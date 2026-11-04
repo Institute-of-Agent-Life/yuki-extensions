@@ -1,0 +1,342 @@
+{
+  "observed_utc": "2026-11-04T18:32:08+00:00",
+  "core_main": "00e1f9f77e73d708fa762692a1acfccede48445b",
+  "core_unmerged": {
+    "24": {
+      "baseRefName": "main",
+      "headRefOid": "cfec3d9e38ed35a81c15e47ac7253f35980711c1",
+      "state": "OPEN",
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/24"
+    },
+    "28": {
+      "baseRefName": "codex/core-032-host",
+      "headRefOid": "7fbe9a3fa94577b3441268d84b20c98aebf0fce5",
+      "state": "OPEN",
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/28"
+    }
+  },
+  "formal_windows_passed": [
+    "EXT-001",
+    "EXT-002",
+    "EXT-007",
+    "EXT-008",
+    "EXT-009",
+    "EXT-010",
+    "EXT-019"
+  ],
+  "ready_uncompleted_cards": [],
+  "unpublished_candidate_work": {
+    "EXT-003": {
+      "branch": "codex/ext-003-telegram",
+      "implementation_commit": "bef4def5b22bae53e6555c600baa0d088f9c3aac",
+      "evidence": "artifacts/EXT-003/candidate-03/telegram-offset.json",
+      "sha256": "a81f960527f3d5e959fef3003af13a8539f4174c9d35af91d1b5855e833f9338",
+      "scope": "Telegram native gateway, durable ingress only"
+    },
+    "EXT-005": {
+      "branch": "codex/ext-005-feishu",
+      "implementation_commit": "6183e58b12a09230fb1d071c026cefd226b76ebe",
+      "evidence": "artifacts/EXT-005/candidate-01/lark-frames.json",
+      "sha256": "55fb682c455fc5f43349d87d9c7c6c3c760d2136579d8c6e92738ae754dce9a3",
+      "scope": "Feishu/Lark authenticated native frames"
+    },
+    "EXT-020": {
+      "branch": "codex/ext-020-env",
+      "implementation_commit": "1e7906b7f2f8cf5ca3085c5e247e4fc2594f9c14",
+      "evidence": "artifacts/EXT-020/candidate-03/env-preparation.json",
+      "sha256": "70925ce355dfea6ceb2c63f42e981c05aec968c4cd2479b7dc852b3289be53d2",
+      "scope": "partial original backend and unavailable tool"
+    },
+    "EXT-028": {
+      "branch": "codex/ext-028-web-fetch",
+      "implementation_commit": "0bac1493a9cefc70f32a938f7aff4c6b24b844f6",
+      "evidence": "artifacts/EXT-028/candidate-05/fetch-source.json",
+      "sha256": "e1f5569fd35045fadd0729b0222e229eef21bcbf798fb821ac086fbc539691d9",
+      "scope": "tool dispatch, R07, original and text paging"
+    },
+    "EXT-040": {
+      "branch": "codex/ext-040-setup",
+      "implementation_commit": "a607e8c14a4807859fb853a3d9282f70be5f2b66",
+      "evidence": "artifacts/EXT-040/candidate-06/setup-install.json",
+      "sha256": "ec6d75176646ddcebae6a22792f4e0a95c22669ffd6e146dd17dd219cc75fbd8",
+      "scope": "signed direct kit, native readiness and optional web-fetch"
+    }
+  },
+  "remaining_direct_prerequisites": {
+    "EXT-003": [
+      "CORE-032"
+    ],
+    "EXT-005": [
+      "CORE-032"
+    ],
+    "EXT-020": [
+      "CORE-032"
+    ],
+    "EXT-028": [
+      "CORE-032"
+    ],
+    "EXT-029": [
+      "CORE-024",
+      "CORE-032"
+    ],
+    "EXT-004": [
+      "CORE-025",
+      "EXT-003"
+    ],
+    "EXT-006": [
+      "CORE-025",
+      "EXT-005"
+    ],
+    "EXT-021": [
+      "CORE-038",
+      "EXT-020"
+    ],
+    "EXT-030": [
+      "CORE-038",
+      "CORE-050"
+    ],
+    "EXT-031": [
+      "CORE-038"
+    ],
+    "EXT-032": [
+      "CORE-038",
+      "CORE-050"
+    ],
+    "EXT-040": [
+      "CORE-039"
+    ],
+    "EXT-011": [
+      "CORE-033"
+    ],
+    "EXT-015": [
+      "CORE-033"
+    ],
+    "EXT-023": [
+      "CORE-034"
+    ],
+    "EXT-025": [
+      "CORE-036",
+      "CORE-050"
+    ],
+    "EXT-027": [
+      "CORE-058"
+    ],
+    "EXT-033": [
+      "CORE-035",
+      "CORE-050"
+    ],
+    "EXT-034": [
+      "CORE-035"
+    ],
+    "EXT-035": [
+      "CORE-035",
+      "CORE-050"
+    ],
+    "EXT-036": [
+      "CORE-035"
+    ],
+    "EXT-047": [
+      "CORE-051",
+      "CORE-058"
+    ],
+    "EXT-067": [
+      "CORE-039",
+      "EXT-004",
+      "EXT-028"
+    ],
+    "EXT-068": [
+      "EXT-004"
+    ],
+    "EXT-069": [
+      "EXT-006"
+    ],
+    "EXT-012": [
+      "EXT-011"
+    ],
+    "EXT-014": [
+      "EXT-011"
+    ],
+    "EXT-016": [
+      "EXT-015"
+    ],
+    "EXT-017": [
+      "EXT-015"
+    ],
+    "EXT-024": [
+      "EXT-023"
+    ],
+    "EXT-026": [
+      "EXT-025"
+    ],
+    "EXT-070": [
+      "EXT-011"
+    ],
+    "EXT-013": [
+      "EXT-012"
+    ],
+    "EXT-018": [
+      "EXT-016",
+      "EXT-017"
+    ],
+    "EXT-022": [
+      "CORE-037",
+      "EXT-021"
+    ],
+    "EXT-037": [
+      "CORE-037"
+    ],
+    "EXT-038": [
+      "CORE-037",
+      "CORE-038"
+    ],
+    "EXT-039": [
+      "CORE-037",
+      "EXT-034"
+    ],
+    "EXT-043": [
+      "CORE-044"
+    ],
+    "EXT-062": [
+      "CORE-041",
+      "EXT-004"
+    ],
+    "EXT-048": [
+      "CORE-035",
+      "EXT-015",
+      "EXT-038"
+    ],
+    "EXT-049": [
+      "CORE-055",
+      "EXT-015"
+    ],
+    "EXT-050": [
+      "EXT-013",
+      "EXT-014",
+      "EXT-015",
+      "EXT-022"
+    ],
+    "EXT-051": [
+      "CORE-042",
+      "EXT-013"
+    ],
+    "EXT-052": [
+      "CORE-042",
+      "EXT-018"
+    ],
+    "EXT-053": [
+      "CORE-042",
+      "EXT-021"
+    ],
+    "EXT-054": [
+      "CORE-042",
+      "EXT-026"
+    ],
+    "EXT-055": [
+      "CORE-042",
+      "EXT-033"
+    ],
+    "EXT-056": [
+      "CORE-042",
+      "EXT-032"
+    ],
+    "EXT-057": [
+      "CORE-041",
+      "EXT-037"
+    ],
+    "EXT-058": [
+      "CORE-041",
+      "EXT-038"
+    ],
+    "EXT-059": [
+      "CORE-042",
+      "EXT-027"
+    ],
+    "EXT-060": [
+      "CORE-042",
+      "EXT-034"
+    ],
+    "EXT-061": [
+      "CORE-042",
+      "EXT-035",
+      "EXT-036"
+    ],
+    "EXT-064": [
+      "CORE-042",
+      "EXT-024"
+    ],
+    "EXT-046": [
+      "EXT-048",
+      "EXT-049",
+      "EXT-050"
+    ],
+    "EXT-066": [
+      "CORE-054",
+      "EXT-047"
+    ],
+    "EXT-041": [
+      "EXT-006",
+      "EXT-028",
+      "EXT-029",
+      "EXT-031",
+      "EXT-039",
+      "EXT-051",
+      "EXT-052",
+      "EXT-053",
+      "EXT-054",
+      "EXT-055",
+      "EXT-056",
+      "EXT-057",
+      "EXT-058",
+      "EXT-059",
+      "EXT-060",
+      "EXT-061",
+      "EXT-062",
+      "EXT-064",
+      "EXT-066"
+    ],
+    "EXT-042": [
+      "CORE-053",
+      "EXT-018",
+      "EXT-024",
+      "EXT-026",
+      "EXT-027",
+      "EXT-029",
+      "EXT-030",
+      "EXT-031",
+      "EXT-032",
+      "EXT-033",
+      "EXT-035",
+      "EXT-036",
+      "EXT-037",
+      "EXT-039",
+      "EXT-040",
+      "EXT-046",
+      "EXT-047",
+      "EXT-068",
+      "EXT-069"
+    ],
+    "EXT-044": [
+      "EXT-017",
+      "EXT-039",
+      "EXT-043",
+      "EXT-046",
+      "EXT-070"
+    ],
+    "EXT-045": [
+      "CORE-043",
+      "EXT-042"
+    ]
+  },
+  "core_inputs": {
+    "CORE-032": "compat/core-032/source.lock.json",
+    "CORE-039": [
+      "tools/yuki-setup/inputs/source.lock.json",
+      "tools/yuki-setup/inputs/native.lock.json"
+    ]
+  },
+  "handoffs": [
+    "https://github.com/Institute-of-Agent-Life/yuki-core/pull/24#issuecomment-6637434938",
+    "https://github.com/Institute-of-Agent-Life/yuki-core/pull/24#issuecomment-6637995503",
+    "https://github.com/Institute-of-Agent-Life/yuki-core/pull/24#issuecomment-6638192603"
+  ]
+}

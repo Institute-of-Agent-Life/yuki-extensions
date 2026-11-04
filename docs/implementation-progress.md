@@ -64,11 +64,22 @@ manifest。回條含來源提交、SDK／schema／peer／消費者 digest、逐�
 錯誤碼與實收效果；正式狀態為 PASS。該預發版只含握手，生產插件採 Rust，
 宿主及各業務方法仍待核心後續交付。
 
-## 下一張可執行卡
+## 當前進度
 
-直接前置與最新觀察見 `artifacts/readiness/after-ext-002.json`。共有 7 張卡
-通過實機驗收。Telegram 與 web-fetch 的下一步分別是 EXT-003 與 EXT-028，
-兩者均待 CORE-032；EXT-011／015 待 CORE-033，EXT-040 待 CORE-039。
+七張卡已完成任務書驗收。另有五張卡完成下表的 Windows 候選工作。
+三平台 CI 與合併狀態以各 PR 為準。此批開發對拍不計入七張正式驗收。
+最新依賴快照見 `artifacts/readiness/after-core032-039-candidates.json`。
+
+| 卡／分支 | 實作提交 | Windows 已核實 | 仍需 |
+|---|---|---|---|
+| EXT-003 · codex/ext-003-telegram | `bef4def` · [PR #11](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/11) | 雙 Bot 接納、提交前斷線、提交後丟答與原 offset | CORE-032 正式交接 |
+| EXT-028 · codex/ext-028-web-fetch | `0bac149` · [PR #12](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/12) | 兩次 tool.call、R07、19 頁正文與 49 頁原件 | CORE-032 正式交接 |
+| EXT-005 · codex/ext-005-feishu | `6183e58` · [PR #13](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/13) | 飛書／Lark 身份隔離、亂序重組、writer 斷線無成功 ACK | CORE-032 正式交接 |
+| EXT-020 · codex/ext-020-env | `cf1c2a5`、`1e7906b` · [PR #14](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/14) | 原 Manager 來源包、run 查詢與缺後端局部失敗 | Work/run 授權，真 gVisor/execd、PTY 及輪轉 |
+| EXT-040 · codex/ext-040-setup | `a607e8c` | 簽名原生／OCI 安裝，無 QQ ready，明選 web-fetch | CORE-039 正式交接、外部入口與選配服務實測 |
+
+對 CORE-033 尚無可消費交付，EXT-011／015 待核。EXT-004 尚需 CORE-025。
+EXT-067 完整基底對拍還需 EXT-004 的實際分段投遞證據。
 
 ## EXT-003 Windows 開發候選對拍
 
