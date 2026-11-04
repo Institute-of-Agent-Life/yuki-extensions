@@ -1,0 +1,656 @@
+from __future__ import annotations
+
+import asyncio
+import json
+import sys
+from dataclasses import replace
+from pathlib import Path
+from typing import Any
+
+import pytest
+from websockets.asyncio.client import connect
+from websockets.asyncio.server import serve
+
+from yuki_agent_connector import connector as connector_module
+from yuki_agent_connector.config import Config, Instance
+from yuki_agent_connector.connector import Connector
+from yuki_agent_connector.journal import Journal
+
+
+def command(identity: str = "original", action: str = "prompt") -> dict[str, Any]:
+    return {
+        "type": "command",
+        "id": identity,
+        "instance_id": "local",
+        "action": action,
+        "arguments": {"prompt": "original input"},
+    }
+
+
+@pytest.fixture
+def journal(tmp_path: Path) -> Any:
+    value = Journal(tmp_path / "private" / "journal.db", namespace="server/device")
+    yield value
+    value.close()
+
+
+def test_crash_window_remains_unknown_and_namespace_does_not_move(
+    journal: Journal, tmp_path: Path
+) -> None:
+    original = command()
+    assert journal.begin(original) is None
+    assert journal.begin(original)["result"]["status"] == "unknown"  # type: ignore[index]
+    with pytest.raises(ValueError, match="parameters"):
+        journal.begin({**original, "arguments": {"prompt": "changed"}})
+    with pytest.raises(ValueError, match="another device"):
+        Journal(tmp_path / "private" / "journal.db", namespace="different owner")
+
+
+def test_events_are_committed_before_send_and_ack_prunes_only_original(journal: Journal) -> None:
+    original = command()
+    journal.begin(original)
+    journal.complete(
+        original["id"],
+        {
+            "type": "response",
+            "id": original["id"],
+            "result": {
+                "session_id": "native-session",
+                "execution_id": "native-turn",
+                "pending": True,
+            },
+        },
+    )
+    event = {
+        "type": "event",
+        "event_id": "e1",
+        "kind": "completed",
+        "operation_id": original["id"],
+        "payload": {"status": "completed"},
+    }
+    journal.append(event)
+    journal.append(event)
+    assert all(json.loads(journal.next_event()[2])[key] == value for key, value in event.items())
+    journal.ack("another-event")
+    assert all(json.loads(journal.next_event()[2])[key] == value for key, value in event.items())
+    journal.ack("e1")
+    assert journal.next_event() is None
+    assert journal.operation(original["id"])["status"] == "completed"
+    assert journal.operation(original["id"])["pending"] is False
+    assert journal.observations() == []
+
+
+class FakeDriver:
+    def __init__(self) -> None:
+        self.spec = Instance("local", "fake", "Fake", "fake")
+        self.calls: list[dict[str, Any]] = []
+        self.capabilities = ["list", "get", "prompt"]
+        self.started = asyncio.Event()
+        self.finish = asyncio.Event()
+
+    async def execute(self, value: dict[str, Any]) -> dict[str, Any]:
+        self.calls.append(value)
+        self.started.set()
+        if value["action"] == "prompt":
+            await self.finish.wait()
+        return {"session_id": "native-session", "execution_id": "native-turn", "pending": True}
+
+    async def start(self) -> None:
+        pass
+
+    async def stop(self) -> None:
+        pass
+
+    async def recover(self, value: dict[str, Any], result: dict[str, Any]) -> None:
+        pass
+
+
+@pytest.mark.asyncio
+async def test_live_instance_edit_and_delete_preserve_original_work(
+    journal: Journal, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    original = Instance("local", "fake", "Old", "original")
+    sibling = Instance("sibling", "fake", "Sibling", "sibling")
+    path = tmp_path / "config.json"
+    configured = Config("ws://localhost/", "device", "token", [original, sibling])
+    configured.save(path)
+    drivers: list[Any] = []
+
+    class Owner(FakeDriver):
+        def __init__(self, spec: Instance, emit: Any) -> None:
+            super().__init__()
+            self.spec, self.emit = spec, emit
+            self.stopped = False
+            drivers.append(self)
+
+        async def stop(self) -> None:
+            self.stopped = True
+
+    monkeypatch.setattr(connector_module, "make_driver", Owner)
+    connector = Connector(configured, journal, config_path=path)
+    await connector.start_drivers()
+    await asyncio.sleep(0)
+    old, other = drivers
+    work = asyncio.create_task(connector.dispatch(command()))
+    await old.started.wait()
+
+    edited = Instance("local", "fake", "New", "replacement")
+    Config("ws://localhost/", "device", "token", [edited, sibling]).save(path)
+    status = {"type": "command", "id": "status", "resource": "terminal", "action": "status"}
+    await connector.dispatch(status)
+    await asyncio.sleep(0)
+    assert connector.hello()["instances"][0]["label"] == "New"
+    assert connector.drivers["sibling"] is other and not other.stopped
+    assert connector.drivers["local"] is not old and not old.stopped
+    receipts = {}
+    for action in ("respond", "steer", "cancel", "queue", "watch"):
+        receipts[action] = await connector.dispatch(
+            {**command(f"control-{action}", action), "arguments": {"operation_id": "original"}}
+        )
+        assert old.calls[-1]["id"] == f"control-{action}"
+    await connector.dispatch(
+        {
+            **command("cancel-by-execution", "cancel"),
+            "session_id": "native-session",
+            "execution_id": "native-turn",
+            "arguments": {},
+        }
+    )
+    assert connector.drivers["local"].calls[-1]["id"] == "cancel-by-execution"
+    Config("ws://localhost/", "device", "token", [sibling]).save(path)
+    await connector.dispatch({**status, "id": "status-after-delete"})
+    assert [item["id"] for item in connector.hello()["instances"]] == ["sibling"]
+    assert (await connector.dispatch(command("new")))["result"]["error"][
+        "code"
+    ] == "instance_unavailable"
+    assert not old.stopped and connector.drivers["sibling"] is other
+    await connector.dispatch(
+        {**command("cancel-after-delete", "cancel"), "arguments": {"operation_id": "original"}}
+    )
+    assert old.calls[-1]["id"] == "cancel-after-delete"
+    for action in ("queue", "watch"):
+        rejected = await connector.dispatch(
+            {
+                **command(f"new-{action}-after-delete", action),
+                "arguments": {"operation_id": "original"},
+            }
+        )
+        assert rejected["result"]["error"]["code"] == "instance_unavailable"
+        assert old.calls[-1]["id"] == "cancel-after-delete"
+    assert (
+        await connector.dispatch(
+            {**command("control-queue", "queue"), "arguments": {"operation_id": "original"}}
+        )
+        == receipts["queue"]
+    )
+
+    old.finish.set()
+    assert (await work)["result"]["execution_id"] == "native-turn"
+    for action in ("queue", "watch"):
+        await old.emit(
+            "completed",
+            {"operation_id": f"control-{action}", "payload": {"status": "completed"}},
+        )
+    await old.emit(
+        "completed",
+        {"operation_id": "original", "payload": {"status": "completed"}},
+    )
+    await asyncio.sleep(0)
+    assert journal.operation("original")["status"] == "completed"
+    assert old.stopped and not other.stopped
+    for task in connector._startup:
+        task.cancel()
+    await asyncio.gather(*connector._startup, *connector.tasks, return_exceptions=True)
+
+
+@pytest.mark.asyncio
+async def test_recovery_requires_the_original_connection_source(
+    journal: Journal, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    drivers: list[Any] = []
+    monkeypatch.setenv("CODEX_HOME", str(tmp_path / "original-profile"))
+
+    class Owner(FakeDriver):
+        def __init__(self, spec: Instance, emit: Any) -> None:
+            super().__init__()
+            self.spec = spec
+            self.recovered: list[str] = []
+            drivers.append(self)
+
+        async def execute(self, value: dict[str, Any]) -> dict[str, Any]:
+            return {
+                "status": "running" if value["id"] == "sdk-original" else "unknown",
+                "pending": True,
+                "session_id": "original-session",
+                "execution_id": "original-turn",
+            }
+
+        async def recover(self, value: dict[str, Any], result: dict[str, Any]) -> None:
+            self.recovered.append(value["id"])
+
+    monkeypatch.setattr(connector_module, "make_driver", Owner)
+    spec = Instance(
+        "local",
+        "codex",
+        "Old",
+        "old-version",
+        cwd=str(tmp_path),
+        env={"TOKEN": "private-not-in-source"},
+        endpoint="ws://original-owner",
+        installation="stable-installation",
+    )
+    legacy = command("legacy-watch", "watch")
+    journal.begin(legacy)
+    journal.complete("legacy-watch", {"result": {"status": "unknown", "pending": True}})
+
+    async def started(selected: Instance) -> Connector:
+        connector = Connector(Config("ws://localhost/", "device", "token", [selected]), journal)
+        await connector.start_drivers()
+        await asyncio.sleep(0)
+        return connector
+
+    first = await started(spec)
+    assert drivers[-1].recovered == []  # Legacy journal has no owner-source fact.
+    await first.dispatch(command())
+    original_receipt = journal.operation("original")
+    assert original_receipt["session_id"] == "original-session"
+    source = journal.db.execute(
+        "SELECT owner_source FROM operations WHERE id='original'"
+    ).fetchone()[0]
+    assert "private-not-in-source" not in source
+
+    changed = await started(replace(spec, endpoint="ws://different-owner"))
+    assert drivers[-1].recovered == []
+    result = await changed.dispatch(
+        {**command("query-original", "get"), "arguments": {"operation_id": "original"}}
+    )
+    assert result["result"] == original_receipt
+    assert drivers[-1].recovered == []
+
+    terminal = command("terminal-owner")
+    terminal_source = connector_module.instance_source(spec)
+    journal.begin(terminal, owner_source=terminal_source)
+    journal.complete("terminal-owner", {"result": {"status": "completed", "pending": False}})
+    same_source = await started(spec)
+    await same_source.dispatch(
+        {**command("queue-on-original", "queue"), "arguments": {"operation_id": "terminal-owner"}}
+    )
+    saved_source = journal.db.execute(
+        "SELECT owner_source FROM operations WHERE id='queue-on-original'"
+    ).fetchone()[0]
+    assert saved_source == terminal_source
+    journal.append(
+        {
+            "type": "event",
+            "event_id": "queue-finished",
+            "kind": "completed",
+            "operation_id": "queue-on-original",
+            "payload": {"status": "completed"},
+        }
+    )
+
+    sdk_spec = replace(spec, driver="claude", endpoint=None, installation=None)
+    sdk = await started(sdk_spec)
+    await sdk.dispatch(command("sdk-original"))
+    restarted = await started(sdk_spec)
+    assert drivers[-1].recovered == []  # A new SDK process is not the original owner.
+    lost = journal.operation("sdk-original")
+    assert lost["status"] == "unknown" and lost["pending"] is True
+    assert lost["session_id"] == "original-session" and lost["execution_id"] == "original-turn"
+    assert lost["last_confirmed"]["status"] == "running"
+    queried = await restarted.dispatch(
+        {**command("sdk-get", "get"), "arguments": {"operation_id": "sdk-original"}}
+    )
+    assert queried["result"] == lost
+    queued = journal.db.execute(
+        "SELECT event FROM events WHERE json_extract(event, '$.operation_id')='sdk-original' "
+        "AND json_extract(event, '$.payload.reason')='original_owner_not_attached'"
+    ).fetchone()
+    assert queued is not None and json.loads(queued[0])["operation_state"] == lost
+    result = await restarted.dispatch(
+        {**command("sdk-cancel", "cancel"), "arguments": {"operation_id": "sdk-original"}}
+    )
+    assert result["result"]["error"]["code"] == "instance_unavailable"
+
+    monkeypatch.setenv("CODEX_HOME", str(tmp_path / "different-profile"))
+    await started(spec)
+    assert drivers[-1].recovered == ["original"]  # Explicit endpoint, not local profile.
+    monkeypatch.setenv("CODEX_HOME", str(tmp_path / "original-profile"))
+    default = replace(spec, endpoint=None, installation=None)
+    default_owner = await started(default)
+    await default_owner.dispatch(command("default-original"))
+    monkeypatch.setenv("CODEX_HOME", str(tmp_path / "different-profile"))
+    await started(default)
+    assert drivers[-1].recovered == []
+    monkeypatch.setenv("CODEX_HOME", str(tmp_path / "original-profile"))
+    different_project = tmp_path / "different-project"
+    different_project.mkdir()
+    with monkeypatch.context() as different_home:
+        different_home.setenv("USERPROFILE" if sys.platform == "win32" else "HOME", str(tmp_path))
+        await started(
+            replace(
+                default,
+                label="New label",
+                command="new-version",
+                cwd=str(different_project),
+                args=["--changed"],
+                env={"TOKEN": "different", "HTTP_PROXY": "http://different"},
+            )
+        )
+        assert drivers[-1].recovered == ["default-original"]
+
+
+@pytest.mark.asyncio
+async def test_detached_original_owner_is_released_only_after_real_work_finishes(
+    journal: Journal, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    drivers: list[Any] = []
+
+    class Owner(FakeDriver):
+        def __init__(self, spec: Instance, emit: Any) -> None:
+            super().__init__()
+            self.spec, self.emit, self.stopped = spec, emit, False
+            drivers.append(self)
+
+        async def execute(self, value: dict[str, Any]) -> dict[str, Any]:
+            if value["action"] == "detach":
+                return {"status": "completed", "admitted": True, "detached": True}
+            return {"status": "running", "admitted": True, "pending": True}
+
+        async def stop(self) -> None:
+            self.stopped = True
+
+    monkeypatch.setattr(connector_module, "make_driver", Owner)
+    original = Instance("local", "fake", "Original", "old")
+    path = tmp_path / "config.json"
+    config = Config("ws://localhost/", "device", "token", [original])
+    config.save(path)
+    connector = Connector(config, journal, config_path=path)
+    await connector.start_drivers()
+    await connector.dispatch(command())
+    old = drivers[0]
+    replace(config, instances=[]).save(path)
+    await connector.dispatch({"id": "status", "resource": "terminal", "action": "status"})
+    await connector.dispatch(
+        {**command("detach-original", "detach"), "arguments": {"operation_id": "original"}}
+    )
+    detached = journal.operation("original")
+    assert detached["status"] == "detached" and not old.stopped
+    assert journal.next_event() is None
+    await old.emit("work_finished", {"operation_id": "original"})
+    await asyncio.sleep(0)
+    assert old.stopped and journal.operation("original") == detached
+    assert journal.next_event() is None
+
+    codex = replace(original, driver="codex", endpoint="ws://original-owner")
+    replace(config, instances=[codex]).save(path)
+    await connector.dispatch({"id": "status-add", "resource": "terminal", "action": "status"})
+    await asyncio.sleep(0)
+    codex_owner = drivers[-1]
+    await connector.dispatch(command("codex-original"))
+    replace(config, instances=[]).save(path)
+    await connector.dispatch({"id": "status-delete", "resource": "terminal", "action": "status"})
+    await connector.dispatch(
+        {**command("detach-codex", "detach"), "arguments": {"operation_id": "codex-original"}}
+    )
+    await asyncio.sleep(0)
+    assert codex_owner.stopped and journal.operation("codex-original")["status"] == "detached"
+
+
+@pytest.mark.asyncio
+async def test_duplicate_original_and_parameter_mismatch_never_dispatch_twice(
+    journal: Journal,
+) -> None:
+    driver = FakeDriver()
+    connector = Connector(Config("ws://localhost/", "device", "not-a-real-token"), journal)
+    connector.drivers["local"] = driver
+    task = asyncio.create_task(connector.dispatch(command()))
+    await driver.started.wait()
+    duplicate = await connector.dispatch(command())
+    assert duplicate["result"]["status"] == "unknown"
+    mismatch = await connector.dispatch({**command(), "arguments": {"prompt": "changed"}})
+    assert mismatch["error"]["code"] == "invalid_command"
+    assert journal.operation("original")["status"] == "unknown"
+    driver.finish.set()
+    response = await task
+    assert await connector.dispatch(command()) == response
+    assert len(driver.calls) == 1
+    assert journal.operation("original")["execution_id"] == "native-turn"
+
+
+@pytest.mark.asyncio
+async def test_queries_do_not_write_or_require_a_work(journal: Journal) -> None:
+    connector = Connector(Config("ws://localhost/", "device", "token"), journal)
+    connector.drivers["local"] = FakeDriver()
+    before = journal.db.total_changes
+    await connector.dispatch(command(action="list"))
+    await connector.dispatch(command(action="get"))
+    assert journal.db.total_changes == before
+
+
+@pytest.mark.asyncio
+async def test_network_disconnect_leaves_native_dispatch_running_and_replays_events(
+    journal: Journal,
+) -> None:
+    connector = Connector(Config("ws://localhost/", "device", "token"), journal)
+    driver = FakeDriver()
+    connector.drivers["local"] = driver
+    received: list[dict[str, Any]] = []
+    connections = 0
+    acked = asyncio.Event()
+
+    async def server(socket: Any) -> None:
+        nonlocal connections
+        connections += 1
+        received.append(json.loads(await socket.recv()))
+        if connections == 1:
+            await socket.send(json.dumps(command()))
+            await driver.started.wait()
+            await socket.close()
+        else:
+            event = json.loads(await socket.recv())
+            received.append(event)
+            await socket.send(json.dumps({"type": "ack", "event_id": event["event_id"]}))
+            acked.set()
+            await socket.wait_closed()
+
+    async with serve(server, "127.0.0.1", 0) as listener:
+        url = f"ws://127.0.0.1:{listener.sockets[0].getsockname()[1]}"
+        async with connect(url) as socket:
+            await connector.connection(socket)
+        assert not driver.finish.is_set()
+        driver.finish.set()
+        await asyncio.gather(*connector.tasks)
+        journal.append(
+            {
+                "type": "event",
+                "event_id": "offline-event",
+                "kind": "completed",
+                "operation_id": "original",
+                "payload": {"status": "completed"},
+            }
+        )
+        async with connect(url) as socket:
+            task = asyncio.create_task(connector.connection(socket))
+            await asyncio.wait_for(acked.wait(), 2)
+            await socket.close()
+            await task
+    assert len(driver.calls) == 1
+    assert received[-1]["event_id"] == "offline-event"
+    assert journal.next_event() is None
+
+
+def test_detach_only_removes_its_original_observation(journal: Journal) -> None:
+    for key in ["watch-1", "watch-2"]:
+        journal.begin(command(key, "watch"))
+        journal.complete(key, {"type": "response", "id": key, "result": {"session_id": "same"}})
+    detached = {**command("detach", "detach"), "arguments": {"operation_id": "watch-1"}}
+    journal.begin(detached)
+    journal.complete(
+        "detach",
+        {"type": "response", "id": "detach", "result": {"detached": True, "admitted": True}},
+    )
+    assert [cmd["id"] for cmd, result in journal.observations()] == ["watch-2"]
+
+
+@pytest.mark.asyncio
+async def test_original_operation_query_is_flat_and_preserves_native_receipt_after_ack(
+    journal: Journal,
+) -> None:
+    connector = Connector(Config("ws://localhost/", "device", "token"), journal)
+    driver = FakeDriver()
+    driver.finish.set()
+    connector.drivers["local"] = driver
+    await connector.dispatch(command())
+    journal.append(
+        {
+            "type": "event",
+            "event_id": "native-terminal",
+            "kind": "completed",
+            "operation_id": "original",
+            "session_id": "native-session",
+            "execution_id": "native-turn",
+            "payload": {"status": "completed", "text": "actual result"},
+        }
+    )
+    journal.ack("native-terminal")
+    response = await connector.dispatch(
+        {**command("query", "get"), "arguments": {"operation_id": "original"}}
+    )
+    assert response["result"]["status"] == "completed"
+    assert response["result"]["session_id"] == "native-session"
+    assert response["result"]["execution_id"] == "native-turn"
+    assert response["result"]["pending"] is False
+    assert "type" not in response["result"] and "result" not in response["result"]
+
+
+def test_native_acceptance_before_reply_is_recoverable_without_dispatch_replay(
+    journal: Journal,
+) -> None:
+    original = command()
+    journal.begin(original)
+    journal.append(
+        {
+            "type": "event",
+            "event_id": "accepted-before-crash",
+            "kind": "progress",
+            "operation_id": "original",
+            "session_id": "original-session",
+            "execution_id": "original-turn",
+            "payload": {"admitted": True, "status": "running"},
+        }
+    )
+    assert journal.operation("original")["admitted"] is True
+    observations = journal.observations()
+    assert observations[0][1]["execution_id"] == "original-turn"
+    journal.append(
+        {
+            "type": "event",
+            "event_id": "early-terminal",
+            "kind": "completed",
+            "operation_id": "original",
+            "payload": {"status": "completed"},
+        }
+    )
+    journal.complete(
+        "original",
+        {
+            "type": "response",
+            "id": "original",
+            "result": {
+                "session_id": "original-session",
+                "execution_id": "original-turn",
+                "status": "running",
+            },
+        },
+    )
+    assert journal.observations() == []
+    assert journal.operation("original")["status"] == "completed"
+
+
+@pytest.mark.asyncio
+async def test_unknown_control_is_never_admitted_or_used_to_detach(journal: Journal) -> None:
+    class UnknownDriver(FakeDriver):
+        async def execute(self, value: dict[str, Any]) -> dict[str, Any]:
+            return {"status": "unknown", "reason": "delivery_unconfirmed"}
+
+    driver = UnknownDriver()
+    journal.begin(
+        command("watch-original", "watch"),
+        owner_source=connector_module.instance_source(driver.spec),
+    )
+    journal.complete(
+        "watch-original",
+        {
+            "type": "response",
+            "id": "watch-original",
+            "result": {
+                "session_id": "native-session",
+                "status": "unknown",
+                "pending": True,
+                "admitted": True,
+            },
+        },
+    )
+    connector = Connector(Config("ws://localhost/", "device", "token"), journal)
+    connector.drivers["local"] = driver
+    response = await connector.dispatch(
+        {**command("detach", "detach"), "arguments": {"operation_id": "watch-original"}}
+    )
+    assert "admitted" not in response["result"]
+    assert journal.observations()[0][0]["id"] == "watch-original"
+
+
+@pytest.mark.asyncio
+async def test_pipeline_sends_backlog_before_ack_and_replays_only_unacked_sequence(journal):
+    connector = Connector(Config("ws://localhost/", "device", "fixture"), journal)
+    connector.drivers["local"] = FakeDriver()
+    originals = [
+        {
+            "type": "event",
+            "event_id": f"backlog-{i}",
+            "kind": "progress",
+            "payload": {"text": "x" * 4096},
+        }
+        for i in range(40)
+    ]
+    for event in originals:
+        journal.append(event)
+    connections = 0
+    all_acked = asyncio.Event()
+
+    async def peer(socket):
+        nonlocal connections
+        connections += 1
+        await socket.recv()  # Current connection hello.
+        if connections == 1:
+            # The entire backlog can cross the wire before its commit ACKs return.
+            batch = [json.loads(await socket.recv()) for _ in originals]
+            assert [item["event_id"] for item in batch] == [item["event_id"] for item in originals]
+            first = batch[0]
+            await socket.send(json.dumps(command("read-during-ack", "get")))
+            response = json.loads(await socket.recv())
+            assert response["type"] == "response" and response["id"] == "read-during-ack"
+            assert json.loads(journal.next_event()[2]) == first
+            await socket.send(json.dumps({"type": "ack", "event_id": first["event_id"]}))
+            await socket.send(json.dumps({"type": "ack", "event_id": first["event_id"]}))
+            await socket.close()  # Commit/ACK observation is lost for the second original.
+        else:
+            for original in originals[1:]:
+                current = json.loads(await socket.recv())
+                assert all(current[key] == value for key, value in original.items())
+                await socket.send(json.dumps({"type": "ack", "event_id": current["event_id"]}))
+            all_acked.set()
+            await socket.wait_closed()
+
+    async with serve(peer, "127.0.0.1", 0) as server:
+        url = f"ws://127.0.0.1:{server.sockets[0].getsockname()[1]}"
+        async with connect(url) as socket:
+            await connector.connection(socket)
+        assert json.loads(journal.next_event()[2])["event_id"] == originals[1]["event_id"]
+        async with connect(url) as socket:
+            running = asyncio.create_task(connector.connection(socket))
+            await asyncio.wait_for(all_acked.wait(), 5)
+            await socket.close()
+            await running
+    assert journal.next_event() is None

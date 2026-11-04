@@ -43,6 +43,7 @@ def main():
     parser.add_argument("task")
     parser.add_argument("--run", default="01")
     parser.add_argument("--host", default="hjw")
+    parser.add_argument("--connector-source", action="store_true", help="baseline source verification only, not EXT-007 acceptance")
     args = parser.parse_args()
     if not re.fullmatch(r"EXT-\d{3}", args.task) or not re.fullmatch(r"[a-zA-Z0-9-]+", args.run):
         parser.error("invalid task/run")
@@ -83,11 +84,33 @@ def main():
                 wheel.write_bytes(response.read())
         if hashlib.sha256(wheel.read_bytes()).hexdigest() != package["sha256"]:
             raise ValueError("build-tool wheel digest mismatch: " + wheel.name)
+    extra = []
+    if args.connector_source:
+        if args.task != "EXT-007":
+            parser.error("connector source mode belongs to EXT-007 preparation")
+        manifest_path = transfer / "connector-wheels.json"
+        helper = invoke(["uv", "run", "--no-project", "--offline", "--python", "3.12", "python",
+                         str(root / "ci/download-wheelhouse.py"), str(root / "connector/uv.lock"),
+                         "--out", str(wheelhouse), "--manifest", str(manifest_path)])
+        if helper.returncode:
+            return helper.returncode
+        extra = [wheelhouse / f["filename"] for f in json.loads(manifest_path.read_text())["files"]]
+        source_lock = json.loads((root / "connector/packaging/source.lock.json").read_text())
+        baseline = source_lock["historical_ci"]
+        oracle = transfer / "oracle" / baseline["wheel_name"]
+        if hashlib.sha256(oracle.read_bytes()).hexdigest() != baseline["wheel_sha256"]:
+            raise ValueError("baseline wheel digest mismatch")
+        extra.append(oracle)
     # Include only locked wheels, not arbitrary files already in the transport cache.
     tools_zip = transfer / "tooling.zip"
     with zipfile.ZipFile(tools_zip, "w", zipfile.ZIP_DEFLATED) as archive:
         for package in locked.values():
             archive.write(wheelhouse / package["filename"], package["filename"])
+        existing = {p["filename"] for p in locked.values()}
+        for path in extra:
+            if path.name not in existing:
+                archive.write(path, path.name)
+                existing.add(path.name)
     assert powershell(args.host, f"New-Item -ItemType Directory -Force {quote(remote)} | Out-Null").returncode == 0
     assert invoke(["scp", "-q", str(snapshot), f"{args.host}:{remote}/source.zip"]).returncode == 0
     assert invoke(["scp", "-q", str(tools_zip), f"{args.host}:{remote}/tooling.zip"]).returncode == 0
@@ -108,7 +131,8 @@ if ($actual -ne $expected) {{ throw 'snapshot digest mismatch' }}
 Expand-Archive -LiteralPath {quote(remote + '/source.zip')} -DestinationPath {quote(remote + '/src')} -Force
 Set-Location {quote(remote + '/src')}
 $env:YUKI_SOURCE_SNAPSHOT_SHA256=$expected
-py -3.12 ci/check.py {args.task} --out artifacts/{args.task}/{args.run}
+{('$env:YUKI_BASELINE_WHEEL=' + quote(remote + '/wheelhouse/' + baseline['wheel_name'])) if args.connector_source else ''}
+py -3.12 {'connector/packaging/verify_source.py' if args.connector_source else 'ci/check.py ' + args.task} --out artifacts/{args.task}/{args.run}
 $result=$LASTEXITCODE
 $zipCode=@'
 import pathlib, zipfile
