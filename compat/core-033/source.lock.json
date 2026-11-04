@@ -1,0 +1,65 @@
+{
+  "repository": "Institute-of-Agent-Life/yuki-core",
+  "source_commit": "994aee20ced762d4132186144e718d8946321347",
+  "handoff_commit": "becbdb0316aa96911370bc5f0f5f79dff71af67f",
+  "published": false,
+  "platforms": {
+    "darwin-arm64": {
+      "archive": "yuki-personal-preview-994aee20ced7-darwin-arm64.zip",
+      "sha256": "9b7a014334727466d14fe9add6e0d83fc17b0641eb120f6bf5e33afff2d51ea2",
+      "binary_sha256": "ccf463be3ad11af7ab20cce14b38d7638ccc174e740120302270df2aee2cb78e",
+      "witness_sha256": "186207a0e02848b90062650c70dad93c5c7c71654cd306e304c0858d192e3661"
+    },
+    "linux-arm64": {
+      "archive": "yuki-personal-preview-994aee20ced7-linux-arm64.zip",
+      "sha256": "91da3ff307e1f908e82ee00472c41d1c74ce9d2da998001e17ecaed483f8ce8c",
+      "binary_sha256": "8bb0062f97dfde9d2c37cc40551d0e4908dffecd214efaf43130bd1bc7b9a89c",
+      "witness_sha256": "cf7e02660d1b105532b6c4abfc415c95ccc6a94f8f54db9a2c4b7162c4b42c18"
+    },
+    "windows-x86_64": {
+      "archive": "yuki-personal-preview-994aee20ced7-windows-x86_64.zip",
+      "sha256": "ddc2cf1c01dd9df9e0eecf6b1b85984176810b8c763a4b7bd493d924e40a53f8",
+      "binary_sha256": "54e4825ddd9de64d3e71626e320fbec2e8ddd0d60099ef6775a5573aaf2bbfa3",
+      "witness_sha256": "a2be09e86aa092aedc6160a50af3a13a0afa7d902cf866b9d991e1f5d79a27d5"
+    }
+  },
+  "sdk": {
+    "python": "1.0.0a3",
+    "rust": "1.0.0-alpha.3"
+  },
+  "rust_crate_sha256": "e5b9fde5298eb71ff252fc8acd430b44d8d965761d5d3c948da47fced49c7dbd",
+  "schema_sha256": "9feab6196953ef66a04a745b801b2bf528564cfc0d9d0ff545a81e522624f42e",
+  "personal_schema_sha256": "061b40a245ff7a75bc747684760d7964cae5fa7f685dab855ff96a5458682827",
+  "routes": [
+    "DELETE /client/v1/devices/{identity}",
+    "GET /admin/v1/health",
+    "GET /client/v1/automations",
+    "GET /client/v1/conversations/{identity}/events",
+    "GET /client/v1/home",
+    "GET /client/v1/me",
+    "GET /client/v1/memory/facts",
+    "GET /client/v1/memory/facts/{fact_id}",
+    "GET /client/v1/meta",
+    "GET /client/v1/requests/{request_id}",
+    "GET /client/v1/works",
+    "GET /client/v1/works/{identity}",
+    "POST /admin/v1/persons/{identity}/superuser/{action}",
+    "POST /agents/v1/pair",
+    "POST /client/v1/automations/{automation_id}/actions/{action}",
+    "POST /client/v1/memory/facts/{fact_id}/corrections",
+    "POST /client/v1/pair",
+    "POST /client/v1/works/{identity}/cancel",
+    "POST /client/v1/works/{identity}/inputs",
+    "POST /core/v1/entry/exchange"
+  ],
+  "personal_methods": [
+    "device.auth",
+    "native.notify",
+    "native.queryAck",
+    "work.cancel",
+    "work.get",
+    "work.input"
+  ],
+  "wire": 4,
+  "client": 9
+}

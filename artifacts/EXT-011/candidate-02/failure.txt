@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "D:\yuki-extension-tests\d8cdce0b0aca9c738c6b\src\ci\check.py", line 37, in main
+    report_name, report = runner(root, args.out.resolve())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\d8cdce0b0aca9c738c6b\src\tests\cases\EXT-011.py", line 97, in prepare
+    auth_probe[key] = http(
+                      ^^^^^
+  File "D:\yuki-extension-tests\d8cdce0b0aca9c738c6b\src\ci\personal_preview.py", line 41, in http
+    return r.status, json.loads(data) if data else {}
+                     ^^^^^^^^^^^^^^^^
+  File "C:\Users\Hilbert\AppData\Local\Programs\Python\Python312\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hilbert\AppData\Local\Programs\Python\Python312\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hilbert\AppData\Local\Programs\Python\Python312\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)

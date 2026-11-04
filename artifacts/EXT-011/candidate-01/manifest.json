@@ -1,0 +1,27 @@
+{
+  "task": "EXT-011",
+  "status": "FAIL",
+  "phase": "preparation",
+  "card_status": "FAIL",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "8018a39996492fb863888ae52943c91980f918acd1b046fcd974480b10ec5b41",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-011",
+    "--preparation",
+    "--out",
+    "artifacts\\EXT-011\\candidate-01"
+  ],
+  "files": {
+    "connector-dist/.gitignore": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1",
+    "connector-dist/package-manifest.json": "d8456d47fbf40884759cf6afdf1c16a9136a032d873329aefa4d9d0b4a844272",
+    "connector-dist/yuki_agent_connector-0.4.4.dev1-py3-none-any.whl": "2748ec830b56e38f404d33964350578e543232ab1fce02e2399fc3ab045a74d8",
+    "connector-dist/yuki_agent_connector-0.4.4.dev1.tar.gz": "691ff2efa037744310409fc0cd1b84b6c7b32049ef062b65b658dd7f308364b3",
+    "failure.txt": "0a49bf33dd86e728daf95883a1458ead94433bd3f58450e87cdd120a563fea9a",
+    "host.txt": "8b0605dac653aef7dd1acf1a209c2de5bf7b03b7e4da95e33e202685c4931387",
+    "wire.jsonl": "f2f463d07196d3b9792750c946c24d493c18a3ccaf7fed4d4b1d8746a97b532b"
+  }
+}

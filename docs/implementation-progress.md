@@ -66,7 +66,7 @@ manifest。回條含來源提交、SDK／schema／peer／消費者 digest、逐�
 
 ## 當前進度
 
-七張卡已完成任務書驗收。另有五張卡完成下表的 Windows 候選工作。
+七張卡已完成任務書驗收。另有六張卡完成下表的 Windows 候選工作。
 三平台 CI 與合併狀態以各 PR 為準。此批開發對拍不計入七張正式驗收。
 最新依賴快照見 `artifacts/readiness/after-core032-039-candidates.json`。
 
@@ -77,8 +77,9 @@ manifest。回條含來源提交、SDK／schema／peer／消費者 digest、逐�
 | EXT-005 · codex/ext-005-feishu | `6183e58` · [PR #13](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/13) | 飛書／Lark 身份隔離、亂序重組、writer 斷線無成功 ACK | CORE-032 正式交接 |
 | EXT-020 · codex/ext-020-env | `cf1c2a5`、`1e7906b` · [PR #14](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/14) | 原 Manager 來源包、run 查詢與缺後端局部失敗 | Work/run 授權，真 gVisor/execd、PTY 及輪轉 |
 | EXT-040 · codex/ext-040-setup | `a607e8c` · [PR #15](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/15) | 簽名原生／OCI 安裝，無 QQ ready，明選 web-fetch | CORE-039 正式交接、外部入口與選配服務實測 |
+| EXT-011 · codex/ext-011-local-agent | 候選提交 | 原 Connector 配對、無 instance 裝置跨重啟保存 | Work 以外的裝置授權與撤權狀態 |
 
-對 CORE-033 尚無可消費交付，EXT-011／015 待核。CORE-025 已開
+CORE-033 已交接未發布的個人入口候選包，EXT-011／015 可做開發對拍。CORE-025 已開
 [核心 PR #34](https://github.com/Institute-of-Agent-Life/yuki-core/pull/34)。EXT-004／006
 仍缺原 Bot／租戶附件的公開授權與驗收回條，詳見 `docs/core-interface-requests.md`。
 EXT-067 完整基底對拍還需 EXT-004 的實際分段投遞證據。
@@ -190,3 +191,11 @@ PR #15 的 Linux push 檢查曾在 Codex 測試代理重連時逾時。Windows �
 `artifacts/EXT-007/proxy-eof-regression.json` 記原錯與修正 SHA。
 `artifacts/EXT-007/proxy-eof-01/` 是修正後 Windows 完整升級與 wire4 對拍；
 172 個 pytest 案例中 171 通過、1 跳過。Connector 的發行程式與鎖檔未改。
+
+## EXT-011 個人入口開發候選
+
+核心 PR #36 交接 `becbdb0316aa` 提供未發布的乾淨 CORE-033 `994aee20ced7`。三個 OS 包、宿主 schema、Client9／wire4 來源及方法索引釘在 `compat/core-033/`。HJW 實用 Windows 包 SHA-256 `ddc2cf1c01dd9df9e0eecf6b1b85984176810b8c763a4b7bd493d924e40a53f8`；宿主 SHA-256 `54e4825ddd9de64d3e71626e320fbec2e8ddd0d60099ef6775a5573aaf2bbfa3`，Rust SDK `1.0.0-alpha.3 / e5b9fde5298eb71ff252fc8acd430b44d8d965761d5d3c948da47fced49c7dbd`。
+
+原 Python Connector 用一次性碼向 Rust local-agent 配對。錯用途和重用配對碼回 401，重啟後仍能按原 device_id 列出沒有 instance 的設備。原 wire4 連線不帶 Work，宿主交換接口缺 Work 回 422；插件拒絕升級，保留舊 journal。需要核心給出與指定 Work 無關的 connector 鑑權、原裝置 ID／namespace 和即時撤權語義，再驗兩條連線的 fencing。
+
+實機插件 SHA-256 `51a4dde84c7eb06127793c62a82fa3e7d6ee8b46c1b5d94f81db4ef49f0f2ee1`。回條 `artifacts/EXT-011/candidate-03/device-catalog.json`，SHA-256 `410fd6c97aafcfe5c3a896291b7d6332e12a1bf0326c5c5d5e188101cd195434`。同目錄有 manifest、transport 與逐方向 `wire.jsonl`。
