@@ -1,0 +1,32 @@
+{
+  "run_id": 41818382374,
+  "source_commit": "033bb04700f8f2665f93135e6a1ba809d840604f",
+  "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/41818382374",
+  "jobs": [
+    {
+      "id": 126534936150,
+      "name": "acceptance (windows-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 126534936331,
+      "name": "acceptance (macos-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 126534936465,
+      "name": "acceptance (ubuntu-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 126535127867,
+      "name": "package",
+      "status": "completed",
+      "conclusion": "skipped"
+    }
+  ],
+  "scope": "Initial EXT-001 Python wheels and manifest policy; actual Rust compilation is a later check."
+}

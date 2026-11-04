@@ -101,6 +101,13 @@ def validate_unit(root: Path, unit: dict) -> list[str]:
         raise BoundaryError(f"catalog version differs from package: {unit['unit_id']}")
     if not python and data.get("workspace"):
         raise BoundaryError("a release unit cannot require an outer Rust workspace")
+    if not python:
+        toolchain = path / "rust-toolchain.toml"
+        if not toolchain.is_file():
+            raise BoundaryError("Rust release unit needs its own pinned toolchain")
+        channel = tomllib.loads(toolchain.read_text(encoding="utf-8")).get("toolchain", {}).get("channel", "")
+        if not re.fullmatch(r"\d+\.\d+\.\d+", channel):
+            raise BoundaryError("Rust toolchain must pin an exact stable version")
     for file in [config, lock]:
         parsed = tomllib.loads(file.read_text(encoding="utf-8"))
         _validate_git_records(parsed)
