@@ -1,0 +1,163 @@
+{
+  "status": "PASS",
+  "card_status": "AWAITING_CORE_002",
+  "scope": "independent distribution preparation; not cross-repository card acceptance",
+  "version": "0.4.4.dev0",
+  "published": false,
+  "protocol": 4,
+  "source": {
+    "repository": "https://github.com/YuanYeYouTao/Yuki",
+    "commit": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+    "upstream_path": "packages/yuki-agent-connector/",
+    "original_version": "0.4.3",
+    "connector_wire_revision": 4,
+    "original_files_sha256": {
+      ".gitignore": "ba72e11faad1970b34f3603fc2559765563cdf99d4b3c34e6a6e61c7923d8bbd",
+      "README.md": "ca2a4dccb0e33f514e788e92ba15e5b4464381949dfad760a4806544460490b5",
+      "pyproject.toml": "7b3be9232479884c66a6f61b966268e334ab919fcbb8e9d10ebc8b7e305bfb1d",
+      "scripts/build_runtime.py": "78ee6d47a84c81e1300e0c25e258d69344f88737e177fa90d20c5f7e58f6f833",
+      "scripts/service_smoke.py": "b1a9119f9ca98f9717b23aeefcce10695b5ab86de7504bc7f472a841cfebc24f",
+      "scripts/verify_wheel.py": "4bc72d0e6669d669082bac54df7f4a77b3cbc06ab418144f319274b700af4a09",
+      "src/yuki_agent_connector/__init__.py": "6ae32dca292f886d85ca1c5ddcb3a12a1ee579b0bd2fb3b2c68a0764631050fb",
+      "src/yuki_agent_connector/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+      "src/yuki_agent_connector/claude_inspect.py": "07724d443860ed50b4017a80f183d3842ffb30ce9a09dcc41aeef92dbc05e0c0",
+      "src/yuki_agent_connector/cli.py": "12f3ba4614c066a612b45fe19f11184596e1e4a9388beb0745ccd24f232d5f25",
+      "src/yuki_agent_connector/computer.py": "ebbdd07a48aaa696d6b58aefd42003fbfb22d51a1bc7751bd62dfb8724f48940",
+      "src/yuki_agent_connector/config.py": "e038b5eae10a3ba1d951ac7bdd73b9c49e96ee88a7d4b126e8e51ad1a9552bef",
+      "src/yuki_agent_connector/connector.py": "69187496704d96b1e074462786d35932231f2c9f7959fd197a6d68c93c0b6083",
+      "src/yuki_agent_connector/discovery.py": "450c6388225be284d91cf40e5e7c6d8ad9fc70f18abb63c399f039cbdfdb41b5",
+      "src/yuki_agent_connector/drivers/__init__.py": "616c53b04a3a414d996131430439587dd2300eb44473c0946279079994aa49ec",
+      "src/yuki_agent_connector/drivers/acp.py": "f144340d75dd1b137507440594f500744fa7ca9a1812c98ba2233478d4edf77b",
+      "src/yuki_agent_connector/drivers/claude.py": "13853c868ceccf56e55674799cf59c84eb1d9d5ee8bd6922781d14d90751ca54",
+      "src/yuki_agent_connector/drivers/codex.py": "42a1e235c71105fd328c40510d71478cb02cbec9b99ffc78a5ae5b6136b5a94e",
+      "src/yuki_agent_connector/files.py": "72941999fabe6813090f44dc207775d485b27813b771fbf3386fe8114577078c",
+      "src/yuki_agent_connector/journal.py": "140e58fb667a1ad897bc3b73f1f389d44cef109804c813beb493131407c763e6",
+      "src/yuki_agent_connector/service.py": "84ca6cc53fac396c60181e0c7d70d5a291368351281bb711341699b3c0fbb054",
+      "src/yuki_agent_connector/terminal.py": "25c45184af7355d88fabf96844093f9274bcd49486ac8bdd21bf553c54fea6f4",
+      "tests/fakes/acp_agent.py": "bd5388b21917f88feaf5b9ea5e991e1fc5f096402ddcb6a493640f5456e6a8a6",
+      "tests/fakes/codex_cli.py": "52d842509961f2f500ca838791e71df1ccd0c0dae49efa602aaca885dd8becfc",
+      "tests/test_acp_driver.py": "fc55f33c38825827593fa0dede9b9a15b2565ee64d0889e993a79de71ecc4406",
+      "tests/test_claude_discovery.py": "b935284249dfba8e12a47c99b2f98c1df417edfd932a4b212c0e3654233c2650",
+      "tests/test_claude_driver.py": "271e9774ef390a1b7af4e44da1e94df96222ae94585b578c66be693e5cc238e3",
+      "tests/test_cli_service.py": "f1d01862952586450914869974dad0fff500c480e4fc924d994064bb32f392e6",
+      "tests/test_codex_discovery.py": "aa126d3574e6405a31dc99ba5702839423a4d0806cdcdb575d69cd606202177b",
+      "tests/test_codex_driver.py": "d37a1a590c7481a7e99dd125cfad1ccfd01ef9bb19132456f3f73828660fee6a",
+      "tests/test_connector_startup_owner.py": "0f86640c96bddf0ae1d6f6423973422582893ca8be2dccb865f1e21cb570e5f6",
+      "tests/test_desktop_management.py": "aa6a6498c1c1070705a7d0caad430164af69b930f7f6c45639d5177e70e206ad",
+      "tests/test_desktop_stdio_lifecycle.py": "811849332cb7eb86b07280b22c787467986aea6d31096086e776f53e71eb7965",
+      "tests/test_driver_supervision.py": "599bf71947eb53b3b6829ce843259e38088c358a03c66b7d2cac22dcc5498b2d",
+      "tests/test_installation_lock.py": "4ad37cd126fe78953872226e9d8f3937259c003f3a8ca3afd46c25f250c4cae3",
+      "tests/test_instance_arguments.py": "d3c3cf3dcd97465e76463ed630ae1a96c48e569b391d573264c5b42fd2a8b766",
+      "tests/test_journal_connector.py": "89c6b1bd5d92c79a8263fcf5c55320679d3c9a6be5f984ea23451bec4443137c",
+      "tests/test_local_device_connector.py": "f65ad52adc38ff29be639406e8760d8d5f39faba54dc47cb5c0ab697b9f792bb",
+      "tests/test_local_file_transfers.py": "650e11821584f4af4bf39e4d2d156912943dd8bba0fe90f3f763d5d92b3c4168",
+      "tests/test_local_terminal_edges.py": "bfbdf253f010f48d7fdd3cf6cb5e4b1e40739c7878db08478243e16717efe3a5",
+      "tests/test_progress_queries.py": "f6c5ef79ef775a772ff0be1f34015aabefb163252f469e27299279ff86b0fd83",
+      "tests/test_receipt_projection.py": "d68e546836c89c751f266d5ba3cb1e4271e9d0dd973ff4749f4627161ae64dd4",
+      "uv.lock": "25c6aabc3c8c63e937590e0a38821c5143361e02cd0064c7b2ee0abf4b2373d1"
+    },
+    "license_sha256": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+    "historical_ci": {
+      "kind": "historical-ci-not-new-run",
+      "outer_archive_sha256": "979a2d14fb1886ead0e4db57b405b077f653b5aeb3c23f5cf8fa1d1bb7ab8ef9",
+      "wheel_name": "yuki_agent_connector-0.4.3-py3-none-any.whl",
+      "wheel_sha256": "4453e9cfe90929c952de70b9a9360bd890857fc7704dc4d4b412a0cd388ae3a7",
+      "ci_source_commit": "9138a528872bb9775b9ac05ddb38b5c1de6d7df2",
+      "runtime_python_files_byte_equal_to_behavior_baseline": 16
+    },
+    "core_oracle_delivery": null,
+    "status": "source-preparation; CORE-002 handoff not yet consumed"
+  },
+  "wheel": {
+    "runtime_files": 16,
+    "files": [
+      "yuki_agent_connector/__init__.py",
+      "yuki_agent_connector/__main__.py",
+      "yuki_agent_connector/claude_inspect.py",
+      "yuki_agent_connector/cli.py",
+      "yuki_agent_connector/computer.py",
+      "yuki_agent_connector/config.py",
+      "yuki_agent_connector/connector.py",
+      "yuki_agent_connector/discovery.py",
+      "yuki_agent_connector/files.py",
+      "yuki_agent_connector/journal.py",
+      "yuki_agent_connector/service.py",
+      "yuki_agent_connector/terminal.py",
+      "yuki_agent_connector/drivers/__init__.py",
+      "yuki_agent_connector/drivers/acp.py",
+      "yuki_agent_connector/drivers/claude.py",
+      "yuki_agent_connector/drivers/codex.py",
+      "yuki_agent_connector-0.4.4.dev0.dist-info/METADATA",
+      "yuki_agent_connector-0.4.4.dev0.dist-info/WHEEL",
+      "yuki_agent_connector-0.4.4.dev0.dist-info/entry_points.txt",
+      "yuki_agent_connector-0.4.4.dev0.dist-info/licenses/LICENSE",
+      "yuki_agent_connector-0.4.4.dev0.dist-info/RECORD"
+    ],
+    "version": "0.4.4.dev0",
+    "sha256": "6160954210d696b0b83d5493fa244b245a59dece24fc3cf43d7ffe6196f615bb"
+  },
+  "private_file_injection_rejected": "unexpected private/config data in the wheel",
+  "journal_upgrade": {
+    "version": "0.4.4.dev0",
+    "protocol": 4,
+    "operations": 2,
+    "receipts": {
+      "unknown-original": {
+        "pending": true,
+        "reason": "original_dispatch_not_confirmed",
+        "state_sequence": 0,
+        "status": "unknown"
+      },
+      "confirmed-original": {
+        "admitted": true,
+        "execution_id": "original-turn",
+        "pending": false,
+        "session_id": "original-session",
+        "state_sequence": 1,
+        "status": "completed"
+      }
+    },
+    "different_device_rejected": true,
+    "changed_parameters_rejected": true
+  },
+  "original_database_unchanged": true,
+  "in_place_version": "0.4.4.dev0",
+  "device_config_preserved": true,
+  "daemon_started": false,
+  "pytest_suites": [
+    {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "1",
+      "tests": "165",
+      "time": "40.796",
+      "timestamp": "2026-11-04T19:55:54.642842+08:00",
+      "hostname": "hjw"
+    }
+  ],
+  "runtime": {
+    "version": "0.4.4.dev0",
+    "protocol": 4,
+    "connector_wheel": {
+      "filename": "yuki_agent_connector-0.4.4.dev0-py3-none-any.whl",
+      "sha256": "6160954210d696b0b83d5493fa244b245a59dece24fc3cf43d7ffe6196f615bb"
+    },
+    "platform": "win32",
+    "arch": "x64",
+    "executable": "python/python.exe",
+    "arguments": [
+      "-I",
+      "-B",
+      "-m",
+      "yuki_agent_connector"
+    ],
+    "python": {
+      "version": "3.12.15",
+      "url": "https://github.com/astral-sh/python-build-standalone/releases/download/20261021/cpython-3.12.15+20261021-x86_64-pc-windows-msvc-install_only_stripped.tar.gz",
+      "sha256": "aac5d331fc3307343f95928fdbea4583f0d53973d08c7e1d081884fbd229a0e1"
+    }
+  },
+  "core_oracle_consumed": null,
+  "host_sdk_consumed": null
+}

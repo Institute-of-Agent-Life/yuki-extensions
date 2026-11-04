@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "C:\Users\Hilbert\yuki-extension-tests\4c50c808fd5bf7483187\src\ci\check.py", line 37, in main
+    report_name, report = runner(root, args.out.resolve())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hilbert\yuki-extension-tests\4c50c808fd5bf7483187\src\tests\cases\EXT-007.py", line 109, in prepare
+    call(["uv", "pip", "install", "--python", python, "--require-hashes", "-r", requirements])
+  File "C:\Users\Hilbert\yuki-extension-tests\4c50c808fd5bf7483187\src\tests\cases\EXT-007.py", line 67, in call
+    raise RuntimeError("candidate check failed; see commands.json: " + str(argv[:4]))
+RuntimeError: candidate check failed; see commands.json: ['uv', 'pip', 'install', '--python']

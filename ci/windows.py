@@ -43,8 +43,14 @@ def main():
     parser.add_argument("task")
     parser.add_argument("--run", default="01")
     parser.add_argument("--host", default="hjw")
+    parser.add_argument("--remote-root", default="C:/Users/Hilbert/yuki-extension-tests",
+                        help="isolated test directory on the Windows host")
     parser.add_argument("--connector-source", action="store_true", help="baseline source verification only, not EXT-007 acceptance")
+    parser.add_argument("--connector-candidate", action="store_true", help="verify the independent EXT-007 candidate")
     args = parser.parse_args()
+    connector_mode = args.connector_source or args.connector_candidate
+    if args.connector_source and args.connector_candidate:
+        parser.error("select one connector verification mode")
     if not re.fullmatch(r"EXT-\d{3}", args.task) or not re.fullmatch(r"[a-zA-Z0-9-]+", args.run):
         parser.error("invalid task/run")
     root = Path(__file__).resolve().parents[1]
@@ -72,7 +78,7 @@ def main():
     snapshot = transfer / (digest + ".zip")
     snapshot.write_bytes(buffer.getvalue())
     # A separate per-task test directory, never the user's existing checkout/journal.
-    remote = "C:/Users/Hilbert/yuki-extension-tests/" + digest[:20]
+    remote = args.remote_root.rstrip("/\\") + "/" + digest[:20]
     tooling = "C:/Users/Hilbert/yuki-extension-tests/tooling-uv-0.12.0"
     locked = json.loads((root / "ci/tooling.lock.json").read_text(encoding="utf-8"))["packages"]
     wheelhouse = transfer / "wheelhouse"
@@ -85,7 +91,7 @@ def main():
         if hashlib.sha256(wheel.read_bytes()).hexdigest() != package["sha256"]:
             raise ValueError("build-tool wheel digest mismatch: " + wheel.name)
     extra = []
-    if args.connector_source:
+    if connector_mode:
         if args.task != "EXT-007":
             parser.error("connector source mode belongs to EXT-007 preparation")
         manifest_path = transfer / "connector-wheels.json"
@@ -97,15 +103,34 @@ def main():
         extra = [wheelhouse / f["filename"] for f in json.loads(manifest_path.read_text())["files"]]
         source_lock = json.loads((root / "connector/packaging/source.lock.json").read_text())
         baseline = source_lock["historical_ci"]
-        oracle = transfer / "oracle" / baseline["wheel_name"]
+        oracle = root / "tests/fixtures/connector" / baseline["wheel_name"]
         if hashlib.sha256(oracle.read_bytes()).hexdigest() != baseline["wheel_sha256"]:
             raise ValueError("baseline wheel digest mismatch")
         extra.append(oracle)
+    runtime_input = None
+    if args.connector_candidate:
+        import ast
+        script = (root / "connector/scripts/build_runtime.py").read_text(encoding="utf-8")
+        pins = {n.targets[0].id: ast.literal_eval(n.value) for n in ast.parse(script).body
+                if isinstance(n, ast.Assign) and isinstance(n.targets[0], ast.Name)
+                and n.targets[0].id in {"TARGETS", "PYTHON_VERSION", "PYTHON_RELEASE"}}
+        _, _, triple, expected = pins["TARGETS"]["win32", "AMD64"]
+        filename = f"cpython-{pins['PYTHON_VERSION']}+{pins['PYTHON_RELEASE']}-{triple}-install_only_stripped.tar.gz"
+        runtime_input = transfer / "python-runtime" / filename
+        if not runtime_input.exists():
+            runtime_input.parent.mkdir(exist_ok=True)
+            subprocess.run(["gh", "release", "download", pins["PYTHON_RELEASE"], "--repo",
+                            "astral-sh/python-build-standalone", "--pattern", filename,
+                            "--dir", str(runtime_input.parent)], check=True)
+        if hashlib.sha256(runtime_input.read_bytes()).hexdigest() != expected:
+            raise ValueError("pinned Windows Python archive digest mismatch")
     # Include only locked wheels, not arbitrary files already in the transport cache.
     tools_zip = transfer / "tooling.zip"
     with zipfile.ZipFile(tools_zip, "w", zipfile.ZIP_DEFLATED) as archive:
         for package in locked.values():
             archive.write(wheelhouse / package["filename"], package["filename"])
+        if runtime_input:
+            archive.write(runtime_input, "runtime-cache/" + runtime_input.name)
         existing = {p["filename"] for p in locked.values()}
         for path in extra:
             if path.name not in existing:
@@ -123,6 +148,11 @@ if (-not (Test-Path {quote(tooling + '/Scripts/uv.exe')})) {{
   if ($LASTEXITCODE -ne 0) {{ exit $LASTEXITCODE }}
 }}
 $env:PATH={quote(tooling + '/Scripts;')}+$env:PATH
+$env:TEMP={quote(remote + '/temp')}
+$env:TMP=$env:TEMP
+New-Item -ItemType Directory -Force $env:TEMP | Out-Null
+$env:UV_CACHE_DIR={quote(args.remote_root.rstrip('/') + '/uv-cache')}
+$env:UV_OFFLINE='true'
 $env:UV_NO_INDEX='1'
 $env:UV_FIND_LINKS={quote(remote + '/wheelhouse')}
 $expected={quote(digest)}
@@ -131,8 +161,9 @@ if ($actual -ne $expected) {{ throw 'snapshot digest mismatch' }}
 Expand-Archive -LiteralPath {quote(remote + '/source.zip')} -DestinationPath {quote(remote + '/src')} -Force
 Set-Location {quote(remote + '/src')}
 $env:YUKI_SOURCE_SNAPSHOT_SHA256=$expected
-{('$env:YUKI_BASELINE_WHEEL=' + quote(remote + '/wheelhouse/' + baseline['wheel_name'])) if args.connector_source else ''}
-py -3.12 {'connector/packaging/verify_source.py' if args.connector_source else 'ci/check.py ' + args.task} --out artifacts/{args.task}/{args.run}
+{('$env:YUKI_BASELINE_WHEEL=' + quote(remote + '/wheelhouse/' + baseline['wheel_name'])) if connector_mode else ''}
+$env:YUKI_RUNTIME_CACHE={quote(remote + '/wheelhouse/runtime-cache')}
+py -3.12 {'connector/packaging/verify_source.py' if args.connector_source else 'ci/check.py ' + args.task + (' --preparation' if args.connector_candidate else '')} --out artifacts/{args.task}/{args.run}
 $result=$LASTEXITCODE
 $zipCode=@'
 import pathlib, zipfile

@@ -61,9 +61,17 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--cache", type=Path, required=True)
+    parser.add_argument(
+        "--wheel", type=Path, help="Install the wheel produced by this unit's build"
+    )
     args = parser.parse_args()
     target_os, arch, triple, expected = TARGETS[sys.platform, platform.machine()]
     root = Path(__file__).resolve().parents[1]
+    metadata = tomllib.loads((root / "pyproject.toml").read_text(encoding="utf-8"))
+    version = metadata["project"]["version"]
+    wheel_name = f"yuki_agent_connector-{version}-py3-none-any.whl"
+    if args.wheel and args.wheel.name != wheel_name:
+        raise ValueError(f"Expected the candidate wheel {wheel_name}")
     output, cache = args.output.resolve(), args.cache.resolve()
     if output.exists():
         raise FileExistsError(f"Choose a new build output directory: {output}")
@@ -112,8 +120,12 @@ def main() -> None:
             "-r",
             str(requirements),
         )
-        run("uv", "build", "--wheel", "--out-dir", str(temporary))
-        wheel = next(temporary.glob("*.whl"))
+        if args.wheel:
+            wheel = args.wheel.resolve(strict=True)
+        else:
+            run("uv", "build", "--wheel", "--out-dir", str(temporary))
+            wheel = temporary / wheel_name
+        wheel_sha256 = digest(wheel)
         run("uv", "pip", "install", "--python", str(python), "--no-deps", str(wheel))
     # Relocate before probing; no development venv or source import path is available.
     relocated = output.with_name(output.name + "-relocation-中文")
@@ -127,6 +139,8 @@ def main() -> None:
             "-B",
             "-c",
             "import ssl,sqlite3; import yuki_agent_connector.drivers.codex; "
+            f"assert yuki_agent_connector.__version__ == {version!r}; "
+            "assert yuki_agent_connector.PROTOCOL_VERSION == 4; "
             "import yuki_agent_connector.drivers.claude; "
             "import yuki_agent_connector.drivers.acp; import yuki_agent_connector.claude_inspect",
             cwd=relocated,
@@ -148,9 +162,8 @@ def main() -> None:
         relocated.rename(output)
     legal = output / "legal"
     legal.mkdir()
-    shutil.copy2(root.parents[1] / "LICENSE", legal / "Yuki-LICENSE")
+    shutil.copy2(root / "LICENSE", legal / "Yuki-LICENSE")
     shutil.copy2(root / "uv.lock", legal / "dependency-lock.toml")
-    metadata = tomllib.loads((root / "pyproject.toml").read_text())
     entries = []
     for path in sorted(output.rglob("*")):
         relative = path.relative_to(output).as_posix()
@@ -161,6 +174,7 @@ def main() -> None:
     manifest = {
         "version": metadata["project"]["version"],
         "protocol": 4,
+        "connector_wheel": {"filename": wheel_name, "sha256": wheel_sha256},
         "platform": target_os,
         "arch": arch,
         "executable": python.relative_to(output).as_posix(),

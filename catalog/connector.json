@@ -1,0 +1,24 @@
+{
+  "unit_id": "connector",
+  "kind": "connector",
+  "path": "connector",
+  "ecosystem": "python",
+  "version": "0.4.4.dev0",
+  "tag_prefix": "connector/v",
+  "license": "AGPL-3.0-only",
+  "notices": [
+    "LICENSE"
+  ],
+  "source": {
+    "upstream": "https://github.com/YuanYeYouTao/Yuki",
+    "commit": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+    "path": "packages/yuki-agent-connector/",
+    "original_version": "0.4.3",
+    "source_inventory": "packaging/source.lock.json"
+  },
+  "check_paths": [
+    "tests/cases/EXT-007.py",
+    "tests/peers/connector_upgrade.py",
+    "tests/fixtures/connector/yuki_agent_connector-0.4.3-py3-none-any.whl"
+  ]
+}
