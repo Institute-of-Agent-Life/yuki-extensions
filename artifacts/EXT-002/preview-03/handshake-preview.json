@@ -1,0 +1,658 @@
+{
+  "status": "PASS",
+  "card_status": "AWAITING_PUBLICATION",
+  "source_commit": "dd694a0db605bfe13b0d72663bef01599560230b",
+  "bundle_sha256": "6e2ca1040f6d1eac2f70b0ff363887faf662782f72a7acd367d4a52a17b2caa2",
+  "published": false,
+  "sdk_versions": {
+    "python": "1.0.0a1",
+    "rust": "1.0.0-alpha.1"
+  },
+  "capabilities": [
+    "initialize"
+  ],
+  "member_sha256": {
+    "golden": "5275ee7b90b6af4221693f92ea9c1b4fb1d1b306c2b6ebb85947273dba0bcfa3",
+    "method-index": "73b6ed15ea61a2eac0776ea5c1384886fb3c7583747c08ce6cd269737ef621e5",
+    "peer": "80a30b1a3d57c31c02155d11bf997da387e1dd18d5bf4c9453a9cf629718b530",
+    "python-sdk": "5fec3ae9dc3b2dbd1fb260d75eff81b357f706498a56365bbeae3df0a53a3cb3",
+    "rust-sdk": "9f8c0f6ee2d27528c3bfd7e549090daac5f451372627ce23ae0871afbacbfafc",
+    "schema": "cecbee860f010599b3ae3d8511c50c24adf3a4145945abae860338290d1a4ce0",
+    "verification": "f591c746dfcf13d5a6acccff7b7b0cf3cc5da6f52ffde9cf2de4c6ffd8cd858c"
+  },
+  "consumers": {
+    "rust": {
+      "binary_sha256": "1191c282ecbb3d3683eb110450e614da8d7c96b5dd29a13f71e8985e8221647c",
+      "cargo_lock": "d2147b94037237f7176a89fe0ab835657b257d05ef0e433612476b48a4cff796",
+      "compiler": "rustc 1.96.0 (ac68faa20 2026-05-25)"
+    },
+    "python": {
+      "script_sha256": "72f4ef5cfea1aef52f977d9c2a365a1ab548d631f125533726c4cfbec71d76a7",
+      "requirements": "5ea2fa8119766a73bdb34f01c8da6d67df1a783ddf488489061de3b1f1e92cc8",
+      "version": "1.0.0a1"
+    }
+  },
+  "python_lock_fault": {
+    "rejected_exit_code": 1,
+    "stderr": "Using Python 3.12.0 environment at: venv\nResolved 1 package in 2ms\n  × Failed to download `yuki-plugin-sdk==1.0.0a1`\n  ╰─▶ Hash mismatch for `yuki-plugin-sdk==1.0.0a1`\n\n      Expected:\n        sha256:5fec3ae9dc3b2dbd1fb260d75eff81b357f706498a56365bbeae3df0a53a3cb3\n\n      Computed:\n        sha256:d1a1a2e7a1b1b61bd4047b85cc29ce1838cbb47109dbb65c63a18d57f197720d\n",
+    "rust_lock_unchanged": true
+  },
+  "tampered_bundle": "contract digest mismatch: yuki-handshake-preview.zip",
+  "producer_manifest_sha256": "a55d1f2e6e3fb4d0a8eab00dc4dee2dbe28dca84a5ea47ed90bb97f86f90f41b",
+  "wire": {
+    "rust": {
+      "transcript": [
+        {
+          "from": "producer_peer",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"initialize\",\"params\":{\"versions\":{\"min\":{\"major\":1,\"minor\":0},\"max\":{\"major\":1,\"minor\":0}},\"required_features\":[\"initialize\"],\"manifest_revision\":\"ext002-r1\",\"declarations\":[],\"optional_features\":[]}}"
+        },
+        {
+          "from": "consumer",
+          "line": "{\"id\":1,\"jsonrpc\":\"2.0\",\"method\":\"initialize\",\"params\":{\"declarations\":[],\"manifest_revision\":\"ext002-r1\",\"optional_features\":[\"ext002.optional\"],\"required_features\":[\"initialize\"],\"versions\":{\"max\":{\"major\":1,\"minor\":0},\"min\":{\"major\":1,\"minor\":0}}}}"
+        },
+        {
+          "to": "consumer",
+          "origin": "producer_peer",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"initialize\",\"params\":{\"versions\":{\"min\":{\"major\":1,\"minor\":0},\"max\":{\"major\":1,\"minor\":0}},\"required_features\":[\"initialize\"],\"manifest_revision\":\"ext002-r1\",\"declarations\":[],\"optional_features\":[]}}"
+        },
+        {
+          "to": "producer_peer",
+          "origin": "consumer",
+          "line": "{\"id\":1,\"jsonrpc\":\"2.0\",\"method\":\"initialize\",\"params\":{\"declarations\":[],\"manifest_revision\":\"ext002-r1\",\"optional_features\":[\"ext002.optional\"],\"required_features\":[\"initialize\"],\"versions\":{\"max\":{\"major\":1,\"minor\":0},\"min\":{\"major\":1,\"minor\":0}}}}"
+        },
+        {
+          "from": "consumer",
+          "line": "{\"id\":1,\"jsonrpc\":\"2.0\",\"result\":{\"extension_points\":[],\"features\":[\"initialize\"],\"grants\":[],\"manifest_revision\":\"ext002-r1\",\"method_revisions\":[{\"name\":\"initialize\",\"revision\":1}],\"namespace\":\"ext002.consumer\",\"schema_revision\":1,\"version\":{\"major\":1,\"minor\":0}}}"
+        },
+        {
+          "from": "producer_peer",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":{\"version\":{\"major\":1,\"minor\":0},\"features\":[\"initialize\"],\"extension_points\":[],\"method_revisions\":[{\"name\":\"initialize\",\"revision\":1}],\"schema_revision\":1,\"namespace\":\"ext002.consumer\",\"grants\":[],\"manifest_revision\":\"ext002-r1\"}}"
+        },
+        {
+          "to": "consumer",
+          "origin": "producer_peer",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":{\"version\":{\"major\":1,\"minor\":0},\"features\":[\"initialize\"],\"extension_points\":[],\"method_revisions\":[{\"name\":\"initialize\",\"revision\":1}],\"schema_revision\":1,\"namespace\":\"ext002.consumer\",\"grants\":[],\"manifest_revision\":\"ext002-r1\"}}"
+        },
+        {
+          "to": "producer_peer",
+          "origin": "consumer",
+          "line": "{\"id\":1,\"jsonrpc\":\"2.0\",\"result\":{\"extension_points\":[],\"features\":[\"initialize\"],\"grants\":[],\"manifest_revision\":\"ext002-r1\",\"method_revisions\":[{\"name\":\"initialize\",\"revision\":1}],\"namespace\":\"ext002.consumer\",\"schema_revision\":1,\"version\":{\"major\":1,\"minor\":0}}}"
+        },
+        {
+          "to": "consumer",
+          "origin": "fault-probe",
+          "line": "{\"id\":\"test-method_not_found\",\"jsonrpc\":\"2.0\",\"method\":\"ext002.undeclared\",\"params\":{\"declarations\":[],\"manifest_revision\":\"ext002-r1\",\"optional_features\":[\"ext002.optional\"],\"required_features\":[\"initialize\"],\"versions\":{\"max\":{\"major\":1,\"minor\":0},\"min\":{\"major\":1,\"minor\":0}}}}"
+        },
+        {
+          "from": "consumer",
+          "line": "{\"error\":{\"code\":-32601,\"message\":\"method_not_found\"},\"id\":\"test-method_not_found\",\"jsonrpc\":\"2.0\"}"
+        },
+        {
+          "to": "consumer",
+          "origin": "fault-probe",
+          "line": "{\"id\":\"test-unsupported_version\",\"jsonrpc\":\"2.0\",\"method\":\"initialize\",\"params\":{\"declarations\":[],\"manifest_revision\":\"ext002-r1\",\"optional_features\":[\"ext002.optional\"],\"required_features\":[\"initialize\"],\"versions\":{\"min\":{\"major\":9,\"minor\":0},\"max\":{\"major\":9,\"minor\":0}}}}"
+        },
+        {
+          "from": "consumer",
+          "line": "{\"error\":{\"code\":-32010,\"message\":\"unsupported_version\"},\"id\":\"test-unsupported_version\",\"jsonrpc\":\"2.0\"}"
+        },
+        {
+          "to": "consumer",
+          "origin": "fault-probe",
+          "line": "{\"id\":\"test-missing_feature\",\"jsonrpc\":\"2.0\",\"method\":\"initialize\",\"params\":{\"declarations\":[],\"manifest_revision\":\"ext002-r1\",\"optional_features\":[\"ext002.optional\"],\"required_features\":[\"initialize\",\"ext002.unavailable\"],\"versions\":{\"max\":{\"major\":1,\"minor\":0},\"min\":{\"major\":1,\"minor\":0}}}}"
+        },
+        {
+          "from": "consumer",
+          "line": "{\"error\":{\"code\":-32011,\"message\":\"missing_feature\"},\"id\":\"test-missing_feature\",\"jsonrpc\":\"2.0\"}"
+        },
+        {
+          "to": "consumer",
+          "origin": "fault-probe",
+          "line": "{\"id\":\"test-manifest_mismatch\",\"jsonrpc\":\"2.0\",\"method\":\"initialize\",\"params\":{\"declarations\":[],\"manifest_revision\":\"ext002-r1-replaced\",\"optional_features\":[\"ext002.optional\"],\"required_features\":[\"initialize\"],\"versions\":{\"max\":{\"major\":1,\"minor\":0},\"min\":{\"major\":1,\"minor\":0}}}}"
+        },
+        {
+          "from": "consumer",
+          "line": "{\"error\":{\"code\":-32012,\"message\":\"manifest_mismatch\"},\"id\":\"test-manifest_mismatch\",\"jsonrpc\":\"2.0\"}"
+        },
+        {
+          "to": "consumer",
+          "origin": "fault-probe",
+          "line": "{\"id\":\"test-duplicate_declaration\",\"jsonrpc\":\"2.0\",\"method\":\"initialize\",\"params\":{\"declarations\":[{\"kind\":\"tool\",\"name\":\"fixture\",\"revision\":1},{\"kind\":\"tool\",\"name\":\"fixture\",\"revision\":1}],\"manifest_revision\":\"ext002-r1\",\"optional_features\":[\"ext002.optional\"],\"required_features\":[\"initialize\"],\"versions\":{\"max\":{\"major\":1,\"minor\":0},\"min\":{\"major\":1,\"minor\":0}}}}"
+        },
+        {
+          "from": "consumer",
+          "line": "{\"error\":{\"code\":-32013,\"message\":\"duplicate_declaration\"},\"id\":\"test-duplicate_declaration\",\"jsonrpc\":\"2.0\"}"
+        },
+        {
+          "to": "consumer",
+          "origin": "optional-probe",
+          "line": "{\"id\":\"test-optional_fields\",\"jsonrpc\":\"2.0\",\"method\":\"initialize\",\"params\":{\"declarations\":[],\"manifest_revision\":\"ext002-r1\",\"required_features\":[\"initialize\"],\"versions\":{\"max\":{\"major\":1,\"minor\":0},\"min\":{\"major\":1,\"minor\":0}},\"namespace\":\"foreign\",\"grants\":[\"admin\"],\"future_optional\":true}}"
+        },
+        {
+          "from": "consumer",
+          "line": "{\"id\":\"test-optional_fields\",\"jsonrpc\":\"2.0\",\"result\":{\"extension_points\":[],\"features\":[\"initialize\"],\"grants\":[],\"manifest_revision\":\"ext002-r1\",\"method_revisions\":[{\"name\":\"initialize\",\"revision\":1}],\"namespace\":\"ext002.consumer\",\"schema_revision\":1,\"version\":{\"major\":1,\"minor\":0}}}"
+        },
+        {
+          "to": "producer_peer",
+          "origin": "fault-probe",
+          "line": "{\"id\":\"test-method_not_found\",\"jsonrpc\":\"2.0\",\"method\":\"ext002.undeclared\",\"params\":{\"declarations\":[],\"manifest_revision\":\"ext002-r1\",\"optional_features\":[\"ext002.optional\"],\"required_features\":[\"initialize\"],\"versions\":{\"max\":{\"major\":1,\"minor\":0},\"min\":{\"major\":1,\"minor\":0}}}}"
+        },
+        {
+          "from": "producer_peer",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":\"test-method_not_found\",\"error\":{\"code\":-32601,\"message\":\"method_not_found\"}}"
+        },
+        {
+          "to": "producer_peer",
+          "origin": "fault-probe",
+          "line": "{\"id\":\"test-unsupported_version\",\"jsonrpc\":\"2.0\",\"method\":\"initialize\",\"params\":{\"declarations\":[],\"manifest_revision\":\"ext002-r1\",\"optional_features\":[\"ext002.optional\"],\"required_features\":[\"initialize\"],\"versions\":{\"min\":{\"major\":9,\"minor\":0},\"max\":{\"major\":9,\"minor\":0}}}}"
+        },
+        {
+          "from": "producer_peer",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":\"test-unsupported_version\",\"error\":{\"code\":-32010,\"message\":\"unsupported_version\"}}"
+        },
+        {
+          "to": "producer_peer",
+          "origin": "fault-probe",
+          "line": "{\"id\":\"test-missing_feature\",\"jsonrpc\":\"2.0\",\"method\":\"initialize\",\"params\":{\"declarations\":[],\"manifest_revision\":\"ext002-r1\",\"optional_features\":[\"ext002.optional\"],\"required_features\":[\"initialize\",\"ext002.unavailable\"],\"versions\":{\"max\":{\"major\":1,\"minor\":0},\"min\":{\"major\":1,\"minor\":0}}}}"
+        },
+        {
+          "from": "producer_peer",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":\"test-missing_feature\",\"error\":{\"code\":-32011,\"message\":\"missing_feature\"}}"
+        },
+        {
+          "to": "producer_peer",
+          "origin": "fault-probe",
+          "line": "{\"id\":\"test-manifest_mismatch\",\"jsonrpc\":\"2.0\",\"method\":\"initialize\",\"params\":{\"declarations\":[],\"manifest_revision\":\"ext002-r1-replaced\",\"optional_features\":[\"ext002.optional\"],\"required_features\":[\"initialize\"],\"versions\":{\"max\":{\"major\":1,\"minor\":0},\"min\":{\"major\":1,\"minor\":0}}}}"
+        },
+        {
+          "from": "producer_peer",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":\"test-manifest_mismatch\",\"error\":{\"code\":-32012,\"message\":\"manifest_mismatch\"}}"
+        },
+        {
+          "to": "producer_peer",
+          "origin": "fault-probe",
+          "line": "{\"id\":\"test-duplicate_declaration\",\"jsonrpc\":\"2.0\",\"method\":\"initialize\",\"params\":{\"declarations\":[{\"kind\":\"tool\",\"name\":\"fixture\",\"revision\":1},{\"kind\":\"tool\",\"name\":\"fixture\",\"revision\":1}],\"manifest_revision\":\"ext002-r1\",\"optional_features\":[\"ext002.optional\"],\"required_features\":[\"initialize\"],\"versions\":{\"max\":{\"major\":1,\"minor\":0},\"min\":{\"major\":1,\"minor\":0}}}}"
+        },
+        {
+          "from": "producer_peer",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":\"test-duplicate_declaration\",\"error\":{\"code\":-32013,\"message\":\"duplicate_declaration\"}}"
+        },
+        {
+          "to": "producer_peer",
+          "origin": "optional-probe",
+          "line": "{\"id\":\"test-optional_fields\",\"jsonrpc\":\"2.0\",\"method\":\"initialize\",\"params\":{\"declarations\":[],\"manifest_revision\":\"ext002-r1\",\"required_features\":[\"initialize\"],\"versions\":{\"max\":{\"major\":1,\"minor\":0},\"min\":{\"major\":1,\"minor\":0}},\"namespace\":\"foreign\",\"grants\":[\"admin\"],\"future_optional\":true}}"
+        },
+        {
+          "from": "producer_peer",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":\"test-optional_fields\",\"result\":{\"version\":{\"major\":1,\"minor\":0},\"features\":[\"initialize\"],\"extension_points\":[],\"method_revisions\":[{\"name\":\"initialize\",\"revision\":1}],\"schema_revision\":1,\"namespace\":\"ext002.consumer\",\"grants\":[],\"manifest_revision\":\"ext002-r1\"}}"
+        }
+      ],
+      "consumer_receipt": {
+        "accepted": {
+          "extension_points": [],
+          "features": [
+            "initialize"
+          ],
+          "grants": [],
+          "manifest_revision": "ext002-r1",
+          "method_revisions": [
+            {
+              "name": "initialize",
+              "revision": 1
+            }
+          ],
+          "namespace": "ext002.consumer",
+          "schema_revision": 1,
+          "version": {
+            "major": 1,
+            "minor": 0
+          }
+        },
+        "id": 1
+      },
+      "faults": {
+        "consumer": {
+          "method_not_found": {
+            "error": {
+              "code": -32601,
+              "message": "method_not_found"
+            },
+            "id": "test-method_not_found",
+            "jsonrpc": "2.0"
+          },
+          "unsupported_version": {
+            "error": {
+              "code": -32010,
+              "message": "unsupported_version"
+            },
+            "id": "test-unsupported_version",
+            "jsonrpc": "2.0"
+          },
+          "missing_feature": {
+            "error": {
+              "code": -32011,
+              "message": "missing_feature"
+            },
+            "id": "test-missing_feature",
+            "jsonrpc": "2.0"
+          },
+          "manifest_mismatch": {
+            "error": {
+              "code": -32012,
+              "message": "manifest_mismatch"
+            },
+            "id": "test-manifest_mismatch",
+            "jsonrpc": "2.0"
+          },
+          "duplicate_declaration": {
+            "error": {
+              "code": -32013,
+              "message": "duplicate_declaration"
+            },
+            "id": "test-duplicate_declaration",
+            "jsonrpc": "2.0"
+          },
+          "optional_fields": {
+            "id": "test-optional_fields",
+            "jsonrpc": "2.0",
+            "result": {
+              "extension_points": [],
+              "features": [
+                "initialize"
+              ],
+              "grants": [],
+              "manifest_revision": "ext002-r1",
+              "method_revisions": [
+                {
+                  "name": "initialize",
+                  "revision": 1
+                }
+              ],
+              "namespace": "ext002.consumer",
+              "schema_revision": 1,
+              "version": {
+                "major": 1,
+                "minor": 0
+              }
+            }
+          }
+        },
+        "producer_peer": {
+          "method_not_found": {
+            "jsonrpc": "2.0",
+            "id": "test-method_not_found",
+            "error": {
+              "code": -32601,
+              "message": "method_not_found"
+            }
+          },
+          "unsupported_version": {
+            "jsonrpc": "2.0",
+            "id": "test-unsupported_version",
+            "error": {
+              "code": -32010,
+              "message": "unsupported_version"
+            }
+          },
+          "missing_feature": {
+            "jsonrpc": "2.0",
+            "id": "test-missing_feature",
+            "error": {
+              "code": -32011,
+              "message": "missing_feature"
+            }
+          },
+          "manifest_mismatch": {
+            "jsonrpc": "2.0",
+            "id": "test-manifest_mismatch",
+            "error": {
+              "code": -32012,
+              "message": "manifest_mismatch"
+            }
+          },
+          "duplicate_declaration": {
+            "jsonrpc": "2.0",
+            "id": "test-duplicate_declaration",
+            "error": {
+              "code": -32013,
+              "message": "duplicate_declaration"
+            }
+          },
+          "optional_fields": {
+            "jsonrpc": "2.0",
+            "id": "test-optional_fields",
+            "result": {
+              "version": {
+                "major": 1,
+                "minor": 0
+              },
+              "features": [
+                "initialize"
+              ],
+              "extension_points": [],
+              "method_revisions": [
+                {
+                  "name": "initialize",
+                  "revision": 1
+                }
+              ],
+              "schema_revision": 1,
+              "namespace": "ext002.consumer",
+              "grants": [],
+              "manifest_revision": "ext002-r1"
+            }
+          }
+        }
+      },
+      "producer_peer_exit_code": 0
+    },
+    "python": {
+      "transcript": [
+        {
+          "from": "producer_peer",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"initialize\",\"params\":{\"versions\":{\"min\":{\"major\":1,\"minor\":0},\"max\":{\"major\":1,\"minor\":0}},\"required_features\":[\"initialize\"],\"manifest_revision\":\"ext002-r1\",\"declarations\":[],\"optional_features\":[]}}"
+        },
+        {
+          "from": "consumer",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"initialize\",\"params\":{\"versions\":{\"min\":{\"major\":1,\"minor\":0},\"max\":{\"major\":1,\"minor\":0}},\"required_features\":[\"initialize\"],\"manifest_revision\":\"ext002-r1\",\"declarations\":[],\"optional_features\":[\"ext002.optional\"]}}"
+        },
+        {
+          "to": "consumer",
+          "origin": "producer_peer",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"initialize\",\"params\":{\"versions\":{\"min\":{\"major\":1,\"minor\":0},\"max\":{\"major\":1,\"minor\":0}},\"required_features\":[\"initialize\"],\"manifest_revision\":\"ext002-r1\",\"declarations\":[],\"optional_features\":[]}}"
+        },
+        {
+          "to": "producer_peer",
+          "origin": "consumer",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"initialize\",\"params\":{\"versions\":{\"min\":{\"major\":1,\"minor\":0},\"max\":{\"major\":1,\"minor\":0}},\"required_features\":[\"initialize\"],\"manifest_revision\":\"ext002-r1\",\"declarations\":[],\"optional_features\":[\"ext002.optional\"]}}"
+        },
+        {
+          "from": "consumer",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":{\"version\":{\"major\":1,\"minor\":0},\"features\":[\"initialize\"],\"extension_points\":[],\"method_revisions\":[{\"name\":\"initialize\",\"revision\":1}],\"schema_revision\":1,\"namespace\":\"ext002.consumer\",\"grants\":[],\"manifest_revision\":\"ext002-r1\"}}"
+        },
+        {
+          "from": "producer_peer",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":{\"version\":{\"major\":1,\"minor\":0},\"features\":[\"initialize\"],\"extension_points\":[],\"method_revisions\":[{\"name\":\"initialize\",\"revision\":1}],\"schema_revision\":1,\"namespace\":\"ext002.consumer\",\"grants\":[],\"manifest_revision\":\"ext002-r1\"}}"
+        },
+        {
+          "to": "consumer",
+          "origin": "producer_peer",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":{\"version\":{\"major\":1,\"minor\":0},\"features\":[\"initialize\"],\"extension_points\":[],\"method_revisions\":[{\"name\":\"initialize\",\"revision\":1}],\"schema_revision\":1,\"namespace\":\"ext002.consumer\",\"grants\":[],\"manifest_revision\":\"ext002-r1\"}}"
+        },
+        {
+          "to": "producer_peer",
+          "origin": "consumer",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":{\"version\":{\"major\":1,\"minor\":0},\"features\":[\"initialize\"],\"extension_points\":[],\"method_revisions\":[{\"name\":\"initialize\",\"revision\":1}],\"schema_revision\":1,\"namespace\":\"ext002.consumer\",\"grants\":[],\"manifest_revision\":\"ext002-r1\"}}"
+        },
+        {
+          "to": "consumer",
+          "origin": "fault-probe",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":\"test-method_not_found\",\"method\":\"ext002.undeclared\",\"params\":{\"versions\":{\"min\":{\"major\":1,\"minor\":0},\"max\":{\"major\":1,\"minor\":0}},\"required_features\":[\"initialize\"],\"manifest_revision\":\"ext002-r1\",\"declarations\":[],\"optional_features\":[\"ext002.optional\"]}}"
+        },
+        {
+          "from": "consumer",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":\"test-method_not_found\",\"error\":{\"code\":-32601,\"message\":\"method_not_found\"}}"
+        },
+        {
+          "to": "consumer",
+          "origin": "fault-probe",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":\"test-unsupported_version\",\"method\":\"initialize\",\"params\":{\"versions\":{\"min\":{\"major\":9,\"minor\":0},\"max\":{\"major\":9,\"minor\":0}},\"required_features\":[\"initialize\"],\"manifest_revision\":\"ext002-r1\",\"declarations\":[],\"optional_features\":[\"ext002.optional\"]}}"
+        },
+        {
+          "from": "consumer",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":\"test-unsupported_version\",\"error\":{\"code\":-32010,\"message\":\"unsupported_version\"}}"
+        },
+        {
+          "to": "consumer",
+          "origin": "fault-probe",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":\"test-missing_feature\",\"method\":\"initialize\",\"params\":{\"versions\":{\"min\":{\"major\":1,\"minor\":0},\"max\":{\"major\":1,\"minor\":0}},\"required_features\":[\"initialize\",\"ext002.unavailable\"],\"manifest_revision\":\"ext002-r1\",\"declarations\":[],\"optional_features\":[\"ext002.optional\"]}}"
+        },
+        {
+          "from": "consumer",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":\"test-missing_feature\",\"error\":{\"code\":-32011,\"message\":\"missing_feature\"}}"
+        },
+        {
+          "to": "consumer",
+          "origin": "fault-probe",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":\"test-manifest_mismatch\",\"method\":\"initialize\",\"params\":{\"versions\":{\"min\":{\"major\":1,\"minor\":0},\"max\":{\"major\":1,\"minor\":0}},\"required_features\":[\"initialize\"],\"manifest_revision\":\"ext002-r1-replaced\",\"declarations\":[],\"optional_features\":[\"ext002.optional\"]}}"
+        },
+        {
+          "from": "consumer",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":\"test-manifest_mismatch\",\"error\":{\"code\":-32012,\"message\":\"manifest_mismatch\"}}"
+        },
+        {
+          "to": "consumer",
+          "origin": "fault-probe",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":\"test-duplicate_declaration\",\"method\":\"initialize\",\"params\":{\"versions\":{\"min\":{\"major\":1,\"minor\":0},\"max\":{\"major\":1,\"minor\":0}},\"required_features\":[\"initialize\"],\"manifest_revision\":\"ext002-r1\",\"declarations\":[{\"kind\":\"tool\",\"name\":\"fixture\",\"revision\":1},{\"kind\":\"tool\",\"name\":\"fixture\",\"revision\":1}],\"optional_features\":[\"ext002.optional\"]}}"
+        },
+        {
+          "from": "consumer",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":\"test-duplicate_declaration\",\"error\":{\"code\":-32013,\"message\":\"duplicate_declaration\"}}"
+        },
+        {
+          "to": "consumer",
+          "origin": "optional-probe",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":\"test-optional_fields\",\"method\":\"initialize\",\"params\":{\"versions\":{\"min\":{\"major\":1,\"minor\":0},\"max\":{\"major\":1,\"minor\":0}},\"required_features\":[\"initialize\"],\"manifest_revision\":\"ext002-r1\",\"declarations\":[],\"namespace\":\"foreign\",\"grants\":[\"admin\"],\"future_optional\":true}}"
+        },
+        {
+          "from": "consumer",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":\"test-optional_fields\",\"result\":{\"version\":{\"major\":1,\"minor\":0},\"features\":[\"initialize\"],\"extension_points\":[],\"method_revisions\":[{\"name\":\"initialize\",\"revision\":1}],\"schema_revision\":1,\"namespace\":\"ext002.consumer\",\"grants\":[],\"manifest_revision\":\"ext002-r1\"}}"
+        },
+        {
+          "to": "producer_peer",
+          "origin": "fault-probe",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":\"test-method_not_found\",\"method\":\"ext002.undeclared\",\"params\":{\"versions\":{\"min\":{\"major\":1,\"minor\":0},\"max\":{\"major\":1,\"minor\":0}},\"required_features\":[\"initialize\"],\"manifest_revision\":\"ext002-r1\",\"declarations\":[],\"optional_features\":[\"ext002.optional\"]}}"
+        },
+        {
+          "from": "producer_peer",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":\"test-method_not_found\",\"error\":{\"code\":-32601,\"message\":\"method_not_found\"}}"
+        },
+        {
+          "to": "producer_peer",
+          "origin": "fault-probe",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":\"test-unsupported_version\",\"method\":\"initialize\",\"params\":{\"versions\":{\"min\":{\"major\":9,\"minor\":0},\"max\":{\"major\":9,\"minor\":0}},\"required_features\":[\"initialize\"],\"manifest_revision\":\"ext002-r1\",\"declarations\":[],\"optional_features\":[\"ext002.optional\"]}}"
+        },
+        {
+          "from": "producer_peer",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":\"test-unsupported_version\",\"error\":{\"code\":-32010,\"message\":\"unsupported_version\"}}"
+        },
+        {
+          "to": "producer_peer",
+          "origin": "fault-probe",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":\"test-missing_feature\",\"method\":\"initialize\",\"params\":{\"versions\":{\"min\":{\"major\":1,\"minor\":0},\"max\":{\"major\":1,\"minor\":0}},\"required_features\":[\"initialize\",\"ext002.unavailable\"],\"manifest_revision\":\"ext002-r1\",\"declarations\":[],\"optional_features\":[\"ext002.optional\"]}}"
+        },
+        {
+          "from": "producer_peer",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":\"test-missing_feature\",\"error\":{\"code\":-32011,\"message\":\"missing_feature\"}}"
+        },
+        {
+          "to": "producer_peer",
+          "origin": "fault-probe",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":\"test-manifest_mismatch\",\"method\":\"initialize\",\"params\":{\"versions\":{\"min\":{\"major\":1,\"minor\":0},\"max\":{\"major\":1,\"minor\":0}},\"required_features\":[\"initialize\"],\"manifest_revision\":\"ext002-r1-replaced\",\"declarations\":[],\"optional_features\":[\"ext002.optional\"]}}"
+        },
+        {
+          "from": "producer_peer",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":\"test-manifest_mismatch\",\"error\":{\"code\":-32012,\"message\":\"manifest_mismatch\"}}"
+        },
+        {
+          "to": "producer_peer",
+          "origin": "fault-probe",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":\"test-duplicate_declaration\",\"method\":\"initialize\",\"params\":{\"versions\":{\"min\":{\"major\":1,\"minor\":0},\"max\":{\"major\":1,\"minor\":0}},\"required_features\":[\"initialize\"],\"manifest_revision\":\"ext002-r1\",\"declarations\":[{\"kind\":\"tool\",\"name\":\"fixture\",\"revision\":1},{\"kind\":\"tool\",\"name\":\"fixture\",\"revision\":1}],\"optional_features\":[\"ext002.optional\"]}}"
+        },
+        {
+          "from": "producer_peer",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":\"test-duplicate_declaration\",\"error\":{\"code\":-32013,\"message\":\"duplicate_declaration\"}}"
+        },
+        {
+          "to": "producer_peer",
+          "origin": "optional-probe",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":\"test-optional_fields\",\"method\":\"initialize\",\"params\":{\"versions\":{\"min\":{\"major\":1,\"minor\":0},\"max\":{\"major\":1,\"minor\":0}},\"required_features\":[\"initialize\"],\"manifest_revision\":\"ext002-r1\",\"declarations\":[],\"namespace\":\"foreign\",\"grants\":[\"admin\"],\"future_optional\":true}}"
+        },
+        {
+          "from": "producer_peer",
+          "line": "{\"jsonrpc\":\"2.0\",\"id\":\"test-optional_fields\",\"result\":{\"version\":{\"major\":1,\"minor\":0},\"features\":[\"initialize\"],\"extension_points\":[],\"method_revisions\":[{\"name\":\"initialize\",\"revision\":1}],\"schema_revision\":1,\"namespace\":\"ext002.consumer\",\"grants\":[],\"manifest_revision\":\"ext002-r1\"}}"
+        }
+      ],
+      "consumer_receipt": {
+        "id": 1,
+        "accepted": {
+          "version": {
+            "major": 1,
+            "minor": 0
+          },
+          "features": [
+            "initialize"
+          ],
+          "extension_points": [],
+          "method_revisions": [
+            {
+              "name": "initialize",
+              "revision": 1
+            }
+          ],
+          "schema_revision": 1,
+          "namespace": "ext002.consumer",
+          "grants": [],
+          "manifest_revision": "ext002-r1"
+        }
+      },
+      "faults": {
+        "consumer": {
+          "method_not_found": {
+            "jsonrpc": "2.0",
+            "id": "test-method_not_found",
+            "error": {
+              "code": -32601,
+              "message": "method_not_found"
+            }
+          },
+          "unsupported_version": {
+            "jsonrpc": "2.0",
+            "id": "test-unsupported_version",
+            "error": {
+              "code": -32010,
+              "message": "unsupported_version"
+            }
+          },
+          "missing_feature": {
+            "jsonrpc": "2.0",
+            "id": "test-missing_feature",
+            "error": {
+              "code": -32011,
+              "message": "missing_feature"
+            }
+          },
+          "manifest_mismatch": {
+            "jsonrpc": "2.0",
+            "id": "test-manifest_mismatch",
+            "error": {
+              "code": -32012,
+              "message": "manifest_mismatch"
+            }
+          },
+          "duplicate_declaration": {
+            "jsonrpc": "2.0",
+            "id": "test-duplicate_declaration",
+            "error": {
+              "code": -32013,
+              "message": "duplicate_declaration"
+            }
+          },
+          "optional_fields": {
+            "jsonrpc": "2.0",
+            "id": "test-optional_fields",
+            "result": {
+              "version": {
+                "major": 1,
+                "minor": 0
+              },
+              "features": [
+                "initialize"
+              ],
+              "extension_points": [],
+              "method_revisions": [
+                {
+                  "name": "initialize",
+                  "revision": 1
+                }
+              ],
+              "schema_revision": 1,
+              "namespace": "ext002.consumer",
+              "grants": [],
+              "manifest_revision": "ext002-r1"
+            }
+          }
+        },
+        "producer_peer": {
+          "method_not_found": {
+            "jsonrpc": "2.0",
+            "id": "test-method_not_found",
+            "error": {
+              "code": -32601,
+              "message": "method_not_found"
+            }
+          },
+          "unsupported_version": {
+            "jsonrpc": "2.0",
+            "id": "test-unsupported_version",
+            "error": {
+              "code": -32010,
+              "message": "unsupported_version"
+            }
+          },
+          "missing_feature": {
+            "jsonrpc": "2.0",
+            "id": "test-missing_feature",
+            "error": {
+              "code": -32011,
+              "message": "missing_feature"
+            }
+          },
+          "manifest_mismatch": {
+            "jsonrpc": "2.0",
+            "id": "test-manifest_mismatch",
+            "error": {
+              "code": -32012,
+              "message": "manifest_mismatch"
+            }
+          },
+          "duplicate_declaration": {
+            "jsonrpc": "2.0",
+            "id": "test-duplicate_declaration",
+            "error": {
+              "code": -32013,
+              "message": "duplicate_declaration"
+            }
+          },
+          "optional_fields": {
+            "jsonrpc": "2.0",
+            "id": "test-optional_fields",
+            "result": {
+              "version": {
+                "major": 1,
+                "minor": 0
+              },
+              "features": [
+                "initialize"
+              ],
+              "extension_points": [],
+              "method_revisions": [
+                {
+                  "name": "initialize",
+                  "revision": 1
+                }
+              ],
+              "schema_revision": 1,
+              "namespace": "ext002.consumer",
+              "grants": [],
+              "manifest_revision": "ext002-r1"
+            }
+          }
+        }
+      },
+      "producer_peer_exit_code": 0
+    }
+  },
+  "runtime_host": null,
+  "official_plugins": []
+}

@@ -47,6 +47,7 @@ def main():
                         help="isolated test directory on the Windows host")
     parser.add_argument("--connector-source", action="store_true", help="baseline source verification only, not EXT-007 acceptance")
     parser.add_argument("--connector-candidate", action="store_true", help="verify the independent EXT-007 candidate")
+    parser.add_argument("--preparation", action="store_true", help="run the card preparation entry point")
     args = parser.parse_args()
     driver_case = args.task in {"EXT-008", "EXT-009", "EXT-010"}
     connector_mode = args.connector_source or args.connector_candidate or driver_case
@@ -146,6 +147,16 @@ def main():
     assert powershell(args.host, f"New-Item -ItemType Directory -Force {quote(remote)} | Out-Null").returncode == 0
     assert invoke(["scp", "-q", str(snapshot), f"{args.host}:{remote}/source.zip"]).returncode == 0
     assert invoke(["scp", "-q", str(tools_zip), f"{args.host}:{remote}/tooling.zip"]).returncode == 0
+    sdk_environment = ""
+    if args.task == "EXT-002":
+        # Use the host's existing pinned toolchain, with a separate writable Cargo home.
+        sdk_environment = r"""
+$tools=Join-Path $env:USERPROFILE 'yuki-core-tooling'
+$env:RUSTUP_HOME=Join-Path $tools 'rustup'
+$env:YUKI_CRATE_CACHE=Join-Path $tools 'cargo/registry/cache'
+$env:PATH="$(Join-Path $tools 'cargo/bin');$(Join-Path $tools 'winlibs/mingw64/bin');$env:PATH"
+$env:CARGO_HOME=Join-Path $env:TEMP 'cargo-home'
+"""
     setup = f"""
 Expand-Archive -LiteralPath {quote(remote + '/tooling.zip')} -DestinationPath {quote(remote + '/wheelhouse')} -Force
 if (-not (Test-Path {quote(tooling + '/Scripts/uv.exe')})) {{
@@ -171,7 +182,8 @@ $env:YUKI_SOURCE_SNAPSHOT_SHA256=$expected
 {('$env:YUKI_BASELINE_WHEEL=' + quote(remote + '/wheelhouse/' + baseline['wheel_name'])) if connector_mode else ''}
 $env:YUKI_DESKTOP_TOOLS={quote(remote + '/wheelhouse/desktop-tools')}
 $env:YUKI_RUNTIME_CACHE={quote(remote + '/wheelhouse/runtime-cache')}
-py -3.12 {'connector/packaging/verify_source.py' if args.connector_source else 'ci/check.py ' + args.task} --out artifacts/{args.task}/{args.run}
+{sdk_environment}
+py -3.12 {'connector/packaging/verify_source.py' if args.connector_source else 'ci/check.py ' + args.task}{' --preparation' if args.preparation else ''} --out artifacts/{args.task}/{args.run}
 $result=$LASTEXITCODE
 $zipCode=@'
 import pathlib, zipfile

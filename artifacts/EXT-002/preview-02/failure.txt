@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "D:\yuki-extension-tests\bacf95c3b7152435afcc\src\ci\check.py", line 37, in main
+    report_name, report = runner(root, args.out.resolve())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\bacf95c3b7152435afcc\src\tests\cases\EXT-002.py", line 77, in prepare
+    raise AssertionError("corrupted Python wheel was not rejected by the project lock: " + rejected.stderr)
+AssertionError: corrupted Python wheel was not rejected by the project lock: Using Python 3.12.0 environment at: venv
+Resolved 1 package in 19ms
+  × Failed to download `yuki-plugin-sdk==1.0.0a1`
+  ├─▶ Failed to extract archive: yuki_plugin_sdk-1.0.0a1-py3-none-any.whl
+  ╰─▶ ZIP file contains trailing contents after the end-of-central-directory
+      record
+

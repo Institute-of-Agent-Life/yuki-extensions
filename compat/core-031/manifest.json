@@ -1,0 +1,409 @@
+{
+  "format_version": 1,
+  "card": "CORE-031",
+  "status": "verified",
+  "exit_code": 0,
+  "command": [
+    "python",
+    "ci/check.py",
+    "CORE-031",
+    "--out",
+    "artifacts/CORE-031/handoff-dd694a0db605"
+  ],
+  "worker_command": [
+    "/opt/anaconda3/bin/python3.12",
+    "/Volumes/huawei/項目實戰/yuki-core/tests/harness/worker.py",
+    "CORE-031",
+    "/Volumes/huawei/項目實戰/yuki-core/artifacts/CORE-031/handoff-dd694a0db605"
+  ],
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "tools": {
+    "python": "3.12.7",
+    "sqlite": "3.45.3"
+  },
+  "dependency_lock": "ci/checks.json",
+  "network": "python-loopback-only",
+  "cost": {
+    "physical_provider_calls": 0,
+    "paid_calls": 0,
+    "source": "offline harness"
+  },
+  "failure": null,
+  "assertions": [
+    {
+      "name": "assemble real immutable distributions",
+      "passed": true
+    },
+    {
+      "name": "installed Rust and Python each initiate and answer with the same connection-local ID",
+      "passed": true
+    },
+    {
+      "name": "preview contains only initialize",
+      "passed": true
+    },
+    {
+      "name": "schema SHA matches index",
+      "passed": true
+    },
+    {
+      "name": "wheel has no core application imports",
+      "passed": true
+    },
+    {
+      "name": "Rust archive contains no filesystem metadata",
+      "passed": true
+    },
+    {
+      "name": "Rust isolated errors preserve the stdio session",
+      "passed": true
+    },
+    {
+      "name": "Rust IDs remain scoped and typed",
+      "passed": true
+    },
+    {
+      "name": "Rust rejects exactly the requested fault branches",
+      "passed": true
+    },
+    {
+      "name": "Rust namespace and grants come from approved binding",
+      "passed": true
+    },
+    {
+      "name": "Rust namespace and grants come from approved binding",
+      "passed": true
+    },
+    {
+      "name": "Rust optional negotiation does not claim business methods",
+      "passed": true
+    },
+    {
+      "name": "Rust fresh connection may use ID 1",
+      "passed": true
+    },
+    {
+      "name": "Rust refuses response ID from another connection",
+      "passed": true
+    },
+    {
+      "name": "Rust rejects oversized unterminated frames",
+      "passed": true
+    },
+    {
+      "name": "Rust trusted namespace and narrow grant remain bound",
+      "passed": true
+    },
+    {
+      "name": "Rust changed declaration cannot replace manifest",
+      "passed": true
+    },
+    {
+      "name": "Python isolated errors preserve the stdio session",
+      "passed": true
+    },
+    {
+      "name": "Python IDs remain scoped and typed",
+      "passed": true
+    },
+    {
+      "name": "Python rejects exactly the requested fault branches",
+      "passed": true
+    },
+    {
+      "name": "Python namespace and grants come from approved binding",
+      "passed": true
+    },
+    {
+      "name": "Python namespace and grants come from approved binding",
+      "passed": true
+    },
+    {
+      "name": "Python optional negotiation does not claim business methods",
+      "passed": true
+    },
+    {
+      "name": "Python fresh connection may use ID 1",
+      "passed": true
+    },
+    {
+      "name": "Python refuses response ID from another connection",
+      "passed": true
+    },
+    {
+      "name": "Python rejects oversized unterminated frames",
+      "passed": true
+    },
+    {
+      "name": "Python trusted namespace and narrow grant remain bound",
+      "passed": true
+    },
+    {
+      "name": "Python changed declaration cannot replace manifest",
+      "passed": true
+    },
+    {
+      "name": "portable isolated errors preserve the stdio session",
+      "passed": true
+    },
+    {
+      "name": "portable IDs remain scoped and typed",
+      "passed": true
+    },
+    {
+      "name": "portable rejects exactly the requested fault branches",
+      "passed": true
+    },
+    {
+      "name": "portable namespace and grants come from approved binding",
+      "passed": true
+    },
+    {
+      "name": "portable namespace and grants come from approved binding",
+      "passed": true
+    },
+    {
+      "name": "portable optional negotiation does not claim business methods",
+      "passed": true
+    },
+    {
+      "name": "portable fresh connection may use ID 1",
+      "passed": true
+    },
+    {
+      "name": "portable refuses response ID from another connection",
+      "passed": true
+    },
+    {
+      "name": "portable rejects oversized unterminated frames",
+      "passed": true
+    },
+    {
+      "name": "portable trusted namespace and narrow grant remain bound",
+      "passed": true
+    },
+    {
+      "name": "portable changed declaration cannot replace manifest",
+      "passed": true
+    },
+    {
+      "name": "consumer pin anchors expected ZIP",
+      "passed": true
+    },
+    {
+      "name": "wrong digest preserves existing pin",
+      "passed": true
+    },
+    {
+      "name": "missing distribution preserves previous pin",
+      "passed": true
+    }
+  ],
+  "artifacts": {
+    "._case-result.json": "f3bad5b302237b647db06386a1ea9efd86388064f8d12a45d354ea4cd0cca2b6",
+    "._handshake-preview": "f3bad5b302237b647db06386a1ea9efd86388064f8d12a45d354ea4cd0cca2b6",
+    "._sdk-crosswire.json": "f3bad5b302237b647db06386a1ea9efd86388064f8d12a45d354ea4cd0cca2b6",
+    "._stderr.txt": "f3bad5b302237b647db06386a1ea9efd86388064f8d12a45d354ea4cd0cca2b6",
+    "._stdout.txt": "f3bad5b302237b647db06386a1ea9efd86388064f8d12a45d354ea4cd0cca2b6",
+    "case-result.json": "2b33d793e63cebbda6919a312504b1fd4915d822888d0f2c9834651dcdd6316c",
+    "handshake-preview/._candidate.json": "f3bad5b302237b647db06386a1ea9efd86388064f8d12a45d354ea4cd0cca2b6",
+    "handshake-preview/._handshake.ndjson": "f3bad5b302237b647db06386a1ea9efd86388064f8d12a45d354ea4cd0cca2b6",
+    "handshake-preview/._handshake.schema.json": "f3bad5b302237b647db06386a1ea9efd86388064f8d12a45d354ea4cd0cca2b6",
+    "handshake-preview/._method-index.json": "f3bad5b302237b647db06386a1ea9efd86388064f8d12a45d354ea4cd0cca2b6",
+    "handshake-preview/._sdk-verification.json": "f3bad5b302237b647db06386a1ea9efd86388064f8d12a45d354ea4cd0cca2b6",
+    "handshake-preview/._yuki-conformance-peer.pyz": "f3bad5b302237b647db06386a1ea9efd86388064f8d12a45d354ea4cd0cca2b6",
+    "handshake-preview/._yuki-handshake-preview.zip": "f3bad5b302237b647db06386a1ea9efd86388064f8d12a45d354ea4cd0cca2b6",
+    "handshake-preview/._yuki-plugin-sdk-1.0.0-alpha.1.crate": "f3bad5b302237b647db06386a1ea9efd86388064f8d12a45d354ea4cd0cca2b6",
+    "handshake-preview/._yuki_plugin_sdk-1.0.0a1-py3-none-any.whl": "f3bad5b302237b647db06386a1ea9efd86388064f8d12a45d354ea4cd0cca2b6",
+    "handshake-preview/candidate.json": "713f865623f6cebbe20bf154b650b3723f13842e26750a8b7a43ea83cb6129fd",
+    "handshake-preview/handshake.ndjson": "5275ee7b90b6af4221693f92ea9c1b4fb1d1b306c2b6ebb85947273dba0bcfa3",
+    "handshake-preview/handshake.schema.json": "cecbee860f010599b3ae3d8511c50c24adf3a4145945abae860338290d1a4ce0",
+    "handshake-preview/method-index.json": "73b6ed15ea61a2eac0776ea5c1384886fb3c7583747c08ce6cd269737ef621e5",
+    "handshake-preview/sdk-verification.json": "f591c746dfcf13d5a6acccff7b7b0cf3cc5da6f52ffde9cf2de4c6ffd8cd858c",
+    "handshake-preview/yuki-conformance-peer.pyz": "80a30b1a3d57c31c02155d11bf997da387e1dd18d5bf4c9453a9cf629718b530",
+    "handshake-preview/yuki-handshake-preview.zip": "6e2ca1040f6d1eac2f70b0ff363887faf662782f72a7acd367d4a52a17b2caa2",
+    "handshake-preview/yuki-plugin-sdk-1.0.0-alpha.1.crate": "9f8c0f6ee2d27528c3bfd7e549090daac5f451372627ce23ae0871afbacbfafc",
+    "handshake-preview/yuki_plugin_sdk-1.0.0a1-py3-none-any.whl": "5fec3ae9dc3b2dbd1fb260d75eff81b357f706498a56365bbeae3df0a53a3cb3",
+    "sdk-crosswire.json": "a6f06ea848efc8a530c956e7cb302e852da5140177461cd18ec4a5b019143f10",
+    "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "lock_sha256": "2709e890175e17a1029d0d628301b6042b45779737317d0c731bab31a235841b",
+  "seed": 329,
+  "clock": "2026-11-04T00:00:00Z",
+  "source": {
+    "commit": "dd694a0db605bfe13b0d72663bef01599560230b",
+    "branch": "codex/core-031-handoff",
+    "dirty": false,
+    "tree_sha256": "1e9bcb51bea5c106e32fdf814dbb54335e05304c3dfacde0a859ececa5dfe154",
+    "files": {
+      ".dockerignore": "663e3575e66f01743c1895755c21d7f8b3bc39aca6b469b8d9cd7f8e42436d81",
+      ".gitattributes": "15176e0dfb824d9c80a8dcf8a2378e3b46c471cd48cee870c7fb7a06978c731b",
+      ".github/workflows/check.yml": "dc9d19c3dd71904dd92f8d23876b6e56d84adc35c777460aa20e1e94aa65be24",
+      ".gitignore": "8a4db0f04636fbb93f15963d2fc21a16104bbfca9b1608f53c7f2801a7f04ea4",
+      "Cargo.lock": "6bcdd1bfeb20bee52628d4aa152870fb263ad7f395060c45ede08d5597415e36",
+      "Cargo.toml": "26a8c8673b29b700b40936b437ecab84dbdc1372c54989e5b46047e02d43e431",
+      "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+      "NOTICE": "fedd2608ca8a8cfaa42a58f2d93fb04fce133fa5d0e6a89aacfe08d7621f022f",
+      "README.md": "a8cd54d6e406b23a2a858b288c795f0baed545b2cb795a82a3f8a1a96a0b0850",
+      "baseline/inventory.py": "fafced73715422128d73c6c7fd51ae9552181a3697c06a03ce6b7108a9b54f6f",
+      "baseline/lock.json": "8f71b7a513c5064055546892dfa67342e42b7b31b6347049a679c004a35fe21a",
+      "baseline/profile-evidence/capture.py": "bfc38ea6cff3f7f9976aec124b1677e9d50b203ba4d51d26fc0277aab8a36796",
+      "baseline/profile-evidence/sources.json": "66c6640271bb5c833102aba955098a8b6bf08aacae54aabb289a1e56775f22fb",
+      "baseline/profile-evidence/wire.json": "d8806bc66671cc77be2ec60d6c0f6c6f93826b5c9ec585c431d47e4cb9d6f67d",
+      "baseline/qq-key/README.md": "d6da36d4041e4d0635a537c0ab0dd0c79713a716598e59583c41d90b8286bd7d",
+      "baseline/qq-key/decision.py": "255f42edb165644f5bc8c0a1ff69d8aa1973e4afd942d267c75facb8c5890d23",
+      "baseline/replay/README.md": "c0444326344db0cb2d7beaf27aae5a885bce605ece585db44d3ad035ba793088",
+      "baseline/replay/compare.py": "087969f26620de3b3a99b796ff418d162cc618af4a4b782adca91011483318f7",
+      "baseline/replay/freeze.py": "6779c8de9cfe1bf09bab351243093e00a7bf29db571c936b8dfe0a5c75c523cb",
+      "baseline/replay/load.py": "9319e26d682480327f6ee566bc216f776ed639dd423f6dfde5d11874a678fb12",
+      "baseline/replay/load_cases.py": "9410de43cac17e126a85706490c54fee09cbe20c2b8d5b465300d09e466e33e9",
+      "baseline/replay/package.py": "831d94a2e155e6d40ab82ebe6a791f550aeba7097cabefe530b4a6f6fa4bdbf7",
+      "baseline/replay/record.py": "a8d27aec31eadfb262974c79b7e6f63a4dc474674a028299d4583f8713a29f1b",
+      "baseline/replay/scenarios.json": "3e8b6236e740120229ba71befc4752ae1691d3a35ea2047608a53d9139a7aea1",
+      "build.rs": "43619b97d7e0f350effa8adb94ce0fe3f4024c4887c40becd1f9a435249e5f22",
+      "ci/check.py": "761ef0e9cc464bf17687b086ca2039fc0d64395f40316228a6942d00416e0ff7",
+      "ci/checks.json": "2709e890175e17a1029d0d628301b6042b45779737317d0c731bab31a235841b",
+      "ci/container-smoke.py": "8d4dc989f9d5906077f54bdf2da9b98764b191ca42a44667dfb806a54e871bbf",
+      "ci/contract.py": "fd65b8494b57b8fa375d44b9e1eaf630e248ea04636f4ba67a75c485cf41ab64",
+      "ci/docker-build.py": "e9f5b64c13eb19251360ae4eac0e24515f05444f4567ddee9e81bc217bf1f4ff",
+      "ci/probe-profile.py": "32a390ac93ad9182ab2ad0cdca6f4eed7afc4978c5065f159d651106653592a5",
+      "ci/publish-contract.py": "2cf62d47e271a8bb1db52793b9205b35b3f5ebdbc17cfa1fad399e939d076c1b",
+      "ci/source.py": "fd929a8a8b855d77858b1f181f534a81d672fc5f86bda4df357bc34521fb393c",
+      "ci/windows.py": "72b7f68a6c247cbd3c0ece87d4f23e32265128fee6504db3b5564a4ad96c6c80",
+      "config/qq_face_map.json": "dad0d73577b919401ca35e1ff38af8d98be22107653d78b317d9838bc8106c51",
+      "deploy/core.Dockerfile": "48f96bbb7b3d7386f3861a2b5a3697b7fc02710c631d6ee20c7918084827043d",
+      "docs/CORE-005-sequences.md": "160ab4a75b12caafa760da9dbe02c59daa20d6c89f1d4809c8a4982cb4b978bd",
+      "docs/evidence.md": "4f5e215792cadfc7387d9b891d68768b1f91d06db99ffab0c9871ec8ea9e45a0",
+      "docs/implementation-progress.md": "e1bfe4ab49a54e792cc32c6dea1684c473cbcc09737b669d7ca060c0ee3eaec4",
+      "docs/import-inventory.md": "08820ac95a40da9dd44dad4d08b2594ff93151b6131cd8a671072a6a431047f9",
+      "docs/profile-evidence.md": "528e8f797547f703ed6e77d2301941cbe8a08e587b4fdbc64bf9861f30849dfe",
+      "docs/qq-ingress.md": "247c307c724f3b23f8c47a5cd651efc1bac0ac5fbd26e206c82250809397a730",
+      "docs/taskbook/v3.2/Yuki-Rust重寫總任務書-v3.2.md": "3599085dd5d9719273c06374fe211afb2122fa4a62a0fcee0dc924327de738d7",
+      "docs/taskbook/v3.2/audit/README.md": "541432522dc9c83eb71b24786e02547ad40c0a4b23fb780919c01266790d09fe",
+      "docs/taskbook/v3.2/audit/check_snapshot.py": "4ed346f5624517a90065f7695bc880bb74274a66dc0b2cf1e4d8e96f40e10233",
+      "docs/taskbook/v3.2/audit/evidence/upstream-connector.zip": "979a2d14fb1886ead0e4db57b405b077f653b5aeb3c23f5cf8fa1d1bb7ab8ef9",
+      "docs/taskbook/v3.2/audit/evidence/upstream-headed.zip": "c8f8c924f43fb32629fe00feb5a3824344dd7ec38f793641b32c55bb5f95ae69",
+      "docs/taskbook/v3.2/audit/evidence/upstream-integration.zip": "44ee180125e155fb7de2e2d06c4d59c4be3b62e514b11d71e9a4aebc23cb1189",
+      "docs/taskbook/v3.2/audit/evidence/upstream-native.zip": "c1fcaf4bcefa4b26d4f5245110d42f8bc2e7c6ac37bce69e8c2e83c50acb6cf6",
+      "docs/taskbook/v3.2/audit/evidence/upstream-unit.zip": "a62edfcca7c2e8bbcbbcd1886b90d9f2207c8f83575c86d448923c8888473a17",
+      "docs/taskbook/v3.2/audit/evidence/upstream-wheel.zip": "f8938d72c16806b9475cecdda727bc43965900a8df85d67ba1a05fb8e358dae6",
+      "docs/taskbook/v3.2/audit/inventory.py": "42b3ba375c2566387149e38109e6fc6b3f17bc6b21c9b4e677ee4f823ba8f9fe",
+      "docs/taskbook/v3.2/audit/reconcile_coverage.py": "093348eaddcfb0bfe92c983de8c1fce7a82f61b89f1d8a1974df5485e15bf5f3",
+      "docs/taskbook/v3.2/audit/results/adversarial.json": "145bcec9b4ad3ce71a9cb5ccb5a76b56263f15a785d3c55a1b4cb9188c8fcbc5",
+      "docs/taskbook/v3.2/audit/results/ci-members.tsv": "04da650fcbfcfe7df78d638118bb5528dd5a3d445062b5f737c9c68508b422c2",
+      "docs/taskbook/v3.2/audit/results/ci-source-proof.json": "16153e3dd761238d19fcac436d4022bbf4dec4c606b65acc637e42fb9664c465",
+      "docs/taskbook/v3.2/audit/results/core-doc-crosswalk.json": "ec6b354c279185efc1c1672266df36fb34c5d6325058fbcf3b071a02c9ca425c",
+      "docs/taskbook/v3.2/audit/results/core-review-check.json": "d4ceb20622837feebc80eddef6b793e6e1aae512034880deb3201ec8b41050aa",
+      "docs/taskbook/v3.2/audit/results/coverage-summary.json": "4ba125d32dfd9feb3849b59ed7b6c68f5c2eef30b8f3bab32399cf5f82118a53",
+      "docs/taskbook/v3.2/audit/results/coverage.tsv": "81e88257705a31e64f5934c413a68290ca005dbf53ca5cec5b7adf952f5126aa",
+      "docs/taskbook/v3.2/audit/results/delivery-sha256.tsv": "8cba666799356a6553251a151fe6f7bbe28697596763bcf7b2030f941927b3fa",
+      "docs/taskbook/v3.2/audit/results/docs-top-level.tsv": "9a32d8ab61ec979747cf3c84e604a090eaa61db4ef7e3dd4ed8717029c193f67",
+      "docs/taskbook/v3.2/audit/results/package-loc.tsv": "7ca1368ba91425913b1887eff46784f4c45c659c1e5b003a6a8d5943d216d065",
+      "docs/taskbook/v3.2/audit/results/plan-check.json": "8b60075dadf64e893f93a7858b37f1a82b4e6e48121d12198bd57e3e8c763875",
+      "docs/taskbook/v3.2/audit/results/r2-ci-members.tsv": "ea88daa466bcd8081357de62d89487ed0430aade3c9d938a856bd5216edcbcb7",
+      "docs/taskbook/v3.2/audit/results/r2-source-proof.json": "70799b448dcde569076c855e187e0468902de41d855ef3f97d7dbe0e35f0b4be",
+      "docs/taskbook/v3.2/audit/results/snapshot-selftest.json": "f1db4842fa99ddcf004eea68ca971259c22fef4a6051e3937184b66f9a023427",
+      "docs/taskbook/v3.2/audit/results/stable-ids-coverage.json": "fd1f8685faa5a5c12758a4ce3494c155bc04b5ca1f6411279ee30de7e8af1efc",
+      "docs/taskbook/v3.2/audit/test_snapshot.py": "af836c3fe55d2c94106af4fc24326a1f3408f62d9091085a39a51bdfc36515c0",
+      "docs/taskbook/v3.2/audit/test_verifier.py": "52df60dd732338aa41301299e8b185b4995fc523c95ac46e95e286cf570b8880",
+      "docs/taskbook/v3.2/audit/verify_core_review.py": "cb46ceedae3e11ea466711b34350e2b54e4b6f7b79e7ed081e25a8532035a32f",
+      "docs/taskbook/v3.2/audit/verify_evidence.py": "baed255ee595694a68303195f529323da19c0bca3cf175fb338d5c18ac478acc",
+      "docs/taskbook/v3.2/audit/verify_package.py": "ace1e1f8d70bc62b7f8ad45c8c60e334905a3993e72408a2d76fa8340c164d76",
+      "docs/taskbook/v3.2/audit/verify_plan.py": "c0df8f13e1b29502b8189526d67aac6a92c74dd55aea101002accbd47f353de6",
+      "docs/taskbook/v3.2/audit/verify_supplement.py": "d470dcd040f76edbe636c7e9d93ac99a844a87fb28877314f56609db0ac9a789",
+      "docs/taskbook/v3.2/全量文檔覆蓋與裁決表.md": "e78b7880dab6d38eab2023e4b80f7b72c891826a17d332dac180f354ec04bfe8",
+      "docs/taskbook/v3.2/擴展倉庫-提交級任務書.md": "853458026422dd21edcf3bc4907cd23a2ac993d48d4dd8e91e6be26e86d4d6c5",
+      "docs/taskbook/v3.2/核心倉庫-提交級任務書.md": "fef0099cc2d284e4bb108001b7af88454b6da7121476f9344df4240a9083cca2",
+      "docs/taskbook/v3.2/跨倉庫依賴與驗收矩陣.md": "fadb19740c323356edb2365744675bc85ca322da7949393324321156d12553fc",
+      "fixtures/oracle/v4/arrivals.jsonl.gz": "b0f779f667572ea13d84a99b2c1bc12c2222d9a994a1bef9b8a5b9635ce2a860",
+      "fixtures/oracle/v4/first/run.json": "20698484bc89b1ab35fef6bfa1601caede7e789126895f4d5af473ec60fea22e",
+      "fixtures/oracle/v4/first/transcript.json.gz": "5c66f844f31c1523d537cd8f11409493fe47d827477d551da6d39e8cfa51cb36",
+      "fixtures/oracle/v4/load.json": "d12853830c45fdf0b39ba2496e82a16d3580d66ebabe10818f5d1931a415ebd1",
+      "fixtures/oracle/v4/long-works.jsonl.gz": "f47d2d5f3fa8e6369017d3391d3aa4b0a7c28a97cdd7f442059d55e2f701f6e3",
+      "fixtures/oracle/v4/material/config/SOUL.md": "bc1068015afa9a3ac864a102e7706b17e2e7140181b1ba81784e9abe6b8773cc",
+      "fixtures/oracle/v4/material/examples/plugins/com.example.echo/plugin.toml": "11ada43d31c668924058f71f15fc717188bc0bf398730bf3f03ebf68c2cebfd0",
+      "fixtures/oracle/v4/material/plugins/subscription-monitor/plugin.toml": "7ad11867df00c9023f62a327f186c00b3c6279a21ced86e487b111d7e82c54d9",
+      "fixtures/oracle/v4/second/run.json": "f1532e5fd8960d1ffdd0532a2f2973bca3b2b9e77de12aa9da2f01549ee60699",
+      "fixtures/oracle/v4/second/transcript.json.gz": "5c66f844f31c1523d537cd8f11409493fe47d827477d551da6d39e8cfa51cb36",
+      "fixtures/qq-dual/deployment.json": "d0ed0e3e9469f5bf1a75f28825953ac5b8e327af19fb6d33c17524ef74fdd75e",
+      "fixtures/qq-dual/rehearsal.json": "dca76898991164ecbf3667cdcacb84bc06862ef0faa60b8198f2f075aefabd29",
+      "fixtures/v4-0156/create.py": "5039913dc413a021db57fa46aa052dbc68d356d2404a48c8d30a738e324e036b",
+      "migrations/0001_meta.sql": "d41fd010b2cf926e74f7939eed842170e8be9d994c7ef9ef83551242d95905c4",
+      "migrations/0002_person.sql": "ae2099829ece7c717630fc50549e5b01d7a5e25da519485a83e806e8b98766d9",
+      "migrations/0003_entries.sql": "aef88e196d636b63848f82bf43551adc1c298094cfd9a399956c5d4999b8f9a0",
+      "migrations/0004_ingress.sql": "9d4d13403cb3d612a01bb9956a71d3526d86ebad5e1892c234ee645c70f0b6a1",
+      "migrations/0005_effects.sql": "9759a99cce855fca2f103cfa9aa5610a0c486265324dde4232ef8004c1b2cd75",
+      "protocol/baseline-v4/admin-openapi.json": "6caf8f1a6da0c09a9f033b06eb5f6b27b179e60c740d437a393907f04c5aa51c",
+      "protocol/baseline-v4/client-openapi.json": "2ac0ee897f207d181a703ad25bf15571a66e77f390c20d6177ddee4d325ea7f6",
+      "protocol/baseline-v4/wire4-frames.json": "6a8c4a9feb1d4db803e86fe629d935636ee9507338804432799b760df0f78531",
+      "protocol/plugin/README.md": "dc16ffb77a9ff9ff906728c50f622cc5b5eea7a6cdfb8729405a125ead511ba2",
+      "protocol/plugin/generate.py": "46a5c25625ae446ce42924879b0a7452a97228be488d04b3a82a2facc0b32d5a",
+      "protocol/plugin/handshake.ndjson": "5275ee7b90b6af4221693f92ea9c1b4fb1d1b306c2b6ebb85947273dba0bcfa3",
+      "protocol/plugin/handshake.schema.json": "cecbee860f010599b3ae3d8511c50c24adf3a4145945abae860338290d1a4ce0",
+      "protocol/plugin/method-index.json": "73b6ed15ea61a2eac0776ea5c1384886fb3c7583747c08ce6cd269737ef621e5",
+      "rust-toolchain.toml": "2c388180d0d5476ed0d69975b382feaf709bb072d51a342add3030cfb3d1bdb2",
+      "sdk/python/pyproject.toml": "5696b5bebca46a223a76f447ff2fd357700e4b866d066d73562ad3717dc106e6",
+      "sdk/python/yuki_plugin_sdk/__init__.py": "93ec3f0e28a2e394f6781d2f4c98d143a93f81e4d8e82f08d5f5949778283b3e",
+      "sdk/python/yuki_plugin_sdk/connection.py": "fab58996fbbeceeeb8b328c0083969eed4a9be709d581c3865b50e1e0df2acf9",
+      "sdk/python/yuki_plugin_sdk/generated.py": "73b35626b73989573e2b2654e47e6e8a6b758a53ef70808da1b163f9a9576f40",
+      "sdk/python/yuki_plugin_sdk/handshake.schema.json": "cecbee860f010599b3ae3d8511c50c24adf3a4145945abae860338290d1a4ce0",
+      "sdk/python/yuki_plugin_sdk/peer.py": "1d5a48b260be9877fd8421e1b2078248aaa4de0f52866dcd59b8569e00d47940",
+      "sdk/rust/Cargo.lock": "966ae36a6d9e53f856938772e5101dba6df1617b6b41db5ed88efb3f8401fee9",
+      "sdk/rust/Cargo.toml": "d22dece51c013c16ca1b6d2429cc0aabc78f6bcabe9314925fc59a812f9a1f58",
+      "sdk/rust/LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+      "sdk/rust/NOTICE": "fedd2608ca8a8cfaa42a58f2d93fb04fce133fa5d0e6a89aacfe08d7621f022f",
+      "sdk/rust/src/bin/yuki-plugin-peer.rs": "2b32853006ee25a15eb8f01a4f4909384486c92f4bc4038abb03b9f5b7b1d360",
+      "sdk/rust/src/generated.rs": "f472b0248431d484a315a5afd7db947f2fb8c2561058259c65e3a8ae17efcee7",
+      "sdk/rust/src/lib.rs": "cff7fbfe66194d81e4570e66fa7e63aa120bd2f190f6a3e0c840b9b51616012a",
+      "src/config.rs": "25a56c0903eaf2edfed2e9e22d9c955033ebbcdb6be5d3481597d00b8d7a3c8d",
+      "src/gateway.rs": "4e3e0ef73c724db488fda1598ed30240b3eb7b6afc5000000f4c989c93919caa",
+      "src/gateway/qq.rs": "19fec64ff4fecdef8bb8398c35b6da79b6e8be192dd75f90fd4a87ca6a7ed3cf",
+      "src/gateway/qq/activity.rs": "0dee9f6b17e2d6572c2d79baf7dc76ed38970d6cafa94e9b9a24baeb899c8a22",
+      "src/gateway/qq/frame.rs": "38f81ac900bca82186ca626ebfdc245bd26051778d38d9b724347b8463c94321",
+      "src/gateway/qq/projection.rs": "7b414f5f375da15291a0d9b16360b4152fb314c2d975642d03c3c17ec5c3e2e0",
+      "src/identity.rs": "7a58d1a501935960819ed6b4522b1dc9474f3edb0a64f22f9f8528453a4b2644",
+      "src/identity/assignment.rs": "aa95b7ab9be11e8963e9dbe2ff31fecaad57491041668c20dcedf903cb375a0b",
+      "src/identity/entry.rs": "665e21bdbe675ddbab7af870327b17254534d0a3febb6377e18975372ba95669",
+      "src/identity/person.rs": "e5042de22a84f207e23872081ca50fe4240aa31a11e83de49414da70e726da79",
+      "src/ingress.rs": "7f8b867d580767de6a0038cdbe72a0c6be23854bb8999ea21dd16d909b1a16d9",
+      "src/ingress/admit.rs": "e08cfb6f9e3743dfca827807ac65829bca536f26378d9ef984442e238a380167",
+      "src/main.rs": "91af116d0fb5fb85c7ec9c2f0fb9791ccf4c47e681cb59dd798b1b81364ee2fb",
+      "src/operator.rs": "54915cf705a56d8c04d8f15f47308ffdbcdbe9328820e105d7fdde6cc5c8fb02",
+      "src/operator/windows_acl.rs": "7e5705fee479fda2e2f2fbf9614ac613e1cc8a60e5caf88db5d7bec3a2682305",
+      "src/runtime.rs": "016f5547b38b46afc4cba4c7ae1410f839eb72b842b8959a4f33c1bf33f7087b",
+      "src/runtime/effects.rs": "d24f87c6fffb984385909fe1196b4cabdc37aa442f82468113f48cf36b123929",
+      "src/store.rs": "08c786e626306282798437c0bd420f05debc6f80cf59c95e2e2859e0b5585307",
+      "src/store/tests.rs": "15c070e5b6da686a676a67ba27eed1ea02fdfdceb5a85a3be2b32fbdd5cd5f56",
+      "tests/__init__.py": "8b2476f654cb9f5e58fdb779af0abefb696a0e89312965fc4d3599d7bf6eec04",
+      "tests/cases/CORE-001.py": "6cb0f49b2f275126eb4d5b4abcb7fdb48a038fb8fbe956283b0a79f5283609c3",
+      "tests/cases/CORE-002.py": "3a093735530e965b085af341fa6c0dabfd2b1d0a1dbe20f054c123e20706f95b",
+      "tests/cases/CORE-003.py": "3127d5e60a7b92dd8ff8a05f2923db00d9f45427fd874cf574cfa5e76800767c",
+      "tests/cases/CORE-004.py": "670c1a07567824fe3dd6c016ea68094ccd9ab8d18f174fdba2dbb048d5b0435c",
+      "tests/cases/CORE-005.py": "5b9be3dbb5f3f7782ec26acac076a9b5bd4a5d63cbe414c03fd571af239cb640",
+      "tests/cases/CORE-006.py": "2877e76f2868097fd45c3110386ef38e959ec086a0637ed55ee45524ce232a8b",
+      "tests/cases/CORE-007.py": "0f1bfee7ac9bad7579edec1c2baaf19b2c9ec595db3b2e18b59f800e58f308d7",
+      "tests/cases/CORE-008.py": "c24f358435e35a7eff9da254c17e9a9fa9bbc13fc63e29360835d8b9014fce9a",
+      "tests/cases/CORE-009.py": "eea981061f3352c32fd77a043ab4a98ce92c0b46d3ebf166eebf25bba091127c",
+      "tests/cases/CORE-010.py": "b069b53534dbe190a52dc3c964eba2ac2e37ef815ad97d820976f7ab74e7e60e",
+      "tests/cases/CORE-031.py": "9e969ccfb60f18746eae2cec4036caf8210aea525a61856fdd2a1c6584307663",
+      "tests/cases/CORE-049.py": "ea6a35d4c14979a23c65e589f0207ba7ed0e54ecd8468248da1cb16db400751b",
+      "tests/fixtures/CORE-001.json": "63fe7c176f222d10a9d666273d22a38f5d05009fb6e17ba6d37a82f11ddc1832",
+      "tests/harness/__init__.py": "ec33d0441f499494dc67b89600218c0bcf951aa36918ba55ef42a9137ba5bf96",
+      "tests/harness/crash.py": "552e7b62fba37dc98931d4a55cc51cb91b5ffa1b58ad5cc5bee1287241cabb20",
+      "tests/harness/handshake.py": "0285743942c4f51b34d3f362b0a61f86fbad328250f24d5d35961289cdf15a63",
+      "tests/harness/network.py": "a602f384bb40fbbde9c0632e97945997a3c9af80b2731de687c4e585c8e176cb",
+      "tests/harness/service.py": "d7b354829fcfd1e72ed57779e0ed7c5e2763850a48440d012e601b724463d45d",
+      "tests/harness/windows_acl.py": "c4ff85c1becc6f0a6177a41676364872fa4a62abbc860730b4f9f41e5c50d4ec",
+      "tests/harness/worker.py": "ba2e437635f0e2d8515af88c8a80053793dbac10f9f7c6c1b27d7c542d8099a8",
+      "tests/peers/onebot/peer.py": "86f675a1efaf8d1e3f7e88d3c10958c0a723b78fa0e589e81840895c227a7c70"
+    }
+  },
+  "capabilities": [
+    "handshake-preview",
+    "python-sdk",
+    "rust-sdk",
+    "stdio-conformance-peer"
+  ],
+  "duration_seconds": 8.687251
+}

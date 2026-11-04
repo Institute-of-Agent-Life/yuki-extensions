@@ -35,6 +35,10 @@ jobs:
         run: rustup toolchain install 1.90.0 --profile minimal
       - name: EXT-001 independent packages and fault cases
         run: python ci/check.py EXT-001 --out artifacts/EXT-001/ci
+      - name: Install the handshake SDK compiler
+        run: rustup toolchain install 1.96.0 --profile minimal
+      - name: EXT-002 unpacked SDK consumer parity
+        run: python ci/check.py EXT-002 --preparation --out artifacts/EXT-002/ci
       - uses: actions/setup-node@v4
         with:
           node-version: '22.14.0'
@@ -67,6 +71,8 @@ jobs:
           path: |
             artifacts/EXT-001/ci/*.json
             artifacts/EXT-001/ci/*.txt
+            artifacts/EXT-002/ci/*.json
+            artifacts/EXT-002/ci/*.txt
             artifacts/EXT-019/ci/*.json
             artifacts/EXT-019/ci/*.txt
           if-no-files-found: error

@@ -1,0 +1,23 @@
+{
+  "repository": "Institute-of-Agent-Life/yuki-core",
+  "source_commit": "dd694a0db605bfe13b0d72663bef01599560230b",
+  "distribution": "unpublished",
+  "capabilities": [
+    "initialize"
+  ],
+  "versions": {
+    "python": "1.0.0a1",
+    "rust": "1.0.0-alpha.1"
+  },
+  "files": {
+    "yuki-handshake-preview.zip": "6e2ca1040f6d1eac2f70b0ff363887faf662782f72a7acd367d4a52a17b2caa2",
+    "manifest.json": "a55d1f2e6e3fb4d0a8eab00dc4dee2dbe28dca84a5ea47ed90bb97f86f90f41b",
+    "sdk-crosswire.json": "a6f06ea848efc8a530c956e7cb302e852da5140177461cd18ec4a5b019143f10"
+  },
+  "producer_ci": {
+    "run": 41839465940,
+    "artifact": 13328705534,
+    "name": "core-evidence-ubuntu-latest-1",
+    "member": "CORE-031/ci/handshake-preview/yuki-handshake-preview.zip"
+  }
+}

@@ -81,3 +81,16 @@ TypeScript syntax trees. Compare the two old contracts independently to the
 CORE-002 snapshots. Remove a used endpoint, remove Work.cancel.expected_revision,
 change upload bytes to multipart, and substitute an SSE sequence for a business
 cursor. Each mutation must fail the same consumer checks as the unmodified input.
+
+## EXT-002 handshake candidate
+
+Verify the producer commit, manifest, sdk-crosswire receipt, archive and all
+members before unpacking. Reject a changed archive or a mismatched member.
+Build the Rust consumer with its own Cargo.lock, install the Python consumer's
+pinned wheel in isolation and run each outside the checkout with the independent
+packaged stdio peer. Cross the two initialize requests with the same RPC id.
+Unknown optional features and fields must preserve the agreed namespace and
+empty grant. Reject an unknown method, unsupported wire version, missing
+required feature and a changed manifest without breaking the original session.
+Record the actual frames, consumer receipt and binary/package hashes. Report
+candidate verification separately from the published-artifact gate.

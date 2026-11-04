@@ -1,0 +1,22 @@
+{
+  "task": "EXT-002",
+  "status": "PASS",
+  "phase": "preparation",
+  "card_status": "AWAITING_PUBLICATION",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "9b4a35676480f92ac44d8683c35b916d5bfa0ba4fda20cd1f7ca6201ef0a251e",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-002",
+    "--preparation",
+    "--out",
+    "artifacts\\EXT-002\\preview-01"
+  ],
+  "files": {
+    "build.txt": "06353c3998c3d7b035e1502d79b106dd89dc830b9dac69981dbf0b7f8172d733",
+    "handshake-preview.json": "35c2a659cba3ec87cd580a672f899083da1651fde2df29bec0d1cfcb6e78c472"
+  }
+}

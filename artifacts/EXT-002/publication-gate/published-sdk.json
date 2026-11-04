@@ -1,0 +1,7 @@
+{
+  "status": "BLOCKED",
+  "card_status": "AWAITING_PUBLICATION",
+  "published": false,
+  "reason": "The pinned CORE-031 bundle is an unpublished handshake preview.",
+  "preview_command": "python ci/check.py EXT-002 --preparation --out artifacts/EXT-002/preview"
+}
