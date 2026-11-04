@@ -211,49 +211,68 @@ fn result(source: &Url, url: &Url, hop: Hop) -> Value {
             .trim()
             .to_ascii_lowercase()
     });
+    let etag = hop.headers.get("etag").filter(|s| s.len() <= 4096);
     let mut data = json!({"source":source.as_str(),"url":url.as_str(),"status":hop.code,
-        "content_type":mime,"etag":hop.headers.get("etag"),"observed_bytes":hop.bytes.len(),
-        "original_complete":hop.complete,"observed_sha256":format!("{:x}",Sha256::digest(&hop.bytes))});
-    if hop.code == 304 {
-        data["state"] = "not_modified".into();
-        return data;
-    }
-    if !(200..300).contains(&hop.code) {
-        data["state"] = "http_error".into();
-        return data;
-    }
-    if !matches!(
+        "content_type":mime.as_deref().filter(|s| s.len() <= 256),"etag":etag,
+        "observed_bytes":hop.bytes.len(),"transport_complete":hop.complete,
+        "observed_sha256":format!("{:x}",Sha256::digest(&hop.bytes))});
+    let mut state = if hop.code == 304 {
+        "not_modified"
+    } else if !(200..300).contains(&hop.code) {
+        "http_error"
+    } else if !matches!(
         mime.as_deref(),
         Some("text/plain" | "text/html" | "application/xhtml+xml")
     ) {
-        data["state"] = "unsupported_content_type".into();
-        return data;
-    }
-    let content = text(&hop.bytes, mime.as_deref() != Some("text/plain"));
-    if content.is_empty() {
-        data["state"] = "empty_page".into();
-        return data;
-    }
-    data["text"] = Value::String(content);
-    if hop.complete && hop.bytes.len() <= 8192 {
-        data["original_hex"] =
-            Value::String(hop.bytes.iter().map(|v| format!("{v:02x}")).collect());
-    }
-    // Respect the negotiated frame budget even with JSON-escaped characters.
-    let mut partial = !hop.complete;
-    while serde_json::to_vec(&data).expect("JSON value").len() > 58_000 {
-        let s = data["text"].as_str().unwrap();
-        if s.is_empty() {
-            break;
+        "unsupported_content_type"
+    } else {
+        let content = text(&hop.bytes, mime.as_deref() != Some("text/plain"));
+        if content.is_empty() {
+            "empty_page"
+        } else {
+            data["text"] = Value::String(content);
+            "read"
         }
-        let mut end = s.len() * 3 / 4;
-        while !s.is_char_boundary(end) {
-            end -= 1;
+    };
+    // Share the frame between extracted text and original bytes. Preserve both
+    // prefixes and identify any truncation independently of the transport.
+    const BUDGET: usize = 58_000;
+    let metadata = serde_json::to_vec(&data).unwrap().len();
+    if let Some(content) = data["text"].as_str() {
+        let full_size = serde_json::to_vec(content).unwrap().len();
+        let fixed = metadata - full_size;
+        if metadata.saturating_add(hop.bytes.len() * 2) > BUDGET {
+            let budget = BUDGET.saturating_sub(fixed) / 2;
+            let mut end = content.len().min(budget);
+            while !content.is_char_boundary(end) {
+                end -= 1;
+            }
+            while end > 0 && serde_json::to_vec(&content[..end]).unwrap().len() > budget {
+                end = end * 3 / 4;
+                while !content.is_char_boundary(end) {
+                    end -= 1;
+                }
+            }
+            if end < content.len() {
+                data["text"] = content[..end].into();
+                data["text_truncated"] = true.into();
+            }
         }
-        data["text"] = s[..end].into();
-        partial = true;
     }
-    data["state"] = if partial { "partial" } else { "read" }.into();
+    let remaining = BUDGET.saturating_sub(serde_json::to_vec(&data).unwrap().len());
+    let retained = hop.bytes.len().min(remaining / 2);
+    data["original_hex"] = Value::String(
+        hop.bytes[..retained]
+            .iter()
+            .map(|b| format!("{b:02x}"))
+            .collect(),
+    );
+    let complete = retained == hop.bytes.len() && hop.complete;
+    data["original_complete"] = complete.into();
+    if state == "read" && (!complete || data["text_truncated"] == true) {
+        state = "partial";
+    }
+    data["state"] = state.into();
     data
 }
 

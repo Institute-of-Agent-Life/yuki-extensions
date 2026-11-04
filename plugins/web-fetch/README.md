@@ -15,7 +15,7 @@ remain effective. Set these through the plugin-specific
 Failures return typed states without retrying directly or calling a model.
 
 Responses retain the original and final URL, HTTP status, content type, observed
-byte count and SHA-256. Small originals also include their bytes. The transport
+byte count and SHA-256. Original bytes are included as hex, including error and unsupported responses. When the SDK frame cannot hold the full representation it carries the observed prefix and marks the original incomplete. The transport
 reads at most 2 MiB; larger inputs report a partial result and a digest of the
 observed prefix. The plugin has no persistent page database. The host owns the
 committed tool result and its paging.
