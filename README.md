@@ -24,6 +24,12 @@ Formal EXT-007 acceptance replays the pinned CORE-002 wire recording.
 define the plugin wire, grant model or host declarations. Units enter the catalog
 when their implementation exists. Test fixture packages are not product plugins.
 
+The EXT-002 preview case installs the CORE-031 Rust crate and Python wheel and
+runs each test consumer against its packaged peer outside the checkout:
+`python ci/check.py EXT-002 --preparation --out artifacts/EXT-002/local-preview`.
+The Python test consumer exercises the required second SDK in this test.
+Official plugins use Rust. The published-artifact gate remains open.
+
 Progress and current limitations: [docs/implementation-progress.md](docs/implementation-progress.md).
 The verified taskbook is retained under `docs/taskbook/v3.2`; its wording is
 reference material subject to the user's working agreements. K05 governs the

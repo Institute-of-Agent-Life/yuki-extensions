@@ -1,0 +1,1 @@
+yuki-plugin-sdk==1.0.0a1 --hash=sha256:5fec3ae9dc3b2dbd1fb260d75eff81b357f706498a56365bbeae3df0a53a3cb3

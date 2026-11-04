@@ -28,11 +28,30 @@ CORE-002 未發布 oracle 產自 `89f15dbbfc5535a0d9fa94244a9e5cde96638ece`，
   Codex、Claude、ACP 各自的具名 JSON 包含本機 peer 的實際回執與故障邊界。
 - EXT-019 對拍的是 Desktop 源碼與舊協議。源安裝固定 rev 9；公開 beta.8
   的 tag 固定 rev 7。詳見 `docs/desktop-handoff.md`。
-- Rust Host／SDK／正式插件尚無 digest 或逐方法真消費證據。
+- 握手 SDK 的 digest 見下方 EXT-002；完整 Host／正式插件仍無逐方法消費證據。
+
+## EXT-002 握手預覽
+
+分支 `codex/ext-002-preview`。核心合併提交
+`dd694a0db605bfe13b0d72663bef01599560230b`，候選 ZIP SHA-256
+`6e2ca1040f6d1eac2f70b0ff363887faf662782f72a7acd367d4a52a17b2caa2`。
+本地交付和核心 CI 的 Ubuntu ZIP 完全相同。Rust SDK `1.0.0-alpha.1`、
+Python SDK `1.0.0a1`、schema 修訂 1、wire 1.0，方法只有 `initialize`。
+`contracts.lock` 記錄 producer 和各交付檔。兩個 consumer 各自鎖定依賴。
+
+Windows 實機在 checkout 外編譯 Rust consumer，從 wheel 安裝 Python consumer，
+分別對接交付的 stdio peer。可交還核心的回條是
+`artifacts/EXT-002/preview-03/handshake-preview.json` 和同次 manifest。
+回條含各實物／測試 consumer digest、逐方向訊框、協商結果及故障回執。
+額外欄位不能改 namespace 或提升空 grant；錯版、缺能力、同名宣告、
+變更 manifest 與未宣告方法均局部拒絕。修改 ZIP 或 wheel 也被拒絕。
+`preview-02` 記錄首個 wheel 反例在格式檢查就遭拒；`preview-03` 用格式有效、
+內容相同但 SHA 不同的 wheel，確定是消費方 lock 攔下。正式插件採 Rust，
+Python 在此卡只驗 SDK。完整宿主與業務插件仍待相應交付。
 
 ## 下一張可執行卡
 
-`artifacts/readiness/after-ext-019.json` 核對全部 68 卡的直接前置。
-目前的前沿為 EXT-002 待 CORE-031 公共 SDK／schema／conformance peer，
-EXT-043 待 CORE-044 穩定介面及沿途 EXT-067 消費見證。EXT-011 另需 CORE-033
-與 EXT-002。交付欄位、授權與失敗案例需求見 `docs/core-interface-requests.md`。
+EXT-002 的預覽對拍已可重現；正式狀態為 `AWAITING_PUBLICATION`。
+收到正式 SDK 的來源、取得位置和 digest 後，重新安裝該版本並跑正式驗收。
+其餘擴展卡的直接前置記在 `artifacts/readiness/after-ext-019.json`。
+EXT-043 仍待 CORE-044 與沿途 EXT-067，EXT-011 另需 CORE-033 與 EXT-002。

@@ -14,14 +14,13 @@ EXT-019 已對照兩份 OpenAPI，Desktop 固定 `bee5692` 的後端是
 
 ## CORE-031 → EXT-002
 
-需要同一 IDL 生成的 Rust SDK、Python SDK、schema、方法索引和 conformance peer；
-每項有版本、來源合併 commit、SHA-256、實含能力及取得位置。先有不可變握手候選，
-再釘各插件自己的依賴。未正式發布的候選須保留候選標記。
-
-`initialize` 的消費需求：協商版本範圍及 required features、選定版本、固定 declarations、
-方法／schema revision；宿主綁定的 plugin namespace 與窄 grant 不能被重握手取代。
-錯版、缺必需能力、未宣告方法、同名宣告或改 manifest 必須能局部拒絕並給可診斷錯誤。
-Rust/Python peer 分別驗雙向交錯、optional 欄位和連線內 RPC ID。
+已收到合併提交 `dd694a0db605bfe13b0d72663bef01599560230b` 的握手預覽。
+`contracts.lock` 固定 handoff manifest、sdk-crosswire 與 ZIP 雜湊。
+核心 GitHub Actions run `41839465940` 的 Ubuntu artifact 裡有逐位元相同的 ZIP。
+對端、schema 修訂 1、方法索引與 Rust／Python SDK 都已實際消費。
+雙向 `initialize`、同 ID 的交錯 RPC、optional 欄位、錯版、未宣告方法、
+缺必需能力、重複宣告與變更 manifest 的結果在 EXT-002 預覽回條中。
+正式驗收還需要核心發布能固定版本、來源及 SHA-256 的 SDK 產物。
 
 ## CORE-032／CORE-039 → 首批 Rust 插件
 

@@ -1,0 +1,20 @@
+{
+  "task": "EXT-002",
+  "status": "BLOCKED",
+  "phase": "acceptance",
+  "card_status": "AWAITING_PUBLICATION",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "778ce58c3dea535ca2d50f7cb9a6d1b4946b85cad15a0e2ef65a1c92bdb8f024",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-002",
+    "--out",
+    "artifacts\\EXT-002\\publication-gate"
+  ],
+  "files": {
+    "published-sdk.json": "5bf31973cbb6a476ffd188aa2fd44e5ce290932d0c65ad34e283ea98297ae628"
+  }
+}
