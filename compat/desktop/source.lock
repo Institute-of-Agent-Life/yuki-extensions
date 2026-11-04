@@ -1,0 +1,241 @@
+{
+  "repository": "Institute-of-Agent-Life/Yuki-Desktop",
+  "commit": "bee5692292d8601033798cb2772a075b8db8004b",
+  "backend": "004ae36dbe26046d3946b78934c4766333831bcf",
+  "source_zip_sha256": "75bfa99cad65b8f299e711f2dce69d5025ddb93ad847078d8bcf4a4edb6dba98",
+  "client_sha256": "2ac0ee897f207d181a703ad25bf15571a66e77f390c20d6177ddee4d325ea7f6",
+  "admin_sha256": "78dc8119b3ce7272e89951b2bfb72031c025c1928988102bc9962e1db5162dc5",
+  "git_blobs": {
+    "LICENSE": "932435201cc785667f73e8a74bae80e48de6e2af",
+    "contracts/admin-api.openapi.json": "95c0a8dd80e8a386b8b2393cc80ef72a816a20bb",
+    "contracts/client-api.openapi.json": "d38c512257eadec5f00a162c1f748e7974c3d74d",
+    "contracts/source.json": "78ea173f6bffc1210c14f12b4a9a584cfe371384",
+    "package.json": "52f33b376cf11fad72583d00c2f48f65eefc6de4",
+    "src/main/agent-connector.ts": "aebb35ad6315abf5cc50828ac9a9efbd5c0acf9a",
+    "src/main/api/client.ts": "3dd33d85277c82e5297757101d43814d43194fb6",
+    "src/main/api/stream.ts": "5ce6fed3259d01ba0a40a174bfca8ea9f4d848c0",
+    "src/main/app.ts": "ee1c003943a6f6697b5866ea44e0820e208164d1",
+    "src/main/avatar-input.ts": "6803610a914f0237093f511efb868a815514da4e",
+    "src/main/computer-exit.ts": "ffbe448668dbd709a06e909d0ac611b9a094120d",
+    "src/main/computer-tickets.ts": "76b9397de3d553fc3f86868a8f0d9a4fb282e4fe",
+    "src/main/connections.ts": "267270cf3effe390408a4856bcaa4fa98d2b6135",
+    "src/main/connector-installation.ts": "be0d1c741ef3f9a34ce8de4b5c9de291cb233794",
+    "src/main/credentials.ts": "ea3db80ec8a32489a3486358e9a8858a79477f24",
+    "src/main/diagnostics.ts": "72b4fa9c28344438e4f2dbb3944580f419c0bce3",
+    "src/main/feed-updater.ts": "6ec709edbe18ded9b0e50e9e0f7b027aa5ae489b",
+    "src/main/geometry.ts": "961d3efe4cdeb3f10b9e360a7a234088f36ec9d8",
+    "src/main/linux-frame.ts": "577c2d591a1c5b4c5afcaf36195e2220c3850090",
+    "src/main/local-bot.ts": "e7dba45ea897d7cdc6d74634bde0aa14f09d22a8",
+    "src/main/login-item.ts": "19fd5a50df6771dc880db440d0c7f8de52bb8723",
+    "src/main/media/content.ts": "d849453a1969713f506956bbfc01fb85bb19d0cc",
+    "src/main/media/previews.ts": "1c41b3c30bbbddf7f21b4e155fb6b1f58a1e2d04",
+    "src/main/media/uploads.ts": "625dc8e0b1e02f3a36841867429c9f0366944a82",
+    "src/main/menu.ts": "f7391b2c8e74d5b92a1fc99228972222040629ec",
+    "src/main/native.ts": "57b11319ccb10a8343b4d346040ccc991c9bf2d6",
+    "src/main/notifications.ts": "3ac0b2f7573c50fad33169135163e48a372fef2d",
+    "src/main/outbox/character-commands.ts": "d5280bcebdedcc24ffd7e26e3f9da7042bc27a16",
+    "src/main/outbox/computer-commands.ts": "2930d8f99edd1155c09df397dd26958d5edc6610",
+    "src/main/outbox/fingerprint.ts": "09d58afd0f4b4285364d86b19eba0667e3330361",
+    "src/main/outbox/index.ts": "0017502b1681e5e8ef3af876bdf49a6082172c88",
+    "src/main/outbox/link-codes.ts": "56a1f2d20398699c028ddcc2fcae0615af6640ea",
+    "src/main/outbox/local-summary.ts": "be6f483644bdab40ed26d31d887b512802491a56",
+    "src/main/outbox/soul.ts": "221c27044e49791705f5a69b27a348cd76395e46",
+    "src/main/outbox/work-commands.ts": "35ce8aa13a7eb539e8ab719cbb64f70a7821c272",
+    "src/main/release-provider.ts": "4589835cd1f227717c8709b626b6d5400e1cc917",
+    "src/main/store.ts": "2b6ac6eb3c9a110989a00fcec6d2a7ec4581acaa",
+    "src/main/updates.ts": "4475ecd09ebab2195e568e5d22434d2aa77ccb96",
+    "src/main/window-appearance.ts": "dfa9c41322cce558063a8f0018312d7f277c215c",
+    "src/main/windows.ts": "a110fdf895a2edb8ddb2d34a64e660e5859820d1",
+    "src/preload/index.ts": "c3e0ad6dc507d0146b92f9c3cc3e1ba6ea9ccf8b",
+    "src/renderer/App.tsx": "76928af404ae63212cf243bdd8b6068466ed499c",
+    "src/renderer/components/ApplicationMenu.tsx": "f0cb020fae95bc280ba0daa5587cdd1770a3434b",
+    "src/renderer/components/CharacterAvatar.tsx": "fdd0600fc338ce4de9366843f7268a87dad4c59a",
+    "src/renderer/components/CommandPalette.tsx": "8e323c8ac10536a8293e3eb203f91284e05e128b",
+    "src/renderer/components/Composer.tsx": "9b9b6f6b045f100e1c6041a672c835d7e18fe7dc",
+    "src/renderer/components/Content.tsx": "056589452fe2344a41da3b5d8c47d1a70a4b0177",
+    "src/renderer/components/Controls.tsx": "510e5b4c9171ba5445bfaeb6869fd3e6988ded29",
+    "src/renderer/components/InteractiveControls.tsx": "c6f4961d0ef0079e5ea18c0e551a3ec5061c166c",
+    "src/renderer/components/PresenceCard.tsx": "0a8c7c20b4259cee8dda5b99ae3fb489b80059ac",
+    "src/renderer/components/RoleSwitcher.tsx": "7d76bb500aa8fde0f13b49dfff735d833c2096e0",
+    "src/renderer/components/SoulCode.tsx": "1b78a8a95065684e14fe8c7e7fc9488a5f0098e2",
+    "src/renderer/components/Updates.tsx": "479d4ff1a22b14368654d0d6cdfc6a6917f4c0bd",
+    "src/renderer/components/Workspace.tsx": "33243146a48deea983f4f7154170cb8872f2091e",
+    "src/renderer/images/avatar.ts": "470d68f6c884c5921e424dabdf13e9d8eeff83da",
+    "src/renderer/materials/floating.ts": "aeb7b4cd1fb9aebc0e4f21c929a03cdb397ac2af",
+    "src/renderer/materials/glass.ts": "bcc19c153af366a7db9bbae3cb1d9178ec725783",
+    "src/renderer/motion/hooks.ts": "b1932be345d6d00bb01995a058608195996247fa",
+    "src/renderer/motion/spring.ts": "6b0e41344b2d7c33ac2e336e271253537e5ff95e",
+    "src/renderer/motion/tab.ts": "dc6fdb81dae8adcdd1e3f9e9f88f9ffb58e2a758",
+    "src/renderer/queries/client.ts": "04613f9bfb1ac6be1478751e6735467ff2560d17",
+    "src/renderer/queries/history.ts": "c33e565de62c9d723609dc6d5b52f79119a52265",
+    "src/renderer/src.tsx": "30caadca372a3584988c0633aaf3c13d1de6a978",
+    "src/renderer/state/commands.ts": "fbf242d4096a28d562f875a1f082b24aeb287ea9",
+    "src/renderer/state/loaded.ts": "967ad1ca5d7f388724964647d6507c02b8932ccd",
+    "src/renderer/state/navigation.ts": "f67106985ae6d30d5d37d87f9e59afbebe672eda",
+    "src/renderer/state/time.ts": "208d3fa0963e62247d0c8c6375ecb18fac103414",
+    "src/renderer/state/updates.tsx": "305fcb8349902686c08c42efe3adf290f4a0bdcc",
+    "src/renderer/state/workspace.ts": "52551943571d17895f3139422a88340e47dfdb92",
+    "src/renderer/text/RichMarkdown.tsx": "c6ce43413a3455d4e9f76110764fe11f57d569e3",
+    "src/renderer/text/diff.worker.ts": "efe8479cad3233804b592b3bb2e8dc310ae28a1c",
+    "src/renderer/text/markdown.ts": "64699abec432c656ffc5fcbde793f0d7112959f3",
+    "src/renderer/views/About.tsx": "2af24ac1356522b4c64b867803fd746caedf91db",
+    "src/renderer/views/AgentConnector.tsx": "0144eb5c24ff8b6859d3f668ecd402f4cc54d1e0",
+    "src/renderer/views/AvatarEditor.tsx": "c9cd5258aa3ba726149ec6818c250ba555eb6408",
+    "src/renderer/views/AvatarStatus.tsx": "819b2cef19f205cb255f3987b18c74e92eb0189c",
+    "src/renderer/views/Computer.tsx": "5c60d691d1572107ffe328ec80dd6d5fb9977f96",
+    "src/renderer/views/ConnectorTasks.tsx": "ce4c42f87244ce48b10330e04cfbbb3d695e6707",
+    "src/renderer/views/ConnectorTerminals.tsx": "51747ed5ca9c3f7c8709bc41f485de307586591c",
+    "src/renderer/views/Conversation.tsx": "a52939af9d27c7f306e40cb39f8d67149d04f7d6",
+    "src/renderer/views/DeviceSecurity.tsx": "775aba908cdcf6b4a3712e22575c418723d8da6e",
+    "src/renderer/views/DisconnectedHome.tsx": "beb1203eaf5e70307618dbb26684427e55354dcd",
+    "src/renderer/views/Files.tsx": "dfeb210d33105ac7ced47a76f249b341c968eadc",
+    "src/renderer/views/LocalBot.tsx": "02e752c2756176c338755497e40c7dafbaefb45f",
+    "src/renderer/views/LocalComputer.tsx": "268e37f8e5748f72e27af87de05f37c2fb8a262a",
+    "src/renderer/views/LogoutFlow.tsx": "7ede8970520e0ff5f2b0c117694a837f34028889",
+    "src/renderer/views/Media.tsx": "0c4fb322fca7bea10ca1a2670f44e7a898f83374",
+    "src/renderer/views/ModelConnectionForm.tsx": "9c7fa244da8ab78f8b3db9e3538591328273610e",
+    "src/renderer/views/ModelConnections.tsx": "fc428d0ba756229ee268732ade38c65ead85bbcc",
+    "src/renderer/views/ModelProbes.tsx": "1685550e1b66968e96fb73a431edbde40c38a164",
+    "src/renderer/views/ModelPurposes.tsx": "74ec6bda72f3d2c89e7c3994cc340d1841799731",
+    "src/renderer/views/ModelSchemaFields.tsx": "f0c002159b45465a439363a6d72c301416ee5a82",
+    "src/renderer/views/ModelSettings.tsx": "d9a8b2379e11237d09313777ff6bc0e2e14ff102",
+    "src/renderer/views/ModelUsage.tsx": "f64bf9637ef6d787ed46b8fb65de1029944c2f33",
+    "src/renderer/views/NativeRequest.tsx": "14c6a0bb10781226be5e0473782db9e607d8a8f8",
+    "src/renderer/views/Pairing.tsx": "019ac9783ba6ae3a9db85ec8663298920ff26cb9",
+    "src/renderer/views/ServerSettings.tsx": "0812c410808524c6c055dc49a173f1b95da8bfb1",
+    "src/renderer/views/Settings.tsx": "e9ab7ca92a68af82219caffabdb23a49d4d41283",
+    "src/renderer/views/SettingsRow.tsx": "396dcfb7b24dadd0cecec98dafedbdf13f8cdf93",
+    "src/renderer/views/SoulEditor.tsx": "59b839d8cc7773142e0ca912898525f50fac3826",
+    "src/renderer/views/TailscaleGuide.tsx": "1e2d206471a8dc573174ebe2c9659c04dba7b2fe",
+    "src/renderer/views/VoiceRecorder.tsx": "e24586251f5c4986cfbb18a817a6ed45c67788a9",
+    "src/renderer/views/Works.tsx": "cded52a21e5a6d32b9646758ade6143878ce5b7f",
+    "src/renderer/views/media-content.ts": "99cd0fcd5c8a9aebe800e6db7c88387d4bddacca",
+    "src/renderer/views/model-document.ts": "7b30e8b854078e5c832041bf7910d9884f8ae82a",
+    "src/shared/admin-contract.gen.ts": "e0aba614aba8d9daabad1e9c5b1c4a0aca1ec9a5",
+    "src/shared/api.ts": "c1ca9a1671e7f526a04d034c46ce61226b85a9fd",
+    "src/shared/commands.ts": "6408ace86c4cd8ec0bbbb26d1d76aff2e2e646f7",
+    "src/shared/connector.ts": "2382d0c91695eecd6e35f6853e0b9d28414e8e04",
+    "src/shared/contract.gen.ts": "1f9e275e0d5689dfa551077b344a3dbc41223e00",
+    "src/shared/desktop.ts": "3b68abbd10d3c5d03eca86c7670422951bf5d5f7",
+    "src/shared/diff.ts": "0c561a1569c164ae2cac1ce26195489e05c0cd02",
+    "src/shared/local-bot.ts": "879b10a3d7c384baa37bf0558d763623749651cf",
+    "src/shared/media.ts": "08ae2ba680b04c89f2e73f369a2dff3eccb8a428",
+    "src/shared/message.ts": "d836c51acc10e893d8a72bb4526fa8f41c36ce4d",
+    "src/shared/models.ts": "eec675258cc292293188e25df474d6ab7ac23548",
+    "src/shared/novnc.d.ts": "559a3053d6321ed227427ee2acbb03544878fa8f",
+    "src/shared/pairing.ts": "85eeacfba876ccab6a19770cf5163b5da0e83b8b",
+    "src/shared/presence.ts": "d4999984b5e20fc213d0704b01491c9e1e143531",
+    "src/shared/sync.ts": "a90f5da37cf7cbc6c20b4ecff95429d0caed6870",
+    "src/shared/time.ts": "b7fb96e9d55e4f29ba9cf9b24064103a5239e22e",
+    "src/shared/updates.ts": "17330350fcb8513a21a94bb4be35efa0155fa513",
+    "src/shared/version.ts": "ead80dac656546bf5bf11e7ae0756b69322c7288"
+  },
+  "release": {
+    "tag": "desktop-v1.0.0-beta.8",
+    "url": "https://github.com/Institute-of-Agent-Life/Yuki-Desktop/releases/tag/desktop-v1.0.0-beta.8",
+    "prerelease": true,
+    "commit": "e9ed2f59b6b86959c2cacbb953ed458645e9a159",
+    "assets": [
+      {
+        "digest": "sha256:95fd1151324b8e95d27fd416138b22711a0d32733dfcd95e65d92350e62ba9fd",
+        "name": "beta-linux-arm64.yml"
+      },
+      {
+        "digest": "sha256:a80222e0d535815d6da56a8d53321ac560287bd52e632acf572e04f766873f3f",
+        "name": "beta-linux.yml"
+      },
+      {
+        "digest": "sha256:4300f7cb01d03bb8e0dd66ab4f26584c0512ad9aa53f25fce09c2429343da49e",
+        "name": "beta-mac.yml"
+      },
+      {
+        "digest": "sha256:160a2ecdb7fbb5b88a0e0ecef48e1a418986edf7b59459ce5c2ee8ea547892cb",
+        "name": "beta.yml"
+      },
+      {
+        "digest": "sha256:a3b33a130d62cbc45c4bf6723a34d40b264f35c20c9a1ab90577fb9e2d97bcbd",
+        "name": "SHA256SUMS"
+      },
+      {
+        "digest": "sha256:26762de9c4a93021a95f864dc2cacbfdd937701d432469b2019ee10bc6ebfe19",
+        "name": "Yuki-1.0.0-beta.8-linux-aarch64.rpm"
+      },
+      {
+        "digest": "sha256:9f50402909e0d2a330cdd1f6dfa06407408ba751056b4f334e98bfe7b2487cbf",
+        "name": "Yuki-1.0.0-beta.8-linux-amd64.deb"
+      },
+      {
+        "digest": "sha256:f76466e0a8f9a43232168340a78f0db8a7c5b5bea0f9ff80057ef85a36f1a414",
+        "name": "Yuki-1.0.0-beta.8-linux-arm64.AppImage"
+      },
+      {
+        "digest": "sha256:00c7e57d9df37bf5b84fd943a0aa33382e67a1b8b73ba60f8a7ce84b0ecc5acc",
+        "name": "Yuki-1.0.0-beta.8-linux-arm64.deb"
+      },
+      {
+        "digest": "sha256:5efde0c656acd4623571bdfe57afb91fc6f8518a1204317ab30ee0de4bf04836",
+        "name": "Yuki-1.0.0-beta.8-linux-x86_64.AppImage"
+      },
+      {
+        "digest": "sha256:821a5ed844a7bd180f77b644e6f4477545601e8162586fb8c7f596258cc6f953",
+        "name": "Yuki-1.0.0-beta.8-linux-x86_64.rpm"
+      },
+      {
+        "digest": "sha256:dcc47fcb936dbc686cb5e32d283f135665d21b82e79cdc022c84104f1b144d0c",
+        "name": "Yuki-1.0.0-beta.8-mac-arm64.dmg"
+      },
+      {
+        "digest": "sha256:e2cb40a1808c1b2c9388ba6794b669920942444e18bce3d85f5503600d1199a9",
+        "name": "Yuki-1.0.0-beta.8-mac-arm64.dmg.blockmap"
+      },
+      {
+        "digest": "sha256:f187abc768b113b0b7bdccb03b71ada6b669f3e2a74abf175ec87aa33cbc1e93",
+        "name": "Yuki-1.0.0-beta.8-mac-arm64.zip"
+      },
+      {
+        "digest": "sha256:a04f58f5cacbe6e7a8fb588eeba9efe533cd0391e84f9a93284b199c5e8d85cd",
+        "name": "Yuki-1.0.0-beta.8-mac-arm64.zip.blockmap"
+      },
+      {
+        "digest": "sha256:a9a6c4fdb9fc3124207284b3caf790b1fba16c402a3c1bb466fbdcd83d6f9c87",
+        "name": "Yuki-1.0.0-beta.8-mac-x64.dmg"
+      },
+      {
+        "digest": "sha256:eefa68a9d648142e47368c9296fd0657c4218ec0e07b8c1bd584b38d765624a8",
+        "name": "Yuki-1.0.0-beta.8-mac-x64.dmg.blockmap"
+      },
+      {
+        "digest": "sha256:0de68d5e1fab1cb282a832d04db9af940f0283239a7a3149a84df0ed7eb4c2df",
+        "name": "Yuki-1.0.0-beta.8-mac-x64.zip"
+      },
+      {
+        "digest": "sha256:1ee0099cbba74358a318b722ed2da3139e7b0ff023f8f1fe5eeedbdb9bf55a3f",
+        "name": "Yuki-1.0.0-beta.8-mac-x64.zip.blockmap"
+      },
+      {
+        "digest": "sha256:ba11b2e54345ff282182907b6f39bda25a86d5942ad711a9e8d1f7a41982e162",
+        "name": "Yuki-1.0.0-beta.8-win-x64.exe"
+      },
+      {
+        "digest": "sha256:011a73259a671c0e5340e73ca5eb09336763f64e9bf20e74b9a624db40f48a98",
+        "name": "Yuki-1.0.0-beta.8-win-x64.exe.blockmap"
+      }
+    ],
+    "tag_source_json": {
+      "blob": "f230be4c035158efdc06ca5f00b6a3c8408600c1",
+      "sha256": "8bf06280637dcad8f85545df550547975d59a587aaf5dcd822660e403adaf2fa",
+      "backend": "c728bb1928ef180ba881fd3e031c10fec9c8be81",
+      "client_sha256": "4e3f790dcf55ec5c5677275947d08a19bf9a244c85459be96b3caec773929ba3",
+      "admin_sha256": null
+    }
+  },
+  "typescript": {
+    "version": "5.9.3",
+    "url": "https://registry.npmjs.org/typescript/-/typescript-5.9.3.tgz",
+    "integrity": "sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw=="
+  },
+  "windows_node": {
+    "version": "22.14.0",
+    "sha256": "55b639295920b219bb2acbcfa00f90393a2789095b7323f79475c9f34795f217"
+  }
+}

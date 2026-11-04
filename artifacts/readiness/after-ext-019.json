@@ -1,0 +1,328 @@
+{
+  "extensions_cards": 68,
+  "windows_verified": [
+    "EXT-001",
+    "EXT-007",
+    "EXT-008",
+    "EXT-009",
+    "EXT-010",
+    "EXT-019"
+  ],
+  "core_main_observed": "ff7122a623c37189d4dff80c7caa9cec86345972",
+  "core_merged_pr_cards": [
+    "CORE-002",
+    "CORE-003",
+    "CORE-004",
+    "CORE-005",
+    "CORE-006",
+    "CORE-007",
+    "CORE-008",
+    "CORE-049"
+  ],
+  "releases_observed": [],
+  "ready_uncompleted_cards": [],
+  "frontier": {
+    "EXT-002": [
+      "CORE-031"
+    ],
+    "EXT-043": [
+      "CORE-044"
+    ]
+  },
+  "along_path_input": {
+    "EXT-043": "EXT-067 base-consumer-witness.json"
+  },
+  "remaining_prerequisites": {
+    "EXT-002": [
+      "CORE-031"
+    ],
+    "EXT-003": [
+      "CORE-032",
+      "EXT-002"
+    ],
+    "EXT-005": [
+      "CORE-032",
+      "EXT-002"
+    ],
+    "EXT-020": [
+      "CORE-032",
+      "EXT-002"
+    ],
+    "EXT-028": [
+      "CORE-032",
+      "EXT-002"
+    ],
+    "EXT-029": [
+      "CORE-024",
+      "CORE-032",
+      "EXT-002"
+    ],
+    "EXT-004": [
+      "CORE-025",
+      "EXT-003"
+    ],
+    "EXT-006": [
+      "CORE-025",
+      "EXT-005"
+    ],
+    "EXT-021": [
+      "CORE-038",
+      "EXT-020"
+    ],
+    "EXT-030": [
+      "CORE-038",
+      "CORE-050",
+      "EXT-002"
+    ],
+    "EXT-031": [
+      "CORE-038",
+      "EXT-002"
+    ],
+    "EXT-032": [
+      "CORE-038",
+      "CORE-050",
+      "EXT-002"
+    ],
+    "EXT-040": [
+      "CORE-039",
+      "EXT-002"
+    ],
+    "EXT-011": [
+      "CORE-033",
+      "EXT-002"
+    ],
+    "EXT-015": [
+      "CORE-033",
+      "EXT-002"
+    ],
+    "EXT-023": [
+      "CORE-034",
+      "EXT-002"
+    ],
+    "EXT-025": [
+      "CORE-036",
+      "CORE-050",
+      "EXT-002"
+    ],
+    "EXT-027": [
+      "CORE-058",
+      "EXT-002"
+    ],
+    "EXT-033": [
+      "CORE-035",
+      "CORE-050",
+      "EXT-002"
+    ],
+    "EXT-034": [
+      "CORE-035",
+      "EXT-002"
+    ],
+    "EXT-035": [
+      "CORE-035",
+      "CORE-050",
+      "EXT-002"
+    ],
+    "EXT-036": [
+      "CORE-035",
+      "EXT-002"
+    ],
+    "EXT-047": [
+      "CORE-058",
+      "CORE-051",
+      "EXT-002"
+    ],
+    "EXT-067": [
+      "CORE-039",
+      "EXT-004",
+      "EXT-028"
+    ],
+    "EXT-068": [
+      "CORE-056",
+      "EXT-004"
+    ],
+    "EXT-069": [
+      "CORE-056",
+      "EXT-006"
+    ],
+    "EXT-012": [
+      "EXT-011"
+    ],
+    "EXT-014": [
+      "EXT-011"
+    ],
+    "EXT-016": [
+      "EXT-015"
+    ],
+    "EXT-017": [
+      "EXT-015"
+    ],
+    "EXT-024": [
+      "EXT-023"
+    ],
+    "EXT-026": [
+      "EXT-025"
+    ],
+    "EXT-070": [
+      "EXT-011"
+    ],
+    "EXT-013": [
+      "EXT-012"
+    ],
+    "EXT-018": [
+      "EXT-016",
+      "EXT-017"
+    ],
+    "EXT-022": [
+      "CORE-037",
+      "EXT-021"
+    ],
+    "EXT-037": [
+      "CORE-037",
+      "EXT-002"
+    ],
+    "EXT-038": [
+      "CORE-037",
+      "CORE-038",
+      "EXT-002"
+    ],
+    "EXT-039": [
+      "CORE-037",
+      "EXT-034"
+    ],
+    "EXT-043": [
+      "CORE-044"
+    ],
+    "EXT-062": [
+      "CORE-041",
+      "EXT-004"
+    ],
+    "EXT-048": [
+      "CORE-035",
+      "EXT-015",
+      "EXT-038"
+    ],
+    "EXT-049": [
+      "CORE-055",
+      "EXT-015"
+    ],
+    "EXT-050": [
+      "EXT-013",
+      "EXT-014",
+      "EXT-015",
+      "EXT-022"
+    ],
+    "EXT-051": [
+      "CORE-042",
+      "EXT-013"
+    ],
+    "EXT-052": [
+      "CORE-042",
+      "EXT-018"
+    ],
+    "EXT-053": [
+      "CORE-042",
+      "EXT-021"
+    ],
+    "EXT-054": [
+      "CORE-042",
+      "EXT-026"
+    ],
+    "EXT-055": [
+      "CORE-042",
+      "EXT-033"
+    ],
+    "EXT-056": [
+      "CORE-042",
+      "EXT-032"
+    ],
+    "EXT-057": [
+      "CORE-041",
+      "EXT-037"
+    ],
+    "EXT-058": [
+      "CORE-041",
+      "EXT-038"
+    ],
+    "EXT-059": [
+      "CORE-042",
+      "EXT-027"
+    ],
+    "EXT-060": [
+      "CORE-042",
+      "EXT-034"
+    ],
+    "EXT-061": [
+      "CORE-042",
+      "EXT-035",
+      "EXT-036"
+    ],
+    "EXT-064": [
+      "CORE-042",
+      "EXT-024"
+    ],
+    "EXT-046": [
+      "EXT-048",
+      "EXT-049",
+      "EXT-050"
+    ],
+    "EXT-066": [
+      "CORE-054",
+      "EXT-047"
+    ],
+    "EXT-041": [
+      "EXT-006",
+      "EXT-028",
+      "EXT-029",
+      "EXT-031",
+      "EXT-039",
+      "EXT-051",
+      "EXT-052",
+      "EXT-053",
+      "EXT-054",
+      "EXT-055",
+      "EXT-056",
+      "EXT-057",
+      "EXT-058",
+      "EXT-059",
+      "EXT-060",
+      "EXT-061",
+      "EXT-062",
+      "EXT-064",
+      "EXT-066"
+    ],
+    "EXT-042": [
+      "CORE-053",
+      "EXT-018",
+      "EXT-024",
+      "EXT-026",
+      "EXT-027",
+      "EXT-029",
+      "EXT-030",
+      "EXT-031",
+      "EXT-032",
+      "EXT-033",
+      "EXT-035",
+      "EXT-036",
+      "EXT-037",
+      "EXT-039",
+      "EXT-040",
+      "EXT-046",
+      "EXT-047",
+      "EXT-068",
+      "EXT-069"
+    ],
+    "EXT-044": [
+      "EXT-017",
+      "EXT-039",
+      "EXT-043",
+      "EXT-046",
+      "EXT-070"
+    ],
+    "EXT-045": [
+      "CORE-043",
+      "EXT-042"
+    ]
+  },
+  "source": "v3.2 extension cards, declared prerequisites; merged core PRs alone do not imply published packages",
+  "sdk_host_consumer": null
+}

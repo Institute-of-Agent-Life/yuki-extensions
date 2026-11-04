@@ -125,11 +125,17 @@ def main():
                             "--dir", str(runtime_input.parent)], check=True)
         if hashlib.sha256(runtime_input.read_bytes()).hexdigest() != expected:
             raise ValueError("pinned Windows Python archive digest mismatch")
+    desktop_tools = []
+    if args.task == "EXT-019":
+        from desktop_tooling import inputs
+        desktop_tools = inputs(root, transfer / "desktop-tools", windows_node=True)
     # Include only locked wheels, not arbitrary files already in the transport cache.
     tools_zip = transfer / "tooling.zip"
     with zipfile.ZipFile(tools_zip, "w", zipfile.ZIP_DEFLATED) as archive:
         for package in locked.values():
             archive.write(wheelhouse / package["filename"], package["filename"])
+        for path in desktop_tools:
+            archive.write(path, "desktop-tools/" + path.name)
         if runtime_input:
             archive.write(runtime_input, "runtime-cache/" + runtime_input.name)
         existing = {p["filename"] for p in locked.values()}
@@ -163,6 +169,7 @@ Expand-Archive -LiteralPath {quote(remote + '/source.zip')} -DestinationPath {qu
 Set-Location {quote(remote + '/src')}
 $env:YUKI_SOURCE_SNAPSHOT_SHA256=$expected
 {('$env:YUKI_BASELINE_WHEEL=' + quote(remote + '/wheelhouse/' + baseline['wheel_name'])) if connector_mode else ''}
+$env:YUKI_DESKTOP_TOOLS={quote(remote + '/wheelhouse/desktop-tools')}
 $env:YUKI_RUNTIME_CACHE={quote(remote + '/wheelhouse/runtime-cache')}
 py -3.12 {'connector/packaging/verify_source.py' if args.connector_source else 'ci/check.py ' + args.task} --out artifacts/{args.task}/{args.run}
 $result=$LASTEXITCODE
