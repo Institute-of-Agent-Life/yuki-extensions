@@ -1,7 +1,6 @@
 {
   "repository": "Institute-of-Agent-Life/yuki-core",
   "source_commit": "dd694a0db605bfe13b0d72663bef01599560230b",
-  "distribution": "unpublished",
   "capabilities": [
     "initialize"
   ],
@@ -19,5 +18,26 @@
     "artifact": 13328705534,
     "name": "core-evidence-ubuntu-latest-1",
     "member": "CORE-031/ci/handshake-preview/yuki-handshake-preview.zip"
+  },
+  "candidate_build_status": "unpublished",
+  "release": {
+    "kind": "github-prerelease",
+    "tag": "handshake-preview-dd694a0db605",
+    "published_at": "2026-11-04T13:52:33Z",
+    "url": "https://github.com/Institute-of-Agent-Life/yuki-core/releases/tag/handshake-preview-dd694a0db605",
+    "assets": {
+      "SHA256SUMS": {
+        "url": "https://github.com/Institute-of-Agent-Life/yuki-core/releases/download/handshake-preview-dd694a0db605/SHA256SUMS",
+        "sha256": "7ff2d3765de109f647cfab337319748f115a0b2b4037ba77450c8d187a5820df"
+      },
+      "release-receipt.json": {
+        "url": "https://github.com/Institute-of-Agent-Life/yuki-core/releases/download/handshake-preview-dd694a0db605/release-receipt.json",
+        "sha256": "4771aa18d1105107929781925c349fe3552019527ae940c2293b2b49f11c79c5"
+      },
+      "yuki-handshake-preview.zip": {
+        "url": "https://github.com/Institute-of-Agent-Life/yuki-core/releases/download/handshake-preview-dd694a0db605/yuki-handshake-preview.zip",
+        "sha256": "6e2ca1040f6d1eac2f70b0ff363887faf662782f72a7acd367d4a52a17b2caa2"
+      }
+    }
   }
 }

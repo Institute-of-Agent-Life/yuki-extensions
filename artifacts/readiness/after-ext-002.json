@@ -1,0 +1,376 @@
+{
+  "core_main_observed": "ed971f0b57f3b50536d23c383a5a607286fe9edf",
+  "merged_core_cards": [
+    "CORE-002",
+    "CORE-003",
+    "CORE-004",
+    "CORE-005",
+    "CORE-006",
+    "CORE-007",
+    "CORE-008",
+    "CORE-009",
+    "CORE-010",
+    "CORE-011",
+    "CORE-031",
+    "CORE-049"
+  ],
+  "windows_verified_extensions": [
+    "EXT-001",
+    "EXT-002",
+    "EXT-007",
+    "EXT-008",
+    "EXT-009",
+    "EXT-010",
+    "EXT-019"
+  ],
+  "extensions_cards": 68,
+  "ready_uncompleted_cards": [],
+  "frontier": {
+    "EXT-003": [
+      "CORE-032"
+    ],
+    "EXT-005": [
+      "CORE-032"
+    ],
+    "EXT-020": [
+      "CORE-032"
+    ],
+    "EXT-028": [
+      "CORE-032"
+    ],
+    "EXT-029": [
+      "CORE-024",
+      "CORE-032"
+    ],
+    "EXT-030": [
+      "CORE-038",
+      "CORE-050"
+    ],
+    "EXT-031": [
+      "CORE-038"
+    ],
+    "EXT-032": [
+      "CORE-038",
+      "CORE-050"
+    ],
+    "EXT-040": [
+      "CORE-039"
+    ],
+    "EXT-011": [
+      "CORE-033"
+    ],
+    "EXT-015": [
+      "CORE-033"
+    ],
+    "EXT-023": [
+      "CORE-034"
+    ],
+    "EXT-025": [
+      "CORE-036",
+      "CORE-050"
+    ],
+    "EXT-027": [
+      "CORE-058"
+    ],
+    "EXT-033": [
+      "CORE-035",
+      "CORE-050"
+    ],
+    "EXT-034": [
+      "CORE-035"
+    ],
+    "EXT-035": [
+      "CORE-035",
+      "CORE-050"
+    ],
+    "EXT-036": [
+      "CORE-035"
+    ],
+    "EXT-047": [
+      "CORE-051",
+      "CORE-058"
+    ],
+    "EXT-037": [
+      "CORE-037"
+    ],
+    "EXT-038": [
+      "CORE-037",
+      "CORE-038"
+    ],
+    "EXT-043": [
+      "CORE-044"
+    ]
+  },
+  "consumer": {
+    "tag": "handshake-preview-dd694a0db605",
+    "published_sdk_sha256": "5c5d944f126b2866760e7684b7d5f0a8b512fb0bb54b20ee503bc6fb57daf6c4",
+    "host": null
+  },
+  "remaining_prerequisites": {
+    "EXT-003": [
+      "CORE-032"
+    ],
+    "EXT-005": [
+      "CORE-032"
+    ],
+    "EXT-020": [
+      "CORE-032"
+    ],
+    "EXT-028": [
+      "CORE-032"
+    ],
+    "EXT-029": [
+      "CORE-024",
+      "CORE-032"
+    ],
+    "EXT-004": [
+      "CORE-025",
+      "EXT-003"
+    ],
+    "EXT-006": [
+      "CORE-025",
+      "EXT-005"
+    ],
+    "EXT-021": [
+      "CORE-038",
+      "EXT-020"
+    ],
+    "EXT-030": [
+      "CORE-038",
+      "CORE-050"
+    ],
+    "EXT-031": [
+      "CORE-038"
+    ],
+    "EXT-032": [
+      "CORE-038",
+      "CORE-050"
+    ],
+    "EXT-040": [
+      "CORE-039"
+    ],
+    "EXT-011": [
+      "CORE-033"
+    ],
+    "EXT-015": [
+      "CORE-033"
+    ],
+    "EXT-023": [
+      "CORE-034"
+    ],
+    "EXT-025": [
+      "CORE-036",
+      "CORE-050"
+    ],
+    "EXT-027": [
+      "CORE-058"
+    ],
+    "EXT-033": [
+      "CORE-035",
+      "CORE-050"
+    ],
+    "EXT-034": [
+      "CORE-035"
+    ],
+    "EXT-035": [
+      "CORE-035",
+      "CORE-050"
+    ],
+    "EXT-036": [
+      "CORE-035"
+    ],
+    "EXT-047": [
+      "CORE-051",
+      "CORE-058"
+    ],
+    "EXT-067": [
+      "CORE-039",
+      "EXT-004",
+      "EXT-028"
+    ],
+    "EXT-068": [
+      "CORE-056",
+      "EXT-004"
+    ],
+    "EXT-069": [
+      "CORE-056",
+      "EXT-006"
+    ],
+    "EXT-012": [
+      "EXT-011"
+    ],
+    "EXT-014": [
+      "EXT-011"
+    ],
+    "EXT-016": [
+      "EXT-015"
+    ],
+    "EXT-017": [
+      "EXT-015"
+    ],
+    "EXT-024": [
+      "EXT-023"
+    ],
+    "EXT-026": [
+      "EXT-025"
+    ],
+    "EXT-070": [
+      "EXT-011"
+    ],
+    "EXT-013": [
+      "EXT-012"
+    ],
+    "EXT-018": [
+      "EXT-016",
+      "EXT-017"
+    ],
+    "EXT-022": [
+      "CORE-037",
+      "EXT-021"
+    ],
+    "EXT-037": [
+      "CORE-037"
+    ],
+    "EXT-038": [
+      "CORE-037",
+      "CORE-038"
+    ],
+    "EXT-039": [
+      "CORE-037",
+      "EXT-034"
+    ],
+    "EXT-043": [
+      "CORE-044"
+    ],
+    "EXT-062": [
+      "CORE-041",
+      "EXT-004"
+    ],
+    "EXT-048": [
+      "CORE-035",
+      "EXT-015",
+      "EXT-038"
+    ],
+    "EXT-049": [
+      "CORE-055",
+      "EXT-015"
+    ],
+    "EXT-050": [
+      "EXT-013",
+      "EXT-014",
+      "EXT-015",
+      "EXT-022"
+    ],
+    "EXT-051": [
+      "CORE-042",
+      "EXT-013"
+    ],
+    "EXT-052": [
+      "CORE-042",
+      "EXT-018"
+    ],
+    "EXT-053": [
+      "CORE-042",
+      "EXT-021"
+    ],
+    "EXT-054": [
+      "CORE-042",
+      "EXT-026"
+    ],
+    "EXT-055": [
+      "CORE-042",
+      "EXT-033"
+    ],
+    "EXT-056": [
+      "CORE-042",
+      "EXT-032"
+    ],
+    "EXT-057": [
+      "CORE-041",
+      "EXT-037"
+    ],
+    "EXT-058": [
+      "CORE-041",
+      "EXT-038"
+    ],
+    "EXT-059": [
+      "CORE-042",
+      "EXT-027"
+    ],
+    "EXT-060": [
+      "CORE-042",
+      "EXT-034"
+    ],
+    "EXT-061": [
+      "CORE-042",
+      "EXT-035",
+      "EXT-036"
+    ],
+    "EXT-064": [
+      "CORE-042",
+      "EXT-024"
+    ],
+    "EXT-046": [
+      "EXT-048",
+      "EXT-049",
+      "EXT-050"
+    ],
+    "EXT-066": [
+      "CORE-054",
+      "EXT-047"
+    ],
+    "EXT-041": [
+      "EXT-006",
+      "EXT-028",
+      "EXT-029",
+      "EXT-031",
+      "EXT-039",
+      "EXT-051",
+      "EXT-052",
+      "EXT-053",
+      "EXT-054",
+      "EXT-055",
+      "EXT-056",
+      "EXT-057",
+      "EXT-058",
+      "EXT-059",
+      "EXT-060",
+      "EXT-061",
+      "EXT-062",
+      "EXT-064",
+      "EXT-066"
+    ],
+    "EXT-042": [
+      "CORE-053",
+      "EXT-018",
+      "EXT-024",
+      "EXT-026",
+      "EXT-027",
+      "EXT-029",
+      "EXT-030",
+      "EXT-031",
+      "EXT-032",
+      "EXT-033",
+      "EXT-035",
+      "EXT-036",
+      "EXT-037",
+      "EXT-039",
+      "EXT-040",
+      "EXT-046",
+      "EXT-047",
+      "EXT-068",
+      "EXT-069"
+    ],
+    "EXT-044": [
+      "EXT-017",
+      "EXT-039",
+      "EXT-043",
+      "EXT-046",
+      "EXT-070"
+    ],
+    "EXT-045": [
+      "CORE-043",
+      "EXT-042"
+    ]
+  }
+}

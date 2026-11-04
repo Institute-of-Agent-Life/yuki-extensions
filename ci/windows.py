@@ -130,11 +130,26 @@ def main():
     if args.task == "EXT-019":
         from desktop_tooling import inputs
         desktop_tools = inputs(root, transfer / "desktop-tools", windows_node=True)
+    release_assets = []
+    if args.task == "EXT-002" and not args.preparation:
+        contract = json.loads((root / "contracts.lock").read_bytes())
+        release = contract["release"]
+        destination = transfer / "core031-github-release" / release["tag"]
+        destination.mkdir(parents=True, exist_ok=True)
+        subprocess.run(["gh", "release", "download", release["tag"], "--repo", contract["repository"],
+                        "--dir", str(destination), "--clobber"], check=True)
+        for filename, asset in release["assets"].items():
+            path = destination / filename
+            if hashlib.sha256(path.read_bytes()).hexdigest() != asset["sha256"]:
+                raise ValueError("release download digest mismatch: " + filename)
+            release_assets.append(path)
     # Include only locked wheels, not arbitrary files already in the transport cache.
     tools_zip = transfer / "tooling.zip"
     with zipfile.ZipFile(tools_zip, "w", zipfile.ZIP_DEFLATED) as archive:
         for package in locked.values():
             archive.write(wheelhouse / package["filename"], package["filename"])
+        for path in release_assets:
+            archive.write(path, "core031-release/" + path.name)
         for path in desktop_tools:
             archive.write(path, "desktop-tools/" + path.name)
         if runtime_input:
@@ -157,6 +172,8 @@ $env:YUKI_CRATE_CACHE=Join-Path $tools 'cargo/registry/cache'
 $env:PATH="$(Join-Path $tools 'cargo/bin');$(Join-Path $tools 'winlibs/mingw64/bin');$env:PATH"
 $env:CARGO_HOME=Join-Path $env:TEMP 'cargo-home'
 """
+    if release_assets:
+        sdk_environment += "$env:YUKI_CORE031_RELEASE_DIR=" + quote(remote + "/wheelhouse/core031-release")
     setup = f"""
 Expand-Archive -LiteralPath {quote(remote + '/tooling.zip')} -DestinationPath {quote(remote + '/wheelhouse')} -Force
 if (-not (Test-Path {quote(tooling + '/Scripts/uv.exe')})) {{

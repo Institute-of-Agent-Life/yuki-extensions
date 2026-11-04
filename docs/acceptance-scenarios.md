@@ -94,3 +94,9 @@ empty grant. Reject an unknown method, unsupported wire version, missing
 required feature and a changed manifest without breaking the original session.
 Record the actual frames, consumer receipt and binary/package hashes. Report
 candidate verification separately from the published-artifact gate.
+
+The formal EXT-002 check downloads the GitHub prerelease assets at the fixed
+CORE-031 tag. It verifies the producer receipt, checksum list and archive, then
+uses those downloaded SDKs for the same isolated exchanges on every platform.
+It distinguishes public distribution from the pre-publication state recorded
+when those unchanged bytes were built.

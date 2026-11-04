@@ -37,8 +37,8 @@ jobs:
         run: python ci/check.py EXT-001 --out artifacts/EXT-001/ci
       - name: Install the handshake SDK compiler
         run: rustup toolchain install 1.96.0 --profile minimal
-      - name: EXT-002 unpacked SDK consumer parity
-        run: python ci/check.py EXT-002 --preparation --out artifacts/EXT-002/ci
+      - name: EXT-002 released SDK consumer parity
+        run: python ci/check.py EXT-002 --out artifacts/EXT-002/ci
       - uses: actions/setup-node@v4
         with:
           node-version: '22.14.0'
