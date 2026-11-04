@@ -79,7 +79,7 @@ manifest。回條含來源提交、SDK／schema／peer／消費者 digest、逐�
 | EXT-040 · codex/ext-040-setup | `a607e8c` · [PR #15](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/15) | 簽名原生／OCI 安裝，無 QQ ready，明選 web-fetch | CORE-039 正式交接、外部入口與選配服務實測 |
 | EXT-011 · codex/ext-011-local-agent | 12b3ace · [PR #16](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/16) | 原 Connector 配對、無 instance 裝置跨重啟保存 | Work 以外的裝置授權與撤權狀態 |
 | EXT-015 · codex/ext-015-client | `1d8d377` · [PR #17](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/17) | 雙裝置重放、合併後原入口隔離、撤銷單台設備 | 原入口明選、附件／目標操作、Social 出站與 SSE |
-| EXT-031 · codex/ext-031-media | 本次實作提交 | 所選 PDF 頁文、原影片幀與時間、三類壞檔、清除中止與暫存回收 | 原模型呈現、媒體暫存自動登記、正式交付 |
+| EXT-031 · codex/ext-031-media | `b69ca40` | 所選 PDF 頁文、原影片幀與時間、三類壞檔、清除中止與暫存回收 | 原模型呈現、媒體暫存自動登記、正式交付 |
 
 CORE-033 已交接未發布的個人入口候選包，EXT-011／015 可做開發對拍。CORE-025 已開
 [核心 PR #34](https://github.com/Institute-of-Agent-Life/yuki-core/pull/34)。EXT-004／006
