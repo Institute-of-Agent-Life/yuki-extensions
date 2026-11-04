@@ -1,0 +1,1455 @@
+{
+  "source_commit": "e25c2b8acce34858d5fd67ac408186e49a1da160",
+  "handoff_commit": "685b1d59ae645162cfc4216df0ecaa0d5afc7746",
+  "published": false,
+  "host": {
+    "archive": "yuki-media-preview-e25c2b8acce3-windows-x86_64.zip",
+    "sha256": "f7bff236ca0c518016a4bf40dafaddb29b9d86d6fa92722fdce179620d296310",
+    "binary_sha256": "7b1c226caf099264dc74f64a988391963a50505a438c5f6d7a32076411e1a1f9",
+    "validation_manifest_sha256": "789ac9b1ca915217b4abf1fe26151588668cde827ee1f4998a50db79f5254d57"
+  },
+  "sdk": {
+    "version": "1.0.0-alpha.4",
+    "sha256": "fb01271d99ba222f8c84c9821374d6edf03bd32ac172f39b5e83c0beb1010ca9"
+  },
+  "host_schema_sha256": "79d5cdee6ff01d7bac327e7c896ea7f7614aa3528ffeeaaea5bc825ae5e930a7",
+  "personal_schema_sha256": null,
+  "media_schema_sha256": "3c62e0c188e7f64b88bb38161102eb622a227778571ced9e439c63c6729ea6c2",
+  "plugin_sha256": "ad83ae19b484349ace01f83a3bbb491c97fd6ef7e444dc57fe17be247324ee46",
+  "wire_sha256": "4a3ca24d9b126f8a40c03221a29b149b56a524055bc361d34f1c2ff2eb48d36e",
+  "status": "PASS",
+  "card_status": "UNPUBLISHED_DECODE_CANDIDATE",
+  "codecs": {
+    "ffmpeg": "ffmpeg version 7.1-essentials_build-www.gyan.dev Copyright (c) 2000-2024 the FFmpeg developers",
+    "ffmpeg_sha256": "2ce797a0f88d7f067180338fb227f7b1928ea727bd9a4d7a1d022f7c52af71a3",
+    "document_lock": {
+      "upstream_commit": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+      "python": "3.12",
+      "packages": {
+        "pypdf": {
+          "version": "6.18.0",
+          "filename": "pypdf-6.18.0-py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/c7/a5/d5922a078c9a612327681d4793404f82998f4d66213add6fdc0659245856/pypdf-6.18.0-py3-none-any.whl",
+          "sha256": "05b762b77bcb9dcb4a7c91fcf5dded585b25bee7269ab3d3001d7c55fa1b324b"
+        },
+        "defusedxml": {
+          "version": "0.7.1",
+          "filename": "defusedxml-0.7.1-py2.py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/07/6c/aa3f2f849e01cb6a001cd8554a88d4c77c5c1a31c95bdf1cf9301e6d9ef4/defusedxml-0.7.1-py2.py3-none-any.whl",
+          "sha256": "a352e7e428770286cc899e2542b6cdaedb2b4953ff269a210103ec58f6198a61"
+        }
+      }
+    },
+    "document_source_sha256": "3eaa8ccdd25bbc764d73eb9be7d5c57a8ca7c0a997a9d4d9695902f6f441998a"
+  },
+  "pdf": {
+    "handle": "3a1d61cf-548b-4e33-83aa-4bfb51c702e6",
+    "result": {
+      "data": {
+        "kind": "pdf",
+        "source": {
+          "event": 1,
+          "slot": 1
+        },
+        "state": "read",
+        "text": "\n[page 1]\nSelected page one\n[page 2]\nSelected page two\n[PDF text extraction only; embedded images were not read.]\n",
+        "total_units": 2,
+        "truncated": false,
+        "units_read": 2,
+        "version": "753e25b038830e03768f05449dab4b8f05ef0534927abb9282eab60f4c5ecf42"
+      },
+      "ok": true
+    },
+    "state": "confirmed"
+  },
+  "video": {
+    "handle": "23f18ab2-d04c-4948-b298-c976cc4b5781",
+    "result": {
+      "data": {
+        "frames": [
+          {
+            "index": 0,
+            "seconds": 0.0,
+            "sha256": "62218f03a1a02acf72d2136af6c6d0f2c399a8afe27df68063f2c97d85c5fd7d"
+          },
+          {
+            "index": 1,
+            "seconds": 5.0,
+            "sha256": "62218f03a1a02acf72d2136af6c6d0f2c399a8afe27df68063f2c97d85c5fd7d"
+          }
+        ],
+        "images": [
+          {
+            "artifact_id": "d9c91aa0-adb5-4940-88ba-25444d1d2bca",
+            "ordinal": 0,
+            "state": "no_vision"
+          },
+          {
+            "artifact_id": "ea795f63-51e5-425b-8eb0-95f8ff43f1a7",
+            "ordinal": 1,
+            "state": "no_vision"
+          }
+        ],
+        "kind": "video",
+        "limit_frames": 8,
+        "limit_seconds": 600,
+        "source": {
+          "event": 5,
+          "slot": 1
+        },
+        "state": "read",
+        "version": "c07d7e011bc253f0e6ad6d8a958093abf6bb04fe0afee7f14536e6091a0fd1b9"
+      },
+      "ok": true
+    },
+    "state": "confirmed"
+  },
+  "faults": {
+    "corrupt": {
+      "handle": "0c2b5990-a6dc-45e2-89e2-619902f3261f",
+      "result": {
+        "error": "document_unreadable",
+        "ok": false
+      },
+      "state": "failed"
+    },
+    "encrypted": {
+      "handle": "f529fae9-e1df-43e2-92b4-d03387d4e761",
+      "result": {
+        "error": "encrypted_document",
+        "ok": false
+      },
+      "state": "failed"
+    },
+    "empty": {
+      "handle": "692b7fd5-f6ea-4514-b073-e18221ce25f4",
+      "result": {
+        "error": "document_empty",
+        "ok": false
+      },
+      "state": "failed"
+    }
+  },
+  "erasure": {
+    "late": {
+      "handle": "0c395358-d8a8-4450-8c84-d0ac44658313",
+      "result": null,
+      "state": "failed"
+    },
+    "new_call_denied": true,
+    "temporary_empty": true
+  },
+  "selected_slot": 1,
+  "media_calls": 6,
+  "media_reads": 15,
+  "operator_transcript": [
+    {
+      "command": [
+        "person",
+        "create",
+        "e6efe6a0-ca00-452d-8477-d786c0d25e5a"
+      ],
+      "result": {
+        "original": "e6efe6a0-ca00-452d-8477-d786c0d25e5a",
+        "root": "e6efe6a0-ca00-452d-8477-d786c0d25e5a"
+      }
+    },
+    {
+      "command": [
+        "account",
+        "open",
+        "qq"
+      ],
+      "result": {
+        "account": "5c22a723-a95a-46d7-9538-c2a18ed99639",
+        "assignment": "63d86eda-65e2-4762-9403-32da216a5cc8"
+      }
+    },
+    {
+      "command": [
+        "account",
+        "open",
+        "qq"
+      ],
+      "result": {
+        "account": "77b2e6cf-84bd-44ee-b9ea-14b870c63bc2",
+        "assignment": "b82e7666-7abc-4b36-a690-e494cfeb1fc2"
+      }
+    },
+    {
+      "command": [
+        "ingress",
+        "record",
+        "{\"source\": \"pdf\", \"account\": \"5c22a723-a95a-46d7-9538-c2a18ed99639\", \"bot_stage\": \"b82e7666-7abc-4b36-a690-e494cfeb1fc2\", \"kind\": \"message\", \"reply_bot\": \"100\", \"occurred\": 100, \"observed\": 100, \"segments\": [{\"type\": \"media\", \"kind\": \"file\", \"reference\": \"unselected-pdf\"}, {\"type\": \"media\", \"kind\": \"file\", \"reference\": \"selected-pdf\"}]}"
+      ],
+      "result": {
+        "accepted": true,
+        "event": 1
+      }
+    },
+    {
+      "command": [
+        "ingress",
+        "claim",
+        "1"
+      ],
+      "result": {
+        "entry": "d1e6d0da-133b-4476-9fa8-f704c06ee354",
+        "envelope": {
+          "account": "5c22a723-a95a-46d7-9538-c2a18ed99639",
+          "bot_stage": "b82e7666-7abc-4b36-a690-e494cfeb1fc2",
+          "kind": "message",
+          "native_id": null,
+          "observed": 100,
+          "occurred": 100,
+          "reply_bot": "100",
+          "segments": [
+            {
+              "kind": "file",
+              "reference": "unselected-pdf",
+              "type": "media"
+            },
+            {
+              "kind": "file",
+              "reference": "selected-pdf",
+              "type": "media"
+            }
+          ],
+          "source": "pdf",
+          "space": null,
+          "topic": null
+        },
+        "execution": "f25ff6d7-18e4-4df3-b4d3-c2be32344b96",
+        "mentions": [],
+        "original_actor": "e6efe6a0-ca00-452d-8477-d786c0d25e5a",
+        "source": 1
+      }
+    },
+    {
+      "command": [
+        "media",
+        "cache-file",
+        "f25ff6d7-18e4-4df3-b4d3-c2be32344b96"
+      ],
+      "result": {
+        "digest": "50370931a0b76d5de10746daf717053d7fb76c3f4f726c0052cc6140d0a88683",
+        "expires": 1793919829190,
+        "handle": 0,
+        "kind": "file",
+        "mime": "application/octet-stream",
+        "origin": "unselected-pdf",
+        "segment": 0,
+        "slot": 0,
+        "source": 1,
+        "stage": "b82e7666-7abc-4b36-a690-e494cfeb1fc2",
+        "state": "cached"
+      }
+    },
+    {
+      "command": [
+        "media",
+        "cache-file",
+        "f25ff6d7-18e4-4df3-b4d3-c2be32344b96"
+      ],
+      "result": {
+        "digest": "753e25b038830e03768f05449dab4b8f05ef0534927abb9282eab60f4c5ecf42",
+        "expires": 1793919829243,
+        "handle": 1,
+        "kind": "file",
+        "mime": "application/octet-stream",
+        "origin": "selected-pdf",
+        "segment": 1,
+        "slot": 1,
+        "source": 1,
+        "stage": "b82e7666-7abc-4b36-a690-e494cfeb1fc2",
+        "state": "cached"
+      }
+    },
+    {
+      "command": [
+        "host",
+        "process",
+        "media"
+      ],
+      "result": {
+        "handle": "3a1d61cf-548b-4e33-83aa-4bfb51c702e6",
+        "result": {
+          "data": {
+            "kind": "pdf",
+            "source": {
+              "event": 1,
+              "slot": 1
+            },
+            "state": "read",
+            "text": "\n[page 1]\nSelected page one\n[page 2]\nSelected page two\n[PDF text extraction only; embedded images were not read.]\n",
+            "total_units": 2,
+            "truncated": false,
+            "units_read": 2,
+            "version": "753e25b038830e03768f05449dab4b8f05ef0534927abb9282eab60f4c5ecf42"
+          },
+          "ok": true
+        },
+        "state": "confirmed"
+      }
+    },
+    {
+      "command": [
+        "ingress",
+        "record",
+        "{\"source\": \"corrupt\", \"account\": \"5c22a723-a95a-46d7-9538-c2a18ed99639\", \"bot_stage\": \"b82e7666-7abc-4b36-a690-e494cfeb1fc2\", \"kind\": \"message\", \"reply_bot\": \"100\", \"occurred\": 100, \"observed\": 100, \"segments\": [{\"type\": \"media\", \"kind\": \"file\", \"reference\": \"unselected-corrupt\"}, {\"type\": \"media\", \"kind\": \"file\", \"reference\": \"selected-corrupt\"}]}"
+      ],
+      "result": {
+        "accepted": true,
+        "event": 2
+      }
+    },
+    {
+      "command": [
+        "ingress",
+        "claim",
+        "2"
+      ],
+      "result": {
+        "entry": "d1e6d0da-133b-4476-9fa8-f704c06ee354",
+        "envelope": {
+          "account": "5c22a723-a95a-46d7-9538-c2a18ed99639",
+          "bot_stage": "b82e7666-7abc-4b36-a690-e494cfeb1fc2",
+          "kind": "message",
+          "native_id": null,
+          "observed": 100,
+          "occurred": 100,
+          "reply_bot": "100",
+          "segments": [
+            {
+              "kind": "file",
+              "reference": "unselected-corrupt",
+              "type": "media"
+            },
+            {
+              "kind": "file",
+              "reference": "selected-corrupt",
+              "type": "media"
+            }
+          ],
+          "source": "corrupt",
+          "space": null,
+          "topic": null
+        },
+        "execution": "6fece0ad-b20d-409e-845d-96bd5155eccd",
+        "mentions": [],
+        "original_actor": "e6efe6a0-ca00-452d-8477-d786c0d25e5a",
+        "source": 2
+      }
+    },
+    {
+      "command": [
+        "media",
+        "cache-file",
+        "6fece0ad-b20d-409e-845d-96bd5155eccd"
+      ],
+      "result": {
+        "digest": "50370931a0b76d5de10746daf717053d7fb76c3f4f726c0052cc6140d0a88683",
+        "expires": 1793919829587,
+        "handle": 0,
+        "kind": "file",
+        "mime": "application/octet-stream",
+        "origin": "unselected-corrupt",
+        "segment": 0,
+        "slot": 0,
+        "source": 2,
+        "stage": "b82e7666-7abc-4b36-a690-e494cfeb1fc2",
+        "state": "cached"
+      }
+    },
+    {
+      "command": [
+        "media",
+        "cache-file",
+        "6fece0ad-b20d-409e-845d-96bd5155eccd"
+      ],
+      "result": {
+        "digest": "210a1e5a01148576f57d9fd39815133c18f6dcb7b7abb37d982860916284e19e",
+        "expires": 1793919829631,
+        "handle": 1,
+        "kind": "file",
+        "mime": "text/plain",
+        "origin": "selected-corrupt",
+        "segment": 1,
+        "slot": 1,
+        "source": 2,
+        "stage": "b82e7666-7abc-4b36-a690-e494cfeb1fc2",
+        "state": "cached"
+      }
+    },
+    {
+      "command": [
+        "host",
+        "process",
+        "media"
+      ],
+      "result": {
+        "handle": "0c2b5990-a6dc-45e2-89e2-619902f3261f",
+        "result": {
+          "error": "document_unreadable",
+          "ok": false
+        },
+        "state": "failed"
+      }
+    },
+    {
+      "command": [
+        "ingress",
+        "record",
+        "{\"source\": \"encrypted\", \"account\": \"5c22a723-a95a-46d7-9538-c2a18ed99639\", \"bot_stage\": \"b82e7666-7abc-4b36-a690-e494cfeb1fc2\", \"kind\": \"message\", \"reply_bot\": \"100\", \"occurred\": 100, \"observed\": 100, \"segments\": [{\"type\": \"media\", \"kind\": \"file\", \"reference\": \"unselected-encrypted\"}, {\"type\": \"media\", \"kind\": \"file\", \"reference\": \"selected-encrypted\"}]}"
+      ],
+      "result": {
+        "accepted": true,
+        "event": 3
+      }
+    },
+    {
+      "command": [
+        "ingress",
+        "claim",
+        "3"
+      ],
+      "result": {
+        "entry": "d1e6d0da-133b-4476-9fa8-f704c06ee354",
+        "envelope": {
+          "account": "5c22a723-a95a-46d7-9538-c2a18ed99639",
+          "bot_stage": "b82e7666-7abc-4b36-a690-e494cfeb1fc2",
+          "kind": "message",
+          "native_id": null,
+          "observed": 100,
+          "occurred": 100,
+          "reply_bot": "100",
+          "segments": [
+            {
+              "kind": "file",
+              "reference": "unselected-encrypted",
+              "type": "media"
+            },
+            {
+              "kind": "file",
+              "reference": "selected-encrypted",
+              "type": "media"
+            }
+          ],
+          "source": "encrypted",
+          "space": null,
+          "topic": null
+        },
+        "execution": "26e29b06-0f47-4cf3-ab00-8954b7c88666",
+        "mentions": [],
+        "original_actor": "e6efe6a0-ca00-452d-8477-d786c0d25e5a",
+        "source": 3
+      }
+    },
+    {
+      "command": [
+        "media",
+        "cache-file",
+        "26e29b06-0f47-4cf3-ab00-8954b7c88666"
+      ],
+      "result": {
+        "digest": "50370931a0b76d5de10746daf717053d7fb76c3f4f726c0052cc6140d0a88683",
+        "expires": 1793919829992,
+        "handle": 0,
+        "kind": "file",
+        "mime": "application/octet-stream",
+        "origin": "unselected-encrypted",
+        "segment": 0,
+        "slot": 0,
+        "source": 3,
+        "stage": "b82e7666-7abc-4b36-a690-e494cfeb1fc2",
+        "state": "cached"
+      }
+    },
+    {
+      "command": [
+        "media",
+        "cache-file",
+        "26e29b06-0f47-4cf3-ab00-8954b7c88666"
+      ],
+      "result": {
+        "digest": "d450b6079b572fc0187589644ea9fcfb5e003aa620946c457168392fb95f5471",
+        "expires": 1793919830051,
+        "handle": 1,
+        "kind": "file",
+        "mime": "application/octet-stream",
+        "origin": "selected-encrypted",
+        "segment": 1,
+        "slot": 1,
+        "source": 3,
+        "stage": "b82e7666-7abc-4b36-a690-e494cfeb1fc2",
+        "state": "cached"
+      }
+    },
+    {
+      "command": [
+        "host",
+        "process",
+        "media"
+      ],
+      "result": {
+        "handle": "f529fae9-e1df-43e2-92b4-d03387d4e761",
+        "result": {
+          "error": "encrypted_document",
+          "ok": false
+        },
+        "state": "failed"
+      }
+    },
+    {
+      "command": [
+        "ingress",
+        "record",
+        "{\"source\": \"empty\", \"account\": \"5c22a723-a95a-46d7-9538-c2a18ed99639\", \"bot_stage\": \"b82e7666-7abc-4b36-a690-e494cfeb1fc2\", \"kind\": \"message\", \"reply_bot\": \"100\", \"occurred\": 100, \"observed\": 100, \"segments\": [{\"type\": \"media\", \"kind\": \"file\", \"reference\": \"unselected-empty\"}, {\"type\": \"media\", \"kind\": \"file\", \"reference\": \"selected-empty\"}]}"
+      ],
+      "result": {
+        "accepted": true,
+        "event": 4
+      }
+    },
+    {
+      "command": [
+        "ingress",
+        "claim",
+        "4"
+      ],
+      "result": {
+        "entry": "d1e6d0da-133b-4476-9fa8-f704c06ee354",
+        "envelope": {
+          "account": "5c22a723-a95a-46d7-9538-c2a18ed99639",
+          "bot_stage": "b82e7666-7abc-4b36-a690-e494cfeb1fc2",
+          "kind": "message",
+          "native_id": null,
+          "observed": 100,
+          "occurred": 100,
+          "reply_bot": "100",
+          "segments": [
+            {
+              "kind": "file",
+              "reference": "unselected-empty",
+              "type": "media"
+            },
+            {
+              "kind": "file",
+              "reference": "selected-empty",
+              "type": "media"
+            }
+          ],
+          "source": "empty",
+          "space": null,
+          "topic": null
+        },
+        "execution": "0c6bc682-b496-4801-aeb7-a2afd8d3b75b",
+        "mentions": [],
+        "original_actor": "e6efe6a0-ca00-452d-8477-d786c0d25e5a",
+        "source": 4
+      }
+    },
+    {
+      "command": [
+        "media",
+        "cache-file",
+        "0c6bc682-b496-4801-aeb7-a2afd8d3b75b"
+      ],
+      "result": {
+        "digest": "50370931a0b76d5de10746daf717053d7fb76c3f4f726c0052cc6140d0a88683",
+        "expires": 1793919830385,
+        "handle": 0,
+        "kind": "file",
+        "mime": "application/octet-stream",
+        "origin": "unselected-empty",
+        "segment": 0,
+        "slot": 0,
+        "source": 4,
+        "stage": "b82e7666-7abc-4b36-a690-e494cfeb1fc2",
+        "state": "cached"
+      }
+    },
+    {
+      "command": [
+        "media",
+        "cache-file",
+        "0c6bc682-b496-4801-aeb7-a2afd8d3b75b"
+      ],
+      "result": {
+        "digest": "c0409770e2beb3035c8df54acb079208155b3b294d4c0146577be9a5cd8e79bb",
+        "expires": 1793919830447,
+        "handle": 1,
+        "kind": "file",
+        "mime": "application/octet-stream",
+        "origin": "selected-empty",
+        "segment": 1,
+        "slot": 1,
+        "source": 4,
+        "stage": "b82e7666-7abc-4b36-a690-e494cfeb1fc2",
+        "state": "cached"
+      }
+    },
+    {
+      "command": [
+        "host",
+        "process",
+        "media"
+      ],
+      "result": {
+        "handle": "692b7fd5-f6ea-4514-b073-e18221ce25f4",
+        "result": {
+          "error": "document_empty",
+          "ok": false
+        },
+        "state": "failed"
+      }
+    },
+    {
+      "command": [
+        "ingress",
+        "record",
+        "{\"source\": \"video\", \"account\": \"5c22a723-a95a-46d7-9538-c2a18ed99639\", \"bot_stage\": \"b82e7666-7abc-4b36-a690-e494cfeb1fc2\", \"kind\": \"message\", \"reply_bot\": \"100\", \"occurred\": 100, \"observed\": 100, \"segments\": [{\"type\": \"media\", \"kind\": \"file\", \"reference\": \"unselected-video\"}, {\"type\": \"media\", \"kind\": \"file\", \"reference\": \"selected-video\"}]}"
+      ],
+      "result": {
+        "accepted": true,
+        "event": 5
+      }
+    },
+    {
+      "command": [
+        "ingress",
+        "claim",
+        "5"
+      ],
+      "result": {
+        "entry": "d1e6d0da-133b-4476-9fa8-f704c06ee354",
+        "envelope": {
+          "account": "5c22a723-a95a-46d7-9538-c2a18ed99639",
+          "bot_stage": "b82e7666-7abc-4b36-a690-e494cfeb1fc2",
+          "kind": "message",
+          "native_id": null,
+          "observed": 100,
+          "occurred": 100,
+          "reply_bot": "100",
+          "segments": [
+            {
+              "kind": "file",
+              "reference": "unselected-video",
+              "type": "media"
+            },
+            {
+              "kind": "file",
+              "reference": "selected-video",
+              "type": "media"
+            }
+          ],
+          "source": "video",
+          "space": null,
+          "topic": null
+        },
+        "execution": "91e563b2-3ecb-4a2d-8173-901c6e5dc2aa",
+        "mentions": [],
+        "original_actor": "e6efe6a0-ca00-452d-8477-d786c0d25e5a",
+        "source": 5
+      }
+    },
+    {
+      "command": [
+        "media",
+        "cache-file",
+        "91e563b2-3ecb-4a2d-8173-901c6e5dc2aa"
+      ],
+      "result": {
+        "digest": "50370931a0b76d5de10746daf717053d7fb76c3f4f726c0052cc6140d0a88683",
+        "expires": 1793919830748,
+        "handle": 0,
+        "kind": "file",
+        "mime": "application/octet-stream",
+        "origin": "unselected-video",
+        "segment": 0,
+        "slot": 0,
+        "source": 5,
+        "stage": "b82e7666-7abc-4b36-a690-e494cfeb1fc2",
+        "state": "cached"
+      }
+    },
+    {
+      "command": [
+        "media",
+        "cache-file",
+        "91e563b2-3ecb-4a2d-8173-901c6e5dc2aa"
+      ],
+      "result": {
+        "digest": "c07d7e011bc253f0e6ad6d8a958093abf6bb04fe0afee7f14536e6091a0fd1b9",
+        "expires": 1793919830782,
+        "handle": 1,
+        "kind": "file",
+        "mime": "application/octet-stream",
+        "origin": "selected-video",
+        "segment": 1,
+        "slot": 1,
+        "source": 5,
+        "stage": "b82e7666-7abc-4b36-a690-e494cfeb1fc2",
+        "state": "cached"
+      }
+    },
+    {
+      "command": [
+        "host",
+        "process",
+        "media"
+      ],
+      "result": {
+        "handle": "23f18ab2-d04c-4948-b298-c976cc4b5781",
+        "result": {
+          "data": {
+            "frames": [
+              {
+                "index": 0,
+                "seconds": 0.0,
+                "sha256": "62218f03a1a02acf72d2136af6c6d0f2c399a8afe27df68063f2c97d85c5fd7d"
+              },
+              {
+                "index": 1,
+                "seconds": 5.0,
+                "sha256": "62218f03a1a02acf72d2136af6c6d0f2c399a8afe27df68063f2c97d85c5fd7d"
+              }
+            ],
+            "images": [
+              {
+                "artifact_id": "d9c91aa0-adb5-4940-88ba-25444d1d2bca",
+                "ordinal": 0,
+                "state": "no_vision"
+              },
+              {
+                "artifact_id": "ea795f63-51e5-425b-8eb0-95f8ff43f1a7",
+                "ordinal": 1,
+                "state": "no_vision"
+              }
+            ],
+            "kind": "video",
+            "limit_frames": 8,
+            "limit_seconds": 600,
+            "source": {
+              "event": 5,
+              "slot": 1
+            },
+            "state": "read",
+            "version": "c07d7e011bc253f0e6ad6d8a958093abf6bb04fe0afee7f14536e6091a0fd1b9"
+          },
+          "ok": true
+        },
+        "state": "confirmed"
+      }
+    },
+    {
+      "command": [
+        "ingress",
+        "record",
+        "{\"source\": \"erase-race\", \"account\": \"5c22a723-a95a-46d7-9538-c2a18ed99639\", \"bot_stage\": \"b82e7666-7abc-4b36-a690-e494cfeb1fc2\", \"kind\": \"message\", \"reply_bot\": \"100\", \"occurred\": 100, \"observed\": 100, \"segments\": [{\"type\": \"media\", \"kind\": \"file\", \"reference\": \"unselected-erase-race\"}, {\"type\": \"media\", \"kind\": \"file\", \"reference\": \"selected-erase-race\"}]}"
+      ],
+      "result": {
+        "accepted": true,
+        "event": 6
+      }
+    },
+    {
+      "command": [
+        "ingress",
+        "claim",
+        "6"
+      ],
+      "result": {
+        "entry": "d1e6d0da-133b-4476-9fa8-f704c06ee354",
+        "envelope": {
+          "account": "5c22a723-a95a-46d7-9538-c2a18ed99639",
+          "bot_stage": "b82e7666-7abc-4b36-a690-e494cfeb1fc2",
+          "kind": "message",
+          "native_id": null,
+          "observed": 100,
+          "occurred": 100,
+          "reply_bot": "100",
+          "segments": [
+            {
+              "kind": "file",
+              "reference": "unselected-erase-race",
+              "type": "media"
+            },
+            {
+              "kind": "file",
+              "reference": "selected-erase-race",
+              "type": "media"
+            }
+          ],
+          "source": "erase-race",
+          "space": null,
+          "topic": null
+        },
+        "execution": "0149b4f9-7004-4ed9-9ad1-ae1d9fe390f5",
+        "mentions": [],
+        "original_actor": "e6efe6a0-ca00-452d-8477-d786c0d25e5a",
+        "source": 6
+      }
+    },
+    {
+      "command": [
+        "media",
+        "cache-file",
+        "0149b4f9-7004-4ed9-9ad1-ae1d9fe390f5"
+      ],
+      "result": {
+        "digest": "50370931a0b76d5de10746daf717053d7fb76c3f4f726c0052cc6140d0a88683",
+        "expires": 1793919831040,
+        "handle": 0,
+        "kind": "file",
+        "mime": "application/octet-stream",
+        "origin": "unselected-erase-race",
+        "segment": 0,
+        "slot": 0,
+        "source": 6,
+        "stage": "b82e7666-7abc-4b36-a690-e494cfeb1fc2",
+        "state": "cached"
+      }
+    },
+    {
+      "command": [
+        "media",
+        "cache-file",
+        "0149b4f9-7004-4ed9-9ad1-ae1d9fe390f5"
+      ],
+      "result": {
+        "digest": "753e25b038830e03768f05449dab4b8f05ef0534927abb9282eab60f4c5ecf42",
+        "expires": 1793919831075,
+        "handle": 1,
+        "kind": "file",
+        "mime": "application/octet-stream",
+        "origin": "selected-erase-race",
+        "segment": 1,
+        "slot": 1,
+        "source": 6,
+        "stage": "b82e7666-7abc-4b36-a690-e494cfeb1fc2",
+        "state": "cached"
+      }
+    },
+    {
+      "command": [
+        "privacy",
+        "acquire",
+        "media"
+      ],
+      "result": {
+        "envelope": {
+          "account": "5c22a723-a95a-46d7-9538-c2a18ed99639",
+          "bot_stage": "b82e7666-7abc-4b36-a690-e494cfeb1fc2",
+          "kind": "message",
+          "native_id": null,
+          "observed": 100,
+          "occurred": 100,
+          "reply_bot": "100",
+          "segments": [
+            {
+              "kind": "file",
+              "reference": "unselected-erase-race",
+              "type": "media"
+            },
+            {
+              "kind": "file",
+              "reference": "selected-erase-race",
+              "type": "media"
+            }
+          ],
+          "source": "erase-race",
+          "space": null,
+          "topic": null
+        },
+        "ref": "volatile-decoder-fixture",
+        "source": 6
+      }
+    },
+    {
+      "command": [
+        "privacy",
+        "erase",
+        "remove-original"
+      ],
+      "result": {
+        "key": "remove-original",
+        "sources": [
+          6
+        ],
+        "watermark": 1
+      }
+    },
+    {
+      "command": [
+        "host",
+        "process",
+        "media"
+      ],
+      "result": {
+        "handle": "0c395358-d8a8-4450-8c84-d0ac44658313",
+        "result": null,
+        "state": "failed"
+      }
+    },
+    {
+      "command": [
+        "privacy",
+        "pending",
+        "media"
+      ],
+      "result": {
+        "obligations": [
+          {
+            "key": "remove-original",
+            "sources": [
+              6
+            ],
+            "watermark": 1
+          }
+        ],
+        "owner": "media"
+      }
+    },
+    {
+      "command": [
+        "privacy",
+        "pending",
+        "media"
+      ],
+      "result": {
+        "obligations": [
+          {
+            "key": "remove-original",
+            "sources": [
+              6
+            ],
+            "watermark": 1
+          }
+        ],
+        "owner": "media"
+      }
+    },
+    {
+      "command": [
+        "privacy",
+        "pending",
+        "media"
+      ],
+      "result": {
+        "obligations": [
+          {
+            "key": "remove-original",
+            "sources": [
+              6
+            ],
+            "watermark": 1
+          }
+        ],
+        "owner": "media"
+      }
+    },
+    {
+      "command": [
+        "privacy",
+        "pending",
+        "media"
+      ],
+      "result": {
+        "obligations": [
+          {
+            "key": "remove-original",
+            "sources": [
+              6
+            ],
+            "watermark": 1
+          }
+        ],
+        "owner": "media"
+      }
+    },
+    {
+      "command": [
+        "privacy",
+        "pending",
+        "media"
+      ],
+      "result": {
+        "obligations": [
+          {
+            "key": "remove-original",
+            "sources": [
+              6
+            ],
+            "watermark": 1
+          }
+        ],
+        "owner": "media"
+      }
+    },
+    {
+      "command": [
+        "privacy",
+        "pending",
+        "media"
+      ],
+      "result": {
+        "obligations": [
+          {
+            "key": "remove-original",
+            "sources": [
+              6
+            ],
+            "watermark": 1
+          }
+        ],
+        "owner": "media"
+      }
+    },
+    {
+      "command": [
+        "privacy",
+        "pending",
+        "media"
+      ],
+      "result": {
+        "obligations": [
+          {
+            "key": "remove-original",
+            "sources": [
+              6
+            ],
+            "watermark": 1
+          }
+        ],
+        "owner": "media"
+      }
+    },
+    {
+      "command": [
+        "privacy",
+        "pending",
+        "media"
+      ],
+      "result": {
+        "obligations": [
+          {
+            "key": "remove-original",
+            "sources": [
+              6
+            ],
+            "watermark": 1
+          }
+        ],
+        "owner": "media"
+      }
+    },
+    {
+      "command": [
+        "privacy",
+        "pending",
+        "media"
+      ],
+      "result": {
+        "obligations": [
+          {
+            "key": "remove-original",
+            "sources": [
+              6
+            ],
+            "watermark": 1
+          }
+        ],
+        "owner": "media"
+      }
+    },
+    {
+      "command": [
+        "privacy",
+        "pending",
+        "media"
+      ],
+      "result": {
+        "obligations": [
+          {
+            "key": "remove-original",
+            "sources": [
+              6
+            ],
+            "watermark": 1
+          }
+        ],
+        "owner": "media"
+      }
+    },
+    {
+      "command": [
+        "privacy",
+        "pending",
+        "media"
+      ],
+      "result": {
+        "obligations": [
+          {
+            "key": "remove-original",
+            "sources": [
+              6
+            ],
+            "watermark": 1
+          }
+        ],
+        "owner": "media"
+      }
+    },
+    {
+      "command": [
+        "privacy",
+        "pending",
+        "media"
+      ],
+      "result": {
+        "obligations": [
+          {
+            "key": "remove-original",
+            "sources": [
+              6
+            ],
+            "watermark": 1
+          }
+        ],
+        "owner": "media"
+      }
+    },
+    {
+      "command": [
+        "privacy",
+        "pending",
+        "media"
+      ],
+      "result": {
+        "obligations": [
+          {
+            "key": "remove-original",
+            "sources": [
+              6
+            ],
+            "watermark": 1
+          }
+        ],
+        "owner": "media"
+      }
+    },
+    {
+      "command": [
+        "privacy",
+        "pending",
+        "media"
+      ],
+      "result": {
+        "obligations": [
+          {
+            "key": "remove-original",
+            "sources": [
+              6
+            ],
+            "watermark": 1
+          }
+        ],
+        "owner": "media"
+      }
+    },
+    {
+      "command": [
+        "privacy",
+        "pending",
+        "media"
+      ],
+      "result": {
+        "obligations": [
+          {
+            "key": "remove-original",
+            "sources": [
+              6
+            ],
+            "watermark": 1
+          }
+        ],
+        "owner": "media"
+      }
+    },
+    {
+      "command": [
+        "privacy",
+        "pending",
+        "media"
+      ],
+      "result": {
+        "obligations": [
+          {
+            "key": "remove-original",
+            "sources": [
+              6
+            ],
+            "watermark": 1
+          }
+        ],
+        "owner": "media"
+      }
+    },
+    {
+      "command": [
+        "privacy",
+        "pending",
+        "media"
+      ],
+      "result": {
+        "obligations": [
+          {
+            "key": "remove-original",
+            "sources": [
+              6
+            ],
+            "watermark": 1
+          }
+        ],
+        "owner": "media"
+      }
+    },
+    {
+      "command": [
+        "privacy",
+        "pending",
+        "media"
+      ],
+      "result": {
+        "obligations": [
+          {
+            "key": "remove-original",
+            "sources": [
+              6
+            ],
+            "watermark": 1
+          }
+        ],
+        "owner": "media"
+      }
+    },
+    {
+      "command": [
+        "privacy",
+        "pending",
+        "media"
+      ],
+      "result": {
+        "obligations": [
+          {
+            "key": "remove-original",
+            "sources": [
+              6
+            ],
+            "watermark": 1
+          }
+        ],
+        "owner": "media"
+      }
+    },
+    {
+      "command": [
+        "privacy",
+        "pending",
+        "media"
+      ],
+      "result": {
+        "obligations": [
+          {
+            "key": "remove-original",
+            "sources": [
+              6
+            ],
+            "watermark": 1
+          }
+        ],
+        "owner": "media"
+      }
+    },
+    {
+      "command": [
+        "privacy",
+        "pending",
+        "media"
+      ],
+      "result": {
+        "obligations": [
+          {
+            "key": "remove-original",
+            "sources": [
+              6
+            ],
+            "watermark": 1
+          }
+        ],
+        "owner": "media"
+      }
+    },
+    {
+      "command": [
+        "privacy",
+        "pending",
+        "media"
+      ],
+      "result": {
+        "obligations": [
+          {
+            "key": "remove-original",
+            "sources": [
+              6
+            ],
+            "watermark": 1
+          }
+        ],
+        "owner": "media"
+      }
+    },
+    {
+      "command": [
+        "privacy",
+        "pending",
+        "media"
+      ],
+      "result": {
+        "obligations": [
+          {
+            "key": "remove-original",
+            "sources": [
+              6
+            ],
+            "watermark": 1
+          }
+        ],
+        "owner": "media"
+      }
+    },
+    {
+      "command": [
+        "privacy",
+        "pending",
+        "media"
+      ],
+      "result": {
+        "obligations": [
+          {
+            "key": "remove-original",
+            "sources": [
+              6
+            ],
+            "watermark": 1
+          }
+        ],
+        "owner": "media"
+      }
+    },
+    {
+      "command": [
+        "privacy",
+        "pending",
+        "media"
+      ],
+      "result": {
+        "obligations": [
+          {
+            "key": "remove-original",
+            "sources": [
+              6
+            ],
+            "watermark": 1
+          }
+        ],
+        "owner": "media"
+      }
+    },
+    {
+      "command": [
+        "privacy",
+        "pending",
+        "media"
+      ],
+      "result": {
+        "obligations": [
+          {
+            "key": "remove-original",
+            "sources": [
+              6
+            ],
+            "watermark": 1
+          }
+        ],
+        "owner": "media"
+      }
+    },
+    {
+      "command": [
+        "privacy",
+        "pending",
+        "media"
+      ],
+      "result": {
+        "obligations": [
+          {
+            "key": "remove-original",
+            "sources": [
+              6
+            ],
+            "watermark": 1
+          }
+        ],
+        "owner": "media"
+      }
+    },
+    {
+      "command": [
+        "privacy",
+        "pending",
+        "media"
+      ],
+      "result": {
+        "obligations": [
+          {
+            "key": "remove-original",
+            "sources": [
+              6
+            ],
+            "watermark": 1
+          }
+        ],
+        "owner": "media"
+      }
+    },
+    {
+      "command": [
+        "privacy",
+        "pending",
+        "media"
+      ],
+      "result": {
+        "obligations": [],
+        "owner": "media"
+      }
+    },
+    {
+      "command": [
+        "privacy",
+        "pending",
+        "media"
+      ],
+      "result": {
+        "obligations": [],
+        "owner": "media"
+      }
+    }
+  ],
+  "pending": [
+    "original model pixel presentation through a selected profile",
+    "automatic volatile media ownership registration; this callback fixture uses operator privacy acquire",
+    "public producer release and full cross-platform runtime"
+  ]
+}

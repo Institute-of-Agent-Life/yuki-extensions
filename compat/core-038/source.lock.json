@@ -1,0 +1,55 @@
+{
+  "repository": "Institute-of-Agent-Life/yuki-core",
+  "source_commit": "e25c2b8acce34858d5fd67ac408186e49a1da160",
+  "published": false,
+  "platforms": {
+    "linux-arm64": {
+      "archive": "yuki-media-preview-e25c2b8acce3-linux-arm64.zip",
+      "sha256": "d93dbe77128699e2f02948dc14929f264565b0f36e59641994db0fd87ceb4281",
+      "binary_sha256": "6dc8ebbfac8857b158ef46cbfad2e02935bb07353317d9ba40a94a577654caa0",
+      "validation_manifest_sha256": "53e621f1240df75f3d0cfad1f2743774c1e67a51460c9240903c46bd444e22e4"
+    },
+    "darwin-arm64": {
+      "archive": "yuki-media-preview-e25c2b8acce3-darwin-arm64.zip",
+      "sha256": "8379af387c4080f3ce14bbeba898790cba9f06a0f03dff926b2ee30f0c01ee05",
+      "binary_sha256": "d2b186936a8866e7c861808a4d451423e8aa7352105e8368a004c3ae01360a33",
+      "validation_manifest_sha256": "e802e7be1160630a1c05f0cd104ed374f3c435ced54c6a7e8674d36e07095487"
+    },
+    "windows-x86_64": {
+      "archive": "yuki-media-preview-e25c2b8acce3-windows-x86_64.zip",
+      "sha256": "f7bff236ca0c518016a4bf40dafaddb29b9d86d6fa92722fdce179620d296310",
+      "binary_sha256": "7b1c226caf099264dc74f64a988391963a50505a438c5f6d7a32076411e1a1f9",
+      "validation_manifest_sha256": "789ac9b1ca915217b4abf1fe26151588668cde827ee1f4998a50db79f5254d57"
+    }
+  },
+  "sdk": {
+    "python": "1.0.0a4",
+    "rust": "1.0.0-alpha.4"
+  },
+  "schema_sha256": "79d5cdee6ff01d7bac327e7c896ea7f7614aa3528ffeeaaea5bc825ae5e930a7",
+  "media_schema_sha256": "3c62e0c188e7f64b88bb38161102eb622a227778571ced9e439c63c6729ea6c2",
+  "rust_crate_sha256": "fb01271d99ba222f8c84c9821374d6edf03bd32ac172f39b5e83c0beb1010ca9",
+  "methods": [
+    "command.invoke",
+    "device.auth",
+    "forget.ack",
+    "forget.request",
+    "gateway.dispatch_part",
+    "gateway.inbound",
+    "gateway.part_status",
+    "gateway.plan_send",
+    "gateway.status",
+    "media.open",
+    "media.process",
+    "media.publish",
+    "native.notify",
+    "native.queryAck",
+    "observer.event",
+    "tool.call",
+    "tool.status",
+    "work.cancel",
+    "work.get",
+    "work.input"
+  ],
+  "handoff_commit": "685b1d59ae645162cfc4216df0ecaa0d5afc7746"
+}

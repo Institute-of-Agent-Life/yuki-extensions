@@ -66,9 +66,9 @@ manifest。回條含來源提交、SDK／schema／peer／消費者 digest、逐�
 
 ## 當前進度
 
-七張卡已完成任務書驗收。另有七張卡完成下表的 Windows 候選工作。
+七張卡已完成任務書驗收。另有八張卡完成下表的 Windows 候選工作。
 三平台 CI 與合併狀態以各 PR 為準。此批開發對拍不計入七張正式驗收。
-先前快照見 `artifacts/readiness/after-core032-039-candidates.json`。本輪更新見 `artifacts/readiness/after-core033-candidates.json`。
+先前快照見 `artifacts/readiness/after-core032-039-candidates.json`、`after-core033-candidates.json`。本輪更新見 `artifacts/readiness/after-core038-candidate.json`。
 
 | 卡／分支 | 實作提交 | Windows 已核實 | 仍需 |
 |---|---|---|---|
@@ -79,10 +79,12 @@ manifest。回條含來源提交、SDK／schema／peer／消費者 digest、逐�
 | EXT-040 · codex/ext-040-setup | `a607e8c` · [PR #15](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/15) | 簽名原生／OCI 安裝，無 QQ ready，明選 web-fetch | CORE-039 正式交接、外部入口與選配服務實測 |
 | EXT-011 · codex/ext-011-local-agent | 12b3ace · [PR #16](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/16) | 原 Connector 配對、無 instance 裝置跨重啟保存 | Work 以外的裝置授權與撤權狀態 |
 | EXT-015 · codex/ext-015-client | `1d8d377` · [PR #17](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/17) | 雙裝置重放、合併後原入口隔離、撤銷單台設備 | 原入口明選、附件／目標操作、Social 出站與 SSE |
+| EXT-031 · codex/ext-031-media | 本次實作提交 | 所選 PDF 頁文、原影片幀與時間、三類壞檔、清除中止與暫存回收 | 原模型呈現、媒體暫存自動登記、正式交付 |
 
 CORE-033 已交接未發布的個人入口候選包，EXT-011／015 可做開發對拍。CORE-025 已開
 [核心 PR #34](https://github.com/Institute-of-Agent-Life/yuki-core/pull/34)。EXT-004／006
 仍缺原 Bot／租戶附件的公開授權與驗收回條，詳見 `docs/core-interface-requests.md`。
+CORE-038 已補齊出站媒體版本讀取；入站原 Bot／租戶取件回調仍待交接。
 EXT-067 完整基底對拍還需 EXT-004 的實際分段投遞證據。
 
 PR #15 修正外接磁碟打包時讀取 catalog 的問題。Windows 實機驗證
@@ -208,3 +210,11 @@ PR #15 的 Linux push 檢查曾在 Codex 測試代理重連時逾時。Windows �
 直接向候選宿主明選另一入口仍回預設 binding。插件在派發前拒絕明選入口／會話，失敗寫入無回條。附件／agent_target 回 503，原 SSE 路由回 404；對應入口選擇、完整衝突判定與原子出站效果仍待核心。兩個 Rust 路由邊界回歸在 `artifacts/EXT-015/package-windows/`。
 
 實機插件 SHA-256 `5b890f5e8244a82738633682a1e7a49f94e3fa576602fd57c503a564aa0a2cad`。回條 `artifacts/EXT-015/candidate-01/original-uuid-entry.json`，SHA-256 `a4767cdd810ab075363ee2d269232ce95f5527d4480dca2487916e7cfc8bf216`。同目錄有 manifest、transport 與逐方向 `wire.jsonl`。
+
+## EXT-031 選讀文件與影片開發候選
+
+CORE-038 乾淨來源 `e25c2b8acce34858d5fd67ac408186e49a1da160`，交接提交 `685b1d59ae64`，SDK Rust `1.0.0-alpha.4`。三平台候選成員逐一驗雜湊，固定於 `compat/core-038/source.lock.json`。HJW 使用 Windows ZIP `f7bff236ca0c518016a4bf40dafaddb29b9d86d6fa92722fdce179620d296310`；原生宿主 `7b1c226caf099264dc74f64a988391963a50505a438c5f6d7a1d022f7c52af71a3`。均未公開發布。
+
+獨立 Rust media 插件按原 handle 分塊讀取，復用基線原版 document_reader.py 和鎖定的 FFmpeg 7.1；原解析器 bytes 未改。實機只解碼 slot 1，取得 PDF 兩頁文字和影片第 0／5 秒的兩個不可變 PNG。壞檔、加密、空文件回未讀。第二塊到達前清除來源，晚到結果失效，再讀遭拒，臨時目錄清空。`candidate-01` 留存未自動發送 forget 回調的失敗；`candidate-02` 用公開 operator 登記暫存責任後，實收回調且義務清空。自動登記仍是生產者缺口。
+
+`artifacts/EXT-031/candidate-02/media-inspection.json` SHA-256 `3cdd5fd92089a927627f9cdd5f3bd842bbd39600c9ad5175738075c6ea29ab1b`；插件 SHA-256 `ad83ae19b484349ace01f83a3bbb491c97fd6ef7e444dc57fe17be247324ee46`。同目錄含逐方法 wire、manifest、transport 與 owner-disposition；`package-windows.json` 保留獨立建包命令。兩幀目前為 no_vision，待選讀與原 Main 呈現的公開串接。影片 runtime 現鎖 Windows x86_64，其他平台需另驗 codec；三平台 CI 建置／測試與真 Host 解碼分列。

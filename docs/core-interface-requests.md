@@ -87,6 +87,10 @@ terminal continues. The partial plugin exposes readiness only.
 下一個可用交付須附該公開方法的 grant、欄位、乾淨宿主／SDK digest，以及
 同安裝成功、換安裝拒絕的回條。擴展才能把以上案例接入 EXT-004／006。
 
+CORE-038 `e25c2b8acce3` 已提供出站原 plan 的 `media` 描述與 dispatch handle 的
+`media.open` 讀取，此部分缺口已收斂。仍需入站 Telegram file_id／飛書 key
+的原 Bot／app 取件 callback、原 event/slot 和到期語義，才能接完整原件解析。
+
 ## CORE-033 → EXT-011
 
 Windows 候選 `994aee20ced7` 能以一次性碼配對 connector。原 Connector 在
@@ -111,3 +115,22 @@ X-Yuki-Conversation，涵蓋合併後切換、越權原件、停用入口／撤�
 ACP 既有會話和舊 NULL。另需可用的附件及 agent_target 正反例、同號操作／
 目標衝突、提交後 Social Outbound 的 SSE 與斷線續讀。回條需給出所選原
 binding、request_person_id、事件／conversation、可見範圍及明選失敗時的零寫入。
+
+## CORE-038 → EXT-031
+
+Windows 真 Rust 插件已消費 `e25c2b8acce3` 的 `media.process/open/publish`，
+固定來源、SDK、schema 與三平台包於 `compat/core-038/source.lock.json`。
+`artifacts/EXT-031/candidate-02/` 含原 PDF 頁文、兩張實際影片幀、失敗結果和 wire。
+
+- `candidate-01` 中已讀首塊後，`privacy erase` 阻止後續讀取，卻未發
+  `forget.request`。`candidate-02` 在相同時序加入公開 operator
+  `privacy acquire media volatile-decoder-fixture <event>` 才收到回調，Rust
+  清理完畢回原 key／watermark／proof，pending 清空。請確認宿主應在
+  `media.process` 授出或 `media.open` 首讀時自動登記的暫存責任，綁定
+  installation、原 handle、source/version、水位；或指明已有的插件端方法。
+  案例需覆蓋分塊讀途中清除、解碼中清除、完成前清除與重啟欠交。
+- 普通 `tool.call` 的 `data.images` 已有原 profile 的呈現合同。選讀現在由
+  operator `host process` 觸發，回條兩幀是 no_vision。請給出由使用者或
+  Main 的原執行選定 processor/event/slot 後，如何把該 media call 的
+  artifact/version 帶回原 Main 的公開路徑與案例。需證明原圖 bytes 到達
+  原模型、無另購 vision 請求、失效 handle 不呈現；擴展不另造轉接授權。

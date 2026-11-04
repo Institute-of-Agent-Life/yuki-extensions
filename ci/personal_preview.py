@@ -51,13 +51,25 @@ def http(address, method, path, body=None, token=None, headers=None):
 
 
 class Owner:
-    def __init__(self, root, out, unit, grants):
+    def __init__(
+        self,
+        root,
+        out,
+        unit,
+        grants,
+        *,
+        contract="core-033",
+        environment=None,
+        relay=None,
+        command_timeout=12,
+    ):
+        self.command_timeout = command_timeout
         self.root = root
         self.out = out
         self.unit = unit
         self.work = out / "work"
         self.work.mkdir()
-        self.exe, self.pin, self.platform = materialize(root, self.work, "core-033")
+        self.exe, self.pin, self.platform = materialize(root, self.work, contract)
         self.data = self.work / "owner"
         self.packages = out / "packages"
         package = build(root, unit, self.packages)
@@ -75,6 +87,7 @@ class Owner:
         settings = {prefix + "_CORE": self.address, prefix + "_LISTEN": self.edge}
         if unit == "local-agent":
             settings[prefix + "_STATE"] = str(self.work / "catalog")
+        settings.update(environment or {})
         self.env.update(settings)
         self.cli("init")
         cfg = self.data / "yuki.toml"
@@ -86,13 +99,16 @@ class Owner:
             "namespace": unit,
             "program": sys.executable,
             "args": [
-                str(root / "tests/peers/observe_stdio.py"),
+                str(root / "tests/peers" / (relay or "observe_stdio.py")),
                 str(self.plugin),
                 str(self.trace),
             ],
             "grants": grants,
             "env": list(settings),
         }
+        if relay:
+            fields["args"].append(str(self.work / "control"))
+            (self.work / "control").mkdir()
         cfg.write_text(
             text
             + "\n[[plugins]]\n"
@@ -108,7 +124,7 @@ class Owner:
             env=self.env,
             capture_output=True,
             text=True,
-            timeout=12,
+            timeout=self.command_timeout,
         )
 
     def cli(self, *args):
@@ -170,7 +186,8 @@ class Owner:
                 "sha256": self.pin["rust_crate_sha256"],
             },
             "host_schema_sha256": self.pin["schema_sha256"],
-            "personal_schema_sha256": self.pin["personal_schema_sha256"],
+            "personal_schema_sha256": self.pin.get("personal_schema_sha256"),
+            "media_schema_sha256": self.pin.get("media_schema_sha256"),
             "plugin_sha256": self.binary_sha,
             "wire_sha256": hashlib.sha256(self.trace.read_bytes()).hexdigest(),
         }

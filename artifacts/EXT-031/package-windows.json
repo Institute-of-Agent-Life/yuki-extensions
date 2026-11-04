@@ -1,0 +1,71 @@
+{
+  "unit_id": "media",
+  "version": "0.1.0-alpha.1",
+  "release_tag": "media/v0.1.0-alpha.1",
+  "published": false,
+  "manifest_sha256": "1a212029eb41fbce3fcb956571f5bee571b9fa89b8467f4e9998568e289571d8",
+  "lock_sha256": "95257131bd4d94e9a5dc8e0fbbd2a0e1c518c6f5c1fc17e9a1b495f418949929",
+  "source": {
+    "repository": "Institute-of-Agent-Life/yuki-extensions",
+    "baseline": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+    "sdk_contract": "compat/core-038/source.lock.json"
+  },
+  "license": "AGPL-3.0-only",
+  "artifacts": {
+    "backend/document_reader.py": "3eaa8ccdd25bbc764d73eb9be7d5c57a8ca7c0a997a9d4d9695902f6f441998a",
+    "backend/source.lock.json": "e0b6d68b94370a41ad5bdb59e2640905cdb6ca435de4b69ed2baf75b06e8e040",
+    "Cargo.lock": "95257131bd4d94e9a5dc8e0fbbd2a0e1c518c6f5c1fc17e9a1b495f418949929",
+    "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+    "packaging/codecs.lock": "92e058e12e25c10b2cff0764dfac8b9b66d085b77055b6e4a77e595ed6e41bb7",
+    "plugin.toml": "7cfca2fe51f2e14676727339f4665605c588b79d8dee963cf00fc52802828a73",
+    "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+    "yuki-media.exe": "ad83ae19b484349ace01f83a3bbb491c97fd6ef7e444dc57fe17be247324ee46"
+  },
+  "commands": [
+    {
+      "command": [
+        "rustc",
+        "--version",
+        "--verbose"
+      ],
+      "exit_code": 0,
+      "stdout": "rustc 1.96.0 (ac68faa20 2026-05-25)\nbinary: rustc\ncommit-hash: ac68faa20c58cbccd01ee7208bf3b6e93a7d7f96\ncommit-date: 2026-05-25\nhost: x86_64-pc-windows-gnu\nrelease: 1.96.0\nLLVM version: 22.1.2\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "cargo",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "cargo 1.96.0 (30a34c682 2026-05-25)\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--target-dir",
+        "D:\\yuki-extension-tests\\6659d470e225d2f628d2\\temp\\yuki-rust-build-bxeq6v5u"
+      ],
+      "exit_code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "   Compiling proc-macro2 v1.0.107\n   Compiling version_check v0.9.5\n   Compiling quote v1.0.47\n   Compiling unicode-ident v1.0.27\n   Compiling typenum v1.20.1\n   Compiling serde_core v1.0.228\n   Compiling serde_json v1.0.145\n   Compiling cfg-if v1.0.5\n   Compiling serde v1.0.228\n   Compiling getrandom v0.3.4\n   Compiling windows-link v0.2.1\n   Compiling memchr v2.8.3\n   Compiling itoa v1.0.18\n   Compiling ryu v1.0.23\n   Compiling fastrand v2.5.0\n   Compiling once_cell v1.21.4\n   Compiling windows-sys v0.61.2\n   Compiling cpufeatures v0.2.17\n   Compiling base64 v0.22.1\n   Compiling generic-array v0.14.7\n   Compiling tempfile v3.23.0\n   Compiling block-buffer v0.10.4\n   Compiling crypto-common v0.1.7\n   Compiling syn v2.0.119\n   Compiling digest v0.10.7\n   Compiling sha2 v0.10.9\n   Compiling serde_derive v1.0.228\n   Compiling yuki-plugin-sdk v1.0.0-alpha.4\n   Compiling yuki-media v0.1.0-alpha.1 (D:\\yuki-extension-tests\\6659d470e225d2f628d2\\temp\\yuki-rust-build-bxeq6v5u\\unit)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 9.77s\n     Running unittests src\\main.rs (D:\\yuki-extension-tests\\6659d470e225d2f628d2\\temp\\yuki-rust-build-bxeq6v5u\\debug\\deps\\yuki_media-b59220c2089ed5e0.exe)\n"
+    },
+    {
+      "command": [
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "--target-dir",
+        "D:\\yuki-extension-tests\\6659d470e225d2f628d2\\temp\\yuki-rust-build-bxeq6v5u"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "   Compiling proc-macro2 v1.0.107\n   Compiling version_check v0.9.5\n   Compiling quote v1.0.47\n   Compiling unicode-ident v1.0.27\n   Compiling typenum v1.20.1\n   Compiling serde_core v1.0.228\n   Compiling getrandom v0.3.4\n   Compiling cfg-if v1.0.5\n   Compiling serde_json v1.0.145\n   Compiling serde v1.0.228\n   Compiling windows-link v0.2.1\n   Compiling ryu v1.0.23\n   Compiling memchr v2.8.3\n   Compiling itoa v1.0.18\n   Compiling once_cell v1.21.4\n   Compiling fastrand v2.5.0\n   Compiling windows-sys v0.61.2\n   Compiling cpufeatures v0.2.17\n   Compiling base64 v0.22.1\n   Compiling generic-array v0.14.7\n   Compiling tempfile v3.23.0\n   Compiling syn v2.0.119\n   Compiling block-buffer v0.10.4\n   Compiling crypto-common v0.1.7\n   Compiling digest v0.10.7\n   Compiling sha2 v0.10.9\n   Compiling serde_derive v1.0.228\n   Compiling yuki-plugin-sdk v1.0.0-alpha.4\n   Compiling yuki-media v0.1.0-alpha.1 (D:\\yuki-extension-tests\\6659d470e225d2f628d2\\temp\\yuki-rust-build-bxeq6v5u\\unit)\n    Finished `release` profile [optimized] target(s) in 11.28s\n"
+    }
+  ]
+}

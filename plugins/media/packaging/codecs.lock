@@ -1,0 +1,34 @@
+{
+  "document_backend": {
+    "upstream_commit": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+    "python": "3.12",
+    "packages": {
+      "pypdf": {
+        "version": "6.18.0",
+        "filename": "pypdf-6.18.0-py3-none-any.whl",
+        "url": "https://files.pythonhosted.org/packages/c7/a5/d5922a078c9a612327681d4793404f82998f4d66213add6fdc0659245856/pypdf-6.18.0-py3-none-any.whl",
+        "sha256": "05b762b77bcb9dcb4a7c91fcf5dded585b25bee7269ab3d3001d7c55fa1b324b"
+      },
+      "defusedxml": {
+        "version": "0.7.1",
+        "filename": "defusedxml-0.7.1-py2.py3-none-any.whl",
+        "url": "https://files.pythonhosted.org/packages/07/6c/aa3f2f849e01cb6a001cd8554a88d4c77c5c1a31c95bdf1cf9301e6d9ef4/defusedxml-0.7.1-py2.py3-none-any.whl",
+        "sha256": "a352e7e428770286cc899e2542b6cdaedb2b4953ff269a210103ec58f6198a61"
+      }
+    }
+  },
+  "ffmpeg": {
+    "package": "imageio-ffmpeg",
+    "package_version": "0.6.0",
+    "platforms": {
+      "windows-x86_64": {
+        "version": "0.6.0",
+        "filename": "imageio_ffmpeg-0.6.0-py3-none-win_amd64.whl",
+        "url": "https://files.pythonhosted.org/packages/2c/c6/fa760e12a2483469e2bf5058c5faff664acf66cadb4df2ad6205b016a73d/imageio_ffmpeg-0.6.0-py3-none-win_amd64.whl",
+        "sha256": "02fa47c83703c37df6bfe4896aab339013f62bf02c5ebf2dce6da56af04ffc0a",
+        "member": "imageio_ffmpeg/binaries/ffmpeg-win-x86_64-v7.1.exe",
+        "binary_sha256": "2ce797a0f88d7f067180338fb227f7b1928ea727bd9a4d7a1d022f7c52af71a3"
+      }
+    }
+  }
+}
