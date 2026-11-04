@@ -30,7 +30,7 @@ CORE-002 未發布 oracle 產自 `89f15dbbfc5535a0d9fa94244a9e5cde96638ece`，
   的 tag 固定 rev 7。詳見 `docs/desktop-handoff.md`。
 - 握手 SDK 的 digest 見下方 EXT-002；完整 Host／正式插件仍無逐方法消費證據。
 
-## EXT-002 握手預覽
+## EXT-002 握手 SDK
 
 分支 `codex/ext-002-preview`，實作提交 `e2ca2aa`。[PR #9 的三平台驗證與合併紀錄](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/9)。
 核心合併提交
@@ -40,7 +40,7 @@ CORE-002 未發布 oracle 產自 `89f15dbbfc5535a0d9fa94244a9e5cde96638ece`，
 Python SDK `1.0.0a1`、schema 修訂 1、wire 1.0，方法只有 `initialize`。
 `contracts.lock` 記錄 producer 和各交付檔。兩個 consumer 各自鎖定依賴。
 
-Windows 實機在 checkout 外編譯 Rust consumer，從 wheel 安裝 Python consumer，
+預覽 PR #9 合併於 `4f350b7`。Windows 實機在 checkout 外編譯 Rust consumer，從 wheel 安裝 Python consumer，
 分別對接交付的 stdio peer。可交還核心的回條是
 `artifacts/EXT-002/preview-03/handshake-preview.json` 和同次 manifest。
 回條含各實物／測試 consumer digest、逐方向訊框、協商結果及故障回執。
@@ -50,9 +50,22 @@ Windows 實機在 checkout 外編譯 Rust consumer，從 wheel 安裝 Python con
 內容相同但 SHA 不同的 wheel，確定是消費方 lock 攔下。正式插件採 Rust，
 Python 在此卡只驗 SDK。完整宿主與業務插件仍待相應交付。
 
+## EXT-002 正式驗收
+
+分支 `codex/ext-002-release`，實作提交 `4a281fd`。[PR #10 的三平台驗證與合併紀錄](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/10)。
+核心公開預發版 `handshake-preview-dd694a0db605`
+指向同一合併提交。ZIP bytes 與預覽相同。`contracts.lock` 已釘公開下載位置、
+release receipt 及 SHA256SUMS 的 digest。Windows 測試傳輸程序重新下載三個
+公開資產，實機驗雜湊後乾淨安裝，再跑兩端對拍。早期直連逾時的紀錄在
+`artifacts/EXT-002/release-download-red/`。
+
+正式可交還證據為 `artifacts/EXT-002/01/published-sdk.json` 與同次
+manifest。回條含來源提交、SDK／schema／peer／消費者 digest、逐方向原始訊框、
+錯誤碼與實收效果；正式狀態為 PASS。該預發版只含握手，生產插件採 Rust，
+宿主及各業務方法仍待核心後續交付。
+
 ## 下一張可執行卡
 
-EXT-002 的預覽對拍已可重現；正式狀態為 `AWAITING_PUBLICATION`。
-收到正式 SDK 的來源、取得位置和 digest 後，重新安裝該版本並跑正式驗收。
-其餘擴展卡的直接前置記在 `artifacts/readiness/after-ext-019.json`。
-EXT-043 仍待 CORE-044 與沿途 EXT-067，EXT-011 另需 CORE-033 與 EXT-002。
+直接前置與最新觀察見 `artifacts/readiness/after-ext-002.json`。共有 7 張卡
+通過實機驗收。Telegram 與 web-fetch 的下一步分別是 EXT-003 與 EXT-020，
+兩者均待 CORE-032；EXT-011／015 待 CORE-033，EXT-040 待 CORE-039。

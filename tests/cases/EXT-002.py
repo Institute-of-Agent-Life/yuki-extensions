@@ -19,7 +19,7 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def prepare(root, output):
+def check_sdk(root, output, *, published):
     spec = importlib.util.spec_from_file_location("fetch_contract", root / "ci/fetch-contract.py")
     fetch = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(fetch)
@@ -32,7 +32,12 @@ def prepare(root, output):
         work = Path(tmp).resolve()
         if work.is_relative_to(root):
             raise ValueError("consumer isolation requires a directory outside the checkout")
-        meta, files = fetch.materialize(root, work / "contract")
+        receipt = None
+        if published:
+            meta, files, receipt = fetch.published_contract(root, work / "contract", work / "release")
+            archive = work / "release/yuki-handshake-preview.zip"
+        else:
+            meta, files = fetch.materialize(root, work / "contract")
         damaged = work / "tampered.zip"
         shutil.copyfile(archive, damaged)
         with zipfile.ZipFile(damaged, "a") as z:
@@ -98,8 +103,13 @@ def prepare(root, output):
         for language, command in commands.items():
             wire = crosswire(command, host, work, binding, index, errors, env)
             transcripts[language] = asyncio.run(asyncio.wait_for(wire, timeout=30))
-        return "handshake-preview.json", {"status": "PASS", "card_status": "AWAITING_PUBLICATION",
-            "source_commit": meta["source_commit"], "bundle_sha256": sha(archive), "published": False,
+        report_name = "published-sdk.json" if published else "handshake-preview.json"
+        return report_name, {"status": "PASS", "card_status": "PASS" if published else "PREVIEW_ONLY",
+            "source_commit": meta["source_commit"], "bundle_sha256": sha(archive), "published": published,
+            "build_time_status": meta["status"], "release_receipt": receipt,
+            "release": contract["release"] if published else None,
+            "release_transport": ("staged-verified-release-assets" if env.get("YUKI_CORE031_RELEASE_DIR")
+                                  else "direct-https") if published else None,
             "sdk_versions": meta["sdk_versions"], "capabilities": meta["capabilities"],
             "member_sha256": {role: sha(path) for role, path in files.items()},
             "consumers": {"rust": {"binary_sha256": sha(rust_bin), "cargo_lock": sha(project / "Cargo.lock"),
@@ -112,7 +122,9 @@ def prepare(root, output):
             "wire": transcripts, "runtime_host": None, "official_plugins": []}
 
 
+def prepare(root, output):
+    return check_sdk(root, output, published=False)
+
+
 def run(root, output):
-    return "published-sdk.json", {"status": "BLOCKED", "card_status": "AWAITING_PUBLICATION",
-        "published": False, "reason": "The pinned CORE-031 bundle is an unpublished handshake preview.",
-        "preview_command": "python ci/check.py EXT-002 --preparation --out artifacts/EXT-002/preview"}
+    return check_sdk(root, output, published=True)

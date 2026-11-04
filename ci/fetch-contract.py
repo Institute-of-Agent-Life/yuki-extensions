@@ -3,7 +3,9 @@ import argparse
 import hashlib
 import io
 import json
+import os
 from pathlib import Path
+from urllib.request import urlopen
 import zipfile
 
 
@@ -39,7 +41,7 @@ def materialize(root, output, archive=None):
                 meta["sdk_versions"], meta["capabilities"]) != (
                 commit, False, "unpublished", "verified", lock["versions"], ["initialize"]):
             raise ValueError("unexpected handshake candidate")
-        if receipt["members"] != meta["members"] or meta["status"] != lock["distribution"]:
+        if receipt["members"] != meta["members"] or meta["status"] != lock["candidate_build_status"]:
             raise ValueError("candidate and producer receipt disagree")
         expected = {m["name"] for m in meta["members"].values()} | {"candidate.json"}
         if sorted(bundle.namelist()) != sorted(expected):
@@ -73,10 +75,53 @@ def materialize(root, output, archive=None):
     return meta, files
 
 
+def obtain_release(root, directory):
+    lock = json.loads((root / "contracts.lock").read_bytes())
+    release = lock["release"]
+    directory.mkdir()
+    for name, asset in release["assets"].items():
+        if name not in {"yuki-handshake-preview.zip", "SHA256SUMS", "release-receipt.json"}:
+            raise ValueError("unexpected release asset")
+        if staged := os.environ.get("YUKI_CORE031_RELEASE_DIR"):
+            data = (Path(staged) / name).read_bytes()
+        else:
+            with urlopen(asset["url"], timeout=60) as response:
+                data = response.read()
+        if digest(data) != asset["sha256"]:
+            raise ValueError("release asset digest mismatch: " + name)
+        (directory / name).write_bytes(data)
+    receipt = json.loads((directory / "release-receipt.json").read_bytes())
+    name = "yuki-handshake-preview.zip"
+    expected = {f"{release['assets'][key]['sha256']}  {key}" for key in (name, "release-receipt.json")}
+    if set((directory / "SHA256SUMS").read_text(encoding="ascii").splitlines()) != expected:
+        raise ValueError("release checksum list mismatch")
+    if (receipt["kind"], receipt["source_commit"], receipt["tag"], receipt["release_url"],
+            receipt["bundle_sha256"], receipt["bundle_url"]) != (
+            release["kind"], lock["source_commit"], release["tag"], release["url"],
+            lock["files"][name], release["assets"][name]["url"]):
+        raise ValueError("release receipt does not bind the source commit and asset")
+    return directory / name, receipt
+
+
+def published_contract(root, output, download):
+    archive, receipt = obtain_release(root, download)
+    meta, files = materialize(root, output, archive)
+    for key in ("sdk_versions", "schema_revision", "schema_sha256", "capabilities", "members"):
+        if receipt[key] != meta[key]:
+            raise ValueError("release receipt differs from the delivered bundle: " + key)
+    return meta, files, receipt
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--bundle", type=Path)
     args = parser.parse_args()
-    candidate, _ = materialize(Path(__file__).resolve().parents[1], args.out, args.bundle)
+    root = Path(__file__).resolve().parents[1]
+    if args.bundle:
+        candidate, _ = materialize(root, args.out, args.bundle)
+    else:
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            candidate, _, _ = published_contract(root, args.out, Path(tmp) / "release")
     print(json.dumps({key: candidate[key] for key in ("source_commit", "status", "sdk_versions")}))

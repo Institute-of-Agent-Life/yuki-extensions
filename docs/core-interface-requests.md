@@ -20,7 +20,8 @@ EXT-019 已對照兩份 OpenAPI，Desktop 固定 `bee5692` 的後端是
 對端、schema 修訂 1、方法索引與 Rust／Python SDK 都已實際消費。
 雙向 `initialize`、同 ID 的交錯 RPC、optional 欄位、錯版、未宣告方法、
 缺必需能力、重複宣告與變更 manifest 的結果在 EXT-002 預覽回條中。
-正式驗收還需要核心發布能固定版本、來源及 SHA-256 的 SDK 產物。
+核心已將同一 ZIP 以 `handshake-preview-dd694a0db605` 公開預發。正式雙向消費回條見
+`artifacts/EXT-002/01/published-sdk.json`。下一步需 CORE-032 等業務方法。
 
 ## CORE-032／CORE-039 → 首批 Rust 插件
 
