@@ -1,0 +1,140 @@
+{
+  "wheel": "yuki_agent_connector-0.4.4.dev1-py3-none-any.whl",
+  "sha256": "2748ec830b56e38f404d33964350578e543232ab1fce02e2399fc3ab045a74d8",
+  "lock_sha256": "20473bace4005ddd06df3c0d5b08a6239f5a6e33a7f8f24b20f2d4382a95336a",
+  "distribution": "0.4.4.dev1",
+  "cases": {
+    "tests/test_claude_contract.py::test_explicit_resume_question_and_owner_eof": {
+      "setup": "passed",
+      "call": "passed",
+      "witness": {
+        "sdk": "0.2.172",
+        "cli_path": "D:\\yuki-extension-tests\\fe6fb5c68c778c30f37f\\src\\artifacts\\EXT-009\\01\\work\\env\\Scripts\\python.exe",
+        "original_session": "00000000-0000-4000-8000-000000000003",
+        "original_cwd": "D:\\yuki-extension-tests\\fe6fb5c68c778c30f37f\\temp\\pytest-of-hilbert\\pytest-0\\test_explicit_resume_question_0\\original project",
+        "instance": "original",
+        "readonly_entry": {
+          "id": "00000000-0000-4000-8000-000000000003",
+          "label": "fixture",
+          "cwd": "D:\\yuki-extension-tests\\fe6fb5c68c778c30f37f\\temp\\pytest-of-hilbert\\pytest-0\\test_explicit_resume_question_0\\original project",
+          "status": "unknown",
+          "live_attach": false,
+          "last_modified": 1793797169483,
+          "first_prompt": null,
+          "git_branch": null,
+          "created_at": null
+        },
+        "denied_implicit_attach": "explicit_resume_required",
+        "wrong_question": "request_resolved",
+        "correct_answer": {
+          "session_id": "00000000-0000-4000-8000-000000000003",
+          "execution_id": "38917359-b962-483a-af39-c150f548abc2",
+          "status": "response_submitted",
+          "pending": false,
+          "response_submitted": true,
+          "admitted": true
+        },
+        "writes": [
+          {
+            "type": "control_request",
+            "request_id": "req_1_c2a4263f",
+            "request": {
+              "subtype": "initialize",
+              "hooks": null
+            }
+          },
+          {
+            "type": "user",
+            "uuid": "38917359-b962-483a-af39-c150f548abc2",
+            "session_id": "00000000-0000-4000-8000-000000000003",
+            "parent_tool_use_id": null,
+            "message": {
+              "role": "user",
+              "content": "fixture work"
+            }
+          },
+          {
+            "type": "control_response",
+            "response": {
+              "subtype": "success",
+              "request_id": "native-control",
+              "response": {
+                "behavior": "allow",
+                "updatedInput": {
+                  "questions": [
+                    {
+                      "question": "Go?"
+                    }
+                  ],
+                  "answers": {
+                    "Go?": "yes"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "events": [
+          {
+            "kind": "question",
+            "session_id": "00000000-0000-4000-8000-000000000003",
+            "execution_id": "38917359-b962-483a-af39-c150f548abc2",
+            "operation_id": "original-op",
+            "payload": {
+              "permission_id": "native-question",
+              "native_request_id": "native-question",
+              "connection_id": "e60f1ad3-aeb2-492d-b5cc-28a7915387d7",
+              "tool": "AskUserQuestion",
+              "native_request": {
+                "questions": [
+                  {
+                    "question": "Go?"
+                  }
+                ]
+              },
+              "options": [
+                "allow",
+                "deny"
+              ],
+              "admitted": true
+            }
+          },
+          {
+            "kind": "progress",
+            "session_id": "00000000-0000-4000-8000-000000000003",
+            "execution_id": "38917359-b962-483a-af39-c150f548abc2",
+            "operation_id": "original-op",
+            "payload": {
+              "status": "unknown",
+              "pending": true,
+              "reason": "native_sdk_connection_lost",
+              "stream_gap": true
+            }
+          }
+        ],
+        "closed": true,
+        "retained_file_sha256": "3aa2de677256742c1d99227a6a78271295018c928e6c0868aa1f0be99728a6f8",
+        "private_canaries_checked": [
+          ".credentials.json",
+          ".env"
+        ]
+      },
+      "teardown": "passed"
+    },
+    "tests/test_claude_driver.py::test_real_sdk_native_preset_permissions_completion_and_no_arbitrary_attach": {
+      "setup": "passed",
+      "call": "passed",
+      "teardown": "passed"
+    },
+    "tests/test_claude_driver.py::test_profiles_readonly_discovery_are_process_isolated": {
+      "setup": "passed",
+      "call": "passed",
+      "teardown": "passed"
+    },
+    "tests/test_claude_driver.py::test_server_revocation_does_not_exit_sdk_or_kill_its_original_native_execution": {
+      "setup": "passed",
+      "call": "passed",
+      "teardown": "passed"
+    }
+  }
+}

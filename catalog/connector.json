@@ -26,6 +26,8 @@
     "compat/core-002/v4-oracle-candidate.zip",
     "compat/core-002/v4-oracle-index.json",
     "tests/cases/EXT-008.py",
-    "tests/peers/codex_wire.py"
+    "tests/peers/codex_wire.py",
+    "tests/cases/EXT-009.py",
+    "tests/peers/native_case.py"
   ]
 }

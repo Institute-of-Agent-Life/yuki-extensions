@@ -1,0 +1,21 @@
+{
+  "task": "EXT-009",
+  "status": "PASS",
+  "phase": "acceptance",
+  "card_status": "PASS",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "fe6fb5c68c778c30f37f706dc9606e40cf3574f06731ed6582c2bd433bb143b8",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-009",
+    "--out",
+    "artifacts\\EXT-009\\01"
+  ],
+  "files": {
+    "claude-driver-wire.json": "ceb081857e05575d61a129d01b970ba2c8bdf0a1314349026a87545dcb989f46",
+    "commands.txt": "321b363751d8b40804af2e4c9290a997976dc1bcc03e926d3addad220c63002f"
+  }
+}

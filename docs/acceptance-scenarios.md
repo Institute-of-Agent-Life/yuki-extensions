@@ -54,3 +54,12 @@ available. Reject an unsupported queue method without a fallback prompt. Drop
 the response after the daemon accepts one prompt, reconnect, then recover by
 the original client message ID; require a read and exactly one turn/start.
 Run discovery against fixture installations only.
+
+## EXT-009 local Claude CLI and SDK
+
+Read the fixture profile's history, reject implicit attachment, and resume only
+the selected original session and cwd. Reject an answer naming the wrong native
+question before delivering the correct one. End the SDK stream after a peer
+file effect and observe the unknown receipt, retained bytes and single prompt.
+Keep private profile and project canary contents out of observed SDK messages
+and Connector events.

@@ -80,3 +80,13 @@ EXT-002 尚需 CORE-031 Rust／Python SDK 與 schema；其餘需求見
 恢復只讀原 operation，daemon 共收到一次 turn/start。證據在
 `artifacts/EXT-008/01/codex-driver-wire.json`，失敗基線在
 `artifacts/EXT-008/faults/`；此為本機 loopback daemon，無模型呼叫。
+
+## EXT-009 Claude 原會話
+
+分支 `codex/ext-009`。沿 `d434482` 的 0.4.4.dev1 安裝包與已鎖定的
+Claude Agent SDK 0.2.172，Windows 實機 4 個定向案例與 ruff 通過。
+SDK 使用本機替身 transport，讀到歷史後仍須明確 resume，原 cwd 保留。
+錯誤問題 ID 遭拒，正確答案回原 native control request。EOF 後回報 unknown，
+同一操作只發一次，peer 已寫檔案在關閉後仍可讀。驗過私密檔 canary
+未進入 SDK 寫出資料與 Connector 事件。實際欄位與檔案雜湊見
+`artifacts/EXT-009/01/claude-driver-wire.json`。
