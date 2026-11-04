@@ -222,7 +222,7 @@ def main():
     assert invoke(["scp", "-q", str(snapshot), f"{args.host}:{remote}/source.zip"]).returncode == 0
     assert invoke(["scp", "-q", str(tools_zip), f"{args.host}:{remote}/tooling.zip"]).returncode == 0
     sdk_environment = ""
-    if args.task in {"EXT-002", "EXT-003", "EXT-005", "EXT-020", "EXT-028", "EXT-040"}:
+    if args.task in {"EXT-001", "EXT-002", "EXT-003", "EXT-005", "EXT-020", "EXT-028", "EXT-040"}:
         # Use the host's existing pinned toolchain, with a separate writable Cargo home.
         sdk_environment = r"""
 $tools=Join-Path $env:USERPROFILE 'yuki-core-tooling'
@@ -230,6 +230,14 @@ $env:RUSTUP_HOME=Join-Path $tools 'rustup'
 $env:YUKI_CRATE_CACHE=Join-Path $tools 'cargo/registry/cache'
 $env:PATH="$(Join-Path $tools 'cargo/bin');$(Join-Path $tools 'winlibs/mingw64/bin');$env:PATH"
 $env:CARGO_HOME=Join-Path $env:TEMP 'cargo-home'
+"""
+    if args.task == "EXT-001":
+        fixture_home = quote(args.remote_root.rstrip("/\\") + "/rust-fixture-1.90/rustup")
+        sdk_environment += f"""
+if (Test-Path (Join-Path {fixture_home} 'toolchains/1.90.0-x86_64-pc-windows-gnu/bin/rustc.exe')) {{
+    $env:RUSTUP_HOME={fixture_home}
+    $env:RUSTUP_TOOLCHAIN='1.90.0-x86_64-pc-windows-gnu'
+}}
 """
     for key, package in setup_inputs:
         sdk_environment += "$env:" + key + "=" + quote(remote + "/wheelhouse/setup-inputs/" + package.name) + "\n"

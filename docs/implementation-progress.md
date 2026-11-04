@@ -81,6 +81,12 @@ manifest。回條含來源提交、SDK／schema／peer／消費者 digest、逐�
 對 CORE-033 尚無可消費交付，EXT-011／015 待核。EXT-004 尚需 CORE-025。
 EXT-067 完整基底對拍還需 EXT-004 的實際分段投遞證據。
 
+PR #15 修正外接磁碟打包時讀取 catalog 的問題。Windows 實機驗證
+`catalog/._alpha.json` 不選任何單元，真正的 alpha 變更只選 alpha，損壞的正式
+manifest 會報錯。兩個 Python 套件及一個 Rust 執行檔均成功建置。
+`artifacts/EXT-001/catalog-sidecar-03/` 含完整回條。首兩次失敗分別記錄
+Cargo 不在 PATH 和共用工具鏈缺少 rustc；綠燈使用 HJW 擴展測試目錄內的 Rust 1.90.0。
+
 ## EXT-003 Windows 開發候選對拍
 
 分支 `codex/ext-003-telegram`。Telegram 是獨立建置的 Rust 插件，使用
