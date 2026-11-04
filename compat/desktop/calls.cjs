@@ -6,7 +6,10 @@ const ts = require(compiler)
 const inventory = [], dto = [], routes = []
 const method = /\.(get|post|response|mutate|agentRead|agentRequest|download|read)$/
 function walk(dir) {
-  for (const entry of fs.readdirSync(dir, {withFileTypes: true})) {
+  // Pin the inventory order across NTFS, APFS and Linux directory enumeration.
+  const entries = fs.readdirSync(dir, {withFileTypes: true})
+  entries.sort((a, b) => a.name < b.name ? -1 : a.name > b.name ? 1 : 0)
+  for (const entry of entries) {
     const absolute = path.join(dir, entry.name)
     if (entry.isDirectory()) { walk(absolute); continue }
     if (!/\.tsx?$/.test(entry.name) || entry.name.endsWith('contract.gen.ts')) continue

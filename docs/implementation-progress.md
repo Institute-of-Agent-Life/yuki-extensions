@@ -11,7 +11,7 @@
 | EXT-008 · codex/ext-008 | `d434482`；CI `41833796596`；PR #4 合併 `15ea291` | `artifacts/EXT-008/faults/` 重現舊錯，`01/` 實測 19 例 |
 | EXT-009 · codex/ext-009 | `c0d30fb`；CI `41834256598`；PR #5 合併 `9eb9223` | `artifacts/EXT-009/01/`，4 例含真 SDK、原問題回執、EOF 與檔案保留 |
 | EXT-010 · codex/ext-010 | `ab16e07`；CI `41834791702`；PR #6 合併 `2c55dbb` | `artifacts/EXT-010/02/`，8 例含實際子進程退出碼 23、雙 session 取消及 unknown |
-| EXT-019 · codex/ext-019 | 實作 `7531d84`；Windows 靜態驗收通過；[PR #7 三平台檢查與合併記錄](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/7) | `artifacts/EXT-019/02/`，Desktop 呼叫表、schema 差分、5 個故障變異 |
+| EXT-019 · codex/ext-019 | 實作 `7531d84`、PR head `9d1e8a8`；三平台 CI `41835863011`；PR #7 合併 `7625095` | `artifacts/EXT-019/02/`，呼叫表、schema 差分、5 個故障變異；`03/` 固定跨平台順序 |
 
 ## 核心輸入與可交還證據
 
