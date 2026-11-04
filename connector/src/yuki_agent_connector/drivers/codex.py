@@ -1072,14 +1072,24 @@ class CodexDriver:
         if action == "queue":
             self.queue_operations[operation] = ""
             self.queue_sessions[operation] = session
-            result = await self.rpc.call(
-                "thread/queue/add",
-                {
-                    "threadId": session,
-                    "clientUserMessageId": operation,
-                    "input": [{"type": "text", "text": arguments["prompt"]}],
-                },
-            )
+            try:
+                result = await self.rpc.call(
+                    "thread/queue/add",
+                    {
+                        "threadId": session,
+                        "clientUserMessageId": operation,
+                        "input": [{"type": "text", "text": arguments["prompt"]}],
+                    },
+                )
+            except DriverError as exc:
+                if not exc.uncertain:
+                    self.queue_operations.pop(operation, None)
+                    self.queue_sessions.pop(operation, None)
+                if isinstance(exc.details, dict) and exc.details.get("code") == -32601:
+                    raise DriverError(
+                        "unsupported_action", "Native owner does not support queue", exc.details
+                    ) from exc
+                raise
             queue_id = result["queuedSubmission"]["id"]
             if operation in self.queue_operations:
                 self.queue_operations[operation] = queue_id

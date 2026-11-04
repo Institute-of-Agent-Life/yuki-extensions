@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "D:\yuki-extension-tests\95d185303f0a487d158c\src\ci\check.py", line 37, in main
+    report_name, report = runner(root, args.out.resolve())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\95d185303f0a487d158c\src\tests\cases\EXT-008.py", line 14, in run
+    return "codex-driver-wire.json", installed_case(root, output, "codex_wire.py", nodes)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\95d185303f0a487d158c\src\ci\driver_case.py", line 38, in installed_case
+    run(python, "-I", root / "tests/peers" / observer, trace, *nodes)
+  File "D:\yuki-extension-tests\95d185303f0a487d158c\src\ci\driver_case.py", line 29, in run
+    result.check_returncode()
+  File "C:\Users\Hilbert\AppData\Local\Programs\Python\Python312\Lib\subprocess.py", line 502, in check_returncode
+    raise CalledProcessError(self.returncode, self.args, self.stdout,
+subprocess.CalledProcessError: Command '['D:\\yuki-extension-tests\\95d185303f0a487d158c\\src\\artifacts\\EXT-008\\faults\\work\\env\\Scripts\\python.exe', '-I', 'D:\\yuki-extension-tests\\95d185303f0a487d158c\\src\\tests\\peers\\codex_wire.py', 'D:\\yuki-extension-tests\\95d185303f0a487d158c\\src\\artifacts\\EXT-008\\faults\\work\\peer.json', 'tests/test_codex_driver.py::test_original_turn_steer_queue_cancel_and_detach_have_distinct_effects', 'tests/test_codex_driver.py::test_native_request_exact_original_and_cannot_answer_twice', 'tests/test_codex_driver.py::test_selected_cli_prepares_default_owner_then_uses_only_its_proxy', 'tests/test_codex_contract.py', 'tests/test_codex_discovery.py']' returned non-zero exit status 1.

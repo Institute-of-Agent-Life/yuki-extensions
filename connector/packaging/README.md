@@ -1,6 +1,6 @@
 # Connector development candidate
 
-The candidate uses distribution version `0.4.4.dev0`, wire 4 and Python 3.12.
+The candidate uses distribution version `0.4.4.dev1`, wire 4 and Python 3.12.
 The 0.4.3 source preparation is reproducible at commit `0150c76`.
 Its 43 original file digests, source commit and historical CI wheel digest are
 in `source.lock.json`. The exact historical wheel lives under
@@ -8,8 +8,8 @@ in `source.lock.json`. The exact historical wheel lives under
 
 The candidate changes package metadata and the runtime builder. The builder
 takes the license from this release unit and records the digest of the wheel
-installed in the portable runtime. The fixed drivers and journal are checked
-against the original source bytes.
+installed in the portable runtime. The wheel audit checks the baseline module inventory and source digests.
+The reviewed Codex change for EXT-008 has a separate digest in the same lock.
 
 From the repository root on a machine with Python 3.12 and uv 0.12.0:
 

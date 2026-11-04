@@ -62,7 +62,21 @@ Windows 實機正式驗收與產物在 `artifacts/EXT-007/01/`。安裝原 0.4.3
 
 ## 下一步
 
-PR #3 在同一提交的 Windows、macOS、Linux CI 全綠後合併。EXT-008／009／010
+PR #3 已在提交 `41860a2` 通過三平台正式 CI（run `41833181301`），
+合併到 `main` 的提交為 `18e028c`。每平台的 manifest 與 transcript 雜湊
+均已覆核，見 `artifacts/EXT-007/ci-receipt-41860a2.json`。EXT-008／009／010
 可沿已驗 Connector 檢查原生驅動，EXT-019 可用同一 oracle 盤點 Desktop。
 EXT-002 尚需 CORE-031 Rust／Python SDK 與 schema；其餘需求見
 `docs/core-interface-requests.md`。共享預算依總書 K05。
+
+
+## EXT-008 Codex 原生驅動
+
+分支 `codex/ext-008`。Windows 在已安裝的 0.4.4.dev0 重現 queue
+回 `native_error`（18 通過、1 失敗）。候選 0.4.4.dev1 將原生
+`-32601` 回為 `unsupported_action` 並清除已明確拒絕的待排項目。
+52 個依賴維持原鎖定。Windows 實機的 19 個案例通過，包含原生問答、
+指定 turn 的 steer／cancel、detach、CLI 發現，以及接納 prompt 後丟失回應。
+恢復只讀原 operation，daemon 共收到一次 turn/start。證據在
+`artifacts/EXT-008/01/codex-driver-wire.json`，失敗基線在
+`artifacts/EXT-008/faults/`；此為本機 loopback daemon，無模型呼叫。

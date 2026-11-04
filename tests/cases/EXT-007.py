@@ -21,7 +21,7 @@ from oracle import load_oracle
 from package import build
 
 
-VERSION = "0.4.4.dev0"
+VERSION = "0.4.4.dev1"
 
 
 def audit_wheel(path, source):
@@ -29,6 +29,11 @@ def audit_wheel(path, source):
         names = archive.namelist()
         expected = {name.removeprefix("src/"): sha for name, sha in source["original_files_sha256"].items()
                     if name.startswith("src/") and name.endswith(".py")}
+        for name, sha in source.get("reviewed_runtime_sha256", {}).items():
+            module = name.removeprefix("src/")
+            if module not in expected:
+                raise ValueError("reviewed module is absent from baseline: " + name)
+            expected[module] = sha
         code = {n for n in names if n.startswith("yuki_agent_connector/") and not n.endswith("/")}
         if code != set(expected):
             raise ValueError("runtime wheel content differs from the fixed module inventory")

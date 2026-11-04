@@ -72,6 +72,9 @@ jobs:
         env:
           YUKI_CONNECTOR_PACKAGE_DIR: dist/connector
         run: python ci/check.py EXT-007 --out artifacts/EXT-007/candidate-ci
+      - name: Check Codex native driver
+        if: matrix.unit == 'connector'
+        run: python ci/check.py EXT-008 --out artifacts/EXT-008/ci
       - name: Upload Connector acceptance evidence
         if: always() && matrix.unit == 'connector'
         uses: actions/upload-artifact@v4
@@ -79,6 +82,8 @@ jobs:
           name: connector-upgrade-${{ matrix.os }}-${{ github.sha }}
           path: |
             artifacts/EXT-007/candidate-ci/*.json
+            artifacts/EXT-008/ci/*.json
+            artifacts/EXT-008/ci/*.txt
             artifacts/EXT-007/candidate-ci/*.xml
             artifacts/EXT-007/candidate-ci/*.txt
           if-no-files-found: error

@@ -1,0 +1,1599 @@
+{
+  "wheel": "yuki_agent_connector-0.4.4.dev1-py3-none-any.whl",
+  "sha256": "2748ec830b56e38f404d33964350578e543232ab1fce02e2399fc3ab045a74d8",
+  "lock_sha256": "20473bace4005ddd06df3c0d5b08a6239f5a6e33a7f8f24b20f2d4382a95336a",
+  "distribution": "0.4.4.dev1",
+  "cases": {
+    "tests/test_codex_driver.py::test_original_turn_steer_queue_cancel_and_detach_have_distinct_effects": {
+      "transcript": [
+        {
+          "from_driver": {
+            "id": "bf890093-d4be-4264-abad-e9cd603a8690",
+            "method": "initialize",
+            "params": {
+              "clientInfo": {
+                "name": "yuki_agent_connector",
+                "version": "0.4.4.dev1"
+              },
+              "capabilities": {
+                "experimentalApi": true
+              }
+            }
+          }
+        },
+        {
+          "from_owner": {
+            "id": "bf890093-d4be-4264-abad-e9cd603a8690",
+            "result": {
+              "userAgent": "fake-codex-0.163.0"
+            }
+          }
+        },
+        {
+          "instance": "codex",
+          "input": {
+            "id": "operation",
+            "action": "list",
+            "session_id": "thread",
+            "execution_id": null,
+            "arguments": {}
+          },
+          "result": {
+            "sessions": [
+              {
+                "id": "thread",
+                "label": null,
+                "status": "idle",
+                "cwd": null,
+                "native_status": {
+                  "type": "idle"
+                }
+              }
+            ],
+            "next_cursor": null,
+            "cursor_parameter": "native_cursor",
+            "history_order": "updated_at_desc",
+            "source_scope": "native_default_interactive_sources"
+          }
+        },
+        {
+          "from_driver": {
+            "method": "initialized"
+          }
+        },
+        {
+          "from_driver": {
+            "id": "654c6c35-a6ec-49f9-9df6-6103e9814ac4",
+            "method": "thread/list",
+            "params": {
+              "cursor": null,
+              "limit": 30,
+              "sortKey": "updated_at",
+              "sortDirection": "desc",
+              "useStateDbOnly": true
+            }
+          }
+        },
+        {
+          "from_owner": {
+            "id": "654c6c35-a6ec-49f9-9df6-6103e9814ac4",
+            "result": {
+              "data": [
+                {
+                  "id": "thread",
+                  "status": {
+                    "type": "idle"
+                  },
+                  "turns": [
+                    {
+                      "id": "turn",
+                      "status": "completed"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "instance": "codex",
+          "input": {
+            "id": "watch-one",
+            "action": "watch",
+            "session_id": "thread",
+            "execution_id": null,
+            "arguments": {}
+          },
+          "result": {
+            "session_id": "thread",
+            "execution_id": null,
+            "status": "unknown",
+            "pending": true,
+            "admitted": true
+          }
+        },
+        {
+          "from_driver": {
+            "id": "ac6f6d25-23ee-4f79-a9cd-8d2bd70f4c38",
+            "method": "thread/loaded/list",
+            "params": {
+              "cursor": null
+            }
+          }
+        },
+        {
+          "from_owner": {
+            "id": "ac6f6d25-23ee-4f79-a9cd-8d2bd70f4c38",
+            "result": {
+              "data": [
+                "thread"
+              ]
+            }
+          }
+        },
+        {
+          "from_driver": {
+            "id": "8b80d2a0-49ba-4f3b-8d3b-a41d7323f44c",
+            "method": "thread/resume",
+            "params": {
+              "threadId": "thread",
+              "excludeTurns": true
+            }
+          }
+        },
+        {
+          "from_owner": {
+            "id": "8b80d2a0-49ba-4f3b-8d3b-a41d7323f44c",
+            "result": {
+              "thread": {
+                "id": "thread",
+                "status": {
+                  "type": "idle"
+                },
+                "turns": [
+                  {
+                    "id": "turn",
+                    "status": "completed"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "instance": "codex",
+          "input": {
+            "id": "operation",
+            "action": "prompt",
+            "session_id": "thread",
+            "execution_id": null,
+            "arguments": {
+              "prompt": "original"
+            }
+          },
+          "result": {
+            "session_id": "thread",
+            "execution_id": "turn",
+            "status": "running",
+            "pending": true,
+            "admitted": true
+          }
+        },
+        {
+          "from_driver": {
+            "id": "8918265b-d383-4c05-b601-53c9dce439c1",
+            "method": "thread/read",
+            "params": {
+              "threadId": "thread",
+              "includeTurns": false
+            }
+          }
+        },
+        {
+          "from_owner": {
+            "id": "8918265b-d383-4c05-b601-53c9dce439c1",
+            "result": {
+              "thread": {
+                "id": "thread",
+                "status": {
+                  "type": "idle"
+                },
+                "turns": [
+                  {
+                    "id": "turn",
+                    "status": "completed"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "from_driver": {
+            "id": "c6e59918-8676-4db5-a222-306a3506ae02",
+            "method": "thread/resume",
+            "params": {
+              "threadId": "thread",
+              "excludeTurns": true
+            }
+          }
+        },
+        {
+          "from_owner": {
+            "id": "c6e59918-8676-4db5-a222-306a3506ae02",
+            "result": {
+              "thread": {
+                "id": "thread",
+                "status": {
+                  "type": "idle"
+                },
+                "turns": [
+                  {
+                    "id": "turn",
+                    "status": "completed"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "from_driver": {
+            "id": "2eab2b0c-bf2d-444b-84e4-ad7bf4417af5",
+            "method": "turn/start",
+            "params": {
+              "threadId": "thread",
+              "clientUserMessageId": "operation",
+              "input": [
+                {
+                  "type": "text",
+                  "text": "original"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "from_owner": {
+            "method": "turn/started",
+            "params": {
+              "threadId": "thread",
+              "turn": {
+                "id": "turn",
+                "status": "inProgress"
+              }
+            }
+          }
+        },
+        {
+          "from_owner": {
+            "id": "2eab2b0c-bf2d-444b-84e4-ad7bf4417af5",
+            "result": {
+              "turn": {
+                "id": "turn",
+                "status": "inProgress"
+              }
+            }
+          }
+        },
+        {
+          "instance": "codex",
+          "input": {
+            "id": "another",
+            "action": "prompt",
+            "session_id": "thread",
+            "execution_id": null,
+            "arguments": {
+              "prompt": "duplicate"
+            }
+          },
+          "error": {
+            "code": "conflict",
+            "uncertain": false,
+            "details": null
+          }
+        },
+        {
+          "from_driver": {
+            "id": "401a8a20-c04a-4255-ba1b-239b8a4930e7",
+            "method": "thread/read",
+            "params": {
+              "threadId": "thread",
+              "includeTurns": false
+            }
+          }
+        },
+        {
+          "from_owner": {
+            "id": "401a8a20-c04a-4255-ba1b-239b8a4930e7",
+            "result": {
+              "thread": {
+                "id": "thread",
+                "status": {
+                  "type": "active"
+                },
+                "turns": [
+                  {
+                    "id": "turn",
+                    "status": "inProgress"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "instance": "codex",
+          "input": {
+            "id": "operation",
+            "action": "steer",
+            "session_id": "thread",
+            "execution_id": "turn",
+            "arguments": {
+              "prompt": "new requirement"
+            }
+          },
+          "result": {
+            "session_id": "thread",
+            "execution_id": "turn",
+            "status": "running",
+            "pending": true,
+            "admitted": true
+          }
+        },
+        {
+          "from_driver": {
+            "id": "0dd3deea-7f1a-46c9-8e69-cfbd5656803a",
+            "method": "turn/steer",
+            "params": {
+              "threadId": "thread",
+              "expectedTurnId": "turn",
+              "input": [
+                {
+                  "type": "text",
+                  "text": "new requirement"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "from_owner": {
+            "id": "0dd3deea-7f1a-46c9-8e69-cfbd5656803a",
+            "result": {
+              "turnId": "turn"
+            }
+          }
+        },
+        {
+          "instance": "codex",
+          "input": {
+            "id": "operation",
+            "action": "steer",
+            "session_id": "thread",
+            "execution_id": "wrong",
+            "arguments": {
+              "prompt": "conflict"
+            }
+          },
+          "error": {
+            "code": "native_error",
+            "uncertain": true,
+            "details": {
+              "code": -32000,
+              "message": "active turn mismatch"
+            }
+          }
+        },
+        {
+          "from_driver": {
+            "id": "15214d82-07d0-40eb-825c-ff8495c15b57",
+            "method": "turn/steer",
+            "params": {
+              "threadId": "thread",
+              "expectedTurnId": "wrong",
+              "input": [
+                {
+                  "type": "text",
+                  "text": "conflict"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "from_owner": {
+            "id": "15214d82-07d0-40eb-825c-ff8495c15b57",
+            "error": {
+              "code": -32000,
+              "message": "active turn mismatch"
+            }
+          }
+        },
+        {
+          "instance": "codex",
+          "input": {
+            "id": "queue-op",
+            "action": "queue",
+            "session_id": "thread",
+            "execution_id": null,
+            "arguments": {
+              "prompt": "later"
+            }
+          },
+          "result": {
+            "session_id": "thread",
+            "execution_id": null,
+            "queued_submission_id": "queued",
+            "status": "queued",
+            "pending": true,
+            "admitted": true
+          }
+        },
+        {
+          "from_driver": {
+            "id": "574605fc-49cb-4483-93fa-d1f4f6fb7d59",
+            "method": "thread/queue/add",
+            "params": {
+              "threadId": "thread",
+              "clientUserMessageId": "queue-op",
+              "input": [
+                {
+                  "type": "text",
+                  "text": "later"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "from_owner": {
+            "id": "574605fc-49cb-4483-93fa-d1f4f6fb7d59",
+            "result": {
+              "queuedSubmission": {
+                "id": "queued",
+                "clientUserMessageId": "queue-op"
+              }
+            }
+          }
+        },
+        {
+          "instance": "codex",
+          "input": {
+            "id": "operation",
+            "action": "cancel",
+            "session_id": "thread",
+            "execution_id": null,
+            "arguments": {
+              "operation_id": "queue-op"
+            }
+          },
+          "result": {
+            "session_id": "thread",
+            "status": "cancelled",
+            "pending": false,
+            "admitted": true
+          }
+        },
+        {
+          "from_driver": {
+            "id": "6faf18f8-3965-4f5f-9227-ee10a02fc422",
+            "method": "thread/queue/delete",
+            "params": {
+              "threadId": "thread",
+              "queuedSubmissionId": "queued"
+            }
+          }
+        },
+        {
+          "from_owner": {
+            "id": "6faf18f8-3965-4f5f-9227-ee10a02fc422",
+            "result": {}
+          }
+        },
+        {
+          "instance": "codex",
+          "input": {
+            "id": "operation",
+            "action": "cancel",
+            "session_id": "thread",
+            "execution_id": "turn",
+            "arguments": {}
+          },
+          "result": {
+            "session_id": "thread",
+            "execution_id": "turn",
+            "status": "running",
+            "pending": true,
+            "cancel_requested": true,
+            "admitted": true
+          }
+        },
+        {
+          "from_driver": {
+            "id": "300557ef-187f-4202-9cb8-4db0bb181e7b",
+            "method": "turn/interrupt",
+            "params": {
+              "threadId": "thread",
+              "turnId": "turn"
+            }
+          }
+        },
+        {
+          "from_owner": {
+            "id": "300557ef-187f-4202-9cb8-4db0bb181e7b",
+            "result": {}
+          }
+        },
+        {
+          "instance": "codex",
+          "input": {
+            "id": "operation",
+            "action": "detach",
+            "session_id": "thread",
+            "execution_id": null,
+            "arguments": {
+              "operation_id": "watch-one"
+            }
+          },
+          "result": {
+            "status": "completed",
+            "session_id": "thread",
+            "detached": true,
+            "admitted": true
+          }
+        },
+        {
+          "from_owner": {
+            "method": "turn/completed",
+            "params": {
+              "threadId": "thread",
+              "turn": {
+                "id": "turn",
+                "status": "interrupted"
+              }
+            }
+          }
+        }
+      ],
+      "setup": "passed",
+      "call": "passed",
+      "teardown": "passed"
+    },
+    "tests/test_codex_driver.py::test_native_request_exact_original_and_cannot_answer_twice": {
+      "transcript": [
+        {
+          "from_driver": {
+            "id": "2c19d454-8ce4-4d3b-82aa-09cb6f2b8715",
+            "method": "initialize",
+            "params": {
+              "clientInfo": {
+                "name": "yuki_agent_connector",
+                "version": "0.4.4.dev1"
+              },
+              "capabilities": {
+                "experimentalApi": true
+              }
+            }
+          }
+        },
+        {
+          "from_owner": {
+            "id": "2c19d454-8ce4-4d3b-82aa-09cb6f2b8715",
+            "result": {
+              "userAgent": "fake-codex-0.163.0"
+            }
+          }
+        },
+        {
+          "instance": "codex",
+          "input": {
+            "id": "operation",
+            "action": "watch",
+            "session_id": "thread",
+            "execution_id": null,
+            "arguments": {}
+          },
+          "result": {
+            "session_id": "thread",
+            "execution_id": null,
+            "status": "unknown",
+            "pending": true,
+            "admitted": true
+          }
+        },
+        {
+          "from_driver": {
+            "method": "initialized"
+          }
+        },
+        {
+          "from_driver": {
+            "id": "1b853450-cdcd-4a5f-9ab9-28ea9210ce0d",
+            "method": "thread/loaded/list",
+            "params": {
+              "cursor": null
+            }
+          }
+        },
+        {
+          "from_owner": {
+            "id": "1b853450-cdcd-4a5f-9ab9-28ea9210ce0d",
+            "result": {
+              "data": [
+                "thread"
+              ]
+            }
+          }
+        },
+        {
+          "from_driver": {
+            "id": "51b67faf-2cc1-40b5-8247-d61574cce106",
+            "method": "thread/resume",
+            "params": {
+              "threadId": "thread",
+              "excludeTurns": true
+            }
+          }
+        },
+        {
+          "from_owner": {
+            "id": "51b67faf-2cc1-40b5-8247-d61574cce106",
+            "result": {
+              "thread": {
+                "id": "thread",
+                "status": {
+                  "type": "idle"
+                },
+                "turns": [
+                  {
+                    "id": "turn",
+                    "status": "completed"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "from_owner": {
+            "id": 17,
+            "method": "item/tool/requestUserInput",
+            "params": {
+              "threadId": "thread",
+              "turnId": "turn",
+              "questions": []
+            }
+          }
+        },
+        {
+          "instance": "codex",
+          "input": {
+            "id": "operation",
+            "action": "respond",
+            "session_id": "thread",
+            "execution_id": "turn",
+            "arguments": {
+              "permission_id": "17",
+              "connection_id": "d4134f89-1267-4f1a-9696-e2e56a57d460",
+              "response": {
+                "answers": {
+                  "q": {
+                    "answers": [
+                      "yes"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "result": {
+            "session_id": "thread",
+            "execution_id": "turn",
+            "status": "response_submitted",
+            "pending": false,
+            "response_submitted": true,
+            "admitted": true
+          }
+        },
+        {
+          "from_driver": {
+            "id": 17,
+            "result": {
+              "answers": {
+                "q": {
+                  "answers": [
+                    "yes"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "instance": "codex",
+          "input": {
+            "id": "operation",
+            "action": "respond",
+            "session_id": "thread",
+            "execution_id": "turn",
+            "arguments": {
+              "permission_id": "17",
+              "connection_id": "d4134f89-1267-4f1a-9696-e2e56a57d460",
+              "answers": {}
+            }
+          },
+          "error": {
+            "code": "request_resolved",
+            "uncertain": false,
+            "details": null
+          }
+        }
+      ],
+      "setup": "passed",
+      "call": "passed",
+      "teardown": "passed"
+    },
+    "tests/test_codex_driver.py::test_selected_cli_prepares_default_owner_then_uses_only_its_proxy[False]": {
+      "transcript": [
+        {
+          "from_driver": {
+            "id": "0af0a542-64a8-47a8-91d9-ef0a0e205c7a",
+            "method": "initialize",
+            "params": {
+              "clientInfo": {
+                "name": "yuki_agent_connector",
+                "version": "0.4.4.dev1"
+              },
+              "capabilities": {
+                "experimentalApi": true
+              }
+            }
+          }
+        },
+        {
+          "from_owner": {
+            "id": "0af0a542-64a8-47a8-91d9-ef0a0e205c7a",
+            "result": {
+              "userAgent": "fake-codex-0.163.0"
+            }
+          }
+        },
+        {
+          "instance": "original",
+          "input": {
+            "id": "list",
+            "action": "list",
+            "arguments": {}
+          },
+          "result": {
+            "sessions": [
+              {
+                "id": "thread",
+                "label": null,
+                "status": "idle",
+                "cwd": null,
+                "native_status": {
+                  "type": "idle"
+                }
+              }
+            ],
+            "next_cursor": null,
+            "cursor_parameter": "native_cursor",
+            "history_order": "updated_at_desc",
+            "source_scope": "native_default_interactive_sources"
+          }
+        },
+        {
+          "from_driver": {
+            "method": "initialized"
+          }
+        },
+        {
+          "from_driver": {
+            "id": "e95f7f39-876e-40d9-a1d5-5a427ff3a97b",
+            "method": "thread/list",
+            "params": {
+              "cursor": null,
+              "limit": 30,
+              "sortKey": "updated_at",
+              "sortDirection": "desc",
+              "useStateDbOnly": true
+            }
+          }
+        },
+        {
+          "from_owner": {
+            "id": "e95f7f39-876e-40d9-a1d5-5a427ff3a97b",
+            "result": {
+              "data": [
+                {
+                  "id": "thread",
+                  "status": {
+                    "type": "idle"
+                  },
+                  "turns": [
+                    {
+                      "id": "turn",
+                      "status": "completed"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "from_driver": {
+            "id": "cf28be58-07aa-44f9-92a5-98e2466359bd",
+            "method": "initialize",
+            "params": {
+              "clientInfo": {
+                "name": "yuki_agent_connector",
+                "version": "0.4.4.dev1"
+              },
+              "capabilities": {
+                "experimentalApi": true
+              }
+            }
+          }
+        },
+        {
+          "from_owner": {
+            "id": "cf28be58-07aa-44f9-92a5-98e2466359bd",
+            "result": {
+              "userAgent": "fake-codex-0.163.0"
+            }
+          }
+        },
+        {
+          "instance": "original",
+          "input": {
+            "id": "after-reconnect",
+            "action": "list",
+            "arguments": {}
+          },
+          "result": {
+            "sessions": [
+              {
+                "id": "thread",
+                "label": null,
+                "status": "idle",
+                "cwd": null,
+                "native_status": {
+                  "type": "idle"
+                }
+              }
+            ],
+            "next_cursor": null,
+            "cursor_parameter": "native_cursor",
+            "history_order": "updated_at_desc",
+            "source_scope": "native_default_interactive_sources"
+          }
+        },
+        {
+          "from_driver": {
+            "method": "initialized"
+          }
+        },
+        {
+          "from_driver": {
+            "id": "40557e17-2644-492f-a82c-9b0ed9a5d3b1",
+            "method": "thread/list",
+            "params": {
+              "cursor": null,
+              "limit": 30,
+              "sortKey": "updated_at",
+              "sortDirection": "desc",
+              "useStateDbOnly": true
+            }
+          }
+        },
+        {
+          "from_owner": {
+            "id": "40557e17-2644-492f-a82c-9b0ed9a5d3b1",
+            "result": {
+              "data": [
+                {
+                  "id": "thread",
+                  "status": {
+                    "type": "idle"
+                  },
+                  "turns": [
+                    {
+                      "id": "turn",
+                      "status": "completed"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "from_driver": {
+            "id": "7dc19368-5f06-4509-8fe1-3ab6fae2deb3",
+            "method": "initialize",
+            "params": {
+              "clientInfo": {
+                "name": "yuki_agent_connector",
+                "version": "0.4.4.dev1"
+              },
+              "capabilities": {
+                "experimentalApi": true
+              }
+            }
+          }
+        },
+        {
+          "from_owner": {
+            "id": "7dc19368-5f06-4509-8fe1-3ab6fae2deb3",
+            "result": {
+              "userAgent": "fake-codex-0.163.0"
+            }
+          }
+        },
+        {
+          "instance": "original",
+          "input": {
+            "id": "list",
+            "action": "list",
+            "arguments": {}
+          },
+          "result": {
+            "sessions": [
+              {
+                "id": "thread",
+                "label": null,
+                "status": "idle",
+                "cwd": null,
+                "native_status": {
+                  "type": "idle"
+                }
+              }
+            ],
+            "next_cursor": null,
+            "cursor_parameter": "native_cursor",
+            "history_order": "updated_at_desc",
+            "source_scope": "native_default_interactive_sources"
+          }
+        },
+        {
+          "from_driver": {
+            "method": "initialized"
+          }
+        },
+        {
+          "from_driver": {
+            "id": "178613ae-ee6e-4e43-8651-936ddce940bc",
+            "method": "thread/list",
+            "params": {
+              "cursor": null,
+              "limit": 30,
+              "sortKey": "updated_at",
+              "sortDirection": "desc",
+              "useStateDbOnly": true
+            }
+          }
+        },
+        {
+          "from_owner": {
+            "id": "178613ae-ee6e-4e43-8651-936ddce940bc",
+            "result": {
+              "data": [
+                {
+                  "id": "thread",
+                  "status": {
+                    "type": "idle"
+                  },
+                  "turns": [
+                    {
+                      "id": "turn",
+                      "status": "completed"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "setup": "passed",
+      "call": "passed",
+      "teardown": "passed"
+    },
+    "tests/test_codex_driver.py::test_selected_cli_prepares_default_owner_then_uses_only_its_proxy[True]": {
+      "transcript": [
+        {
+          "from_driver": {
+            "id": "c49116d9-f2cb-4b6e-a9bc-a2ad7e890798",
+            "method": "initialize",
+            "params": {
+              "clientInfo": {
+                "name": "yuki_agent_connector",
+                "version": "0.4.4.dev1"
+              },
+              "capabilities": {
+                "experimentalApi": true
+              }
+            }
+          }
+        },
+        {
+          "from_owner": {
+            "id": "c49116d9-f2cb-4b6e-a9bc-a2ad7e890798",
+            "result": {
+              "userAgent": "fake-codex-0.163.0"
+            }
+          }
+        },
+        {
+          "instance": "original",
+          "input": {
+            "id": "list",
+            "action": "list",
+            "arguments": {}
+          },
+          "result": {
+            "sessions": [
+              {
+                "id": "thread",
+                "label": null,
+                "status": "idle",
+                "cwd": null,
+                "native_status": {
+                  "type": "idle"
+                }
+              }
+            ],
+            "next_cursor": null,
+            "cursor_parameter": "native_cursor",
+            "history_order": "updated_at_desc",
+            "source_scope": "native_default_interactive_sources"
+          }
+        },
+        {
+          "from_driver": {
+            "method": "initialized"
+          }
+        },
+        {
+          "from_driver": {
+            "id": "4b073017-84f2-47cf-99ca-f2f4dc75fc2c",
+            "method": "thread/list",
+            "params": {
+              "cursor": null,
+              "limit": 30,
+              "sortKey": "updated_at",
+              "sortDirection": "desc",
+              "useStateDbOnly": true
+            }
+          }
+        },
+        {
+          "from_owner": {
+            "id": "4b073017-84f2-47cf-99ca-f2f4dc75fc2c",
+            "result": {
+              "data": [
+                {
+                  "id": "thread",
+                  "status": {
+                    "type": "idle"
+                  },
+                  "turns": [
+                    {
+                      "id": "turn",
+                      "status": "completed"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "from_driver": {
+            "id": "9c1c8273-2112-4149-890b-106c968130e5",
+            "method": "initialize",
+            "params": {
+              "clientInfo": {
+                "name": "yuki_agent_connector",
+                "version": "0.4.4.dev1"
+              },
+              "capabilities": {
+                "experimentalApi": true
+              }
+            }
+          }
+        },
+        {
+          "from_owner": {
+            "id": "9c1c8273-2112-4149-890b-106c968130e5",
+            "result": {
+              "userAgent": "fake-codex-0.163.0"
+            }
+          }
+        },
+        {
+          "instance": "original",
+          "input": {
+            "id": "after-reconnect",
+            "action": "list",
+            "arguments": {}
+          },
+          "result": {
+            "sessions": [
+              {
+                "id": "thread",
+                "label": null,
+                "status": "idle",
+                "cwd": null,
+                "native_status": {
+                  "type": "idle"
+                }
+              }
+            ],
+            "next_cursor": null,
+            "cursor_parameter": "native_cursor",
+            "history_order": "updated_at_desc",
+            "source_scope": "native_default_interactive_sources"
+          }
+        },
+        {
+          "from_driver": {
+            "method": "initialized"
+          }
+        },
+        {
+          "from_driver": {
+            "id": "2b27f83a-2183-4a9b-9909-5b8c3bf89110",
+            "method": "thread/list",
+            "params": {
+              "cursor": null,
+              "limit": 30,
+              "sortKey": "updated_at",
+              "sortDirection": "desc",
+              "useStateDbOnly": true
+            }
+          }
+        },
+        {
+          "from_owner": {
+            "id": "2b27f83a-2183-4a9b-9909-5b8c3bf89110",
+            "result": {
+              "data": [
+                {
+                  "id": "thread",
+                  "status": {
+                    "type": "idle"
+                  },
+                  "turns": [
+                    {
+                      "id": "turn",
+                      "status": "completed"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "from_driver": {
+            "id": "9c09da78-d741-4ca4-b5eb-60856a56a9b3",
+            "method": "initialize",
+            "params": {
+              "clientInfo": {
+                "name": "yuki_agent_connector",
+                "version": "0.4.4.dev1"
+              },
+              "capabilities": {
+                "experimentalApi": true
+              }
+            }
+          }
+        },
+        {
+          "from_owner": {
+            "id": "9c09da78-d741-4ca4-b5eb-60856a56a9b3",
+            "result": {
+              "userAgent": "fake-codex-0.163.0"
+            }
+          }
+        },
+        {
+          "instance": "original",
+          "input": {
+            "id": "list",
+            "action": "list",
+            "arguments": {}
+          },
+          "result": {
+            "sessions": [
+              {
+                "id": "thread",
+                "label": null,
+                "status": "idle",
+                "cwd": null,
+                "native_status": {
+                  "type": "idle"
+                }
+              }
+            ],
+            "next_cursor": null,
+            "cursor_parameter": "native_cursor",
+            "history_order": "updated_at_desc",
+            "source_scope": "native_default_interactive_sources"
+          }
+        },
+        {
+          "from_driver": {
+            "method": "initialized"
+          }
+        },
+        {
+          "from_driver": {
+            "id": "8a2659fe-2e57-46ca-a562-7bbfba7dcd7a",
+            "method": "thread/list",
+            "params": {
+              "cursor": null,
+              "limit": 30,
+              "sortKey": "updated_at",
+              "sortDirection": "desc",
+              "useStateDbOnly": true
+            }
+          }
+        },
+        {
+          "from_owner": {
+            "id": "8a2659fe-2e57-46ca-a562-7bbfba7dcd7a",
+            "result": {
+              "data": [
+                {
+                  "id": "thread",
+                  "status": {
+                    "type": "idle"
+                  },
+                  "turns": [
+                    {
+                      "id": "turn",
+                      "status": "completed"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "setup": "passed",
+      "call": "passed",
+      "teardown": "passed"
+    },
+    "tests/test_codex_contract.py::test_original_owner_fault[unsupported_queue]": {
+      "transcript": [
+        {
+          "from_driver": {
+            "id": "492cc3f8-0637-4a8b-9739-1c76f3c72f09",
+            "method": "initialize",
+            "params": {
+              "clientInfo": {
+                "name": "yuki_agent_connector",
+                "version": "0.4.4.dev1"
+              },
+              "capabilities": {
+                "experimentalApi": true
+              }
+            }
+          }
+        },
+        {
+          "from_owner": {
+            "id": "492cc3f8-0637-4a8b-9739-1c76f3c72f09",
+            "result": {}
+          }
+        },
+        {
+          "instance": "original-device",
+          "input": {
+            "id": "queued-once",
+            "action": "queue",
+            "session_id": "thread",
+            "execution_id": null,
+            "arguments": {
+              "prompt": "later"
+            }
+          },
+          "error": {
+            "code": "unsupported_action",
+            "uncertain": false,
+            "details": {
+              "code": -32601,
+              "message": "No queue"
+            }
+          }
+        },
+        {
+          "from_driver": {
+            "method": "initialized"
+          }
+        },
+        {
+          "from_driver": {
+            "id": "7d0c6f1c-61ea-44b7-bada-80fb1bd018e4",
+            "method": "thread/queue/add",
+            "params": {
+              "threadId": "thread",
+              "clientUserMessageId": "queued-once",
+              "input": [
+                {
+                  "type": "text",
+                  "text": "later"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "from_owner": {
+            "id": "7d0c6f1c-61ea-44b7-bada-80fb1bd018e4",
+            "error": {
+              "code": -32601,
+              "message": "No queue"
+            }
+          }
+        }
+      ],
+      "setup": "passed",
+      "call": "passed",
+      "teardown": "passed"
+    },
+    "tests/test_codex_contract.py::test_original_owner_fault[lost_prompt_reply]": {
+      "transcript": [
+        {
+          "from_driver": {
+            "id": "7448dadc-b840-4839-a4c2-22a8386be45b",
+            "method": "initialize",
+            "params": {
+              "clientInfo": {
+                "name": "yuki_agent_connector",
+                "version": "0.4.4.dev1"
+              },
+              "capabilities": {
+                "experimentalApi": true
+              }
+            }
+          }
+        },
+        {
+          "from_owner": {
+            "id": "7448dadc-b840-4839-a4c2-22a8386be45b",
+            "result": {}
+          }
+        },
+        {
+          "instance": "original-device",
+          "input": {
+            "id": "prompt-once",
+            "action": "prompt",
+            "session_id": "thread",
+            "execution_id": null,
+            "arguments": {
+              "prompt": "fixture request"
+            }
+          },
+          "error": {
+            "code": "unknown",
+            "uncertain": true,
+            "details": null
+          }
+        },
+        {
+          "from_driver": {
+            "method": "initialized"
+          }
+        },
+        {
+          "from_driver": {
+            "id": "16fa0b1f-778f-492a-ac12-7470b2996340",
+            "method": "thread/read",
+            "params": {
+              "threadId": "thread",
+              "includeTurns": false
+            }
+          }
+        },
+        {
+          "from_owner": {
+            "id": "16fa0b1f-778f-492a-ac12-7470b2996340",
+            "result": {
+              "thread": {
+                "id": "thread",
+                "status": {
+                  "type": "idle"
+                }
+              }
+            }
+          }
+        },
+        {
+          "from_driver": {
+            "id": "26dda4de-b55a-498c-9b1c-f0e542d1a298",
+            "method": "thread/resume",
+            "params": {
+              "threadId": "thread",
+              "excludeTurns": true
+            }
+          }
+        },
+        {
+          "from_owner": {
+            "id": "26dda4de-b55a-498c-9b1c-f0e542d1a298",
+            "result": {
+              "thread": {
+                "id": "thread",
+                "status": {
+                  "type": "idle"
+                }
+              }
+            }
+          }
+        },
+        {
+          "from_driver": {
+            "id": "6108ffa0-e9ec-42e1-9f23-39f2a68e147c",
+            "method": "turn/start",
+            "params": {
+              "threadId": "thread",
+              "clientUserMessageId": "prompt-once",
+              "input": [
+                {
+                  "type": "text",
+                  "text": "fixture request"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "from_driver": {
+            "id": "b56ba759-ac8e-490b-8a57-f8d023cb5cad",
+            "method": "initialize",
+            "params": {
+              "clientInfo": {
+                "name": "yuki_agent_connector",
+                "version": "0.4.4.dev1"
+              },
+              "capabilities": {
+                "experimentalApi": true
+              }
+            }
+          }
+        },
+        {
+          "from_owner": {
+            "id": "b56ba759-ac8e-490b-8a57-f8d023cb5cad",
+            "result": {}
+          }
+        },
+        {
+          "from_driver": {
+            "method": "initialized"
+          }
+        },
+        {
+          "from_driver": {
+            "id": "adc10f38-5bc1-44ac-bb95-a56735dea3fc",
+            "method": "thread/turns/list",
+            "params": {
+              "threadId": "thread",
+              "cursor": null,
+              "itemsView": "full",
+              "sortDirection": "desc"
+            }
+          }
+        },
+        {
+          "from_owner": {
+            "id": "adc10f38-5bc1-44ac-bb95-a56735dea3fc",
+            "result": {
+              "data": [
+                {
+                  "id": "original-turn",
+                  "status": "completed",
+                  "items": [
+                    {
+                      "type": "userMessage",
+                      "clientId": "prompt-once"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "setup": "passed",
+      "call": "passed",
+      "teardown": "passed"
+    },
+    "tests/test_codex_discovery.py::test_windows_npm_shim_resolves_its_installed_native_package_without_launching[x86_64-pc-windows-msvc-nested]": {
+      "transcript": [],
+      "setup": "passed",
+      "call": "passed",
+      "teardown": "passed"
+    },
+    "tests/test_codex_discovery.py::test_windows_npm_shim_resolves_its_installed_native_package_without_launching[x86_64-pc-windows-msvc-hoisted]": {
+      "transcript": [],
+      "setup": "passed",
+      "call": "passed",
+      "teardown": "passed"
+    },
+    "tests/test_codex_discovery.py::test_windows_npm_shim_resolves_its_installed_native_package_without_launching[x86_64-pc-windows-msvc-vendor]": {
+      "transcript": [],
+      "setup": "passed",
+      "call": "passed",
+      "teardown": "passed"
+    },
+    "tests/test_codex_discovery.py::test_windows_npm_shim_resolves_its_installed_native_package_without_launching[aarch64-pc-windows-msvc-nested]": {
+      "transcript": [],
+      "setup": "passed",
+      "call": "passed",
+      "teardown": "passed"
+    },
+    "tests/test_codex_discovery.py::test_windows_npm_shim_resolves_its_installed_native_package_without_launching[aarch64-pc-windows-msvc-hoisted]": {
+      "transcript": [],
+      "setup": "passed",
+      "call": "passed",
+      "teardown": "passed"
+    },
+    "tests/test_codex_discovery.py::test_windows_npm_shim_resolves_its_installed_native_package_without_launching[aarch64-pc-windows-msvc-vendor]": {
+      "transcript": [],
+      "setup": "passed",
+      "call": "passed",
+      "teardown": "passed"
+    },
+    "tests/test_codex_discovery.py::test_npm_source_survives_upgrade_without_changing_original_owner": {
+      "transcript": [],
+      "setup": "passed",
+      "call": "passed",
+      "teardown": "passed"
+    },
+    "tests/test_codex_discovery.py::test_daemon_current_manifest_owns_executable_and_upgrade_identity": {
+      "transcript": [],
+      "setup": "passed",
+      "call": "passed",
+      "teardown": "passed"
+    },
+    "tests/test_codex_discovery.py::test_daemon_package_uses_default_or_explicit_codex_home[win32]": {
+      "transcript": [],
+      "setup": "passed",
+      "call": "passed",
+      "teardown": "passed"
+    },
+    "tests/test_codex_discovery.py::test_daemon_package_uses_default_or_explicit_codex_home[linux]": {
+      "transcript": [],
+      "setup": "passed",
+      "call": "passed",
+      "teardown": "passed"
+    },
+    "tests/test_codex_discovery.py::test_daemon_package_uses_default_or_explicit_codex_home[darwin]": {
+      "transcript": [],
+      "setup": "passed",
+      "call": "passed",
+      "teardown": "passed"
+    },
+    "tests/test_codex_discovery.py::test_manual_path_does_not_follow_another_available_installation": {
+      "transcript": [],
+      "setup": "passed",
+      "call": "passed",
+      "teardown": "passed"
+    },
+    "tests/test_codex_discovery.py::test_appx_npm_and_daemon_are_distinct_available_sources": {
+      "transcript": [],
+      "setup": "passed",
+      "call": "passed",
+      "teardown": "passed"
+    }
+  }
+}
