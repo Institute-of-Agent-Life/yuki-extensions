@@ -59,5 +59,8 @@
     "runtime_python_files_byte_equal_to_behavior_baseline": 16
   },
   "core_oracle_delivery": "compat/core-002/source.lock.json",
-  "status": "wire4 oracle pinned for EXT-007 acceptance"
+  "status": "wire4 oracle pinned for EXT-007 acceptance",
+  "reviewed_runtime_sha256": {
+    "src/yuki_agent_connector/drivers/codex.py": "18929eb03bb87ca4c9794dc3d0eb94596af892d20c2e80626799311601f7184b"
+  }
 }

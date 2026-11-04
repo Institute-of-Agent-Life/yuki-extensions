@@ -1,0 +1,21 @@
+{
+  "task": "EXT-008",
+  "status": "PASS",
+  "phase": "acceptance",
+  "card_status": "PASS",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "94f6b4818c29c4cacb1be6ee3c325a8a8feea8b5b26763dfb33e0e71b7142261",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-008",
+    "--out",
+    "artifacts\\EXT-008\\01"
+  ],
+  "files": {
+    "codex-driver-wire.json": "f6e3df9e0113058c8941096dd800eb97a22f9c6e65c89f651675827e26d70f0e",
+    "commands.txt": "6549b27261ee4d7c2aeef04bdf895ebdc3c1bd70fb3eb1a6925b54337630abc2"
+  }
+}

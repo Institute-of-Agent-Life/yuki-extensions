@@ -48,7 +48,8 @@ def main():
     parser.add_argument("--connector-source", action="store_true", help="baseline source verification only, not EXT-007 acceptance")
     parser.add_argument("--connector-candidate", action="store_true", help="verify the independent EXT-007 candidate")
     args = parser.parse_args()
-    connector_mode = args.connector_source or args.connector_candidate
+    driver_case = args.task in {"EXT-008", "EXT-009", "EXT-010"}
+    connector_mode = args.connector_source or args.connector_candidate or driver_case
     if args.connector_source and args.connector_candidate:
         parser.error("select one connector verification mode")
     if not re.fullmatch(r"EXT-\d{3}", args.task) or not re.fullmatch(r"[a-zA-Z0-9-]+", args.run):
@@ -92,7 +93,7 @@ def main():
             raise ValueError("build-tool wheel digest mismatch: " + wheel.name)
     extra = []
     if connector_mode:
-        if args.task != "EXT-007":
+        if not driver_case and args.task != "EXT-007":
             parser.error("connector source mode belongs to EXT-007 preparation")
         manifest_path = transfer / "connector-wheels.json"
         helper = invoke(["uv", "run", "--no-project", "--offline", "--python", "3.12", "python",

@@ -3,7 +3,7 @@
   "kind": "connector",
   "path": "connector",
   "ecosystem": "python",
-  "version": "0.4.4.dev0",
+  "version": "0.4.4.dev1",
   "tag_prefix": "connector/v",
   "license": "AGPL-3.0-only",
   "notices": [
@@ -24,6 +24,8 @@
     "compat/core-002/manifest.json",
     "compat/core-002/source.lock.json",
     "compat/core-002/v4-oracle-candidate.zip",
-    "compat/core-002/v4-oracle-index.json"
+    "compat/core-002/v4-oracle-index.json",
+    "tests/cases/EXT-008.py",
+    "tests/peers/codex_wire.py"
   ]
 }

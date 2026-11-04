@@ -44,3 +44,13 @@ installed wheels. Verify every ordered frame, including repeated ACKs and the
 reconnect boundary. Change an event sequence and drop an ACK in negative controls.
 Compare host-dependent hello facts to the execution platform and both actual
 installations.
+
+## EXT-008 original Codex app-server
+
+Observe both directions at the loopback daemon. List/watch, prompt once, steer the
+original turn, queue/delete by the original operation, answer the native question
+once, interrupt only the named turn and detach the watch while the owner stays
+available. Reject an unsupported queue method without a fallback prompt. Drop
+the response after the daemon accepts one prompt, reconnect, then recover by
+the original client message ID; require a read and exactly one turn/start.
+Run discovery against fixture installations only.

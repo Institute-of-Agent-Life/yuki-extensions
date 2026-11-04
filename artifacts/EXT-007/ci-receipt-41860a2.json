@@ -1,0 +1,74 @@
+{
+  "pr": 3,
+  "run": 41833181301,
+  "head": "41860a2b63070375954679fca5f68c9401e84a64",
+  "merge": "18e028caddce26d29873ec10d23bd608dbc4cea8",
+  "platforms": {
+    "macos": {
+      "artifact": "connector-upgrade-macos-latest-cdf5539fde16cebab0e0c3903ece02d1722000be",
+      "manifest_sha256": "fcb7b35e1f027e4719a7d445570d5d312e603c85a83f8d4c85248a6d00cb492d",
+      "wheel": "7a7acc20c87b31c7fd5a0e412c21474f5a3ee3e305b02144946ed5efc1db84a5",
+      "transcripts": {
+        "old": "6a8c4a9feb1d4db803e86fe629d935636ee9507338804432799b760df0f78531",
+        "candidate": "6a8c4a9feb1d4db803e86fe629d935636ee9507338804432799b760df0f78531"
+      },
+      "frames": 124,
+      "testsuites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "2",
+          "tests": "165",
+          "time": "16.264",
+          "timestamp": "2026-11-04T12:54:38.506491+00:00",
+          "hostname": "iad20-fj918-6d81f2bb-98e8-40d2-8304-f5776003d6ee-C21FD41D82A9.local"
+        }
+      ]
+    },
+    "ubuntu": {
+      "artifact": "connector-upgrade-ubuntu-latest-cdf5539fde16cebab0e0c3903ece02d1722000be",
+      "manifest_sha256": "e0ca0c98073c2496a417faf7d0842f73266f87ed4bf485a0565f0945871ec313",
+      "wheel": "7a7acc20c87b31c7fd5a0e412c21474f5a3ee3e305b02144946ed5efc1db84a5",
+      "transcripts": {
+        "old": "d012511998b4c4835adf51c3ff2921635ee6cbb765a98b59b44d3edecd1d54e0",
+        "candidate": "d012511998b4c4835adf51c3ff2921635ee6cbb765a98b59b44d3edecd1d54e0"
+      },
+      "frames": 124,
+      "testsuites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "2",
+          "tests": "165",
+          "time": "18.848",
+          "timestamp": "2026-11-04T12:54:36.168834+00:00",
+          "hostname": "runnervm48cm3"
+        }
+      ]
+    },
+    "windows": {
+      "artifact": "connector-upgrade-windows-latest-cdf5539fde16cebab0e0c3903ece02d1722000be",
+      "manifest_sha256": "67c584de41728b52b5f39fce238739799d9f59744fc47b7f8a56d38ffe5c59c5",
+      "wheel": "6160954210d696b0b83d5493fa244b245a59dece24fc3cf43d7ffe6196f615bb",
+      "transcripts": {
+        "old": "906ac87e0ab895e9764374b1605149c8dfaece4bd6804a6fa4f843a8eca1e827",
+        "candidate": "906ac87e0ab895e9764374b1605149c8dfaece4bd6804a6fa4f843a8eca1e827"
+      },
+      "frames": 124,
+      "testsuites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "1",
+          "tests": "165",
+          "time": "29.334",
+          "timestamp": "2026-11-04T12:55:01.042417+00:00",
+          "hostname": "runnervmhao91"
+        }
+      ]
+    }
+  }
+}

@@ -1,13 +1,13 @@
 # Yuki Agent Connector
 
-Development candidate **0.4.4.dev0 / wire protocol 4** connects an existing computer to Yuki through
+Development candidate **0.4.4.dev1 / wire protocol 4** connects an existing computer to Yuki through
 one outbound WSS connection. It provides native Codex, Claude SDK and ACP
 connections, and optional local Shell/file capabilities. It does not
 install the Bot, create another business task system or mirror native histories.
 
 Desktop includes this locked Python runtime for the Connector. No user Python
 installation is required. Independent CLI installations use Python 3.12:
-`uv tool install path/to/yuki_agent_connector-0.4.4.dev0-py3-none-any.whl`.
+`uv tool install path/to/yuki_agent_connector-0.4.4.dev1-py3-none-any.whl`.
 
 ## Installation and ownership
 
