@@ -149,9 +149,9 @@ def validate_unit(root: Path, unit: dict) -> list[str]:
 def select_units(root: Path, changed: list[str]) -> list[str]:
     changed = [p.replace("\\", "/") for p in changed]
     units = load_catalog(root)
-    shared = ("ci/", ".github/workflows/", "tests/cases/EXT-001", "tests/fixtures/")
+    shared = ("ci/", ".github/workflows/", "tests/cases/EXT-001", "tests/fixtures/EXT-001/")
     if any(p.startswith(shared) for p in changed):
         return sorted(units)
     return sorted(ident for ident, unit in units.items() if any(
-        p == f"catalog/{ident}.json" or p.startswith(unit["path"].rstrip("/") + "/")
+        p == f"catalog/{ident}.json" or p in unit.get("check_paths", []) or p.startswith(unit["path"].rstrip("/") + "/")
         for p in changed))

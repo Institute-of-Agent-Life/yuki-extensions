@@ -17,25 +17,52 @@
   PR 的 checkout 是 `3478b8f`，已核父提交及 tree 與 `f136b4d` 相同，不冒填 head SHA。
 - 上述 Rust 程式是建置 fixture，沒有冒充正式插件、SDK 消費或 B0 見證。
 
-## 準備中：EXT-007
+## EXT-007 候選包
 
-- 工作分支 `codex/ext-007`。43 個原檔已取出，16 個執行檔與附件歷史 0.4.3 wheel
-  bytes 相同；來源與 SHA 在 `connector/packaging/source.lock.json`。wire 維持 4。
-- Windows／原 wheel：ruff、mypy、doctor 通過；pytest **164 passed、1 skipped**。
-  skip 是 Windows 已開啟 handle 不允許刪除／替換。證據在本地
-  `artifacts/EXT-007/source-02/`，狀態是來源準備 PASS、整卡 BLOCKED。
-- `source-01` 的測試已通過，最後 doctor 因新探針誤加 `--json` 失敗；保留失敗原件。
-  `source-02` 修正探針後通過。沒有改 Connector 行為或發布新的 0.4.3。
-- 因 CORE-002 尚未交付，本卡程式及準備產物保持未提交，不先合併為完成卡。
+工作分支 `codex/ext-007`。來源提交 `0150c76` 固定 0.4.3 的 43 個檔與歷史 wheel。
+候選提交 `8fd6ed8` 提供 `0.4.4.dev0` wheel、sdist 與可攜 runtime，wire 為 4。
+52 個第三方依賴的版本、來源和雜湊與原鎖檔逐項一致。
 
-## 跨倉輸入與下一步
+Windows 結果在 `artifacts/EXT-007/candidate-02/`。乾淨安裝及原地升級均通過，
+舊 journal 的副本仍可查 confirmed／unknown 原操作，異設備與同鍵異參均被拒。
+原設備設定與原始 DB bytes 保持一致，已設定的 canary daemon 啟動次數為零。
+ruff、mypy 與 doctor 通過。原定向測試 164 passed、1 skipped，跳過項是
+Windows 檔案 handle 的重新命名限制。runtime 在中文路徑執行，清冊含 5,404 項，
+其中的 wheel SHA-256 為 `6160954210d696b0b83d5493fa244b245a59dece24fc3cf43d7ffe6196f615bb`。
 
-- 未消費任何新核心包；目前沒有 Host／SDK 的版本或 digest，核心 Releases 為空。
-  CORE-002／031／039 的交付產物目錄亦未見候選。未拿鄰倉源碼作生產依賴。
-- 已核 68 張擴展卡：沒有尚未完成且前置全滿足的卡。前沿與觀察來源見
-  `artifacts/readiness/2026-11-04.json`；EXT-043 另待 CORE-044 穩定面。
-- 下一步：取得有來源 commit／manifest／hash 的 CORE-002 `v4-oracle-index.json`，
-  完成 EXT-007／019；取得 CORE-031 不可變 Rust／Python SDK 與 schema 再做 EXT-002。
-  方法、欄位語義與失敗案例需求在 `docs/core-interface-requests.md`。
-- 真插件對拍尚未發生，沒有可交還核心的宿主／SDK／插件方法見證。發布、部署及
-  真平台切換未執行。共享預算一律依總書 K05；不增加 unknown 重試權。
+`source-01` 保留早期 doctor 探針失敗，`source-02` 為原版通過結果。
+`candidate-red` 記未登記發行單位，`runtime-red` 記慢速連外下載中止，
+`candidate-01` 記 ruff 行長錯誤，`candidate-02` 為修正後結果。
+以上是收到 CORE-002 之前的準備紀錄。
+
+[PR #3](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/3) 已上傳候選。
+`6fa4af8` 的 [三平台 CI](https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/41825437154)
+在 Windows 得到 164 passed／1 skipped，macOS 和 Linux 各 163 passed／2 skipped。
+後兩者略過 Windows ACL 與 PowerShell 專用案例。三個 runtime 都安裝了各自受測的 wheel。
+wheel 的 21 個成員內容逐位元組相同，ZIP 建置平台欄位有別。平台雜湊與 runtime
+清冊雜湊保存在 `artifacts/EXT-007/ci-receipt-6fa4af8.json`。
+
+## EXT-007 正式對拍
+
+CORE-002 PR #2 已合併於 `2ea4477`；Oracle 產自 `89f15db`，交付說明為
+`2bc490c`。未發布的候選 ZIP SHA-256 為
+`ccdefae10242b19d2f1a201fcd59f5567c08395fd0c051c3d4e92282f6434df0`。
+`compat/core-002/source.lock.json` 固定完整提交、index 及 manifest digest。
+版本為 Connector 0.4.3、wire 4、Client rev 9。
+
+Windows 實機正式驗收與產物在 `artifacts/EXT-007/01/`。安裝原 0.4.3 與
+候選 0.4.4.dev0，各跑原重連案例，逐筆對照核心提供的 124 筆訊框。
+同機兩份 transcript 的 SHA-256 均為
+`38b288e670e16160cfbaf662b18dbe4f334637594bbd43471f5f99b47eba139e`。
+跨系統 hello 的平台、shell 與中斷能力另按實機檢查。刪 ACK、改 sequence
+均遭拒絕。原地升級、隔離資料與 runtime 通過；Connector 未發布。
+
+可交回核心的 Connector 證據為 `connector-upgrade.json`、兩份原始
+`wire4-*.json` 與同次 manifest。插件 Host／SDK 尚無消費證據。
+
+## 下一步
+
+PR #3 在同一提交的 Windows、macOS、Linux CI 全綠後合併。EXT-008／009／010
+可沿已驗 Connector 檢查原生驅動，EXT-019 可用同一 oracle 盤點 Desktop。
+EXT-002 尚需 CORE-031 Rust／Python SDK 與 schema；其餘需求見
+`docs/core-interface-requests.md`。共享預算依總書 K05。

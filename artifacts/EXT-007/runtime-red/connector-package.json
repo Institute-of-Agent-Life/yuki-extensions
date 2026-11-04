@@ -1,0 +1,46 @@
+{
+  "unit_id": "connector",
+  "version": "0.4.4.dev0",
+  "release_tag": "connector/v0.4.4.dev0",
+  "published": false,
+  "manifest_sha256": "57de8e3281fcdd0935d3f14983b65d4d89cafd10752c6e8e0e7b3792cb17111b",
+  "lock_sha256": "5f84713b46d822a40de7cee8b83f0ae07de53fb39ff955ffd1c89c96e04f85fa",
+  "source": {
+    "upstream": "https://github.com/YuanYeYouTao/Yuki",
+    "commit": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+    "path": "packages/yuki-agent-connector/",
+    "original_version": "0.4.3",
+    "source_inventory": "packaging/source.lock.json"
+  },
+  "license": "AGPL-3.0-only",
+  "artifacts": {
+    ".gitignore": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1",
+    "yuki_agent_connector-0.4.4.dev0-py3-none-any.whl": "6160954210d696b0b83d5493fa244b245a59dece24fc3cf43d7ffe6196f615bb",
+    "yuki_agent_connector-0.4.4.dev0.tar.gz": "7e3e407a990d9efa9b569bf5858aa9f86d95f0d25a3fb2d7f1bd86258d0dfe81"
+  },
+  "commands": [
+    {
+      "command": [
+        "uv",
+        "lock",
+        "--check",
+        "--offline"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Using CPython 3.12.0 interpreter at: C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\nResolved 53 packages in 22ms\n"
+    },
+    {
+      "command": [
+        "uv",
+        "build",
+        "--no-sources",
+        "--out-dir",
+        "C:\\Users\\Hilbert\\yuki-extension-tests\\4c50c808fd5bf7483187\\src\\artifacts\\EXT-007\\runtime-red\\packages"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Building source distribution...\nBuilding wheel from source distribution...\nSuccessfully built C:\\Users\\Hilbert\\yuki-extension-tests\\4c50c808fd5bf7483187\\src\\artifacts\\EXT-007\\runtime-red\\packages\\yuki_agent_connector-0.4.4.dev0.tar.gz\nSuccessfully built C:\\Users\\Hilbert\\yuki-extension-tests\\4c50c808fd5bf7483187\\src\\artifacts\\EXT-007\\runtime-red\\packages\\yuki_agent_connector-0.4.4.dev0-py3-none-any.whl\n"
+    }
+  ]
+}

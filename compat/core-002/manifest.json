@@ -1,0 +1,204 @@
+{
+  "format_version": 1,
+  "card": "CORE-002",
+  "status": "verified",
+  "exit_code": 0,
+  "command": [
+    "python",
+    "ci/check.py",
+    "CORE-002",
+    "--out",
+    "/Volumes/huawei/項目實戰/yuki-core/artifacts/CORE-002/handoff-89f15db"
+  ],
+  "worker_command": [
+    "/opt/anaconda3/bin/python3.12",
+    "/Volumes/huawei/項目實戰/yuki-core/.cache/worktrees/oracle/tests/harness/worker.py",
+    "CORE-002",
+    "/Volumes/huawei/項目實戰/yuki-core/artifacts/CORE-002/handoff-89f15db"
+  ],
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "tools": {
+    "python": "3.12.7",
+    "sqlite": "3.45.3"
+  },
+  "dependency_lock": "ci/checks.json",
+  "network": "python-loopback-only",
+  "cost": {
+    "physical_provider_calls": 0,
+    "paid_calls": 0,
+    "source": "offline harness"
+  },
+  "failure": null,
+  "assertions": [
+    {
+      "name": "pinned v4 replays agree",
+      "passed": true
+    },
+    {
+      "name": "removed a confirmed outward send",
+      "passed": true
+    },
+    {
+      "name": "a lost delivery fails the comparison",
+      "passed": true
+    },
+    {
+      "name": "a changed native signature fails the comparison",
+      "passed": true
+    },
+    {
+      "name": "actual v4 evidence: next_main",
+      "passed": true
+    },
+    {
+      "name": "actual v4 evidence: signature",
+      "passed": true
+    },
+    {
+      "name": "actual v4 evidence: app_work",
+      "passed": true
+    },
+    {
+      "name": "actual v4 evidence: partial",
+      "passed": true
+    },
+    {
+      "name": "actual v4 evidence: wire4",
+      "passed": true
+    },
+    {
+      "name": "original connector handshake",
+      "passed": true
+    },
+    {
+      "name": "recorded workload sizes",
+      "passed": true
+    }
+  ],
+  "artifacts": {
+    "._case-result.json": "f3bad5b302237b647db06386a1ea9efd86388064f8d12a45d354ea4cd0cca2b6",
+    "._stderr.txt": "f3bad5b302237b647db06386a1ea9efd86388064f8d12a45d354ea4cd0cca2b6",
+    "._stdout.txt": "f3bad5b302237b647db06386a1ea9efd86388064f8d12a45d354ea4cd0cca2b6",
+    "._v4-oracle-candidate.zip": "f3bad5b302237b647db06386a1ea9efd86388064f8d12a45d354ea4cd0cca2b6",
+    "._v4-oracle-index.json": "f3bad5b302237b647db06386a1ea9efd86388064f8d12a45d354ea4cd0cca2b6",
+    "case-result.json": "ff4f22b3d247a24b020fec75d62b45514ee88a91a6d5daaa9298734af854db68",
+    "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "v4-oracle-candidate.zip": "ccdefae10242b19d2f1a201fcd59f5567c08395fd0c051c3d4e92282f6434df0",
+    "v4-oracle-index.json": "0e326e6095042c20bdf06ec38da8e732a2802d310788533706c6222c01602a8d"
+  },
+  "lock_sha256": "bc9023c0dcb11d8bf154422c92e626960e3c2a55f430d832b7a0e2802f4f0097",
+  "seed": 329,
+  "clock": "2026-11-04T00:00:00Z",
+  "source": {
+    "commit": "89f15dbbfc5535a0d9fa94244a9e5cde96638ece",
+    "branch": "codex/core-002-oracle",
+    "dirty": false,
+    "tree_sha256": "ef33c4d5c5819835bbd42ac2459d30b16895867d03c28f76e0b01f7e9863e8ea",
+    "files": {
+      ".dockerignore": "663e3575e66f01743c1895755c21d7f8b3bc39aca6b469b8d9cd7f8e42436d81",
+      ".gitattributes": "9d0c7d0f5734eab6ec109645f0455656b913aadacbee7117a5aa11bb59cf5552",
+      ".github/workflows/check.yml": "b0089a0d898bb0ce1d2b442c96cdd5dc2059a3f2de8a778e57a27c0a897d852c",
+      ".gitignore": "8a4db0f04636fbb93f15963d2fc21a16104bbfca9b1608f53c7f2801a7f04ea4",
+      "Cargo.lock": "bd4ae564ceda2c2587080c34ae8fb7f9e4d09d3e1b0620044db944680f45342e",
+      "Cargo.toml": "f7cb0ba1eae925e70bafcbe01df46784572c1f5485b7d997f866f27ccaff8039",
+      "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+      "NOTICE": "fedd2608ca8a8cfaa42a58f2d93fb04fce133fa5d0e6a89aacfe08d7621f022f",
+      "README.md": "be5158aca8c07ef978a8c449a1b500d32f0e98787a552482013cbf365f0ffa43",
+      "baseline/lock.json": "8f71b7a513c5064055546892dfa67342e42b7b31b6347049a679c004a35fe21a",
+      "baseline/replay/README.md": "c0444326344db0cb2d7beaf27aae5a885bce605ece585db44d3ad035ba793088",
+      "baseline/replay/compare.py": "087969f26620de3b3a99b796ff418d162cc618af4a4b782adca91011483318f7",
+      "baseline/replay/freeze.py": "6779c8de9cfe1bf09bab351243093e00a7bf29db571c936b8dfe0a5c75c523cb",
+      "baseline/replay/load.py": "9319e26d682480327f6ee566bc216f776ed639dd423f6dfde5d11874a678fb12",
+      "baseline/replay/load_cases.py": "9410de43cac17e126a85706490c54fee09cbe20c2b8d5b465300d09e466e33e9",
+      "baseline/replay/package.py": "831d94a2e155e6d40ab82ebe6a791f550aeba7097cabefe530b4a6f6fa4bdbf7",
+      "baseline/replay/record.py": "a8d27aec31eadfb262974c79b7e6f63a4dc474674a028299d4583f8713a29f1b",
+      "baseline/replay/scenarios.json": "3e8b6236e740120229ba71befc4752ae1691d3a35ea2047608a53d9139a7aea1",
+      "build.rs": "43619b97d7e0f350effa8adb94ce0fe3f4024c4887c40becd1f9a435249e5f22",
+      "ci/check.py": "5faf582e6dd04c8c41b7ae111730ec750b459d27a1b54a3cb88a48b6cda525cb",
+      "ci/checks.json": "bc9023c0dcb11d8bf154422c92e626960e3c2a55f430d832b7a0e2802f4f0097",
+      "ci/container-smoke.py": "8d4dc989f9d5906077f54bdf2da9b98764b191ca42a44667dfb806a54e871bbf",
+      "ci/docker-build.py": "e9f5b64c13eb19251360ae4eac0e24515f05444f4567ddee9e81bc217bf1f4ff",
+      "ci/source.py": "fd929a8a8b855d77858b1f181f534a81d672fc5f86bda4df357bc34521fb393c",
+      "ci/windows.py": "72b7f68a6c247cbd3c0ece87d4f23e32265128fee6504db3b5564a4ad96c6c80",
+      "deploy/core.Dockerfile": "48f96bbb7b3d7386f3861a2b5a3697b7fc02710c631d6ee20c7918084827043d",
+      "docs/CORE-005-sequences.md": "160ab4a75b12caafa760da9dbe02c59daa20d6c89f1d4809c8a4982cb4b978bd",
+      "docs/evidence.md": "4f5e215792cadfc7387d9b891d68768b1f91d06db99ffab0c9871ec8ea9e45a0",
+      "docs/implementation-progress.md": "febbdf9531f7c5f341683db2335583abdd1109605dd8818b5100060f4845952f",
+      "docs/taskbook/v3.2/Yuki-Rust重寫總任務書-v3.2.md": "3599085dd5d9719273c06374fe211afb2122fa4a62a0fcee0dc924327de738d7",
+      "docs/taskbook/v3.2/audit/README.md": "541432522dc9c83eb71b24786e02547ad40c0a4b23fb780919c01266790d09fe",
+      "docs/taskbook/v3.2/audit/check_snapshot.py": "4ed346f5624517a90065f7695bc880bb74274a66dc0b2cf1e4d8e96f40e10233",
+      "docs/taskbook/v3.2/audit/evidence/upstream-connector.zip": "979a2d14fb1886ead0e4db57b405b077f653b5aeb3c23f5cf8fa1d1bb7ab8ef9",
+      "docs/taskbook/v3.2/audit/evidence/upstream-headed.zip": "c8f8c924f43fb32629fe00feb5a3824344dd7ec38f793641b32c55bb5f95ae69",
+      "docs/taskbook/v3.2/audit/evidence/upstream-integration.zip": "44ee180125e155fb7de2e2d06c4d59c4be3b62e514b11d71e9a4aebc23cb1189",
+      "docs/taskbook/v3.2/audit/evidence/upstream-native.zip": "c1fcaf4bcefa4b26d4f5245110d42f8bc2e7c6ac37bce69e8c2e83c50acb6cf6",
+      "docs/taskbook/v3.2/audit/evidence/upstream-unit.zip": "a62edfcca7c2e8bbcbbcd1886b90d9f2207c8f83575c86d448923c8888473a17",
+      "docs/taskbook/v3.2/audit/evidence/upstream-wheel.zip": "f8938d72c16806b9475cecdda727bc43965900a8df85d67ba1a05fb8e358dae6",
+      "docs/taskbook/v3.2/audit/inventory.py": "42b3ba375c2566387149e38109e6fc6b3f17bc6b21c9b4e677ee4f823ba8f9fe",
+      "docs/taskbook/v3.2/audit/reconcile_coverage.py": "093348eaddcfb0bfe92c983de8c1fce7a82f61b89f1d8a1974df5485e15bf5f3",
+      "docs/taskbook/v3.2/audit/results/adversarial.json": "145bcec9b4ad3ce71a9cb5ccb5a76b56263f15a785d3c55a1b4cb9188c8fcbc5",
+      "docs/taskbook/v3.2/audit/results/ci-members.tsv": "04da650fcbfcfe7df78d638118bb5528dd5a3d445062b5f737c9c68508b422c2",
+      "docs/taskbook/v3.2/audit/results/ci-source-proof.json": "16153e3dd761238d19fcac436d4022bbf4dec4c606b65acc637e42fb9664c465",
+      "docs/taskbook/v3.2/audit/results/core-doc-crosswalk.json": "ec6b354c279185efc1c1672266df36fb34c5d6325058fbcf3b071a02c9ca425c",
+      "docs/taskbook/v3.2/audit/results/core-review-check.json": "d4ceb20622837feebc80eddef6b793e6e1aae512034880deb3201ec8b41050aa",
+      "docs/taskbook/v3.2/audit/results/coverage-summary.json": "4ba125d32dfd9feb3849b59ed7b6c68f5c2eef30b8f3bab32399cf5f82118a53",
+      "docs/taskbook/v3.2/audit/results/coverage.tsv": "81e88257705a31e64f5934c413a68290ca005dbf53ca5cec5b7adf952f5126aa",
+      "docs/taskbook/v3.2/audit/results/delivery-sha256.tsv": "8cba666799356a6553251a151fe6f7bbe28697596763bcf7b2030f941927b3fa",
+      "docs/taskbook/v3.2/audit/results/docs-top-level.tsv": "9a32d8ab61ec979747cf3c84e604a090eaa61db4ef7e3dd4ed8717029c193f67",
+      "docs/taskbook/v3.2/audit/results/package-loc.tsv": "7ca1368ba91425913b1887eff46784f4c45c659c1e5b003a6a8d5943d216d065",
+      "docs/taskbook/v3.2/audit/results/plan-check.json": "8b60075dadf64e893f93a7858b37f1a82b4e6e48121d12198bd57e3e8c763875",
+      "docs/taskbook/v3.2/audit/results/r2-ci-members.tsv": "ea88daa466bcd8081357de62d89487ed0430aade3c9d938a856bd5216edcbcb7",
+      "docs/taskbook/v3.2/audit/results/r2-source-proof.json": "70799b448dcde569076c855e187e0468902de41d855ef3f97d7dbe0e35f0b4be",
+      "docs/taskbook/v3.2/audit/results/snapshot-selftest.json": "f1db4842fa99ddcf004eea68ca971259c22fef4a6051e3937184b66f9a023427",
+      "docs/taskbook/v3.2/audit/results/stable-ids-coverage.json": "fd1f8685faa5a5c12758a4ce3494c155bc04b5ca1f6411279ee30de7e8af1efc",
+      "docs/taskbook/v3.2/audit/test_snapshot.py": "af836c3fe55d2c94106af4fc24326a1f3408f62d9091085a39a51bdfc36515c0",
+      "docs/taskbook/v3.2/audit/test_verifier.py": "52df60dd732338aa41301299e8b185b4995fc523c95ac46e95e286cf570b8880",
+      "docs/taskbook/v3.2/audit/verify_core_review.py": "cb46ceedae3e11ea466711b34350e2b54e4b6f7b79e7ed081e25a8532035a32f",
+      "docs/taskbook/v3.2/audit/verify_evidence.py": "baed255ee595694a68303195f529323da19c0bca3cf175fb338d5c18ac478acc",
+      "docs/taskbook/v3.2/audit/verify_package.py": "ace1e1f8d70bc62b7f8ad45c8c60e334905a3993e72408a2d76fa8340c164d76",
+      "docs/taskbook/v3.2/audit/verify_plan.py": "c0df8f13e1b29502b8189526d67aac6a92c74dd55aea101002accbd47f353de6",
+      "docs/taskbook/v3.2/audit/verify_supplement.py": "d470dcd040f76edbe636c7e9d93ac99a844a87fb28877314f56609db0ac9a789",
+      "docs/taskbook/v3.2/全量文檔覆蓋與裁決表.md": "e78b7880dab6d38eab2023e4b80f7b72c891826a17d332dac180f354ec04bfe8",
+      "docs/taskbook/v3.2/擴展倉庫-提交級任務書.md": "853458026422dd21edcf3bc4907cd23a2ac993d48d4dd8e91e6be26e86d4d6c5",
+      "docs/taskbook/v3.2/核心倉庫-提交級任務書.md": "fef0099cc2d284e4bb108001b7af88454b6da7121476f9344df4240a9083cca2",
+      "docs/taskbook/v3.2/跨倉庫依賴與驗收矩陣.md": "fadb19740c323356edb2365744675bc85ca322da7949393324321156d12553fc",
+      "fixtures/oracle/v4/arrivals.jsonl.gz": "b0f779f667572ea13d84a99b2c1bc12c2222d9a994a1bef9b8a5b9635ce2a860",
+      "fixtures/oracle/v4/first/run.json": "20698484bc89b1ab35fef6bfa1601caede7e789126895f4d5af473ec60fea22e",
+      "fixtures/oracle/v4/first/transcript.json.gz": "5c66f844f31c1523d537cd8f11409493fe47d827477d551da6d39e8cfa51cb36",
+      "fixtures/oracle/v4/load.json": "d12853830c45fdf0b39ba2496e82a16d3580d66ebabe10818f5d1931a415ebd1",
+      "fixtures/oracle/v4/long-works.jsonl.gz": "f47d2d5f3fa8e6369017d3391d3aa4b0a7c28a97cdd7f442059d55e2f701f6e3",
+      "fixtures/oracle/v4/material/config/SOUL.md": "bc1068015afa9a3ac864a102e7706b17e2e7140181b1ba81784e9abe6b8773cc",
+      "fixtures/oracle/v4/material/examples/plugins/com.example.echo/plugin.toml": "11ada43d31c668924058f71f15fc717188bc0bf398730bf3f03ebf68c2cebfd0",
+      "fixtures/oracle/v4/material/plugins/subscription-monitor/plugin.toml": "7ad11867df00c9023f62a327f186c00b3c6279a21ced86e487b111d7e82c54d9",
+      "fixtures/oracle/v4/second/run.json": "f1532e5fd8960d1ffdd0532a2f2973bca3b2b9e77de12aa9da2f01549ee60699",
+      "fixtures/oracle/v4/second/transcript.json.gz": "5c66f844f31c1523d537cd8f11409493fe47d827477d551da6d39e8cfa51cb36",
+      "migrations/0001_meta.sql": "d41fd010b2cf926e74f7939eed842170e8be9d994c7ef9ef83551242d95905c4",
+      "protocol/baseline-v4/admin-openapi.json": "6caf8f1a6da0c09a9f033b06eb5f6b27b179e60c740d437a393907f04c5aa51c",
+      "protocol/baseline-v4/client-openapi.json": "2ac0ee897f207d181a703ad25bf15571a66e77f390c20d6177ddee4d325ea7f6",
+      "protocol/baseline-v4/wire4-frames.json": "6a8c4a9feb1d4db803e86fe629d935636ee9507338804432799b760df0f78531",
+      "rust-toolchain.toml": "2c388180d0d5476ed0d69975b382feaf709bb072d51a342add3030cfb3d1bdb2",
+      "src/config.rs": "90a133051198adba0f8b2bc57c31fbd5e2edcaead83b5c1404d7d197307aaa63",
+      "src/main.rs": "e3c645d919032f15af615cef292a6d67ea8eec50dd0cf119cbb775ca84ed9dfb",
+      "src/operator.rs": "ccb466898698378d64b5ea1a40587caa9ce5a28e5950f0fc2085639de6bce93f",
+      "src/operator/windows_acl.rs": "7e5705fee479fda2e2f2fbf9614ac613e1cc8a60e5caf88db5d7bec3a2682305",
+      "src/store.rs": "90948dfd40288c8b16b95b5b973eda4300ec1d5912765fc397e6391b28f3eced",
+      "src/store/tests.rs": "fdcabdd72dd0f701b8e71708c2e9c8cbc88d6210cf8fdb8ddc89fa734ffaacfc",
+      "tests/__init__.py": "8b2476f654cb9f5e58fdb779af0abefb696a0e89312965fc4d3599d7bf6eec04",
+      "tests/cases/CORE-001.py": "6cb0f49b2f275126eb4d5b4abcb7fdb48a038fb8fbe956283b0a79f5283609c3",
+      "tests/cases/CORE-002.py": "3a093735530e965b085af341fa6c0dabfd2b1d0a1dbe20f054c123e20706f95b",
+      "tests/cases/CORE-005.py": "c51d63467002923aa0bae6400ed3a24a70226cdbe679738d15c05556c893fe5e",
+      "tests/fixtures/CORE-001.json": "63fe7c176f222d10a9d666273d22a38f5d05009fb6e17ba6d37a82f11ddc1832",
+      "tests/harness/__init__.py": "ec33d0441f499494dc67b89600218c0bcf951aa36918ba55ef42a9137ba5bf96",
+      "tests/harness/network.py": "a602f384bb40fbbde9c0632e97945997a3c9af80b2731de687c4e585c8e176cb",
+      "tests/harness/windows_acl.py": "c4ff85c1becc6f0a6177a41676364872fa4a62abbc860730b4f9f41e5c50d4ec",
+      "tests/harness/worker.py": "ba2e437635f0e2d8515af88c8a80053793dbac10f9f7c6c1b27d7c542d8099a8"
+    }
+  },
+  "capabilities": [
+    "v4-transcript-replay",
+    "legacy-wire4",
+    "client9-admin-openapi",
+    "A-load-evidence"
+  ],
+  "duration_seconds": 0.273131
+}

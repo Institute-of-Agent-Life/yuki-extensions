@@ -1,0 +1,25 @@
+{
+  "task": "EXT-007",
+  "status": "PASS",
+  "phase": "preparation",
+  "card_status": "AWAITING_CORE_002",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "96456c7f0491e37c14401b21a79bd7794cd2a272c1aceab73df212787e5f08b7",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-007",
+    "--preparation",
+    "--out",
+    "artifacts\\EXT-007\\candidate-02"
+  ],
+  "files": {
+    "candidate-tests.xml": "26a01fde062c3efab34199a77830e4c242d27769b9633bc95f641176c63b7968",
+    "commands.json": "68c693ac3678763449d79ff8a1eb22597ca6298358d66c3e4115690ebb158290",
+    "connector-package.json": "454d3348d992e882b023850f6f5461aaf8b6f87521fcd20a1834269ad38193d9",
+    "connector-runtime.json": "7e2867148e4527cc5672e053d95940ad3d4c4917c3d65145c9aa73f5a94a4f5e",
+    "connector-upgrade.json": "9edc3ebc30b8d0280168c2fb31890b92861dfa7b440e5ecd94aecce8c0ef3059"
+  }
+}

@@ -7,6 +7,9 @@ on:
     branches: [main]
   workflow_dispatch:
 
+env:
+  PYTHONUTF8: "1"
+
 permissions:
   contents: read
 
@@ -64,6 +67,21 @@ jobs:
       - run: python -m pip install --disable-pip-version-check uv==0.12.0
       - name: Build only the selected release unit
         run: python ci/package.py --unit ${{ matrix.unit }} --out dist/${{ matrix.unit }}
+      - name: Install and upgrade the Connector candidate
+        if: matrix.unit == 'connector'
+        env:
+          YUKI_CONNECTOR_PACKAGE_DIR: dist/connector
+        run: python ci/check.py EXT-007 --out artifacts/EXT-007/candidate-ci
+      - name: Upload Connector acceptance evidence
+        if: always() && matrix.unit == 'connector'
+        uses: actions/upload-artifact@v4
+        with:
+          name: connector-upgrade-${{ matrix.os }}-${{ github.sha }}
+          path: |
+            artifacts/EXT-007/candidate-ci/*.json
+            artifacts/EXT-007/candidate-ci/*.xml
+            artifacts/EXT-007/candidate-ci/*.txt
+          if-no-files-found: error
       - uses: actions/upload-artifact@v4
         with:
           name: package-${{ matrix.unit }}-${{ matrix.os }}-${{ github.sha }}

@@ -1,0 +1,10 @@
+{
+  "scope": "unchanged-source-and-historical-wheel preparation",
+  "status": "PASS",
+  "card_status": "BLOCKED",
+  "source_snapshot_sha256": "545ab69d05c1004251a8d54890ac62db2239c6614afd7e024e5622db195b9f21",
+  "files": {
+    "baseline-tests.xml": "b33814e77f53eb45d5c1133c1f806998bd171391689bb3397c964ba36b33a6be",
+    "source-preparation.json": "cba9f7f7a526d587cf8b39266bb4f96311d9716aa29e4331c27d880c01730f84"
+  }
+}

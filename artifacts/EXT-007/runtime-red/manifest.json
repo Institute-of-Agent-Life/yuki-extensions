@@ -1,0 +1,23 @@
+{
+  "task": "EXT-007",
+  "status": "FAIL",
+  "phase": "preparation",
+  "card_status": "FAIL",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "4c50c808fd5bf74831871583f4c2cd4e36d7d2fe80bb92dc028c414db1543e5d",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-007",
+    "--preparation",
+    "--out",
+    "artifacts\\EXT-007\\runtime-red"
+  ],
+  "files": {
+    "commands.json": "4783811d7637a3d5fc9db028e12e23e84721457fcdf35f1a7a91333b60201fcd",
+    "connector-package.json": "0374a51e1a517003513b1a1f7d408d35a7c4864107e87dcfe151d51918b78cf3",
+    "failure.txt": "55e8011a25f56ccb4f7a9b63dd7649432f67015fdfe03f23aaf1114120ef3e62"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "pr": 3,
+  "run_id": 41825437154,
+  "run_url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/41825437154",
+  "head": "6fa4af8f982c6cd24710aab912ec2803b376b791",
+  "tree": "d5d1a080481d55bcf24bc7e81cca645b40b73bbf",
+  "scope": "Connector distribution preparation",
+  "card_status": "AWAITING_CORE_002",
+  "results": [
+    {
+      "platform": "macos-latest",
+      "checkout": "f925645a1b1b6d3d8286e8ccab188661509efbfd",
+      "wheel_sha256": "7a7acc20c87b31c7fd5a0e412c21474f5a3ee3e305b02144946ed5efc1db84a5",
+      "sdist_sha256": "b5eee9bed6ec5404a2fb364269416e0600c033046e66616389a7c650d72e058c",
+      "runtime_manifest_sha256": "ac77a609a08ba050c57f37f0eb8674b9b4a1c839500351c575c6d164f9da7b07",
+      "runtime_file_entries": 3067,
+      "runtime_platform": "darwin",
+      "runtime_arch": "arm64",
+      "python_version": "3.12.15",
+      "python_archive_sha256": "7b8d00b751db21cea87dc551a8f8165147c5fbc5251d5537d7e5497dde00a219",
+      "tests_passed": 163,
+      "tests_skipped": 2
+    },
+    {
+      "platform": "ubuntu-latest",
+      "checkout": "f925645a1b1b6d3d8286e8ccab188661509efbfd",
+      "wheel_sha256": "7a7acc20c87b31c7fd5a0e412c21474f5a3ee3e305b02144946ed5efc1db84a5",
+      "sdist_sha256": "b5eee9bed6ec5404a2fb364269416e0600c033046e66616389a7c650d72e058c",
+      "runtime_manifest_sha256": "4993f05321ca5706f6371a352264d9b09389fd4e81be068791a03f6249e5f365",
+      "runtime_file_entries": 5938,
+      "runtime_platform": "linux",
+      "runtime_arch": "x64",
+      "python_version": "3.12.15",
+      "python_archive_sha256": "6d7521138fd33afddc1ccd08abb007d9a2829e38117c2576f9efdc0ec73ce772",
+      "tests_passed": 163,
+      "tests_skipped": 2
+    },
+    {
+      "platform": "windows-latest",
+      "checkout": "f925645a1b1b6d3d8286e8ccab188661509efbfd",
+      "wheel_sha256": "6160954210d696b0b83d5493fa244b245a59dece24fc3cf43d7ffe6196f615bb",
+      "sdist_sha256": "b5eee9bed6ec5404a2fb364269416e0600c033046e66616389a7c650d72e058c",
+      "runtime_manifest_sha256": "4ff78b06ee4cf7869fd27724e8fb814dc776eb1cd592f6c508f67f6adaaa32f8",
+      "runtime_file_entries": 5365,
+      "runtime_platform": "win32",
+      "runtime_arch": "x64",
+      "python_version": "3.12.15",
+      "python_archive_sha256": "aac5d331fc3307343f95928fdbea4583f0d53973d08c7e1d081884fbd229a0e1",
+      "tests_passed": 164,
+      "tests_skipped": 1
+    }
+  ],
+  "wheel_comparison": {
+    "member_count": 21,
+    "all_member_bytes_equal": true,
+    "zip_creator_systems": {
+      "macos-latest": [
+        3
+      ],
+      "ubuntu-latest": [
+        3
+      ],
+      "windows-latest": [
+        0
+      ]
+    }
+  }
+}

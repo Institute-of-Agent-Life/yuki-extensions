@@ -1,0 +1,10 @@
+{
+  "scope": "unchanged-source-and-historical-wheel preparation",
+  "status": "FAIL",
+  "card_status": "BLOCKED",
+  "source_snapshot_sha256": "07f452ac06fd81e374f091fb73100ac0dd00af4ba44b7ce5d5d487e521a3f05f",
+  "files": {
+    "baseline-tests.xml": "692ad756a7998304d20749ebf7a6f14f4bde6abab4113f5c511481bd3f083855",
+    "source-preparation.json": "3efc4932aa33b56a3d5aa1898dfb29ed2bc5fbf815d20ef6d294518c35c48e33"
+  }
+}

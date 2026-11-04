@@ -14,9 +14,11 @@ python ci/check.py EXT-001 --out artifacts/EXT-001/01
 python ci/affected.py --changed connector/pyproject.toml
 ```
 
-Once an implemented unit is registered, build it with
-`python ci/package.py --unit UNIT_ID --out dist/UNIT_ID`. The current Connector
-source port is baseline preparation and has not been registered or released.
+Build the Connector development wheel and sdist with
+`python ci/package.py --unit connector --out dist/connector`. Run the upgrade
+and portable-runtime checks with `python ci/check.py EXT-007 --out artifacts/EXT-007/local`.
+The independent candidate uses version 0.4.4.dev0 and wire 4.
+Formal EXT-007 acceptance replays the pinned CORE-002 wire recording.
 
 `catalog/*.json` describes packaging, source and licensing only. It does not
 define the plugin wire, grant model or host declarations. Units enter the catalog

@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "C:\Users\Hilbert\yuki-extension-tests\18d288b2ab1fd455734e\src\ci\check.py", line 37, in main
+    report_name, report = runner(root, args.out.resolve())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hilbert\yuki-extension-tests\18d288b2ab1fd455734e\src\tests\cases\EXT-007.py", line 80, in prepare
+    package = build(root, "connector", packages)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hilbert\yuki-extension-tests\18d288b2ab1fd455734e\src\ci\package.py", line 25, in build
+    raise ValueError(f"unknown release unit: {ident}")
+ValueError: unknown release unit: connector

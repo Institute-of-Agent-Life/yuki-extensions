@@ -1,0 +1,17 @@
+{
+  "repository": "Institute-of-Agent-Life/yuki-core",
+  "producer_pr": 2,
+  "producer_commit": "89f15dbbfc5535a0d9fa94244a9e5cde96638ece",
+  "merge_commit": "2ea4477de919dec894a486adfbcc1322d5d85662",
+  "handoff_document_commit": "2bc490c04ec87c071a4edcfee71ab20b812060a9",
+  "behavior_commit": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+  "distribution": "0.4.3",
+  "wire": 4,
+  "client_revision": 9,
+  "status": "unpublished",
+  "files": {
+    "v4-oracle-candidate.zip": "ccdefae10242b19d2f1a201fcd59f5567c08395fd0c051c3d4e92282f6434df0",
+    "v4-oracle-index.json": "0e326e6095042c20bdf06ec38da8e732a2802d310788533706c6222c01602a8d",
+    "manifest.json": "ea06c1c6a0b76cd20662d0b261b31a283c2fafb3832f1e3a1cb576cbb96b5e34"
+  }
+}

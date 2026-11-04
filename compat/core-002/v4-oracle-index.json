@@ -1,0 +1,91 @@
+{
+  "historical_ci": {
+    "ci_sha": "9138a528872bb9775b9ac05ddb38b5c1de6d7df2",
+    "archives": {
+      "integration": "44ee180125e155fb7de2e2d06c4d59c4be3b62e514b11d71e9a4aebc23cb1189",
+      "wheel": "f8938d72c16806b9475cecdda727bc43965900a8df85d67ba1a05fb8e358dae6",
+      "connector": "979a2d14fb1886ead0e4db57b405b077f653b5aeb3c23f5cf8fa1d1bb7ab8ef9"
+    },
+    "compact_then_normal": {
+      "call": "compact-real-send",
+      "original_parts": 6,
+      "steps": [
+        "normal",
+        "public_compact",
+        "normal"
+      ],
+      "evidence_path": "compact/2ac550f3da5337f39567d215a71fdf5f1b5d2107eadf7165dd1ac72c329c9fc7/attempt-rkay110c/evidence.json"
+    },
+    "original_receipt": {
+      "original_member": "compact/00ba4263580d92a672dcbab8d35ecd161e3a4b0d9f6535da24d44039bc6c59a6/attempt-7g3abcwu/evidence.json",
+      "nodeid": "tests/unit/test_work_current_compact_recovery.py::test_current_compact_keeps_unobserved_original_receipt_for_next_main[paired-unknown]",
+      "original_call_id": "original-unobserved-call",
+      "byte_equal_original_result_in_next_normal_request": true,
+      "original_dispatches_in_fixture": 1,
+      "known_result_status": "succeeded",
+      "fixture_source_revision": "9138a528872bb9775b9ac05ddb38b5c1de6d7df2",
+      "note": "unknown refers to this test variant, not proof that the dispatched operation had an unknown effect"
+    }
+  },
+  "status": "unpublished",
+  "source_commit": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+  "source_tree": "c1885cc75e3273aea6f4ed4e994b762b0cdfba6e",
+  "evidence": [
+    {
+      "run": "first",
+      "transcript_sha256": "1f542daf916234e863199b62dff3ec4afb265f020d31f37e9fbaffa84d3d1634",
+      "junit": "6deb30ec3dc9ca6a1a853f54ea0af665db7599004f25e7acfea1638aac75a746",
+      "sqlite": "3.45.3",
+      "vec1_sha256": "106f708739738ec8bace8d853d3f336e5532c11e7180824dab13c756eeb5d4cc"
+    },
+    {
+      "run": "second",
+      "transcript_sha256": "1f542daf916234e863199b62dff3ec4afb265f020d31f37e9fbaffa84d3d1634",
+      "junit": "8f2d1e3a0515735d740f87413deccb3e4a8ae8192df26f5bcdc10718e82d3735",
+      "sqlite": "3.45.3",
+      "vec1_sha256": "106f708739738ec8bace8d853d3f336e5532c11e7180824dab13c756eeb5d4cc"
+    }
+  ],
+  "cases": {
+    "next_main": "tests/integration/test_compact_delivery_e2e.py::test_real_ordinary_send_keeps_receipt_and_replaces_public_prefix[unknown-batch]",
+    "signature": "tests/integration/test_compact_hard_capacity.py::test_native_execution_compact_can_hand_over_to_newly_legal_public_compact",
+    "partial": "tests/integration/test_native_social_delivery.py::test_qq_confirmed_file_is_not_reuploaded_when_caption_fails[timeout]",
+    "app_work": "tests/integration/test_client_continuation.py::test_original_work_continues_across_devices_tools_and_two_cold_runtimes[qq]",
+    "wire4": "packages/yuki-agent-connector/tests/test_journal_connector.py::test_pipeline_sends_backlog_before_ack_and_replays_only_unacked_sequence"
+  },
+  "workload": {
+    "counts": {
+      "group:20002": 500,
+      "private": 200,
+      "group:20001": 500,
+      "long_works": 20
+    },
+    "line": "A",
+    "model": "v4 FakeLLMProvider",
+    "process_cpu_seconds": 185.445007,
+    "elapsed_seconds": 203.20563600002788,
+    "B": "same as A until a verified patch exists",
+    "C": "pending Rust feature-equivalent host"
+  },
+  "old_schema": "0156",
+  "client_revision": 9,
+  "connector_wire": 4,
+  "connector_distribution": "0.4.3",
+  "goldens": {
+    "protocol/baseline-v4/admin-openapi.json": "6caf8f1a6da0c09a9f033b06eb5f6b27b179e60c740d437a393907f04c5aa51c",
+    "protocol/baseline-v4/client-openapi.json": "2ac0ee897f207d181a703ad25bf15571a66e77f390c20d6177ddee4d325ea7f6",
+    "protocol/baseline-v4/wire4-frames.json": "6a8c4a9feb1d4db803e86fe629d935636ee9507338804432799b760df0f78531"
+  },
+  "not_witnessed": [
+    "real QQ packets from two bots",
+    "Rust plugin SDK",
+    "external consumer acceptance"
+  ],
+  "candidate": {
+    "filename": "v4-oracle-candidate.zip",
+    "sha256": "ccdefae10242b19d2f1a201fcd59f5567c08395fd0c051c3d4e92282f6434df0",
+    "source_commit": "89f15dbbfc5535a0d9fa94244a9e5cde96638ece",
+    "source_dirty": false,
+    "status": "unpublished"
+  }
+}
