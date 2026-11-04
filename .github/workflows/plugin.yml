@@ -35,6 +35,11 @@ jobs:
         run: rustup toolchain install 1.90.0 --profile minimal
       - name: EXT-001 independent packages and fault cases
         run: python ci/check.py EXT-001 --out artifacts/EXT-001/ci
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.14.0'
+      - name: EXT-019 pinned Desktop consumer surface
+        run: python ci/check.py EXT-019 --out artifacts/EXT-019/ci
       - name: Select changed independent release units
         id: affected
         shell: pwsh
@@ -47,7 +52,11 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: acceptance-${{ matrix.os }}-${{ github.sha }}
-          path: artifacts/
+          path: |
+            artifacts/EXT-001/ci/*.json
+            artifacts/EXT-001/ci/*.txt
+            artifacts/EXT-019/ci/*.json
+            artifacts/EXT-019/ci/*.txt
           if-no-files-found: error
 
   package:

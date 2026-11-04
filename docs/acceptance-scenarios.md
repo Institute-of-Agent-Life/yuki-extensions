@@ -72,3 +72,12 @@ Denying or omitting load cannot create a replacement session. Start a new run
 beside the loaded one, answer only its original permission and cancel only the
 named execution. Exit the native process with the second prompt pending and
 verify both its real exit status and the unknown receipt.
+
+## EXT-019 Desktop static consumer
+
+Verify the Desktop source tree and both OpenAPI hashes at its own backend pin.
+Enumerate renderer bridge, IPC, CLI, API calls and DTO references from its
+TypeScript syntax trees. Compare the two old contracts independently to the
+CORE-002 snapshots. Remove a used endpoint, remove Work.cancel.expected_revision,
+change upload bytes to multipart, and substitute an SSE sequence for a business
+cursor. Each mutation must fail the same consumer checks as the unmodified input.

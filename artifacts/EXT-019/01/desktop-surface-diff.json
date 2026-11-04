@@ -1,0 +1,58 @@
+{
+  "scope": "pinned Desktop sources and two legacy OpenAPIs",
+  "callsite_sha256": "b3a9cd82c936a0d7770b212f985132b25b011e5bbb05c52d536a57f97010bcd0",
+  "source_counts": {
+    "renderer": 331,
+    "preload": 141,
+    "ipc": 69,
+    "connector-cli": 17,
+    "http": 53
+  },
+  "dto_references": 65,
+  "source_commit": "bee5692292d8601033798cb2772a075b8db8004b",
+  "desktop_backend": "004ae36dbe26046d3946b78934c4766333831bcf",
+  "core_source": "89f15dbbfc5535a0d9fa94244a9e5cde96638ece",
+  "contracts": {
+    "client": {
+      "desktop": "2ac0ee897f207d181a703ad25bf15571a66e77f390c20d6177ddee4d325ea7f6",
+      "core": "2ac0ee897f207d181a703ad25bf15571a66e77f390c20d6177ddee4d325ea7f6",
+      "changes": []
+    },
+    "admin": {
+      "desktop": "78dc8119b3ce7272e89951b2bfb72031c025c1928988102bc9962e1db5162dc5",
+      "core": "6caf8f1a6da0c09a9f033b06eb5f6b27b179e60c740d437a393907f04c5aa51c",
+      "changes": [
+        {
+          "path": [
+            "components",
+            "schemas",
+            "ModelDocument",
+            "properties",
+            "search_backend",
+            "anyOf",
+            0,
+            "enum"
+          ],
+          "before": [
+            "tavily",
+            "model"
+          ],
+          "after": [
+            "model",
+            "tavily"
+          ],
+          "disposition": "enum-order-only"
+        }
+      ]
+    }
+  },
+  "faults": {
+    "wrong-desktop-hash": "Desktop admin contract hash or backend mismatch",
+    "drop-used-endpoint": "missing declared operation post /client/v1/works/{identity}/cancel",
+    "drop-expected-revision": "missing required Work cancel input: expected_revision",
+    "change-upload-encoding": "consumer requirement missing in src/main/media/uploads.ts: 'Content-Type': 'application/octet-stream'",
+    "use-sse-sequence-as-cursor": "consumer requirement missing in src/main/connections.ts: query.set('after', String(route.after))"
+  },
+  "handoff": "docs/desktop-handoff.md",
+  "packaged_UI_exercised": false
+}

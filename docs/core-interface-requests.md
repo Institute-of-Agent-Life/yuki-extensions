@@ -9,8 +9,8 @@
 完整雜湊見 `compat/core-002/source.lock.json`。EXT-007 已在 Windows
 驗證原版及候選的 wire4 重連、ACK 邊界與原操作保留。逐筆對拍與故障結果見
 `artifacts/EXT-007/01/connector-upgrade.json`。
-EXT-019 可從同一交付取兩份 OpenAPI；Desktop 固定 `bee5692` 的後端是
-`004ae36`，需實際對照檔案內容與呼叫點。
+EXT-019 已對照兩份 OpenAPI，Desktop 固定 `bee5692` 的後端是
+`004ae36`；源碼呼叫、tag 區別與故障探針見 `docs/desktop-handoff.md`。
 
 ## CORE-031 → EXT-002
 
