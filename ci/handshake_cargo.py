@@ -39,13 +39,20 @@ def unpack_crate(data, directory, name):
     return target
 
 
-def vendor_sdk(sdk, project):
+def vendor_sdk(sdk, project, dependency_lock=None):
     directory = (project / "vendor").resolve()
     directory.mkdir()
     sdk_root = unpack_crate(sdk.read_bytes(), directory, sdk.stem)
-    locked = tomllib.loads((sdk_root / "Cargo.lock").read_text(encoding="utf-8"))
+    locked = tomllib.loads((dependency_lock or sdk_root / "Cargo.lock").read_text(encoding="utf-8"))
     for entry in locked["package"]:
         if entry["name"] == "yuki-plugin-sdk":
+            if "checksum" in entry and entry["checksum"] != hashlib.sha256(sdk.read_bytes()).hexdigest():
+                raise ValueError("consumer lock selected a different SDK distribution")
+            continue
+        if "source" not in entry:
+            # The local binary described by this consumer's own project lock.
+            if entry["name"] != tomllib.loads((project / "Cargo.toml").read_text(encoding="utf-8"))["package"]["name"]:
+                raise ValueError("undeclared local source in consumer lock")
             continue
         if entry["source"] != "registry+https://github.com/rust-lang/crates.io-index":
             raise ValueError("unexpected registry: " + entry["name"])

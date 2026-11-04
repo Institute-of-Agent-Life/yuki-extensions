@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "D:\yuki-extension-tests\01b134064ecc928fb74c\src\ci\check.py", line 37, in main
+    report_name, report = runner(root, args.out.resolve())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\01b134064ecc928fb74c\src\tests\cases\EXT-028.py", line 21, in prepare
+    distribution=build(root,"web-fetch",packages)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\01b134064ecc928fb74c\src\ci\package.py", line 65, in build
+    raise RuntimeError(f"build failed: {command}; see {output / 'build-failure.json'}")
+RuntimeError: build failed: ['cargo', 'test', '--locked', '--offline', '--target-dir', 'D:\\yuki-extension-tests\\01b134064ecc928fb74c\\temp\\yuki-rust-build-t00g1jme']; see D:\yuki-extension-tests\01b134064ecc928fb74c\src\artifacts\EXT-028\candidate-01\packages\build-failure.json

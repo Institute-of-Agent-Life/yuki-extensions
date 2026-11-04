@@ -111,3 +111,14 @@ host and compare original event IDs. Distinguish two bot identities, equal
 message IDs in different chats and group topics. Exercise UTF-16 mentions,
 captions, reply references, media-only messages, edits and migration data.
 Keep host startup, actual submitted frames, receipts and cursor files visible.
+
+## EXT-028 public page read
+
+Resolve and validate every destination on each hop, pin the actual socket to
+that address, and carry the original Host/TLS name. Verify that credentials,
+request headers and any body never survive an origin change, even on a return
+to the first origin. A port change is also an origin change. Reject forbidden
+addresses and changed DNS answers, report proxy failures without direct
+fallback, keep 304 without inventing content, and preserve source references
+on partial/oversize and missing text. A bounded native fixture must exercise
+real HTTP exchange and compare the actual Host tool receipt.

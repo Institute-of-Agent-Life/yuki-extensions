@@ -93,3 +93,16 @@ Windows 重驗 `artifacts/EXT-003/candidate-03/telegram-offset.json` SHA-256
 `a81f960527f3d5e959fef3003af13a8539f4174c9d35af91d1b5855e833f9338`。
 新 binary `0eb1cc4cbbc40321028032fc5ba5175ff51bce4e9c99c9af77d23c0fea95c0f2`。在本次三條的故障序列中仍得到 event 3 重投回原 ID。
 [擴展 PR #11](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/11)
+
+## EXT-028 Windows 開發候選對拍
+
+分支 `codex/ext-028-web-fetch`。實機回條 `artifacts/EXT-028/candidate-04/fetch-source.json`
+的 SHA-256 為 `efd9f1d22f5e34c1ac7565d808a9b27a9aa1b0e8bb358399f0f1eba939999508`。
+真實 CORE-032 Host 來自 `199dff095be0`，ZIP、binary、Rust SDK alpha.2 和 schema
+釘在 `compat/core-032/source.lock.json`。插件 binary SHA-256
+`a230b4b7d920966bdde578300e99047e8cae7eb69486f61741d7288f4d1359c7`。
+`wire.jsonl` 記錄一次 initialize、兩次 tool.call 和四次原 handle 的 tool.status。
+小頁面經測試代理送達 Main；大頁由宿主儲存，按原 execution、reader、handle
+和 version 讀回 19 頁。R07 同埠換 host 與同 host 換埠都清除敏感標頭和正文，
+也覆蓋私有重導、304 和代理斷線。來源歸屬見同目錄的 owner-disposition.json。
+前三次實機失敗保留在 candidate-01 至 03。此回條驗的是未發布候選，正式卡待 CORE-032 交付。
