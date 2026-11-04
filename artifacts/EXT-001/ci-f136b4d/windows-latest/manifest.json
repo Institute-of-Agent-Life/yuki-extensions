@@ -1,0 +1,18 @@
+{
+  "task": "EXT-001",
+  "status": "PASS",
+  "platform": "Windows-2025Server-10.0.26100-SP0",
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "source_commit": "3478b8fe28941862bea33cb6b43975da9143f3d2",
+  "source_snapshot_sha256": null,
+  "command": [
+    "C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\\python.exe",
+    "ci/check.py",
+    "EXT-001",
+    "--out",
+    "artifacts\\EXT-001\\ci"
+  ],
+  "files": {
+    "extension-build-isolation.json": "a97ade42afc416cf7d88ffa7717fcc7f182dd79fd7a6bc618288f953320a33f3"
+  }
+}

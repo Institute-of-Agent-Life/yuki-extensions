@@ -1,0 +1,47 @@
+{
+  "run_id": 41819289910,
+  "source_head_commit": "f136b4dfa4668b81ad956a2eb4974fb842a6dda2",
+  "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/41819289910",
+  "checkout_note": "GitHub PR merge commit; parent and tree verified against the head, rather than substituting the head SHA.",
+  "proof": [
+    {
+      "platform": "macos-latest",
+      "runtime": "macOS-26.6.2-arm64-arm-64bit",
+      "checkout_commit": "3478b8fe28941862bea33cb6b43975da9143f3d2",
+      "tree_sha": "56f8e6c149a4b4067298729e3e49c071d4fefcd4",
+      "rust_stdout": "fixture-gamma 0.0.1",
+      "rust_artifacts": {
+        "Cargo.lock": "a7b92351387bd2501467e1a702fd6ddb54e912f6f656297c3b2628cfd2e6497a",
+        "LICENSE": "94c311aa6ef85f22692f0004db5ee7cc9df9b2efdf72c121714787dadb25a92e",
+        "fixture-gamma": "39146439912108118efe35474306b7c6a2a74ad37c5c436f4c9224273fdca49f",
+        "rust-toolchain.toml": "814cbf84543a9035e02ec170bd78818ab5866995e8cf684d26b2b4fd85cd3c91"
+      }
+    },
+    {
+      "platform": "ubuntu-latest",
+      "runtime": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+      "checkout_commit": "3478b8fe28941862bea33cb6b43975da9143f3d2",
+      "tree_sha": "56f8e6c149a4b4067298729e3e49c071d4fefcd4",
+      "rust_stdout": "fixture-gamma 0.0.1",
+      "rust_artifacts": {
+        "Cargo.lock": "a7b92351387bd2501467e1a702fd6ddb54e912f6f656297c3b2628cfd2e6497a",
+        "LICENSE": "94c311aa6ef85f22692f0004db5ee7cc9df9b2efdf72c121714787dadb25a92e",
+        "fixture-gamma": "8c1e6179f12d449c4e49ec8f071601a21716f66967b4665d09815a9c4d8b809f",
+        "rust-toolchain.toml": "814cbf84543a9035e02ec170bd78818ab5866995e8cf684d26b2b4fd85cd3c91"
+      }
+    },
+    {
+      "platform": "windows-latest",
+      "runtime": "Windows-2025Server-10.0.26100-SP0",
+      "checkout_commit": "3478b8fe28941862bea33cb6b43975da9143f3d2",
+      "tree_sha": "56f8e6c149a4b4067298729e3e49c071d4fefcd4",
+      "rust_stdout": "fixture-gamma 0.0.1",
+      "rust_artifacts": {
+        "Cargo.lock": "a7b92351387bd2501467e1a702fd6ddb54e912f6f656297c3b2628cfd2e6497a",
+        "fixture-gamma.exe": "ef3b7d688f9636daea94a22afb2db69355cb7d9879a3a5819535ea2b9b3af0ae",
+        "LICENSE": "31eed3049476ac0d441d8b1dc4fc340fa5bc22f7cfb566dfd95deb30857cc386",
+        "rust-toolchain.toml": "6c0f241b807b5da350cf517e5b40a04641e7dc400cfc29831b06855e3e220d2e"
+      }
+    }
+  ]
+}

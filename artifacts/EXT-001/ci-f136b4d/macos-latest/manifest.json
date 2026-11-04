@@ -1,0 +1,18 @@
+{
+  "task": "EXT-001",
+  "status": "PASS",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "python": "3.12.10 (v3.12.10:0cc81280367, Apr  8 2025, 08:46:59) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "source_commit": "3478b8fe28941862bea33cb6b43975da9143f3d2",
+  "source_snapshot_sha256": null,
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.12/bin/python",
+    "ci/check.py",
+    "EXT-001",
+    "--out",
+    "artifacts/EXT-001/ci"
+  ],
+  "files": {
+    "extension-build-isolation.json": "a5280eae549f5697ba251f58d125dc6bbe2009fda6ce37711f58596e4375322e"
+  }
+}
