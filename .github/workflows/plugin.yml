@@ -11,8 +11,12 @@ permissions:
   contents: read
 
 jobs:
-  windows-acceptance:
-    runs-on: windows-latest
+  acceptance:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, macos-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
     outputs:
       units: ${{ steps.affected.outputs.units }}
     steps:
@@ -37,18 +41,19 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: windows-acceptance-${{ github.sha }}
+          name: acceptance-${{ matrix.os }}-${{ github.sha }}
           path: artifacts/
           if-no-files-found: error
 
   package:
-    needs: windows-acceptance
-    if: needs.windows-acceptance.outputs.units != '[]'
-    runs-on: windows-latest
+    needs: acceptance
+    if: needs.acceptance.outputs.units != '[]'
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        unit: ${{ fromJSON(needs.windows-acceptance.outputs.units) }}
+        unit: ${{ fromJSON(needs.acceptance.outputs.units) }}
+        os: [windows-latest, macos-latest, ubuntu-latest]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -59,6 +64,6 @@ jobs:
         run: python ci/package.py --unit ${{ matrix.unit }} --out dist/${{ matrix.unit }}
       - uses: actions/upload-artifact@v4
         with:
-          name: package-${{ matrix.unit }}-${{ github.sha }}
+          name: package-${{ matrix.unit }}-${{ matrix.os }}-${{ github.sha }}
           path: dist/${{ matrix.unit }}/
           if-no-files-found: error

@@ -5,7 +5,8 @@ independent release units. Install and build only the unit you need. The public
 protocol and SDK belong to `yuki-core`; this repository never imports its private
 implementation or uses a neighbouring checkout as a production dependency.
 
-Python tooling requires Python 3.12 and uv 0.12.0. Verification runs on Windows.
+Python tooling requires Python 3.12 and uv 0.12.0. Local verification runs on
+Windows; CI requires Windows, macOS and Linux before merging.
 
 ```powershell
 python ci/check.py EXT-001 --out artifacts/EXT-001/01
