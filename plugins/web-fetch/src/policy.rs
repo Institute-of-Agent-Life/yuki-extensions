@@ -5,6 +5,9 @@ use std::{
 use url::Url;
 
 pub fn url(input: &str) -> Result<Url, &'static str> {
+    if input.len() > 8192 {
+        return Err("url_too_long");
+    }
     let mut url = Url::parse(input).map_err(|_| "invalid_url")?;
     if !matches!(url.scheme(), "http" | "https")
         || url.host().is_none()

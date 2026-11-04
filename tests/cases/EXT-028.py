@@ -148,16 +148,21 @@ def prepare(root, output):
         if not finished.wait(40):raise RuntimeError("missing continuation after large tool result")
         large_follow=json.loads(model_requests[3]["messages"][-1]["content"])
         artifact=large_follow["result"]["artifact"]
-        cursor=0
-        parts=[]
-        while True:
-            section=cli("operator","tools","read-artifact",run,"web-reader",json.dumps({
-                "handle":artifact["handle"],"version":artifact["version"],"path":"/result/data/text",
-                "offset":cursor,"limit":256}))
-            parts.append(section)
-            if section["next_offset"] is None:break
-            assert section["next_offset"]>cursor
-            cursor=section["next_offset"]
+        def read_pages(path):
+            cursor=0
+            parts=[]
+            while True:
+                section=cli("operator","tools","read-artifact",run,"web-reader",json.dumps({
+                    "handle":artifact["handle"],"version":artifact["version"],"path":path,
+                    "offset":cursor,"limit":256}))
+                parts.append(section)
+                if section["next_offset"] is None:break
+                assert section["next_offset"]>cursor
+                cursor=section["next_offset"]
+            return parts
+        parts=read_pages("/result/data/text")
+        original_parts=read_pages("/result/data/original_hex")
+        assert bytes.fromhex("".join(p["value"] for p in original_parts))==big_text.encode()
         assert "".join(p["value"] for p in parts)==" ".join(big_text.split()) and len(parts)>1
         wires=[json.loads(l) for l in trace.read_text(encoding="utf-8").splitlines()]
         calls=[x["frame"] for x in wires if x["frame"].get("method")=="tool.call"]
@@ -173,7 +178,7 @@ def prepare(root, output):
             "source_commit":pin["source_commit"],"host":platform,"sdk":pin["rust_crate_sha256"],
             "plugin":distribution["artifacts"][binary.name],"published":False,"ingress_receipt":original,
             "page":page,"connections":pages,
-            "network_fixtures":fixture_results,"large_result":{"receipt":large_follow,"pages":parts},"tool_result_received_by_main":follow,"transcript":wires}
+            "network_fixtures":fixture_results,"large_result":{"receipt":large_follow,"pages":parts,"original_pages":original_parts},"tool_result_received_by_main":follow,"transcript":wires}
     finally:
         stop()
         for server in (proxy,model):
