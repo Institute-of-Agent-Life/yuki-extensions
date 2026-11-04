@@ -1,0 +1,551 @@
+{
+  "wheel": "yuki_agent_connector-0.4.4.dev1-py3-none-any.whl",
+  "sha256": "2748ec830b56e38f404d33964350578e543232ab1fce02e2399fc3ab045a74d8",
+  "lock_sha256": "20473bace4005ddd06df3c0d5b08a6239f5a6e33a7f8f24b20f2d4382a95336a",
+  "distribution": "0.4.4.dev1",
+  "cases": {
+    "tests/test_native_acp.py::test_negotiated_load_and_targeted_control[absent]": {
+      "setup": "passed",
+      "call": "passed",
+      "witness": {
+        "mode": "absent",
+        "trace": [
+          {
+            "argv": [
+              "argument with space",
+              ""
+            ],
+            "cwd": "D:\\yuki-extension-tests\\8681937d80c33200150b\\temp\\pytest-of-hilbert\\pytest-0\\test_negotiated_load_and_targe0",
+            "pid": 9372
+          },
+          {
+            "from_driver": {
+              "jsonrpc": "2.0",
+              "id": 0,
+              "method": "initialize",
+              "params": {
+                "protocolVersion": 1,
+                "clientCapabilities": {
+                  "fs": {
+                    "readTextFile": true,
+                    "writeTextFile": true
+                  },
+                  "terminal": true,
+                  "auth": {}
+                },
+                "clientInfo": {
+                  "name": "Yuki Agent Connector",
+                  "version": "0.4.4.dev1"
+                }
+              }
+            }
+          },
+          {
+            "from_agent": {
+              "jsonrpc": "2.0",
+              "id": 0,
+              "result": {
+                "protocolVersion": 1,
+                "agentCapabilities": {
+                  "loadSession": false,
+                  "sessionCapabilities": {
+                    "list": {}
+                  }
+                }
+              }
+            }
+          },
+          {
+            "from_driver": {
+              "jsonrpc": "2.0",
+              "id": 1,
+              "method": "session/list",
+              "params": {}
+            }
+          },
+          {
+            "from_agent": {
+              "jsonrpc": "2.0",
+              "id": 1,
+              "result": {
+                "sessions": [
+                  {
+                    "sessionId": "stored",
+                    "cwd": "D:\\yuki-extension-tests\\8681937d80c33200150b\\temp\\pytest-of-hilbert\\pytest-0\\test_negotiated_load_and_targe0"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "receipts": {
+          "refused": "unsupported_action"
+        },
+        "events": [],
+        "exit_code": 0
+      },
+      "teardown": "passed"
+    },
+    "tests/test_native_acp.py::test_negotiated_load_and_targeted_control[reject]": {
+      "setup": "passed",
+      "call": "passed",
+      "witness": {
+        "mode": "reject",
+        "trace": [
+          {
+            "argv": [
+              "argument with space",
+              ""
+            ],
+            "cwd": "D:\\yuki-extension-tests\\8681937d80c33200150b\\temp\\pytest-of-hilbert\\pytest-0\\test_negotiated_load_and_targe1",
+            "pid": 16028
+          },
+          {
+            "from_driver": {
+              "jsonrpc": "2.0",
+              "id": 0,
+              "method": "initialize",
+              "params": {
+                "protocolVersion": 1,
+                "clientCapabilities": {
+                  "fs": {
+                    "readTextFile": true,
+                    "writeTextFile": true
+                  },
+                  "terminal": true,
+                  "auth": {}
+                },
+                "clientInfo": {
+                  "name": "Yuki Agent Connector",
+                  "version": "0.4.4.dev1"
+                }
+              }
+            }
+          },
+          {
+            "from_agent": {
+              "jsonrpc": "2.0",
+              "id": 0,
+              "result": {
+                "protocolVersion": 1,
+                "agentCapabilities": {
+                  "loadSession": true,
+                  "sessionCapabilities": {
+                    "list": {}
+                  }
+                }
+              }
+            }
+          },
+          {
+            "from_driver": {
+              "jsonrpc": "2.0",
+              "id": 1,
+              "method": "session/list",
+              "params": {}
+            }
+          },
+          {
+            "from_agent": {
+              "jsonrpc": "2.0",
+              "id": 1,
+              "result": {
+                "sessions": [
+                  {
+                    "sessionId": "stored",
+                    "cwd": "D:\\yuki-extension-tests\\8681937d80c33200150b\\temp\\pytest-of-hilbert\\pytest-0\\test_negotiated_load_and_targe1"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "from_driver": {
+              "jsonrpc": "2.0",
+              "id": 2,
+              "method": "session/load",
+              "params": {
+                "mcpServers": [],
+                "cwd": "D:\\yuki-extension-tests\\8681937d80c33200150b\\temp\\pytest-of-hilbert\\pytest-0\\test_negotiated_load_and_targe1",
+                "sessionId": "stored"
+              }
+            }
+          },
+          {
+            "from_agent": {
+              "jsonrpc": "2.0",
+              "id": 2,
+              "error": {
+                "code": -32602,
+                "message": "load refused"
+              }
+            }
+          }
+        ],
+        "receipts": {
+          "refused": "native_session_error"
+        },
+        "events": [],
+        "exit_code": 0
+      },
+      "teardown": "passed"
+    },
+    "tests/test_native_acp.py::test_negotiated_load_and_targeted_control[supported]": {
+      "setup": "passed",
+      "call": "passed",
+      "witness": {
+        "mode": "supported",
+        "trace": [
+          {
+            "argv": [
+              "argument with space",
+              ""
+            ],
+            "cwd": "D:\\yuki-extension-tests\\8681937d80c33200150b\\temp\\pytest-of-hilbert\\pytest-0\\test_negotiated_load_and_targe2",
+            "pid": 4456
+          },
+          {
+            "from_driver": {
+              "jsonrpc": "2.0",
+              "id": 0,
+              "method": "initialize",
+              "params": {
+                "protocolVersion": 1,
+                "clientCapabilities": {
+                  "fs": {
+                    "readTextFile": true,
+                    "writeTextFile": true
+                  },
+                  "terminal": true,
+                  "auth": {}
+                },
+                "clientInfo": {
+                  "name": "Yuki Agent Connector",
+                  "version": "0.4.4.dev1"
+                }
+              }
+            }
+          },
+          {
+            "from_agent": {
+              "jsonrpc": "2.0",
+              "id": 0,
+              "result": {
+                "protocolVersion": 1,
+                "agentCapabilities": {
+                  "loadSession": true,
+                  "sessionCapabilities": {
+                    "list": {}
+                  }
+                }
+              }
+            }
+          },
+          {
+            "from_driver": {
+              "jsonrpc": "2.0",
+              "id": 1,
+              "method": "session/list",
+              "params": {}
+            }
+          },
+          {
+            "from_agent": {
+              "jsonrpc": "2.0",
+              "id": 1,
+              "result": {
+                "sessions": [
+                  {
+                    "sessionId": "stored",
+                    "cwd": "D:\\yuki-extension-tests\\8681937d80c33200150b\\temp\\pytest-of-hilbert\\pytest-0\\test_negotiated_load_and_targe2"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "from_driver": {
+              "jsonrpc": "2.0",
+              "id": 2,
+              "method": "session/load",
+              "params": {
+                "mcpServers": [],
+                "cwd": "D:\\yuki-extension-tests\\8681937d80c33200150b\\temp\\pytest-of-hilbert\\pytest-0\\test_negotiated_load_and_targe2",
+                "sessionId": "stored"
+              }
+            }
+          },
+          {
+            "from_agent": {
+              "jsonrpc": "2.0",
+              "id": 2,
+              "result": {}
+            }
+          },
+          {
+            "from_driver": {
+              "jsonrpc": "2.0",
+              "id": 3,
+              "method": "session/prompt",
+              "params": {
+                "sessionId": "stored",
+                "prompt": [
+                  {
+                    "text": "original run",
+                    "type": "text"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "from_agent": {
+              "jsonrpc": "2.0",
+              "method": "session/update",
+              "params": {
+                "sessionId": "stored",
+                "update": {
+                  "sessionUpdate": "agent_message_chunk",
+                  "content": {
+                    "type": "text",
+                    "text": "begun"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "from_driver": {
+              "jsonrpc": "2.0",
+              "id": 4,
+              "method": "session/new",
+              "params": {
+                "cwd": "D:\\yuki-extension-tests\\8681937d80c33200150b\\temp\\pytest-of-hilbert\\pytest-0\\test_negotiated_load_and_targe2",
+                "mcpServers": []
+              }
+            }
+          },
+          {
+            "from_agent": {
+              "jsonrpc": "2.0",
+              "id": 4,
+              "result": {
+                "sessionId": "second"
+              }
+            }
+          },
+          {
+            "from_driver": {
+              "jsonrpc": "2.0",
+              "id": 5,
+              "method": "session/prompt",
+              "params": {
+                "sessionId": "second",
+                "prompt": [
+                  {
+                    "text": "second run",
+                    "type": "text"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "from_agent": {
+              "jsonrpc": "2.0",
+              "method": "session/update",
+              "params": {
+                "sessionId": "second",
+                "update": {
+                  "sessionUpdate": "agent_message_chunk",
+                  "content": {
+                    "type": "text",
+                    "text": "begun"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "from_agent": {
+              "jsonrpc": "2.0",
+              "id": 100000,
+              "method": "session/request_permission",
+              "params": {
+                "sessionId": "second",
+                "toolCall": {
+                  "toolCallId": "native-tool",
+                  "status": "pending"
+                },
+                "options": [
+                  {
+                    "optionId": "once",
+                    "name": "Allow",
+                    "kind": "allow_once"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "from_driver": {
+              "jsonrpc": "2.0",
+              "id": 100000,
+              "result": {
+                "outcome": {
+                  "optionId": "once",
+                  "outcome": "selected"
+                }
+              }
+            }
+          },
+          {
+            "from_driver": {
+              "jsonrpc": "2.0",
+              "method": "session/cancel",
+              "params": {
+                "sessionId": "stored"
+              }
+            }
+          },
+          {
+            "from_agent": {
+              "jsonrpc": "2.0",
+              "id": 3,
+              "result": {
+                "stopReason": "cancelled"
+              }
+            }
+          },
+          {
+            "from_driver": {
+              "jsonrpc": "2.0",
+              "id": 6,
+              "method": "session/list",
+              "params": {}
+            }
+          }
+        ],
+        "receipts": {
+          "answer": {
+            "session_id": "second",
+            "execution_id": "5f17d5dd-05b8-4d2e-abe2-4c7791e5c22d:5",
+            "status": "response_submitted",
+            "pending": false,
+            "response_submitted": true,
+            "admitted": true
+          },
+          "cancel": {
+            "session_id": "stored",
+            "execution_id": "5f17d5dd-05b8-4d2e-abe2-4c7791e5c22d:3",
+            "status": "cancel_submitted",
+            "pending": false,
+            "cancel_requested": true,
+            "cancel_submitted": true,
+            "admitted": true
+          },
+          "first": {
+            "session_id": "stored",
+            "execution_id": "5f17d5dd-05b8-4d2e-abe2-4c7791e5c22d:3",
+            "status": "running",
+            "pending": true,
+            "admitted": true
+          },
+          "second": {
+            "session_id": "second",
+            "execution_id": "5f17d5dd-05b8-4d2e-abe2-4c7791e5c22d:5",
+            "status": "running",
+            "pending": true,
+            "admitted": true
+          }
+        },
+        "events": [
+          {
+            "kind": "permission",
+            "session_id": "second",
+            "execution_id": "5f17d5dd-05b8-4d2e-abe2-4c7791e5c22d:5",
+            "operation_id": "start-second",
+            "payload": {
+              "permission_id": "100000",
+              "native_request_id": 100000,
+              "connection_id": "5f17d5dd-05b8-4d2e-abe2-4c7791e5c22d",
+              "tool": {
+                "toolCallId": "native-tool",
+                "status": "pending"
+              },
+              "options": [
+                {
+                  "optionId": "once",
+                  "name": "Allow",
+                  "kind": "allow_once"
+                }
+              ],
+              "admitted": true
+            }
+          },
+          {
+            "kind": "completed",
+            "session_id": "stored",
+            "execution_id": "5f17d5dd-05b8-4d2e-abe2-4c7791e5c22d:3",
+            "operation_id": "load-original",
+            "payload": {
+              "status": "cancelled",
+              "text": "begun",
+              "native": {
+                "stopReason": "cancelled"
+              },
+              "admitted": true
+            }
+          },
+          {
+            "kind": "work_finished",
+            "operation_id": "load-original"
+          },
+          {
+            "kind": "progress",
+            "session_id": "second",
+            "execution_id": "5f17d5dd-05b8-4d2e-abe2-4c7791e5c22d:5",
+            "operation_id": "start-second",
+            "payload": {
+              "status": "unknown",
+              "reason": "native_prompt_result_unknown",
+              "error_type": "ConnectionError"
+            }
+          },
+          {
+            "kind": "connection",
+            "status": "unavailable",
+            "reason": "native_acp_process_exited"
+          }
+        ],
+        "exit_code": 23
+      },
+      "teardown": "passed"
+    },
+    "tests/test_acp_driver.py::test_real_acp_stdio_permissions_local_files_terminal_and_negotiation": {
+      "setup": "passed",
+      "call": "passed",
+      "teardown": "passed"
+    },
+    "tests/test_acp_driver.py::test_optional_acp_session_directory_is_not_fabricated": {
+      "setup": "passed",
+      "call": "passed",
+      "teardown": "passed"
+    },
+    "tests/test_acp_driver.py::test_incompatible_acp_version_is_not_reported_as_ready": {
+      "setup": "passed",
+      "call": "passed",
+      "teardown": "passed"
+    },
+    "tests/test_acp_driver.py::test_acp_auth_refusal_before_prompt_is_not_an_unknown_execution[False]": {
+      "setup": "passed",
+      "call": "passed",
+      "teardown": "passed"
+    },
+    "tests/test_acp_driver.py::test_acp_auth_refusal_before_prompt_is_not_an_unknown_execution[True]": {
+      "setup": "passed",
+      "call": "passed",
+      "teardown": "passed"
+    }
+  }
+}
