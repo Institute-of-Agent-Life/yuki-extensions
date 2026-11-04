@@ -40,6 +40,18 @@ jobs:
           node-version: '22.14.0'
       - name: EXT-019 pinned Desktop consumer surface
         run: python ci/check.py EXT-019 --out artifacts/EXT-019/ci
+      - name: Compare Desktop witness with the Windows reference
+        shell: python
+        run: |
+          from hashlib import sha256
+          from pathlib import Path
+          root = Path("artifacts/EXT-019")
+          name = "desktop-callsite-pin.json"
+          expected = sha256((root / "03" / name).read_bytes()).hexdigest()
+          actual = sha256((root / "ci" / name).read_bytes()).hexdigest()
+          if actual != expected:
+              raise SystemExit(f"Desktop witness SHA-256 differs: {actual} != {expected}")
+          print(f"Desktop witness SHA-256: {actual}")
       - name: Select changed independent release units
         id: affected
         shell: pwsh

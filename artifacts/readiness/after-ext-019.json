@@ -8,7 +8,7 @@
     "EXT-010",
     "EXT-019"
   ],
-  "core_main_observed": "ff7122a623c37189d4dff80c7caa9cec86345972",
+  "core_main_observed": "a2e9bfa0253cea8c720f3c895b98d23a4c981a43",
   "core_merged_pr_cards": [
     "CORE-002",
     "CORE-003",
@@ -17,6 +17,7 @@
     "CORE-006",
     "CORE-007",
     "CORE-008",
+    "CORE-009",
     "CORE-049"
   ],
   "releases_observed": [],

@@ -1,0 +1,21 @@
+{
+  "task": "EXT-019",
+  "status": "PASS",
+  "phase": "acceptance",
+  "card_status": "PASS",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "e0501aefe3be02262bc72f97375179a6fa4c7f88aa9607f7d322c2a3b256af11",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-019",
+    "--out",
+    "artifacts\\EXT-019\\03"
+  ],
+  "files": {
+    "desktop-callsite-pin.json": "d9d6caa43cb9dd36b65358fb0c06648b7c22784f98babfad63ba42bc00a9c7fe",
+    "desktop-surface-diff.json": "477f17ea1448f685d663477f373bf44b78f626a35b1533f36d9dea1f872d2f6a"
+  }
+}
