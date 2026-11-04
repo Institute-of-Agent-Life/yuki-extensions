@@ -39,5 +39,8 @@ real portable runtime, relocate it to a Unicode path and verify its own legal
 files and inventory. Mutate a wheel by injecting private config and require
 rejection before installation. Preserve any red and green reports.
 
-This preparation is selected explicitly with `--preparation`. The normal EXT-007
-command remains BLOCKED until the immutable CORE-002 oracle can be consumed.
+This preparation is selected explicitly with `--preparation`. The formal command additionally replays the pinned producer node with both
+installed wheels. Verify every ordered frame, including repeated ACKs and the
+reconnect boundary. Change an event sequence and drop an ACK in negative controls.
+Compare host-dependent hello facts to the execution platform and both actual
+installations.

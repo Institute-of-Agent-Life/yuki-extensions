@@ -15,7 +15,7 @@ From the repository root on a machine with Python 3.12 and uv 0.12.0:
 
 ```powershell
 python ci/package.py --unit connector --out dist/connector
-python ci/check.py EXT-007 --preparation --out artifacts/EXT-007/local
+python ci/check.py EXT-007 --out artifacts/EXT-007/local
 ```
 
 The preparation uses isolated installations and a SQLite backup of a disposable
@@ -24,6 +24,6 @@ different device, empty doctor, Desktop stdin EOF, standalone lifetime and the
 relocated portable runtime. The package contains its own license and dependency
 lock. CI retains the built wheel, sdist, test transcripts and runtime manifest.
 
-The formal command `python ci/check.py EXT-007 --out artifacts/EXT-007/01`
-reports the outstanding CORE-002 input separately. No release tag is created by
-these checks.
+Formal acceptance uses the pinned CORE-002 oracle under `compat/core-002`.
+It compares the wire transcript of both installed distributions against the
+recorded reconnect, interleaved query and duplicate ACK scenario.

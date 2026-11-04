@@ -163,7 +163,7 @@ Set-Location {quote(remote + '/src')}
 $env:YUKI_SOURCE_SNAPSHOT_SHA256=$expected
 {('$env:YUKI_BASELINE_WHEEL=' + quote(remote + '/wheelhouse/' + baseline['wheel_name'])) if connector_mode else ''}
 $env:YUKI_RUNTIME_CACHE={quote(remote + '/wheelhouse/runtime-cache')}
-py -3.12 {'connector/packaging/verify_source.py' if args.connector_source else 'ci/check.py ' + args.task + (' --preparation' if args.connector_candidate else '')} --out artifacts/{args.task}/{args.run}
+py -3.12 {'connector/packaging/verify_source.py' if args.connector_source else 'ci/check.py ' + args.task} --out artifacts/{args.task}/{args.run}
 $result=$LASTEXITCODE
 $zipCode=@'
 import pathlib, zipfile

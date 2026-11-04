@@ -19,6 +19,11 @@
   "check_paths": [
     "tests/cases/EXT-007.py",
     "tests/peers/connector_upgrade.py",
-    "tests/fixtures/connector/yuki_agent_connector-0.4.3-py3-none-any.whl"
+    "tests/fixtures/connector/yuki_agent_connector-0.4.3-py3-none-any.whl",
+    "tests/peers/record_wire4.py",
+    "compat/core-002/manifest.json",
+    "compat/core-002/source.lock.json",
+    "compat/core-002/v4-oracle-candidate.zip",
+    "compat/core-002/v4-oracle-index.json"
   ]
 }

@@ -71,8 +71,8 @@ jobs:
         if: matrix.unit == 'connector'
         env:
           YUKI_CONNECTOR_PACKAGE_DIR: dist/connector
-        run: python ci/check.py EXT-007 --preparation --out artifacts/EXT-007/candidate-ci
-      - name: Upload Connector preparation evidence
+        run: python ci/check.py EXT-007 --out artifacts/EXT-007/candidate-ci
+      - name: Upload Connector acceptance evidence
         if: always() && matrix.unit == 'connector'
         uses: actions/upload-artifact@v4
         with:

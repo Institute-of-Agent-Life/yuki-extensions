@@ -5,16 +5,12 @@
 
 ## CORE-002 → EXT-007／EXT-019
 
-需要可釘版的 `v4-oracle-index.json`、同次 manifest、來源 commit、版本及每項產物
-SHA-256；提供者 commit 應可從交付說明追到，不能把正在變動的 checkout 當作版本。
-
-- Connector：wire4 已觀察訊框、方向、序號與 ACK 邊界，固定來源／nodeid／原件 hash。
-  正常重連只補未 ACK 的原事件；同 device 換 URL 不換 journal；異 device 拒用；
-  原派發回應丟失維持 unknown，不新增 prompt 或重派。
-- Desktop：Client revision 9 與 Admin 的兩份原 OpenAPI 及 hash、實際 consumer 來源。
-  Desktop 固定 `bee5692` 的後端是 `004ae36`，不能用 revision 相同取代內容比較。
-- 本倉已鎖原 Connector `329ca7c` 的 43 個檔，16 個執行檔與附件歷史 wheel 相同。
-  Windows 原 wheel 的 164 passed／1 skipped 是本倉基線準備，尚不冒充核心 oracle 交接。
+已收到 CORE-002 `89f15db` 的未發布 oracle、index 與 manifest，
+完整雜湊見 `compat/core-002/source.lock.json`。EXT-007 已在 Windows
+驗證原版及候選的 wire4 重連、ACK 邊界與原操作保留。逐筆對拍與故障結果見
+`artifacts/EXT-007/01/connector-upgrade.json`。
+EXT-019 可從同一交付取兩份 OpenAPI；Desktop 固定 `bee5692` 的後端是
+`004ae36`，需實際對照檔案內容與呼叫點。
 
 ## CORE-031 → EXT-002
 

@@ -58,6 +58,6 @@
     "ci_source_commit": "9138a528872bb9775b9ac05ddb38b5c1de6d7df2",
     "runtime_python_files_byte_equal_to_behavior_baseline": 16
   },
-  "core_oracle_delivery": null,
-  "status": "source-preparation; CORE-002 handoff not yet consumed"
+  "core_oracle_delivery": "compat/core-002/source.lock.json",
+  "status": "wire4 oracle pinned for EXT-007 acceptance"
 }

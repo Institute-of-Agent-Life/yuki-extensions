@@ -5,17 +5,19 @@ The independent preparation can pass before CORE-002. Card acceptance cannot.
 
 from __future__ import annotations
 
+import copy
 import email
+import shutil
 import hashlib
 import json
 import os
 from pathlib import Path
-import shutil
 import subprocess
 import sys
 import xml.etree.ElementTree as ET
 import zipfile
 
+from oracle import load_oracle
 from package import build
 
 
@@ -50,7 +52,63 @@ def audit_wheel(path, source):
                 "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}
 
 
-def prepare(root: Path, output: Path):
+def compare_frames(expected, actual):
+    if len(expected) != len(actual):
+        raise ValueError(f"wire frame count: expected {len(expected)}, got {len(actual)}")
+    facts = []
+    for position, (reference, received) in enumerate(zip(expected, actual, strict=True)):
+        adjusted = copy.deepcopy(reference)
+        if reference["body"]["type"] == "hello":
+            capabilities = received["body"]["device_capabilities"]
+            if capabilities["platform"] != sys.platform or capabilities["interrupt_supported"] != (sys.platform != "win32"):
+                raise ValueError("hello reports incorrect platform or interrupt capability")
+            if not shutil.which(capabilities["shell"]):
+                raise ValueError("hello reports an unavailable shell")
+            keys = ("platform", "shell", "interrupt_supported")
+            facts.append({key: capabilities[key] for key in keys})
+            adjusted["body"]["device_capabilities"].update(facts[-1])
+        if adjusted != received:
+            raise ValueError(f"wire mismatch at frame {position}")
+    return facts
+
+
+def replay(root, output, interpreters, call):
+    pin, index, goldens = load_oracle(root)
+    expected = goldens["wire4-frames.json"]
+    node = index["cases"]["wire4"].removeprefix("packages/yuki-agent-connector/")
+    case, _, test = node.partition("::")
+    source = json.loads((root / "connector/packaging/source.lock.json").read_bytes())
+    if hashlib.sha256((root / "connector" / case).read_bytes()).hexdigest() != source["original_files_sha256"][case]:
+        raise ValueError("inherited replay test changed")
+    records = {}
+    for label, distribution in [("old", "0.4.3"), ("candidate", VERSION)]:
+        path = output / f"wire4-{label}.json"
+        call([interpreters[label], "-I", root / "tests/peers/record_wire4.py", node, distribution, path])
+        records[label] = json.loads(path.read_bytes())
+        facts = compare_frames(expected, records[label])
+    if records["old"] != records["candidate"]:
+        raise ValueError("old and candidate wire frames differ on the same host")
+
+    faults = {}
+    for name in ("lost_ack", "changed_sequence"):
+        damaged = copy.deepcopy(records["candidate"])
+        if name == "lost_ack":
+            damaged.pop(next(i for i, frame in enumerate(damaged) if frame["body"]["type"] == "ack"))
+        else:
+            next(f["body"] for f in damaged if f["body"]["type"] == "event")["sequence"] += 1
+        try:
+            compare_frames(expected, damaged)
+        except ValueError as exc:
+            faults[name] = str(exc)
+        else:
+            raise AssertionError(f"accepted mutation: {name}")
+    return {"pin": pin, "nodeid": node, "frames_compared": len(expected), "host_facts": facts,
+            "same_host_exact_match": True, "negative_controls": faults,
+            "transcript_sha256": {label: hashlib.sha256((output / f"wire4-{label}.json").read_bytes()).hexdigest()
+                                  for label in records}}
+
+
+def check_distribution(root: Path, output: Path, formal: bool):
     connector = root / "connector"
     source = json.loads((connector / "packaging/source.lock.json").read_text(encoding="utf-8"))
     commands = []
@@ -109,6 +167,7 @@ def prepare(root: Path, output: Path):
         local_index = ["--no-index", "--find-links", env["UV_FIND_LINKS"]] if env.get("UV_FIND_LINKS") else []
         call(["uv", "pip", "install", "--python", python, *local_index, "--require-hashes", "-r", requirements])
         call(["uv", "pip", "install", "--python", python, "--no-deps", artifact])
+    wire = replay(root, output, interpreters, call) if formal else None
     old = interpreters["old"]
     candidate = interpreters["candidate"]
     original = work / "original-0.4.3"
@@ -157,20 +216,20 @@ def prepare(root: Path, output: Path):
     assert runtime_manifest["connector_wheel"]["sha256"] == inventory["sha256"]
     assert (runtime / "legal/Yuki-LICENSE").read_bytes() == (connector / "LICENSE").read_bytes()
     (output / "connector-runtime.json").write_bytes((json.dumps(runtime_manifest, indent=2) + "\n").encode())
-    report = {"status": "PASS", "card_status": "AWAITING_CORE_002", "scope": "independent distribution preparation",
+    report = {"status": "PASS", "card_status": "PASS" if formal else "PREPARATION", "scope": "CORE-002 replay and independent distribution" if formal else "independent distribution preparation",
               "version": VERSION, "published": False, "protocol": 4, "source": source,
               "wheel": inventory, "private_file_injection_rejected": rejected_private_file,
               "journal_upgrade": journal, "original_database_unchanged": True,
               "in_place_version": in_place["version"], "device_config_preserved": True,
               "daemon_started": marker.exists(), "pytest_suites": suites,
               "runtime": {k: v for k, v in runtime_manifest.items() if k != "files"},
-              "core_oracle_consumed": None, "host_sdk_consumed": None}
+              "core_oracle_consumed": wire, "host_sdk_consumed": None}
     return "connector-upgrade.json", report
 
 
+def prepare(root: Path, output: Path):
+    return check_distribution(root, output, False)
+
+
 def run(root: Path, output: Path):
-    return "connector-upgrade.json", {
-        "status": "BLOCKED", "card_status": "AWAITING_CORE_002",
-        "reason": "This checkout requires the pinned CORE-002 v4-oracle-index.json and its manifest for card acceptance.",
-        "preparation_command": "python ci/check.py EXT-007 --preparation --out artifacts/EXT-007/candidate-check",
-    }
+    return check_distribution(root, output, True)

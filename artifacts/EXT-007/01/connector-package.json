@@ -1,0 +1,45 @@
+{
+  "unit_id": "connector",
+  "version": "0.4.4.dev0",
+  "release_tag": "connector/v0.4.4.dev0",
+  "published": false,
+  "manifest_sha256": "57de8e3281fcdd0935d3f14983b65d4d89cafd10752c6e8e0e7b3792cb17111b",
+  "lock_sha256": "5f84713b46d822a40de7cee8b83f0ae07de53fb39ff955ffd1c89c96e04f85fa",
+  "source": {
+    "upstream": "https://github.com/YuanYeYouTao/Yuki",
+    "commit": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+    "path": "packages/yuki-agent-connector/",
+    "original_version": "0.4.3",
+    "source_inventory": "packaging/source.lock.json"
+  },
+  "license": "AGPL-3.0-only",
+  "artifacts": {
+    "yuki_agent_connector-0.4.4.dev0-py3-none-any.whl": "6160954210d696b0b83d5493fa244b245a59dece24fc3cf43d7ffe6196f615bb",
+    "yuki_agent_connector-0.4.4.dev0.tar.gz": "b5eee9bed6ec5404a2fb364269416e0600c033046e66616389a7c650d72e058c"
+  },
+  "commands": [
+    {
+      "command": [
+        "uv",
+        "lock",
+        "--check",
+        "--offline"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Using CPython 3.12.0 interpreter at: C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\nResolved 53 packages in 23ms\n"
+    },
+    {
+      "command": [
+        "uv",
+        "build",
+        "--no-sources",
+        "--out-dir",
+        "D:\\yuki-extension-tests\\2bbca8296d518a2c069d\\src\\artifacts\\EXT-007\\01\\packages"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Building source distribution...\nBuilding wheel from source distribution...\nSuccessfully built D:\\yuki-extension-tests\\2bbca8296d518a2c069d\\src\\artifacts\\EXT-007\\01\\packages\\yuki_agent_connector-0.4.4.dev0.tar.gz\nSuccessfully built D:\\yuki-extension-tests\\2bbca8296d518a2c069d\\src\\artifacts\\EXT-007\\01\\packages\\yuki_agent_connector-0.4.4.dev0-py3-none-any.whl\n"
+    }
+  ]
+}

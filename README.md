@@ -16,9 +16,9 @@ python ci/affected.py --changed connector/pyproject.toml
 
 Build the Connector development wheel and sdist with
 `python ci/package.py --unit connector --out dist/connector`. Run the upgrade
-and portable-runtime checks with `python ci/check.py EXT-007 --preparation --out artifacts/EXT-007/local`.
+and portable-runtime checks with `python ci/check.py EXT-007 --out artifacts/EXT-007/local`.
 The independent candidate uses version 0.4.4.dev0 and wire 4.
-Formal EXT-007 acceptance awaits the pinned CORE-002 oracle.
+Formal EXT-007 acceptance replays the pinned CORE-002 wire recording.
 
 `catalog/*.json` describes packaging, source and licensing only. It does not
 define the plugin wire, grant model or host declarations. Units enter the catalog
