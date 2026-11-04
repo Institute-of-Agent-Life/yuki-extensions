@@ -32,7 +32,8 @@ CORE-002 未發布 oracle 產自 `89f15dbbfc5535a0d9fa94244a9e5cde96638ece`，
 
 ## EXT-002 握手預覽
 
-分支 `codex/ext-002-preview`。核心合併提交
+分支 `codex/ext-002-preview`，實作提交 `e2ca2aa`。[PR #9 的三平台驗證與合併紀錄](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/9)。
+核心合併提交
 `dd694a0db605bfe13b0d72663bef01599560230b`，候選 ZIP SHA-256
 `6e2ca1040f6d1eac2f70b0ff363887faf662782f72a7acd367d4a52a17b2caa2`。
 本地交付和核心 CI 的 Ubuntu ZIP 完全相同。Rust SDK `1.0.0-alpha.1`、
