@@ -132,3 +132,14 @@ a platform success ACK only after the host commits its original native event.
 Interrupt the first admission before the host can reply, reconnect and replay.
 Two apps using the same open_id cannot share receipts. Card/control frames
 must not create a human message.
+
+## EXT-040 offline setup
+
+On Windows, verify the clean signed CORE-039 OCI candidate against a separately
+pinned source, signer, platform and digest. Generate a direct-only Compose kit
+without a connector, QQ, Monty, environment image or Docker socket. Offline doctor
+must work without invoking Docker or the network. Repeat installation over
+operator comments, secret references and legacy NapCat values and preserve them.
+Refuse corrupt inputs, unknown pins, an occupied owner file and unsigned optional
+components. Test an actual selected native host when available; distinguish
+rendering/doctor, native readiness and a launched Compose deployment.

@@ -1,0 +1,11 @@
+{
+  "source_commit": "0bac1493a9cefc70f32a938f7aff4c6b24b844f6",
+  "target": "windows/x86_64",
+  "version": "0.1.0-alpha.1",
+  "published": false,
+  "binary_sha256": "e2f00b2f853a3a69485ac509cecce9f2247e928675ee4b9f2f5117902faed91c",
+  "consumer_sdk_sha256": "9408022bdf1322a8d6e07914685869771a5738280e36145e46da5c36facbfce0",
+  "required_host_schema_sha256": "4822f19fb937eba524e475b35c0753a713587f48feee87ae6bd7b53ccab06cba",
+  "consumer_receipt_sha256": "e1f5569fd35045fadd0729b0222e229eef21bcbf798fb821ac086fbc539691d9",
+  "manifest": "id = \"web-fetch\"\nversion = \"0.1.0-alpha.1\"\nprogram = \"yuki-web-fetch\"\ngrants = [\"tool.call\"]\nenv = [\"YUKI_WEB_FETCH_HTTP_PROXY\",\"YUKI_WEB_FETCH_HTTPS_PROXY\",\"YUKI_WEB_FETCH_ALL_PROXY\",\"YUKI_WEB_FETCH_NO_PROXY\"]\n\n[[tools]]\nname = \"web_fetch\"\ndescription = \"Read the text and source of a public HTTP or HTTPS page.\"\nparallel_read = false\ncacheable = false\ncode_direct = true\nschema = {type=\"object\",properties={url={type=\"string\"}},required=[\"url\"],additionalProperties=false}\n"
+}

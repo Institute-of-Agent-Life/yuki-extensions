@@ -1,0 +1,70 @@
+{
+  "source_commit": "093716ad01c0a0ce1f9364e7af26f97c7ad5bdc9",
+  "handoff_commit": "fe278a51dca88c50a4271186579d1f717d0b075d",
+  "fixtures_sha256": "2d986f7c2bf30d597fbf667f346d189a8aad9bf6194d1341fc13620e4907316e",
+  "native": {
+    "windows/x86_64": {
+      "archive": "yuki-core-093716ad01c0-windows-x86_64.zip",
+      "archive_sha256": "03989033a13260cb863d1ff81e2407f0593d43c7a6c0779704ca9eb2c6b1a871",
+      "signer": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA5Myoc8qo28ZGofA6lc3Jg/vYBJf2Qqn9hIVOxtAzi4 hilbert@hjw\n",
+      "signer_sha256": "86d9652f0bb90fcf0204869425d0313024c62c40ba3a49f170ce30a34207b7ef",
+      "binary_sha256": "c40c446a9fa40c9199d999b15671be668a03bd1e97127ac2caaffe71719f057a",
+      "reader_version": 13,
+      "methods": [
+        "command.invoke",
+        "forget.ack",
+        "forget.request",
+        "gateway.dispatch_part",
+        "gateway.inbound",
+        "gateway.part_status",
+        "gateway.plan_send",
+        "gateway.status",
+        "observer.event",
+        "tool.call",
+        "tool.status"
+      ]
+    },
+    "linux/arm64": {
+      "archive": "yuki-core-093716ad01c0-linux-arm64.zip",
+      "archive_sha256": "526504d07c90cabff1c30373fed11465478b2ce451396d11ce1554c0801e1c2e",
+      "signer": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINH+q3ZNbM7sZjg6GIX5uan7Gm1RFKT/4gQQihO+aI8x root@db4e44867920\n",
+      "signer_sha256": "d29f93317c1fb9d70f8b9c428f3f631ca8d3ab91864022dd195c261de6c8ebc4",
+      "binary_sha256": "f7d490166d0925f7547691556f36adc60af2dc3efbfe11e562c512534e9f7520",
+      "reader_version": 13,
+      "methods": [
+        "command.invoke",
+        "forget.ack",
+        "forget.request",
+        "gateway.dispatch_part",
+        "gateway.inbound",
+        "gateway.part_status",
+        "gateway.plan_send",
+        "gateway.status",
+        "observer.event",
+        "tool.call",
+        "tool.status"
+      ]
+    },
+    "darwin/arm64": {
+      "archive": "yuki-core-093716ad01c0-darwin-arm64.zip",
+      "archive_sha256": "e866d639de3b6127823df897ed200bfc3bcdd11883828fba5d54f5af029e2ff2",
+      "signer": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIACzT0UuX1NU2fw1Qol5MBgulksd4TQKLbHLUISUkbNg huangjiawei@huangjiaweideMac-mini.local\n",
+      "signer_sha256": "6cac9d04cdb668e1ed385c27f2ff5e58753a49825f8e634765f4416543bfd3e0",
+      "binary_sha256": "b46cb9788f4077343a98e1552d97d68a37cfa684ea84b43700a4400b67b0e271",
+      "reader_version": 13,
+      "methods": [
+        "command.invoke",
+        "forget.ack",
+        "forget.request",
+        "gateway.dispatch_part",
+        "gateway.inbound",
+        "gateway.part_status",
+        "gateway.plan_send",
+        "gateway.status",
+        "observer.event",
+        "tool.call",
+        "tool.status"
+      ]
+    }
+  }
+}

@@ -29,9 +29,16 @@ def powershell(host, code):
     prefix = "$ErrorActionPreference='Stop'; $ProgressPreference='SilentlyContinue'; "
     prefix += "[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new($false); $env:PYTHONUTF8='1'; "
     encoded = base64.b64encode((prefix + code).encode("utf-16le")).decode()
+    stdin = None
+    if len(encoded) > 7200:
+        # Windows OpenSSH starts its command through cmd.exe (8191-character limit).
+        # Keep the signed-in host and original PowerShell error/exit behavior.
+        stdin = base64.b64encode((prefix + code).encode("utf-8")).decode() + "\r\n"
+        loader = "& ([ScriptBlock]::Create([Text.Encoding]::UTF8.GetString([Convert]::FromBase64String([Console]::In.ReadLine()))))"
+        encoded = base64.b64encode(loader.encode("utf-16le")).decode()
     return invoke(["ssh", "-o", "BatchMode=yes", "-o", "ConnectTimeout=8",
                    "-o", "StrictHostKeyChecking=yes", host, "powershell", "-NoProfile",
-                   "-NonInteractive", "-EncodedCommand", encoded])
+                   "-NonInteractive", "-EncodedCommand", encoded], input=stdin)
 
 
 def quote(value):
@@ -176,7 +183,24 @@ def main():
             if not path.exists() or hashlib.sha256(path.read_bytes()).hexdigest() != package["checksum"]:
                 path.write_bytes(registry_crate(package))
             native_crates.append(path)
+    setup_inputs = []
+    if args.task == "EXT-040":
+        pins = root / "tools/yuki-setup/inputs"
+        oci = json.loads((pins/"source.lock.json").read_bytes())
+        native = json.loads((pins/"native.lock.json").read_bytes())["native"]["windows/x86_64"]
+        for env, pin in [("YUKI_CORE039_OCI", oci), ("YUKI_CORE039_NATIVE", native)]:
+            package = Path(os.environ[env])
+            if hashlib.sha256(package.read_bytes()).hexdigest() != pin["archive_sha256"]:
+                raise ValueError("unexpected setup input: " + env)
+            setup_inputs.append((env, package))
+        plugin = Path(os.environ["YUKI_SETUP_WEB_FETCH"])
+        plug = json.loads((pins / "web-fetch.lock.json").read_bytes())
+        if hashlib.sha256(plugin.read_bytes()).hexdigest() != plug["binary_sha256"]:
+            raise ValueError("unexpected optional web-fetch binary")
+        setup_inputs.append(("YUKI_SETUP_WEB_FETCH", plugin))
     with zipfile.ZipFile(tools_zip, "w", zipfile.ZIP_DEFLATED) as archive:
+        for _, package in setup_inputs:
+            archive.write(package, "setup-inputs/" + package.name)
         for crate in native_crates:
             archive.write(crate, "native-crates/locked/" + crate.name)
         if host_candidate:
@@ -198,7 +222,7 @@ def main():
     assert invoke(["scp", "-q", str(snapshot), f"{args.host}:{remote}/source.zip"]).returncode == 0
     assert invoke(["scp", "-q", str(tools_zip), f"{args.host}:{remote}/tooling.zip"]).returncode == 0
     sdk_environment = ""
-    if args.task in {"EXT-002", "EXT-003", "EXT-005", "EXT-028"}:
+    if args.task in {"EXT-002", "EXT-003", "EXT-005", "EXT-028", "EXT-040"}:
         # Use the host's existing pinned toolchain, with a separate writable Cargo home.
         sdk_environment = r"""
 $tools=Join-Path $env:USERPROFILE 'yuki-core-tooling'
@@ -207,6 +231,8 @@ $env:YUKI_CRATE_CACHE=Join-Path $tools 'cargo/registry/cache'
 $env:PATH="$(Join-Path $tools 'cargo/bin');$(Join-Path $tools 'winlibs/mingw64/bin');$env:PATH"
 $env:CARGO_HOME=Join-Path $env:TEMP 'cargo-home'
 """
+    for key, package in setup_inputs:
+        sdk_environment += "$env:" + key + "=" + quote(remote + "/wheelhouse/setup-inputs/" + package.name) + "\n"
     if host_candidate:
         sdk_environment += "$env:YUKI_HOST_CANDIDATE=" + quote(remote + "/wheelhouse/core032-host.zip") + "\n"
     if native_crates:

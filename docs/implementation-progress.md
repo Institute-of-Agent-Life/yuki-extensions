@@ -28,7 +28,7 @@ CORE-002 未發布 oracle 產自 `89f15dbbfc5535a0d9fa94244a9e5cde96638ece`，
   Codex、Claude、ACP 各自的具名 JSON 包含本機 peer 的實際回執與故障邊界。
 - EXT-019 對拍的是 Desktop 源碼與舊協議。源安裝固定 rev 9；公開 beta.8
   的 tag 固定 rev 7。詳見 `docs/desktop-handoff.md`。
-- 握手 SDK 的 digest 見下方 EXT-002；完整 Host／正式插件仍無逐方法消費證據。
+- EXT-002 記握手 SDK digest。CORE-032 真插件與 CORE-039 原生宿主的逐方法證據見各候選回條。
 
 ## EXT-002 握手 SDK
 
@@ -119,3 +119,21 @@ Windows 插件 SHA-256 `e0684be789a3f16a282bb83b5387549e0e15c90c07a7004ad8a6e125
 宿主中斷前只有 ping 和 card ACK；重投、重複分片及兩 app 同 open_id 分別得到
 原事件 1、1 與 2、2。錯租戶回 500，錯密鑰被拒。逐方法訊框在同目錄 wire.jsonl。
 正式驗收待 CORE-032 交付。
+
+## EXT-040 Windows 離線安裝候選
+
+分支 `codex/ext-040-setup`。獨立 Rust 工具消費 CORE-039 `093716ad01c0`；
+由 `fe278a51` 交接記錄核對的 Windows 原生 ZIP SHA-256
+`03989033a13260cb863d1ff81e2407f0593d43c7a6c0779704ca9eb2c6b1a871`，
+Linux ARM64 OCI tar SHA-256 `b5975cbc593594c6b55222e7ae1fd8ac9a2bbb3bd147ee1081438df04c708ec9`。
+三平台原生包、簽署者、fixture、架構及方法釘在 `tools/yuki-setup/inputs/`。
+此版本尚未發布，ARM64 Compose 在 Windows 只完成產生和驗證。
+
+Windows 安裝器 SHA-256 `9ed9a8aa2ae7415efe12cd38a92ce0ffc6638fcc57454b8806ee350e053a8a12`。
+具名回條 `artifacts/EXT-040/candidate-06/setup-install.json` SHA-256
+`ec6d75176646ddcebae6a22792f4e0a95c22669ffd6e146dd17dd219cc75fbd8`。
+13 次安裝／doctor 操作驗過註釋、人工密鑰引用、NapCat 殘留、不支援的選配與錯誤檔案。
+空 owner 無插件時真實 /readyz 通過。明選 web-fetch 後，另一個新 owner 只載入該實際 binary。
+純安裝不啟服務。Windows 測試另外啟動兩個隔離 owner 驗證結果。CORE-032 消費者與
+CORE-039 宿主內的 SDK 同為 alpha.2，crate 雜湊不同；兩者均記在回條。
+正式外部入口、選配服務與 Compose 實際部署仍待相應交付。

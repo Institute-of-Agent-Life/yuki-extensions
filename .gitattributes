@@ -7,3 +7,7 @@ compat/desktop/beta-source.json -text
 compat/core-031/** -text
 compat/core-032/*.crate -text
 compat/core-032/host-preview.json -text
+tools/yuki-setup/inputs/oci-candidate.json -text
+tools/yuki-setup/inputs/oci-candidate.json.sig -text
+tools/yuki-setup/inputs/signer.pub -text
+tools/yuki-setup/inputs/verify_*.py -text
