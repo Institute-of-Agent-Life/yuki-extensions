@@ -134,11 +134,20 @@ pub fn normalize(update: &Value, bot: i64, username: &str) -> Result<Value, &'st
     } else {
         "message"
     };
+    let occurred = raw["edit_date"]
+        .as_i64()
+        .or(raw["date"].as_i64())
+        .map(|seconds| {
+            seconds
+                .checked_mul(1000)
+                .ok_or("Telegram timestamp overflow")
+        })
+        .transpose()?;
     Ok(
         json!({"source":format!("{chat}:{mid}"),"native_id":format!("{chat}:{mid}"),"sender":sender,
         "space":(raw["chat"]["type"] != "private").then(||chat.to_string()),"topic":raw["message_thread_id"].as_i64().map(|v|v.to_string()),
         "native_version":edited.then(||revision.to_string()),"kind":kind,"segments":segments,
-        "occurred":raw["edit_date"].as_i64().or(raw["date"].as_i64()),"accept":ordinary}),
+        "occurred":occurred,"accept":ordinary}),
     )
 }
 

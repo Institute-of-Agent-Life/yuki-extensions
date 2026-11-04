@@ -87,3 +87,9 @@ event 3。另一 Bot 的同號消息取得 event 7。edit 和遷群各有 durabl
 accepted 為 false。27 個 stdio 訊框與平台 poll 記錄可逐一覆核。
 `dev-03` 是早期開發測試；卡的驗收狀態以 candidate-02 的 preparation manifest
 為準。完整宿主候選對拍在 Windows 實機執行，三平台 CI 各自編譯並測試插件。
+
+修正提交沿 `7dbe738` 的實作，把 Bot API 的秒數轉成宿主接納的毫秒；
+Windows 重驗 `artifacts/EXT-003/candidate-03/telegram-offset.json` SHA-256
+`a81f960527f3d5e959fef3003af13a8539f4174c9d35af91d1b5855e833f9338`。
+新 binary `0eb1cc4cbbc40321028032fc5ba5175ff51bce4e9c99c9af77d23c0fea95c0f2`。在本次三條的故障序列中仍得到 event 3 重投回原 ID。
+[擴展 PR #11](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/11)

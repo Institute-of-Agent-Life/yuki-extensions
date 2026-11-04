@@ -181,6 +181,7 @@ def prepare(root, output):
         assert calls[1]["params"]["topic"]=="7" and calls[3]["params"]["topic"] is None
         assert calls[0]["params"]["segments"][1]["native"]=="101"
         assert [s["type"] for s in calls[1]["params"]["segments"]]==["text","media","reply"]
+        assert calls[0]["params"]["occurred"]==1000 and calls[5]["params"]["occurred"]==2000
         assert calls[5]["params"]["kind"]=="edit" and calls[5]["params"]["native_version"]=="13"
         assert calls[6]["params"]["kind"]=="data" and responses[14]["accepted"] is False
         assert calls[-1]["params"]["segments"][0]["reference"]=="sticker"
