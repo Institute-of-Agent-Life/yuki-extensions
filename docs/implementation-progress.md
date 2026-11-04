@@ -17,16 +17,23 @@
   PR 的 checkout 是 `3478b8f`，已核父提交及 tree 與 `f136b4d` 相同，不冒填 head SHA。
 - 上述 Rust 程式是建置 fixture，沒有冒充正式插件、SDK 消費或 B0 見證。
 
-## 準備中：EXT-007
+## EXT-007 候選包
 
-- 工作分支 `codex/ext-007`。43 個原檔已取出，16 個執行檔與附件歷史 0.4.3 wheel
-  bytes 相同；來源與 SHA 在 `connector/packaging/source.lock.json`。wire 維持 4。
-- Windows／原 wheel：ruff、mypy、doctor 通過；pytest **164 passed、1 skipped**。
-  skip 是 Windows 已開啟 handle 不允許刪除／替換。證據在本地
-  `artifacts/EXT-007/source-02/`，狀態是來源準備 PASS、整卡 BLOCKED。
-- `source-01` 的測試已通過，最後 doctor 因新探針誤加 `--json` 失敗；保留失敗原件。
-  `source-02` 修正探針後通過。沒有改 Connector 行為或發布新的 0.4.3。
-- 因 CORE-002 尚未交付，本卡程式及準備產物保持未提交，不先合併為完成卡。
+工作分支 `codex/ext-007`。來源提交 `0150c76` 固定 0.4.3 的 43 個檔與歷史 wheel。
+候選提交 `8fd6ed8` 提供 `0.4.4.dev0` wheel、sdist 與可攜 runtime，wire 為 4。
+52 個第三方依賴的版本、來源和雜湊與原鎖檔逐項一致。
+
+Windows 結果在 `artifacts/EXT-007/candidate-02/`。乾淨安裝及原地升級均通過，
+舊 journal 的副本仍可查 confirmed／unknown 原操作，異設備與同鍵異參均被拒。
+原設備設定與原始 DB bytes 保持一致，已設定的 canary daemon 啟動次數為零。
+ruff、mypy 與 doctor 通過。原定向測試 164 passed、1 skipped，跳過項是
+Windows 檔案 handle 的重新命名限制。runtime 在中文路徑執行，清冊含 5,404 項，
+其中的 wheel SHA-256 為 `6160954210d696b0b83d5493fa244b245a59dece24fc3cf43d7ffe6196f615bb`。
+
+`source-01` 保留早期 doctor 探針失敗，`source-02` 為原版通過結果。
+`candidate-red` 記未登記發行單位，`runtime-red` 記慢速連外下載中止，
+`candidate-01` 記 ruff 行長錯誤，`candidate-02` 為修正後結果。
+候選仍待 CORE-002 的具名 oracle 與 manifest。整卡驗收與發版保持待辦。
 
 ## 跨倉輸入與下一步
 
