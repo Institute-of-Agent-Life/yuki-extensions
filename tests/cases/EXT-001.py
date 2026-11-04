@@ -51,6 +51,24 @@ def run(root: Path, output: Path):
             execute([str(python), "-I", "-c", "import importlib.util; "
                      "assert importlib.util.find_spec('yuki') is None; "
                      f"import fixture_{name}; assert fixture_{name}.VALUE == 'independent'"], isolated)
+        # Compile and execute an actual independent Rust binary. This is a fixture,
+        # not a substitute for an SDK-consuming product plugin.
+        gamma = isolated / "plugins" / "gamma"
+        (gamma / "src").mkdir(parents=True)
+        (gamma / "src/main.rs").write_text('fn main() { println!("fixture-gamma 0.0.1"); }\n', encoding="utf-8")
+        (gamma / "Cargo.toml").write_text('[package]\nname="fixture-gamma"\nversion="0.0.1"\nedition="2024"\n', encoding="utf-8")
+        (gamma / "rust-toolchain.toml").write_text('[toolchain]\nchannel="1.90.0"\nprofile="minimal"\n', encoding="utf-8")
+        (gamma / "LICENSE").write_text("SPDX-License-Identifier: MIT\nTest-only original fixture.\n", encoding="utf-8")
+        execute(["cargo", "generate-lockfile", "--offline"], gamma)
+        gamma_record = {"unit_id": "gamma", "kind": "plugin", "path": "plugins/gamma", "ecosystem": "rust",
+                        "version": "0.0.1", "tag_prefix": "gamma/v", "license": "MIT", "notices": ["LICENSE"],
+                        "source": {"kind": "test-only-original"}}
+        (isolated / "catalog/gamma.json").write_text(json.dumps(gamma_record), encoding="utf-8")
+        packages["gamma"] = build(isolated, "gamma", isolated / "built/gamma")
+        executable = isolated / "built/gamma" / ("fixture-gamma.exe" if os.name == "nt" else "fixture-gamma")
+        observed = execute([str(executable)], isolated).stdout.strip()
+        assert observed == "fixture-gamma 0.0.1", observed
+        gamma_hashes = {p.name: sha256(p) for p in (isolated / "built/gamma").iterdir()}
         beta_hashes = {p.name: sha256(p) for p in (isolated / "built" / "beta").iterdir()}
         # A manifest change selects and builds only alpha. Beta's emitted bytes stay identical.
         alpha_manifest = isolated / "catalog" / "alpha.json"
@@ -64,6 +82,7 @@ def run(root: Path, output: Path):
         assert selected == ["alpha"], selected
         build(isolated, selected[0], isolated / "built" / "alpha-next")
         assert beta_hashes == {p.name: sha256(p) for p in (isolated / "built" / "beta").iterdir()}
+        assert gamma_hashes == {p.name: sha256(p) for p in (isolated / "built/gamma").iterdir()}
         unit = load_catalog(isolated)["alpha"]
         original = pyproject.read_text(encoding="utf-8")
         faults = {}
@@ -101,6 +120,7 @@ def run(root: Path, output: Path):
                        '[dependencies]\na={git="https://example.invalid/a",rev="' + 'a' * 40 + '"}\n')
         cargo.write_text(valid_cargo, encoding="utf-8")
         (rust / "Cargo.lock").write_text("version = 4\n", encoding="utf-8")
+        (rust / "rust-toolchain.toml").write_text('[toolchain]\nchannel="1.90.0"\n', encoding="utf-8")
         rust_unit = {"unit_id": "rust-check", "path": "rust-unit", "ecosystem": "rust", "version": "0.0.1"}
         validate_unit(isolated, rust_unit)
         cargo.write_text(valid_cargo + 'b={git="https://example.invalid/b"}\n', encoding="utf-8")
@@ -112,10 +132,11 @@ def run(root: Path, output: Path):
             raise AssertionError("an unrelated Cargo rev masked an unpinned dependency")
         assert select_units(isolated, ["plugins\\alpha\\pyproject.toml"]) == ["alpha"]
         # These are test packages; no product plugin or host was substituted for one.
-        report = {"status": "PASS", "scope": "two test-only Python distributions; wheel + sdist + installed smoke",
+        report = {"status": "PASS", "scope": "two test-only Python distributions and one real Rust binary; independent builds + execution",
                   "no_core_checkout": True, "selected_after_alpha_change": selected,
                   "beta_bytes_unchanged": True, "packages": packages, "faults": faults,
-                  "rust_scope": "manifest/lock policy only; no Rust compiler invoked",
-                  "not_run": ["Rust compiler builds", "public SDK handshake", "real plugin/host acceptance"],
+                  "rust_scope": "Rust 1.90.0 compile, package and executable stdout; no product plugin/host",
+                  "rust_stdout": observed, "gamma_bytes_unchanged": True,
+                  "not_run": ["public SDK handshake", "real plugin/host acceptance"],
                   "commands": transcript}
     return "extension-build-isolation.json", report
