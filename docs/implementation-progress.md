@@ -78,7 +78,9 @@ manifest。回條含來源提交、SDK／schema／peer／消費者 digest、逐�
 | EXT-020 · codex/ext-020-env | `cf1c2a5`、`1e7906b` · [PR #14](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/14) | 原 Manager 來源包、run 查詢與缺後端局部失敗 | Work/run 授權，真 gVisor/execd、PTY 及輪轉 |
 | EXT-040 · codex/ext-040-setup | `a607e8c` · [PR #15](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/15) | 簽名原生／OCI 安裝，無 QQ ready，明選 web-fetch | CORE-039 正式交接、外部入口與選配服務實測 |
 
-對 CORE-033 尚無可消費交付，EXT-011／015 待核。EXT-004 尚需 CORE-025。
+對 CORE-033 尚無可消費交付，EXT-011／015 待核。CORE-025 已開
+[核心 PR #34](https://github.com/Institute-of-Agent-Life/yuki-core/pull/34)。EXT-004／006
+仍缺原 Bot／租戶附件的公開授權與驗收回條，詳見 `docs/core-interface-requests.md`。
 EXT-067 完整基底對拍還需 EXT-004 的實際分段投遞證據。
 
 PR #15 修正外接磁碟打包時讀取 catalog 的問題。Windows 實機驗證
