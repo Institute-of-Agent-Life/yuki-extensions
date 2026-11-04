@@ -1,5 +1,5 @@
 {
-  "observed_utc": "2026-11-04T20:01:46+00:00",
+  "observed_utc": "2026-11-04T20:15:42+00:00",
   "core_main": "7fd10027bd520dfaa497e06e4f9d20ec869041c8",
   "core_unmerged": {
     "24": {
@@ -13,6 +13,12 @@
       "headRefOid": "6e80686e1ce70e0e83681435bf06a0d68dd01308",
       "state": "OPEN",
       "url": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/28"
+    },
+    "34": {
+      "baseRefName": "codex/core-027-extract",
+      "headRefOid": "c73f1fc5e0fb44faa6e083a13d9a45029739f891",
+      "state": "OPEN",
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/34"
     }
   },
   "formal_windows_passed": [
@@ -341,12 +347,39 @@
     "https://github.com/Institute-of-Agent-Life/yuki-core/pull/28#issuecomment-6638799502"
   ],
   "core_025_local_observation": {
-    "manifest": "artifacts/CORE-025/mac-01/manifest.json",
-    "manifest_sha256": "abe6eb36640f170f0f8e2c158d1a432d5565a17da7516cd510992a448a6f8710",
-    "source_commit": "940050f074f068508984c3fa965b1eecef558b67",
-    "dirty": true,
-    "validation_status": "verified",
-    "consumed": false
+    "pr_head": "c73f1fc5e0fb44faa6e083a13d9a45029739f891",
+    "local_validation": {
+      "mac-03": {
+        "manifest": "artifacts/CORE-025/mac-03/manifest.json",
+        "manifest_sha256": "3c91d3fa26fdca8641ab2eb36c4495ccbdfc954be7c08e2e2ff50a002b69d694",
+        "source_commit": "940050f074f068508984c3fa965b1eecef558b67",
+        "dirty": true,
+        "validation_status": "verified"
+      },
+      "windows-02": {
+        "manifest": "artifacts/CORE-025/windows-02/manifest.json",
+        "manifest_sha256": "c699d243cd400ecec842163e040e68dd7f82d3c058af7b3775cff54143567506",
+        "source_commit": "940050f074f068508984c3fa965b1eecef558b67",
+        "dirty": true,
+        "validation_status": "verified"
+      }
+    },
+    "public_host_schema_sha256": "4822f19fb937eba524e475b35c0753a713587f48feee87ae6bd7b53ccab06cba",
+    "public_method_index": [
+      "command.invoke",
+      "forget.ack",
+      "forget.request",
+      "gateway.dispatch_part",
+      "gateway.inbound",
+      "gateway.part_status",
+      "gateway.plan_send",
+      "gateway.status",
+      "observer.event",
+      "tool.call",
+      "tool.status"
+    ],
+    "consumed_for_plugin_acceptance": false,
+    "gap": "Original receiving gateway authority and immutable attachment version access are unspecified in the plugin contract."
   },
   "connector_ci_repair": {
     "implementation_commit": "03cabaa6f53db966888e3bf4d62a2113436482ec",
