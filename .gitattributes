@@ -5,3 +5,5 @@ docs/taskbook/** -text
 compat/core-002/** -text
 compat/desktop/beta-source.json -text
 compat/core-031/** -text
+compat/core-032/*.crate -text
+compat/core-032/host-preview.json -text

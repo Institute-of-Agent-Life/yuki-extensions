@@ -1,0 +1,31 @@
+{
+  "repository": "Institute-of-Agent-Life/yuki-core",
+  "source_commit": "199dff095be0bc87c9713beaa0419400cb424a7c",
+  "status": "unpublished-development-candidate",
+  "platforms": {
+    "windows-x86_64": {
+      "archive": "yuki-host-preview-199dff095be0-windows-x86_64.zip",
+      "sha256": "d3ef0f3ce8a7dedd175b6aa3392a22c744504cf6bea70eadc22d5408642e634c",
+      "binary_sha256": "a9079931f50996af682ee4600f1e25b86e7e0637f5b3999bfa4822144c12aff8",
+      "delegation_sha256": "293c44914b715cfb5e5b949c7f75707649d7e2aa368cfafe34c29df7062ac274"
+    },
+    "darwin-arm64": {
+      "archive": "yuki-host-preview-199dff095be0-darwin-arm64.zip",
+      "sha256": "07592cb449433512dcaf55306bfddbc8a6b3f93d025f15d7f51da59e844a5e9d",
+      "binary_sha256": "bdc76fae3743a48f780003dd53e4c0e71734ca996a0902f08d57cdce1743c74b",
+      "delegation_sha256": "713068cc27037af89f7fb475f4e5f292d22e9e21d9e80e26e6e150758739ee0a"
+    }
+  },
+  "sdk": {
+    "python": "1.0.0a2",
+    "rust": "1.0.0-alpha.2"
+  },
+  "schema_sha256": "4822f19fb937eba524e475b35c0753a713587f48feee87ae6bd7b53ccab06cba",
+  "rust_crate_sha256": "9408022bdf1322a8d6e07914685869771a5738280e36145e46da5c36facbfce0",
+  "sdk_origin": {
+    "run": 41872198788,
+    "artifact": 13343974720,
+    "name": "core-evidence-ubuntu-latest-1",
+    "member": "CORE-032/ci/sdk-distributions/yuki-plugin-sdk-1.0.0-alpha.2.crate"
+  }
+}

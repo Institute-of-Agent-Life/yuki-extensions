@@ -67,5 +67,23 @@ manifest。回條含來源提交、SDK／schema／peer／消費者 digest、逐�
 ## 下一張可執行卡
 
 直接前置與最新觀察見 `artifacts/readiness/after-ext-002.json`。共有 7 張卡
-通過實機驗收。Telegram 與 web-fetch 的下一步分別是 EXT-003 與 EXT-020，
+通過實機驗收。Telegram 與 web-fetch 的下一步分別是 EXT-003 與 EXT-028，
 兩者均待 CORE-032；EXT-011／015 待 CORE-033，EXT-040 待 CORE-039。
+
+## EXT-003 Windows 開發候選對拍
+
+分支 `codex/ext-003-telegram`。Telegram 是獨立建置的 Rust 插件，使用
+`compat/core-032/source.lock.json` 的宿主及 SDK。真宿主啟動獨立 binary，
+Bot API 的受控 loopback recorder 只使用 fixture credential。核心握手、
+逐方法訊框與實收效果見 `artifacts/EXT-003/`。早期 `dev-01/02` 的拒絕
+保留原始回執；`dev-03` 通過第二條在 commit 前斷線的開發對拍。這些
+snapshot 使用候選包，正式進度仍取決於 CORE-032 的有效交付。
+
+可交還核心的 Windows 回條為 `artifacts/EXT-003/candidate-02/telegram-offset.json`
+（SHA-256 `7f208179ebfa200709c5574a6756f7edcde83995db369b0bd4b41059f0d64303`）。
+來源 `199dff09`；宿主、SDK、schema 與 Rust binary 雜湊均在回條。三條中
+第二條提交前斷線停在 offset 11，第三條提交後回執丟失停在 12，復送取得同一
+event 3。另一 Bot 的同號消息取得 event 7。edit 和遷群各有 durable event，
+accepted 為 false。27 個 stdio 訊框與平台 poll 記錄可逐一覆核。
+`dev-03` 是早期開發測試；卡的驗收狀態以 candidate-02 的 preparation manifest
+為準。完整宿主候選對拍在 Windows 實機執行，三平台 CI 各自編譯並測試插件。

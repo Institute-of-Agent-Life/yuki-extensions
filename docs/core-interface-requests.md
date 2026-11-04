@@ -41,3 +41,16 @@ host／schema／SDK digest。以下名稱沿用總書方法族，實際欄位以
 
 對拍完成後交回：同一 host／SDK／插件 digest、逐方法 transcript、實收效果、撤權／
 錯版／重投／部分未知等失敗案例。現階段沒有 SDK／Host 消費證據可交，勿標 B0 已驗。
+
+
+### CORE-032 候選的 Telegram 消費結果
+
+已釘 `199dff095be0bc87c9713beaa0419400cb424a7c`，schema 2、SDK
+`1.0.0-alpha.2`，來源與各平台 digest 在 `compat/core-032/source.lock.json`。
+`gateway.inbound` 的 `segments` 索引只列 object。Windows 候選實際接受
+扁平的 text/text、mention/native/label/span、media/kind/reference 及
+reply/native_id；舊 Telegram 的巢狀 data 會回 `-32003`，與拒絕未授權來源
+同碼。建議在生產者 schema 的 segments items 明列這些形狀與失敗分類。
+遷群目前能以 data 事件交原 from/to，尚無可授權轉移原 space 綁定的方法。
+擴展只記平台服務事實；若要移轉既有綁定，需由核心提供帶原 Bot、原新 chat、
+生效時間與同鍵重投語義的授權方法。

@@ -12,6 +12,7 @@ import subprocess
 import tempfile
 from contextlib import ExitStack
 
+from handshake_cargo import vendor_sdk
 from units import inside, load_catalog, validate_unit
 
 
@@ -30,6 +31,7 @@ def build(root: Path, ident: str, output: Path) -> dict:
     if output.exists() and any(output.iterdir()):
         raise ValueError("use an empty output directory; published artifacts are immutable")
     output.mkdir(parents=True, exist_ok=True)
+    build_path = path
     env = {k: v for k, v in os.environ.items() if k not in {"PYTHONPATH", "VIRTUAL_ENV"}}
     with ExitStack() as stack:
         if unit["ecosystem"] == "python":
@@ -39,12 +41,23 @@ def build(root: Path, ident: str, output: Path) -> dict:
             ]
         else:
             target = Path(stack.enter_context(tempfile.TemporaryDirectory(prefix="yuki-rust-build-")))
+            if contract := unit["source"].get("sdk_contract"):
+                contract_path = inside(root, contract)
+                sdk = json.loads(contract_path.read_bytes())
+                crate = contract_path.parent / f"yuki-plugin-sdk-{sdk['sdk']['rust']}.crate"
+                if sha256(crate) != sdk["rust_crate_sha256"]:
+                    raise ValueError("plugin SDK crate digest mismatch")
+                build_path = target / "unit"
+                shutil.copytree(path, build_path, ignore=shutil.ignore_patterns("target","._*"))
+                vendor_sdk(crate, build_path)
             commands = [["rustc", "--version", "--verbose"],
                         ["cargo", "--version"],
                         ["cargo", "build", "--locked", "--release", "--target-dir", str(target)]]
+            if build_path != path:
+                commands.insert(-1, ["cargo", "test", "--locked", "--offline", "--target-dir", str(target)])
         transcripts = []
         for command in commands:
-            result = subprocess.run(command, cwd=path, env=env, text=True, capture_output=True)
+            result = subprocess.run(command, cwd=build_path, env=env, text=True, capture_output=True)
             transcripts.append({"command": command, "exit_code": result.returncode,
                                 "stdout": result.stdout, "stderr": result.stderr})
             if result.returncode:
@@ -56,7 +69,7 @@ def build(root: Path, ident: str, output: Path) -> dict:
             for binary in binaries:
                 name = binary["name"] + (".exe" if os.name == "nt" else "")
                 shutil.copy2(target / "release" / name, output / name)
-            for notice in unit["notices"]:
+            for notice in [*unit["notices"], *unit.get("runtime_files", [])]:
                 dest = output / notice
                 dest.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copy2(inside(path, notice), dest)
