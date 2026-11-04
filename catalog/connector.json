@@ -28,6 +28,7 @@
     "tests/cases/EXT-008.py",
     "tests/peers/codex_wire.py",
     "tests/cases/EXT-009.py",
-    "tests/peers/native_case.py"
+    "tests/peers/native_case.py",
+    "tests/cases/EXT-010.py"
   ]
 }

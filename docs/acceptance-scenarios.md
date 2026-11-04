@@ -63,3 +63,12 @@ question before delivering the correct one. End the SDK stream after a peer
 file effect and observe the unknown receipt, retained bytes and single prompt.
 Keep private profile and project canary contents out of observed SDK messages
 and Connector events.
+
+## EXT-010 native ACP v1
+
+Start an actual stdio peer with an empty argument and an argument containing a
+space. Require its declared capabilities before loading an original session.
+Denying or omitting load cannot create a replacement session. Start a new run
+beside the loaded one, answer only its original permission and cancel only the
+named execution. Exit the native process with the second prompt pending and
+verify both its real exit status and the unknown receipt.

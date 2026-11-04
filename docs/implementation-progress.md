@@ -90,3 +90,15 @@ SDK 使用本機替身 transport，讀到歷史後仍須明確 resume，原 cwd 
 同一操作只發一次，peer 已寫檔案在關閉後仍可讀。驗過私密檔 canary
 未進入 SDK 寫出資料與 Connector 事件。實際欄位與檔案雜湊見
 `artifacts/EXT-009/01/claude-driver-wire.json`。
+
+EXT-008 `d434482` 在三平台 CI `41833796596` 通過，PR #4 合併於 `15ea291`。
+EXT-009 `c0d30fb` 在三平台 CI `41834256598` 通過，PR #5 合併於 `9eb9223`。
+
+## EXT-010 ACP v1 子進程
+
+分支 `codex/ext-010`，沿同一 Connector 與 agent-client-protocol 0.12.1。
+Windows 實機 8 個案例及 ruff 通過。`artifacts/EXT-010/02/native-acp-v1.json`
+記錄實際 stdio 雙向訊框、pid、cwd、含空字串的原 argv 和退出碼。
+未宣告 load 及已宣告但拒絕 load 均未建立新 session。支援 load 的 peer
+只取消指定 session，第二個 prompt 仍在執行。peer 退出碼 23 後第二個
+操作回 unknown。第一次執行 `01/` 與收緊錯誤分類、退出同步後的 `02/` 均保留。

@@ -78,6 +78,9 @@ jobs:
       - name: Check Claude native SDK
         if: matrix.unit == 'connector'
         run: python ci/check.py EXT-009 --out artifacts/EXT-009/ci
+      - name: Check ACP native v1
+        if: matrix.unit == 'connector'
+        run: python ci/check.py EXT-010 --out artifacts/EXT-010/ci
       - name: Upload Connector acceptance evidence
         if: always() && matrix.unit == 'connector'
         uses: actions/upload-artifact@v4
@@ -89,6 +92,8 @@ jobs:
             artifacts/EXT-008/ci/*.txt
             artifacts/EXT-009/ci/*.json
             artifacts/EXT-009/ci/*.txt
+            artifacts/EXT-010/ci/*.json
+            artifacts/EXT-010/ci/*.txt
             artifacts/EXT-007/candidate-ci/*.xml
             artifacts/EXT-007/candidate-ci/*.txt
           if-no-files-found: error
