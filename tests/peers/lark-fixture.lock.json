@@ -1,0 +1,17 @@
+{
+  "source_commit": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+  "schema_path": "src/yuki/gateway/providers/feishu_protocol.py",
+  "schema_sha256": "3ee2eb3172bedeecc647e90bb038408f0b5ede5e2f1c7d0394c943b18fdfc6de",
+  "wheels": [
+    {
+      "filename": "protobuf-7.36.2-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/e4/04/d52c7016b04b6c5108f26691f9d33ec82a9b65d041f1a9c771137693d618/protobuf-7.36.2-py3-none-any.whl",
+      "sha256": "bdb3a345d48db958e6ce1f18e508beb0cc981d64f24088427549c866cd039f1e"
+    },
+    {
+      "filename": "websockets-16.1.1-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/be/4d/2d0d67834092e354d2b0498f014a41249a89556bc406cf86f3e1557bb463/websockets-16.1.1-py3-none-any.whl",
+      "sha256": "6abbd3e82c731c8e531714466acd5d87b5e88ac3243465337ba71d68e23ae7e3"
+    }
+  ]
+}

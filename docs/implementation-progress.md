@@ -106,3 +106,16 @@ Windows 重驗 `artifacts/EXT-003/candidate-03/telegram-offset.json` SHA-256
 和 version 讀回 19 頁。R07 同埠換 host 與同 host 換埠都清除敏感標頭和正文，
 也覆蓋私有重導、304 和代理斷線。來源歸屬見同目錄的 owner-disposition.json。
 前三次實機失敗保留在 candidate-01 至 03。此回條驗的是未發布候選，正式卡待 CORE-032 交付。
+
+## EXT-005 Windows 開發候選對拍
+
+分支 `codex/ext-005-feishu`。飛書與 Lark 各用自己的 app、tenant、域名與
+Host namespace。測試對端用舊基線原版 protobuf schema、鎖定的 protobuf
+與 websockets，經真 WebSocket 連接 Rust 插件。未發布 Host/SDK 釘在
+`compat/core-032/source.lock.json`，此回條的來源是 `199dff095be0`。
+`artifacts/EXT-005/candidate-01/lark-frames.json` SHA-256
+`55fb682c455fc5f43349d87d9c7c6c3c760d2136579d8c6e92738ae754dce9a3`。
+Windows 插件 SHA-256 `e0684be789a3f16a282bb83b5387549e0e15c90c07a7004ad8a6e125f1109bba`。
+宿主中斷前只有 ping 和 card ACK；重投、重複分片及兩 app 同 open_id 分別得到
+原事件 1、1 與 2、2。錯租戶回 500，錯密鑰被拒。逐方法訊框在同目錄 wire.jsonl。
+正式驗收待 CORE-032 交付。
