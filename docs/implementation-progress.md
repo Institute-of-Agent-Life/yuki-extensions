@@ -76,7 +76,7 @@ manifest。回條含來源提交、SDK／schema／peer／消費者 digest、逐�
 | EXT-028 · codex/ext-028-web-fetch | `0bac149` · [PR #12](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/12) | 兩次 tool.call、R07、19 頁正文與 49 頁原件 | CORE-032 正式交接 |
 | EXT-005 · codex/ext-005-feishu | `6183e58` · [PR #13](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/13) | 飛書／Lark 身份隔離、亂序重組、writer 斷線無成功 ACK | CORE-032 正式交接 |
 | EXT-020 · codex/ext-020-env | `cf1c2a5`、`1e7906b` · [PR #14](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/14) | 原 Manager 來源包、run 查詢與缺後端局部失敗 | Work/run 授權，真 gVisor/execd、PTY 及輪轉 |
-| EXT-040 · codex/ext-040-setup | `a607e8c` | 簽名原生／OCI 安裝，無 QQ ready，明選 web-fetch | CORE-039 正式交接、外部入口與選配服務實測 |
+| EXT-040 · codex/ext-040-setup | `a607e8c` · [PR #15](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/15) | 簽名原生／OCI 安裝，無 QQ ready，明選 web-fetch | CORE-039 正式交接、外部入口與選配服務實測 |
 
 對 CORE-033 尚無可消費交付，EXT-011／015 待核。EXT-004 尚需 CORE-025。
 EXT-067 完整基底對拍還需 EXT-004 的實際分段投遞證據。

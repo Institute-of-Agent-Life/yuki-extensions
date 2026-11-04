@@ -14,14 +14,31 @@ permissions:
   contents: read
 
 jobs:
+  select:
+    runs-on: ubuntu-latest
+    outputs:
+      units: ${{ steps.affected.outputs.units }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Select changed independent release units
+        id: affected
+        shell: pwsh
+        run: |
+          $units = python ci/affected.py --event $env:GITHUB_EVENT_PATH
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          "units=$units" >> $env:GITHUB_OUTPUT
+
   acceptance:
     strategy:
       fail-fast: false
       matrix:
         os: [windows-latest, macos-latest, ubuntu-latest]
     runs-on: ${{ matrix.os }}
-    outputs:
-      units: ${{ steps.affected.outputs.units }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -56,13 +73,6 @@ jobs:
           if actual != expected:
               raise SystemExit(f"Desktop witness SHA-256 differs: {actual} != {expected}")
           print(f"Desktop witness SHA-256: {actual}")
-      - name: Select changed independent release units
-        id: affected
-        shell: pwsh
-        run: |
-          $units = python ci/affected.py --event $env:GITHUB_EVENT_PATH
-          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          "units=$units" >> $env:GITHUB_OUTPUT
       - name: Upload acceptance evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -78,13 +88,13 @@ jobs:
           if-no-files-found: error
 
   package:
-    needs: acceptance
-    if: needs.acceptance.outputs.units != '[]'
+    needs: select
+    if: needs.select.outputs.units != '[]'
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        unit: ${{ fromJSON(needs.acceptance.outputs.units) }}
+        unit: ${{ fromJSON(needs.select.outputs.units) }}
         os: [windows-latest, macos-latest, ubuntu-latest]
     steps:
       - uses: actions/checkout@v4
