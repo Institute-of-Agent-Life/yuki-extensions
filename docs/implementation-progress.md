@@ -133,3 +133,7 @@ run_not_found 和 unknown_request。Rust env 對拍 `199dff095be0` 的 CORE-032
 `b7a4ca9553cd3596c3b1fd0db8c58e9380b689149c859c451e33df4a29e080f0`。
 第一輪因 fixture 的 Main 配置缺 name 而失敗。以上是準備項；
 原 Work/run 授權、真 Linux Manager/runsc/execd 的 PTY、輪轉及重啟仍待驗證。
+
+EXT-020 實作提交 `cf1c2a5`。Linux package job 另以隔離的原 Manager Unix socket
+檢查 Rust 工具只回傳 ready。Windows `candidate-03` 通過相同宿主故障案例，
+插件 SHA-256 `44a5e57ec0941dcd067726cc41eaf0b11fd55723209e5674b73562ad30dc6440`。

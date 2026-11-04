@@ -42,3 +42,18 @@ pub fn status(operation: &str) -> Result<Value, &'static str> {
         .ok_or("invalid_manager_response")?;
     Ok(json!({"ready":ready}))
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn original_manager_exposes_only_readiness() {
+        if std::env::var_os("YUKI_ENV_TEST_MANAGER").is_some() {
+            assert_eq!(
+                status("test-original-operation"),
+                Ok(json!({"ready":false}))
+            );
+        }
+    }
+}

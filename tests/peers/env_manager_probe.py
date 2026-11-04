@@ -14,6 +14,16 @@ async def main():
     manager = PersistentManager(state / "manager", WorkspaceStore(state / "store"), "fixture-image",
                                 "fixture-egress", "", state / "home")
     try:
+        if len(sys.argv) == 4:
+            address = Path(sys.argv[3])
+            (state / "home").mkdir(exist_ok=True)
+            async def observe(reader, writer):
+                await manager.serve(reader, writer)
+                (state / "observed").touch()
+            async with await asyncio.start_unix_server(observe, address, limit=262144) as server:
+                print("ready", flush=True)
+                await server.serve_forever()
+            return
         request = "00000000-0000-4000-8000-000000000020"
         read = await manager.handle({"method":"terminal_read","args":{"run_id":request},"request_id":"observation"})
         lookup = await manager.handle({"method":"get_code_run_by_request","args":{"request_id":request},"request_id":"reconcile"})
