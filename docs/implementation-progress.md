@@ -172,3 +172,9 @@ Windows 安裝器 SHA-256 `9ed9a8aa2ae7415efe12cd38a92ce0ffc6638fcc57454b8806ee3
 純安裝不啟服務。Windows 測試另外啟動兩個隔離 owner 驗證結果。CORE-032 消費者與
 CORE-039 宿主內的 SDK 同為 alpha.2，crate 雜湊不同；兩者均記在回條。
 正式外部入口、選配服務與 Compose 實際部署仍待相應交付。
+
+PR #15 的 Linux push 檢查曾在 Codex 測試代理重連時逾時。Windows 四次重現
+代理持有 stdin 緩衝鎖而異常退出；修正測試代理後四次均正常退出。
+`artifacts/EXT-007/proxy-eof-regression.json` 記原錯與修正 SHA。
+`artifacts/EXT-007/proxy-eof-01/` 是修正後 Windows 完整升級與 wire4 對拍；
+172 個 pytest 案例中 171 通過、1 跳過。Connector 的發行程式與鎖檔未改。

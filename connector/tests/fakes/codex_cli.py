@@ -32,7 +32,8 @@ elif command[:2] == ["app-server", "proxy"]:
 
         def copy_input() -> None:
             try:
-                while data := sys.stdin.buffer.read1(65536):
+                # A blocked daemon must not hold BufferedReader's lock at interpreter exit.
+                while data := os.read(sys.stdin.fileno(), 65536):
                     connection.sendall(data)
                 connection.shutdown(socket.SHUT_WR)
             except OSError:
