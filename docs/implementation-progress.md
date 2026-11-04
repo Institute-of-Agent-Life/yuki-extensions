@@ -52,7 +52,8 @@ Python 在此卡只驗 SDK。完整宿主與業務插件仍待相應交付。
 
 ## EXT-002 正式驗收
 
-分支 `codex/ext-002-release`。核心公開預發版 `handshake-preview-dd694a0db605`
+分支 `codex/ext-002-release`，實作提交 `4a281fd`。[PR #10 的三平台驗證與合併紀錄](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/10)。
+核心公開預發版 `handshake-preview-dd694a0db605`
 指向同一合併提交。ZIP bytes 與預覽相同。`contracts.lock` 已釘公開下載位置、
 release receipt 及 SHA256SUMS 的 digest。Windows 測試傳輸程序重新下載三個
 公開資產，實機驗雜湊後乾淨安裝，再跑兩端對拍。早期直連逾時的紀錄在
