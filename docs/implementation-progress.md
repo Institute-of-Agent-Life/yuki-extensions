@@ -35,6 +35,13 @@ Windows 檔案 handle 的重新命名限制。runtime 在中文路徑執行，�
 `candidate-01` 記 ruff 行長錯誤，`candidate-02` 為修正後結果。
 候選仍待 CORE-002 的具名 oracle 與 manifest。整卡驗收與發版保持待辦。
 
+草稿 [PR #3](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/3) 已上傳候選。
+`6fa4af8` 的 [三平台 CI](https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/41825437154)
+在 Windows 得到 164 passed／1 skipped，macOS 和 Linux 各 163 passed／2 skipped。
+後兩者略過 Windows ACL 與 PowerShell 專用案例。三個 runtime 都安裝了各自受測的 wheel。
+wheel 的 21 個成員內容逐位元組相同，ZIP 建置平台欄位有別。平台雜湊與 runtime
+清冊雜湊保存在 `artifacts/EXT-007/ci-receipt-6fa4af8.json`。PR 的合併條件仍包含 CORE-002。
+
 ## 跨倉輸入與下一步
 
 - 未消費任何新核心包；目前沒有 Host／SDK 的版本或 digest，核心 Releases 為空。
