@@ -1,0 +1,37 @@
+{
+  "as_of_date": "2026-11-04",
+  "extensions_cards": 68,
+  "accepted_cards": [
+    "EXT-001"
+  ],
+  "ready_uncompleted_cards": [],
+  "next_frontier_missing_producers": {
+    "EXT-007": [
+      "CORE-002",
+      "EXT-001"
+    ],
+    "EXT-019": [
+      "CORE-002",
+      "EXT-001"
+    ],
+    "EXT-002": [
+      "CORE-031",
+      "EXT-001"
+    ],
+    "EXT-043": [
+      "CORE-044"
+    ]
+  },
+  "core_releases_observed": [],
+  "core_delivery_progress_sha256": "672dbcb54deb4ce0694d79a1f6183970b16fcda9fcb99ca822a081fe4d9d01cb",
+  "core_source_head_observed": "c85bf8ee182d5075c1abaa8b1a56f51e16b0a196",
+  "candidate_deliveries_found": {
+    "CORE-002": [],
+    "CORE-031": [],
+    "CORE-039": []
+  },
+  "preparation_not_card_acceptance": {
+    "EXT-007": "43 source files pinned; historical wheel Windows 164 passed, 1 skipped, ruff/mypy/empty doctor PASS; CORE-002 handoff missing"
+  },
+  "sdk_or_host_consumed": null
+}

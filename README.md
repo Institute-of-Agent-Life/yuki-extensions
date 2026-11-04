@@ -5,14 +5,18 @@ independent release units. Install and build only the unit you need. The public
 protocol and SDK belong to `yuki-core`; this repository never imports its private
 implementation or uses a neighbouring checkout as a production dependency.
 
-Python tooling requires Python 3.12 and uv 0.12.0. Local verification runs on
-Windows; CI requires Windows, macOS and Linux before merging.
+Build checks require Python 3.12, uv 0.12.0 and rustup with Rust 1.90.0 for the
+independent Rust fixture. Each product Rust unit pins its own toolchain. Local
+verification runs on Windows; CI requires Windows, macOS and Linux before merging.
 
 ```powershell
 python ci/check.py EXT-001 --out artifacts/EXT-001/01
 python ci/affected.py --changed connector/pyproject.toml
-python ci/package.py --unit connector --out dist/connector
 ```
+
+Once an implemented unit is registered, build it with
+`python ci/package.py --unit UNIT_ID --out dist/UNIT_ID`. The current Connector
+source port is baseline preparation and has not been registered or released.
 
 `catalog/*.json` describes packaging, source and licensing only. It does not
 define the plugin wire, grant model or host declarations. Units enter the catalog
