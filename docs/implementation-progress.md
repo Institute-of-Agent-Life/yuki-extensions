@@ -119,3 +119,17 @@ Windows 插件 SHA-256 `e0684be789a3f16a282bb83b5387549e0e15c90c07a7004ad8a6e125
 宿主中斷前只有 ping 和 card ACK；重投、重複分片及兩 app 同 open_id 分別得到
 原事件 1、1 與 2、2。錯租戶回 500，錯密鑰被拒。逐方法訊框在同目錄 wire.jsonl。
 正式驗收待 CORE-032 交付。
+
+## EXT-020 Manager 來源包與後端不可用案例
+
+分支 `codex/ext-020-env`。原 Manager、supervisor、execd 鏡像配方等 38 個成員
+釘在 `plugins/env/backend/source.lock.json`。獨立封裝 `deploy/env/manager-source.zip`
+SHA-256 為 `c21901e0eca498be372507d3b600281ed2e43e221bc90744f762b8470cbdfab6`。
+Windows 用原 Manager 開隔離資料目錄，核實不存在的 run 與 request 各自回
+run_not_found 和 unknown_request。Rust env 對拍 `199dff095be0` 的 CORE-032
+宿主，插件 SHA-256 `a6745e364e7d28bc5f9193fea926d05c064c5b475e0ea2bea447fb55e948d937`。
+沒有 Manager 時，原 Main 收到 manager_unavailable 並繼續；插件仍在線。
+回條 `artifacts/EXT-020/candidate-02/env-preparation.json` SHA-256
+`b7a4ca9553cd3596c3b1fd0db8c58e9380b689149c859c451e33df4a29e080f0`。
+第一輪因 fixture 的 Main 配置缺 name 而失敗。以上是準備項；
+原 Work/run 授權、真 Linux Manager/runsc/execd 的 PTY、輪轉及重啟仍待驗證。
