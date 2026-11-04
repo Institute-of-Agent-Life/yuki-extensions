@@ -1,0 +1,13 @@
+._*
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+dist/
+target/
+*.egg-info/
+artifacts/**/work/
+artifacts/**/packages/
+.ci-transfer/

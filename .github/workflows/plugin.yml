@@ -1,0 +1,64 @@
+name: independent-units
+
+on:
+  push:
+    branches: [main, 'codex/**']
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows-acceptance:
+    runs-on: windows-latest
+    outputs:
+      units: ${{ steps.affected.outputs.units }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned build tool
+        run: python -m pip install --disable-pip-version-check uv==0.12.0
+      - name: EXT-001 independent packages and fault cases
+        run: python ci/check.py EXT-001 --out artifacts/EXT-001/ci
+      - name: Select changed independent release units
+        id: affected
+        shell: pwsh
+        run: |
+          $units = python ci/affected.py --event $env:GITHUB_EVENT_PATH
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          "units=$units" >> $env:GITHUB_OUTPUT
+      - name: Upload acceptance evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-acceptance-${{ github.sha }}
+          path: artifacts/
+          if-no-files-found: error
+
+  package:
+    needs: windows-acceptance
+    if: needs.windows-acceptance.outputs.units != '[]'
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        unit: ${{ fromJSON(needs.windows-acceptance.outputs.units) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check uv==0.12.0
+      - name: Build only the selected release unit
+        run: python ci/package.py --unit ${{ matrix.unit }} --out dist/${{ matrix.unit }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: package-${{ matrix.unit }}-${{ github.sha }}
+          path: dist/${{ matrix.unit }}/
+          if-no-files-found: error

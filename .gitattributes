@@ -1,0 +1,4 @@
+* text=auto eol=lf
+# Retain the exact bytes covered by evidence and attachment digests.
+artifacts/** -text
+docs/taskbook/** -text

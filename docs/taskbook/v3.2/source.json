@@ -1,0 +1,14 @@
+{
+  "archive": "Yuki-Rust重寫任務書-v3.2-核心文檔補核版.zip",
+  "archive_sha256": "79dfd2ba5a8b96f22dea4c5f72a94ca761b15f2e354e33b36c7ecdbedc3ec3ee",
+  "behavior_commit": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+  "files": {
+    "Yuki-Rust重寫總任務書-v3.2.md": "3599085dd5d9719273c06374fe211afb2122fa4a62a0fcee0dc924327de738d7",
+    "全量文檔覆蓋與裁決表.md": "e78b7880dab6d38eab2023e4b80f7b72c891826a17d332dac180f354ec04bfe8",
+    "擴展倉庫-提交級任務書.md": "853458026422dd21edcf3bc4907cd23a2ac993d48d4dd8e91e6be26e86d4d6c5",
+    "核心倉庫-提交級任務書.md": "0d8703f4b47cf5c4399d856e7fe4ab957021f626826bfe5f09d572fed465d4c7",
+    "跨倉庫依賴與驗收矩陣.md": "fadb19740c323356edb2365744675bc85ca322da7949393324321156d12553fc",
+    "audit/results/core-review-check.json": "d4ceb20622837feebc80eddef6b793e6e1aae512034880deb3201ec8b41050aa",
+    "audit/results/plan-check.json": "8b60075dadf64e893f93a7858b37f1a82b4e6e48121d12198bd57e3e8c763875"
+  }
+}

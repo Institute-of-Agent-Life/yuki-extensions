@@ -1,0 +1,18 @@
+{
+  "task": "EXT-001",
+  "status": "PASS",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "3f8132140f7b1414699d5595bd48242bba4dbc7729330120f280c47cecaf5e9c",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-001",
+    "--out",
+    "artifacts\\EXT-001\\03"
+  ],
+  "files": {
+    "extension-build-isolation.json": "573098b517c6f65aa27ced7a56aa9bd662c8a7546624eeff10325346cb3ae2fe"
+  }
+}
