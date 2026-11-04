@@ -99,6 +99,10 @@ accepted 為 false。27 個 stdio 訊框與平台 poll 記錄可逐一覆核。
 `dev-03` 是早期開發測試；卡的驗收狀態以 candidate-02 的 preparation manifest
 為準。完整宿主候選對拍在 Windows 實機執行，三平台 CI 各自編譯並測試插件。
 
+PR #11 的 Linux Connector 打包在等待 Codex 代理重連時逾時。移入 `6f36958`
+已驗證的 EOF 修正後，HJW 回歸 172 例中 171 通過、1 跳過；舊／新 wire4
+逐筆相符（124 幀）。失敗的 CI、fixture 雜湊與新回條見 `artifacts/EXT-007/pr11-ci-repair.json`。
+
 修正提交沿 `7dbe738` 的實作，把 Bot API 的秒數轉成宿主接納的毫秒；
 Windows 重驗 `artifacts/EXT-003/candidate-03/telegram-offset.json` SHA-256
 `a81f960527f3d5e959fef3003af13a8539f4174c9d35af91d1b5855e833f9338`。
