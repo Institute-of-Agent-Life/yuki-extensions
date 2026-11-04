@@ -1,0 +1,24 @@
+{
+  "task": "EXT-020",
+  "status": "PASS",
+  "phase": "preparation",
+  "card_status": "PARTIAL_BACKEND_AND_UNAVAILABLE_TOOL",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "c99c39a0ad72046a10d2e8c5fee6c526f25ba6ec84ea5a2b517e88061a884407",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-020",
+    "--preparation",
+    "--out",
+    "artifacts\\EXT-020\\candidate-03"
+  ],
+  "files": {
+    "build.txt": "42bbaa182053cfe8fc8742757013653ed25b78bb1be4dc2b3346df5151e11b44",
+    "env-preparation.json": "70925ce355dfea6ceb2c63f42e981c05aec968c4cd2479b7dc852b3289be53d2",
+    "host.txt": "4a2470aba25b63a6b624d23f3cecaa2b2801017e1778f69384adbd1edf7b386b",
+    "wire.jsonl": "5f86d69230ce8c3bb89fbfd8f222308265022e9c7efe5775a9e0f29289bd0375"
+  }
+}

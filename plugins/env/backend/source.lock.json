@@ -1,0 +1,207 @@
+{
+  "repository": "https://github.com/YuanYeYouTao/Yuki",
+  "source_commit": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+  "source_archive": "manager-source.zip",
+  "archive_sha256": "c21901e0eca498be372507d3b600281ed2e43e221bc90744f762b8470cbdfab6",
+  "source_members": {
+    "LICENSE": {
+      "sha256": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+      "bytes": 34600,
+      "git_blob": "932435201cc785667f73e8a74bae80e48de6e2af"
+    },
+    "deploy/sandbox/Dockerfile.environment": {
+      "sha256": "af091b6748323f928d3b92d2ab980e204077600f19c42481d42089eb9b75a0fe",
+      "bytes": 2191,
+      "git_blob": "8e2d32d8ec8b131a59871793f9e78e5cebb38833"
+    },
+    "deploy/sandbox/environment-storage.sh": {
+      "sha256": "655ce29c1045414b9b38a680f0df693e63f95a4e59455747bbcc76c4e2d5f604",
+      "bytes": 1816,
+      "git_blob": "28432be90c88f43564b7f485f9ea401b988a0ecd"
+    },
+    "deploy/sandbox/network-guard.sh": {
+      "sha256": "9668b87fe477a9e4a616d2c74a487dcce895889be2744056ff9e497bb3df0a6f",
+      "bytes": 1975,
+      "git_blob": "0a03315bd9f09bd668c01e20be96edc612051559"
+    },
+    "deploy/sandbox/requirements-manager.txt": {
+      "sha256": "9ec828179a682425537349fb41440b48a47b1ef006b7b3e1d1542566d3ec6943",
+      "bytes": 19,
+      "git_blob": "7bc03d775075fc452cc88d8aa6292087dd8eec65"
+    },
+    "deploy/sandbox/yuki-environment-storage.service": {
+      "sha256": "f9671e62561d2890c6c0aa745d6deeac76c8f1be130a408c1257fdb02c3ddee1",
+      "bytes": 360,
+      "git_blob": "c8f5e29a19a57dca290074f1b44fbfc8f3e1fe67"
+    },
+    "deploy/sandbox/yuki-sandbox.service": {
+      "sha256": "54c970f6aa8283344d5a625d522b6e06ed79f97f4e430834955747edea1fd4d4",
+      "bytes": 1009,
+      "git_blob": "2bcb5ecedd266682926ecef82c0f4eb1a64c48a8"
+    },
+    "src/yuki/__init__.py": {
+      "sha256": "f2cc350b3beb321ccee2282dc694208733adaafe26872ef5826c495243ce1388",
+      "bytes": 55,
+      "git_blob": "84b52c407f9e1761930fa61ea39295a7035ceb21"
+    },
+    "src/yuki/domain/__init__.py": {
+      "sha256": "9b7b60d5faa2116d8af054780b9a77c77fd380a8fe646de80c2f52b62d0a34b4",
+      "bytes": 1253,
+      "git_blob": "20354e19f8e9b94e61e4f99de9fe34b1adba99de"
+    },
+    "src/yuki/domain/conversations.py": {
+      "sha256": "be57979d274a4b0d34623ebd35c05ee47c05e0278cdd83e68f42df09fe1d2a49",
+      "bytes": 4864,
+      "git_blob": "dcba2c5a3fb8320abe8962d98fc472aa93f29406"
+    },
+    "src/yuki/domain/messages.py": {
+      "sha256": "6e3a731dfd1a22e8345787781cb5709c5ebbdf962b395492c10a98bc37e0f140",
+      "bytes": 17365,
+      "git_blob": "a2c5d6a09a255d06c8d3733c081f765ca9f813b2"
+    },
+    "src/yuki/emoji/__init__.py": {
+      "sha256": "d0e176193c334665e8defea8e190beacbd6aee43eea7b9738d69abe80c0980e0",
+      "bytes": 21,
+      "git_blob": "ac6a2bf6f8a0069d825eca69e52c368183c2d571"
+    },
+    "src/yuki/emoji/media.py": {
+      "sha256": "277ff79669cc6d018f94656c93f867256679fb76c2940f409a5a2000fd7ceb2e",
+      "bytes": 15146,
+      "git_blob": "a86e89e6a93a78aec4e3bdd3e880a174a780a849"
+    },
+    "src/yuki/emoji/sticker_index.py": {
+      "sha256": "1096704a39987d5f5ddbab2636a5b2656640f912d9885e68efb043c0435d9f2f",
+      "bytes": 28192,
+      "git_blob": "980fa3723d6f60f1eaa57a6f91a32f47bd65f9d1"
+    },
+    "src/yuki/gateway/__init__.py": {
+      "sha256": "3d7a4cefd48eeadc08cad2110e734b2a8e1009ac24979bf3f6e3e8e02e71bf45",
+      "bytes": 557,
+      "git_blob": "cbae21bde0e8d40658eab619bd04b3aedbdbca09"
+    },
+    "src/yuki/gateway/media.py": {
+      "sha256": "3832cccd3a7e69d586267dcf3cd06a5323537e245df7ceee15b94b97ac1455a1",
+      "bytes": 1049,
+      "git_blob": "d450f196c12d91939475c2a2d3754e3dcb3a94b6"
+    },
+    "src/yuki/sandbox/__init__.py": {
+      "sha256": "ef1395d04f732be048b850168cd35953b4c0c9efc4b037efdfe64b2a4ba45a94",
+      "bytes": 62,
+      "git_blob": "0c2ae1abdd55d473c2d61c194779f0c2cf2ee229"
+    },
+    "src/yuki/sandbox/completions.py": {
+      "sha256": "6327d59939009f45826d0caf6977404f38d659523816f4ef6a439f468ccd913f",
+      "bytes": 2276,
+      "git_blob": "cf536f06882db27e386c118ddce5c97593debf95"
+    },
+    "src/yuki/sandbox/computer_control.py": {
+      "sha256": "9457b32fb854149dd7546c23bc9ec3eed09f336ce350f706a84596cb1f26d6b3",
+      "bytes": 14622,
+      "git_blob": "e34c3de3539bbbd0f47fddfbbf4b9c5c8226a221"
+    },
+    "src/yuki/sandbox/computer_keys.py": {
+      "sha256": "560dd9fbfe946f5fbb603574567c7bea1bb5916759aa85873a77d4d5bcfc387a",
+      "bytes": 440,
+      "git_blob": "d128f8907f269fd2edd4d419962ebd2f7cf6be3f"
+    },
+    "src/yuki/sandbox/computer_runtime.py": {
+      "sha256": "26fa18803cc8f2dd3b8b5f909d04f7b084e2a58b2f7666e3f08da027997428fd",
+      "bytes": 8756,
+      "git_blob": "8c7111f6f0e1b172e81eeb432c8cda340b914878"
+    },
+    "src/yuki/sandbox/computer_transport.py": {
+      "sha256": "f09640d14c39bd6efb5e4ce4d16b8d3a5bc3c6c88e6a46ad05bed60ae01a7080",
+      "bytes": 5877,
+      "git_blob": "cef8c5b86b7bcf3ec375f52df4b2d0714d8332f6"
+    },
+    "src/yuki/sandbox/environment_supervisor.py": {
+      "sha256": "ac1eb4d9d092285711cf294e6c0cc090782d2da03e44bda09ebe6e5fce79bba5",
+      "bytes": 7016,
+      "git_blob": "07e7d543cb528160723aece959cf43e15fffa30e"
+    },
+    "src/yuki/sandbox/environment_tools.py": {
+      "sha256": "44c16e75f15a81f600ef27835f2b739c0eb49368d3ca2a50a5fdc05703c01cb4",
+      "bytes": 4142,
+      "git_blob": "28d8c7e6a27550e8c1ab41cd1d238bd5840ad531"
+    },
+    "src/yuki/sandbox/execd.py": {
+      "sha256": "54eb1948e41a4f3f95e7038ed293954af5daf3208943bc0746cd6947bf331285",
+      "bytes": 1836,
+      "git_blob": "9c615c344969e05b89989c8783e317e2b0158f15"
+    },
+    "src/yuki/sandbox/legacy_acp.py": {
+      "sha256": "fd96b92c0a89ff9fe95ec8aef4bf786cb997eab8f796857439010eeaabd11933",
+      "bytes": 17434,
+      "git_blob": "0c831b894f44c96fc568edc2184c423cf79e9112"
+    },
+    "src/yuki/sandbox/legacy_acp_protocol.py": {
+      "sha256": "053ed237583cd0db86054c03bec4e4d91a93fac9e532bd4eeab5987d5eb0f3de",
+      "bytes": 3751,
+      "git_blob": "a46150f4d10f531a85708e5fbc358303a5c18af5"
+    },
+    "src/yuki/sandbox/manager.py": {
+      "sha256": "d94596dde1146b82cc1152fcb430740cb60aa16ac3ffdcba0f92aa431cfc9109",
+      "bytes": 3622,
+      "git_blob": "a7c2a5da2e584436c4e6af52878857e21b3dab7e"
+    },
+    "src/yuki/sandbox/persistent.py": {
+      "sha256": "2a40a60459e17dfa16e547f74863091fe40ebb84197cc2a8e16c30c1c07bb66f",
+      "bytes": 58458,
+      "git_blob": "145d04590052f3cbf5ff907a02667d5fc1cd791c"
+    },
+    "src/yuki/sandbox/protocol.py": {
+      "sha256": "060a3aa350c59d533f45e25870d5431cfa4cb64e0d41e54ebbe978a5747ba484",
+      "bytes": 715,
+      "git_blob": "0faa746e0d16c347d329da11f9476315955657b7"
+    },
+    "src/yuki/services/__init__.py": {
+      "sha256": "f1ef9ba2ec09a9fe9c98242df059629bdc0b4ff4c66efbdf65ca0eafd357c0ef",
+      "bytes": 1094,
+      "git_blob": "e7ea8bb715db1ac21ad049ec3bcd7087d39c65ca"
+    },
+    "src/yuki/services/media_resolver.py": {
+      "sha256": "febed6143d866cfbbbd0c55c68c2b3271ec13a93d94eaa10c05ad46a6064853d",
+      "bytes": 27789,
+      "git_blob": "7dfa13d7a1bf68e5dcbba763c7be17079989521c"
+    },
+    "src/yuki/vision/__init__.py": {
+      "sha256": "9e3654be0d07e12670d5618639474e6288eb4132bd17f8fa5201d13f38c99f21",
+      "bytes": 22,
+      "git_blob": "fc4bc53f5578f527e49ccd10017f88e1c3eeadff"
+    },
+    "src/yuki/vision/models.py": {
+      "sha256": "a6aa458dc8a519d8b20909eaefc9b9fc18fde9f5ea872f9b64143eb1df7d601d",
+      "bytes": 3714,
+      "git_blob": "d1918f0997c83c464fe10ac6b414c1d55d411526"
+    },
+    "src/yuki/workspace/__init__.py": {
+      "sha256": "1b61ea8561449f5070d8931eac4244979187d9d470dc90e01df32623a9773956",
+      "bytes": 74,
+      "git_blob": "db76a98da792e5e2876deae14aec4e7bbe23dc27"
+    },
+    "src/yuki/workspace/artifact_lock.py": {
+      "sha256": "4f0b3b044bd71afca2165214761be5961ddb30601d2084c005d29a6859ccb810",
+      "bytes": 3713,
+      "git_blob": "a3bb484108a5329e278a0567f2bb253d6f4d88de"
+    },
+    "src/yuki/workspace/files.py": {
+      "sha256": "d433669b16aa743994b9a93d548318e394c4815f308619301e9d6970bf260260",
+      "bytes": 6282,
+      "git_blob": "895d8a8da29d2fed7862fcbd051d59d627671d74"
+    },
+    "src/yuki/workspace/store.py": {
+      "sha256": "3694f16807b87cafb3bb845096a68f3e23a463d33929978745281f63fc0304b5",
+      "bytes": 12469,
+      "git_blob": "25df53d64b976a7b1242dbcb103161a97d689cf6"
+    }
+  },
+  "manager_python": "3.12",
+  "manager_websockets": "15.0.1",
+  "execd_source": "https://github.com/opensandbox-group/OpenSandbox",
+  "execd_commit": "441042c288a3eacbe93b36236a9baf6f6254ad4d",
+  "runtime": "runsc",
+  "historical_runtime_release": "release-20260831.0",
+  "historical_runtime_reference": "docs/operations/social-sandbox-validation.md",
+  "runtime_image_digest": null,
+  "runtime_binary_digest": null
+}

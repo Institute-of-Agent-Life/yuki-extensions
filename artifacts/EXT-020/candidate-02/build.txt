@@ -1,0 +1,45 @@
+rustc 1.96.0 (ac68faa20 2026-05-25)
+binary: rustc
+commit-hash: ac68faa20c58cbccd01ee7208bf3b6e93a7d7f96
+commit-date: 2026-05-25
+host: x86_64-pc-windows-gnu
+release: 1.96.0
+LLVM version: 22.1.2
+
+cargo 1.96.0 (30a34c682 2026-05-25)
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Compiling proc-macro2 v1.0.107
+   Compiling unicode-ident v1.0.27
+   Compiling quote v1.0.47
+   Compiling serde_core v1.0.228
+   Compiling serde v1.0.228
+   Compiling serde_json v1.0.145
+   Compiling itoa v1.0.18
+   Compiling ryu v1.0.23
+   Compiling memchr v2.8.3
+   Compiling syn v2.0.119
+   Compiling serde_derive v1.0.228
+   Compiling yuki-plugin-sdk v1.0.0-alpha.2
+   Compiling yuki-env v0.1.0-alpha.1 (D:\yuki-extension-tests\5fec2d76edba78055f8a\temp\yuki-rust-build-ny4jvp4e\unit)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 14.58s
+     Running unittests src\main.rs (D:\yuki-extension-tests\5fec2d76edba78055f8a\temp\yuki-rust-build-ny4jvp4e\debug\deps\yuki_env-acf98b18d127bdb4.exe)
+
+   Compiling proc-macro2 v1.0.107
+   Compiling unicode-ident v1.0.27
+   Compiling quote v1.0.47
+   Compiling serde_core v1.0.228
+   Compiling serde_json v1.0.145
+   Compiling serde v1.0.228
+   Compiling memchr v2.8.3
+   Compiling ryu v1.0.23
+   Compiling itoa v1.0.18
+   Compiling syn v2.0.119
+   Compiling serde_derive v1.0.228
+   Compiling yuki-plugin-sdk v1.0.0-alpha.2
+   Compiling yuki-env v0.1.0-alpha.1 (D:\yuki-extension-tests\5fec2d76edba78055f8a\temp\yuki-rust-build-ny4jvp4e\unit)
+    Finished `release` profile [optimized] target(s) in 16.34s

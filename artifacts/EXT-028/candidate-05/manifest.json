@@ -1,0 +1,26 @@
+{
+  "task": "EXT-028",
+  "status": "PASS",
+  "phase": "preparation",
+  "card_status": "VERIFIED_ON_UNPUBLISHED_CANDIDATE",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "f9ee04320b2302b59dd0fd3f2315c800fb014b28d7c818a3e7dc85768ce0ab21",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-028",
+    "--preparation",
+    "--out",
+    "artifacts\\EXT-028\\candidate-05"
+  ],
+  "files": {
+    "build.txt": "7c47979e7c2b2108fbe2123575cdc78994696cc6b6c5584a4488c875e856f392",
+    "fetch-source.json": "e1f5569fd35045fadd0729b0222e229eef21bcbf798fb821ac086fbc539691d9",
+    "host.txt": "3679aee11ba9c56d7b8e3190cb5e2dbc5268891e16d2fdbf64e2cc871b98f98a",
+    "native.json": "2ab7045bd3da2d1c639253f9603773c6450693fc29f8209515077db306dba3b4",
+    "owner-disposition.json": "f70d2e289f35bb4ecf616d128e9103cdf056c749749f6801b2b07c4765768500",
+    "wire.jsonl": "04e7d5fbde0b64ce32f64161da7cd9f2544dca8f0b41bc6cfdd3e5c2419f98bf"
+  }
+}

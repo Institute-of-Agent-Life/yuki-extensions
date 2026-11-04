@@ -133,6 +133,16 @@ Interrupt the first admission before the host can reply, reconnect and replay.
 Two apps using the same open_id cannot share receipts. Card/control frames
 must not create a human message.
 
+## EXT-020 persistent environment
+
+Validate the original Manager, execd source, supervisor and image inputs
+independently of the plugin package. Inspect a real Manager response only
+through its bounded socket and project environment readiness without exposing
+other runs. Missing Manager affects this tool only. Terminal dispatch also
+needs a producer-bound Work, operation and run. Exercise restart, nonzero
+exit with retained files, byte cursors and rotation gaps, PTY input/interrupt,
+and cancellation of observation in an isolated Linux runtime.
+
 ## EXT-040 offline setup
 
 On Windows, verify the clean signed CORE-039 OCI candidate against a separately

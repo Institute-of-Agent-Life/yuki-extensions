@@ -1,0 +1,189 @@
+{
+  "status": "PASS",
+  "card_status": "PARTIAL_BACKEND_AND_UNAVAILABLE_TOOL",
+  "source_commit": "199dff095be0bc87c9713beaa0419400cb424a7c",
+  "host": {
+    "archive": "yuki-host-preview-199dff095be0-windows-x86_64.zip",
+    "sha256": "d3ef0f3ce8a7dedd175b6aa3392a22c744504cf6bea70eadc22d5408642e634c",
+    "binary_sha256": "a9079931f50996af682ee4600f1e25b86e7e0637f5b3999bfa4822144c12aff8",
+    "delegation_sha256": "293c44914b715cfb5e5b949c7f75707649d7e2aa368cfafe34c29df7062ac274"
+  },
+  "sdk": "9408022bdf1322a8d6e07914685869771a5738280e36145e46da5c36facbfce0",
+  "plugin": "a6745e364e7d28bc5f9193fea926d05c064c5b475e0ea2bea447fb55e948d937",
+  "backend_source": "c21901e0eca498be372507d3b600281ed2e43e221bc90744f762b8470cbdfab6",
+  "source_members": 38,
+  "original_manager": {
+    "missing_run": {
+      "error": "run_not_found"
+    },
+    "original_request": {
+      "error": "unknown_request"
+    }
+  },
+  "receipt": {
+    "accepted": true,
+    "event": 1
+  },
+  "model_continuation": {
+    "id": "d39d91d0-fc82-407f-9c82-a1db8575243b",
+    "namespace": "97062c2c-1016-4778-8833-f7871f2a9891",
+    "ordinal": null,
+    "parent": null,
+    "result": {
+      "error": "manager_unavailable",
+      "ok": false
+    },
+    "state": "failed"
+  },
+  "host_online_after_missing_manager": true,
+  "transcript": [
+    {
+      "direction": "from_plugin",
+      "frame": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "initialize",
+        "params": {
+          "declarations": [
+            {
+              "kind": "tool",
+              "name": "environment_status",
+              "revision": 1
+            }
+          ],
+          "manifest_revision": "8df12678a75b478435bc5dfb1155b9db2ce00e7e5799678bb32cdf9d4c19dc05",
+          "optional_features": [],
+          "required_features": [
+            "initialize"
+          ],
+          "versions": {
+            "max": {
+              "major": 1,
+              "minor": 0
+            },
+            "min": {
+              "major": 1,
+              "minor": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "direction": "from_host",
+      "frame": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "result": {
+          "extension_points": [],
+          "features": [
+            "initialize"
+          ],
+          "grants": [
+            "tool.call"
+          ],
+          "host_schema_revision": 2,
+          "manifest_revision": "8df12678a75b478435bc5dfb1155b9db2ce00e7e5799678bb32cdf9d4c19dc05",
+          "method_revisions": [
+            {
+              "name": "initialize",
+              "revision": 1
+            },
+            {
+              "name": "tool.call",
+              "revision": 1
+            },
+            {
+              "name": "tool.status",
+              "revision": 1
+            }
+          ],
+          "namespace": "official.env",
+          "schema_revision": 1,
+          "version": {
+            "major": 1,
+            "minor": 0
+          }
+        }
+      }
+    },
+    {
+      "direction": "from_host",
+      "frame": {
+        "id": "host-1",
+        "jsonrpc": "2.0",
+        "method": "tool.call",
+        "params": {
+          "arguments": {},
+          "handle": "dab66d2c-bda1-4f07-82e3-cee6b936c367",
+          "name": "environment_status",
+          "operation": "d39d91d0-fc82-407f-9c82-a1db8575243b",
+          "ordinal": null,
+          "parent": null,
+          "revision": "8df12678a75b478435bc5dfb1155b9db2ce00e7e5799678bb32cdf9d4c19dc05"
+        }
+      }
+    },
+    {
+      "direction": "from_plugin",
+      "frame": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "tool.status",
+        "params": {
+          "handle": "dab66d2c-bda1-4f07-82e3-cee6b936c367"
+        }
+      }
+    },
+    {
+      "direction": "from_host",
+      "frame": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "result": {
+          "handle": "dab66d2c-bda1-4f07-82e3-cee6b936c367",
+          "result": null,
+          "state": "dispatched"
+        }
+      }
+    },
+    {
+      "direction": "from_plugin",
+      "frame": {
+        "id": 2,
+        "jsonrpc": "2.0",
+        "method": "tool.status",
+        "params": {
+          "handle": "dab66d2c-bda1-4f07-82e3-cee6b936c367"
+        }
+      }
+    },
+    {
+      "direction": "from_host",
+      "frame": {
+        "id": 2,
+        "jsonrpc": "2.0",
+        "result": {
+          "handle": "dab66d2c-bda1-4f07-82e3-cee6b936c367",
+          "result": null,
+          "state": "dispatched"
+        }
+      }
+    },
+    {
+      "direction": "from_plugin",
+      "frame": {
+        "id": "host-1",
+        "jsonrpc": "2.0",
+        "result": {
+          "error": "manager_unavailable",
+          "ok": false
+        }
+      }
+    }
+  ],
+  "pending": [
+    "run authority and original Work binding in consumer SDK",
+    "real Linux gVisor/execd PTY, cancellation, replay and output rotation"
+  ]
+}
