@@ -1,0 +1,13 @@
+[package]
+name = "yuki-client"
+version = "0.1.0-alpha.1"
+edition = "2024"
+rust-version = "1.96"
+license = "AGPL-3.0-only"
+publish = false
+
+[dependencies]
+serde_json = "=1.0.145"
+yuki-plugin-sdk = "=1.0.0-alpha.3"
+tiny_http = "=0.12.0"
+ureq = { version = "=3.1.2", default-features = false }

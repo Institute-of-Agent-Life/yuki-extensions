@@ -1,0 +1,23 @@
+{
+  "task": "EXT-015",
+  "status": "PASS",
+  "phase": "preparation",
+  "card_status": "PARTIAL_IMPLICIT_CHAT_ON_UNPUBLISHED_CANDIDATE",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "c58d4c49ef430409430491027267038fc1be754053ff6cb52f484d6741297140",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-015",
+    "--preparation",
+    "--out",
+    "artifacts\\EXT-015\\candidate-01"
+  ],
+  "files": {
+    "host.txt": "31b3b2f9a8ec17adfe110c641dd57b7a33a6b631a8913e21bd8e0265b67c1ac0",
+    "original-uuid-entry.json": "a4767cdd810ab075363ee2d269232ce95f5527d4480dca2487916e7cfc8bf216",
+    "wire.jsonl": "0d81770a1414d6b34dc0e8dc9de8bf374bc3f24902f0e78961db4c365b27ac69"
+  }
+}

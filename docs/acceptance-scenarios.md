@@ -164,3 +164,14 @@ device must fence late catalog/close from the older generation. Reopening the
 plugin preserves devices, including an offline device with zero instances. A
 self-reported device ID never establishes authority and a revoked credential
 cannot write a snapshot. Record any missing Host authority separately.
+
+## EXT-015 original Client9 request entry
+
+Pair phone and desktop with one original App entry. Replay the same UUID through
+the other device, including reversed JSON field order, and read back the single
+event and its durable receipt. Change the text and expect conflict. A different
+entry cannot see the receipt and can use the same UUID for its own event.
+Exercise used codes, foreign entry/conversation selectors, service restart and
+the original SSE route. Reject ambiguous selectors before any write when the
+owner cannot select them. A Social delivery or merged-entry claim needs its own
+observed Host effect.

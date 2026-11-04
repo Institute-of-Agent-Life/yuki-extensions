@@ -98,3 +98,16 @@ Windows 候選 `994aee20ced7` 能以一次性碼配對 connector。原 Connector
 與 journal namespace，以及在線撤權的通知或複核時點。案例需覆蓋 chat 憑證、
 已配對舊設備、A→B 合併、帳號換人、憑證撤銷、舊連線晚到的 catalog／close。
 取得授權後，插件才能為已認證裝置管理當前連線與 instance 快照。
+
+## CORE-033 → EXT-015
+
+同一 Windows 包的原 Client9 入口支援配對、訊息、事件、原 UUID 回條與
+裝置撤權。A→B 合併後各憑證仍能讀取原 request_person_id。直接向宿主用
+A 的 token 與 B 的 X-Yuki-Entry 查 /me，宿主回 200 並選了 A 的 binding。
+Rust 插件對明選入口／會話先回 503，失敗寫入沒有產生回條。
+
+請核心在原 Client9 的授權及提交交易內處理 X-Yuki-Entry 與
+X-Yuki-Conversation，涵蓋合併後切換、越權原件、停用入口／撤設備、
+ACP 既有會話和舊 NULL。另需可用的附件及 agent_target 正反例、同號操作／
+目標衝突、提交後 Social Outbound 的 SSE 與斷線續讀。回條需給出所選原
+binding、request_person_id、事件／conversation、可見範圍及明選失敗時的零寫入。

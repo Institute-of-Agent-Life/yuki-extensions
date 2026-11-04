@@ -66,9 +66,9 @@ manifest。回條含來源提交、SDK／schema／peer／消費者 digest、逐�
 
 ## 當前進度
 
-七張卡已完成任務書驗收。另有六張卡完成下表的 Windows 候選工作。
+七張卡已完成任務書驗收。另有七張卡完成下表的 Windows 候選工作。
 三平台 CI 與合併狀態以各 PR 為準。此批開發對拍不計入七張正式驗收。
-最新依賴快照見 `artifacts/readiness/after-core032-039-candidates.json`。
+先前快照見 `artifacts/readiness/after-core032-039-candidates.json`。本輪更新見 `artifacts/readiness/after-core033-candidates.json`。
 
 | 卡／分支 | 實作提交 | Windows 已核實 | 仍需 |
 |---|---|---|---|
@@ -77,7 +77,8 @@ manifest。回條含來源提交、SDK／schema／peer／消費者 digest、逐�
 | EXT-005 · codex/ext-005-feishu | `6183e58` · [PR #13](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/13) | 飛書／Lark 身份隔離、亂序重組、writer 斷線無成功 ACK | CORE-032 正式交接 |
 | EXT-020 · codex/ext-020-env | `cf1c2a5`、`1e7906b` · [PR #14](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/14) | 原 Manager 來源包、run 查詢與缺後端局部失敗 | Work/run 授權，真 gVisor/execd、PTY 及輪轉 |
 | EXT-040 · codex/ext-040-setup | `a607e8c` · [PR #15](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/15) | 簽名原生／OCI 安裝，無 QQ ready，明選 web-fetch | CORE-039 正式交接、外部入口與選配服務實測 |
-| EXT-011 · codex/ext-011-local-agent | 候選提交 | 原 Connector 配對、無 instance 裝置跨重啟保存 | Work 以外的裝置授權與撤權狀態 |
+| EXT-011 · codex/ext-011-local-agent | 12b3ace · [PR #16](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/16) | 原 Connector 配對、無 instance 裝置跨重啟保存 | Work 以外的裝置授權與撤權狀態 |
+| EXT-015 · codex/ext-015-client | 候選提交 | 雙裝置重放、合併後原入口隔離、撤銷單台設備 | 原入口明選、附件／目標操作、Social 出站與 SSE |
 
 CORE-033 已交接未發布的個人入口候選包，EXT-011／015 可做開發對拍。CORE-025 已開
 [核心 PR #34](https://github.com/Institute-of-Agent-Life/yuki-core/pull/34)。EXT-004／006
@@ -199,3 +200,11 @@ PR #15 的 Linux push 檢查曾在 Codex 測試代理重連時逾時。Windows �
 原 Python Connector 用一次性碼向 Rust local-agent 配對。錯用途和重用配對碼回 401，重啟後仍能按原 device_id 列出沒有 instance 的設備。原 wire4 連線不帶 Work，宿主交換接口缺 Work 回 422；插件拒絕升級，保留舊 journal。需要核心給出與指定 Work 無關的 connector 鑑權、原裝置 ID／namespace 和即時撤權語義，再驗兩條連線的 fencing。
 
 實機插件 SHA-256 `51a4dde84c7eb06127793c62a82fa3e7d6ee8b46c1b5d94f81db4ef49f0f2ee1`。回條 `artifacts/EXT-011/candidate-03/device-catalog.json`，SHA-256 `410fd6c97aafcfe5c3a896291b7d6332e12a1bf0326c5c5d5e188101cd195434`。同目錄有 manifest、transport 與逐方向 `wire.jsonl`。
+
+## EXT-015 多裝置 Client9 開發候選
+
+同一 CORE-033 與 alpha.3 SDK，Rust client 透過真宿主握手，使用零業務 grant。HJW 的 34 次插件 HTTP 呼叫核實兩裝置共享入口、重放只留一事件、不同正文回 409、另一原入口可獨立使用同 UUID。Person A 併入 B 後兩個原 request_person_id 和各自回條仍可讀。單台被撤權時另一台仍能讀取，宿主重啟可取回原回條。
+
+直接向候選宿主明選另一入口仍回預設 binding。插件在派發前拒絕明選入口／會話，失敗寫入無回條。附件／agent_target 回 503，原 SSE 路由回 404；對應入口選擇、完整衝突判定與原子出站效果仍待核心。兩個 Rust 路由邊界回歸在 `artifacts/EXT-015/package-windows/`。
+
+實機插件 SHA-256 `5b890f5e8244a82738633682a1e7a49f94e3fa576602fd57c503a564aa0a2cad`。回條 `artifacts/EXT-015/candidate-01/original-uuid-entry.json`，SHA-256 `a4767cdd810ab075363ee2d269232ce95f5527d4480dca2487916e7cfc8bf216`。同目錄有 manifest、transport 與逐方向 `wire.jsonl`。

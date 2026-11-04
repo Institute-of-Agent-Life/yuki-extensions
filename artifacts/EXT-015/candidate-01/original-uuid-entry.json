@@ -1,0 +1,295 @@
+{
+  "status": "PASS",
+  "card_status": "PARTIAL_IMPLICIT_CHAT_ON_UNPUBLISHED_CANDIDATE",
+  "source_commit": "994aee20ced762d4132186144e718d8946321347",
+  "handoff_commit": "becbdb0316aa96911370bc5f0f5f79dff71af67f",
+  "published": false,
+  "host": {
+    "archive": "yuki-personal-preview-994aee20ced7-windows-x86_64.zip",
+    "sha256": "ddc2cf1c01dd9df9e0eecf6b1b85984176810b8c763a4b7bd493d924e40a53f8",
+    "binary_sha256": "54e4825ddd9de64d3e71626e320fbec2e8ddd0d60099ef6775a5573aaf2bbfa3",
+    "witness_sha256": "a2be09e86aa092aedc6160a50af3a13a0afa7d902cf866b9d991e1f5d79a27d5"
+  },
+  "sdk": {
+    "version": "1.0.0-alpha.3",
+    "sha256": "e5b9fde5298eb71ff252fc8acd430b44d8d965761d5d3c948da47fced49c7dbd"
+  },
+  "host_schema_sha256": "9feab6196953ef66a04a745b801b2bf528564cfc0d9d0ff545a81e522624f42e",
+  "personal_schema_sha256": "061b40a245ff7a75bc747684760d7964cae5fa7f685dab855ff96a5458682827",
+  "plugin_sha256": "5b890f5e8244a82738633682a1e7a49f94e3fa576602fd57c503a564aa0a2cad",
+  "wire_sha256": "0d81770a1414d6b34dc0e8dc9de8bf374bc3f24902f0e78961db4c365b27ac69",
+  "http_transcript": [
+    {
+      "method": "POST",
+      "path": "/client/v1/pair",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/client/v1/pair",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/client/v1/pair",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/client/v1/pair",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/client/v1/pair",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/client/v1/pair",
+      "status": 401
+    },
+    {
+      "method": "GET",
+      "path": "/client/v1/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/client/v1/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/client/v1/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/client/v1/me",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/client/v1/messages",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/client/v1/messages",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/client/v1/messages",
+      "status": 409
+    },
+    {
+      "method": "GET",
+      "path": "/client/v1/requests/87455caf-559e-4f9d-b065-2c77075bc993",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/client/v1/requests/87455caf-559e-4f9d-b065-2c77075bc993",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/client/v1/messages",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/client/v1/conversations/d2f2c776-8e62-4271-bbef-892b6d0e5373/events",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/client/v1/requests/87455caf-559e-4f9d-b065-2c77075bc993",
+      "status": 503
+    },
+    {
+      "method": "GET",
+      "path": "/client/v1/requests/87455caf-559e-4f9d-b065-2c77075bc993",
+      "status": 503
+    },
+    {
+      "method": "POST",
+      "path": "/client/v1/messages",
+      "status": 503
+    },
+    {
+      "method": "GET",
+      "path": "/client/v1/requests/fe155a74-017e-4231-b980-351652a98d01",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/client/v1/stream",
+      "status": 404
+    },
+    {
+      "method": "GET",
+      "path": "/admin/v1/health",
+      "status": 404
+    },
+    {
+      "method": "GET",
+      "path": "/client/v1/%2e%2e/admin",
+      "status": 404
+    },
+    {
+      "method": "POST",
+      "path": "/client/v1/messages",
+      "status": 503
+    },
+    {
+      "method": "POST",
+      "path": "/client/v1/messages",
+      "status": 503
+    },
+    {
+      "method": "POST",
+      "path": "/client/v1/messages",
+      "status": 503
+    },
+    {
+      "method": "GET",
+      "path": "/client/v1/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/client/v1/requests/87455caf-559e-4f9d-b065-2c77075bc993",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/client/v1/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/client/v1/requests/87455caf-559e-4f9d-b065-2c77075bc993",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/client/v1/me",
+      "status": 401
+    },
+    {
+      "method": "GET",
+      "path": "/client/v1/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/client/v1/requests/87455caf-559e-4f9d-b065-2c77075bc993",
+      "status": 200
+    }
+  ],
+  "cases": {
+    "H24": {
+      "merged_original_entries": [
+        {
+          "binding_id": "20516819-1a93-4295-adac-b3f02408b6aa",
+          "conversation_id": "d2f2c776-8e62-4271-bbef-892b6d0e5373",
+          "request_person_id": "da5b74bc-d1bb-4077-9414-183340acd1e3",
+          "request_conversation_id": "d2f2c776-8e62-4271-bbef-892b6d0e5373",
+          "person_id": "b7a4b2e3-8094-4105-91e6-08f85a2adb24"
+        },
+        {
+          "binding_id": "a424c25b-93a1-43e5-beb6-a09828c8c743",
+          "conversation_id": "f84b03f3-a62d-497f-85bf-c66393efaff0",
+          "request_person_id": "b7a4b2e3-8094-4105-91e6-08f85a2adb24",
+          "request_conversation_id": "f84b03f3-a62d-497f-85bf-c66393efaff0",
+          "person_id": "b7a4b2e3-8094-4105-91e6-08f85a2adb24"
+        }
+      ],
+      "direct_owner_explicit_selection": {
+        "status": 200,
+        "requested_binding": "a424c25b-93a1-43e5-beb6-a09828c8c743",
+        "returned_binding": "20516819-1a93-4295-adac-b3f02408b6aa"
+      },
+      "revoked_device_denied": 401,
+      "attachments_and_agent_target": "503 unavailable; original receipt retained",
+      "request_id": "87455caf-559e-4f9d-b065-2c77075bc993",
+      "original_entry": {
+        "binding_id": "20516819-1a93-4295-adac-b3f02408b6aa",
+        "conversation_id": "d2f2c776-8e62-4271-bbef-892b6d0e5373",
+        "request_person_id": "da5b74bc-d1bb-4077-9414-183340acd1e3",
+        "request_conversation_id": "d2f2c776-8e62-4271-bbef-892b6d0e5373"
+      },
+      "separate_entry": {
+        "binding_id": "a424c25b-93a1-43e5-beb6-a09828c8c743",
+        "conversation_id": "f84b03f3-a62d-497f-85bf-c66393efaff0",
+        "request_person_id": "b7a4b2e3-8094-4105-91e6-08f85a2adb24",
+        "request_conversation_id": "f84b03f3-a62d-497f-85bf-c66393efaff0"
+      },
+      "device_ids": [
+        "450a4b33-69d9-4915-8d79-ab1cfd470a0a",
+        "31bd36c4-862a-44bc-8426-59bddc72a74d"
+      ],
+      "first": {
+        "conversation_id": "d2f2c776-8e62-4271-bbef-892b6d0e5373",
+        "event_id": 1,
+        "replay": false
+      },
+      "replay": {
+        "conversation_id": "d2f2c776-8e62-4271-bbef-892b6d0e5373",
+        "event_id": 1,
+        "replay": true
+      },
+      "changed_text": {
+        "problem": {
+          "code": "request_conflict",
+          "message": "request_conflict"
+        }
+      },
+      "receipt": {
+        "conversation_id": "d2f2c776-8e62-4271-bbef-892b6d0e5373",
+        "event_id": 1,
+        "found": true,
+        "operation_kind": "client.message",
+        "payload_hash": "495515408e26dec142f13c7960df3be2876c45605203d911f6ef0f5b57d30910",
+        "result": {
+          "conversation_id": "d2f2c776-8e62-4271-bbef-892b6d0e5373",
+          "event_id": 1,
+          "replay": false
+        },
+        "status": "accepted",
+        "target": null
+      },
+      "event_count": 1,
+      "foreign_event": {
+        "conversation_id": "f84b03f3-a62d-497f-85bf-c66393efaff0",
+        "event_id": 2,
+        "replay": false
+      },
+      "explicit_entry_and_conversation": "503 before dispatch; no receipt created",
+      "unwitnessed": [
+        "post-merge entry selection",
+        "disabled entry vs revoked device",
+        "ordered attachment / agent_target / operation conflicts",
+        "ACP conversation selection",
+        "Social Outbound SSE"
+      ]
+    }
+  },
+  "after_restart": {
+    "conversation_id": "d2f2c776-8e62-4271-bbef-892b6d0e5373",
+    "event_id": 1,
+    "found": true,
+    "operation_kind": "client.message",
+    "payload_hash": "495515408e26dec142f13c7960df3be2876c45605203d911f6ef0f5b57d30910",
+    "result": {
+      "conversation_id": "d2f2c776-8e62-4271-bbef-892b6d0e5373",
+      "event_id": 1,
+      "replay": false
+    },
+    "status": "accepted",
+    "target": null
+  }
+}
