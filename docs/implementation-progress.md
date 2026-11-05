@@ -136,3 +136,12 @@ Windows 插件 SHA-256 `e0684be789a3f16a282bb83b5387549e0e15c90c07a7004ad8a6e125
 宿主中斷前只有 ping 和 card ACK；重投、重複分片及兩 app 同 open_id 分別得到
 原事件 1、1 與 2、2。錯租戶回 500，錯密鑰被拒。逐方法訊框在同目錄 wire.jsonl。
 正式驗收待 CORE-032 交付。
+
+## PR #12 合併與 PR #13 新基底
+
+PR #12 head `f0843e106711` 的 push `41939834061` 與 PR `41939841639` 全過。
+已下載 18 份 ZIP，核 GitHub SHA-256、成員雜湊及各 task PASS；PR 產物來自
+`867562e4c971`，parents 為 main `8d2f3c6d85e1` 與該 head。普通合併提交
+`e90035586e9b91af19a5c6162c2e565dbfe966cf`，回條 `artifacts/EXT-028/ci-receipt-f0843e1.json`。
+PR #13 已正常合入此 main；程式樹未變，新增前卡回條與進度。新 head 的三平台
+與受影響套件仍須重驗，舊基底綠燈不作合併證據。
