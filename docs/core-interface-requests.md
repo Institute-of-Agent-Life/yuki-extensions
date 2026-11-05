@@ -342,3 +342,28 @@ Admin DTO；metadata 與明選正文成功，普通人／撤權被 -32003 拒絕
 
 本插件目前只保留單次 RPC 的記憶體結果，沒有私庫、排隊 writer 或 cache；因此沒有
 聲稱清除私庫、背壓丟樣、全文留存或匯出已完成。原核心效果及用量仍由核心原回條判定。
+
+## CORE-037／038 → EXT-038：共用角色可用，頭像與逐平台套用待交接
+
+同一 CORE-037 `1e7b89362b6f`／SDK alpha.11 已供獨立 Rust `character` 使用。
+已實收 public/get/identity、SOUL read/save/reload、原 revision／UUID 和當前人物
+權限；原共享身份、SOUL 和操作回條仍由核心擁有。原字串／空值不在插件內重解碼。
+本卡沒有把全域 display_name 更新當作 QQ／Telegram 平台改名成功。
+
+目前公開 control README 及固定 Admin DTO 列角色 presentation／SOUL，沒有可消費的
+頭像變更或逐平台套用方法。請交接核心擁有的下列完整路徑，不需第二套角色／權限：
+
+1. 原圖沿 CORE-038 授權 handle／immutable version 發布的精確方法、purpose、MIME、
+   hash／大小、來源依賴與保留責任。要能把管理員選定的原圖變成公開角色資產；不能把
+   私人附件 scope 或臨時 URL 永久當頭像，也不能靠本地路徑繞過授權。
+2. control 的頭像 apply/read DTO：原 role ID、asset/version、expected avatar revision、
+   原 request_id、當前 Actor/installation authority，以及儲存版本／生效版本的回讀。
+   請提供普通人讀公開圖、普通人／撤權寫入拒絕、同 UUID 不同圖拒絕案例。
+3. Gateway 的 nickname/avatar 能力與動作：原 namespace、receiving Bot／stage、原
+   操作鍵、原圖版本、逐平台 confirmed／unsupported／unknown 與原 receipt。兩平台
+   一成功一不支援必須有真對端回條；unknown 不得自動換 key 重送，共用原圖不得被覆蓋。
+4. SOUL 保存／顯式 reload 的原操作回讀方式。泛稱 Host -32003 沒有 admission／
+   operation 引用時，插件不推斷它是已接納的 failed receipt；請給出公開區分和讀回範例。
+
+角色候選無自己的角色庫或頭像快取；原資產／平台 receipt 的歷史資料仍列現場待核，
+不能據新安裝的空私庫推論舊實例沒有資料。完整頭像、逐平台故障與導入仍待本卡續做。

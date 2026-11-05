@@ -1,0 +1,17 @@
+{
+  "shared_role_and_SOUL": {
+    "classification": "other_authoritative_owner",
+    "owner": "yuki-core",
+    "proof": "Real control methods, same role ID/revision, actual SOUL content and full Host restart in candidate-04"
+  },
+  "candidate_private_store": {
+    "classification": "empty_private_store",
+    "scope": "this fresh candidate only",
+    "proof": "The Rust plugin has no filesystem or database store; private role and SOUL state remains in the Host"
+  },
+  "legacy_avatar_and_platform_receipts": {
+    "classification": "field_verification_pending",
+    "reason": "No claim that the old instance has no data; importer and platform-asset receipts await public owner and interface delivery",
+    "imported": false
+  }
+}

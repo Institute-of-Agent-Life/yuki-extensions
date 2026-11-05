@@ -1,0 +1,30 @@
+format_version = 1
+listen = "127.0.0.1:55648"
+
+[memory]
+mode = "lexical-only"
+
+[main]
+endpoint="http://127.0.0.1:55601/model"
+model="fixture"
+name="Yuki"
+merge_ms=1
+root_slots=8
+root_tool_calls=8
+max_input_units=200000
+max_output=512
+
+[[plugins]]
+id="character"
+namespace="character"
+program="C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe"
+args=["C:\\Users\\Hilbert\\yuki-extension-tests\\15e7f317cb9b77a3d4a0\\src\\tests\\peers\\character_stdio.py", "C:\\Users\\Hilbert\\yuki-extension-tests\\15e7f317cb9b77a3d4a0\\src\\artifacts\\EXT-038\\candidate-04\\packages\\yuki-character.exe", "C:\\Users\\Hilbert\\yuki-extension-tests\\15e7f317cb9b77a3d4a0\\src\\artifacts\\EXT-038\\candidate-04\\work\\wire.jsonl", "C:\\Users\\Hilbert\\yuki-extension-tests\\15e7f317cb9b77a3d4a0\\src\\artifacts\\EXT-038\\candidate-04\\work\\control"]
+grants=["control.invoke", "tool.call"]
+env=["YUKI_CHARACTER_CORE", "YUKI_CHARACTER_LISTEN"]
+[[plugins.tools]]
+name = "character_manage"
+description = "Read or explicitly update the shared role and active SOUL using original core revisions"
+parallel_read = false
+cacheable = false
+code_direct = true
+schema = { type = "object", properties = { action = { type = "string", enum = ["public", "identity", "read", "soul", "update", "save_soul", "reload_soul"] }, body = { type = "object" } }, required = ["action"], additionalProperties = false }

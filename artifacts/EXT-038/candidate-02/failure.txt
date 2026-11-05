@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "C:\Users\Hilbert\yuki-extension-tests\debb7d9fc5569cc1c4b3\src\ci\check.py", line 37, in main
+    report_name, report = runner(root, args.out.resolve())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hilbert\yuki-extension-tests\debb7d9fc5569cc1c4b3\src\tests\cases\EXT-038.py", line 145, in prepare
+    failed_reload = denied('reload-invalid-file', human, 'reload_soul', {'request_id': failed_reload_id})
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hilbert\yuki-extension-tests\debb7d9fc5569cc1c4b3\src\tests\cases\EXT-038.py", line 85, in denied
+    result, _ = probe(label, account, args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hilbert\yuki-extension-tests\debb7d9fc5569cc1c4b3\src\tests\cases\EXT-038.py", line 70, in probe
+    result = wait(lambda: replies()[count:] if len(replies()) > count else None, label)[0]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hilbert\yuki-extension-tests\debb7d9fc5569cc1c4b3\src\tests\cases\EXT-038.py", line 41, in wait
+    raise RuntimeError('timed out: ' + label)
+RuntimeError: timed out: reload-invalid-file

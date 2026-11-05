@@ -1,0 +1,10 @@
+{
+  "task": "EXT-038",
+  "status": "PASS",
+  "phase": "lock-generation",
+  "source_snapshot_sha256": "dd50b6ffe338bd489a60e3f94a5a1e5305119e0d00a6697b49732b765af5926a",
+  "files": {
+    "Cargo.lock": "73b8cbf823418cdf84b9f424a4c5938a9fe980ed25f14e0f51b45e1d14a90793",
+    "lock-generation.json": "4c9788e9d3e4612bfd5be9f6b482a5cc844055edcea4d470dd4ec2cd33b66d41"
+  }
+}
