@@ -227,4 +227,8 @@ CORE-038 乾淨來源 `e25c2b8acce34858d5fd67ac408186e49a1da160`，交接提交 
 
 CORE-034 未發布候選來源 `f3f3723aa5322c6a2a20e8cb3b04d845cd7773cc`，SDK alpha.5、composition 1；三平台 ZIP 與每個成員均已驗 SHA。Windows ZIP `fc5f6f1cb8ddd2fe4c62b335705699b6fb8e181993b0a57fa920fe0798e67d04`，完整能力及雜湊見 `artifacts/readiness/core034-handoff-inspection.json`。尚未記作真 Monty 消費證據。
 
-原 worker 固定 Monty `3f9d6ef413fb951e5b80113b7088d535bd028fcb`、原 string-cache 補丁、Linux bwrap launcher、Rust 1.96.0／CPython 3.12 codec。原平台清單沒有 Windows ABI。HJW 實機探測沒有 Docker，WSL 列舉返回拒絕訪問，回條在 `artifacts/readiness/core034-windows-prerequisites.json`。EXT-023 要求 enforced AppArmor＋seccomp、無網路和零 capability；下一步需可從 HJW 使用的 Linux 隔離測試環境，才可建置並對拍原 worker。未替換為同名 crate、未降低隔離，也未把此交付核對算成整卡驗收。
+原 worker 固定 Monty `3f9d6ef413fb951e5b80113b7088d535bd028fcb`、原 string-cache 補丁、Linux bwrap launcher、Rust 1.96.0／CPython 3.12 codec。原平台清單沒有 Windows ABI。舊回條 `core034-windows-prerequisites.json` 只測 PATH 上的 System32 舊入口；其「拒絕訪問」不能證明 WSL 不可用。
+
+2026-11-04（太平洋時間）經 SSH 實收：`C:/Program Files/WSL/wsl.exe` 可使用 WSL 3.0.1.0，成功進入 Arch，核心為 `6.18.40.1-microsoft-standard-WSL2 x86_64`。核心已編入 AppArmor／seccomp filter，但 AppArmor enabled 為 `N`；Arch 沒有 apparmor、bubblewrap、docker、python、rust、gcc。具名回條 `artifacts/readiness/core034-ssh-wsl-prerequisites.json` SHA-256 `3ac09579389cb3eb5bbf2e74762b40e5d53fdc9d96098899c591c95fd3238bd0`，探測腳本 `codemode-ssh-wsl-preflight.py`；SSH 和 Linux 探測成功，尚未執行 worker 隔離驗收。
+
+下一步已定位到 HJW 的 Arch，不需再問 SSH 主機。準備的環境改動見 `artifacts/readiness/after-ssh-wsl-readiness.json`：保留 `.wslconfig` 的 `memory=4GB`，新增 `kernelCommandLine=apparmor=1 security=apparmor`，在 Arch 安裝隔離工具，載入本次 worker 的專用策略。WSL 核心設定影響所有 WSL2 發行版，重啟可能中斷 Yuki-Bocchi；這項基礎設施變更待明確授權，尚未執行。EXT-023 仍須證明候選 OCI 的 enforced AppArmor＋seccomp、無網路、零 capability、拒絕讀宿主檔、取消終止和原生快照恢復。

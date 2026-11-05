@@ -1,0 +1,71 @@
+{
+  "observed_utc": "2026-11-05T01:43:13.085658+00:00",
+  "previous": "artifacts/readiness/after-core034-readiness.json",
+  "previous_sha256": "192caaccdd3c8c1de07ec2586365bf2b3d3a84169352382f250bd4919ed156ee",
+  "branch": "codex/ext-031-media",
+  "source_commit_before_readiness_correction": "db00f11734da446e47a1b4868ef8c2989b90992c",
+  "next_card": {
+    "id": "EXT-023",
+    "core_ready": true,
+    "runtime_ready": false,
+    "linux_reachable": true,
+    "inspection": "artifacts/readiness/core034-handoff-inspection.json",
+    "prerequisites": "artifacts/readiness/core034-ssh-wsl-prerequisites.json",
+    "prerequisites_sha256": "3ac09579389cb3eb5bbf2e74762b40e5d53fdc9d96098899c591c95fd3238bd0",
+    "probe": "artifacts/readiness/codemode-ssh-wsl-preflight.py",
+    "probe_sha256": "16f4cd0ae22e28b24e28a59be968d1f900bb0030a34fc2768a519461c2d7bb75",
+    "correction": "The original PATH-based probe reached the old System32 wsl.exe. The packaged WSL executable successfully runs Arch over the existing HJW SSH connection. Withdraw the claim that WSL is unavailable.",
+    "blocker": "AppArmor is compiled but disabled; Arch has no apparmor, bubblewrap, or Docker tools. The proposed shared WSL kernel configuration and Arch environment setup require explicit infrastructure authorization.",
+    "acceptance": false
+  },
+  "prepared_environment_change": {
+    "status": "NOT_APPLIED_AWAITING_AUTHORIZATION",
+    "wsl_executable": "C:\\Program Files\\WSL\\wsl.exe",
+    "target_distro": "Arch",
+    "current_wslconfig": [
+      "[wsl2]",
+      "memory=4GB"
+    ],
+    "config_delta": {
+      "section": "wsl2",
+      "add": "kernelCommandLine=apparmor=1 security=apparmor",
+      "preserve": "memory=4GB and any newly observed user settings"
+    },
+    "scope": "WSL kernel configuration is shared by Arch and Yuki-Bocchi. Recheck running distros before a restart; no shutdown or configuration change has been performed.",
+    "arch_packages": [
+      "apparmor",
+      "bubblewrap",
+      "docker"
+    ],
+    "package_versions": "Not selected or installed; resolve and record package versions and hashes before installation. No broad Arch upgrade is authorized.",
+    "runtime_build": "Reuse the original Monty SHA, patch, launcher, Rust 1.96.0 / CPython 3.12 recipe in an independent candidate image; target digests and notices are still to be produced.",
+    "verification": [
+      "AppArmor enabled and dedicated profile in enforce mode",
+      "Actual worker process Seccomp=2 and expected filter",
+      "Worker effective/permitted/bounding capabilities zero and no network",
+      "Host files denied, cancellation kills original process, matching native snapshots resume",
+      "Record actual OCI digest and worker/codec/launcher digests before claiming EXT-023 acceptance"
+    ],
+    "references": [
+      "https://learn.microsoft.com/en-us/windows/wsl/wsl-config",
+      "https://www.kernel.org/doc/html/latest/admin-guide/LSM/apparmor.html"
+    ]
+  },
+  "pr12_observed": {
+    "head": "f0843e106711804fc79fcf6e1a19d0aefe4c9793",
+    "push_run": 41939834061,
+    "push_required_passed": "4/4",
+    "pr_run": 41939841639,
+    "pr_merge_sha": "867562e4c971ec5b95678bafed442245f2be14ae",
+    "pr_required_passed": "9/13",
+    "pending": [
+      "acceptance macOS",
+      "package connector macOS",
+      "package telegram macOS",
+      "package web-fetch macOS"
+    ],
+    "failed_jobs": [],
+    "merged": false
+  },
+  "formal_acceptance_delta": []
+}
