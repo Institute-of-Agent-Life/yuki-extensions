@@ -1,0 +1,18 @@
+Yuki GitHub Monitor
+
+Copyright (c) 2026 Yuki Contributors
+SPDX-License-Identifier: AGPL-3.0-only
+
+Originally developed in plugins/github-monitor of:
+https://github.com/YuanYeYouTao/Yuki
+
+Extracted from Yuki commit:
+9031f25a8707e1e0ccdf98611b14632a8f1c2ca2
+
+The repository retains the plugin history with git subtree split. Original
+commit authors and messages are preserved; the path is now the repository root.
+Standalone development configuration, documentation and explicit offline-doctor
+configuration were added during extraction. See the Git history for changes.
+
+This plugin remains licensed under AGPL-3.0-only. The original license text and
+copyright are retained in LICENSE. No license from another Yuki plugin applies.

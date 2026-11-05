@@ -296,3 +296,20 @@ subset apply、核心已寫後 kill、原已付重用與 forget 尚未跑到，�
 同時提供 CORE-051 `plugins.sessions` 的完整可解析最小 policy（routes、context
 profiles、background permission）及 aux session route 設定，供 EXT-047 隔離遊戲使用。
 擴展不讀主庫、不借 fixture 私有寫入建立 grant，也不猜測替代身份規則。
+
+## CORE-051 → EXT-047：隔離 session 的可用安裝設定
+
+固定 `9db8b3f073e3`／SDK alpha.9；Windows `source-intake-01` 是真 Rust consumer，
+`session.create` 前景原 handle、原已接納 Work handle、actorless 三例皆 -32003。
+目前設定只有已公開的 method grants，沒有文件未交付的 `plugins.sessions` policy／aux route。
+三個 `tool.status` 都是 dispatched，session.run 為零；這是配置缺口診斷，不是核心缺陷認定。
+
+請提供可直接解析的最小 TOML 與原公開 operator 序列：sessions 的 routes／context profiles／
+background permission 欄位，session origin 的 auxiliary route、Profile、purpose，以及原 handle／
+原 event 的授權條件；附無 policy 拒絕、有 policy 成功、換 Person／撤權拒絕案例。
+遊戲需要 durable/context_profile=none、穩定 run key、原 epoch、重啟原已付 receipt、
+unknown 不重買、Main／Memory 不入遊戲正文的公開驗收入口。
+
+可重現入口 `ci/session_intake.py`，證據 `artifacts/EXT-047/source-intake-01/`。
+原 GitHub Monitor 的 manifest／observe／register／commands／polling／config 已固定原版 hash，
+遷移對照在 `docs/sdk-migration.md`；R11 的兩目標 grant 另受 CORE-058 回條阻塞。

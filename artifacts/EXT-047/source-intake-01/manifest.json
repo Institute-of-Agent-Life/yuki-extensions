@@ -1,0 +1,17 @@
+{
+  "task": "EXT-047",
+  "status": "BLOCKED",
+  "phase": "diagnostic",
+  "observations_verified": true,
+  "source_snapshot_sha256": "7afdbd16bed6c0c3b6035de06f6b0285e0ef577f7e78473d4ff7b3c61b129a85",
+  "files": {
+    "build.json": "b4ea46719612d5d41e97c58c30cd910c5defaf91c1d442860d6aa9b509d52e4a",
+    "generated-Cargo.lock": "528a24df3fa713dec33da24031bf3efd77feb798cd94e7fced435658e135a842",
+    "host-config.toml": "559810910a45540a991319ad339a7502a902770e8c8c6397603031dbf4b227f5",
+    "host.txt": "14faf2199e02fddf61efd882730ac14b687178899ce54b0604b620f444a12dcf",
+    "intake.json": "28f2820527c4a4cdd313c5d4ec0a062092cebf00909a478f582714af09e2503c",
+    "model.json": "3f5cccb50e8f0d36fc18077ccdff7fac3f58b86b0332008230a55dc9186587d0",
+    "operator.json": "6e73e16d24c1675cb00131ff59e13af69bad9e5405edf6a6e60765b4e99414d3",
+    "wire.jsonl": "195b711c07b6e745b6c2426b12a9aa9f1845d99ebd3707753b0c05fdae271478"
+  }
+}

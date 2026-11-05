@@ -13,6 +13,25 @@
 | EXT-010 · codex/ext-010 | `ab16e07`；CI `41834791702`；PR #6 合併 `2c55dbb` | `artifacts/EXT-010/02/`，8 例含實際子進程退出碼 23、雙 session 取消及 unknown |
 | EXT-019 · codex/ext-019 | 實作 `7531d84`、PR head `9d1e8a8`；三平台 CI `41835863011`；PR #7 合併 `7625095` | `artifacts/EXT-019/02/`，呼叫表、schema 差分、5 個故障變異；`03/` 固定跨平台順序 |
 
+## 2026-11-05 CORE-051 consumer intake
+
+- 最新工作樹 `.ci-transfer/work-scoped-session`，分支 `codex/ext-047-scoped-session`。
+  EXT-027 的已驗診斷 `07b4da6` 已推 PR #25；核心回條
+  https://github.com/Institute-of-Agent-Life/yuki-core/pull/48#issuecomment-6658294529 。
+- EXT-047 的 `source-intake-01` 已在 HJW Windows 編譯／執行真 Rust consumer；
+  CORE-051 `9db8b3f073e3`、Host `cb2e2e8592bc`、SDK alpha.9 crate `2b1e5fbe107a`，
+  consumer `3644baf1e9c6`、wire `195b711c07b6`，全部輸入／回條 SHA 已核。
+  前景、已接納 Work、actorless 的 session.create 皆 -32003，session.run 為零。
+  原 method grants 可協商，缺公開 sessions policy／aux route 配置；沒有判成核心 bug。
+- GitHub Monitor 1.2.3／API9 固定 `efba5e1ad77f` 的原 manifest、註冊、命令、輪詢、
+  配置、觀察及授權已核 Git blob／SHA；唯讀對照在 `compat/external-plugins/` 和
+  `docs/sdk-migration.md`。沒有升版／發布／自動執行舊插件。R11、遊戲、QQ scope、
+  原 API9 新 Host 拒載和舊 Host 可用仍待驗，詳見 external-consumer-ledger。
+- 正式完成仍 7／68 卡。本輪新增的是兩張授權診斷，沒有新增正式驗收卡。
+  readiness 改為 `artifacts/readiness/after-core051-intake.json`。先等待公開安裝配置、
+  PR #14 的剩餘 macOS jobs 與其他已具名上游缺口；下一次 main 前進仍要更新後續 PR base。
+- 原主樹／ASR／rebuild 及 `work-subscription` 的完整 Rust 訂閱 WIP 保留。
+
 ## 2026-11-05 CORE-058 intake
 
 - CORE-058 `cb02f74ea48b`／SDK alpha.10 的三平台 ZIP、source tree 和全部成員已核，

@@ -1,0 +1,66 @@
+{
+  "repository": "Institute-of-Agent-Life/Yuki-GitHub-Monitor",
+  "commit": "efba5e1ad77f52364c13702c342ab6b937c86c1e",
+  "version": "1.2.3",
+  "api": "9.0",
+  "license": "AGPL-3.0-only",
+  "files": {
+    "plugin.toml": {
+      "bytes": 632,
+      "sha256": "61c4e03b26903428b1c044fb37add5bddee2afdbdb2c8f8d7f9f9f6bb2bc16a6",
+      "git_blob": "7d8155160da509f8f203c6896c3a11bb0da827f1",
+      "url": "https://github.com/Institute-of-Agent-Life/Yuki-GitHub-Monitor/blob/efba5e1ad77f52364c13702c342ab6b937c86c1e/plugin.toml"
+    },
+    "github_monitor/observation.py": {
+      "bytes": 5203,
+      "sha256": "048806afa5273942c373bfb1331e113ad7ec86f36c0373ff95782c4ad84f8d4a",
+      "git_blob": "225ac086c6454f74479622707b407b2b8a8e1ea9",
+      "url": "https://github.com/Institute-of-Agent-Life/Yuki-GitHub-Monitor/blob/efba5e1ad77f52364c13702c342ab6b937c86c1e/github_monitor/observation.py"
+    },
+    "LICENSE": {
+      "bytes": 34600,
+      "sha256": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+      "git_blob": "932435201cc785667f73e8a74bae80e48de6e2af",
+      "url": "https://github.com/Institute-of-Agent-Life/Yuki-GitHub-Monitor/blob/efba5e1ad77f52364c13702c342ab6b937c86c1e/LICENSE"
+    },
+    "NOTICE": {
+      "bytes": 730,
+      "sha256": "2b8db6dee6161a39f473874479e6b05c62a59986d19e7a6ac203f120c768a36f",
+      "git_blob": "db9b1b73396d435beb4b0b47aedaf8e04ac00bba",
+      "url": "https://github.com/Institute-of-Agent-Life/Yuki-GitHub-Monitor/blob/efba5e1ad77f52364c13702c342ab6b937c86c1e/NOTICE"
+    },
+    "github_monitor/plugin.py": {
+      "bytes": 2948,
+      "sha256": "93b8a18d8611f11e689163310839c45f447d4302c023a73034b970532ac1f0c3",
+      "git_blob": "ae61379747ea772c502c3f7e04b7b7bd4915f5b9",
+      "url": "https://github.com/Institute-of-Agent-Life/Yuki-GitHub-Monitor/blob/efba5e1ad77f52364c13702c342ab6b937c86c1e/github_monitor/plugin.py"
+    },
+    "github_monitor/config.py": {
+      "bytes": 3427,
+      "sha256": "579914723c12fbfaa630c9c2a51fa0117de81983f5983ae7a275a675dc48f857",
+      "git_blob": "2a122301a7ad768aab57d5b7cfbabe012564251a",
+      "url": "https://github.com/Institute-of-Agent-Life/Yuki-GitHub-Monitor/blob/efba5e1ad77f52364c13702c342ab6b937c86c1e/github_monitor/config.py"
+    },
+    "github_monitor/__init__.py": {
+      "bytes": 113,
+      "sha256": "102ca2b5c1b19dbe2ebce4f51a38a1f430ecd8cc4d93df26342f4d1920a5eb41",
+      "git_blob": "af4e58892f907755407d5f989f5c26ae339392c5",
+      "url": "https://github.com/Institute-of-Agent-Life/Yuki-GitHub-Monitor/blob/efba5e1ad77f52364c13702c342ab6b937c86c1e/github_monitor/__init__.py"
+    },
+    "github_monitor/commands.py": {
+      "bytes": 15553,
+      "sha256": "9198d72bff174d05396acb66826a87b682ca08fb06be604113624ef99d19444e",
+      "git_blob": "fb6a86bd2959c03896517c80e2685b6e16ad939c",
+      "url": "https://github.com/Institute-of-Agent-Life/Yuki-GitHub-Monitor/blob/efba5e1ad77f52364c13702c342ab6b937c86c1e/github_monitor/commands.py"
+    },
+    "github_monitor/polling.py": {
+      "bytes": 57492,
+      "sha256": "4d38e295e0d6fc389aff3b4639403a5d6788c5f426ead19aeeb35f615788d69d",
+      "git_blob": "68121cbc7f8812ab7da799926cf49198416100bc",
+      "url": "https://github.com/Institute-of-Agent-Life/Yuki-GitHub-Monitor/blob/efba5e1ad77f52364c13702c342ab6b937c86c1e/github_monitor/polling.py"
+    }
+  },
+  "installed": false,
+  "migrated": false,
+  "runtime_tested": false
+}
