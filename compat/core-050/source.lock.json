@@ -29,5 +29,6 @@
   "integrated_methods_equal": [
     "llm.complete",
     "llm.result"
-  ]
+  ],
+  "rust_crate_sha256": "7b435f21042ec0bed2c7b4ffb67751371552e0fb1e3e3cc36f937c759a865816"
 }

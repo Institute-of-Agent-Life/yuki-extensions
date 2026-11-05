@@ -1,0 +1,30 @@
+{
+  "run": 41967166331,
+  "job": 127046802072,
+  "head": "d5d2aa1f66cf93afa87cdf3439d2274e0bc12b38",
+  "artifact_sha": "9f034aa9a8a6aaa7d6d0f381a182e304772657be",
+  "artifact_id": 13389121791,
+  "zip_sha256": "e8af69ecf59652bd20520eaab399eb8576d38344633f74cc58300b9ba196b78a",
+  "verified_members": {
+    "codec.txt": "3ce4a46d6281653b2218015b97cfde21fad4b338622e68ffe3597644aafbfabb",
+    "image-id.txt": "7fb403bb2a3bf20815272b4edcfea65f4696d7923d503a1a19477b91707afb78",
+    "artifacts.json": "2ec9dd02b8e5d0b88e84155b3fa8d0549f7e36bcb8b9c23b1f83aa40520f1d83",
+    "build.txt": "e103ecea10afb8a78cf473320f1e9e6012c777712c061825d5897b8ec53b616f",
+    "native-codec.json": "803404c07d628615f38335f3bb496ca3ed8a07156f38c172f2e25ac9436f143a",
+    "rust-worker.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "image.tar": "cec1ecddfe7c4f0dde8acb487c4eabd8062532d205130a861d799fc8ee2dfd1d",
+    "copy-THIRD_PARTY_NOTICES.json.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runtime-contract.json": "4e4c6c679124b4c7248098735d961874bc8a8eb70f048f2d7c18bbc42c1109af",
+    "image-inspect.json": "10a00f9e215c44448bd823c0692eb1e2546608eff7162a2f4f5c7d4077639b9e",
+    "THIRD_PARTY_NOTICES.json": "f34da0662ee6d0024cdf7bae126f4676070750f7dea5b3178fd2a1891e5f8674",
+    "inputs.txt": "7e5377a03e19550fcff3d6b59488c33be85ac2c0f7f113c8b3f635062b9c8ca8",
+    "copy-artifacts.json.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy-runtime-contract.json.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "export.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "isolation.txt": "9621e9c14ef6d12fdb6ac78af50d225c0c1609ca9293cc38aa927b64479e3b10",
+    "apparmor.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "native-isolation.json": "20bce37892b711bf0bbb33f3e40ce946749a96dd4e8f98018d11da148dda09e3"
+  },
+  "status": "PASS",
+  "entire_pr_ready": false
+}

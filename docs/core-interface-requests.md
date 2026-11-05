@@ -184,3 +184,30 @@ anthropic_messages、gemini。名為 jev 的文字 route 尚未證明等於原 J
 請給出相容的公開 route／輸入形狀與原始回應讀取方式，保持原問題／修訂／usage，
 沿 K05 一次邏輯預留、分列實際 attempt，未知不得新購重試。擴展保留原庫，
 不將其換成另一套文字分類器。
+
+## CORE-050 → EXT-030：已讀原音訊但選定媒體模型派發遭拒
+
+固定 `952954d86166`、SDK alpha.6，Windows Host binary
+`cba774439b078e5b6879f93271f2bbb08d06e2601c1e8d81a05f64dc15e5006e`。
+實收 `media.open` 的 `audio/wav`、3244 bytes 及版本
+`9a1215ca91037cc6916a991befd4a8205175b62e41fa591d1818935a86394e62`。
+同一真 `media.process` handle，路由 asr、purpose transcript、origins call、
+明選 group entry、Chat Profile、明設原 execution root，純文字 `llm.complete`
+成功並實收 HTTP 一次；加 `selected_media=true` 後為 -32003、零音訊 HTTP。
+原始回條在 `artifacts/EXT-030/source-intake-01/`。這只定位拒絕條件，不先判定核心缺功能。
+
+請交付可直接使用的音訊 route／Profile 配置範例及其公開 capability 欄位、
+可讀 handle 到 `selected_media` 的授權條件、成功／跨 source 拒絕案例。
+若可透過已有方法達成，請指出具體路徑。另需確認同一 source／Profile 經新
+media call 或雙 Bot 重投時如何取得原 request，及原 Main 首輪／history 的
+有來源 transcript 入口。未知仍不得新購，K05 邏輯預留與逐 attempt 帳本不變。
+EXT-025 原 Jev wire 的需求仍見上一節，不能用 Chat 文字 route 充當 Jev。
+
+## CORE-038／CORE-050 → EXT-032 的保留與原 Social 子效果
+
+公開候選已列 media.open/publish/process 和輔助模型方法。請明確給出收藏授權、
+原事件到期後的保留／再次讀取及 forget 範圍；collection owner 需要可驗的原
+來源關聯，不自行推導 Person/ACL。也需指明原 Social 意圖／文字已送回條的
+回呼、穩定圖片子鍵、取消／撤權與 Work 正常結束的區分及補圖回聲排除。
+要求純圖、文字成功後崩潰、圖片已發布未確認、原圖改動與來源清除案例。
+目前沒有這組具體交接，未建立空 sticker 插件或自造平行送訊協議。

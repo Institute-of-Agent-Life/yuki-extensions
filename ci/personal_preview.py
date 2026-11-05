@@ -62,6 +62,8 @@ class Owner:
         environment=None,
         relay=None,
         command_timeout=12,
+        package_builder=build,
+        binary_name=None,
     ):
         self.command_timeout = command_timeout
         self.root = root
@@ -72,9 +74,9 @@ class Owner:
         self.exe, self.pin, self.platform = materialize(root, self.work, contract)
         self.data = self.work / "owner"
         self.packages = out / "packages"
-        package = build(root, unit, self.packages)
+        package = package_builder(root, unit, self.packages)
         self.plugin = self.packages / (
-            "yuki-" + unit + (".exe" if os.name == "nt" else "")
+            (binary_name or "yuki-" + unit) + (".exe" if os.name == "nt" else "")
         )
         self.binary_sha = package["artifacts"][self.plugin.name]
         self.address = free_address()
@@ -178,7 +180,7 @@ class Owner:
     def evidence(self):
         return {
             "source_commit": self.pin["source_commit"],
-            "handoff_commit": self.pin["handoff_commit"],
+            "handoff_commit": self.pin.get("handoff_commit"),
             "published": False,
             "host": self.platform,
             "sdk": {

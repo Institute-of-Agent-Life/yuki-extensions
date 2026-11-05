@@ -1,0 +1,37 @@
+{
+  "source": {
+    "tests/peers/aux-media-probe/Cargo.lock": "e4798d840c406b2e8d3c2c9e1d76516edf62e9b04fbffa90236c6fcf5c046a4f",
+    "tests/peers/aux-media-probe/Cargo.toml": "2b059b0b08cb3c2d177f4cac58652cd023100ad6206ca9c1c6c792ea23e86535",
+    "tests/peers/aux-media-probe/README.md": "b953e3e641cdcae59d83e2f590bda39b36ef3fce36c0d53b1e365f6cda6a7dad",
+    "tests/peers/aux-media-probe/rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+    "tests/peers/aux-media-probe/src/main.rs": "b634178615288f92455570437bb7900ce944718f359e8510b0d23fd7b3e46d12",
+    "tests/peers/aux-media-probe/src/rpc.rs": "e55c8f5d52f5c9046bc00a01faab8f4bb0771fcff9f600d617c35a13be7f05bf"
+  },
+  "sdk_sha256": "7b435f21042ec0bed2c7b4ffb67751371552e0fb1e3e3cc36f937c759a865816",
+  "commands": [
+    {
+      "argv": [
+        "cargo",
+        "build",
+        "--locked",
+        "--offline"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "   Compiling proc-macro2 v1.0.107\n   Compiling quote v1.0.47\n   Compiling unicode-ident v1.0.27\n   Compiling serde_core v1.0.228\n   Compiling serde_json v1.0.145\n   Compiling serde v1.0.228\n   Compiling itoa v1.0.18\n   Compiling ryu v1.0.23\n   Compiling memchr v2.8.3\n   Compiling syn v2.0.119\n   Compiling serde_derive v1.0.228\n   Compiling yuki-plugin-sdk v1.0.0-alpha.6\n   Compiling aux-media-probe v0.1.0 (C:\\Users\\Hilbert\\AppData\\Local\\Temp\\yuki-aux-intake-b138w9lr\\peer)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 10.25s\n"
+    },
+    {
+      "argv": [
+        "rustc",
+        "--version",
+        "--verbose"
+      ],
+      "exit_code": 0,
+      "stdout": "rustc 1.96.0 (ac68faa20 2026-05-25)\nbinary: rustc\ncommit-hash: ac68faa20c58cbccd01ee7208bf3b6e93a7d7f96\ncommit-date: 2026-05-25\nhost: x86_64-pc-windows-gnu\nrelease: 1.96.0\nLLVM version: 22.1.2\n",
+      "stderr": ""
+    }
+  ],
+  "artifacts": {
+    "aux-media-probe.exe": "d1c5277638265bc52aceba1dc77328494b21f5e0a15495554ad71a3ed32333b9"
+  }
+}

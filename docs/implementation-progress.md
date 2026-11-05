@@ -278,5 +278,27 @@ Rust 診斷程式已實收 metadata 通知與 source bytes，沒有 promotion／
 也沒有已驗的相容 Profile。回條 `artifacts/EXT-025/source-intake-01/` 與具體欄位
 需求已備妥。未建立空正式插件，未改寫參與庫，未聲稱 EXT-025 完成。
 
-下一張可開發的是 EXT-030：CORE-050 已補公開模型路由，需與已有 CORE-038
-媒體方法共同核對原 ASR 購買／轉寫／失效，再接 Rust media 插件。
+EXT-025 intake 提交 `2874585` 已推 PR #20；[具體回條已交核心 #45](https://github.com/Institute-of-Agent-Life/yuki-core/pull/45#issuecomment-6649779250)。
+
+## EXT-030 音訊路由 intake 與本輪 CI
+
+分支 `codex/ext-030-asr` 位於 `.ci-transfer/work-asr`，從 `2874585` 建立。
+CORE-050 `952954d86166`／Rust SDK alpha.6 的實物鎖在 `compat/core-050/`。
+HJW Windows 的真 Rust 診斷 binary `d1c5277638265bc52aceba1dc77328494b21f5e0a15495554ad71a3ed32333b9`
+已讀到原 WAV 的 MIME／digest。同一 handle／route 的文字請求成功，HTTP 一次、
+usage 4+8；`selected_media=true` 被 -32003 拒絕，未派發音訊。
+`artifacts/EXT-030/source-intake-01/` 含逐方法 wire、原 provider bytes、build、
+manifest 與所有 helper/source hash。這是 scope 診斷，沒有 ASR 成功或逐字稿。
+
+Rust `asr.rs`、媒體 SDK 升級與整卡測試仍留本工作樹，尚未提交為完成插件。
+先前 `candidate-01` 是測試配置缺欄位；具名診斷已補原入口、原執行 root 及
+公開 `origins=["call"]`。目前需要生產者給出選定音訊的配置／授權條件。
+原 Main／歷史、雙 Bot、引用不再購買、轉碼與清除晚返均未宣稱通過。
+
+PR #19 `d5d2aa1` 的 Linux native image／Rust worker 已通過，下載 ZIP 與 18 個
+成員驗 SHA；回條在 `artifacts/EXT-023/ci-native-d5d2aa1/`。這份 CI 映像為
+`92b3ab6849f868142975eb453b078a26169a113c23a71b38ece353d619b17d05`，不可混同 HJW 映像。
+PR #20 的 native job `127051966392` 隨後在 blocked-feed disconnect 的退出碼
+斷言失敗，正在 HJW Arch 重現；先修此故障。PR #12 剩 macOS package 排隊，
+其餘順序 PR 不越過；最新 queue 檢查在 `artifacts/readiness/after-core050-intake.json`。
+CORE-032 已合併 `30a5ea77bf6c`，公開 release 仍只有握手預發版。
