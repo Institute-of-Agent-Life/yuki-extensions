@@ -15,7 +15,7 @@
 
 ## 2026-11-05 CORE-051 consumer intake
 
-- 最新工作樹 `.ci-transfer/work-scoped-session`，分支 `codex/ext-047-scoped-session`。
+- 最新工作樹 `.ci-transfer/work-scoped-session`，分支 `codex/ext-047-scoped-session`，已驗診斷提交 `cfd405d5dc82`。
   EXT-027 的已驗診斷 `07b4da6` 已推 PR #25；核心回條
   https://github.com/Institute-of-Agent-Life/yuki-core/pull/48#issuecomment-6658294529 。
 - EXT-047 的 `source-intake-01` 已在 HJW Windows 編譯／執行真 Rust consumer；
