@@ -161,6 +161,9 @@ jobs:
       - name: Verify OCI source packaging and archive integrity faults
         if: matrix.unit == 'monty-runtime'
         run: python -m unittest discover -s tests/unit -p test_oci_package.py -v
+      - name: Preserve native failure evidence without masking the failed gate
+        if: matrix.unit == 'monty-runtime'
+        run: python -m unittest discover -s tests/unit -p test_monty_ci_evidence.py -v
       - name: Validate the offline direct Compose configuration
         if: matrix.unit == 'yuki-setup' && runner.os == 'Linux'
         run: docker compose -f deploy/compose/direct.yaml config --quiet

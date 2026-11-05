@@ -1,0 +1,10 @@
+{
+  "artifact_id": 13418650191,
+  "run_id": 42031856344,
+  "job_id": 127260154799,
+  "source_commit": "e0625154c09a84967e678ebd63997867aa83fee7",
+  "sha256": "5926a977bc64982960b1ace015e77888cad4ba84173b0357348b2e9d041130ce",
+  "members": 9,
+  "all_manifest_members_verified": true,
+  "current_failure_resolved": false
+}

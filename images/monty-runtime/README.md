@@ -43,3 +43,10 @@ snapshot in a fresh isolated worker; reject corrupt snapshots and incompatible
 contracts. Core parent identity, ordinal and durable recovery are checked through
 the real Rust plugin separately. Environment and image checks alone do not mark
 EXT-023 or EXT-024 accepted.
+
+Native CI enables CPython fatal-signal tracebacks and retains attached output
+and Docker logs for a blocked-feed disconnect.
+It also exports the exact built image and copies its runtime contract before
+validation, including when validation fails. A failure artifact remains marked
+FAIL and unpublished; retaining it only enables reproduction of that exact build.
+Export errors retain the original validation traceback and keep the gate failed.

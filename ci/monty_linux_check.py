@@ -10,6 +10,11 @@ import sys
 from units import load_catalog, validate_unit
 
 
+def file_sha256(path):
+    with path.open("rb") as stream:
+        return hashlib.file_digest(stream, "sha256").hexdigest()
+
+
 def main():
     p = argparse.ArgumentParser(); p.add_argument("--out", type=Path, required=True); args = p.parse_args()
     if platform.system() != "Linux" or platform.machine() != "x86_64":
@@ -35,8 +40,6 @@ def main():
         image = (out / "image-id.txt").read_text().strip()
         inspection = json.loads(subprocess.check_output(["docker", "image", "inspect", image]))[0]
         (out / "image-inspect.json").write_text(json.dumps(inspection, indent=2) + "\n")
-        run([sys.executable, "scripts/verify_image.py", "--image", image, "--out", str(out / "native-isolation.json")], "isolation")
-        run([sys.executable, "scripts/verify_bridge.py", "--image", image, "--out", str(out / "native-codec.json")], "codec")
         cid = subprocess.check_output(["docker", "create", image], text=True).strip()
         try:
             for name in ["artifacts.json", "runtime-contract.json", "THIRD_PARTY_NOTICES.json"]:
@@ -45,17 +48,30 @@ def main():
             subprocess.run(["docker", "rm", "-f", cid], check=True)
         notices = json.loads((out / "THIRD_PARTY_NOTICES.json").read_bytes())
         assert notices["license_text_audit_complete"] and not notices["license_text_gaps"]
+        run([sys.executable, "scripts/verify_image.py", "--image", image, "--out", str(out / "native-isolation.json")], "isolation")
+        run([sys.executable, "scripts/verify_bridge.py", "--image", image, "--out", str(out / "native-codec.json")], "codec")
         run([sys.executable, str(root / "ci/codemode_worker_check.py"),
              "--out", str(out / "rust-worker"), "--image", image,
              "--contract", str(out / "runtime-contract.json")], "rust-worker")
-        run(["docker", "save", "-o", str(out / "image.tar"), image], "export")
         passed = True
     finally:
-        manifest = {"unit_id": "monty-runtime", "scope": "native image; CORE-034 consumer acceptance separate",
-            "status": "PASS" if passed else "FAIL", "formal_card_acceptance": False,
-            "image_id": image, "published": False, "commands": commands,
-            "files": {f.name: hashlib.file_digest(f.open("rb"), "sha256").hexdigest() for f in out.iterdir() if f.is_file()}}
-        (out / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
+        # Retain the exact built image even when a native assertion fails. A
+        # later local rebuild cannot reproduce this binary's digest. Export
+        # failure must not replace the original test traceback or produce PASS.
+        original_failure = sys.exc_info()[0] is not None
+        try:
+            if image is not None:
+                run(["docker", "save", "-o", str(out / "image.tar"), image], "export")
+        except Exception:
+            passed = False
+            if not original_failure:
+                raise
+        finally:
+            manifest = {"unit_id": "monty-runtime", "scope": "native image; CORE-034 consumer acceptance separate",
+                "status": "PASS" if passed else "FAIL", "formal_card_acceptance": False,
+                "image_id": image, "published": False, "commands": commands,
+                "files": {f.name: file_sha256(f) for f in out.iterdir() if f.is_file()}}
+            (out / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
 
 
 if __name__ == "__main__": main()

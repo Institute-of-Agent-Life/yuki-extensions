@@ -27,6 +27,7 @@ class Codec:
     def __init__(self, image, policy):
         self.cid = docker(
             "create", "--init", "-i", "--attach", "stdin", "--attach", "stdout",
+            "--env", "PYTHONFAULTHANDLER=1",
             "--user", "10001:10001", "--cap-drop", "ALL", "--network", "none",
             "--read-only", "--tmpfs", "/tmp:rw,nosuid,nodev,size=256m",
             "--pids-limit", "64", "--memory", "1g",
@@ -71,6 +72,20 @@ class Codec:
     def call(self, request):
         self.send(request)
         return self.receive()
+
+    def exit_diagnostics(self):
+        assert self.proc.poll() is not None, "collect diagnostics only after exit"
+        logs = docker("logs", "--tail", "100", self.cid, check=False)
+        return {
+            "exit_code": self.proc.returncode,
+            "container_state": json.loads(docker("inspect", self.cid).stdout)[0]["State"],
+            "stdout": self.proc.stdout.read().decode("utf-8", "replace"),
+            "stderr": self.proc.stderr.read().decode("utf-8", "replace"),
+            "container_stdout": logs.stdout,
+            "container_stderr": logs.stderr,
+            "logs_exit_code": logs.returncode,
+            "container_environment": self.inspection["Config"]["Env"],
+        }
 
     def close(self):
         if self.proc:
@@ -153,10 +168,7 @@ def verify(image, policy):
         start = time.monotonic()
         blocked.proc.stdin.close()
         exit_code = blocked.proc.wait(timeout=5)
-        state = json.loads(docker("inspect", blocked.cid).stdout)[0]["State"]
-        diagnostics = {"exit_code": exit_code, "container_state": state,
-                       "stdout": blocked.proc.stdout.read().decode("utf-8", "replace"),
-                       "stderr": blocked.proc.stderr.read().decode("utf-8", "replace")}
+        diagnostics = blocked.exit_diagnostics()
         assert exit_code == 0, diagnostics
         elapsed = time.monotonic() - start
         assert not stat.exists() or stat.read_text().split()[21] != baseline[21]

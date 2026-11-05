@@ -1,0 +1,82 @@
+{
+  "Id": "sha256:ecf704e35950f34646e62ae10c82fb3b20d948d9b7b67f92d5efe8e092e96cab",
+  "RepoTags": [],
+  "RepoDigests": [],
+  "Parent": "",
+  "Comment": "buildkit.dockerfile.v0",
+  "Created": "2026-11-05T13:17:51.832519268Z",
+  "DockerVersion": "",
+  "Author": "",
+  "Config": {
+    "Hostname": "",
+    "Domainname": "",
+    "User": "10001:10001",
+    "AttachStdin": false,
+    "AttachStdout": false,
+    "AttachStderr": false,
+    "Tty": false,
+    "OpenStdin": false,
+    "StdinOnce": false,
+    "Env": [
+      "PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "LANG=C.UTF-8",
+      "GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305",
+      "PYTHON_VERSION=3.12.16",
+      "PYTHON_SHA256=b5796915dc45ff745cfb4e990a7e7c93d6f546328a102ce31448d69ebc37575c",
+      "PYTHONPATH=/opt/yuki-monty/backend"
+    ],
+    "Cmd": null,
+    "Image": "",
+    "Volumes": null,
+    "WorkingDir": "/tmp",
+    "Entrypoint": [
+      "python",
+      "/opt/yuki-monty/backend/bridge.py"
+    ],
+    "OnBuild": null,
+    "Labels": {
+      "org.opencontainers.image.title": "Yuki Monty runtime",
+      "org.opencontainers.image.version": "0.1.0-alpha.1"
+    }
+  },
+  "Architecture": "amd64",
+  "Os": "linux",
+  "Size": 179105193,
+  "GraphDriver": {
+    "Data": {
+      "LowerDir": "/var/lib/docker/overlay2/3pav6ljeeugqptp13wfds0dps/diff:/var/lib/docker/overlay2/x3nho0uyfbccgwx01p8d91t9h/diff:/var/lib/docker/overlay2/oeh50s6n28hl6wgvrob3406kd/diff:/var/lib/docker/overlay2/lbsi4vfy9b3o2o46r4ubq8w4b/diff:/var/lib/docker/overlay2/si78iagz9m689vz86l4hwits2/diff:/var/lib/docker/overlay2/vvt24ldzv3mtc67jjbhc541nl/diff:/var/lib/docker/overlay2/5jqk16z3ie0ltzg9nje931xx8/diff:/var/lib/docker/overlay2/j1ooe9tx1715gt4iqv6a93ptg/diff:/var/lib/docker/overlay2/anv8xh28xocolujjd36t96pso/diff:/var/lib/docker/overlay2/40j54wx2lpcvmcmpxarvp48fe/diff:/var/lib/docker/overlay2/ub310b35hzacwyw05zlqp5k4y/diff:/var/lib/docker/overlay2/iaqd6f6vki51forhw96mcpdpt/diff:/var/lib/docker/overlay2/7hwklgis725x3gq1o6m02zesx/diff:/var/lib/docker/overlay2/f32vzxz91nnnyigbcc1zzvtkr/diff:/var/lib/docker/overlay2/h7zs4geahzdi60uaxyywyic6b/diff:/var/lib/docker/overlay2/c36d8ad3e7330458ac355be241ed6cb3661cf449e1eda0ff7f8ba0d792aef20f/diff:/var/lib/docker/overlay2/ee1302997c6622e48ec4e1bf32f99f760aaf449dbd3508c8e64bc1bee81815fd/diff:/var/lib/docker/overlay2/4ab2339f8d87b1415bbe48a86ba6a6b1f30344d40bfee55e67badd9209fbd6e8/diff:/var/lib/docker/overlay2/555e40765b837e67f0c85cf4e158a0159ab5e54a9403262da6556fcb039c2bed/diff",
+      "MergedDir": "/var/lib/docker/overlay2/9z0xhj1phn2ja43xrtazf5kay/merged",
+      "UpperDir": "/var/lib/docker/overlay2/9z0xhj1phn2ja43xrtazf5kay/diff",
+      "WorkDir": "/var/lib/docker/overlay2/9z0xhj1phn2ja43xrtazf5kay/work"
+    },
+    "Name": "overlay2"
+  },
+  "RootFS": {
+    "Type": "layers",
+    "Layers": [
+      "sha256:a5d6d345f6afa08d7c31272055746d60a838b290bfcc82c0a23e8e984d61a933",
+      "sha256:fab99bd4639aec48a77ec4d2e3564c0907e0e1e962bbf773219a0b503a168955",
+      "sha256:bca572b9549074f7cbc5f2d9d29f589038ff21c5f68cef2965167a33f177a9c0",
+      "sha256:cae4cb2b5e819765b847e67faa443b377607452f2ec949d142cad15d9d7ea0b3",
+      "sha256:832c1fdb047874569c492fb0b852d77bd520cda89df2b7650b865b5dece51c6e",
+      "sha256:1841963dc01944b5681280e57f38acbc062d7ca1a2f46ff01716d4ce6f980d39",
+      "sha256:dba9cb7d9c1dec565017312612cfcdeed1db476ebd338ad91588346658fe2026",
+      "sha256:067d1329d10f1c54cc5598ee1036df599b9bad69c1632c2b157cf5e568e55c6c",
+      "sha256:c6bb6de2f11ffb49863bba2d4bf1c2ea4cf1043f1585235e8a21acf7a4c48d71",
+      "sha256:05ff690da20ded074bb2b2552afe68db436bcb062ad363a3062447bea9db56ec",
+      "sha256:3693c687a4f2ca8294836af4035507f8b5ff632510cb9870f616645d5fffcd64",
+      "sha256:67f4de6b69d3e3d527cc278b77896be532dbd1486d5a0681bc932da77f804007",
+      "sha256:537eb5a68c109a20a0bb66e7f2a0b4f3171667fb525312f13fbeb6b4282f3dc8",
+      "sha256:df5acd5d13267a5bb87d71ba723ea347076a766dba3d97546a951a74fa598110",
+      "sha256:0dfc39786a97642de2866471fb7e4e8fd52df8bbdc43b559b72097ae66d60d85",
+      "sha256:414cfb774df62193d5615f695fa8bbfdfea439cf942339a438f8078a6ab579de",
+      "sha256:c778650e1b63d4b320438f822828a991a1bca87189df0b9053dbc565c5b14a64",
+      "sha256:a8b7893affaedff0658c7e2f6edd98f8826c80db75a4018fea55900f28952a49",
+      "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef"
+    ]
+  },
+  "Metadata": {
+    "LastTagTime": "0001-01-01T00:00:00Z"
+  }
+}

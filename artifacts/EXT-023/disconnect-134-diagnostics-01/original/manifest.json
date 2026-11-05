@@ -1,0 +1,75 @@
+{
+  "unit_id": "monty-runtime",
+  "scope": "native image; CORE-034 consumer acceptance separate",
+  "status": "FAIL",
+  "formal_card_acceptance": false,
+  "image_id": "sha256:ecf704e35950f34646e62ae10c82fb3b20d948d9b7b67f92d5efe8e092e96cab",
+  "published": false,
+  "commands": [
+    {
+      "argv": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+        "scripts/prepare_inputs.py"
+      ],
+      "exit_code": 0,
+      "log": "inputs.txt"
+    },
+    {
+      "argv": [
+        "sudo",
+        "apparmor_parser",
+        "-r",
+        "deploy/security/yuki-bot-codemode.apparmor"
+      ],
+      "exit_code": 0,
+      "log": "apparmor.txt"
+    },
+    {
+      "argv": [
+        "docker",
+        "build",
+        "--platform",
+        "linux/amd64",
+        "--iidfile",
+        "/home/runner/work/yuki-extensions/yuki-extensions/dist/monty-runtime-native/image-id.txt",
+        "."
+      ],
+      "exit_code": 0,
+      "log": "build.txt"
+    },
+    {
+      "argv": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+        "scripts/verify_image.py",
+        "--image",
+        "sha256:ecf704e35950f34646e62ae10c82fb3b20d948d9b7b67f92d5efe8e092e96cab",
+        "--out",
+        "/home/runner/work/yuki-extensions/yuki-extensions/dist/monty-runtime-native/native-isolation.json"
+      ],
+      "exit_code": 0,
+      "log": "isolation.txt"
+    },
+    {
+      "argv": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+        "scripts/verify_bridge.py",
+        "--image",
+        "sha256:ecf704e35950f34646e62ae10c82fb3b20d948d9b7b67f92d5efe8e092e96cab",
+        "--out",
+        "/home/runner/work/yuki-extensions/yuki-extensions/dist/monty-runtime-native/native-codec.json"
+      ],
+      "exit_code": 1,
+      "log": "codec.txt"
+    }
+  ],
+  "files": {
+    "codec.txt": "e48e4c990bbfeddc22c1101b28bac7645c93a01f1446a9c55b94d41a9cddc1c2",
+    "image-id.txt": "2f3fb992b56446fcd53487077b5cd3f653bba7e1e64996fbd82a241338528ae7",
+    "build.txt": "4ce86a9f74b80c881f408cfc1bf9a524edd538435a49e12344d06779941eaee1",
+    "image-inspect.json": "379a3c9b6565ea19aaa2f4840d57636cbdee54cf68743c2f3e2060e2567a548c",
+    "inputs.txt": "7e5377a03e19550fcff3d6b59488c33be85ac2c0f7f113c8b3f635062b9c8ca8",
+    "isolation.txt": "8a627e9ac6f718a5963b6e89c1dcb0b6f3d8b4ee9b0be135ff6a3176f70494af",
+    "apparmor.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "native-isolation.json": "b192703c1cf7a4bebc55f41a280dba7f992f2d70aa97aa8a466536335b177f27"
+  }
+}

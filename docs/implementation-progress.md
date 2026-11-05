@@ -13,6 +13,26 @@
 | EXT-010 · codex/ext-010 | `ab16e07`；CI `41834791702`；PR #6 合併 `2c55dbb` | `artifacts/EXT-010/02/`，8 例含實際子進程退出碼 23、雙 session 取消及 unknown |
 | EXT-019 · codex/ext-019 | 實作 `7531d84`、PR head `9d1e8a8`；三平台 CI `41835863011`；PR #7 合併 `7625095` | `artifacts/EXT-019/02/`，呼叫表、schema 差分、5 個故障變異；`03/` 固定跨平台順序 |
 
+## 2026-11-05 native CI exit134 診斷補強
+
+- PR #26 原 head `e0625154c09a` 的 push run `42031856344`／job `127260154799`
+  在 blocked-feed disconnect 退出 134，OOMKilled=false；另一 PR run 的同源 native job 通過。
+  原 ZIP `5926a977bc64982960b1ace015e77888cad4ba84173b0357348b2e9d041130ce` 的
+  9 個成員／manifest 已核，保留在 `artifacts/EXT-023/disconnect-134-diagnostics-01/original/`。
+- HJW 原 `65fcd704d953` 映像增加 60 次不同斷開時點驗證，exit=0、原 PID 全消失；
+  仍未重現 CI 134，沒有做根因修復主張。控制實驗確認 Docker 未宣告 AttachStderr
+  仍會傳回 stderr，故未採用該錯誤假設。
+- 診斷補強啟用 CPython fatal signal trace，並讀 Docker logs；真受控 abort 的退出碼
+  仍為 134，新增可讀堆疊。完整 native codec 通過，測後容器集合還原。
+  CI 先複製實含 runtime contract，失敗時仍保存該次 image.tar；原檢查或 export 失敗
+  仍 FAIL，後者不能遮蔽原錯。沒有修改 backend、原 worker／launcher 或授權規則。
+- Windows `verification-03` 的 5 項 evidence orchestration、3 項 OCI integrity 及
+  source package 皆通過；`verification-02` 保存真容器前後對照及 native 回條。
+  上述 artifact 根 manifest 鎖變更來源及逐檔 hash。PR #26 接續重跑當前 SHA 三平台 gates。
+- PR #14 仍差 Connector／飛書 macOS 排隊，未合併。核心 CORE-039 PR #28 已合併
+  `9a0b14afe68bc461220ec918f2dd6b1c917c995e`，尚無新增正式 release；各授權回條無新回覆。
+  正式完成仍 7／68。readiness 改為 `artifacts/readiness/after-native134-diagnostics.json`。
+
 ## 2026-11-05 CORE-051 consumer intake
 
 - 最新工作樹 `.ci-transfer/work-scoped-session`，分支 `codex/ext-047-scoped-session`，已驗診斷提交 `cfd405d5dc82`。

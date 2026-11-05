@@ -1,0 +1,10 @@
+{
+  "status": "DIAGNOSTICS_VERIFIED",
+  "github_exit134_fixed": false,
+  "source_snapshot_sha256": "4c614886b83b44b5f5da9188a1fa259e5af017fb08c53bc0b806649b08091315",
+  "files": {
+    "windows-checks.json": "8d9a5e2802c62d94ef8fffb6779977c56efd2ef8e11e99f56188963d70b835ac",
+    "package/monty-runtime-0.1.0-alpha.1-source.tar.gz": "ea2be3844979d3fdada2e600015a7d8f221f3f209b8caf1f5af0c25dc29b57a3",
+    "package/package-manifest.json": "a5f9f8ef1ca01969ad25b4d2bc65e3b50be541c08b83d61a8882ce5ea7d6b28c"
+  }
+}
