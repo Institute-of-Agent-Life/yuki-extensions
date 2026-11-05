@@ -1,0 +1,750 @@
+{
+  "status": "PASS",
+  "card_status": "VERIFIED_ON_UNPUBLISHED_CANDIDATE",
+  "source_commit": "199dff095be0bc87c9713beaa0419400cb424a7c",
+  "host": {
+    "archive": "yuki-host-preview-199dff095be0-windows-x86_64.zip",
+    "sha256": "d3ef0f3ce8a7dedd175b6aa3392a22c744504cf6bea70eadc22d5408642e634c",
+    "binary_sha256": "a9079931f50996af682ee4600f1e25b86e7e0637f5b3999bfa4822144c12aff8",
+    "delegation_sha256": "293c44914b715cfb5e5b949c7f75707649d7e2aa368cfafe34c29df7062ac274"
+  },
+  "sdk": "9408022bdf1322a8d6e07914685869771a5738280e36145e46da5c36facbfce0",
+  "plugin": "e0684be789a3f16a282bb83b5387549e0e15c90c07a7004ad8a6e125f1109bba",
+  "accounts": {
+    "cli_a": {
+      "account": "bbff16f2-44a6-4d31-a0c1-192a3b61408f",
+      "assignment": "6d9961e0-4e16-4cb0-a680-d0348a9987b2"
+    },
+    "cli_b": {
+      "account": "4cafbb87-9d00-4502-8f33-8e6abd78d68d",
+      "assignment": "df912556-d6a1-4ed6-8cdb-7b916c3816bd"
+    }
+  },
+  "durable_events": [
+    1,
+    1,
+    2,
+    2
+  ],
+  "native": [
+    {
+      "phase": "break",
+      "app": "cli_a",
+      "type": "ping",
+      "seq": 0,
+      "log": 0,
+      "headers": {
+        "type": "ping"
+      },
+      "payload": null
+    },
+    {
+      "phase": "break",
+      "app": "cli_a",
+      "type": "card",
+      "seq": 2,
+      "log": 102,
+      "headers": {
+        "type": "card",
+        "message_id": "2",
+        "sum": "1",
+        "seq": "0",
+        "biz_rt": "0"
+      },
+      "payload": {
+        "code": 200
+      }
+    },
+    {
+      "phase": "replay",
+      "app": "cli_a",
+      "type": "ping",
+      "seq": 0,
+      "log": 0,
+      "headers": {
+        "type": "ping"
+      },
+      "payload": null
+    },
+    {
+      "phase": "replay",
+      "app": "cli_a",
+      "type": "card",
+      "seq": 2,
+      "log": 102,
+      "headers": {
+        "type": "card",
+        "message_id": "2",
+        "sum": "1",
+        "seq": "0",
+        "biz_rt": "0"
+      },
+      "payload": {
+        "code": 200
+      }
+    },
+    {
+      "phase": "replay",
+      "app": "cli_a",
+      "type": "event",
+      "seq": 1,
+      "log": 101,
+      "headers": {
+        "type": "event",
+        "message_id": "1",
+        "sum": "2",
+        "seq": "0",
+        "biz_rt": "8009"
+      },
+      "payload": {
+        "code": 200
+      }
+    },
+    {
+      "phase": "replay",
+      "app": "cli_a",
+      "type": "ping",
+      "seq": 0,
+      "log": 0,
+      "headers": {
+        "type": "ping"
+      },
+      "payload": null
+    },
+    {
+      "phase": "replay",
+      "app": "cli_a",
+      "type": "event",
+      "seq": 3,
+      "log": 103,
+      "headers": {
+        "type": "event",
+        "message_id": "3",
+        "sum": "1",
+        "seq": "0",
+        "biz_rt": "8011"
+      },
+      "payload": {
+        "code": 200
+      }
+    },
+    {
+      "phase": "replay",
+      "app": "cli_a",
+      "type": "ping",
+      "seq": 0,
+      "log": 0,
+      "headers": {
+        "type": "ping"
+      },
+      "payload": null
+    },
+    {
+      "phase": "replay",
+      "app": "cli_a",
+      "type": "event",
+      "seq": 4,
+      "log": 104,
+      "headers": {
+        "type": "event",
+        "message_id": "4",
+        "sum": "1",
+        "seq": "0",
+        "biz_rt": "0"
+      },
+      "payload": {
+        "code": 500
+      }
+    },
+    {
+      "phase": "other-app",
+      "app": "cli_b",
+      "type": "ping",
+      "seq": 0,
+      "log": 0,
+      "headers": {
+        "type": "ping"
+      },
+      "payload": null
+    },
+    {
+      "phase": "other-app",
+      "app": "cli_b",
+      "type": "card",
+      "seq": 2,
+      "log": 102,
+      "headers": {
+        "type": "card",
+        "message_id": "2",
+        "sum": "1",
+        "seq": "0",
+        "biz_rt": "0"
+      },
+      "payload": {
+        "code": 200
+      }
+    },
+    {
+      "phase": "other-app",
+      "app": "cli_b",
+      "type": "event",
+      "seq": 1,
+      "log": 101,
+      "headers": {
+        "type": "event",
+        "message_id": "1",
+        "sum": "2",
+        "seq": "0",
+        "biz_rt": "8015"
+      },
+      "payload": {
+        "code": 200
+      }
+    },
+    {
+      "phase": "other-app",
+      "app": "cli_b",
+      "type": "ping",
+      "seq": 0,
+      "log": 0,
+      "headers": {
+        "type": "ping"
+      },
+      "payload": null
+    },
+    {
+      "phase": "other-app",
+      "app": "cli_b",
+      "type": "event",
+      "seq": 3,
+      "log": 103,
+      "headers": {
+        "type": "event",
+        "message_id": "3",
+        "sum": "1",
+        "seq": "0",
+        "biz_rt": "8012"
+      },
+      "payload": {
+        "code": 200
+      }
+    },
+    {
+      "phase": "other-app",
+      "app": "cli_b",
+      "type": "ping",
+      "seq": 0,
+      "log": 0,
+      "headers": {
+        "type": "ping"
+      },
+      "payload": null
+    },
+    {
+      "phase": "other-app",
+      "app": "cli_b",
+      "type": "event",
+      "seq": 4,
+      "log": 104,
+      "headers": {
+        "type": "event",
+        "message_id": "4",
+        "sum": "1",
+        "seq": "0",
+        "biz_rt": "0"
+      },
+      "payload": {
+        "code": 500
+      }
+    }
+  ],
+  "auth": [
+    {
+      "path": "/callback/ws/endpoint",
+      "app": "cli_a",
+      "authenticated": true
+    },
+    {
+      "path": "/callback/ws/endpoint",
+      "app": "cli_a",
+      "authenticated": true
+    },
+    {
+      "path": "/callback/ws/endpoint",
+      "app": "cli_b",
+      "authenticated": true
+    },
+    {
+      "path": "/callback/ws/endpoint",
+      "app": "cli_b",
+      "authenticated": false
+    }
+  ],
+  "transcript": [
+    {
+      "direction": "from_plugin",
+      "frame": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "initialize",
+        "params": {
+          "declarations": [],
+          "manifest_revision": "3c5e26f737ad957fb4f8cccab38b57b9c27352c5b9707d1e645efc3523f08de2",
+          "optional_features": [],
+          "required_features": [
+            "initialize"
+          ],
+          "versions": {
+            "max": {
+              "major": 1,
+              "minor": 0
+            },
+            "min": {
+              "major": 1,
+              "minor": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "direction": "from_host",
+      "frame": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "result": {
+          "extension_points": [],
+          "features": [
+            "initialize"
+          ],
+          "grants": [
+            "gateway.inbound"
+          ],
+          "host_schema_revision": 2,
+          "manifest_revision": "3c5e26f737ad957fb4f8cccab38b57b9c27352c5b9707d1e645efc3523f08de2",
+          "method_revisions": [
+            {
+              "name": "initialize",
+              "revision": 1
+            },
+            {
+              "name": "gateway.inbound",
+              "revision": 1
+            },
+            {
+              "name": "gateway.status",
+              "revision": 1
+            }
+          ],
+          "namespace": "fs.a",
+          "schema_revision": 1,
+          "version": {
+            "major": 1,
+            "minor": 0
+          }
+        }
+      }
+    },
+    {
+      "direction": "from_plugin",
+      "frame": {
+        "id": 2,
+        "jsonrpc": "2.0",
+        "method": "gateway.inbound",
+        "params": {
+          "accept": true,
+          "kind": "message",
+          "native_id": "om_shared",
+          "occurred": 1000,
+          "segments": [
+            {
+              "text": "hi ",
+              "type": "text"
+            },
+            {
+              "label": "@Yuki",
+              "native": "cli_a",
+              "type": "mention"
+            },
+            {
+              "native_id": "om_original",
+              "type": "reply"
+            }
+          ],
+          "sender": "ou_shared",
+          "source": "om_shared",
+          "space": "oc_room",
+          "topic": "thread"
+        }
+      }
+    },
+    {
+      "direction": "from_plugin",
+      "frame": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "initialize",
+        "params": {
+          "declarations": [],
+          "manifest_revision": "3c5e26f737ad957fb4f8cccab38b57b9c27352c5b9707d1e645efc3523f08de2",
+          "optional_features": [],
+          "required_features": [
+            "initialize"
+          ],
+          "versions": {
+            "max": {
+              "major": 1,
+              "minor": 0
+            },
+            "min": {
+              "major": 1,
+              "minor": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "direction": "from_host",
+      "frame": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "result": {
+          "extension_points": [],
+          "features": [
+            "initialize"
+          ],
+          "grants": [
+            "gateway.inbound"
+          ],
+          "host_schema_revision": 2,
+          "manifest_revision": "3c5e26f737ad957fb4f8cccab38b57b9c27352c5b9707d1e645efc3523f08de2",
+          "method_revisions": [
+            {
+              "name": "initialize",
+              "revision": 1
+            },
+            {
+              "name": "gateway.inbound",
+              "revision": 1
+            },
+            {
+              "name": "gateway.status",
+              "revision": 1
+            }
+          ],
+          "namespace": "fs.a",
+          "schema_revision": 1,
+          "version": {
+            "major": 1,
+            "minor": 0
+          }
+        }
+      }
+    },
+    {
+      "direction": "from_plugin",
+      "frame": {
+        "id": 2,
+        "jsonrpc": "2.0",
+        "method": "gateway.inbound",
+        "params": {
+          "accept": true,
+          "kind": "message",
+          "native_id": "om_shared",
+          "occurred": 1000,
+          "segments": [
+            {
+              "text": "hi ",
+              "type": "text"
+            },
+            {
+              "label": "@Yuki",
+              "native": "cli_a",
+              "type": "mention"
+            },
+            {
+              "native_id": "om_original",
+              "type": "reply"
+            }
+          ],
+          "sender": "ou_shared",
+          "source": "om_shared",
+          "space": "oc_room",
+          "topic": "thread"
+        }
+      }
+    },
+    {
+      "direction": "from_host",
+      "frame": {
+        "id": 2,
+        "jsonrpc": "2.0",
+        "result": {
+          "accepted": true,
+          "event": 1
+        }
+      }
+    },
+    {
+      "direction": "from_plugin",
+      "frame": {
+        "id": 3,
+        "jsonrpc": "2.0",
+        "method": "gateway.inbound",
+        "params": {
+          "accept": true,
+          "kind": "message",
+          "native_id": "om_shared",
+          "occurred": 1000,
+          "segments": [
+            {
+              "text": "hi ",
+              "type": "text"
+            },
+            {
+              "label": "@Yuki",
+              "native": "cli_a",
+              "type": "mention"
+            },
+            {
+              "native_id": "om_original",
+              "type": "reply"
+            }
+          ],
+          "sender": "ou_shared",
+          "source": "om_shared",
+          "space": "oc_room",
+          "topic": "thread"
+        }
+      }
+    },
+    {
+      "direction": "from_host",
+      "frame": {
+        "id": 3,
+        "jsonrpc": "2.0",
+        "result": {
+          "accepted": true,
+          "event": 1
+        }
+      }
+    },
+    {
+      "direction": "from_plugin",
+      "frame": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "initialize",
+        "params": {
+          "declarations": [],
+          "manifest_revision": "e5c19da2198af4e35322e287e350b10e902298f7d53af3a930d3917731157f1b",
+          "optional_features": [],
+          "required_features": [
+            "initialize"
+          ],
+          "versions": {
+            "max": {
+              "major": 1,
+              "minor": 0
+            },
+            "min": {
+              "major": 1,
+              "minor": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "direction": "from_host",
+      "frame": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "result": {
+          "extension_points": [],
+          "features": [
+            "initialize"
+          ],
+          "grants": [
+            "gateway.inbound"
+          ],
+          "host_schema_revision": 2,
+          "manifest_revision": "e5c19da2198af4e35322e287e350b10e902298f7d53af3a930d3917731157f1b",
+          "method_revisions": [
+            {
+              "name": "initialize",
+              "revision": 1
+            },
+            {
+              "name": "gateway.inbound",
+              "revision": 1
+            },
+            {
+              "name": "gateway.status",
+              "revision": 1
+            }
+          ],
+          "namespace": "fs.b",
+          "schema_revision": 1,
+          "version": {
+            "major": 1,
+            "minor": 0
+          }
+        }
+      }
+    },
+    {
+      "direction": "from_plugin",
+      "frame": {
+        "id": 2,
+        "jsonrpc": "2.0",
+        "method": "gateway.inbound",
+        "params": {
+          "accept": true,
+          "kind": "message",
+          "native_id": "om_shared",
+          "occurred": 1000,
+          "segments": [
+            {
+              "text": "hi ",
+              "type": "text"
+            },
+            {
+              "label": "@Yuki",
+              "native": "cli_b",
+              "type": "mention"
+            },
+            {
+              "native_id": "om_original",
+              "type": "reply"
+            }
+          ],
+          "sender": "ou_shared",
+          "source": "om_shared",
+          "space": "oc_room",
+          "topic": "thread"
+        }
+      }
+    },
+    {
+      "direction": "from_host",
+      "frame": {
+        "id": 2,
+        "jsonrpc": "2.0",
+        "result": {
+          "accepted": true,
+          "event": 2
+        }
+      }
+    },
+    {
+      "direction": "from_plugin",
+      "frame": {
+        "id": 3,
+        "jsonrpc": "2.0",
+        "method": "gateway.inbound",
+        "params": {
+          "accept": true,
+          "kind": "message",
+          "native_id": "om_shared",
+          "occurred": 1000,
+          "segments": [
+            {
+              "text": "hi ",
+              "type": "text"
+            },
+            {
+              "label": "@Yuki",
+              "native": "cli_b",
+              "type": "mention"
+            },
+            {
+              "native_id": "om_original",
+              "type": "reply"
+            }
+          ],
+          "sender": "ou_shared",
+          "source": "om_shared",
+          "space": "oc_room",
+          "topic": "thread"
+        }
+      }
+    },
+    {
+      "direction": "from_host",
+      "frame": {
+        "id": 3,
+        "jsonrpc": "2.0",
+        "result": {
+          "accepted": true,
+          "event": 2
+        }
+      }
+    },
+    {
+      "direction": "from_plugin",
+      "frame": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "initialize",
+        "params": {
+          "declarations": [],
+          "manifest_revision": "e5c19da2198af4e35322e287e350b10e902298f7d53af3a930d3917731157f1b",
+          "optional_features": [],
+          "required_features": [
+            "initialize"
+          ],
+          "versions": {
+            "max": {
+              "major": 1,
+              "minor": 0
+            },
+            "min": {
+              "major": 1,
+              "minor": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "direction": "from_host",
+      "frame": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "result": {
+          "extension_points": [],
+          "features": [
+            "initialize"
+          ],
+          "grants": [
+            "gateway.inbound"
+          ],
+          "host_schema_revision": 2,
+          "manifest_revision": "e5c19da2198af4e35322e287e350b10e902298f7d53af3a930d3917731157f1b",
+          "method_revisions": [
+            {
+              "name": "initialize",
+              "revision": 1
+            },
+            {
+              "name": "gateway.inbound",
+              "revision": 1
+            },
+            {
+              "name": "gateway.status",
+              "revision": 1
+            }
+          ],
+          "namespace": "fs.b",
+          "schema_revision": 1,
+          "version": {
+            "major": 1,
+            "minor": 0
+          }
+        }
+      }
+    }
+  ]
+}

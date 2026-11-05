@@ -122,3 +122,13 @@ addresses and changed DNS answers, report proxy failures without direct
 fallback, keep 304 without inventing content, and preserve source references
 on partial/oversize and missing text. A bounded native fixture must exercise
 real HTTP exchange and compare the actual Host tool receipt.
+
+## EXT-005 Feishu/Lark gateway
+
+Connect an independently built Rust plugin to the installed Windows host and a
+controlled platform endpoint. Verify app/tenant/domain selection, real WebSocket
+framing, ping/pong and shuffled, repeated protobuf fragments. A message gets
+a platform success ACK only after the host commits its original native event.
+Interrupt the first admission before the host can reply, reconnect and replay.
+Two apps using the same open_id cannot share receipts. Card/control frames
+must not create a human message.

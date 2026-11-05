@@ -123,3 +123,25 @@ Host 現在可逐位元組讀回原件。6250 bytes 經 49 頁重建，正文另
 超過訊框預算會保留原件前綴與觀察雜湊，分開記錄傳輸是否完整與保存是否完整。
 新插件 SHA-256 `e2f00b2f853a3a69485ac509cecce9f2247e928675ee4b9f2f5117902faed91c`，
 回條 SHA-256 `e1f5569fd35045fadd0729b0222e229eef21bcbf798fb821ac086fbc539691d9`。
+
+## EXT-005 Windows 開發候選對拍
+
+分支 `codex/ext-005-feishu`。飛書與 Lark 各用自己的 app、tenant、域名與
+Host namespace。測試對端用舊基線原版 protobuf schema、鎖定的 protobuf
+與 websockets，經真 WebSocket 連接 Rust 插件。未發布 Host/SDK 釘在
+`compat/core-032/source.lock.json`，此回條的來源是 `199dff095be0`。
+`artifacts/EXT-005/candidate-01/lark-frames.json` SHA-256
+`55fb682c455fc5f43349d87d9c7c6c3c760d2136579d8c6e92738ae754dce9a3`。
+Windows 插件 SHA-256 `e0684be789a3f16a282bb83b5387549e0e15c90c07a7004ad8a6e125f1109bba`。
+宿主中斷前只有 ping 和 card ACK；重投、重複分片及兩 app 同 open_id 分別得到
+原事件 1、1 與 2、2。錯租戶回 500，錯密鑰被拒。逐方法訊框在同目錄 wire.jsonl。
+正式驗收待 CORE-032 交付。
+
+## PR #12 合併與 PR #13 新基底
+
+PR #12 head `f0843e106711` 的 push `41939834061` 與 PR `41939841639` 全過。
+已下載 18 份 ZIP，核 GitHub SHA-256、成員雜湊及各 task PASS；PR 產物來自
+`867562e4c971`，parents 為 main `8d2f3c6d85e1` 與該 head。普通合併提交
+`e90035586e9b91af19a5c6162c2e565dbfe966cf`，回條 `artifacts/EXT-028/ci-receipt-f0843e1.json`。
+PR #13 已正常合入此 main；程式樹未變，新增前卡回條與進度。新 head 的三平台
+與受影響套件仍須重驗，舊基底綠燈不作合併證據。
