@@ -236,3 +236,21 @@ EXT-036 的真 Rust binary 經 Windows Host 讀取 `maintenance.audit`、批准�
    公開退讓／恢復信號。不能以任意 scope 名或全庫掃描代替原分區與新事件水位。
 
 以上請求不改核心授權規則；EXT-034 的 extraction preview/apply 將先獨立對拍。
+
+## CORE-035 → EXT-034：公開 extraction route 安裝設定
+
+`artifacts/EXT-034/source-intake-02/` 用鎖定的 Rust alpha.8 診斷 consumer，
+在 HJW Windows 重現同一 Person／entry／scope 的兩個 `history.page` 成功；
+原返回版本與 primary/context 送到 `model.open` 和 `extract.preview`，兩者
+均 `-32003`，HTTP 次數為零。`maintenance-policy.toml` 保存完整 fixture 設定，
+`wire.jsonl` 是原始訊框；未讀核心私有模組或資料庫。這是授權路徑診斷，不是重建驗收。
+
+請提供能用原包重現的最小公開安裝設定：所需 grant、scope methods／purposes／
+routes、aux route 的 origins／entry／Profile，以及原 event version 是否還需額外交接。
+已安裝 history/model.open/extract.preview/extract.apply、llm.complete/result 與
+forget.owner；scope 原 Person 與 entry 可成功讀取來源，write_subject 固定同一 Person。
+請附與同一源事件的 extraction format/text_json 正常回條，以及 foreign scope／
+撤權拒絕。不要以廣開全部權限或換一套 extraction 協議消解這個缺口。
+
+完整 EXT-034 job journal／審閱實作仍在 `codex/ext-034-rebuild` 工作樹未提交。
+subset apply、核心已寫後 kill、原已付重用與 forget 尚未跑到，沒有完成主張。

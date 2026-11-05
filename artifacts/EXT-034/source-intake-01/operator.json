@@ -1,0 +1,81 @@
+[
+  {
+    "args": [
+      "person",
+      "create",
+      "5d17d4c5-49aa-400c-a2aa-0bc1e33adae3"
+    ],
+    "result": {
+      "original": "5d17d4c5-49aa-400c-a2aa-0bc1e33adae3",
+      "root": "5d17d4c5-49aa-400c-a2aa-0bc1e33adae3"
+    }
+  },
+  {
+    "args": [
+      "account",
+      "open",
+      "qq",
+      "rebuild-intake",
+      "200",
+      1,
+      "--person",
+      "5d17d4c5-49aa-400c-a2aa-0bc1e33adae3",
+      "--start",
+      1
+    ],
+    "result": {
+      "account": "e2efea82-f249-4a68-9d77-0de1ff80f10a",
+      "assignment": "75a19401-cfbf-4e2a-b8fd-2c3e52e04762"
+    }
+  },
+  {
+    "args": [
+      "account",
+      "open",
+      "qq",
+      "rebuild-intake",
+      "100",
+      1,
+      "--start",
+      1
+    ],
+    "result": {
+      "account": "bfedd306-e699-442f-bb51-f0fedf7b53f9",
+      "assignment": "34cb6cd8-fd4f-4547-ac1c-6a32856248b0"
+    }
+  },
+  {
+    "args": [
+      "entry",
+      "group",
+      "[\"qq\",\"rebuild-intake\",\"702\"]"
+    ],
+    "result": {
+      "entry": "d0f22cb3-8fc0-490b-9a22-6880238f17d3"
+    }
+  },
+  {
+    "args": [
+      "ingress",
+      "record",
+      "{\"source\": \"primary\", \"account\": \"e2efea82-f249-4a68-9d77-0de1ff80f10a\", \"bot_stage\": \"34cb6cd8-fd4f-4547-ac1c-6a32856248b0\", \"reply_bot\": \"100\", \"space\": \"[\\\"qq\\\",\\\"rebuild-intake\\\",\\\"702\\\"]\", \"kind\": \"message\", \"occurred\": 100, \"observed\": 100, \"segments\": [{\"type\": \"text\", \"text\": \"\\u6211\\u6bcf\\u5929\\u559d\\u70cf\\u9f8d\\u8336\\u3002\"}]}",
+      "--accept"
+    ],
+    "result": {
+      "accepted": true,
+      "event": 1
+    }
+  },
+  {
+    "args": [
+      "ingress",
+      "record",
+      "{\"source\": \"context\", \"account\": \"e2efea82-f249-4a68-9d77-0de1ff80f10a\", \"bot_stage\": \"34cb6cd8-fd4f-4547-ac1c-6a32856248b0\", \"reply_bot\": \"100\", \"space\": \"[\\\"qq\\\",\\\"rebuild-intake\\\",\\\"702\\\"]\", \"kind\": \"message\", \"occurred\": 100, \"observed\": 100, \"segments\": [{\"type\": \"text\", \"text\": \"\\u4e0a\\u4e0b\\u6587\\u539f\\u53e5\\uff0c\\u4e0d\\u7576\\u6210\\u4e3b\\u8981\\u4f86\\u6e90\\u3002\"}]}",
+      "--accept"
+    ],
+    "result": {
+      "accepted": true,
+      "event": 2
+    }
+  }
+]

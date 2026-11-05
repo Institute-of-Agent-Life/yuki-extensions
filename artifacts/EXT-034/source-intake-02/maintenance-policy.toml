@@ -1,0 +1,23 @@
+
+[plugins.maintenance.scopes.own]
+actor="5556db82-b8ae-4bf5-a831-bb57f17226e1"
+entry="410dd389-5930-455c-b0c9-4ac0a3bc2647"
+methods=["maintenance.history.page", "maintenance.model.open", "maintenance.extract.preview", "maintenance.extract.apply"]
+purposes=["rebuild"]
+routes=["extract"]
+write_subject={kind="person",person="5556db82-b8ae-4bf5-a831-bb57f17226e1"}
+
+[plugins.aux_routes.extract]
+purposes=["rebuild"]
+origins=["maintenance"]
+entries=["410dd389-5930-455c-b0c9-4ac0a3bc2647"]
+[plugins.aux_routes.extract.profile]
+protocol="chat"
+name="rebuild-fixture"
+model="fixture-extraction"
+merge_ms=1
+root_tool_calls=8
+root_slots=4
+max_output=2048
+max_input_units=32000
+endpoint="http://127.0.0.1:31379/v1/chat/completions"
