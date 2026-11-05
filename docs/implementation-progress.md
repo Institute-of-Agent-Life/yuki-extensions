@@ -34,7 +34,7 @@
 - EXT-023 `candidate-03` 三個真案例通過：兩筆不同 operation、缺 runtime 零效果、
   畸形訊框後原 native 容器清除；全部在 Windows Host／HJW Arch 執行。
   EXT-023／024 都仍是未發布候選，未加入七張正式驗收清單。
-- EXT-023 插件候選實作 `fe7c9c0411cc` 已推遠端。EXT-024 `candidate-03` 已驗第一筆
+- EXT-023 插件候選實作 `fe7c9c0411cc`、EXT-024 驗證 `75c3b42c5dc2` 已推遠端。EXT-024 `candidate-03` 已驗第一筆
   回執未餵入時恢復、第一筆確認後雙重啟、unknown 配對後雙重啟不復活。
   原父與兩筆實收 operation 對應完整；六個案例各三次模型 HTTP，容器集合均還原。
   `evidence-analysis-01` 在 Windows 重算 snapshot SHA 與原位點；native restore 本身
@@ -191,6 +191,13 @@ Windows 重驗 `artifacts/EXT-003/candidate-03/telegram-offset.json` SHA-256
 `a81f960527f3d5e959fef3003af13a8539f4174c9d35af91d1b5855e833f9338`。
 新 binary `0eb1cc4cbbc40321028032fc5ba5175ff51bce4e9c99c9af77d23c0fea95c0f2`。在本次三條的故障序列中仍得到 event 3 重投回原 ID。
 [擴展 PR #11](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/11)
+
+PR #11 的 head `03cabaa6f53d` 已完成三平台 acceptance、Connector 與 Telegram
+package jobs；push `41902511932`、PR `41902523876` 的 24 份產物逐一下載驗
+ZIP digest、manifest 和套件成員。2026-11-05 普通合併至 main `8d2f3c6d85e1`。
+回條為 `artifacts/EXT-003/ci-receipt-03cabaa.json`。EXT-003 仍是未發布宿主的
+開發候選；正式驗收待 CORE-032 交付。PR #12 合入此 main 後程式樹未改，
+在新 head／base 重跑三平台 CI；依 #12→#13→#14→#15→#16→#17→#18 順序合併。
 
 ## EXT-028 Windows 開發候選對拍
 
@@ -393,3 +400,15 @@ load 所用 OCI manifest `2be28421f615` 與 CI config ID `92b3ab6849f8` 明確�
 保留原 failure 回條；當前 SHA 的全部檢查仍為合併條件。PR #12 尚等 web-fetch
 macOS package，其餘 #13→#21 按新 main、當前 SHA 及下載產物逐張處理。
 已就緒本地工作已推；下步等待 CI 或核心回覆，原未完成 adapter／ASR 工作樹保留。
+
+## PR #12 合併與 PR #13 新基底
+
+PR #12 head `f0843e106711` 的 push `41939834061` 與 PR `41939841639` 全過。
+已下載 18 份 ZIP，核 GitHub SHA-256、成員雜湊及各 task PASS；PR 產物來自
+`867562e4c971`，parents 為 main `8d2f3c6d85e1` 與該 head。普通合併提交
+`e90035586e9b91af19a5c6162c2e565dbfe966cf`，回條 `artifacts/EXT-028/ci-receipt-f0843e1.json`。
+PR #13 已正常合入此 main；程式樹未變，新增前卡回條與進度。新 head 的三平台
+與受影響套件仍須重驗，舊基底綠燈不作合併證據。
+
+本次 Code 候選已正常合入 main `526a35382d9b`；合併只加入前卡 CI 回條與進度，
+程式內容不變。後續 main 前進仍須再正常合入，不能沿用本次 base 的舊綠燈。
