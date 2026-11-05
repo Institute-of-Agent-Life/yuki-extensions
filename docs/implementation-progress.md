@@ -13,6 +13,32 @@
 | EXT-010 · codex/ext-010 | `ab16e07`；CI `41834791702`；PR #6 合併 `2c55dbb` | `artifacts/EXT-010/02/`，8 例含實際子進程退出碼 23、雙 session 取消及 unknown |
 | EXT-019 · codex/ext-019 | 實作 `7531d84`、PR head `9d1e8a8`；三平台 CI `41835863011`；PR #7 合併 `7625095` | `artifacts/EXT-019/02/`，呼叫表、schema 差分、5 個故障變異；`03/` 固定跨平台順序 |
 
+## 2026-11-05 EXT-038 Rust 共用角色／SOUL 候選
+
+- 分支 `codex/ext-038-character`，實作 `87c3f6531a8d5c412e1212047a84a494e366aeec`；
+  正常合入 trace 的 CI 選擇修正 `20534f8ed7b0`，merge `82c731f8351a`，程式樹未變。
+  trace 已推 [PR #27](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/27)，
+  真回條交 [核心 #51](https://github.com/Institute-of-Agent-Life/yuki-core/pull/51#issuecomment-6669933736)。
+- 獨立 `character` Rust package／lock／catalog 已落實，使用同一已核 CORE-037
+  `1e7b89362b6f`／SDK alpha.11。角色、SOUL、身份與授權真源均留核心；沒有插件角色庫。
+- HJW Windows 正式 transport 的 `artifacts/EXT-038/candidate-04` 過 21 例、實收
+  模型 HTTP 42 筆：公開讀／權限拒絕、改名原 ID、原 UUID 重放、改 body／舊 revision
+  拒絕、空 SOUL、原已付 system 角色／SOUL 不變、新激活用新版本、冷啟和撤權。
+  插件 digest `1e321b8852d8ef3af1ffbab7a2600426d379bdfd1054cbbb147f3060f24f74b6`；
+  shared-character digest `bc8f2e6ff4b25dae0c7d82e1af0f3c50e4546f8e3a26aa65e27909ba0c55f261`。
+- 壞檔故障只改新 owner 的 fixture SOUL.md，真原 reload 和 Host 拒絕訊框均未改寫。
+  保存、原拒絕及後續新明選 reload 分欄；不從 generic -32003 推斷 admission。
+  candidate-02／03 保留兩個測試時點失敗；最終雙向 relay 在回傳前恢復原 fixture，
+  Main 完成原配對。26 個來源綁定、wire／build／manifest 和 owner-disposition 可交核心。
+- **整卡仍進行中，正式完成 7／68。** 頭像 immutable version／原圖保留、逐 Bot
+  平台 nickname/avatar 套用與真結果、舊資產導入及正式發布缺口列於 interface requests。
+  CORE-055 已開 PR #52，尚未消費；EXT-049 仍缺 EXT-015 真個人入口／Social 前置。
+- 合併佇列 main 仍 `996deedef3e1`；PR #15 最新 36 success／8 個 macOS package queued，
+  沒有新失敗；PR #23 原 504 仍未結束整輪，不到 rerun 條件。PR #27 新 head `20534f8`
+  push `42116257171`／PR `42116267407` 已啟動；已核過期 SHA 後請求取消舊 `646584e`
+  兩輪。當前 SHA／base 的三平台與全部 package/native/worker gates 均保留，未合併。
+  最新 readiness `artifacts/readiness/after-core037-character.json`；其餘 WIP 全保留。
+
 ## 2026-11-05 EXT-037 Rust 查詢候選
 
 - 分支 `codex/ext-037-trace`；實作 `76feabd5cb5c354309e4556e881f5bd1579a7baf`。
