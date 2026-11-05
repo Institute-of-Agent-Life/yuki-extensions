@@ -1,0 +1,510 @@
+{
+  "n": 11,
+  "head": "03cabaa6f53db966888e3bf4d62a2113436482ec",
+  "merge_state": "CLEAN",
+  "runs": {
+    "push": {
+      "id": 41902511932,
+      "artifact_sha": "03cabaa6f53db966888e3bf4d62a2113436482ec",
+      "units": [
+        "connector",
+        "telegram"
+      ],
+      "failed": [],
+      "required": 10,
+      "pass": 10,
+      "pending_windows_linux": [],
+      "valid_artifacts": 12,
+      "missing_artifacts": [],
+      "complete": true
+    },
+    "pull_request": {
+      "id": 41902523876,
+      "artifact_sha": "39dfdd163536c825a801359f59e7727a34a8e1fb",
+      "units": [
+        "connector",
+        "telegram"
+      ],
+      "failed": [],
+      "required": 10,
+      "pass": 10,
+      "pending_windows_linux": [],
+      "valid_artifacts": 12,
+      "missing_artifacts": [],
+      "complete": true
+    }
+  },
+  "ready": true,
+  "verified_at": "2026-11-05T00:13:52.241575+00:00",
+  "pr": "https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/11",
+  "merge_commit": "8d2f3c6d85e1a3a638e28014f4fa131b91f1cbdc",
+  "merge_method": "merge",
+  "artifact_contents": {
+    "push": [
+      {
+        "name": "package-connector-macos-latest-03cabaa6f53db966888e3bf4d62a2113436482ec",
+        "id": 13373940825,
+        "digest": "sha256:2a0750163bd018fe4817db3c9d357a28677f29fbf8afeddc6a871d5a52182baa",
+        "bytes": 230581,
+        "manifests": [
+          {
+            "name": "package-manifest.json",
+            "status": null,
+            "unit": "connector"
+          }
+        ]
+      },
+      {
+        "name": "connector-upgrade-macos-latest-03cabaa6f53db966888e3bf4d62a2113436482ec",
+        "id": 13373681152,
+        "digest": "sha256:68c5e9d9829f8ab6207f2f7b210f256aa71bc5534e9a43b85949694a006b70e1",
+        "bytes": 209196,
+        "manifests": [
+          {
+            "name": "EXT-007/candidate-ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          },
+          {
+            "name": "EXT-008/ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          },
+          {
+            "name": "EXT-009/ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          },
+          {
+            "name": "EXT-010/ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          }
+        ]
+      },
+      {
+        "name": "package-telegram-macos-latest-03cabaa6f53db966888e3bf4d62a2113436482ec",
+        "id": 13370429360,
+        "digest": "sha256:38e5e15894b84c495d231fb6c97c3b6daf92f528a1c40cd13724123a002a4918",
+        "bytes": 454480,
+        "manifests": [
+          {
+            "name": "package-manifest.json",
+            "status": null,
+            "unit": "telegram"
+          }
+        ]
+      },
+      {
+        "name": "acceptance-macos-latest-03cabaa6f53db966888e3bf4d62a2113436482ec",
+        "id": 13369876475,
+        "digest": "sha256:2516fa415b968f9f35ade7960b6dc6810f2d8060a7f06c0daa1fd387ee6b2a24",
+        "bytes": 28713,
+        "manifests": [
+          {
+            "name": "EXT-001/ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          },
+          {
+            "name": "EXT-002/ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          },
+          {
+            "name": "EXT-019/ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          }
+        ]
+      },
+      {
+        "name": "connector-upgrade-windows-latest-03cabaa6f53db966888e3bf4d62a2113436482ec",
+        "id": 13359905568,
+        "digest": "sha256:b284664edeb86563f7a3464cd8356b47a4e32e948dfe5fc2b4fb47363aa39766",
+        "bytes": 316353,
+        "manifests": [
+          {
+            "name": "EXT-007/candidate-ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          },
+          {
+            "name": "EXT-008/ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          },
+          {
+            "name": "EXT-009/ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          },
+          {
+            "name": "EXT-010/ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          }
+        ]
+      },
+      {
+        "name": "acceptance-ubuntu-latest-03cabaa6f53db966888e3bf4d62a2113436482ec",
+        "id": 13359895341,
+        "digest": "sha256:bdda2cd4a4171e2cc3aac92bcfe44200381d81cb95d3c6e266b6eab05d3bccba",
+        "bytes": 28547,
+        "manifests": [
+          {
+            "name": "EXT-001/ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          },
+          {
+            "name": "EXT-002/ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          },
+          {
+            "name": "EXT-019/ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          }
+        ]
+      },
+      {
+        "name": "package-telegram-windows-latest-03cabaa6f53db966888e3bf4d62a2113436482ec",
+        "id": 13359536199,
+        "digest": "sha256:cb207f857c9cf9c80e5f9c7019982903f2ebd1a37169b0daf55f399090ecbd58",
+        "bytes": 366090,
+        "manifests": [
+          {
+            "name": "package-manifest.json",
+            "status": null,
+            "unit": "telegram"
+          }
+        ]
+      },
+      {
+        "name": "package-connector-windows-latest-03cabaa6f53db966888e3bf4d62a2113436482ec",
+        "id": 13359516112,
+        "digest": "sha256:fc669c237c2b0f9436e4a74fb6894ed2598f391eb9509a201b5bd466d3b12e38",
+        "bytes": 230587,
+        "manifests": [
+          {
+            "name": "package-manifest.json",
+            "status": null,
+            "unit": "connector"
+          }
+        ]
+      },
+      {
+        "name": "acceptance-windows-latest-03cabaa6f53db966888e3bf4d62a2113436482ec",
+        "id": 13359046753,
+        "digest": "sha256:26c266f6bcbc5995547186cd55816c8627920d86b35a945ffa75ddff48ae1e4c",
+        "bytes": 28811,
+        "manifests": [
+          {
+            "name": "EXT-001/ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          },
+          {
+            "name": "EXT-002/ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          },
+          {
+            "name": "EXT-019/ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          }
+        ]
+      },
+      {
+        "name": "package-telegram-ubuntu-latest-03cabaa6f53db966888e3bf4d62a2113436482ec",
+        "id": 13358746812,
+        "digest": "sha256:a9abc2132e5a89f61f557b98f33b868ec671cf4bef2728043de7a3f034c6dd51",
+        "bytes": 504757,
+        "manifests": [
+          {
+            "name": "package-manifest.json",
+            "status": null,
+            "unit": "telegram"
+          }
+        ]
+      },
+      {
+        "name": "package-connector-ubuntu-latest-03cabaa6f53db966888e3bf4d62a2113436482ec",
+        "id": 13357938352,
+        "digest": "sha256:0ee83128c9e9ddbdd392f76e09b87c5af370f003424f2bbeed0d1b24ce221364",
+        "bytes": 230576,
+        "manifests": [
+          {
+            "name": "package-manifest.json",
+            "status": null,
+            "unit": "connector"
+          }
+        ]
+      },
+      {
+        "name": "connector-upgrade-ubuntu-latest-03cabaa6f53db966888e3bf4d62a2113436482ec",
+        "id": 13357819397,
+        "digest": "sha256:5e6c679c40f2ab66b116e8bf186518fd165396092553142eea1eb4346b2cf1d8",
+        "bytes": 298097,
+        "manifests": [
+          {
+            "name": "EXT-007/candidate-ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          },
+          {
+            "name": "EXT-008/ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          },
+          {
+            "name": "EXT-009/ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          },
+          {
+            "name": "EXT-010/ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          }
+        ]
+      }
+    ],
+    "pull_request": [
+      {
+        "name": "package-telegram-macos-latest-39dfdd163536c825a801359f59e7727a34a8e1fb",
+        "id": 13373931994,
+        "digest": "sha256:b5c49a6b61ee60266ce7fe1e806f43a59415bdc7aa14fded368a72f3c74f8d7c",
+        "bytes": 454485,
+        "manifests": [
+          {
+            "name": "package-manifest.json",
+            "status": null,
+            "unit": "telegram"
+          }
+        ]
+      },
+      {
+        "name": "connector-upgrade-macos-latest-39dfdd163536c825a801359f59e7727a34a8e1fb",
+        "id": 13367556614,
+        "digest": "sha256:915a4e4dcc0d155ed225c62c7ce87fe90edfaf483d1b46a6dd570977ab0ccdcf",
+        "bytes": 209209,
+        "manifests": [
+          {
+            "name": "EXT-007/candidate-ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          },
+          {
+            "name": "EXT-008/ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          },
+          {
+            "name": "EXT-009/ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          },
+          {
+            "name": "EXT-010/ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          }
+        ]
+      },
+      {
+        "name": "acceptance-macos-latest-39dfdd163536c825a801359f59e7727a34a8e1fb",
+        "id": 13366641021,
+        "digest": "sha256:69504af0645f7886388711326441fdc52877e8367e402c7362e71ec6ab199762",
+        "bytes": 28721,
+        "manifests": [
+          {
+            "name": "EXT-001/ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          },
+          {
+            "name": "EXT-002/ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          },
+          {
+            "name": "EXT-019/ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          }
+        ]
+      },
+      {
+        "name": "package-connector-macos-latest-39dfdd163536c825a801359f59e7727a34a8e1fb",
+        "id": 13366388845,
+        "digest": "sha256:a70964c72e6ba90c4b2a1a7cc65ec2b81d571cd656895564ba8b4b0ae715e160",
+        "bytes": 230581,
+        "manifests": [
+          {
+            "name": "package-manifest.json",
+            "status": null,
+            "unit": "connector"
+          }
+        ]
+      },
+      {
+        "name": "package-connector-windows-latest-39dfdd163536c825a801359f59e7727a34a8e1fb",
+        "id": 13359670887,
+        "digest": "sha256:028ba7caae14830a04ad036f009d5649efb2f2a22f238fdb82d368000c31dad2",
+        "bytes": 230587,
+        "manifests": [
+          {
+            "name": "package-manifest.json",
+            "status": null,
+            "unit": "connector"
+          }
+        ]
+      },
+      {
+        "name": "connector-upgrade-ubuntu-latest-39dfdd163536c825a801359f59e7727a34a8e1fb",
+        "id": 13359651103,
+        "digest": "sha256:fe1967a6eb5d088c2e2d2f81c824f3a015b70d280d91db6c984b516cbca17fc7",
+        "bytes": 298076,
+        "manifests": [
+          {
+            "name": "EXT-007/candidate-ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          },
+          {
+            "name": "EXT-008/ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          },
+          {
+            "name": "EXT-009/ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          },
+          {
+            "name": "EXT-010/ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          }
+        ]
+      },
+      {
+        "name": "connector-upgrade-windows-latest-39dfdd163536c825a801359f59e7727a34a8e1fb",
+        "id": 13359625987,
+        "digest": "sha256:852885fde1535816ea0f9339c468a08e47bfb125734b605800b01d56d2e921ea",
+        "bytes": 316362,
+        "manifests": [
+          {
+            "name": "EXT-007/candidate-ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          },
+          {
+            "name": "EXT-008/ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          },
+          {
+            "name": "EXT-009/ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          },
+          {
+            "name": "EXT-010/ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          }
+        ]
+      },
+      {
+        "name": "package-connector-ubuntu-latest-39dfdd163536c825a801359f59e7727a34a8e1fb",
+        "id": 13359307061,
+        "digest": "sha256:cad83fa65c1ee67c9dc56927f5c261e2e585bc5644143fccd799f9d2ba8af593",
+        "bytes": 230576,
+        "manifests": [
+          {
+            "name": "package-manifest.json",
+            "status": null,
+            "unit": "connector"
+          }
+        ]
+      },
+      {
+        "name": "acceptance-ubuntu-latest-39dfdd163536c825a801359f59e7727a34a8e1fb",
+        "id": 13359066596,
+        "digest": "sha256:4b4f20efc046524650efd632e87a766453e78117dcb81fd7a6eb30efc0b738f7",
+        "bytes": 28553,
+        "manifests": [
+          {
+            "name": "EXT-001/ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          },
+          {
+            "name": "EXT-002/ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          },
+          {
+            "name": "EXT-019/ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          }
+        ]
+      },
+      {
+        "name": "package-telegram-ubuntu-latest-39dfdd163536c825a801359f59e7727a34a8e1fb",
+        "id": 13358871768,
+        "digest": "sha256:5f5ae39ec4cc0974688acb0b96304d2a7c95dd79ea5c54c9084e000caa77170a",
+        "bytes": 504768,
+        "manifests": [
+          {
+            "name": "package-manifest.json",
+            "status": null,
+            "unit": "telegram"
+          }
+        ]
+      },
+      {
+        "name": "acceptance-windows-latest-39dfdd163536c825a801359f59e7727a34a8e1fb",
+        "id": 13358767465,
+        "digest": "sha256:cee1b046a51937f494c6a4afd52dba7e05d2255de0c33fe59bb98d60b616e05d",
+        "bytes": 28819,
+        "manifests": [
+          {
+            "name": "EXT-001/ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          },
+          {
+            "name": "EXT-002/ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          },
+          {
+            "name": "EXT-019/ci/manifest.json",
+            "status": "PASS",
+            "unit": null
+          }
+        ]
+      },
+      {
+        "name": "package-telegram-windows-latest-39dfdd163536c825a801359f59e7727a34a8e1fb",
+        "id": 13358571978,
+        "digest": "sha256:91163886a2836e8ffd3f9f9f79e6f5696a5cf64a4403919ee1857cdabaab92cb",
+        "bytes": 366088,
+        "manifests": [
+          {
+            "name": "package-manifest.json",
+            "status": null,
+            "unit": "telegram"
+          }
+        ]
+      }
+    ]
+  }
+}

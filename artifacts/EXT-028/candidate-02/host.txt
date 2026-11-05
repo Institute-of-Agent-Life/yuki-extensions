@@ -1,0 +1,2 @@
+{"listen":"127.0.0.1:32056","operator":"\\\\.\\pipe\\yuki-core-d64e4a5c3c8008c9c58aa5f7971ea25c087e13a64aa883f2125ec2db3ef10639","status":"ready"}
+{"error":"invalid environment allowlist"}

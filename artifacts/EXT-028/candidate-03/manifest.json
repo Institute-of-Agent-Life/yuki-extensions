@@ -1,0 +1,24 @@
+{
+  "task": "EXT-028",
+  "status": "FAIL",
+  "phase": "preparation",
+  "card_status": "FAIL",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "0e4b537c8f8db5c5e38a8b30cd960f52bca7d1670aae70168ef4e2d63808ce85",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-028",
+    "--preparation",
+    "--out",
+    "artifacts\\EXT-028\\candidate-03"
+  ],
+  "files": {
+    "build.txt": "697aafb8843bb9cdbc579b702eba7d166866ab676f1135f8c4cbea9149c59456",
+    "failure.txt": "07f82e5d8a5735f3194714f3696a7b869bd9a1c565e12210f3598007cc883ed5",
+    "host.txt": "b44170a750a4cdef3140f59d1c9b5ae72407354033a8fde05611dbabb93ada7c",
+    "native.json": "b556dea086f4c33b21eb6cbbdf83026080d7cf74c99856cfa6e26da13c4e9dac"
+  }
+}

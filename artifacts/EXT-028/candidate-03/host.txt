@@ -1,0 +1,2 @@
+{"listen":"127.0.0.1:32334","operator":"\\\\.\\pipe\\yuki-core-f93ada0bd48f1e4323552829544b28e42b58e5aa85e3c7742c3d4d898aaf6e1d","status":"ready"}
+{"error":"plugin tool name collides or has an unverified execution policy"}

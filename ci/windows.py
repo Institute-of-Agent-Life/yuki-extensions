@@ -146,12 +146,28 @@ def main():
     # Include only locked wheels, not arbitrary files already in the transport cache.
     tools_zip = transfer / "tooling.zip"
     host_candidate = None
-    if args.task == "EXT-003":
+    if args.task in {"EXT-003", "EXT-028"}:
         host_candidate = Path(os.environ["YUKI_HOST_CANDIDATE"])
         pin = json.loads((root / "compat/core-032/source.lock.json").read_bytes())["platforms"]["windows-x86_64"]
         if hashlib.sha256(host_candidate.read_bytes()).hexdigest() != pin["sha256"]:
             raise ValueError("unexpected Windows host candidate")
+    native_crates = []
+    if args.task == "EXT-028":
+        import tomllib
+        from handshake_cargo import registry_crate
+        cache = transfer / "native-crates"
+        cache.mkdir(exist_ok=True)
+        project = tomllib.loads((root / "plugins/web-fetch/Cargo.lock").read_text())
+        for package in project["package"]:
+            if not package.get("source") or package["name"] == "yuki-plugin-sdk":
+                continue
+            path = cache / f"{package['name']}-{package['version']}.crate"
+            if not path.exists() or hashlib.sha256(path.read_bytes()).hexdigest() != package["checksum"]:
+                path.write_bytes(registry_crate(package))
+            native_crates.append(path)
     with zipfile.ZipFile(tools_zip, "w", zipfile.ZIP_DEFLATED) as archive:
+        for crate in native_crates:
+            archive.write(crate, "native-crates/locked/" + crate.name)
         if host_candidate:
             archive.write(host_candidate, "core032-host.zip")
         for package in locked.values():
@@ -171,7 +187,7 @@ def main():
     assert invoke(["scp", "-q", str(snapshot), f"{args.host}:{remote}/source.zip"]).returncode == 0
     assert invoke(["scp", "-q", str(tools_zip), f"{args.host}:{remote}/tooling.zip"]).returncode == 0
     sdk_environment = ""
-    if args.task in {"EXT-002", "EXT-003"}:
+    if args.task in {"EXT-002", "EXT-003", "EXT-028"}:
         # Use the host's existing pinned toolchain, with a separate writable Cargo home.
         sdk_environment = r"""
 $tools=Join-Path $env:USERPROFILE 'yuki-core-tooling'
@@ -182,6 +198,8 @@ $env:CARGO_HOME=Join-Path $env:TEMP 'cargo-home'
 """
     if host_candidate:
         sdk_environment += "$env:YUKI_HOST_CANDIDATE=" + quote(remote + "/wheelhouse/core032-host.zip") + "\n"
+    if native_crates:
+        sdk_environment += "$env:YUKI_CRATE_CACHE=" + quote(remote + "/wheelhouse/native-crates") + "\n"
     if release_assets:
         sdk_environment += "$env:YUKI_CORE031_RELEASE_DIR=" + quote(remote + "/wheelhouse/core031-release")
     setup = f"""

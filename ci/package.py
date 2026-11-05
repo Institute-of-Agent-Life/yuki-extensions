@@ -20,7 +20,7 @@ def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def build(root: Path, ident: str, output: Path) -> dict:
+def build(root: Path, ident: str, output: Path, *, test_evidence: Path | None = None) -> dict:
     units = load_catalog(root)
     if ident not in units:
         raise ValueError(f"unknown release unit: {ident}")
@@ -49,7 +49,7 @@ def build(root: Path, ident: str, output: Path) -> dict:
                     raise ValueError("plugin SDK crate digest mismatch")
                 build_path = target / "unit"
                 shutil.copytree(path, build_path, ignore=shutil.ignore_patterns("target","._*"))
-                vendor_sdk(crate, build_path)
+                vendor_sdk(crate, build_path, build_path / "Cargo.lock")
             commands = [["rustc", "--version", "--verbose"],
                         ["cargo", "--version"],
                         ["cargo", "build", "--locked", "--release", "--target-dir", str(target)]]
@@ -57,7 +57,10 @@ def build(root: Path, ident: str, output: Path) -> dict:
                 commands.insert(-1, ["cargo", "test", "--locked", "--offline", "--target-dir", str(target)])
         transcripts = []
         for command in commands:
-            result = subprocess.run(command, cwd=build_path, env=env, text=True, capture_output=True)
+            command_env = env
+            if test_evidence is not None and command[:2] == ["cargo", "test"]:
+                command_env = {**env, "YUKI_UNIT_TEST_EVIDENCE": str(test_evidence)}
+            result = subprocess.run(command, cwd=build_path, env=command_env, text=True, capture_output=True)
             transcripts.append({"command": command, "exit_code": result.returncode,
                                 "stdout": result.stdout, "stderr": result.stderr})
             if result.returncode:

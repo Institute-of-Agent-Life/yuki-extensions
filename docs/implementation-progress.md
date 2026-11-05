@@ -97,3 +97,29 @@ Windows 重驗 `artifacts/EXT-003/candidate-03/telegram-offset.json` SHA-256
 `a81f960527f3d5e959fef3003af13a8539f4174c9d35af91d1b5855e833f9338`。
 新 binary `0eb1cc4cbbc40321028032fc5ba5175ff51bce4e9c99c9af77d23c0fea95c0f2`。在本次三條的故障序列中仍得到 event 3 重投回原 ID。
 [擴展 PR #11](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/11)
+
+PR #11 的 head `03cabaa6f53d` 已完成三平台 acceptance、Connector 與 Telegram
+package jobs；push `41902511932`、PR `41902523876` 的 24 份產物逐一下載驗
+ZIP digest、manifest 和套件成員。2026-11-05 普通合併至 main `8d2f3c6d85e1`。
+回條為 `artifacts/EXT-003/ci-receipt-03cabaa.json`。EXT-003 仍是未發布宿主的
+開發候選；正式驗收待 CORE-032 交付。PR #12 合入此 main 後程式樹未改，
+在新 head／base 重跑三平台 CI；依 #12→#13→#14→#15→#16→#17→#18 順序合併。
+
+## EXT-028 Windows 開發候選對拍
+
+分支 `codex/ext-028-web-fetch`。實機回條 `artifacts/EXT-028/candidate-04/fetch-source.json`
+的 SHA-256 為 `efd9f1d22f5e34c1ac7565d808a9b27a9aa1b0e8bb358399f0f1eba939999508`。
+真實 CORE-032 Host 來自 `199dff095be0`，ZIP、binary、Rust SDK alpha.2 和 schema
+釘在 `compat/core-032/source.lock.json`。插件 binary SHA-256
+`a230b4b7d920966bdde578300e99047e8cae7eb69486f61741d7288f4d1359c7`。
+`wire.jsonl` 記錄一次 initialize、兩次 tool.call 和四次原 handle 的 tool.status。
+小頁面經測試代理送達 Main；大頁由宿主儲存，按原 execution、reader、handle
+和 version 讀回 19 頁。R07 同埠換 host 與同 host 換埠都清除敏感標頭和正文，
+也覆蓋私有重導、304 和代理斷線。來源歸屬見同目錄的 owner-disposition.json。
+前三次實機失敗保留在 candidate-01 至 03。此回條驗的是未發布候選，正式卡待 CORE-032 交付。
+
+EXT-028 實作提交 `de2a867` 的後續實機回條在 `artifacts/EXT-028/candidate-05/`。
+Host 現在可逐位元組讀回原件。6250 bytes 經 49 頁重建，正文另經 19 頁重建。
+超過訊框預算會保留原件前綴與觀察雜湊，分開記錄傳輸是否完整與保存是否完整。
+新插件 SHA-256 `e2f00b2f853a3a69485ac509cecce9f2247e928675ee4b9f2f5117902faed91c`，
+回條 SHA-256 `e1f5569fd35045fadd0729b0222e229eef21bcbf798fb821ac086fbc539691d9`。

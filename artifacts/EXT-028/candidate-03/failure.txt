@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "D:\yuki-extension-tests\0e4b537c8f8db5c5e38a\src\ci\check.py", line 37, in main
+    report_name, report = runner(root, args.out.resolve())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\0e4b537c8f8db5c5e38a\src\tests\cases\EXT-028.py", line 127, in prepare
+    start()
+  File "D:\yuki-extension-tests\0e4b537c8f8db5c5e38a\src\tests\cases\EXT-028.py", line 104, in start
+    wait_for(lambda:cli("operator","database-info",check=False))
+  File "D:\yuki-extension-tests\0e4b537c8f8db5c5e38a\src\tests\cases\EXT-028.py", line 99, in wait_for
+    raise RuntimeError("host readiness timeout")
+RuntimeError: host readiness timeout
