@@ -13,6 +13,30 @@
 | EXT-010 · codex/ext-010 | `ab16e07`；CI `41834791702`；PR #6 合併 `2c55dbb` | `artifacts/EXT-010/02/`，8 例含實際子進程退出碼 23、雙 session 取消及 unknown |
 | EXT-019 · codex/ext-019 | 實作 `7531d84`、PR head `9d1e8a8`；三平台 CI `41835863011`；PR #7 合併 `7625095` | `artifacts/EXT-019/02/`，呼叫表、schema 差分、5 個故障變異；`03/` 固定跨平台順序 |
 
+## 2026-11-05 本輪更新
+
+- PR #12 已普通合併 `e90035586e9b`，18 份 CI ZIP／成員驗證回條在 PR #13 的
+  `artifacts/EXT-028/ci-receipt-f0843e1.json`。PR #13 head `9db51914174e` 已合入新 main；
+  Windows、Linux acceptance 與四個 package 通過，macOS 尚排隊。
+- PR #20 的 native job `127064263207` 已通過。`artifacts/EXT-023/ci-native-1e9c4b3/`
+  保留下載驗證：ZIP `09be6a2742ce217058f2fd91928513af35f88c4c5c7b904822ed99f3057c7e44`、
+  18 個頂層成員、真 Rust worker 與原 PID 清理。舊故障未重現；沒有新增因果修復主張。
+- 分支 `codex/ext-036-maintenance` 新增獨立 Rust `memory-maintenance`，管理者明選本地工作，
+  scope／指紋／原操作／Profile 均交核心核權。`candidate-06` 是當前 Windows 對拍；
+  已驗掃描、批准子集、重啟原回條、同筆數修訂拒舊指紋、兩個同維不同 Profile、
+  HTTP unknown 重啟不重發，以及清除來源後拒絕新 Reembed。正常 HTTP 2 次，未知 1 次。
+- CORE-035 固定來源 `0cdd9dffe07c18949990492fd2a9944919c455d3`，交付說明提交 `69cfdfd7b0ef`，
+  Rust SDK alpha.8；Windows ZIP `e2b964e87a30d5c230fbb0805a9de973cb91160b6e8b52606b363ca0fd77a152`，
+  crate `a8739c74d300f1044c94749ced333d9694920aa7c91728b19f624ff9fbaf2e63`。
+  三平台 bytes／成員均核驗，完整 pin 在 `compat/core-035/`，回條在 `producer-intake/`。
+  CORE-028 vector-coverage 回歸另鎖原 manifest／tree，標明 dirty 參考，不代替乾淨候選。
+- EXT-036 整卡仍 BLOCKED：公開 audit 未提供原 SQL FTS／向量／來源完整性問題清單；
+  audit/reembed 沒有自動清除回調，metadata 保留責任待釐清。`candidate-01` 留缺 write_subject
+  的拒絕，`candidate-04` 留未發生回調的失敗。插件收到此回調會停止並拒絕未證實的 ACK，
+  不刪無關工作。未發布、未部署、未計入七張正式驗收。
+- 下一張可做卡為 EXT-034 原來源歷史重建；EXT-033 尚缺精確選簇向量與權屬投影，
+  EXT-035 尚需原 SELF 分區／前臺真人工作退讓的公開交接。CORE-034/036/050 三份既有回條仍待回覆。
+
 ## 核心輸入與可交還證據
 
 CORE-002 未發布 oracle 產自 `89f15dbbfc5535a0d9fa94244a9e5cde96638ece`，

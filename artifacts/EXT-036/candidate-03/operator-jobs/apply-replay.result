@@ -1,0 +1,11 @@
+{
+  "result": {
+    "fingerprint": "8c5bd97c53b0f9c9f103ab1b423ec79b09eaa061655c031756973f87d83f90ff",
+    "operation": "quality-selected-apply",
+    "paid_calls": 0,
+    "rebuilt": [
+      "53370574-2b61-43f4-8bec-3b84940ced2d"
+    ]
+  },
+  "state": "completed"
+}

@@ -1,0 +1,35 @@
+[
+  {
+    "path": "/v1/embeddings",
+    "body": {
+      "dimensions": 3,
+      "encoding_format": "float",
+      "input": [
+        "Kind: fact\nCategory: \nKey: quality-fixture\nFact: Original quality fixture"
+      ],
+      "model": "fixture-a"
+    }
+  },
+  {
+    "path": "/v1/embeddings",
+    "body": {
+      "dimensions": 3,
+      "encoding_format": "float",
+      "input": [
+        "Kind: fact\nCategory: \nKey: quality-fixture\nFact: Original quality fixture"
+      ],
+      "model": "fixture-b"
+    }
+  },
+  {
+    "path": "/v1/embeddings",
+    "body": {
+      "dimensions": 3,
+      "encoding_format": "float",
+      "input": [
+        "Kind: fact\nCategory: \nKey: quality-fixture\nFact: Original quality fixture"
+      ],
+      "model": "fixture-unknown"
+    }
+  }
+]

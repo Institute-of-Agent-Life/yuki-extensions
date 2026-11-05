@@ -1,0 +1,5 @@
+{
+  "error": "{\"code\":-32003,\"message\":\"method, grant or original scope denied\"}",
+  "retry": "explicit original-operation recovery only",
+  "state": "not_completed"
+}

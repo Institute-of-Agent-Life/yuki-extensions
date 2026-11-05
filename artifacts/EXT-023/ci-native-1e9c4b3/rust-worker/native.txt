@@ -1,0 +1,7 @@
+
+running 2 tests
+test cancelled_admission_starts_no_worker ... ok
+test native_suspend_restore_and_cancel ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.22s
+

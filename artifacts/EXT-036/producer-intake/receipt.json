@@ -1,0 +1,36 @@
+[
+  {
+    "archive": "yuki-maintenance-preview-0cdd9dffe07c-darwin-arm64.zip",
+    "sha256": "3060058a12b5b10efc9fc78f1dd5d6ddcd8fe820dd72f353885c8248f067079c",
+    "source_commit": "0cdd9dffe07c18949990492fd2a9944919c455d3",
+    "verified_members": 13,
+    "published": false
+  },
+  {
+    "archive": "yuki-maintenance-preview-0cdd9dffe07c-linux-arm64.zip",
+    "sha256": "04c13a21ea2d42a84d11b285d93c46dafa98f20270bf3b285dcd2d48afb8011c",
+    "source_commit": "0cdd9dffe07c18949990492fd2a9944919c455d3",
+    "verified_members": 13,
+    "published": false
+  },
+  {
+    "archive": "yuki-maintenance-preview-0cdd9dffe07c-windows-x86_64.zip",
+    "sha256": "e2b964e87a30d5c230fbb0805a9de973cb91160b6e8b52606b363ca0fd77a152",
+    "source_commit": "0cdd9dffe07c18949990492fd2a9944919c455d3",
+    "verified_members": 16,
+    "published": false
+  },
+  {
+    "card": "CORE-028",
+    "reference_only": true,
+    "manifest_sha256": "a3a93b41d79180e591d7ce24e53cde0c76fd64f1e349c085deba49feef590269",
+    "vector_coverage_sha256": "6d745e26bc8b6613dfd49040366af47fde1af2302c10783296e6653e5ccf807e",
+    "source": {
+      "commit": "9f9c3d0eaace08c2abe59e0a6ca229c9293dd8e1",
+      "dirty": true,
+      "tree_sha256": "02e537febf439d9e4f39754f421120d8334d2cc032d8847c1d297f2f2fb8e401"
+    },
+    "status": "verified",
+    "runtime_pin": "CORE-035 clean candidate, not this dirty validation tree"
+  }
+]

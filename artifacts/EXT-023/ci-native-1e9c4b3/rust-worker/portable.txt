@@ -1,0 +1,40 @@
+
+running 2 tests
+test native_suspend_restore_and_cancel ... ignored, requires the installed native runtime and enforced AppArmor/seccomp
+test cancelled_admission_starts_no_worker ... ok
+
+test result: ok. 1 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Compiling proc-macro2 v1.0.107
+   Compiling version_check v0.9.5
+   Compiling unicode-ident v1.0.27
+   Compiling quote v1.0.47
+   Compiling serde_core v1.0.228
+   Compiling typenum v1.20.1
+   Compiling generic-array v0.14.7
+   Compiling libc v0.2.191
+   Compiling rustix v1.1.6
+   Compiling serde v1.0.228
+   Compiling syn v2.0.119
+   Compiling serde_json v1.0.145
+   Compiling getrandom v0.3.4
+   Compiling cfg-if v1.0.5
+   Compiling block-buffer v0.10.4
+   Compiling crypto-common v0.1.7
+   Compiling memchr v2.8.3
+   Compiling linux-raw-sys v0.12.1
+   Compiling ryu v1.0.23
+   Compiling bitflags v2.13.2
+   Compiling itoa v1.0.18
+   Compiling digest v0.10.7
+   Compiling fastrand v2.5.0
+   Compiling once_cell v1.21.4
+   Compiling serde_derive v1.0.228
+   Compiling cpufeatures v0.2.17
+   Compiling sha2 v0.10.9
+   Compiling base64 v0.22.1
+   Compiling tempfile v3.23.0
+   Compiling yuki-plugin-sdk v1.0.0-alpha.5
+   Compiling yuki-codemode v0.1.0-alpha.1 (/home/runner/work/yuki-extensions/yuki-extensions/dist/monty-runtime-native/rust-worker/project)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.85s
+     Running tests/native_worker.rs (target/debug/deps/native_worker-0968fcd92bcff02d)

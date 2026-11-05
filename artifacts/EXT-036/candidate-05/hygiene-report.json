@@ -1,0 +1,349 @@
+{
+  "status": "PASS",
+  "card_status": "BLOCKED",
+  "candidate_only": true,
+  "core": {
+    "source_commit": "0cdd9dffe07c18949990492fd2a9944919c455d3",
+    "handoff_commit": "69cfdfd7b0efba36c41080f5fae424401cfc1b5c",
+    "published": false,
+    "host": {
+      "archive": "yuki-maintenance-preview-0cdd9dffe07c-windows-x86_64.zip",
+      "sha256": "e2b964e87a30d5c230fbb0805a9de973cb91160b6e8b52606b363ca0fd77a152",
+      "binary_sha256": "7b8b374306f0081f0b80494cbc0cd4f0b7394c392a025da7e19f8468dcf192e7",
+      "validation_manifest_sha256": "e74b03e48ecd4c98198325ac51f367531019a192ce03e51ed3b190bff5f1f41f"
+    },
+    "sdk": {
+      "version": "1.0.0-alpha.8",
+      "sha256": "a8739c74d300f1044c94749ced333d9694920aa7c91728b19f624ff9fbaf2e63"
+    },
+    "host_schema_sha256": "4f5cdeb464c5fb275feeed766019ba159561a7335d13daec4d2d030b95cd4ec2",
+    "personal_schema_sha256": null,
+    "media_schema_sha256": null,
+    "plugin_sha256": "9868be13a09b361f438073bf362d5c6e76398db01ca2a85b4c6edf290f796338",
+    "wire_sha256": "910251c59c823f7d4e712f2f435f621a32173053360f2b50f213d362ea1fbcd1"
+  },
+  "cases": {
+    "invalid_job": {
+      "error": "unknown job field",
+      "retry": "explicit original-operation recovery only",
+      "state": "not_completed"
+    },
+    "scan": {
+      "result": {
+        "audit": {
+          "embedding_routes": [
+            {
+              "dimensions": 3,
+              "profile": "6e18743b150f950ccb8419e3570879c65a5b1a1a5012bd0d3ef226f7d67752b8",
+              "route": "dense-a"
+            },
+            {
+              "dimensions": 3,
+              "profile": "764b90c1dfaee02e86e50f8f29d6beef91d5742280a31b191b4bcaca83e94c0a",
+              "route": "dense-b"
+            },
+            {
+              "dimensions": 3,
+              "profile": "e7b66a4d84fc09d76fa13ab6090b9468909157cfbe3be087ff516cdb0f75b894",
+              "route": "dense-unknown"
+            }
+          ],
+          "fingerprint": "fa7730879843b6f210b054f1bf8802aacac3eff88a55f1b0e7a55a8dd18699c4",
+          "items": [
+            {
+              "evidence_retained": 1,
+              "evidence_total": 1,
+              "fact": "9639bc16-d67d-4040-b762-fa3d7d06ef28",
+              "revision": 1,
+              "status": "active",
+              "vector_profiles": []
+            }
+          ],
+          "paid_calls": 0
+        },
+        "bounded_page": true,
+        "coverage": [
+          {
+            "fact": "9639bc16-d67d-4040-b762-fa3d7d06ef28",
+            "missing_profile_attempt_state": "not_observed_by_audit",
+            "missing_profiles": [
+              {
+                "dimensions": 3,
+                "profile": "6e18743b150f950ccb8419e3570879c65a5b1a1a5012bd0d3ef226f7d67752b8",
+                "route": "dense-a"
+              },
+              {
+                "dimensions": 3,
+                "profile": "764b90c1dfaee02e86e50f8f29d6beef91d5742280a31b191b4bcaca83e94c0a",
+                "route": "dense-b"
+              },
+              {
+                "dimensions": 3,
+                "profile": "e7b66a4d84fc09d76fa13ab6090b9468909157cfbe3be087ff516cdb0f75b894",
+                "route": "dense-unknown"
+              }
+            ],
+            "recorded_evidence": 1,
+            "retained_evidence": 1,
+            "revision": 1
+          }
+        ],
+        "paid_calls": 0,
+        "quality_findings": "not_exposed_by_candidate"
+      },
+      "state": "completed"
+    },
+    "foreign_scope": {
+      "error": "{\"code\":-32003,\"message\":\"method, grant or original scope denied\"}",
+      "retry": "explicit original-operation recovery only",
+      "state": "not_completed"
+    },
+    "apply": {
+      "result": {
+        "fingerprint": "fa7730879843b6f210b054f1bf8802aacac3eff88a55f1b0e7a55a8dd18699c4",
+        "operation": "quality-selected-apply",
+        "paid_calls": 0,
+        "rebuilt": [
+          "9639bc16-d67d-4040-b762-fa3d7d06ef28"
+        ]
+      },
+      "state": "completed"
+    },
+    "foreign_fact": {
+      "error": "{\"code\":-32003,\"message\":\"method, grant or original scope denied\"}",
+      "retry": "explicit original-operation recovery only",
+      "state": "not_completed"
+    },
+    "replay": {
+      "result": {
+        "fingerprint": "fa7730879843b6f210b054f1bf8802aacac3eff88a55f1b0e7a55a8dd18699c4",
+        "operation": "quality-selected-apply",
+        "paid_calls": 0,
+        "rebuilt": [
+          "9639bc16-d67d-4040-b762-fa3d7d06ef28"
+        ]
+      },
+      "state": "completed"
+    },
+    "embed_a": {
+      "result": {
+        "dispatch_now": false,
+        "fact": "9639bc16-d67d-4040-b762-fa3d7d06ef28",
+        "logical": "embed-doc:f65b7690-1669-49b6-9227-5e62070695ea",
+        "operation": "quality-embed-a",
+        "profile": "6e18743b150f950ccb8419e3570879c65a5b1a1a5012bd0d3ef226f7d67752b8",
+        "revision": 1,
+        "state": "done",
+        "usage": {
+          "input": 5
+        }
+      },
+      "state": "completed"
+    },
+    "scan_after_a": {
+      "result": {
+        "audit": {
+          "embedding_routes": [
+            {
+              "dimensions": 3,
+              "profile": "6e18743b150f950ccb8419e3570879c65a5b1a1a5012bd0d3ef226f7d67752b8",
+              "route": "dense-a"
+            },
+            {
+              "dimensions": 3,
+              "profile": "764b90c1dfaee02e86e50f8f29d6beef91d5742280a31b191b4bcaca83e94c0a",
+              "route": "dense-b"
+            },
+            {
+              "dimensions": 3,
+              "profile": "e7b66a4d84fc09d76fa13ab6090b9468909157cfbe3be087ff516cdb0f75b894",
+              "route": "dense-unknown"
+            }
+          ],
+          "fingerprint": "3ece15e317614e3527413fbfcbfdcf524e1092c7a555f4cea3579872190b0b72",
+          "items": [
+            {
+              "evidence_retained": 1,
+              "evidence_total": 1,
+              "fact": "9639bc16-d67d-4040-b762-fa3d7d06ef28",
+              "revision": 1,
+              "status": "active",
+              "vector_profiles": [
+                "6e18743b150f950ccb8419e3570879c65a5b1a1a5012bd0d3ef226f7d67752b8"
+              ]
+            }
+          ],
+          "paid_calls": 0
+        },
+        "bounded_page": true,
+        "coverage": [
+          {
+            "fact": "9639bc16-d67d-4040-b762-fa3d7d06ef28",
+            "missing_profile_attempt_state": "not_observed_by_audit",
+            "missing_profiles": [
+              {
+                "dimensions": 3,
+                "profile": "764b90c1dfaee02e86e50f8f29d6beef91d5742280a31b191b4bcaca83e94c0a",
+                "route": "dense-b"
+              },
+              {
+                "dimensions": 3,
+                "profile": "e7b66a4d84fc09d76fa13ab6090b9468909157cfbe3be087ff516cdb0f75b894",
+                "route": "dense-unknown"
+              }
+            ],
+            "recorded_evidence": 1,
+            "retained_evidence": 1,
+            "revision": 1
+          }
+        ],
+        "paid_calls": 0,
+        "quality_findings": "not_exposed_by_candidate"
+      },
+      "state": "completed"
+    },
+    "embed_b": {
+      "result": {
+        "dispatch_now": false,
+        "fact": "9639bc16-d67d-4040-b762-fa3d7d06ef28",
+        "logical": "embed-doc:de25cb0a-60b7-4b58-9b25-2b40b28c431c",
+        "operation": "quality-embed-b",
+        "profile": "764b90c1dfaee02e86e50f8f29d6beef91d5742280a31b191b4bcaca83e94c0a",
+        "revision": 1,
+        "state": "done",
+        "usage": {
+          "input": 5
+        }
+      },
+      "state": "completed"
+    },
+    "embed_unknown": {
+      "result": {
+        "dispatch_now": false,
+        "fact": "9639bc16-d67d-4040-b762-fa3d7d06ef28",
+        "logical": "embed-doc:b62d8ecb-4790-497e-812d-4f4abf4b337e",
+        "operation": "quality-embed-unknown",
+        "profile": "e7b66a4d84fc09d76fa13ab6090b9468909157cfbe3be087ff516cdb0f75b894",
+        "revision": 1,
+        "state": "unknown",
+        "usage": null
+      },
+      "state": "completed"
+    },
+    "unknown_replay": {
+      "result": {
+        "dispatch_now": false,
+        "fact": "9639bc16-d67d-4040-b762-fa3d7d06ef28",
+        "logical": "embed-doc:b62d8ecb-4790-497e-812d-4f4abf4b337e",
+        "operation": "quality-embed-unknown",
+        "profile": "e7b66a4d84fc09d76fa13ab6090b9468909157cfbe3be087ff516cdb0f75b894",
+        "revision": 1,
+        "state": "unknown",
+        "usage": null
+      },
+      "state": "completed"
+    },
+    "same_count_change": {
+      "before": {
+        "embedding_routes": [
+          {
+            "dimensions": 3,
+            "profile": "6e18743b150f950ccb8419e3570879c65a5b1a1a5012bd0d3ef226f7d67752b8",
+            "route": "dense-a"
+          },
+          {
+            "dimensions": 3,
+            "profile": "764b90c1dfaee02e86e50f8f29d6beef91d5742280a31b191b4bcaca83e94c0a",
+            "route": "dense-b"
+          },
+          {
+            "dimensions": 3,
+            "profile": "e7b66a4d84fc09d76fa13ab6090b9468909157cfbe3be087ff516cdb0f75b894",
+            "route": "dense-unknown"
+          }
+        ],
+        "fingerprint": "e0f31f51e35f50821d479b64a5548d74fd21adec3fc3624f630a00d5c61703a6",
+        "items": [
+          {
+            "evidence_retained": 1,
+            "evidence_total": 1,
+            "fact": "9639bc16-d67d-4040-b762-fa3d7d06ef28",
+            "revision": 1,
+            "status": "active",
+            "vector_profiles": [
+              "6e18743b150f950ccb8419e3570879c65a5b1a1a5012bd0d3ef226f7d67752b8",
+              "764b90c1dfaee02e86e50f8f29d6beef91d5742280a31b191b4bcaca83e94c0a"
+            ]
+          }
+        ],
+        "paid_calls": 0
+      },
+      "after": {
+        "embedding_routes": [
+          {
+            "dimensions": 3,
+            "profile": "6e18743b150f950ccb8419e3570879c65a5b1a1a5012bd0d3ef226f7d67752b8",
+            "route": "dense-a"
+          },
+          {
+            "dimensions": 3,
+            "profile": "764b90c1dfaee02e86e50f8f29d6beef91d5742280a31b191b4bcaca83e94c0a",
+            "route": "dense-b"
+          },
+          {
+            "dimensions": 3,
+            "profile": "e7b66a4d84fc09d76fa13ab6090b9468909157cfbe3be087ff516cdb0f75b894",
+            "route": "dense-unknown"
+          }
+        ],
+        "fingerprint": "c2f662e2b92ba50e11f4a8ef8ff9a6844596eaa876ffd819309d71f66ba2c150",
+        "items": [
+          {
+            "evidence_retained": 1,
+            "evidence_total": 1,
+            "fact": "9639bc16-d67d-4040-b762-fa3d7d06ef28",
+            "revision": 2,
+            "status": "active",
+            "vector_profiles": []
+          }
+        ],
+        "paid_calls": 0
+      },
+      "correction": {
+        "fact": "9639bc16-d67d-4040-b762-fa3d7d06ef28",
+        "outcome": "active",
+        "revision": 2
+      }
+    },
+    "stale_fingerprint": {
+      "error": "{\"code\":-32003,\"message\":\"method, grant or original scope denied\"}",
+      "retry": "explicit original-operation recovery only",
+      "state": "not_completed"
+    },
+    "erased_reembed": {
+      "error": "{\"code\":-32003,\"message\":\"method, grant or original scope denied\"}",
+      "retry": "explicit original-operation recovery only",
+      "state": "not_completed"
+    },
+    "erasure": {
+      "operation": {
+        "key": "quality-erase",
+        "sources": [
+          1
+        ],
+        "watermark": 1
+      },
+      "callback_observed": null,
+      "pending_obligations": [],
+      "operator_acquire_calls": 0,
+      "automatic_callback_acceptance": false
+    }
+  },
+  "embedding_http_calls": 3,
+  "scan_paid_calls": 0,
+  "database_access": "public operator and SDK only",
+  "remaining": [
+    "actual SQL integrity findings",
+    "producer clarification of metadata erasure obligations"
+  ]
+}

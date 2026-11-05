@@ -1,0 +1,103 @@
+{
+  "status": "PASS",
+  "card_status": "BLOCKED",
+  "candidate_only": true,
+  "core": {
+    "source_commit": "0cdd9dffe07c18949990492fd2a9944919c455d3",
+    "handoff_commit": "69cfdfd7b0efba36c41080f5fae424401cfc1b5c",
+    "published": false,
+    "host": {
+      "archive": "yuki-maintenance-preview-0cdd9dffe07c-windows-x86_64.zip",
+      "sha256": "e2b964e87a30d5c230fbb0805a9de973cb91160b6e8b52606b363ca0fd77a152",
+      "binary_sha256": "7b8b374306f0081f0b80494cbc0cd4f0b7394c392a025da7e19f8468dcf192e7",
+      "validation_manifest_sha256": "e74b03e48ecd4c98198325ac51f367531019a192ce03e51ed3b190bff5f1f41f"
+    },
+    "sdk": {
+      "version": "1.0.0-alpha.8",
+      "sha256": "a8739c74d300f1044c94749ced333d9694920aa7c91728b19f624ff9fbaf2e63"
+    },
+    "host_schema_sha256": "4f5cdeb464c5fb275feeed766019ba159561a7335d13daec4d2d030b95cd4ec2",
+    "personal_schema_sha256": null,
+    "media_schema_sha256": null,
+    "plugin_sha256": "7995815e00ea7d35b831cb135d1e11b69e52bfa61bf343d793d3ff7e32097558",
+    "wire_sha256": "ecf2f2578d013f2cd1cc39a02c50bf8d3af7fd12adca1b456e529b89f798cb55"
+  },
+  "cases": {
+    "invalid_job": {
+      "error": "unknown job field",
+      "retry": "explicit original-operation recovery only",
+      "state": "not_completed"
+    },
+    "scan": {
+      "result": {
+        "audit": {
+          "embedding_routes": [],
+          "fingerprint": "d2aa9936a8b9ab107c7b61f41345309715c8a8626e7ee345a39ccbce76948a55",
+          "items": [
+            {
+              "evidence_retained": 1,
+              "evidence_total": 1,
+              "fact": "0564ee16-a0fe-446f-8d06-5f16f4f1ec97",
+              "revision": 1,
+              "status": "active",
+              "vector_profiles": []
+            }
+          ],
+          "paid_calls": 0
+        },
+        "bounded_page": true,
+        "coverage": [
+          {
+            "fact": "0564ee16-a0fe-446f-8d06-5f16f4f1ec97",
+            "missing_profile_attempt_state": "not_observed_by_audit",
+            "missing_profiles": [],
+            "recorded_evidence": 1,
+            "retained_evidence": 1,
+            "revision": 1
+          }
+        ],
+        "paid_calls": 0,
+        "quality_findings": "not_exposed_by_candidate"
+      },
+      "state": "completed"
+    },
+    "foreign_scope": {
+      "error": "{\"code\":-32003,\"message\":\"method, grant or original scope denied\"}",
+      "retry": "explicit original-operation recovery only",
+      "state": "not_completed"
+    },
+    "apply": {
+      "result": {
+        "fingerprint": "d2aa9936a8b9ab107c7b61f41345309715c8a8626e7ee345a39ccbce76948a55",
+        "operation": "quality-selected-apply",
+        "paid_calls": 0,
+        "rebuilt": [
+          "0564ee16-a0fe-446f-8d06-5f16f4f1ec97"
+        ]
+      },
+      "state": "completed"
+    },
+    "foreign_fact": {
+      "error": "{\"code\":-32003,\"message\":\"method, grant or original scope denied\"}",
+      "retry": "explicit original-operation recovery only",
+      "state": "not_completed"
+    },
+    "replay": {
+      "result": {
+        "fingerprint": "d2aa9936a8b9ab107c7b61f41345309715c8a8626e7ee345a39ccbce76948a55",
+        "operation": "quality-selected-apply",
+        "paid_calls": 0,
+        "rebuilt": [
+          "0564ee16-a0fe-446f-8d06-5f16f4f1ec97"
+        ]
+      },
+      "state": "completed"
+    }
+  },
+  "model_calls": 0,
+  "database_access": "public operator and SDK only",
+  "remaining": [
+    "actual SQL integrity findings",
+    "semantic profile reembed and unknown fault cases"
+  ]
+}

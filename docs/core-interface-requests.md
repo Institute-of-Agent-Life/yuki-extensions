@@ -211,3 +211,28 @@ EXT-025 原 Jev wire 的需求仍見上一節，不能用 Chat 文字 route 充�
 回呼、穩定圖片子鍵、取消／撤權與 Work 正常結束的區分及補圖回聲排除。
 要求純圖、文字成功後崩潰、圖片已發布未確認、原圖改動與來源清除案例。
 目前沒有這組具體交接，未建立空 sticker 插件或自造平行送訊協議。
+
+## CORE-035 → EXT-036／033／035：真維護消費與尚缺投影
+
+固定乾淨來源 `0cdd9dffe07c`、SDK alpha.8，三平台交付成員均核。
+EXT-036 的真 Rust binary 經 Windows Host 讀取 `maintenance.audit`、批准子集
+`maintenance.audit.apply` 及 `maintenance.reembed`；回條在
+`artifacts/EXT-036/candidate-06/`。已核原 scope、Person/entry、write_subject，
+兩個同維不同模型分別購買，原 unknown 重啟保持三次 HTTP，清除後新補向量被拒。
+
+1. `maintenance.audit` 目前只有 fact/revision/status/evidence_total/evidence_retained/
+   vector_profiles、embedding_routes 與 fingerprint。需要原 SQL 品質檢查的具名
+   issue code、count、bounded fact IDs、FTS 缺失／孤兒、向量缺失／尺寸或原文版本不符、
+   來源／工具回執完整性及 pending/unknown 覆蓋。scope 內讀取、無付費；apply 只作用於
+   同一 plan fingerprint 的明選子集，變更來源或衍生索引時拒舊計畫。請附真故障前後回條。
+2. audit/reembed 後擦除原 event 沒有 `forget.request` 或 pending obligation。
+   候選只存 opaque fact/profile/operation 與計數；請明定這些 metadata 的保留責任，
+   或提供 source dependency／自動 owner 登記，才能只清相應本地回條而不刪無關工作。
+   不用手動 acquire 冒充產品自動責任；目前 forget ACK 未驗收。
+3. EXT-033 原稀疏精確選簇需要授權內原語義向量、Profile／版本與維度、穩定 fact order，
+   及 canonical ownership/visibility 分區。現有 profile ID 列表不能還原向量或 tie。
+   請提供 bounded 讀取／精確鄰接投影或生產者選簇輸入，含跨分區拒絕與同分排序例。
+4. EXT-035 需要原 SELF 寫入分區與本批工具來源映射的配置例，以及前臺有真人工作時的
+   公開退讓／恢復信號。不能以任意 scope 名或全庫掃描代替原分區與新事件水位。
+
+以上請求不改核心授權規則；EXT-034 的 extraction preview/apply 將先獨立對拍。

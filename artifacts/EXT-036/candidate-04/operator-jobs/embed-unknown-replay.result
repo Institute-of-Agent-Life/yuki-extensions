@@ -1,0 +1,13 @@
+{
+  "result": {
+    "dispatch_now": false,
+    "fact": "ba3ca2f1-499f-4009-bf0d-de31ed17a021",
+    "logical": "embed-doc:6c20863e-74c1-4eef-8477-15adf395367b",
+    "operation": "quality-embed-unknown",
+    "profile": "e974218119ff95b3117522824f4ca820ef784889299197439f5c0dafb8ddcf63",
+    "revision": 1,
+    "state": "unknown",
+    "usage": null
+  },
+  "state": "completed"
+}

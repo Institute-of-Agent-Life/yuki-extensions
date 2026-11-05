@@ -1,0 +1,94 @@
+{
+  "first_profile": {
+    "covered": 1,
+    "degraded": true,
+    "dimension": 2,
+    "missing": 0,
+    "mode": "hybrid",
+    "profile": "52829a51ced3cd6a6d168bc1997ad7544de663efd6575d90380b84f20e9e0818",
+    "total": 1,
+    "usage": [
+      {
+        "attempts": 1,
+        "known_input_tokens": 5,
+        "logical": 1,
+        "purpose": "document",
+        "state": "done",
+        "unknown": 0
+      },
+      {
+        "attempts": 2,
+        "known_input_tokens": 10,
+        "logical": 2,
+        "purpose": "document",
+        "state": "erased",
+        "unknown": 0
+      },
+      {
+        "attempts": 2,
+        "known_input_tokens": 10,
+        "logical": 2,
+        "purpose": "query",
+        "state": "done",
+        "unknown": 0
+      },
+      {
+        "attempts": 1,
+        "known_input_tokens": 5,
+        "logical": 1,
+        "purpose": "query",
+        "state": "partial",
+        "unknown": 0
+      },
+      {
+        "attempts": 2,
+        "known_input_tokens": 10,
+        "logical": 2,
+        "purpose": "reembed",
+        "state": "erased",
+        "unknown": 0
+      }
+    ]
+  },
+  "second_profile": {
+    "covered": 1,
+    "degraded": false,
+    "dimension": 2,
+    "missing": 0,
+    "mode": "hybrid",
+    "profile": "3b1c62c0f7987b95f51a8cfe06c8cc16f106ea60f047b6f9bacf1b0ec9e6e9ea",
+    "total": 1,
+    "usage": [
+      {
+        "attempts": 1,
+        "known_input_tokens": 5,
+        "logical": 1,
+        "purpose": "reembed",
+        "state": "done",
+        "unknown": 0
+      }
+    ]
+  },
+  "partial": {
+    "covered": 1,
+    "degraded": true,
+    "dimension": 2,
+    "missing": 1,
+    "mode": "hybrid",
+    "profile": "52829a51ced3cd6a6d168bc1997ad7544de663efd6575d90380b84f20e9e0818",
+    "total": 2,
+    "usage": [
+      {
+        "attempts": 1,
+        "known_input_tokens": 5,
+        "logical": 1,
+        "purpose": "document",
+        "state": "partial",
+        "unknown": 0
+      }
+    ]
+  },
+  "source": "fixtures/embedding/v4-wire.json",
+  "requests": 10,
+  "unknown_fact": "9b48e01d-9a49-4f12-821e-db034f8f218f"
+}

@@ -1,0 +1,127 @@
+[
+  {
+    "args": [
+      "person",
+      "create",
+      "a3b9ec07-cb54-43fc-8e20-b798fad5cfec"
+    ],
+    "exit": 0,
+    "stdout": "{\"original\":\"a3b9ec07-cb54-43fc-8e20-b798fad5cfec\",\"root\":\"a3b9ec07-cb54-43fc-8e20-b798fad5cfec\"}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "account",
+      "open",
+      "qq",
+      "quality-fixture",
+      "200",
+      "1",
+      "--person",
+      "a3b9ec07-cb54-43fc-8e20-b798fad5cfec",
+      "--start",
+      "1"
+    ],
+    "exit": 0,
+    "stdout": "{\"account\":\"1c02f8ce-d8e4-4817-8597-ae60adcad4e6\",\"assignment\":\"d11d9e26-c9c2-43cf-ac4c-7613c841a4ca\"}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "account",
+      "open",
+      "qq",
+      "quality-fixture",
+      "100",
+      "1",
+      "--start",
+      "1"
+    ],
+    "exit": 0,
+    "stdout": "{\"account\":\"ace1f860-18f8-4ec6-a50b-285297ced6aa\",\"assignment\":\"384dab4f-26a4-41b2-8297-e557720737a4\"}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "entry",
+      "group",
+      "[\"qq\",\"quality-fixture\",\"702\"]"
+    ],
+    "exit": 0,
+    "stdout": "{\"entry\":\"7670b654-7bd1-4d93-9f4c-569752f2d556\"}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "ingress",
+      "record",
+      "{\"source\": \"quality-original\", \"account\": \"1c02f8ce-d8e4-4817-8597-ae60adcad4e6\", \"bot_stage\": \"384dab4f-26a4-41b2-8297-e557720737a4\", \"reply_bot\": \"100\", \"space\": \"[\\\"qq\\\",\\\"quality-fixture\\\",\\\"702\\\"]\", \"kind\": \"message\", \"occurred\": 100, \"observed\": 100, \"segments\": [{\"type\": \"text\", \"text\": \"Original EXT-036 quality source; no invented evidence.\"}]}",
+      "--accept"
+    ],
+    "exit": 0,
+    "stdout": "{\"accepted\":true,\"event\":1}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "ingress",
+      "claim",
+      "1"
+    ],
+    "exit": 0,
+    "stdout": "{\"entry\":\"7670b654-7bd1-4d93-9f4c-569752f2d556\",\"envelope\":{\"account\":\"1c02f8ce-d8e4-4817-8597-ae60adcad4e6\",\"bot_stage\":\"384dab4f-26a4-41b2-8297-e557720737a4\",\"kind\":\"message\",\"native_id\":null,\"observed\":100,\"occurred\":100,\"reply_bot\":\"100\",\"segments\":[{\"text\":\"Original EXT-036 quality source; no invented evidence.\",\"type\":\"text\"}],\"source\":\"quality-original\",\"space\":\"[\\\"qq\\\",\\\"quality-fixture\\\",\\\"702\\\"]\",\"topic\":null},\"execution\":\"a3293558-2e89-44bf-9a2b-5e7075a5886f\",\"mentions\":[],\"original_actor\":\"a3b9ec07-cb54-43fc-8e20-b798fad5cfec\",\"source\":1}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "memory",
+      "edit",
+      "a3293558-2e89-44bf-9a2b-5e7075a5886f",
+      "a3b9ec07-cb54-43fc-8e20-b798fad5cfec",
+      "quality-add",
+      "{\"action\": \"add\", \"body\": \"Original quality fixture\", \"fact_key\": \"quality-fixture\", \"subject\": {\"kind\": \"person\", \"person\": \"a3b9ec07-cb54-43fc-8e20-b798fad5cfec\", \"space\": null, \"visibility\": null, \"entry\": null}, \"evidence\": [{\"kind\": \"event\", \"id\": 1, \"quote\": \"Original EXT-036 quality source; no invented evidence.\"}]}"
+    ],
+    "exit": 0,
+    "stdout": "{\"fact\":\"ba3ca2f1-499f-4009-bf0d-de31ed17a021\",\"outcome\":\"active\",\"revision\":1}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "memory",
+      "read",
+      "a3293558-2e89-44bf-9a2b-5e7075a5886f",
+      "a3b9ec07-cb54-43fc-8e20-b798fad5cfec",
+      "--fact",
+      "ba3ca2f1-499f-4009-bf0d-de31ed17a021",
+      "--evidence"
+    ],
+    "exit": 0,
+    "stdout": "{\"items\":[{\"body\":\"Original quality fixture\",\"confidence\":null,\"evidence\":[{\"author\":\"a3b9ec07-cb54-43fc-8e20-b798fad5cfec\",\"entry\":\"7670b654-7bd1-4d93-9f4c-569752f2d556\",\"id\":1,\"key\":\"1\",\"kind\":\"event\",\"quote\":\"Original EXT-036 quality source; no invented evidence.\",\"version\":\"6821417eb838a5d1d6dfb4d1b75a331b4afad56ed4ebfc3f31679b794d4a9c8b\"}],\"fact\":\"ba3ca2f1-499f-4009-bf0d-de31ed17a021\",\"fact_id\":1,\"fact_key\":\"quality-fixture\",\"kind\":\"person\",\"person\":\"a3b9ec07-cb54-43fc-8e20-b798fad5cfec\",\"proof\":\"d2aec19cc0452da8269041f26a8a0683b17095ca76851c2550e60bbdb25f4c74\",\"readable_evidence\":1,\"revision\":1,\"space\":null,\"status\":\"active\",\"visibility\":\"subject\"}],\"next_cursor\":null}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "memory",
+      "edit",
+      "a3293558-2e89-44bf-9a2b-5e7075a5886f",
+      "a3b9ec07-cb54-43fc-8e20-b798fad5cfec",
+      "quality-correct",
+      "{\"action\": \"correct\", \"fact\": \"ba3ca2f1-499f-4009-bf0d-de31ed17a021\", \"revision\": 1, \"proof\": \"d2aec19cc0452da8269041f26a8a0683b17095ca76851c2550e60bbdb25f4c74\", \"body\": \"Changed fact content, same original evidence count\"}"
+    ],
+    "exit": 0,
+    "stdout": "{\"fact\":\"ba3ca2f1-499f-4009-bf0d-de31ed17a021\",\"outcome\":\"active\",\"revision\":2}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "privacy",
+      "erase",
+      "quality-erase",
+      "a3b9ec07-cb54-43fc-8e20-b798fad5cfec",
+      "[1]"
+    ],
+    "exit": 0,
+    "stdout": "{\"key\":\"quality-erase\",\"sources\":[1],\"watermark\":1}\n",
+    "stderr": ""
+  }
+]

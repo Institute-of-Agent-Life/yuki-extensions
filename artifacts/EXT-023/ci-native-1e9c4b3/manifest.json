@@ -1,0 +1,140 @@
+{
+  "unit_id": "monty-runtime",
+  "scope": "native image; CORE-034 consumer acceptance separate",
+  "status": "PASS",
+  "formal_card_acceptance": false,
+  "image_id": "sha256:c8cdd922e0ea990e794f0d758937ddad2115d2849e9195444d36bbb620ad4e91",
+  "published": false,
+  "commands": [
+    {
+      "argv": [
+        "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+        "scripts/prepare_inputs.py"
+      ],
+      "exit_code": 0,
+      "log": "inputs.txt"
+    },
+    {
+      "argv": [
+        "sudo",
+        "apparmor_parser",
+        "-r",
+        "deploy/security/yuki-bot-codemode.apparmor"
+      ],
+      "exit_code": 0,
+      "log": "apparmor.txt"
+    },
+    {
+      "argv": [
+        "docker",
+        "build",
+        "--platform",
+        "linux/amd64",
+        "--iidfile",
+        "/home/runner/work/yuki-extensions/yuki-extensions/dist/monty-runtime-native/image-id.txt",
+        "."
+      ],
+      "exit_code": 0,
+      "log": "build.txt"
+    },
+    {
+      "argv": [
+        "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+        "scripts/verify_image.py",
+        "--image",
+        "sha256:c8cdd922e0ea990e794f0d758937ddad2115d2849e9195444d36bbb620ad4e91",
+        "--out",
+        "/home/runner/work/yuki-extensions/yuki-extensions/dist/monty-runtime-native/native-isolation.json"
+      ],
+      "exit_code": 0,
+      "log": "isolation.txt"
+    },
+    {
+      "argv": [
+        "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+        "scripts/verify_bridge.py",
+        "--image",
+        "sha256:c8cdd922e0ea990e794f0d758937ddad2115d2849e9195444d36bbb620ad4e91",
+        "--out",
+        "/home/runner/work/yuki-extensions/yuki-extensions/dist/monty-runtime-native/native-codec.json"
+      ],
+      "exit_code": 0,
+      "log": "codec.txt"
+    },
+    {
+      "argv": [
+        "docker",
+        "cp",
+        "57e900c1166db85d2b9c6dd311c718e9dc68a37f03ed1408f489adc361474311:/opt/yuki-monty/artifacts.json",
+        "/home/runner/work/yuki-extensions/yuki-extensions/dist/monty-runtime-native/artifacts.json"
+      ],
+      "exit_code": 0,
+      "log": "copy-artifacts.json.txt"
+    },
+    {
+      "argv": [
+        "docker",
+        "cp",
+        "57e900c1166db85d2b9c6dd311c718e9dc68a37f03ed1408f489adc361474311:/opt/yuki-monty/runtime-contract.json",
+        "/home/runner/work/yuki-extensions/yuki-extensions/dist/monty-runtime-native/runtime-contract.json"
+      ],
+      "exit_code": 0,
+      "log": "copy-runtime-contract.json.txt"
+    },
+    {
+      "argv": [
+        "docker",
+        "cp",
+        "57e900c1166db85d2b9c6dd311c718e9dc68a37f03ed1408f489adc361474311:/opt/yuki-monty/THIRD_PARTY_NOTICES.json",
+        "/home/runner/work/yuki-extensions/yuki-extensions/dist/monty-runtime-native/THIRD_PARTY_NOTICES.json"
+      ],
+      "exit_code": 0,
+      "log": "copy-THIRD_PARTY_NOTICES.json.txt"
+    },
+    {
+      "argv": [
+        "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+        "/home/runner/work/yuki-extensions/yuki-extensions/ci/codemode_worker_check.py",
+        "--out",
+        "/home/runner/work/yuki-extensions/yuki-extensions/dist/monty-runtime-native/rust-worker",
+        "--image",
+        "sha256:c8cdd922e0ea990e794f0d758937ddad2115d2849e9195444d36bbb620ad4e91",
+        "--contract",
+        "/home/runner/work/yuki-extensions/yuki-extensions/dist/monty-runtime-native/runtime-contract.json"
+      ],
+      "exit_code": 0,
+      "log": "rust-worker.txt"
+    },
+    {
+      "argv": [
+        "docker",
+        "save",
+        "-o",
+        "/home/runner/work/yuki-extensions/yuki-extensions/dist/monty-runtime-native/image.tar",
+        "sha256:c8cdd922e0ea990e794f0d758937ddad2115d2849e9195444d36bbb620ad4e91"
+      ],
+      "exit_code": 0,
+      "log": "export.txt"
+    }
+  ],
+  "files": {
+    "codec.txt": "e4245cf9fa77195aa501f2fed19520a0fa264cbe8cee634a23c59a48721ed0ba",
+    "image-id.txt": "1e81c4d1577265ed9802d4897ed7271571697f1a0184bb7f4063f0f996d385df",
+    "artifacts.json": "dfccf7575e065cb678cfc9cb1924a495399f4d8cfde97e9542f0070274b63b6d",
+    "build.txt": "f6225dd9116a9a67f5e03db4de4d5dbb1a0ab974a2c210bceabd44e382d0f6ca",
+    "native-codec.json": "f9d6cf682d480bdcf350e3d18ac1793f05d200119d8b93a18c3c226010166560",
+    "rust-worker.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "image.tar": "e80bb60956ed22f454093d7e8efe19843e446e2182524920387003d54e18c829",
+    "copy-THIRD_PARTY_NOTICES.json.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runtime-contract.json": "46fda499c93caeac2e8fad90b622a7f990a09c5a6f2e00c9819c914ad077232c",
+    "image-inspect.json": "c908520b68259c05d1357a196d6a5ede18e1103fbb081f638e7f279e2a6ff611",
+    "THIRD_PARTY_NOTICES.json": "d66e540339f76e4b053710e416cb47384e6939cd5db25032d62f05c9ad7b92e5",
+    "inputs.txt": "7e5377a03e19550fcff3d6b59488c33be85ac2c0f7f113c8b3f635062b9c8ca8",
+    "copy-artifacts.json.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy-runtime-contract.json.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "export.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "isolation.txt": "6b07d83dc9958128b66d8a1fdb9b31fda77c34512e3d39b47248f5b3c9060bc6",
+    "apparmor.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "native-isolation.json": "ebb851a7ecfe9c0e25afc27d4f511f4d6d668b2ceb94db422a972f9fedd42914"
+  }
+}

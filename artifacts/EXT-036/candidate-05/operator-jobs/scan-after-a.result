@@ -1,0 +1,62 @@
+{
+  "result": {
+    "audit": {
+      "embedding_routes": [
+        {
+          "dimensions": 3,
+          "profile": "6e18743b150f950ccb8419e3570879c65a5b1a1a5012bd0d3ef226f7d67752b8",
+          "route": "dense-a"
+        },
+        {
+          "dimensions": 3,
+          "profile": "764b90c1dfaee02e86e50f8f29d6beef91d5742280a31b191b4bcaca83e94c0a",
+          "route": "dense-b"
+        },
+        {
+          "dimensions": 3,
+          "profile": "e7b66a4d84fc09d76fa13ab6090b9468909157cfbe3be087ff516cdb0f75b894",
+          "route": "dense-unknown"
+        }
+      ],
+      "fingerprint": "3ece15e317614e3527413fbfcbfdcf524e1092c7a555f4cea3579872190b0b72",
+      "items": [
+        {
+          "evidence_retained": 1,
+          "evidence_total": 1,
+          "fact": "9639bc16-d67d-4040-b762-fa3d7d06ef28",
+          "revision": 1,
+          "status": "active",
+          "vector_profiles": [
+            "6e18743b150f950ccb8419e3570879c65a5b1a1a5012bd0d3ef226f7d67752b8"
+          ]
+        }
+      ],
+      "paid_calls": 0
+    },
+    "bounded_page": true,
+    "coverage": [
+      {
+        "fact": "9639bc16-d67d-4040-b762-fa3d7d06ef28",
+        "missing_profile_attempt_state": "not_observed_by_audit",
+        "missing_profiles": [
+          {
+            "dimensions": 3,
+            "profile": "764b90c1dfaee02e86e50f8f29d6beef91d5742280a31b191b4bcaca83e94c0a",
+            "route": "dense-b"
+          },
+          {
+            "dimensions": 3,
+            "profile": "e7b66a4d84fc09d76fa13ab6090b9468909157cfbe3be087ff516cdb0f75b894",
+            "route": "dense-unknown"
+          }
+        ],
+        "recorded_evidence": 1,
+        "retained_evidence": 1,
+        "revision": 1
+      }
+    ],
+    "paid_calls": 0,
+    "quality_findings": "not_exposed_by_candidate"
+  },
+  "state": "completed"
+}

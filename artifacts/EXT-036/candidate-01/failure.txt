@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "D:\yuki-extension-tests\fc42f041bdc8d8ee2400\src\ci\check.py", line 37, in main
+    report_name, report = runner(root, args.out.resolve())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\fc42f041bdc8d8ee2400\src\tests\cases\EXT-036.py", line 68, in prepare
+    assert cases['apply']['state']=='completed',cases['apply']
+AssertionError: {'error': '{"code":-32003,"message":"method, grant or original scope denied"}', 'retry': 'explicit original-operation recovery only', 'state': 'not_completed'}

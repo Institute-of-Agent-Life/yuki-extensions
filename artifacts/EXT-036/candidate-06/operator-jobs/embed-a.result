@@ -1,0 +1,15 @@
+{
+  "result": {
+    "dispatch_now": false,
+    "fact": "47614af2-7335-41a8-86c8-fba518e5799a",
+    "logical": "embed-doc:c37d8d29-b326-4e2f-b896-243fd19ce2a0",
+    "operation": "quality-embed-a",
+    "profile": "cdfb25e897e9e804835b7fd12ed5afdd8448d152dbf2f00c09fd62ecdf4c4456",
+    "revision": 1,
+    "state": "done",
+    "usage": {
+      "input": 5
+    }
+  },
+  "state": "completed"
+}
