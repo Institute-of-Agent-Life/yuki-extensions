@@ -1,0 +1,901 @@
+{
+  "source_commit": "e25c2b8acce34858d5fd67ac408186e49a1da160",
+  "handoff_commit": "685b1d59ae645162cfc4216df0ecaa0d5afc7746",
+  "published": false,
+  "host": {
+    "archive": "yuki-media-preview-e25c2b8acce3-windows-x86_64.zip",
+    "sha256": "f7bff236ca0c518016a4bf40dafaddb29b9d86d6fa92722fdce179620d296310",
+    "binary_sha256": "7b1c226caf099264dc74f64a988391963a50505a438c5f6d7a32076411e1a1f9",
+    "validation_manifest_sha256": "789ac9b1ca915217b4abf1fe26151588668cde827ee1f4998a50db79f5254d57"
+  },
+  "sdk": {
+    "version": "1.0.0-alpha.4",
+    "sha256": "fb01271d99ba222f8c84c9821374d6edf03bd32ac172f39b5e83c0beb1010ca9"
+  },
+  "host_schema_sha256": "79d5cdee6ff01d7bac327e7c896ea7f7614aa3528ffeeaaea5bc825ae5e930a7",
+  "personal_schema_sha256": null,
+  "media_schema_sha256": "3c62e0c188e7f64b88bb38161102eb622a227778571ced9e439c63c6729ea6c2",
+  "plugin_sha256": "2d0e7e9b910789bf34b8d263475c71a720a2ee650628fc88a3292a64e26d454c",
+  "wire_sha256": "f120f2ce7859b28b013b78ba22205b6ae9e5e9e5b6745d954a1cff0ea8cdd1e3",
+  "status": "PASS",
+  "card_status": "UNPUBLISHED_DECODE_CANDIDATE",
+  "codecs": {
+    "ffmpeg": "ffmpeg version 7.1-essentials_build-www.gyan.dev Copyright (c) 2000-2024 the FFmpeg developers",
+    "ffmpeg_sha256": "2ce797a0f88d7f067180338fb227f7b1928ea727bd9a4d7a1d022f7c52af71a3",
+    "document_lock": {
+      "upstream_commit": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+      "python": "3.12",
+      "packages": {
+        "pypdf": {
+          "version": "6.18.0",
+          "filename": "pypdf-6.18.0-py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/c7/a5/d5922a078c9a612327681d4793404f82998f4d66213add6fdc0659245856/pypdf-6.18.0-py3-none-any.whl",
+          "sha256": "05b762b77bcb9dcb4a7c91fcf5dded585b25bee7269ab3d3001d7c55fa1b324b"
+        },
+        "defusedxml": {
+          "version": "0.7.1",
+          "filename": "defusedxml-0.7.1-py2.py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/07/6c/aa3f2f849e01cb6a001cd8554a88d4c77c5c1a31c95bdf1cf9301e6d9ef4/defusedxml-0.7.1-py2.py3-none-any.whl",
+          "sha256": "a352e7e428770286cc899e2542b6cdaedb2b4953ff269a210103ec58f6198a61"
+        }
+      }
+    },
+    "document_source_sha256": "3eaa8ccdd25bbc764d73eb9be7d5c57a8ca7c0a997a9d4d9695902f6f441998a"
+  },
+  "pdf": {
+    "handle": "3754b298-8f46-4542-8493-c819ddf3c202",
+    "result": {
+      "data": {
+        "kind": "pdf",
+        "source": {
+          "event": 1,
+          "slot": 1
+        },
+        "state": "read",
+        "text": "\n[page 1]\nSelected page one\n[page 2]\nSelected page two\n[PDF text extraction only; embedded images were not read.]\n",
+        "total_units": 2,
+        "truncated": false,
+        "units_read": 2,
+        "version": "753e25b038830e03768f05449dab4b8f05ef0534927abb9282eab60f4c5ecf42"
+      },
+      "ok": true
+    },
+    "state": "confirmed"
+  },
+  "video": {
+    "handle": "c544daa0-2094-473b-ad89-7273a57c0fe7",
+    "result": {
+      "data": {
+        "frames": [
+          {
+            "index": 0,
+            "seconds": 0.0,
+            "sha256": "62218f03a1a02acf72d2136af6c6d0f2c399a8afe27df68063f2c97d85c5fd7d"
+          },
+          {
+            "index": 1,
+            "seconds": 5.0,
+            "sha256": "62218f03a1a02acf72d2136af6c6d0f2c399a8afe27df68063f2c97d85c5fd7d"
+          }
+        ],
+        "images": [
+          {
+            "artifact_id": "91c52b8e-102a-43f6-953d-fe73a0c89b88",
+            "ordinal": 0,
+            "state": "no_vision"
+          },
+          {
+            "artifact_id": "1caba080-3cc5-4835-bbb2-22731681076d",
+            "ordinal": 1,
+            "state": "no_vision"
+          }
+        ],
+        "kind": "video",
+        "limit_frames": 8,
+        "limit_seconds": 600,
+        "source": {
+          "event": 5,
+          "slot": 1
+        },
+        "state": "read",
+        "version": "c07d7e011bc253f0e6ad6d8a958093abf6bb04fe0afee7f14536e6091a0fd1b9"
+      },
+      "ok": true
+    },
+    "state": "confirmed"
+  },
+  "faults": {
+    "corrupt": {
+      "handle": "694d04bb-8dc9-43aa-ac0e-35ee7b6c72c0",
+      "result": {
+        "error": "document_unreadable",
+        "ok": false
+      },
+      "state": "failed"
+    },
+    "encrypted": {
+      "handle": "1ebd8991-01c4-455f-881f-56ce44b86cbc",
+      "result": {
+        "error": "encrypted_document",
+        "ok": false
+      },
+      "state": "failed"
+    },
+    "empty": {
+      "handle": "2debc2a4-86a3-46dd-9bb0-a67e651ae7d1",
+      "result": {
+        "error": "document_empty",
+        "ok": false
+      },
+      "state": "failed"
+    }
+  },
+  "erasure": {
+    "late": {
+      "handle": "930fbb73-d91f-488b-a044-747a94cc12eb",
+      "result": null,
+      "state": "failed"
+    },
+    "new_call_denied": true,
+    "temporary_empty": true,
+    "automatic_registration": true,
+    "forget_request": {
+      "id": "host-7",
+      "jsonrpc": "2.0",
+      "method": "forget.request",
+      "params": {
+        "key": "remove-original",
+        "sources": [
+          6
+        ],
+        "watermark": 1
+      }
+    },
+    "operator_acquire_calls": 0
+  },
+  "selected_slot": 1,
+  "media_calls": 6,
+  "media_reads": 15,
+  "operator_transcript": [
+    {
+      "command": [
+        "person",
+        "create",
+        "9f09ddc1-1f50-4252-9133-f896683866d9"
+      ],
+      "result": {
+        "original": "9f09ddc1-1f50-4252-9133-f896683866d9",
+        "root": "9f09ddc1-1f50-4252-9133-f896683866d9"
+      }
+    },
+    {
+      "command": [
+        "account",
+        "open",
+        "qq"
+      ],
+      "result": {
+        "account": "baba2091-48d1-4759-94f9-6787b99010c0",
+        "assignment": "91c5e1b4-ac4e-4711-84bd-67ca3c41c951"
+      }
+    },
+    {
+      "command": [
+        "account",
+        "open",
+        "qq"
+      ],
+      "result": {
+        "account": "5800b858-0156-4e69-bd35-1466ca908562",
+        "assignment": "58ad7ac9-8216-45ce-b91a-1977d9e0de90"
+      }
+    },
+    {
+      "command": [
+        "ingress",
+        "record",
+        "{\"source\": \"pdf\", \"account\": \"baba2091-48d1-4759-94f9-6787b99010c0\", \"bot_stage\": \"58ad7ac9-8216-45ce-b91a-1977d9e0de90\", \"kind\": \"message\", \"reply_bot\": \"100\", \"occurred\": 100, \"observed\": 100, \"segments\": [{\"type\": \"media\", \"kind\": \"file\", \"reference\": \"unselected-pdf\"}, {\"type\": \"media\", \"kind\": \"file\", \"reference\": \"selected-pdf\"}]}"
+      ],
+      "result": {
+        "accepted": true,
+        "event": 1
+      }
+    },
+    {
+      "command": [
+        "ingress",
+        "claim",
+        "1"
+      ],
+      "result": {
+        "entry": "85bf0688-2b8b-419e-a408-8354a11f96fb",
+        "envelope": {
+          "account": "baba2091-48d1-4759-94f9-6787b99010c0",
+          "bot_stage": "58ad7ac9-8216-45ce-b91a-1977d9e0de90",
+          "kind": "message",
+          "native_id": null,
+          "observed": 100,
+          "occurred": 100,
+          "reply_bot": "100",
+          "segments": [
+            {
+              "kind": "file",
+              "reference": "unselected-pdf",
+              "type": "media"
+            },
+            {
+              "kind": "file",
+              "reference": "selected-pdf",
+              "type": "media"
+            }
+          ],
+          "source": "pdf",
+          "space": null,
+          "topic": null
+        },
+        "execution": "e6ffd8d9-527c-4402-bc65-6c2825e58444",
+        "mentions": [],
+        "original_actor": "9f09ddc1-1f50-4252-9133-f896683866d9",
+        "source": 1
+      }
+    },
+    {
+      "command": [
+        "media",
+        "cache-file",
+        "e6ffd8d9-527c-4402-bc65-6c2825e58444"
+      ],
+      "result": {
+        "digest": "50370931a0b76d5de10746daf717053d7fb76c3f4f726c0052cc6140d0a88683",
+        "expires": 1793927969793,
+        "handle": 0,
+        "kind": "file",
+        "mime": "application/octet-stream",
+        "origin": "unselected-pdf",
+        "segment": 0,
+        "slot": 0,
+        "source": 1,
+        "stage": "58ad7ac9-8216-45ce-b91a-1977d9e0de90",
+        "state": "cached"
+      }
+    },
+    {
+      "command": [
+        "media",
+        "cache-file",
+        "e6ffd8d9-527c-4402-bc65-6c2825e58444"
+      ],
+      "result": {
+        "digest": "753e25b038830e03768f05449dab4b8f05ef0534927abb9282eab60f4c5ecf42",
+        "expires": 1793927969846,
+        "handle": 1,
+        "kind": "file",
+        "mime": "application/octet-stream",
+        "origin": "selected-pdf",
+        "segment": 1,
+        "slot": 1,
+        "source": 1,
+        "stage": "58ad7ac9-8216-45ce-b91a-1977d9e0de90",
+        "state": "cached"
+      }
+    },
+    {
+      "command": [
+        "host",
+        "process",
+        "media"
+      ],
+      "result": {
+        "handle": "3754b298-8f46-4542-8493-c819ddf3c202",
+        "result": {
+          "data": {
+            "kind": "pdf",
+            "source": {
+              "event": 1,
+              "slot": 1
+            },
+            "state": "read",
+            "text": "\n[page 1]\nSelected page one\n[page 2]\nSelected page two\n[PDF text extraction only; embedded images were not read.]\n",
+            "total_units": 2,
+            "truncated": false,
+            "units_read": 2,
+            "version": "753e25b038830e03768f05449dab4b8f05ef0534927abb9282eab60f4c5ecf42"
+          },
+          "ok": true
+        },
+        "state": "confirmed"
+      }
+    },
+    {
+      "command": [
+        "ingress",
+        "record",
+        "{\"source\": \"corrupt\", \"account\": \"baba2091-48d1-4759-94f9-6787b99010c0\", \"bot_stage\": \"58ad7ac9-8216-45ce-b91a-1977d9e0de90\", \"kind\": \"message\", \"reply_bot\": \"100\", \"occurred\": 100, \"observed\": 100, \"segments\": [{\"type\": \"media\", \"kind\": \"file\", \"reference\": \"unselected-corrupt\"}, {\"type\": \"media\", \"kind\": \"file\", \"reference\": \"selected-corrupt\"}]}"
+      ],
+      "result": {
+        "accepted": true,
+        "event": 2
+      }
+    },
+    {
+      "command": [
+        "ingress",
+        "claim",
+        "2"
+      ],
+      "result": {
+        "entry": "85bf0688-2b8b-419e-a408-8354a11f96fb",
+        "envelope": {
+          "account": "baba2091-48d1-4759-94f9-6787b99010c0",
+          "bot_stage": "58ad7ac9-8216-45ce-b91a-1977d9e0de90",
+          "kind": "message",
+          "native_id": null,
+          "observed": 100,
+          "occurred": 100,
+          "reply_bot": "100",
+          "segments": [
+            {
+              "kind": "file",
+              "reference": "unselected-corrupt",
+              "type": "media"
+            },
+            {
+              "kind": "file",
+              "reference": "selected-corrupt",
+              "type": "media"
+            }
+          ],
+          "source": "corrupt",
+          "space": null,
+          "topic": null
+        },
+        "execution": "d71c65c8-e3dc-4450-8e89-76197fc3c2f7",
+        "mentions": [],
+        "original_actor": "9f09ddc1-1f50-4252-9133-f896683866d9",
+        "source": 2
+      }
+    },
+    {
+      "command": [
+        "media",
+        "cache-file",
+        "d71c65c8-e3dc-4450-8e89-76197fc3c2f7"
+      ],
+      "result": {
+        "digest": "50370931a0b76d5de10746daf717053d7fb76c3f4f726c0052cc6140d0a88683",
+        "expires": 1793927970291,
+        "handle": 0,
+        "kind": "file",
+        "mime": "application/octet-stream",
+        "origin": "unselected-corrupt",
+        "segment": 0,
+        "slot": 0,
+        "source": 2,
+        "stage": "58ad7ac9-8216-45ce-b91a-1977d9e0de90",
+        "state": "cached"
+      }
+    },
+    {
+      "command": [
+        "media",
+        "cache-file",
+        "d71c65c8-e3dc-4450-8e89-76197fc3c2f7"
+      ],
+      "result": {
+        "digest": "210a1e5a01148576f57d9fd39815133c18f6dcb7b7abb37d982860916284e19e",
+        "expires": 1793927970322,
+        "handle": 1,
+        "kind": "file",
+        "mime": "text/plain",
+        "origin": "selected-corrupt",
+        "segment": 1,
+        "slot": 1,
+        "source": 2,
+        "stage": "58ad7ac9-8216-45ce-b91a-1977d9e0de90",
+        "state": "cached"
+      }
+    },
+    {
+      "command": [
+        "host",
+        "process",
+        "media"
+      ],
+      "result": {
+        "handle": "694d04bb-8dc9-43aa-ac0e-35ee7b6c72c0",
+        "result": {
+          "error": "document_unreadable",
+          "ok": false
+        },
+        "state": "failed"
+      }
+    },
+    {
+      "command": [
+        "ingress",
+        "record",
+        "{\"source\": \"encrypted\", \"account\": \"baba2091-48d1-4759-94f9-6787b99010c0\", \"bot_stage\": \"58ad7ac9-8216-45ce-b91a-1977d9e0de90\", \"kind\": \"message\", \"reply_bot\": \"100\", \"occurred\": 100, \"observed\": 100, \"segments\": [{\"type\": \"media\", \"kind\": \"file\", \"reference\": \"unselected-encrypted\"}, {\"type\": \"media\", \"kind\": \"file\", \"reference\": \"selected-encrypted\"}]}"
+      ],
+      "result": {
+        "accepted": true,
+        "event": 3
+      }
+    },
+    {
+      "command": [
+        "ingress",
+        "claim",
+        "3"
+      ],
+      "result": {
+        "entry": "85bf0688-2b8b-419e-a408-8354a11f96fb",
+        "envelope": {
+          "account": "baba2091-48d1-4759-94f9-6787b99010c0",
+          "bot_stage": "58ad7ac9-8216-45ce-b91a-1977d9e0de90",
+          "kind": "message",
+          "native_id": null,
+          "observed": 100,
+          "occurred": 100,
+          "reply_bot": "100",
+          "segments": [
+            {
+              "kind": "file",
+              "reference": "unselected-encrypted",
+              "type": "media"
+            },
+            {
+              "kind": "file",
+              "reference": "selected-encrypted",
+              "type": "media"
+            }
+          ],
+          "source": "encrypted",
+          "space": null,
+          "topic": null
+        },
+        "execution": "64b0ac85-fa2e-4a42-878a-e0df383917a4",
+        "mentions": [],
+        "original_actor": "9f09ddc1-1f50-4252-9133-f896683866d9",
+        "source": 3
+      }
+    },
+    {
+      "command": [
+        "media",
+        "cache-file",
+        "64b0ac85-fa2e-4a42-878a-e0df383917a4"
+      ],
+      "result": {
+        "digest": "50370931a0b76d5de10746daf717053d7fb76c3f4f726c0052cc6140d0a88683",
+        "expires": 1793927970698,
+        "handle": 0,
+        "kind": "file",
+        "mime": "application/octet-stream",
+        "origin": "unselected-encrypted",
+        "segment": 0,
+        "slot": 0,
+        "source": 3,
+        "stage": "58ad7ac9-8216-45ce-b91a-1977d9e0de90",
+        "state": "cached"
+      }
+    },
+    {
+      "command": [
+        "media",
+        "cache-file",
+        "64b0ac85-fa2e-4a42-878a-e0df383917a4"
+      ],
+      "result": {
+        "digest": "d450b6079b572fc0187589644ea9fcfb5e003aa620946c457168392fb95f5471",
+        "expires": 1793927970742,
+        "handle": 1,
+        "kind": "file",
+        "mime": "application/octet-stream",
+        "origin": "selected-encrypted",
+        "segment": 1,
+        "slot": 1,
+        "source": 3,
+        "stage": "58ad7ac9-8216-45ce-b91a-1977d9e0de90",
+        "state": "cached"
+      }
+    },
+    {
+      "command": [
+        "host",
+        "process",
+        "media"
+      ],
+      "result": {
+        "handle": "1ebd8991-01c4-455f-881f-56ce44b86cbc",
+        "result": {
+          "error": "encrypted_document",
+          "ok": false
+        },
+        "state": "failed"
+      }
+    },
+    {
+      "command": [
+        "ingress",
+        "record",
+        "{\"source\": \"empty\", \"account\": \"baba2091-48d1-4759-94f9-6787b99010c0\", \"bot_stage\": \"58ad7ac9-8216-45ce-b91a-1977d9e0de90\", \"kind\": \"message\", \"reply_bot\": \"100\", \"occurred\": 100, \"observed\": 100, \"segments\": [{\"type\": \"media\", \"kind\": \"file\", \"reference\": \"unselected-empty\"}, {\"type\": \"media\", \"kind\": \"file\", \"reference\": \"selected-empty\"}]}"
+      ],
+      "result": {
+        "accepted": true,
+        "event": 4
+      }
+    },
+    {
+      "command": [
+        "ingress",
+        "claim",
+        "4"
+      ],
+      "result": {
+        "entry": "85bf0688-2b8b-419e-a408-8354a11f96fb",
+        "envelope": {
+          "account": "baba2091-48d1-4759-94f9-6787b99010c0",
+          "bot_stage": "58ad7ac9-8216-45ce-b91a-1977d9e0de90",
+          "kind": "message",
+          "native_id": null,
+          "observed": 100,
+          "occurred": 100,
+          "reply_bot": "100",
+          "segments": [
+            {
+              "kind": "file",
+              "reference": "unselected-empty",
+              "type": "media"
+            },
+            {
+              "kind": "file",
+              "reference": "selected-empty",
+              "type": "media"
+            }
+          ],
+          "source": "empty",
+          "space": null,
+          "topic": null
+        },
+        "execution": "56746617-36ad-4820-8ac8-1f2dafc8842c",
+        "mentions": [],
+        "original_actor": "9f09ddc1-1f50-4252-9133-f896683866d9",
+        "source": 4
+      }
+    },
+    {
+      "command": [
+        "media",
+        "cache-file",
+        "56746617-36ad-4820-8ac8-1f2dafc8842c"
+      ],
+      "result": {
+        "digest": "50370931a0b76d5de10746daf717053d7fb76c3f4f726c0052cc6140d0a88683",
+        "expires": 1793927971106,
+        "handle": 0,
+        "kind": "file",
+        "mime": "application/octet-stream",
+        "origin": "unselected-empty",
+        "segment": 0,
+        "slot": 0,
+        "source": 4,
+        "stage": "58ad7ac9-8216-45ce-b91a-1977d9e0de90",
+        "state": "cached"
+      }
+    },
+    {
+      "command": [
+        "media",
+        "cache-file",
+        "56746617-36ad-4820-8ac8-1f2dafc8842c"
+      ],
+      "result": {
+        "digest": "c0409770e2beb3035c8df54acb079208155b3b294d4c0146577be9a5cd8e79bb",
+        "expires": 1793927971163,
+        "handle": 1,
+        "kind": "file",
+        "mime": "application/octet-stream",
+        "origin": "selected-empty",
+        "segment": 1,
+        "slot": 1,
+        "source": 4,
+        "stage": "58ad7ac9-8216-45ce-b91a-1977d9e0de90",
+        "state": "cached"
+      }
+    },
+    {
+      "command": [
+        "host",
+        "process",
+        "media"
+      ],
+      "result": {
+        "handle": "2debc2a4-86a3-46dd-9bb0-a67e651ae7d1",
+        "result": {
+          "error": "document_empty",
+          "ok": false
+        },
+        "state": "failed"
+      }
+    },
+    {
+      "command": [
+        "ingress",
+        "record",
+        "{\"source\": \"video\", \"account\": \"baba2091-48d1-4759-94f9-6787b99010c0\", \"bot_stage\": \"58ad7ac9-8216-45ce-b91a-1977d9e0de90\", \"kind\": \"message\", \"reply_bot\": \"100\", \"occurred\": 100, \"observed\": 100, \"segments\": [{\"type\": \"media\", \"kind\": \"file\", \"reference\": \"unselected-video\"}, {\"type\": \"media\", \"kind\": \"file\", \"reference\": \"selected-video\"}]}"
+      ],
+      "result": {
+        "accepted": true,
+        "event": 5
+      }
+    },
+    {
+      "command": [
+        "ingress",
+        "claim",
+        "5"
+      ],
+      "result": {
+        "entry": "85bf0688-2b8b-419e-a408-8354a11f96fb",
+        "envelope": {
+          "account": "baba2091-48d1-4759-94f9-6787b99010c0",
+          "bot_stage": "58ad7ac9-8216-45ce-b91a-1977d9e0de90",
+          "kind": "message",
+          "native_id": null,
+          "observed": 100,
+          "occurred": 100,
+          "reply_bot": "100",
+          "segments": [
+            {
+              "kind": "file",
+              "reference": "unselected-video",
+              "type": "media"
+            },
+            {
+              "kind": "file",
+              "reference": "selected-video",
+              "type": "media"
+            }
+          ],
+          "source": "video",
+          "space": null,
+          "topic": null
+        },
+        "execution": "582798cf-6572-45d0-a0a3-e223480b74f2",
+        "mentions": [],
+        "original_actor": "9f09ddc1-1f50-4252-9133-f896683866d9",
+        "source": 5
+      }
+    },
+    {
+      "command": [
+        "media",
+        "cache-file",
+        "582798cf-6572-45d0-a0a3-e223480b74f2"
+      ],
+      "result": {
+        "digest": "50370931a0b76d5de10746daf717053d7fb76c3f4f726c0052cc6140d0a88683",
+        "expires": 1793927971582,
+        "handle": 0,
+        "kind": "file",
+        "mime": "application/octet-stream",
+        "origin": "unselected-video",
+        "segment": 0,
+        "slot": 0,
+        "source": 5,
+        "stage": "58ad7ac9-8216-45ce-b91a-1977d9e0de90",
+        "state": "cached"
+      }
+    },
+    {
+      "command": [
+        "media",
+        "cache-file",
+        "582798cf-6572-45d0-a0a3-e223480b74f2"
+      ],
+      "result": {
+        "digest": "c07d7e011bc253f0e6ad6d8a958093abf6bb04fe0afee7f14536e6091a0fd1b9",
+        "expires": 1793927971617,
+        "handle": 1,
+        "kind": "file",
+        "mime": "application/octet-stream",
+        "origin": "selected-video",
+        "segment": 1,
+        "slot": 1,
+        "source": 5,
+        "stage": "58ad7ac9-8216-45ce-b91a-1977d9e0de90",
+        "state": "cached"
+      }
+    },
+    {
+      "command": [
+        "host",
+        "process",
+        "media"
+      ],
+      "result": {
+        "handle": "c544daa0-2094-473b-ad89-7273a57c0fe7",
+        "result": {
+          "data": {
+            "frames": [
+              {
+                "index": 0,
+                "seconds": 0.0,
+                "sha256": "62218f03a1a02acf72d2136af6c6d0f2c399a8afe27df68063f2c97d85c5fd7d"
+              },
+              {
+                "index": 1,
+                "seconds": 5.0,
+                "sha256": "62218f03a1a02acf72d2136af6c6d0f2c399a8afe27df68063f2c97d85c5fd7d"
+              }
+            ],
+            "images": [
+              {
+                "artifact_id": "91c52b8e-102a-43f6-953d-fe73a0c89b88",
+                "ordinal": 0,
+                "state": "no_vision"
+              },
+              {
+                "artifact_id": "1caba080-3cc5-4835-bbb2-22731681076d",
+                "ordinal": 1,
+                "state": "no_vision"
+              }
+            ],
+            "kind": "video",
+            "limit_frames": 8,
+            "limit_seconds": 600,
+            "source": {
+              "event": 5,
+              "slot": 1
+            },
+            "state": "read",
+            "version": "c07d7e011bc253f0e6ad6d8a958093abf6bb04fe0afee7f14536e6091a0fd1b9"
+          },
+          "ok": true
+        },
+        "state": "confirmed"
+      }
+    },
+    {
+      "command": [
+        "ingress",
+        "record",
+        "{\"source\": \"erase-race\", \"account\": \"baba2091-48d1-4759-94f9-6787b99010c0\", \"bot_stage\": \"58ad7ac9-8216-45ce-b91a-1977d9e0de90\", \"kind\": \"message\", \"reply_bot\": \"100\", \"occurred\": 100, \"observed\": 100, \"segments\": [{\"type\": \"media\", \"kind\": \"file\", \"reference\": \"unselected-erase-race\"}, {\"type\": \"media\", \"kind\": \"file\", \"reference\": \"selected-erase-race\"}]}"
+      ],
+      "result": {
+        "accepted": true,
+        "event": 6
+      }
+    },
+    {
+      "command": [
+        "ingress",
+        "claim",
+        "6"
+      ],
+      "result": {
+        "entry": "85bf0688-2b8b-419e-a408-8354a11f96fb",
+        "envelope": {
+          "account": "baba2091-48d1-4759-94f9-6787b99010c0",
+          "bot_stage": "58ad7ac9-8216-45ce-b91a-1977d9e0de90",
+          "kind": "message",
+          "native_id": null,
+          "observed": 100,
+          "occurred": 100,
+          "reply_bot": "100",
+          "segments": [
+            {
+              "kind": "file",
+              "reference": "unselected-erase-race",
+              "type": "media"
+            },
+            {
+              "kind": "file",
+              "reference": "selected-erase-race",
+              "type": "media"
+            }
+          ],
+          "source": "erase-race",
+          "space": null,
+          "topic": null
+        },
+        "execution": "c01a99da-135f-443e-9e86-19d406ef5a8d",
+        "mentions": [],
+        "original_actor": "9f09ddc1-1f50-4252-9133-f896683866d9",
+        "source": 6
+      }
+    },
+    {
+      "command": [
+        "media",
+        "cache-file",
+        "c01a99da-135f-443e-9e86-19d406ef5a8d"
+      ],
+      "result": {
+        "digest": "50370931a0b76d5de10746daf717053d7fb76c3f4f726c0052cc6140d0a88683",
+        "expires": 1793927971843,
+        "handle": 0,
+        "kind": "file",
+        "mime": "application/octet-stream",
+        "origin": "unselected-erase-race",
+        "segment": 0,
+        "slot": 0,
+        "source": 6,
+        "stage": "58ad7ac9-8216-45ce-b91a-1977d9e0de90",
+        "state": "cached"
+      }
+    },
+    {
+      "command": [
+        "media",
+        "cache-file",
+        "c01a99da-135f-443e-9e86-19d406ef5a8d"
+      ],
+      "result": {
+        "digest": "753e25b038830e03768f05449dab4b8f05ef0534927abb9282eab60f4c5ecf42",
+        "expires": 1793927971886,
+        "handle": 1,
+        "kind": "file",
+        "mime": "application/octet-stream",
+        "origin": "selected-erase-race",
+        "segment": 1,
+        "slot": 1,
+        "source": 6,
+        "stage": "58ad7ac9-8216-45ce-b91a-1977d9e0de90",
+        "state": "cached"
+      }
+    },
+    {
+      "command": [
+        "privacy",
+        "erase",
+        "remove-original"
+      ],
+      "result": {
+        "key": "remove-original",
+        "sources": [
+          6
+        ],
+        "watermark": 1
+      }
+    },
+    {
+      "command": [
+        "host",
+        "process",
+        "media"
+      ],
+      "result": {
+        "handle": "930fbb73-d91f-488b-a044-747a94cc12eb",
+        "result": null,
+        "state": "failed"
+      }
+    },
+    {
+      "command": [
+        "privacy",
+        "pending",
+        "media"
+      ],
+      "result": {
+        "obligations": [],
+        "owner": "media"
+      }
+    },
+    {
+      "command": [
+        "privacy",
+        "pending",
+        "media"
+      ],
+      "result": {
+        "obligations": [],
+        "owner": "media"
+      }
+    }
+  ],
+  "pending": [
+    "original model pixel presentation through a selected profile",
+    "public producer release and full cross-platform runtime"
+  ]
+}

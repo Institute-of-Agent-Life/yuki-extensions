@@ -213,9 +213,9 @@ def prepare(root, output):
                     raise AssertionError("race completed before second chunk was held")
                 time.sleep(0.02)
             assert (owner.work / "control/held").exists()
-            # The current media.open does not itself register an owner obligation.
-            # Exercise the real callback via the protected operator registration.
-            op("privacy", "acquire", "media", "volatile-decoder-fixture", re)
+            # The Host registers the selected media holder automatically. Its
+            # forget callback is asynchronous; wait for the original callback
+            # and acknowledgement below instead of introducing an operator hold.
             erased = op("privacy", "erase", "remove-original", actor, json.dumps([re]))
             (owner.work / "control/release").touch()
             late = active.result(timeout=15)
@@ -233,11 +233,19 @@ def prepare(root, output):
         )
         assert denied.returncode != 0
         deadline = time.monotonic() + 8
-        while (
-            op("privacy", "pending", "media")["obligations"]
-            and time.monotonic() < deadline
-        ):
-            time.sleep(0.05)
+        automatic_forget = None
+        while time.monotonic() < deadline:
+            automatic_forget = next(
+                (r["frame"] for r in snapshot()
+                 if r["frame"].get("method") == "forget.request"
+                 and r["frame"]["params"]["key"] == "remove-original"),
+                None,
+            )
+            if automatic_forget and not op("privacy", "pending", "media")["obligations"]:
+                break
+            time.sleep(0.1)
+        assert automatic_forget is not None
+        assert automatic_forget["params"]["sources"] == [re]
         assert not op("privacy", "pending", "media")["obligations"]
         assert not list(temporary.iterdir())
         wire = snapshot()
@@ -268,14 +276,17 @@ def prepare(root, output):
         "pdf": pdf,
         "video": video,
         "faults": faults,
-        "erasure": {"late": late, "new_call_denied": True, "temporary_empty": True},
+        "erasure": {
+            "late": late, "new_call_denied": True, "temporary_empty": True,
+            "automatic_registration": True, "forget_request": automatic_forget,
+            "operator_acquire_calls": 0,
+        },
         "selected_slot": 1,
         "media_calls": len(media_calls),
         "media_reads": len(opens),
         "operator_transcript": records,
         "pending": [
             "original model pixel presentation through a selected profile",
-            "automatic volatile media ownership registration; this callback fixture uses operator privacy acquire",
             "public producer release and full cross-platform runtime",
         ],
     }

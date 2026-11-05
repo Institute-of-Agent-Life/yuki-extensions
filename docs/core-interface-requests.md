@@ -122,13 +122,12 @@ Windows 真 Rust 插件已消費 `e25c2b8acce3` 的 `media.process/open/publish`
 固定來源、SDK、schema 與三平台包於 `compat/core-038/source.lock.json`。
 `artifacts/EXT-031/candidate-02/` 含原 PDF 頁文、兩張實際影片幀、失敗結果和 wire。
 
-- `candidate-01` 中已讀首塊後，`privacy erase` 阻止後續讀取，卻未發
-  `forget.request`。`candidate-02` 在相同時序加入公開 operator
-  `privacy acquire media volatile-decoder-fixture <event>` 才收到回調，Rust
-  清理完畢回原 key／watermark／proof，pending 清空。請確認宿主應在
-  `media.process` 授出或 `media.open` 首讀時自動登記的暫存責任，綁定
-  installation、原 handle、source/version、水位；或指明已有的插件端方法。
-  案例需覆蓋分塊讀途中清除、解碼中清除、完成前清除與重啟欠交。
+- 自動媒體清除責任已核實，撤回先前缺口判定。生產者 `d1b7c1b` 的只讀
+  診斷指出 `candidate-01` 太早截取 wire；原包 `e25c2b8` 已有自動持有者。
+  Windows `candidate-03` 移除手動 acquire，等待原來源的非同步
+  `forget.request` 和 pending 清空後才結束。實收 key `remove-original`、
+  sources `[6]`、watermark `1`；晚到結果失效、新讀取遭拒，暫存清空。
+  新回條 SHA-256 `405e7c1359165dced882df1c6400bdd29ae2f781106b583e56225d17b587ea55`。
 - 普通 `tool.call` 的 `data.images` 已有原 profile 的呈現合同。選讀現在由
   operator `host process` 觸發，回條兩幀是 no_vision。請給出由使用者或
   Main 的原執行選定 processor/event/slot 後，如何把該 media call 的

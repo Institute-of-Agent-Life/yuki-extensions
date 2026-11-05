@@ -29,6 +29,6 @@ plugin. A scope error prevents late publication.
 
 This uses an unpublished alpha.4 Host contract. Actual original-model pixel
 presentation and public-release acceptance remain separate open checks.
-The current candidate does not automatically register volatile media ownership.
-The Windows callback witness uses the public operator privacy acquire command;
-automatic source-bound registration must be supplied by the Host before release.
+The Host automatically registers volatile media ownership. The Windows
+candidate-03 witness waits for the asynchronous original forget callback and
+its acknowledgement, without an operator privacy acquire command.
