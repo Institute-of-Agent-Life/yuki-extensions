@@ -15,6 +15,8 @@
 
 ## 2026-11-05 固定資產 GET 的 504 回歸
 
+已驗修正提交 `b82112b5b452`，分支 `codex/ext-047-scoped-session`，沿 PR #26 驗新 SHA。
+
 - PR #26 `b2393fc` 的新失敗是 PR run `42043545403`／job `127300355097`
   acceptance/Ubuntu 在已發布握手資產 GET 收到 HTTP 504。原 ZIP
   `52db6dd1f504eecbabfaf1ad5435e3979c76a9c36f3f9e337a1a67e758ee47e8`、四成員／manifest

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-05T15:34:01.330652+00:00",
+  "updated_at": "2026-11-05T15:35:32.343845+00:00",
   "previous": "after-native134-diagnostics.json",
   "formal_cards": [
     "EXT-001",
@@ -698,7 +698,8 @@
     "original_run": 42043545403,
     "original_job": 127300355097,
     "http_status": 504,
-    "business_retry_policy_changed": false
+    "business_retry_policy_changed": false,
+    "implementation_commit": "b82112b5b45202f10672e32de6f3b104b5aad30f"
   },
   "pr14_partial": {
     "evidence": "artifacts/readiness/pr14-dfe8eb4-ci-partial.json",
