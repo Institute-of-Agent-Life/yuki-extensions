@@ -98,6 +98,13 @@ Windows 重驗 `artifacts/EXT-003/candidate-03/telegram-offset.json` SHA-256
 新 binary `0eb1cc4cbbc40321028032fc5ba5175ff51bce4e9c99c9af77d23c0fea95c0f2`。在本次三條的故障序列中仍得到 event 3 重投回原 ID。
 [擴展 PR #11](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/11)
 
+PR #11 的 head `03cabaa6f53d` 已完成三平台 acceptance、Connector 與 Telegram
+package jobs；push `41902511932`、PR `41902523876` 的 24 份產物逐一下載驗
+ZIP digest、manifest 和套件成員。2026-11-05 普通合併至 main `8d2f3c6d85e1`。
+回條為 `artifacts/EXT-003/ci-receipt-03cabaa.json`。EXT-003 仍是未發布宿主的
+開發候選；正式驗收待 CORE-032 交付。PR #12 合入此 main 後程式樹未改，
+在新 head／base 重跑三平台 CI；依 #12→#13→#14→#15→#16→#17→#18 順序合併。
+
 ## EXT-028 Windows 開發候選對拍
 
 分支 `codex/ext-028-web-fetch`。實機回條 `artifacts/EXT-028/candidate-04/fetch-source.json`
