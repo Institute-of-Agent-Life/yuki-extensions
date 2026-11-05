@@ -13,6 +13,28 @@
 | EXT-010 · codex/ext-010 | `ab16e07`；CI `41834791702`；PR #6 合併 `2c55dbb` | `artifacts/EXT-010/02/`，8 例含實際子進程退出碼 23、雙 session 取消及 unknown |
 | EXT-019 · codex/ext-019 | 實作 `7531d84`、PR head `9d1e8a8`；三平台 CI `41835863011`；PR #7 合併 `7625095` | `artifacts/EXT-019/02/`，呼叫表、schema 差分、5 個故障變異；`03/` 固定跨平台順序 |
 
+## 2026-11-05 固定資產 GET 的 504 回歸
+
+- PR #26 `b2393fc` 的新失敗是 PR run `42043545403`／job `127300355097`
+  acceptance/Ubuntu 在已發布握手資產 GET 收到 HTTP 504。原 ZIP
+  `52db6dd1f504eecbabfaf1ad5435e3979c76a9c36f3f9e337a1a67e758ee47e8`、四成員／manifest
+  及 merge parents 已核；證據 `artifacts/readiness/ci-release-504-20261105/original/`。
+- `ci/download_http.py` 只為無 body 的固定資產 GET 做 502／503／504 最多三次讀取，
+  等待 1、2 秒；Retry-After、其他 HTTP、TLS 錯誤直接失敗。原 checksum／來源／版本／
+  receipt／能力核對保留，壞 digest 不重試、不落盤；不增加任何業務或模型請求重試權。
+  正常與故障時序在 `docs/ci-download-sequences.md`。
+- HJW Windows 的七項真 loopback HTTP／TLS 例外／完整性回歸通過，產物
+  `ci-release-504-20261105/verification-01`；只驗 CI 讀取，不重做 EXT-002 消費者。
+  同一 `b2393fc` 的兩個 native jobs `127300387575`／`127301499397` 都 success，
+  此處僅核 job 狀態，未據此宣布間歇性 134 根因已修復或整張卡通過。
+- PR #14 的 22 份現有 ZIP 已核 GitHub digest、成員、manifest、當前 base／merge parents；
+  回條 `artifacts/readiness/pr14-dfe8eb4-ci-partial.json`。只差 Connector/macOS
+  `127165347504` 與 package／connector-upgrade 兩產物，未合併。
+- 核心 main 已普通合併 CORE-027 至 `3d7d12c0d329aef5fb0db117161cc81a07242946`；
+  CORE-035／051／058 只整合 CI window，CORE-025 只整合新 main，未補本倉所缺安裝配置
+  或新的公開 Host／SDK 交付。授權回條仍無回覆，公開 release 仍只有已驗握手版。
+  正式完成 7／68；最新 readiness `artifacts/readiness/after-ci-get-retry.json`。
+
 ## 2026-11-05 native CI exit134 診斷補強
 
 已驗本地提交 `335bc62e0d3e`，分支 `codex/ext-047-scoped-session`，推送至 PR #26 後驗當前 CI。

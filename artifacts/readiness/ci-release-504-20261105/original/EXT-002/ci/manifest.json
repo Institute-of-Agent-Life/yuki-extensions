@@ -1,0 +1,20 @@
+{
+  "task": "EXT-002",
+  "status": "FAIL",
+  "phase": "acceptance",
+  "card_status": "FAIL",
+  "platform": "Linux-7.0.0-1014-aws-x86_64-with-glibc2.39",
+  "python": "3.12.16 (main, Oct 26 2026, 02:50:49) [GCC 13.3.0]",
+  "source_commit": "42d5396dfe19eada5cf0de45563b68b6f9ede01d",
+  "source_snapshot_sha256": null,
+  "command": [
+    "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+    "ci/check.py",
+    "EXT-002",
+    "--out",
+    "artifacts/EXT-002/ci"
+  ],
+  "files": {
+    "failure.txt": "85e93a5edb2183d5e058cc9d18e8442a926de3d86417ee0fc30c7e1112dad112"
+  }
+}
