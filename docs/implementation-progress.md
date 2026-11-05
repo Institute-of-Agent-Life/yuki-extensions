@@ -98,6 +98,13 @@ Windows 重驗 `artifacts/EXT-003/candidate-03/telegram-offset.json` SHA-256
 新 binary `0eb1cc4cbbc40321028032fc5ba5175ff51bce4e9c99c9af77d23c0fea95c0f2`。在本次三條的故障序列中仍得到 event 3 重投回原 ID。
 [擴展 PR #11](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/11)
 
+PR #11 的 head `03cabaa6f53d` 已完成三平台 acceptance、Connector 與 Telegram
+package jobs；push `41902511932`、PR `41902523876` 的 24 份產物逐一下載驗
+ZIP digest、manifest 和套件成員。2026-11-05 普通合併至 main `8d2f3c6d85e1`。
+回條為 `artifacts/EXT-003/ci-receipt-03cabaa.json`。EXT-003 仍是未發布宿主的
+開發候選；正式驗收待 CORE-032 交付。PR #12 合入此 main 後程式樹未改，
+在新 head／base 重跑三平台 CI；依 #12→#13→#14→#15→#16→#17→#18 順序合併。
+
 ## EXT-028 Windows 開發候選對拍
 
 分支 `codex/ext-028-web-fetch`。實機回條 `artifacts/EXT-028/candidate-04/fetch-source.json`
@@ -147,3 +154,21 @@ run_not_found 和 unknown_request。Rust env 對拍 `199dff095be0` 的 CORE-032
 EXT-020 實作提交 `cf1c2a5`。Linux package job 另以隔離的原 Manager Unix socket
 檢查 Rust 工具只回傳 ready。Windows `candidate-03` 通過相同宿主故障案例，
 插件 SHA-256 `44a5e57ec0941dcd067726cc41eaf0b11fd55723209e5674b73562ad30dc6440`。
+
+## PR #12 合併與 PR #13 新基底
+
+PR #12 head `f0843e106711` 的 push `41939834061` 與 PR `41939841639` 全過。
+已下載 18 份 ZIP，核 GitHub SHA-256、成員雜湊及各 task PASS；PR 產物來自
+`867562e4c971`，parents 為 main `8d2f3c6d85e1` 與該 head。普通合併提交
+`e90035586e9b91af19a5c6162c2e565dbfe966cf`，回條 `artifacts/EXT-028/ci-receipt-f0843e1.json`。
+PR #13 已正常合入此 main；程式樹未變，新增前卡回條與進度。新 head 的三平台
+與受影響套件仍須重驗，舊基底綠燈不作合併證據。
+
+## PR #13 合併與 PR #14 新基底
+
+PR #13 head `9db51914174e` 的 push `41980406600`、PR `41980413395` 三平台及
+四套件全過。下載核驗 21 份 ZIP、所有 manifest 成員與執行回條；測試 merge
+`98eb7aab4850` 的 parents 為 `e90035586e9b` 和該 head。普通合併至 main
+`526a35382d9bb464f92adc947e1b212e0ea41c3c`，回條 `artifacts/EXT-005/ci-receipt-9db5191.json`。
+PR #14 正常合入此 main；僅合併回條與進度，程式樹不變。新 SHA 的三平台及套件
+檢查仍需全過並驗下載產物，才可合併。
