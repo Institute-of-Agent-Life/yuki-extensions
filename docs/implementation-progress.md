@@ -34,8 +34,21 @@
   audit/reembed 沒有自動清除回調，metadata 保留責任待釐清。`candidate-01` 留缺 write_subject
   的拒絕，`candidate-04` 留未發生回調的失敗。插件收到此回調會停止並拒絕未證實的 ACK，
   不刪無關工作。未發布、未部署、未計入七張正式驗收。
-- 下一張可做卡為 EXT-034 原來源歷史重建；EXT-033 尚缺精確選簇向量與權屬投影，
-  EXT-035 尚需原 SELF 分區／前臺真人工作退讓的公開交接。CORE-034/036/050 三份既有回條仍待回覆。
+- EXT-036 實作 `fdaa47576a54` 已推 [PR #22](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/22)，
+  Windows／Linux jobs 通過，macOS 排隊。真插件回條已交 [CORE-035 #46](https://github.com/Institute-of-Agent-Life/yuki-core/pull/46#issuecomment-6651927585)。
+- 已接續 EXT-034。`codex/ext-034-rebuild` 的診斷提交 `69e4e5a` 在
+  `artifacts/EXT-034/source-intake-02/` 保留真 Rust 最小重現：同一 Person／entry 的來源讀取成功，
+  `model.open`／`extract.preview` 皆 `-32003`，HTTP 零次；完整安裝設定、source version、
+  Host／SDK／consumer digest 與 transcript 均保存。這是可重現授權拒絕，未驗收重建。
+- `.ci-transfer/work-rebuild` 的完整 job journal／審閱／apply 尚未提交：
+  catalog、ci/windows.py、plugin.toml、main.rs、rebuild.rs、EXT-034.py、rebuild_stdio.py、
+  EXT-034-sequences.md 及 candidate-01…06 仍留工作樹。批准子集、kill 恢復、付費復用及
+  forget 尚未跑到，不把這些檔計入已驗插件。主樹四個 Code adapter 與 work-asr 改動均保留。
+- 最新 readiness 為 `artifacts/readiness/after-core035-intake.json`。暫無獨立就緒下一卡；
+  下一步等 CORE-035 公開 extraction route 設定或 PR #13 macOS gate。
+  EXT-033 缺精確選簇向量與權屬投影，EXT-035 缺原 SELF／真人前臺退讓交接。
+  EXT-048 還缺個人寫入及角色管理前置；CORE-051 目前只有 Mac 開發證據，沒有可驗 Windows
+  Host 交付，CORE-058／037 亦未見交付。CORE-034/036/050 三份回條仍待回覆。
 
 ## 核心輸入與可交還證據
 

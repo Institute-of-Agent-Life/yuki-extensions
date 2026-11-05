@@ -46,7 +46,7 @@
     "EXT-033": "missing authorized exact vector/profile and ownership partition projection",
     "EXT-035": "missing original SELF partition and foreground yield contract",
     "EXT-048": "EXT-015/038 and CORE-037 personal mutation dependencies unmet",
-    "EXT-063": "CORE-051 has local Mac development evidence, no verified Windows Host handoff; CORE-058 unmet"
+    "EXT-047": "CORE-051 has local Mac development evidence, no verified Windows Host handoff; CORE-058 unmet"
   },
   "pull_requests": {
     "12": "merged e90035586e9b91af19a5c6162c2e565dbfe966cf",
@@ -72,6 +72,7 @@
       "tests/peers/rebuild_stdio.py",
       "docs/EXT-034-sequences.md"
     ],
-    "candidate_only": true
+    "candidate_only": true,
+    "diagnostic_commit": "69e4e5a"
   }
 }
