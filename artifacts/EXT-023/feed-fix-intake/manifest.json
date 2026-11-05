@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "scope": "candidate diagnostic; not full card acceptance",
+  "files": {
+    "host.txt": "15c9e5c9e90316f2a0cc87c6d7e055911b9a26a53e6eb97f3f4537ccd14508ab",
+    "model.json": "95d46464b3c8b73ecdcbd7deb100da2f39dac529b7539350e8a802f4636dae23",
+    "native-owner.py": "4b437cc7df9fd8c0085ab71d020f9131e74dcd8203ac8e42c38957a83ef31b67",
+    "result.json": "3b966f575be111350ac52e8d3eb1060bd61be8b02f2a078d0068c7193a477d70",
+    "sdk-comparison.json": "2343aca110edf73cac75ace2e8c79c9600dc419d798d76550e4ec871ee848301",
+    "source.lock.json": "a17a6d2aff857deb9d8b79ea51442a2c9c0845d325615fb131e904dff4700d27",
+    "verified-packages.json": "c03ee1cdaeb4ad4fe1eef43092207760df3ab4629da4abbbb97e2ab3bb97c2d4",
+    "wire.jsonl": "8897af387eacde8dc3a051b4e584f619917e4fe46110ca8b84a9805886731396"
+  }
+}

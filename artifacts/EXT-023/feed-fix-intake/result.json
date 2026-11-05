@@ -1,0 +1,38 @@
+{
+  "event": {
+    "accepted": true,
+    "event": 1
+  },
+  "wire_count": 3,
+  "deliveries": [
+    {
+      "arguments": {
+        "text": "same original arguments"
+      },
+      "execution": "53a5271e-3ad5-480b-af0f-3afbd8afb4dd",
+      "operation": "aa719383-e5a8-4ac3-a8b0-f9edde3046c5",
+      "tool": "send"
+    },
+    {
+      "arguments": {
+        "text": "same original arguments"
+      },
+      "execution": "53a5271e-3ad5-480b-af0f-3afbd8afb4dd",
+      "operation": "b22ff0e8-8f50-459e-835a-5aa722946542",
+      "tool": "send"
+    }
+  ],
+  "host": {
+    "host_schema_revision": 2,
+    "plugins": [
+      {
+        "enabled": true,
+        "generation": "94758010-2b4b-4938-bf1b-a12663087a0f",
+        "namespace": "code_a",
+        "online": true,
+        "plugin": "code_a",
+        "revision": "fe16e18e0af3d5032954fadc9e64a9b1adf37127ae43854a5a0adb9d639e294c"
+      }
+    ]
+  }
+}

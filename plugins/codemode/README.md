@@ -1,29 +1,46 @@
-# Code runtime worker component
+# Code plugin candidate
 
-The Rust worker controller is implemented and independently tested. It starts
-only the pinned Linux x86_64 image on a local Docker socket, verifies the original
-AppArmor profiles and seccomp bytes, checks the actual worker/launcher/codec/ABI,
-and owns cleanup of the container it created. Scripts enter the codec only over
-stdin. The interpreter remains the original pinned native Monty worker.
+Rust Host adapter for the independently packaged `monty-runtime` image. The
+plugin owns no identity, authorization or primary database. It uses the public
+SDK and frozen Host script aliases, saves opaque native snapshots through
+`code.snapshot.put`, and feeds only the original durable child receipt.
 
-Set `YUKI_CODE_RUNTIME_CONFIG` to an administrator-owned JSON file containing
-`image_id` (immutable `sha256:` image ID), `docker_socket` (local `unix:///` socket),
-`seccomp_path`, and the built image's `contract`. The user of this controller is
-a trusted Docker client. The script has no access to Docker or host files.
-Install the exact original AppArmor profiles before use. Container-wide
-NoNewPrivs would block the original launcher transition; the worker itself
-retains enforced NoNewPrivs through the original bwrap boundary.
+This is an unpublished development candidate. `compat/core-034/source.lock.json`
+pins the build SDK. The newer Host at `f74ecdd86b73` fixes same-feed acknowledgement;
+its full package pins and the byte-identical SDK source comparison are recorded
+in `artifacts/EXT-023/feed-fix-intake/`. The earlier Host cannot complete that flow.
 
-Run `python ci/codemode_worker_check.py --out <new-directory>` for portable
-compilation and the pre-cancelled admission case. On HJW Arch the explicit
-`native_suspend_restore_and_cancel` case also executes the native VM, preserves
-both equal-argument calls at feed 0 with distinct engine call IDs, restores the
-original dump and removes each container. Non-Linux hosts report unavailable;
-an ignored native case is not a native runtime pass.
+`YUKI_CODE_RUNTIME_CONFIG` names the operator-installed runtime JSON containing
+`image_id`, `docker_socket`, `seccomp_path` and `contract`. The image must be pinned,
+the local Unix socket reachable, and the original three AppArmor profiles enforced.
+No runtime, daemon, profile or image is installed by the plugin. The independent
+runtime unit carries Monty, its original patch, launcher, codec and notices.
+The controller is a trusted Docker client; scripts receive no Docker socket or
+host mounts. Container-wide NoNewPrivs would block the original launcher
+transition. The worker retains enforced NoNewPrivs inside the original bwrap
+boundary.
 
-The Host composition adapter is still in the working tree, outside this
-completed component. It is not a release unit yet. CORE-034 `f3f3723aa532`
-accepted the first actual send but rejected its post-answer acknowledgement at
-the original native feed 0. See `artifacts/EXT-023/core034-consumer-01/`.
-No parallel core rules or synthetic VM positions are introduced to bypass that
-boundary. Full EXT-023/024 acceptance and publication remain pending.
+Native execution currently requires Linux with that isolation setup. Windows and
+macOS builds return `runtime_abi_unavailable`; HJW integration uses a Windows Host
+and byte-preserving WSL transport to the real Linux Rust binary. Direct mode does
+not depend on this plugin or image. Unsupported native futures fail closed.
+
+The Host must register the actual composition ABI/digests and one explicit Code
+tool. Scripts pass one object to each frozen alias. Parent operation, child
+ordinal, original feed and engine call ID survive snapshot restore. Two calls
+with equal arguments retain different child operations. Unknown receipts return
+partial without redispatch; closing the stream cancels native workers, including
+when the final frame is malformed. Forget acknowledges only after cleanup.
+
+Candidate evidence covers real effects and crash boundaries, not full EXT-024
+acceptance. The current public catalog exposes aliases only through `tool.schema`,
+so bootstrap reads then discards schemas to obtain the frozen projection. A light
+alias projection is still needed to satisfy strictly on-demand schema lookup.
+Work/run futures, full H14 budget/stop cases and formal publication remain open.
+
+Run `python ci/package.py --unit codemode --out <new-directory>` to build this
+independent package. `python ci/codemode_worker_check.py --out <new-directory>`
+checks the portable worker component. Its ignored native test is not a native
+runtime pass; explicitly run `native_suspend_restore_and_cancel` only with the
+installed isolated runtime. The HJW integration fixture and exact invocation
+are documented in `docs/EXT-023-024-sequences.md`.

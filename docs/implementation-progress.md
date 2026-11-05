@@ -13,7 +13,29 @@
 | EXT-010 · codex/ext-010 | `ab16e07`；CI `41834791702`；PR #6 合併 `2c55dbb` | `artifacts/EXT-010/02/`，8 例含實際子進程退出碼 23、雙 session 取消及 unknown |
 | EXT-019 · codex/ext-019 | 實作 `7531d84`、PR head `9d1e8a8`；三平台 CI `41835863011`；PR #7 合併 `7625095` | `artifacts/EXT-019/02/`，呼叫表、schema 差分、5 個故障變異；`03/` 固定跨平台順序 |
 
-## 2026-11-05 本輪更新
+## 2026-11-05 10:04 UTC 更新
+
+- PR #13 當前 head `9db5191` 的三平台與四套 package／Connector 升級檢查全過，
+  21 份 ZIP、GitHub digest、manifest 成員及 merge parents 已核；普通合併 main
+  `526a35382d9bb464f92adc947e1b212e0ea41c3c`。回條 `artifacts/EXT-005/ci-receipt-9db5191.json`。
+  PR #14 已正常合入此 main，head `dfe8eb46d64a`；Windows／Linux 過，七個 macOS job 排隊。
+- PR #20 的 connector/macOS、#23 的 acceptance/macOS 原日誌均為固定依賴下載 HTTP 504。
+  原 ZIP 已驗；整輪仍排隊時 GitHub 拒絕單 job rerun。等結束再重跑，沒有降檢查或合併。
+- `codex/ext-023-feed-recovery` 位於 `.ci-transfer/work-code-recovery`，從 `ab63ec2` 接續。
+  原主樹四個 Code adapter、work-asr 與 work-rebuild 的 WIP 均保留。
+  本次形成獨立 Rust `codemode` 建置單位，原 Monty 映像仍獨立發行；異常訊框也會
+  走 native worker 清理。Windows 建包與 HJW Arch 同源編譯通過，見
+  `artifacts/EXT-023/package-candidate-02/`，Linux binary `23f888dc639f`。
+- CORE-034 新候選來源 `f74ecdd86b732d0fb34fa12f0ca9defa377db6b8`，handoff `befb66685306`；
+  Windows ZIP `4d073b6f15f5d10c0c8594064c568555671e90c49394f7da64ff1d9568b7ec2e`。
+  三平台 ZIP 與每個成員已核。SDK alpha.5 的新包只變 `.cargo_vcs_info.json`，
+  插件沿已釘原 crate `ea6a1c2f5e8e`，來源逐成員一致；完整 pin 在 `feed-fix-intake/`。
+  原 binary `f26e88f7` 已先實收兩筆同參數 send，證實原 feed 0 ACK 問題解除。
+- EXT-023 `candidate-03` 三個真案例通過：兩筆不同 operation、缺 runtime 零效果、
+  畸形訊框後原 native 容器清除；全部在 Windows Host／HJW Arch 執行。
+  EXT-023／024 都仍是未發布候選，未加入七張正式驗收清單。
+
+## 2026-11-05 08:28 UTC 已有進度
 
 - PR #12 已普通合併 `e90035586e9b`，18 份 CI ZIP／成員驗證回條在 PR #13 的
   `artifacts/EXT-028/ci-receipt-f0843e1.json`。PR #13 head `9db51914174e` 已合入新 main；
