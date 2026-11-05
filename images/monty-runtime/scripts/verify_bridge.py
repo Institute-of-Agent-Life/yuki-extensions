@@ -152,7 +152,12 @@ def verify(image, policy):
         else: raise AssertionError("native infinite loop was not observed running")
         start = time.monotonic()
         blocked.proc.stdin.close()
-        assert blocked.proc.wait(timeout=5) == 0
+        exit_code = blocked.proc.wait(timeout=5)
+        state = json.loads(docker("inspect", blocked.cid).stdout)[0]["State"]
+        diagnostics = {"exit_code": exit_code, "container_state": state,
+                       "stdout": blocked.proc.stdout.read().decode("utf-8", "replace"),
+                       "stderr": blocked.proc.stderr.read().decode("utf-8", "replace")}
+        assert exit_code == 0, diagnostics
         elapsed = time.monotonic() - start
         assert not stat.exists() or stat.read_text().split()[21] != baseline[21]
         report["blocked_feed_disconnect"] = {"native_pid": native[0], "elapsed_seconds": elapsed,
