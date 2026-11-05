@@ -1,6 +1,6 @@
 {
   "status": "waiting_current_PR15_CI",
-  "updated_at": "2026-11-05T15:42:03.157638+00:00",
+  "updated_at": "2026-11-05T15:47:09.211934+00:00",
   "main": "996deedef3e119246651050dc8cac186044a925a",
   "formal_cards": [
     "EXT-001",
@@ -25,8 +25,17 @@
     "branch": "codex/ext-040-setup",
     "original_head": "a2285c3bc6a22da587f9d586cf26ada8ae65c821",
     "new_base": "996deedef3e119246651050dc8cac186044a925a",
-    "code_changed": false,
-    "CI": "current head pending; do not use old green checks"
+    "code_changed": true,
+    "CI": "current head pending; do not use old green checks",
+    "sync_merge": "f8aef1bb976d5fd813b8bf63857dbce0c3943de6",
+    "installer_and_plugin_code_changed": false,
+    "ci_transport_backport": "b82112b5b45202f10672e32de6f3b104b5aad30f",
+    "windows_tests": 7,
+    "evidence": "artifacts/readiness/ci-release-504-pr15",
+    "superseded_runs_after_next_push": [
+      42057662910,
+      42057674092
+    ]
   },
   "order": [
     15,

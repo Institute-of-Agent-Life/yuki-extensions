@@ -20,8 +20,12 @@
   `996deedef3e119246651050dc8cac186044a925a`；實際 tree 與 CI merge `a5ece9e35203` 相同。
   回條 `artifacts/EXT-040/ci-receipt-dfe8eb4.json`。EXT-020 的完整前置仍待核心交付。
 - 本分支 `codex/ext-040-setup` 從原 head `a2285c3bc6a2` 正常合入新 main；
-  只合併歷次回條／進度，安裝器、插件與 CI 程式樹未改。當前 SHA 三平台 acceptance
+  同步提交 `f8aef1b` 只合併歷次回條／進度，安裝器與插件程式樹未改。當前 SHA 三平台 acceptance
   和受影響 packages 需重新通過並驗產物，才可合併 PR #15，不能使用舊 base 綠燈。
+- 隨後把已驗固定資產下載修正 `b82112b5b452` 同步到本分支，避免後續 CI 繼續
+  遇到相同 504。四個來源檔和原 contract inputs 逐 bytes 相同；在此新基底又於 HJW
+  Windows 驗七例通過，回條 `artifacts/readiness/ci-release-504-pr15/`。只改 CI
+  讀取；安裝器、插件、原 SDK／資產和授權未變。新 SHA 要重跑全部 gates。
 - 正式完成仍 7／68。PR #26 已推固定資產 GET 的有限重試，修正 `b82112b5b452`、
   head `c2600d644a02`；Windows 七例過。原 native exit134 只有診斷補強，根因未解。
   後續卡與核心包 pin 的完整進度固定於
