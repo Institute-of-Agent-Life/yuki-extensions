@@ -1,0 +1,19 @@
+{
+  "task": "EXT-037",
+  "status": "METHOD_INTAKE",
+  "card_status": "BLOCKED",
+  "phase": "diagnostic",
+  "source_snapshot_sha256": "6d7138e2ee9b00686f85b0842beadbcc974ebeb7e85ecf945d8ec73b298913a4",
+  "files": {
+    "build.json": "f12b960156fb9925b91647d8497ade52a6c32389af2f95c5e4dc6424f3bf2029",
+    "cases.json": "487023ef6ca83d75ab6b8dda81020190b499493d170ad41e96a1670feff3628c",
+    "erasure.json": "cd4a787a2246a8ea033a681ee41fc682daec66f04576a95f45b4dcd1ef5a5951",
+    "generated-Cargo.lock": "51556be49fd1f19e7164ddcf83ecb66e0d4cd621a4f16d35d5f5e4b963ab3e8b",
+    "host-config.toml": "142912649b79f4406e1d4a19aade532ef71e50aa257d0bec3274cae4f658efb1",
+    "host.txt": "cffb27631368efaa039ff876ab2430c81c9bad6930e8870a600bfa37228c8f30",
+    "intake.json": "36399715a7bc7551862bd877f400d8ec6a61888e28e77e99eec9b41eab952779",
+    "model.json": "8900ce8ba40b4e2fd17b04102e0abbc252b26f036e5cc3485c529e558ea6da17",
+    "operator.json": "5824f55c27108fa4194587b76f1ad48ea5402e265689fb547a85da074ac7416f",
+    "wire.jsonl": "e5b4d98dd15421c9f8556e25f331055024ebe5ced21d4da943c3aa662848e1e5"
+  }
+}

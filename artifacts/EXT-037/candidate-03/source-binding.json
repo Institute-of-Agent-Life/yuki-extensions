@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "source_snapshot_sha256": "446846cbdac20555d1c9a16ea75ff7a51ce0f8a7ae99c623aa51181c2c5d4bbc",
+  "files": {
+    "plugins/trace/Cargo.toml": "ebb0b7e143a2cd2e27d97377c6caa797481e8378a017138da64e3f30054455f8",
+    "plugins/trace/rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+    "plugins/trace/plugin.toml": "1c9003baafd100c94a13b2d4be8e5cc6892e4098fe4b621388cebe59c9b28add",
+    "plugins/trace/README.md": "641cda42bd38979d5a0c8f0da90b16c44d0d96601615473822e505533ad09f4f",
+    "plugins/trace/LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+    "plugins/trace/Cargo.lock": "adf7e201a7f790356894bb617040a90802f6d0c979db7a1656a5fc94659d9ec9",
+    "plugins/trace/src/query.rs": "5b3402ba232aa041a286e9cb747096c66f7e794937886e98b41528e7d5a3fdb5",
+    "plugins/trace/src/main.rs": "dce2a7dd21992e65cc7eb043f899f6b6e41d54951bb52693849826ce3dd7be62",
+    "plugins/trace/src/rpc.rs": "f3c8975a8dae286a0a036a2f754412f4cc9ba3212e0cbff56fafdc64188762a9",
+    "compat/core-037/host-preview.json": "217d402c00a0c7d47f41b206162f3d96156e8787e15bffce5cf45d886c0be750",
+    "compat/core-037/handshake.schema.json": "c4946589e2de76b2a9af6e2793af10651e8b6c29e84ddf41a75db015a71d3d0a",
+    "compat/core-037/control-methods.json": "ff3efce8020cbc6aff324c2aebfb6a90c863f3c60ea27b54df4af17d59a9c213",
+    "compat/core-037/README.md": "a0e2a5f0ed883c4332da3bcc44da7ff8db99ab6b54616338bb9852fb074372e3",
+    "compat/core-037/capabilities.json": "20b8f6a62f7acc0cb1e53b1c5296022be6a883b509bb0e8d0dd8c1515211574e",
+    "compat/core-037/person-capabilities.json": "a65fff32af8ba516c5874228495609fc8f127ba5849b78013d06819d50503f50",
+    "compat/core-037/admin-openapi.json": "6caf8f1a6da0c09a9f033b06eb5f6b27b179e60c740d437a393907f04c5aa51c",
+    "compat/core-037/yuki-plugin-sdk-1.0.0-alpha.11.crate": "cb6db37ce6b3b40d258e209a8561e01e4d496ad14640615a6676e34665031193",
+    "compat/core-037/sdk-verification.json": "f591c746dfcf13d5a6acccff7b7b0cf3cc5da6f52ffde9cf2de4c6ffd8cd858c",
+    "compat/core-037/source.lock.json": "ee0a25db75e881ce5a5bc3f5b107fcd55f13d83ff694049195a585a6886f3a98",
+    "catalog/trace.json": "d23fd6d131b788a2d4c774b4aecd61f49af5c8c9f313ca4b70704432adcb9d1a",
+    "ci/control_intake.py": "ba4a08f2f0dfd4624db31bb94fbef66a966ce32e3581325feda209cff540725c",
+    "ci/windows.py": "2a8dbebd62fc0fd1f83e8b31baf7716034a4abc644c67898ee90221fed40bd3f",
+    "ci/personal_preview.py": "33b05b3eef6137ac44083a2aa2e9f716512d3177612856a3068b049a52a32d06",
+    "ci/host_preview.py": "6d4dbb4c0348ae501041bb28e7cefc09476290dbeea6bd9c43324560b19d9d23",
+    "ci/package.py": "3ce1623c5e44102c99e3f5226b6171c38da26d98cb61adadc2c5b5c487fea74d",
+    "ci/handshake_cargo.py": "4aaeb82dcc8d70ebd61d4dc7ef0c3d64381b898ef58320b04a8c65f14213855f",
+    "tests/cases/EXT-037.py": "3e46ccfadc38774e78de2a1039425e38b301cd8f60e2c9f8a8389b5a241a14c3"
+  }
+}

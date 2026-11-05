@@ -1,0 +1,30 @@
+format_version = 1
+listen = "127.0.0.1:52107"
+
+[memory]
+mode = "lexical-only"
+
+[main]
+endpoint="http://127.0.0.1:52067/model"
+model="fixture"
+name="Yuki"
+merge_ms=1
+root_slots=8
+root_tool_calls=8
+max_input_units=200000
+max_output=512
+
+[[plugins]]
+id="control-probe"
+namespace="control-probe"
+program="C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe"
+args=["D:\\yuki-extension-tests\\control-source-intake-01\\src\\tests\\peers\\observe_stdio.py", "D:\\yuki-extension-tests\\control-source-intake-01\\evidence\\packages\\control-probe.exe", "D:\\yuki-extension-tests\\control-source-intake-01\\evidence\\work\\wire.jsonl"]
+grants=["control.invoke", "tool.call", "forget.owner"]
+env=["YUKI_CONTROL_PROBE_CORE", "YUKI_CONTROL_PROBE_LISTEN"]
+[[plugins.tools]]
+name="control_probe"
+description="Inspect the authorized original trace"
+parallel_read=false
+cacheable=false
+code_direct=true
+schema={type="object",properties={method={type="string"},args={type="object"},forged_actor={type="string"}},required=["method","args"],additionalProperties=false}

@@ -1,0 +1,30 @@
+format_version = 1
+listen = "127.0.0.1:52968"
+
+[memory]
+mode = "lexical-only"
+
+[main]
+endpoint="http://127.0.0.1:52898/model"
+model="fixture"
+name="Yuki"
+merge_ms=1
+root_slots=8
+root_tool_calls=8
+max_input_units=200000
+max_output=512
+
+[[plugins]]
+id="trace"
+namespace="trace"
+program="C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe"
+args=["D:\\yuki-extension-tests\\control-candidate-02\\src\\tests\\peers\\observe_stdio.py", "D:\\yuki-extension-tests\\control-candidate-02\\evidence\\packages\\yuki-trace.exe", "D:\\yuki-extension-tests\\control-candidate-02\\evidence\\work\\wire.jsonl"]
+grants=["control.invoke", "tool.call"]
+env=["YUKI_TRACE_CORE", "YUKI_TRACE_LISTEN"]
+[[plugins.tools]]
+name = "trace_query"
+description = "Read one authorized page of the original execution, model and tool timeline"
+parallel_read = false
+cacheable = false
+code_direct = true
+schema = { type = "object", properties = { kind = { type = "string", enum = ["turn", "work", "event"] }, identity = { type = "string", minLength = 1, maxLength = 128 }, after = { type = "integer", minimum = 0 }, limit = { type = "integer", minimum = 1, maximum = 20 }, content = { type = "boolean", default = false } }, required = ["kind", "identity"], additionalProperties = false }

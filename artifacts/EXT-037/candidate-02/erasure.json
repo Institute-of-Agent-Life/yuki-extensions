@@ -1,0 +1,14 @@
+{
+  "erase": {
+    "key": "trace-source-erase",
+    "sources": [
+      1
+    ],
+    "watermark": 1
+  },
+  "pending": {
+    "obligations": [],
+    "owner": "trace"
+  },
+  "callbacks": []
+}

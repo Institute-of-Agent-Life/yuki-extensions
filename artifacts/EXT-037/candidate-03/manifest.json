@@ -1,0 +1,30 @@
+{
+  "task": "EXT-037",
+  "status": "PASS",
+  "phase": "preparation",
+  "card_status": "UNPUBLISHED_QUERY_CANDIDATE",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "446846cbdac20555d1c9a16ea75ff7a51ce0f8a7ae99c623aa51181c2c5d4bbc",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-037",
+    "--preparation",
+    "--out",
+    "artifacts\\EXT-037\\candidate-03"
+  ],
+  "files": {
+    "build.json": "ec484a951ec5c86ce880d41228797a018dcda2bc205d1832cde11a4ce3628a22",
+    "cases.json": "5cfb4c78f757cd7b41da91a1668b72ca58417a466f01e1f32c463002b27c6bd5",
+    "erasure.json": "939ec16a3f266ac9215111b195d18e2d20bd29894a51e4a359a07d1a47d5f73c",
+    "host-config.toml": "397f5c8b96ce4909a88050e6a840b84b857766df1ea92d8cb18040e5ee404c55",
+    "host.txt": "d58db82a23887afd324b11fb791b95cb343bbb2f462fbcc10ef13b4c07d7205f",
+    "intake.json": "608bbc012b492b17fc768ae67ee185aede2184ee0ae6fd33fe10a38b3044375a",
+    "model.json": "9b12acd16a0e384a61dd7b99a29efd4afd735a83d37d1326bf5e03d08a773db9",
+    "operator.json": "315744a5213c21eee19b182b37818577822fb74e8aacf9111934da3de52ac74e",
+    "trace-query.json": "7c1fa65768dd6f08ce61a9624f78107de2edcd33c76c276bcb6ec458f262c88e",
+    "wire.jsonl": "c0446f9ba7d6fdfc2a5dca57323623d4d9d5eceee9207b987374bc79be377b7e"
+  }
+}

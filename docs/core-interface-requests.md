@@ -313,3 +313,32 @@ unknown 不重買、Main／Memory 不入遊戲正文的公開驗收入口。
 可重現入口 `ci/session_intake.py`，證據 `artifacts/EXT-047/source-intake-01/`。
 原 GitHub Monitor 的 manifest／observe／register／commands／polling／config 已固定原版 hash，
 遷移對照在 `docs/sdk-migration.md`；R11 的兩目標 grant 另受 CORE-058 回條阻塞。
+
+## CORE-037 → EXT-037：真查詢已可用，私庫訂閱與清除仍需公開契約
+
+固定來源 `1e7b89362b6f806aa11eed841b28071b22151e7e`、SDK alpha.11，三平台 ZIP
+及成員已核，見 `compat/core-037/source.lock.json` 和 EXT-037 producer-intake。
+Windows 真 Rust probe 與獨立 `yuki-trace` release 插件均使用原 Main tool.call
+handle 呼叫 `control.read/trace.read`。kind／identity／after／limit／content 沿原
+Admin DTO；metadata 與明選正文成功，普通人／撤權被 -32003 拒絕，擦除原 source
+後讀回空頁。原 canary、逐方法 wire、模型 HTTP、build 和 Host/SDK/binary digest
+見 `artifacts/EXT-037/source-intake-01` 與 `candidate-02`。這是未發布查詢候選，
+不是完整 trace／R18／匯出驗收。
+
+請在核心擁有的既有 observer/control/forget 合同中補齊以下可直接消費的路徑：
+
+- **事件訂閱**：如何為已安裝插件明選 metadata／限時全文、bounded queue 與
+  backpressure？現在 observer.event 只有 event／entry／kind；請提供原 trace row
+  ID、source_event_id、turn/work/operation、generation、保留期限、drop/cursor 的
+  已授權投影與最小 TOML／呼叫序列。沒有原 handle 時，背景收集的真授權由核心
+  供給，不以插件自報 actor／superuser 或自造 handle 補足。
+- **私料責任**：插件在私庫或暫存寫入前，如何公開取得並綁定原 SourceHold／
+  dependency？需要來源集合、原讀取授權／generation、清除 watermark、重啟 pending
+  和證明 ACK 的具體字段與先後順序。現有無私庫的 query consumer 擦除後沒有 callback
+  或 pending；不據此判核心 bug，也不手動 operator acquire 冒充產品自動登記。
+- **R18 與匯出**：請交付暫停 writer → forget → 原模型／工具確認 → 舊 writer 返回
+  的真正反例，以及拒絕已撤權 reader、metadata 預設／全文另權、刪除後不可重放的
+  versioned tool artifact 讀取方式。opaque／簽名／憑證／臨時媒體 URL 不得出現在匯出。
+
+本插件目前只保留單次 RPC 的記憶體結果，沒有私庫、排隊 writer 或 cache；因此沒有
+聲稱清除私庫、背壓丟樣、全文留存或匯出已完成。原核心效果及用量仍由核心原回條判定。

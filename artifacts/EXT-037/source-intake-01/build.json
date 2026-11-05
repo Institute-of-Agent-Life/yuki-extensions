@@ -1,0 +1,44 @@
+{
+  "source": {
+    "tests/peers/control-probe/Cargo.toml": "58150b47c3821fc7b56254154c47f26b9bd573bbd58be65f926b5dc148f74101",
+    "tests/peers/control-probe/src/main.rs": "9cb61f22146a5c4000bedda386ec57ab92ad9790c93e693cdcce5a0aa23ea7af",
+    "tests/peers/control-probe/src/rpc.rs": "f3c8975a8dae286a0a036a2f754412f4cc9ba3212e0cbff56fafdc64188762a9"
+  },
+  "sdk_sha256": "cb6db37ce6b3b40d258e209a8561e01e4d496ad14640615a6676e34665031193",
+  "commands": [
+    {
+      "argv": [
+        "cargo",
+        "generate-lockfile",
+        "--offline"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "     Locking 12 packages to latest Rust 1.96 compatible versions\n"
+    },
+    {
+      "argv": [
+        "cargo",
+        "build",
+        "--locked",
+        "--offline"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "   Compiling proc-macro2 v1.0.107\n   Compiling unicode-ident v1.0.27\n   Compiling quote v1.0.47\n   Compiling serde_core v1.0.228\n   Compiling serde_json v1.0.145\n   Compiling serde v1.0.228\n   Compiling itoa v1.0.18\n   Compiling ryu v1.0.23\n   Compiling memchr v2.8.3\n   Compiling syn v2.0.119\n   Compiling serde_derive v1.0.228\n   Compiling yuki-plugin-sdk v1.0.0-alpha.11\n   Compiling control-probe v0.1.0 (C:\\Users\\Hilbert\\AppData\\Local\\Temp\\yuki-control-intake-nh2l6uxj\\peer)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 10.88s\n"
+    },
+    {
+      "argv": [
+        "rustc",
+        "--version",
+        "--verbose"
+      ],
+      "exit_code": 0,
+      "stdout": "rustc 1.96.0 (ac68faa20 2026-05-25)\nbinary: rustc\ncommit-hash: ac68faa20c58cbccd01ee7208bf3b6e93a7d7f96\ncommit-date: 2026-05-25\nhost: x86_64-pc-windows-gnu\nrelease: 1.96.0\nLLVM version: 22.1.2\n",
+      "stderr": ""
+    }
+  ],
+  "artifacts": {
+    "control-probe.exe": "bd37ccd238333403644c75fff23d78db6dd838dc21c819b0451effcd6fce813c"
+  }
+}
