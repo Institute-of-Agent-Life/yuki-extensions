@@ -1,0 +1,5 @@
+{
+  "exit_code": 0,
+  "stdout": "{\"status\": \"PASS\", \"image\": \"sha256:65fcd704d953a9ca9be9c1e70269fc21768b571635e8fa8c38bc8b30c84ceb9a\"}\n",
+  "stderr": "wsl: Failed to start the systemd user session for 'root'. See journalctl for more details.\nWARNING: IPv4 forwarding is disabled\n"
+}

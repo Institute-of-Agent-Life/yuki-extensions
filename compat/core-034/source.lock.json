@@ -1,0 +1,63 @@
+{
+  "repository": "Institute-of-Agent-Life/yuki-core",
+  "source_commit": "f3f3723aa5322c6a2a20e8cb3b04d845cd7773cc",
+  "published": false,
+  "platforms": {
+    "darwin-arm64": {
+      "archive": "yuki-code-preview-f3f3723aa532-darwin-arm64.zip",
+      "sha256": "a404610ee179994885f136417d195d7b13b55ee09fd43e3581bf1e648957e355",
+      "binary_sha256": "b0f2233dd501040a2adca889c19301ec1accd7daafa338545b78526c168bdc37",
+      "validation_manifest_sha256": "5a2089f4dca403a1173cae93140b7b92ae8ae3f18f302144487e3fe488304388"
+    },
+    "windows-x86_64": {
+      "archive": "yuki-code-preview-f3f3723aa532-windows-x86_64.zip",
+      "sha256": "fc5f6f1cb8ddd2fe4c62b335705699b6fb8e181993b0a57fa920fe0798e67d04",
+      "binary_sha256": "39e0d540fe376b51a850fd9773e30b72ae1dbdb2d04be1a9c59558c45e22b9d9",
+      "validation_manifest_sha256": "2ccb3fe3d1f4003021a12e123711811dad5879756c24d1d5e944f572195ccab1"
+    },
+    "linux-arm64": {
+      "archive": "yuki-code-preview-f3f3723aa532-linux-arm64.zip",
+      "sha256": "2e0704581efe0b0133c15e8e7700e4d4d40806a4e752d4b715790919257254db",
+      "binary_sha256": "d54f6b9d32aeca3189527ed670b8b4a744d5f0a2454d6af6bf678f5f9f8e23a1",
+      "validation_manifest_sha256": "e68d55a8e34dd58bdf559ddd0d4a24df29d810260dbfcb0511df21ec4a6554d8"
+    }
+  },
+  "handoff_commit": "bfd8d796c9d61ab08e7532e940763aaa2e818337",
+  "sdk": {
+    "python": "1.0.0a5",
+    "rust": "1.0.0-alpha.5"
+  },
+  "schema_sha256": "1f22ed740b83bf78d0e26ac79d028a36d9b504580c7784bc80bcfaab7e723cee",
+  "composition_schema_sha256": "e001485289af1561f9a6dfd9136fb8e15bb6fd6b47f03c6fcd152e1ece6dcd7d",
+  "rust_crate_sha256": "ea6a1c2f5e8e5ff5b53ef7b8ab89baa9c8bb26cbd9ba45f116eaaafd73406794",
+  "methods": [
+    "code.resume",
+    "code.snapshot.get",
+    "code.snapshot.put",
+    "code.sources",
+    "command.invoke",
+    "device.auth",
+    "forget.ack",
+    "forget.request",
+    "gateway.dispatch_part",
+    "gateway.inbound",
+    "gateway.part_status",
+    "gateway.plan_send",
+    "gateway.status",
+    "media.open",
+    "media.process",
+    "media.publish",
+    "native.notify",
+    "native.queryAck",
+    "observer.event",
+    "tool.call",
+    "tool.catalog",
+    "tool.invoke",
+    "tool.resume",
+    "tool.schema",
+    "tool.status",
+    "work.cancel",
+    "work.get",
+    "work.input"
+  ]
+}

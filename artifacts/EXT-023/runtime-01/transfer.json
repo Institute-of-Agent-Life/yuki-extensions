@@ -1,0 +1,9 @@
+{
+  "image": "sha256:65fcd704d953a9ca9be9c1e70269fc21768b571635e8fa8c38bc8b30c84ceb9a",
+  "files": {
+    "artifacts.json": "546ffffc7a22e5c6acb954bbb945e262693d0c81d403a472cd671474be815efc",
+    "image.tar": "fc82cc61ab4b26bb07ef0978b58ff5de0173e41fe08b1879d870a9345502f1ee",
+    "runtime-contract.json": "d0d3e892fc7529aa5da9004610a297eabd283fba3d7755c73da0964fbb27edc3",
+    "THIRD_PARTY_NOTICES.json": "a87eaabe92ea9802e1dd0093fb8538da2016bc2a8bbe64147c18891e937ba122"
+  }
+}

@@ -1,0 +1,15 @@
+# EXT-023 native runtime witness
+
+HJW Windows / Arch WSL, 2026-11-05 UTC. Native image and private codec checks pass; EXT-023/024 public Host and Rust plugin acceptance remains in progress.
+
+The independently built OCI manifest is `sha256:65fcd704d953a9ca9be9c1e70269fc21768b571635e8fa8c38bc8b30c84ceb9a`. `oci-manifest.json` is its exact exported manifest, and every exported OCI blob was verified against its SHA. The archive SHA is `fc82cc61ab4b26bb07ef0978b58ff5de0173e41fe08b1879d870a9345502f1ee`. The local, unpublished archive is `.ci-transfer/monty-runtime-65fcd704d953/image.tar`; on HJW it is `D:/yuki-extension-tests/monty-runtime-65fcd704d953/image.tar`.
+
+`native-isolation.json` records the actual stacked enforce label, NoNewPrivs=1 inside the worker, Seccomp=2, zero capabilities, six distinct namespaces, UID/GID 65534, no host data or procfs, loopback only, immutable worker/libraries and limits. It also records original PID cleanup after timeout, cancellation, parent SIGKILL and a stopped-native-worker watchdog.
+
+`native-codec.json` observes native call IDs 0 and 1 for two equal argument calls in the same feed 0, crossing three fresh containers. Both original snapshots restore at their exact boundary. A corrupt dump fails without restarting the script. An unlisted function is refused. A CPU-observed infinite loop loses its original worker after stdin disconnect. These are native engine positions, not core business identities or physical tool effects.
+
+The worker, launcher, binding wheel and codec hashes are in `artifacts.json` and `runtime-contract.json`. `notices-audit.json` identifies all 598 locked packages and 326 notice texts; the full notice file is shipped at `/opt/yuki-monty/THIRD_PARTY_NOTICES.json` inside this image. Two upstream MIT copyright-notice omissions remain explicitly identified by the original auditor; no author names were invented.
+
+Raw build and test receipts retain the failures. Build 02 was SIGKILLed during native compilation; build 03 passed with release LTO disabled and 16 codegen units. Build 05 fixed readable, root-owned program modes. Native probe 02 rejected an incorrectly added container-wide NoNewPrivs flag. The original `deploy/security/README.md` explicitly requires bwrap to set this after the launcher transition; probes 03/04 use that original boundary, preserving the worker NoNewPrivs assertion and both unchanged policies. Probe 03 passed but its tmpfs report disappeared after exit; probe 04 streams the complete original verifier result before container exit and additionally checks the exact enforce label and Seccomp=2.
+
+`source-package-windows.json` and `source-package-manifest.json` record the independent source package and two integrity regressions on Windows. Shared package checks also passed at `artifacts/EXT-001/codemode-packaging-01/`. CI is configured to build source distributions on three platforms and separately build/test the native image on Linux; remote results are pending. No image or release has been published.

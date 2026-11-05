@@ -27,13 +27,17 @@ def registry_crate(package):
 def unpack_crate(data, directory, name):
     target = directory / name
     with tarfile.open(fileobj=io.BytesIO(data), mode="r:gz") as crate:
-        for member in crate.getmembers():
+        members = crate.getmembers()
+        for member in members:
             path = directory / member.name
             if not path.resolve().is_relative_to(target) or not (member.isfile() or member.isdir()):
                 raise ValueError("invalid crate member: " + member.name)
         crate.extractall(directory, filter="data")
-    files = {p.relative_to(target).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
-             for p in sorted(target.rglob("*")) if p.is_file()}
+    # Hash the archive's actual members. Filesystems may create AppleDouble
+    # sidecars during extraction; those are not part of the locked crate.
+    files = {str(Path(m.name).relative_to(name)).replace("\\", "/"):
+             hashlib.sha256((directory / m.name).read_bytes()).hexdigest()
+             for m in members if m.isfile()}
     checksum = {"files": files, "package": hashlib.sha256(data).hexdigest()}
     (target / ".cargo-checksum.json").write_text(json.dumps(checksum), encoding="utf-8")
     return target

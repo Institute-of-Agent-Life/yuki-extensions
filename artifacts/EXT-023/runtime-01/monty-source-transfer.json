@@ -1,0 +1,5 @@
+{
+  "exit_code": 0,
+  "stdout": "014df5c6dec1\n",
+  "stderr": "WARNING: IPv4 forwarding is disabled\n"
+}

@@ -1,0 +1,18 @@
+{
+  "abi": "monty-3f9d6ef-cpython312-linux-x86_64-codec1",
+  "engine_sha256": "19867d12ee8dea8281f70bffa24d4b1a4bc832469b33dbda7d091e20dd347dc3",
+  "launcher_sha256": "a3d43e7ab1d4a115a12607f1a44d2e5a4a0f1d7f7c451a77a1b81ce6b8da18fb",
+  "codec_sha256": "b4e80e73450d7fb18265779fc7dd5fed49626beca98118a32383cae89c4ae4ba",
+  "codec_members": {
+    "binding_wheel": "8961fa5428412ed9ec8446e5146e9b2786a7280234d055003554579f416e4b43",
+    "cpython_binary": "0e6475dfda68a9b2d93501449fc47593ca169010e8f4881577b97463fd0c1263",
+    "backend/bridge.py": "2de631a23dea699bf5f40ddbc471d9d8a8303b9e5d32b86027a4225c91bbe415",
+    "backend/make_contract.py": "4f9889a1665645cecdcc942922678ee079b794f461f48a0642f784a7bb4b5b9f",
+    "backend/yuki_monty_backend/capacity.py": "86f6b0f25a14b80e7576cf7a0f1fb52927ca8ea1875444940ffdc6ac67c2fcb1",
+    "backend/yuki_monty_backend/driver_types.py": "46b78b27b91297653e1569177d6a5eefbabd4882e95290073ba2c9e762a29b65",
+    "backend/yuki_monty_backend/engine_monty.py": "87a2cdb45d431aed2d6127885fb718bf26bcefaf0c40b6b2396f27348aab6343",
+    "backend/yuki_monty_backend/limits.py": "8987eec952ce230dcad31b4f8086d5e800835ceb4791d5a69574a9cb88591e36",
+    "backend/yuki_monty_backend/snapshot_binding.py": "b7b78f43368fcae7151291583e2c3f6e8bbb33338ff1ebf0472bac646ce96dae"
+  },
+  "monty_source": "3f9d6ef413fb951e5b80113b7088d535bd028fcb"
+}

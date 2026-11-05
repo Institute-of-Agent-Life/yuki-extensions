@@ -31,6 +31,9 @@ def build(root: Path, ident: str, output: Path, *, test_evidence: Path | None = 
     if output.exists() and any(output.iterdir()):
         raise ValueError("use an empty output directory; published artifacts are immutable")
     output.mkdir(parents=True, exist_ok=True)
+    if unit["ecosystem"] == "oci":
+        from oci_package import build_source
+        return build_source(root, unit, output)
     build_path = path
     env = {k: v for k, v in os.environ.items() if k not in {"PYTHONPATH", "VIRTUAL_ENV"}}
     with ExitStack() as stack:

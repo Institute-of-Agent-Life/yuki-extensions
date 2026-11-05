@@ -1,0 +1,6 @@
+{
+  "repository": "https://github.com/pydantic/monty.git",
+  "commit": "3f9d6ef413fb951e5b80113b7088d535bd028fcb",
+  "archive_sha256": "4f0cb32f561f95d409e3d53b9a15798494569ac1c92d7497d2e411e0b3d74c78",
+  "purpose": "Exact Git objects fetched on macOS; compile and execute on HJW Arch. No source translation."
+}

@@ -1,0 +1,51 @@
+{
+  "format": "yuki_monty_notices_v1",
+  "source_sha": "3f9d6ef413fb951e5b80113b7088d535bd028fcb",
+  "cargo_lock_sha256": "430d2d7dc5be00995edb48f748e53fa823a9d8ce2d7cf77704a578480ba3e541",
+  "target": "x86_64-unknown-linux-gnu",
+  "worker_sha256": "19867d12ee8dea8281f70bffa24d4b1a4bc832469b33dbda7d091e20dd347dc3",
+  "wheel_sha256": "8961fa5428412ed9ec8446e5146e9b2786a7280234d055003554579f416e4b43",
+  "rust_toolchain": "1.96.0",
+  "maturin_version": "1.9.6",
+  "patch_sha256": "2d2e83ecc44353faeccaa1069b11053e0154c0f5cf0e02d55ab592e7706dddb4",
+  "license_scope": "All locked packages; target membership records normal/build dependency trees, not legal license selection.",
+  "license_text_audit_complete": true,
+  "license_text_gaps": [],
+  "upstream_notice_omissions": [
+    {
+      "package": "quote-use-0.8.4",
+      "declared_license": "MIT",
+      "archive_sha256": "9619db1197b497a36178cfc736dc96b271fe918875fbf1344c436a7e93d0321e",
+      "manifest_path": "quote-use-0.8.4/Cargo.toml.orig",
+      "manifest_license_field": "MIT",
+      "vcs_commit": "05096f346f8b17fba8a57a235b958917ad9d99e0",
+      "standard_text_source": "https://raw.githubusercontent.com/spdx/license-list-data/d46e94e2c78ceede1cfc63cfa0396472d2798d4c/text/MIT.txt",
+      "copyright_notice_status": "not_supplied_by_upstream",
+      "note": "Standard MIT text is attached to the original MIT declaration; template placeholders are not package copyright attribution."
+    },
+    {
+      "package": "quote-use-macros-0.8.4",
+      "declared_license": "MIT",
+      "archive_sha256": "82ebfb7faafadc06a7ab141a6f67bcfb24cb8beb158c6fe933f2f035afa99f35",
+      "manifest_path": "quote-use-macros-0.8.4/Cargo.toml.orig",
+      "manifest_license_field": "MIT",
+      "vcs_commit": "05096f346f8b17fba8a57a235b958917ad9d99e0",
+      "standard_text_source": "https://raw.githubusercontent.com/spdx/license-list-data/d46e94e2c78ceede1cfc63cfa0396472d2798d4c/text/MIT.txt",
+      "copyright_notice_status": "not_supplied_by_upstream",
+      "note": "Standard MIT text is attached to the original MIT declaration; template placeholders are not package copyright attribution."
+    }
+  ],
+  "embedded_typeshed": {
+    "source_sha": "0e16ea31d2e188fdc126cb31e7c4fcc6b5a8da96",
+    "notices": [
+      {
+        "source": "https://raw.githubusercontent.com/python/typeshed/0e16ea31d2e188fdc126cb31e7c4fcc6b5a8da96/LICENSE",
+        "sha256": "295f8538c94ae5c3043301cf7cff1c852dab6a786a8ddee471e061b40d5ecabe"
+      }
+    ]
+  },
+  "packages": 598,
+  "notice_texts": 326,
+  "full_notice_sha256": "a87eaabe92ea9802e1dd0093fb8538da2016bc2a8bbe64147c18891e937ba122",
+  "artifact_in_image": "/opt/yuki-monty/THIRD_PARTY_NOTICES.json"
+}

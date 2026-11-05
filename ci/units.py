@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import ast
+import hashlib
 import json
 import re
 import tomllib
@@ -40,7 +41,7 @@ def load_catalog(root: Path) -> dict[str, dict]:
             raise BoundaryError(f"invalid/duplicate unit_id: {ident}")
         if unit["kind"] not in {"plugin", "connector", "image", "tool"}:
             raise BoundaryError(f"invalid kind: {unit['kind']}")
-        if unit["ecosystem"] not in {"python", "rust"}:
+        if unit["ecosystem"] not in {"python", "rust", "oci"}:
             raise BoundaryError(f"unsupported ecosystem: {unit['ecosystem']}")
         path = inside(root, unit["path"])
         if path == root.resolve() or not path.is_dir():
@@ -93,23 +94,45 @@ def _validate_git_records(value):
 def validate_unit(root: Path, unit: dict) -> list[str]:
     path = inside(root, unit["path"])
     python = unit["ecosystem"] == "python"
-    config = path / ("pyproject.toml" if python else "Cargo.toml")
-    lock = path / ("uv.lock" if python else "Cargo.lock")
+    oci = unit["ecosystem"] == "oci"
+    config = path / ("runtime.toml" if oci else "pyproject.toml" if python else "Cargo.toml")
+    lock = path / ("runtime.lock" if oci else "uv.lock" if python else "Cargo.lock")
     if not config.is_file() or not lock.is_file():
         raise BoundaryError(f"{unit['unit_id']} needs its own manifest and lock")
     data = tomllib.loads(config.read_text(encoding="utf-8"))
-    version = data.get("project" if python else "package", {}).get("version")
+    version = data.get("version") if oci else data.get("project" if python else "package", {}).get("version")
     if version != unit["version"]:
         raise BoundaryError(f"catalog version differs from package: {unit['unit_id']}")
-    if not python and data.get("workspace"):
+    if not python and not oci and data.get("workspace"):
         raise BoundaryError("a release unit cannot require an outer Rust workspace")
-    if not python:
+    if not python and not oci:
         toolchain = path / "rust-toolchain.toml"
         if not toolchain.is_file():
             raise BoundaryError("Rust release unit needs its own pinned toolchain")
         channel = tomllib.loads(toolchain.read_text(encoding="utf-8")).get("toolchain", {}).get("channel", "")
         if not re.fullmatch(r"\d+\.\d+\.\d+", channel):
             raise BoundaryError("Rust toolchain must pin an exact stable version")
+    if oci:
+        inputs = tomllib.loads(lock.read_text(encoding="utf-8"))
+        if unit["kind"] != "image" or data.get("platform") != "linux/amd64":
+            raise BoundaryError("OCI unit must declare its actual supported target")
+        files = inputs.get("files", {})
+        if not {"Dockerfile", "runtime.toml", "base-images.lock.json", "baseline.lock.json"} <= files.keys():
+            raise BoundaryError("OCI unit needs its complete pinned build inputs")
+        actual_files = {p.relative_to(path).as_posix() for p in path.rglob("*") if p.is_file()
+                        and p.name != "runtime.lock" and not any(
+                            part in {"inputs", "__pycache__"} or part.startswith("._")
+                            for part in p.relative_to(path).parts)}
+        if set(files) != actual_files:
+            raise BoundaryError("OCI source member set differs from its lock")
+        for name, expected in files.items():
+            file = inside(path, name)
+            if not re.fullmatch(r"[0-9a-f]{64}", expected) or hashlib.sha256(file.read_bytes()).hexdigest() != expected:
+                raise BoundaryError("OCI input digest mismatch: " + name)
+        recipe = (path / "Dockerfile").read_text(encoding="utf-8")
+        for base in json.loads((path / "base-images.lock.json").read_bytes()):
+            if not re.fullmatch(r"[a-z0-9./_-]+@sha256:[0-9a-f]{64}", base["ref"]) or base["ref"] not in recipe:
+                raise BoundaryError("OCI base image must use its locked digest")
     for file in [config, lock]:
         parsed = tomllib.loads(file.read_text(encoding="utf-8"))
         _validate_git_records(parsed)
@@ -128,6 +151,8 @@ def validate_unit(root: Path, unit: dict) -> list[str]:
     checked = []
     for source in sorted(path.rglob("*")):
         rel = source.relative_to(path)
+        if oci and "inputs" in rel.parts:
+            continue
         if any(p in {".venv", "target", "dist", "__pycache__", ".git"} for p in rel.parts):
             continue
         if source.is_symlink():

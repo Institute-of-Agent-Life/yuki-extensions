@@ -87,6 +87,30 @@ jobs:
             artifacts/EXT-019/ci/*.txt
           if-no-files-found: error
 
+  monty-runtime:
+    name: runtime (monty-runtime, ubuntu-latest)
+    needs: select
+    if: contains(fromJSON(needs.select.outputs.units), 'monty-runtime')
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Ensure the Linux image policy parser is installed
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends apparmor
+      - name: Build and exercise the native Monty image with enforced isolation
+        run: python ci/monty_linux_check.py --out dist/monty-runtime-native
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: runtime-monty-runtime-ubuntu-latest-${{ github.sha }}
+          path: dist/monty-runtime-native/
+          if-no-files-found: error
+
   package:
     needs: select
     if: needs.select.outputs.units != '[]'
@@ -108,6 +132,9 @@ jobs:
       - name: Build only the selected release unit
         if: matrix.unit != 'env' || runner.os != 'Linux'
         run: python ci/package.py --unit ${{ matrix.unit }} --out dist/${{ matrix.unit }}
+      - name: Verify OCI source packaging and archive integrity faults
+        if: matrix.unit == 'monty-runtime'
+        run: python -m unittest discover -s tests/unit -p test_oci_package.py -v
       - name: Validate the offline direct Compose configuration
         if: matrix.unit == 'yuki-setup' && runner.os == 'Linux'
         run: docker compose -f deploy/compose/direct.yaml config --quiet

@@ -234,3 +234,13 @@ CORE-034 未發布候選來源 `f3f3723aa5322c6a2a20e8cb3b04d845cd7773cc`，SDK 
 使用者隨後明確授權準備 Arch、安裝隔離工具和必要的 WSL 重啟。`codex/ext-023-codemode` 已保留 `.wslconfig` 原有 memory／swap 設定，追加 AppArmor 啟動參數；重啟時只有本次探測的 Arch 在執行。原索引對應的 10 個 Arch 官方封存套件逐一核 SHA 並驗簽安裝，包含 Docker 29.6.0、AppArmor 4.1.7、bubblewrap 0.11.2，沒有升級既有基礎套件。
 
 `artifacts/EXT-023/environment-01/manifest.json` 記錄環境準備 PASS，含原始故障回條。Arch 的既有 systemd-firstboot 阻塞一般服務啟動，因此本次 daemon 使用專用 socket／資料目錄，未啟用開機服務。公開映像固定 digest 後傳入 HJW；真容器已驗 enforce、Seccomp=2、CapEff/CapPrm/CapBnd 全零、NoNewPrivs=1、只有 loopback、外網失敗、宿主檔不可見與根目錄不可寫。這是執行環境驗證；EXT-023 的原 Monty worker 建置及 Rust 插件仍在進行，尚無 VM 真消費回條或整卡驗收。
+
+### EXT-023 原生 runtime 已驗，Rust 插件對拍進行中
+
+分支 `codex/ext-023-codemode`、PR #19；環境提交 `3dda59a0e5a09c524f1575df54a8557c1b77b292` 已推遠端。原 Monty SHA／補丁／launcher 已在 HJW Arch 建成獨立映像，`images/monty-runtime` 有自身版本、來源鎖、建置、驗證與發行前綴。為符合原 4 GiB WSL 限額，建置期使用 16 codegen units、停用 LTO；執行期限制未變。
+
+未發布 OCI digest `65fcd704d953a9ca9be9c1e70269fc21768b571635e8fa8c38bc8b30c84ceb9a`，archive SHA `fc82cc61ab4b26bb07ef0978b58ff5de0173e41fe08b1879d870a9345502f1ee`。`artifacts/EXT-023/runtime-01/manifest.json` 彙總實收：原 worker 的 stacked AppArmor enforce、Seccomp=2、NoNewPrivs=1、零 capability、六種 namespace、無宿主資料與網路，以及取消／逾時／父程序死亡後清除。兩次同參數呼叫在原 feed 0 保留 call ID 0／1，跨三個新容器恢復；壞 dump 和非凍結函式遭拒。這是 VM／codec 證據，尚未證明核心業務父鍵／子序號及實體效果。
+
+映像封裝的讀取權限已修正。先前誤加的容器層 NoNewPrivs 阻止原 launcher 轉換；依原安全文檔恢復 bwrap 內的原邊界，worker 的 NoNewPrivs=1 斷言保留。598 個鎖定依賴及 326 份 notice 的稽核無未解析項，原兩項上游 MIT 通知缺項有明確記錄。Windows 獨立來源包、兩個完整性故障回歸及 `artifacts/EXT-001/codemode-packaging-01` 通過；三平台來源包與 Linux 真映像 CI 已加入，結果待遠端執行。
+
+CORE-034 `f3f3723aa532`／SDK alpha.5 的 crate、schema、三平台來源與 SHA 鎖在 `compat/core-034/`；Rust worker 控制模組初版已通過 Windows `cargo check`，尚未提交為完成插件。下一步是實收公開凍結投影、接入 Rust Code 插件，再對拍原父 operation／子 ordinal 和未知結果；未交還真插件消費回條，也未標記 EXT-023／024 整卡完成。
