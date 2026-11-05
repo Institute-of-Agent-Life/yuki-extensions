@@ -1,0 +1,42 @@
+{
+  "operator_truth": {
+    "actor": "30af646a-bf90-465a-b9d4-39da83b89867",
+    "user": {
+      "account": "eb6636fc-9630-449f-98de-0465e55a4190",
+      "assignment": "f291bc31-06e5-4129-9694-40553dba2ea1"
+    },
+    "bot": {
+      "account": "b9f48981-d5ea-4530-b9d5-21f977a48404",
+      "assignment": "44819422-6a8c-46bc-ad6f-662e9598dcd4"
+    },
+    "entry": "b4e44041-869e-4caa-b0e9-ecda8aa6215b",
+    "space": "[\"qq\",\"schedule\",\"702\"]"
+  },
+  "event": 1,
+  "received": {
+    "notification": {
+      "entry": "b4e44041-869e-4caa-b0e9-ecda8aa6215b",
+      "event": 1,
+      "kind": "message"
+    },
+    "source": {
+      "account": "eb6636fc-9630-449f-98de-0465e55a4190",
+      "bot_stage": "44819422-6a8c-46bc-ad6f-662e9598dcd4",
+      "kind": "message",
+      "native_id": null,
+      "observed": 200,
+      "occurred": 200,
+      "reply_bot": "100",
+      "segments": [
+        {
+          "text": "Hello, Yuki, original human observation",
+          "type": "text"
+        }
+      ],
+      "source": "part-identity-probe",
+      "space": "[\"qq\",\"schedule\",\"702\"]",
+      "topic": null
+    },
+    "version": "b4c3f4b2fdfe02f66b30ec89b4a3da34e5eb24706003869b0d0ac6e21349f229"
+  }
+}

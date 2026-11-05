@@ -156,3 +156,31 @@ Windows 真 Rust 插件已消費 `e25c2b8acce3` 的 `media.process/open/publish`
 Rust binary／worker／launcher／codec digest、原始逐方法 wire、實際 HTTP 效果和
 失敗位置。這是已執行的消費者不相容回條；完整 Host adapter 尚留工作樹，未作
 完成插件或穩定接口見證。可獨立驗證的 Rust worker 控制模組另行提交。
+
+## CORE-036／CORE-050 → EXT-025：原參與庫的輸入與 Jev wire
+
+CORE-036 `9f9c3d0eaace` 與 CORE-050 `952954d86166` 的三平台候選和每個成員
+已驗 SHA；前者整合的 `llm.complete/result` 與後者公開定義逐欄一致。仍未發布。
+原參與庫固定 `a6a13d4f04ecc36da26adb5f364abdb4f032fc1e`，archive SHA
+`0e2cad3ad0f16e710e39f6fd2c9513c0a4c889ca54617ad6fdcb599f313a6ab4`。
+
+Windows 真 Rust SDK 診斷收到 `observer.event` 的 entry/event/kind，及 source
+頁中的 account、bot_stage、segments、space/topic、原時間與 transport source。
+原 Person、canonical Conversation／generation 不在回傳中；用 operator 建立的
+Person UUID 與實收 account UUID 不同。完整原始線路見
+`artifacts/EXT-025/source-intake-01/`，此 consumer 不 promotion、不買模型。
+
+請指定 scoped hydration 的既有公開路徑，或補欄位使 `ScopedEvent`／原
+`UnitBinding` 可無推測地建立：canonical Conversation／generation、原真人
+Person／assignment 與當前代表、human／SELF 真來源、原 reply/mention refs、
+source revision/order、thread/target 及已有普通接納關係。需覆蓋雙 Bot、同名不同
+Person、A→B 合併／帳號換人、topic、原生無人名提及、quiet 和原發送回條。
+不得要求插件自行查主庫、推斷 generation 或重建核心身份規則。
+
+原 `JevObserver` 固定發送 `{model,state,questions}`，按 `model/answers/usage`
+驗證回應。候選 Profile 實測拒絕 `protocol="jev"`，列出的六種協定是 chat、
+openai_responses、deepseek_responses_legacy、deepseek_responses、
+anthropic_messages、gemini。名為 jev 的文字 route 尚未證明等於原 Jev wire。
+請給出相容的公開 route／輸入形狀與原始回應讀取方式，保持原問題／修訂／usage，
+沿 K05 一次邏輯預留、分列實際 attempt，未知不得新購重試。擴展保留原庫，
+不將其換成另一套文字分類器。

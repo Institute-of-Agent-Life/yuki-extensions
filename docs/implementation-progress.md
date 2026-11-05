@@ -261,3 +261,22 @@ Windows Host `f3f3723aa532` 與 Rust SDK alpha.5 已實際協商，Linux Rust bi
 及清除。`plugins/codemode` 現提交可用 worker library；完整 `main.rs`、`rpc.rs`、
 `catalog.rs`、`compose.rs` 尚在工作樹，待公開接口修正後才可完成驗收與發行單位。
 下一步是消費核心相容 feed-ack 交付、續做原父／子恢復；同時等待順序 PR 的 CI。
+
+## EXT-025 候選輸入已對拍，等待具體生產者接口
+
+`codex/ext-025-participation` 從 `d5d2aa1` 建立獨立工作樹，保留 EXT-023 未完成的
+Host adapter。EXT-023 的 feed 回條已交還
+https://github.com/Institute-of-Agent-Life/yuki-core/pull/43#issuecomment-6649583219 。
+`b0b515f` 修正已使 PR #19 的 Windows／Linux OCI package 通過，最新 worker 的
+Windows／Linux jobs 也通過；macOS 與 native image 仍在執行／排隊。
+
+CORE-036 `9f9c3d0eaace`／SDK alpha.7 和 CORE-050 `952954d86166`／alpha.6 的
+三平台包逐成員核 SHA，鎖在 `compat/core-036` 與 `compat/core-050`。實際消費
+使用整合 aux 方法的 alpha.7 Windows Host，binary `429b1797ffdda7411314572f812123bac2ca31826ca0dd725acdc1c36a45db38`。
+Rust 診斷程式已實收 metadata 通知與 source bytes，沒有 promotion／模型呼叫。
+缺 canonical Person／Conversation／generation 等原庫必要輸入；原 Jev wire
+也沒有已驗的相容 Profile。回條 `artifacts/EXT-025/source-intake-01/` 與具體欄位
+需求已備妥。未建立空正式插件，未改寫參與庫，未聲稱 EXT-025 完成。
+
+下一張可開發的是 EXT-030：CORE-050 已補公開模型路由，需與已有 CORE-038
+媒體方法共同核對原 ASR 購買／轉寫／失效，再接 Rust media 插件。

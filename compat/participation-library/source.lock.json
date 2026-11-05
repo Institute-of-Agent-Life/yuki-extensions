@@ -1,0 +1,29 @@
+{
+  "repository": "Institute-of-Agent-Life/Yuki-Semantic-Participation",
+  "source_commit": "a6a13d4f04ecc36da26adb5f364abdb4f032fc1e",
+  "source_url": "https://github.com/Institute-of-Agent-Life/Yuki-Semantic-Participation/archive/a6a13d4f04ecc36da26adb5f364abdb4f032fc1e.tar.gz",
+  "source_sha256": "0e2cad3ad0f16e710e39f6fd2c9513c0a4c889ca54617ad6fdcb599f313a6ab4",
+  "baseline": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+  "python_requires": ">=3.12",
+  "inspection_only": true,
+  "required_wire": {
+    "request": [
+      "model",
+      "state",
+      "questions"
+    ],
+    "response": [
+      "model",
+      "answers",
+      "usage"
+    ]
+  },
+  "inspected_files": {
+    "src/yuki_participation/models.py": "1ea041537c650362f1520bbfcd253f91041f2603b6a56bd396add64b611eec16",
+    "src/yuki_participation/observer.py": "f714011f53691b2138db2e0271067f2748b08d2a81c6f07339533c6a7ff96b9b",
+    "src/yuki_participation/participation.py": "6d7d64297dea9d8e888425eaa37493e1b79b19c9ece4a8d5fb45bea24248f7fd",
+    "src/yuki_participation/snapshot.py": "559f8b589d500bce26b84d2744a4f466af68b7235e944668caf159f7922d8be6",
+    "src/yuki_participation/controller.py": "88c1e6975976c6f516dcaef2e19973e76423475edb561b26328da44cada7bdb7",
+    "README.md": "0711087e35476c86102a7b708bb6ba5915e58dde8dc48f45b4d270f141e2f37a"
+  }
+}
