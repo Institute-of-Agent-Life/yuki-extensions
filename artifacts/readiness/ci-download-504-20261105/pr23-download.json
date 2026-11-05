@@ -1,0 +1,20 @@
+{
+  "id": 13401717436,
+  "node_id": "MDg6QXJ0aWZhY3QxMzQwMTcxNzQzNg==",
+  "name": "acceptance-macos-latest-a657f13a83cb41852ed7288a11a235949135bb8c",
+  "size_in_bytes": 4442,
+  "url": "https://api.github.com/repos/Institute-of-Agent-Life/yuki-extensions/actions/artifacts/13401717436",
+  "archive_download_url": "https://api.github.com/repos/Institute-of-Agent-Life/yuki-extensions/actions/artifacts/13401717436/zip",
+  "expired": false,
+  "digest": "sha256:642d0ea54e0b9a508570fa34ef7c4fae3dc38897eff033bb4923d38ba06bceda",
+  "created_at": "2026-11-05T09:08:19Z",
+  "updated_at": "2026-11-05T09:08:19Z",
+  "expires_at": "2027-02-03T07:22:51Z",
+  "workflow_run": {
+    "id": 41986818687,
+    "repository_id": 1445117268,
+    "head_repository_id": 1445117268,
+    "head_branch": "codex/ext-034-rebuild",
+    "head_sha": "ab63ec24827f163b4922a01d17837f0c86fbbe77"
+  }
+}

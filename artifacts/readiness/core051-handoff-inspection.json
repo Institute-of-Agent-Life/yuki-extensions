@@ -1,0 +1,506 @@
+{
+  "status": "package_verified_not_consumed",
+  "published": false,
+  "handoff_commit": "e913c81ca6c29244f3d6e29e6747ac4934d2461c",
+  "packages": [
+    {
+      "archive": "yuki-session-preview-9db8b3f073e3-linux-arm64.zip",
+      "archive_sha256": "326325c842984e88ec80e94056b86afdab280e62968d9b22aceaa809ce281a99",
+      "candidate": {
+        "arch": "arm64",
+        "binary_profile": "tested debug",
+        "dirty": false,
+        "handshake_schema_revision": 1,
+        "host_schema_revision": 2,
+        "host_schema_sha256": "38600a59f63c64fe1eb45ddd2da618b0db25c3af10a2fee49416f6a3f4a4c252",
+        "implemented_methods": [
+          "code.resume",
+          "code.snapshot.get",
+          "code.snapshot.put",
+          "code.sources",
+          "command.invoke",
+          "device.auth",
+          "forget.ack",
+          "forget.request",
+          "gateway.dispatch_part",
+          "gateway.inbound",
+          "gateway.part_status",
+          "gateway.plan_send",
+          "gateway.status",
+          "llm.complete",
+          "llm.result",
+          "maintenance.audit",
+          "maintenance.audit.apply",
+          "maintenance.content",
+          "maintenance.dependencies",
+          "maintenance.evidence",
+          "maintenance.extract.apply",
+          "maintenance.extract.preview",
+          "maintenance.fact.page",
+          "maintenance.history.page",
+          "maintenance.model.open",
+          "maintenance.reembed",
+          "maintenance.tool.page",
+          "media.open",
+          "media.process",
+          "media.publish",
+          "native.notify",
+          "native.queryAck",
+          "observer.event",
+          "participation.feedback",
+          "participation.promote",
+          "participation.self_propose",
+          "participation.source",
+          "participation.sources",
+          "session.append",
+          "session.close",
+          "session.content",
+          "session.create",
+          "session.page",
+          "session.reset",
+          "session.run",
+          "session.sources",
+          "tool.call",
+          "tool.catalog",
+          "tool.invoke",
+          "tool.resume",
+          "tool.schema",
+          "tool.status",
+          "work.cancel",
+          "work.get",
+          "work.input"
+        ],
+        "members": {
+          "LICENSE": {
+            "bytes": 34600,
+            "sha256": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99"
+          },
+          "NOTICE": {
+            "bytes": 666,
+            "sha256": "92eec243bb25b89d47a7fa29ce6c863a14487a9c9e1078d0538775e6ec8f5a34"
+          },
+          "bin/yuki-core": {
+            "bytes": 259366352,
+            "sha256": "dfa7b93eeaddd0c3e995a90fed1ad622be01d3221e52e2dd53608b1c09197c35"
+          },
+          "evidence/isolated-session-replay.json": {
+            "bytes": 20968,
+            "sha256": "350dfd2e7b7952e8647cedc6014bbfb54e3ee2059a229cf13f2266fb5c25f1d9"
+          },
+          "licenses/OpenCC.txt": {
+            "bytes": 12835,
+            "sha256": "913605727253219eecf1f5ef2bd5ac7b0a524a9893d1c8de04304f0edd59756d"
+          },
+          "licenses/Vec1.txt": {
+            "bytes": 734,
+            "sha256": "f19ceac9154f61607007a294703456609c4ff3e64573e3673e1e8af1b4e95e97"
+          },
+          "protocol/handshake.schema.json": {
+            "bytes": 5319,
+            "sha256": "2e6f97eff7e2668be9339ec8649d4379262f715a35e8a9a422f657803e268bc8"
+          },
+          "protocol/host-preview.json": {
+            "bytes": 131898,
+            "sha256": "38600a59f63c64fe1eb45ddd2da618b0db25c3af10a2fee49416f6a3f4a4c252"
+          },
+          "protocol/sessions/methods.json": {
+            "bytes": 30458,
+            "sha256": "4e4cc2cd6255ccb203a9b2447be51c479c7058ff5f78d90f90db2ebd0bf20e1d"
+          },
+          "sdk/handshake.ndjson": {
+            "bytes": 502,
+            "sha256": "5275ee7b90b6af4221693f92ea9c1b4fb1d1b306c2b6ebb85947273dba0bcfa3"
+          },
+          "sdk/sdk-verification.json": {
+            "bytes": 2248,
+            "sha256": "f591c746dfcf13d5a6acccff7b7b0cf3cc5da6f52ffde9cf2de4c6ffd8cd858c"
+          },
+          "sdk/yuki-plugin-sdk-1.0.0-alpha.9.crate": {
+            "bytes": 26988,
+            "sha256": "2b1e5fbe107a3460528f526546768e8aa21e737f6d4b8ded4543360d1b1ac22f"
+          },
+          "sdk/yuki_plugin_sdk-1.0.0a9-py3-none-any.whl": {
+            "bytes": 191036,
+            "sha256": "fff0d45e05c49e920f5d514c12a5da8a70a9ee9e7ad414150f08d04caf85f463"
+          }
+        },
+        "os": "linux",
+        "rust_host": "aarch64-unknown-linux-gnu",
+        "sdk_versions": {
+          "python": "1.0.0a9",
+          "rust": "1.0.0-alpha.9"
+        },
+        "session_schema_revision": 1,
+        "session_schema_sha256": "4e4cc2cd6255ccb203a9b2447be51c479c7058ff5f78d90f90db2ebd0bf20e1d",
+        "source_commit": "9db8b3f073e34a6b86c8f93e878c2de09f0e25ba",
+        "source_tree_sha256": "8bfe544d695eb64813fadd6d7ddba27a7e43b8da97edd940d6b7f8c3e260d785",
+        "status": "unpublished-development-candidate",
+        "validated_session_methods": [
+          "session.append",
+          "session.close",
+          "session.content",
+          "session.create",
+          "session.page",
+          "session.reset",
+          "session.run",
+          "session.sources"
+        ],
+        "validated_session_protocols": [
+          "chat",
+          "openai_responses",
+          "deepseek_responses_legacy",
+          "deepseek_responses",
+          "anthropic_messages",
+          "gemini"
+        ],
+        "validation": {
+          "assertions": 735,
+          "card": "CORE-051",
+          "clean_path_launch": "verified",
+          "consumer": "synthetic SDK subprocesses",
+          "manifest_sha256": "8e1c31d73f16c8913480104096dc0e2ceacefdaf9071d98ab0cffbf3a7821f89",
+          "platform": "Linux-6.12.54-linuxkit-aarch64-with-glibc2.36",
+          "real_extension_consumers": "pending EXT-047",
+          "stable": false
+        }
+      }
+    },
+    {
+      "archive": "yuki-session-preview-9db8b3f073e3-darwin-arm64.zip",
+      "archive_sha256": "3c2dab0738d434db26cd145e82d29a7e79773d4d9713649a1ef04b58949a32e9",
+      "candidate": {
+        "arch": "arm64",
+        "binary_profile": "tested debug",
+        "dirty": false,
+        "handshake_schema_revision": 1,
+        "host_schema_revision": 2,
+        "host_schema_sha256": "38600a59f63c64fe1eb45ddd2da618b0db25c3af10a2fee49416f6a3f4a4c252",
+        "implemented_methods": [
+          "code.resume",
+          "code.snapshot.get",
+          "code.snapshot.put",
+          "code.sources",
+          "command.invoke",
+          "device.auth",
+          "forget.ack",
+          "forget.request",
+          "gateway.dispatch_part",
+          "gateway.inbound",
+          "gateway.part_status",
+          "gateway.plan_send",
+          "gateway.status",
+          "llm.complete",
+          "llm.result",
+          "maintenance.audit",
+          "maintenance.audit.apply",
+          "maintenance.content",
+          "maintenance.dependencies",
+          "maintenance.evidence",
+          "maintenance.extract.apply",
+          "maintenance.extract.preview",
+          "maintenance.fact.page",
+          "maintenance.history.page",
+          "maintenance.model.open",
+          "maintenance.reembed",
+          "maintenance.tool.page",
+          "media.open",
+          "media.process",
+          "media.publish",
+          "native.notify",
+          "native.queryAck",
+          "observer.event",
+          "participation.feedback",
+          "participation.promote",
+          "participation.self_propose",
+          "participation.source",
+          "participation.sources",
+          "session.append",
+          "session.close",
+          "session.content",
+          "session.create",
+          "session.page",
+          "session.reset",
+          "session.run",
+          "session.sources",
+          "tool.call",
+          "tool.catalog",
+          "tool.invoke",
+          "tool.resume",
+          "tool.schema",
+          "tool.status",
+          "work.cancel",
+          "work.get",
+          "work.input"
+        ],
+        "members": {
+          "LICENSE": {
+            "bytes": 34600,
+            "sha256": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99"
+          },
+          "NOTICE": {
+            "bytes": 666,
+            "sha256": "92eec243bb25b89d47a7fa29ce6c863a14487a9c9e1078d0538775e6ec8f5a34"
+          },
+          "bin/yuki-core": {
+            "bytes": 69866040,
+            "sha256": "f6a73cd8d7381dbad1e7fe1e8a769dddbdd6a5ff72ffc1a83bdd303a00e54753"
+          },
+          "evidence/isolated-session-replay.json": {
+            "bytes": 20968,
+            "sha256": "4a2165fc5b3857f0eadf26f06093d79d9dc9c0763bf213d022d6f79daa692107"
+          },
+          "licenses/OpenCC.txt": {
+            "bytes": 12835,
+            "sha256": "913605727253219eecf1f5ef2bd5ac7b0a524a9893d1c8de04304f0edd59756d"
+          },
+          "licenses/Vec1.txt": {
+            "bytes": 734,
+            "sha256": "f19ceac9154f61607007a294703456609c4ff3e64573e3673e1e8af1b4e95e97"
+          },
+          "protocol/handshake.schema.json": {
+            "bytes": 5319,
+            "sha256": "2e6f97eff7e2668be9339ec8649d4379262f715a35e8a9a422f657803e268bc8"
+          },
+          "protocol/host-preview.json": {
+            "bytes": 131898,
+            "sha256": "38600a59f63c64fe1eb45ddd2da618b0db25c3af10a2fee49416f6a3f4a4c252"
+          },
+          "protocol/sessions/methods.json": {
+            "bytes": 30458,
+            "sha256": "4e4cc2cd6255ccb203a9b2447be51c479c7058ff5f78d90f90db2ebd0bf20e1d"
+          },
+          "sdk/handshake.ndjson": {
+            "bytes": 502,
+            "sha256": "5275ee7b90b6af4221693f92ea9c1b4fb1d1b306c2b6ebb85947273dba0bcfa3"
+          },
+          "sdk/sdk-verification.json": {
+            "bytes": 2248,
+            "sha256": "f591c746dfcf13d5a6acccff7b7b0cf3cc5da6f52ffde9cf2de4c6ffd8cd858c"
+          },
+          "sdk/yuki-plugin-sdk-1.0.0-alpha.9.crate": {
+            "bytes": 26988,
+            "sha256": "2b1e5fbe107a3460528f526546768e8aa21e737f6d4b8ded4543360d1b1ac22f"
+          },
+          "sdk/yuki_plugin_sdk-1.0.0a9-py3-none-any.whl": {
+            "bytes": 191036,
+            "sha256": "fff0d45e05c49e920f5d514c12a5da8a70a9ee9e7ad414150f08d04caf85f463"
+          }
+        },
+        "os": "darwin",
+        "rust_host": "aarch64-apple-darwin",
+        "sdk_versions": {
+          "python": "1.0.0a9",
+          "rust": "1.0.0-alpha.9"
+        },
+        "session_schema_revision": 1,
+        "session_schema_sha256": "4e4cc2cd6255ccb203a9b2447be51c479c7058ff5f78d90f90db2ebd0bf20e1d",
+        "source_commit": "9db8b3f073e34a6b86c8f93e878c2de09f0e25ba",
+        "source_tree_sha256": "8bfe544d695eb64813fadd6d7ddba27a7e43b8da97edd940d6b7f8c3e260d785",
+        "status": "unpublished-development-candidate",
+        "validated_session_methods": [
+          "session.append",
+          "session.close",
+          "session.content",
+          "session.create",
+          "session.page",
+          "session.reset",
+          "session.run",
+          "session.sources"
+        ],
+        "validated_session_protocols": [
+          "chat",
+          "openai_responses",
+          "deepseek_responses_legacy",
+          "deepseek_responses",
+          "anthropic_messages",
+          "gemini"
+        ],
+        "validation": {
+          "assertions": 735,
+          "card": "CORE-051",
+          "clean_path_launch": "verified",
+          "consumer": "synthetic SDK subprocesses",
+          "manifest_sha256": "19a05ce28115203b2c1b42c6c982f436204c8ad5b853265ebe262229faf31fc0",
+          "platform": "macOS-26.6.2-arm64-arm-64bit",
+          "real_extension_consumers": "pending EXT-047",
+          "stable": false
+        }
+      }
+    },
+    {
+      "archive": "yuki-session-preview-9db8b3f073e3-windows-x86_64.zip",
+      "archive_sha256": "1e0d5856740899539c9f4adac2b4c6ce6d01aff6d7697597203d37f2d87d7f56",
+      "candidate": {
+        "arch": "x86_64",
+        "binary_profile": "tested debug",
+        "dirty": false,
+        "handshake_schema_revision": 1,
+        "host_schema_revision": 2,
+        "host_schema_sha256": "38600a59f63c64fe1eb45ddd2da618b0db25c3af10a2fee49416f6a3f4a4c252",
+        "implemented_methods": [
+          "code.resume",
+          "code.snapshot.get",
+          "code.snapshot.put",
+          "code.sources",
+          "command.invoke",
+          "device.auth",
+          "forget.ack",
+          "forget.request",
+          "gateway.dispatch_part",
+          "gateway.inbound",
+          "gateway.part_status",
+          "gateway.plan_send",
+          "gateway.status",
+          "llm.complete",
+          "llm.result",
+          "maintenance.audit",
+          "maintenance.audit.apply",
+          "maintenance.content",
+          "maintenance.dependencies",
+          "maintenance.evidence",
+          "maintenance.extract.apply",
+          "maintenance.extract.preview",
+          "maintenance.fact.page",
+          "maintenance.history.page",
+          "maintenance.model.open",
+          "maintenance.reembed",
+          "maintenance.tool.page",
+          "media.open",
+          "media.process",
+          "media.publish",
+          "native.notify",
+          "native.queryAck",
+          "observer.event",
+          "participation.feedback",
+          "participation.promote",
+          "participation.self_propose",
+          "participation.source",
+          "participation.sources",
+          "session.append",
+          "session.close",
+          "session.content",
+          "session.create",
+          "session.page",
+          "session.reset",
+          "session.run",
+          "session.sources",
+          "tool.call",
+          "tool.catalog",
+          "tool.invoke",
+          "tool.resume",
+          "tool.schema",
+          "tool.status",
+          "work.cancel",
+          "work.get",
+          "work.input"
+        ],
+        "members": {
+          "LICENSE": {
+            "bytes": 34600,
+            "sha256": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99"
+          },
+          "NOTICE": {
+            "bytes": 666,
+            "sha256": "92eec243bb25b89d47a7fa29ce6c863a14487a9c9e1078d0538775e6ec8f5a34"
+          },
+          "bin/yuki-core.exe": {
+            "bytes": 351856700,
+            "sha256": "cb2e2e8592bc46a991b04d74430b4078c06039667f00415b6f1f0848ad34a4d4"
+          },
+          "evidence/isolated-session-replay.json": {
+            "bytes": 21746,
+            "sha256": "27f50d6c9c0c7abb513403cae4906173a69cf68e4eccbeeaa0823814ac9a8be9"
+          },
+          "licenses/GCC/COPYING.RUNTIME": {
+            "bytes": 3324,
+            "sha256": "9d6b43ce4d8de0c878bf16b54d8e7a10d9bd42b75178153e3af6a815bdc90f74"
+          },
+          "licenses/GCC/COPYING3": {
+            "bytes": 35147,
+            "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+          },
+          "licenses/GCC/provenance.json": {
+            "bytes": 623,
+            "sha256": "3922fe567874ca1cb7943d33d3576da0f4b0c02051817b97b0aabfcaa2d686c9"
+          },
+          "licenses/OpenCC.txt": {
+            "bytes": 12835,
+            "sha256": "913605727253219eecf1f5ef2bd5ac7b0a524a9893d1c8de04304f0edd59756d"
+          },
+          "licenses/Vec1.txt": {
+            "bytes": 734,
+            "sha256": "f19ceac9154f61607007a294703456609c4ff3e64573e3673e1e8af1b4e95e97"
+          },
+          "protocol/handshake.schema.json": {
+            "bytes": 5319,
+            "sha256": "2e6f97eff7e2668be9339ec8649d4379262f715a35e8a9a422f657803e268bc8"
+          },
+          "protocol/host-preview.json": {
+            "bytes": 131898,
+            "sha256": "38600a59f63c64fe1eb45ddd2da618b0db25c3af10a2fee49416f6a3f4a4c252"
+          },
+          "protocol/sessions/methods.json": {
+            "bytes": 30458,
+            "sha256": "4e4cc2cd6255ccb203a9b2447be51c479c7058ff5f78d90f90db2ebd0bf20e1d"
+          },
+          "sdk/handshake.ndjson": {
+            "bytes": 502,
+            "sha256": "5275ee7b90b6af4221693f92ea9c1b4fb1d1b306c2b6ebb85947273dba0bcfa3"
+          },
+          "sdk/sdk-verification.json": {
+            "bytes": 2248,
+            "sha256": "f591c746dfcf13d5a6acccff7b7b0cf3cc5da6f52ffde9cf2de4c6ffd8cd858c"
+          },
+          "sdk/yuki-plugin-sdk-1.0.0-alpha.9.crate": {
+            "bytes": 26988,
+            "sha256": "2b1e5fbe107a3460528f526546768e8aa21e737f6d4b8ded4543360d1b1ac22f"
+          },
+          "sdk/yuki_plugin_sdk-1.0.0a9-py3-none-any.whl": {
+            "bytes": 191036,
+            "sha256": "fff0d45e05c49e920f5d514c12a5da8a70a9ee9e7ad414150f08d04caf85f463"
+          }
+        },
+        "os": "windows",
+        "rust_host": "x86_64-pc-windows-gnu",
+        "sdk_versions": {
+          "python": "1.0.0a9",
+          "rust": "1.0.0-alpha.9"
+        },
+        "session_schema_revision": 1,
+        "session_schema_sha256": "4e4cc2cd6255ccb203a9b2447be51c479c7058ff5f78d90f90db2ebd0bf20e1d",
+        "source_commit": "9db8b3f073e34a6b86c8f93e878c2de09f0e25ba",
+        "source_tree_sha256": "8bfe544d695eb64813fadd6d7ddba27a7e43b8da97edd940d6b7f8c3e260d785",
+        "status": "unpublished-development-candidate",
+        "validated_session_methods": [
+          "session.append",
+          "session.close",
+          "session.content",
+          "session.create",
+          "session.page",
+          "session.reset",
+          "session.run",
+          "session.sources"
+        ],
+        "validated_session_protocols": [
+          "chat",
+          "openai_responses",
+          "deepseek_responses_legacy",
+          "deepseek_responses",
+          "anthropic_messages",
+          "gemini"
+        ],
+        "validation": {
+          "assertions": 735,
+          "card": "CORE-051",
+          "clean_path_launch": "verified",
+          "consumer": "synthetic SDK subprocesses",
+          "manifest_sha256": "6a145bb7035995acd2265464d2d4705e119391977ae143d68d5cccbc14639130",
+          "platform": "Windows-11-10.0.22000-SP0",
+          "real_extension_consumers": "pending EXT-047",
+          "stable": false
+        }
+      }
+    }
+  ],
+  "EXT-047": "CORE-058 still required; no scoped session consumer acceptance claimed"
+}

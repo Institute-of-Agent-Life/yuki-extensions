@@ -1,0 +1,9 @@
+{
+  "previous_assertion": "exactly two suspensions after restore",
+  "correction": "Original native restore also counts a suspension. Check cumulative non-decrease, original feed/call positions and actual effects instead of assuming restore is free.",
+  "actual_final_suspensions": {
+    "normal": 2,
+    "before-feed": 3,
+    "after-feed-twice": 3
+  }
+}

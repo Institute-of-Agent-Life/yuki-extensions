@@ -1,0 +1,41 @@
+{
+  "activations": [
+    [
+      "main:b697bdf7-e348-492d-a818-de092e6027f8",
+      "chat-v1:29e85453e724fa4dca0dc03a3e058f4cd9a7186873024ffe891972365eb66c68"
+    ]
+  ],
+  "attempts": [
+    [
+      "b697bdf7-e348-492d-a818-de092e6027f8:logical:0:http:0",
+      "paired",
+      null
+    ],
+    [
+      "b697bdf7-e348-492d-a818-de092e6027f8:logical:1:http:0",
+      "paired",
+      null
+    ],
+    [
+      "b697bdf7-e348-492d-a818-de092e6027f8:logical:2:http:0",
+      "response",
+      null
+    ]
+  ],
+  "cancelled": false,
+  "conversation": "3f683ead-cf09-4faa-ae3d-9851294c5fc2",
+  "diagnostic": null,
+  "execution": "b697bdf7-e348-492d-a818-de092e6027f8",
+  "inputs": [
+    1
+  ],
+  "kind": "human",
+  "origin": "3de6877c-d2a2-4d09-92d1-ce5a9457eeaa",
+  "result": "done",
+  "root": "b697bdf7-e348-492d-a818-de092e6027f8",
+  "source": 1,
+  "state": "completed",
+  "tool_contract": "main-chat-v1",
+  "tool_revision": "9e9771dd39d23a75db857377144085d48206ee68f388df685c2e2d653ded9d81",
+  "window": 1
+}

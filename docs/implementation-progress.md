@@ -34,6 +34,18 @@
 - EXT-023 `candidate-03` 三個真案例通過：兩筆不同 operation、缺 runtime 零效果、
   畸形訊框後原 native 容器清除；全部在 Windows Host／HJW Arch 執行。
   EXT-023／024 都仍是未發布候選，未加入七張正式驗收清單。
+- EXT-023 插件候選實作 `fe7c9c0411cc` 已推遠端。EXT-024 `candidate-03` 已驗第一筆
+  回執未餵入時恢復、第一筆確認後雙重啟、unknown 配對後雙重啟不復活。
+  原父與兩筆實收 operation 對應完整；六個案例各三次模型 HTTP，容器集合均還原。
+  `evidence-analysis-01` 在 Windows 重算 snapshot SHA 與原位點；native restore 本身
+  計一次 suspension，正常累計 2、恢復累計 3，沒有歸零或把兩筆呼叫合併。
+- CORE-051 新交付 `9db8b3f073e3`／SDK alpha.9 的三平台 ZIP 與全部成員已核，
+  `artifacts/readiness/core051-handoff-inspection.json` 留來源與能力；尚未真消費。
+  EXT-047 仍缺 CORE-058，沒有建立空 scoped-session 插件。
+- 最新 readiness 為 `artifacts/readiness/after-core034-feed-recovery.json`。
+  下一步按 PR #14→…→#23→本次候選處理當前 base 的三平台 gate；CORE-035 extraction
+  配置、CORE-036 身份／Jev、CORE-050 音訊授權均仍無新回覆。EXT-024 的 light alias
+  投影、Work/run 等待及完整 H14 預算／停止見證需求見 `docs/core-interface-requests.md`。
 
 ## 2026-11-05 08:28 UTC 已有進度
 

@@ -254,3 +254,29 @@ forget.owner；scope 原 Person 與 entry 可成功讀取來源，write_subject 
 
 完整 EXT-034 job journal／審閱實作仍在 `codex/ext-034-rebuild` 工作樹未提交。
 subset apply、核心已寫後 kill、原已付重用與 forget 尚未跑到，沒有完成主張。
+
+## CORE-034 → EXT-023／024：feed 修正已實收，尚缺完整消費交接
+
+`f74ecdd86b73` 的三平台候選已逐成員核驗；SDK alpha.5 的來源與已釘 crate
+相同，僅封裝內 VCS commit 改變。原 `f26e88f7` Rust binary 對拍成功，原 feed 0
+的 call 0／1 分別實收兩筆同參數 send。完整插件 `23f888dc639f` 在 HJW Windows／Arch
+又驗回執前 kill、確認後雙重啟、unknown 已配對後重啟不復活、缺 runtime 零效果、
+畸形訊框清除。`artifacts/EXT-023/candidate-03/`、`EXT-024/candidate-03/` 是實收回條。
+
+1. `tool.catalog` 目前只有 name／description，唯一 script_name 位於 `tool.schema`。
+   請在公開凍結投影提供 bounded `{name, script_name|null, revision}` 或指出既有輕量
+   入口，讓 VM 只取得可用 alias 而不預讀所有 schema。別名及 script 排除仍由 Host
+   決定，插件不自行加 `yuki_` 前綴。附相同 revision 分頁、script 排除及改版拒絕案例。
+2. `tool.invoke`／`tool.resume` 的 pending/unknown 需要公開原 run 等待／回讀規則：
+   穩定 child operation、原 Work/run ID、何時可餵與何時僅等待、恢復入口、取消與
+   已配對 partial/code_stop 的終止區分。現在非 can_feed 的回應只安全返回 partial；
+   沒有假定它可重新派發，也沒有將 future 改成第二套本地 run。
+3. 請提供可由已打包 Host 公開安裝／operator 入口重現的 H14 控決定與根額度見證：
+   未配對段額耗盡如何續原快照、已配對 partial/code_stop 如何不再復活、
+   同一 root 的原預留／剩餘額度與逐 attempt 狀態怎樣有界讀取。消費者已保留
+   三次原模型 HTTP、同一 execution 與 native 累積計數，但不讀主庫湊完整預算帳。
+   需要 direct／Code 相同越權項目和普通拒絕後獨立合法項目的配置及回條。
+
+原 native restore 本身增加 suspension。回條的正常計數 2、恢復計數 3 保留原值；
+不把未知當重試權，也不將恢復視作補充根額度。所有結果仍為未發布候選消費，
+完整 EXT-024／穩定接口與正式發版尚未驗收。

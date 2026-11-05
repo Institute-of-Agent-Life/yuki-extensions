@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "candidate_only": true,
+  "mode": "missing-runtime",
+  "restarts": 0,
+  "event": {
+    "accepted": true,
+    "event": 1
+  },
+  "wire_count": 3,
+  "deliveries": [],
+  "host": {
+    "host_schema_revision": 2,
+    "plugins": [
+      {
+        "enabled": true,
+        "generation": "9501ce61-bd6e-407a-92f0-3abbcbb66ab0",
+        "namespace": "code_a",
+        "online": true,
+        "plugin": "code_a",
+        "revision": "fe16e18e0af3d5032954fadc9e64a9b1adf37127ae43854a5a0adb9d639e294c"
+      }
+    ]
+  }
+}

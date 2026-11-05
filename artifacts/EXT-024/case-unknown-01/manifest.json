@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "scope": "candidate diagnostic; not full card acceptance",
+  "files": {
+    "after.json": "7213144e8a71d89f8e4d48755e22ee65f7969c97fae7d3fc781664759fabf597",
+    "closed-restart-0.txt": "8def35f639b704f71ad036bc3136c12597fc52cfbbd7e74228d82971ada59008",
+    "closed-restart-1.txt": "26473fe99bba78ba9286894e4a9a26b28c697df3fef50642745623af930bbef3",
+    "host-config.toml": "a7eaf0fa75a7089ee96598344f7104b9f17ce76f639f0716cb7fe566253df731",
+    "host.txt": "84850f8f62d4aecc3cef6b916407603e23fc9bc3e676480a4892610f49a7b873",
+    "model.json": "15284b4103cc12d0224b329fc1f59851e2b13ee855de5eb7164d07c9daf43316",
+    "result.json": "fd35d86ae24f1906c4644fd72dfea1bf13d9ee1590a534b4107c779860c094b8",
+    "transfer.json": "72d1b6277a9f362b798c806a82c72a9d4e4b856ac763df58252307a07c1f34a2",
+    "wire.jsonl": "b6dd67a7f19d2c576b3a2317f0768f194151b8cdb9f5d4d9aa40906b9aee6631"
+  }
+}
