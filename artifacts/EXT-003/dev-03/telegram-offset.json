@@ -1,0 +1,647 @@
+{
+  "status": "PASS",
+  "scope": "development-host-crosswire",
+  "source_commit": "199dff095be0bc87c9713beaa0419400cb424a7c",
+  "host": {
+    "archive": "yuki-host-preview-199dff095be0-windows-x86_64.zip",
+    "sha256": "d3ef0f3ce8a7dedd175b6aa3392a22c744504cf6bea70eadc22d5408642e634c",
+    "binary_sha256": "a9079931f50996af682ee4600f1e25b86e7e0637f5b3999bfa4822144c12aff8",
+    "delegation_sha256": "293c44914b715cfb5e5b949c7f75707649d7e2aa368cfafe34c29df7062ac274"
+  },
+  "sdk": "9408022bdf1322a8d6e07914685869771a5738280e36145e46da5c36facbfce0",
+  "schema": "4822f19fb937eba524e475b35c0753a713587f48feee87ae6bd7b53ccab06cba",
+  "plugin": "42cf05c9e8a108c7eeb2fd49aa42397ecf2e1b2888759b28d180d197a0c0147f",
+  "published": false,
+  "committed_prefix_after_disconnect": 11,
+  "polls": [
+    {
+      "bot": "101",
+      "allowed_updates": [
+        "message",
+        "edited_message"
+      ],
+      "timeout": 30
+    },
+    {
+      "bot": "101",
+      "allowed_updates": [
+        "message",
+        "edited_message"
+      ],
+      "offset": 11,
+      "timeout": 30
+    },
+    {
+      "bot": "101",
+      "allowed_updates": [
+        "message",
+        "edited_message"
+      ],
+      "offset": 17,
+      "timeout": 30
+    },
+    {
+      "bot": "101",
+      "allowed_updates": [
+        "message",
+        "edited_message"
+      ],
+      "offset": 17,
+      "timeout": 30
+    },
+    {
+      "bot": "202",
+      "allowed_updates": [
+        "message",
+        "edited_message"
+      ],
+      "timeout": 30
+    },
+    {
+      "bot": "202",
+      "allowed_updates": [
+        "message",
+        "edited_message"
+      ],
+      "offset": 11,
+      "timeout": 30
+    }
+  ],
+  "transcript": [
+    {
+      "direction": "from_plugin",
+      "frame": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "initialize",
+        "params": {
+          "declarations": [],
+          "manifest_revision": "080d100130909c6a8b11dff47807ef030b9643c98315e5ff8b8a9559d652d09d",
+          "optional_features": [],
+          "required_features": [
+            "initialize"
+          ],
+          "versions": {
+            "max": {
+              "major": 1,
+              "minor": 0
+            },
+            "min": {
+              "major": 1,
+              "minor": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "direction": "from_host",
+      "frame": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "result": {
+          "extension_points": [],
+          "features": [
+            "initialize"
+          ],
+          "grants": [
+            "gateway.inbound"
+          ],
+          "host_schema_revision": 2,
+          "manifest_revision": "080d100130909c6a8b11dff47807ef030b9643c98315e5ff8b8a9559d652d09d",
+          "method_revisions": [
+            {
+              "name": "initialize",
+              "revision": 1
+            },
+            {
+              "name": "gateway.inbound",
+              "revision": 1
+            },
+            {
+              "name": "gateway.status",
+              "revision": 1
+            }
+          ],
+          "namespace": "tg.bot101",
+          "schema_revision": 1,
+          "version": {
+            "major": 1,
+            "minor": 0
+          }
+        }
+      }
+    },
+    {
+      "direction": "from_plugin",
+      "frame": {
+        "id": 10,
+        "jsonrpc": "2.0",
+        "method": "gateway.inbound",
+        "params": {
+          "accept": true,
+          "kind": "message",
+          "native_id": "17:1",
+          "native_version": null,
+          "occurred": 1,
+          "segments": [
+            {
+              "text": "🌨 ",
+              "type": "text"
+            },
+            {
+              "label": "@YukiBot",
+              "native": "101",
+              "span": {
+                "end": 10,
+                "segment": 1,
+                "start": 2
+              },
+              "type": "mention"
+            }
+          ],
+          "sender": "17",
+          "source": "17:1",
+          "space": null,
+          "topic": null
+        }
+      }
+    },
+    {
+      "direction": "from_host",
+      "frame": {
+        "id": 10,
+        "jsonrpc": "2.0",
+        "result": {
+          "accepted": true,
+          "event": 1
+        }
+      }
+    },
+    {
+      "direction": "from_plugin",
+      "frame": {
+        "id": 11,
+        "jsonrpc": "2.0",
+        "method": "gateway.inbound",
+        "params": {
+          "accept": true,
+          "kind": "message",
+          "native_id": "-80:2",
+          "native_version": null,
+          "occurred": 1,
+          "segments": [
+            {
+              "text": "照片",
+              "type": "text"
+            },
+            {
+              "kind": "image",
+              "reference": "photo-id",
+              "type": "media"
+            },
+            {
+              "native_id": "17:1",
+              "type": "reply"
+            }
+          ],
+          "sender": "17",
+          "source": "-80:2",
+          "space": "-80",
+          "topic": "7"
+        }
+      }
+    },
+    {
+      "direction": "from_plugin",
+      "frame": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "initialize",
+        "params": {
+          "declarations": [],
+          "manifest_revision": "080d100130909c6a8b11dff47807ef030b9643c98315e5ff8b8a9559d652d09d",
+          "optional_features": [],
+          "required_features": [
+            "initialize"
+          ],
+          "versions": {
+            "max": {
+              "major": 1,
+              "minor": 0
+            },
+            "min": {
+              "major": 1,
+              "minor": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "direction": "from_host",
+      "frame": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "result": {
+          "extension_points": [],
+          "features": [
+            "initialize"
+          ],
+          "grants": [
+            "gateway.inbound"
+          ],
+          "host_schema_revision": 2,
+          "manifest_revision": "080d100130909c6a8b11dff47807ef030b9643c98315e5ff8b8a9559d652d09d",
+          "method_revisions": [
+            {
+              "name": "initialize",
+              "revision": 1
+            },
+            {
+              "name": "gateway.inbound",
+              "revision": 1
+            },
+            {
+              "name": "gateway.status",
+              "revision": 1
+            }
+          ],
+          "namespace": "tg.bot101",
+          "schema_revision": 1,
+          "version": {
+            "major": 1,
+            "minor": 0
+          }
+        }
+      }
+    },
+    {
+      "direction": "from_plugin",
+      "frame": {
+        "id": 11,
+        "jsonrpc": "2.0",
+        "method": "gateway.inbound",
+        "params": {
+          "accept": true,
+          "kind": "message",
+          "native_id": "-80:2",
+          "native_version": null,
+          "occurred": 1,
+          "segments": [
+            {
+              "text": "照片",
+              "type": "text"
+            },
+            {
+              "kind": "image",
+              "reference": "photo-id",
+              "type": "media"
+            },
+            {
+              "native_id": "17:1",
+              "type": "reply"
+            }
+          ],
+          "sender": "17",
+          "source": "-80:2",
+          "space": "-80",
+          "topic": "7"
+        }
+      }
+    },
+    {
+      "direction": "from_host",
+      "frame": {
+        "id": 11,
+        "jsonrpc": "2.0",
+        "result": {
+          "accepted": true,
+          "event": 2
+        }
+      }
+    },
+    {
+      "direction": "from_plugin",
+      "frame": {
+        "id": 12,
+        "jsonrpc": "2.0",
+        "method": "gateway.inbound",
+        "params": {
+          "accept": true,
+          "kind": "message",
+          "native_id": "-81:2",
+          "native_version": null,
+          "occurred": 1,
+          "segments": [
+            {
+              "text": "other group",
+              "type": "text"
+            }
+          ],
+          "sender": "17",
+          "source": "-81:2",
+          "space": "-81",
+          "topic": null
+        }
+      }
+    },
+    {
+      "direction": "from_host",
+      "frame": {
+        "id": 12,
+        "jsonrpc": "2.0",
+        "result": {
+          "accepted": true,
+          "event": 3
+        }
+      }
+    },
+    {
+      "direction": "from_plugin",
+      "frame": {
+        "id": 13,
+        "jsonrpc": "2.0",
+        "method": "gateway.inbound",
+        "params": {
+          "accept": false,
+          "kind": "edit",
+          "native_id": "-80:2",
+          "native_version": "13",
+          "occurred": 2,
+          "segments": [
+            {
+              "text": "edited",
+              "type": "text"
+            }
+          ],
+          "sender": "17",
+          "source": "-80:2",
+          "space": "-80",
+          "topic": "7"
+        }
+      }
+    },
+    {
+      "direction": "from_host",
+      "frame": {
+        "id": 13,
+        "jsonrpc": "2.0",
+        "result": {
+          "accepted": false,
+          "event": 4
+        }
+      }
+    },
+    {
+      "direction": "from_plugin",
+      "frame": {
+        "id": 14,
+        "jsonrpc": "2.0",
+        "method": "gateway.inbound",
+        "params": {
+          "accept": false,
+          "kind": "data",
+          "native_id": "-81:3",
+          "native_version": null,
+          "occurred": 1,
+          "segments": [
+            {
+              "text": "Telegram chat migration: -81 -> -82",
+              "type": "text"
+            }
+          ],
+          "sender": "17",
+          "source": "-81:3",
+          "space": "-81",
+          "topic": null
+        }
+      }
+    },
+    {
+      "direction": "from_host",
+      "frame": {
+        "id": 14,
+        "jsonrpc": "2.0",
+        "result": {
+          "accepted": false,
+          "event": 5
+        }
+      }
+    },
+    {
+      "direction": "from_plugin",
+      "frame": {
+        "id": 15,
+        "jsonrpc": "2.0",
+        "method": "gateway.inbound",
+        "params": {
+          "accept": true,
+          "kind": "message",
+          "native_id": "-81:2",
+          "native_version": null,
+          "occurred": 1,
+          "segments": [
+            {
+              "text": "other group",
+              "type": "text"
+            }
+          ],
+          "sender": "17",
+          "source": "-81:2",
+          "space": "-81",
+          "topic": null
+        }
+      }
+    },
+    {
+      "direction": "from_host",
+      "frame": {
+        "id": 15,
+        "jsonrpc": "2.0",
+        "result": {
+          "accepted": true,
+          "event": 3
+        }
+      }
+    },
+    {
+      "direction": "from_plugin",
+      "frame": {
+        "id": 16,
+        "jsonrpc": "2.0",
+        "method": "gateway.inbound",
+        "params": {
+          "accept": true,
+          "kind": "message",
+          "native_id": "-80:4",
+          "native_version": null,
+          "occurred": 1,
+          "segments": [
+            {
+              "kind": "file",
+              "reference": "sticker",
+              "type": "media"
+            }
+          ],
+          "sender": "17",
+          "source": "-80:4",
+          "space": "-80",
+          "topic": null
+        }
+      }
+    },
+    {
+      "direction": "from_host",
+      "frame": {
+        "id": 16,
+        "jsonrpc": "2.0",
+        "result": {
+          "accepted": true,
+          "event": 6
+        }
+      }
+    },
+    {
+      "direction": "from_plugin",
+      "frame": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "initialize",
+        "params": {
+          "declarations": [],
+          "manifest_revision": "33659c9611e778c77f16f80860b8f0d4a2f10d26b13e035b1e08584014db2b64",
+          "optional_features": [],
+          "required_features": [
+            "initialize"
+          ],
+          "versions": {
+            "max": {
+              "major": 1,
+              "minor": 0
+            },
+            "min": {
+              "major": 1,
+              "minor": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "direction": "from_host",
+      "frame": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "result": {
+          "extension_points": [],
+          "features": [
+            "initialize"
+          ],
+          "grants": [
+            "gateway.inbound"
+          ],
+          "host_schema_revision": 2,
+          "manifest_revision": "33659c9611e778c77f16f80860b8f0d4a2f10d26b13e035b1e08584014db2b64",
+          "method_revisions": [
+            {
+              "name": "initialize",
+              "revision": 1
+            },
+            {
+              "name": "gateway.inbound",
+              "revision": 1
+            },
+            {
+              "name": "gateway.status",
+              "revision": 1
+            }
+          ],
+          "namespace": "tg.bot202",
+          "schema_revision": 1,
+          "version": {
+            "major": 1,
+            "minor": 0
+          }
+        }
+      }
+    },
+    {
+      "direction": "from_plugin",
+      "frame": {
+        "id": 10,
+        "jsonrpc": "2.0",
+        "method": "gateway.inbound",
+        "params": {
+          "accept": true,
+          "kind": "message",
+          "native_id": "17:1",
+          "native_version": null,
+          "occurred": 1,
+          "segments": [
+            {
+              "text": "🌨 ",
+              "type": "text"
+            },
+            {
+              "label": "@YukiBot",
+              "native": "202",
+              "span": {
+                "end": 10,
+                "segment": 1,
+                "start": 2
+              },
+              "type": "mention"
+            }
+          ],
+          "sender": "17",
+          "source": "17:1",
+          "space": null,
+          "topic": null
+        }
+      }
+    },
+    {
+      "direction": "from_host",
+      "frame": {
+        "id": 10,
+        "jsonrpc": "2.0",
+        "result": {
+          "accepted": true,
+          "event": 7
+        }
+      }
+    }
+  ],
+  "first_bot_receipts": {
+    "10": {
+      "accepted": true,
+      "event": 1
+    },
+    "11": {
+      "accepted": true,
+      "event": 2
+    },
+    "12": {
+      "accepted": true,
+      "event": 3
+    },
+    "13": {
+      "accepted": false,
+      "event": 4
+    },
+    "14": {
+      "accepted": false,
+      "event": 5
+    },
+    "15": {
+      "accepted": true,
+      "event": 3
+    },
+    "16": {
+      "accepted": true,
+      "event": 6
+    }
+  },
+  "second_bot_event": 7
+}

@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "D:\yuki-extension-tests\2ad43c8ef1a0b840d73f\src\ci\check.py", line 37, in main
+    report_name, report = runner(root, args.out.resolve())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\2ad43c8ef1a0b840d73f\src\tests\cases\EXT-003.py", line 62, in prepare
+    package = build(root, "telegram", packages)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\2ad43c8ef1a0b840d73f\src\ci\package.py", line 65, in build
+    raise RuntimeError(f"build failed: {command}; see {output / 'build-failure.json'}")
+RuntimeError: build failed: ['cargo', 'test', '--locked', '--offline', '--target-dir', 'D:\\yuki-extension-tests\\2ad43c8ef1a0b840d73f\\temp\\yuki-rust-build-qmr9qe2n']; see D:\yuki-extension-tests\2ad43c8ef1a0b840d73f\src\artifacts\EXT-003\candidate-01\packages\build-failure.json

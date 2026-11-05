@@ -1,0 +1,24 @@
+{
+  "task": "EXT-003",
+  "status": "PASS",
+  "phase": "preparation",
+  "card_status": "VERIFIED_ON_UNPUBLISHED_CANDIDATE",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "cb4360959f4f78bbd77edacd505886dcfbe012a49ae4986cd4a588073861520a",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-003",
+    "--preparation",
+    "--out",
+    "artifacts\\EXT-003\\candidate-03"
+  ],
+  "files": {
+    "host.txt": "27e10d7aff4fcddcf67509d37407df7b0c2ae3587fa87b28cd0f5401698bd390",
+    "plugin.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "telegram-offset.json": "a81f960527f3d5e959fef3003af13a8539f4174c9d35af91d1b5855e833f9338",
+    "wire.jsonl": "c41bb6623bd25a62e5c7fddac758ac86fdcbbe2d672cd95df464af1b622a76cc"
+  }
+}

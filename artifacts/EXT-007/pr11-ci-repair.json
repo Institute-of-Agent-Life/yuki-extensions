@@ -1,0 +1,30 @@
+{
+  "pr": 11,
+  "failed_head": "bef4def5b22bae53e6555c600baa0d088f9c3aac",
+  "ci_run": 41881175205,
+  "ci_job": 126818314254,
+  "failure": {
+    "platform": "ubuntu-latest",
+    "test": "test_selected_cli_prepares_default_owner_then_uses_only_its_proxy[False]",
+    "at": "await asyncio.wait_for(reconnected.wait(), 5)",
+    "reason": "TimeoutError",
+    "evidence_artifact_id": 13356483957,
+    "evidence_archive_sha256": "8042e2c3fe614a1154727fd25a1d94fafcf6981106e615015801ed62f3845bae"
+  },
+  "fixture_fix_source": "6f3695826533bb9beda504d4299140c24cf6b1a9",
+  "fixed_fixture_sha256": "b9db390919ea38bc40386a1c52b4ed320e4d8073a329011c772eeed0cdb98a04",
+  "windows": {
+    "host": "HJW",
+    "source_snapshot_sha256": "38da62045d10e6caca5d1f7179319147823fb839987db484c020225a08f39ecd",
+    "manifest": "pr11-proxy-eof/manifest.json",
+    "manifest_sha256": "fafb18df10751dec4de2eeb7942e81778362a86ededa29bd3533fb1d764db1b7",
+    "pytest": {
+      "tests": 172,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 1
+    },
+    "wire4_frames": 124,
+    "same_host_exact_match": true
+  }
+}

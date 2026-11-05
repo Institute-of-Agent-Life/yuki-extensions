@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "D:\yuki-extension-tests\4a32fdcd6a5f1bcdddd8\src\ci\check.py", line 37, in main
+    report_name, report = runner(root, args.out.resolve())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\4a32fdcd6a5f1bcdddd8\src\tests\cases\EXT-003.py", line 154, in run
+    wait(lambda:(trace/"disconnected").exists())
+  File "D:\yuki-extension-tests\4a32fdcd6a5f1bcdddd8\src\tests\cases\EXT-003.py", line 23, in wait
+    raise RuntimeError("timed out waiting for " + until.__name__)
+RuntimeError: timed out waiting for <lambda>

@@ -100,3 +100,14 @@ CORE-031 tag. It verifies the producer receipt, checksum list and archive, then
 uses those downloaded SDKs for the same isolated exchanges on every platform.
 It distinguishes public distribution from the pre-publication state recorded
 when those unchanged bytes were built.
+
+## EXT-003 Telegram ingress
+
+Run an independently compiled Rust plugin against the pinned CORE-032 Windows
+candidate. Feed native Bot API updates over loopback with getMe and getUpdates.
+For a three-item batch, interrupt the connection at the second admission. The
+next poll may acknowledge only the committed prefix. Replay through the real
+host and compare original event IDs. Distinguish two bot identities, equal
+message IDs in different chats and group topics. Exercise UTF-16 mentions,
+captions, reply references, media-only messages, edits and migration data.
+Keep host startup, actual submitted frames, receipts and cursor files visible.

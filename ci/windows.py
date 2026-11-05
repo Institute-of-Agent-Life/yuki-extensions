@@ -145,7 +145,15 @@ def main():
             release_assets.append(path)
     # Include only locked wheels, not arbitrary files already in the transport cache.
     tools_zip = transfer / "tooling.zip"
+    host_candidate = None
+    if args.task == "EXT-003":
+        host_candidate = Path(os.environ["YUKI_HOST_CANDIDATE"])
+        pin = json.loads((root / "compat/core-032/source.lock.json").read_bytes())["platforms"]["windows-x86_64"]
+        if hashlib.sha256(host_candidate.read_bytes()).hexdigest() != pin["sha256"]:
+            raise ValueError("unexpected Windows host candidate")
     with zipfile.ZipFile(tools_zip, "w", zipfile.ZIP_DEFLATED) as archive:
+        if host_candidate:
+            archive.write(host_candidate, "core032-host.zip")
         for package in locked.values():
             archive.write(wheelhouse / package["filename"], package["filename"])
         for path in release_assets:
@@ -163,7 +171,7 @@ def main():
     assert invoke(["scp", "-q", str(snapshot), f"{args.host}:{remote}/source.zip"]).returncode == 0
     assert invoke(["scp", "-q", str(tools_zip), f"{args.host}:{remote}/tooling.zip"]).returncode == 0
     sdk_environment = ""
-    if args.task == "EXT-002":
+    if args.task in {"EXT-002", "EXT-003"}:
         # Use the host's existing pinned toolchain, with a separate writable Cargo home.
         sdk_environment = r"""
 $tools=Join-Path $env:USERPROFILE 'yuki-core-tooling'
@@ -172,6 +180,8 @@ $env:YUKI_CRATE_CACHE=Join-Path $tools 'cargo/registry/cache'
 $env:PATH="$(Join-Path $tools 'cargo/bin');$(Join-Path $tools 'winlibs/mingw64/bin');$env:PATH"
 $env:CARGO_HOME=Join-Path $env:TEMP 'cargo-home'
 """
+    if host_candidate:
+        sdk_environment += "$env:YUKI_HOST_CANDIDATE=" + quote(remote + "/wheelhouse/core032-host.zip") + "\n"
     if release_assets:
         sdk_environment += "$env:YUKI_CORE031_RELEASE_DIR=" + quote(remote + "/wheelhouse/core031-release")
     setup = f"""
