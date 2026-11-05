@@ -15,6 +15,8 @@
 
 ## 2026-11-05 native CI exit134 診斷補強
 
+已驗本地提交 `335bc62e0d3e`，分支 `codex/ext-047-scoped-session`，推送至 PR #26 後驗當前 CI。
+
 - PR #26 原 head `e0625154c09a` 的 push run `42031856344`／job `127260154799`
   在 blocked-feed disconnect 退出 134，OOMKilled=false；另一 PR run 的同源 native job 通過。
   原 ZIP `5926a977bc64982960b1ace015e77888cad4ba84173b0357348b2e9d041130ce` 的
