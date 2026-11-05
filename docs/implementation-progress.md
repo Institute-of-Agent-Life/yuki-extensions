@@ -247,6 +247,13 @@ CORE-034 `f3f3723aa532`／SDK alpha.5 的 crate、schema、三平台來源與 SH
 
 映像與封裝提交 `d76aae47ec5853b9d373b55b4ccad663409c93c4` 已推 PR #19。其 Windows package job `127037883124` 的 OCI 來源包成功；archive 回歸在非正規化 TEMP 基底誤拒合法成員。修正為基底與成員都先 canonicalize，保留越界與非普通檔案拒絕。HJW 三項回歸與來源包均過，回條 `artifacts/EXT-023/packaging-fix-01/`；遠端須重驗當前 head。
 
+PR #19 的 d5d2aa1 Linux native job 已通過；PR #20 的 job 127051966392
+隨後在 blocked-feed disconnect 的退出碼斷言失敗。原日誌／artifact ZIP 已核 SHA。
+HJW Arch 完整重播五次、另做三十次斷開測試全部通過，尚未重現 CI 故障。
+驗證器保留退出碼為零及原 native PID 消失的斷言，失敗時增加容器 state、
+stdout／stderr；Windows 來源包驗證通過。回條在
+`artifacts/EXT-023/disconnect-diagnostics-01/`。等待新 CI 診斷，沒有宣稱故障已修復。
+
 ### EXT-023 真 Rust／Host 對拍的具體阻塞
 
 Windows Host `f3f3723aa532` 與 Rust SDK alpha.5 已實際協商，Linux Rust binary
