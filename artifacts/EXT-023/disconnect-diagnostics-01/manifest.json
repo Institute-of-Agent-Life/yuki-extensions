@@ -1,0 +1,31 @@
+{
+  "status": "DIAGNOSTICS_VERIFIED",
+  "github_failure_fixed": false,
+  "github": {
+    "run": 41968729810,
+    "job": 127051966392,
+    "head": "28745852a0d54fd1a328c8c4e8d262748cb1ea8b",
+    "artifact_sha": "80c3607b6781cb22137b9f31b298d3bf4a8cbb86",
+    "artifact_id": 13389616001,
+    "zip_sha256": "0aa6af51f0417b80682eca70f9b87edc9683fea4cf9b7868f7506e0c4179e7ec"
+  },
+  "hjw_arch": {
+    "full_native_runs": 5,
+    "additional_disconnect_runs": 30,
+    "exit_code_assertion_retained": true,
+    "original_process_gone_assertion_retained": true,
+    "image": "sha256:65fcd704d953a9ca9be9c1e70269fc21768b571635e8fa8c38bc8b30c84ceb9a"
+  },
+  "verifier_sha256": "2ec66c79fe68b8c936f97e9ebad0b2b744c99746aad089df7e9885e87296b01a",
+  "runtime_lock_sha256": "de6cfd3649bdfc66d9bfe6893bc0004ac29e628d8aeb6e8a49939cb53d1231a9",
+  "next": "Run the same strict exit and cleanup checks on GitHub, retaining exit code, container state and stdout/stderr on failure.",
+  "files": {
+    "github-job.log": "2d9230b77584b644fd6e7fce1499e505132470ab053062b58a5b5b221f3a17d7",
+    "hjw-full-repeat.json": "459556c08ba9aa0af25e78a2590c1b11d474b5dddd599a17cc07d471c027a513",
+    "hjw-cut-repeat.json": "64aa874bcaa4652b80a8cba987084a7175677850ff580cdd8d6f437bebe5e07a",
+    "full-repro.sh": "3b9f2667aba2d3ca6f2b283767b547efd91a16cfa9c9a5e93cc3b0b780976a31",
+    "cut-repro.sh": "0298632667f515624face7f0deaa0e99ed034a9f08e9e0f899ad1ccb859240f9",
+    "windows-package.json": "3c1104cfaaab299586e2617f9a356ba27fa1d03da4b8e0ee928cd31c0e79e642",
+    "github-codec.txt": "dd36a1339a662bc6838b31cecbbff4dace6f0d6fe659d3022117a0ee88b23b4d"
+  }
+}
