@@ -25,7 +25,7 @@
 - 隨後把已驗固定資產下載修正 `b82112b5b452` 同步到本分支，避免後續 CI 繼續
   遇到相同 504。四個來源檔和原 contract inputs 逐 bytes 相同；在此新基底又於 HJW
   Windows 驗七例通過，回條 `artifacts/readiness/ci-release-504-pr15/`。只改 CI
-  讀取；安裝器、插件、原 SDK／資產和授權未變。新 SHA 要重跑全部 gates。
+  讀取；安裝器、插件、原 SDK／資產和授權未變。本地修正提交 `f707400a754a`；新 SHA 要重跑全部 gates。
 - 正式完成仍 7／68。PR #26 已推固定資產 GET 的有限重試，修正 `b82112b5b452`、
   head `c2600d644a02`；Windows 七例過。原 native exit134 只有診斷補強，根因未解。
   後續卡與核心包 pin 的完整進度固定於
