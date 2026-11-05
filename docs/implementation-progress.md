@@ -13,6 +13,30 @@
 | EXT-010 · codex/ext-010 | `ab16e07`；CI `41834791702`；PR #6 合併 `2c55dbb` | `artifacts/EXT-010/02/`，8 例含實際子進程退出碼 23、雙 session 取消及 unknown |
 | EXT-019 · codex/ext-019 | 實作 `7531d84`、PR head `9d1e8a8`；三平台 CI `41835863011`；PR #7 合併 `7625095` | `artifacts/EXT-019/02/`，呼叫表、schema 差分、5 個故障變異；`03/` 固定跨平台順序 |
 
+## 2026-11-05 EXT-037 Rust 查詢候選
+
+- 分支 `codex/ext-037-trace`；實作 `76feabd5cb5c354309e4556e881f5bd1579a7baf`。
+  正常合入已驗 main `996deedef3e1` 的提交 `1e177495404b` 只保留兩邊進度。
+  原主樹四個 Code adapter、ASR／rebuild／subscription WIP 均未動。
+- CORE-037 固定來源 `1e7b89362b6f`、tree `f58b344f4da4`、SDK alpha.11；
+  三平台 ZIP／成員及 producer manifest 已核。Windows ZIP `cfad9951aa18`、
+  Host `b3fbd607fe5a`、crate `cb6db37ce6b3`，完整 pin 在 `compat/core-037`。
+  候選未發布。CORE-055 新 PR 不代表 EXT-049 的個人入口前置已齊。
+- 獨立 `plugins/trace`／catalog／鎖檔／release unit 已可執行 `trace_query`。
+  HJW Windows `candidate-03` 通過 release build、兩項 Rust 回歸與真 Host 查詢：
+  metadata、明選正文、普通人／撤權拒絕、擦除後空頁；實收模型 HTTP 12 筆。
+  插件 digest `58c73b9d6fa28fb1e9801df972a9a7fd8d35c470e1b48f0b0cf88754cf28dde3`。
+  trace-query digest `7c1fa65768dd6f08ce61a9624f78107de2edcd33c76c276bcb6ec458f262c88e`。
+  原 wire／build／manifest／27 個來源綁定同目錄可交核心；正常與故障時序見 EXT-037-sequences。
+- `candidate-01` 保留未驗並行讀宣告被 Host 拒絕的原日誌；改為順序派發後，
+  `candidate-02` 真插件過，`candidate-03` 再驗正式 `ci/windows.py` 入口。
+  沒有修改核心驗權或改成接受失敗；macOS／Linux package 仍須 CI。
+- **整卡仍進行中，正式完成仍 7／68。** 已實作單次授權查詢，不保存私料。
+  opt-in trace 訂閱、私庫 SourceHold／forget、R18 遲到 writer 及 versioned export
+  尚缺公開契約，需求已列 core-interface-requests。下一可獨立進行項是 EXT-038
+  已公開的共用角色／SOUL；頭像版本與平台套用需另外核 CORE-038／Gateway 真接口。
+  最新 readiness：`artifacts/readiness/after-core037-trace-query.json`。
+
 ## 2026-11-05 固定資產 GET 的 504 回歸
 
 已驗修正提交 `b82112b5b452`，分支 `codex/ext-047-scoped-session`，沿 PR #26 驗新 SHA。

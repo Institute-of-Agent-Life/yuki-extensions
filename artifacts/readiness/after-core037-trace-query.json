@@ -1,0 +1,171 @@
+{
+  "updated_at": "2026-11-05T21:22:40.862578+00:00",
+  "previous": "after-ci-get-retry.json",
+  "branch": "codex/ext-037-trace",
+  "implementation_commit": "76feabd5cb5c354309e4556e881f5bd1579a7baf",
+  "merge_main_commit": "1e177495404b64c9e6030cd03aa5c55810fc02c6",
+  "main": "996deedef3e119246651050dc8cac186044a925a",
+  "formal_cards": [
+    "EXT-001",
+    "EXT-002",
+    "EXT-007",
+    "EXT-008",
+    "EXT-009",
+    "EXT-010",
+    "EXT-019"
+  ],
+  "core037": {
+    "repository": "Institute-of-Agent-Life/yuki-core",
+    "source_commit": "1e7b89362b6f806aa11eed841b28071b22151e7e",
+    "handoff_commit": "98816c20a592434a2eb5c224f960b6f464778673",
+    "source_tree_sha256": "f58b344f4da4d4bf36c5a7a2dc20a67f6d752a373e8d362f3891d562a3bd22bf",
+    "published": false,
+    "handoff_index_sha256": "8519f27ea2c10a9f692ac6b34e47e8a92bf3751b871b07dcaf02f9597e5b946b",
+    "platforms": {
+      "darwin-arm64": {
+        "archive": "yuki-control-preview-1e7b89362b6f-darwin-arm64.zip",
+        "sha256": "37945f2a6abda16c54fd024271471a0adaa78343b093fae3fac7313867ee9e9c",
+        "binary_sha256": "2ae13f1f5f6edbc0eada5e2dc6e9d27f75d220d44d6de9989d2630850fec65e2",
+        "validation_manifest_sha256": "a1499f0835a15ade21d4fdecb1f17a012870ab0740168c8a7c4bec83422fe35b"
+      },
+      "linux-arm64": {
+        "archive": "yuki-control-preview-1e7b89362b6f-linux-arm64.zip",
+        "sha256": "673662bd73e0a89418c8aeb2740a00c34c491ea3da56c735b0bb7f6540f5b625",
+        "binary_sha256": "6fe621895780f834f776f6fd36ce0637610722ec2fd07532e4d59946d3b8db22",
+        "validation_manifest_sha256": "d4ebf48a78085057b90fbc0b458b054eba4cf4556dd941eabeb12d7acea13bae"
+      },
+      "windows-x86_64": {
+        "archive": "yuki-control-preview-1e7b89362b6f-windows-x86_64.zip",
+        "sha256": "cfad9951aa18cb1e0a9677b8d6e042d84dafdc6e6b13ba95feb4ab943fd9a4e6",
+        "binary_sha256": "b3fbd607fe5a5fc9547156bbbfc86fb3ecbb7aeb13a2752f3c812ecf41b4294c",
+        "validation_manifest_sha256": "b784241abcbb6c6e25059c790ce16ef09abd16eafc945797700480270b33140d"
+      }
+    },
+    "sdk": {
+      "python": "1.0.0a11",
+      "rust": "1.0.0-alpha.11"
+    },
+    "schema_sha256": "217d402c00a0c7d47f41b206162f3d96156e8787e15bffce5cf45d886c0be750",
+    "control_schema_sha256": "ff3efce8020cbc6aff324c2aebfb6a90c863f3c60ea27b54df4af17d59a9c213",
+    "methods": [
+      "code.resume",
+      "code.snapshot.get",
+      "code.snapshot.put",
+      "code.sources",
+      "command.invoke",
+      "control.read",
+      "control.write",
+      "device.auth",
+      "forget.ack",
+      "forget.request",
+      "gateway.dispatch_part",
+      "gateway.inbound",
+      "gateway.part_status",
+      "gateway.plan_send",
+      "gateway.status",
+      "llm.complete",
+      "llm.result",
+      "maintenance.audit",
+      "maintenance.audit.apply",
+      "maintenance.content",
+      "maintenance.dependencies",
+      "maintenance.evidence",
+      "maintenance.extract.apply",
+      "maintenance.extract.preview",
+      "maintenance.fact.page",
+      "maintenance.history.page",
+      "maintenance.model.open",
+      "maintenance.reembed",
+      "maintenance.tool.page",
+      "media.open",
+      "media.process",
+      "media.publish",
+      "native.notify",
+      "native.queryAck",
+      "notification.grant_target",
+      "notification.publish",
+      "notification.read",
+      "notification.revoke_target",
+      "notification.sources",
+      "notification.status",
+      "observer.event",
+      "participation.feedback",
+      "participation.promote",
+      "participation.self_propose",
+      "participation.source",
+      "participation.sources",
+      "plugin.config.get",
+      "plugin.observe",
+      "plugin.secrets.get",
+      "session.append",
+      "session.close",
+      "session.content",
+      "session.create",
+      "session.page",
+      "session.reset",
+      "session.run",
+      "session.sources",
+      "tool.call",
+      "tool.catalog",
+      "tool.invoke",
+      "tool.resume",
+      "tool.schema",
+      "tool.status",
+      "work.cancel",
+      "work.get",
+      "work.input"
+    ],
+    "rust_crate_sha256": "cb6db37ce6b3b40d258e209a8561e01e4d496ad14640615a6676e34665031193"
+  },
+  "EXT-037": {
+    "status": "unpublished_query_candidate_verified_card_in_progress",
+    "evidence": "artifacts/EXT-037/candidate-03",
+    "native_platform": "HJW Windows x86_64",
+    "rust_tests": 2,
+    "model_http_calls": 12,
+    "plugin_sha256": "58c73b9d6fa28fb1e9801df972a9a7fd8d35c470e1b48f0b0cf88754cf28dde3",
+    "private_store": false,
+    "methods_consumed": [
+      "control.read/trace.read"
+    ],
+    "missing": [
+      "opt-in metadata/content trace subscription with current authority",
+      "SourceHold/dependency and forget contract for private storage",
+      "R18 delayed writer and authoritative effect reconciliation",
+      "authorized versioned export",
+      "formal producer/consumer publication"
+    ]
+  },
+  "next_executable": [
+    "EXT-038 shared character and SOUL candidate; first verify actual public methods and avatar/platform gaps"
+  ],
+  "pr_order": [
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27
+  ],
+  "pr15_last_observation": {
+    "at": "2026-11-05T21:01Z",
+    "head": "0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+    "success": 35,
+    "macos_queued": 9,
+    "new_failures": 0
+  },
+  "pending_CI": "Exact current head/base three-platform acceptance, affected packages, Monty native/worker if selected; verify all downloaded artifacts before ordinary merge.",
+  "preserved_WIP": [
+    "root/codemode four untracked files",
+    "work-asr",
+    "work-rebuild",
+    "work-subscription"
+  ]
+}
