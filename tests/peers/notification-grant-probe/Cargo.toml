@@ -1,0 +1,9 @@
+[package]
+name = "notification-grant-probe"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.96"
+publish = false
+[dependencies]
+yuki-plugin-sdk = "=1.0.0-alpha.10"
+serde_json = "=1.0.145"

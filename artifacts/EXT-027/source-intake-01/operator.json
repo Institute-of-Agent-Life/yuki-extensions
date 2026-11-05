@@ -1,0 +1,107 @@
+[
+  {
+    "args": [
+      "person",
+      "create",
+      "e292a5e1-fbbd-4490-8ebd-8c393ae6e1d0"
+    ],
+    "result": {
+      "original": "e292a5e1-fbbd-4490-8ebd-8c393ae6e1d0",
+      "root": "e292a5e1-fbbd-4490-8ebd-8c393ae6e1d0"
+    }
+  },
+  {
+    "args": [
+      "person",
+      "set-admin",
+      "e292a5e1-fbbd-4490-8ebd-8c393ae6e1d0",
+      "true"
+    ],
+    "result": {
+      "admin": true,
+      "original": "e292a5e1-fbbd-4490-8ebd-8c393ae6e1d0",
+      "root": "e292a5e1-fbbd-4490-8ebd-8c393ae6e1d0"
+    }
+  },
+  {
+    "args": [
+      "account",
+      "open",
+      "qq",
+      "notification-intake",
+      "200",
+      1,
+      "--person",
+      "e292a5e1-fbbd-4490-8ebd-8c393ae6e1d0",
+      "--start",
+      1
+    ],
+    "result": {
+      "account": "ea301369-9931-463c-945a-a09de97fac8c",
+      "assignment": "c07741b9-95bb-4151-a2a3-2a38ba9b7fa0"
+    }
+  },
+  {
+    "args": [
+      "account",
+      "open",
+      "qq",
+      "notification-intake",
+      "100",
+      1,
+      "--start",
+      1
+    ],
+    "result": {
+      "account": "67bacdf6-00b8-4cb6-88f1-676d63db911c",
+      "assignment": "d134976d-3317-469b-b78a-39f4febb7600"
+    }
+  },
+  {
+    "args": [
+      "entry",
+      "private",
+      "c07741b9-95bb-4151-a2a3-2a38ba9b7fa0",
+      "d134976d-3317-469b-b78a-39f4febb7600"
+    ],
+    "result": {
+      "entry": "ab0263dc-e170-477b-8d25-d6eb85d0a000"
+    }
+  },
+  {
+    "args": [
+      "ingress",
+      "record",
+      "{\"source\": \"foreground\", \"account\": \"ea301369-9931-463c-945a-a09de97fac8c\", \"bot_stage\": \"d134976d-3317-469b-b78a-39f4febb7600\", \"reply_bot\": \"100\", \"kind\": \"message\", \"occurred\": 100, \"observed\": 100, \"segments\": [{\"type\": \"text\", \"text\": \"foreground\"}]}",
+      "--accept"
+    ],
+    "result": {
+      "accepted": true,
+      "event": 1
+    }
+  },
+  {
+    "args": [
+      "ingress",
+      "record",
+      "{\"source\": \"accepted-work\", \"account\": \"ea301369-9931-463c-945a-a09de97fac8c\", \"bot_stage\": \"d134976d-3317-469b-b78a-39f4febb7600\", \"reply_bot\": \"100\", \"kind\": \"message\", \"occurred\": 101, \"observed\": 101, \"segments\": [{\"type\": \"text\", \"text\": \"accepted-work\"}]}",
+      "--accept"
+    ],
+    "result": {
+      "accepted": true,
+      "event": 2
+    }
+  },
+  {
+    "args": [
+      "ingress",
+      "record",
+      "{\"source\": \"current-entry\", \"account\": \"ea301369-9931-463c-945a-a09de97fac8c\", \"bot_stage\": \"d134976d-3317-469b-b78a-39f4febb7600\", \"reply_bot\": \"100\", \"kind\": \"message\", \"occurred\": 102, \"observed\": 102, \"segments\": [{\"type\": \"text\", \"text\": \"current-entry\"}]}",
+      "--accept"
+    ],
+    "result": {
+      "accepted": true,
+      "event": 3
+    }
+  }
+]

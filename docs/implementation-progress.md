@@ -13,6 +13,28 @@
 | EXT-010 · codex/ext-010 | `ab16e07`；CI `41834791702`；PR #6 合併 `2c55dbb` | `artifacts/EXT-010/02/`，8 例含實際子進程退出碼 23、雙 session 取消及 unknown |
 | EXT-019 · codex/ext-019 | 實作 `7531d84`、PR head `9d1e8a8`；三平台 CI `41835863011`；PR #7 合併 `7625095` | `artifacts/EXT-019/02/`，呼叫表、schema 差分、5 個故障變異；`03/` 固定跨平台順序 |
 
+## 2026-11-05 CORE-058 intake
+
+- CORE-058 `cb02f74ea48b`／SDK alpha.10 的三平台 ZIP、source tree 和全部成員已核，
+  固定來源見 `compat/core-058/`，回條 `artifacts/EXT-027/producer-intake/inspection.json`。
+  包仍未發布；Windows Host SHA `44e051731197`，crate SHA `4975c4e27096`。
+- `codex/ext-027-subscription` 位於 `.ci-transfer/work-subscription`。Windows 最小 Rust
+  consumer 的 `source-intake-01` 已確認三種原呼叫都仍被 `notification.grant_target`
+  以 -32003 拒絕：前景、已接納 Work、略去 conversation／bot 使用原入口。
+  Person 已為 admin、三個 `tool.status` 都為 dispatched；notification.publish 次數為零。
+  診斷 binary `7ecb61ef9d779`，完整 policy、operator、model、wire 和 manifest 均保存。
+  此為已驗診斷，沒有把發布／送達算通過。
+- 完整 Rust 訂閱插件留 WIP：`plugins/subscription-monitor/`、catalog、EXT-027 case、
+  relay、`ci/windows.py` 與正常／故障時序。Windows 已編譯，5 項游標／journal 測試過；
+  candidate-01…03 皆在授權階段失敗，尚未跑到 outbox ACK 丟失、實際發布、撤權。
+  原 Code／ASR／rebuild WIP 保留。待生產者補最小安裝／授權設定後續跑，不提交成已驗插件。
+- PR #14 仍差 Connector、飛書的 macOS package；三平台 acceptance 已過。PR #20
+  原 504 workflow 已結束，`gh run rerun --failed` 成功請求第二次 attempt，只重跑失敗項。
+  GitHub connector 的同操作回 403 integration 權限不足，已用既有 gh 授權完成。
+  PR #23 原 504 workflow 尚在跑，未重試。新 main 仍 `526a35382d9b`。
+- EXT-047 已具 CORE-058／051 候選，但真 Monitor 的目標授權仍受本次 intake 阻塞；
+  原 GitHub Monitor 固定 `efba5e1ad77f`，未升版或聲稱遷移。隔離遊戲會話仍待實作驗證。
+
 ## 2026-11-05 10:04 UTC 更新
 
 - PR #13 當前 head `9db5191` 的三平台與四套 package／Connector 升級檢查全過，

@@ -280,3 +280,19 @@ subset apply、核心已寫後 kill、原已付重用與 forget 尚未跑到，�
 原 native restore 本身增加 suspension。回條的正常計數 2、恢復計數 3 保留原值；
 不把未知當重試權，也不將恢復視作補充根額度。所有結果仍為未發布候選消費，
 完整 EXT-024／穩定接口與正式發版尚未驗收。
+
+## CORE-058 / EXT-027 原管理員 target grant intake
+
+`cb02f74ea48b`／alpha.10：Windows 最小 Rust consumer 三次原 Host call 都取得
+`tool.status.state=dispatched`，其 canonical Person 已由公開 operator 設 admin。
+前景、接納原 Work 後、略去 conversation／bot 的原入口三例，grant_target 皆 -32003。
+具體原 handle、mutation key、target、Person／entry、模型與安裝配置見
+`artifacts/EXT-027/source-intake-01/`。尚無 notification.publish 或送達；不先判定核心 bug。
+
+請交可直接套用的公開最小安裝設定和操作序列：notification policy（若須額外欄位）、
+原管理員作用域、QQ receiving bot／Conversation 的公開建立方式，以及原 handle 如何
+符合授權。請含成功、非管理員／換 Person／換 topic／撤權拒絕，並示範原 source 不借
+最近管理員的背景 publication。若要新 candidate，請附來源、版本與三平台 digest。
+同時提供 CORE-051 `plugins.sessions` 的完整可解析最小 policy（routes、context
+profiles、background permission）及 aux session route 設定，供 EXT-047 隔離遊戲使用。
+擴展不讀主庫、不借 fixture 私有寫入建立 grant，也不猜測替代身份規則。

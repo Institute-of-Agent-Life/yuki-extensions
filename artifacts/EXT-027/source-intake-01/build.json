@@ -1,0 +1,45 @@
+{
+  "source": {
+    "tests/peers/notification-grant-probe/Cargo.toml": "468b994f8915bf969f6c46dae1204056e38b9167e2ada9c2a451ba2e05dc29cd",
+    "tests/peers/notification-grant-probe/rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+    "tests/peers/notification-grant-probe/src/main.rs": "22d2db7ccd79e28ffb099cb771b33b776d92dfb13ca1e1420440639ae4e45707",
+    "tests/peers/notification-grant-probe/src/rpc.rs": "f3c8975a8dae286a0a036a2f754412f4cc9ba3212e0cbff56fafdc64188762a9"
+  },
+  "sdk_sha256": "4975c4e27096cec1dd30bca2f396fd5e11f32b52929de13e8f42da6f6980fce7",
+  "commands": [
+    {
+      "argv": [
+        "cargo",
+        "generate-lockfile",
+        "--offline"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "     Locking 12 packages to latest Rust 1.96 compatible versions\n"
+    },
+    {
+      "argv": [
+        "cargo",
+        "build",
+        "--locked",
+        "--offline"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "   Compiling proc-macro2 v1.0.107\n   Compiling quote v1.0.47\n   Compiling unicode-ident v1.0.27\n   Compiling serde_core v1.0.228\n   Compiling serde v1.0.228\n   Compiling serde_json v1.0.145\n   Compiling ryu v1.0.23\n   Compiling itoa v1.0.18\n   Compiling memchr v2.8.3\n   Compiling syn v2.0.119\n   Compiling serde_derive v1.0.228\n   Compiling yuki-plugin-sdk v1.0.0-alpha.10\n   Compiling notification-grant-probe v0.1.0 (C:\\Users\\Hilbert\\AppData\\Local\\Temp\\yuki-maintenance-intake-n8iwp4ud\\peer)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 9.93s\n"
+    },
+    {
+      "argv": [
+        "rustc",
+        "--version",
+        "--verbose"
+      ],
+      "exit_code": 0,
+      "stdout": "rustc 1.96.0 (ac68faa20 2026-05-25)\nbinary: rustc\ncommit-hash: ac68faa20c58cbccd01ee7208bf3b6e93a7d7f96\ncommit-date: 2026-05-25\nhost: x86_64-pc-windows-gnu\nrelease: 1.96.0\nLLVM version: 22.1.2\n",
+      "stderr": ""
+    }
+  ],
+  "artifacts": {
+    "notification-grant-probe.exe": "7ecb61ef9d779ac827c5d6f0bb26a66c7de8fff96295b7bad1da96ed7370f110"
+  }
+}
