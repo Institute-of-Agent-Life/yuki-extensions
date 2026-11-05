@@ -25,6 +25,9 @@ def registry_crate(package):
 
 
 def unpack_crate(data, directory, name):
+    # Resolve the base too: Windows TEMP may use an 8.3 alias while member
+    # resolve() expands it. Compare paths in the same canonical namespace.
+    directory = directory.resolve()
     target = directory / name
     with tarfile.open(fileobj=io.BytesIO(data), mode="r:gz") as crate:
         members = crate.getmembers()

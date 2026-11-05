@@ -244,3 +244,5 @@ CORE-034 未發布候選來源 `f3f3723aa5322c6a2a20e8cb3b04d845cd7773cc`，SDK 
 映像封裝的讀取權限已修正。先前誤加的容器層 NoNewPrivs 阻止原 launcher 轉換；依原安全文檔恢復 bwrap 內的原邊界，worker 的 NoNewPrivs=1 斷言保留。598 個鎖定依賴及 326 份 notice 的稽核無未解析項，原兩項上游 MIT 通知缺項有明確記錄。Windows 獨立來源包、兩個完整性故障回歸及 `artifacts/EXT-001/codemode-packaging-01` 通過；三平台來源包與 Linux 真映像 CI 已加入，結果待遠端執行。
 
 CORE-034 `f3f3723aa532`／SDK alpha.5 的 crate、schema、三平台來源與 SHA 鎖在 `compat/core-034/`；Rust worker 控制模組初版已通過 Windows `cargo check`，尚未提交為完成插件。下一步是實收公開凍結投影、接入 Rust Code 插件，再對拍原父 operation／子 ordinal 和未知結果；未交還真插件消費回條，也未標記 EXT-023／024 整卡完成。
+
+映像與封裝提交 `d76aae47ec5853b9d373b55b4ccad663409c93c4` 已推 PR #19。其 Windows package job `127037883124` 的 OCI 來源包成功；archive 回歸在非正規化 TEMP 基底誤拒合法成員。修正為基底與成員都先 canonicalize，保留越界與非普通檔案拒絕。HJW 三項回歸與來源包均過，回條 `artifacts/EXT-023/packaging-fix-01/`；遠端須重驗當前 head。
