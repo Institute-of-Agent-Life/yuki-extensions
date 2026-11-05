@@ -1,0 +1,685 @@
+{
+  "observed_utc": "2026-11-05T01:27:48.824281+00:00",
+  "previous": "artifacts/readiness/after-core038-candidate.json",
+  "previous_sha256": "b3ff384fa56cc459a9f117aa796cb12cc71b73073a02599f1391320faf027dce",
+  "core_main": "905e968c5a04187944bf8f0ff4a3667652221731",
+  "producer_prs": [
+    {
+      "baseRefName": "codex/core-038-media",
+      "headRefOid": "bfd8d796c9d61ab08e7532e940763aaa2e818337",
+      "number": 43,
+      "title": "feat(host): preserve original Code children and VM recovery",
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/43"
+    },
+    {
+      "baseRefName": "codex/core-033-personal",
+      "headRefOid": "8117f95c724664ef2b932ecd0d19b00b68f1ea54",
+      "number": 42,
+      "title": "fix(work): retain original requests across durable segment yields",
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/42"
+    },
+    {
+      "baseRefName": "main",
+      "headRefOid": "1e623b08e05a45fa8a1d875d511cb0727bac01fa",
+      "number": 41,
+      "title": "fix(history): restore original contact and conversation tools",
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/41"
+    },
+    {
+      "baseRefName": "codex/core-033-personal",
+      "headRefOid": "d1b7c1ba68a57aa4fc9edfea8f894bc839cdd9e7",
+      "number": 40,
+      "title": "CORE-038 Broker immutable media, source-bound ASR and original delivery",
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/40"
+    },
+    {
+      "baseRefName": "codex/core-029-retrieval",
+      "headRefOid": "c412fdd96a60c244ea52ecfd76bc7922384a4084",
+      "number": 39,
+      "title": "CORE-030 Erase original Person dependencies and resume owner cleanup",
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/39"
+    },
+    {
+      "baseRefName": "codex/core-028-vectors",
+      "headRefOid": "5c5a830afc965434db8fb7020519d95fbda1bad7",
+      "number": 37,
+      "title": "CORE-029 Rank authorized memory candidates against the v4 oracle",
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/37"
+    },
+    {
+      "baseRefName": "codex/core-025-media",
+      "headRefOid": "c979a2e8628fde00e92765c8c7e26c4fe82d8ae1",
+      "number": 36,
+      "title": "CORE-033 Authenticate personal entry and hand off to the original Work",
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/36"
+    },
+    {
+      "baseRefName": "codex/core-025-media",
+      "headRefOid": "9e32244893fda17d8f358a47853d3f16f2dd4cb3",
+      "number": 35,
+      "title": "CORE-028 Index committed facts under the original embedding profile",
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/35"
+    },
+    {
+      "baseRefName": "codex/core-027-extract",
+      "headRefOid": "894a27a4cdb2fe879305af082b4ca48873e33992",
+      "number": 34,
+      "title": "CORE-025 Bound attachment handles and immutable native delivery",
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/34"
+    },
+    {
+      "baseRefName": "codex/core-023-private",
+      "headRefOid": "dd3d4ff2c2c8a24b2efec1ce3e08046e977d8ffe",
+      "number": 33,
+      "title": "CORE-027: evidenced live fact extraction and atomic watermarks",
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/33"
+    },
+    {
+      "baseRefName": "codex/core-018-schedule",
+      "headRefOid": "18b4099b857f6b167444582bcd8a9455b4969bb3",
+      "number": 32,
+      "title": "CORE-023: preserve original tool and delivery evidence across private Compact",
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/32"
+    },
+    {
+      "baseRefName": "codex/core-022-compact",
+      "headRefOid": "72a93aeb55450305fe19876275f027a2c7becc7e",
+      "number": 31,
+      "title": "CORE-018: admit and recover the original scheduled occurrence",
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/31"
+    },
+    {
+      "baseRefName": "codex/core-017-wait",
+      "headRefOid": "5d2406226bbefb88cfba4a3605c472c9fe056477",
+      "number": 30,
+      "title": "CORE-022: recoverable public Compact on actual Main requests",
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/30"
+    },
+    {
+      "baseRefName": "codex/core-026-facts",
+      "headRefOid": "03a52e567c8b37c9f1a533b42be8f06adead5a50",
+      "number": 29,
+      "title": "CORE-017: durable Work waits and authorized wake-up",
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/29"
+    },
+    {
+      "baseRefName": "codex/core-032-host",
+      "headRefOid": "804c2b09f37b78d8caaa79cab630ac2605cec453",
+      "number": 28,
+      "title": "CORE-039: produce signed portable release hosts and verified OCI images",
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/28"
+    },
+    {
+      "baseRefName": "codex/core-016-work",
+      "headRefOid": "bd52c9570aae1236b083bf946e1b4f66b69f97a2",
+      "number": 27,
+      "title": "CORE-026: authorize facts independently of private source evidence",
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/27"
+    },
+    {
+      "baseRefName": "codex/core-032-host",
+      "headRefOid": "04acd9798dff0567781355e85394d0d8e654ec56",
+      "number": 26,
+      "title": "CORE-016: settle original Work trees and private child messages",
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/26"
+    },
+    {
+      "baseRefName": "main",
+      "headRefOid": "24d40cca35d870cb541a6d9b7e755a53f66e111c",
+      "number": 24,
+      "title": "CORE-032: bind live plugin capabilities to original executions",
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/24"
+    }
+  ],
+  "core_release_tags": [
+    "handshake-preview-dd694a0db605"
+  ],
+  "formal_windows_passed": [
+    "EXT-001",
+    "EXT-002",
+    "EXT-007",
+    "EXT-008",
+    "EXT-009",
+    "EXT-010",
+    "EXT-019"
+  ],
+  "new_formal_acceptances": [],
+  "ext031_correction": {
+    "implementation": "262d782",
+    "receipt": "artifacts/EXT-031/candidate-03/media-inspection.json",
+    "sha256": "405e7c1359165dced882df1c6400bdd29ae2f781106b583e56225d17b587ea55",
+    "automatic_source_registration": true,
+    "operator_acquire_calls": 0,
+    "handback": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/40#issuecomment-6646981531",
+    "remaining": [
+      "original Main image presentation",
+      "published producer acceptance"
+    ]
+  },
+  "next_card": {
+    "id": "EXT-023",
+    "core_ready": true,
+    "runtime_ready": false,
+    "inspection": "artifacts/readiness/core034-handoff-inspection.json",
+    "inspection_sha256": "3d56d19ccb32f38c1c5ac340c4089a3ae07b1c99e5bdea5b64e5675e47e8e8b4",
+    "windows_prerequisites": "artifacts/readiness/core034-windows-prerequisites.json",
+    "windows_prerequisites_sha256": "05dec356af35ff8475be1f23f268e5d99c8bfb94f919c7f6d881bb4706ee0704",
+    "blocker": "Original pinned Monty worker excludes Windows ABI; Docker not found and wsl --list --quiet exits 4294967295 with access denied. Need a Linux isolation test environment accessible from HJW. No Windows ABI or weakened isolation is substituted."
+  },
+  "ready_uncompleted_cards": [],
+  "ci_gate_snapshot": [
+    {
+      "n": 11,
+      "merged": "8d2f3c6d85e1a3a638e28014f4fa131b91f1cbdc"
+    },
+    {
+      "n": 12,
+      "head": "f0843e106711804fc79fcf6e1a19d0aefe4c9793",
+      "merge_state": "UNSTABLE",
+      "runs": {
+        "push": {
+          "id": 41939834061,
+          "artifact_sha": "f0843e106711804fc79fcf6e1a19d0aefe4c9793",
+          "units": [],
+          "failed": [],
+          "required": 4,
+          "pass": 4,
+          "pending_windows_linux": [],
+          "valid_artifacts": 3,
+          "missing_artifacts": [],
+          "complete": true
+        },
+        "pull_request": {
+          "id": 41939841639,
+          "artifact_sha": "867562e4c971ec5b95678bafed442245f2be14ae",
+          "units": [
+            "connector",
+            "telegram",
+            "web-fetch"
+          ],
+          "failed": [],
+          "required": 13,
+          "pass": 9,
+          "pending_windows_linux": [],
+          "valid_artifacts": 10,
+          "missing_artifacts": [
+            "acceptance-macos-latest-",
+            "package-connector-macos-latest-",
+            "package-telegram-macos-latest-",
+            "package-web-fetch-macos-latest-",
+            "connector-upgrade-macos-latest-"
+          ],
+          "complete": false
+        }
+      },
+      "ready": false
+    },
+    {
+      "n": 13,
+      "head": "a9851426968903270e2f0c1ff87b704714f25d65",
+      "merge_state": "CLEAN",
+      "runs": {
+        "push": {
+          "id": 41902563812,
+          "artifact_sha": "a9851426968903270e2f0c1ff87b704714f25d65",
+          "units": [
+            "connector",
+            "feishu",
+            "telegram",
+            "web-fetch"
+          ],
+          "failed": [],
+          "required": 16,
+          "pass": 16,
+          "pending_windows_linux": [],
+          "valid_artifacts": 18,
+          "missing_artifacts": [],
+          "complete": true
+        },
+        "pull_request": {
+          "id": 41902574597,
+          "artifact_sha": "",
+          "units": [
+            "connector",
+            "feishu",
+            "telegram",
+            "web-fetch"
+          ],
+          "failed": [],
+          "required": 16,
+          "pass": 16,
+          "pending_windows_linux": [],
+          "valid_artifacts": 18,
+          "missing_artifacts": [
+            "acceptance-windows-latest-",
+            "package-connector-windows-latest-",
+            "package-feishu-windows-latest-",
+            "package-telegram-windows-latest-",
+            "package-web-fetch-windows-latest-",
+            "connector-upgrade-windows-latest-",
+            "acceptance-macos-latest-",
+            "package-connector-macos-latest-",
+            "package-feishu-macos-latest-",
+            "package-telegram-macos-latest-",
+            "package-web-fetch-macos-latest-",
+            "connector-upgrade-macos-latest-",
+            "acceptance-ubuntu-latest-",
+            "package-connector-ubuntu-latest-",
+            "package-feishu-ubuntu-latest-",
+            "package-telegram-ubuntu-latest-",
+            "package-web-fetch-ubuntu-latest-",
+            "connector-upgrade-ubuntu-latest-"
+          ],
+          "complete": false
+        }
+      },
+      "ready": false
+    },
+    {
+      "n": 14,
+      "head": "c66dbe17227493b102da82e230fd7404e0b490cb",
+      "merge_state": "CLEAN",
+      "runs": {
+        "push": {
+          "id": 41902570970,
+          "artifact_sha": "c66dbe17227493b102da82e230fd7404e0b490cb",
+          "units": [
+            "connector",
+            "env",
+            "feishu",
+            "telegram",
+            "web-fetch"
+          ],
+          "failed": [],
+          "required": 19,
+          "pass": 19,
+          "pending_windows_linux": [],
+          "valid_artifacts": 21,
+          "missing_artifacts": [],
+          "complete": true
+        },
+        "pull_request": {
+          "id": 41902585385,
+          "artifact_sha": "",
+          "units": [
+            "connector",
+            "env",
+            "feishu",
+            "telegram",
+            "web-fetch"
+          ],
+          "failed": [],
+          "required": 19,
+          "pass": 19,
+          "pending_windows_linux": [],
+          "valid_artifacts": 21,
+          "missing_artifacts": [
+            "acceptance-windows-latest-",
+            "package-connector-windows-latest-",
+            "package-env-windows-latest-",
+            "package-feishu-windows-latest-",
+            "package-telegram-windows-latest-",
+            "package-web-fetch-windows-latest-",
+            "connector-upgrade-windows-latest-",
+            "acceptance-macos-latest-",
+            "package-connector-macos-latest-",
+            "package-env-macos-latest-",
+            "package-feishu-macos-latest-",
+            "package-telegram-macos-latest-",
+            "package-web-fetch-macos-latest-",
+            "connector-upgrade-macos-latest-",
+            "acceptance-ubuntu-latest-",
+            "package-connector-ubuntu-latest-",
+            "package-env-ubuntu-latest-",
+            "package-feishu-ubuntu-latest-",
+            "package-telegram-ubuntu-latest-",
+            "package-web-fetch-ubuntu-latest-",
+            "connector-upgrade-ubuntu-latest-"
+          ],
+          "complete": false
+        }
+      },
+      "ready": false
+    },
+    {
+      "n": 15,
+      "head": "a2285c3bc6a22da587f9d586cf26ada8ae65c821",
+      "merge_state": "UNSTABLE",
+      "runs": {
+        "push": {
+          "id": 41904941694,
+          "artifact_sha": "a2285c3bc6a22da587f9d586cf26ada8ae65c821",
+          "units": [],
+          "failed": [],
+          "required": 4,
+          "pass": 3,
+          "pending_windows_linux": [],
+          "valid_artifacts": 2,
+          "missing_artifacts": [
+            "acceptance-macos-latest-"
+          ],
+          "complete": false
+        },
+        "pull_request": {
+          "id": 41904950491,
+          "artifact_sha": "",
+          "units": [
+            "connector",
+            "env",
+            "feishu",
+            "telegram",
+            "web-fetch",
+            "yuki-setup"
+          ],
+          "failed": [],
+          "required": 22,
+          "pass": 15,
+          "pending_windows_linux": [],
+          "valid_artifacts": 16,
+          "missing_artifacts": [
+            "acceptance-windows-latest-",
+            "package-connector-windows-latest-",
+            "package-env-windows-latest-",
+            "package-feishu-windows-latest-",
+            "package-telegram-windows-latest-",
+            "package-web-fetch-windows-latest-",
+            "package-yuki-setup-windows-latest-",
+            "connector-upgrade-windows-latest-",
+            "acceptance-macos-latest-",
+            "package-connector-macos-latest-",
+            "package-env-macos-latest-",
+            "package-feishu-macos-latest-",
+            "package-telegram-macos-latest-",
+            "package-web-fetch-macos-latest-",
+            "package-yuki-setup-macos-latest-",
+            "connector-upgrade-macos-latest-",
+            "acceptance-ubuntu-latest-",
+            "package-connector-ubuntu-latest-",
+            "package-env-ubuntu-latest-",
+            "package-feishu-ubuntu-latest-",
+            "package-telegram-ubuntu-latest-",
+            "package-web-fetch-ubuntu-latest-",
+            "package-yuki-setup-ubuntu-latest-",
+            "connector-upgrade-ubuntu-latest-"
+          ],
+          "complete": false
+        }
+      },
+      "ready": false
+    },
+    {
+      "n": 16,
+      "head": "12b3ace901e367bde217ae2fc3745de2c7847679",
+      "merge_state": "UNSTABLE",
+      "runs": {
+        "push": {
+          "id": 41919148239,
+          "artifact_sha": "12b3ace901e367bde217ae2fc3745de2c7847679",
+          "units": [
+            "connector",
+            "env",
+            "feishu",
+            "local-agent",
+            "telegram",
+            "web-fetch",
+            "yuki-setup"
+          ],
+          "failed": [],
+          "required": 25,
+          "pass": 23,
+          "pending_windows_linux": [],
+          "valid_artifacts": 25,
+          "missing_artifacts": [
+            "package-feishu-macos-latest-",
+            "package-yuki-setup-macos-latest-"
+          ],
+          "complete": false
+        },
+        "pull_request": {
+          "id": 41919159072,
+          "artifact_sha": "",
+          "units": [
+            "connector",
+            "env",
+            "feishu",
+            "local-agent",
+            "telegram",
+            "web-fetch",
+            "yuki-setup"
+          ],
+          "failed": [],
+          "required": 25,
+          "pass": 25,
+          "pending_windows_linux": [],
+          "valid_artifacts": 27,
+          "missing_artifacts": [
+            "acceptance-windows-latest-",
+            "package-connector-windows-latest-",
+            "package-env-windows-latest-",
+            "package-feishu-windows-latest-",
+            "package-local-agent-windows-latest-",
+            "package-telegram-windows-latest-",
+            "package-web-fetch-windows-latest-",
+            "package-yuki-setup-windows-latest-",
+            "connector-upgrade-windows-latest-",
+            "acceptance-macos-latest-",
+            "package-connector-macos-latest-",
+            "package-env-macos-latest-",
+            "package-feishu-macos-latest-",
+            "package-local-agent-macos-latest-",
+            "package-telegram-macos-latest-",
+            "package-web-fetch-macos-latest-",
+            "package-yuki-setup-macos-latest-",
+            "connector-upgrade-macos-latest-",
+            "acceptance-ubuntu-latest-",
+            "package-connector-ubuntu-latest-",
+            "package-env-ubuntu-latest-",
+            "package-feishu-ubuntu-latest-",
+            "package-local-agent-ubuntu-latest-",
+            "package-telegram-ubuntu-latest-",
+            "package-web-fetch-ubuntu-latest-",
+            "package-yuki-setup-ubuntu-latest-",
+            "connector-upgrade-ubuntu-latest-"
+          ],
+          "complete": false
+        }
+      },
+      "ready": false
+    },
+    {
+      "n": 17,
+      "head": "25075e2be2a029e229bea54abf384f567b71d950",
+      "merge_state": "UNSTABLE",
+      "runs": {
+        "push": {
+          "id": 41919254623,
+          "artifact_sha": "25075e2be2a029e229bea54abf384f567b71d950",
+          "units": [
+            "client",
+            "connector",
+            "env",
+            "feishu",
+            "local-agent",
+            "telegram",
+            "web-fetch",
+            "yuki-setup"
+          ],
+          "failed": [],
+          "required": 28,
+          "pass": 23,
+          "pending_windows_linux": [],
+          "valid_artifacts": 24,
+          "missing_artifacts": [
+            "package-client-macos-latest-",
+            "package-connector-macos-latest-",
+            "package-local-agent-macos-latest-",
+            "package-telegram-macos-latest-",
+            "package-yuki-setup-macos-latest-",
+            "connector-upgrade-macos-latest-"
+          ],
+          "complete": false
+        },
+        "pull_request": {
+          "id": 41919267123,
+          "artifact_sha": "",
+          "units": [
+            "client",
+            "connector",
+            "env",
+            "feishu",
+            "local-agent",
+            "telegram",
+            "web-fetch",
+            "yuki-setup"
+          ],
+          "failed": [],
+          "required": 28,
+          "pass": 24,
+          "pending_windows_linux": [],
+          "valid_artifacts": 25,
+          "missing_artifacts": [
+            "acceptance-windows-latest-",
+            "package-client-windows-latest-",
+            "package-connector-windows-latest-",
+            "package-env-windows-latest-",
+            "package-feishu-windows-latest-",
+            "package-local-agent-windows-latest-",
+            "package-telegram-windows-latest-",
+            "package-web-fetch-windows-latest-",
+            "package-yuki-setup-windows-latest-",
+            "connector-upgrade-windows-latest-",
+            "acceptance-macos-latest-",
+            "package-client-macos-latest-",
+            "package-connector-macos-latest-",
+            "package-env-macos-latest-",
+            "package-feishu-macos-latest-",
+            "package-local-agent-macos-latest-",
+            "package-telegram-macos-latest-",
+            "package-web-fetch-macos-latest-",
+            "package-yuki-setup-macos-latest-",
+            "connector-upgrade-macos-latest-",
+            "acceptance-ubuntu-latest-",
+            "package-client-ubuntu-latest-",
+            "package-connector-ubuntu-latest-",
+            "package-env-ubuntu-latest-",
+            "package-feishu-ubuntu-latest-",
+            "package-local-agent-ubuntu-latest-",
+            "package-telegram-ubuntu-latest-",
+            "package-web-fetch-ubuntu-latest-",
+            "package-yuki-setup-ubuntu-latest-",
+            "connector-upgrade-ubuntu-latest-"
+          ],
+          "complete": false
+        }
+      },
+      "ready": false
+    },
+    {
+      "n": 18,
+      "head": "262d782c25483168bdde6b81a23ceb7921abd316",
+      "merge_state": "UNSTABLE",
+      "runs": {
+        "push": {
+          "id": 41947969736,
+          "artifact_sha": "262d782c25483168bdde6b81a23ceb7921abd316",
+          "units": [
+            "media"
+          ],
+          "failed": [],
+          "required": 7,
+          "pass": 2,
+          "pending_windows_linux": [
+            "acceptance (windows-latest)",
+            "package (media, ubuntu-latest)",
+            "package (media, windows-latest)"
+          ],
+          "valid_artifacts": 1,
+          "missing_artifacts": [
+            "acceptance-windows-latest-",
+            "package-media-windows-latest-",
+            "acceptance-macos-latest-",
+            "package-media-macos-latest-",
+            "package-media-ubuntu-latest-"
+          ],
+          "complete": false
+        },
+        "pull_request": {
+          "id": 41947976564,
+          "artifact_sha": "",
+          "units": [
+            "client",
+            "connector",
+            "env",
+            "feishu",
+            "local-agent",
+            "media",
+            "telegram",
+            "web-fetch",
+            "yuki-setup"
+          ],
+          "failed": [],
+          "required": 31,
+          "pass": 4,
+          "pending_windows_linux": [
+            "package (client, ubuntu-latest)",
+            "package (client, windows-latest)",
+            "package (connector, ubuntu-latest)",
+            "package (connector, windows-latest)",
+            "package (env, ubuntu-latest)",
+            "package (env, windows-latest)",
+            "package (feishu, ubuntu-latest)",
+            "package (feishu, windows-latest)",
+            "package (local-agent, ubuntu-latest)",
+            "package (local-agent, windows-latest)",
+            "package (media, windows-latest)",
+            "package (telegram, ubuntu-latest)",
+            "package (telegram, windows-latest)",
+            "package (web-fetch, ubuntu-latest)",
+            "package (web-fetch, windows-latest)",
+            "package (yuki-setup, ubuntu-latest)",
+            "package (yuki-setup, windows-latest)"
+          ],
+          "valid_artifacts": 3,
+          "missing_artifacts": [
+            "acceptance-windows-latest-",
+            "package-client-windows-latest-",
+            "package-connector-windows-latest-",
+            "package-env-windows-latest-",
+            "package-feishu-windows-latest-",
+            "package-local-agent-windows-latest-",
+            "package-media-windows-latest-",
+            "package-telegram-windows-latest-",
+            "package-web-fetch-windows-latest-",
+            "package-yuki-setup-windows-latest-",
+            "connector-upgrade-windows-latest-",
+            "acceptance-macos-latest-",
+            "package-client-macos-latest-",
+            "package-connector-macos-latest-",
+            "package-env-macos-latest-",
+            "package-feishu-macos-latest-",
+            "package-local-agent-macos-latest-",
+            "package-media-macos-latest-",
+            "package-telegram-macos-latest-",
+            "package-web-fetch-macos-latest-",
+            "package-yuki-setup-macos-latest-",
+            "connector-upgrade-macos-latest-",
+            "acceptance-ubuntu-latest-",
+            "package-client-ubuntu-latest-",
+            "package-connector-ubuntu-latest-",
+            "package-env-ubuntu-latest-",
+            "package-feishu-ubuntu-latest-",
+            "package-local-agent-ubuntu-latest-",
+            "package-media-ubuntu-latest-",
+            "package-telegram-ubuntu-latest-",
+            "package-web-fetch-ubuntu-latest-",
+            "package-yuki-setup-ubuntu-latest-",
+            "connector-upgrade-ubuntu-latest-"
+          ],
+          "complete": false
+        }
+      },
+      "ready": false
+    }
+  ],
+  "core_interface_changes": "Other changed producer heads integrate the existing main; no new idle-device, explicit entry, gateway incoming native-media or Work/run contract delivery was found."
+}

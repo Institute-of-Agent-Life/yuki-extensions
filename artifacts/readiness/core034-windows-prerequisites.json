@@ -1,0 +1,36 @@
+{
+  "task": "EXT-023",
+  "status": "BLOCKED_EXECUTION_ENVIRONMENT",
+  "host": "hjw",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "probe_sha256": "aa1251cc3a26b367970be51da147ee921b7969736df04e350912f14e52fe564a",
+  "commands": [
+    {
+      "program": "docker",
+      "executable": null
+    },
+    {
+      "program": "wsl",
+      "executable": "C:\\Windows\\system32\\wsl.EXE",
+      "command": [
+        "C:\\Windows\\system32\\wsl.EXE",
+        "--list",
+        "--quiet"
+      ],
+      "exit_code": 4294967295,
+      "stdout": "拒绝访问。 \r\n",
+      "stderr": "",
+      "stdout_base64": "0mLdfr+L7pUCMCAADQAKAA==",
+      "stderr_base64": ""
+    }
+  ],
+  "native_worker_supported": false,
+  "baseline_worker_platforms": [
+    "Darwin arm64",
+    "Linux x86_64",
+    "Linux aarch64"
+  ],
+  "baseline": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+  "required": "Linux worker runtime with enforced AppArmor and seccomp, no network, zero capabilities, fixed worker/launcher/CPython codec digests; current Windows has no executable backend."
+}

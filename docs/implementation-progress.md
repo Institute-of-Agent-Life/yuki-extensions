@@ -68,7 +68,7 @@ manifest。回條含來源提交、SDK／schema／peer／消費者 digest、逐�
 
 七張卡已完成任務書驗收。另有八張卡完成下表的 Windows 候選工作。
 三平台 CI 與合併狀態以各 PR 為準。此批開發對拍不計入七張正式驗收。
-先前快照見 `artifacts/readiness/after-core032-039-candidates.json`、`after-core033-candidates.json`。本輪更新見 `artifacts/readiness/after-core038-candidate.json`。
+先前快照見 `artifacts/readiness/after-core032-039-candidates.json`、`after-core033-candidates.json`、`after-core038-candidate.json`。本輪更新見 `artifacts/readiness/after-core034-readiness.json`。
 
 | 卡／分支 | 實作提交 | Windows 已核實 | 仍需 |
 |---|---|---|---|
@@ -220,3 +220,11 @@ CORE-038 乾淨來源 `e25c2b8acce34858d5fd67ac408186e49a1da160`，交接提交 
 `artifacts/EXT-031/candidate-02/media-inspection.json` SHA-256 `3cdd5fd92089a927627f9cdd5f3bd842bbd39600c9ad5175738075c6ea29ab1b`；插件 SHA-256 `ad83ae19b484349ace01f83a3bbb491c97fd6ef7e444dc57fe17be247324ee46`。同目錄含逐方法 wire、manifest、transport 與 owner-disposition；`package-windows.json` 保留獨立建包命令。兩幀目前為 no_vision，待選讀與原 Main 呈現的公開串接。影片 runtime 現鎖 Windows x86_64，其他平台需另驗 codec；三平台 CI 建置／測試與真 Host 解碼分列。
 
 2026-11-05 修正測試等待時序。CORE-038 `d1b7c1b` 的診斷證實原包已登記持有者；Windows `candidate-03` 完全移除手動 acquire，實收原來源 `[6]` 的 forget 回調、原 key／watermark，等待 pending 清空。回條 SHA-256 `405e7c1359165dced882df1c6400bdd29ae2f781106b583e56225d17b587ea55`，新建插件 binary `2d0e7e9b910789bf34b8d263475c71a720a2ee650628fc88a3292a64e26d454c`。`package-windows-03.json` 記建包，宿主／SDK 鎖未變。撤回自動登記缺失的判定；原 Main 呈現與正式發布仍待交付。
+
+修正提交 `262d782` 已推 PR #18，[更正回條已交還核心](https://github.com/Institute-of-Agent-Life/yuki-core/pull/40#issuecomment-6646981531)。PR #11 已合併 `8d2f3c6`；PR #12 head `f0843e1` 合入新主線後正重跑 CI。其餘依順序合併，舊 base 的綠燈不可替代新 merge 產物。
+
+## 下一步：EXT-023 的執行環境
+
+CORE-034 未發布候選來源 `f3f3723aa5322c6a2a20e8cb3b04d845cd7773cc`，SDK alpha.5、composition 1；三平台 ZIP 與每個成員均已驗 SHA。Windows ZIP `fc5f6f1cb8ddd2fe4c62b335705699b6fb8e181993b0a57fa920fe0798e67d04`，完整能力及雜湊見 `artifacts/readiness/core034-handoff-inspection.json`。尚未記作真 Monty 消費證據。
+
+原 worker 固定 Monty `3f9d6ef413fb951e5b80113b7088d535bd028fcb`、原 string-cache 補丁、Linux bwrap launcher、Rust 1.96.0／CPython 3.12 codec。原平台清單沒有 Windows ABI。HJW 實機探測沒有 Docker，WSL 列舉返回拒絕訪問，回條在 `artifacts/readiness/core034-windows-prerequisites.json`。EXT-023 要求 enforced AppArmor＋seccomp、無網路和零 capability；下一步需可從 HJW 使用的 Linux 隔離測試環境，才可建置並對拍原 worker。未替換為同名 crate、未降低隔離，也未把此交付核對算成整卡驗收。
