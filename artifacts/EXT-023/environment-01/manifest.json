@@ -1,0 +1,146 @@
+{
+  "task": "EXT-023",
+  "phase": "HJW Arch execution environment",
+  "status": "PASS",
+  "formal_card_acceptance": false,
+  "source_branch": "codex/ext-023-codemode",
+  "base_commit": "3c6c25e76f11d9f98fe4cc0ec1b56560999688ea",
+  "authorization": "User approved Arch preparation, AppArmor activation, Docker/bubblewrap installation and necessary WSL restart in this chat.",
+  "kernel": "6.18.40.1-microsoft-standard-WSL2 x86_64",
+  "baseline_policy_commit": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+  "container_probe": {
+    "scope": "Prepared HJW Arch container environment; no Monty VM has run in this probe.",
+    "status": "PASS",
+    "apparmor": "yuki-bot-codemode (enforce)",
+    "uid": 10001,
+    "security": {
+      "CapEff": "0000000000000000",
+      "CapPrm": "0000000000000000",
+      "CapBnd": "0000000000000000",
+      "NoNewPrivs": "1",
+      "Seccomp": "2"
+    },
+    "network_interfaces": [
+      [
+        1,
+        "lo"
+      ]
+    ],
+    "outbound_connection_denied": {
+      "errno": 101,
+      "type": "OSError"
+    },
+    "host_file_unavailable": {
+      "errno": 2,
+      "type": "FileNotFoundError"
+    },
+    "image_write_denied": {
+      "errno": 30,
+      "type": "OSError"
+    },
+    "keyctl_errno": 1,
+    "ext023_acceptance": false
+  },
+  "daemon_scope": {
+    "socket": "unix:///run/yuki-ext023-docker/api.sock",
+    "data": "/var/lib/yuki-ext023-docker",
+    "network_bridge": "none",
+    "service_enabled": false,
+    "reason": "Existing systemd-firstboot blocks normal service startup. Use a dedicated test daemon with its own temporary directory; retain existing boot services."
+  },
+  "failures_preserved": [
+    "packages-install.json: old mirror package URLs returned 404; no package transaction committed",
+    "packages-install-locked.json: all signatures and installation passed, then an unmounted securityfs observation failed",
+    "docker-start.json: canceled only the new Docker service start and its two new dependency jobs",
+    "docker-isolated-start.json: daemon healthy, direct Docker Hub connection refused",
+    "container-probe-run.json: inherited /run/user/0 temp directory missing; corrected only test daemon environment"
+  ],
+  "remaining": [
+    "Build original Monty worker, patch, launcher and matching CPython 3.12 codec",
+    "Run real native suspension/recovery and cancellation inside the candidate image",
+    "Implement Rust plugin and consume the pinned CORE-034 public SDK/Host; no real VM handback yet"
+  ],
+  "files": [
+    {
+      "path": "MOBY-PROFILES-LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "README.md",
+      "sha256": "73dd667909d2db718fc8f4bde03f944c01bf62c00ca58bc457440fac8a31ff94"
+    },
+    {
+      "path": "base-images-transfer.json",
+      "sha256": "e5c8e6fc7122f84351e3bd713d5226d5facf6c8eca30237b135a1e78e7a23233"
+    },
+    {
+      "path": "container-probe-run-02.json",
+      "sha256": "f0d38ace1f21cfe97988f4af91fd560f10f510fd494bcd99966a6405f318d357"
+    },
+    {
+      "path": "container-probe-run.json",
+      "sha256": "a20cfe0c128db194687f95cc4ff7713eef3bcd62d4e0219b8bb8ee29f53cdc7a"
+    },
+    {
+      "path": "container-probe.py",
+      "sha256": "3cb553a715b1ad8c3e3fe73a2478a7a1d480fa319e268f564d19e5a1a2590727"
+    },
+    {
+      "path": "docker-isolated-start.json",
+      "sha256": "66d140c3d80a790e267db3440429595ffdfe3bfc3a874cc8f2d3a80af725da6f"
+    },
+    {
+      "path": "docker-start.json",
+      "sha256": "9273feb86991c3f73c518565e7e38948b9f3983cadda09e3f2f58a1fbc3460e8"
+    },
+    {
+      "path": "enable-apparmor.py",
+      "sha256": "5a84a376709f54e8a7b5aea98836128e72971eb2d2e091f33039286e3f18ddb2"
+    },
+    {
+      "path": "environment-replay.json",
+      "sha256": "57ad3c3322aee5fb6661d8df2c041b3a8f7f2f5014a5b6b563cc5d53c5e69a52"
+    },
+    {
+      "path": "install-locked-packages.sh",
+      "sha256": "bf85002b285decd12a1441bf0324924a5bada1dc8ccdebfe0d0f067c02a5d91f"
+    },
+    {
+      "path": "packages-install-locked.json",
+      "sha256": "eec79592d6a81b6ac57e24bb263d14a0ced0b8c9a7b1eb35d49217a8cd82e42b"
+    },
+    {
+      "path": "packages-install.json",
+      "sha256": "0ec43fb40e07d7337ee40c5f40a25c4a957b84e18da9d03f43947c6ccdcdaec3"
+    },
+    {
+      "path": "packages-plan-refreshed.json",
+      "sha256": "2ca780d36fad3ef0e30537baa3ed8bd1b0dac757ff42c3aba2f457c0514b3fc1"
+    },
+    {
+      "path": "packages.lock.json",
+      "sha256": "bbf1159410a008f32b371a8970ad36c4f9f671af6b69e8616ccbe3e35323c5d5"
+    },
+    {
+      "path": "run-container-probe.sh",
+      "sha256": "49c9ea70e930069bf9a960b9811bfe8020b564afecae9a3aa38c938767de7ea3"
+    },
+    {
+      "path": "start-docker.sh",
+      "sha256": "93b0114a9a0e4904a2db9b89b53ae242fb68c671c4e399113c9c70ca01e7aa11"
+    },
+    {
+      "path": "wsl-config-change.json",
+      "sha256": "229a72f66f233ff87bdde569163d94fdb92e700fc73b560abb6aa30035081005"
+    },
+    {
+      "path": "yuki-bot-codemode.apparmor",
+      "sha256": "06ac5a94ad26f7300666641cead6698f24a6960985c655b7c20e517a42ab94cb"
+    },
+    {
+      "path": "yuki-codemode-seccomp.json",
+      "sha256": "57457313430e0bb513ccab8a6906c5e05ffc217459f9c5b01cc77d827dcedc81"
+    }
+  ],
+  "replay_status": "PASS: checked-in start/probe scripts executed through HJW SSH"
+}

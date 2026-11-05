@@ -1,0 +1,73 @@
+[
+  {
+    "source_ref": "docker.io/library/python:3.12-slim",
+    "ref": "docker.io/library/python@sha256:1148dbb014615300fa7e713b2f94f550c0d1c69780c0805f84f093ceee34dd0b",
+    "descriptor": {
+      "annotations": {
+        "com.docker.official-images.bashbrew.arch": "amd64",
+        "org.opencontainers.image.base.digest": "sha256:1e1a22175fbf1b32157ddaf0219e1db4e5401fab2b94ed285add64d18587cd2d",
+        "org.opencontainers.image.base.name": "debian:trixie-slim",
+        "org.opencontainers.image.created": "2026-10-28T01:54:42Z",
+        "org.opencontainers.image.revision": "3d7e95597e56a415d9e4abc0f15877e005d2cb2e",
+        "org.opencontainers.image.source": "https://github.com/docker-library/python.git#3d7e95597e56a415d9e4abc0f15877e005d2cb2e:3.12/slim-trixie",
+        "org.opencontainers.image.url": "https://hub.docker.com/_/python",
+        "org.opencontainers.image.version": "3.12.16-slim-trixie"
+      },
+      "digest": "sha256:1148dbb014615300fa7e713b2f94f550c0d1c69780c0805f84f093ceee34dd0b",
+      "mediaType": "application/vnd.oci.image.manifest.v1+json",
+      "platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "size": 1746
+    },
+    "image_id": "sha256:1148dbb014615300fa7e713b2f94f550c0d1c69780c0805f84f093ceee34dd0b",
+    "archive": "ext023-base-python.tar",
+    "archive_sha256": "0a84755a5fa3f9d0079950798a0a357574766d889bb909455871fea88d20a93b",
+    "purpose": "Download and export only; execution remains on HJW Arch"
+  },
+  {
+    "source_ref": "docker.io/library/rust:1.96.0-slim",
+    "ref": "docker.io/library/rust@sha256:811d6caab4a84e6148c8722128993c1caf152156868b2b66f3a26af189b0dad8",
+    "descriptor": {
+      "annotations": {
+        "com.docker.official-images.bashbrew.arch": "amd64",
+        "org.opencontainers.image.base.digest": "sha256:a617c1cdde36a7e0194b2f07dff669e1753c03c3205356b94f9f350b0f9a57d1",
+        "org.opencontainers.image.base.name": "debian:trixie-slim",
+        "org.opencontainers.image.created": "2026-06-24T02:11:49Z",
+        "org.opencontainers.image.revision": "7502a8239b3db41eda6017b17aa50067d140d2a7",
+        "org.opencontainers.image.source": "https://github.com/rust-lang/docker-rust.git#7502a8239b3db41eda6017b17aa50067d140d2a7:stable/trixie/slim",
+        "org.opencontainers.image.url": "https://hub.docker.com/_/rust",
+        "org.opencontainers.image.version": "1-slim-trixie"
+      },
+      "digest": "sha256:811d6caab4a84e6148c8722128993c1caf152156868b2b66f3a26af189b0dad8",
+      "mediaType": "application/vnd.oci.image.manifest.v1+json",
+      "platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "size": 1361
+    },
+    "image_id": "sha256:811d6caab4a84e6148c8722128993c1caf152156868b2b66f3a26af189b0dad8",
+    "archive": "ext023-base-rust.tar",
+    "archive_sha256": "f5dedffcf170d187e7971779d5e81d0bb0637f72d5dd67c6925765ceb83d55d6",
+    "purpose": "Download and export only; execution remains on HJW Arch"
+  },
+  {
+    "source_ref": "ghcr.io/astral-sh/uv:0.11.31",
+    "ref": "ghcr.io/astral-sh/uv@sha256:812f4717f0002c1c5400653454de9a29b7cbe93bdfe19451376d6aaac522a9bf",
+    "descriptor": {
+      "mediaType": "application/vnd.oci.image.manifest.v1+json",
+      "digest": "sha256:812f4717f0002c1c5400653454de9a29b7cbe93bdfe19451376d6aaac522a9bf",
+      "size": 669,
+      "platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      }
+    },
+    "image_id": "sha256:812f4717f0002c1c5400653454de9a29b7cbe93bdfe19451376d6aaac522a9bf",
+    "archive": "ext023-base-uv.tar",
+    "archive_sha256": "2e089984a7b7546b39fbe50a753b0903ce7c57f3205c1134d76e05185ac9c4de",
+    "purpose": "Download and export only; execution remains on HJW Arch"
+  }
+]

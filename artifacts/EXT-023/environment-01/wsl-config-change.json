@@ -1,0 +1,11 @@
+{
+  "observed_utc": "2026-11-05T02:07:52.766579+00:00",
+  "authorization": "User explicitly approved Arch environment setup, AppArmor, Docker/bubblewrap and necessary WSL restart.",
+  "config_path": "C:\\Users\\Hilbert\\.wslconfig",
+  "before_sha256": "048a479f5c51372a9c953706d7f1d1c08f2593581979e24ff0765005564f2a44",
+  "after_sha256": "aed9460e4c8055f193f85e82780ce91ce4df3eabdba7d873e9ea4776ab7966f0",
+  "change": "Append kernelCommandLine=apparmor=1 security=apparmor to existing wsl2 section; preserve all original bytes.",
+  "running_before": "适用于 Linux 的 Windows 子系统分发:\r\nArch (默认值)\r\n",
+  "shutdown_exit": 0,
+  "shutdown_stderr": ""
+}

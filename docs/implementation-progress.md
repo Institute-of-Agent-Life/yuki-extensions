@@ -231,4 +231,6 @@ CORE-034 未發布候選來源 `f3f3723aa5322c6a2a20e8cb3b04d845cd7773cc`，SDK 
 
 2026-11-04（太平洋時間）經 SSH 實收：`C:/Program Files/WSL/wsl.exe` 可使用 WSL 3.0.1.0，成功進入 Arch，核心為 `6.18.40.1-microsoft-standard-WSL2 x86_64`。核心已編入 AppArmor／seccomp filter，但 AppArmor enabled 為 `N`；Arch 沒有 apparmor、bubblewrap、docker、python、rust、gcc。具名回條 `artifacts/readiness/core034-ssh-wsl-prerequisites.json` SHA-256 `3ac09579389cb3eb5bbf2e74762b40e5d53fdc9d96098899c591c95fd3238bd0`，探測腳本 `codemode-ssh-wsl-preflight.py`；SSH 和 Linux 探測成功，尚未執行 worker 隔離驗收。
 
-下一步已定位到 HJW 的 Arch，不需再問 SSH 主機。準備的環境改動見 `artifacts/readiness/after-ssh-wsl-readiness.json`：保留 `.wslconfig` 的 `memory=4GB`，新增 `kernelCommandLine=apparmor=1 security=apparmor`，在 Arch 安裝隔離工具，載入本次 worker 的專用策略。WSL 核心設定影響所有 WSL2 發行版，重啟可能中斷 Yuki-Bocchi；這項基礎設施變更待明確授權，尚未執行。EXT-023 仍須證明候選 OCI 的 enforced AppArmor＋seccomp、無網路、零 capability、拒絕讀宿主檔、取消終止和原生快照恢復。
+使用者隨後明確授權準備 Arch、安裝隔離工具和必要的 WSL 重啟。`codex/ext-023-codemode` 已保留 `.wslconfig` 原有 memory／swap 設定，追加 AppArmor 啟動參數；重啟時只有本次探測的 Arch 在執行。原索引對應的 10 個 Arch 官方封存套件逐一核 SHA 並驗簽安裝，包含 Docker 29.6.0、AppArmor 4.1.7、bubblewrap 0.11.2，沒有升級既有基礎套件。
+
+`artifacts/EXT-023/environment-01/manifest.json` 記錄環境準備 PASS，含原始故障回條。Arch 的既有 systemd-firstboot 阻塞一般服務啟動，因此本次 daemon 使用專用 socket／資料目錄，未啟用開機服務。公開映像固定 digest 後傳入 HJW；真容器已驗 enforce、Seccomp=2、CapEff/CapPrm/CapBnd 全零、NoNewPrivs=1、只有 loopback、外網失敗、宿主檔不可見與根目錄不可寫。這是執行環境驗證；EXT-023 的原 Monty worker 建置及 Rust 插件仍在進行，尚無 VM 真消費回條或整卡驗收。

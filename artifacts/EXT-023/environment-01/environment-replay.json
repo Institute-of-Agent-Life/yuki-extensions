@@ -1,0 +1,5 @@
+{
+  "exit_code": 0,
+  "stdout": "{\"scope\": \"Prepared HJW Arch container environment; no Monty VM has run in this probe.\", \"status\": \"PASS\", \"apparmor\": \"yuki-bot-codemode (enforce)\", \"uid\": 10001, \"security\": {\"CapEff\": \"0000000000000000\", \"CapPrm\": \"0000000000000000\", \"CapBnd\": \"0000000000000000\", \"NoNewPrivs\": \"1\", \"Seccomp\": \"2\"}, \"network_interfaces\": [[1, \"lo\"]], \"outbound_connection_denied\": {\"errno\": 101, \"type\": \"OSError\"}, \"host_file_unavailable\": {\"errno\": 2, \"type\": \"FileNotFoundError\"}, \"image_write_denied\": {\"errno\": 30, \"type\": \"OSError\"}, \"keyctl_errno\": 1, \"ext023_acceptance\": false}\n",
+  "stderr": "WARNING: IPv4 forwarding is disabled\n"
+}
