@@ -1,0 +1,82 @@
+[
+  {
+    "run": 41967166331,
+    "superseded_head": "d5d2aa1f66cf93afa87cdf3439d2274e0bc12b38",
+    "current_head": "5ea1d55fc99590f8b54883885948d0d813e83518",
+    "exit_code": 0,
+    "stdout": "\u2713 Request to cancel workflow 41967166331 submitted.\n",
+    "stderr": ""
+  },
+  {
+    "run": 41967157466,
+    "superseded_head": "d5d2aa1f66cf93afa87cdf3439d2274e0bc12b38",
+    "current_head": "5ea1d55fc99590f8b54883885948d0d813e83518",
+    "exit_code": 0,
+    "stdout": "\u2713 Request to cancel workflow 41967157466 submitted.\n",
+    "stderr": ""
+  },
+  {
+    "run": 41966476621,
+    "superseded_head": "b0b515f3ee735e9809df10bad7ba2638254e1570",
+    "current_head": "5ea1d55fc99590f8b54883885948d0d813e83518",
+    "exit_code": 0,
+    "stdout": "\u2713 Request to cancel workflow 41966476621 submitted.\n",
+    "stderr": ""
+  },
+  {
+    "run": 41966470911,
+    "superseded_head": "b0b515f3ee735e9809df10bad7ba2638254e1570",
+    "current_head": "5ea1d55fc99590f8b54883885948d0d813e83518",
+    "exit_code": 0,
+    "stdout": "\u2713 Request to cancel workflow 41966470911 submitted.\n",
+    "stderr": ""
+  },
+  {
+    "run": 41964358286,
+    "superseded_head": "d76aae47ec5853b9d373b55b4ccad663409c93c4",
+    "current_head": "5ea1d55fc99590f8b54883885948d0d813e83518",
+    "exit_code": 0,
+    "stdout": "\u2713 Request to cancel workflow 41964358286 submitted.\n",
+    "stderr": ""
+  },
+  {
+    "run": 41964353338,
+    "superseded_head": "d76aae47ec5853b9d373b55b4ccad663409c93c4",
+    "current_head": "5ea1d55fc99590f8b54883885948d0d813e83518",
+    "exit_code": 0,
+    "stdout": "\u2713 Request to cancel workflow 41964353338 submitted.\n",
+    "stderr": ""
+  },
+  {
+    "run": 41955954425,
+    "superseded_head": "3dda59a0e5a09c524f1575df54a8557c1b77b292",
+    "current_head": "5ea1d55fc99590f8b54883885948d0d813e83518",
+    "exit_code": 0,
+    "stdout": "\u2713 Request to cancel workflow 41955954425 submitted.\n",
+    "stderr": ""
+  },
+  {
+    "run": 41955839641,
+    "superseded_head": "3dda59a0e5a09c524f1575df54a8557c1b77b292",
+    "current_head": "5ea1d55fc99590f8b54883885948d0d813e83518",
+    "exit_code": 0,
+    "stdout": "\u2713 Request to cancel workflow 41955839641 submitted.\n",
+    "stderr": ""
+  },
+  {
+    "run": 41968729810,
+    "superseded_head": "28745852a0d54fd1a328c8c4e8d262748cb1ea8b",
+    "current_head": "1e9c4b3052878d4244acc1df89b50dc16a712e21",
+    "exit_code": 0,
+    "stdout": "\u2713 Request to cancel workflow 41968729810 submitted.\n",
+    "stderr": ""
+  },
+  {
+    "run": 41968662295,
+    "superseded_head": "28745852a0d54fd1a328c8c4e8d262748cb1ea8b",
+    "current_head": "1e9c4b3052878d4244acc1df89b50dc16a712e21",
+    "exit_code": 0,
+    "stdout": "\u2713 Request to cancel workflow 41968662295 submitted.\n",
+    "stderr": ""
+  }
+]

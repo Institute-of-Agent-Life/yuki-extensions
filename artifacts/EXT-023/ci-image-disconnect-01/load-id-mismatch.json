@@ -1,0 +1,5 @@
+{
+  "exit_code": 1,
+  "stdout": "Loaded image ID: sha256:2be28421f615af8bed92e688604b206b076c072392374db47459fa293af47a84\ncut 0\n",
+  "stderr": "wsl: Failed to start the systemd user session for 'root'. See journalctl for more details.\nWARNING: IPv4 forwarding is disabled\nTraceback (most recent call last):\n  File \"<stdin>\", line 12, in <module>\n  File \"/mnt/d/yuki-extension-tests/verify_bridge_diagnostic.py\", line 28, in __init__\n    self.cid = docker(\n               ~~~~~~^\n        \"create\", \"--init\", \"-i\", \"--attach\", \"stdin\", \"--attach\", \"stdout\",\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<4 lines>...\n        \"--security-opt\", \"seccomp=\" + str(policy), image,\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ).stdout.strip()\n    ^\n  File \"/mnt/d/yuki-extension-tests/verify_bridge_diagnostic.py\", line 22, in docker\n    raise RuntimeError(\"docker command failed: \" + r.stderr)\nRuntimeError: docker command failed: Error response from daemon: No such image: sha256:92b3ab6849f868142975eb453b078a26169a113c23a71b38ece353d619b17d05\n\n"
+}

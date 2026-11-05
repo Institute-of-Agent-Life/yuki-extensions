@@ -821,7 +821,7 @@
       "ready": false
     }
   ],
-  "next_executable": "repair the observed PR20 native blocked-feed disconnect failure on HJW Arch; retain the exact exit-code and native-process checks",
+  "next_executable": "Await current-head CI diagnostics and the queued macOS job; producer followups may make the preserved adapters executable again.",
   "blocked_consumers": {
     "EXT-023/024": "CORE034 native same-feed acknowledgement denied; producer comment 6649583219",
     "EXT-025": "canonical source hydration and native Jev transport; producer comment 6649779250",
@@ -830,5 +830,26 @@
     "EXT-033/034/035/036": "CORE035 has Mac acceptance artifacts, no verified Windows executable handoff located",
     "others": "Existing work/run, external ingress, personal Social and readiness blockers remain; see core-interface-requests.md"
   },
-  "not_formal_acceptance": true
+  "not_formal_acceptance": true,
+  "implementation_commits": {
+    "EXT-023-native-diagnostics": "5ea1d55fc99590f8b54883885948d0d813e83518",
+    "EXT-025": "28745852a0d54fd1a328c8c4e8d262748cb1ea8b",
+    "EXT-030-intake": "b5a007c"
+  },
+  "current_integrated_heads": {
+    "19": "5ea1d55fc99590f8b54883885948d0d813e83518",
+    "20": "1e9c4b3052878d4244acc1df89b50dc16a712e21",
+    "21": "cb52127180ff243605cd05afb00388a5b5d99bd9"
+  },
+  "handoffs": {
+    "CORE-034": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/43#issuecomment-6649583219",
+    "CORE-036": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/45#issuecomment-6649779250",
+    "CORE-050": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/44#issuecomment-6650249495"
+  },
+  "local_native_disconnect_checks": {
+    "hjw_image": 35,
+    "downloaded_pr19_image": 10,
+    "all_passed": true,
+    "github_failure_fixed": false
+  }
 }

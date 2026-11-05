@@ -309,3 +309,16 @@ PR #20 的 native job `127051966392` 隨後在 blocked-feed disconnect 的退出
 斷言失敗，正在 HJW Arch 重現；先修此故障。PR #12 剩 macOS package 排隊，
 其餘順序 PR 不越過；最新 queue 檢查在 `artifacts/readiness/after-core050-intake.json`。
 CORE-032 已合併 `30a5ea77bf6c`，公開 release 仍只有握手預發版。
+
+本輪提交／交接：EXT-030 診斷 `b5a007c` 已推 [PR #21](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/21)，
+[回條交核心 #44](https://github.com/Institute-of-Agent-Life/yuki-core/pull/44#issuecomment-6650249495)。
+取消時序診斷 `5ea1d55` 已推 #19，正常合入 #20 `1e9c4b3`、#21 `cb52127`。
+另把 PR #19 的原 image.tar 核全部 blob SHA 後送到 HJW，再做十次 native
+斷開測試全部通過；`artifacts/EXT-023/ci-image-disconnect-01/` 留原件。Docker
+load 所用 OCI manifest `2be28421f615` 與 CI config ID `92b3ab6849f8` 明確分列。
+
+目前 45 次 Arch 斷開均無重現，仍等新 CI 的退出碼／container state／stdout／stderr，
+不宣稱已修復 runner 故障。已對 #19／#20 的十個過期 SHA workflow 請求取消，
+保留原 failure 回條；當前 SHA 的全部檢查仍為合併條件。PR #12 尚等 web-fetch
+macOS package，其餘 #13→#21 按新 main、當前 SHA 及下載產物逐張處理。
+已就緒本地工作已推；下步等待 CI 或核心回覆，原未完成 adapter／ASR 工作樹保留。
