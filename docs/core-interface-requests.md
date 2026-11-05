@@ -54,3 +54,15 @@ reply/native_id；舊 Telegram 的巢狀 data 會回 `-32003`，與拒絕未授�
 遷群目前能以 data 事件交原 from/to，尚無可授權轉移原 space 綁定的方法。
 擴展只記平台服務事實；若要移轉既有綁定，需由核心提供帶原 Bot、原新 chat、
 生效時間與同鍵重投語義的授權方法。
+
+### EXT-020 original Work and terminal run
+
+The CORE-032 tool.call at `199dff095be0` carries the operation, call handle and
+parent/ordinal. Its tool.status result supplies that handle and state. Identify
+the public lookup or add a capability-scoped binding for original Work,
+execution, installation and permitted target run. The original Manager sets
+YUKI_WORK_ID from trusted context, and its status contains other runs.
+A model-supplied Work or guessed run cannot authorize read/input/cancel.
+Required cases cover cross-Work guesses, redispatch/restart of one original
+request, a changed Work after dispatch and cancelling an observation while the
+terminal continues. The partial plugin exposes readiness only.

@@ -156,18 +156,18 @@ def main():
     # Include only locked wheels, not arbitrary files already in the transport cache.
     tools_zip = transfer / "tooling.zip"
     host_candidate = None
-    if args.task in {"EXT-003", "EXT-005", "EXT-028"}:
+    if args.task in {"EXT-003", "EXT-005", "EXT-020", "EXT-028"}:
         host_candidate = Path(os.environ["YUKI_HOST_CANDIDATE"])
         pin = json.loads((root / "compat/core-032/source.lock.json").read_bytes())["platforms"]["windows-x86_64"]
         if hashlib.sha256(host_candidate.read_bytes()).hexdigest() != pin["sha256"]:
             raise ValueError("unexpected Windows host candidate")
     native_crates = []
-    if args.task in {"EXT-005", "EXT-028"}:
+    if args.task in {"EXT-005", "EXT-020", "EXT-028"}:
         import tomllib
         from handshake_cargo import registry_crate
         cache = transfer / "native-crates"
         cache.mkdir(exist_ok=True)
-        unit = {"EXT-005": "feishu", "EXT-028": "web-fetch"}[args.task]
+        unit = {"EXT-005": "feishu", "EXT-020": "env", "EXT-028": "web-fetch"}[args.task]
         project = tomllib.loads((root / "plugins" / unit / "Cargo.lock").read_text())
         for package in project["package"]:
             if not package.get("source") or package["name"] == "yuki-plugin-sdk":
@@ -198,7 +198,7 @@ def main():
     assert invoke(["scp", "-q", str(snapshot), f"{args.host}:{remote}/source.zip"]).returncode == 0
     assert invoke(["scp", "-q", str(tools_zip), f"{args.host}:{remote}/tooling.zip"]).returncode == 0
     sdk_environment = ""
-    if args.task in {"EXT-002", "EXT-003", "EXT-005", "EXT-028"}:
+    if args.task in {"EXT-002", "EXT-003", "EXT-005", "EXT-020", "EXT-028"}:
         # Use the host's existing pinned toolchain, with a separate writable Cargo home.
         sdk_environment = r"""
 $tools=Join-Path $env:USERPROFILE 'yuki-core-tooling'

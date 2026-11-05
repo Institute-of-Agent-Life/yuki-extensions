@@ -1,0 +1,13 @@
+id = "env"
+version = "0.1.0-alpha.1"
+program = "yuki-env"
+grants = ["tool.call"]
+env = ["YUKI_ENV_MANAGER_SOCKET"]
+
+[[tools]]
+name = "environment_status"
+description = "Read the configured environment manager's readiness."
+parallel_read = false
+code_direct = true
+cacheable = false
+schema = { type="object", properties={}, additionalProperties=false }

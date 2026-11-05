@@ -1,0 +1,2 @@
+{"listen":"127.0.0.1:34492","operator":"\\\\.\\pipe\\yuki-core-ab9623135cd38f80a5da410deb47f0314d52305b439f7b5e024ff38e284bd5cc","status":"ready"}
+{"error":"TOML parse error at line 4, column 1\n  |\n4 | [main]\r\n  | ^^^^^^\nmissing field `name`\n"}
