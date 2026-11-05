@@ -1,0 +1,182 @@
+{
+  "status": "BLOCKED",
+  "scope": "actual Rust consumer / real Windows Host / real Linux Monty / HTTP receiver",
+  "formal_card_acceptance": false,
+  "published": false,
+  "host_source": "f3f3723aa5322c6a2a20e8cb3b04d845cd7773cc",
+  "host_binary_sha256": "39e0d540fe376b51a850fd9773e30b72ae1dbdb2d04be1a9c59558c45e22b9d9",
+  "sdk_version": "1.0.0-alpha.5",
+  "sdk_sha256": "ea6a1c2f5e8e5ff5b53ef7b8ab89baa9c8bb26cbd9ba45f116eaaafd73406794",
+  "plugin_binary_sha256": "f26e88f764a44c666cdee68b012e28d422ebd46a9ffbeae5240bee71d33d6b0d",
+  "plugin_source_status": "uncommitted Host adapter; complete worker component committed separately",
+  "source_transfer_sha256": "55a504937b36c0f494715f0c84879cdfb03dcee9198ea393eb0104262ca0c84c",
+  "consumer_sources": {
+    "Cargo.lock": "2b584722fd3618fe935bf31c00bc741e8ae03643abd416d057f5ab9e25d227d3",
+    "Cargo.toml": "6c5c47fb41912f30b747e8d5b555220ea076515d2091c239612140954952765d",
+    "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+    "examples/catalog_probe.rs": "de76f1323cc454305bed0599d59430f90b52cf20c85483a36db5a046ff7ef053",
+    "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+    "src/catalog.rs": "a3c0104cf5843be7ac44a311bee44060dbcd9af0c20e0f5a656a7e22eca99618",
+    "src/compose.rs": "f6c221e735dea7710690bb935b816f3402f41d575305e6a6cc474b9e8d60560b",
+    "src/lib.rs": "ef788443d7fdc472cb3e1924ea2434f216fbc519a8ca9272eef6bfaaf612f288",
+    "src/main.rs": "da5653ef0e5fc761efaa39f687390c3a4523dc3bfafa8a1d362c030e6e43ebbb",
+    "src/rpc.rs": "1e0d29a48c0292c27f17a940a344546bb4f95859a7212432d1c8b7e5b1dba527",
+    "src/worker.rs": "0c9561959cb2c45f2f10f0cf2896bfa5a253f7ac37c0878c34a564baae7ec8f0"
+  },
+  "runtime_contract": {
+    "abi": "monty-3f9d6ef-cpython312-linux-x86_64-codec1",
+    "engine_sha256": "19867d12ee8dea8281f70bffa24d4b1a4bc832469b33dbda7d091e20dd347dc3",
+    "launcher_sha256": "a3d43e7ab1d4a115a12607f1a44d2e5a4a0f1d7f7c451a77a1b81ce6b8da18fb",
+    "codec_sha256": "b4e80e73450d7fb18265779fc7dd5fed49626beca98118a32383cae89c4ae4ba",
+    "codec_members": {
+      "binding_wheel": "8961fa5428412ed9ec8446e5146e9b2786a7280234d055003554579f416e4b43",
+      "cpython_binary": "0e6475dfda68a9b2d93501449fc47593ca169010e8f4881577b97463fd0c1263",
+      "backend/bridge.py": "2de631a23dea699bf5f40ddbc471d9d8a8303b9e5d32b86027a4225c91bbe415",
+      "backend/make_contract.py": "4f9889a1665645cecdcc942922678ee079b794f461f48a0642f784a7bb4b5b9f",
+      "backend/yuki_monty_backend/capacity.py": "86f6b0f25a14b80e7576cf7a0f1fb52927ca8ea1875444940ffdc6ac67c2fcb1",
+      "backend/yuki_monty_backend/driver_types.py": "46b78b27b91297653e1569177d6a5eefbabd4882e95290073ba2c9e762a29b65",
+      "backend/yuki_monty_backend/engine_monty.py": "87a2cdb45d431aed2d6127885fb718bf26bcefaf0c40b6b2396f27348aab6343",
+      "backend/yuki_monty_backend/limits.py": "8987eec952ce230dcad31b4f8086d5e800835ceb4791d5a69574a9cb88591e36",
+      "backend/yuki_monty_backend/snapshot_binding.py": "b7b78f43368fcae7151291583e2c3f6e8bbb33338ff1ebf0472bac646ce96dae"
+    },
+    "monty_source": "3f9d6ef413fb951e5b80113b7088d535bd028fcb"
+  },
+  "image": "sha256:65fcd704d953a9ca9be9c1e70269fc21768b571635e8fa8c38bc8b30c84ceb9a",
+  "actual_receiver": [
+    {
+      "arguments": {
+        "text": "same original arguments"
+      },
+      "execution": "0ff37a0e-df8b-4b38-9679-3934e0621692",
+      "operation": "be3fd861-bace-42c2-991c-47b58a69c671",
+      "tool": "send"
+    }
+  ],
+  "snapshots": [
+    {
+      "snapshot": "f5975d92dadf876a7ebe35fee69772de64bce6719e1cb4a84fe695a8c5cdc07c",
+      "envelope_sha256": "f5975d92dadf876a7ebe35fee69772de64bce6719e1cb4a84fe695a8c5cdc07c",
+      "operation": "ee482859-9bdb-4316-95df-d462153c2a40",
+      "next_ordinal": 0,
+      "vm_call": {
+        "args": [
+          {
+            "text": "same original arguments"
+          }
+        ],
+        "engine_call_id": 0,
+        "feed_index": 0,
+        "function_name": "yuki_send",
+        "kind": "function",
+        "kwargs": {},
+        "pending_call_ids": []
+      },
+      "native_sha256": "630c30f1650faa8c190f0022a2684b238b4fcb15cec2620005a2d09b6c239027",
+      "counters": {
+        "denied_calls": 0,
+        "feeds": 1,
+        "output_bytes": 0,
+        "suspensions": 1
+      }
+    },
+    {
+      "snapshot": "48644e1b01d3cc2517b91be3c53678a46ee46d74cb21802ab8fbc2a6c0a6bb79",
+      "envelope_sha256": "48644e1b01d3cc2517b91be3c53678a46ee46d74cb21802ab8fbc2a6c0a6bb79",
+      "operation": "ee482859-9bdb-4316-95df-d462153c2a40",
+      "next_ordinal": 1,
+      "vm_call": {
+        "args": [
+          {
+            "text": "same original arguments"
+          }
+        ],
+        "engine_call_id": 1,
+        "feed_index": 0,
+        "function_name": "yuki_send",
+        "kind": "function",
+        "kwargs": {},
+        "pending_call_ids": []
+      },
+      "native_sha256": "7ae1396265fb249173b10ec83263bda5e30c3f54461578091d33afb8a08c0d10",
+      "counters": {
+        "denied_calls": 0,
+        "feeds": 1,
+        "output_bytes": 0,
+        "suspensions": 2
+      }
+    }
+  ],
+  "first_invoke": {
+    "id": 38,
+    "jsonrpc": "2.0",
+    "method": "tool.invoke",
+    "params": {
+      "arguments": {
+        "text": "same original arguments"
+      },
+      "checkpoint": 0,
+      "engine_call_id": "0",
+      "feed_index": 0,
+      "handle": "480df7d8-da02-48c5-a987-8ecd9c9d44c8",
+      "name": "send",
+      "ordinal": 0,
+      "snapshot": "f5975d92dadf876a7ebe35fee69772de64bce6719e1cb4a84fe695a8c5cdc07c"
+    }
+  },
+  "first_receipt": {
+    "id": 38,
+    "jsonrpc": "2.0",
+    "result": {
+      "can_feed": true,
+      "checkpoint": 1,
+      "closed": false,
+      "engine_call_id": "0",
+      "execution": "0ff37a0e-df8b-4b38-9679-3934e0621692",
+      "fed": false,
+      "fed_snapshot": null,
+      "feed_index": 0,
+      "handle": "480df7d8-da02-48c5-a987-8ecd9c9d44c8",
+      "intent_checkpoint": 0,
+      "operation": "be3fd861-bace-42c2-991c-47b58a69c671",
+      "ordinal": 0,
+      "receipt": {
+        "id": "be3fd861-bace-42c2-991c-47b58a69c671",
+        "namespace": "0ff37a0e-df8b-4b38-9679-3934e0621692",
+        "ordinal": 0,
+        "parent": "ee482859-9bdb-4316-95df-d462153c2a40",
+        "result": {
+          "accepted": "be3fd861-bace-42c2-991c-47b58a69c671",
+          "sequence": 1
+        },
+        "state": "confirmed"
+      },
+      "snapshot": "f5975d92dadf876a7ebe35fee69772de64bce6719e1cb4a84fe695a8c5cdc07c",
+      "state": "confirmed"
+    }
+  },
+  "original_native_feed_ack": {
+    "id": 40,
+    "jsonrpc": "2.0",
+    "method": "tool.resume",
+    "params": {
+      "ack": {
+        "checkpoint": 1,
+        "feed_index": 0,
+        "snapshot": "48644e1b01d3cc2517b91be3c53678a46ee46d74cb21802ab8fbc2a6c0a6bb79"
+      },
+      "engine_call_id": "0",
+      "feed_index": 0,
+      "handle": "480df7d8-da02-48c5-a987-8ecd9c9d44c8",
+      "ordinal": 0
+    }
+  },
+  "ack_denial": {
+    "error": {
+      "code": -32003,
+      "message": "method, grant or original scope denied"
+    },
+    "id": 40,
+    "jsonrpc": "2.0"
+  },
+  "missing": "producer must accept original VM position (feed 0, call 0 -> feed 0, call 1) or supply an explicit compatible public contract; consumer will not replace native feed by ordinal"
+}

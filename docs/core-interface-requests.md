@@ -133,3 +133,26 @@ Windows 真 Rust 插件已消費 `e25c2b8acce3` 的 `media.process/open/publish`
   Main 的原執行選定 processor/event/slot 後，如何把該 media call 的
   artifact/version 帶回原 Main 的公開路徑與案例。需證明原圖 bytes 到達
   原模型、無另購 vision 請求、失效 handle 不呈現；擴展不另造轉接授權。
+
+## CORE-034 → EXT-023／024：原 Monty feed 位點確認
+
+固定 Windows Host `f3f3723aa532`、SDK alpha.5 與真 Rust 消費者，在 HJW Arch
+啟動 OCI `65fcd704d953` 的原 worker。原 Main 接納 Work，`tool.schema` 提供
+凍結 `script_name`，第一個 `send` 已由 HTTP 對端實收。T0／T1 和 T3 回條均成功。
+
+原 Monty 對同一段程式的兩次呼叫產生 `(feed_index=0, engine_call_id=0)` 和
+`(feed_index=0, engine_call_id=1)`。第一筆餵回後，原 post-answer 快照仍在 feed 0；
+以 `tool.resume` 確認 `{checkpoint:1,snapshot:<原SHA>,feed_index:0}`，Host 回
+`-32003 method, grant or original scope denied`，第二筆沒有派發。不得把原 feed
+改成 child ordinal 以迎合不相容條件。兩個 dump／envelope 的 SHA 已重新核對。
+
+請生產者確認 `tool.resume.ack.feed_index` 的公開語義並提供可消費修正：同一
+原 feed 內以不同 engine_call_id 前進，仍以原 checkpoint 防止重餵；同 ack
+重投冪等，換 snapshot／原 child 位點拒絕。需附 T3 後未餵、post-answer 確認後
+雙重啟、原父 operation／子 ordinal 不變及兩筆同參數效果恰為兩次的案例。
+使用者 K05 的根預留和未知請求重試權不變。
+
+回條 `artifacts/EXT-023/core034-consumer-01/native-feed-ack.json` 含 Host／SDK／
+Rust binary／worker／launcher／codec digest、原始逐方法 wire、實際 HTTP 效果和
+失敗位置。這是已執行的消費者不相容回條；完整 Host adapter 尚留工作樹，未作
+完成插件或穩定接口見證。可獨立驗證的 Rust worker 控制模組另行提交。

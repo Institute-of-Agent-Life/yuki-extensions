@@ -1,7 +1,28 @@
 {
-  "unit_id": "monty-runtime", "kind": "image", "path": "images/monty-runtime", "ecosystem": "oci",
-  "version": "0.1.0-alpha.1", "tag_prefix": "monty-runtime/v", "license": "AGPL-3.0-only",
-  "notices": ["LICENSE", "vendor/monty/LICENSE", "vendor/monty/TYPESHED-LICENSE", "deploy/security/MOBY-PROFILES-LICENSE"],
-  "source": {"repository": "Institute-of-Agent-Life/yuki-extensions", "baseline": "329ca7c487414d2f54ddd98ff4727446ed2446cd", "monty": "3f9d6ef413fb951e5b80113b7088d535bd028fcb"},
-  "check_paths": ["ci/monty_linux_check.py", "ci/oci_package.py"]
+  "unit_id": "monty-runtime",
+  "kind": "image",
+  "path": "images/monty-runtime",
+  "ecosystem": "oci",
+  "version": "0.1.0-alpha.1",
+  "tag_prefix": "monty-runtime/v",
+  "license": "AGPL-3.0-only",
+  "notices": [
+    "LICENSE",
+    "vendor/monty/LICENSE",
+    "vendor/monty/TYPESHED-LICENSE",
+    "deploy/security/MOBY-PROFILES-LICENSE"
+  ],
+  "source": {
+    "repository": "Institute-of-Agent-Life/yuki-extensions",
+    "baseline": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+    "monty": "3f9d6ef413fb951e5b80113b7088d535bd028fcb"
+  },
+  "check_paths": [
+    "plugins/codemode/Cargo.toml",
+    "plugins/codemode/Cargo.lock",
+    "plugins/codemode/rust-toolchain.toml",
+    "plugins/codemode/src/lib.rs",
+    "plugins/codemode/src/worker.rs",
+    "plugins/codemode/tests/native_worker.rs"
+  ]
 }

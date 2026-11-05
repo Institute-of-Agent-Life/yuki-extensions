@@ -102,6 +102,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends apparmor
+      - run: rustup toolchain install 1.96.0 --profile minimal
       - name: Build and exercise the native Monty image with enforced isolation
         run: python ci/monty_linux_check.py --out dist/monty-runtime-native
       - uses: actions/upload-artifact@v4
@@ -109,6 +110,31 @@ jobs:
         with:
           name: runtime-monty-runtime-ubuntu-latest-${{ github.sha }}
           path: dist/monty-runtime-native/
+          if-no-files-found: error
+
+  codemode-worker:
+    name: worker (codemode, ${{ matrix.os }})
+    needs: select
+    if: contains(fromJSON(needs.select.outputs.units), 'monty-runtime')
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, macos-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: rustup toolchain install 1.96.0 --profile minimal
+      - run: python ci/codemode_worker_check.py --out dist/codemode-worker
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: worker-codemode-${{ matrix.os }}-${{ github.sha }}
+          path: |
+            dist/codemode-worker/manifest.json
+            dist/codemode-worker/*.txt
           if-no-files-found: error
 
   package:

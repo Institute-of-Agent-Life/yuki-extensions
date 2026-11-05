@@ -246,3 +246,18 @@ CORE-034 未發布候選來源 `f3f3723aa5322c6a2a20e8cb3b04d845cd7773cc`，SDK 
 CORE-034 `f3f3723aa532`／SDK alpha.5 的 crate、schema、三平台來源與 SHA 鎖在 `compat/core-034/`；Rust worker 控制模組初版已通過 Windows `cargo check`，尚未提交為完成插件。下一步是實收公開凍結投影、接入 Rust Code 插件，再對拍原父 operation／子 ordinal 和未知結果；未交還真插件消費回條，也未標記 EXT-023／024 整卡完成。
 
 映像與封裝提交 `d76aae47ec5853b9d373b55b4ccad663409c93c4` 已推 PR #19。其 Windows package job `127037883124` 的 OCI 來源包成功；archive 回歸在非正規化 TEMP 基底誤拒合法成員。修正為基底與成員都先 canonicalize，保留越界與非普通檔案拒絕。HJW 三項回歸與來源包均過，回條 `artifacts/EXT-023/packaging-fix-01/`；遠端須重驗當前 head。
+
+### EXT-023 真 Rust／Host 對拍的具體阻塞
+
+Windows Host `f3f3723aa532` 與 Rust SDK alpha.5 已實際協商，Linux Rust binary
+`f26e88f764a44c666cdee68b012e28d422ebd46a9ffbeae5240bee71d33d6b0d` 經同一 HJW
+的 WSL 啟動真 Monty。第一筆 `send` 有 HTTP 實收與原 child 回條；第一筆餵入後
+原 VM 仍是 feed 0、下一 engine call ID 是 1。核心拒絕 feed 0 的 post-answer
+確認（`tool.resume` 回 -32003），所以第二筆未派發。具名回條及所有 digest 在
+`artifacts/EXT-023/core034-consumer-01/`。未偽造 feed 序號，未新增重試或模型購買。
+
+獨立 Rust worker 模組在 HJW Windows 編譯／預取消測試通過，原生 ABI 測試明列
+不適用；Arch 實跑兩項測試全部通過，包含跨容器原 dump、同參數的兩個原 call
+及清除。`plugins/codemode` 現提交可用 worker library；完整 `main.rs`、`rpc.rs`、
+`catalog.rs`、`compose.rs` 尚在工作樹，待公開接口修正後才可完成驗收與發行單位。
+下一步是消費核心相容 feed-ack 交付、續做原父／子恢復；同時等待順序 PR 的 CI。

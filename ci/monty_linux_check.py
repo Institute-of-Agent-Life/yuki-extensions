@@ -45,6 +45,9 @@ def main():
             subprocess.run(["docker", "rm", "-f", cid], check=True)
         notices = json.loads((out / "THIRD_PARTY_NOTICES.json").read_bytes())
         assert notices["license_text_audit_complete"] and not notices["license_text_gaps"]
+        run([sys.executable, str(root / "ci/codemode_worker_check.py"),
+             "--out", str(out / "rust-worker"), "--image", image,
+             "--contract", str(out / "runtime-contract.json")], "rust-worker")
         run(["docker", "save", "-o", str(out / "image.tar"), image], "export")
         passed = True
     finally:
