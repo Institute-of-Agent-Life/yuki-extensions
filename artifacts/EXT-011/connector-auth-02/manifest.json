@@ -1,0 +1,24 @@
+{
+  "task": "EXT-011",
+  "status": "FAIL",
+  "phase": "preparation",
+  "card_status": "FAIL",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "9f11d1949c0778cf826696b09dc300e2b98ea5af32e4d1af78f9c0e9ce437b92",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-011",
+    "--preparation",
+    "--out",
+    "artifacts\\EXT-011\\connector-auth-02"
+  ],
+  "files": {
+    "cases.json": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+    "failure.txt": "2683dde05445cbca3aa167bd08016057abc4af3229be0b8cc36d343dd8bbfd9b",
+    "host.txt": "ffc76d1a1778abf77b468df681e6b82e99ba2ae5cb9ca230c8390dae478a5737",
+    "model-http.json": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f"
+  }
+}

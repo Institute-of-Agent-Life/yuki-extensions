@@ -1,0 +1,42 @@
+{
+  "final": "connector-auth-07",
+  "iterations": [
+    {
+      "run": "connector-auth-02",
+      "original_status": "FAIL",
+      "manifest_sha256": "e69da81fde6579323946e131ad33f707b23ef992b59cdb342899dd3f13d6003a",
+      "disposition": "test TOML missed required main fields; Host did not start"
+    },
+    {
+      "run": "connector-auth-03",
+      "original_status": "FAIL",
+      "manifest_sha256": "f200c84f7238cea1c233677541ddd68c3c848e79d21d575f7b1b30bae0dd6f8c",
+      "disposition": "account.open cannot transfer an existing current owner; test sequence corrected"
+    },
+    {
+      "run": "connector-auth-04",
+      "original_status": "FAIL",
+      "manifest_sha256": "d62782de20d8bcef0f476c91313c85d5b7b8ea13432df77b65f80dd9be69af85",
+      "disposition": "pre-expiry close observed, later test incorrectly reopened with another native epoch"
+    },
+    {
+      "run": "connector-auth-05",
+      "original_status": "PASS",
+      "manifest_sha256": "3ee6195d14d9f945b6c06ac5dfd1ce5445ae59777288ee4da04b4f58076f5f9f",
+      "disposition": "connection() cases passed; coverage review found 1008 stops original run; not accepted as renewal proof"
+    },
+    {
+      "run": "connector-auth-06",
+      "original_status": "FAIL",
+      "manifest_sha256": "7abbe40dfbddbe27c2ede128b0e55da64995e5b70731af3397870fde74cb9ecb",
+      "disposition": "real run renewal passed; observer lost early metadata for expected forged-hello close"
+    },
+    {
+      "run": "connector-auth-07",
+      "original_status": "PASS",
+      "manifest_sha256": "0d276f83bb7322b90d507aeecd2441ce128a3a8adae41f294916f0a3ef1c0cb7",
+      "disposition": "final real run, 12 cases, original automatic renewal and full source/method verification pass"
+    }
+  ],
+  "core_bug_claimed": false
+}

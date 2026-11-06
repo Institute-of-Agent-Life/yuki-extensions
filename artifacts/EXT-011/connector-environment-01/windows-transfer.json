@@ -1,0 +1,5 @@
+{
+  "source_snapshot_sha256": "16fbeb425eddc8013dacfcee38736290a4953a674e4a4d737a834215f3629f5c",
+  "evidence_zip_sha256": "f182722ff5fc88bae75bd53a974d879c6a41371b006d669377c6d9c93868ae5c",
+  "disposition": "FAIL: isolated test runner omitted uv PATH; no Host consumption reached"
+}

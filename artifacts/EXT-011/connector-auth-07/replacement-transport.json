@@ -1,0 +1,12 @@
+{
+  "journal_namespace": "a4468c14-f5b0-4385-aea0-86be7c229d38",
+  "connector_version": "0.4.4.dev1",
+  "tls": {
+    "version": "TLSv1.3",
+    "certificate_required": true,
+    "hostname_check": true
+  },
+  "connection": 1,
+  "automatic_run": false,
+  "owner_stopped": false
+}

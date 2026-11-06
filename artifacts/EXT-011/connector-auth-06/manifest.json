@@ -1,0 +1,37 @@
+{
+  "task": "EXT-011",
+  "status": "FAIL",
+  "phase": "preparation",
+  "card_status": "FAIL",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "eb6a11c8c5d00db82a25f30b9022d9f9c6d9d1c614a461b0a44dbd406ce864ef",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-011",
+    "--preparation",
+    "--out",
+    "artifacts\\EXT-011\\connector-auth-06"
+  ],
+  "files": {
+    "account-reassigned-transport.json": "b4a668969c476c4f3231f21a5f8aed1ef049e6269c7806637240fbd97d9e154c",
+    "account-reassigned.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "cases.json": "cadba9b572ede547ad3491674988c99f0117d50b99b598cf05aa1a45963d7521",
+    "empty-original-transport.json": "b4a668969c476c4f3231f21a5f8aed1ef049e6269c7806637240fbd97d9e154c",
+    "empty-original.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "failure.txt": "df3f41358546f132d4abc6dfd6f79342193bd8b570990f118b6cac218ca1a051",
+    "forged-hello.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "host.txt": "b5db61188d2704221bf192bb86c6ecaa89c827d476eb58a48f7655fd377e6a2f",
+    "model-http.json": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+    "original-run-renewal-transport.json": "e4dfb731de53e3d700a0088abe51972175f831514b280baafb7784f8910668bf",
+    "original-run-renewal.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "person-merged-transport.json": "b4a668969c476c4f3231f21a5f8aed1ef049e6269c7806637240fbd97d9e154c",
+    "person-merged.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "replacement-transport.json": "b4a668969c476c4f3231f21a5f8aed1ef049e6269c7806637240fbd97d9e154c",
+    "replacement.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tls-ingress.json": "2815f55bf17711f102532927005e7f640b91c405c9fe0135ddeeacf0fe736c7b",
+    "wire.jsonl": "9e607126ccab8054f035ac5ca463b0f59940fcc704b7d4e33c8d65e79b1c73aa"
+  }
+}

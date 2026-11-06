@@ -1,0 +1,7 @@
+{
+  "url": "wss://127.0.0.1:14335/agents/v1/connect",
+  "certificate_sha256": "ed39da81a5984369a8b7df30ffa8d8298839aeaf2705a2e718f9b6a9b122e624",
+  "certificate_verification": "original Python TLS defaults with explicit isolated test CA",
+  "wire_modification": false,
+  "public_deployment": false
+}

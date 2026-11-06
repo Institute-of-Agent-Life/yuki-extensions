@@ -165,7 +165,7 @@ def main():
     host_candidate = None
     if args.task in {"EXT-003", "EXT-005", "EXT-011", "EXT-015", "EXT-020", "EXT-028", "EXT-031", "EXT-036", "EXT-037", "EXT-038"}:
         host_candidate = Path(os.environ["YUKI_HOST_CANDIDATE"])
-        contract = "core-037" if args.task in {"EXT-037", "EXT-038"} else "core-035" if args.task == "EXT-036" else "core-038" if args.task == "EXT-031" else ("core-033" if args.task in {"EXT-011","EXT-015"} else "core-032")
+        contract = "core-033-connector" if args.task == "EXT-011" else "core-037" if args.task in {"EXT-037", "EXT-038"} else "core-035" if args.task == "EXT-036" else "core-038" if args.task == "EXT-031" else ("core-033" if args.task in {"EXT-011","EXT-015"} else "core-032")
         pin = json.loads((root / "compat" / contract / "source.lock.json").read_bytes())["platforms"]["windows-x86_64"]
         if hashlib.sha256(host_candidate.read_bytes()).hexdigest() != pin["sha256"]:
             raise ValueError("unexpected Windows host candidate")

@@ -1,0 +1,32 @@
+{
+  "task": "EXT-011",
+  "status": "FAIL",
+  "phase": "preparation",
+  "card_status": "FAIL",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "5df383cb0853101052de4a8826fb2bad696c0e8efdaba4400ef900877fa2eb0c",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-011",
+    "--preparation",
+    "--out",
+    "artifacts\\EXT-011\\connector-auth-03"
+  ],
+  "files": {
+    "cases.json": "a9dae86ec1388be69ba2e384c873ac9725cfcef81516184946aa3fd422c1f07b",
+    "empty-original-transport.json": "9b7e4664aee2f803f1af01328099cf23eb45dad279382bef2a461de9d0f617a8",
+    "empty-original.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "failure.txt": "af66a6fb74734afb48e89f95877df0a6ccddac41527ee65a6e4c8e1d81c57a1a",
+    "host.txt": "79a17c6e5ae8f85892a5c517d02c7bc1228e7a531426a31b1f53e59a17678648",
+    "model-http.json": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+    "person-merged-transport.json": "9b7e4664aee2f803f1af01328099cf23eb45dad279382bef2a461de9d0f617a8",
+    "person-merged.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "replacement-transport.json": "9b7e4664aee2f803f1af01328099cf23eb45dad279382bef2a461de9d0f617a8",
+    "replacement.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tls-ingress.json": "0e469e9ebdbe4981e5db30806abb21ebe1e452893e378a33de6a890186474f9d",
+    "wire.jsonl": "a0b0e846057b16ce63ebcfbd89d7ff4bb5863231abce8aa8333088907f832a0a"
+  }
+}

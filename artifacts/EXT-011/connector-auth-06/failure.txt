@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "C:\Users\Hilbert\yuki-extension-tests\eb6a11c8c5d00db82a25\src\ci\check.py", line 37, in main
+    report_name, report = runner(root, args.out.resolve())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hilbert\yuki-extension-tests\eb6a11c8c5d00db82a25\src\tests\cases\EXT-011.py", line 193, in prepare
+    forged = peer("forged-hello", {**credential, "device_id": "forged-device"}, [], allow_closed=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hilbert\yuki-extension-tests\eb6a11c8c5d00db82a25\src\tests\cases\EXT-011.py", line 93, in peer
+    assert (control / "connected.json").exists() and (allow_closed or process.poll() is None), (label, (output / (label + ".txt")).read_text())
+AssertionError: ('forged-hello', '')

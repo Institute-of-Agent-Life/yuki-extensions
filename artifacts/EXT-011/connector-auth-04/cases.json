@@ -1,0 +1,102 @@
+[
+  {
+    "case": "missing-credential-denied",
+    "result": 401
+  },
+  {
+    "case": "chat-credential-denied",
+    "result": 401
+  },
+  {
+    "case": "original-connector-empty-device",
+    "result": {
+      "connected": true,
+      "connection_epoch": 1,
+      "device_capabilities": {
+        "full_access": false,
+        "interrupt_supported": false,
+        "platform": "win32",
+        "shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+        "tty": false
+      },
+      "device_id": "6b27e133-87c8-43f3-9e3c-c79d306f3a1b",
+      "instances": [],
+      "journal_namespace": "connector:7fc4ad64fd9630c4212f7812b76a1490fdb756989781587c0e95a71bade3a769"
+    }
+  },
+  {
+    "case": "old-catalog-and-close-fenced",
+    "result": {
+      "connected": true,
+      "connection_epoch": 2,
+      "device_capabilities": {
+        "full_access": false,
+        "interrupt_supported": false,
+        "platform": "win32",
+        "shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+        "tty": false
+      },
+      "device_id": "6b27e133-87c8-43f3-9e3c-c79d306f3a1b",
+      "instances": [
+        {
+          "capabilities": [],
+          "driver": "codex",
+          "id": "native",
+          "label": "new snapshot",
+          "status": "unavailable"
+        }
+      ],
+      "journal_namespace": "connector:7fc4ad64fd9630c4212f7812b76a1490fdb756989781587c0e95a71bade3a769"
+    }
+  },
+  {
+    "case": "full-snapshot-removes-instances-keeps-device",
+    "result": {
+      "connected": true,
+      "connection_epoch": 2,
+      "device_capabilities": {
+        "full_access": false,
+        "interrupt_supported": false,
+        "platform": "win32",
+        "shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+        "tty": false
+      },
+      "device_id": "6b27e133-87c8-43f3-9e3c-c79d306f3a1b",
+      "instances": [],
+      "journal_namespace": "connector:7fc4ad64fd9630c4212f7812b76a1490fdb756989781587c0e95a71bade3a769"
+    }
+  },
+  {
+    "case": "original-WebSocket-ping-closes-before-handle-expiry",
+    "result": {
+      "kind": "ConnectionClosedError",
+      "code": 1008,
+      "reason": "connector_reauthentication_required"
+    }
+  },
+  {
+    "case": "person-merge-keeps-original-device-namespace",
+    "result": {
+      "connected": true,
+      "connection_epoch": 3,
+      "device_capabilities": {
+        "full_access": false,
+        "interrupt_supported": false,
+        "platform": "win32",
+        "shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+        "tty": false
+      },
+      "device_id": "6b27e133-87c8-43f3-9e3c-c79d306f3a1b",
+      "instances": [
+        {
+          "capabilities": [],
+          "driver": "codex",
+          "id": "same",
+          "label": "same device",
+          "status": "unavailable"
+        }
+      ],
+      "journal_namespace": "connector:7fc4ad64fd9630c4212f7812b76a1490fdb756989781587c0e95a71bade3a769"
+    }
+  }
+]

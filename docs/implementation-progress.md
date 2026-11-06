@@ -13,6 +13,35 @@
 | EXT-010 · codex/ext-010 | `ab16e07`；CI `41834791702`；PR #6 合併 `2c55dbb` | `artifacts/EXT-010/02/`，8 例含實際子進程退出碼 23、雙 session 取消及 unknown |
 | EXT-019 · codex/ext-019 | 實作 `7531d84`、PR head `9d1e8a8`；三平台 CI `41835863011`；PR #7 合併 `7625095` | `artifacts/EXT-019/02/`，呼叫表、schema 差分、5 個故障變異；`03/` 固定跨平台順序 |
 
+## 2026-11-06 EXT-011 原 Connector 鑑權與 wire4 候選
+
+- 分支 `codex/ext-011-connector-auth`，基於 `5986cba`；Rust local-agent
+  `0.1.0-alpha.2` 已完成本輪可用接線。正式完成仍 **7／68**。
+- CORE-033 `c85a00b121d0277578292e8b60170b799e4ad6db`／SDK alpha.12，
+  三平台 ZIP／全成員／producer manifest 已核，完整 pin 在 `compat/core-033-connector`。
+  Windows ZIP `6249cf5145c4`、Host `e26626a017c5`、crate `7f260fdd21a7`；未發布。
+- HJW Windows `connector-auth-07`：真 Rust＋原安裝 Python Connector 的 WSS／TLS 1.3
+  12 例通過，模型 HTTP 0。涵蓋 chat／缺憑據拒絕、空設備、全量 catalog、舊 epoch
+  catalog／close fence、人物合併、原帳號 transfer、偽造 hello、無 Work 的 event 不 ACK、
+  撤權與冷啟。原 `Connector.run` 240.141 秒自動重連，epoch 3→4，未停止 owner。
+- `connector-analysis-01` 在 Windows 核 31 個來源綁定、47 組原方法配對
+  （connect 9／check 29／close 9）、build／SDK／Host／wire SHA；原 alpha.1 binary
+  實測 schema1→2 保留設備，舊 reader 拒絕新事實且 DB bytes 未變。新格式前向修復。
+  binary `791e7ceb89fd526be00bc390831afa0889e8cd503adfc3beb9fb3577d44860a5`；
+  wire `bc94657fe5a687444f39959e12f2453b2cfe42d236b87ecc8bb351059cf8c3e0`。
+- 原 Python Connector／驅動／journal 未改。原 raw Bearer 只交私有核心 exchange；
+  安裝 ID 明選、與 SDK namespace 分開；proof／handle 不落 catalog。續期用 1001，
+  原 1008 會停 owner，不能以只跑 connection() 的 PASS 冒充自動重連。
+  02…06 原配置／觀測失敗與 05 的覆蓋缺口全部保留，見 iteration-disposition。
+- 仍需正式發布、公開 WSS 部署、原設備／catalog 匯出導入演練；CORE-057 現有包只含
+  import-models，不能代替設備資料。EXT-012／014 的原 Work/run 授權、operation 綁定
+  與回流另交核心，不把 device.connections 當一般業務授權。
+- PR #15 本輪已核 48 ZIP 並普通合併 main `ac8c1b287e5a`；回條
+  `artifacts/EXT-011/ci-receipt-0107c0a.json`。PR #16 已正常合 main 至 `58cd960e1a99`，
+  新三平台 CI 等 runner；其後各 PR 輪到時仍須正常合入新 main。
+- 下一個獨立可做項是 EXT-070；已從基線 CI `41554925880` 核得 11 份原 address
+  回條、JUnit 與來源，尚未把它們當本次執行結果。所有既有 WIP 保留。
+
 ## 2026-11-06 EXT-024 普通拒絕與後續效果對拍
 
 - 分支 `codex/ext-024-rejection-continuation`，從已驗角色／trace 的 `d9cfee9` 建獨立樹；

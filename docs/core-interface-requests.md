@@ -103,6 +103,27 @@ Windows 候選 `994aee20ced7` 能以一次性碼配對 connector。原 Connector
 已配對舊設備、A→B 合併、帳號換人、憑證撤銷、舊連線晚到的 catalog／close。
 取得授權後，插件才能為已認證裝置管理當前連線與 instance 快照。
 
+### 2026-11-06：未選 Work 的連線鑑權已解除
+
+上述舊缺口由 PR #66 固定候選 `c85a00b121d0`／SDK alpha.12 的
+`device.connect/check/close` 解除。EXT-011 在 HJW Windows 用原 Connector
+通過 12 例 WSS／epoch／撤權／合併／帳號 transfer；逐方法 47 配對與完整 tuple
+在 `artifacts/EXT-011/connector-analysis-01`。這是未發布候選，後續不再把
+「缺 Workless device authority」列為本卡阻塞，也不重跑舊 alpha.3 的拒絕診斷。
+
+資料責任仍需公開交接：CORE-057 的固定候選只列 import-models。請由原 owner
+提供設備認證資料的版本化 inspect/apply 回條，保留原 device ID／人物原值與 current
+root／撤權水位／穩定 namespace；憑據繼續由核心持有。local-agent 只消費批准的
+原 device→instance／current-connection metadata 匯出（schema、原鍵、來源版本、
+SHA、barrier），自行導入私庫；不讀主庫，不從 Account 另建 Person 或重設 journal。
+案例需覆蓋原已配對設備重連、撤權設備不得復活、A→B 及帳號轉讓的舊資料。
+
+EXT-012／014 的業務 scope 不能用 device.connections 代替。需以既有公開
+Work／device.auth／native 回調交付原 tool.call handle→accepted Work→原
+operation/run/session/permission 的最小正反序列、字段與 grant：H11 prompt/queue/watch
+未 accept 拒絕，list/get 與原 operation 控制分開；unknown 查原鍵，不重派。
+本候選遇無 Work event 只拒絕、不 ACK，原 Connector journal 保留未確認事件。
+
 ## CORE-033 → EXT-015
 
 同一 Windows 包的原 Client9 入口支援配對、訊息、事件、原 UUID 回條與

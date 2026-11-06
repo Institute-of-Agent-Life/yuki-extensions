@@ -1,0 +1,68 @@
+{
+  "unit_id": "local-agent",
+  "version": "0.1.0-alpha.2",
+  "release_tag": "local-agent/v0.1.0-alpha.2",
+  "published": false,
+  "manifest_sha256": "4c14d9e83df0e8cc1adba531018cfae5d64a210ab000328dd7f8ec0d0dd49463",
+  "lock_sha256": "5eb68a8cac1947d55729a5d735427fc025601ecbbee39ab5d2b6841e69a82f3c",
+  "source": {
+    "repository": "Institute-of-Agent-Life/yuki-extensions",
+    "baseline": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+    "sdk_contract": "compat/core-033-connector/source.lock.json"
+  },
+  "license": "AGPL-3.0-only",
+  "artifacts": {
+    "Cargo.lock": "5eb68a8cac1947d55729a5d735427fc025601ecbbee39ab5d2b6841e69a82f3c",
+    "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+    "plugin.toml": "52321a64782f2542600b3c7b80d6bf30d868177f9fe7e035a133c7ca6ce76d36",
+    "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+    "yuki-local-agent.exe": "791e7ceb89fd526be00bc390831afa0889e8cd503adfc3beb9fb3577d44860a5"
+  },
+  "commands": [
+    {
+      "command": [
+        "rustc",
+        "--version",
+        "--verbose"
+      ],
+      "exit_code": 0,
+      "stdout": "rustc 1.96.0 (ac68faa20 2026-05-25)\nbinary: rustc\ncommit-hash: ac68faa20c58cbccd01ee7208bf3b6e93a7d7f96\ncommit-date: 2026-05-25\nhost: x86_64-pc-windows-gnu\nrelease: 1.96.0\nLLVM version: 22.1.2\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "cargo",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "cargo 1.96.0 (30a34c682 2026-05-25)\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--target-dir",
+        "C:\\Users\\Hilbert\\yuki-extension-tests\\aaacdf35449e1ade3d51\\temp\\yuki-rust-build-diraimhm"
+      ],
+      "exit_code": 0,
+      "stdout": "\nrunning 1 test\ntest wire::tests::authority_fields_cannot_replace_original_device_or_instance_keys ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 3 tests\ntest reopening_is_idempotent_and_rejects_foreign_databases ... ok\ntest tests::incomplete_snapshot_rolls_back_and_unknown_schema_is_preserved ... ok\ntest tests::migration_keeps_paired_device_and_fences_replacement ... ok\n\ntest result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s\n\n",
+      "stderr": "   Compiling proc-macro2 v1.0.107\n   Compiling unicode-ident v1.0.27\n   Compiling quote v1.0.47\n   Compiling version_check v0.9.5\n   Compiling getrandom v0.3.4\n   Compiling cfg-if v1.0.5\n   Compiling itoa v1.0.18\n   Compiling typenum v1.20.1\n   Compiling zerocopy v0.8.63\n   Compiling shlex v2.0.1\n   Compiling httparse v1.10.1\n   Compiling serde_core v1.0.228\n   Compiling find-msvc-tools v0.1.15\n   Compiling vcpkg v0.2.15\n   Compiling pkg-config v0.3.34\n   Compiling log v0.4.35\n   Compiling bytes v1.12.1\n   Compiling serde_json v1.0.145\n   Compiling thiserror v2.0.21\n   Compiling foldhash v0.1.5\n   Compiling serde v1.0.228\n   Compiling generic-array v0.14.7\n   Compiling hashbrown v0.15.5\n   Compiling cc v1.11.0\n   Compiling memchr v2.8.3\n   Compiling http v1.5.0\n   Compiling base64 v0.22.1\n   Compiling cpufeatures v0.2.17\n   Compiling ryu v1.0.23\n   Compiling utf-8 v0.7.6\n   Compiling hashlink v0.10.0\n   Compiling fallible-streaming-iterator v0.1.9\n   Compiling smallvec v1.16.4\n   Compiling rand_core v0.9.5\n   Compiling httpdate v1.0.3\n   Compiling chunked_transfer v1.5.0\n   Compiling ascii v1.1.0\n   Compiling fallible-iterator v0.3.0\n   Compiling bitflags v2.13.2\n   Compiling data-encoding v2.11.1\n   Compiling windows-link v0.2.1\n   Compiling percent-encoding v2.3.2\n   Compiling fastrand v2.5.0\n   Compiling ureq-proto v0.5.3\n   Compiling syn v3.0.9\n   Compiling syn v2.0.119\n   Compiling tiny_http v0.12.0\n   Compiling windows-sys v0.61.2\n   Compiling once_cell v1.21.4\n   Compiling crypto-common v0.1.7\n   Compiling block-buffer v0.10.4\n   Compiling digest v0.10.7\n   Compiling ureq v3.1.2\n   Compiling libsqlite3-sys v0.35.0\n   Compiling sha1 v0.10.7\n   Compiling tempfile v3.23.0\n   Compiling serde_derive v1.0.228\n   Compiling thiserror-impl v2.0.21\n   Compiling ppv-lite86 v0.2.21\n   Compiling rand_chacha v0.9.0\n   Compiling rand v0.9.5\n   Compiling yuki-plugin-sdk v1.0.0-alpha.12\n   Compiling tungstenite v0.28.0\n   Compiling rusqlite v0.37.0\n   Compiling yuki-local-agent v0.1.0-alpha.2 (C:\\Users\\Hilbert\\yuki-extension-tests\\aaacdf35449e1ade3d51\\temp\\yuki-rust-build-diraimhm\\unit)\nwarning: method `startup` is never used\n  --> tests\\..\\src\\catalog.rs:50:12\n   |\n 8 | impl Catalog {\n   | ------------ method in this implementation\n...\n50 |     pub fn startup(&mut self) -> rusqlite::Result<()> {\n   |            ^^^^^^^\n   |\n   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default\n\nwarning: `yuki-local-agent` (test \"catalog\") generated 1 warning\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 33.10s\n     Running unittests src\\main.rs (C:\\Users\\Hilbert\\yuki-extension-tests\\aaacdf35449e1ade3d51\\temp\\yuki-rust-build-diraimhm\\debug\\deps\\yuki_local_agent-6b439fc13780fd3b.exe)\n     Running tests\\catalog.rs (C:\\Users\\Hilbert\\yuki-extension-tests\\aaacdf35449e1ade3d51\\temp\\yuki-rust-build-diraimhm\\debug\\deps\\catalog-c93da6a2df8e46ee.exe)\n"
+    },
+    {
+      "command": [
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "--target-dir",
+        "C:\\Users\\Hilbert\\yuki-extension-tests\\aaacdf35449e1ade3d51\\temp\\yuki-rust-build-diraimhm"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "   Compiling proc-macro2 v1.0.107\n   Compiling quote v1.0.47\n   Compiling unicode-ident v1.0.27\n   Compiling version_check v0.9.5\n   Compiling cfg-if v1.0.5\n   Compiling zerocopy v0.8.63\n   Compiling typenum v1.20.1\n   Compiling getrandom v0.3.4\n   Compiling itoa v1.0.18\n   Compiling httparse v1.10.1\n   Compiling serde_core v1.0.228\n   Compiling find-msvc-tools v0.1.15\n   Compiling shlex v2.0.1\n   Compiling vcpkg v0.2.15\n   Compiling pkg-config v0.3.34\n   Compiling log v0.4.35\n   Compiling bytes v1.12.1\n   Compiling serde_json v1.0.145\n   Compiling serde v1.0.228\n   Compiling thiserror v2.0.21\n   Compiling foldhash v0.1.5\n   Compiling generic-array v0.14.7\n   Compiling cc v1.11.0\n   Compiling hashbrown v0.15.5\n   Compiling utf-8 v0.7.6\n   Compiling base64 v0.22.1\n   Compiling cpufeatures v0.2.17\n   Compiling http v1.5.0\n   Compiling memchr v2.8.3\n   Compiling ryu v1.0.23\n   Compiling fallible-iterator v0.3.0\n   Compiling httpdate v1.0.3\n   Compiling bitflags v2.13.2\n   Compiling rand_core v0.9.5\n   Compiling percent-encoding v2.3.2\n   Compiling data-encoding v2.11.1\n   Compiling chunked_transfer v1.5.0\n   Compiling ascii v1.1.0\n   Compiling fallible-streaming-iterator v0.1.9\n   Compiling smallvec v1.16.4\n   Compiling hashlink v0.10.0\n   Compiling syn v2.0.119\n   Compiling syn v3.0.9\n   Compiling block-buffer v0.10.4\n   Compiling crypto-common v0.1.7\n   Compiling ureq-proto v0.5.3\n   Compiling tiny_http v0.12.0\n   Compiling digest v0.10.7\n   Compiling sha1 v0.10.7\n   Compiling ureq v3.1.2\n   Compiling libsqlite3-sys v0.35.0\n   Compiling serde_derive v1.0.228\n   Compiling thiserror-impl v2.0.21\n   Compiling yuki-plugin-sdk v1.0.0-alpha.12\n   Compiling ppv-lite86 v0.2.21\n   Compiling rand_chacha v0.9.0\n   Compiling rand v0.9.5\n   Compiling tungstenite v0.28.0\n   Compiling rusqlite v0.37.0\n   Compiling yuki-local-agent v0.1.0-alpha.2 (C:\\Users\\Hilbert\\yuki-extension-tests\\aaacdf35449e1ade3d51\\temp\\yuki-rust-build-diraimhm\\unit)\n    Finished `release` profile [optimized] target(s) in 2m 27s\n"
+    }
+  ]
+}

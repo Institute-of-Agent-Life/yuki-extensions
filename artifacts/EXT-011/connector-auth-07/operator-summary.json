@@ -1,0 +1,13 @@
+{
+  "original": "1c42eaa0-17f0-435b-b6f9-c5b9d395d528",
+  "merged": "b5a98fdc-99c4-413c-af15-681b510c215b",
+  "other": "b45232fc-89ff-4b3c-b1b4-257ccce01f3f",
+  "account_before": {
+    "account": "835ba3cd-7127-4e40-a197-767b6288bb1f",
+    "assignment": "8d936799-8ec5-4ac0-8bac-5158efbb7793"
+  },
+  "account_after": {
+    "account": "835ba3cd-7127-4e40-a197-767b6288bb1f",
+    "assignment": "c6a0480b-b75b-4df6-8266-6c0e66511c49"
+  }
+}
