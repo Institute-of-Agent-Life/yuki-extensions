@@ -2,10 +2,17 @@ name: independent-units
 
 on:
   push:
-    branches: [main, 'codex/**']
+    # PRs run on the merge ref; a feature-branch push would duplicate that run.
+    branches: [main]
   pull_request:
     branches: [main]
   workflow_dispatch:
+
+# Only superseded runs for the same PR are cancelled. Main and manual runs
+# retain unique groups, so they cannot cancel each other.
+concurrency:
+  group: ${{ github.event_name == 'pull_request' && format('{0}-pr-{1}', github.workflow, github.event.pull_request.number) || format('{0}-run-{1}', github.workflow, github.run_id) }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 env:
   PYTHONUTF8: "1"

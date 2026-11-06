@@ -170,12 +170,12 @@ def main():
         if hashlib.sha256(host_candidate.read_bytes()).hexdigest() != pin["sha256"]:
             raise ValueError("unexpected Windows host candidate")
     native_crates = []
-    if args.task in {"EXT-005", "EXT-011", "EXT-015", "EXT-020", "EXT-028", "EXT-031", "EXT-036", "EXT-037", "EXT-038"}:
+    if args.task in {"EXT-003", "EXT-004", "EXT-005", "EXT-011", "EXT-015", "EXT-020", "EXT-028", "EXT-031", "EXT-036", "EXT-037", "EXT-038"}:
         import tomllib
         from handshake_cargo import registry_crate
         cache = transfer / "native-crates"
         cache.mkdir(exist_ok=True)
-        unit = {"EXT-005": "feishu", "EXT-011": "local-agent", "EXT-015": "client", "EXT-020": "env", "EXT-028": "web-fetch", "EXT-031": "media", "EXT-036": "memory-maintenance", "EXT-037": "trace", "EXT-038": "character"}[args.task]
+        unit = {"EXT-003": "telegram", "EXT-004": "telegram", "EXT-005": "feishu", "EXT-011": "local-agent", "EXT-015": "client", "EXT-020": "env", "EXT-028": "web-fetch", "EXT-031": "media", "EXT-036": "memory-maintenance", "EXT-037": "trace", "EXT-038": "character"}[args.task]
         project = tomllib.loads((root / "plugins" / unit / "Cargo.lock").read_text())
         for package in project["package"]:
             if not package.get("source") or package["name"] == "yuki-plugin-sdk":
@@ -237,7 +237,7 @@ def main():
     assert invoke(["scp", "-q", str(snapshot), f"{args.host}:{remote}/source.zip"]).returncode == 0
     assert invoke(["scp", "-q", str(tools_zip), f"{args.host}:{remote}/tooling.zip"]).returncode == 0
     sdk_environment = ""
-    if args.task in {"EXT-001", "EXT-002", "EXT-003", "EXT-005", "EXT-011", "EXT-015", "EXT-020", "EXT-028", "EXT-031", "EXT-036", "EXT-037", "EXT-038", "EXT-040"}:
+    if args.task in {"EXT-001", "EXT-002", "EXT-003", "EXT-004", "EXT-005", "EXT-011", "EXT-015", "EXT-020", "EXT-028", "EXT-031", "EXT-036", "EXT-037", "EXT-038", "EXT-040"}:
         # Use the host's existing pinned toolchain, with a separate writable Cargo home.
         sdk_environment = r"""
 $tools=Join-Path $env:USERPROFILE 'yuki-core-tooling'

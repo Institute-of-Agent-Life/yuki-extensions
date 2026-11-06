@@ -452,3 +452,13 @@ source commit／SDK／hash 與公開成功／故障序列，能在 Main 正常�
 `audit-09` 在 Windows 核五個已通過案例、原 artifact/member hashes、原方法配對、
 實際模型 HTTP bytes 與原 FK 錯誤。原 receiving gateway 真取件及正式發布仍另待；
 受保護 cache-file fixture 不能代替 Telegram／飛書的原平台取件。
+
+### EXT-004：已在 0ef956a9c6d9 分開驗證取件與安裝授權
+
+`artifacts/EXT-004/platform-01` 記錄 Windows Rust 插件以假 Telegram HTTP 取回原 Bot 附件。
+`host-02` 同一 binary／真 Host 的 ingress-only 安裝寫入 event 1；只加入公開
+`gateway.media` grant 時，Host 在握手前退出，原錯誤為
+“gateway.media requires an inbound installation with an explicit application identity”。
+需公開可解析的 `[[plugins]]` 核准 application（Telegram 101、無 tenant；飛書 app/tenant）
+配置與原 event/slot 選讀入口。等待 [核心 #73 的配置回條](https://github.com/Institute-of-Agent-Life/yuki-core/pull/73#issuecomment-6679830369)。
+本次沒有 Host 發起的取件、上線或發布。新回條取代先前「尚無 callback 方法」的舊描述。

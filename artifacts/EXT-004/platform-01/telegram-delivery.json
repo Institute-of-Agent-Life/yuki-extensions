@@ -1,0 +1,134 @@
+{
+  "status": "PASS",
+  "scope": "packaged Rust stdio peer + loopback Telegram HTTP fixtures",
+  "actual_host_consumption": false,
+  "paid_calls": 0,
+  "native_http": [
+    {
+      "method": "getMe",
+      "bot": "101",
+      "body": {}
+    },
+    {
+      "method": "getUpdates",
+      "bot": "101",
+      "body": {
+        "allowed_updates": [
+          "message",
+          "edited_message"
+        ],
+        "timeout": 30
+      }
+    },
+    {
+      "method": "getFile",
+      "bot": "101",
+      "body": {
+        "file_id": "origin-file"
+      }
+    },
+    {
+      "method": "GET",
+      "bot": "101",
+      "path": "docs/%E9%9B%AA%20%23.raw"
+    },
+    {
+      "method": "getUpdates",
+      "bot": "101",
+      "body": {
+        "allowed_updates": [
+          "message",
+          "edited_message"
+        ],
+        "offset": 45,
+        "timeout": 30
+      }
+    },
+    {
+      "method": "getFile",
+      "bot": "101",
+      "body": {
+        "file_id": "declared-large"
+      }
+    },
+    {
+      "method": "getFile",
+      "bot": "101",
+      "body": {
+        "file_id": "unsafe"
+      }
+    },
+    {
+      "method": "getFile",
+      "bot": "101",
+      "body": {
+        "file_id": "short"
+      }
+    },
+    {
+      "method": "GET",
+      "bot": "101",
+      "path": "m/short"
+    },
+    {
+      "method": "getFile",
+      "bot": "101",
+      "body": {
+        "file_id": "redirect"
+      }
+    },
+    {
+      "method": "GET",
+      "bot": "101",
+      "path": "m/redirect"
+    },
+    {
+      "method": "getFile",
+      "bot": "101",
+      "body": {
+        "file_id": "too-large"
+      }
+    },
+    {
+      "method": "GET",
+      "bot": "101",
+      "path": "m/large"
+    }
+  ],
+  "source_bytes": 29367,
+  "source_sha256": "5c135c19ab93377d7bb010137bbcaf37a77866d8e84d3aa4ddbd0f9ce912b2fc",
+  "checks": [
+    "foreign installation/tenant and invalid first page: zero platform requests",
+    "same digest and exact pages while waiting for admission and during getUpdates",
+    "declared-large: denied; downloads=0",
+    "unsafe: denied; downloads=0",
+    "short: denied; downloads=1",
+    "redirect: denied; downloads=1",
+    "too-large: denied; downloads=1",
+    "stdio EOF during long poll: exited before HTTP fixture released"
+  ],
+  "plugin_sha256": "a07413f4b0b351eea85bb97b52f2e16d7fd59978f45414f948c4e9fd821b79e5",
+  "sdk_sha256": "25694e880798108129a1fa8e49e6fff7464ebc9075e5042cc379a6709343e29b",
+  "sdk_version": "1.0.0-alpha.13",
+  "sdk_source": "0ef956a9c6d90fae79c0d4488296c064ccf29f54",
+  "source_bindings": {
+    "catalog/telegram.json": "4a52ae001fdec64ebaf4f6ae9d2401624c6db954e8df6d2bd3cb6c506cd2f830",
+    "compat/core-038-main/source.lock.json": "24d79b5c746a6bda2b5cebcbdff77a34423e986defc7b0e49fe04f97ef7d904d",
+    "ci/package.py": "3ce1623c5e44102c99e3f5226b6171c38da26d98cb61adadc2c5b5c487fea74d",
+    "ci/handshake_cargo.py": "4aaeb82dcc8d70ebd61d4dc7ef0c3d64381b898ef58320b04a8c65f14213855f",
+    "ci/check.py": "3756572711482a1b2a4ef2ee2f71fdb7d427001d7b962de781739ca7fd18ba10",
+    "tests/cases/EXT-004.py": "69dc1b1aaaead91cda4c437390a1f694d155f6e763cb251aab7aecba26333fc3",
+    "tests/peers/telegram_media_wire.py": "ce1a181d7f83a518d3907546790b178b175484e2515dce7da6c55b89dc58464b",
+    "plugins/telegram/Cargo.lock": "8b6beebb6fd68cfb419a6488c5808948cbcdf425bd5be83ce228879fb16f0f47",
+    "plugins/telegram/Cargo.toml": "8a0708076d5230d15e64fc84ec11da113f2e00dc15aee6a7e65823484f3d1662",
+    "plugins/telegram/LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+    "plugins/telegram/plugin.toml": "1e5408591b7c725e887288a97a31bb38beebab70c6dfed9f01481afe7beca789",
+    "plugins/telegram/README.md": "a4adaabc13069d21dd4d8bcc617778cd27524471313b4a68078c424772f58c23",
+    "plugins/telegram/rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+    "plugins/telegram/src/ingress.rs": "4b54cee0786dd5d6aec2737470ff4801b99c3d0f7596eabd00ce33c90733cd0f",
+    "plugins/telegram/src/main.rs": "9d647a78b1bc914cbae1962894cd652ca974ce3f44c1279d52da71d4b12b0b97",
+    "plugins/telegram/src/media.rs": "cb03132d32209dd27f620c2d315f4380044828eee603ed23219a22b6997c27bc",
+    "plugins/telegram/src/transport.rs": "38e314944d4d56ffc2ebcedd25e8b7c70cfc5aea886902ad39e95172af4cee38"
+  },
+  "card_status": "PLATFORM_MEDIA_VERIFIED_HOST_AUTHORIZATION_AND_SOCIAL_PENDING"
+}
