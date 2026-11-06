@@ -13,10 +13,26 @@ from host_preview import materialize
 from package import build
 
 
-def prepare(root, output):
+def exercise(root, output, signed):
     work=output/"work"
     work.mkdir()
-    host, pin, platform=materialize(root,work)
+    if signed:
+        from runpy import run_path
+        contract = root/"compat/base"
+        verifier = run_path(str(contract/"verify_dist.py"))
+        pin = json.loads((contract/"source.lock.json").read_bytes())
+        platform = pin["platforms"]["-".join(verifier["native_target"]())]
+        key = work/"source-signer.pub"
+        key.write_bytes((platform["signer"]+"\n").encode("ascii"))
+        assert hashlib.sha256(key.read_bytes()).hexdigest()==platform["signer_sha256"]
+        release = verifier["verify"](Path(os.environ["YUKI_BASE_HOST_ARCHIVE"]), key,
+                                    pin["source_commit"], platform["sha256"], pin["fixtures_sha256"],
+                                    destination=work/"signed")
+        assert not release["dirty"] and release["host_schema_sha256"]==pin["schema_sha256"]
+        host = work/"signed"/"bin"/("yuki-core.exe" if os.name=="nt" else "yuki-core")
+        assert hashlib.sha256(host.read_bytes()).hexdigest()==platform["binary_sha256"]
+    else:
+        host, pin, platform=materialize(root,work)
     packages=output/"packages"
     fixtures=work/"http-fixtures"
     fixtures.mkdir()
@@ -26,6 +42,7 @@ def prepare(root, output):
     (output/"build.txt").write_text("\n".join(cmd["stdout"]+cmd["stderr"] for cmd in distribution["commands"]),encoding="utf-8")
     data=work/"host-data"
     trace=work/"wire.jsonl"
+    empty_html=b"<html><style>hidden</style><script>unused()</script></html>"
     pages=[]
     model_requests=[]
     finished=threading.Event()
@@ -58,6 +75,8 @@ def prepare(root, output):
             pages.append({"method":"GET","host":self.headers["Host"],"path":self.path})
             if self.path=="/document":
                 self.body(200,html,"text/html")
+            elif self.path=="/empty":
+                self.body(200,empty_html,"text/html")
             elif self.path=="/large":
                 self.body(200,big_text.encode(),"text/plain")
             else:
@@ -68,8 +87,11 @@ def prepare(root, output):
             received=json.loads(self.rfile.read(int(self.headers["Content-Length"])))
             model_requests.append(received)
             n=len(model_requests)
+            targets = {1: source, 3: large_url}
+            if signed:
+                targets[5] = source.replace("/document", "/empty")
             calls=[{"type":"function","id":f"fixture-tool-{n}","function":{
-                "name":"web_fetch","arguments":json.dumps({"url":source if n==1 else large_url})}}] if n in (1,3) else []
+                "name":"web_fetch","arguments":json.dumps({"url":targets[n]})}}] if n in targets else []
             reply={"id":"fixture-completion","choices":[{"index":0,"finish_reason":"tool_calls" if calls else "stop",
                 "message":{"role":"assistant","content":None if calls else "complete",
                            **({"tool_calls":calls} if calls else {})}}],
@@ -110,7 +132,13 @@ def prepare(root, output):
             except subprocess.TimeoutExpired:proc.kill();proc.wait()
 
     try:
-        cli("init");start()
+        cli("init")
+        if signed:
+            from personal_preview import free_address
+            cfg=data/"yuki.toml"
+            settings=cfg.read_text(encoding="utf-8").replace('"127.0.0.1:0"',json.dumps(free_address()))
+            cfg.write_text(settings.replace('mode = "hybrid"','mode = "lexical-only"'),encoding="utf-8")
+        start()
         person="00000000-0000-4000-8000-000000000028"
         cli("operator","person","create",person)
         human=cli("operator","account","open","telegram","web-test","17","1","--person",person,"--start","1")
@@ -165,21 +193,38 @@ def prepare(root, output):
         original_parts=read_pages("/result/data/original_hex")
         assert bytes.fromhex("".join(p["value"] for p in original_parts))==big_text.encode()
         assert "".join(p["value"] for p in parts)==" ".join(big_text.split()) and len(parts)>1
+        empty_page = None
+        if signed:
+            finished.clear()
+            cli("operator","main","trigger","web-reader","empty-page",json.dumps({"text":"read empty fixture"}))
+            if not finished.wait(40):
+                raise RuntimeError("missing tool result for the empty HTML document")
+            final_messages = model_requests[-1]["messages"]
+            empty_page = json.loads(final_messages[-1]["content"])["result"]["data"]
+            assert empty_page["state"] == "empty_page" and "text" not in empty_page
+            assert bytes.fromhex(empty_page["original_hex"]) == empty_html
+            assert empty_page["observed_sha256"] == hashlib.sha256(empty_html).hexdigest()
+            assert empty_page["source"] == source.replace("/document","/empty")
+            assert [q["path"] for q in pages if q["method"]=="GET"] == ["/document","/large","/empty"]
+            assert len(model_requests) == 6
         wires=[json.loads(l) for l in trace.read_text(encoding="utf-8").splitlines()]
         calls=[x["frame"] for x in wires if x["frame"].get("method")=="tool.call"]
         checks=[x["frame"] for x in wires if x["frame"].get("method")=="tool.status"]
-        assert len(calls)==2 and len(checks)==4
+        expected_calls = 3 if signed else 2
+        assert len(calls)==expected_calls and len(checks)==2*expected_calls
         for call in calls:
             assert sum(c["params"]["handle"]==call["params"]["handle"] for c in checks)==2
         fixture_results={p.stem:json.loads(p.read_bytes()) for p in fixtures.glob("*.json")}
         assert set(fixture_results)=={"R07-port","R07-host","R07-denied-and-304","failed-proxy"}
         owner=json.loads((root/"plugins/web-fetch/owner-disposition.json").read_bytes())
         (output/"owner-disposition.json").write_bytes((json.dumps(owner,indent=2)+"\n").encode())
-        return "fetch-source.json",{"status":"PASS","card_status":"VERIFIED_ON_UNPUBLISHED_CANDIDATE",
+        return "fetch-source.json",{"status":"PASS",
+            "card_status":"VERIFIED_ON_SIGNED_DEVELOPMENT_CANDIDATE" if signed else "VERIFIED_ON_UNPUBLISHED_CANDIDATE",
+            "signed_distribution":signed,
             "source_commit":pin["source_commit"],"host":platform,"host_sdk":pin["rust_crate_sha256"],"sdk":consumer_pin["rust_crate_sha256"],
             "plugin":distribution["artifacts"][binary.name],"published":False,"ingress_receipt":original,
             "page":page,"connections":pages,
-            "network_fixtures":fixture_results,"large_result":{"receipt":large_follow,"pages":parts,"original_pages":original_parts},"tool_result_received_by_main":follow,"transcript":wires}
+            "empty_page":empty_page,"network_fixtures":fixture_results,"large_result":{"receipt":large_follow,"pages":parts,"original_pages":original_parts},"tool_result_received_by_main":follow,"transcript":wires}
     finally:
         stop()
         for server in (proxy,model):
@@ -188,6 +233,14 @@ def prepare(root, output):
         (output/"native.json").write_bytes((json.dumps({"requests":pages,"model_requests":model_requests},indent=2)+"\n").encode())
 
 
+def prepare(root, output):
+    return exercise(root, output, signed=False)
+
+
 def run(root, output):
-    return "fetch-source.json",{"status":"BLOCKED","card_status":"AWAITING_CORE_032_HANDOFF",
-        "reason":"The pinned development host has no merged producer handoff in this lock."}
+    if not os.environ.get("YUKI_BASE_HOST_ARCHIVE"):
+        return "fetch-source.json", {
+            "status": "BLOCKED",
+            "reason": "Supply the signed CORE-039 archive pinned in compat/base via YUKI_BASE_HOST_ARCHIVE.",
+        }
+    return exercise(root, output, signed=True)

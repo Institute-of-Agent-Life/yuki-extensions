@@ -1,0 +1,640 @@
+{
+  "taskbook_sha256": "79dfd2ba5a8b96f22dea4c5f72a94ca761b15f2e354e33b36c7ecdbedc3ec3ee",
+  "counts": {
+    "previously_accepted": 7,
+    "partial_or_diagnostic_evidence": 20,
+    "signed_candidate_acceptance_pass": 2,
+    "no_named_card_artifact": 39
+  },
+  "signed_candidates": {
+    "EXT-028": "f4f4e2653e28c0c472674864fb5a1db3b497fbe2",
+    "EXT-067": "49f7b190406c59adb15b1a5fe70f442942addbb7"
+  },
+  "core_release_at_check": [
+    "handshake-preview-dd694a0db605"
+  ],
+  "active_handoffs": {
+    "CORE-044": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/97#issuecomment-6690574635",
+    "gateway_inbound": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/73#issuecomment-6689562410",
+    "native_reply_locator": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/73#issuecomment-6689945197"
+  },
+  "classification": "A signed candidate acceptance is a runtime pass on the pinned tuple. An artifact directory may contain only a diagnostic. Other rows have no per-card artifact on this branch. Neither an open PR nor a release is inferred from these counts.",
+  "cards": {
+    "EXT-001": {
+      "state": "previously_accepted",
+      "card": "插件可獨立測與發，不必建置整個合集",
+      "requires": [],
+      "evidence": "artifacts/EXT-001"
+    },
+    "EXT-007": {
+      "state": "previously_accepted",
+      "card": "本機連接器可獨立安裝、升級、發版",
+      "requires": [
+        "CORE-002",
+        "EXT-001"
+      ],
+      "evidence": "artifacts/EXT-007"
+    },
+    "EXT-019": {
+      "state": "previously_accepted",
+      "card": "Desktop 升級可先知道哪些畫面/DTO 會變",
+      "requires": [
+        "CORE-002",
+        "EXT-001"
+      ],
+      "evidence": "artifacts/EXT-019"
+    },
+    "EXT-008": {
+      "state": "previously_accepted",
+      "card": "Codex 驅動與原生 daemon 的真實分工可檢查",
+      "requires": [
+        "EXT-007"
+      ],
+      "evidence": "artifacts/EXT-008"
+    },
+    "EXT-009": {
+      "state": "previously_accepted",
+      "card": "Claude 仍沿本機 CLI/SDK 及使用者原會話",
+      "requires": [
+        "EXT-007"
+      ],
+      "evidence": "artifacts/EXT-009"
+    },
+    "EXT-010": {
+      "state": "previously_accepted",
+      "card": "第三方 ACP driver 僅用對方有的能力",
+      "requires": [
+        "EXT-007"
+      ],
+      "evidence": "artifacts/EXT-010"
+    },
+    "EXT-002": {
+      "state": "previously_accepted",
+      "card": "從兩種發行物驗接入，而非拷貝 Host DTO",
+      "requires": [
+        "CORE-031",
+        "EXT-001"
+      ],
+      "evidence": "artifacts/EXT-002"
+    },
+    "EXT-003": {
+      "state": "partial_or_diagnostic_evidence",
+      "card": "TG 私聊/群/topic 可入站並保留事件定位",
+      "requires": [
+        "CORE-032",
+        "EXT-002"
+      ],
+      "evidence": "artifacts/EXT-003"
+    },
+    "EXT-005": {
+      "state": "partial_or_diagnostic_evidence",
+      "card": "飛書/Lark 長連線可接納且不同企業身份不碰撞",
+      "requires": [
+        "CORE-032",
+        "EXT-002"
+      ],
+      "evidence": "artifacts/EXT-005"
+    },
+    "EXT-020": {
+      "state": "partial_or_diagnostic_evidence",
+      "card": "以原 Manager/execd 執行，保留 PTY 與持久 HOME",
+      "requires": [
+        "CORE-032",
+        "EXT-002"
+      ],
+      "evidence": "artifacts/EXT-020"
+    },
+    "EXT-028": {
+      "state": "signed_candidate_acceptance_pass",
+      "card": "正文擷取不是另一輪搜索或模型回答",
+      "requires": [
+        "CORE-032",
+        "EXT-002"
+      ],
+      "evidence": "artifacts/EXT-028"
+    },
+    "EXT-029": {
+      "state": "no_named_card_artifact",
+      "card": "需額外搜索服務時由部署明選",
+      "requires": [
+        "CORE-024",
+        "CORE-032",
+        "EXT-002"
+      ]
+    },
+    "EXT-004": {
+      "state": "partial_or_diagnostic_evidence",
+      "card": "TG 發送/撤回/附件及 typing 沿原 Bot",
+      "requires": [
+        "CORE-025",
+        "EXT-003"
+      ],
+      "evidence": "artifacts/EXT-004"
+    },
+    "EXT-006": {
+      "state": "partial_or_diagnostic_evidence",
+      "card": "飛書與 Lark REST 依原應用發送/取媒體",
+      "requires": [
+        "CORE-025",
+        "EXT-005"
+      ],
+      "evidence": "artifacts/EXT-006"
+    },
+    "EXT-021": {
+      "state": "no_named_card_artifact",
+      "card": "服務按真實 restart 政策重啟，原工作文件能交付",
+      "requires": [
+        "CORE-038",
+        "EXT-020"
+      ]
+    },
+    "EXT-030": {
+      "state": "partial_or_diagnostic_evidence",
+      "card": "選裝語音轉寫可供首輪及歷史，不阻塞純文字",
+      "requires": [
+        "CORE-038",
+        "CORE-050",
+        "EXT-002"
+      ],
+      "evidence": "artifacts/EXT-030"
+    },
+    "EXT-031": {
+      "state": "partial_or_diagnostic_evidence",
+      "card": "依使用者或模型選讀影片、PDF，不把文件自動貼進前綴",
+      "requires": [
+        "CORE-038",
+        "EXT-002"
+      ],
+      "evidence": "artifacts/EXT-031"
+    },
+    "EXT-032": {
+      "state": "no_named_card_artifact",
+      "card": "原件收藏、挑選與異步配圖均有來源",
+      "requires": [
+        "CORE-038",
+        "CORE-050",
+        "EXT-002"
+      ]
+    },
+    "EXT-040": {
+      "state": "partial_or_diagnostic_evidence",
+      "card": "獨立安裝工具能生成並保留部署者既有設定",
+      "requires": [
+        "CORE-039",
+        "EXT-002"
+      ],
+      "evidence": "artifacts/EXT-040"
+    },
+    "EXT-011": {
+      "state": "partial_or_diagnostic_evidence",
+      "card": "伺服器插件可識別原設備及實例、不偽造聊天入口",
+      "requires": [
+        "CORE-033",
+        "EXT-002",
+        "EXT-007"
+      ],
+      "evidence": "artifacts/EXT-011"
+    },
+    "EXT-015": {
+      "state": "partial_or_diagnostic_evidence",
+      "card": "同一 App 入口可由多台裝置共享",
+      "requires": [
+        "CORE-033",
+        "EXT-002"
+      ],
+      "evidence": "artifacts/EXT-015"
+    },
+    "EXT-023": {
+      "state": "partial_or_diagnostic_evidence",
+      "card": "Code 選裝時才有 VM、launcher 與對應快照 codec",
+      "requires": [
+        "CORE-034",
+        "EXT-002"
+      ],
+      "evidence": "artifacts/EXT-023"
+    },
+    "EXT-025": {
+      "state": "partial_or_diagnostic_evidence",
+      "card": "群內原關係續聊不變成 SELF，也不堵住明確 @",
+      "requires": [
+        "CORE-036",
+        "CORE-050",
+        "EXT-002"
+      ],
+      "evidence": "artifacts/EXT-025"
+    },
+    "EXT-027": {
+      "state": "partial_or_diagnostic_evidence",
+      "card": "移植訂閱插件而不放開全站歷史",
+      "requires": [
+        "CORE-058",
+        "EXT-002"
+      ],
+      "evidence": "artifacts/EXT-027"
+    },
+    "EXT-033": {
+      "state": "no_named_card_artifact",
+      "card": "Dream 可保留及套用原已付整理結果",
+      "requires": [
+        "CORE-035",
+        "CORE-050",
+        "EXT-002"
+      ]
+    },
+    "EXT-034": {
+      "state": "partial_or_diagnostic_evidence",
+      "card": "歷史重建按來源審閱、續處理並可只接受一部分",
+      "requires": [
+        "CORE-035",
+        "EXT-002"
+      ],
+      "evidence": "artifacts/EXT-034"
+    },
+    "EXT-035": {
+      "state": "no_named_card_artifact",
+      "card": "自省由本批真實事件/工具回執生成 SELF",
+      "requires": [
+        "CORE-035",
+        "CORE-050",
+        "EXT-002"
+      ]
+    },
+    "EXT-036": {
+      "state": "partial_or_diagnostic_evidence",
+      "card": "Quality、hygiene、Reembed 可由管理者明確執行",
+      "requires": [
+        "CORE-035",
+        "EXT-002"
+      ],
+      "evidence": "artifacts/EXT-036"
+    },
+    "EXT-047": {
+      "state": "partial_or_diagnostic_evidence",
+      "card": "獨立插件有可驗證的升級路徑，不冒充已替第三方發布",
+      "requires": [
+        "CORE-058",
+        "CORE-051",
+        "EXT-002"
+      ],
+      "evidence": "artifacts/EXT-047"
+    },
+    "EXT-067": {
+      "state": "signed_candidate_acceptance_pass",
+      "card": "以 Telegram 與 web-fetch 實物界定第一版共同協議",
+      "requires": [
+        "CORE-039",
+        "EXT-004",
+        "EXT-028"
+      ],
+      "evidence": "artifacts/EXT-067"
+    },
+    "EXT-068": {
+      "state": "no_named_card_artifact",
+      "card": "Telegram 原群可啟用停用的接入",
+      "requires": [
+        "CORE-056",
+        "EXT-004"
+      ]
+    },
+    "EXT-069": {
+      "state": "no_named_card_artifact",
+      "card": "飛書/Lark 原群可啟用停用的接入",
+      "requires": [
+        "CORE-056",
+        "EXT-006"
+      ]
+    },
+    "EXT-012": {
+      "state": "no_named_card_artifact",
+      "card": "本機委託、補充、答覆、取消、監督有原操作",
+      "requires": [
+        "EXT-008",
+        "EXT-009",
+        "EXT-010",
+        "EXT-011"
+      ]
+    },
+    "EXT-014": {
+      "state": "no_named_card_artifact",
+      "card": "無 Agent 實例也能在本人授權下使用本機電腦",
+      "requires": [
+        "EXT-011"
+      ]
+    },
+    "EXT-016": {
+      "state": "no_named_card_artifact",
+      "card": "離線可再讀本人歷史及原件，而非依賴最後一個推送",
+      "requires": [
+        "EXT-015"
+      ]
+    },
+    "EXT-017": {
+      "state": "no_named_card_artifact",
+      "card": "在桌面補充 QQ 工作，不另開 App 輪",
+      "requires": [
+        "EXT-015"
+      ]
+    },
+    "EXT-024": {
+      "state": "partial_or_diagnostic_evidence",
+      "card": "真 VM 跑兩次相同參數的不同合法呼叫並可恢復",
+      "requires": [
+        "EXT-023"
+      ],
+      "evidence": "artifacts/EXT-024"
+    },
+    "EXT-026": {
+      "state": "no_named_card_artifact",
+      "card": "沒有新真人消息時仍可按原機會模型行動",
+      "requires": [
+        "EXT-025"
+      ]
+    },
+    "EXT-070": {
+      "state": "partial_or_diagnostic_evidence",
+      "card": "同一電腦換伺服器網址不換 journal 或重新提交",
+      "requires": [
+        "EXT-011"
+      ],
+      "evidence": "artifacts/EXT-070"
+    },
+    "EXT-013": {
+      "state": "no_named_card_artifact",
+      "card": "插件 ACK 後中斷仍可通知原 Work",
+      "requires": [
+        "EXT-012"
+      ]
+    },
+    "EXT-018": {
+      "state": "no_named_card_artifact",
+      "card": "ACP A 將 Yuki 提供給編輯器",
+      "requires": [
+        "EXT-016",
+        "EXT-017"
+      ]
+    },
+    "EXT-022": {
+      "state": "no_named_card_artifact",
+      "card": "人能查看遠程桌面、取得/歸還控制、不與 Agent 搶輸入",
+      "requires": [
+        "CORE-037",
+        "EXT-021"
+      ]
+    },
+    "EXT-037": {
+      "state": "partial_or_diagnostic_evidence",
+      "card": "可查執行、模型和工具時間線，不是效果真源",
+      "requires": [
+        "CORE-037",
+        "EXT-002"
+      ],
+      "evidence": "artifacts/EXT-037"
+    },
+    "EXT-038": {
+      "state": "partial_or_diagnostic_evidence",
+      "card": "同一角色 SOUL、公開名稱、頭像及各平台狀態可管理",
+      "requires": [
+        "CORE-037",
+        "CORE-038",
+        "EXT-002"
+      ],
+      "evidence": "artifacts/EXT-038"
+    },
+    "EXT-039": {
+      "state": "no_named_card_artifact",
+      "card": "管理者可安全管理群、資料、Work、排程、用量",
+      "requires": [
+        "CORE-037",
+        "EXT-034"
+      ]
+    },
+    "EXT-043": {
+      "state": "no_named_card_artifact",
+      "card": "每個插件可獨立升級且舊版仍可用",
+      "requires": [
+        "CORE-044"
+      ]
+    },
+    "EXT-062": {
+      "state": "no_named_card_artifact",
+      "card": "按原 Bot 接回已確認的 Telegram 游標",
+      "requires": [
+        "CORE-041",
+        "EXT-004"
+      ]
+    },
+    "EXT-048": {
+      "state": "no_named_card_artifact",
+      "card": "本人可從桌面修改事實與維護自己的安排",
+      "requires": [
+        "CORE-035",
+        "EXT-015",
+        "EXT-019",
+        "EXT-038"
+      ]
+    },
+    "EXT-049": {
+      "state": "no_named_card_artifact",
+      "card": "Desktop `/admin/v1` 依原憑據管理模型、用量和操作",
+      "requires": [
+        "CORE-055",
+        "EXT-015",
+        "EXT-019"
+      ]
+    },
+    "EXT-050": {
+      "state": "no_named_card_artifact",
+      "card": "Desktop 可分別查本人電腦和 Yuki 的伺服器電腦",
+      "requires": [
+        "EXT-013",
+        "EXT-014",
+        "EXT-015",
+        "EXT-019",
+        "EXT-022"
+      ]
+    },
+    "EXT-051": {
+      "state": "no_named_card_artifact",
+      "card": "只搬伺服器側原生操作與未交事件",
+      "requires": [
+        "CORE-042",
+        "EXT-013"
+      ]
+    },
+    "EXT-052": {
+      "state": "no_named_card_artifact",
+      "card": "移交 App/ACP 接入側狀態而不重發憑據",
+      "requires": [
+        "CORE-042",
+        "EXT-018"
+      ]
+    },
+    "EXT-053": {
+      "state": "no_named_card_artifact",
+      "card": "移交 Manager jobs、持久卷與交付版本",
+      "requires": [
+        "CORE-042",
+        "EXT-021"
+      ]
+    },
+    "EXT-054": {
+      "state": "no_named_card_artifact",
+      "card": "按原群與代次接回參與快照",
+      "requires": [
+        "CORE-042",
+        "EXT-026"
+      ]
+    },
+    "EXT-055": {
+      "state": "no_named_card_artifact",
+      "card": "只導 Dream 已購買的預覽與原結算",
+      "requires": [
+        "CORE-042",
+        "EXT-033"
+      ]
+    },
+    "EXT-056": {
+      "state": "no_named_card_artifact",
+      "card": "只導收藏原件與已發表情效果",
+      "requires": [
+        "CORE-042",
+        "EXT-032"
+      ]
+    },
+    "EXT-057": {
+      "state": "no_named_card_artifact",
+      "card": "只移交仍獲准保留的診斷",
+      "requires": [
+        "CORE-041",
+        "EXT-037"
+      ]
+    },
+    "EXT-058": {
+      "state": "no_named_card_artifact",
+      "card": "移交頭像版本，不重設平台資料",
+      "requires": [
+        "CORE-041",
+        "EXT-038"
+      ]
+    },
+    "EXT-059": {
+      "state": "no_named_card_artifact",
+      "card": "移交訂閱游標及已發通知鍵",
+      "requires": [
+        "CORE-042",
+        "EXT-027"
+      ]
+    },
+    "EXT-060": {
+      "state": "no_named_card_artifact",
+      "card": "保留已審閱的候選及未完成重建",
+      "requires": [
+        "CORE-042",
+        "EXT-034"
+      ]
+    },
+    "EXT-061": {
+      "state": "no_named_card_artifact",
+      "card": "恢復自省的原批次、預算與維護位置",
+      "requires": [
+        "CORE-042",
+        "EXT-035",
+        "EXT-036"
+      ]
+    },
+    "EXT-064": {
+      "state": "no_named_card_artifact",
+      "card": "核 VM ABI 與已凍結子效果，不執行導入的腳本",
+      "requires": [
+        "CORE-042",
+        "EXT-024"
+      ]
+    },
+    "EXT-046": {
+      "state": "no_named_card_artifact",
+      "card": "同一個 Desktop 位址分派到原領域擁有者",
+      "requires": [
+        "EXT-048",
+        "EXT-049",
+        "EXT-050"
+      ]
+    },
+    "EXT-066": {
+      "state": "no_named_card_artifact",
+      "card": "原插件自己對接私有設定與會話引用",
+      "requires": [
+        "CORE-054",
+        "EXT-047"
+      ]
+    },
+    "EXT-041": {
+      "state": "no_named_card_artifact",
+      "card": "只對賬並演練，不再實作任何插件的導入器",
+      "requires": [
+        "EXT-006",
+        "EXT-028",
+        "EXT-029",
+        "EXT-031",
+        "EXT-039",
+        "EXT-051",
+        "EXT-052",
+        "EXT-053",
+        "EXT-054",
+        "EXT-055",
+        "EXT-056",
+        "EXT-057",
+        "EXT-058",
+        "EXT-059",
+        "EXT-060",
+        "EXT-061",
+        "EXT-062",
+        "EXT-064",
+        "EXT-066"
+      ]
+    },
+    "EXT-042": {
+      "state": "no_named_card_artifact",
+      "card": "驗證 16 個官方插件與跨平台工作在同一候選組協作",
+      "requires": [
+        "CORE-053",
+        "EXT-018",
+        "EXT-024",
+        "EXT-026",
+        "EXT-027",
+        "EXT-029",
+        "EXT-030",
+        "EXT-031",
+        "EXT-032",
+        "EXT-033",
+        "EXT-035",
+        "EXT-036",
+        "EXT-037",
+        "EXT-039",
+        "EXT-040",
+        "EXT-046",
+        "EXT-047",
+        "EXT-068",
+        "EXT-069"
+      ]
+    },
+    "EXT-044": {
+      "state": "no_named_card_artifact",
+      "card": "完整 Desktop 配套必須能實際操作，不以 OpenAPI 一致代替",
+      "requires": [
+        "EXT-017",
+        "EXT-039",
+        "EXT-043",
+        "EXT-046",
+        "EXT-070"
+      ]
+    },
+    "EXT-045": {
+      "state": "no_named_card_artifact",
+      "card": "插件按需安裝、卸載後仍能查原效果及清私料",
+      "requires": [
+        "CORE-043",
+        "EXT-042"
+      ]
+    }
+  }
+}

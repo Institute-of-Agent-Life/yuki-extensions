@@ -1,0 +1,39 @@
+Traceback (most recent call last):
+  File "D:\yuki-extension-tests\local-joint-pr95-01\official-source\tests\peers\joint_base.py", line 406, in <module>
+    run(args.root,args.assets,args.archive,args.out,args.case)
+  File "D:\yuki-extension-tests\local-joint-pr95-01\official-source\tests\peers\joint_base.py", line 345, in run
+    live_inventory=inventory()
+                   ^^^^^^^^^^^
+  File "D:\yuki-extension-tests\local-joint-pr95-01\official-source\tests\peers\joint_base.py", line 323, in inventory
+    return {folder:{f.relative_to(work/folder).as_posix():digest(f) for f in (work/folder).rglob('*') if f.is_file()}
+                                                          ^^^^^^^^^
+  File "D:\yuki-extension-tests\local-joint-pr95-01\official-source\tests\peers\joint_base.py", line 21, in digest
+    return hashlib.file_digest(source, 'sha256').hexdigest()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hilbert\AppData\Local\Programs\Python\Python312\Lib\hashlib.py", line 233, in file_digest
+    size = fileobj.readinto(buf)
+           ^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied
+Traceback (most recent call last):
+  File "D:\yuki-extension-tests\local-joint-pr95-01\official-source\ci\check.py", line 37, in main
+    report_name, report = runner(root, args.out.resolve())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\local-joint-pr95-01\official-source\tests\cases\EXT-067.py", line 6, in run
+    return run_path(str(root/'ci/base-witness.py'))['run'](root, output)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\local-joint-pr95-01\official-source\ci\base-witness.py", line 109, in run
+    subprocess.run([sys.executable,root/'tests/peers/joint_base.py',root,work,archive,runs[case],'--case',case],check=True)
+  File "C:\Users\Hilbert\AppData\Local\Programs\Python\Python312\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe', WindowsPath('D:/yuki-extension-tests/local-joint-pr95-01/official-source/tests/peers/joint_base.py'), WindowsPath('D:/yuki-extension-tests/local-joint-pr95-01/official-source'), WindowsPath('D:/yuki-extension-tests/local-joint-pr95-01/native-01/work'), 'D:\\yuki-extension-tests\\local-joint-pr95-01\\yuki-core-4a41470e89b4-windows-x86_64.zip', WindowsPath('D:/yuki-extension-tests/local-joint-pr95-01/native-01/work/confirmed'), '--case', 'confirmed']' returned non-zero exit status 1.
+{"task": "EXT-067", "status": "FAIL", "out": "D:\\yuki-extension-tests\\local-joint-pr95-01\\native-01"}
+Traceback (most recent call last):
+  File "D:\yuki-extension-tests\local-joint-pr95-01\official-base.py", line 13, in <module>
+    out=b/'native-01';cmd(sys.executable,'-B','ci/check.py','EXT-067','--out',out,cwd=r,env=env)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\local-joint-pr95-01\official-base.py", line 4, in cmd
+    def cmd(*args,**k):return sp.run(list(map(str,args)),check=True,**k)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hilbert\AppData\Local\Programs\Python\Python312\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe', '-B', 'ci/check.py', 'EXT-067', '--out', 'D:\\yuki-extension-tests\\local-joint-pr95-01\\native-01']' returned non-zero exit status 1.
