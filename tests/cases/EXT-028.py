@@ -42,6 +42,7 @@ def exercise(root, output, signed):
     (output/"build.txt").write_text("\n".join(cmd["stdout"]+cmd["stderr"] for cmd in distribution["commands"]),encoding="utf-8")
     data=work/"host-data"
     trace=work/"wire.jsonl"
+    empty_html=b"<html><style>hidden</style><script>unused()</script></html>"
     pages=[]
     model_requests=[]
     finished=threading.Event()
@@ -74,6 +75,8 @@ def exercise(root, output, signed):
             pages.append({"method":"GET","host":self.headers["Host"],"path":self.path})
             if self.path=="/document":
                 self.body(200,html,"text/html")
+            elif self.path=="/empty":
+                self.body(200,empty_html,"text/html")
             elif self.path=="/large":
                 self.body(200,big_text.encode(),"text/plain")
             else:
@@ -84,8 +87,11 @@ def exercise(root, output, signed):
             received=json.loads(self.rfile.read(int(self.headers["Content-Length"])))
             model_requests.append(received)
             n=len(model_requests)
+            targets = {1: source, 3: large_url}
+            if signed:
+                targets[5] = source.replace("/document", "/empty")
             calls=[{"type":"function","id":f"fixture-tool-{n}","function":{
-                "name":"web_fetch","arguments":json.dumps({"url":source if n==1 else large_url})}}] if n in (1,3) else []
+                "name":"web_fetch","arguments":json.dumps({"url":targets[n]})}}] if n in targets else []
             reply={"id":"fixture-completion","choices":[{"index":0,"finish_reason":"tool_calls" if calls else "stop",
                 "message":{"role":"assistant","content":None if calls else "complete",
                            **({"tool_calls":calls} if calls else {})}}],
@@ -187,10 +193,25 @@ def exercise(root, output, signed):
         original_parts=read_pages("/result/data/original_hex")
         assert bytes.fromhex("".join(p["value"] for p in original_parts))==big_text.encode()
         assert "".join(p["value"] for p in parts)==" ".join(big_text.split()) and len(parts)>1
+        empty_page = None
+        if signed:
+            finished.clear()
+            cli("operator","main","trigger","web-reader","empty-page",json.dumps({"text":"read empty fixture"}))
+            if not finished.wait(40):
+                raise RuntimeError("missing tool result for the empty HTML document")
+            final_messages = model_requests[-1]["messages"]
+            empty_page = json.loads(final_messages[-1]["content"])["result"]["data"]
+            assert empty_page["state"] == "empty_page" and "text" not in empty_page
+            assert bytes.fromhex(empty_page["original_hex"]) == empty_html
+            assert empty_page["observed_sha256"] == hashlib.sha256(empty_html).hexdigest()
+            assert empty_page["source"] == source.replace("/document","/empty")
+            assert [q["path"] for q in pages if q["method"]=="GET"] == ["/document","/large","/empty"]
+            assert len(model_requests) == 6
         wires=[json.loads(l) for l in trace.read_text(encoding="utf-8").splitlines()]
         calls=[x["frame"] for x in wires if x["frame"].get("method")=="tool.call"]
         checks=[x["frame"] for x in wires if x["frame"].get("method")=="tool.status"]
-        assert len(calls)==2 and len(checks)==4
+        expected_calls = 3 if signed else 2
+        assert len(calls)==expected_calls and len(checks)==2*expected_calls
         for call in calls:
             assert sum(c["params"]["handle"]==call["params"]["handle"] for c in checks)==2
         fixture_results={p.stem:json.loads(p.read_bytes()) for p in fixtures.glob("*.json")}
@@ -203,7 +224,7 @@ def exercise(root, output, signed):
             "source_commit":pin["source_commit"],"host":platform,"host_sdk":pin["rust_crate_sha256"],"sdk":consumer_pin["rust_crate_sha256"],
             "plugin":distribution["artifacts"][binary.name],"published":False,"ingress_receipt":original,
             "page":page,"connections":pages,
-            "network_fixtures":fixture_results,"large_result":{"receipt":large_follow,"pages":parts,"original_pages":original_parts},"tool_result_received_by_main":follow,"transcript":wires}
+            "empty_page":empty_page,"network_fixtures":fixture_results,"large_result":{"receipt":large_follow,"pages":parts,"original_pages":original_parts},"tool_result_received_by_main":follow,"transcript":wires}
     finally:
         stop()
         for server in (proxy,model):
