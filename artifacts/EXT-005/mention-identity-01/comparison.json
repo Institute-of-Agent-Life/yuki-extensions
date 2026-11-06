@@ -1,0 +1,65 @@
+{
+  "card": "EXT-005",
+  "platform": "HJW Windows x86_64",
+  "host_source": "0ef956a9c6d90fae79c0d4488296c064ccf29f54",
+  "host_package_sha256": "a81c49a722b9e1e420d5084856f7a13aed116865f7ca0a4c1304ac10881c62f3",
+  "host_binary_sha256": "4dd7a9fc345664f85d59b9c83d17e03b9dc452bbc2fb7bb01eba7d73c47b6cc0",
+  "sdk": "1.0.0-alpha.13",
+  "sdk_crate_sha256": "25694e880798108129a1fa8e49e6fff7464ebc9075e5042cc379a6709343e29b",
+  "scope": "gateway ingress, original native mention identity, Host durable admission and native ACK; group-memory attribution and group activation not exercised",
+  "runs": {
+    "red": {
+      "status": "REPRODUCED",
+      "binary_sha256": "d5c04486c59019f64f5633109fd81b2c69d2c64ffbe885492c4c0b664c8da6e9",
+      "wire_sha256": "b38f191834d07c2a2a05b9e3166dbeaf143f42499e1e167b4d6d620577fc7eca",
+      "archive_sha256": "85b7c67208f02a21d49f71ddff7d38915cd2530266c7ad7f920b5f23f52e5993",
+      "original_event_ids": [
+        1,
+        1,
+        2,
+        2
+      ],
+      "native_mentions_in_wire": {
+        "cli_a": [
+          "cli_a",
+          "cli_a",
+          "cli_a",
+          "cli_a"
+        ],
+        "cli_b": [
+          "ou_ten",
+          "cli_b",
+          "ou_ten",
+          "ou_ten"
+        ]
+      },
+      "verified_source_paths": 87,
+      "historical_package_sha256": "e3ef5dbad9f5b628d5b354343c46d7dd58db2b7b86c045259447b893ffb0d3fc"
+    },
+    "green": {
+      "status": "PASS",
+      "binary_sha256": "3b41ee529c037e306b6f5409db6c4082171a4ce8d592d3c4f1ad32729f31b621",
+      "wire_sha256": "4216a231e4889dfb9a866eb073954668caa937aa010667ad2589b9cd1b0752dd",
+      "archive_sha256": "137b25a34c56f6992e0bc7d8185f72a6b0f094b086a6682215e1914457fc8f03",
+      "original_event_ids": [
+        1,
+        1,
+        2,
+        2
+      ],
+      "native_mentions_in_wire": {
+        "cli_a": [
+          "ou_ten",
+          "cli_a",
+          "ou_ten"
+        ],
+        "cli_b": [
+          "ou_ten",
+          "cli_b",
+          "ou_ten"
+        ]
+      },
+      "verified_source_paths": 87
+    }
+  }
+}
