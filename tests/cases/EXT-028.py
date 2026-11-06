@@ -13,10 +13,26 @@ from host_preview import materialize
 from package import build
 
 
-def prepare(root, output):
+def exercise(root, output, signed):
     work=output/"work"
     work.mkdir()
-    host, pin, platform=materialize(root,work)
+    if signed:
+        from runpy import run_path
+        contract = root/"compat/base"
+        verifier = run_path(str(contract/"verify_dist.py"))
+        pin = json.loads((contract/"source.lock.json").read_bytes())
+        platform = pin["platforms"]["-".join(verifier["native_target"]())]
+        key = work/"source-signer.pub"
+        key.write_bytes((platform["signer"]+"\n").encode("ascii"))
+        assert hashlib.sha256(key.read_bytes()).hexdigest()==platform["signer_sha256"]
+        release = verifier["verify"](Path(os.environ["YUKI_BASE_HOST_ARCHIVE"]), key,
+                                    pin["source_commit"], platform["sha256"], pin["fixtures_sha256"],
+                                    destination=work/"signed")
+        assert not release["dirty"] and release["host_schema_sha256"]==pin["schema_sha256"]
+        host = work/"signed"/"bin"/("yuki-core.exe" if os.name=="nt" else "yuki-core")
+        assert hashlib.sha256(host.read_bytes()).hexdigest()==platform["binary_sha256"]
+    else:
+        host, pin, platform=materialize(root,work)
     packages=output/"packages"
     fixtures=work/"http-fixtures"
     fixtures.mkdir()
@@ -110,7 +126,13 @@ def prepare(root, output):
             except subprocess.TimeoutExpired:proc.kill();proc.wait()
 
     try:
-        cli("init");start()
+        cli("init")
+        if signed:
+            from personal_preview import free_address
+            cfg=data/"yuki.toml"
+            settings=cfg.read_text(encoding="utf-8").replace('"127.0.0.1:0"',json.dumps(free_address()))
+            cfg.write_text(settings.replace('mode = "hybrid"','mode = "lexical-only"'),encoding="utf-8")
+        start()
         person="00000000-0000-4000-8000-000000000028"
         cli("operator","person","create",person)
         human=cli("operator","account","open","telegram","web-test","17","1","--person",person,"--start","1")
@@ -175,7 +197,9 @@ def prepare(root, output):
         assert set(fixture_results)=={"R07-port","R07-host","R07-denied-and-304","failed-proxy"}
         owner=json.loads((root/"plugins/web-fetch/owner-disposition.json").read_bytes())
         (output/"owner-disposition.json").write_bytes((json.dumps(owner,indent=2)+"\n").encode())
-        return "fetch-source.json",{"status":"PASS","card_status":"VERIFIED_ON_UNPUBLISHED_CANDIDATE",
+        return "fetch-source.json",{"status":"PASS",
+            "card_status":"VERIFIED_ON_SIGNED_DEVELOPMENT_CANDIDATE" if signed else "VERIFIED_ON_UNPUBLISHED_CANDIDATE",
+            "signed_distribution":signed,
             "source_commit":pin["source_commit"],"host":platform,"host_sdk":pin["rust_crate_sha256"],"sdk":consumer_pin["rust_crate_sha256"],
             "plugin":distribution["artifacts"][binary.name],"published":False,"ingress_receipt":original,
             "page":page,"connections":pages,
@@ -188,6 +212,14 @@ def prepare(root, output):
         (output/"native.json").write_bytes((json.dumps({"requests":pages,"model_requests":model_requests},indent=2)+"\n").encode())
 
 
+def prepare(root, output):
+    return exercise(root, output, signed=False)
+
+
 def run(root, output):
-    return "fetch-source.json",{"status":"BLOCKED","card_status":"AWAITING_CORE_032_HANDOFF",
-        "reason":"The pinned development host has no merged producer handoff in this lock."}
+    if not os.environ.get("YUKI_BASE_HOST_ARCHIVE"):
+        return "fetch-source.json", {
+            "status": "BLOCKED",
+            "reason": "Supply the signed CORE-039 archive pinned in compat/base via YUKI_BASE_HOST_ARCHIVE.",
+        }
+    return exercise(root, output, signed=True)
