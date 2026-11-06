@@ -60,6 +60,7 @@ def prepare(root, output):
         host.chmod(0o700)
     packages = output / "packages"
     package = build(root, "telegram", packages)
+    consumer_pin = json.loads((root / package["source"]["sdk_contract"]).read_bytes())
     plugin = packages / ("yuki-telegram.exe" if os.name == "nt" else "yuki-telegram")
     data = work / "host-data"
     cursor_dir = work / "cursor"
@@ -196,7 +197,7 @@ def prepare(root, output):
                           e["direction"]=="from_host" and e["frame"].get("id")==10)
         assert responses[10]["event"]!=second_event
         return "telegram-offset.json", {"status":"PASS","card_status":"VERIFIED_ON_UNPUBLISHED_CANDIDATE","scope":"development-host-crosswire",
-            "source_commit":meta["source_commit"],"host":expected,"sdk":pin["rust_crate_sha256"],
+            "source_commit":meta["source_commit"],"host":expected,"host_sdk":pin["rust_crate_sha256"],"sdk":consumer_pin["rust_crate_sha256"],
             "schema":pin["schema_sha256"],"plugin":package["artifacts"][plugin.name],"published":False,
             "committed_prefix_after_disconnect":prefix,"prefix_after_lost_reply":lost_prefix,
             "lost_and_recovered_event":delivered,"polls":polls,"transcript":first_wire+second_wire,

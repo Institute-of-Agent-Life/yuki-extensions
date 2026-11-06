@@ -19,3 +19,5 @@ byte count and SHA-256. Original bytes are included as hex, including error and 
 reads at most 2 MiB; larger inputs report a partial result and a digest of the
 observed prefix. The plugin has no persistent page database. The host owns the
 committed tool result and its paging.
+
+The two-consumer build pins SDK 1.0.0-alpha.14 from the signed CORE-039 development distribution. Rebuild and run the Windows witness with the instructions in `compat/base/README.md`.

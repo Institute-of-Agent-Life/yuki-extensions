@@ -21,6 +21,7 @@ def prepare(root, output):
     fixtures=work/"http-fixtures"
     fixtures.mkdir()
     distribution=build(root,"web-fetch",packages,test_evidence=fixtures)
+    consumer_pin = json.loads((root / distribution["source"]["sdk_contract"]).read_bytes())
     binary=packages/("yuki-web-fetch.exe" if os.name=="nt" else "yuki-web-fetch")
     (output/"build.txt").write_text("\n".join(cmd["stdout"]+cmd["stderr"] for cmd in distribution["commands"]),encoding="utf-8")
     data=work/"host-data"
@@ -175,7 +176,7 @@ def prepare(root, output):
         owner=json.loads((root/"plugins/web-fetch/owner-disposition.json").read_bytes())
         (output/"owner-disposition.json").write_bytes((json.dumps(owner,indent=2)+"\n").encode())
         return "fetch-source.json",{"status":"PASS","card_status":"VERIFIED_ON_UNPUBLISHED_CANDIDATE",
-            "source_commit":pin["source_commit"],"host":platform,"sdk":pin["rust_crate_sha256"],
+            "source_commit":pin["source_commit"],"host":platform,"host_sdk":pin["rust_crate_sha256"],"sdk":consumer_pin["rust_crate_sha256"],
             "plugin":distribution["artifacts"][binary.name],"published":False,"ingress_receipt":original,
             "page":page,"connections":pages,
             "network_fixtures":fixture_results,"large_result":{"receipt":large_follow,"pages":parts,"original_pages":original_parts},"tool_result_received_by_main":follow,"transcript":wires}

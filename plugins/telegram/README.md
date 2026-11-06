@@ -30,3 +30,5 @@ the native chat/message locator only after a matching successful response.
 A lost or ambiguous response returns `unknown` without another send.
 This version refuses quoted events and outbound media during planning; those
 need a resolved native locator or the original authorized immutable media.
+
+The two-consumer build pins SDK 1.0.0-alpha.14 from the signed CORE-039 development distribution. Rebuild and run the Windows witness with the instructions in `compat/base/README.md`.

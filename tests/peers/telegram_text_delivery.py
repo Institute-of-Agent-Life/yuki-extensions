@@ -31,6 +31,7 @@ def exercise(root, package, out, case):
     host_dir.mkdir()
     host,pin,platform=materialize(root,host_dir,'core-038-main')
     package_manifest=json.loads((package/'package-manifest.json').read_bytes())
+    consumer_pin=json.loads((root/package_manifest['source']['sdk_contract']).read_bytes())
     binary=package/'yuki-telegram.exe'
     binary_digest=hashlib.sha256(binary.read_bytes()).hexdigest()
     assert binary_digest==package_manifest['artifacts'][binary.name] and all(x['exit_code']==0 for x in package_manifest['commands'])
@@ -156,7 +157,7 @@ def exercise(root, package, out, case):
             plan=pairs[0]
             assert plan['params']['arguments']['message']['reply_to_event_id']>0 and plan['reply']['error']['code']==-32602
             write(out/'result.json',{'status':'PASS','case':case,'scope':'unsupported event reference stops before native dispatch',
-                 'source':pin['source_commit'],'host':platform,'sdk':pin['rust_crate_sha256'],'gateway':binary_digest,
+                 'source':pin['source_commit'],'host':platform,'host_sdk':pin['rust_crate_sha256'],'sdk':consumer_pin['rust_crate_sha256'],'gateway':binary_digest,
                  'model_operation':receipt,'native_sends':0,'plan':plan,'published':False})
             return
         planned=[p['text'] for p in pairs[0]['reply']['result']['parts']]
@@ -181,7 +182,7 @@ def exercise(root, package, out, case):
             assert 52 in polls[previous:]
         assert before==(len(models),len(native))
         write(out/'result.json',{'status':'PASS','case':case,'source':pin['source_commit'],
-             'host':platform,'sdk':pin['rust_crate_sha256'],'gateway':binary_digest,'paid_fixture_http':len(models),
+             'host':platform,'host_sdk':pin['rust_crate_sha256'],'sdk':consumer_pin['rust_crate_sha256'],'gateway':binary_digest,'paid_fixture_http':len(models),
              'plan':pairs[0]['params']['operation'],'part_operations':[p['params']['operation'] for p in dispatched],
              'part_receipts':[p['reply']['result'] for p in dispatched],'model_operation':receipt,'native_sends':len(native),
              'post_restart_sends':0,'published':False})

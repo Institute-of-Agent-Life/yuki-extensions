@@ -3,7 +3,7 @@
   "kind": "plugin",
   "path": "plugins/telegram",
   "ecosystem": "rust",
-  "version": "0.1.0-alpha.3",
+  "version": "0.1.0-alpha.4",
   "tag_prefix": "telegram/v",
   "license": "AGPL-3.0-only",
   "notices": [
@@ -13,15 +13,19 @@
     "repository": "Institute-of-Agent-Life/yuki-extensions",
     "baseline": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
     "upstream_path": "src/yuki/gateway/providers/telegram_ingress.py",
-    "sdk_contract": "compat/core-038-main/source.lock.json"
+    "sdk_contract": "compat/base/source.lock.json"
   },
   "check_paths": [
     "tests/cases/EXT-003.py",
     "tests/peers/telegram_media_wire.py",
     "tests/peers/telegram_text_delivery.py",
     "tests/cases/EXT-004.py",
-    "compat/core-038-main/source.lock.json",
-    "compat/core-038-main/yuki-plugin-sdk-1.0.0-alpha.13.crate"
+    "compat/base/source.lock.json",
+    "compat/base/yuki-plugin-sdk-1.0.0-alpha.14.crate",
+    "tests/peers/joint_base.py",
+    "tests/peers/base_relay.py",
+    "ci/base-witness.py",
+    "tests/cases/EXT-067.py"
   ],
   "runtime_files": [
     "plugin.toml"
