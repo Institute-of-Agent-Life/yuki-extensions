@@ -13,6 +13,14 @@
 | EXT-010 · codex/ext-010 | `ab16e07`；CI `41834791702`；PR #6 合併 `2c55dbb` | `artifacts/EXT-010/02/`，8 例含實際子進程退出碼 23、雙 session 取消及 unknown |
 | EXT-019 · codex/ext-019 | 實作 `7531d84`、PR head `9d1e8a8`；三平台 CI `41835863011`；PR #7 合併 `7625095` | `artifacts/EXT-019/02/`，呼叫表、schema 差分、5 個故障變異；`03/` 固定跨平台順序 |
 
+## CI 觸發去重（進行中）
+
+分支 `codex/ci-dedupe`，基於 main `ac8c1b287e5a320107f64975dfd318b521bd8f13`。
+PR 只跑一套 merge ref 檢查；更新 PR 時只取消同一 PR 的舊執行。
+main push 與手動執行仍保留，三平台及套件作業定義未改。Windows 實機的靜態檢查及
+事件模擬回條為 `artifacts/readiness/ci-dedupe-windows.json`；actionlint 1.7.12 通過。
+GitHub 實際觸發與當前 PR 的三平台、受影響套件及具名產物仍待驗證後才能合併。
+
 ## 2026-11-05 PR #14 合併與 PR #15 新基底
 
 - PR #14 head `dfe8eb46d64a` 的三平台 acceptance、五套 package 和 Connector 回歸

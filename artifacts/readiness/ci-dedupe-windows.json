@@ -1,0 +1,18 @@
+{
+  "scope": "Windows static YAML comparison and simulated event matching; live GitHub Actions validation pending",
+  "host": "hjw",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0",
+  "pyyaml": "6.0.3",
+  "base_commit": "ac8c1b287e5a320107f64975dfd318b521bd8f13",
+  "original_workflow_sha256": "d1a2bdde082222555fdbd896592be4fe21032a5df06b9eb7ddafefb43192b11e",
+  "new_workflow_sha256": "e8f3465def7ebdbf0aee8024b580eb2edc13cb3342652137dbf6f9a35de6fa22",
+  "checks": [
+    "GitHub events: 5 simulated cases passed",
+    "same-PR duplicate push eliminated in event simulation",
+    "all job definitions unchanged",
+    "three-platform acceptance and package matrices unchanged",
+    "concurrency scope and main/manual isolation checked structurally"
+  ],
+  "result": "PASS"
+}
