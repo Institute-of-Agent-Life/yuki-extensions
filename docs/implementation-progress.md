@@ -4,6 +4,8 @@
 行為基線 `329ca7c487414d2f54ddd98ff4727446ed2446cd`。官方插件接入層用 Rust。
 獨立 Connector 沿用 Python 3.12；共享預算沿總書 K05。
 
+**EXT-005 公開基底入站驗收通過。** `codex/ext-005-public-admission` 在 HJW 將 #47 原 Windows 套件（飛書 alpha.4，SDK alpha.13）裝入公開 Host 1.0.0。writer 前斷線無成功事件 ACK，ping 與卡片無模型 HTTP；補齊分片後，飛書重投取得 1、1，Lark 同鍵取得 2、2，兩域的 open_id 分屬不同 account。錯租戶回 500、錯認證無連線。原生 ACK、Host transcript、模型正控與來源雜湊在 `artifacts/EXT-005/01`，停機副本沿用 #45。正式 10/68，另兩張簽署候選。#50 實作 `4c0af7fee853`，7 個 CI 作業和 9 個 ZIP 通過，普通合併 `8ca5f7077f11`。EXT-004/006 的原生操作與正向附件路由仍待核心交付。
+
 **EXT-003 公開基底入站驗收通過。** `codex/ext-003-public-admission` 在 HJW 使用公開 Host 1.0.0（`c6bd0c75e387`）及 #48 原 Telegram 0.1.0 套件。提交前斷線留下水位 11，回應遺失留下 12；重投均回原事件。兩個 Bot 同一私聊鍵分別收到事件 2、7。獨立遷群只留下事件 1，模型 HTTP 為零，後續一般訊息通過同一回環端點。wire 與兩端 digest 在 `artifacts/EXT-003/01`，三次未通過的驗收迭代在 `artifacts/EXT-003/public-intake`。停機副本與回退沿用 #44、#48。正式 9/68，下一項是 EXT-005 在公開 Host 上的 writer 與租戶隔離。
 
 **EXT-040 公開原生包。** `codex/ext-040-public-base` 實作 `bc2fe451a0d8` 的 yuki-setup alpha.2 可明選公開基底 1.0.0。HJW Windows 八項安裝操作通過。空插件及明選原 web-fetch 的兩個隔離 owner 均 ready，後者只有原包 online；錯誤輸入未留下安裝，原配置與 SOUL 雜湊保持一致。證據及兩輪故障在 `artifacts/EXT-040/public-native-01`。完整卡仍待外部入口、選配服務與真正的 Compose 部署。EXT-043 實作 `e9e012d761da`，#48 已合併 `24258c7c8c5c`，53 個驗證作業成功，91 份 ZIP 與實際合併樹相符。兩包消費回條已交核心 #103；詳 `artifacts/readiness/after-public-native-setup.json`。
