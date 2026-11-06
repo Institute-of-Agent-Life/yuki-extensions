@@ -1,0 +1,95 @@
+{
+  "source_commit": "1f62c7106f9fe8e01b832d0db22aac2d5c35f600",
+  "host_source": "dce1a6862000c312dc93dcfd7e9b3b2f8ba06168",
+  "host_sha256": "f6e89ae33368f4057880401acac9602f4ad3d1771ad50e63bd4241089938438b",
+  "host_sdk": "2928ed102a37a27955febc2eadacf1fa917e2e085e1b97565b107713ee3655af",
+  "consumer_sdk": "e41a2375efb2f8f479fa86b022168f02d3b098d3366c1f8f9a6ed9dc22ff4c40",
+  "schema": "5a9790642d0eb0ee2dfc15bcebc459c7b0bf9971260e6576e47da7e2e363fb9f",
+  "published": false,
+  "platform": "HJW Windows",
+  "status": "PASS",
+  "cases": {
+    "unsupported-emoji": {
+      "sha256": "15ebfc17efee8845e68632e8c35212ea99a0fc4bdf981d1da853cf6a076c421a",
+      "original_operation": "c76840dc-d160-4569-ae30-c81d4cdd38ec",
+      "receipt": {
+        "error": "gateway_media_unsupported"
+      },
+      "after_restart": "failed",
+      "original_pages": 4,
+      "native_sends": 0,
+      "redelivery_effects": 0,
+      "installed": [
+        {
+          "unit": "web-fetch",
+          "namespace": "official.web-fetch",
+          "grants": [
+            "tool.call"
+          ],
+          "environment_names": [
+            "YUKI_WEB_FETCH_HTTP_PROXY",
+            "YUKI_WEB_FETCH_NO_PROXY"
+          ],
+          "program_digest": "90912616d2e50ffce88c82422ebe58740e8c28235b83365ac43e07ef413659b2"
+        },
+        {
+          "unit": "telegram",
+          "namespace": "tg.bot101",
+          "grants": [
+            "gateway.inbound",
+            "gateway.send",
+            "gateway.media"
+          ],
+          "environment_names": [
+            "YUKI_TELEGRAM_API",
+            "YUKI_TELEGRAM_BOT_ID",
+            "YUKI_TELEGRAM_TOKEN",
+            "YUKI_TELEGRAM_STATE"
+          ],
+          "program_digest": "e49fac00669f9175814a1b06f6034626d4bc6514639576d23020817eb16b93b0"
+        }
+      ]
+    },
+    "missing-media-reader": {
+      "sha256": "fe4d4a47d24388ab01c5f5083e0508b45927b834910d5760ddf850805546dbfd",
+      "original_operation": "9f3c0d90-d4d0-4b4a-91ac-21d7e686f4c5",
+      "receipt": {
+        "error": "gateway_media_read_not_granted"
+      },
+      "after_restart": "failed",
+      "original_pages": 4,
+      "native_sends": 0,
+      "redelivery_effects": 0,
+      "installed": [
+        {
+          "unit": "web-fetch",
+          "namespace": "official.web-fetch",
+          "grants": [
+            "tool.call"
+          ],
+          "environment_names": [
+            "YUKI_WEB_FETCH_HTTP_PROXY",
+            "YUKI_WEB_FETCH_NO_PROXY"
+          ],
+          "program_digest": "90912616d2e50ffce88c82422ebe58740e8c28235b83365ac43e07ef413659b2"
+        },
+        {
+          "unit": "telegram",
+          "namespace": "tg.bot101",
+          "grants": [
+            "gateway.inbound",
+            "gateway.send",
+            "gateway.media"
+          ],
+          "environment_names": [
+            "YUKI_TELEGRAM_API",
+            "YUKI_TELEGRAM_BOT_ID",
+            "YUKI_TELEGRAM_TOKEN",
+            "YUKI_TELEGRAM_STATE"
+          ],
+          "program_digest": "e49fac00669f9175814a1b06f6034626d4bc6514639576d23020817eb16b93b0"
+        }
+      ]
+    }
+  }
+}
