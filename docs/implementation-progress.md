@@ -4,6 +4,8 @@
 行為基線 `329ca7c487414d2f54ddd98ff4727446ed2446cd`。官方插件接入層用 Rust。
 獨立 Connector 沿用 Python 3.12；共享預算沿總書 K05。
 
+**EXT-004 入站安裝拒絕發送。** 分支 `codex/ext-004-gateway-refusal`，實作 `603a98bef211`。在 HJW 安裝 #40 的 Windows Telegram alpha.4 與 web-fetch alpha.2，逐包核 SHA。新版簽署 Host `1eb6708fafd0` 的 SDK alpha.14 與插件原鎖只有 VCS 元資料不同，兩份 crate digest 分列於 `compat/gateway-refusal/source.lock.json`。取網頁、四頁原件續讀成功後，只有入站權的 Telegram 在原 Main 收到 `failed / gateway_send_not_granted`；計畫、派發與原 Bot 發送皆零。殺兩個真插件、重啟宿主後，用原 namespace、operation 和 Person 讀回同一拒絕，再投舊更新沒有新增效果。完整回條在 `artifacts/EXT-004/send-grant-refusal-03/`。#41 的三平台與合併樹核對在 `artifacts/ci/local-pr/41/receipt.json`。本案例補該卡一項授權拒絕，正式分母仍見下方 68 張清冊。
+
 **EXT-028 簽署候選驗收。** 在 HJW Windows 以分支 `codex/ext-028-signed-fetch` 的乾淨提交 `f4f4e2653e28` 跑預設 `ci/check.py EXT-028`。Host 來源 `4a41470e89b4`，SDK alpha.14，Rust web-fetch alpha.2。三次真工具派發分別讀取正文、大頁及只有 style/script 的 HTML。原文 6,250 bytes 分 49 頁核回，正文分 19 頁；第三個工具結果為 `empty_page`，保留原 bytes。六項 Rust 網路回歸涵蓋跨 origin 清除憑據、DNS 換址、合法 304 與代理故障。測試使用隔離 HTTP 和模型端點。Windows 執行檔 `a39fc7dbaa33`，與 EXT-067 獨立建置。回條、原連線、封包、三類資料所有者在 `artifacts/EXT-028/01/`。重現時將 `YUKI_BASE_HOST_ARCHIVE` 指向 `compat/base/source.lock.json` 固定的本機平台 ZIP。
 
 **合併與交接。** PR #16 至 #40 已合入主線；#40 合併 `1a2ed566a06e`，59 份 Windows/Linux 產物及本機 macOS 16 項檢查見 `artifacts/ci/local-pr/40/receipt.json`。68 張逐卡清冊見 `artifacts/readiness/after-signed-web-fetch.json`，分列先前正式通過、此次簽署候選驗收、部分證據及尚無具名產物。CORE-044 已收到 EXT-067 兩個真包的原始見證，待生產者發布。後續追蹤 CORE-038 真權限拒絕與原回執，以及 EXT-004/006 平台引用、撤回及媒體出站。
