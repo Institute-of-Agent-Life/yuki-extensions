@@ -4,6 +4,17 @@
 行為基線 `329ca7c487414d2f54ddd98ff4727446ed2446cd`。官方插件接入層用 Rust。
 獨立 Connector 沿用 Python 3.12；共享預算沿總書 K05。
 
+**EXT-006 飛書／Lark 部分候選；正式完成 7/68。** 分支 `codex/ext-006-feishu-media`，實作 `2db0fa096b2f`。
+HJW Windows 的 Rust alpha.2 在兩個區域端點各取回 26,789 bytes；同名 key 的內容摘要不同。
+下載中原 WS 可回 ACK；錯 app/tenant 不發 HTTP、403 不重試。修正 Windows 複製 socket 導致原讀取逾時沒有更新的問題。
+同一執行檔 `4fc4e77480ba` 對固定 CORE-038 `0ef956a9c6d9`／SDK alpha.13、Host `4dd7a9fc3456`，
+用兩個獨立安裝接納與重放，真回執 event 1/1/2/2；這條測試只授入站權限，附件 callback 為零。
+見 `artifacts/EXT-006/evidence-index.json`、`platform-05`、`ingress-05`。平台端為回環 fixture，
+真選讀需原 app/tenant 的公開安裝配置，Social 和舊資料導入仍待。
+上張 [EXT-004 PR #36](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/36) 已推；
+[原安裝配置回條](https://github.com/Institute-of-Agent-Life/yuki-core/pull/73#issuecomment-6680974214)。
+合併佇列先處理 #16；最新清單：`artifacts/readiness/after-feishu-native-media.json`。
+
 **EXT-004 部分候選；正式完成 7/68。** 分支 `codex/ext-004-telegram-media`，實作 `adb9c36eae38`。
 HJW 的 Rust Telegram alpha.2（SDK alpha.13，來源 `0ef956a9c6d9`、crate `25694e880798`）已驗原 Bot 單次取檔、兩頁同摘要、跨身份零取件、轉址／超限拒絕及長輪詢中止。
 平台證據在 `artifacts/EXT-004/platform-01`；真 Host 的 ingress-only 寫入 event 1，新增 grant 時缺 application 核准而無法啟動（`host-02`）。待核公開配置、真選讀、發送／撤回／typing 與發布。
