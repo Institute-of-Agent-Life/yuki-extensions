@@ -1,0 +1,12 @@
+{
+  "binary": "0b28a8f2d044d31f4b8890cb1b276819656c6886fb19d84951d3bed27080f212",
+  "test_inputs": {
+    "tests\\cases\\EXT-005.py": "a3c386fb45be22d7f667cf8945d6dc652c3fc965e64c08efcf8d2520fdb447a9",
+    "tests\\cases\\EXT-006.py": "f815b73222d63707a82f60709882e202f5961e6432289504f2f0c8961b7a994b",
+    "tests\\peers\\feishu_media_host.py": "711c8524bb9372deee79ac384c94be99c650a0788d7e12130095e76990e38076",
+    "tests\\peers\\feishu_media_wire.py": "7af85858db0e3cf3cc0d6da039b4b3ffde58c56b5878e963ce9d081790b1ee03"
+  },
+  "sdk_source": "0ef956a9c6d90fae79c0d4488296c064ccf29f54",
+  "source_zip_sha256": "1309071c3eca45c8aa2052ae8da7300d9f1ea78b300799b9381353bdaf4e09db",
+  "status": "FAIL"
+}

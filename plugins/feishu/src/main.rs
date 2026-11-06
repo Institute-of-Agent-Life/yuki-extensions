@@ -1,5 +1,6 @@
 mod host;
 mod ingress;
+mod rest;
 mod ws;
 
 use data_encoding::BASE64;
@@ -22,10 +23,27 @@ use tungstenite::{Message, WebSocket, client_tls_with_config, protocol::WebSocke
 use url::Url;
 use ws::{Assembler, Frame};
 type Error = Box<dyn std::error::Error>;
+// On Windows, TcpStream::try_clone creates a distinct Winsock handle.
+// Change the timeout on the socket actually used by TLS/WebSocket after the handshake.
+struct SharedTcp(std::sync::Arc<TcpStream>);
+impl Read for SharedTcp {
+    fn read(&mut self, buf: &mut [u8]) -> io::Result<usize> {
+        self.0.as_ref().read(buf)
+    }
+}
+impl Write for SharedTcp {
+    fn write(&mut self, buf: &[u8]) -> io::Result<usize> {
+        self.0.as_ref().write(buf)
+    }
+    fn flush(&mut self) -> io::Result<()> {
+        self.0.as_ref().flush()
+    }
+}
 trait Stream: Read + Write {}
 impl<T: Read + Write> Stream for T {}
 type Socket = WebSocket<MaybeTlsStream<Box<dyn Stream>>>;
 
+#[derive(Clone)]
 struct Config {
     app: String,
     secret: String,
@@ -168,59 +186,62 @@ fn tcp(host: &str, port: u16) -> Result<TcpStream, Error> {
 fn websocket(cfg: &Config, url: &Url) -> Result<Socket, Error> {
     let target = url.host_str().ok_or("missing host")?;
     let port = url.port_or_known_default().ok_or("missing port")?;
-    let (stream, timer): (Box<dyn Stream>, TcpStream) = if let Some(proxy) = &cfg.proxy {
-        let ph = proxy.host_str().ok_or("missing proxy")?;
-        let socket = tcp(
-            ph,
-            proxy.port_or_known_default().ok_or("missing proxy port")?,
-        )?;
-        let timer = socket.try_clone()?;
-        let mut stream: Box<dyn Stream> = if proxy.scheme() == "https" {
-            Box::new(
-                TlsConnector::new()?
-                    .connect(ph, socket)
-                    .map_err(|_| "proxy TLS failed")?,
-            )
-        } else {
-            Box::new(socket)
-        };
-        write!(
-            stream,
-            "CONNECT {target}:{port} HTTP/1.1\r\nHost: {target}:{port}\r\n"
-        )?;
-        if !proxy.username().is_empty() {
-            let user = percent_decode_str(proxy.username()).decode_utf8()?;
-            let pass = percent_decode_str(proxy.password().unwrap_or("")).decode_utf8()?;
+    let (stream, timer): (Box<dyn Stream>, std::sync::Arc<TcpStream>) =
+        if let Some(proxy) = &cfg.proxy {
+            let ph = proxy.host_str().ok_or("missing proxy")?;
+            let socket = tcp(
+                ph,
+                proxy.port_or_known_default().ok_or("missing proxy port")?,
+            )?;
+            let timer = std::sync::Arc::new(socket);
+            let socket = SharedTcp(std::sync::Arc::clone(&timer));
+            let mut stream: Box<dyn Stream> = if proxy.scheme() == "https" {
+                Box::new(
+                    TlsConnector::new()?
+                        .connect(ph, socket)
+                        .map_err(|_| "proxy TLS failed")?,
+                )
+            } else {
+                Box::new(socket)
+            };
             write!(
                 stream,
-                "Proxy-Authorization: Basic {}\r\n",
-                BASE64.encode(format!("{user}:{pass}").as_bytes())
+                "CONNECT {target}:{port} HTTP/1.1\r\nHost: {target}:{port}\r\n"
             )?;
-        }
-        stream.write_all(b"\r\n")?;
-        stream.flush()?;
-        let mut reader = BufReader::new(&mut stream);
-        let mut bytes = Vec::new();
-        loop {
-            let n = (&mut reader)
-                .take(16_385 - bytes.len() as u64)
-                .read_until(b'\n', &mut bytes)?;
-            if n == 0 || bytes.len() > 16384 {
-                return Err("proxy CONNECT failed".into());
+            if !proxy.username().is_empty() {
+                let user = percent_decode_str(proxy.username()).decode_utf8()?;
+                let pass = percent_decode_str(proxy.password().unwrap_or("")).decode_utf8()?;
+                write!(
+                    stream,
+                    "Proxy-Authorization: Basic {}\r\n",
+                    BASE64.encode(format!("{user}:{pass}").as_bytes())
+                )?;
             }
-            if bytes.ends_with(b"\r\n\r\n") {
-                break;
+            stream.write_all(b"\r\n")?;
+            stream.flush()?;
+            let mut reader = BufReader::new(&mut stream);
+            let mut bytes = Vec::new();
+            loop {
+                let n = (&mut reader)
+                    .take(16_385 - bytes.len() as u64)
+                    .read_until(b'\n', &mut bytes)?;
+                if n == 0 || bytes.len() > 16384 {
+                    return Err("proxy CONNECT failed".into());
+                }
+                if bytes.ends_with(b"\r\n\r\n") {
+                    break;
+                }
             }
-        }
-        if bytes.split(|b| *b == b' ').nth(1) != Some(b"200".as_slice()) {
-            return Err("proxy CONNECT refused".into());
-        }
-        (stream, timer)
-    } else {
-        let socket = tcp(target, port)?;
-        let timer = socket.try_clone()?;
-        (Box::new(socket), timer)
-    };
+            if bytes.split(|b| *b == b' ').nth(1) != Some(b"200".as_slice()) {
+                return Err("proxy CONNECT refused".into());
+            }
+            (stream, timer)
+        } else {
+            let socket = tcp(target, port)?;
+            let timer = std::sync::Arc::new(socket);
+            let socket = SharedTcp(std::sync::Arc::clone(&timer));
+            (Box::new(socket), timer)
+        };
     let config = WebSocketConfig::default()
         .max_message_size(Some(2 * 1024 * 1024))
         .max_frame_size(Some(2 * 1024 * 1024));
@@ -367,8 +388,8 @@ fn connection(
 }
 
 fn main() -> Result<(), Error> {
-    let mut host = Host::connect()?;
     let cfg = Config::load()?;
+    let mut host = Host::connect(&cfg)?;
     let mut timing = Timing {
         ping: 120,
         retry: 120,

@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "scope": "Original ingress/ACK regression on real fixed Host, ingress-only installations",
+  "host_source": "0ef956a9c6d90fae79c0d4488296c064ccf29f54",
+  "plugin_sha256": "35488fc4f14759b5d7a18088e4ca95aeec419d1b59c323dfc4f2e86d9a0d7168",
+  "ingress_calls": 5,
+  "gateway_media_callbacks": 0,
+  "wire_sha256": "9b8218c08073315842196cdf2d959861e55aa098406ec5767752f889b254f896"
+}

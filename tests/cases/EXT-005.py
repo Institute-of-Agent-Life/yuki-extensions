@@ -40,13 +40,13 @@ def fixture_imports(root, work):
     return Frame,serve
 
 
-def prepare(root, output):
+def prepare(root, output, *, contract="core-032", package_builder=build):
     work=output/"work"
     work.mkdir()
     Frame,serve=fixture_imports(root,work)
-    host,pin,platform=materialize(root,work)
+    host,pin,platform=materialize(root,work,contract)
     packages=output/"packages"
-    built=build(root,"feishu",packages)
+    built=package_builder(root,"feishu",packages)
     binary=packages/("yuki-feishu.exe" if os.name=="nt" else "yuki-feishu")
     (output/"build.txt").write_text("\n".join(cmd["stdout"]+cmd["stderr"] for cmd in built["commands"]),encoding="utf-8")
     data=work/"host"; proc=None
@@ -151,13 +151,21 @@ def prepare(root, output):
         env.update(YUKI_FEISHU_APP_ID=app,YUKI_FEISHU_APP_SECRET="fixture-"+app,YUKI_FEISHU_TENANT="tenant-"+slug,YUKI_FEISHU_DOMAIN=domain)
         cfg=data/"yuki.toml"
         base=cfg.read_text(encoding="utf-8").split("[[plugins]]")[0]
-        vals={"id":"feishu","namespace":"fs."+slug,"program":sys.executable,
+        # Distinct production installations retain independent IDs. The historical
+        # CORE-032 witness used a single ID, and its original scenario is preserved.
+        ident = "feishu-"+slug if contract=="core-038-main" else "feishu"
+        vals={"id":ident,"namespace":"fs."+slug,"program":sys.executable,
             "args":[str(root/"tests/peers/feishu_relay.py"),str(binary),str(trace)],
             "platform":domain,"bot_stage":stage,"grants":["gateway.inbound"],
             "env":[k for k in env if k.startswith("YUKI_FEISHU_")]}
         cfg.write_text(base+"\n[[plugins]]\n"+"\n".join(f"{k} = {json.dumps(v)}" for k,v in vals.items())+"\n",encoding="utf-8")
     try:
-        cli("init");start()
+        cli("init")
+        if contract=="core-038-main":
+            # This Host requires an explicit offline memory mode when no embedder is installed.
+            cfg=data/"yuki.toml"
+            cfg.write_text(cfg.read_text(encoding="utf-8").replace('mode = "hybrid"','mode = "lexical-only"'),encoding="utf-8")
+        start()
         stages={}; accounts={}
         for n,(app,(slug,domain)) in enumerate(routes.items(),1):
             person=f"00000000-0000-4000-8000-00000000005{n}"
@@ -195,6 +203,13 @@ def prepare(root, output):
         return "lark-frames.json",{"status":"PASS","card_status":"VERIFIED_ON_UNPUBLISHED_CANDIDATE",
             "source_commit":pin["source_commit"],"host":platform,"sdk":pin["rust_crate_sha256"],
             "plugin":built["artifacts"][binary.name],"accounts":accounts,"durable_events":ids,"native":native,"auth":auth,"transcript":records}
+    except Exception:
+        if contract != "core-032" and proc and proc.poll() is None:
+            status=subprocess.run([host,"--data",data,"operator","host","status"],cwd=work,env=env,
+                text=True,capture_output=True,timeout=8)
+            (output/"host-status.json").write_text(json.dumps({"phase":phase,"exit_code":status.returncode,
+                "stdout":status.stdout,"stderr":status.stderr},indent=2),encoding="utf-8")
+        raise
     finally:
         release.set();stop();api.shutdown();api.server_close();ws.shutdown()
         if (trace/"wire.jsonl").exists():(output/"wire.jsonl").write_bytes((trace/"wire.jsonl").read_bytes())

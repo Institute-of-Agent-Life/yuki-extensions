@@ -1,6 +1,6 @@
 [package]
 name = "yuki-feishu"
-version = "0.1.0-alpha.1"
+version = "0.1.0-alpha.2"
 edition = "2024"
 rust-version = "1.96"
 license = "AGPL-3.0-only"
@@ -8,10 +8,11 @@ publish = false
 
 [dependencies]
 serde_json = "=1.0.145"
-yuki-plugin-sdk = "=1.0.0-alpha.2"
+yuki-plugin-sdk = "=1.0.0-alpha.13"
 prost = "=0.14.1"
 tungstenite = { version="=0.28.0", features=["native-tls"] }
 url = "=2.5.7"
 native-tls = "=0.2.18"
 data-encoding = "=2.11.1"
 percent-encoding = "=2.3.2"
+sha2 = "=0.10.9"

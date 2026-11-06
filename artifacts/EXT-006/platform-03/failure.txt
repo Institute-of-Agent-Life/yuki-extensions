@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "D:\yuki-extension-tests\feishu-media-platform-03\src\ci\check.py", line 37, in main
+    report_name, report = runner(root, args.out.resolve())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\feishu-media-platform-03\src\tests\cases\EXT-006.py", line 18, in prepare
+    rows=[one(output/'packages'/name,Frame,serve,domain,kind) for domain,kind in [('feishu','image'),('lark','file')]]
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\feishu-media-platform-03\src\tests\peers\feishu_media_wire.py", line 19, in one
+    assert len(content)>24576
+AssertionError

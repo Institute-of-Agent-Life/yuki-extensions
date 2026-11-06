@@ -1,0 +1,24 @@
+{
+  "task": "EXT-006",
+  "status": "PASS",
+  "phase": "preparation",
+  "card_status": "PLATFORM_RESOURCE_VERIFIED_HOST_AND_SOCIAL_PENDING",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "a7d7994705b76a2942d75eac679104a02282cd7ad1963035c322f133e021f848",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-006",
+    "--preparation",
+    "--out",
+    "D:\\yuki-extension-tests\\feishu-media-platform-05\\evidence"
+  ],
+  "files": {
+    "build-receipt.json": "19b0211b291f3907562ecbac75b6d6288b7bd2e5abe9516a1e81ddceb66c35cd",
+    "feishu-wire.json": "454a519069dba3839feb348f97262ae1044416a58239490b3a03eaa3b8a9249b",
+    "lark-rest.json": "791bf7f757109a0eaecca12f4ed9e5ddb12ed7f930f3042d7082eff3b741c352",
+    "lark-wire.json": "826e6b0af1be239679c83dff2e7a1df1bc9cbfccadcab90ac183a851c3bad20b"
+  }
+}

@@ -462,3 +462,9 @@ source commit／SDK／hash 與公開成功／故障序列，能在 Main 正常�
 需公開可解析的 `[[plugins]]` 核准 application（Telegram 101、無 tenant；飛書 app/tenant）
 配置與原 event/slot 選讀入口。等待 [核心 #73 的配置回條](https://github.com/Institute-of-Agent-Life/yuki-core/pull/73#issuecomment-6679830369)。
 本次沒有 Host 發起的取件、上線或發布。新回條取代先前「尚無 callback 方法」的舊描述。
+
+EXT-006 的取件路徑已接入 Rust gateway，本地維持原 Feishu/Lark domain、app/tenant、
+message_id 及 resource_key。兩域的原安裝公開核准配置沿用 [核心 #73](https://github.com/Institute-of-Agent-Life/yuki-core/pull/73#issuecomment-6680974214)；
+不能用同名 key 互相補件。對出站，已有 plan／dispatch 與 dispatch handle 的原 media.open。
+仍請附原路由授權下的文件/附言逐步計畫、引用及撤回、活動提示的公開方法、定位欄位
+與真回條，以驗證第二步超時不再建立新操作。現有一般 arguments 不授予任意跨域路由。
