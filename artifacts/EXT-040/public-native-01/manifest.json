@@ -1,0 +1,23 @@
+{
+  "task": "EXT-040",
+  "status": "PASS",
+  "phase": "preparation",
+  "card_status": "PUBLIC_NATIVE_PROFILE_VERIFIED",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "101d966b6f82718c85e126ed2b241c80264a158116f9aad6974435121a01849d",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-040",
+    "--preparation",
+    "--out",
+    "C:\\Users\\Hilbert\\yuki-extension-tests\\local-base-setup49\\r3\\out"
+  ],
+  "files": {
+    "plain-host.log": "0660eed990921ff29e1441da0c328d4dcb98c6715b71380e2a87a8140bd3bd42",
+    "selected-host.log": "eb296e87668642654ecfd316620be55a0dade05451952b41ce7aadee0f207f6b",
+    "setup-install.json": "f0b3056fef47a28d87914523367808fb153c81734c68fd11ef3646eb43c9689b"
+  }
+}

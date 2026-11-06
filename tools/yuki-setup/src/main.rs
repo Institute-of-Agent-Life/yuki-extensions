@@ -102,6 +102,48 @@ fn run() -> Result<(), Error> {
         let selected = args.get("--plugin").map(String::as_str);
         let plugin_file = args.get("--plugin-file");
         let optional = selected == Some("web-fetch") && plugin_file.is_some();
+        if let Some(version) = args.get("--core") {
+            if version != "1.0.0"
+                || !(args.len() == 3 || optional && args.len() == 5)
+                || selected.is_some() != optional
+                || plugin_file.is_some() != optional
+            {
+                return Err("native --core 1.0.0 accepts the base archive and optionally the frozen web-fetch package".into());
+            }
+            let archive = args.get("--archive").ok_or("missing --archive")?;
+            if args.keys().any(|k| {
+                !["--core", "--dir", "--archive", "--plugin", "--plugin-file"].contains(&k.as_str())
+            }) {
+                return Err("unknown option for native base installation".into());
+            }
+            let mut python = Command::new(if cfg!(windows) { "py" } else { "python3" });
+            if cfg!(windows) {
+                python.arg("-3.12");
+            }
+            let result = python
+                .args([
+                    "-I",
+                    "-c",
+                    concat!(include_str!("keygen.py"), "\n", include_str!("stable.py")),
+                ])
+                .arg(archive)
+                .arg(dir)
+                .arg(include_str!("../inputs/base-1.0.json"))
+                .arg(plugin_file.map(String::as_str).unwrap_or(""))
+                .output()?;
+            if !result.status.success() {
+                eprintln!(
+                    "{}",
+                    String::from_utf8_lossy(&result.stderr)
+                        .lines()
+                        .last()
+                        .unwrap_or("base verification failed")
+                );
+                return Err("native base input refused".into());
+            }
+            print!("{}", String::from_utf8(result.stdout)?);
+            return Ok(());
+        }
         if !(args.len() == 2 || optional && args.len() == 4) {
             return Err("native takes --archive and --dir; a selected Windows web-fetch also requires --plugin-file".into());
         }
@@ -211,5 +253,39 @@ fn main() {
     if let Err(err) = run() {
         eprintln!("{err}");
         std::process::exit(1);
+    }
+}
+
+#[cfg(test)]
+mod public_base_tests {
+    use std::process::Command;
+
+    #[test]
+    fn commit_refuses_to_replace_even_an_empty_existing_destination() {
+        let mut python = Command::new(if cfg!(windows) { "py" } else { "python3" });
+        if cfg!(windows) {
+            python.arg("-3.12");
+        }
+        let probe = r#"
+from pathlib import Path
+from tempfile import TemporaryDirectory
+import runpy
+commit = runpy.run_path("src/stable.py")["commit_directory"]
+with TemporaryDirectory() as tmp:
+    src, dst = (Path(tmp) / n for n in ["staged", "installed"])
+    src.mkdir()
+    (src / "checked").write_bytes(b"payload")
+    dst.mkdir()
+    try:
+        commit(src, dst)
+    except OSError:
+        assert src.is_dir() and not list(dst.iterdir())
+    else:
+        raise AssertionError("existing directory replaced")
+    dst.rmdir()
+    commit(src, dst)
+    assert not src.exists() and (dst / "checked").read_bytes() == b"payload"
+"#;
+        assert!(python.args(["-I", "-c", probe]).status().unwrap().success());
     }
 }

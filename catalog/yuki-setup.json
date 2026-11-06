@@ -1,6 +1,6 @@
 {
-  "unit_id":"yuki-setup","kind":"tool","path":"tools/yuki-setup","ecosystem":"rust","version":"0.1.0-alpha.1",
+  "unit_id":"yuki-setup","kind":"tool","path":"tools/yuki-setup","ecosystem":"rust","version":"0.1.0-alpha.2",
   "tag_prefix":"setup/v","license":"AGPL-3.0-only","notices":["LICENSE","inputs/CORE-LICENSE","inputs/CORE-NOTICE"],
   "source":{"repository":"Institute-of-Agent-Life/yuki-extensions","producer":"CORE-039","candidate_lock":"inputs/source.lock.json"},
-  "check_paths":["tests/cases/EXT-040.py"]
+  "check_paths":["tests/cases/EXT-040.py","tests/peers/setup_published.py","compat/stable-1.0/source.lock.json"]
 }
