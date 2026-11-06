@@ -17,6 +17,8 @@
 
 - 分支 `codex/ext-024-rejection-continuation`，從已驗角色／trace 的 `d9cfee9` 建獨立樹；
   main 仍 `996deedef3e1`。本次只新增對拍與契約 pin，Rust Code 本體來源未變。
+  實作與原回條 `af6e61b95009b6a3c592ecbea302fe0df51a13e5` 已推
+  [PR #29](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/29)。
 - CORE-015 固定來源 `969fb62e34de`／SDK alpha.11 的三平台 ZIP、所有成員及原
   producer manifest 已核；完整來源／版本／雜湊在 `compat/core-015-isolation`。
   Windows ZIP `3b45be537020`、Host `9cd0c5ac8c8a`。候選仍未發布。
@@ -35,7 +37,10 @@
 - **正式完成仍 7／68。** 新阻塞及精確方法／字段／授權／故障需求已列
   `docs/core-interface-requests.md`；缺普通拒絕的可分類 child receipt／續跑路徑，
   其餘 light alias、Work/run、H14／根帳本、越權等價及發布缺口延續。
-  本輪實作與回條隨本分支提交；三平台當前 SHA CI 與合併仍待遠端 gates。
+  真回條已交 [CORE-015 #61](https://github.com/Institute-of-Agent-Life/yuki-core/pull/61#issuecomment-6673430091)
+  及 [CORE-034 #43](https://github.com/Institute-of-Agent-Life/yuki-core/pull/43#issuecomment-6673443351)。
+  三平台當前 SHA CI 與合併仍待遠端 gates；佇列仍從 PR #15 起，最新 40 success／
+  4 個 macOS package queued，沒有新失敗。PR #29 輪到時仍需正常合入新 main 並重驗。
   最新 readiness：`artifacts/readiness/after-core015-refusal-intake.json`。
   其餘使用者 WIP 全部保留。
 

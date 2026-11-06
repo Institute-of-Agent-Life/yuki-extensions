@@ -31,5 +31,5 @@
     "code.sources": true,
     "code.resume": true
   },
-  "note": "Existing verified native binary. Full Host schema files differ; the listed composition method DTOs are byte-equivalent JSON values. No fresh compile is claimed."
+  "note": "Existing verified native binary. Full Host schema files differ; the listed composition method DTOs have equal decoded JSON values. No fresh compile is claimed."
 }

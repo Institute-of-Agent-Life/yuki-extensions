@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-06T00:35:32.942489+00:00",
+  "updated_at": "2026-11-06T00:41:39.885930+00:00",
   "status": "waiting_CI_or_public_producer_contracts",
   "previous": "after-core037-character.json",
   "formal_cards_completed": 7,
@@ -56,12 +56,26 @@
     25,
     26,
     27,
-    28
+    28,
+    29
   ],
   "preserved_WIP": [
     "root four Code adapters",
     "work-asr",
     "work-rebuild",
     "work-subscription"
-  ]
+  ],
+  "implementation_commit": "af6e61b95009b6a3c592ecbea302fe0df51a13e5",
+  "PR": 29,
+  "core_handoffs": [
+    "https://github.com/Institute-of-Agent-Life/yuki-core/pull/61#issuecomment-6673430091",
+    "https://github.com/Institute-of-Agent-Life/yuki-core/pull/43#issuecomment-6673443351"
+  ],
+  "PR15_last_observation": {
+    "head": "0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+    "success": 40,
+    "macos_package_queued": 4,
+    "failures": 0
+  },
+  "windows_source_validation": "artifacts/EXT-024/validation-02"
 }
