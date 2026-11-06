@@ -1,0 +1,120 @@
+{
+  "repository": "Institute-of-Agent-Life/yuki-core",
+  "tag": "plugin-base-v1.0.0",
+  "release_id": 437071990,
+  "url": "https://github.com/Institute-of-Agent-Life/yuki-core/releases/tag/plugin-base-v1.0.0",
+  "published_at": "2026-11-06T21:30:07Z",
+  "github_immutable": false,
+  "source_commit": "c6bd0c75e38717abc71373201d31a77982428d5b",
+  "source_tree_sha256": "4fd151798a39c4b3a2b9c84ce36704870e8ef5a40686cd839d672fb85b80bbc4",
+  "published": true,
+  "sdk": {
+    "python": "1.0.0",
+    "rust": "1.0.0"
+  },
+  "rust_crate_sha256": "21aceed53a465aaefe6a74560a4d283b947c55dc6f5fb3fd5d5e10f4dc842711",
+  "schema_sha256": "131754fbc818d26557eb31958782624eb38bbe19d1f4e3c6f42e2e62f8d9001e",
+  "signer_sha256": "b94f861a2d7a4a53ae689cea4990cbff6387ae9f019bba1780a1f832fadb8541",
+  "assets": {
+    "base-1.0.0-consumer-replay.zip": {
+      "id": 718628791,
+      "size": 4862075,
+      "digest": "sha256:115a70590e717a0b79463c0627f7bc8f860773c515e66fc48acf80a350eeda4d"
+    },
+    "base-release.json": {
+      "id": 718628823,
+      "size": 2466,
+      "digest": "sha256:a98fb1e4d36f895f02db8614b88638ed73339f21d03bd42c76719ab54274dabc"
+    },
+    "SHA256SUMS": {
+      "id": 718628927,
+      "size": 678,
+      "digest": "sha256:8be3e720618e01dff0d9b869561e34698361d58260648ae09e67a267e428b5ef"
+    },
+    "SHA256SUMS.sig": {
+      "id": 718628962,
+      "size": 322,
+      "digest": "sha256:2036625d046663373751c489ec6e118c63ae92e850a5e34f470e0e7dbdd8bdf5"
+    },
+    "signer.pub": {
+      "id": 718628794,
+      "size": 104,
+      "digest": "sha256:b94f861a2d7a4a53ae689cea4990cbff6387ae9f019bba1780a1f832fadb8541"
+    },
+    "yuki-plugin-base-1.0.0-darwin-arm64.zip": {
+      "id": 718628830,
+      "size": 13780295,
+      "digest": "sha256:ed0aef8a02d216133a21dc784c67d2c344f5bd667f168884ae5475ea1465e533"
+    },
+    "yuki-plugin-base-1.0.0-linux-arm64.zip": {
+      "id": 718628826,
+      "size": 14550465,
+      "digest": "sha256:737d5d0ff9ec8e77adc898f5a6112f742c7785bc395730b65a1e4b13310eb69f"
+    },
+    "yuki-plugin-base-1.0.0-support.zip": {
+      "id": 718628886,
+      "size": 76423,
+      "digest": "sha256:f9ffec757b415a745a9bec5c45897c771f22237584e7f78a4513fd0ebd28e317"
+    },
+    "yuki-plugin-base-1.0.0-windows-x86_64.zip": {
+      "id": 718628893,
+      "size": 17597555,
+      "digest": "sha256:287167dae7b2b1222efd22fa5a0aa58e1c39f7129c7112e5b81cebb6278a7ecd"
+    }
+  },
+  "platforms": {
+    "linux-arm64": {
+      "acceptance_sha256": "0c83fff40f0a1b978e5fb0180edd427defeda19682721858fd2baddc62014ce5",
+      "archive": "yuki-plugin-base-1.0.0-linux-arm64.zip",
+      "native_candidate_sha256": "eccac860c84b22872918a27ccc0f09360887df9b11e01f33e462804422d240e0",
+      "sha256": "737d5d0ff9ec8e77adc898f5a6112f742c7785bc395730b65a1e4b13310eb69f",
+      "binary": "bin/yuki-base",
+      "binary_sha256": "e2435386c53541628898861d1a1f162ecadae51e815020d78d162d57130e7d1b",
+      "verified_members": 495
+    },
+    "darwin-arm64": {
+      "acceptance_sha256": "8253345b2496f11fab2da3dcf5735ae34d326976a6737d36de45c75b89479e8a",
+      "archive": "yuki-plugin-base-1.0.0-darwin-arm64.zip",
+      "native_candidate_sha256": "790598699440700353cfbd94267f23f8db2b125d4c364c4c0ec32e7d2b9ce180",
+      "sha256": "ed0aef8a02d216133a21dc784c67d2c344f5bd667f168884ae5475ea1465e533",
+      "binary": "bin/yuki-base",
+      "binary_sha256": "8768e4cf17fe2a355e11570002bb37d7adfc81c5f8ae77063f90094e025ea4cb",
+      "verified_members": 492
+    },
+    "windows-x86_64": {
+      "acceptance_sha256": "b3789a78484daf98956deb9bc2860c990c82161e701b56bc3faa61ac736c9c42",
+      "archive": "yuki-plugin-base-1.0.0-windows-x86_64.zip",
+      "native_candidate_sha256": "801a5a6ae3c9d1ab17013f917c437c75839618f429af327250217d50c425706b",
+      "sha256": "287167dae7b2b1222efd22fa5a0aa58e1c39f7129c7112e5b81cebb6278a7ecd",
+      "binary": "bin/yuki-base.exe",
+      "binary_sha256": "7ad3dc1659c5ef53809da5c0faf3b6ca885c4e3c7f0c7d46155803c86accf095",
+      "verified_members": 504
+    }
+  },
+  "windows_fallback": {
+    "telegram": {
+      "artifact_id": "13523402982",
+      "sha256": "5227f287eb2afad02fe3295e251a1b21c79baa2460ad748531bef2b86cf94f84",
+      "members": {
+        "Cargo.lock": "48220d028b84338e07d47d3d4b7a4c8cf37d6eb8e76df532e147621e68e5e763",
+        "package-manifest.json": "19ee9c1ecaf66897d9d2bf6a22b8abd45f5a67b78502b612afe14e1137078b80",
+        "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "plugin.toml": "2bbeca542c94e4fecf993dfea52c8906e8d2662378d54bfbe55b2d4426aa22ad",
+        "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "yuki-telegram.exe": "e49fac00669f9175814a1b06f6034626d4bc6514639576d23020817eb16b93b0"
+      }
+    },
+    "web-fetch": {
+      "artifact_id": "13524465074",
+      "sha256": "51dd857899c6350353fe289d4955981f2fa97ca8ff51ad7857b916ba5801d963",
+      "members": {
+        "Cargo.lock": "20609ae0ee4935d761204f1aec7618a95439e591e3bf6876cc5be9a61b5d94ba",
+        "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "package-manifest.json": "3da6a9e77e9ecd19eb2550cf1ecae0783d4c0d1cebdcb50c94a09589a819db91",
+        "plugin.toml": "116d0aa6cb5d635118d8abecdd405f5bef0d8a5eb475eae0217430f3c5bc20cd",
+        "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "yuki-web-fetch.exe": "90912616d2e50ffce88c82422ebe58740e8c28235b83365ac43e07ef413659b2"
+      }
+    }
+  }
+}

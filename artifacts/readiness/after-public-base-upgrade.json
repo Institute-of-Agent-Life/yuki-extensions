@@ -1,0 +1,30 @@
+{
+  "previous": "after-feishu-rich-messages.json",
+  "counts": {
+    "formally_accepted": 8,
+    "signed_candidate_acceptance_pass": 2,
+    "partial_or_diagnostic_evidence": 20,
+    "no_named_card_artifact": 38
+  },
+  "card": "EXT-043",
+  "branch": "codex/ext-043-stable-telegram",
+  "native_manifest": "artifacts/EXT-043/01/manifest.json",
+  "handoff": "artifacts/EXT-043/01/extension-release-lock.json",
+  "source_pin": "compat/stable-1.0/source.lock.json",
+  "published_core": "plugin-base-v1.0.0",
+  "extension_release_created": false,
+  "native_archives": {
+    "r1": "1fe248dcf29fc698cb683cb662e26b3c9d32a3815bbc0ccec57d91341d9c6e35",
+    "r2": "4e1e6bf62a2f7325fdff4b36f66934f0bac995aa03287f449e07db2cf146fd17"
+  },
+  "next": {
+    "EXT-044": [
+      "EXT-017",
+      "EXT-039",
+      "EXT-046",
+      "completed address-change scenario in EXT-070; full Desktop integration outstanding"
+    ],
+    "EXT-029": "Public per-attempt accounting binding and installation recipe requested on core #101.",
+    "CORE-045": "Can consume the release lock and named rollback evidence."
+  }
+}

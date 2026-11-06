@@ -14,3 +14,5 @@ tools/yuki-setup/inputs/verify_*.py -text
 compat/core-033/* -text
 compat/core-038/* -text
 plugins/media/backend/document_reader.py -text
+
+compat/stable-1.0/** -text

@@ -4,6 +4,8 @@
 行為基線 `329ca7c487414d2f54ddd98ff4727446ed2446cd`。官方插件接入層用 Rust。
 獨立 Connector 沿用 Python 3.12；共享預算沿總書 K05。
 
+**EXT-043 獨立升級。** `codex/ext-043-stable-telegram`。核心已公開發行 `plugin-base-v1.0.0`（來源 `c6bd0c75e387`），9 個發行資產與簽署清單已核。HJW Windows 只將 Telegram 升至 SDK 1.0.0，原 web-fetch 及其 SDK 維持原包。三段確認、第二段失回應保留 unknown，兩次停止並換回舊 Telegram 後，各讀原游標 52，新增派發均為零。原始回條與 SBOM 在 `artifacts/EXT-043/01`，發行鎖在 `compat/stable-1.0/source.lock.json`。Telegram 標籤與插件發布另待授權。正式 8/68，另 2 張通過簽署候選驗收。EXT-044 仍待 Desktop、部署及原控制前置，詳 `artifacts/readiness/after-public-base-upgrade.json`。
+
 **EXT-005 富文字與原生貼紙。** `codex/ext-005-feishu-rich-post` 實作 `afb432bc50d5`。HJW Windows 用 #46 原套件與 alpha.4 在同一 CORE-038 Host（`0ef956a9c6d9`、SDK alpha.13）分別接收飛書及 Lark 原群訊息。新版富文字的 12 段保留標題與換行、提及、連結目的地、程式碼、表情及原圖／影片鍵；原生貼紙只有文字標記和回覆定位，可下載附件為零。正常重投、writer 斷開及錯租戶回條、兩版 wire、binary 與來源 digest 在 `artifacts/EXT-005/rich-message-01`。#46 三平台全過、9 份 ZIP 已核，合併 `98b08c435a6f`。正式 7/68，另 2 張簽署候選通過。EXT-043 等核心 B0 公開發行，EXT-029 的物理 attempt 對帳已向核心 #101 提交具體需求。見 `artifacts/readiness/after-feishu-rich-messages.json`。
 
 **EXT-005 原群提及。** `codex/ext-005-exact-mentions` 的 `ac360c785115` 修正飛書與 Lark 文字事件中的身份錯配。HJW Windows 以 #40 alpha.2 重現短鍵截走長鍵及未列鍵，再以 Rust alpha.3 對同一 Host（CORE-038 `0ef956a9c6d9`、SDK alpha.13）重放兩種表順序。兩個域都將 `@_user_10` 交給原成員、將 `@_user_1` 交給原應用、將無登記的 `@_user_100` 保留為文字。writer 前斷線無成功 ACK，兩安裝各自重投回讀事件 1、2。兩份原始線路、ACK、Rust 測試及 digest 在 `artifacts/EXT-005/mention-identity-01/`。#45 的託管 macOS 套件也已通過，新增兩份 ZIP 已下載核對。68 卡分級及下一步見 `artifacts/readiness/after-exact-mentions.json`。

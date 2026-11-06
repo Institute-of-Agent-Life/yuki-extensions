@@ -1,0 +1,19 @@
+{
+  "plugin/telegram/v0.1.0": {
+    "inputs": {
+      "catalog/telegram.json": "05cebd8322f70110060f567de1f40b0f7b6a615e215cf70d5f0d51774d3a7e6c",
+      "compat/stable-1.0/source.lock.json": "3e40e71c7e7c66794591a79f7a3651220496b4c3a4101b3abb8a77c3e8688418",
+      "plugins/telegram/LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+      "plugins/telegram/rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+      "plugins/telegram/src/ingress.rs": "4b54cee0786dd5d6aec2737470ff4801b99c3d0f7596eabd00ce33c90733cd0f",
+      "plugins/telegram/src/main.rs": "af1c1c5cbe75c29d98f09e99c68e945c976c67e08fa9bf425452d288f73681f4",
+      "plugins/telegram/src/media.rs": "cb03132d32209dd27f620c2d315f4380044828eee603ed23219a22b6997c27bc",
+      "plugins/telegram/src/social.rs": "d9311840de108714d0a3d4916ef66be5b3cf73540b4e041648b885deec51e103",
+      "plugins/telegram/src/transport.rs": "0ea3d285718b0b1197023b74990a3e1fa348aaa903b4281ebd0f22c7e1fda2a8",
+      "releases/telegram/0.1.0/Cargo.lock": "ce3e844dbdc18ebbafb6c8e3ed55b9f8bd3359e2028335cf489c189bf68b0a00",
+      "releases/telegram/0.1.0/Cargo.toml": "6cca590e6c8b37cfefa6e31e2d9791058a3c2b3587ee0884ef13d1ef318c5b52",
+      "releases/telegram/0.1.0/plugin.toml": "780ecff8d4681631655556ba6d8b1771a84b9a13ba7f2f97ef3a4c693a3d8499"
+    },
+    "qualification": "artifacts/EXT-043/01"
+  }
+}

@@ -29,7 +29,7 @@ def load_catalog(root: Path) -> dict[str, dict]:
     paths = set()
     prefixes = set()
     for manifest in sorted((root / "catalog").glob("*.json")):
-        if manifest.name.startswith("._"):
+        if manifest.name == "verified.json" or manifest.name.startswith("._"):
             continue
         unit = json.loads(manifest.read_text(encoding="utf-8"))
         required = {"unit_id", "kind", "path", "ecosystem", "version", "tag_prefix",
