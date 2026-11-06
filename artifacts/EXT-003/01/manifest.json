@@ -1,0 +1,24 @@
+{
+  "task": "EXT-003",
+  "status": "PASS",
+  "phase": "acceptance",
+  "card_status": "VERIFIED_ON_PUBLISHED_BASE",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "426721bf0cc8e8f2acd7d83ace90a3ea152ca27b743f8b0cd5a71228a4f5e05e",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-003",
+    "--out",
+    "C:\\Users\\Hilbert\\yuki-extension-tests\\local-public-admission50\\tg04\\out"
+  ],
+  "files": {
+    "host.txt": "b33c6c034dced809384dd2c825a1b2164925491f2df14a0d699cd080527a0af5",
+    "model.json": "e44b72832714de8074fa8b64205937a5561cfbaffe01a7c789848793d31703dd",
+    "plugin.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "telegram-offset.json": "2714b08bb48e5b9f36c6d0558561105fc98973b3b54df1801e2f93aeb6488c1a",
+    "wire.jsonl": "a133756cb6b418657d290aa4b875347bfd94189becc1b276dbc32947ee75552e"
+  }
+}
