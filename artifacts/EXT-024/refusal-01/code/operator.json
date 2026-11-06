@@ -1,0 +1,107 @@
+[
+  {
+    "args": [
+      "person",
+      "create",
+      "81553a0b-7a98-4bab-9b82-f0741d27067d"
+    ],
+    "result": {
+      "original": "81553a0b-7a98-4bab-9b82-f0741d27067d",
+      "root": "81553a0b-7a98-4bab-9b82-f0741d27067d"
+    }
+  },
+  {
+    "args": [
+      "account",
+      "open",
+      "qq",
+      "code-refusal",
+      "200",
+      1,
+      "--person",
+      "81553a0b-7a98-4bab-9b82-f0741d27067d",
+      "--start",
+      1
+    ],
+    "result": {
+      "account": "0175f336-ea22-4032-94ae-b9a8d0ec3fed",
+      "assignment": "9da760ae-d5a0-4c7e-86be-777914c5a00a"
+    }
+  },
+  {
+    "args": [
+      "account",
+      "open",
+      "qq",
+      "code-refusal",
+      "100",
+      1,
+      "--start",
+      1
+    ],
+    "result": {
+      "account": "38c20be8-7c03-4527-b854-1424afd2f205",
+      "assignment": "a28970a5-2fc4-4a94-bcda-4bd0cce665f4"
+    }
+  },
+  {
+    "args": [
+      "ingress",
+      "record",
+      "{\"source\": \"code-refusal-code\", \"account\": \"0175f336-ea22-4032-94ae-b9a8d0ec3fed\", \"bot_stage\": \"a28970a5-2fc4-4a94-bcda-4bd0cce665f4\", \"kind\": \"message\", \"reply_bot\": \"100\", \"occurred\": 100, \"observed\": 100, \"segments\": [{\"type\": \"text\", \"text\": \"compare original refusals\"}]}",
+      "--accept"
+    ],
+    "result": {
+      "accepted": true,
+      "event": 1
+    }
+  },
+  {
+    "args": [
+      "main",
+      "inspect",
+      "8ba4701f-7c74-4cd5-bbaa-1911c529ce45"
+    ],
+    "result": {
+      "activations": [
+        [
+          "main:8ba4701f-7c74-4cd5-bbaa-1911c529ce45",
+          "chat-v1:c704553e6081011bbaede3e4165e9f9f36e7cc54e8eda6e90e76ec18fd5acc26"
+        ]
+      ],
+      "attempts": [
+        [
+          "8ba4701f-7c74-4cd5-bbaa-1911c529ce45:logical:0:http:0",
+          "paired",
+          null
+        ],
+        [
+          "8ba4701f-7c74-4cd5-bbaa-1911c529ce45:logical:1:http:0",
+          "paired",
+          null
+        ],
+        [
+          "8ba4701f-7c74-4cd5-bbaa-1911c529ce45:logical:2:http:0",
+          "response",
+          null
+        ]
+      ],
+      "cancelled": false,
+      "conversation": "294d503a-5718-4df0-9171-39139bfd60f4",
+      "diagnostic": null,
+      "execution": "8ba4701f-7c74-4cd5-bbaa-1911c529ce45",
+      "inputs": [
+        1
+      ],
+      "kind": "human",
+      "origin": "81553a0b-7a98-4bab-9b82-f0741d27067d",
+      "result": "done",
+      "root": "8ba4701f-7c74-4cd5-bbaa-1911c529ce45",
+      "source": 1,
+      "state": "completed",
+      "tool_contract": "main-chat-v1",
+      "tool_revision": "3e93b5509d2ef86396aa34f639a9b4d5dd444c2c9ecd100210c7cddaa892f8b0",
+      "window": 1
+    }
+  }
+]

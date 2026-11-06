@@ -1,0 +1,35 @@
+{
+  "published": false,
+  "implementation_commit": "fe7c9c0411cca43cec931c34e9338d26237ae6fa",
+  "consumer_sdk_version": "1.0.0-alpha.5",
+  "consumer_sdk_crate_sha256": "ea6a1c2f5e8e5ff5b53ef7b8ab89baa9c8bb26cbd9ba45f116eaaafd73406794",
+  "binary_sha256": "23f888dc639f01754f4122dd606bfeebddf9e77f84757bee8db8fc318e05bb47",
+  "build_evidence": "artifacts/EXT-023/package-candidate-02/build-linux.json",
+  "build_evidence_sha256": "a259eeb6073f81794e22b2b4567c403a76ab273e3c1bab1d21ae4a696b85f47e",
+  "files": {
+    "plugins/codemode/Cargo.lock": "2b584722fd3618fe935bf31c00bc741e8ae03643abd416d057f5ab9e25d227d3",
+    "plugins/codemode/Cargo.toml": "6c5c47fb41912f30b747e8d5b555220ea076515d2091c239612140954952765d",
+    "plugins/codemode/LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+    "plugins/codemode/README.md": "1357634fcc2410afe4e41ebd92b092d2528de5ed39da67000dbd210e8bb77f8b",
+    "plugins/codemode/plugin.toml": "4b633e319716a8c158c693db2bc5135294a40f776b87ac31350e3130768eb621",
+    "plugins/codemode/rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+    "plugins/codemode/src/catalog.rs": "a3c0104cf5843be7ac44a311bee44060dbcd9af0c20e0f5a656a7e22eca99618",
+    "plugins/codemode/src/compose.rs": "f6c221e735dea7710690bb935b816f3402f41d575305e6a6cc474b9e8d60560b",
+    "plugins/codemode/src/lib.rs": "ef788443d7fdc472cb3e1924ea2434f216fbc519a8ca9272eef6bfaaf612f288",
+    "plugins/codemode/src/main.rs": "a98fc7706d63a2394ec4b791d7ff27e874153c4b9ff139105e9bb9a7276d7b93",
+    "plugins/codemode/src/rpc.rs": "1e0d29a48c0292c27f17a940a344546bb4f95859a7212432d1c8b7e5b1dba527",
+    "plugins/codemode/src/worker.rs": "6a08230aa60f356305b1624c8d853b6da22c5c9fdaaef00b13ad5cb2dcd13894",
+    "plugins/codemode/tests/native_worker.rs": "4a5c90ae71e8659c50036d5eafed31a8f342970adc93860034b661c020adebe7"
+  },
+  "method_DTO_equality": {
+    "tool.catalog": true,
+    "tool.schema": true,
+    "tool.invoke": true,
+    "tool.resume": true,
+    "code.snapshot.put": true,
+    "code.snapshot.get": true,
+    "code.sources": true,
+    "code.resume": true
+  },
+  "note": "Existing verified native binary. Full Host schema files differ; the listed composition method DTOs are byte-equivalent JSON values. No fresh compile is claimed."
+}

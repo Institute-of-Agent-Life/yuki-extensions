@@ -1,0 +1,182 @@
+{
+  "status": "BLOCKED",
+  "formal_card_status": "BLOCKED",
+  "published": false,
+  "source_commit": "969fb62e34de6a52a5fbe31d798e6b5436d6e9a8",
+  "host": {
+    "archive": "yuki-artifact-preview-969fb62e34de-windows-x86_64.zip",
+    "sha256": "3b45be537020e1aa094afbd1c2e9f0ed81dda90defdf6b1518aa0cf61aa08dca",
+    "binary_sha256": "9cd0c5ac8c8acbbd8e703acc832878f5efd31a16c1cea395c3c90f147e31f387",
+    "validation_manifest_sha256": "5a8ee0c7b855f120bd895f56f81287250f0856d19159cc9b2c900baf6e68756a"
+  },
+  "sdk": {
+    "python": "1.0.0a11",
+    "rust": "1.0.0-alpha.11"
+  },
+  "host_schema_sha256": "217d402c00a0c7d47f41b206162f3d96156e8787e15bffce5cf45d886c0be750",
+  "linux_plugin_sha256": "23f888dc639f01754f4122dd606bfeebddf9e77f84757bee8db8fc318e05bb47",
+  "scope": "same ordinary invalid arguments then independent valid effect; real direct and Monty",
+  "cases": {
+    "direct": {
+      "status": "PASS",
+      "candidate_only": true,
+      "mode": "direct",
+      "event": {
+        "accepted": true,
+        "event": 1
+      },
+      "execution": "ba4ffc81-517c-404a-87db-225a3c384815",
+      "model_http_calls": 3,
+      "deliveries": [
+        {
+          "arguments": {
+            "text": "continue after original refusal"
+          },
+          "execution": "ba4ffc81-517c-404a-87db-225a3c384815",
+          "operation": "9bc3e128-c3b8-4169-ac7b-c12307e0d2e0",
+          "tool": "send"
+        }
+      ],
+      "paired": {
+        "accept-original": {
+          "id": "e0a146c4-815f-4210-bfae-1549e406f54e",
+          "namespace": "ba4ffc81-517c-404a-87db-225a3c384815",
+          "ordinal": null,
+          "parent": null,
+          "result": {
+            "attached": true,
+            "queued": false,
+            "work_id": "79391b8e-ebe5-4d83-adf3-f015cc181f25"
+          },
+          "state": "confirmed"
+        },
+        "bad-original": {
+          "id": "847f227b-e9eb-48f9-9107-5bdbba956003",
+          "namespace": "ba4ffc81-517c-404a-87db-225a3c384815",
+          "ordinal": null,
+          "parent": null,
+          "result": {
+            "dispatched": false,
+            "error": "invalid_tool_arguments",
+            "executed": false
+          },
+          "state": "failed"
+        },
+        "good-original": {
+          "id": "9bc3e128-c3b8-4169-ac7b-c12307e0d2e0",
+          "namespace": "ba4ffc81-517c-404a-87db-225a3c384815",
+          "ordinal": null,
+          "parent": null,
+          "result": {
+            "accepted": "9bc3e128-c3b8-4169-ac7b-c12307e0d2e0",
+            "sequence": 1
+          },
+          "state": "confirmed"
+        }
+      },
+      "invokes": [],
+      "continued_after_refusal": true,
+      "cold_restarts": 2,
+      "inventory_before": {
+        "plugin_sha256": "23f888dc639f01754f4122dd606bfeebddf9e77f84757bee8db8fc318e05bb47",
+        "containers": [
+          "014df5c6dec1",
+          "d620452a9cef",
+          "f6870be17a2a"
+        ]
+      },
+      "inventory_after": {
+        "plugin_sha256": "23f888dc639f01754f4122dd606bfeebddf9e77f84757bee8db8fc318e05bb47",
+        "containers": [
+          "014df5c6dec1",
+          "d620452a9cef",
+          "f6870be17a2a"
+        ]
+      },
+      "host_sha256": "9cd0c5ac8c8acbbd8e703acc832878f5efd31a16c1cea395c3c90f147e31f387"
+    },
+    "code": {
+      "status": "BLOCKED",
+      "candidate_only": true,
+      "mode": "code",
+      "event": {
+        "accepted": true,
+        "event": 1
+      },
+      "execution": "8ba4701f-7c74-4cd5-bbaa-1911c529ce45",
+      "model_http_calls": 3,
+      "deliveries": [],
+      "paired": {
+        "accept-original": {
+          "id": "4a905a9e-8cb8-4abd-83b1-57f702b3d685",
+          "namespace": "8ba4701f-7c74-4cd5-bbaa-1911c529ce45",
+          "ordinal": null,
+          "parent": null,
+          "result": {
+            "attached": true,
+            "queued": false,
+            "work_id": "d72043c2-0f95-4ccb-a352-f1d061b52ad6"
+          },
+          "state": "confirmed"
+        },
+        "code-original": {
+          "id": "08c24221-e675-4412-82bc-58eb5c04b82e",
+          "namespace": "8ba4701f-7c74-4cd5-bbaa-1911c529ce45",
+          "ordinal": null,
+          "parent": null,
+          "result": {
+            "composition": {
+              "child_count": 0,
+              "children": [],
+              "has_more": false,
+              "status": "completed"
+            },
+            "error": "scope unavailable",
+            "ok": false
+          },
+          "state": "failed"
+        }
+      },
+      "invokes": [
+        {
+          "arguments": {
+            "text": 42
+          },
+          "checkpoint": 0,
+          "engine_call_id": "0",
+          "feed_index": 0,
+          "handle": "ea712db8-10f6-41c0-8cff-126488b5c2b1",
+          "name": "send",
+          "ordinal": 0,
+          "snapshot": "daca6ef88f8080c93754720e8df6d9511e9342a11f7cef47d20db75d1c9e78a8"
+        }
+      ],
+      "continued_after_refusal": false,
+      "cold_restarts": 2,
+      "inventory_before": {
+        "plugin_sha256": "23f888dc639f01754f4122dd606bfeebddf9e77f84757bee8db8fc318e05bb47",
+        "containers": [
+          "014df5c6dec1",
+          "d620452a9cef",
+          "f6870be17a2a"
+        ]
+      },
+      "inventory_after": {
+        "plugin_sha256": "23f888dc639f01754f4122dd606bfeebddf9e77f84757bee8db8fc318e05bb47",
+        "containers": [
+          "014df5c6dec1",
+          "d620452a9cef",
+          "f6870be17a2a"
+        ]
+      },
+      "host_sha256": "9cd0c5ac8c8acbbd8e703acc832878f5efd31a16c1cea395c3c90f147e31f387"
+    }
+  },
+  "remaining": [
+    "authorization parity",
+    "H14 and public root reserve ledger",
+    "Work/run futures",
+    "light frozen aliases",
+    "formal publication"
+  ]
+}

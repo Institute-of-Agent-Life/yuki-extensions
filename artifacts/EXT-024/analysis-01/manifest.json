@@ -1,0 +1,11 @@
+{
+  "task": "EXT-024",
+  "status": "DIAGNOSTIC_VERIFIED",
+  "formal_card_status": "BLOCKED",
+  "phase": "native-evidence-analysis",
+  "source_snapshot_sha256": "e51aa23dbab2c200bd99689e7ad8ce0ac8c1252279438d4bdec0f8c038048254",
+  "files": {
+    "analysis.json": "0332b6d3ae578b2f13b4cff28733df643c5aaba15a094be4152d5a51416e05bb",
+    "command.json": "67dede71efa44d58fdc8308a33b9fbbb29bf37f7655d96528622ac9bd0549ebb"
+  }
+}

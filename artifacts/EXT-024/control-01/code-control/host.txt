@@ -1,0 +1,3 @@
+{"listen":"127.0.0.1:15524","operator":"\\\\.\\pipe\\yuki-core-e4bfe7b3f0a6ec66e27c40a785a46d0c1ce74828438a9eecff4d6678929cd691","status":"ready"}
+{"listen":"127.0.0.1:15529","operator":"\\\\.\\pipe\\yuki-core-e4bfe7b3f0a6ec66e27c40a785a46d0c1ce74828438a9eecff4d6678929cd691","status":"ready"}
+{"listen":"127.0.0.1:15532","operator":"\\\\.\\pipe\\yuki-core-e4bfe7b3f0a6ec66e27c40a785a46d0c1ce74828438a9eecff4d6678929cd691","status":"ready"}

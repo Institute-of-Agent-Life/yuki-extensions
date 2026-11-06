@@ -1,0 +1,107 @@
+[
+  {
+    "args": [
+      "person",
+      "create",
+      "f8645c9f-1c4c-4ec4-a92b-fbca1e3bd48a"
+    ],
+    "result": {
+      "original": "f8645c9f-1c4c-4ec4-a92b-fbca1e3bd48a",
+      "root": "f8645c9f-1c4c-4ec4-a92b-fbca1e3bd48a"
+    }
+  },
+  {
+    "args": [
+      "account",
+      "open",
+      "qq",
+      "code-refusal",
+      "200",
+      1,
+      "--person",
+      "f8645c9f-1c4c-4ec4-a92b-fbca1e3bd48a",
+      "--start",
+      1
+    ],
+    "result": {
+      "account": "c41edc02-9ed5-49ab-a3ce-c4431f3d9179",
+      "assignment": "9c4c3055-c8f1-4718-8b22-434f6bd95b95"
+    }
+  },
+  {
+    "args": [
+      "account",
+      "open",
+      "qq",
+      "code-refusal",
+      "100",
+      1,
+      "--start",
+      1
+    ],
+    "result": {
+      "account": "050af759-86f0-4b33-bb9c-098b4a2fda61",
+      "assignment": "c9a5467d-7329-414c-bec3-27d91daa1559"
+    }
+  },
+  {
+    "args": [
+      "ingress",
+      "record",
+      "{\"source\": \"code-refusal-direct\", \"account\": \"c41edc02-9ed5-49ab-a3ce-c4431f3d9179\", \"bot_stage\": \"c9a5467d-7329-414c-bec3-27d91daa1559\", \"kind\": \"message\", \"reply_bot\": \"100\", \"occurred\": 100, \"observed\": 100, \"segments\": [{\"type\": \"text\", \"text\": \"compare original refusals\"}]}",
+      "--accept"
+    ],
+    "result": {
+      "accepted": true,
+      "event": 1
+    }
+  },
+  {
+    "args": [
+      "main",
+      "inspect",
+      "ba4ffc81-517c-404a-87db-225a3c384815"
+    ],
+    "result": {
+      "activations": [
+        [
+          "main:ba4ffc81-517c-404a-87db-225a3c384815",
+          "chat-v1:8503451b55830d935104f8c609b381b6e8a4b1014b31c9e91b6876836e1d5982"
+        ]
+      ],
+      "attempts": [
+        [
+          "ba4ffc81-517c-404a-87db-225a3c384815:logical:0:http:0",
+          "paired",
+          null
+        ],
+        [
+          "ba4ffc81-517c-404a-87db-225a3c384815:logical:1:http:0",
+          "paired",
+          null
+        ],
+        [
+          "ba4ffc81-517c-404a-87db-225a3c384815:logical:2:http:0",
+          "response",
+          null
+        ]
+      ],
+      "cancelled": false,
+      "conversation": "84686e18-bda2-44fc-8f25-1c861ef6f210",
+      "diagnostic": null,
+      "execution": "ba4ffc81-517c-404a-87db-225a3c384815",
+      "inputs": [
+        1
+      ],
+      "kind": "human",
+      "origin": "f8645c9f-1c4c-4ec4-a92b-fbca1e3bd48a",
+      "result": "done",
+      "root": "ba4ffc81-517c-404a-87db-225a3c384815",
+      "source": 1,
+      "state": "completed",
+      "tool_contract": "main-chat-v1",
+      "tool_revision": "3d0f1fc9ebacd6d93b3e27ff9c2ecc32972f2b8e9cf860f25e8c9a40eac9244e",
+      "window": 1
+    }
+  }
+]

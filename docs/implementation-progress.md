@@ -13,6 +13,32 @@
 | EXT-010 · codex/ext-010 | `ab16e07`；CI `41834791702`；PR #6 合併 `2c55dbb` | `artifacts/EXT-010/02/`，8 例含實際子進程退出碼 23、雙 session 取消及 unknown |
 | EXT-019 · codex/ext-019 | 實作 `7531d84`、PR head `9d1e8a8`；三平台 CI `41835863011`；PR #7 合併 `7625095` | `artifacts/EXT-019/02/`，呼叫表、schema 差分、5 個故障變異；`03/` 固定跨平台順序 |
 
+## 2026-11-06 EXT-024 普通拒絕與後續效果對拍
+
+- 分支 `codex/ext-024-rejection-continuation`，從已驗角色／trace 的 `d9cfee9` 建獨立樹；
+  main 仍 `996deedef3e1`。本次只新增對拍與契約 pin，Rust Code 本體來源未變。
+- CORE-015 固定來源 `969fb62e34de`／SDK alpha.11 的三平台 ZIP、所有成員及原
+  producer manifest 已核；完整來源／版本／雜湊在 `compat/core-015-isolation`。
+  Windows ZIP `3b45be537020`、Host `9cd0c5ac8c8a`。候選仍未發布。
+- HJW Windows／Arch 三例共 9 筆模型 HTTP：direct 的原 bad call 收到明確 failed，
+  原 good call 實收；真 Rust／Monty 的同一無效項 `tool.invoke` 收到 -32003，後項
+  未執行。正對照先合法送達並 ACK，再遇相同無效項拒絕，已確認效果仍保留。
+  三例各冷啟兩次，未重買／重送，專用 daemon 容器集合回原集合。
+- `artifacts/EXT-024/refusal-01`、`control-01` 保留逐方法 wire、原配對與 binding；
+  `analysis-01` 是 Windows 原 ZIP／manifest／來源與原 child／ACK 的實際重核，
+  狀態 `DIAGNOSTIC_VERIFIED`。這不是整卡 PASS，不從 generic RPC error 猜 admission。
+- Windows `validation-02` 已過最新 Python 語法、SDK／13 個原來源／八個方法 DTO
+  綁定與 release 邊界；選擇器仍選全部 14 單位。`validation-01` 是測試傳輸漏帶
+  舊 build 回條的來源檢查失敗；補齊具名輸入後重驗，原失敗保留，不算 Host 缺陷。
+- 原 Rust binary `23f888dc639f`／alpha.5 consumer 沿用，13 個來源／建置檔與
+  `fe7c9c0411cc` 逐 bytes 相同；沒有重跑既有六個恢復案例或重編 Monty 後端。
+- **正式完成仍 7／68。** 新阻塞及精確方法／字段／授權／故障需求已列
+  `docs/core-interface-requests.md`；缺普通拒絕的可分類 child receipt／續跑路徑，
+  其餘 light alias、Work/run、H14／根帳本、越權等價及發布缺口延續。
+  本輪實作與回條隨本分支提交；三平台當前 SHA CI 與合併仍待遠端 gates。
+  最新 readiness：`artifacts/readiness/after-core015-refusal-intake.json`。
+  其餘使用者 WIP 全部保留。
+
 ## 2026-11-05 EXT-038 Rust 共用角色／SOUL 候選
 
 - 分支 `codex/ext-038-character`，實作 `87c3f6531a8d5c412e1212047a84a494e366aeec`；

@@ -1,0 +1,10 @@
+[
+  {
+    "arguments": {
+      "text": "continue after original refusal"
+    },
+    "execution": "ba4ffc81-517c-404a-87db-225a3c384815",
+    "operation": "9bc3e128-c3b8-4169-ac7b-c12307e0d2e0",
+    "tool": "send"
+  }
+]

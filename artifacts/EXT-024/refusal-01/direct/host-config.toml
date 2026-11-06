@@ -1,0 +1,16 @@
+format_version = 1
+listen = "127.0.0.1:0"
+
+[memory]
+mode = "lexical-only"
+
+[main]
+endpoint="http://127.0.0.1:15270/model"
+binding_endpoint="http://127.0.0.1:15270/binding"
+model="fixture"
+name="Yuki"
+max_output=512
+root_slots=8
+root_tool_calls=8
+max_input_units=4000000
+merge_ms=1

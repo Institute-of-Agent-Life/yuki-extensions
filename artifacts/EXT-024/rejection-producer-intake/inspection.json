@@ -1,0 +1,327 @@
+{
+  "status": "PASS",
+  "published": false,
+  "consumer_executed": false,
+  "source_commit": "969fb62e34de6a52a5fbe31d798e6b5436d6e9a8",
+  "index_sha256": "1e2e368f0f2996e024f3d0afba92c9fee199af4781e6de3cff4482932cf7614b",
+  "platforms": [
+    {
+      "platform": "darwin-arm64",
+      "archive": "yuki-artifact-preview-969fb62e34de-darwin-arm64.zip",
+      "sha256": "d1e6509e4a11c7b7dd40bd10ab7dbcb550755de44f276c236fcbdbca49bd296e",
+      "candidate_sha256": "b1d909f55692b6ef32d29558d49f2185dce4a21447c6ae7d0750395c35203063",
+      "members": {
+        "LICENSE": {
+          "bytes": 34600,
+          "sha256": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99"
+        },
+        "NOTICE": {
+          "bytes": 666,
+          "sha256": "92eec243bb25b89d47a7fa29ce6c863a14487a9c9e1078d0538775e6ec8f5a34"
+        },
+        "bin/yuki-core": {
+          "bytes": 78797192,
+          "sha256": "5d8600fdc95a7746528c187af77134283d11b0b9c5a168f653e7b6f41f17e1f5"
+        },
+        "docs/original-tool-views.md": {
+          "bytes": 1621,
+          "sha256": "bfdca127e7982a56042eb60381f6bbf649fcfb8cc74aaea49793841ddaf416b1"
+        },
+        "docs/tool-artifact-compat.md": {
+          "bytes": 1880,
+          "sha256": "77b8e5fc8982460e8f0bc9fb933d9411dc7207625d654ffdf724a18405cc41c9"
+        },
+        "docs/tool-call-isolation.md": {
+          "bytes": 2115,
+          "sha256": "ab4825a757cc04938d98b502d7c7223bde07f81f5862b38ada73d78153ddd194"
+        },
+        "evidence/original-tool-views.json": {
+          "bytes": 411056,
+          "sha256": "9d448af2316d5c27b10c3c8f51f58b7fbfc4e68e3083fb6fd16e52f69bf735bc"
+        },
+        "evidence/tool-call-isolation.json": {
+          "bytes": 44589,
+          "sha256": "a6dc9b98e102c74848dd112dcc3d61c7f1829867f2da3353f999ffe6c81024e8"
+        },
+        "evidence/tool-result-pages.json": {
+          "bytes": 9577,
+          "sha256": "0848dffbf3f4bf178b5e79ed234a2fcd6051823927bb31c17d783ae5a51538d9"
+        },
+        "evidence/v4-call-rejections.json": {
+          "bytes": 706,
+          "sha256": "dc9b00a7819018564def4ebe37235d621bcd85033d9de74467fcdc89a3cd7113"
+        },
+        "evidence/v4-original-declaration.json": {
+          "bytes": 1945,
+          "sha256": "e605c7db6dc51d813b031fb932302b9e6f5c0c384cb3ec83bb282efaaeddc6fa"
+        },
+        "evidence/v4-original-pages.json": {
+          "bytes": 28281,
+          "sha256": "dcb699b0bf7e99b2fbbe9503f7e5d90576da7171778410e8c8429c88ed928732"
+        },
+        "evidence/v4-tool-views.json": {
+          "bytes": 38196,
+          "sha256": "9f1b51a22e9b7e1925224d4394aad506e81ca6cf1b9c9bc9b6eb4cd3a6dd547b"
+        },
+        "licenses/OpenCC.txt": {
+          "bytes": 12835,
+          "sha256": "913605727253219eecf1f5ef2bd5ac7b0a524a9893d1c8de04304f0edd59756d"
+        },
+        "licenses/Vec1.txt": {
+          "bytes": 734,
+          "sha256": "f19ceac9154f61607007a294703456609c4ff3e64573e3673e1e8af1b4e95e97"
+        },
+        "protocol/handshake.schema.json": {
+          "bytes": 5321,
+          "sha256": "c4946589e2de76b2a9af6e2793af10651e8b6c29e84ddf41a75db015a71d3d0a"
+        },
+        "protocol/host-preview.json": {
+          "bytes": 150069,
+          "sha256": "217d402c00a0c7d47f41b206162f3d96156e8787e15bffce5cf45d886c0be750"
+        },
+        "sdk/handshake.ndjson": {
+          "bytes": 502,
+          "sha256": "5275ee7b90b6af4221693f92ea9c1b4fb1d1b306c2b6ebb85947273dba0bcfa3"
+        },
+        "sdk/sdk-verification.json": {
+          "bytes": 2248,
+          "sha256": "f591c746dfcf13d5a6acccff7b7b0cf3cc5da6f52ffde9cf2de4c6ffd8cd858c"
+        },
+        "sdk/yuki-plugin-sdk-1.0.0-alpha.11.crate": {
+          "bytes": 27931,
+          "sha256": "70a92c47108762d3a0c6bdebd2ebb7f32d9c5075e0f3aefcb037abee9b1b52e6"
+        },
+        "sdk/yuki_plugin_sdk-1.0.0a11-py3-none-any.whl": {
+          "bytes": 209230,
+          "sha256": "993ba8bde65cb6deac4e1b1b7a364a05664c97e1ea87b5bc2f5227eb35509e28"
+        }
+      },
+      "producer_validation": {
+        "assertions": 363,
+        "card": "CORE-015",
+        "clean_path_launch": "verified",
+        "consumer": "physical Main tool continuation and fixed original JSON/text page fixtures; SDK packages independently installed",
+        "manifest_sha256": "28617dfddcec722d9c19b7ea3381a1d8359aa5448abbd120913a34f1f73ad313",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "real_extension_consumers": false,
+        "stable": false
+      }
+    },
+    {
+      "platform": "linux-arm64",
+      "archive": "yuki-artifact-preview-969fb62e34de-linux-arm64.zip",
+      "sha256": "540dc3791f7ebaafd72748d5c7e0d67fdb9f86380b85f36136dda8f0cfca61ab",
+      "candidate_sha256": "f9f9e2bf35540ef31d941c9b42ab74519d3b2ae1c5872dc038cf212af3f72a53",
+      "members": {
+        "LICENSE": {
+          "bytes": 34600,
+          "sha256": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99"
+        },
+        "NOTICE": {
+          "bytes": 666,
+          "sha256": "92eec243bb25b89d47a7fa29ce6c863a14487a9c9e1078d0538775e6ec8f5a34"
+        },
+        "bin/yuki-core": {
+          "bytes": 294739984,
+          "sha256": "c6617ba21d9570613eb9c494c6769c20520dd49b522e1b75d2778ff0f26b659a"
+        },
+        "docs/original-tool-views.md": {
+          "bytes": 1621,
+          "sha256": "bfdca127e7982a56042eb60381f6bbf649fcfb8cc74aaea49793841ddaf416b1"
+        },
+        "docs/tool-artifact-compat.md": {
+          "bytes": 1880,
+          "sha256": "77b8e5fc8982460e8f0bc9fb933d9411dc7207625d654ffdf724a18405cc41c9"
+        },
+        "docs/tool-call-isolation.md": {
+          "bytes": 2115,
+          "sha256": "ab4825a757cc04938d98b502d7c7223bde07f81f5862b38ada73d78153ddd194"
+        },
+        "evidence/original-tool-views.json": {
+          "bytes": 411056,
+          "sha256": "9d448af2316d5c27b10c3c8f51f58b7fbfc4e68e3083fb6fd16e52f69bf735bc"
+        },
+        "evidence/tool-call-isolation.json": {
+          "bytes": 44589,
+          "sha256": "3c6b454cdcae63831645faec15995a070e95e5ace81c92d9cb6b976fb097fbc5"
+        },
+        "evidence/tool-result-pages.json": {
+          "bytes": 9577,
+          "sha256": "093cf86083dfc00c743b7985b45f3a35531e98cf8de2451be83d08730c59751f"
+        },
+        "evidence/v4-call-rejections.json": {
+          "bytes": 706,
+          "sha256": "dc9b00a7819018564def4ebe37235d621bcd85033d9de74467fcdc89a3cd7113"
+        },
+        "evidence/v4-original-declaration.json": {
+          "bytes": 1945,
+          "sha256": "e605c7db6dc51d813b031fb932302b9e6f5c0c384cb3ec83bb282efaaeddc6fa"
+        },
+        "evidence/v4-original-pages.json": {
+          "bytes": 28281,
+          "sha256": "dcb699b0bf7e99b2fbbe9503f7e5d90576da7171778410e8c8429c88ed928732"
+        },
+        "evidence/v4-tool-views.json": {
+          "bytes": 38196,
+          "sha256": "9f1b51a22e9b7e1925224d4394aad506e81ca6cf1b9c9bc9b6eb4cd3a6dd547b"
+        },
+        "licenses/OpenCC.txt": {
+          "bytes": 12835,
+          "sha256": "913605727253219eecf1f5ef2bd5ac7b0a524a9893d1c8de04304f0edd59756d"
+        },
+        "licenses/Vec1.txt": {
+          "bytes": 734,
+          "sha256": "f19ceac9154f61607007a294703456609c4ff3e64573e3673e1e8af1b4e95e97"
+        },
+        "protocol/handshake.schema.json": {
+          "bytes": 5321,
+          "sha256": "c4946589e2de76b2a9af6e2793af10651e8b6c29e84ddf41a75db015a71d3d0a"
+        },
+        "protocol/host-preview.json": {
+          "bytes": 150069,
+          "sha256": "217d402c00a0c7d47f41b206162f3d96156e8787e15bffce5cf45d886c0be750"
+        },
+        "sdk/handshake.ndjson": {
+          "bytes": 502,
+          "sha256": "5275ee7b90b6af4221693f92ea9c1b4fb1d1b306c2b6ebb85947273dba0bcfa3"
+        },
+        "sdk/sdk-verification.json": {
+          "bytes": 2248,
+          "sha256": "f591c746dfcf13d5a6acccff7b7b0cf3cc5da6f52ffde9cf2de4c6ffd8cd858c"
+        },
+        "sdk/yuki-plugin-sdk-1.0.0-alpha.11.crate": {
+          "bytes": 27931,
+          "sha256": "70a92c47108762d3a0c6bdebd2ebb7f32d9c5075e0f3aefcb037abee9b1b52e6"
+        },
+        "sdk/yuki_plugin_sdk-1.0.0a11-py3-none-any.whl": {
+          "bytes": 209230,
+          "sha256": "993ba8bde65cb6deac4e1b1b7a364a05664c97e1ea87b5bc2f5227eb35509e28"
+        }
+      },
+      "producer_validation": {
+        "assertions": 363,
+        "card": "CORE-015",
+        "clean_path_launch": "verified",
+        "consumer": "physical Main tool continuation and fixed original JSON/text page fixtures; SDK packages independently installed",
+        "manifest_sha256": "9a98d4706ef0dd897189736ad2a8630fef9f71bee0d52537fadedc8ba729d428",
+        "platform": "Linux-6.12.54-linuxkit-aarch64-with-glibc2.36",
+        "real_extension_consumers": false,
+        "stable": false
+      }
+    },
+    {
+      "platform": "windows-x86_64",
+      "archive": "yuki-artifact-preview-969fb62e34de-windows-x86_64.zip",
+      "sha256": "3b45be537020e1aa094afbd1c2e9f0ed81dda90defdf6b1518aa0cf61aa08dca",
+      "candidate_sha256": "6c1afecf3f0b5b1758c9ca099b18a7109c4466600e39213abc2a501536a3bdad",
+      "members": {
+        "LICENSE": {
+          "bytes": 34600,
+          "sha256": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99"
+        },
+        "NOTICE": {
+          "bytes": 666,
+          "sha256": "92eec243bb25b89d47a7fa29ce6c863a14487a9c9e1078d0538775e6ec8f5a34"
+        },
+        "bin/yuki-core.exe": {
+          "bytes": 394318608,
+          "sha256": "9cd0c5ac8c8acbbd8e703acc832878f5efd31a16c1cea395c3c90f147e31f387"
+        },
+        "docs/original-tool-views.md": {
+          "bytes": 1621,
+          "sha256": "bfdca127e7982a56042eb60381f6bbf649fcfb8cc74aaea49793841ddaf416b1"
+        },
+        "docs/tool-artifact-compat.md": {
+          "bytes": 1880,
+          "sha256": "77b8e5fc8982460e8f0bc9fb933d9411dc7207625d654ffdf724a18405cc41c9"
+        },
+        "docs/tool-call-isolation.md": {
+          "bytes": 2115,
+          "sha256": "ab4825a757cc04938d98b502d7c7223bde07f81f5862b38ada73d78153ddd194"
+        },
+        "evidence/original-tool-views.json": {
+          "bytes": 422797,
+          "sha256": "cea94d2bb3f73211866f973a409da1c857e802ce97f94c6274a0a2ae6889d194"
+        },
+        "evidence/tool-call-isolation.json": {
+          "bytes": 46091,
+          "sha256": "f4f3220ddf4bf781a3de024d893922e305ca010fe343165b222b9061e80b455c"
+        },
+        "evidence/tool-result-pages.json": {
+          "bytes": 9803,
+          "sha256": "fb5ced98efa595e18a58ae3204b6c24a7115dca8e6638430899a71357376ab7d"
+        },
+        "evidence/v4-call-rejections.json": {
+          "bytes": 706,
+          "sha256": "dc9b00a7819018564def4ebe37235d621bcd85033d9de74467fcdc89a3cd7113"
+        },
+        "evidence/v4-original-declaration.json": {
+          "bytes": 1945,
+          "sha256": "e605c7db6dc51d813b031fb932302b9e6f5c0c384cb3ec83bb282efaaeddc6fa"
+        },
+        "evidence/v4-original-pages.json": {
+          "bytes": 28281,
+          "sha256": "dcb699b0bf7e99b2fbbe9503f7e5d90576da7171778410e8c8429c88ed928732"
+        },
+        "evidence/v4-tool-views.json": {
+          "bytes": 38196,
+          "sha256": "9f1b51a22e9b7e1925224d4394aad506e81ca6cf1b9c9bc9b6eb4cd3a6dd547b"
+        },
+        "licenses/GCC/COPYING.RUNTIME": {
+          "bytes": 3324,
+          "sha256": "9d6b43ce4d8de0c878bf16b54d8e7a10d9bd42b75178153e3af6a815bdc90f74"
+        },
+        "licenses/GCC/COPYING3": {
+          "bytes": 35147,
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+        },
+        "licenses/GCC/provenance.json": {
+          "bytes": 623,
+          "sha256": "3922fe567874ca1cb7943d33d3576da0f4b0c02051817b97b0aabfcaa2d686c9"
+        },
+        "licenses/OpenCC.txt": {
+          "bytes": 12835,
+          "sha256": "913605727253219eecf1f5ef2bd5ac7b0a524a9893d1c8de04304f0edd59756d"
+        },
+        "licenses/Vec1.txt": {
+          "bytes": 734,
+          "sha256": "f19ceac9154f61607007a294703456609c4ff3e64573e3673e1e8af1b4e95e97"
+        },
+        "protocol/handshake.schema.json": {
+          "bytes": 5321,
+          "sha256": "c4946589e2de76b2a9af6e2793af10651e8b6c29e84ddf41a75db015a71d3d0a"
+        },
+        "protocol/host-preview.json": {
+          "bytes": 150069,
+          "sha256": "217d402c00a0c7d47f41b206162f3d96156e8787e15bffce5cf45d886c0be750"
+        },
+        "sdk/handshake.ndjson": {
+          "bytes": 502,
+          "sha256": "5275ee7b90b6af4221693f92ea9c1b4fb1d1b306c2b6ebb85947273dba0bcfa3"
+        },
+        "sdk/sdk-verification.json": {
+          "bytes": 2248,
+          "sha256": "f591c746dfcf13d5a6acccff7b7b0cf3cc5da6f52ffde9cf2de4c6ffd8cd858c"
+        },
+        "sdk/yuki-plugin-sdk-1.0.0-alpha.11.crate": {
+          "bytes": 27931,
+          "sha256": "70a92c47108762d3a0c6bdebd2ebb7f32d9c5075e0f3aefcb037abee9b1b52e6"
+        },
+        "sdk/yuki_plugin_sdk-1.0.0a11-py3-none-any.whl": {
+          "bytes": 209230,
+          "sha256": "993ba8bde65cb6deac4e1b1b7a364a05664c97e1ea87b5bc2f5227eb35509e28"
+        }
+      },
+      "producer_validation": {
+        "assertions": 363,
+        "card": "CORE-015",
+        "clean_path_launch": "verified",
+        "consumer": "physical Main tool continuation and fixed original JSON/text page fixtures; SDK packages independently installed",
+        "manifest_sha256": "5a8ee0c7b855f120bd895f56f81287250f0856d19159cc9b2c900baf6e68756a",
+        "platform": "Windows-11-10.0.22000-SP0",
+        "real_extension_consumers": false,
+        "stable": false
+      }
+    }
+  ]
+}

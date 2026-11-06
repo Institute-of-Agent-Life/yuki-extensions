@@ -281,6 +281,30 @@ subset apply、核心已寫後 kill、原已付重用與 forget 尚未跑到，�
 不把未知當重試權，也不將恢復視作補充根額度。所有結果仍為未發布候選消費，
 完整 EXT-024／穩定接口與正式發版尚未驗收。
 
+## CORE-015／034 → EXT-024：direct 已續跑，普通拒絕的 nested 回條仍缺
+
+固定 CORE-015 `969fb62e34de6a52a5fbe31d798e6b5436d6e9a8`／Host schema 2，
+三平台 ZIP／全成員與 manifest 已核；pin 在 `compat/core-015-isolation`。
+Windows ZIP `3b45be537020e1aa094afbd1c2e9f0ed81dda90defdf6b1518aa0cf61aa08dca`，
+Host `9cd0c5ac8c8acbbd8e703acc832878f5efd31a16c1cea395c3c90f147e31f387`。
+
+HJW Windows／Arch 真原 Rust Monty consumer：direct 同一 paid response 的
+`send({text:42})` 有 failed／invalid_tool_arguments／executed=false／dispatched=false
+原回條，後續合法 send 實收一次。相同 Code 呼叫的 `tool.invoke` 卻回泛稱 -32003，
+沒有取得可餵入的原 child receipt，後項未執行。正對照先合法 send，取得真實送達、
+原 receipt 與 ACK；再送同一無效參數才收到同一 -32003，首筆效果不回滾。
+三例 9 筆模型 HTTP，六次冷啟不重送，測後容器集合回原集合。
+原 wire／配對及原 manifest 見 EXT-024 `refusal-01`、`control-01`、`analysis-01`。
+這是已核診斷；不是越權等價、費用或完整 EXT-024 驗收。
+
+請依既有 `tool.invoke`／`tool.resume` 合同提供普通參數拒絕的最小公開配置或修正：
+穩定 child operation／parent／ordinal、原 feed_index／engine_call_id、checkpoint、
+失敗 receipt 與 `can_feed` 的含義，以及何時 ACK 後可合法續下一項。
+若此 -32003 按設計屬於整體撤權或安裝策略拒絕，請交可重現的分類／原 operation
+回讀與正反例，讓消費者區分應停止與可餵普通拒絕；不從文字猜測 admission，
+不由插件製造 child receipt。另需核 bad 項零派發、同 root 不加預留、下一合法項
+獨立授權、拒絕後 kill／恢復不重做首筆；未知項仍無新增重試權。
+
 ## CORE-058 / EXT-027 原管理員 target grant intake
 
 `cb02f74ea48b`／alpha.10：Windows 最小 Rust consumer 三次原 Host call 都取得

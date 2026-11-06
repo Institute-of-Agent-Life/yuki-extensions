@@ -1,0 +1,67 @@
+{
+  "updated_at": "2026-11-06T00:35:32.942489+00:00",
+  "status": "waiting_CI_or_public_producer_contracts",
+  "previous": "after-core037-character.json",
+  "formal_cards_completed": 7,
+  "formal_cards_total": 68,
+  "branch": "codex/ext-024-rejection-continuation",
+  "base_main": "996deedef3e119246651050dc8cac186044a925a",
+  "core015_source": "969fb62e34de6a52a5fbe31d798e6b5436d6e9a8",
+  "core015_pin": "compat/core-015-isolation/source.lock.json",
+  "producer_published": false,
+  "native_consumer": "unchanged real Rust Code binary in HJW Arch; Windows Host",
+  "native_plugin_sha256": "23f888dc639f01754f4122dd606bfeebddf9e77f84757bee8db8fc318e05bb47",
+  "producer_sdk": "1.0.0-alpha.11",
+  "consumer_build_sdk": "1.0.0-alpha.5",
+  "evidence": [
+    "artifacts/EXT-024/rejection-producer-intake",
+    "artifacts/EXT-024/refusal-01",
+    "artifacts/EXT-024/control-01",
+    "artifacts/EXT-024/analysis-01"
+  ],
+  "observed": {
+    "direct": "failed original invalid_tool_arguments receipt; later valid send delivered once",
+    "code_bad_first": "tool.invoke returned generic -32003; no child receipt obtained; zero deliveries",
+    "code_positive_control": "first valid child delivered, fed and ACKed; invalid second child returned -32003; third call did not execute",
+    "model_http_calls": 9,
+    "cold_restarts": 6,
+    "all_container_sets_restored": true,
+    "verification": "DIAGNOSTIC_VERIFIED on HJW Windows"
+  },
+  "missing": [
+    "classified ordinary-refusal child receipt and authorized continuation through original Host methods",
+    "light frozen alias projection",
+    "original Work/run future wait and readback",
+    "complete H14, paired stop/partial, public root reserve ledger and authority parity",
+    "formal publication"
+  ],
+  "not_claimed": [
+    "core bug classification",
+    "full EXT-024 acceptance",
+    "zero budget deduction proof",
+    "fresh native plugin build"
+  ],
+  "next_executable": [],
+  "PR_order": [
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28
+  ],
+  "preserved_WIP": [
+    "root four Code adapters",
+    "work-asr",
+    "work-rebuild",
+    "work-subscription"
+  ]
+}

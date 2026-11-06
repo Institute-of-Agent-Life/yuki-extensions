@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "-X",
+    "utf8",
+    "ci/codemode_rejection_verify.py",
+    "--first",
+    "D:/yuki-extension-tests/code-rejection-refusal-01/evidence",
+    "--control",
+    "D:/yuki-extension-tests/code-rejection-control-01/evidence",
+    "--out",
+    "D:\\yuki-extension-tests\\code-rejection-analysis-01\\evidence"
+  ],
+  "exit_code": 0,
+  "stdout": "{\"status\": \"DIAGNOSTIC_VERIFIED\", \"model_http_calls\": 9, \"cold_restarts\": 6}\n",
+  "stderr": ""
+}
