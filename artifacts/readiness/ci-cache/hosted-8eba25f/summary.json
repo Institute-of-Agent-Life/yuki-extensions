@@ -1,0 +1,179 @@
+{
+  "status": "PARTIAL_TWO_PLATFORM_VERIFIED",
+  "pr": 35,
+  "head": "8eba25f1c44b70983293bdc6b46b00edb5979174",
+  "base": "ac8c1b287e5a320107f64975dfd318b521bd8f13",
+  "run": 42183667489,
+  "synthetic_merge": "f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+  "merge_parents": [
+    "ac8c1b287e5a320107f64975dfd318b521bd8f13",
+    "8eba25f1c44b70983293bdc6b46b00edb5979174"
+  ],
+  "tree_equals_head": true,
+  "verified_zips": 30,
+  "verified_packages": 14,
+  "cache_input_artifacts": 12,
+  "exact_hosted_target_cache_hits": 8,
+  "rust_package_jobs_observed": 12,
+  "hosted_cache_evidence": [
+    {
+      "job": "package (env, windows-latest)",
+      "job_id": 127778936549,
+      "key": "rust-v1-Windows-AMD64-env-440bde67a7ea2f6c8466825e0a8ead6dfc65050582422ee7a10525ab86fb57c9",
+      "exact_cache_hit": true,
+      "compile_line_count": 2,
+      "raw_job_log_sha256": "c90610155dd7aba89937a05b80efd6ea93a2fdaeda318a60a18592f2d427bf9f"
+    },
+    {
+      "job": "package (feishu, ubuntu-latest)",
+      "job_id": 127778936551,
+      "key": "rust-v1-Linux-x86_64-feishu-9cce6f95a216aae4cd6a666e21e461700515c6ecc2dd573d4b99e99a63576b24",
+      "exact_cache_hit": true,
+      "compile_line_count": 2,
+      "raw_job_log_sha256": "f4e3310d6c825e66e5eb0ced72ff926987cf3e1ed8166f4cef1da1466c9c7997"
+    },
+    {
+      "job": "package (yuki-setup, windows-latest)",
+      "job_id": 127778936568,
+      "key": "rust-v1-Windows-AMD64-yuki-setup-c6a93f01ab92e0c8103bcf62772b7fb4b0ab403b9a2e672a6322b6af648b1073",
+      "exact_cache_hit": true,
+      "compile_line_count": 2,
+      "raw_job_log_sha256": "8874649ac4b1b5d5d171600c80f3bb6f7ef1ac86e43b82a3b3bb7d5307c2092c"
+    },
+    {
+      "job": "package (env, ubuntu-latest)",
+      "job_id": 127778936591,
+      "key": "rust-v1-Linux-x86_64-env-0f7e8ffe6c5bf0651d01baaa1d9a6dbfbf3c3a6f6447385eb169375e4a3e1977",
+      "exact_cache_hit": true,
+      "compile_line_count": 2,
+      "raw_job_log_sha256": "5469ca12daf0d383e3fb8f6135bf43edbc28b16dc43390f2818e46986c0012e1"
+    },
+    {
+      "job": "package (feishu, windows-latest)",
+      "job_id": 127778936612,
+      "key": "rust-v1-Windows-AMD64-feishu-e15b373b9daff4518f36d6463799a2e5f02471aa9b904bfcef81e219bb9f0745",
+      "exact_cache_hit": false,
+      "compile_line_count": 152,
+      "raw_job_log_sha256": "21f599eb1b57cdd7a8f00cb934cad52f4507b2d40b2674821086aab18d33971b"
+    },
+    {
+      "job": "package (yuki-setup, ubuntu-latest)",
+      "job_id": 127778936628,
+      "key": "rust-v1-Linux-x86_64-yuki-setup-6f8fb2bd2427a088e43b15afce889e83f5a55e37c2f9a9b27eb4c5ee97fafa86",
+      "exact_cache_hit": true,
+      "compile_line_count": 2,
+      "raw_job_log_sha256": "381ba8153abba3a2787b5aa9b3c8124ce40f57255877731bb0131cc382a630ce"
+    },
+    {
+      "job": "package (web-fetch, windows-latest)",
+      "job_id": 127778936656,
+      "key": "rust-v1-Windows-AMD64-web-fetch-a7cd7b936176302d651bc26e1017374a4a1416513b7c24deabccd356c0e570b3",
+      "exact_cache_hit": false,
+      "compile_line_count": 114,
+      "raw_job_log_sha256": "71ce375cf9e604cc0b6cb538b6858698500494b1a96769caa29b1f4d114b51b2"
+    },
+    {
+      "job": "package (web-fetch, ubuntu-latest)",
+      "job_id": 127778936663,
+      "key": "rust-v1-Linux-x86_64-web-fetch-6bea88aa550a5856e33e9739161ac950c5a8f69d8b566384cde7b703befac266",
+      "exact_cache_hit": true,
+      "compile_line_count": 2,
+      "raw_job_log_sha256": "5b3cf5136f2e90fcfed9043d4a8931613b0b98c3ea31519b6ea54b33d2de3786"
+    },
+    {
+      "job": "package (telegram, windows-latest)",
+      "job_id": 127778936666,
+      "key": "rust-v1-Windows-AMD64-telegram-2b6cf98a9641cd81dc59011379cd1a056fe2e4d103615129930a3891ab05b36b",
+      "exact_cache_hit": false,
+      "compile_line_count": 26,
+      "raw_job_log_sha256": "85dc27eeb0e2d5d249afa54024530a0ba1e2a38a5a45fc972f7def28b64e3f8d"
+    },
+    {
+      "job": "package (telegram, ubuntu-latest)",
+      "job_id": 127778936680,
+      "key": "rust-v1-Linux-x86_64-telegram-828a513b8948451cf4132ea8876b596a90322e0f6b5a6df640c25c4571ff45ae",
+      "exact_cache_hit": true,
+      "compile_line_count": 2,
+      "raw_job_log_sha256": "6dbf0c47d47d49461d866dfbe95091ed86211f18d67ff549dbe2d476b337fed5"
+    },
+    {
+      "job": "package (local-agent, ubuntu-latest)",
+      "job_id": 127778936764,
+      "key": "rust-v1-Linux-x86_64-local-agent-ce8d57f41f19f81ff397feca2fbd459250cdce74abdfe7fdd368e6040b7d0220",
+      "exact_cache_hit": true,
+      "compile_line_count": 2,
+      "raw_job_log_sha256": "7b35f9b275a53d611246e04dbb82f99cac70575f4be0a973245bfd98ffa92a1e"
+    },
+    {
+      "job": "package (local-agent, windows-latest)",
+      "job_id": 127778936792,
+      "key": "rust-v1-Windows-AMD64-local-agent-1e3571a224da97d6486fd15ec586cdd7ac14e3cc600d59b0004a8a8dfe122fa1",
+      "exact_cache_hit": false,
+      "compile_line_count": 80,
+      "raw_job_log_sha256": "39e3b3a6084dad3326357378549ac7d5e034383bcfd0d7290ae5f4bf15bfb875"
+    }
+  ],
+  "pending_jobs": [
+    {
+      "id": 127778845373,
+      "name": "acceptance (macos-latest)",
+      "status": "queued"
+    },
+    {
+      "id": 127778936575,
+      "name": "package (telegram, macos-latest)",
+      "status": "queued"
+    },
+    {
+      "id": 127778936597,
+      "name": "package (env, macos-latest)",
+      "status": "queued"
+    },
+    {
+      "id": 127778936610,
+      "name": "package (web-fetch, macos-latest)",
+      "status": "queued"
+    },
+    {
+      "id": 127778936611,
+      "name": "package (yuki-setup, macos-latest)",
+      "status": "queued"
+    },
+    {
+      "id": 127778936622,
+      "name": "package (local-agent, macos-latest)",
+      "status": "queued"
+    },
+    {
+      "id": 127778936660,
+      "name": "package (connector, macos-latest)",
+      "status": "queued"
+    },
+    {
+      "id": 127778936671,
+      "name": "package (feishu, macos-latest)",
+      "status": "queued"
+    }
+  ],
+  "missing_artifacts": [
+    "acceptance-macos-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+    "cache-inputs-env-macos-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+    "cache-inputs-feishu-macos-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+    "cache-inputs-local-agent-macos-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+    "cache-inputs-telegram-macos-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+    "cache-inputs-web-fetch-macos-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+    "cache-inputs-yuki-setup-macos-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+    "connector-upgrade-macos-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+    "package-connector-macos-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+    "package-env-macos-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+    "package-feishu-macos-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+    "package-local-agent-macos-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+    "package-telegram-macos-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+    "package-web-fetch-macos-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+    "package-yuki-setup-macos-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4"
+  ],
+  "full_gate_pass": false,
+  "merge_performed": false,
+  "queue_improvement_measured": false,
+  "source_or_runtime_changed_after_native_verification": false
+}

@@ -1,0 +1,2360 @@
+{
+  "status": "VERIFIED_AVAILABLE_ARTIFACTS_ONLY",
+  "pr": 35,
+  "run": 42183667489,
+  "head": "8eba25f1c44b70983293bdc6b46b00edb5979174",
+  "base": "ac8c1b287e5a320107f64975dfd318b521bd8f13",
+  "synthetic_merge": "f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+  "merge_parents": [
+    "ac8c1b287e5a320107f64975dfd318b521bd8f13",
+    "8eba25f1c44b70983293bdc6b46b00edb5979174"
+  ],
+  "merge_tree": "5bb5486c621ce63cd8a2ea3a5918872d5d736ed2",
+  "merge_tree_equals_head": true,
+  "verified_at": "2026-11-06T08:06:00.243436+00:00",
+  "artifacts": [
+    {
+      "id": 13487030239,
+      "name": "package-web-fetch-ubuntu-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+      "zip_sha256": "a2af4bc03bba02f2d5526afea96986475360eb2183c1e637c97e687f4b5ed03a",
+      "bytes": 738582,
+      "members": {
+        "Cargo.lock": "464fc9374e68c11bc37652c611b739af5759dcbf6231c8ea9cc48d37bbffb3ff",
+        "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "package-manifest.json": "139c1be1d4c71974ad7bf50e3eaa1c941e5aee2a71abe4ab013e762542cb9726",
+        "plugin.toml": "c67dd07b6613398e1bde628918e24d03c48494afad34bd481d17e94ece557cf6",
+        "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "yuki-web-fetch": "d1d8c05b22d4ee4ae662e282481ad6379ca90c7c0764c83b9acf1c0fa9b7f542"
+      },
+      "manifests": [
+        {
+          "name": "package-manifest.json",
+          "status": null,
+          "task": null,
+          "unit": "web-fetch",
+          "verified_files": {
+            "Cargo.lock": "464fc9374e68c11bc37652c611b739af5759dcbf6231c8ea9cc48d37bbffb3ff",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "plugin.toml": "c67dd07b6613398e1bde628918e24d03c48494afad34bd481d17e94ece557cf6",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-web-fetch": "d1d8c05b22d4ee4ae662e282481ad6379ca90c7c0764c83b9acf1c0fa9b7f542"
+          },
+          "compile_lines": [
+            "Compiling yuki-web-fetch v0.1.0-alpha.1 (/home/runner/work/yuki-extensions/yuki-extensions/.ci-transfer/rust-src/web-fetch/6bea88aa550a5856/unit)",
+            "Compiling yuki-web-fetch v0.1.0-alpha.1 (/home/runner/work/yuki-extensions/yuki-extensions/.ci-transfer/rust-src/web-fetch/6bea88aa550a5856/unit)"
+          ]
+        }
+      ],
+      "cache_inputs": null
+    },
+    {
+      "id": 13486945763,
+      "name": "package-connector-ubuntu-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+      "zip_sha256": "6484b13f2b2550d243c3084162c18e1d292d5cfdf01111c64e9bbebad92e07d5",
+      "bytes": 230576,
+      "members": {
+        "package-manifest.json": "87abbfe2bc6859e475ed7989c2c2738cd76a3784bbd09d4ce6d3c0c1c2147b11",
+        "yuki_agent_connector-0.4.4.dev1-py3-none-any.whl": "7a143a2d128bde2de038f26ce0a44cee8e9bcbd9249960bf68beb0b5032d85b5",
+        "yuki_agent_connector-0.4.4.dev1.tar.gz": "691ff2efa037744310409fc0cd1b84b6c7b32049ef062b65b658dd7f308364b3"
+      },
+      "manifests": [
+        {
+          "name": "package-manifest.json",
+          "status": null,
+          "task": null,
+          "unit": "connector",
+          "verified_files": {
+            "yuki_agent_connector-0.4.4.dev1-py3-none-any.whl": "7a143a2d128bde2de038f26ce0a44cee8e9bcbd9249960bf68beb0b5032d85b5",
+            "yuki_agent_connector-0.4.4.dev1.tar.gz": "691ff2efa037744310409fc0cd1b84b6c7b32049ef062b65b658dd7f308364b3"
+          },
+          "compile_lines": []
+        }
+      ],
+      "cache_inputs": null
+    },
+    {
+      "id": 13486915804,
+      "name": "package-yuki-setup-windows-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+      "zip_sha256": "dc08e372804b6d91f028302e7fe5128a1d2bf78554c77353ded040ba6f437ab5",
+      "bytes": 176681,
+      "members": {
+        "Cargo.lock": "9365e3881889c89db7ec71ab2218bb70e765635f159a535d2937284dc42da829",
+        "inputs/CORE-NOTICE": "92eec243bb25b89d47a7fa29ce6c863a14487a9c9e1078d0538775e6ec8f5a34",
+        "inputs/CORE-LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "package-manifest.json": "6b6264f7eb11765115bff7e2cc082c17b257ed9e9d10d9479504e394efe98458",
+        "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "yuki-setup.exe": "88a8b34574fc067090b9a078c68eaf56701ade2ad177bcdfed4382b44ea9149f"
+      },
+      "manifests": [
+        {
+          "name": "package-manifest.json",
+          "status": null,
+          "task": null,
+          "unit": "yuki-setup",
+          "verified_files": {
+            "Cargo.lock": "9365e3881889c89db7ec71ab2218bb70e765635f159a535d2937284dc42da829",
+            "inputs/CORE-LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "inputs/CORE-NOTICE": "92eec243bb25b89d47a7fa29ce6c863a14487a9c9e1078d0538775e6ec8f5a34",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-setup.exe": "88a8b34574fc067090b9a078c68eaf56701ade2ad177bcdfed4382b44ea9149f"
+          },
+          "compile_lines": [
+            "Compiling yuki-setup v0.1.0-alpha.1 (D:\\a\\yuki-extensions\\yuki-extensions\\.ci-transfer\\rust-src\\yuki-setup\\c6a93f01ab92e0c8\\unit)",
+            "Compiling yuki-setup v0.1.0-alpha.1 (D:\\a\\yuki-extensions\\yuki-extensions\\.ci-transfer\\rust-src\\yuki-setup\\c6a93f01ab92e0c8\\unit)"
+          ]
+        }
+      ],
+      "cache_inputs": null
+    },
+    {
+      "id": 13486905873,
+      "name": "connector-upgrade-ubuntu-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+      "zip_sha256": "94689cd4168a7a5ddae276b568f6ad9533f2514bfe1547984072adaaa3da52b4",
+      "bytes": 298106,
+      "members": {
+        "EXT-007/candidate-ci/candidate-tests.xml": "e34aade43f21a011e4d519ebafb74468ecb0aca1c2f92c45beb96886b51d40b2",
+        "EXT-007/candidate-ci/connector-package.json": "87abbfe2bc6859e475ed7989c2c2738cd76a3784bbd09d4ce6d3c0c1c2147b11",
+        "EXT-007/candidate-ci/commands.json": "0ae663cce64420375c3dafbec93e3463f6ccaf09267b176274f8162f08fba69d",
+        "EXT-007/candidate-ci/connector-runtime.json": "293c1440015745f2fc930b32a65391cfaa359d56d8312fcd3be9f33cf782442a",
+        "EXT-007/candidate-ci/connector-upgrade.json": "339af82562ac69628b718e1a5cfba2e15a36db6a23d1b2296d8e3ad62ab23869",
+        "EXT-007/candidate-ci/wire4-candidate.json": "d012511998b4c4835adf51c3ff2921635ee6cbb765a98b59b44d3edecd1d54e0",
+        "EXT-007/candidate-ci/manifest.json": "1f8b1d7e969cc0f78f5c12d91a4180d166335a2012189ff873955dc31556c133",
+        "EXT-007/candidate-ci/wire4-old.json": "d012511998b4c4835adf51c3ff2921635ee6cbb765a98b59b44d3edecd1d54e0",
+        "EXT-008/ci/codex-driver-wire.json": "77eb5c6105a65f0d09aa195cb8cb50738f779c1725b5aae553e29099e622cd3f",
+        "EXT-008/ci/commands.txt": "8e9e0256c3e299205d90a23ea0e0a5cf6fab13021a0eb338646d30bc92f4a4d5",
+        "EXT-008/ci/manifest.json": "b49507b565bfc59ed2ea902a03d4af5b5c9d682ceadab739b510b902b24d2f6e",
+        "EXT-009/ci/claude-driver-wire.json": "9daea016ee0489b4fec924da40427b8c866f64f7a8f0ab74a08f5974fce9dcc0",
+        "EXT-009/ci/commands.txt": "5e23a242f391be707408f21edb659a3e12128d2bafd8bcdc465bdfa472a7f037",
+        "EXT-009/ci/manifest.json": "e951c51353d1edf46fa0749f728558dcfda730a7053d75953fd320c563c5f45c",
+        "EXT-010/ci/commands.txt": "7acc364536c17c58caab0e928f20f14eff88cf9d94b46efc93557d8c764e0daf",
+        "EXT-010/ci/manifest.json": "3d82ead78bf2db8f04a1d929bf3ed016871f2c36fc95c54a2026cbce29237f9b",
+        "EXT-010/ci/native-acp-v1.json": "98368cb785781e00f16311c202ca3f515159a6f96818806d212407ebf27d9748"
+      },
+      "manifests": [
+        {
+          "name": "EXT-007/candidate-ci/manifest.json",
+          "status": "PASS",
+          "task": "EXT-007",
+          "unit": null,
+          "verified_files": {
+            "candidate-tests.xml": "e34aade43f21a011e4d519ebafb74468ecb0aca1c2f92c45beb96886b51d40b2",
+            "commands.json": "0ae663cce64420375c3dafbec93e3463f6ccaf09267b176274f8162f08fba69d",
+            "connector-package.json": "87abbfe2bc6859e475ed7989c2c2738cd76a3784bbd09d4ce6d3c0c1c2147b11",
+            "connector-runtime.json": "293c1440015745f2fc930b32a65391cfaa359d56d8312fcd3be9f33cf782442a",
+            "connector-upgrade.json": "339af82562ac69628b718e1a5cfba2e15a36db6a23d1b2296d8e3ad62ab23869",
+            "wire4-candidate.json": "d012511998b4c4835adf51c3ff2921635ee6cbb765a98b59b44d3edecd1d54e0",
+            "wire4-old.json": "d012511998b4c4835adf51c3ff2921635ee6cbb765a98b59b44d3edecd1d54e0"
+          },
+          "compile_lines": []
+        },
+        {
+          "name": "EXT-008/ci/manifest.json",
+          "status": "PASS",
+          "task": "EXT-008",
+          "unit": null,
+          "verified_files": {
+            "codex-driver-wire.json": "77eb5c6105a65f0d09aa195cb8cb50738f779c1725b5aae553e29099e622cd3f",
+            "commands.txt": "8e9e0256c3e299205d90a23ea0e0a5cf6fab13021a0eb338646d30bc92f4a4d5"
+          },
+          "compile_lines": []
+        },
+        {
+          "name": "EXT-009/ci/manifest.json",
+          "status": "PASS",
+          "task": "EXT-009",
+          "unit": null,
+          "verified_files": {
+            "claude-driver-wire.json": "9daea016ee0489b4fec924da40427b8c866f64f7a8f0ab74a08f5974fce9dcc0",
+            "commands.txt": "5e23a242f391be707408f21edb659a3e12128d2bafd8bcdc465bdfa472a7f037"
+          },
+          "compile_lines": []
+        },
+        {
+          "name": "EXT-010/ci/manifest.json",
+          "status": "PASS",
+          "task": "EXT-010",
+          "unit": null,
+          "verified_files": {
+            "commands.txt": "7acc364536c17c58caab0e928f20f14eff88cf9d94b46efc93557d8c764e0daf",
+            "native-acp-v1.json": "98368cb785781e00f16311c202ca3f515159a6f96818806d212407ebf27d9748"
+          },
+          "compile_lines": []
+        }
+      ],
+      "cache_inputs": null
+    },
+    {
+      "id": 13486870906,
+      "name": "cache-inputs-web-fetch-ubuntu-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+      "zip_sha256": "924f1c532a96436d260b0bd4b0ec8082d637afb73ac5e0d6cf1f0f6ce760e07d",
+      "bytes": 1806,
+      "members": {
+        "web-fetch.json": "c845e3527ddde88d8791251ae2040acaa44b6ce515871c5166b828dc88808e6d"
+      },
+      "manifests": [],
+      "cache_inputs": {
+        "enabled": true,
+        "key": "rust-v1-Linux-x86_64-web-fetch-6bea88aa550a5856e33e9739161ac950c5a8f69d8b566384cde7b703befac266",
+        "digest": "6bea88aa550a5856e33e9739161ac950c5a8f69d8b566384cde7b703befac266",
+        "inputs": {
+          "policy": 1,
+          "unit": {
+            "unit_id": "web-fetch",
+            "kind": "plugin",
+            "path": "plugins/web-fetch",
+            "ecosystem": "rust",
+            "version": "0.1.0-alpha.1",
+            "tag_prefix": "web-fetch/v",
+            "license": "AGPL-3.0-only",
+            "notices": [
+              "LICENSE"
+            ],
+            "runtime_files": [
+              "plugin.toml"
+            ],
+            "source": {
+              "repository": "Institute-of-Agent-Life/yuki-extensions",
+              "baseline": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+              "upstream_path": "src/yuki/web/page_extractor.py",
+              "sdk_contract": "compat/core-032/source.lock.json"
+            },
+            "check_paths": [
+              "tests/cases/EXT-028.py",
+              "compat/core-032/source.lock.json",
+              "compat/core-032/yuki-plugin-sdk-1.0.0-alpha.2.crate"
+            ]
+          },
+          "platform": [
+            "Linux",
+            "x86_64",
+            "7.0.0-1017-azure"
+          ],
+          "image": {
+            "ImageOS": "ubuntu24",
+            "ImageVersion": "20261101.360.1"
+          },
+          "compiler": "rustc 1.96.0 (ac68faa20 2026-05-25)\nbinary: rustc\ncommit-hash: ac68faa20c58cbccd01ee7208bf3b6e93a7d7f96\ncommit-date: 2026-05-25\nhost: x86_64-unknown-linux-gnu\nrelease: 1.96.0\nLLVM version: 22.1.2\n",
+          "cargo": "cargo 1.96.0 (30a34c682 2026-05-25)\n",
+          "build_root": "/home/runner/work/yuki-extensions/yuki-extensions/.ci-transfer/rust-src",
+          "environment": {
+            "RUSTFLAGS": "",
+            "CARGO_ENCODED_RUSTFLAGS": "",
+            "RUSTDOCFLAGS": "",
+            "CARGO_BUILD_TARGET": "",
+            "RUSTC": "",
+            "RUSTC_WRAPPER": "",
+            "CC": "",
+            "CXX": "",
+            "AR": "",
+            "CFLAGS": "",
+            "CXXFLAGS": ""
+          },
+          "sources": {
+            "Cargo.lock": "464fc9374e68c11bc37652c611b739af5759dcbf6231c8ea9cc48d37bbffb3ff",
+            "Cargo.toml": "343de55c54df420bc75e1fc1be49d97a2e51ac4148d8e4946f4e9d853dbb8b96",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "README.md": "c4a4a62b34956a02c6254feb5bb58c1483350d896403b8c33a2241e367c081da",
+            "owner-disposition.json": "f70d2e289f35bb4ecf616d128e9103cdf056c749749f6801b2b07c4765768500",
+            "plugin.toml": "c67dd07b6613398e1bde628918e24d03c48494afad34bd481d17e94ece557cf6",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "src/fetch.rs": "474f46b7fb497f15dc79bf5bdaf10770f5b1117654a1fe9f0ac3f3f5ca0e567f",
+            "src/main.rs": "2b430c4d4143e28313b1f118295e82521465de1bbc415ec95c98991076214180",
+            "src/policy.rs": "5e3c4b7a84850fa7e14bfa6adf4660302ffc5301955deb5a8e44942c06de708a"
+          },
+          "builders": {
+            "package.py": "fa740b8a4ba939ca53865e76e8adf9955a648eb2780d9e2cf4b213c8ddeda05e",
+            "rust_cache.py": "0ee65548645a050859e4dd8e7f089a23be15acb3e07c2733b210b706a7e85ac3",
+            "handshake_cargo.py": "a77d5fc5b9e1cd7a714c8c56aef8d65fe1ef79daa6d59e7d98001e0935229698",
+            "units.py": "412af73476c9ccb7b9ab47caf15e4042a91be7082cf5fdd97e915d93c5ca8302"
+          },
+          "sdk": {
+            "contract_sha256": "ecdc614e0de2b9be9b628dcd1551afe514efc62a4799806e6d8739ff8359fd94",
+            "crate_sha256": "9408022bdf1322a8d6e07914685869771a5738280e36145e46da5c36facbfce0"
+          }
+        }
+      }
+    },
+    {
+      "id": 13486835885,
+      "name": "cache-inputs-env-windows-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+      "zip_sha256": "ad1e0eee634a64f3297c20e69cef38e223be8a7c3e67506a655f5ff719a274c6",
+      "bytes": 1757,
+      "members": {
+        "env.json": "7f5e7ead226038f5b4bc1ec33a1d5a0495181cb5e1005b42f8fcfa6f898fccb5"
+      },
+      "manifests": [],
+      "cache_inputs": {
+        "enabled": true,
+        "key": "rust-v1-Windows-AMD64-env-440bde67a7ea2f6c8466825e0a8ead6dfc65050582422ee7a10525ab86fb57c9",
+        "digest": "440bde67a7ea2f6c8466825e0a8ead6dfc65050582422ee7a10525ab86fb57c9",
+        "inputs": {
+          "policy": 1,
+          "unit": {
+            "unit_id": "env",
+            "kind": "plugin",
+            "path": "plugins/env",
+            "ecosystem": "rust",
+            "version": "0.1.0-alpha.1",
+            "tag_prefix": "env/v",
+            "license": "AGPL-3.0-only",
+            "notices": [
+              "LICENSE"
+            ],
+            "runtime_files": [
+              "plugin.toml"
+            ],
+            "source": {
+              "repository": "Institute-of-Agent-Life/yuki-extensions",
+              "baseline": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+              "upstream_path": "src/yuki/sandbox/client.py",
+              "sdk_contract": "compat/core-032/source.lock.json"
+            },
+            "check_paths": [
+              "tests/cases/EXT-020.py",
+              "compat/core-032/source.lock.json",
+              "compat/core-032/yuki-plugin-sdk-1.0.0-alpha.2.crate",
+              "deploy/env/manager-source.zip"
+            ]
+          },
+          "platform": [
+            "Windows",
+            "AMD64",
+            "2025Server"
+          ],
+          "image": {
+            "ImageOS": "win25-vs2026",
+            "ImageVersion": "20261030.294.1"
+          },
+          "compiler": "rustc 1.96.0 (ac68faa20 2026-05-25)\nbinary: rustc\ncommit-hash: ac68faa20c58cbccd01ee7208bf3b6e93a7d7f96\ncommit-date: 2026-05-25\nhost: x86_64-pc-windows-msvc\nrelease: 1.96.0\nLLVM version: 22.1.2\n",
+          "cargo": "cargo 1.96.0 (30a34c682 2026-05-25)\n",
+          "build_root": "D:\\a\\yuki-extensions\\yuki-extensions\\.ci-transfer\\rust-src",
+          "environment": {
+            "RUSTFLAGS": "",
+            "CARGO_ENCODED_RUSTFLAGS": "",
+            "RUSTDOCFLAGS": "",
+            "CARGO_BUILD_TARGET": "",
+            "RUSTC": "",
+            "RUSTC_WRAPPER": "",
+            "CC": "",
+            "CXX": "",
+            "AR": "",
+            "CFLAGS": "",
+            "CXXFLAGS": ""
+          },
+          "sources": {
+            "backend/source.lock.json": "307bc76b27df577491453f5ac19f8cd8ef6cec6f99151efd225b45e5b6a41723",
+            "Cargo.lock": "f8ad380038ce0ef39f902b3d9b982ee5601e1e7d11574ab49fe79990559f0816",
+            "Cargo.toml": "79ee27b342353a4a862afe48f5028e40ca64cecc4acded5bae286c98a1d55ce6",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "plugin.toml": "969067f56ef5b152aeb56ba8145097175f29107576f19f607be531869cb7ca08",
+            "README.md": "61070d4480b1f578b3848a7568a2aaafc87a490be8a3b2ed31677b6a3310fe64",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "src/main.rs": "4d3923eac0f8e0835f32cbf18b1bb4b67ed226c36a5a525803fb62610c1ee07f",
+            "src/manager.rs": "41d13dd95e94b2739c9127b25e59df105a98a7a82b6aa8375ef071035b60d43b"
+          },
+          "builders": {
+            "package.py": "fa740b8a4ba939ca53865e76e8adf9955a648eb2780d9e2cf4b213c8ddeda05e",
+            "rust_cache.py": "0ee65548645a050859e4dd8e7f089a23be15acb3e07c2733b210b706a7e85ac3",
+            "handshake_cargo.py": "a77d5fc5b9e1cd7a714c8c56aef8d65fe1ef79daa6d59e7d98001e0935229698",
+            "units.py": "412af73476c9ccb7b9ab47caf15e4042a91be7082cf5fdd97e915d93c5ca8302"
+          },
+          "sdk": {
+            "contract_sha256": "ecdc614e0de2b9be9b628dcd1551afe514efc62a4799806e6d8739ff8359fd94",
+            "crate_sha256": "9408022bdf1322a8d6e07914685869771a5738280e36145e46da5c36facbfce0"
+          }
+        }
+      }
+    },
+    {
+      "id": 13486816135,
+      "name": "connector-upgrade-windows-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+      "zip_sha256": "aef01444673c8d2c57f75dbc5886bdbad4cf72f5a14006bb131fbdbe3119b470",
+      "bytes": 316327,
+      "members": {
+        "EXT-007/candidate-ci/candidate-tests.xml": "3841a46efafae05edaff7dda23db9af5af790a4076352d78707f700bb3057011",
+        "EXT-007/candidate-ci/connector-runtime.json": "daa05d0bb84c861850e5c0cd20ec882a26108c14c296d2a9a270c1bf41ce6a46",
+        "EXT-007/candidate-ci/connector-package.json": "6190c8651d30f3cdcd993cdb660e9156fa72bf8affc6678f9f57f0eb3672cfb6",
+        "EXT-007/candidate-ci/commands.json": "596f83fb7659d862c655c1824c44074d9f975654c89fda22a6f1d947fdc9d39e",
+        "EXT-007/candidate-ci/connector-upgrade.json": "7634ca09745a02dadec1e470ca0f9ad6eb3d77adcd7b442ac11157ede28e83f1",
+        "EXT-007/candidate-ci/manifest.json": "7b83885f06e25888fef6d8e2865cf61c15898f1354757bea098012b695bde861",
+        "EXT-007/candidate-ci/wire4-candidate.json": "906ac87e0ab895e9764374b1605149c8dfaece4bd6804a6fa4f843a8eca1e827",
+        "EXT-007/candidate-ci/wire4-old.json": "906ac87e0ab895e9764374b1605149c8dfaece4bd6804a6fa4f843a8eca1e827",
+        "EXT-008/ci/codex-driver-wire.json": "ed1782ac36586a509ddf367a3106c2da95e0f3a06a367e46fb0550fd4420abed",
+        "EXT-008/ci/commands.txt": "be811193235430c1c08890b48f6f5cfbdb1dba37d7febfb98eda546f818d0bae",
+        "EXT-008/ci/manifest.json": "bfd75db8f11b87f163220a796dc0b2430c3cfdfacbcb6513c8f331f2daabd8d2",
+        "EXT-009/ci/claude-driver-wire.json": "a298ea78588bd54f7f9532759a9b472a9b15285be5630e359f67a23f6ded047c",
+        "EXT-009/ci/commands.txt": "17086132bd7c770a39b0d39c3bb1f5e700bdcfb2cffd84ec819df45e02b78963",
+        "EXT-009/ci/manifest.json": "001a32b33c7b2a370831d1a7bb0b6aa5383e06e0fc8622fd9c58d55cfe9081d9",
+        "EXT-010/ci/commands.txt": "a8f47b6cfe6aced82d735e4ad99a5206c99d09aca3ef69e43e78a4ba0cfcc9f2",
+        "EXT-010/ci/manifest.json": "5c614f14d531e8eaa161fb906ef3a72e67bba881660bfb046822bd7e832526cf",
+        "EXT-010/ci/native-acp-v1.json": "9443a215aed887533227bc9eb292ebec2b4f8e92e4077576c06528383aaf9e27"
+      },
+      "manifests": [
+        {
+          "name": "EXT-007/candidate-ci/manifest.json",
+          "status": "PASS",
+          "task": "EXT-007",
+          "unit": null,
+          "verified_files": {
+            "candidate-tests.xml": "3841a46efafae05edaff7dda23db9af5af790a4076352d78707f700bb3057011",
+            "commands.json": "596f83fb7659d862c655c1824c44074d9f975654c89fda22a6f1d947fdc9d39e",
+            "connector-package.json": "6190c8651d30f3cdcd993cdb660e9156fa72bf8affc6678f9f57f0eb3672cfb6",
+            "connector-runtime.json": "daa05d0bb84c861850e5c0cd20ec882a26108c14c296d2a9a270c1bf41ce6a46",
+            "connector-upgrade.json": "7634ca09745a02dadec1e470ca0f9ad6eb3d77adcd7b442ac11157ede28e83f1",
+            "wire4-candidate.json": "906ac87e0ab895e9764374b1605149c8dfaece4bd6804a6fa4f843a8eca1e827",
+            "wire4-old.json": "906ac87e0ab895e9764374b1605149c8dfaece4bd6804a6fa4f843a8eca1e827"
+          },
+          "compile_lines": []
+        },
+        {
+          "name": "EXT-008/ci/manifest.json",
+          "status": "PASS",
+          "task": "EXT-008",
+          "unit": null,
+          "verified_files": {
+            "codex-driver-wire.json": "ed1782ac36586a509ddf367a3106c2da95e0f3a06a367e46fb0550fd4420abed",
+            "commands.txt": "be811193235430c1c08890b48f6f5cfbdb1dba37d7febfb98eda546f818d0bae"
+          },
+          "compile_lines": []
+        },
+        {
+          "name": "EXT-009/ci/manifest.json",
+          "status": "PASS",
+          "task": "EXT-009",
+          "unit": null,
+          "verified_files": {
+            "claude-driver-wire.json": "a298ea78588bd54f7f9532759a9b472a9b15285be5630e359f67a23f6ded047c",
+            "commands.txt": "17086132bd7c770a39b0d39c3bb1f5e700bdcfb2cffd84ec819df45e02b78963"
+          },
+          "compile_lines": []
+        },
+        {
+          "name": "EXT-010/ci/manifest.json",
+          "status": "PASS",
+          "task": "EXT-010",
+          "unit": null,
+          "verified_files": {
+            "commands.txt": "a8f47b6cfe6aced82d735e4ad99a5206c99d09aca3ef69e43e78a4ba0cfcc9f2",
+            "native-acp-v1.json": "9443a215aed887533227bc9eb292ebec2b4f8e92e4077576c06528383aaf9e27"
+          },
+          "compile_lines": []
+        }
+      ],
+      "cache_inputs": null
+    },
+    {
+      "id": 13486771389,
+      "name": "acceptance-windows-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+      "zip_sha256": "c01b099bb8ea042e413e2155d7b4d09af359bc58eed1ce0c6c21136bc04327f6",
+      "bytes": 28838,
+      "members": {
+        "EXT-001/ci/extension-build-isolation.json": "b66039b5d0739903d5caf4a69d7e7d1d75ff6a5be2d5582840d01a003f15f34e",
+        "EXT-001/ci/manifest.json": "35d38a0b3b4196d402bfc6bf32d8f77b322c827990545814d1ec6b9de6b1106c",
+        "EXT-002/ci/build.txt": "12ff81d7e2fbef565ce5b25576d57b569ef5ace7f5ba0601734c013241eb14a7",
+        "EXT-002/ci/manifest.json": "ea2a9b072d1de51b3f6d254e37d3a4740d98b147274f5b3cb9d425c3a7bddad5",
+        "EXT-002/ci/published-sdk.json": "8f2cb7faabcec31f14f780385578a5e3fd2f4f403f692eeded84fcbbcf4b2ef4",
+        "EXT-019/ci/desktop-callsite-pin.json": "d9d6caa43cb9dd36b65358fb0c06648b7c22784f98babfad63ba42bc00a9c7fe",
+        "EXT-019/ci/desktop-surface-diff.json": "477f17ea1448f685d663477f373bf44b78f626a35b1533f36d9dea1f872d2f6a",
+        "EXT-019/ci/manifest.json": "1878934ba20648c32637e158a265f50a088048f625123b37e547d7f027ce30d2"
+      },
+      "manifests": [
+        {
+          "name": "EXT-001/ci/manifest.json",
+          "status": "PASS",
+          "task": "EXT-001",
+          "unit": null,
+          "verified_files": {
+            "extension-build-isolation.json": "b66039b5d0739903d5caf4a69d7e7d1d75ff6a5be2d5582840d01a003f15f34e"
+          },
+          "compile_lines": []
+        },
+        {
+          "name": "EXT-002/ci/manifest.json",
+          "status": "PASS",
+          "task": "EXT-002",
+          "unit": null,
+          "verified_files": {
+            "build.txt": "12ff81d7e2fbef565ce5b25576d57b569ef5ace7f5ba0601734c013241eb14a7",
+            "published-sdk.json": "8f2cb7faabcec31f14f780385578a5e3fd2f4f403f692eeded84fcbbcf4b2ef4"
+          },
+          "compile_lines": []
+        },
+        {
+          "name": "EXT-019/ci/manifest.json",
+          "status": "PASS",
+          "task": "EXT-019",
+          "unit": null,
+          "verified_files": {
+            "desktop-callsite-pin.json": "d9d6caa43cb9dd36b65358fb0c06648b7c22784f98babfad63ba42bc00a9c7fe",
+            "desktop-surface-diff.json": "477f17ea1448f685d663477f373bf44b78f626a35b1533f36d9dea1f872d2f6a"
+          },
+          "compile_lines": []
+        }
+      ],
+      "cache_inputs": null
+    },
+    {
+      "id": 13486751470,
+      "name": "package-connector-windows-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+      "zip_sha256": "89ffbf3ac0fccc2531de54053d190c3881611ad82c585f49e4d99e4908ef17a3",
+      "bytes": 230587,
+      "members": {
+        "package-manifest.json": "36c9b29293e7b65e9917306527cf0b7fc554fd33e24aa737dbcd3b3fc3a8a4ff",
+        "yuki_agent_connector-0.4.4.dev1-py3-none-any.whl": "2748ec830b56e38f404d33964350578e543232ab1fce02e2399fc3ab045a74d8",
+        "yuki_agent_connector-0.4.4.dev1.tar.gz": "691ff2efa037744310409fc0cd1b84b6c7b32049ef062b65b658dd7f308364b3"
+      },
+      "manifests": [
+        {
+          "name": "package-manifest.json",
+          "status": null,
+          "task": null,
+          "unit": "connector",
+          "verified_files": {
+            "yuki_agent_connector-0.4.4.dev1-py3-none-any.whl": "2748ec830b56e38f404d33964350578e543232ab1fce02e2399fc3ab045a74d8",
+            "yuki_agent_connector-0.4.4.dev1.tar.gz": "691ff2efa037744310409fc0cd1b84b6c7b32049ef062b65b658dd7f308364b3"
+          },
+          "compile_lines": []
+        }
+      ],
+      "cache_inputs": null
+    },
+    {
+      "id": 13486711381,
+      "name": "cache-inputs-yuki-setup-windows-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+      "zip_sha256": "17eac8919a98625cecb24113f6b554a894cf079f1ee98f6a91c5ef395dfb1bee",
+      "bytes": 2001,
+      "members": {
+        "yuki-setup.json": "8f066d108d59084d0020044baa131b282f76acd9ac39f260b09f12ac3e586c52"
+      },
+      "manifests": [],
+      "cache_inputs": {
+        "enabled": true,
+        "key": "rust-v1-Windows-AMD64-yuki-setup-c6a93f01ab92e0c8103bcf62772b7fb4b0ab403b9a2e672a6322b6af648b1073",
+        "digest": "c6a93f01ab92e0c8103bcf62772b7fb4b0ab403b9a2e672a6322b6af648b1073",
+        "inputs": {
+          "policy": 1,
+          "unit": {
+            "unit_id": "yuki-setup",
+            "kind": "tool",
+            "path": "tools/yuki-setup",
+            "ecosystem": "rust",
+            "version": "0.1.0-alpha.1",
+            "tag_prefix": "setup/v",
+            "license": "AGPL-3.0-only",
+            "notices": [
+              "LICENSE",
+              "inputs/CORE-LICENSE",
+              "inputs/CORE-NOTICE"
+            ],
+            "source": {
+              "repository": "Institute-of-Agent-Life/yuki-extensions",
+              "producer": "CORE-039",
+              "candidate_lock": "inputs/source.lock.json"
+            },
+            "check_paths": [
+              "tests/cases/EXT-040.py"
+            ]
+          },
+          "platform": [
+            "Windows",
+            "AMD64",
+            "2025Server"
+          ],
+          "image": {
+            "ImageOS": "win25-vs2026",
+            "ImageVersion": "20261103.298.1"
+          },
+          "compiler": "rustc 1.96.0 (ac68faa20 2026-05-25)\nbinary: rustc\ncommit-hash: ac68faa20c58cbccd01ee7208bf3b6e93a7d7f96\ncommit-date: 2026-05-25\nhost: x86_64-pc-windows-msvc\nrelease: 1.96.0\nLLVM version: 22.1.2\n",
+          "cargo": "cargo 1.96.0 (30a34c682 2026-05-25)\n",
+          "build_root": "D:\\a\\yuki-extensions\\yuki-extensions\\.ci-transfer\\rust-src",
+          "environment": {
+            "RUSTFLAGS": "",
+            "CARGO_ENCODED_RUSTFLAGS": "",
+            "RUSTDOCFLAGS": "",
+            "CARGO_BUILD_TARGET": "",
+            "RUSTC": "",
+            "RUSTC_WRAPPER": "",
+            "CC": "",
+            "CXX": "",
+            "AR": "",
+            "CFLAGS": "",
+            "CXXFLAGS": ""
+          },
+          "sources": {
+            "Cargo.lock": "9365e3881889c89db7ec71ab2218bb70e765635f159a535d2937284dc42da829",
+            "Cargo.toml": "a3823e56fc854670abdea9c109b08c6762dce4779963dd45abe33185cbb148fa",
+            "inputs/CORE-LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "inputs/CORE-NOTICE": "92eec243bb25b89d47a7fa29ce6c863a14487a9c9e1078d0538775e6ec8f5a34",
+            "inputs/native.lock.json": "9cdd69b2840f7f8c0fff2d5363659fa469f05c81b2601900161f6cae6b5ab074",
+            "inputs/oci-candidate.json": "12c5483f1f924f66d9b5852962805063d243392f8ade5af37c6e82a42896100d",
+            "inputs/oci-candidate.json.sig": "0def13d3d28378f1b6bbca9a72ed1749ae7487968992d9f5f361ab6f0c819d31",
+            "inputs/signer.pub": "dfc60f5213b47f244a9cdc673d65ddc2f98e940d9c67768a19400bed9ef77ecb",
+            "inputs/source.lock.json": "b954f220e563e53b5d6ec84e3bcbec39546eb4755e09b2af3dd7ce8dcc5f9eab",
+            "inputs/verify_dist.py": "b542c9bdd5535e944aeadd8442b3a4c766eab010a14ed3d9e665c5e1bffbf2db",
+            "inputs/verify_oci.py": "381baff5676e44845f55b3d5e076298d780a6117ed7dba999a78d6b227829b4f",
+            "inputs/web-fetch.lock.json": "9bc050b72f74d8e494faedee9ff92dca8ed3a6ff03bd36a2489c6555caeb3686",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "src/config.rs": "4b266b8224b48198310c51828d5f65aefed9a11ff0d4339a3f85ee77e5b67422",
+            "src/keygen.py": "61911de5f034a65b888810c88d5b647ee38358ad990fe36889a0cedb698d0d6e",
+            "src/main.rs": "8a1d972fd3390e66c882af996891256c800409e6733e208fe8352d8def7a3b8b",
+            "src/native.py": "78e6f2d5c5528a57a3796d4e45b8e2da6409d8ac91470b547c80dcef3b8dc9d5",
+            "src/verify.py": "66b4e8b5268d476f3b465622ac9dc8a5a33813613bffcc20af4a353f162c4309"
+          },
+          "builders": {
+            "package.py": "fa740b8a4ba939ca53865e76e8adf9955a648eb2780d9e2cf4b213c8ddeda05e",
+            "rust_cache.py": "0ee65548645a050859e4dd8e7f089a23be15acb3e07c2733b210b706a7e85ac3",
+            "handshake_cargo.py": "a77d5fc5b9e1cd7a714c8c56aef8d65fe1ef79daa6d59e7d98001e0935229698",
+            "units.py": "412af73476c9ccb7b9ab47caf15e4042a91be7082cf5fdd97e915d93c5ca8302"
+          }
+        }
+      }
+    },
+    {
+      "id": 13486572217,
+      "name": "acceptance-ubuntu-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+      "zip_sha256": "99b7d8559a29b5012cf155a9da4cb3d3ae7524ee3cf09f94581a4391ce4d5e3e",
+      "bytes": 28566,
+      "members": {
+        "EXT-001/ci/extension-build-isolation.json": "8d491656fd98bf6e5c911cb2c6bce620909d0bf954b7b6694865fbbc68f22462",
+        "EXT-001/ci/manifest.json": "d903b3e34c12802507d95d60b80bbf0f6188231342ae9d1300c89279cc297db1",
+        "EXT-002/ci/build.txt": "e61ab2cd7b257da5933cf8b64b5e0df11fbca21c947444fa04e3588cbb5839da",
+        "EXT-002/ci/manifest.json": "ac055155fa7ec1e37f7a657d106abf2e2c37d135ca8d196be326e16037e5fb1a",
+        "EXT-002/ci/published-sdk.json": "452898aa4b9cdf2abba893cc760b89b4fc1f72c2a1c08fd59953df1b61012c06",
+        "EXT-019/ci/desktop-callsite-pin.json": "d9d6caa43cb9dd36b65358fb0c06648b7c22784f98babfad63ba42bc00a9c7fe",
+        "EXT-019/ci/desktop-surface-diff.json": "21d8a19696cd02bb91ad8079dd09948eeacbae32f31211d3a32f766abbb88550",
+        "EXT-019/ci/manifest.json": "efa6d37b5c267d6189180e749fed9164d5ac9afb60f34a24f85cce7cf9e56b77"
+      },
+      "manifests": [
+        {
+          "name": "EXT-001/ci/manifest.json",
+          "status": "PASS",
+          "task": "EXT-001",
+          "unit": null,
+          "verified_files": {
+            "extension-build-isolation.json": "8d491656fd98bf6e5c911cb2c6bce620909d0bf954b7b6694865fbbc68f22462"
+          },
+          "compile_lines": []
+        },
+        {
+          "name": "EXT-002/ci/manifest.json",
+          "status": "PASS",
+          "task": "EXT-002",
+          "unit": null,
+          "verified_files": {
+            "build.txt": "e61ab2cd7b257da5933cf8b64b5e0df11fbca21c947444fa04e3588cbb5839da",
+            "published-sdk.json": "452898aa4b9cdf2abba893cc760b89b4fc1f72c2a1c08fd59953df1b61012c06"
+          },
+          "compile_lines": []
+        },
+        {
+          "name": "EXT-019/ci/manifest.json",
+          "status": "PASS",
+          "task": "EXT-019",
+          "unit": null,
+          "verified_files": {
+            "desktop-callsite-pin.json": "d9d6caa43cb9dd36b65358fb0c06648b7c22784f98babfad63ba42bc00a9c7fe",
+            "desktop-surface-diff.json": "21d8a19696cd02bb91ad8079dd09948eeacbae32f31211d3a32f766abbb88550"
+          },
+          "compile_lines": []
+        }
+      ],
+      "cache_inputs": null
+    },
+    {
+      "id": 13486533323,
+      "name": "package-telegram-ubuntu-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+      "zip_sha256": "ce5a5c428d5ee4aa931522f4e7c067a1498b40fcc9c98ca0fcc1021e69d68509",
+      "bytes": 504543,
+      "members": {
+        "Cargo.lock": "4b2b29014370b0a0a4f31596e413f991775eec3871f420559a5e2cbdddfc9f5b",
+        "package-manifest.json": "e9fe32d45dd6da669e5670ed35eb250f5182976ae332668c5b4296e27b9ecaf3",
+        "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "plugin.toml": "1f0c387a9ae89eacebf993717dd8f08c352cfebff0170a483c8f2fcc052867d6",
+        "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "yuki-telegram": "939cf6a19cba21cc6b5e0ad1c2307447404dfbf2db245f96184cb8acbc544a56"
+      },
+      "manifests": [
+        {
+          "name": "package-manifest.json",
+          "status": null,
+          "task": null,
+          "unit": "telegram",
+          "verified_files": {
+            "Cargo.lock": "4b2b29014370b0a0a4f31596e413f991775eec3871f420559a5e2cbdddfc9f5b",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "plugin.toml": "1f0c387a9ae89eacebf993717dd8f08c352cfebff0170a483c8f2fcc052867d6",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-telegram": "939cf6a19cba21cc6b5e0ad1c2307447404dfbf2db245f96184cb8acbc544a56"
+          },
+          "compile_lines": [
+            "Compiling yuki-telegram v0.1.0-alpha.1 (/home/runner/work/yuki-extensions/yuki-extensions/.ci-transfer/rust-src/telegram/828a513b8948451c/unit)",
+            "Compiling yuki-telegram v0.1.0-alpha.1 (/home/runner/work/yuki-extensions/yuki-extensions/.ci-transfer/rust-src/telegram/828a513b8948451c/unit)"
+          ]
+        }
+      ],
+      "cache_inputs": null
+    },
+    {
+      "id": 13486443473,
+      "name": "cache-inputs-yuki-setup-ubuntu-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+      "zip_sha256": "861b20ebdca926f151155c153ddca32d9ed4e100935eac7d3964ac2b98bc4ce8",
+      "bytes": 2003,
+      "members": {
+        "yuki-setup.json": "0453b62c01f87d63b12f2f961a143e27642cea505e8335fdfba8cdf436eb7b1a"
+      },
+      "manifests": [],
+      "cache_inputs": {
+        "enabled": true,
+        "key": "rust-v1-Linux-x86_64-yuki-setup-6f8fb2bd2427a088e43b15afce889e83f5a55e37c2f9a9b27eb4c5ee97fafa86",
+        "digest": "6f8fb2bd2427a088e43b15afce889e83f5a55e37c2f9a9b27eb4c5ee97fafa86",
+        "inputs": {
+          "policy": 1,
+          "unit": {
+            "unit_id": "yuki-setup",
+            "kind": "tool",
+            "path": "tools/yuki-setup",
+            "ecosystem": "rust",
+            "version": "0.1.0-alpha.1",
+            "tag_prefix": "setup/v",
+            "license": "AGPL-3.0-only",
+            "notices": [
+              "LICENSE",
+              "inputs/CORE-LICENSE",
+              "inputs/CORE-NOTICE"
+            ],
+            "source": {
+              "repository": "Institute-of-Agent-Life/yuki-extensions",
+              "producer": "CORE-039",
+              "candidate_lock": "inputs/source.lock.json"
+            },
+            "check_paths": [
+              "tests/cases/EXT-040.py"
+            ]
+          },
+          "platform": [
+            "Linux",
+            "x86_64",
+            "7.0.0-1017-azure"
+          ],
+          "image": {
+            "ImageOS": "ubuntu24",
+            "ImageVersion": "20261101.360.1"
+          },
+          "compiler": "rustc 1.96.0 (ac68faa20 2026-05-25)\nbinary: rustc\ncommit-hash: ac68faa20c58cbccd01ee7208bf3b6e93a7d7f96\ncommit-date: 2026-05-25\nhost: x86_64-unknown-linux-gnu\nrelease: 1.96.0\nLLVM version: 22.1.2\n",
+          "cargo": "cargo 1.96.0 (30a34c682 2026-05-25)\n",
+          "build_root": "/home/runner/work/yuki-extensions/yuki-extensions/.ci-transfer/rust-src",
+          "environment": {
+            "RUSTFLAGS": "",
+            "CARGO_ENCODED_RUSTFLAGS": "",
+            "RUSTDOCFLAGS": "",
+            "CARGO_BUILD_TARGET": "",
+            "RUSTC": "",
+            "RUSTC_WRAPPER": "",
+            "CC": "",
+            "CXX": "",
+            "AR": "",
+            "CFLAGS": "",
+            "CXXFLAGS": ""
+          },
+          "sources": {
+            "Cargo.lock": "9365e3881889c89db7ec71ab2218bb70e765635f159a535d2937284dc42da829",
+            "Cargo.toml": "a3823e56fc854670abdea9c109b08c6762dce4779963dd45abe33185cbb148fa",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "inputs/CORE-LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "inputs/CORE-NOTICE": "92eec243bb25b89d47a7fa29ce6c863a14487a9c9e1078d0538775e6ec8f5a34",
+            "inputs/native.lock.json": "9cdd69b2840f7f8c0fff2d5363659fa469f05c81b2601900161f6cae6b5ab074",
+            "inputs/oci-candidate.json": "12c5483f1f924f66d9b5852962805063d243392f8ade5af37c6e82a42896100d",
+            "inputs/oci-candidate.json.sig": "0def13d3d28378f1b6bbca9a72ed1749ae7487968992d9f5f361ab6f0c819d31",
+            "inputs/signer.pub": "dfc60f5213b47f244a9cdc673d65ddc2f98e940d9c67768a19400bed9ef77ecb",
+            "inputs/source.lock.json": "b954f220e563e53b5d6ec84e3bcbec39546eb4755e09b2af3dd7ce8dcc5f9eab",
+            "inputs/verify_dist.py": "b542c9bdd5535e944aeadd8442b3a4c766eab010a14ed3d9e665c5e1bffbf2db",
+            "inputs/verify_oci.py": "381baff5676e44845f55b3d5e076298d780a6117ed7dba999a78d6b227829b4f",
+            "inputs/web-fetch.lock.json": "9bc050b72f74d8e494faedee9ff92dca8ed3a6ff03bd36a2489c6555caeb3686",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "src/config.rs": "4b266b8224b48198310c51828d5f65aefed9a11ff0d4339a3f85ee77e5b67422",
+            "src/keygen.py": "61911de5f034a65b888810c88d5b647ee38358ad990fe36889a0cedb698d0d6e",
+            "src/main.rs": "8a1d972fd3390e66c882af996891256c800409e6733e208fe8352d8def7a3b8b",
+            "src/native.py": "78e6f2d5c5528a57a3796d4e45b8e2da6409d8ac91470b547c80dcef3b8dc9d5",
+            "src/verify.py": "66b4e8b5268d476f3b465622ac9dc8a5a33813613bffcc20af4a353f162c4309"
+          },
+          "builders": {
+            "package.py": "fa740b8a4ba939ca53865e76e8adf9955a648eb2780d9e2cf4b213c8ddeda05e",
+            "rust_cache.py": "0ee65548645a050859e4dd8e7f089a23be15acb3e07c2733b210b706a7e85ac3",
+            "handshake_cargo.py": "a77d5fc5b9e1cd7a714c8c56aef8d65fe1ef79daa6d59e7d98001e0935229698",
+            "units.py": "412af73476c9ccb7b9ab47caf15e4042a91be7082cf5fdd97e915d93c5ca8302"
+          }
+        }
+      }
+    },
+    {
+      "id": 13486413498,
+      "name": "package-yuki-setup-ubuntu-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+      "zip_sha256": "b3c58e0c18b23bffc7c28e7db500b0083186016efcb86c4f4a6b988b412b2697",
+      "bytes": 285491,
+      "members": {
+        "Cargo.lock": "9365e3881889c89db7ec71ab2218bb70e765635f159a535d2937284dc42da829",
+        "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "inputs/CORE-LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "inputs/CORE-NOTICE": "92eec243bb25b89d47a7fa29ce6c863a14487a9c9e1078d0538775e6ec8f5a34",
+        "package-manifest.json": "b6f9aec31119b0130ee40cd5e59432b9d5b1b81222f58bb0015ee8e6319a2863",
+        "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "yuki-setup": "952c860119f1ada18443b375d8f84a2eced162442f1491aba4f47d445a9d5067"
+      },
+      "manifests": [
+        {
+          "name": "package-manifest.json",
+          "status": null,
+          "task": null,
+          "unit": "yuki-setup",
+          "verified_files": {
+            "Cargo.lock": "9365e3881889c89db7ec71ab2218bb70e765635f159a535d2937284dc42da829",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "inputs/CORE-LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "inputs/CORE-NOTICE": "92eec243bb25b89d47a7fa29ce6c863a14487a9c9e1078d0538775e6ec8f5a34",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-setup": "952c860119f1ada18443b375d8f84a2eced162442f1491aba4f47d445a9d5067"
+          },
+          "compile_lines": [
+            "Compiling yuki-setup v0.1.0-alpha.1 (/home/runner/work/yuki-extensions/yuki-extensions/.ci-transfer/rust-src/yuki-setup/6f8fb2bd2427a088/unit)",
+            "Compiling yuki-setup v0.1.0-alpha.1 (/home/runner/work/yuki-extensions/yuki-extensions/.ci-transfer/rust-src/yuki-setup/6f8fb2bd2427a088/unit)"
+          ]
+        }
+      ],
+      "cache_inputs": null
+    },
+    {
+      "id": 13486388674,
+      "name": "package-local-agent-windows-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+      "zip_sha256": "64289db1d5c336015d9057044995c6741732e25eb34bafa6be4a8d113dbbff50",
+      "bytes": 1551540,
+      "members": {
+        "Cargo.lock": "bcbc25db19e2c8726488b7a5db9da69ce6cab44eed5e998d315dcba0ec2b554d",
+        "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "package-manifest.json": "b7eed851f8f7bdbf9df95cdcd3e03a2835dd13c0fa7b4712e7af683a391a47f1",
+        "plugin.toml": "6b4bc8bf5757778b1553173e7d69f7e6c32441994dfe173e66ffdca769621b1c",
+        "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "yuki-local-agent.exe": "bf0eb8aed5c9f44b173a93f8b34a5dd000ecb32ef0fb0bd96213e7b32cc0944f"
+      },
+      "manifests": [
+        {
+          "name": "package-manifest.json",
+          "status": null,
+          "task": null,
+          "unit": "local-agent",
+          "verified_files": {
+            "Cargo.lock": "bcbc25db19e2c8726488b7a5db9da69ce6cab44eed5e998d315dcba0ec2b554d",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "plugin.toml": "6b4bc8bf5757778b1553173e7d69f7e6c32441994dfe173e66ffdca769621b1c",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-local-agent.exe": "bf0eb8aed5c9f44b173a93f8b34a5dd000ecb32ef0fb0bd96213e7b32cc0944f"
+          },
+          "compile_lines": [
+            "Compiling proc-macro2 v1.0.107",
+            "Compiling unicode-ident v1.0.27",
+            "Compiling quote v1.0.47",
+            "Compiling shlex v2.0.1",
+            "Compiling itoa v1.0.18",
+            "Compiling find-msvc-tools v0.1.15",
+            "Compiling serde_core v1.0.228",
+            "Compiling cc v1.11.0",
+            "Compiling pkg-config v0.3.34",
+            "Compiling vcpkg v0.2.15",
+            "Compiling httparse v1.10.1",
+            "Compiling syn v2.0.119",
+            "Compiling foldhash v0.1.5",
+            "Compiling libsqlite3-sys v0.35.0",
+            "Compiling serde_json v1.0.145",
+            "Compiling bytes v1.12.1",
+            "Compiling serde v1.0.228",
+            "Compiling log v0.4.35",
+            "Compiling http v1.5.0",
+            "Compiling hashbrown v0.15.5",
+            "Compiling serde_derive v1.0.228",
+            "Compiling ryu v1.0.23",
+            "Compiling memchr v2.8.3",
+            "Compiling base64 v0.22.1",
+            "Compiling ureq-proto v0.5.3",
+            "Compiling hashlink v0.10.0",
+            "Compiling ascii v1.1.0",
+            "Compiling percent-encoding v2.3.2",
+            "Compiling chunked_transfer v1.5.0",
+            "Compiling smallvec v1.16.4",
+            "Compiling bitflags v2.13.2",
+            "Compiling fallible-iterator v0.3.0",
+            "Compiling utf-8 v0.7.6",
+            "Compiling fallible-streaming-iterator v0.1.9",
+            "Compiling httpdate v1.0.3",
+            "Compiling ureq v3.1.2",
+            "Compiling tiny_http v0.12.0",
+            "Compiling rusqlite v0.37.0",
+            "Compiling yuki-plugin-sdk v1.0.0-alpha.3",
+            "Compiling yuki-local-agent v0.1.0-alpha.1 (D:\\a\\yuki-extensions\\yuki-extensions\\.ci-transfer\\rust-src\\local-agent\\1e3571a224da97d6\\unit)",
+            "Compiling proc-macro2 v1.0.107",
+            "Compiling unicode-ident v1.0.27",
+            "Compiling quote v1.0.47",
+            "Compiling find-msvc-tools v0.1.15",
+            "Compiling serde_core v1.0.228",
+            "Compiling shlex v2.0.1",
+            "Compiling itoa v1.0.18",
+            "Compiling cc v1.11.0",
+            "Compiling httparse v1.10.1",
+            "Compiling vcpkg v0.2.15",
+            "Compiling pkg-config v0.3.34",
+            "Compiling syn v2.0.119",
+            "Compiling serde v1.0.228",
+            "Compiling foldhash v0.1.5",
+            "Compiling bytes v1.12.1",
+            "Compiling libsqlite3-sys v0.35.0",
+            "Compiling log v0.4.35",
+            "Compiling serde_json v1.0.145",
+            "Compiling http v1.5.0",
+            "Compiling serde_derive v1.0.228",
+            "Compiling hashbrown v0.15.5",
+            "Compiling base64 v0.22.1",
+            "Compiling ryu v1.0.23",
+            "Compiling memchr v2.8.3",
+            "Compiling ureq-proto v0.5.3",
+            "Compiling hashlink v0.10.0",
+            "Compiling smallvec v1.16.4",
+            "Compiling utf-8 v0.7.6",
+            "Compiling bitflags v2.13.2",
+            "Compiling fallible-streaming-iterator v0.1.9",
+            "Compiling fallible-iterator v0.3.0",
+            "Compiling percent-encoding v2.3.2",
+            "Compiling httpdate v1.0.3",
+            "Compiling ascii v1.1.0",
+            "Compiling chunked_transfer v1.5.0",
+            "Compiling tiny_http v0.12.0",
+            "Compiling ureq v3.1.2",
+            "Compiling yuki-plugin-sdk v1.0.0-alpha.3",
+            "Compiling rusqlite v0.37.0",
+            "Compiling yuki-local-agent v0.1.0-alpha.1 (D:\\a\\yuki-extensions\\yuki-extensions\\.ci-transfer\\rust-src\\local-agent\\1e3571a224da97d6\\unit)"
+          ]
+        }
+      ],
+      "cache_inputs": null
+    },
+    {
+      "id": 13486253852,
+      "name": "cache-inputs-telegram-ubuntu-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+      "zip_sha256": "652dc64709fd6e9cecd0c48d651f04a270ee0af1462c16304d0baf1795b1c48d",
+      "bytes": 1716,
+      "members": {
+        "telegram.json": "fa345d6d32cf713dd9206ceff148411e488ea4d212cacb904203adeae668eafe"
+      },
+      "manifests": [],
+      "cache_inputs": {
+        "enabled": true,
+        "key": "rust-v1-Linux-x86_64-telegram-828a513b8948451cf4132ea8876b596a90322e0f6b5a6df640c25c4571ff45ae",
+        "digest": "828a513b8948451cf4132ea8876b596a90322e0f6b5a6df640c25c4571ff45ae",
+        "inputs": {
+          "policy": 1,
+          "unit": {
+            "unit_id": "telegram",
+            "kind": "plugin",
+            "path": "plugins/telegram",
+            "ecosystem": "rust",
+            "version": "0.1.0-alpha.1",
+            "tag_prefix": "telegram/v",
+            "license": "AGPL-3.0-only",
+            "notices": [
+              "LICENSE"
+            ],
+            "source": {
+              "repository": "Institute-of-Agent-Life/yuki-extensions",
+              "baseline": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+              "upstream_path": "src/yuki/gateway/providers/telegram_ingress.py",
+              "sdk_contract": "compat/core-032/source.lock.json"
+            },
+            "check_paths": [
+              "tests/cases/EXT-003.py",
+              "compat/core-032/source.lock.json",
+              "compat/core-032/yuki-plugin-sdk-1.0.0-alpha.2.crate"
+            ],
+            "runtime_files": [
+              "plugin.toml"
+            ]
+          },
+          "platform": [
+            "Linux",
+            "x86_64",
+            "7.0.0-1017-azure"
+          ],
+          "image": {
+            "ImageOS": "ubuntu24",
+            "ImageVersion": "20261101.360.1"
+          },
+          "compiler": "rustc 1.96.0 (ac68faa20 2026-05-25)\nbinary: rustc\ncommit-hash: ac68faa20c58cbccd01ee7208bf3b6e93a7d7f96\ncommit-date: 2026-05-25\nhost: x86_64-unknown-linux-gnu\nrelease: 1.96.0\nLLVM version: 22.1.2\n",
+          "cargo": "cargo 1.96.0 (30a34c682 2026-05-25)\n",
+          "build_root": "/home/runner/work/yuki-extensions/yuki-extensions/.ci-transfer/rust-src",
+          "environment": {
+            "RUSTFLAGS": "",
+            "CARGO_ENCODED_RUSTFLAGS": "",
+            "RUSTDOCFLAGS": "",
+            "CARGO_BUILD_TARGET": "",
+            "RUSTC": "",
+            "RUSTC_WRAPPER": "",
+            "CC": "",
+            "CXX": "",
+            "AR": "",
+            "CFLAGS": "",
+            "CXXFLAGS": ""
+          },
+          "sources": {
+            "Cargo.lock": "4b2b29014370b0a0a4f31596e413f991775eec3871f420559a5e2cbdddfc9f5b",
+            "Cargo.toml": "c5676db5a51e515af0cc8c47a8774710583bb417a0e04355bb71f2a63724d619",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "README.md": "a4adaabc13069d21dd4d8bcc617778cd27524471313b4a68078c424772f58c23",
+            "plugin.toml": "1f0c387a9ae89eacebf993717dd8f08c352cfebff0170a483c8f2fcc052867d6",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "src/ingress.rs": "4b54cee0786dd5d6aec2737470ff4801b99c3d0f7596eabd00ce33c90733cd0f",
+            "src/main.rs": "b2d859f10c1ccf2c64e8ad59fbeb77e11942796b02bd89658b906e4142dd2500"
+          },
+          "builders": {
+            "package.py": "fa740b8a4ba939ca53865e76e8adf9955a648eb2780d9e2cf4b213c8ddeda05e",
+            "rust_cache.py": "0ee65548645a050859e4dd8e7f089a23be15acb3e07c2733b210b706a7e85ac3",
+            "handshake_cargo.py": "a77d5fc5b9e1cd7a714c8c56aef8d65fe1ef79daa6d59e7d98001e0935229698",
+            "units.py": "412af73476c9ccb7b9ab47caf15e4042a91be7082cf5fdd97e915d93c5ca8302"
+          },
+          "sdk": {
+            "contract_sha256": "ecdc614e0de2b9be9b628dcd1551afe514efc62a4799806e6d8739ff8359fd94",
+            "crate_sha256": "9408022bdf1322a8d6e07914685869771a5738280e36145e46da5c36facbfce0"
+          }
+        }
+      }
+    },
+    {
+      "id": 13486199291,
+      "name": "cache-inputs-local-agent-windows-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+      "zip_sha256": "8a4aed491693523ec8fb992b04eb31aad3c12aa2388c3acf70c3bf7491dc9cfe",
+      "bytes": 1837,
+      "members": {
+        "local-agent.json": "3202ebf1d0f09a4cc90918e0602c26fda266f053249f4e76196652125294b13c"
+      },
+      "manifests": [],
+      "cache_inputs": {
+        "enabled": true,
+        "key": "rust-v1-Windows-AMD64-local-agent-1e3571a224da97d6486fd15ec586cdd7ac14e3cc600d59b0004a8a8dfe122fa1",
+        "digest": "1e3571a224da97d6486fd15ec586cdd7ac14e3cc600d59b0004a8a8dfe122fa1",
+        "inputs": {
+          "policy": 1,
+          "unit": {
+            "unit_id": "local-agent",
+            "kind": "plugin",
+            "path": "plugins/local-agent",
+            "ecosystem": "rust",
+            "version": "0.1.0-alpha.1",
+            "tag_prefix": "local-agent/v",
+            "license": "AGPL-3.0-only",
+            "notices": [
+              "LICENSE"
+            ],
+            "runtime_files": [
+              "plugin.toml"
+            ],
+            "source": {
+              "repository": "Institute-of-Agent-Life/yuki-extensions",
+              "baseline": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+              "sdk_contract": "compat/core-033/source.lock.json"
+            },
+            "check_paths": [
+              "tests/cases/EXT-011.py",
+              "compat/core-033/source.lock.json",
+              "compat/core-033/yuki-plugin-sdk-1.0.0-alpha.3.crate"
+            ]
+          },
+          "platform": [
+            "Windows",
+            "AMD64",
+            "2025Server"
+          ],
+          "image": {
+            "ImageOS": "win25-vs2026",
+            "ImageVersion": "20261103.298.1"
+          },
+          "compiler": "rustc 1.96.0 (ac68faa20 2026-05-25)\nbinary: rustc\ncommit-hash: ac68faa20c58cbccd01ee7208bf3b6e93a7d7f96\ncommit-date: 2026-05-25\nhost: x86_64-pc-windows-msvc\nrelease: 1.96.0\nLLVM version: 22.1.2\n",
+          "cargo": "cargo 1.96.0 (30a34c682 2026-05-25)\n",
+          "build_root": "D:\\a\\yuki-extensions\\yuki-extensions\\.ci-transfer\\rust-src",
+          "environment": {
+            "RUSTFLAGS": "",
+            "CARGO_ENCODED_RUSTFLAGS": "",
+            "RUSTDOCFLAGS": "",
+            "CARGO_BUILD_TARGET": "",
+            "RUSTC": "",
+            "RUSTC_WRAPPER": "",
+            "CC": "",
+            "CXX": "",
+            "AR": "",
+            "CFLAGS": "",
+            "CXXFLAGS": ""
+          },
+          "sources": {
+            "Cargo.lock": "bcbc25db19e2c8726488b7a5db9da69ce6cab44eed5e998d315dcba0ec2b554d",
+            "Cargo.toml": "afee67840c891e835c2dd951bf74be2100e662d43424f93f425010555d67c41b",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "migrations/001_catalog.sql": "e6308ffddc9428ba5334d03813d7ba6e204a3aeb7cda6183a6ee1b16f3140932",
+            "plugin.toml": "6b4bc8bf5757778b1553173e7d69f7e6c32441994dfe173e66ffdca769621b1c",
+            "README.md": "41f41462a31be3cc1ed506287cc41663c599f7006401804233781086182d5ea6",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "src/catalog.rs": "bcd8009a2a5c39b423ebc41d06df600bc4f2ab420111f257a9fd8781e8df8ab3",
+            "src/main.rs": "61ae60bb9fc974cedd1cc974d4fc45c6a13b85054bb520010d0fa83feaa9c43f",
+            "src/server.rs": "82bb340c0322b82bd156fe4b5bb600101296c24e79530a7925f4aac58c708276",
+            "tests/catalog.rs": "77bfe0e482fab06a314189ebb37e9db43e213d77f19b2ffd50a95fdb2410d712"
+          },
+          "builders": {
+            "package.py": "fa740b8a4ba939ca53865e76e8adf9955a648eb2780d9e2cf4b213c8ddeda05e",
+            "rust_cache.py": "0ee65548645a050859e4dd8e7f089a23be15acb3e07c2733b210b706a7e85ac3",
+            "handshake_cargo.py": "a77d5fc5b9e1cd7a714c8c56aef8d65fe1ef79daa6d59e7d98001e0935229698",
+            "units.py": "412af73476c9ccb7b9ab47caf15e4042a91be7082cf5fdd97e915d93c5ca8302"
+          },
+          "sdk": {
+            "contract_sha256": "5a25676ee401c2535d4efd7ec7cd3b9475e41a3d01de60c6b39c03fe760880b4",
+            "crate_sha256": "e5b9fde5298eb71ff252fc8acd430b44d8d965761d5d3c948da47fced49c7dbd"
+          }
+        }
+      }
+    },
+    {
+      "id": 13486189246,
+      "name": "cache-inputs-feishu-windows-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+      "zip_sha256": "0adf6612039906e93f0d53bfb245020d4eda35f2f029c5607b2f0db0f0e03d2c",
+      "bytes": 1851,
+      "members": {
+        "feishu.json": "d172e812348e06a3c9f14eb5f544bf7b4dfca62e804b90b5b85aef5341a38e36"
+      },
+      "manifests": [],
+      "cache_inputs": {
+        "enabled": true,
+        "key": "rust-v1-Windows-AMD64-feishu-e15b373b9daff4518f36d6463799a2e5f02471aa9b904bfcef81e219bb9f0745",
+        "digest": "e15b373b9daff4518f36d6463799a2e5f02471aa9b904bfcef81e219bb9f0745",
+        "inputs": {
+          "policy": 1,
+          "unit": {
+            "unit_id": "feishu",
+            "kind": "plugin",
+            "path": "plugins/feishu",
+            "ecosystem": "rust",
+            "version": "0.1.0-alpha.1",
+            "tag_prefix": "feishu/v",
+            "license": "AGPL-3.0-only",
+            "notices": [
+              "LICENSE",
+              "NOTICE"
+            ],
+            "runtime_files": [
+              "plugin.toml"
+            ],
+            "source": {
+              "repository": "Institute-of-Agent-Life/yuki-extensions",
+              "baseline": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+              "upstream_path": "src/yuki/gateway/providers/feishu_ws.py",
+              "sdk_contract": "compat/core-032/source.lock.json"
+            },
+            "check_paths": [
+              "tests/cases/EXT-005.py",
+              "compat/core-032/source.lock.json",
+              "compat/core-032/yuki-plugin-sdk-1.0.0-alpha.2.crate"
+            ]
+          },
+          "platform": [
+            "Windows",
+            "AMD64",
+            "2025Server"
+          ],
+          "image": {
+            "ImageOS": "win25-vs2026",
+            "ImageVersion": "20261030.294.1"
+          },
+          "compiler": "rustc 1.96.0 (ac68faa20 2026-05-25)\nbinary: rustc\ncommit-hash: ac68faa20c58cbccd01ee7208bf3b6e93a7d7f96\ncommit-date: 2026-05-25\nhost: x86_64-pc-windows-msvc\nrelease: 1.96.0\nLLVM version: 22.1.2\n",
+          "cargo": "cargo 1.96.0 (30a34c682 2026-05-25)\n",
+          "build_root": "D:\\a\\yuki-extensions\\yuki-extensions\\.ci-transfer\\rust-src",
+          "environment": {
+            "RUSTFLAGS": "",
+            "CARGO_ENCODED_RUSTFLAGS": "",
+            "RUSTDOCFLAGS": "",
+            "CARGO_BUILD_TARGET": "",
+            "RUSTC": "",
+            "RUSTC_WRAPPER": "",
+            "CC": "",
+            "CXX": "",
+            "AR": "",
+            "CFLAGS": "",
+            "CXXFLAGS": ""
+          },
+          "sources": {
+            "Cargo.lock": "4b35a6537e4c867bfd1f1ac72718a470ded7688c410cab84af4544371f7fd846",
+            "Cargo.toml": "d21b3d6bd7b2ed161ed64e0f760d2f845318ab314c86edd444a21f763edd0ea7",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "NOTICE": "51201cfac32f0bae2e3f4157609d1f4c268f76fef608d30e6809a7581b6746cb",
+            "plugin.toml": "3d099ddd3fe2e1aef0663aa4ddc79913ef05890731ea697498b4349b28653e33",
+            "README.md": "2a3f91db6fc9624793803fc3b21a114506aad783018cead091b2258f275bf1bc",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "src/host.rs": "3b341f23cdf161f95d2315a8c60cb59a71bd6ef1e927351d9511333d4568aa57",
+            "src/ingress.rs": "845ac72a943d64ba09fd8dbc726b365cababcb44792cc84530b6de4b6410f298",
+            "src/main.rs": "672b9bf90aa1a96a3c123b0d48988daea01e9e6771ecc362a0df40b20d3b1ffc",
+            "src/ws.rs": "d2fe7637b25fc8e8ca47cb7a7e3671b2a8d34c1c414babc940e6369945d8911e"
+          },
+          "builders": {
+            "package.py": "fa740b8a4ba939ca53865e76e8adf9955a648eb2780d9e2cf4b213c8ddeda05e",
+            "rust_cache.py": "0ee65548645a050859e4dd8e7f089a23be15acb3e07c2733b210b706a7e85ac3",
+            "handshake_cargo.py": "a77d5fc5b9e1cd7a714c8c56aef8d65fe1ef79daa6d59e7d98001e0935229698",
+            "units.py": "412af73476c9ccb7b9ab47caf15e4042a91be7082cf5fdd97e915d93c5ca8302"
+          },
+          "sdk": {
+            "contract_sha256": "ecdc614e0de2b9be9b628dcd1551afe514efc62a4799806e6d8739ff8359fd94",
+            "crate_sha256": "9408022bdf1322a8d6e07914685869771a5738280e36145e46da5c36facbfce0"
+          }
+        }
+      }
+    },
+    {
+      "id": 13486174190,
+      "name": "package-web-fetch-windows-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+      "zip_sha256": "27bd20907db334ec293a6623f98b50336ec87a8836685163f1ecb43635ea2c2f",
+      "bytes": 575175,
+      "members": {
+        "Cargo.lock": "464fc9374e68c11bc37652c611b739af5759dcbf6231c8ea9cc48d37bbffb3ff",
+        "package-manifest.json": "ce2698880d7b2f55aa1f8569834280521e06bbc16a57def9558bdb8f773f7b9f",
+        "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "plugin.toml": "c67dd07b6613398e1bde628918e24d03c48494afad34bd481d17e94ece557cf6",
+        "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "yuki-web-fetch.exe": "6db3a3661052963dcd98e2674046f0fb79d18b9cbf903000129aa1c41ceb1a1f"
+      },
+      "manifests": [
+        {
+          "name": "package-manifest.json",
+          "status": null,
+          "task": null,
+          "unit": "web-fetch",
+          "verified_files": {
+            "Cargo.lock": "464fc9374e68c11bc37652c611b739af5759dcbf6231c8ea9cc48d37bbffb3ff",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "plugin.toml": "c67dd07b6613398e1bde628918e24d03c48494afad34bd481d17e94ece557cf6",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-web-fetch.exe": "6db3a3661052963dcd98e2674046f0fb79d18b9cbf903000129aa1c41ceb1a1f"
+          },
+          "compile_lines": [
+            "Compiling proc-macro2 v1.0.107",
+            "Compiling unicode-ident v1.0.27",
+            "Compiling quote v1.0.47",
+            "Compiling stable_deref_trait v1.2.1",
+            "Compiling writeable v0.6.4",
+            "Compiling version_check v0.9.5",
+            "Compiling litemap v0.8.3",
+            "Compiling utf_types v1.0.0",
+            "Compiling generic-array v0.14.7",
+            "Compiling utf8_iter v1.1.0",
+            "Compiling icu_properties_data v2.4.0",
+            "Compiling serde_core v1.0.228",
+            "Compiling icu_normalizer_data v2.4.0",
+            "Compiling typenum v1.20.1",
+            "Compiling windows_x86_64_msvc v0.52.6",
+            "Compiling syn v3.0.9",
+            "Compiling syn v2.0.119",
+            "Compiling smallvec v1.16.4",
+            "Compiling serde v1.0.228",
+            "Compiling serde_json v1.0.145",
+            "Compiling windows-targets v0.52.6",
+            "Compiling block-buffer v0.10.4",
+            "Compiling crypto-common v0.1.7",
+            "Compiling itoa v1.0.18",
+            "Compiling memchr v2.8.3",
+            "Compiling ryu v1.0.23",
+            "Compiling percent-encoding v2.3.2",
+            "Compiling synstructure v0.14.0",
+            "Compiling serde_derive v1.0.228",
+            "Compiling form_urlencoded v1.2.2",
+            "Compiling digest v0.10.7",
+            "Compiling windows-sys v0.59.0",
+            "Compiling zerofrom-derive v0.1.8",
+            "Compiling yoke-derive v0.8.4",
+            "Compiling zerofrom v0.1.8",
+            "Compiling zerovec-derive v0.11.7",
+            "Compiling displaydoc v0.2.7",
+            "Compiling yoke v0.8.4",
+            "Compiling cfg-if v1.0.5",
+            "Compiling zerotrie v0.2.5",
+            "Compiling cpufeatures v0.2.17",
+            "Compiling sha2 v0.10.9",
+            "Compiling if-addrs v0.14.0",
+            "Compiling zerovec v0.11.9",
+            "Compiling html5gum v0.9.0",
+            "Compiling tinystr v0.8.5",
+            "Compiling icu_locale_core v2.4.0",
+            "Compiling potential_utf v0.1.6",
+            "Compiling icu_collections v2.4.0",
+            "Compiling yuki-plugin-sdk v1.0.0-alpha.2",
+            "Compiling icu_provider v2.4.0",
+            "Compiling icu_properties v2.4.0",
+            "Compiling icu_normalizer v2.4.0",
+            "Compiling idna_adapter v1.2.2",
+            "Compiling idna v1.1.0",
+            "Compiling url v2.5.7",
+            "Compiling yuki-web-fetch v0.1.0-alpha.1 (D:\\a\\yuki-extensions\\yuki-extensions\\.ci-transfer\\rust-src\\web-fetch\\a7cd7b936176302d\\unit)",
+            "Compiling proc-macro2 v1.0.107",
+            "Compiling quote v1.0.47",
+            "Compiling unicode-ident v1.0.27",
+            "Compiling stable_deref_trait v1.2.1",
+            "Compiling version_check v0.9.5",
+            "Compiling litemap v0.8.3",
+            "Compiling utf_types v1.0.0",
+            "Compiling writeable v0.6.4",
+            "Compiling generic-array v0.14.7",
+            "Compiling utf8_iter v1.1.0",
+            "Compiling icu_properties_data v2.4.0",
+            "Compiling serde_core v1.0.228",
+            "Compiling icu_normalizer_data v2.4.0",
+            "Compiling windows_x86_64_msvc v0.52.6",
+            "Compiling typenum v1.20.1",
+            "Compiling syn v3.0.9",
+            "Compiling syn v2.0.119",
+            "Compiling smallvec v1.16.4",
+            "Compiling serde v1.0.228",
+            "Compiling serde_json v1.0.145",
+            "Compiling synstructure v0.14.0",
+            "Compiling serde_derive v1.0.228",
+            "Compiling windows-targets v0.52.6",
+            "Compiling crypto-common v0.1.7",
+            "Compiling block-buffer v0.10.4",
+            "Compiling itoa v1.0.18",
+            "Compiling memchr v2.8.3",
+            "Compiling ryu v1.0.23",
+            "Compiling zerofrom-derive v0.1.8",
+            "Compiling yoke-derive v0.8.4",
+            "Compiling zerofrom v0.1.8",
+            "Compiling zerovec-derive v0.11.7",
+            "Compiling yoke v0.8.4",
+            "Compiling displaydoc v0.2.7",
+            "Compiling percent-encoding v2.3.2",
+            "Compiling form_urlencoded v1.2.2",
+            "Compiling zerotrie v0.2.5",
+            "Compiling zerovec v0.11.9",
+            "Compiling digest v0.10.7",
+            "Compiling windows-sys v0.59.0",
+            "Compiling tinystr v0.8.5",
+            "Compiling icu_locale_core v2.4.0",
+            "Compiling potential_utf v0.1.6",
+            "Compiling icu_collections v2.4.0",
+            "Compiling cfg-if v1.0.5",
+            "Compiling icu_provider v2.4.0",
+            "Compiling icu_properties v2.4.0",
+            "Compiling icu_normalizer v2.4.0",
+            "Compiling cpufeatures v0.2.17",
+            "Compiling sha2 v0.10.9",
+            "Compiling idna_adapter v1.2.2",
+            "Compiling idna v1.1.0",
+            "Compiling if-addrs v0.14.0",
+            "Compiling url v2.5.7",
+            "Compiling yuki-plugin-sdk v1.0.0-alpha.2",
+            "Compiling html5gum v0.9.0",
+            "Compiling yuki-web-fetch v0.1.0-alpha.1 (D:\\a\\yuki-extensions\\yuki-extensions\\.ci-transfer\\rust-src\\web-fetch\\a7cd7b936176302d\\unit)"
+          ]
+        }
+      ],
+      "cache_inputs": null
+    },
+    {
+      "id": 13486152864,
+      "name": "package-feishu-ubuntu-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+      "zip_sha256": "9080285909329286f4e65aa471df8c5ad00506e14c027844a1ed1bec6681b6d7",
+      "bytes": 822185,
+      "members": {
+        "Cargo.lock": "4b35a6537e4c867bfd1f1ac72718a470ded7688c410cab84af4544371f7fd846",
+        "NOTICE": "51201cfac32f0bae2e3f4157609d1f4c268f76fef608d30e6809a7581b6746cb",
+        "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "package-manifest.json": "cbf2e654c7db693895f2bf0ddc4500c2c1dd2dc443de52418d2f30f374e87daa",
+        "plugin.toml": "3d099ddd3fe2e1aef0663aa4ddc79913ef05890731ea697498b4349b28653e33",
+        "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "yuki-feishu": "924cee915077249e874f6a2440ed2c81987cdb953293fc2e0c77b88bf1da0e65"
+      },
+      "manifests": [
+        {
+          "name": "package-manifest.json",
+          "status": null,
+          "task": null,
+          "unit": "feishu",
+          "verified_files": {
+            "Cargo.lock": "4b35a6537e4c867bfd1f1ac72718a470ded7688c410cab84af4544371f7fd846",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "NOTICE": "51201cfac32f0bae2e3f4157609d1f4c268f76fef608d30e6809a7581b6746cb",
+            "plugin.toml": "3d099ddd3fe2e1aef0663aa4ddc79913ef05890731ea697498b4349b28653e33",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-feishu": "924cee915077249e874f6a2440ed2c81987cdb953293fc2e0c77b88bf1da0e65"
+          },
+          "compile_lines": [
+            "Compiling yuki-feishu v0.1.0-alpha.1 (/home/runner/work/yuki-extensions/yuki-extensions/.ci-transfer/rust-src/feishu/9cce6f95a216aae4/unit)",
+            "Compiling yuki-feishu v0.1.0-alpha.1 (/home/runner/work/yuki-extensions/yuki-extensions/.ci-transfer/rust-src/feishu/9cce6f95a216aae4/unit)"
+          ]
+        }
+      ],
+      "cache_inputs": null
+    },
+    {
+      "id": 13486144277,
+      "name": "package-local-agent-ubuntu-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+      "zip_sha256": "c7ddb59fe330dffa7fc9adb6b841ebee03b7a654b07cafd16231cbe9d1fa1a02",
+      "bytes": 1883711,
+      "members": {
+        "Cargo.lock": "bcbc25db19e2c8726488b7a5db9da69ce6cab44eed5e998d315dcba0ec2b554d",
+        "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "package-manifest.json": "9beaa363e1b75420f64268ce6580e10ceae2a0d054d70b0daf3bbf12cd2f12e9",
+        "plugin.toml": "6b4bc8bf5757778b1553173e7d69f7e6c32441994dfe173e66ffdca769621b1c",
+        "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "yuki-local-agent": "0a4f1d26ae1d82f9d0a3a9aa4a0233745cb5e0bc8f2d83935ac22fa7fc9839b5"
+      },
+      "manifests": [
+        {
+          "name": "package-manifest.json",
+          "status": null,
+          "task": null,
+          "unit": "local-agent",
+          "verified_files": {
+            "Cargo.lock": "bcbc25db19e2c8726488b7a5db9da69ce6cab44eed5e998d315dcba0ec2b554d",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "plugin.toml": "6b4bc8bf5757778b1553173e7d69f7e6c32441994dfe173e66ffdca769621b1c",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-local-agent": "0a4f1d26ae1d82f9d0a3a9aa4a0233745cb5e0bc8f2d83935ac22fa7fc9839b5"
+          },
+          "compile_lines": [
+            "Compiling yuki-local-agent v0.1.0-alpha.1 (/home/runner/work/yuki-extensions/yuki-extensions/.ci-transfer/rust-src/local-agent/ce8d57f41f19f81f/unit)",
+            "Compiling yuki-local-agent v0.1.0-alpha.1 (/home/runner/work/yuki-extensions/yuki-extensions/.ci-transfer/rust-src/local-agent/ce8d57f41f19f81f/unit)"
+          ]
+        }
+      ],
+      "cache_inputs": null
+    },
+    {
+      "id": 13486078043,
+      "name": "package-env-ubuntu-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+      "zip_sha256": "c167b605ac6c35ab8773794075dd6fc316b4281881110f92a292cd509f0be870",
+      "bytes": 424290,
+      "members": {
+        "Cargo.lock": "f8ad380038ce0ef39f902b3d9b982ee5601e1e7d11574ab49fe79990559f0816",
+        "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "package-manifest.json": "d81f8362d748dd613aa5570388c6e47670a5147b81e1e89d83682c76f9ea4ed9",
+        "plugin.toml": "969067f56ef5b152aeb56ba8145097175f29107576f19f607be531869cb7ca08",
+        "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "yuki-env": "4b19f818cc39d809a2c2946d53eb4ca53a18ea70893ea4d7686b7caf18b8b346"
+      },
+      "manifests": [
+        {
+          "name": "package-manifest.json",
+          "status": null,
+          "task": null,
+          "unit": "env",
+          "verified_files": {
+            "Cargo.lock": "f8ad380038ce0ef39f902b3d9b982ee5601e1e7d11574ab49fe79990559f0816",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "plugin.toml": "969067f56ef5b152aeb56ba8145097175f29107576f19f607be531869cb7ca08",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-env": "4b19f818cc39d809a2c2946d53eb4ca53a18ea70893ea4d7686b7caf18b8b346"
+          },
+          "compile_lines": [
+            "Compiling yuki-env v0.1.0-alpha.1 (/home/runner/work/yuki-extensions/yuki-extensions/.ci-transfer/rust-src/env/0f7e8ffe6c5bf065/unit)",
+            "Compiling yuki-env v0.1.0-alpha.1 (/home/runner/work/yuki-extensions/yuki-extensions/.ci-transfer/rust-src/env/0f7e8ffe6c5bf065/unit)"
+          ]
+        }
+      ],
+      "cache_inputs": null
+    },
+    {
+      "id": 13486064448,
+      "name": "cache-inputs-web-fetch-windows-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+      "zip_sha256": "ac52113170c6766ecd857efd8685a3c7cb81da09f869ff1702cb5a8f2fed24cc",
+      "bytes": 1810,
+      "members": {
+        "web-fetch.json": "514091f1c3ce1df8ec801f4a01ad3ebe63d86b8f9bb7d172a8c8558274cef2b5"
+      },
+      "manifests": [],
+      "cache_inputs": {
+        "enabled": true,
+        "key": "rust-v1-Windows-AMD64-web-fetch-a7cd7b936176302d651bc26e1017374a4a1416513b7c24deabccd356c0e570b3",
+        "digest": "a7cd7b936176302d651bc26e1017374a4a1416513b7c24deabccd356c0e570b3",
+        "inputs": {
+          "policy": 1,
+          "unit": {
+            "unit_id": "web-fetch",
+            "kind": "plugin",
+            "path": "plugins/web-fetch",
+            "ecosystem": "rust",
+            "version": "0.1.0-alpha.1",
+            "tag_prefix": "web-fetch/v",
+            "license": "AGPL-3.0-only",
+            "notices": [
+              "LICENSE"
+            ],
+            "runtime_files": [
+              "plugin.toml"
+            ],
+            "source": {
+              "repository": "Institute-of-Agent-Life/yuki-extensions",
+              "baseline": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+              "upstream_path": "src/yuki/web/page_extractor.py",
+              "sdk_contract": "compat/core-032/source.lock.json"
+            },
+            "check_paths": [
+              "tests/cases/EXT-028.py",
+              "compat/core-032/source.lock.json",
+              "compat/core-032/yuki-plugin-sdk-1.0.0-alpha.2.crate"
+            ]
+          },
+          "platform": [
+            "Windows",
+            "AMD64",
+            "2025Server"
+          ],
+          "image": {
+            "ImageOS": "win25-vs2026",
+            "ImageVersion": "20261103.298.1"
+          },
+          "compiler": "rustc 1.96.0 (ac68faa20 2026-05-25)\nbinary: rustc\ncommit-hash: ac68faa20c58cbccd01ee7208bf3b6e93a7d7f96\ncommit-date: 2026-05-25\nhost: x86_64-pc-windows-msvc\nrelease: 1.96.0\nLLVM version: 22.1.2\n",
+          "cargo": "cargo 1.96.0 (30a34c682 2026-05-25)\n",
+          "build_root": "D:\\a\\yuki-extensions\\yuki-extensions\\.ci-transfer\\rust-src",
+          "environment": {
+            "RUSTFLAGS": "",
+            "CARGO_ENCODED_RUSTFLAGS": "",
+            "RUSTDOCFLAGS": "",
+            "CARGO_BUILD_TARGET": "",
+            "RUSTC": "",
+            "RUSTC_WRAPPER": "",
+            "CC": "",
+            "CXX": "",
+            "AR": "",
+            "CFLAGS": "",
+            "CXXFLAGS": ""
+          },
+          "sources": {
+            "Cargo.lock": "464fc9374e68c11bc37652c611b739af5759dcbf6231c8ea9cc48d37bbffb3ff",
+            "Cargo.toml": "343de55c54df420bc75e1fc1be49d97a2e51ac4148d8e4946f4e9d853dbb8b96",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "owner-disposition.json": "f70d2e289f35bb4ecf616d128e9103cdf056c749749f6801b2b07c4765768500",
+            "plugin.toml": "c67dd07b6613398e1bde628918e24d03c48494afad34bd481d17e94ece557cf6",
+            "README.md": "c4a4a62b34956a02c6254feb5bb58c1483350d896403b8c33a2241e367c081da",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "src/fetch.rs": "474f46b7fb497f15dc79bf5bdaf10770f5b1117654a1fe9f0ac3f3f5ca0e567f",
+            "src/main.rs": "2b430c4d4143e28313b1f118295e82521465de1bbc415ec95c98991076214180",
+            "src/policy.rs": "5e3c4b7a84850fa7e14bfa6adf4660302ffc5301955deb5a8e44942c06de708a"
+          },
+          "builders": {
+            "package.py": "fa740b8a4ba939ca53865e76e8adf9955a648eb2780d9e2cf4b213c8ddeda05e",
+            "rust_cache.py": "0ee65548645a050859e4dd8e7f089a23be15acb3e07c2733b210b706a7e85ac3",
+            "handshake_cargo.py": "a77d5fc5b9e1cd7a714c8c56aef8d65fe1ef79daa6d59e7d98001e0935229698",
+            "units.py": "412af73476c9ccb7b9ab47caf15e4042a91be7082cf5fdd97e915d93c5ca8302"
+          },
+          "sdk": {
+            "contract_sha256": "ecdc614e0de2b9be9b628dcd1551afe514efc62a4799806e6d8739ff8359fd94",
+            "crate_sha256": "9408022bdf1322a8d6e07914685869771a5738280e36145e46da5c36facbfce0"
+          }
+        }
+      }
+    },
+    {
+      "id": 13486064382,
+      "name": "cache-inputs-local-agent-ubuntu-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+      "zip_sha256": "02533ae0f780bfd9a420e16fea17bd98310a84949456112af53b55ee185d3f9d",
+      "bytes": 1834,
+      "members": {
+        "local-agent.json": "a535e335442ada854736c5f998325eb6ce6083e247b38989c6fa3812f0d21976"
+      },
+      "manifests": [],
+      "cache_inputs": {
+        "enabled": true,
+        "key": "rust-v1-Linux-x86_64-local-agent-ce8d57f41f19f81ff397feca2fbd459250cdce74abdfe7fdd368e6040b7d0220",
+        "digest": "ce8d57f41f19f81ff397feca2fbd459250cdce74abdfe7fdd368e6040b7d0220",
+        "inputs": {
+          "policy": 1,
+          "unit": {
+            "unit_id": "local-agent",
+            "kind": "plugin",
+            "path": "plugins/local-agent",
+            "ecosystem": "rust",
+            "version": "0.1.0-alpha.1",
+            "tag_prefix": "local-agent/v",
+            "license": "AGPL-3.0-only",
+            "notices": [
+              "LICENSE"
+            ],
+            "runtime_files": [
+              "plugin.toml"
+            ],
+            "source": {
+              "repository": "Institute-of-Agent-Life/yuki-extensions",
+              "baseline": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+              "sdk_contract": "compat/core-033/source.lock.json"
+            },
+            "check_paths": [
+              "tests/cases/EXT-011.py",
+              "compat/core-033/source.lock.json",
+              "compat/core-033/yuki-plugin-sdk-1.0.0-alpha.3.crate"
+            ]
+          },
+          "platform": [
+            "Linux",
+            "x86_64",
+            "7.0.0-1017-azure"
+          ],
+          "image": {
+            "ImageOS": "ubuntu24",
+            "ImageVersion": "20261101.360.1"
+          },
+          "compiler": "rustc 1.96.0 (ac68faa20 2026-05-25)\nbinary: rustc\ncommit-hash: ac68faa20c58cbccd01ee7208bf3b6e93a7d7f96\ncommit-date: 2026-05-25\nhost: x86_64-unknown-linux-gnu\nrelease: 1.96.0\nLLVM version: 22.1.2\n",
+          "cargo": "cargo 1.96.0 (30a34c682 2026-05-25)\n",
+          "build_root": "/home/runner/work/yuki-extensions/yuki-extensions/.ci-transfer/rust-src",
+          "environment": {
+            "RUSTFLAGS": "",
+            "CARGO_ENCODED_RUSTFLAGS": "",
+            "RUSTDOCFLAGS": "",
+            "CARGO_BUILD_TARGET": "",
+            "RUSTC": "",
+            "RUSTC_WRAPPER": "",
+            "CC": "",
+            "CXX": "",
+            "AR": "",
+            "CFLAGS": "",
+            "CXXFLAGS": ""
+          },
+          "sources": {
+            "Cargo.lock": "bcbc25db19e2c8726488b7a5db9da69ce6cab44eed5e998d315dcba0ec2b554d",
+            "Cargo.toml": "afee67840c891e835c2dd951bf74be2100e662d43424f93f425010555d67c41b",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "README.md": "41f41462a31be3cc1ed506287cc41663c599f7006401804233781086182d5ea6",
+            "migrations/001_catalog.sql": "e6308ffddc9428ba5334d03813d7ba6e204a3aeb7cda6183a6ee1b16f3140932",
+            "plugin.toml": "6b4bc8bf5757778b1553173e7d69f7e6c32441994dfe173e66ffdca769621b1c",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "src/catalog.rs": "bcd8009a2a5c39b423ebc41d06df600bc4f2ab420111f257a9fd8781e8df8ab3",
+            "src/main.rs": "61ae60bb9fc974cedd1cc974d4fc45c6a13b85054bb520010d0fa83feaa9c43f",
+            "src/server.rs": "82bb340c0322b82bd156fe4b5bb600101296c24e79530a7925f4aac58c708276",
+            "tests/catalog.rs": "77bfe0e482fab06a314189ebb37e9db43e213d77f19b2ffd50a95fdb2410d712"
+          },
+          "builders": {
+            "package.py": "fa740b8a4ba939ca53865e76e8adf9955a648eb2780d9e2cf4b213c8ddeda05e",
+            "rust_cache.py": "0ee65548645a050859e4dd8e7f089a23be15acb3e07c2733b210b706a7e85ac3",
+            "handshake_cargo.py": "a77d5fc5b9e1cd7a714c8c56aef8d65fe1ef79daa6d59e7d98001e0935229698",
+            "units.py": "412af73476c9ccb7b9ab47caf15e4042a91be7082cf5fdd97e915d93c5ca8302"
+          },
+          "sdk": {
+            "contract_sha256": "5a25676ee401c2535d4efd7ec7cd3b9475e41a3d01de60c6b39c03fe760880b4",
+            "crate_sha256": "e5b9fde5298eb71ff252fc8acd430b44d8d965761d5d3c948da47fced49c7dbd"
+          }
+        }
+      }
+    },
+    {
+      "id": 13485953331,
+      "name": "cache-inputs-env-ubuntu-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+      "zip_sha256": "bf0f105a685a0c8e48357e0bb4d61d3e87e764bbdfe0944dbb37bcb5579ab2c5",
+      "bytes": 1758,
+      "members": {
+        "env.json": "1fca2271c7f7bdf8503e158acaaa2be22acc6d7295338e2ef2ec7f282031cb21"
+      },
+      "manifests": [],
+      "cache_inputs": {
+        "enabled": true,
+        "key": "rust-v1-Linux-x86_64-env-0f7e8ffe6c5bf0651d01baaa1d9a6dbfbf3c3a6f6447385eb169375e4a3e1977",
+        "digest": "0f7e8ffe6c5bf0651d01baaa1d9a6dbfbf3c3a6f6447385eb169375e4a3e1977",
+        "inputs": {
+          "policy": 1,
+          "unit": {
+            "unit_id": "env",
+            "kind": "plugin",
+            "path": "plugins/env",
+            "ecosystem": "rust",
+            "version": "0.1.0-alpha.1",
+            "tag_prefix": "env/v",
+            "license": "AGPL-3.0-only",
+            "notices": [
+              "LICENSE"
+            ],
+            "runtime_files": [
+              "plugin.toml"
+            ],
+            "source": {
+              "repository": "Institute-of-Agent-Life/yuki-extensions",
+              "baseline": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+              "upstream_path": "src/yuki/sandbox/client.py",
+              "sdk_contract": "compat/core-032/source.lock.json"
+            },
+            "check_paths": [
+              "tests/cases/EXT-020.py",
+              "compat/core-032/source.lock.json",
+              "compat/core-032/yuki-plugin-sdk-1.0.0-alpha.2.crate",
+              "deploy/env/manager-source.zip"
+            ]
+          },
+          "platform": [
+            "Linux",
+            "x86_64",
+            "7.0.0-1017-azure"
+          ],
+          "image": {
+            "ImageOS": "ubuntu24",
+            "ImageVersion": "20261101.360.1"
+          },
+          "compiler": "rustc 1.96.0 (ac68faa20 2026-05-25)\nbinary: rustc\ncommit-hash: ac68faa20c58cbccd01ee7208bf3b6e93a7d7f96\ncommit-date: 2026-05-25\nhost: x86_64-unknown-linux-gnu\nrelease: 1.96.0\nLLVM version: 22.1.2\n",
+          "cargo": "cargo 1.96.0 (30a34c682 2026-05-25)\n",
+          "build_root": "/home/runner/work/yuki-extensions/yuki-extensions/.ci-transfer/rust-src",
+          "environment": {
+            "RUSTFLAGS": "",
+            "CARGO_ENCODED_RUSTFLAGS": "",
+            "RUSTDOCFLAGS": "",
+            "CARGO_BUILD_TARGET": "",
+            "RUSTC": "",
+            "RUSTC_WRAPPER": "",
+            "CC": "",
+            "CXX": "",
+            "AR": "",
+            "CFLAGS": "",
+            "CXXFLAGS": ""
+          },
+          "sources": {
+            "Cargo.lock": "f8ad380038ce0ef39f902b3d9b982ee5601e1e7d11574ab49fe79990559f0816",
+            "Cargo.toml": "79ee27b342353a4a862afe48f5028e40ca64cecc4acded5bae286c98a1d55ce6",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "README.md": "61070d4480b1f578b3848a7568a2aaafc87a490be8a3b2ed31677b6a3310fe64",
+            "backend/source.lock.json": "307bc76b27df577491453f5ac19f8cd8ef6cec6f99151efd225b45e5b6a41723",
+            "plugin.toml": "969067f56ef5b152aeb56ba8145097175f29107576f19f607be531869cb7ca08",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "src/main.rs": "4d3923eac0f8e0835f32cbf18b1bb4b67ed226c36a5a525803fb62610c1ee07f",
+            "src/manager.rs": "41d13dd95e94b2739c9127b25e59df105a98a7a82b6aa8375ef071035b60d43b"
+          },
+          "builders": {
+            "package.py": "fa740b8a4ba939ca53865e76e8adf9955a648eb2780d9e2cf4b213c8ddeda05e",
+            "rust_cache.py": "0ee65548645a050859e4dd8e7f089a23be15acb3e07c2733b210b706a7e85ac3",
+            "handshake_cargo.py": "a77d5fc5b9e1cd7a714c8c56aef8d65fe1ef79daa6d59e7d98001e0935229698",
+            "units.py": "412af73476c9ccb7b9ab47caf15e4042a91be7082cf5fdd97e915d93c5ca8302"
+          },
+          "sdk": {
+            "contract_sha256": "ecdc614e0de2b9be9b628dcd1551afe514efc62a4799806e6d8739ff8359fd94",
+            "crate_sha256": "9408022bdf1322a8d6e07914685869771a5738280e36145e46da5c36facbfce0"
+          }
+        }
+      }
+    },
+    {
+      "id": 13485908466,
+      "name": "package-telegram-windows-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+      "zip_sha256": "060cb4efdb88f1c75884866d86a5da1bb2e3bd2fa6a93325d5851331cc27afda",
+      "bytes": 365901,
+      "members": {
+        "package-manifest.json": "8150424046ba7144776cfa1762ac18566ec6b3b6c915ed0555b13daae4bac096",
+        "Cargo.lock": "4b2b29014370b0a0a4f31596e413f991775eec3871f420559a5e2cbdddfc9f5b",
+        "plugin.toml": "1f0c387a9ae89eacebf993717dd8f08c352cfebff0170a483c8f2fcc052867d6",
+        "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "yuki-telegram.exe": "86621a9271e771769c968b3d8aa5959bdd079cf27164af967e168802c01d64b8"
+      },
+      "manifests": [
+        {
+          "name": "package-manifest.json",
+          "status": null,
+          "task": null,
+          "unit": "telegram",
+          "verified_files": {
+            "Cargo.lock": "4b2b29014370b0a0a4f31596e413f991775eec3871f420559a5e2cbdddfc9f5b",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "plugin.toml": "1f0c387a9ae89eacebf993717dd8f08c352cfebff0170a483c8f2fcc052867d6",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-telegram.exe": "86621a9271e771769c968b3d8aa5959bdd079cf27164af967e168802c01d64b8"
+          },
+          "compile_lines": [
+            "Compiling proc-macro2 v1.0.107",
+            "Compiling unicode-ident v1.0.27",
+            "Compiling quote v1.0.47",
+            "Compiling serde_core v1.0.228",
+            "Compiling serde_json v1.0.145",
+            "Compiling serde v1.0.228",
+            "Compiling ryu v1.0.23",
+            "Compiling itoa v1.0.18",
+            "Compiling memchr v2.8.3",
+            "Compiling syn v2.0.119",
+            "Compiling serde_derive v1.0.228",
+            "Compiling yuki-plugin-sdk v1.0.0-alpha.2",
+            "Compiling yuki-telegram v0.1.0-alpha.1 (D:\\a\\yuki-extensions\\yuki-extensions\\.ci-transfer\\rust-src\\telegram\\2b6cf98a9641cd81\\unit)",
+            "Compiling proc-macro2 v1.0.107",
+            "Compiling unicode-ident v1.0.27",
+            "Compiling quote v1.0.47",
+            "Compiling serde_core v1.0.228",
+            "Compiling serde v1.0.228",
+            "Compiling serde_json v1.0.145",
+            "Compiling itoa v1.0.18",
+            "Compiling ryu v1.0.23",
+            "Compiling memchr v2.8.3",
+            "Compiling syn v2.0.119",
+            "Compiling serde_derive v1.0.228",
+            "Compiling yuki-plugin-sdk v1.0.0-alpha.2",
+            "Compiling yuki-telegram v0.1.0-alpha.1 (D:\\a\\yuki-extensions\\yuki-extensions\\.ci-transfer\\rust-src\\telegram\\2b6cf98a9641cd81\\unit)"
+          ]
+        }
+      ],
+      "cache_inputs": null
+    },
+    {
+      "id": 13485884940,
+      "name": "package-feishu-windows-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+      "zip_sha256": "5d35329d8707092dbd73e666f06de2b254497f2fabbf5042b7e7f9f411ea9ba2",
+      "bytes": 633402,
+      "members": {
+        "Cargo.lock": "4b35a6537e4c867bfd1f1ac72718a470ded7688c410cab84af4544371f7fd846",
+        "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "NOTICE": "51201cfac32f0bae2e3f4157609d1f4c268f76fef608d30e6809a7581b6746cb",
+        "package-manifest.json": "025332634a413088a7f2ffbc167ff4f733fd7a771ba38c4b91752fab9ce68357",
+        "plugin.toml": "3d099ddd3fe2e1aef0663aa4ddc79913ef05890731ea697498b4349b28653e33",
+        "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "yuki-feishu.exe": "baa957a0546dfbcf4a0b24e0887d6fcf2a954452751bb4d7800175c121bdbbae"
+      },
+      "manifests": [
+        {
+          "name": "package-manifest.json",
+          "status": null,
+          "task": null,
+          "unit": "feishu",
+          "verified_files": {
+            "Cargo.lock": "4b35a6537e4c867bfd1f1ac72718a470ded7688c410cab84af4544371f7fd846",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "NOTICE": "51201cfac32f0bae2e3f4157609d1f4c268f76fef608d30e6809a7581b6746cb",
+            "plugin.toml": "3d099ddd3fe2e1aef0663aa4ddc79913ef05890731ea697498b4349b28653e33",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-feishu.exe": "baa957a0546dfbcf4a0b24e0887d6fcf2a954452751bb4d7800175c121bdbbae"
+          },
+          "compile_lines": [
+            "Compiling proc-macro2 v1.0.107",
+            "Compiling quote v1.0.47",
+            "Compiling unicode-ident v1.0.27",
+            "Compiling stable_deref_trait v1.2.1",
+            "Compiling version_check v0.9.5",
+            "Compiling litemap v0.8.3",
+            "Compiling writeable v0.6.4",
+            "Compiling generic-array v0.14.7",
+            "Compiling utf_types v1.0.0",
+            "Compiling utf8_iter v1.1.0",
+            "Compiling serde_core v1.0.228",
+            "Compiling icu_normalizer_data v2.4.0",
+            "Compiling zerocopy v0.8.63",
+            "Compiling cfg-if v1.0.5",
+            "Compiling getrandom v0.3.4",
+            "Compiling typenum v1.20.1",
+            "Compiling icu_properties_data v2.4.0",
+            "Compiling syn v3.0.9",
+            "Compiling syn v2.0.119",
+            "Compiling synstructure v0.14.0",
+            "Compiling windows-link v0.2.1",
+            "Compiling smallvec v1.16.4",
+            "Compiling anyhow v1.0.104",
+            "Compiling serde v1.0.228",
+            "Compiling zerofrom-derive v0.1.8",
+            "Compiling yoke-derive v0.8.4",
+            "Compiling zerovec-derive v0.11.7",
+            "Compiling zerofrom v0.1.8",
+            "Compiling displaydoc v0.2.7",
+            "Compiling yoke v0.8.4",
+            "Compiling itoa v1.0.18",
+            "Compiling zerovec v0.11.9",
+            "Compiling serde_derive v1.0.228",
+            "Compiling zerotrie v0.2.5",
+            "Compiling ppv-lite86 v0.2.21",
+            "Compiling tinystr v0.8.5",
+            "Compiling potential_utf v0.1.6",
+            "Compiling windows-sys v0.61.2",
+            "Compiling icu_locale_core v2.4.0",
+            "Compiling icu_collections v2.4.0",
+            "Compiling rand_core v0.9.5",
+            "Compiling icu_provider v2.4.0",
+            "Compiling icu_normalizer v2.4.0",
+            "Compiling icu_properties v2.4.0",
+            "Compiling block-buffer v0.10.4",
+            "Compiling crypto-common v0.1.7",
+            "Compiling httparse v1.10.1",
+            "Compiling either v1.19.0",
+            "Compiling bytes v1.12.1",
+            "Compiling thiserror v2.0.21",
+            "Compiling serde_json v1.0.145",
+            "Compiling native-tls v0.2.18",
+            "Compiling idna_adapter v1.2.2",
+            "Compiling itertools v0.14.0",
+            "Compiling digest v0.10.7",
+            "Compiling rand_chacha v0.9.0",
+            "Compiling schannel v0.1.30",
+            "Compiling thiserror-impl v2.0.21",
+            "Compiling cpufeatures v0.2.17",
+            "Compiling ryu v1.0.23",
+            "Compiling percent-encoding v2.3.2",
+            "Compiling memchr v2.8.3",
+            "Compiling prost-derive v0.14.4",
+            "Compiling form_urlencoded v1.2.2",
+            "Compiling sha1 v0.10.7",
+            "Compiling rand v0.9.5",
+            "Compiling idna v1.1.0",
+            "Compiling http v1.5.0",
+            "Compiling data-encoding v2.11.1",
+            "Compiling utf-8 v0.7.6",
+            "Compiling log v0.4.35",
+            "Compiling tungstenite v0.28.0",
+            "Compiling url v2.5.7",
+            "Compiling prost v0.14.1",
+            "Compiling yuki-plugin-sdk v1.0.0-alpha.2",
+            "Compiling yuki-feishu v0.1.0-alpha.1 (D:\\a\\yuki-extensions\\yuki-extensions\\.ci-transfer\\rust-src\\feishu\\e15b373b9daff451\\unit)",
+            "Compiling proc-macro2 v1.0.107",
+            "Compiling unicode-ident v1.0.27",
+            "Compiling quote v1.0.47",
+            "Compiling stable_deref_trait v1.2.1",
+            "Compiling version_check v0.9.5",
+            "Compiling writeable v0.6.4",
+            "Compiling utf_types v1.0.0",
+            "Compiling generic-array v0.14.7",
+            "Compiling litemap v0.8.3",
+            "Compiling serde_core v1.0.228",
+            "Compiling utf8_iter v1.1.0",
+            "Compiling cfg-if v1.0.5",
+            "Compiling icu_properties_data v2.4.0",
+            "Compiling icu_normalizer_data v2.4.0",
+            "Compiling getrandom v0.3.4",
+            "Compiling zerocopy v0.8.63",
+            "Compiling syn v3.0.9",
+            "Compiling syn v2.0.119",
+            "Compiling typenum v1.20.1",
+            "Compiling synstructure v0.14.0",
+            "Compiling windows-link v0.2.1",
+            "Compiling smallvec v1.16.4",
+            "Compiling itoa v1.0.18",
+            "Compiling zerofrom-derive v0.1.8",
+            "Compiling yoke-derive v0.8.4",
+            "Compiling zerovec-derive v0.11.7",
+            "Compiling displaydoc v0.2.7",
+            "Compiling zerofrom v0.1.8",
+            "Compiling yoke v0.8.4",
+            "Compiling serde v1.0.228",
+            "Compiling zerovec v0.11.9",
+            "Compiling anyhow v1.0.104",
+            "Compiling zerotrie v0.2.5",
+            "Compiling windows-sys v0.61.2",
+            "Compiling serde_derive v1.0.228",
+            "Compiling tinystr v0.8.5",
+            "Compiling icu_locale_core v2.4.0",
+            "Compiling potential_utf v0.1.6",
+            "Compiling icu_collections v2.4.0",
+            "Compiling icu_provider v2.4.0",
+            "Compiling icu_properties v2.4.0",
+            "Compiling icu_normalizer v2.4.0",
+            "Compiling ppv-lite86 v0.2.21",
+            "Compiling rand_core v0.9.5",
+            "Compiling block-buffer v0.10.4",
+            "Compiling crypto-common v0.1.7",
+            "Compiling native-tls v0.2.18",
+            "Compiling thiserror v2.0.21",
+            "Compiling either v1.19.0",
+            "Compiling bytes v1.12.1",
+            "Compiling httparse v1.10.1",
+            "Compiling serde_json v1.0.145",
+            "Compiling itertools v0.14.0",
+            "Compiling digest v0.10.7",
+            "Compiling rand_chacha v0.9.0",
+            "Compiling schannel v0.1.30",
+            "Compiling idna_adapter v1.2.2",
+            "Compiling thiserror-impl v2.0.21",
+            "Compiling ryu v1.0.23",
+            "Compiling cpufeatures v0.2.17",
+            "Compiling percent-encoding v2.3.2",
+            "Compiling memchr v2.8.3",
+            "Compiling form_urlencoded v1.2.2",
+            "Compiling sha1 v0.10.7",
+            "Compiling prost-derive v0.14.4",
+            "Compiling idna v1.1.0",
+            "Compiling http v1.5.0",
+            "Compiling rand v0.9.5",
+            "Compiling utf-8 v0.7.6",
+            "Compiling data-encoding v2.11.1",
+            "Compiling log v0.4.35",
+            "Compiling tungstenite v0.28.0",
+            "Compiling prost v0.14.1",
+            "Compiling yuki-plugin-sdk v1.0.0-alpha.2",
+            "Compiling url v2.5.7",
+            "Compiling yuki-feishu v0.1.0-alpha.1 (D:\\a\\yuki-extensions\\yuki-extensions\\.ci-transfer\\rust-src\\feishu\\e15b373b9daff451\\unit)"
+          ]
+        }
+      ],
+      "cache_inputs": null
+    },
+    {
+      "id": 13485818875,
+      "name": "cache-inputs-telegram-windows-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+      "zip_sha256": "28d9ef1bc63b5af8a1d0050d689d68c20ba5fd7b0166e1557e3b901b72b04d38",
+      "bytes": 1717,
+      "members": {
+        "telegram.json": "a7d4f94c61b6c6bd4904f88545aa0d3521ed1cec0a231611281b969f671986e4"
+      },
+      "manifests": [],
+      "cache_inputs": {
+        "enabled": true,
+        "key": "rust-v1-Windows-AMD64-telegram-2b6cf98a9641cd81dc59011379cd1a056fe2e4d103615129930a3891ab05b36b",
+        "digest": "2b6cf98a9641cd81dc59011379cd1a056fe2e4d103615129930a3891ab05b36b",
+        "inputs": {
+          "policy": 1,
+          "unit": {
+            "unit_id": "telegram",
+            "kind": "plugin",
+            "path": "plugins/telegram",
+            "ecosystem": "rust",
+            "version": "0.1.0-alpha.1",
+            "tag_prefix": "telegram/v",
+            "license": "AGPL-3.0-only",
+            "notices": [
+              "LICENSE"
+            ],
+            "source": {
+              "repository": "Institute-of-Agent-Life/yuki-extensions",
+              "baseline": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+              "upstream_path": "src/yuki/gateway/providers/telegram_ingress.py",
+              "sdk_contract": "compat/core-032/source.lock.json"
+            },
+            "check_paths": [
+              "tests/cases/EXT-003.py",
+              "compat/core-032/source.lock.json",
+              "compat/core-032/yuki-plugin-sdk-1.0.0-alpha.2.crate"
+            ],
+            "runtime_files": [
+              "plugin.toml"
+            ]
+          },
+          "platform": [
+            "Windows",
+            "AMD64",
+            "2025Server"
+          ],
+          "image": {
+            "ImageOS": "win25-vs2026",
+            "ImageVersion": "20261103.298.1"
+          },
+          "compiler": "rustc 1.96.0 (ac68faa20 2026-05-25)\nbinary: rustc\ncommit-hash: ac68faa20c58cbccd01ee7208bf3b6e93a7d7f96\ncommit-date: 2026-05-25\nhost: x86_64-pc-windows-msvc\nrelease: 1.96.0\nLLVM version: 22.1.2\n",
+          "cargo": "cargo 1.96.0 (30a34c682 2026-05-25)\n",
+          "build_root": "D:\\a\\yuki-extensions\\yuki-extensions\\.ci-transfer\\rust-src",
+          "environment": {
+            "RUSTFLAGS": "",
+            "CARGO_ENCODED_RUSTFLAGS": "",
+            "RUSTDOCFLAGS": "",
+            "CARGO_BUILD_TARGET": "",
+            "RUSTC": "",
+            "RUSTC_WRAPPER": "",
+            "CC": "",
+            "CXX": "",
+            "AR": "",
+            "CFLAGS": "",
+            "CXXFLAGS": ""
+          },
+          "sources": {
+            "Cargo.lock": "4b2b29014370b0a0a4f31596e413f991775eec3871f420559a5e2cbdddfc9f5b",
+            "Cargo.toml": "c5676db5a51e515af0cc8c47a8774710583bb417a0e04355bb71f2a63724d619",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "plugin.toml": "1f0c387a9ae89eacebf993717dd8f08c352cfebff0170a483c8f2fcc052867d6",
+            "README.md": "a4adaabc13069d21dd4d8bcc617778cd27524471313b4a68078c424772f58c23",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "src/ingress.rs": "4b54cee0786dd5d6aec2737470ff4801b99c3d0f7596eabd00ce33c90733cd0f",
+            "src/main.rs": "b2d859f10c1ccf2c64e8ad59fbeb77e11942796b02bd89658b906e4142dd2500"
+          },
+          "builders": {
+            "package.py": "fa740b8a4ba939ca53865e76e8adf9955a648eb2780d9e2cf4b213c8ddeda05e",
+            "rust_cache.py": "0ee65548645a050859e4dd8e7f089a23be15acb3e07c2733b210b706a7e85ac3",
+            "handshake_cargo.py": "a77d5fc5b9e1cd7a714c8c56aef8d65fe1ef79daa6d59e7d98001e0935229698",
+            "units.py": "412af73476c9ccb7b9ab47caf15e4042a91be7082cf5fdd97e915d93c5ca8302"
+          },
+          "sdk": {
+            "contract_sha256": "ecdc614e0de2b9be9b628dcd1551afe514efc62a4799806e6d8739ff8359fd94",
+            "crate_sha256": "9408022bdf1322a8d6e07914685869771a5738280e36145e46da5c36facbfce0"
+          }
+        }
+      }
+    },
+    {
+      "id": 13485749965,
+      "name": "package-env-windows-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+      "zip_sha256": "66c7b9186cd9b3f6875aa81cb9e6dbf0d804f306008c42f2ce6ae78f9fc0b5ec",
+      "bytes": 265425,
+      "members": {
+        "Cargo.lock": "f8ad380038ce0ef39f902b3d9b982ee5601e1e7d11574ab49fe79990559f0816",
+        "package-manifest.json": "c60666ec5aba7511c8d93f286f8798e71f7361029ab5dca834c983f8e284c043",
+        "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "plugin.toml": "969067f56ef5b152aeb56ba8145097175f29107576f19f607be531869cb7ca08",
+        "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "yuki-env.exe": "5b4e5f03ac04fcb63e45431b18451c7a4d12402c735ef86bc2e643a7f1d035cb"
+      },
+      "manifests": [
+        {
+          "name": "package-manifest.json",
+          "status": null,
+          "task": null,
+          "unit": "env",
+          "verified_files": {
+            "Cargo.lock": "f8ad380038ce0ef39f902b3d9b982ee5601e1e7d11574ab49fe79990559f0816",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "plugin.toml": "969067f56ef5b152aeb56ba8145097175f29107576f19f607be531869cb7ca08",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-env.exe": "5b4e5f03ac04fcb63e45431b18451c7a4d12402c735ef86bc2e643a7f1d035cb"
+          },
+          "compile_lines": [
+            "Compiling yuki-env v0.1.0-alpha.1 (D:\\a\\yuki-extensions\\yuki-extensions\\.ci-transfer\\rust-src\\env\\440bde67a7ea2f6c\\unit)",
+            "Compiling yuki-env v0.1.0-alpha.1 (D:\\a\\yuki-extensions\\yuki-extensions\\.ci-transfer\\rust-src\\env\\440bde67a7ea2f6c\\unit)"
+          ]
+        }
+      ],
+      "cache_inputs": null
+    },
+    {
+      "id": 13485718991,
+      "name": "cache-inputs-feishu-ubuntu-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+      "zip_sha256": "e5a6ed5f88c8949aec2a24cf0bd0b6a675d65f5e250792852d867c24471a8ae4",
+      "bytes": 1846,
+      "members": {
+        "feishu.json": "d40d8c78d7a25e8f43de218c589d0b7959b895df1e7de27608c74c3ab18fcc0e"
+      },
+      "manifests": [],
+      "cache_inputs": {
+        "enabled": true,
+        "key": "rust-v1-Linux-x86_64-feishu-9cce6f95a216aae4cd6a666e21e461700515c6ecc2dd573d4b99e99a63576b24",
+        "digest": "9cce6f95a216aae4cd6a666e21e461700515c6ecc2dd573d4b99e99a63576b24",
+        "inputs": {
+          "policy": 1,
+          "unit": {
+            "unit_id": "feishu",
+            "kind": "plugin",
+            "path": "plugins/feishu",
+            "ecosystem": "rust",
+            "version": "0.1.0-alpha.1",
+            "tag_prefix": "feishu/v",
+            "license": "AGPL-3.0-only",
+            "notices": [
+              "LICENSE",
+              "NOTICE"
+            ],
+            "runtime_files": [
+              "plugin.toml"
+            ],
+            "source": {
+              "repository": "Institute-of-Agent-Life/yuki-extensions",
+              "baseline": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+              "upstream_path": "src/yuki/gateway/providers/feishu_ws.py",
+              "sdk_contract": "compat/core-032/source.lock.json"
+            },
+            "check_paths": [
+              "tests/cases/EXT-005.py",
+              "compat/core-032/source.lock.json",
+              "compat/core-032/yuki-plugin-sdk-1.0.0-alpha.2.crate"
+            ]
+          },
+          "platform": [
+            "Linux",
+            "x86_64",
+            "7.0.0-1017-azure"
+          ],
+          "image": {
+            "ImageOS": "ubuntu24",
+            "ImageVersion": "20261101.360.1"
+          },
+          "compiler": "rustc 1.96.0 (ac68faa20 2026-05-25)\nbinary: rustc\ncommit-hash: ac68faa20c58cbccd01ee7208bf3b6e93a7d7f96\ncommit-date: 2026-05-25\nhost: x86_64-unknown-linux-gnu\nrelease: 1.96.0\nLLVM version: 22.1.2\n",
+          "cargo": "cargo 1.96.0 (30a34c682 2026-05-25)\n",
+          "build_root": "/home/runner/work/yuki-extensions/yuki-extensions/.ci-transfer/rust-src",
+          "environment": {
+            "RUSTFLAGS": "",
+            "CARGO_ENCODED_RUSTFLAGS": "",
+            "RUSTDOCFLAGS": "",
+            "CARGO_BUILD_TARGET": "",
+            "RUSTC": "",
+            "RUSTC_WRAPPER": "",
+            "CC": "",
+            "CXX": "",
+            "AR": "",
+            "CFLAGS": "",
+            "CXXFLAGS": ""
+          },
+          "sources": {
+            "Cargo.lock": "4b35a6537e4c867bfd1f1ac72718a470ded7688c410cab84af4544371f7fd846",
+            "Cargo.toml": "d21b3d6bd7b2ed161ed64e0f760d2f845318ab314c86edd444a21f763edd0ea7",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "NOTICE": "51201cfac32f0bae2e3f4157609d1f4c268f76fef608d30e6809a7581b6746cb",
+            "README.md": "2a3f91db6fc9624793803fc3b21a114506aad783018cead091b2258f275bf1bc",
+            "plugin.toml": "3d099ddd3fe2e1aef0663aa4ddc79913ef05890731ea697498b4349b28653e33",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "src/host.rs": "3b341f23cdf161f95d2315a8c60cb59a71bd6ef1e927351d9511333d4568aa57",
+            "src/ingress.rs": "845ac72a943d64ba09fd8dbc726b365cababcb44792cc84530b6de4b6410f298",
+            "src/main.rs": "672b9bf90aa1a96a3c123b0d48988daea01e9e6771ecc362a0df40b20d3b1ffc",
+            "src/ws.rs": "d2fe7637b25fc8e8ca47cb7a7e3671b2a8d34c1c414babc940e6369945d8911e"
+          },
+          "builders": {
+            "package.py": "fa740b8a4ba939ca53865e76e8adf9955a648eb2780d9e2cf4b213c8ddeda05e",
+            "rust_cache.py": "0ee65548645a050859e4dd8e7f089a23be15acb3e07c2733b210b706a7e85ac3",
+            "handshake_cargo.py": "a77d5fc5b9e1cd7a714c8c56aef8d65fe1ef79daa6d59e7d98001e0935229698",
+            "units.py": "412af73476c9ccb7b9ab47caf15e4042a91be7082cf5fdd97e915d93c5ca8302"
+          },
+          "sdk": {
+            "contract_sha256": "ecdc614e0de2b9be9b628dcd1551afe514efc62a4799806e6d8739ff8359fd94",
+            "crate_sha256": "9408022bdf1322a8d6e07914685869771a5738280e36145e46da5c36facbfce0"
+          }
+        }
+      }
+    }
+  ],
+  "cache_logs": [
+    {
+      "job": "package (env, windows-latest)",
+      "id": 127778936549,
+      "log_sha256": "c90610155dd7aba89937a05b80efd6ea93a2fdaeda318a60a18592f2d427bf9f",
+      "cache_lines": [
+        "2026-11-06T07:52:37.8107021Z Cache restored from key: rust-v1-Windows-AMD64-env-440bde67a7ea2f6c8466825e0a8ead6dfc65050582422ee7a10525ab86fb57c9"
+      ]
+    },
+    {
+      "job": "package (feishu, ubuntu-latest)",
+      "id": 127778936551,
+      "log_sha256": "f4e3310d6c825e66e5eb0ced72ff926987cf3e1ed8166f4cef1da1466c9c7997",
+      "cache_lines": [
+        "2026-11-06T07:52:36.3805894Z Cache restored from key: rust-v1-Linux-x86_64-feishu-9cce6f95a216aae4cd6a666e21e461700515c6ecc2dd573d4b99e99a63576b24"
+      ]
+    },
+    {
+      "job": "package (yuki-setup, windows-latest)",
+      "id": 127778936568,
+      "log_sha256": "8874649ac4b1b5d5d171600c80f3bb6f7ef1ac86e43b82a3b3bb7d5307c2092c",
+      "cache_lines": [
+        "2026-11-06T07:52:40.1639993Z Cache restored from key: rust-v1-Windows-AMD64-yuki-setup-c6a93f01ab92e0c8103bcf62772b7fb4b0ab403b9a2e672a6322b6af648b1073"
+      ]
+    },
+    {
+      "job": "package (env, ubuntu-latest)",
+      "id": 127778936591,
+      "log_sha256": "5469ca12daf0d383e3fb8f6135bf43edbc28b16dc43390f2818e46986c0012e1",
+      "cache_lines": [
+        "2026-11-06T07:52:28.3909620Z Cache restored from key: rust-v1-Linux-x86_64-env-0f7e8ffe6c5bf0651d01baaa1d9a6dbfbf3c3a6f6447385eb169375e4a3e1977"
+      ]
+    },
+    {
+      "job": "package (feishu, windows-latest)",
+      "id": 127778936612,
+      "log_sha256": "21f599eb1b57cdd7a8f00cb934cad52f4507b2d40b2674821086aab18d33971b",
+      "cache_lines": [
+        "2026-11-06T07:52:38.5680940Z Cache not found for input keys: rust-v1-Windows-AMD64-feishu-e15b373b9daff4518f36d6463799a2e5f02471aa9b904bfcef81e219bb9f0745",
+        "2026-11-06T07:54:06.9859347Z Cache saved with key: rust-v1-Windows-AMD64-feishu-e15b373b9daff4518f36d6463799a2e5f02471aa9b904bfcef81e219bb9f0745"
+      ]
+    },
+    {
+      "job": "package (yuki-setup, ubuntu-latest)",
+      "id": 127778936628,
+      "log_sha256": "381ba8153abba3a2787b5aa9b3c8124ce40f57255877731bb0131cc382a630ce",
+      "cache_lines": [
+        "2026-11-06T07:52:32.1741513Z Cache restored from key: rust-v1-Linux-x86_64-yuki-setup-6f8fb2bd2427a088e43b15afce889e83f5a55e37c2f9a9b27eb4c5ee97fafa86"
+      ]
+    },
+    {
+      "job": "package (web-fetch, windows-latest)",
+      "id": 127778936656,
+      "log_sha256": "71ce375cf9e604cc0b6cb538b6858698500494b1a96769caa29b1f4d114b51b2",
+      "cache_lines": [
+        "2026-11-06T07:52:43.1831800Z Cache not found for input keys: rust-v1-Windows-AMD64-web-fetch-a7cd7b936176302d651bc26e1017374a4a1416513b7c24deabccd356c0e570b3",
+        "2026-11-06T07:53:36.0434700Z Cache saved with key: rust-v1-Windows-AMD64-web-fetch-a7cd7b936176302d651bc26e1017374a4a1416513b7c24deabccd356c0e570b3"
+      ]
+    },
+    {
+      "job": "package (web-fetch, ubuntu-latest)",
+      "id": 127778936663,
+      "log_sha256": "5b3cf5136f2e90fcfed9043d4a8931613b0b98c3ea31519b6ea54b33d2de3786",
+      "cache_lines": [
+        "2026-11-06T07:52:57.2733663Z Cache restored from key: rust-v1-Linux-x86_64-web-fetch-6bea88aa550a5856e33e9739161ac950c5a8f69d8b566384cde7b703befac266"
+      ]
+    },
+    {
+      "job": "package (telegram, windows-latest)",
+      "id": 127778936666,
+      "log_sha256": "85dc27eeb0e2d5d249afa54024530a0ba1e2a38a5a45fc972f7def28b64e3f8d",
+      "cache_lines": [
+        "2026-11-06T07:52:38.8528556Z Cache not found for input keys: rust-v1-Windows-AMD64-telegram-2b6cf98a9641cd81dc59011379cd1a056fe2e4d103615129930a3891ab05b36b",
+        "2026-11-06T07:53:04.8464964Z Cache saved with key: rust-v1-Windows-AMD64-telegram-2b6cf98a9641cd81dc59011379cd1a056fe2e4d103615129930a3891ab05b36b"
+      ]
+    },
+    {
+      "job": "package (telegram, ubuntu-latest)",
+      "id": 127778936680,
+      "log_sha256": "6dbf0c47d47d49461d866dfbe95091ed86211f18d67ff549dbe2d476b337fed5",
+      "cache_lines": [
+        "2026-11-06T07:52:55.7562869Z Cache restored from key: rust-v1-Linux-x86_64-telegram-828a513b8948451cf4132ea8876b596a90322e0f6b5a6df640c25c4571ff45ae"
+      ]
+    },
+    {
+      "job": "package (local-agent, ubuntu-latest)",
+      "id": 127778936764,
+      "log_sha256": "7b35f9b275a53d611246e04dbb82f99cac70575f4be0a973245bfd98ffa92a1e",
+      "cache_lines": [
+        "2026-11-06T07:53:04.8369412Z Cache restored from key: rust-v1-Linux-x86_64-local-agent-ce8d57f41f19f81ff397feca2fbd459250cdce74abdfe7fdd368e6040b7d0220"
+      ]
+    },
+    {
+      "job": "package (local-agent, windows-latest)",
+      "id": 127778936792,
+      "log_sha256": "39e3b3a6084dad3326357378549ac7d5e034383bcfd0d7290ae5f4bf15bfb875",
+      "cache_lines": [
+        "2026-11-06T07:52:40.7615459Z Cache not found for input keys: rust-v1-Windows-AMD64-local-agent-1e3571a224da97d6486fd15ec586cdd7ac14e3cc600d59b0004a8a8dfe122fa1",
+        "2026-11-06T07:53:58.3189102Z Cache saved with key: rust-v1-Windows-AMD64-local-agent-1e3571a224da97d6486fd15ec586cdd7ac14e3cc600d59b0004a8a8dfe122fa1"
+      ]
+    }
+  ],
+  "missing_artifacts": [
+    "acceptance-macos-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+    "cache-inputs-env-macos-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+    "cache-inputs-feishu-macos-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+    "cache-inputs-local-agent-macos-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+    "cache-inputs-telegram-macos-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+    "cache-inputs-web-fetch-macos-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+    "cache-inputs-yuki-setup-macos-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+    "connector-upgrade-macos-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+    "package-connector-macos-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+    "package-env-macos-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+    "package-feishu-macos-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+    "package-local-agent-macos-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+    "package-telegram-macos-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+    "package-web-fetch-macos-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+    "package-yuki-setup-macos-latest-f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4"
+  ],
+  "pending_jobs": [
+    {
+      "id": 127778845373,
+      "name": "acceptance (macos-latest)",
+      "status": "queued"
+    },
+    {
+      "id": 127778936575,
+      "name": "package (telegram, macos-latest)",
+      "status": "queued"
+    },
+    {
+      "id": 127778936597,
+      "name": "package (env, macos-latest)",
+      "status": "queued"
+    },
+    {
+      "id": 127778936610,
+      "name": "package (web-fetch, macos-latest)",
+      "status": "queued"
+    },
+    {
+      "id": 127778936611,
+      "name": "package (yuki-setup, macos-latest)",
+      "status": "queued"
+    },
+    {
+      "id": 127778936622,
+      "name": "package (local-agent, macos-latest)",
+      "status": "queued"
+    },
+    {
+      "id": 127778936660,
+      "name": "package (connector, macos-latest)",
+      "status": "queued"
+    },
+    {
+      "id": 127778936671,
+      "name": "package (feishu, macos-latest)",
+      "status": "queued"
+    }
+  ],
+  "full_gate_pass": false,
+  "merge_performed": false
+}
