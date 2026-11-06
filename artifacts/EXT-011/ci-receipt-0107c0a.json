@@ -1,0 +1,2064 @@
+{
+  "pr": 15,
+  "head": "0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+  "base": "996deedef3e119246651050dc8cac186044a925a",
+  "merge_sha": "dfff7d48543ba23f02d8f9587e8189154c279aa7",
+  "runs": {
+    "push": {
+      "id": 42058530137,
+      "artifact_sha": "0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+      "units": [
+        "connector",
+        "env",
+        "feishu",
+        "telegram",
+        "web-fetch",
+        "yuki-setup"
+      ],
+      "status": "completed",
+      "conclusion": "success",
+      "pending_jobs": [],
+      "missing_artifacts": [],
+      "jobs": [
+        {
+          "name": "select",
+          "id": 127353451863,
+          "conclusion": "success"
+        },
+        {
+          "name": "acceptance (windows-latest)",
+          "id": 127353452268,
+          "conclusion": "success"
+        },
+        {
+          "name": "acceptance (macos-latest)",
+          "id": 127353452650,
+          "conclusion": "success"
+        },
+        {
+          "name": "acceptance (ubuntu-latest)",
+          "id": 127353452694,
+          "conclusion": "success"
+        },
+        {
+          "name": "package (env, windows-latest)",
+          "id": 127354013423,
+          "conclusion": "success"
+        },
+        {
+          "name": "package (connector, windows-latest)",
+          "id": 127354013437,
+          "conclusion": "success"
+        },
+        {
+          "name": "package (yuki-setup, ubuntu-latest)",
+          "id": 127354013514,
+          "conclusion": "success"
+        },
+        {
+          "name": "package (telegram, ubuntu-latest)",
+          "id": 127354013525,
+          "conclusion": "success"
+        },
+        {
+          "name": "package (web-fetch, windows-latest)",
+          "id": 127354013548,
+          "conclusion": "success"
+        },
+        {
+          "name": "package (feishu, ubuntu-latest)",
+          "id": 127354013565,
+          "conclusion": "success"
+        },
+        {
+          "name": "package (yuki-setup, windows-latest)",
+          "id": 127354013566,
+          "conclusion": "success"
+        },
+        {
+          "name": "package (web-fetch, macos-latest)",
+          "id": 127354013569,
+          "conclusion": "success"
+        },
+        {
+          "name": "package (telegram, windows-latest)",
+          "id": 127354013573,
+          "conclusion": "success"
+        },
+        {
+          "name": "package (feishu, macos-latest)",
+          "id": 127354013581,
+          "conclusion": "success"
+        },
+        {
+          "name": "package (web-fetch, ubuntu-latest)",
+          "id": 127354013602,
+          "conclusion": "success"
+        },
+        {
+          "name": "package (env, macos-latest)",
+          "id": 127354013613,
+          "conclusion": "success"
+        },
+        {
+          "name": "package (yuki-setup, macos-latest)",
+          "id": 127354013667,
+          "conclusion": "success"
+        },
+        {
+          "name": "package (connector, ubuntu-latest)",
+          "id": 127354013668,
+          "conclusion": "success"
+        },
+        {
+          "name": "package (env, ubuntu-latest)",
+          "id": 127354013686,
+          "conclusion": "success"
+        },
+        {
+          "name": "package (feishu, windows-latest)",
+          "id": 127354013771,
+          "conclusion": "success"
+        },
+        {
+          "name": "package (telegram, macos-latest)",
+          "id": 127354013836,
+          "conclusion": "success"
+        },
+        {
+          "name": "package (connector, macos-latest)",
+          "id": 127354014110,
+          "conclusion": "success"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": 13469362905,
+          "name": "package-connector-macos-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+          "digest": "sha256:ba03384b6612c05b9571e8a88acce35a5fc7c5650efe7586ed78cf0cbcab92b0",
+          "bytes": 230581,
+          "manifests": [
+            {
+              "name": "package-manifest.json",
+              "status": null,
+              "task": null,
+              "unit": "connector",
+              "verified_files": {
+                "yuki_agent_connector-0.4.4.dev1-py3-none-any.whl": "7a143a2d128bde2de038f26ce0a44cee8e9bcbd9249960bf68beb0b5032d85b5",
+                "yuki_agent_connector-0.4.4.dev1.tar.gz": "691ff2efa037744310409fc0cd1b84b6c7b32049ef062b65b658dd7f308364b3"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13469138080,
+          "name": "connector-upgrade-macos-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+          "digest": "sha256:08d8e3e225407783f2125f99b8368f6c953e85a88251f80f93e7ea9cc16253cf",
+          "bytes": 209129,
+          "manifests": [
+            {
+              "name": "EXT-007/candidate-ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-007",
+              "unit": null,
+              "verified_files": {
+                "candidate-tests.xml": "104132b80ed4101f7b83a568c484908ba49e213514b5a00c44775ce063f47e56",
+                "commands.json": "caf7b07996c662bb2290bfec11f66dba38ba0a3333277f94d9cc9ee4da883760",
+                "connector-package.json": "92a0b9707783aa1355b0ea12b4178c6ef7e75bc2a2aa277e4f5958eded1fe32c",
+                "connector-runtime.json": "5acded99be18c8c8fafe19eaf0d5087b2281d34981264654dd02136f352609b0",
+                "connector-upgrade.json": "3603e14d344592eb923eac5fbf922b2b89d68061f69e8a282ea7a485bbb50ff3",
+                "wire4-candidate.json": "6a8c4a9feb1d4db803e86fe629d935636ee9507338804432799b760df0f78531",
+                "wire4-old.json": "6a8c4a9feb1d4db803e86fe629d935636ee9507338804432799b760df0f78531"
+              }
+            },
+            {
+              "name": "EXT-008/ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-008",
+              "unit": null,
+              "verified_files": {
+                "codex-driver-wire.json": "f8250ea05c19f0ad363ffabc26e23ca37cbcc99356d24c1c25e823cb6ce35b0f",
+                "commands.txt": "abee120c4acbcc4a217c46693b2ea029eed9ea35890d9ac4664ffbbe4d0865a2"
+              }
+            },
+            {
+              "name": "EXT-009/ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-009",
+              "unit": null,
+              "verified_files": {
+                "claude-driver-wire.json": "457fc0e77b2c33b8fbdbd72abc0b4839482b7dd253ed1a851bd0897d312bb4ed",
+                "commands.txt": "075b683e94a069e1baffb3540ccf1b68cc6b2bc7bacfb1e458453a255ce2c69a"
+              }
+            },
+            {
+              "name": "EXT-010/ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-010",
+              "unit": null,
+              "verified_files": {
+                "commands.txt": "bd7b62ef3998a282e60481e715f4f7c52bccf5af5f69e38eb618624354962265",
+                "native-acp-v1.json": "a29ebdf94c92aecbc0e999277fc00f480c7e2a43c18f03ce2904a03a5fd3f019"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13468944208,
+          "name": "package-web-fetch-macos-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+          "digest": "sha256:2b4d0e5c7fcacc00e79bdb76c508c31aa25a3d5052cabd4f20cce4f428a1a94c",
+          "bytes": 666436,
+          "manifests": [
+            {
+              "name": "package-manifest.json",
+              "status": null,
+              "task": null,
+              "unit": "web-fetch",
+              "verified_files": {
+                "Cargo.lock": "464fc9374e68c11bc37652c611b739af5759dcbf6231c8ea9cc48d37bbffb3ff",
+                "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+                "plugin.toml": "c67dd07b6613398e1bde628918e24d03c48494afad34bd481d17e94ece557cf6",
+                "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+                "yuki-web-fetch": "9aaa9ac165468a9dc5913ea1354c2b49939aa6f709355fd7c475b68d75a9de1d"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13462484900,
+          "name": "package-telegram-macos-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+          "digest": "sha256:d037a53c81ba93b08ecfb843570384964e047b49f21c92a03f01a27ff61521a4",
+          "bytes": 454493,
+          "manifests": [
+            {
+              "name": "package-manifest.json",
+              "status": null,
+              "task": null,
+              "unit": "telegram",
+              "verified_files": {
+                "Cargo.lock": "4b2b29014370b0a0a4f31596e413f991775eec3871f420559a5e2cbdddfc9f5b",
+                "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+                "plugin.toml": "1f0c387a9ae89eacebf993717dd8f08c352cfebff0170a483c8f2fcc052867d6",
+                "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+                "yuki-telegram": "fa41e2cafdce2ecabe6a779897ea44f6c54b4d18269f1de6ba8313642905782d"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13460676502,
+          "name": "package-env-macos-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+          "digest": "sha256:0048afe47fa5822fb8d889cf5ba4b90681f3bd587da2c3d853699048596646fc",
+          "bytes": 379949,
+          "manifests": [
+            {
+              "name": "package-manifest.json",
+              "status": null,
+              "task": null,
+              "unit": "env",
+              "verified_files": {
+                "Cargo.lock": "f8ad380038ce0ef39f902b3d9b982ee5601e1e7d11574ab49fe79990559f0816",
+                "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+                "plugin.toml": "969067f56ef5b152aeb56ba8145097175f29107576f19f607be531869cb7ca08",
+                "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+                "yuki-env": "94a129655c855c4d4bd2f7f94151f31d887ec1e2800b4d0080848b4691dcf188"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13451567184,
+          "name": "package-yuki-setup-macos-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+          "digest": "sha256:426ff8f2e3efa3479e03b76f16339866d1940953859863cde42bca081abde4f6",
+          "bytes": 261643,
+          "manifests": [
+            {
+              "name": "package-manifest.json",
+              "status": null,
+              "task": null,
+              "unit": "yuki-setup",
+              "verified_files": {
+                "Cargo.lock": "9365e3881889c89db7ec71ab2218bb70e765635f159a535d2937284dc42da829",
+                "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+                "inputs/CORE-LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+                "inputs/CORE-NOTICE": "92eec243bb25b89d47a7fa29ce6c863a14487a9c9e1078d0538775e6ec8f5a34",
+                "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+                "yuki-setup": "2124b2d0f683966675fa885fbeecef2fb900b63cf499beb877190f08914722ee"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13445032871,
+          "name": "package-feishu-macos-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+          "digest": "sha256:b14250772c2143e9d0358559b4ac41e69c03ae658b03c70a17f7939f89d85e7c",
+          "bytes": 747205,
+          "manifests": [
+            {
+              "name": "package-manifest.json",
+              "status": null,
+              "task": null,
+              "unit": "feishu",
+              "verified_files": {
+                "Cargo.lock": "4b35a6537e4c867bfd1f1ac72718a470ded7688c410cab84af4544371f7fd846",
+                "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+                "NOTICE": "51201cfac32f0bae2e3f4157609d1f4c268f76fef608d30e6809a7581b6746cb",
+                "plugin.toml": "3d099ddd3fe2e1aef0663aa4ddc79913ef05890731ea697498b4349b28653e33",
+                "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+                "yuki-feishu": "f8d56e9cd34bc0fabe44c1253c5cbc3547ef9ec29831b37423ec2007e4d157cd"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13434947308,
+          "name": "acceptance-macos-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+          "digest": "sha256:823ad8b9e6a6014b36ae190860edf2bfa89a931cbf7cc489150760ca664f816f",
+          "bytes": 28731,
+          "manifests": [
+            {
+              "name": "EXT-002/ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-002",
+              "unit": null,
+              "verified_files": {
+                "build.txt": "21b37c1ce7ff9c0f15cccab214990c1fb7a8c9b25f5bfa1b44dcae47edae42d6",
+                "published-sdk.json": "cddefc1e4be41fff7a0f926f1394e635124f66eb1b46b0500af8831acabebe17"
+              }
+            },
+            {
+              "name": "EXT-001/ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-001",
+              "unit": null,
+              "verified_files": {
+                "extension-build-isolation.json": "ddbf1d52b3e5f2f9e9e3c3d019744b17b6b29582691579d462f7810348e6a4af"
+              }
+            },
+            {
+              "name": "EXT-019/ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-019",
+              "unit": null,
+              "verified_files": {
+                "desktop-callsite-pin.json": "d9d6caa43cb9dd36b65358fb0c06648b7c22784f98babfad63ba42bc00a9c7fe",
+                "desktop-surface-diff.json": "21d8a19696cd02bb91ad8079dd09948eeacbae32f31211d3a32f766abbb88550"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13432135199,
+          "name": "package-feishu-windows-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+          "digest": "sha256:d00ab4e210a98d5db255d8a9c16b2fdaedf9e9c283e071bedff7a1cbdfc261e2",
+          "bytes": 633410,
+          "manifests": [
+            {
+              "name": "package-manifest.json",
+              "status": null,
+              "task": null,
+              "unit": "feishu",
+              "verified_files": {
+                "Cargo.lock": "4b35a6537e4c867bfd1f1ac72718a470ded7688c410cab84af4544371f7fd846",
+                "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+                "NOTICE": "51201cfac32f0bae2e3f4157609d1f4c268f76fef608d30e6809a7581b6746cb",
+                "plugin.toml": "3d099ddd3fe2e1aef0663aa4ddc79913ef05890731ea697498b4349b28653e33",
+                "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+                "yuki-feishu.exe": "8b9a9ddba7e90064aa8131804a100751702dffc2186b307f46a81b2be971d7ab"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13431335568,
+          "name": "package-connector-ubuntu-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+          "digest": "sha256:5b0f6186ce0abba0af9ea264a3068474c6362e9e752b1dfdcd7603d7ba0a725b",
+          "bytes": 230576,
+          "manifests": [
+            {
+              "name": "package-manifest.json",
+              "status": null,
+              "task": null,
+              "unit": "connector",
+              "verified_files": {
+                "yuki_agent_connector-0.4.4.dev1-py3-none-any.whl": "7a143a2d128bde2de038f26ce0a44cee8e9bcbd9249960bf68beb0b5032d85b5",
+                "yuki_agent_connector-0.4.4.dev1.tar.gz": "691ff2efa037744310409fc0cd1b84b6c7b32049ef062b65b658dd7f308364b3"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13431190726,
+          "name": "connector-upgrade-ubuntu-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+          "digest": "sha256:eb7ef1eb34f3fd1e5abc05bd8776e1961cf46e10539fe5d7372f76b8ec5406c1",
+          "bytes": 298112,
+          "manifests": [
+            {
+              "name": "EXT-007/candidate-ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-007",
+              "unit": null,
+              "verified_files": {
+                "candidate-tests.xml": "0cd81035c734c666629108a1da558bb2a68f91b3b8a9f81d76b8348fcc4c8159",
+                "commands.json": "1b78ff44ff1b628a1f8101f38cd8034b109e27e05e32fef70dd1d5eacc7f9c00",
+                "connector-package.json": "90c264275cd4a862a7ce5dd7dbe604839508b42d361e34c7bec9accbd38587f4",
+                "connector-runtime.json": "cf9ee7c1c8d1b44de3773b1c1d2bcef4acedb6bdd235f6bc025518dc2b274407",
+                "connector-upgrade.json": "fb9d460453e34f402c6df77a97f22a980d388d357daa8eeef593ae418ff8096a",
+                "wire4-candidate.json": "d012511998b4c4835adf51c3ff2921635ee6cbb765a98b59b44d3edecd1d54e0",
+                "wire4-old.json": "d012511998b4c4835adf51c3ff2921635ee6cbb765a98b59b44d3edecd1d54e0"
+              }
+            },
+            {
+              "name": "EXT-008/ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-008",
+              "unit": null,
+              "verified_files": {
+                "codex-driver-wire.json": "f329e13ffd7c629422170e3081936e1b0553d341c8d76ab959febd70e96f4b67",
+                "commands.txt": "a71061054e89fd156b536e78564a2f621019cbbdf45e29196b7eff7991741c9c"
+              }
+            },
+            {
+              "name": "EXT-009/ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-009",
+              "unit": null,
+              "verified_files": {
+                "claude-driver-wire.json": "c872668a0cf80788fdbd2b18a9fbea152b32fb261ad9b58c78085ee1104f7675",
+                "commands.txt": "ce34f73362be738269b51756c7d8fdf972f38430934a5f9f4b7a26ddee4aed82"
+              }
+            },
+            {
+              "name": "EXT-010/ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-010",
+              "unit": null,
+              "verified_files": {
+                "commands.txt": "a3687511b700cb5dce6aef037ff25cc5dac17a6137daa0f5c08afbfd12ad7490",
+                "native-acp-v1.json": "3651efd8e1f46fe0c3b34187820ae5e53db287310ca4a9a6d947508a848ee4f6"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13431155293,
+          "name": "package-env-windows-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+          "digest": "sha256:20f07160c55d5a01035aa64da6da80a6aa10ad60969c91f59c5aa717a8c9ea97",
+          "bytes": 265719,
+          "manifests": [
+            {
+              "name": "package-manifest.json",
+              "status": null,
+              "task": null,
+              "unit": "env",
+              "verified_files": {
+                "Cargo.lock": "f8ad380038ce0ef39f902b3d9b982ee5601e1e7d11574ab49fe79990559f0816",
+                "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+                "plugin.toml": "969067f56ef5b152aeb56ba8145097175f29107576f19f607be531869cb7ca08",
+                "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+                "yuki-env.exe": "38f591ca2b999ce3adeadb6fbf98ca462e068d397b6431482b2835183a6b3ecc"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13430980325,
+          "name": "package-telegram-windows-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+          "digest": "sha256:9b442a591a7449a8c2536c0c2db520feb1851c594c5b1964bb5574f2a15e5d4d",
+          "bytes": 366099,
+          "manifests": [
+            {
+              "name": "package-manifest.json",
+              "status": null,
+              "task": null,
+              "unit": "telegram",
+              "verified_files": {
+                "Cargo.lock": "4b2b29014370b0a0a4f31596e413f991775eec3871f420559a5e2cbdddfc9f5b",
+                "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+                "plugin.toml": "1f0c387a9ae89eacebf993717dd8f08c352cfebff0170a483c8f2fcc052867d6",
+                "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+                "yuki-telegram.exe": "12a88596cbe7820c1c973c2d45e7c2a6c443ede980ceb56b3a66380e2d8cdf30"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13430870425,
+          "name": "package-yuki-setup-windows-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+          "digest": "sha256:de54e64de940de796b8e7fc989a5c7ec16f837736856c9a7453822a4408f1315",
+          "bytes": 176865,
+          "manifests": [
+            {
+              "name": "package-manifest.json",
+              "status": null,
+              "task": null,
+              "unit": "yuki-setup",
+              "verified_files": {
+                "Cargo.lock": "9365e3881889c89db7ec71ab2218bb70e765635f159a535d2937284dc42da829",
+                "inputs/CORE-LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+                "inputs/CORE-NOTICE": "92eec243bb25b89d47a7fa29ce6c863a14487a9c9e1078d0538775e6ec8f5a34",
+                "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+                "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+                "yuki-setup.exe": "70958a50856fcb68b68689f206e6ee394e9e8a404eb9dcd81f55bd3cee39c34c"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13430765850,
+          "name": "connector-upgrade-windows-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+          "digest": "sha256:5979924ed00150a8974257d5d19db600274fe4785fbba8608b0ed9e2a83a86f3",
+          "bytes": 316371,
+          "manifests": [
+            {
+              "name": "EXT-007/candidate-ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-007",
+              "unit": null,
+              "verified_files": {
+                "candidate-tests.xml": "80ad07c8ac7f919f13580d3d1299ba9868990ee265c26f8f80583c2f0a76f678",
+                "commands.json": "498ec3fa930821f8079cb40fbc06976a532ddcf0f1c7d4cc9567e3006303b811",
+                "connector-package.json": "6190c8651d30f3cdcd993cdb660e9156fa72bf8affc6678f9f57f0eb3672cfb6",
+                "connector-runtime.json": "41fff56f18d400c97ba653fef6a97c9a793cd0419a56f2bd7cf3a0d86f4cbcd1",
+                "connector-upgrade.json": "856deb106ab40a11322f10a67de42f800b8657abda5c17fae69070cc6f831c7b",
+                "wire4-candidate.json": "906ac87e0ab895e9764374b1605149c8dfaece4bd6804a6fa4f843a8eca1e827",
+                "wire4-old.json": "906ac87e0ab895e9764374b1605149c8dfaece4bd6804a6fa4f843a8eca1e827"
+              }
+            },
+            {
+              "name": "EXT-008/ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-008",
+              "unit": null,
+              "verified_files": {
+                "codex-driver-wire.json": "a6786fa294e92160078f30fb6535720cd668ba0b40d944fb8065cbb16ade1fa6",
+                "commands.txt": "7bdae33ed84c1553bbd20b17e1460eb38339b77cc3f865b7a057f06282e5229f"
+              }
+            },
+            {
+              "name": "EXT-009/ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-009",
+              "unit": null,
+              "verified_files": {
+                "claude-driver-wire.json": "ec8c529f1f5fb3358a23186db120bbdb39bb2727e684fccb201d00714d867135",
+                "commands.txt": "6ae0d68cc85bbd780a8d30c29c8f62f1d4e60e42f325c03d47196501a49fdba8"
+              }
+            },
+            {
+              "name": "EXT-010/ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-010",
+              "unit": null,
+              "verified_files": {
+                "commands.txt": "a086bf4aab43e8c8f10f2c424d345a6101887dcad476ed84602e5ec8a351b7fa",
+                "native-acp-v1.json": "5e2d5f0d8d4f9e48a364a56dc800644f1a4c0f03ee764c4159083f84f46948e5"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13430630400,
+          "name": "package-yuki-setup-ubuntu-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+          "digest": "sha256:4f60e34257ce8cea6a0833afd2d0ec08ad92d1cc86169a3c68b51e82d0d583b0",
+          "bytes": 285647,
+          "manifests": [
+            {
+              "name": "package-manifest.json",
+              "status": null,
+              "task": null,
+              "unit": "yuki-setup",
+              "verified_files": {
+                "Cargo.lock": "9365e3881889c89db7ec71ab2218bb70e765635f159a535d2937284dc42da829",
+                "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+                "inputs/CORE-LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+                "inputs/CORE-NOTICE": "92eec243bb25b89d47a7fa29ce6c863a14487a9c9e1078d0538775e6ec8f5a34",
+                "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+                "yuki-setup": "952c860119f1ada18443b375d8f84a2eced162442f1491aba4f47d445a9d5067"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13430625740,
+          "name": "package-env-ubuntu-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+          "digest": "sha256:d0b6fc4ef8b08499192ddd67eabc187c1a5abad270f7f9bbb2934836c4a9bef8",
+          "bytes": 424516,
+          "manifests": [
+            {
+              "name": "package-manifest.json",
+              "status": null,
+              "task": null,
+              "unit": "env",
+              "verified_files": {
+                "Cargo.lock": "f8ad380038ce0ef39f902b3d9b982ee5601e1e7d11574ab49fe79990559f0816",
+                "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+                "plugin.toml": "969067f56ef5b152aeb56ba8145097175f29107576f19f607be531869cb7ca08",
+                "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+                "yuki-env": "02f00dbbca5e249f00376ba56d2365e628443d3551f33f2a1b6e788989f70262"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13430535378,
+          "name": "acceptance-ubuntu-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+          "digest": "sha256:f2529cb8d535dd71f697dc5c175c309ec9af6c3614457c91d7d1ba18a796248f",
+          "bytes": 28557,
+          "manifests": [
+            {
+              "name": "EXT-001/ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-001",
+              "unit": null,
+              "verified_files": {
+                "extension-build-isolation.json": "1a62ef974b1912f5d310f2e27d094f0b1c438150cf3f2ddaea9651f9b9e60132"
+              }
+            },
+            {
+              "name": "EXT-002/ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-002",
+              "unit": null,
+              "verified_files": {
+                "build.txt": "90ebcfd6e8d66a13ad1d64b36c5c8c79654ed82f51d13224b0c8b68b577f8fe9",
+                "published-sdk.json": "0452486c7ec772d62bed1b79168c00f6e7abc6117b1f063cdee6f94ab9e8ff81"
+              }
+            },
+            {
+              "name": "EXT-019/ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-019",
+              "unit": null,
+              "verified_files": {
+                "desktop-callsite-pin.json": "d9d6caa43cb9dd36b65358fb0c06648b7c22784f98babfad63ba42bc00a9c7fe",
+                "desktop-surface-diff.json": "21d8a19696cd02bb91ad8079dd09948eeacbae32f31211d3a32f766abbb88550"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13430323822,
+          "name": "package-connector-windows-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+          "digest": "sha256:7f48768ef829994014e80a4ed5544f4968a89e3e09cc27b5fc5602dd93d27676",
+          "bytes": 230587,
+          "manifests": [
+            {
+              "name": "package-manifest.json",
+              "status": null,
+              "task": null,
+              "unit": "connector",
+              "verified_files": {
+                "yuki_agent_connector-0.4.4.dev1-py3-none-any.whl": "2748ec830b56e38f404d33964350578e543232ab1fce02e2399fc3ab045a74d8",
+                "yuki_agent_connector-0.4.4.dev1.tar.gz": "691ff2efa037744310409fc0cd1b84b6c7b32049ef062b65b658dd7f308364b3"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13430219415,
+          "name": "package-feishu-ubuntu-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+          "digest": "sha256:bcb8d1ab9ea23011bf71ac9a223f0f4be0e7a8c25b4d8c83a047e3ab97926825",
+          "bytes": 823304,
+          "manifests": [
+            {
+              "name": "package-manifest.json",
+              "status": null,
+              "task": null,
+              "unit": "feishu",
+              "verified_files": {
+                "Cargo.lock": "4b35a6537e4c867bfd1f1ac72718a470ded7688c410cab84af4544371f7fd846",
+                "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+                "NOTICE": "51201cfac32f0bae2e3f4157609d1f4c268f76fef608d30e6809a7581b6746cb",
+                "plugin.toml": "3d099ddd3fe2e1aef0663aa4ddc79913ef05890731ea697498b4349b28653e33",
+                "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+                "yuki-feishu": "5a0264b0a4b63ac6215d218538b74e43dc150cd122071bfe6af9a87ef69c28d8"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13429894963,
+          "name": "package-telegram-ubuntu-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+          "digest": "sha256:84c5224a95d0c87f6211c7f9d23e3a958b10e31c83d81999655964610eed9c1c",
+          "bytes": 504756,
+          "manifests": [
+            {
+              "name": "package-manifest.json",
+              "status": null,
+              "task": null,
+              "unit": "telegram",
+              "verified_files": {
+                "Cargo.lock": "4b2b29014370b0a0a4f31596e413f991775eec3871f420559a5e2cbdddfc9f5b",
+                "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+                "plugin.toml": "1f0c387a9ae89eacebf993717dd8f08c352cfebff0170a483c8f2fcc052867d6",
+                "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+                "yuki-telegram": "370db3f7b8e9a8390e4afaf24c72b4a882c11198a357470bd44b08f406ae7189"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13429784509,
+          "name": "package-web-fetch-windows-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+          "digest": "sha256:76ec39a09c0fe0706e1d6dc9682084efbce39169ce4f0a1afe22e7fc036f1053",
+          "bytes": 575406,
+          "manifests": [
+            {
+              "name": "package-manifest.json",
+              "status": null,
+              "task": null,
+              "unit": "web-fetch",
+              "verified_files": {
+                "Cargo.lock": "464fc9374e68c11bc37652c611b739af5759dcbf6231c8ea9cc48d37bbffb3ff",
+                "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+                "plugin.toml": "c67dd07b6613398e1bde628918e24d03c48494afad34bd481d17e94ece557cf6",
+                "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+                "yuki-web-fetch.exe": "0cb4eaf2b232593cac3ec8c12f58d7c8b00fcccda1304681a7386649000f8809"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13429604504,
+          "name": "acceptance-windows-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+          "digest": "sha256:9dcb9ed68e573834a3ac06335bd2c32fa1e27680dcd0370c92af1ce8e8a1ace2",
+          "bytes": 28836,
+          "manifests": [
+            {
+              "name": "EXT-001/ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-001",
+              "unit": null,
+              "verified_files": {
+                "extension-build-isolation.json": "b821cd44b73667a5b7eeae956be90b7fe98f34083bdfd735081f17099a3ce7cc"
+              }
+            },
+            {
+              "name": "EXT-002/ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-002",
+              "unit": null,
+              "verified_files": {
+                "build.txt": "e966c9abaa61d09b73192320f223c645126607c802516595aab4f7b973edacfa",
+                "published-sdk.json": "8a57730809313c1a876b94770099d5009576c1bb156c72b8ce81722fa1b6d7a6"
+              }
+            },
+            {
+              "name": "EXT-019/ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-019",
+              "unit": null,
+              "verified_files": {
+                "desktop-callsite-pin.json": "d9d6caa43cb9dd36b65358fb0c06648b7c22784f98babfad63ba42bc00a9c7fe",
+                "desktop-surface-diff.json": "477f17ea1448f685d663477f373bf44b78f626a35b1533f36d9dea1f872d2f6a"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13429454763,
+          "name": "package-web-fetch-ubuntu-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+          "digest": "sha256:72f7f98088da9b4260f8b19fe42ee77af3baea29d77fce5fe21dce0af2bb85e5",
+          "bytes": 739335,
+          "manifests": [
+            {
+              "name": "package-manifest.json",
+              "status": null,
+              "task": null,
+              "unit": "web-fetch",
+              "verified_files": {
+                "Cargo.lock": "464fc9374e68c11bc37652c611b739af5759dcbf6231c8ea9cc48d37bbffb3ff",
+                "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+                "plugin.toml": "c67dd07b6613398e1bde628918e24d03c48494afad34bd481d17e94ece557cf6",
+                "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+                "yuki-web-fetch": "23eda0ca2afdc9e2b6fcf763d9c6571d360c9dc404beb1afbe7e37cb4584f280"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "pull_request": {
+      "id": 42058542237,
+      "artifact_sha": "dfff7d48543ba23f02d8f9587e8189154c279aa7",
+      "units": [
+        "connector",
+        "env",
+        "feishu",
+        "telegram",
+        "web-fetch",
+        "yuki-setup"
+      ],
+      "status": "completed",
+      "conclusion": "success",
+      "pending_jobs": [],
+      "missing_artifacts": [],
+      "jobs": [
+        {
+          "name": "select",
+          "id": 127353492192,
+          "conclusion": "success"
+        },
+        {
+          "name": "acceptance (windows-latest)",
+          "id": 127353492264,
+          "conclusion": "success"
+        },
+        {
+          "name": "acceptance (macos-latest)",
+          "id": 127353492405,
+          "conclusion": "success"
+        },
+        {
+          "name": "acceptance (ubuntu-latest)",
+          "id": 127353492514,
+          "conclusion": "success"
+        },
+        {
+          "name": "package (env, ubuntu-latest)",
+          "id": 127354424295,
+          "conclusion": "success"
+        },
+        {
+          "name": "package (connector, macos-latest)",
+          "id": 127354424430,
+          "conclusion": "success"
+        },
+        {
+          "name": "package (connector, windows-latest)",
+          "id": 127354424468,
+          "conclusion": "success"
+        },
+        {
+          "name": "package (feishu, macos-latest)",
+          "id": 127354424541,
+          "conclusion": "success"
+        },
+        {
+          "name": "package (connector, ubuntu-latest)",
+          "id": 127354424584,
+          "conclusion": "success"
+        },
+        {
+          "name": "package (telegram, macos-latest)",
+          "id": 127354424644,
+          "conclusion": "success"
+        },
+        {
+          "name": "package (telegram, windows-latest)",
+          "id": 127354424646,
+          "conclusion": "success"
+        },
+        {
+          "name": "package (telegram, ubuntu-latest)",
+          "id": 127354424647,
+          "conclusion": "success"
+        },
+        {
+          "name": "package (env, macos-latest)",
+          "id": 127354424686,
+          "conclusion": "success"
+        },
+        {
+          "name": "package (feishu, windows-latest)",
+          "id": 127354424729,
+          "conclusion": "success"
+        },
+        {
+          "name": "package (yuki-setup, windows-latest)",
+          "id": 127354424772,
+          "conclusion": "success"
+        },
+        {
+          "name": "package (feishu, ubuntu-latest)",
+          "id": 127354424783,
+          "conclusion": "success"
+        },
+        {
+          "name": "package (yuki-setup, macos-latest)",
+          "id": 127354424849,
+          "conclusion": "success"
+        },
+        {
+          "name": "package (web-fetch, windows-latest)",
+          "id": 127354424952,
+          "conclusion": "success"
+        },
+        {
+          "name": "package (yuki-setup, ubuntu-latest)",
+          "id": 127354425142,
+          "conclusion": "success"
+        },
+        {
+          "name": "package (env, windows-latest)",
+          "id": 127354425203,
+          "conclusion": "success"
+        },
+        {
+          "name": "package (web-fetch, ubuntu-latest)",
+          "id": 127354425223,
+          "conclusion": "success"
+        },
+        {
+          "name": "package (web-fetch, macos-latest)",
+          "id": 127354425227,
+          "conclusion": "success"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": 13469864366,
+          "name": "package-yuki-setup-macos-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+          "digest": "sha256:3f51c7c4a9df7a27d9824fc71257bd2a58e6922b926849dae9523f85221dfbd8",
+          "bytes": 261643,
+          "manifests": [
+            {
+              "name": "package-manifest.json",
+              "status": null,
+              "task": null,
+              "unit": "yuki-setup",
+              "verified_files": {
+                "Cargo.lock": "9365e3881889c89db7ec71ab2218bb70e765635f159a535d2937284dc42da829",
+                "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+                "inputs/CORE-LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+                "inputs/CORE-NOTICE": "92eec243bb25b89d47a7fa29ce6c863a14487a9c9e1078d0538775e6ec8f5a34",
+                "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+                "yuki-setup": "2124b2d0f683966675fa885fbeecef2fb900b63cf499beb877190f08914722ee"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13469273202,
+          "name": "package-telegram-macos-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+          "digest": "sha256:e1ac06dbcf84fceaa161a5a0bbd4dcabc400e62c34b841f961f7ded8b52bb0d1",
+          "bytes": 454486,
+          "manifests": [
+            {
+              "name": "package-manifest.json",
+              "status": null,
+              "task": null,
+              "unit": "telegram",
+              "verified_files": {
+                "Cargo.lock": "4b2b29014370b0a0a4f31596e413f991775eec3871f420559a5e2cbdddfc9f5b",
+                "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+                "plugin.toml": "1f0c387a9ae89eacebf993717dd8f08c352cfebff0170a483c8f2fcc052867d6",
+                "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+                "yuki-telegram": "85b98346bd9774b6f3c55046d2d965254f6476d1fb06a119c152a9f626bb380b"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13460916902,
+          "name": "package-connector-macos-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+          "digest": "sha256:a4201edb1337f42c7e4f7eb84db8a85a23fb51803e03c526a70b4c7a00cb28f2",
+          "bytes": 230581,
+          "manifests": [
+            {
+              "name": "package-manifest.json",
+              "status": null,
+              "task": null,
+              "unit": "connector",
+              "verified_files": {
+                "yuki_agent_connector-0.4.4.dev1-py3-none-any.whl": "7a143a2d128bde2de038f26ce0a44cee8e9bcbd9249960bf68beb0b5032d85b5",
+                "yuki_agent_connector-0.4.4.dev1.tar.gz": "691ff2efa037744310409fc0cd1b84b6c7b32049ef062b65b658dd7f308364b3"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13460832015,
+          "name": "connector-upgrade-macos-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+          "digest": "sha256:2cee6eec8f677efd62ac399a72709ed7a895d20fc5c1ce29b0b767362a8ec70b",
+          "bytes": 209249,
+          "manifests": [
+            {
+              "name": "EXT-007/candidate-ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-007",
+              "unit": null,
+              "verified_files": {
+                "candidate-tests.xml": "b0612d61e128d2fa44abe2b08e5d5a17c5f40299a4543fc4fc5c839c291e9863",
+                "commands.json": "f3c261373a4cf654f1bb2d6c16d52060d1132d1bd1a17dfbcc74554516e71e81",
+                "connector-package.json": "dccbf233f3ed13cc22ccc561e2b7559bdd3a583a9827d69b4d0356139faedbda",
+                "connector-runtime.json": "6c6881da27bbf2e68fbdf115010c28529c07414fb4e04efa33e3a1af1b27cc2a",
+                "connector-upgrade.json": "15dea77465976e5d2a05fd6dc4fc57524956f9345a4d98c5a057969c56c9ebea",
+                "wire4-candidate.json": "6a8c4a9feb1d4db803e86fe629d935636ee9507338804432799b760df0f78531",
+                "wire4-old.json": "6a8c4a9feb1d4db803e86fe629d935636ee9507338804432799b760df0f78531"
+              }
+            },
+            {
+              "name": "EXT-008/ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-008",
+              "unit": null,
+              "verified_files": {
+                "codex-driver-wire.json": "9c24e44927f56655fbb7af2a409628f336607a396bc57a2a4cdd8bb81908d3ae",
+                "commands.txt": "e052566ac81a4b40f0ef79bb3eed51aa49d9248eb21b2b7d7ca7142b13041046"
+              }
+            },
+            {
+              "name": "EXT-009/ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-009",
+              "unit": null,
+              "verified_files": {
+                "claude-driver-wire.json": "affda5d1619d86ecfb5431db45a97c7639b67fe91bd20006a14e021d4fb514db",
+                "commands.txt": "a2133400b19cecd5e432d97b355ae39c12de50e49d54f1ea84436df2144f1582"
+              }
+            },
+            {
+              "name": "EXT-010/ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-010",
+              "unit": null,
+              "verified_files": {
+                "commands.txt": "e0fc358d37f03206ddc9c0727796ae7ab9946cad7e6f84d34882e9b0c7ec99ee",
+                "native-acp-v1.json": "8db29139ed308429742f6cea16d4408c6a2e0b44094d8903df7bb7a97653c16b"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13456408431,
+          "name": "package-web-fetch-macos-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+          "digest": "sha256:01d061cd39fb983e305b48aebebcaf5f4497080547526ddb707f077a1ca0c398",
+          "bytes": 666440,
+          "manifests": [
+            {
+              "name": "package-manifest.json",
+              "status": null,
+              "task": null,
+              "unit": "web-fetch",
+              "verified_files": {
+                "Cargo.lock": "464fc9374e68c11bc37652c611b739af5759dcbf6231c8ea9cc48d37bbffb3ff",
+                "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+                "plugin.toml": "c67dd07b6613398e1bde628918e24d03c48494afad34bd481d17e94ece557cf6",
+                "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+                "yuki-web-fetch": "c7c85ec589f4550f4ea0022205ceeab2bdd49ef18043e624bbe289369b073fde"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13455422798,
+          "name": "package-env-macos-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+          "digest": "sha256:b6ba5358795b3a55897bceae454f092e5109dadf6cd083973e3dcd8fd5cc8179",
+          "bytes": 379948,
+          "manifests": [
+            {
+              "name": "package-manifest.json",
+              "status": null,
+              "task": null,
+              "unit": "env",
+              "verified_files": {
+                "Cargo.lock": "f8ad380038ce0ef39f902b3d9b982ee5601e1e7d11574ab49fe79990559f0816",
+                "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+                "plugin.toml": "969067f56ef5b152aeb56ba8145097175f29107576f19f607be531869cb7ca08",
+                "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+                "yuki-env": "4d03b549fad4516ebd07fc2d888bdb2c867e7756982dbc7be229000e23e28394"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13441361445,
+          "name": "package-feishu-macos-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+          "digest": "sha256:cb078e6cb30cecb28965dba54e3c07bb6bf34dbfe48d382e3a0054f1e30e57d8",
+          "bytes": 747153,
+          "manifests": [
+            {
+              "name": "package-manifest.json",
+              "status": null,
+              "task": null,
+              "unit": "feishu",
+              "verified_files": {
+                "Cargo.lock": "4b35a6537e4c867bfd1f1ac72718a470ded7688c410cab84af4544371f7fd846",
+                "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+                "NOTICE": "51201cfac32f0bae2e3f4157609d1f4c268f76fef608d30e6809a7581b6746cb",
+                "plugin.toml": "3d099ddd3fe2e1aef0663aa4ddc79913ef05890731ea697498b4349b28653e33",
+                "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+                "yuki-feishu": "e8fe76bcded5f19776baaf537acd7baee8a12523cc3052b94a60eb09595dfebe"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13432045585,
+          "name": "package-yuki-setup-ubuntu-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+          "digest": "sha256:37866152888ced3fddf3025a0f1d22a653cfdfe40e5267b74ebb4db2a6ddc898",
+          "bytes": 285647,
+          "manifests": [
+            {
+              "name": "package-manifest.json",
+              "status": null,
+              "task": null,
+              "unit": "yuki-setup",
+              "verified_files": {
+                "Cargo.lock": "9365e3881889c89db7ec71ab2218bb70e765635f159a535d2937284dc42da829",
+                "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+                "inputs/CORE-LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+                "inputs/CORE-NOTICE": "92eec243bb25b89d47a7fa29ce6c863a14487a9c9e1078d0538775e6ec8f5a34",
+                "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+                "yuki-setup": "952c860119f1ada18443b375d8f84a2eced162442f1491aba4f47d445a9d5067"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13432030292,
+          "name": "package-connector-windows-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+          "digest": "sha256:fdc1e4dd991296f4fb02c5353f587a34e5341b97cdb84fc4e9a4502ffbf328a8",
+          "bytes": 230587,
+          "manifests": [
+            {
+              "name": "package-manifest.json",
+              "status": null,
+              "task": null,
+              "unit": "connector",
+              "verified_files": {
+                "yuki_agent_connector-0.4.4.dev1-py3-none-any.whl": "2748ec830b56e38f404d33964350578e543232ab1fce02e2399fc3ab045a74d8",
+                "yuki_agent_connector-0.4.4.dev1.tar.gz": "691ff2efa037744310409fc0cd1b84b6c7b32049ef062b65b658dd7f308364b3"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13431835226,
+          "name": "package-telegram-ubuntu-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+          "digest": "sha256:cf0df06ef08adfe526098ad842ef7851404e8860ce299d60fe571f3c12737835",
+          "bytes": 504769,
+          "manifests": [
+            {
+              "name": "package-manifest.json",
+              "status": null,
+              "task": null,
+              "unit": "telegram",
+              "verified_files": {
+                "Cargo.lock": "4b2b29014370b0a0a4f31596e413f991775eec3871f420559a5e2cbdddfc9f5b",
+                "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+                "plugin.toml": "1f0c387a9ae89eacebf993717dd8f08c352cfebff0170a483c8f2fcc052867d6",
+                "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+                "yuki-telegram": "0d5d607e1ed28adc1a51dc3a75639963f796a6f7c0fc8837f599b1d6cc89f38b"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13431565635,
+          "name": "connector-upgrade-windows-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+          "digest": "sha256:bda20a2d94fb27d0fa851f8c119cf196907a6faf0f02036797c3f6f37d0ac8dd",
+          "bytes": 316343,
+          "manifests": [
+            {
+              "name": "EXT-007/candidate-ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-007",
+              "unit": null,
+              "verified_files": {
+                "candidate-tests.xml": "47f2136fb1fb98b1cca2c653d3e73a6c5ebf99be12861513ef1390a5f077d33e",
+                "commands.json": "7e4b8658f3ca36f5f61cf9da5398746cea77542a4ddfc2b483b45ef5a19882d3",
+                "connector-package.json": "6190c8651d30f3cdcd993cdb660e9156fa72bf8affc6678f9f57f0eb3672cfb6",
+                "connector-runtime.json": "9308891ad7cbe976772525d7101b9ec8ca3d7b6ffbbcdfc57b4e45431a4f2b89",
+                "connector-upgrade.json": "1d0941bc3bf64da2d2029a204de3b9c384d3505c9e142de94a922c53de9b4be9",
+                "wire4-candidate.json": "906ac87e0ab895e9764374b1605149c8dfaece4bd6804a6fa4f843a8eca1e827",
+                "wire4-old.json": "906ac87e0ab895e9764374b1605149c8dfaece4bd6804a6fa4f843a8eca1e827"
+              }
+            },
+            {
+              "name": "EXT-008/ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-008",
+              "unit": null,
+              "verified_files": {
+                "codex-driver-wire.json": "9bab1652be9c535fc82435262bab92ba0ad366fcd03492d8b8cdc2a2b7dc07b2",
+                "commands.txt": "2dde6af7ef9953d4238dea791b76af412c97cb50af46bf4d242aaadcfe046333"
+              }
+            },
+            {
+              "name": "EXT-009/ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-009",
+              "unit": null,
+              "verified_files": {
+                "claude-driver-wire.json": "8a5572e618289cc15144914189a6b30b18650c124404c2da2b8efd8d8a7a59a1",
+                "commands.txt": "86dbf4ada6380add797a5ab7cf7e50507748e965a250002aebfd72604cb797af"
+              }
+            },
+            {
+              "name": "EXT-010/ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-010",
+              "unit": null,
+              "verified_files": {
+                "commands.txt": "2c1925dcf83ede2bf920b7dd4084f3d7d104ae14ba854af35fd8e6423ad70cfa",
+                "native-acp-v1.json": "5e305fd799d0dc1a71624301784385dd6a57d1d65bfcfae7b3c4ca64c2eb014d"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13431415951,
+          "name": "package-env-windows-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+          "digest": "sha256:8c5f4a2f7ed14113ab8ce75f2bea9a2a765f2eb608650bb271903caa4de11b69",
+          "bytes": 265717,
+          "manifests": [
+            {
+              "name": "package-manifest.json",
+              "status": null,
+              "task": null,
+              "unit": "env",
+              "verified_files": {
+                "Cargo.lock": "f8ad380038ce0ef39f902b3d9b982ee5601e1e7d11574ab49fe79990559f0816",
+                "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+                "plugin.toml": "969067f56ef5b152aeb56ba8145097175f29107576f19f607be531869cb7ca08",
+                "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+                "yuki-env.exe": "9fee6012e690e37ab541dcff64467ef50faf6a4e17c19c4385bdece74cf1ebe0"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13431245742,
+          "name": "package-connector-ubuntu-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+          "digest": "sha256:ca735f6b234773cd779d982288bd9570b14c26712ed13c989c91bd0e82c19be3",
+          "bytes": 230576,
+          "manifests": [
+            {
+              "name": "package-manifest.json",
+              "status": null,
+              "task": null,
+              "unit": "connector",
+              "verified_files": {
+                "yuki_agent_connector-0.4.4.dev1-py3-none-any.whl": "7a143a2d128bde2de038f26ce0a44cee8e9bcbd9249960bf68beb0b5032d85b5",
+                "yuki_agent_connector-0.4.4.dev1.tar.gz": "691ff2efa037744310409fc0cd1b84b6c7b32049ef062b65b658dd7f308364b3"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13431075740,
+          "name": "acceptance-macos-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+          "digest": "sha256:89cbc5e5423bf12ddd99b9d49af9de77345463b980eee31138a743c05f61f3e1",
+          "bytes": 28734,
+          "manifests": [
+            {
+              "name": "EXT-001/ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-001",
+              "unit": null,
+              "verified_files": {
+                "extension-build-isolation.json": "2660c02bc4e17d5130a07f08241bb99aa161ac5829b79d3705b89265ed1d1f86"
+              }
+            },
+            {
+              "name": "EXT-002/ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-002",
+              "unit": null,
+              "verified_files": {
+                "build.txt": "ae4a96db01a70abcf1b856abe37962eabdc6c6cd21985937cc0f16d2e74ce767",
+                "published-sdk.json": "e60e4e826de157ed6afb7a25217cbeac05f52e275ed8897389886efd2dd28972"
+              }
+            },
+            {
+              "name": "EXT-019/ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-019",
+              "unit": null,
+              "verified_files": {
+                "desktop-callsite-pin.json": "d9d6caa43cb9dd36b65358fb0c06648b7c22784f98babfad63ba42bc00a9c7fe",
+                "desktop-surface-diff.json": "21d8a19696cd02bb91ad8079dd09948eeacbae32f31211d3a32f766abbb88550"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13430975858,
+          "name": "package-telegram-windows-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+          "digest": "sha256:e7ce47e434875f2a66690fbca6ccbe57a6aa6d2bed585fc90c470248973ff1de",
+          "bytes": 366095,
+          "manifests": [
+            {
+              "name": "package-manifest.json",
+              "status": null,
+              "task": null,
+              "unit": "telegram",
+              "verified_files": {
+                "Cargo.lock": "4b2b29014370b0a0a4f31596e413f991775eec3871f420559a5e2cbdddfc9f5b",
+                "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+                "plugin.toml": "1f0c387a9ae89eacebf993717dd8f08c352cfebff0170a483c8f2fcc052867d6",
+                "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+                "yuki-telegram.exe": "b35ae0e8ac7e7854148bbedb1847e6ff39f4b50898495e9c8ff281be0fc3ca3c"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13430905928,
+          "name": "package-yuki-setup-windows-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+          "digest": "sha256:23d89177747793c9b1347d8a25aa426415ece86dc6af9a386a53b50febd26bd1",
+          "bytes": 176867,
+          "manifests": [
+            {
+              "name": "package-manifest.json",
+              "status": null,
+              "task": null,
+              "unit": "yuki-setup",
+              "verified_files": {
+                "Cargo.lock": "9365e3881889c89db7ec71ab2218bb70e765635f159a535d2937284dc42da829",
+                "inputs/CORE-LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+                "inputs/CORE-NOTICE": "92eec243bb25b89d47a7fa29ce6c863a14487a9c9e1078d0538775e6ec8f5a34",
+                "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+                "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+                "yuki-setup.exe": "46bbee7997e2131d748178e62ebdf388d8bca2459504691806c97628e4270806"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13430895643,
+          "name": "package-env-ubuntu-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+          "digest": "sha256:25b49ec39d457d439e0532f342292a2369672dd840624e485e283d4f47127954",
+          "bytes": 424518,
+          "manifests": [
+            {
+              "name": "package-manifest.json",
+              "status": null,
+              "task": null,
+              "unit": "env",
+              "verified_files": {
+                "Cargo.lock": "f8ad380038ce0ef39f902b3d9b982ee5601e1e7d11574ab49fe79990559f0816",
+                "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+                "plugin.toml": "969067f56ef5b152aeb56ba8145097175f29107576f19f607be531869cb7ca08",
+                "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+                "yuki-env": "c5a18510f2c6cdb0c9e89c1b778ff4e2d60920d92c43c13e78cef7aa73ab18c1"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13430701160,
+          "name": "package-feishu-windows-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+          "digest": "sha256:6f33f188376d8f1acc5e87e378b1a7b45ee23fd94a58f93b48fc6185bb422e91",
+          "bytes": 633408,
+          "manifests": [
+            {
+              "name": "package-manifest.json",
+              "status": null,
+              "task": null,
+              "unit": "feishu",
+              "verified_files": {
+                "Cargo.lock": "4b35a6537e4c867bfd1f1ac72718a470ded7688c410cab84af4544371f7fd846",
+                "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+                "NOTICE": "51201cfac32f0bae2e3f4157609d1f4c268f76fef608d30e6809a7581b6746cb",
+                "plugin.toml": "3d099ddd3fe2e1aef0663aa4ddc79913ef05890731ea697498b4349b28653e33",
+                "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+                "yuki-feishu.exe": "828b88e3471e8c5d6f402397d8fcc158137cce2d821b13f8f03186be1517eaba"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13430696052,
+          "name": "package-web-fetch-windows-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+          "digest": "sha256:40194d2718db3441d89dbdbc6474aaef0aa18c18c3aabaad7f1beb6654ba5223",
+          "bytes": 575395,
+          "manifests": [
+            {
+              "name": "package-manifest.json",
+              "status": null,
+              "task": null,
+              "unit": "web-fetch",
+              "verified_files": {
+                "Cargo.lock": "464fc9374e68c11bc37652c611b739af5759dcbf6231c8ea9cc48d37bbffb3ff",
+                "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+                "plugin.toml": "c67dd07b6613398e1bde628918e24d03c48494afad34bd481d17e94ece557cf6",
+                "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+                "yuki-web-fetch.exe": "49c72b81b461ee08be76fb1ed297160dbb418537e714b6fc989c10a08be69fe0"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13430601189,
+          "name": "connector-upgrade-ubuntu-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+          "digest": "sha256:25623537934faf64c961b623ed703f105959b6ddcd92ccc53916289c5307c7f2",
+          "bytes": 298105,
+          "manifests": [
+            {
+              "name": "EXT-007/candidate-ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-007",
+              "unit": null,
+              "verified_files": {
+                "candidate-tests.xml": "7e2eae691a846b40bdb6479fba828787cca77488b6171f4512ad5093ff37d351",
+                "commands.json": "c799f1f5d435340525dca5b7584982bfe27f004ca21071b566e34f710b769bd5",
+                "connector-package.json": "e397b474a2309056970734bf3a83dba58eafed1ecb47f6a2a307749bb502db4a",
+                "connector-runtime.json": "fd2e8f9ecc47321bc359686002c8946b96e1bfeecc2cefe96f3e45e64c596eeb",
+                "connector-upgrade.json": "2de9ff8722944317b36af49e7a12924927d89483a01beb52d9229bc672b6a406",
+                "wire4-candidate.json": "d012511998b4c4835adf51c3ff2921635ee6cbb765a98b59b44d3edecd1d54e0",
+                "wire4-old.json": "d012511998b4c4835adf51c3ff2921635ee6cbb765a98b59b44d3edecd1d54e0"
+              }
+            },
+            {
+              "name": "EXT-008/ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-008",
+              "unit": null,
+              "verified_files": {
+                "codex-driver-wire.json": "1f3c00bb2cfe1c695a80a1667b7ea14b32a0dff1a68453a960ef1a1956dcdfc0",
+                "commands.txt": "62d1c34360b5e09973abd7b767133133c7675b0cd5f81f9532a9d02f59ed3446"
+              }
+            },
+            {
+              "name": "EXT-009/ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-009",
+              "unit": null,
+              "verified_files": {
+                "claude-driver-wire.json": "161bc46559eccace56a1e71fed4463e60c76f5247ff63832562e4cef5324c84e",
+                "commands.txt": "a1610d7e51a8c4240ab62ee0def072bbb452ff8c1fc79d9841918e32b040b935"
+              }
+            },
+            {
+              "name": "EXT-010/ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-010",
+              "unit": null,
+              "verified_files": {
+                "commands.txt": "4d693604f3c26804c2ffc52a35e52a3c8feb3fd66b86c3e3a94dfaad8395b158",
+                "native-acp-v1.json": "82865478e48bac8a934766c12c7b098ee92ad021fd23009e2f5356bf62f67ef5"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13430591141,
+          "name": "package-web-fetch-ubuntu-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+          "digest": "sha256:1286408564f707d1e3ccfc5fca38886af2e7145921488c1bb90e6c4981ef6ec2",
+          "bytes": 739339,
+          "manifests": [
+            {
+              "name": "package-manifest.json",
+              "status": null,
+              "task": null,
+              "unit": "web-fetch",
+              "verified_files": {
+                "Cargo.lock": "464fc9374e68c11bc37652c611b739af5759dcbf6231c8ea9cc48d37bbffb3ff",
+                "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+                "plugin.toml": "c67dd07b6613398e1bde628918e24d03c48494afad34bd481d17e94ece557cf6",
+                "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+                "yuki-web-fetch": "a7fce0034d88e47a8c0885c100ba8b7ed75165d4f9f7c1084d893e569065a722"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13430279800,
+          "name": "package-feishu-ubuntu-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+          "digest": "sha256:77bc2f40e6dbb5484b15e07351da39f87d3d833f60a9bf18bdfcd27e43a81959",
+          "bytes": 823319,
+          "manifests": [
+            {
+              "name": "package-manifest.json",
+              "status": null,
+              "task": null,
+              "unit": "feishu",
+              "verified_files": {
+                "Cargo.lock": "4b35a6537e4c867bfd1f1ac72718a470ded7688c410cab84af4544371f7fd846",
+                "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+                "NOTICE": "51201cfac32f0bae2e3f4157609d1f4c268f76fef608d30e6809a7581b6746cb",
+                "plugin.toml": "3d099ddd3fe2e1aef0663aa4ddc79913ef05890731ea697498b4349b28653e33",
+                "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+                "yuki-feishu": "0373b47bd799ab698b103dd997d8f80d93dd2cc896edb22c9f1e28df30650084"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13430024130,
+          "name": "acceptance-ubuntu-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+          "digest": "sha256:346aad673d8be0e039e3bc531eef1d6fa77b54ebc42d356ea1a715b7371b8b5d",
+          "bytes": 28562,
+          "manifests": [
+            {
+              "name": "EXT-001/ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-001",
+              "unit": null,
+              "verified_files": {
+                "extension-build-isolation.json": "801c3deb743035f18f35b187f6f0c3ad298037fd9e85c4faf1c5f7713e127394"
+              }
+            },
+            {
+              "name": "EXT-002/ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-002",
+              "unit": null,
+              "verified_files": {
+                "build.txt": "6414b0fe1c435e632f3706717e1fef8c4687c366b4405a72d51cda166dec162b",
+                "published-sdk.json": "188dbdac935716b53edead90d610896610557e2ebe51509f47be5ec35754bfbd"
+              }
+            },
+            {
+              "name": "EXT-019/ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-019",
+              "unit": null,
+              "verified_files": {
+                "desktop-callsite-pin.json": "d9d6caa43cb9dd36b65358fb0c06648b7c22784f98babfad63ba42bc00a9c7fe",
+                "desktop-surface-diff.json": "21d8a19696cd02bb91ad8079dd09948eeacbae32f31211d3a32f766abbb88550"
+              }
+            }
+          ]
+        },
+        {
+          "id": 13429184966,
+          "name": "acceptance-windows-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+          "digest": "sha256:03a7e3648230e88d1eb3fe71c2a4a12a1c7ed3b5ce50d46164cf83e581230d3a",
+          "bytes": 28831,
+          "manifests": [
+            {
+              "name": "EXT-001/ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-001",
+              "unit": null,
+              "verified_files": {
+                "extension-build-isolation.json": "8c286bf91b3c29a313cc8ec3a92d78b108fafe74c64b6f4b85e1458a13f5c9ff"
+              }
+            },
+            {
+              "name": "EXT-002/ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-002",
+              "unit": null,
+              "verified_files": {
+                "build.txt": "a07da754d1958464b528876362d4cef4abdfacd8752692d8e510324de199d207",
+                "published-sdk.json": "8adc43ee18dc0cfdc402622074019efe5294b632f9a13483637344df3828e2c6"
+              }
+            },
+            {
+              "name": "EXT-019/ci/manifest.json",
+              "status": "PASS",
+              "task": "EXT-019",
+              "unit": null,
+              "verified_files": {
+                "desktop-callsite-pin.json": "d9d6caa43cb9dd36b65358fb0c06648b7c22784f98babfad63ba42bc00a9c7fe",
+                "desktop-surface-diff.json": "477f17ea1448f685d663477f373bf44b78f626a35b1533f36d9dea1f872d2f6a"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "verified_at": "2026-11-06T02:09:04.299396+00:00",
+  "status": "PASS",
+  "package_capabilities": [
+    {
+      "artifact_id": 13469362905,
+      "name": "package-connector-macos-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+      "unit": "connector",
+      "version": "0.4.4.dev1",
+      "published": false,
+      "capability": {
+        "wheel": "yuki_agent_connector-0.4.4.dev1-py3-none-any.whl",
+        "native_driver_modules": [
+          "yuki_agent_connector/connector.py",
+          "yuki_agent_connector/drivers/acp.py",
+          "yuki_agent_connector/drivers/claude.py",
+          "yuki_agent_connector/drivers/codex.py",
+          "yuki_agent_connector/journal.py"
+        ]
+      }
+    },
+    {
+      "artifact_id": 13468944208,
+      "name": "package-web-fetch-macos-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+      "unit": "web-fetch",
+      "version": "0.1.0-alpha.1",
+      "published": false,
+      "capability": {
+        "binary": "yuki-web-fetch",
+        "magic": "cffaedfe",
+        "bytes": 1612384,
+        "locked_native_tests": true
+      }
+    },
+    {
+      "artifact_id": 13462484900,
+      "name": "package-telegram-macos-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+      "unit": "telegram",
+      "version": "0.1.0-alpha.1",
+      "published": false,
+      "capability": {
+        "binary": "yuki-telegram",
+        "magic": "cffaedfe",
+        "bytes": 1059312,
+        "locked_native_tests": true
+      }
+    },
+    {
+      "artifact_id": 13460676502,
+      "name": "package-env-macos-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+      "unit": "env",
+      "version": "0.1.0-alpha.1",
+      "published": false,
+      "capability": {
+        "binary": "yuki-env",
+        "magic": "cffaedfe",
+        "bytes": 872496,
+        "locked_native_tests": true
+      }
+    },
+    {
+      "artifact_id": 13451567184,
+      "name": "package-yuki-setup-macos-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+      "unit": "yuki-setup",
+      "version": "0.1.0-alpha.1",
+      "published": false,
+      "capability": {
+        "binary": "yuki-setup",
+        "magic": "cffaedfe",
+        "bytes": 556864,
+        "locked_native_tests": true
+      }
+    },
+    {
+      "artifact_id": 13445032871,
+      "name": "package-feishu-macos-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+      "unit": "feishu",
+      "version": "0.1.0-alpha.1",
+      "published": false,
+      "capability": {
+        "binary": "yuki-feishu",
+        "magic": "cffaedfe",
+        "bytes": 1727520,
+        "locked_native_tests": true
+      }
+    },
+    {
+      "artifact_id": 13432135199,
+      "name": "package-feishu-windows-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+      "unit": "feishu",
+      "version": "0.1.0-alpha.1",
+      "published": false,
+      "capability": {
+        "binary": "yuki-feishu.exe",
+        "magic": "4d5a9000",
+        "bytes": 1387520,
+        "locked_native_tests": true
+      }
+    },
+    {
+      "artifact_id": 13431335568,
+      "name": "package-connector-ubuntu-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+      "unit": "connector",
+      "version": "0.4.4.dev1",
+      "published": false,
+      "capability": {
+        "wheel": "yuki_agent_connector-0.4.4.dev1-py3-none-any.whl",
+        "native_driver_modules": [
+          "yuki_agent_connector/connector.py",
+          "yuki_agent_connector/drivers/acp.py",
+          "yuki_agent_connector/drivers/claude.py",
+          "yuki_agent_connector/drivers/codex.py",
+          "yuki_agent_connector/journal.py"
+        ]
+      }
+    },
+    {
+      "artifact_id": 13431155293,
+      "name": "package-env-windows-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+      "unit": "env",
+      "version": "0.1.0-alpha.1",
+      "published": false,
+      "capability": {
+        "binary": "yuki-env.exe",
+        "magic": "4d5a9000",
+        "bytes": 563712,
+        "locked_native_tests": true
+      }
+    },
+    {
+      "artifact_id": 13430980325,
+      "name": "package-telegram-windows-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+      "unit": "telegram",
+      "version": "0.1.0-alpha.1",
+      "published": false,
+      "capability": {
+        "binary": "yuki-telegram.exe",
+        "magic": "4d5a9000",
+        "bytes": 798208,
+        "locked_native_tests": true
+      }
+    },
+    {
+      "artifact_id": 13430870425,
+      "name": "package-yuki-setup-windows-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+      "unit": "yuki-setup",
+      "version": "0.1.0-alpha.1",
+      "published": false,
+      "capability": {
+        "binary": "yuki-setup.exe",
+        "magic": "4d5a9000",
+        "bytes": 317440,
+        "locked_native_tests": true
+      }
+    },
+    {
+      "artifact_id": 13430630400,
+      "name": "package-yuki-setup-ubuntu-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+      "unit": "yuki-setup",
+      "version": "0.1.0-alpha.1",
+      "published": false,
+      "capability": {
+        "binary": "yuki-setup",
+        "magic": "7f454c46",
+        "bytes": 608952,
+        "locked_native_tests": true
+      }
+    },
+    {
+      "artifact_id": 13430625740,
+      "name": "package-env-ubuntu-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+      "unit": "env",
+      "version": "0.1.0-alpha.1",
+      "published": false,
+      "capability": {
+        "binary": "yuki-env",
+        "magic": "7f454c46",
+        "bytes": 997696,
+        "locked_native_tests": true
+      }
+    },
+    {
+      "artifact_id": 13430323822,
+      "name": "package-connector-windows-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+      "unit": "connector",
+      "version": "0.4.4.dev1",
+      "published": false,
+      "capability": {
+        "wheel": "yuki_agent_connector-0.4.4.dev1-py3-none-any.whl",
+        "native_driver_modules": [
+          "yuki_agent_connector/connector.py",
+          "yuki_agent_connector/drivers/acp.py",
+          "yuki_agent_connector/drivers/claude.py",
+          "yuki_agent_connector/drivers/codex.py",
+          "yuki_agent_connector/journal.py"
+        ]
+      }
+    },
+    {
+      "artifact_id": 13430219415,
+      "name": "package-feishu-ubuntu-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+      "unit": "feishu",
+      "version": "0.1.0-alpha.1",
+      "published": false,
+      "capability": {
+        "binary": "yuki-feishu",
+        "magic": "7f454c46",
+        "bytes": 1984712,
+        "locked_native_tests": true
+      }
+    },
+    {
+      "artifact_id": 13429894963,
+      "name": "package-telegram-ubuntu-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+      "unit": "telegram",
+      "version": "0.1.0-alpha.1",
+      "published": false,
+      "capability": {
+        "binary": "yuki-telegram",
+        "magic": "7f454c46",
+        "bytes": 1200184,
+        "locked_native_tests": true
+      }
+    },
+    {
+      "artifact_id": 13429784509,
+      "name": "package-web-fetch-windows-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+      "unit": "web-fetch",
+      "version": "0.1.0-alpha.1",
+      "published": false,
+      "capability": {
+        "binary": "yuki-web-fetch.exe",
+        "magic": "4d5a9000",
+        "bytes": 1334784,
+        "locked_native_tests": true
+      }
+    },
+    {
+      "artifact_id": 13429454763,
+      "name": "package-web-fetch-ubuntu-latest-0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+      "unit": "web-fetch",
+      "version": "0.1.0-alpha.1",
+      "published": false,
+      "capability": {
+        "binary": "yuki-web-fetch",
+        "magic": "7f454c46",
+        "bytes": 1917448,
+        "locked_native_tests": true
+      }
+    },
+    {
+      "artifact_id": 13469864366,
+      "name": "package-yuki-setup-macos-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+      "unit": "yuki-setup",
+      "version": "0.1.0-alpha.1",
+      "published": false,
+      "capability": {
+        "binary": "yuki-setup",
+        "magic": "cffaedfe",
+        "bytes": 556864,
+        "locked_native_tests": true
+      }
+    },
+    {
+      "artifact_id": 13469273202,
+      "name": "package-telegram-macos-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+      "unit": "telegram",
+      "version": "0.1.0-alpha.1",
+      "published": false,
+      "capability": {
+        "binary": "yuki-telegram",
+        "magic": "cffaedfe",
+        "bytes": 1059312,
+        "locked_native_tests": true
+      }
+    },
+    {
+      "artifact_id": 13460916902,
+      "name": "package-connector-macos-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+      "unit": "connector",
+      "version": "0.4.4.dev1",
+      "published": false,
+      "capability": {
+        "wheel": "yuki_agent_connector-0.4.4.dev1-py3-none-any.whl",
+        "native_driver_modules": [
+          "yuki_agent_connector/connector.py",
+          "yuki_agent_connector/drivers/acp.py",
+          "yuki_agent_connector/drivers/claude.py",
+          "yuki_agent_connector/drivers/codex.py",
+          "yuki_agent_connector/journal.py"
+        ]
+      }
+    },
+    {
+      "artifact_id": 13456408431,
+      "name": "package-web-fetch-macos-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+      "unit": "web-fetch",
+      "version": "0.1.0-alpha.1",
+      "published": false,
+      "capability": {
+        "binary": "yuki-web-fetch",
+        "magic": "cffaedfe",
+        "bytes": 1612384,
+        "locked_native_tests": true
+      }
+    },
+    {
+      "artifact_id": 13455422798,
+      "name": "package-env-macos-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+      "unit": "env",
+      "version": "0.1.0-alpha.1",
+      "published": false,
+      "capability": {
+        "binary": "yuki-env",
+        "magic": "cffaedfe",
+        "bytes": 872496,
+        "locked_native_tests": true
+      }
+    },
+    {
+      "artifact_id": 13441361445,
+      "name": "package-feishu-macos-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+      "unit": "feishu",
+      "version": "0.1.0-alpha.1",
+      "published": false,
+      "capability": {
+        "binary": "yuki-feishu",
+        "magic": "cffaedfe",
+        "bytes": 1727520,
+        "locked_native_tests": true
+      }
+    },
+    {
+      "artifact_id": 13432045585,
+      "name": "package-yuki-setup-ubuntu-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+      "unit": "yuki-setup",
+      "version": "0.1.0-alpha.1",
+      "published": false,
+      "capability": {
+        "binary": "yuki-setup",
+        "magic": "7f454c46",
+        "bytes": 608952,
+        "locked_native_tests": true
+      }
+    },
+    {
+      "artifact_id": 13432030292,
+      "name": "package-connector-windows-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+      "unit": "connector",
+      "version": "0.4.4.dev1",
+      "published": false,
+      "capability": {
+        "wheel": "yuki_agent_connector-0.4.4.dev1-py3-none-any.whl",
+        "native_driver_modules": [
+          "yuki_agent_connector/connector.py",
+          "yuki_agent_connector/drivers/acp.py",
+          "yuki_agent_connector/drivers/claude.py",
+          "yuki_agent_connector/drivers/codex.py",
+          "yuki_agent_connector/journal.py"
+        ]
+      }
+    },
+    {
+      "artifact_id": 13431835226,
+      "name": "package-telegram-ubuntu-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+      "unit": "telegram",
+      "version": "0.1.0-alpha.1",
+      "published": false,
+      "capability": {
+        "binary": "yuki-telegram",
+        "magic": "7f454c46",
+        "bytes": 1200184,
+        "locked_native_tests": true
+      }
+    },
+    {
+      "artifact_id": 13431415951,
+      "name": "package-env-windows-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+      "unit": "env",
+      "version": "0.1.0-alpha.1",
+      "published": false,
+      "capability": {
+        "binary": "yuki-env.exe",
+        "magic": "4d5a9000",
+        "bytes": 563712,
+        "locked_native_tests": true
+      }
+    },
+    {
+      "artifact_id": 13431245742,
+      "name": "package-connector-ubuntu-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+      "unit": "connector",
+      "version": "0.4.4.dev1",
+      "published": false,
+      "capability": {
+        "wheel": "yuki_agent_connector-0.4.4.dev1-py3-none-any.whl",
+        "native_driver_modules": [
+          "yuki_agent_connector/connector.py",
+          "yuki_agent_connector/drivers/acp.py",
+          "yuki_agent_connector/drivers/claude.py",
+          "yuki_agent_connector/drivers/codex.py",
+          "yuki_agent_connector/journal.py"
+        ]
+      }
+    },
+    {
+      "artifact_id": 13430975858,
+      "name": "package-telegram-windows-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+      "unit": "telegram",
+      "version": "0.1.0-alpha.1",
+      "published": false,
+      "capability": {
+        "binary": "yuki-telegram.exe",
+        "magic": "4d5a9000",
+        "bytes": 798208,
+        "locked_native_tests": true
+      }
+    },
+    {
+      "artifact_id": 13430905928,
+      "name": "package-yuki-setup-windows-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+      "unit": "yuki-setup",
+      "version": "0.1.0-alpha.1",
+      "published": false,
+      "capability": {
+        "binary": "yuki-setup.exe",
+        "magic": "4d5a9000",
+        "bytes": 317440,
+        "locked_native_tests": true
+      }
+    },
+    {
+      "artifact_id": 13430895643,
+      "name": "package-env-ubuntu-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+      "unit": "env",
+      "version": "0.1.0-alpha.1",
+      "published": false,
+      "capability": {
+        "binary": "yuki-env",
+        "magic": "7f454c46",
+        "bytes": 997704,
+        "locked_native_tests": true
+      }
+    },
+    {
+      "artifact_id": 13430701160,
+      "name": "package-feishu-windows-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+      "unit": "feishu",
+      "version": "0.1.0-alpha.1",
+      "published": false,
+      "capability": {
+        "binary": "yuki-feishu.exe",
+        "magic": "4d5a9000",
+        "bytes": 1387520,
+        "locked_native_tests": true
+      }
+    },
+    {
+      "artifact_id": 13430696052,
+      "name": "package-web-fetch-windows-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+      "unit": "web-fetch",
+      "version": "0.1.0-alpha.1",
+      "published": false,
+      "capability": {
+        "binary": "yuki-web-fetch.exe",
+        "magic": "4d5a9000",
+        "bytes": 1334784,
+        "locked_native_tests": true
+      }
+    },
+    {
+      "artifact_id": 13430591141,
+      "name": "package-web-fetch-ubuntu-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+      "unit": "web-fetch",
+      "version": "0.1.0-alpha.1",
+      "published": false,
+      "capability": {
+        "binary": "yuki-web-fetch",
+        "magic": "7f454c46",
+        "bytes": 1917408,
+        "locked_native_tests": true
+      }
+    },
+    {
+      "artifact_id": 13430279800,
+      "name": "package-feishu-ubuntu-latest-dfff7d48543ba23f02d8f9587e8189154c279aa7",
+      "unit": "feishu",
+      "version": "0.1.0-alpha.1",
+      "published": false,
+      "capability": {
+        "binary": "yuki-feishu",
+        "magic": "7f454c46",
+        "bytes": 1984592,
+        "locked_native_tests": true
+      }
+    }
+  ],
+  "merge": {
+    "commit": "ac8c1b287e5a320107f64975dfd318b521bd8f13",
+    "parents": [
+      "996deedef3e119246651050dc8cac186044a925a",
+      "0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3"
+    ],
+    "tree": "54a39c56ca2d0ee204bbb19c8f0f12c43132519d",
+    "same_as_tested_merge_tree": true,
+    "verified_at": "2026-11-06T02:13:08.830917+00:00"
+  }
+}

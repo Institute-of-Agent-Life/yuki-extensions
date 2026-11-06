@@ -153,3 +153,14 @@ operator comments, secret references and legacy NapCat values and preserve them.
 Refuse corrupt inputs, unknown pins, an occupied owner file and unsigned optional
 components. Test an actual selected native host when available; distinguish
 rendering/doctor, native readiness and a launched Compose deployment.
+
+## EXT-011 original Connector device catalog
+
+Start a real installed Rust local-agent and the pinned personal Host. A code for
+purpose=connector must pair a device without creating a chat entry. Reject chat
+credentials on the wire4 path. Identify the authenticated original device before
+accepting a hello or replacing its full catalog. Two connections for the same
+device must fence late catalog/close from the older generation. Reopening the
+plugin preserves devices, including an offline device with zero instances. A
+self-reported device ID never establishes authority and a revoked credential
+cannot write a snapshot. Record any missing Host authority separately.

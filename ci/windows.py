@@ -57,7 +57,7 @@ def main():
     parser.add_argument("--preparation", action="store_true", help="run the card preparation entry point")
     args = parser.parse_args()
     driver_case = args.task in {"EXT-008", "EXT-009", "EXT-010"}
-    connector_mode = args.connector_source or args.connector_candidate or driver_case
+    connector_mode = args.connector_source or args.connector_candidate or driver_case or args.task == "EXT-011"
     if args.connector_source and args.connector_candidate:
         parser.error("select one connector verification mode")
     if not re.fullmatch(r"EXT-\d{3}", args.task) or not re.fullmatch(r"[a-zA-Z0-9-]+", args.run):
@@ -111,7 +111,7 @@ def main():
                 raise ValueError("platform fixture wheel digest mismatch: " + wheel.name)
             extra.append(wheel)
     if connector_mode:
-        if not driver_case and args.task != "EXT-007":
+        if not driver_case and args.task not in {"EXT-007", "EXT-011"}:
             parser.error("connector source mode belongs to EXT-007 preparation")
         manifest_path = transfer / "connector-wheels.json"
         helper = invoke(["uv", "run", "--no-project", "--offline", "--python", "3.12", "python",
@@ -163,18 +163,19 @@ def main():
     # Include only locked wheels, not arbitrary files already in the transport cache.
     tools_zip = transfer / "tooling.zip"
     host_candidate = None
-    if args.task in {"EXT-003", "EXT-005", "EXT-020", "EXT-028"}:
+    if args.task in {"EXT-003", "EXT-005", "EXT-011", "EXT-020", "EXT-028"}:
         host_candidate = Path(os.environ["YUKI_HOST_CANDIDATE"])
-        pin = json.loads((root / "compat/core-032/source.lock.json").read_bytes())["platforms"]["windows-x86_64"]
+        contract = "core-033" if args.task == "EXT-011" else "core-032"
+        pin = json.loads((root / "compat" / contract / "source.lock.json").read_bytes())["platforms"]["windows-x86_64"]
         if hashlib.sha256(host_candidate.read_bytes()).hexdigest() != pin["sha256"]:
             raise ValueError("unexpected Windows host candidate")
     native_crates = []
-    if args.task in {"EXT-005", "EXT-020", "EXT-028"}:
+    if args.task in {"EXT-005", "EXT-011", "EXT-020", "EXT-028"}:
         import tomllib
         from handshake_cargo import registry_crate
         cache = transfer / "native-crates"
         cache.mkdir(exist_ok=True)
-        unit = {"EXT-005": "feishu", "EXT-020": "env", "EXT-028": "web-fetch"}[args.task]
+        unit = {"EXT-005": "feishu", "EXT-011": "local-agent", "EXT-020": "env", "EXT-028": "web-fetch"}[args.task]
         project = tomllib.loads((root / "plugins" / unit / "Cargo.lock").read_text())
         for package in project["package"]:
             if not package.get("source") or package["name"] == "yuki-plugin-sdk":
@@ -204,7 +205,7 @@ def main():
         for crate in native_crates:
             archive.write(crate, "native-crates/locked/" + crate.name)
         if host_candidate:
-            archive.write(host_candidate, "core032-host.zip")
+            archive.write(host_candidate, "extension-host-candidate.zip")
         for package in locked.values():
             archive.write(wheelhouse / package["filename"], package["filename"])
         for path in release_assets:
@@ -222,7 +223,7 @@ def main():
     assert invoke(["scp", "-q", str(snapshot), f"{args.host}:{remote}/source.zip"]).returncode == 0
     assert invoke(["scp", "-q", str(tools_zip), f"{args.host}:{remote}/tooling.zip"]).returncode == 0
     sdk_environment = ""
-    if args.task in {"EXT-001", "EXT-002", "EXT-003", "EXT-005", "EXT-020", "EXT-028", "EXT-040"}:
+    if args.task in {"EXT-001", "EXT-002", "EXT-003", "EXT-005", "EXT-011", "EXT-020", "EXT-028", "EXT-040"}:
         # Use the host's existing pinned toolchain, with a separate writable Cargo home.
         sdk_environment = r"""
 $tools=Join-Path $env:USERPROFILE 'yuki-core-tooling'
@@ -242,7 +243,7 @@ if (Test-Path (Join-Path {fixture_home} 'toolchains/1.90.0-x86_64-pc-windows-gnu
     for key, package in setup_inputs:
         sdk_environment += "$env:" + key + "=" + quote(remote + "/wheelhouse/setup-inputs/" + package.name) + "\n"
     if host_candidate:
-        sdk_environment += "$env:YUKI_HOST_CANDIDATE=" + quote(remote + "/wheelhouse/core032-host.zip") + "\n"
+        sdk_environment += "$env:YUKI_HOST_CANDIDATE=" + quote(remote + "/wheelhouse/extension-host-candidate.zip") + "\n"
     if native_crates:
         sdk_environment += "$env:YUKI_CRATE_CACHE=" + quote(remote + "/wheelhouse/native-crates") + "\n"
     if release_assets:

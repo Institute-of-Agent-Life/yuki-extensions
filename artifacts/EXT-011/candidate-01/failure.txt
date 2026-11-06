@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "D:\yuki-extension-tests\8018a39996492fb86388\src\ci\check.py", line 37, in main
+    report_name, report = runner(root, args.out.resolve())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\8018a39996492fb86388\src\tests\cases\EXT-011.py", line 30, in prepare
+    code,payload=http(owner.edge,"POST","/agents/v1/pair",{"code":wrong,"device_label":"wrong-purpose"})
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\8018a39996492fb86388\src\ci\personal_preview.py", line 28, in http
+    conn=http.client.HTTPConnection(address,timeout=12)
+         ^^^^^^^^^^^
+AttributeError: 'function' object has no attribute 'client'

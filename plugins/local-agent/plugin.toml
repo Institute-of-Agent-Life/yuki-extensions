@@ -1,0 +1,5 @@
+id = "local-agent"
+version = "0.1.0-alpha.1"
+program = "yuki-local-agent"
+grants = []
+env = ["YUKI_LOCAL_AGENT_CORE","YUKI_LOCAL_AGENT_LISTEN","YUKI_LOCAL_AGENT_STATE"]

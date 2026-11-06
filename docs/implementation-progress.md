@@ -13,6 +13,39 @@
 | EXT-010 · codex/ext-010 | `ab16e07`；CI `41834791702`；PR #6 合併 `2c55dbb` | `artifacts/EXT-010/02/`，8 例含實際子進程退出碼 23、雙 session 取消及 unknown |
 | EXT-019 · codex/ext-019 | 實作 `7531d84`、PR head `9d1e8a8`；三平台 CI `41835863011`；PR #7 合併 `7625095` | `artifacts/EXT-019/02/`，呼叫表、schema 差分、5 個故障變異；`03/` 固定跨平台順序 |
 
+## 2026-11-06 CI 去重同步至佇列首張 PR #16
+
+- 沿用 PR #33 的 `11fbc352c9ca`：本提交工作流與已在 HJW Windows 驗過的
+  `e8f3465def7ebdbf0aee8024b580eb2edc13cb3342652137dbf6f9a35de6fa22` 逐 bytes 相同。
+  分支 push 改由 PR merge ref 跑三平台；main push／手動執行保留。
+  只取消同 PR 過期執行，不讓 main 或手動執行互相取消。
+- 原 jobs、矩陣、選擇器、測試、建包與上傳步驟均保留。原 Windows 五事件／YAML
+  回條 `artifacts/readiness/ci-dedupe-windows.json`，本次來源核對
+  `artifacts/readiness/ci-dedupe-pr16.json`。這是既有驗證的精確重用，沒有重跑同件。
+- PR #16 基底仍為 `ac8c1b287e5a`；新 head 的三平台 acceptance、全部受影響套件與
+  ZIP／manifest／merge tree 未核完之前不合併。只有在新 head gates 已存在後，才取消
+  原 `58cd960` 的兩輪過期執行；保留其既有產物。
+- Rust 快取為獨立後續變更。原 local-agent、Connector 和 SDK 都未改。
+  正式完成仍 7／68。新的 Client9／Main 媒體候選在 PR #32／#34；
+  詳細進度見 `work-client-selection`／`work-media-main` 工作樹，原四份 WIP 保留。
+
+## 2026-11-06 PR #15 合併與 PR #16 新基底
+
+- PR #15 head `0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3` 的 push `42058530137`、
+  PR `42058542237` 全 44 項檢查成功：三平台 acceptance、六個 release units package
+  及 Connector 回歸。已下載核對全部 48 ZIP 的 GitHub digest、安全成員、CRC、
+  manifest／逐成員 SHA、36 個 package 的真 binary／wheel 與已鎖 native tests。
+- CI merge `dfff7d48543b` parents 為舊 main `996deedef3e1`／該 head。普通合併
+  `ac8c1b287e5a320107f64975dfd318b521bd8f13` 的相同 parents 及 tree
+  `54a39c56ca2d0ee204bbb19c8f0f12c43132519d` 已重核，與測試 merge tree 相同。
+  完整回條 `artifacts/EXT-011/ci-receipt-0107c0a.json`。
+- PR #16 原 `12b3ace901e3` 在獨立 `codex/ext-011-gates` 工作樹正常合入此 main；
+  只進度有衝突，兩邊完整保留，local-agent／Connector 原碼未改。新 head／current
+  base 的三平台 acceptance、受影響 package 與具名產物須重驗後才可普通合併。
+- 另有 `work-connector-auth` 的新 CORE-033 alpha.12 Rust 接入 WIP，獨立保留，
+  正在 HJW 驗證；本 PR #16 的原配對候選不冒充新 wire4 鑑權整卡驗收。
+  其餘 Code／ASR／rebuild／subscription WIP 未動。正式完成仍 7／68。
+
 ## 2026-11-05 PR #14 合併與 PR #15 新基底
 
 - PR #14 head `dfe8eb46d64a` 的三平台 acceptance、五套 package 和 Connector 回歸
@@ -86,7 +119,7 @@ manifest。回條含來源提交、SDK／schema／peer／消費者 digest、逐�
 
 ## 當前進度
 
-七張卡已完成任務書驗收。另有五張卡完成下表的 Windows 候選工作。
+七張卡已完成任務書驗收。另有六張卡完成下表的 Windows 候選工作。
 三平台 CI 與合併狀態以各 PR 為準。此批開發對拍不計入七張正式驗收。
 最新依賴快照見 `artifacts/readiness/after-core032-039-candidates.json`。
 
@@ -97,8 +130,9 @@ manifest。回條含來源提交、SDK／schema／peer／消費者 digest、逐�
 | EXT-005 · codex/ext-005-feishu | `6183e58` · [PR #13](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/13) | 飛書／Lark 身份隔離、亂序重組、writer 斷線無成功 ACK | CORE-032 正式交接 |
 | EXT-020 · codex/ext-020-env | `cf1c2a5`、`1e7906b` · [PR #14](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/14) | 原 Manager 來源包、run 查詢與缺後端局部失敗 | Work/run 授權，真 gVisor/execd、PTY 及輪轉 |
 | EXT-040 · codex/ext-040-setup | `a607e8c` · [PR #15](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/15) | 簽名原生／OCI 安裝，無 QQ ready，明選 web-fetch | CORE-039 正式交接、外部入口與選配服務實測 |
+| EXT-011 · codex/ext-011-local-agent | 候選提交 | 原 Connector 配對、無 instance 裝置跨重啟保存 | Work 以外的裝置授權與撤權狀態 |
 
-對 CORE-033 尚無可消費交付，EXT-011／015 待核。CORE-025 已開
+CORE-033 已交接未發布的個人入口候選包，EXT-011／015 可做開發對拍。CORE-025 已開
 [核心 PR #34](https://github.com/Institute-of-Agent-Life/yuki-core/pull/34)。EXT-004／006
 仍缺原 Bot／租戶附件的公開授權與驗收回條，詳見 `docs/core-interface-requests.md`。
 EXT-067 完整基底對拍還需 EXT-004 的實際分段投遞證據。
@@ -235,3 +269,11 @@ PR #13 head `9db51914174e` 的 push `41980406600`、PR `41980413395` 三平台�
 `526a35382d9bb464f92adc947e1b212e0ea41c3c`，回條 `artifacts/EXT-005/ci-receipt-9db5191.json`。
 PR #14 正常合入此 main；僅合併回條與進度，程式樹不變。新 SHA 的三平台及套件
 檢查仍需全過並驗下載產物，才可合併。
+
+## EXT-011 個人入口開發候選
+
+核心 PR #36 交接 `becbdb0316aa` 提供未發布的乾淨 CORE-033 `994aee20ced7`。三個 OS 包、宿主 schema、Client9／wire4 來源及方法索引釘在 `compat/core-033/`。HJW 實用 Windows 包 SHA-256 `ddc2cf1c01dd9df9e0eecf6b1b85984176810b8c763a4b7bd493d924e40a53f8`；宿主 SHA-256 `54e4825ddd9de64d3e71626e320fbec2e8ddd0d60099ef6775a5573aaf2bbfa3`，Rust SDK `1.0.0-alpha.3 / e5b9fde5298eb71ff252fc8acd430b44d8d965761d5d3c948da47fced49c7dbd`。
+
+原 Python Connector 用一次性碼向 Rust local-agent 配對。錯用途和重用配對碼回 401，重啟後仍能按原 device_id 列出沒有 instance 的設備。原 wire4 連線不帶 Work，宿主交換接口缺 Work 回 422；插件拒絕升級，保留舊 journal。需要核心給出與指定 Work 無關的 connector 鑑權、原裝置 ID／namespace 和即時撤權語義，再驗兩條連線的 fencing。
+
+實機插件 SHA-256 `51a4dde84c7eb06127793c62a82fa3e7d6ee8b46c1b5d94f81db4ef49f0f2ee1`。回條 `artifacts/EXT-011/candidate-03/device-catalog.json`，SHA-256 `410fd6c97aafcfe5c3a896291b7d6332e12a1bf0326c5c5d5e188101cd195434`。同目錄有 manifest、transport 與逐方向 `wire.jsonl`。

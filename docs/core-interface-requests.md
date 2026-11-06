@@ -86,3 +86,15 @@ terminal continues. The partial plugin exposes readiness only.
 
 下一個可用交付須附該公開方法的 grant、欄位、乾淨宿主／SDK digest，以及
 同安裝成功、換安裝拒絕的回條。擴展才能把以上案例接入 EXT-004／006。
+
+## CORE-033 → EXT-011
+
+Windows 候選 `994aee20ced7` 能以一次性碼配對 connector。原 Connector 在
+`/agents/v1/connect` 升級時只有 Bearer 憑證，尚無 Work。現有
+`/core/v1/entry/exchange` 缺 Work 回 422；SDK `device.auth` 以 Work proof
+換取 handle、scope、expires_in。wire4 hello 的 device_id 由客戶端填寫。
+
+請核心指定既有憑證在未選 Work 時的驗證入口、grant、用途、穩定原裝置 ID
+與 journal namespace，以及在線撤權的通知或複核時點。案例需覆蓋 chat 憑證、
+已配對舊設備、A→B 合併、帳號換人、憑證撤銷、舊連線晚到的 catalog／close。
+取得授權後，插件才能為已認證裝置管理當前連線與 instance 快照。

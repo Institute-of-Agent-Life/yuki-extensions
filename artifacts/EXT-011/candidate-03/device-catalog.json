@@ -1,0 +1,154 @@
+{
+  "status": "PASS",
+  "card_status": "PARTIAL_PAIRING_ON_UNPUBLISHED_CANDIDATE",
+  "source_commit": "994aee20ced762d4132186144e718d8946321347",
+  "handoff_commit": "becbdb0316aa96911370bc5f0f5f79dff71af67f",
+  "published": false,
+  "host": {
+    "archive": "yuki-personal-preview-994aee20ced7-windows-x86_64.zip",
+    "sha256": "ddc2cf1c01dd9df9e0eecf6b1b85984176810b8c763a4b7bd493d924e40a53f8",
+    "binary_sha256": "54e4825ddd9de64d3e71626e320fbec2e8ddd0d60099ef6775a5573aaf2bbfa3",
+    "witness_sha256": "a2be09e86aa092aedc6160a50af3a13a0afa7d902cf866b9d991e1f5d79a27d5"
+  },
+  "sdk": {
+    "version": "1.0.0-alpha.3",
+    "sha256": "e5b9fde5298eb71ff252fc8acd430b44d8d965761d5d3c948da47fced49c7dbd"
+  },
+  "host_schema_sha256": "9feab6196953ef66a04a745b801b2bf528564cfc0d9d0ff545a81e522624f42e",
+  "personal_schema_sha256": "061b40a245ff7a75bc747684760d7964cae5fa7f685dab855ff96a5458682827",
+  "plugin_sha256": "51a4dde84c7eb06127793c62a82fa3e7d6ee8b46c1b5d94f81db4ef49f0f2ee1",
+  "wire_sha256": "69e2a0c807783ccff23c4861338c8bb11e409e5eb6113789852152baf441d8be",
+  "connector": {
+    "version": "0.4.4.dev1",
+    "wheel_sha256": "2748ec830b56e38f404d33964350578e543232ab1fce02e2399fc3ab045a74d8"
+  },
+  "original_device": "a69fa087-cf9e-4773-849b-b61d24aa46c6",
+  "after_restart": {
+    "devices": [
+      "a69fa087-cf9e-4773-849b-b61d24aa46c6"
+    ]
+  },
+  "wrong_purpose_pair": 401,
+  "one_time_code_replay": 401,
+  "connector_on_chat_route": 401,
+  "workless_exchange": {
+    "chat": 422,
+    "connector": 422
+  },
+  "wire4_upgrade": {
+    "none": 401,
+    "chat": 503,
+    "original": 503
+  },
+  "transcript": [
+    {
+      "direction": "from_plugin",
+      "frame": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "initialize",
+        "params": {
+          "declarations": [],
+          "manifest_revision": "2f6a7f9c1024aff1eb3714e0ae276d3844571793d725c404fbe0aea4d82a0068",
+          "optional_features": [],
+          "required_features": [
+            "initialize"
+          ],
+          "versions": {
+            "max": {
+              "major": 1,
+              "minor": 0
+            },
+            "min": {
+              "major": 1,
+              "minor": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "direction": "from_host",
+      "frame": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "result": {
+          "extension_points": [],
+          "features": [
+            "initialize"
+          ],
+          "grants": [],
+          "host_schema_revision": 2,
+          "manifest_revision": "2f6a7f9c1024aff1eb3714e0ae276d3844571793d725c404fbe0aea4d82a0068",
+          "method_revisions": [
+            {
+              "name": "initialize",
+              "revision": 1
+            }
+          ],
+          "namespace": "local-agent",
+          "schema_revision": 1,
+          "version": {
+            "major": 1,
+            "minor": 0
+          }
+        }
+      }
+    },
+    {
+      "direction": "from_plugin",
+      "frame": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "initialize",
+        "params": {
+          "declarations": [],
+          "manifest_revision": "2f6a7f9c1024aff1eb3714e0ae276d3844571793d725c404fbe0aea4d82a0068",
+          "optional_features": [],
+          "required_features": [
+            "initialize"
+          ],
+          "versions": {
+            "max": {
+              "major": 1,
+              "minor": 0
+            },
+            "min": {
+              "major": 1,
+              "minor": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "direction": "from_host",
+      "frame": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "result": {
+          "extension_points": [],
+          "features": [
+            "initialize"
+          ],
+          "grants": [],
+          "host_schema_revision": 2,
+          "manifest_revision": "2f6a7f9c1024aff1eb3714e0ae276d3844571793d725c404fbe0aea4d82a0068",
+          "method_revisions": [
+            {
+              "name": "initialize",
+              "revision": 1
+            }
+          ],
+          "namespace": "local-agent",
+          "schema_revision": 1,
+          "version": {
+            "major": 1,
+            "minor": 0
+          }
+        }
+      }
+    }
+  ],
+  "pending": "The Host must bind an idle connector proof to its authenticated device before a hello or catalog can be accepted, including revoked/previously paired devices."
+}

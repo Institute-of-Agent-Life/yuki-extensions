@@ -1,0 +1,15 @@
+{
+  "host": "HJW",
+  "source_snapshot_sha256": "134e7bc6aa0aafd97efeaed8bac3007b9f7285121f8d8a14353e557f6ab0c637",
+  "release_plugin_sha256": "51a4dde84c7eb06127793c62a82fa3e7d6ee8b46c1b5d94f81db4ef49f0f2ee1",
+  "command": [
+    "cargo",
+    "test",
+    "--locked",
+    "--offline",
+    "--target-dir",
+    "D:\\yuki-extension-tests\\134e7bc6aa0aafd97efe\\temp\\yuki-rust-build-fw4_eunr"
+  ],
+  "exit_code": 0,
+  "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest reopening_is_idempotent_and_rejects_foreign_databases ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s\n\n"
+}
