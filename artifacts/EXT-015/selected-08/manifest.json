@@ -1,0 +1,35 @@
+{
+  "task": "EXT-015",
+  "status": "PASS",
+  "phase": "preparation",
+  "card_status": "UNPUBLISHED_SELECTED_CLIENT_CANDIDATE",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "29be75205cbffc194a5cf7ab92f75658cf2950289ef4c90427ab77c9bea4a647",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-015",
+    "--preparation",
+    "--out",
+    "D:\\yuki-extension-tests\\client-selected-selected-08\\evidence"
+  ],
+  "files": {
+    "acp-diagnostic.json": "3f59cad4e4678f5370da94d731e531ea4bd64a666a6e10934fd760f2c469fb40",
+    "build.json": "4087f6dd767f03b4726baa1cc6ea1b9f473fa3ab177e28b507b9a9dd8cae89d2",
+    "cases.json": "a414d88aa6ba60f32bff5d7fdc8d6068ecc6b1e8e4b28793a9e5ab2464534789",
+    "host-config.json": "1dabea3a5864338208e312239ebe81b70aad2e909ebf6515008a533c81781d5d",
+    "host.txt": "549c2ad56975e7a7f1edf07708c8dc504d835551b2faacfbb51bc2575036de24",
+    "http.json": "d1019e26c2b09386473a83464791f4fc9fae414289ec02e6a43467828f9ca631",
+    "model-http.json": "e239489f5f41dc6df4428e94875b6ca51c46939c877e47cd553070d5ec9640d1",
+    "model-responses.json": "0984deb0c4d4a4ca24577216cb3e6501cb6bce651ecb1ec6ef992d5ac2635515",
+    "operator.json": "3a5c749b81305aa838c0b5e54c9b29dcd0f1e0ac539a28b47ff2c60c614197c6",
+    "original-uuid-entry.json": "d95172edd226dab7699131c4232c1d2fd78688d61a156d1d2614a2a62cbdb461",
+    "personal-entries.json": "d95172edd226dab7699131c4232c1d2fd78688d61a156d1d2614a2a62cbdb461",
+    "release-boundaries.json": "87ba15b5232258a0b673459e18942237d626ffbfb6d03a66d887d4b7571882b2",
+    "source-bindings.json": "876c4332358c28f6ec40316f94f05907533f7bbfc49aeac91777cc653c48df28",
+    "sse.json": "d5cacd7c49d7943750cba2c44def7587eb18527515d985a33af3fbcc7d734214",
+    "wire.jsonl": "0d81770a1414d6b34dc0e8dc9de8bf374bc3f24902f0e78961db4c365b27ac69"
+  }
+}

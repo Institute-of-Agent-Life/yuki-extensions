@@ -21,15 +21,17 @@ fn only_the_supported_owner_routes_can_be_dispatched() {
 }
 
 #[test]
-fn explicit_selectors_and_ambiguous_bearers_stop_before_dispatch() {
+fn selected_entries_reach_the_owner_but_duplicate_authority_is_rejected() {
     for header in ["X-Yuki-Entry", "X-Yuki-Conversation"] {
         let req = TestRequest::new()
             .with_path("/client/v1/me")
             .with_header(Header::from_bytes(header, "other").unwrap());
-        assert_eq!(
-            auth::check(&req.into()).unwrap_err(),
-            (503, "owner_selection_unavailable")
-        );
+        assert!(auth::check(&req.into()).is_ok());
+        let duplicate = TestRequest::new()
+            .with_path("/client/v1/me")
+            .with_header(Header::from_bytes(header, "first").unwrap())
+            .with_header(Header::from_bytes(header, "second").unwrap());
+        assert_eq!(auth::check(&duplicate.into()).unwrap_err().0, 400);
     }
     let req = TestRequest::new()
         .with_path("/client/v1/me")
@@ -37,6 +39,6 @@ fn explicit_selectors_and_ambiguous_bearers_stop_before_dispatch() {
         .with_header(Header::from_bytes("Authorization", "Bearer two").unwrap());
     assert_eq!(
         auth::check(&req.into()).unwrap_err(),
-        (400, "ambiguous_authorization")
+        (400, "ambiguous_authority")
     );
 }

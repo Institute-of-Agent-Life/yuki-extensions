@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "D:\yuki-extension-tests\client-selected-selected-07\src\ci\check.py", line 37, in main
+    report_name, report = runner(root, args.out.resolve())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\client-selected-selected-07\src\tests\cases\EXT-015.py", line 8, in prepare
+    return exercise(root, output)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\client-selected-selected-07\src\tests\peers\client_selected.py", line 241, in exercise
+    disabled = op('control', 'write', 'binding.disable', json.dumps({'id': a['binding_id'], 'request_id': str(uuid.uuid4())}))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\client-selected-selected-07\src\tests\peers\client_selected.py", line 63, in op
+    result = owner.cli('operator', *map(str, args))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\client-selected-selected-07\src\ci\personal_preview.py", line 135, in cli
+    raise RuntimeError(
+RuntimeError: Host CLI refused ('operator', 'control'): {"error":"operator: \"invalid_command_body\""}
+

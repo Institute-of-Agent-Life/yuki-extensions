@@ -1,0 +1,149 @@
+[
+  {
+    "args": [
+      "person",
+      "create",
+      "bb966800-74f6-4579-bbc9-f8e606c599b9"
+    ],
+    "result": {
+      "original": "bb966800-74f6-4579-bbc9-f8e606c599b9",
+      "root": "bb966800-74f6-4579-bbc9-f8e606c599b9"
+    }
+  },
+  {
+    "args": [
+      "person",
+      "create",
+      "7df06fc9-ca81-48da-bd8f-7cc5da9dee5c"
+    ],
+    "result": {
+      "original": "7df06fc9-ca81-48da-bd8f-7cc5da9dee5c",
+      "root": "7df06fc9-ca81-48da-bd8f-7cc5da9dee5c"
+    }
+  },
+  {
+    "args": [
+      "person",
+      "create",
+      "555f4f4e-f891-4e9d-ae1a-e0ceba8983b0"
+    ],
+    "result": {
+      "original": "555f4f4e-f891-4e9d-ae1a-e0ceba8983b0",
+      "root": "555f4f4e-f891-4e9d-ae1a-e0ceba8983b0"
+    }
+  },
+  {
+    "args": [
+      "person",
+      "merge",
+      "bb966800-74f6-4579-bbc9-f8e606c599b9",
+      "7df06fc9-ca81-48da-bd8f-7cc5da9dee5c"
+    ],
+    "result": {
+      "changed": true,
+      "original": "bb966800-74f6-4579-bbc9-f8e606c599b9",
+      "root": "7df06fc9-ca81-48da-bd8f-7cc5da9dee5c"
+    }
+  },
+  {
+    "args": [
+      "account",
+      "open",
+      "acp",
+      "selected-client",
+      "actor",
+      1,
+      "--person",
+      "7df06fc9-ca81-48da-bd8f-7cc5da9dee5c",
+      "--start",
+      1
+    ],
+    "result": {
+      "account": "82c02446-9461-40f3-a422-e719b7c6ad4b",
+      "assignment": "82498f2d-14a6-44b3-861f-285cc76ee46b"
+    }
+  },
+  {
+    "args": [
+      "account",
+      "open",
+      "acp",
+      "selected-client",
+      "bot",
+      1,
+      "--start",
+      1
+    ],
+    "result": {
+      "account": "eb31326a-5284-42a5-a980-a226fe318210",
+      "assignment": "71d22043-9146-4985-a411-fcfe669d8448"
+    }
+  },
+  {
+    "args": [
+      "entry",
+      "private",
+      "82498f2d-14a6-44b3-861f-285cc76ee46b",
+      "71d22043-9146-4985-a411-fcfe669d8448",
+      "--topic",
+      "original-thread-one"
+    ],
+    "result": {
+      "entry": "af1dceb3-aee2-4c12-a96a-ee667511b0b6"
+    }
+  },
+  {
+    "args": [
+      "ingress",
+      "record",
+      "{\"source\": \"original-thread-one\", \"account\": \"82c02446-9461-40f3-a422-e719b7c6ad4b\", \"bot_stage\": \"71d22043-9146-4985-a411-fcfe669d8448\", \"reply_bot\": \"bot\", \"kind\": \"message\", \"topic\": \"original-thread-one\", \"occurred\": 100, \"observed\": 100, \"segments\": [{\"type\": \"text\", \"text\": \"original-thread-one\"}]}"
+    ],
+    "result": {
+      "accepted": false,
+      "event": 3
+    }
+  },
+  {
+    "args": [
+      "main",
+      "inspect",
+      "ef0ff01c-cb4b-4daa-bccc-3b3ef193ab0f"
+    ],
+    "result": {
+      "activations": [
+        [
+          "main:ef0ff01c-cb4b-4daa-bccc-3b3ef193ab0f",
+          "chat-v1:7b8113e040107db4f1660830aa6e1783cb31370578e1111caaf06e821e3b606e"
+        ]
+      ],
+      "attempts": [
+        [
+          "ef0ff01c-cb4b-4daa-bccc-3b3ef193ab0f:logical:0:http:0",
+          "paired",
+          null
+        ],
+        [
+          "ef0ff01c-cb4b-4daa-bccc-3b3ef193ab0f:logical:1:http:0",
+          "response",
+          null
+        ]
+      ],
+      "cancelled": false,
+      "conversation": "f7f2df07-d22c-4c29-b2e8-5f666985d0e2",
+      "diagnostic": "runner_failed",
+      "execution": "ef0ff01c-cb4b-4daa-bccc-3b3ef193ab0f",
+      "inputs": [
+        5
+      ],
+      "kind": "human",
+      "origin": "bb966800-74f6-4579-bbc9-f8e606c599b9",
+      "result": null,
+      "root": "ef0ff01c-cb4b-4daa-bccc-3b3ef193ab0f",
+      "source": 5,
+      "state": "held",
+      "tool_contract": "main-chat-v1",
+      "tool_revision": "a16e6be69425634e36d3b48288b0685250faf219e0b624175d99cd8dd6ad511f",
+      "window": 1
+    }
+  }
+]

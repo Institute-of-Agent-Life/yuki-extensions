@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "validated": [
+    "character",
+    "client",
+    "codemode",
+    "connector",
+    "env",
+    "feishu",
+    "local-agent",
+    "media",
+    "memory-maintenance",
+    "monty-runtime",
+    "telegram",
+    "trace",
+    "web-fetch",
+    "yuki-setup"
+  ],
+  "selected": [
+    "character",
+    "client",
+    "codemode",
+    "connector",
+    "env",
+    "feishu",
+    "local-agent",
+    "media",
+    "memory-maintenance",
+    "monty-runtime",
+    "telegram",
+    "trace",
+    "web-fetch",
+    "yuki-setup"
+  ]
+}

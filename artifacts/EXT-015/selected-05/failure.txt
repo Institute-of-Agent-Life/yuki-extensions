@@ -1,0 +1,31 @@
+Traceback (most recent call last):
+  File "D:\yuki-extension-tests\client-selected-selected-05\src\tests\peers\client_selected.py", line 201, in exercise
+    committed = wait(lambda: next((e for e in page(phone, a['conversation_id'])['items'] if e.get('text') == reply), None), 'Social event not committed')
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\client-selected-selected-05\src\tests\peers\client_selected.py", line 106, in wait
+    raise AssertionError(label)
+AssertionError: Social event not committed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\yuki-extension-tests\client-selected-selected-05\src\ci\check.py", line 37, in main
+    report_name, report = runner(root, args.out.resolve())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\client-selected-selected-05\src\tests\cases\EXT-015.py", line 8, in prepare
+    return exercise(root, output)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\client-selected-selected-05\src\tests\peers\client_selected.py", line 207, in exercise
+    if work_id: op('work', 'get', work_id)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\client-selected-selected-05\src\tests\peers\client_selected.py", line 62, in op
+    result = owner.cli('operator', *map(str, args))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\client-selected-selected-05\src\ci\personal_preview.py", line 135, in cli
+    raise RuntimeError(
+RuntimeError: Host CLI refused ('operator', 'work'): error: unrecognized subcommand 'get'
+
+Usage: yuki-core.exe operator work [OPTIONS] <COMMAND>
+
+For more information, try '--help'.
+

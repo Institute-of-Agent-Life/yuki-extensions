@@ -1,0 +1,48 @@
+[
+  {
+    "args": [
+      "person",
+      "create",
+      "adbeae07-4a5c-4e0d-9823-3777fe83e407"
+    ],
+    "result": {
+      "original": "adbeae07-4a5c-4e0d-9823-3777fe83e407",
+      "root": "adbeae07-4a5c-4e0d-9823-3777fe83e407"
+    }
+  },
+  {
+    "args": [
+      "person",
+      "create",
+      "5d1dd52b-601f-4ddb-88dd-93fa5d97e55f"
+    ],
+    "result": {
+      "original": "5d1dd52b-601f-4ddb-88dd-93fa5d97e55f",
+      "root": "5d1dd52b-601f-4ddb-88dd-93fa5d97e55f"
+    }
+  },
+  {
+    "args": [
+      "person",
+      "create",
+      "0ee83dde-94ea-4254-ad23-e1cbf6d29a3b"
+    ],
+    "result": {
+      "original": "0ee83dde-94ea-4254-ad23-e1cbf6d29a3b",
+      "root": "0ee83dde-94ea-4254-ad23-e1cbf6d29a3b"
+    }
+  },
+  {
+    "args": [
+      "person",
+      "merge",
+      "adbeae07-4a5c-4e0d-9823-3777fe83e407",
+      "5d1dd52b-601f-4ddb-88dd-93fa5d97e55f"
+    ],
+    "result": {
+      "changed": true,
+      "original": "adbeae07-4a5c-4e0d-9823-3777fe83e407",
+      "root": "5d1dd52b-601f-4ddb-88dd-93fa5d97e55f"
+    }
+  }
+]

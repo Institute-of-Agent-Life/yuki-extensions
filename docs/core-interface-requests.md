@@ -412,3 +412,24 @@ Admin DTO；metadata 與明選正文成功，普通人／撤權被 -32003 拒絕
 
 角色候選無自己的角色庫或頭像快取；原資產／平台 receipt 的歷史資料仍列現場待核，
 不能據新安裝的空私庫推論舊實例沒有資料。完整頭像、逐平台故障與導入仍待本卡續做。
+# EXT-015 Client9 c616cf35e442：公開 ACP 與本地 Social 的剩餘對拍
+
+Windows 真 Rust Client alpha.2 / SDK alpha.12 已驗九組明選入口、原 UUID、
+有序附件、入站 SSE、容量隔離、撤設備、停用入口及冷啟案例。
+`artifacts/EXT-015/selected-08` 與 `selected-analysis-01` 鎖住 35 個來源及實收 tuple；
+這些不是完整 H24 或本地 Social 出站驗收。
+
+- ACP：用公開 operator account open（domain acp）、原 actor／bot assignment、
+  entry private --topic 及 ingress record；home 已列出原 binding/conversation，
+  原已合併 A 的 token 帶兩個匹配 header 仍得到 404。請提供可解析的安裝設定、
+  原 ACP session／presence 建立序列，以及明選／不匹配、已關閉 thread 的正反例。
+  需要確定 request_person_id 保原 B，request_scope/request_conversation_id 保原 thread，
+  既有 NULL receipt 不因合併或選擇而回填。不能用手工主庫 fixture 代替公共入口。
+- 本地 Social：`selected-06` 以公開 Client messages 觸發 Main，模型先 task_control.accept
+  再 send（唯一 call ID）；沒有 main.binding_endpoint。公開 main inspect 回 held/
+  runner_failed，原 send 尚未取得 paired receipt，事件頁沒有出站。請提供原 App
+  receiving Presence／sender 的最小公開設定，或新固定包；要能看到本地 Social 原子
+  提交後才提高 SSE latest_event_id。05 的 fixture binding 確認沒有本地事件，不能採計。
+  不從 runner_failed 推斷派發、費用或根因，不重發該原未知操作。
+- 取得公開配置或固定修正後，只重驗受影響的 ACP／Social／agent_target／operation
+  及遺失最後提示案例；已通過的同 tuple 功能回條沿用。完整卡與正式發布仍待驗。

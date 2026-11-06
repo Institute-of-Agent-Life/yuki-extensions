@@ -1,0 +1,707 @@
+[
+  {
+    "method": "POST",
+    "path": "/client/v1/pair",
+    "headers": {},
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "path": "/client/v1/pair",
+    "headers": {},
+    "status": 401
+  },
+  {
+    "method": "POST",
+    "path": "/client/v1/pair",
+    "headers": {},
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "path": "/client/v1/pair",
+    "headers": {},
+    "status": 401
+  },
+  {
+    "method": "POST",
+    "path": "/client/v1/pair",
+    "headers": {},
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "path": "/client/v1/pair",
+    "headers": {},
+    "status": 401
+  },
+  {
+    "method": "POST",
+    "path": "/client/v1/pair",
+    "headers": {},
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "path": "/client/v1/pair",
+    "headers": {},
+    "status": 401
+  },
+  {
+    "method": "GET",
+    "path": "/client/v1/me",
+    "headers": {},
+    "status": 200,
+    "body": null,
+    "response": {
+      "data": {
+        "binding_id": "71da48d2-b6a6-4179-903e-942aa202faf4",
+        "bindings": [
+          {
+            "binding_id": "71da48d2-b6a6-4179-903e-942aa202faf4",
+            "display_name": "",
+            "platform": "app",
+            "source_person_id": "fcb79ad3-1184-428e-822f-6709a1d12e57",
+            "status": "active"
+          }
+        ],
+        "conversation_id": "4312008c-7461-4d37-86ad-25419bcd7ecf",
+        "devices": [
+          {
+            "created_at": "2026-11-06T05:24:42Z",
+            "device_id": "6921941f-682e-4de4-b09e-4c2b0b53834b",
+            "label": "desktop",
+            "purpose": "chat",
+            "revoked_at": null
+          },
+          {
+            "created_at": "2026-11-06T05:24:42Z",
+            "device_id": "80cb018b-49c3-43f5-9f33-4c31cb3d58ae",
+            "label": "phone",
+            "purpose": "chat",
+            "revoked_at": null
+          }
+        ],
+        "display_name": "",
+        "is_superuser": false,
+        "person_id": "fcb79ad3-1184-428e-822f-6709a1d12e57",
+        "platform": "app",
+        "presence_id": "334a7783-90ef-4f63-95d2-a885fde99ca7",
+        "request_conversation_id": null,
+        "request_person_id": "fcb79ad3-1184-428e-822f-6709a1d12e57",
+        "request_scope": "fcb79ad3-1184-428e-822f-6709a1d12e57",
+        "source_person_id": "fcb79ad3-1184-428e-822f-6709a1d12e57",
+        "thread_id": null
+      }
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/client/v1/me",
+    "headers": {},
+    "status": 200,
+    "body": null,
+    "response": {
+      "data": {
+        "binding_id": "71da48d2-b6a6-4179-903e-942aa202faf4",
+        "bindings": [
+          {
+            "binding_id": "71da48d2-b6a6-4179-903e-942aa202faf4",
+            "display_name": "",
+            "platform": "app",
+            "source_person_id": "fcb79ad3-1184-428e-822f-6709a1d12e57",
+            "status": "active"
+          }
+        ],
+        "conversation_id": "4312008c-7461-4d37-86ad-25419bcd7ecf",
+        "devices": [
+          {
+            "created_at": "2026-11-06T05:24:42Z",
+            "device_id": "6921941f-682e-4de4-b09e-4c2b0b53834b",
+            "label": "desktop",
+            "purpose": "chat",
+            "revoked_at": null
+          },
+          {
+            "created_at": "2026-11-06T05:24:42Z",
+            "device_id": "80cb018b-49c3-43f5-9f33-4c31cb3d58ae",
+            "label": "phone",
+            "purpose": "chat",
+            "revoked_at": null
+          }
+        ],
+        "display_name": "",
+        "is_superuser": false,
+        "person_id": "fcb79ad3-1184-428e-822f-6709a1d12e57",
+        "platform": "app",
+        "presence_id": "334a7783-90ef-4f63-95d2-a885fde99ca7",
+        "request_conversation_id": null,
+        "request_person_id": "fcb79ad3-1184-428e-822f-6709a1d12e57",
+        "request_scope": "fcb79ad3-1184-428e-822f-6709a1d12e57",
+        "source_person_id": "fcb79ad3-1184-428e-822f-6709a1d12e57",
+        "thread_id": null
+      }
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/client/v1/me",
+    "headers": {},
+    "status": 200,
+    "body": null,
+    "response": {
+      "data": {
+        "binding_id": "a7a99d39-c081-469e-a7f8-93706766b7ad",
+        "bindings": [
+          {
+            "binding_id": "a7a99d39-c081-469e-a7f8-93706766b7ad",
+            "display_name": "",
+            "platform": "app",
+            "source_person_id": "c1fad6d5-4b00-43bd-bb27-26fcbd065f72",
+            "status": "active"
+          }
+        ],
+        "conversation_id": "e0edc543-0c7d-4a40-b76b-e8a69898cb3a",
+        "devices": [
+          {
+            "created_at": "2026-11-06T05:24:42Z",
+            "device_id": "7fd84302-81e0-458e-870e-efc89164819d",
+            "label": "B",
+            "purpose": "chat",
+            "revoked_at": null
+          }
+        ],
+        "display_name": "",
+        "is_superuser": false,
+        "person_id": "c1fad6d5-4b00-43bd-bb27-26fcbd065f72",
+        "platform": "app",
+        "presence_id": "334a7783-90ef-4f63-95d2-a885fde99ca7",
+        "request_conversation_id": null,
+        "request_person_id": "c1fad6d5-4b00-43bd-bb27-26fcbd065f72",
+        "request_scope": "c1fad6d5-4b00-43bd-bb27-26fcbd065f72",
+        "source_person_id": "c1fad6d5-4b00-43bd-bb27-26fcbd065f72",
+        "thread_id": null
+      }
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/client/v1/me",
+    "headers": {},
+    "status": 200,
+    "body": null,
+    "response": {
+      "data": {
+        "binding_id": "feabe3d1-8d20-4e80-a07c-3d31f778839e",
+        "bindings": [
+          {
+            "binding_id": "feabe3d1-8d20-4e80-a07c-3d31f778839e",
+            "display_name": "",
+            "platform": "app",
+            "source_person_id": "bdb9cae9-b92a-4093-b09b-f91cb8fb6b4f",
+            "status": "active"
+          }
+        ],
+        "conversation_id": "a8268104-19dd-48f4-a5a9-80e8680ee342",
+        "devices": [
+          {
+            "created_at": "2026-11-06T05:24:42Z",
+            "device_id": "0e25378b-9237-460e-bdeb-5fc090971596",
+            "label": "C",
+            "purpose": "chat",
+            "revoked_at": null
+          }
+        ],
+        "display_name": "",
+        "is_superuser": false,
+        "person_id": "bdb9cae9-b92a-4093-b09b-f91cb8fb6b4f",
+        "platform": "app",
+        "presence_id": "334a7783-90ef-4f63-95d2-a885fde99ca7",
+        "request_conversation_id": null,
+        "request_person_id": "bdb9cae9-b92a-4093-b09b-f91cb8fb6b4f",
+        "request_scope": "bdb9cae9-b92a-4093-b09b-f91cb8fb6b4f",
+        "source_person_id": "bdb9cae9-b92a-4093-b09b-f91cb8fb6b4f",
+        "thread_id": null
+      }
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/client/v1/messages",
+    "headers": {},
+    "status": 200,
+    "body": {
+      "request_id": "5e2d6031-8f08-4067-a3e3-6543cb46fd61",
+      "text": "original A"
+    },
+    "response": {
+      "data": {
+        "conversation_id": "4312008c-7461-4d37-86ad-25419bcd7ecf",
+        "event_id": 1,
+        "replay": false
+      }
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/client/v1/messages",
+    "headers": {},
+    "status": 200,
+    "body": {
+      "request_id": "5e2d6031-8f08-4067-a3e3-6543cb46fd61",
+      "text": "original A"
+    },
+    "response": {
+      "data": {
+        "conversation_id": "4312008c-7461-4d37-86ad-25419bcd7ecf",
+        "event_id": 1,
+        "replay": true
+      }
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/client/v1/requests/5e2d6031-8f08-4067-a3e3-6543cb46fd61",
+    "headers": {},
+    "status": 200,
+    "body": null,
+    "response": {
+      "data": {
+        "conversation_id": "4312008c-7461-4d37-86ad-25419bcd7ecf",
+        "event_id": 1,
+        "found": true,
+        "operation_kind": "client.message",
+        "payload_hash": "2167af7c0a832a3345ceaea6ff799a5e87607ae11570e04189927f4f078865f3",
+        "result": {
+          "conversation_id": "4312008c-7461-4d37-86ad-25419bcd7ecf",
+          "event_id": 1,
+          "replay": false
+        },
+        "status": "accepted",
+        "target": null
+      }
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/client/v1/messages",
+    "headers": {},
+    "status": 409,
+    "body": {
+      "request_id": "5e2d6031-8f08-4067-a3e3-6543cb46fd61",
+      "text": "different A"
+    },
+    "response": {
+      "problem": {
+        "code": "request_conflict",
+        "message": "request_conflict"
+      }
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/client/v1/requests/5e2d6031-8f08-4067-a3e3-6543cb46fd61",
+    "headers": {},
+    "status": 200,
+    "body": null,
+    "response": {
+      "data": {
+        "found": false
+      }
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/client/v1/conversations/4312008c-7461-4d37-86ad-25419bcd7ecf/events",
+    "headers": {},
+    "status": 200,
+    "body": null,
+    "response": {
+      "data": {
+        "generation": 1,
+        "has_more": false,
+        "items": [
+          {
+            "asr": [],
+            "attachments": [],
+            "author_kind": "person",
+            "author_person_id": "fcb79ad3-1184-428e-822f-6709a1d12e57",
+            "binding_id": "71da48d2-b6a6-4179-903e-942aa202faf4",
+            "content": "original A",
+            "conversation_id": "4312008c-7461-4d37-86ad-25419bcd7ecf",
+            "created_at": "2026-11-06T05:24:42+00:00",
+            "direction": "inbound",
+            "event_id": 1,
+            "event_kind": "message",
+            "id": 1,
+            "observed_at": "2026-11-06T05:24:42+00:00",
+            "occurred_at": "2026-11-06T05:24:42+00:00",
+            "origin": "app",
+            "platform": "app",
+            "sender_display_name": "",
+            "text": "original A",
+            "work_ids": []
+          }
+        ],
+        "latest_event_id": 1,
+        "next_after": 1,
+        "next_before": 1,
+        "revision": 1
+      }
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/client/v1/me",
+    "headers": {
+      "X-Yuki-Entry": "a7a99d39-c081-469e-a7f8-93706766b7ad"
+    },
+    "status": 401,
+    "body": null,
+    "response": {
+      "problem": {
+        "code": "unauthenticated",
+        "message": "unauthenticated"
+      }
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/client/v1/messages",
+    "headers": {
+      "X-Yuki-Entry": "a7a99d39-c081-469e-a7f8-93706766b7ad"
+    },
+    "status": 401,
+    "body": {
+      "request_id": "b7d2c7dd-c162-47fa-8085-bb898f2698f2",
+      "text": "foreign"
+    },
+    "response": {
+      "problem": {
+        "code": "unauthenticated",
+        "message": "unauthenticated"
+      }
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/client/v1/requests/b7d2c7dd-c162-47fa-8085-bb898f2698f2",
+    "headers": {},
+    "status": 200,
+    "body": null,
+    "response": {
+      "data": {
+        "found": false
+      }
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/client/v1/requests/b7d2c7dd-c162-47fa-8085-bb898f2698f2",
+    "headers": {},
+    "status": 200,
+    "body": null,
+    "response": {
+      "data": {
+        "found": false
+      }
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/client/v1/messages",
+    "headers": {},
+    "status": 200,
+    "body": {
+      "request_id": "5e2d6031-8f08-4067-a3e3-6543cb46fd61",
+      "text": "original B"
+    },
+    "response": {
+      "data": {
+        "conversation_id": "e0edc543-0c7d-4a40-b76b-e8a69898cb3a",
+        "event_id": 2,
+        "replay": false
+      }
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/client/v1/me",
+    "headers": {},
+    "status": 200,
+    "body": null,
+    "response": {
+      "data": {
+        "binding_id": "71da48d2-b6a6-4179-903e-942aa202faf4",
+        "bindings": [
+          {
+            "binding_id": "71da48d2-b6a6-4179-903e-942aa202faf4",
+            "display_name": "",
+            "platform": "app",
+            "source_person_id": "fcb79ad3-1184-428e-822f-6709a1d12e57",
+            "status": "active"
+          },
+          {
+            "binding_id": "a7a99d39-c081-469e-a7f8-93706766b7ad",
+            "display_name": "",
+            "platform": "app",
+            "source_person_id": "c1fad6d5-4b00-43bd-bb27-26fcbd065f72",
+            "status": "active"
+          }
+        ],
+        "conversation_id": "4312008c-7461-4d37-86ad-25419bcd7ecf",
+        "devices": [
+          {
+            "created_at": "2026-11-06T05:24:42Z",
+            "device_id": "6921941f-682e-4de4-b09e-4c2b0b53834b",
+            "label": "desktop",
+            "purpose": "chat",
+            "revoked_at": null
+          },
+          {
+            "created_at": "2026-11-06T05:24:42Z",
+            "device_id": "7fd84302-81e0-458e-870e-efc89164819d",
+            "label": "B",
+            "purpose": "chat",
+            "revoked_at": null
+          },
+          {
+            "created_at": "2026-11-06T05:24:42Z",
+            "device_id": "80cb018b-49c3-43f5-9f33-4c31cb3d58ae",
+            "label": "phone",
+            "purpose": "chat",
+            "revoked_at": null
+          }
+        ],
+        "display_name": "",
+        "is_superuser": false,
+        "person_id": "c1fad6d5-4b00-43bd-bb27-26fcbd065f72",
+        "platform": "app",
+        "presence_id": "334a7783-90ef-4f63-95d2-a885fde99ca7",
+        "request_conversation_id": null,
+        "request_person_id": "fcb79ad3-1184-428e-822f-6709a1d12e57",
+        "request_scope": "fcb79ad3-1184-428e-822f-6709a1d12e57",
+        "source_person_id": "fcb79ad3-1184-428e-822f-6709a1d12e57",
+        "thread_id": null
+      }
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/client/v1/me",
+    "headers": {
+      "X-Yuki-Entry": "a7a99d39-c081-469e-a7f8-93706766b7ad"
+    },
+    "status": 200,
+    "body": null,
+    "response": {
+      "data": {
+        "binding_id": "a7a99d39-c081-469e-a7f8-93706766b7ad",
+        "bindings": [
+          {
+            "binding_id": "71da48d2-b6a6-4179-903e-942aa202faf4",
+            "display_name": "",
+            "platform": "app",
+            "source_person_id": "fcb79ad3-1184-428e-822f-6709a1d12e57",
+            "status": "active"
+          },
+          {
+            "binding_id": "a7a99d39-c081-469e-a7f8-93706766b7ad",
+            "display_name": "",
+            "platform": "app",
+            "source_person_id": "c1fad6d5-4b00-43bd-bb27-26fcbd065f72",
+            "status": "active"
+          }
+        ],
+        "conversation_id": "e0edc543-0c7d-4a40-b76b-e8a69898cb3a",
+        "devices": [
+          {
+            "created_at": "2026-11-06T05:24:42Z",
+            "device_id": "6921941f-682e-4de4-b09e-4c2b0b53834b",
+            "label": "desktop",
+            "purpose": "chat",
+            "revoked_at": null
+          },
+          {
+            "created_at": "2026-11-06T05:24:42Z",
+            "device_id": "7fd84302-81e0-458e-870e-efc89164819d",
+            "label": "B",
+            "purpose": "chat",
+            "revoked_at": null
+          },
+          {
+            "created_at": "2026-11-06T05:24:42Z",
+            "device_id": "80cb018b-49c3-43f5-9f33-4c31cb3d58ae",
+            "label": "phone",
+            "purpose": "chat",
+            "revoked_at": null
+          }
+        ],
+        "display_name": "",
+        "is_superuser": false,
+        "person_id": "c1fad6d5-4b00-43bd-bb27-26fcbd065f72",
+        "platform": "app",
+        "presence_id": "334a7783-90ef-4f63-95d2-a885fde99ca7",
+        "request_conversation_id": null,
+        "request_person_id": "c1fad6d5-4b00-43bd-bb27-26fcbd065f72",
+        "request_scope": "c1fad6d5-4b00-43bd-bb27-26fcbd065f72",
+        "source_person_id": "fcb79ad3-1184-428e-822f-6709a1d12e57",
+        "thread_id": null
+      }
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/client/v1/requests/5e2d6031-8f08-4067-a3e3-6543cb46fd61",
+    "headers": {},
+    "status": 200,
+    "body": null,
+    "response": {
+      "data": {
+        "conversation_id": "4312008c-7461-4d37-86ad-25419bcd7ecf",
+        "event_id": 1,
+        "found": true,
+        "operation_kind": "client.message",
+        "payload_hash": "2167af7c0a832a3345ceaea6ff799a5e87607ae11570e04189927f4f078865f3",
+        "result": {
+          "conversation_id": "4312008c-7461-4d37-86ad-25419bcd7ecf",
+          "event_id": 1,
+          "replay": false
+        },
+        "status": "accepted",
+        "target": null
+      }
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/client/v1/requests/5e2d6031-8f08-4067-a3e3-6543cb46fd61",
+    "headers": {
+      "X-Yuki-Entry": "a7a99d39-c081-469e-a7f8-93706766b7ad"
+    },
+    "status": 200,
+    "body": null,
+    "response": {
+      "data": {
+        "conversation_id": "e0edc543-0c7d-4a40-b76b-e8a69898cb3a",
+        "event_id": 2,
+        "found": true,
+        "operation_kind": "client.message",
+        "payload_hash": "5dd6eb9fcd7f3969663c350351603fda888125493672de9ed92739b4dbda2589",
+        "result": {
+          "conversation_id": "e0edc543-0c7d-4a40-b76b-e8a69898cb3a",
+          "event_id": 2,
+          "replay": false
+        },
+        "status": "accepted",
+        "target": null
+      }
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/client/v1/messages",
+    "headers": {
+      "X-Yuki-Entry": "a7a99d39-c081-469e-a7f8-93706766b7ad"
+    },
+    "status": 200,
+    "body": {
+      "request_id": "5e2d6031-8f08-4067-a3e3-6543cb46fd61",
+      "text": "original B"
+    },
+    "response": {
+      "data": {
+        "conversation_id": "e0edc543-0c7d-4a40-b76b-e8a69898cb3a",
+        "event_id": 2,
+        "replay": true
+      }
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/client/v1/requests/5e2d6031-8f08-4067-a3e3-6543cb46fd61",
+    "headers": {
+      "X-Yuki-Entry": "a7a99d39-c081-469e-a7f8-93706766b7ad"
+    },
+    "status": 200,
+    "body": null,
+    "response": {
+      "data": {
+        "conversation_id": "e0edc543-0c7d-4a40-b76b-e8a69898cb3a",
+        "event_id": 2,
+        "found": true,
+        "operation_kind": "client.message",
+        "payload_hash": "5dd6eb9fcd7f3969663c350351603fda888125493672de9ed92739b4dbda2589",
+        "result": {
+          "conversation_id": "e0edc543-0c7d-4a40-b76b-e8a69898cb3a",
+          "event_id": 2,
+          "replay": false
+        },
+        "status": "accepted",
+        "target": null
+      }
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/client/v1/me",
+    "headers": {
+      "X-Yuki-Entry": "feabe3d1-8d20-4e80-a07c-3d31f778839e"
+    },
+    "status": 401,
+    "body": null,
+    "response": {
+      "problem": {
+        "code": "unauthenticated",
+        "message": "unauthenticated"
+      }
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/client/v1/me",
+    "headers": {
+      "X-Yuki-Conversation": "4312008c-7461-4d37-86ad-25419bcd7ecf"
+    },
+    "status": 404,
+    "body": null,
+    "response": {
+      "problem": {
+        "code": "not_found",
+        "message": "not_found"
+      }
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/client/v1/me",
+    "headers": {
+      "X-Yuki-Entry": "a7a99d39-c081-469e-a7f8-93706766b7ad",
+      "X-Yuki-Conversation": "4312008c-7461-4d37-86ad-25419bcd7ecf"
+    },
+    "status": 404,
+    "body": null,
+    "response": {
+      "problem": {
+        "code": "not_found",
+        "message": "not_found"
+      }
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/client/v1/me",
+    "headers": {
+      "X-Yuki-Entry": "93c2f59d-d73c-42ec-8179-924c93345073",
+      "X-Yuki-Conversation": "f1e5063f-749d-444e-ae3c-9378b677b438"
+    },
+    "status": 404,
+    "body": null,
+    "response": {
+      "problem": {
+        "code": "not_found",
+        "message": "not_found"
+      }
+    }
+  }
+]

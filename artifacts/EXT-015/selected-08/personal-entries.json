@@ -1,0 +1,623 @@
+{
+  "status": "PASS",
+  "card_status": "UNPUBLISHED_SELECTED_CLIENT_CANDIDATE",
+  "source_commit": "c616cf35e4424e2b9f3c99a4481bfab1c99a34f3",
+  "handoff_commit": null,
+  "published": false,
+  "host": {
+    "archive": "yuki-personal-preview-c616cf35e442-windows-x86_64.zip",
+    "sha256": "5260a4f063fa4d2598cec9f94a6547b0f9bfd8c6660188bdff233d177f9806a5",
+    "binary_sha256": "7e78050e20326713bdd93a1730a2c69b665cff129e68807d475b2fa1e978df94",
+    "validation_manifest_sha256": "c5992be748c9e926d1df11dabbe5c57e15903e70bdaf7fbb9f70055e90178f1e"
+  },
+  "sdk": {
+    "version": "1.0.0-alpha.12",
+    "sha256": "29f5e9f0b89dbc09a025406711904b9df1960c6019243af30318509f1980347a"
+  },
+  "host_schema_sha256": "6a072bf0b915398cf69d838cc16960b7c0ac382ba6e44691a1b525722c9d0515",
+  "personal_schema_sha256": "a7196947dee6be5563f359e0e30c1d1da40c9478133d8ae36b1e4db5314c021c",
+  "media_schema_sha256": null,
+  "plugin_sha256": "ecd3200867585a7c38ed5682d855cb5177e960a1776e7c49211583ed0587f960",
+  "wire_sha256": "0d81770a1414d6b34dc0e8dc9de8bf374bc3f24902f0e78961db4c365b27ac69",
+  "cases": {
+    "H24": [
+      {
+        "name": "same-person-original-uuid",
+        "request_id": "4b20ea31-6263-4668-9e4a-da59f74a5f8d",
+        "first": {
+          "conversation_id": "a711babe-5fd8-42e0-9a00-d4524365d28c",
+          "event_id": 1,
+          "replay": false
+        },
+        "replay": {
+          "conversation_id": "a711babe-5fd8-42e0-9a00-d4524365d28c",
+          "event_id": 1,
+          "replay": true
+        },
+        "conflict": {
+          "problem": {
+            "code": "request_conflict",
+            "message": "request_conflict"
+          }
+        }
+      },
+      {
+        "name": "merged-selected-entry",
+        "original": {
+          "binding_id": "9ccb6719-de4a-4404-b1e0-cb0e6adc9e69",
+          "bindings": [
+            {
+              "binding_id": "899127fc-bc93-46be-b21c-18cac70be5ef",
+              "display_name": "",
+              "platform": "app",
+              "source_person_id": "02148a70-18eb-447a-bbb4-0f92ec717c97",
+              "status": "active"
+            },
+            {
+              "binding_id": "9ccb6719-de4a-4404-b1e0-cb0e6adc9e69",
+              "display_name": "",
+              "platform": "app",
+              "source_person_id": "40860e03-2142-4edb-a627-96a1f457402b",
+              "status": "active"
+            }
+          ],
+          "conversation_id": "a711babe-5fd8-42e0-9a00-d4524365d28c",
+          "devices": [
+            {
+              "created_at": "2026-11-06T05:37:01Z",
+              "device_id": "8046d8fe-1b96-4f24-b934-bd132ebb3fe7",
+              "label": "desktop",
+              "purpose": "chat",
+              "revoked_at": null
+            },
+            {
+              "created_at": "2026-11-06T05:37:01Z",
+              "device_id": "cf6df7fb-f82f-418b-ba13-755a4337e51c",
+              "label": "phone",
+              "purpose": "chat",
+              "revoked_at": null
+            },
+            {
+              "created_at": "2026-11-06T05:37:01Z",
+              "device_id": "eb939e57-4d15-4690-8379-f1e5a58cc7db",
+              "label": "B",
+              "purpose": "chat",
+              "revoked_at": null
+            }
+          ],
+          "display_name": "",
+          "is_superuser": false,
+          "person_id": "02148a70-18eb-447a-bbb4-0f92ec717c97",
+          "platform": "app",
+          "presence_id": "5ff13a9b-a4bd-4a46-8e9d-ce2de976cd78",
+          "request_conversation_id": null,
+          "request_person_id": "40860e03-2142-4edb-a627-96a1f457402b",
+          "request_scope": "40860e03-2142-4edb-a627-96a1f457402b",
+          "source_person_id": "40860e03-2142-4edb-a627-96a1f457402b",
+          "thread_id": null
+        },
+        "selected": {
+          "binding_id": "899127fc-bc93-46be-b21c-18cac70be5ef",
+          "bindings": [
+            {
+              "binding_id": "899127fc-bc93-46be-b21c-18cac70be5ef",
+              "display_name": "",
+              "platform": "app",
+              "source_person_id": "02148a70-18eb-447a-bbb4-0f92ec717c97",
+              "status": "active"
+            },
+            {
+              "binding_id": "9ccb6719-de4a-4404-b1e0-cb0e6adc9e69",
+              "display_name": "",
+              "platform": "app",
+              "source_person_id": "40860e03-2142-4edb-a627-96a1f457402b",
+              "status": "active"
+            }
+          ],
+          "conversation_id": "3513f8d7-e012-4270-9bd6-556a3c725062",
+          "devices": [
+            {
+              "created_at": "2026-11-06T05:37:01Z",
+              "device_id": "8046d8fe-1b96-4f24-b934-bd132ebb3fe7",
+              "label": "desktop",
+              "purpose": "chat",
+              "revoked_at": null
+            },
+            {
+              "created_at": "2026-11-06T05:37:01Z",
+              "device_id": "cf6df7fb-f82f-418b-ba13-755a4337e51c",
+              "label": "phone",
+              "purpose": "chat",
+              "revoked_at": null
+            },
+            {
+              "created_at": "2026-11-06T05:37:01Z",
+              "device_id": "eb939e57-4d15-4690-8379-f1e5a58cc7db",
+              "label": "B",
+              "purpose": "chat",
+              "revoked_at": null
+            }
+          ],
+          "display_name": "",
+          "is_superuser": false,
+          "person_id": "02148a70-18eb-447a-bbb4-0f92ec717c97",
+          "platform": "app",
+          "presence_id": "5ff13a9b-a4bd-4a46-8e9d-ce2de976cd78",
+          "request_conversation_id": null,
+          "request_person_id": "02148a70-18eb-447a-bbb4-0f92ec717c97",
+          "request_scope": "02148a70-18eb-447a-bbb4-0f92ec717c97",
+          "source_person_id": "40860e03-2142-4edb-a627-96a1f457402b",
+          "thread_id": null
+        },
+        "original_receipt": {
+          "conversation_id": "a711babe-5fd8-42e0-9a00-d4524365d28c",
+          "event_id": 1,
+          "found": true,
+          "operation_kind": "client.message",
+          "payload_hash": "7cd5b39868fc31f7b7bbfc63d98a6cf0e904f9aec4176ff6b9a3f764c90b0c3f",
+          "result": {
+            "conversation_id": "a711babe-5fd8-42e0-9a00-d4524365d28c",
+            "event_id": 1,
+            "replay": false
+          },
+          "status": "accepted",
+          "target": null
+        },
+        "selected_receipt": {
+          "conversation_id": "3513f8d7-e012-4270-9bd6-556a3c725062",
+          "event_id": 2,
+          "found": true,
+          "operation_kind": "client.message",
+          "payload_hash": "02d2a644c5d3dd5948d42326a2d3b3fd4da973a238f04089f4dfe81c252425af",
+          "result": {
+            "conversation_id": "3513f8d7-e012-4270-9bd6-556a3c725062",
+            "event_id": 2,
+            "replay": false
+          },
+          "status": "accepted",
+          "target": null
+        },
+        "replay": {
+          "conversation_id": "3513f8d7-e012-4270-9bd6-556a3c725062",
+          "event_id": 2,
+          "replay": true
+        }
+      },
+      {
+        "name": "invalid-and-duplicate-selection",
+        "duplicate_status": 400
+      },
+      {
+        "name": "ordered-attachment-conflict",
+        "uploads": [
+          {
+            "expires_at": 1794029822,
+            "filename": "first.txt",
+            "kind": "file",
+            "media_id": "e0f483b5-ea6e-5d2f-aeb5-0d6f7d29db5b",
+            "replay": false,
+            "sha256": "4e70e3e0fe9ec9cffe3c0d11d4b3ce9307cf2da2267912204a1265a3738014d5",
+            "size": 21
+          },
+          {
+            "expires_at": 1794029822,
+            "filename": "second.txt",
+            "kind": "file",
+            "media_id": "aff82cf4-d6ee-5e9a-81b1-fd054e255a00",
+            "replay": false,
+            "sha256": "20c04502e7f2ae0f91f8eac6634b7e15231baa890c50fc0aa79c0378e2491baf",
+            "size": 22
+          }
+        ],
+        "first": {
+          "conversation_id": "a711babe-5fd8-42e0-9a00-d4524365d28c",
+          "event_id": 4,
+          "replay": false
+        },
+        "replay": {
+          "conversation_id": "a711babe-5fd8-42e0-9a00-d4524365d28c",
+          "event_id": 4,
+          "replay": true
+        }
+      },
+      {
+        "name": "committed-inbound-sse-and-resync",
+        "initial": {
+          "event": "sync",
+          "id": "1",
+          "data": {
+            "activity": [
+              {
+                "conversation_id": "ebba7147-6dcd-46af-86b4-a6b5db0bad95",
+                "evidence": "insufficient",
+                "revision": 0,
+                "sources": [],
+                "step_kind": null
+              },
+              {
+                "conversation_id": "3513f8d7-e012-4270-9bd6-556a3c725062",
+                "evidence": "insufficient",
+                "revision": 10,
+                "sources": [],
+                "step_kind": null
+              },
+              {
+                "conversation_id": "a711babe-5fd8-42e0-9a00-d4524365d28c",
+                "evidence": "insufficient",
+                "revision": 5,
+                "sources": [],
+                "step_kind": null
+              }
+            ],
+            "character": {
+              "avatar_revision": 0,
+              "id": "82e31681-a075-458d-b551-744b48162ef8",
+              "revision": 1
+            },
+            "conversations": [
+              {
+                "binding_id": "029d285f-fade-4d97-8fe6-a5051146d960",
+                "conversation_id": "ebba7147-6dcd-46af-86b4-a6b5db0bad95",
+                "display_name": "",
+                "generation": 1,
+                "latest_event_id": 3,
+                "platform": "acp",
+                "revision": 1,
+                "status": "active"
+              },
+              {
+                "binding_id": "899127fc-bc93-46be-b21c-18cac70be5ef",
+                "conversation_id": "3513f8d7-e012-4270-9bd6-556a3c725062",
+                "display_name": "",
+                "generation": 1,
+                "latest_event_id": 2,
+                "platform": "app",
+                "revision": 1,
+                "status": "active"
+              },
+              {
+                "binding_id": "9ccb6719-de4a-4404-b1e0-cb0e6adc9e69",
+                "conversation_id": "a711babe-5fd8-42e0-9a00-d4524365d28c",
+                "display_name": "",
+                "generation": 1,
+                "latest_event_id": 4,
+                "platform": "app",
+                "revision": 1,
+                "status": "active"
+              }
+            ],
+            "works": []
+          }
+        },
+        "committed": {
+          "asr": [],
+          "attachments": [],
+          "author_kind": "person",
+          "author_person_id": "40860e03-2142-4edb-a627-96a1f457402b",
+          "binding_id": "9ccb6719-de4a-4404-b1e0-cb0e6adc9e69",
+          "content": "client-stream-c21dbdc86be0477a9037060b17ad9b9c",
+          "conversation_id": "a711babe-5fd8-42e0-9a00-d4524365d28c",
+          "created_at": "2026-11-06T05:37:02+00:00",
+          "direction": "inbound",
+          "event_id": 5,
+          "event_kind": "message",
+          "id": 5,
+          "observed_at": "2026-11-06T05:37:02+00:00",
+          "occurred_at": "2026-11-06T05:37:02+00:00",
+          "origin": "app",
+          "platform": "app",
+          "sender_display_name": "",
+          "text": "client-stream-c21dbdc86be0477a9037060b17ad9b9c",
+          "work_ids": []
+        },
+        "hint": {
+          "event": "sync",
+          "id": "5",
+          "data": {
+            "activity": [
+              {
+                "conversation_id": "ebba7147-6dcd-46af-86b4-a6b5db0bad95",
+                "evidence": "insufficient",
+                "revision": 0,
+                "sources": [],
+                "step_kind": null
+              },
+              {
+                "conversation_id": "3513f8d7-e012-4270-9bd6-556a3c725062",
+                "evidence": "insufficient",
+                "revision": 10,
+                "sources": [],
+                "step_kind": null
+              },
+              {
+                "conversation_id": "a711babe-5fd8-42e0-9a00-d4524365d28c",
+                "evidence": "executing",
+                "revision": 13,
+                "sources": [
+                  {
+                    "kind": "turn",
+                    "origin": "user_message",
+                    "started_at": "2026-11-06T05:37:02Z"
+                  }
+                ],
+                "step_kind": "model"
+              }
+            ],
+            "character": {
+              "avatar_revision": 0,
+              "id": "82e31681-a075-458d-b551-744b48162ef8",
+              "revision": 1
+            },
+            "conversations": [
+              {
+                "binding_id": "029d285f-fade-4d97-8fe6-a5051146d960",
+                "conversation_id": "ebba7147-6dcd-46af-86b4-a6b5db0bad95",
+                "display_name": "",
+                "generation": 1,
+                "latest_event_id": 3,
+                "platform": "acp",
+                "revision": 1,
+                "status": "active"
+              },
+              {
+                "binding_id": "899127fc-bc93-46be-b21c-18cac70be5ef",
+                "conversation_id": "3513f8d7-e012-4270-9bd6-556a3c725062",
+                "display_name": "",
+                "generation": 1,
+                "latest_event_id": 2,
+                "platform": "app",
+                "revision": 1,
+                "status": "active"
+              },
+              {
+                "binding_id": "9ccb6719-de4a-4404-b1e0-cb0e6adc9e69",
+                "conversation_id": "a711babe-5fd8-42e0-9a00-d4524365d28c",
+                "display_name": "",
+                "generation": 1,
+                "latest_event_id": 5,
+                "platform": "app",
+                "revision": 1,
+                "status": "active"
+              }
+            ],
+            "works": []
+          }
+        },
+        "reconnect": {
+          "event": "sync",
+          "id": "1",
+          "data": {
+            "activity": [
+              {
+                "conversation_id": "ebba7147-6dcd-46af-86b4-a6b5db0bad95",
+                "evidence": "insufficient",
+                "revision": 0,
+                "sources": [],
+                "step_kind": null
+              },
+              {
+                "conversation_id": "3513f8d7-e012-4270-9bd6-556a3c725062",
+                "evidence": "insufficient",
+                "revision": 10,
+                "sources": [],
+                "step_kind": null
+              },
+              {
+                "conversation_id": "a711babe-5fd8-42e0-9a00-d4524365d28c",
+                "evidence": "insufficient",
+                "revision": 16,
+                "sources": [],
+                "step_kind": null
+              }
+            ],
+            "character": {
+              "avatar_revision": 0,
+              "id": "82e31681-a075-458d-b551-744b48162ef8",
+              "revision": 1
+            },
+            "conversations": [
+              {
+                "binding_id": "029d285f-fade-4d97-8fe6-a5051146d960",
+                "conversation_id": "ebba7147-6dcd-46af-86b4-a6b5db0bad95",
+                "display_name": "",
+                "generation": 1,
+                "latest_event_id": 3,
+                "platform": "acp",
+                "revision": 1,
+                "status": "active"
+              },
+              {
+                "binding_id": "899127fc-bc93-46be-b21c-18cac70be5ef",
+                "conversation_id": "3513f8d7-e012-4270-9bd6-556a3c725062",
+                "display_name": "",
+                "generation": 1,
+                "latest_event_id": 2,
+                "platform": "app",
+                "revision": 1,
+                "status": "active"
+              },
+              {
+                "binding_id": "9ccb6719-de4a-4404-b1e0-cb0e6adc9e69",
+                "conversation_id": "a711babe-5fd8-42e0-9a00-d4524365d28c",
+                "display_name": "",
+                "generation": 1,
+                "latest_event_id": 5,
+                "platform": "app",
+                "revision": 1,
+                "status": "active"
+              }
+            ],
+            "works": []
+          }
+        },
+        "resumed": {
+          "generation": 1,
+          "has_more": false,
+          "items": [
+            {
+              "asr": [],
+              "attachments": [],
+              "author_kind": "person",
+              "author_person_id": "40860e03-2142-4edb-a627-96a1f457402b",
+              "binding_id": "9ccb6719-de4a-4404-b1e0-cb0e6adc9e69",
+              "content": "client-stream-c21dbdc86be0477a9037060b17ad9b9c",
+              "conversation_id": "a711babe-5fd8-42e0-9a00-d4524365d28c",
+              "created_at": "2026-11-06T05:37:02+00:00",
+              "direction": "inbound",
+              "event_id": 5,
+              "event_kind": "message",
+              "id": 5,
+              "observed_at": "2026-11-06T05:37:02+00:00",
+              "occurred_at": "2026-11-06T05:37:02+00:00",
+              "origin": "app",
+              "platform": "app",
+              "sender_display_name": "",
+              "text": "client-stream-c21dbdc86be0477a9037060b17ad9b9c",
+              "work_ids": []
+            }
+          ],
+          "latest_event_id": 5,
+          "next_after": 5,
+          "next_before": 5,
+          "revision": 1
+        },
+        "human_read_evidence": false
+      },
+      {
+        "name": "sse-capacity-preserves-ordinary-requests",
+        "active_streams": 4,
+        "overflow": 503,
+        "me": 200
+      },
+      {
+        "name": "revoke-device-closes-original-streams",
+        "streams_ended": true
+      },
+      {
+        "name": "paused-entry-is-not-device-revocation",
+        "disabled": {
+          "audit_id": "14126eb8-e31f-4a69-aad7-409f598f4deb",
+          "effective_state": {
+            "resource": "9ccb6719-de4a-4404-b1e0-cb0e6adc9e69",
+            "revision": 2,
+            "status": "disabled"
+          },
+          "operation": null,
+          "resource_id": "9ccb6719-de4a-4404-b1e0-cb0e6adc9e69",
+          "revision": 2,
+          "success": true
+        },
+        "enabled": {
+          "audit_id": "91ffd9c3-da31-4c8d-9ed1-58b674ebaf19",
+          "effective_state": {
+            "resource": "9ccb6719-de4a-4404-b1e0-cb0e6adc9e69",
+            "revision": 3,
+            "status": "active"
+          },
+          "operation": null,
+          "resource_id": "9ccb6719-de4a-4404-b1e0-cb0e6adc9e69",
+          "revision": 3,
+          "success": true
+        },
+        "readable": {
+          "binding_id": "9ccb6719-de4a-4404-b1e0-cb0e6adc9e69",
+          "bindings": [
+            {
+              "binding_id": "029d285f-fade-4d97-8fe6-a5051146d960",
+              "display_name": "",
+              "platform": "acp",
+              "source_person_id": "02148a70-18eb-447a-bbb4-0f92ec717c97",
+              "status": "active"
+            },
+            {
+              "binding_id": "899127fc-bc93-46be-b21c-18cac70be5ef",
+              "display_name": "",
+              "platform": "app",
+              "source_person_id": "02148a70-18eb-447a-bbb4-0f92ec717c97",
+              "status": "active"
+            },
+            {
+              "binding_id": "9ccb6719-de4a-4404-b1e0-cb0e6adc9e69",
+              "display_name": "",
+              "platform": "app",
+              "source_person_id": "40860e03-2142-4edb-a627-96a1f457402b",
+              "status": "disabled"
+            }
+          ],
+          "conversation_id": "a711babe-5fd8-42e0-9a00-d4524365d28c",
+          "devices": [
+            {
+              "created_at": "2026-11-06T05:37:01Z",
+              "device_id": "8046d8fe-1b96-4f24-b934-bd132ebb3fe7",
+              "label": "desktop",
+              "purpose": "chat",
+              "revoked_at": null
+            },
+            {
+              "created_at": "2026-11-06T05:37:01Z",
+              "device_id": "cf6df7fb-f82f-418b-ba13-755a4337e51c",
+              "label": "phone",
+              "purpose": "chat",
+              "revoked_at": "2026-11-06T05:37:02Z"
+            },
+            {
+              "created_at": "2026-11-06T05:37:01Z",
+              "device_id": "eb939e57-4d15-4690-8379-f1e5a58cc7db",
+              "label": "B",
+              "purpose": "chat",
+              "revoked_at": null
+            }
+          ],
+          "display_name": "",
+          "is_superuser": false,
+          "person_id": "02148a70-18eb-447a-bbb4-0f92ec717c97",
+          "platform": "app",
+          "presence_id": "5ff13a9b-a4bd-4a46-8e9d-ce2de976cd78",
+          "request_conversation_id": null,
+          "request_person_id": "40860e03-2142-4edb-a627-96a1f457402b",
+          "request_scope": "40860e03-2142-4edb-a627-96a1f457402b",
+          "source_person_id": "40860e03-2142-4edb-a627-96a1f457402b",
+          "thread_id": null
+        },
+        "new_write_denied": {
+          "problem": {
+            "code": "precondition_failed",
+            "message": "precondition_failed"
+          }
+        },
+        "original_receipt_retained": true
+      },
+      {
+        "name": "cold-original-and-selected-receipts",
+        "original": {
+          "conversation_id": "a711babe-5fd8-42e0-9a00-d4524365d28c",
+          "event_id": 1,
+          "found": true,
+          "operation_kind": "client.message",
+          "payload_hash": "7cd5b39868fc31f7b7bbfc63d98a6cf0e904f9aec4176ff6b9a3f764c90b0c3f",
+          "result": {
+            "conversation_id": "a711babe-5fd8-42e0-9a00-d4524365d28c",
+            "event_id": 1,
+            "replay": false
+          },
+          "status": "accepted",
+          "target": null
+        },
+        "selected": {
+          "conversation_id": "3513f8d7-e012-4270-9bd6-556a3c725062",
+          "event_id": 2,
+          "replay": false
+        }
+      }
+    ]
+  },
+  "model_http_requests": 4,
+  "unwitnessed": [
+    "ACP conversation and legacy NULL",
+    "agent_target and operation conflict",
+    "local Social outbound",
+    "H27 final overflow",
+    "H28 download/forget race",
+    "published tuple"
+  ]
+}

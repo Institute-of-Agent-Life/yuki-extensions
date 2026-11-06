@@ -1,0 +1,201 @@
+[
+  {
+    "name": "same-person-original-uuid",
+    "request_id": "da1a8317-3eef-4d8b-8f85-b6a7a3db3223",
+    "first": {
+      "conversation_id": "2986ff03-dbe3-4e19-9cec-7b674f374ed0",
+      "event_id": 1,
+      "replay": false
+    },
+    "replay": {
+      "conversation_id": "2986ff03-dbe3-4e19-9cec-7b674f374ed0",
+      "event_id": 1,
+      "replay": true
+    },
+    "conflict": {
+      "problem": {
+        "code": "request_conflict",
+        "message": "request_conflict"
+      }
+    }
+  },
+  {
+    "name": "merged-selected-entry",
+    "original": {
+      "binding_id": "e6a07f31-06a5-46c1-8ee4-6ec9ebe31e2e",
+      "bindings": [
+        {
+          "binding_id": "5f474da2-eb57-4b1d-a197-59747af777a6",
+          "display_name": "",
+          "platform": "app",
+          "source_person_id": "de3970ff-e5bb-416f-baff-e4dd61bd3fca",
+          "status": "active"
+        },
+        {
+          "binding_id": "e6a07f31-06a5-46c1-8ee4-6ec9ebe31e2e",
+          "display_name": "",
+          "platform": "app",
+          "source_person_id": "837ac47c-5d53-42e1-93a7-e4f0c196168d",
+          "status": "active"
+        }
+      ],
+      "conversation_id": "2986ff03-dbe3-4e19-9cec-7b674f374ed0",
+      "devices": [
+        {
+          "created_at": "2026-11-06T05:21:43Z",
+          "device_id": "713ba4ee-919f-4ba3-a36d-1738cb816c83",
+          "label": "desktop",
+          "purpose": "chat",
+          "revoked_at": null
+        },
+        {
+          "created_at": "2026-11-06T05:21:43Z",
+          "device_id": "8d66a228-33be-421b-a2ae-cccfd482e74f",
+          "label": "phone",
+          "purpose": "chat",
+          "revoked_at": null
+        },
+        {
+          "created_at": "2026-11-06T05:21:43Z",
+          "device_id": "c521444a-d982-4b4b-af96-35a9dd69e59d",
+          "label": "B",
+          "purpose": "chat",
+          "revoked_at": null
+        }
+      ],
+      "display_name": "",
+      "is_superuser": false,
+      "person_id": "de3970ff-e5bb-416f-baff-e4dd61bd3fca",
+      "platform": "app",
+      "presence_id": "3a06f9a4-a8a1-4566-b543-911bab0ad0dc",
+      "request_conversation_id": null,
+      "request_person_id": "837ac47c-5d53-42e1-93a7-e4f0c196168d",
+      "request_scope": "837ac47c-5d53-42e1-93a7-e4f0c196168d",
+      "source_person_id": "837ac47c-5d53-42e1-93a7-e4f0c196168d",
+      "thread_id": null
+    },
+    "selected": {
+      "binding_id": "5f474da2-eb57-4b1d-a197-59747af777a6",
+      "bindings": [
+        {
+          "binding_id": "5f474da2-eb57-4b1d-a197-59747af777a6",
+          "display_name": "",
+          "platform": "app",
+          "source_person_id": "de3970ff-e5bb-416f-baff-e4dd61bd3fca",
+          "status": "active"
+        },
+        {
+          "binding_id": "e6a07f31-06a5-46c1-8ee4-6ec9ebe31e2e",
+          "display_name": "",
+          "platform": "app",
+          "source_person_id": "837ac47c-5d53-42e1-93a7-e4f0c196168d",
+          "status": "active"
+        }
+      ],
+      "conversation_id": "49650462-6198-4430-a36a-73b788c2b2a6",
+      "devices": [
+        {
+          "created_at": "2026-11-06T05:21:43Z",
+          "device_id": "713ba4ee-919f-4ba3-a36d-1738cb816c83",
+          "label": "desktop",
+          "purpose": "chat",
+          "revoked_at": null
+        },
+        {
+          "created_at": "2026-11-06T05:21:43Z",
+          "device_id": "8d66a228-33be-421b-a2ae-cccfd482e74f",
+          "label": "phone",
+          "purpose": "chat",
+          "revoked_at": null
+        },
+        {
+          "created_at": "2026-11-06T05:21:43Z",
+          "device_id": "c521444a-d982-4b4b-af96-35a9dd69e59d",
+          "label": "B",
+          "purpose": "chat",
+          "revoked_at": null
+        }
+      ],
+      "display_name": "",
+      "is_superuser": false,
+      "person_id": "de3970ff-e5bb-416f-baff-e4dd61bd3fca",
+      "platform": "app",
+      "presence_id": "3a06f9a4-a8a1-4566-b543-911bab0ad0dc",
+      "request_conversation_id": null,
+      "request_person_id": "de3970ff-e5bb-416f-baff-e4dd61bd3fca",
+      "request_scope": "de3970ff-e5bb-416f-baff-e4dd61bd3fca",
+      "source_person_id": "837ac47c-5d53-42e1-93a7-e4f0c196168d",
+      "thread_id": null
+    },
+    "original_receipt": {
+      "conversation_id": "2986ff03-dbe3-4e19-9cec-7b674f374ed0",
+      "event_id": 1,
+      "found": true,
+      "operation_kind": "client.message",
+      "payload_hash": "c388437bd0473f9126143c1345e930b87819a3ec2401468d9c60cef520fe8e93",
+      "result": {
+        "conversation_id": "2986ff03-dbe3-4e19-9cec-7b674f374ed0",
+        "event_id": 1,
+        "replay": false
+      },
+      "status": "accepted",
+      "target": null
+    },
+    "selected_receipt": {
+      "conversation_id": "49650462-6198-4430-a36a-73b788c2b2a6",
+      "event_id": 2,
+      "found": true,
+      "operation_kind": "client.message",
+      "payload_hash": "bd2fa74dfce40aa23a5014df752cec447ee403b125047e5f68e1fe3deabb7e47",
+      "result": {
+        "conversation_id": "49650462-6198-4430-a36a-73b788c2b2a6",
+        "event_id": 2,
+        "replay": false
+      },
+      "status": "accepted",
+      "target": null
+    },
+    "replay": {
+      "conversation_id": "49650462-6198-4430-a36a-73b788c2b2a6",
+      "event_id": 2,
+      "replay": true
+    }
+  },
+  {
+    "name": "invalid-and-duplicate-selection",
+    "duplicate_status": 400
+  },
+  {
+    "name": "ordered-attachment-conflict",
+    "uploads": [
+      {
+        "expires_at": 1794028904,
+        "filename": "first.txt",
+        "kind": "file",
+        "media_id": "d11cc245-112c-5b3f-a961-655d66ec101c",
+        "replay": false,
+        "sha256": "4e70e3e0fe9ec9cffe3c0d11d4b3ce9307cf2da2267912204a1265a3738014d5",
+        "size": 21
+      },
+      {
+        "expires_at": 1794028904,
+        "filename": "second.txt",
+        "kind": "file",
+        "media_id": "5199e76a-e21a-5a8b-8093-64f6fda6450e",
+        "replay": false,
+        "sha256": "20c04502e7f2ae0f91f8eac6634b7e15231baa890c50fc0aa79c0378e2491baf",
+        "size": 22
+      }
+    ],
+    "first": {
+      "conversation_id": "2986ff03-dbe3-4e19-9cec-7b674f374ed0",
+      "event_id": 3,
+      "replay": false
+    },
+    "replay": {
+      "conversation_id": "2986ff03-dbe3-4e19-9cec-7b674f374ed0",
+      "event_id": 3,
+      "replay": true
+    }
+  }
+]

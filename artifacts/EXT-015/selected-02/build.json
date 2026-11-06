@@ -1,0 +1,68 @@
+{
+  "unit_id": "client",
+  "version": "0.1.0-alpha.2",
+  "release_tag": "client/v0.1.0-alpha.2",
+  "published": false,
+  "manifest_sha256": "215cef9017318d138cbdde8e22de1da1db35619f97b10532bb86a58a027978f8",
+  "lock_sha256": "3b4f6f60bcbd9f26930e0efdef0e4b70dda3b92a8b85d041ea54199c783840cc",
+  "source": {
+    "repository": "Institute-of-Agent-Life/yuki-extensions",
+    "baseline": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+    "sdk_contract": "compat/core-033-client/source.lock.json"
+  },
+  "license": "AGPL-3.0-only",
+  "artifacts": {
+    "Cargo.lock": "3b4f6f60bcbd9f26930e0efdef0e4b70dda3b92a8b85d041ea54199c783840cc",
+    "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+    "plugin.toml": "555166fcc444e7ab9ebd86524ff74d49673374fb7a93558fd2535f301c433d75",
+    "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+    "yuki-client.exe": "eede16f0162ed49e819619d62f5e9364946ba343c276ff38df9c6e1f22ba7030"
+  },
+  "commands": [
+    {
+      "command": [
+        "rustc",
+        "--version",
+        "--verbose"
+      ],
+      "exit_code": 0,
+      "stdout": "rustc 1.96.0 (ac68faa20 2026-05-25)\nbinary: rustc\ncommit-hash: ac68faa20c58cbccd01ee7208bf3b6e93a7d7f96\ncommit-date: 2026-05-25\nhost: x86_64-pc-windows-gnu\nrelease: 1.96.0\nLLVM version: 22.1.2\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "cargo",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "cargo 1.96.0 (30a34c682 2026-05-25)\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--target-dir",
+        "C:\\Users\\Hilbert\\AppData\\Local\\Temp\\yuki-rust-build-tqeekqil"
+      ],
+      "exit_code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 2 tests\ntest selected_entries_reach_the_owner_but_duplicate_authority_is_rejected ... ok\ntest only_the_supported_owner_routes_can_be_dispatched ... ok\n\ntest result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "   Compiling proc-macro2 v1.0.107\n   Compiling quote v1.0.47\n   Compiling unicode-ident v1.0.27\n   Compiling serde_core v1.0.228\n   Compiling itoa v1.0.18\n   Compiling httparse v1.10.1\n   Compiling serde v1.0.228\n   Compiling serde_json v1.0.145\n   Compiling bytes v1.12.1\n   Compiling log v0.4.35\n   Compiling memchr v2.8.3\n   Compiling ryu v1.0.23\n   Compiling base64 v0.22.1\n   Compiling chunked_transfer v1.5.0\n   Compiling utf-8 v0.7.6\n   Compiling httpdate v1.0.3\n   Compiling percent-encoding v2.3.2\n   Compiling ascii v1.1.0\n   Compiling tiny_http v0.12.0\n   Compiling http v1.5.0\n   Compiling syn v2.0.119\n   Compiling ureq-proto v0.5.3\n   Compiling ureq v3.1.2\n   Compiling serde_derive v1.0.228\n   Compiling yuki-plugin-sdk v1.0.0-alpha.12\n   Compiling yuki-client v0.1.0-alpha.2 (C:\\Users\\Hilbert\\AppData\\Local\\Temp\\yuki-rust-build-tqeekqil\\unit)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 11.14s\n     Running unittests src\\main.rs (C:\\Users\\Hilbert\\AppData\\Local\\Temp\\yuki-rust-build-tqeekqil\\debug\\deps\\yuki_client-4ee36e990e572838.exe)\n     Running tests\\request_boundary.rs (C:\\Users\\Hilbert\\AppData\\Local\\Temp\\yuki-rust-build-tqeekqil\\debug\\deps\\request_boundary-540fb7c5f62e7935.exe)\n"
+    },
+    {
+      "command": [
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "--target-dir",
+        "C:\\Users\\Hilbert\\AppData\\Local\\Temp\\yuki-rust-build-tqeekqil"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "   Compiling proc-macro2 v1.0.107\n   Compiling quote v1.0.47\n   Compiling unicode-ident v1.0.27\n   Compiling serde_core v1.0.228\n   Compiling itoa v1.0.18\n   Compiling httparse v1.10.1\n   Compiling log v0.4.35\n   Compiling serde v1.0.228\n   Compiling bytes v1.12.1\n   Compiling serde_json v1.0.145\n   Compiling base64 v0.22.1\n   Compiling ryu v1.0.23\n   Compiling memchr v2.8.3\n   Compiling percent-encoding v2.3.2\n   Compiling httpdate v1.0.3\n   Compiling utf-8 v0.7.6\n   Compiling ascii v1.1.0\n   Compiling chunked_transfer v1.5.0\n   Compiling tiny_http v0.12.0\n   Compiling http v1.5.0\n   Compiling syn v2.0.119\n   Compiling ureq-proto v0.5.3\n   Compiling ureq v3.1.2\n   Compiling serde_derive v1.0.228\n   Compiling yuki-plugin-sdk v1.0.0-alpha.12\n   Compiling yuki-client v0.1.0-alpha.2 (C:\\Users\\Hilbert\\AppData\\Local\\Temp\\yuki-rust-build-tqeekqil\\unit)\n    Finished `release` profile [optimized] target(s) in 12.83s\n"
+    }
+  ]
+}

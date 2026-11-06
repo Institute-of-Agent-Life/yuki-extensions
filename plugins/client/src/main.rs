@@ -1,10 +1,10 @@
 mod auth;
 mod http;
+mod stream;
 use serde_json::{Value, json};
 use std::{
     env,
     io::{self, Write},
-    sync::Arc,
     thread,
 };
 use yuki_plugin_sdk::{
@@ -22,8 +22,7 @@ fn send(value: &Value) -> Result<(), Error> {
 fn main() -> Result<(), Error> {
     let core = auth::loopback("YUKI_CLIENT_CORE")?;
     let listen = auth::loopback("YUKI_CLIENT_LISTEN")?;
-    let socket =
-        Arc::new(tiny_http::Server::http(listen).map_err(|_| "cannot bind client listener")?);
+    let socket = tiny_http::Server::http(listen).map_err(|_| "cannot bind client listener")?;
     let binding: Binding = serde_json::from_str(&env::var("YUKI_PLUGIN_BINDING")?)?;
     let offer = binding.offer();
     let mut peer = Peer::new(binding)?;
@@ -40,12 +39,7 @@ fn main() -> Result<(), Error> {
             Received::Notification => (),
         }
     };
-    let agent = http::agent();
-    for _ in 0..8 {
-        let s = socket.clone();
-        let agent = agent.clone();
-        thread::spawn(move || http::serve(&s, core, &agent));
-    }
+    thread::spawn(move || http::serve(socket, core));
     while let Some(raw) = read_frame(&mut input)? {
         if let Incoming::Call { id, .. } = calls.receive(&raw)? {
             send(

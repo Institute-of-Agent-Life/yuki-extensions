@@ -1,0 +1,11 @@
+{
+  "task": "EXT-015",
+  "status": "PASS",
+  "phase": "native-lock-build",
+  "source_snapshot_sha256": "631a5eed91eca45c92cc6e31cb0344143b135447bc0e75a721faec87941d117e",
+  "files": {
+    "build.json": "acad7ca09498b70f73dd32ebe2fc577b822fbd0ea7cb314039a22d3033de4b8b",
+    "Cargo.lock": "3b4f6f60bcbd9f26930e0efdef0e4b70dda3b92a8b85d041ea54199c783840cc",
+    "yuki-client.exe": "dc29c1c51f001229ed6283c7332dcd167705cd678fd7fcd8da977ba6b8fb0340"
+  }
+}
