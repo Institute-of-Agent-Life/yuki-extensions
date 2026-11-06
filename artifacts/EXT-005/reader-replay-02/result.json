@@ -1,0 +1,79 @@
+{
+  "status": "PASS",
+  "scope": "stopped-plugin-copy",
+  "host": {
+    "archive": "yuki-media-preview-0ef956a9c6d9-windows-x86_64.zip",
+    "sha256": "a81c49a722b9e1e420d5084856f7a13aed116865f7ca0a4c1304ac10881c62f3",
+    "binary_sha256": "4dd7a9fc345664f85d59b9c83d17e03b9dc452bbc2fb7bb01eba7d73c47b6cc0",
+    "validation_manifest_sha256": "d7341e1fc982a2ec192d6bcea225b45641e8d8b387eaa73785c982ebd7f32730"
+  },
+  "host_source": "0ef956a9c6d90fae79c0d4488296c064ccf29f54",
+  "packages": {
+    "0.1.0-alpha.1": {
+      "binary": "0.1.0-alpha.1.exe",
+      "binary_sha256": "f72574e93a6ca883162cfda749d40f143b1a5853040ce5a9c72603de2cdb4d53",
+      "sdk_version": "1.0.0-alpha.2",
+      "sdk_sha256": "9408022bdf1322a8d6e07914685869771a5738280e36145e46da5c36facbfce0",
+      "archive_sha256": "724da1a529274a87d4a94b63756ac8d942a4002cc7b1cfa2e3a161435359b4ad"
+    },
+    "0.1.0-alpha.2": {
+      "binary": "0.1.0-alpha.2.exe",
+      "binary_sha256": "d5c04486c59019f64f5633109fd81b2c69d2c64ffbe885492c4c0b664c8da6e9",
+      "sdk_version": "1.0.0-alpha.13",
+      "sdk_sha256": "25694e880798108129a1fa8e49e6fff7464ebc9075e5042cc379a6709343e29b",
+      "archive_sha256": "e3ef5dbad9f5b628d5b354343c46d7dd58db2b7b86c045259447b893ffb0d3fc"
+    }
+  },
+  "events": {
+    "cli_a": {
+      "old": [
+        1
+      ],
+      "new": [
+        2,
+        1
+      ],
+      "rollback": [
+        2
+      ]
+    },
+    "cli_b": {
+      "old": [
+        3
+      ],
+      "new": [
+        4,
+        3
+      ],
+      "rollback": [
+        4
+      ]
+    }
+  },
+  "accounts": {
+    "cli_a": {
+      "account": "7978364c-d346-4aa5-86da-b925dafdaf2d",
+      "assignment": "d6b6a9f1-9217-4546-b8b6-bf243a361cd4"
+    },
+    "cli_b": {
+      "account": "f76aa729-b458-4b2b-8c08-e0382c094f0a",
+      "assignment": "ee69fc64-600a-43f9-9229-178841f69c75"
+    }
+  },
+  "killed_native_pids": {
+    "cli_a-old": 22012,
+    "cli_a-new": 24440,
+    "cli_a-rollback": 500,
+    "cli_b-old": 13516,
+    "cli_b-new": 25896,
+    "cli_b-rollback": 10036
+  },
+  "stopped_private_files": {
+    "cli_a-new-stopped": [],
+    "cli_a-old-stopped": [],
+    "cli_a-rollback-stopped": [],
+    "cli_b-new-stopped": [],
+    "cli_b-old-stopped": [],
+    "cli_b-rollback-stopped": []
+  }
+}

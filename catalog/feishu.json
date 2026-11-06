@@ -3,5 +3,5 @@
   "tag_prefix":"feishu/v","license":"AGPL-3.0-only","notices":["LICENSE","NOTICE"],"runtime_files":["plugin.toml"],
   "source":{"repository":"Institute-of-Agent-Life/yuki-extensions","baseline":"329ca7c487414d2f54ddd98ff4727446ed2446cd",
     "upstream_path":"src/yuki/gateway/providers/feishu_ws.py","sdk_contract":"compat/core-038-main/source.lock.json"},
-  "check_paths":["tests/cases/EXT-005.py","tests/cases/EXT-006.py","tests/peers/feishu_media_wire.py","tests/peers/feishu_media_host.py","compat/core-038-main/source.lock.json","compat/core-038-main/yuki-plugin-sdk-1.0.0-alpha.13.crate"]
+  "check_paths":["tests/cases/EXT-005.py","tests/peers/feishu_reader_replay.py","tests/cases/EXT-006.py","tests/peers/feishu_media_wire.py","tests/peers/feishu_media_host.py","compat/core-038-main/source.lock.json","compat/core-038-main/yuki-plugin-sdk-1.0.0-alpha.13.crate"]
 }
