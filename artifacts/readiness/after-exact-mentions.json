@@ -1,0 +1,73 @@
+{
+  "previous": "after-gateway-reader-replay.json",
+  "counts": {
+    "previously_accepted": 7,
+    "partial_or_diagnostic_evidence": 20,
+    "signed_candidate_acceptance_pass": 2,
+    "no_named_card_artifact": 39
+  },
+  "implementation": "ac360c785115fd4a454f38b00190dd40f9e9e364",
+  "scope": {
+    "EXT-005": "artifacts/EXT-005/mention-identity-01/comparison.json"
+  },
+  "core_main_observed": "459f845146c05933c6bd42d854be31abc1370766",
+  "core_release_tags": [
+    "handshake-preview-dd694a0db605"
+  ],
+  "source_checks": [
+    {
+      "core_pr": 101,
+      "source": "9e0b6a039e5fc04c84a47dc031399418498821d0",
+      "sdk": "1.0.0-alpha.14",
+      "published": false,
+      "index_sha256": "7856006d4e6a52545aa8da36a38cc5e3261adc27aa17bcf84587b4590ad582e5",
+      "signed_archives": {
+        "darwin-arm64": "2ff5adf2be719677115360f521d14529e7dce70323b84d066453f59e9d94ebf2",
+        "linux-arm64": "44fd1724bbf2aa01bfee3a4f37c626148e44c94a4dfe54b94d94c6ae12ba3e55",
+        "windows-x86_64": "a978d1cd7f6be6c5860c58a4656ad1ffce40ae7f989d393cb9d2e1d915568e61"
+      },
+      "host_schema": "byte-identical to compat/base/host-preview.json; 14 methods",
+      "ran_plugin_against_this_distribution": false
+    },
+    {
+      "core_pr": 102,
+      "source": "c942da9d39e0e237908cf3a5b9345c6fb1239a2c",
+      "sdk": "1.0.0-alpha.14",
+      "published": false,
+      "index_sha256": "2a8a60fe14110e14d83693fc1e2a60721568fa282da86c89be724021ac4a9f93",
+      "signed_archives": {
+        "darwin-arm64": "f198650d0a4ed3f48c8f63c209f1983e8917e9a9c430b689b2c2b7e69cee3fe6",
+        "linux-arm64": "e1b1a828c8f15ad71bf792581f362998a740e934cb7c7d09c5556a7b184a6299",
+        "windows-x86_64": "8b5d0fd40602296cb16c5a0a2b8b0166355b1cfcb96a2d8f51d92ac2f415c745"
+      },
+      "host_schema": "byte-identical to compat/base/host-preview.json; 14 methods",
+      "ran_plugin_against_this_distribution": false
+    }
+  ],
+  "pr45_hosted_macos": {
+    "run": 42277389964,
+    "job": 128097269102,
+    "synthetic_merge": "478ad30571c70c5a582c4bacdb216964e5140403",
+    "conclusion": "success",
+    "additional_artifacts": [
+      {
+        "id": 13534241257,
+        "type": "package",
+        "sha256": "dcf9e59da6787b35ee1da037e7d9ba74656a057bd28fb506c364471f31e540bd",
+        "verified_payload_files": 6
+      },
+      {
+        "id": 13534456199,
+        "type": "cache-inputs",
+        "sha256": "7e76603fa4b3fe5b8e777781be0b3016ddfe77db4a326a9fbee8a5a01500a305",
+        "bound_sources": 12,
+        "bound_builders": 4
+      }
+    ]
+  },
+  "next": {
+    "EXT-043": "Publish the immutable B0 Host/SDK, then reuse the EXT-067 manifest.",
+    "EXT-029": "CORE-024 fixed the deployment limit of native web_search. Its packaged plugin schema exposes tool.call/status but no binding for dispatch, response or unknown cost of an external paid HTTP attempt against the original reservation.",
+    "EXT-068/069": "Verify original gateway group activation and owner authorization once available. This case covers native ingress identity only."
+  }
+}
