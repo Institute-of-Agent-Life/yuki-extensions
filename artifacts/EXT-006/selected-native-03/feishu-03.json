@@ -1,0 +1,72 @@
+{
+  "case": "feishu-03",
+  "transfer_zip_sha256": "3e9308217aa5bc9ebc6ab3b19e487b8e35795b170db804579e50220d7e8aca7e",
+  "archive_bytes": 49862,
+  "members": {
+    "gateway.jsonl": "36b9f18146325cf0492ad7a45bb3eb3b6ee8f2eb9b3005f0ea2d27c44beec601",
+    "host.txt": "909a4c31cea794b59d9471999030b94505c5af7f20bff6cf27ca5d5c49f0ccc2",
+    "installation.toml": "0b34ac8b0cea179e94dcb23c50bc7944580a524157da3f4321ddc83f65f829a3",
+    "model-http.json": "cf70dc6c50582a46f45364078962889f1d50bb91fd9d66f4c3b3c99b58bfeae2",
+    "native-http.json": "a3c287c47cd4a3772f2f9452fd37e9d08472c0cab46b536eaa7bdac619f66ba1",
+    "result.json": "09744f762dcda42510366e6a08f5a7d9fb5dfa8fe7914a0ad50c09d41e8cda50",
+    "wire.jsonl": "1753d23d942148b46ba86e3239dcd6ce6713732d6fcaa218abc8496b8089da35",
+    "processor-wire.jsonl": "1753d23d942148b46ba86e3239dcd6ce6713732d6fcaa218abc8496b8089da35",
+    "test.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "methods": {
+    "initialize": 3,
+    "gateway.inbound": 1,
+    "gateway.media": 6,
+    "media.process": 1,
+    "media.open": 9
+  },
+  "result": {
+    "status": "PASS",
+    "domain": "feishu",
+    "source_event": 1,
+    "stage": "2e48e259-85dc-44de-a735-16b4dca27c40",
+    "installation": {
+      "application": "cli_feishu",
+      "tenant": "tenant-feishu"
+    },
+    "host_source": "0ef956a9c6d90fae79c0d4488296c064ccf29f54",
+    "host": {
+      "archive": "yuki-media-preview-0ef956a9c6d9-windows-x86_64.zip",
+      "sha256": "a81c49a722b9e1e420d5084856f7a13aed116865f7ca0a4c1304ac10881c62f3",
+      "binary_sha256": "4dd7a9fc345664f85d59b9c83d17e03b9dc452bbc2fb7bb01eba7d73c47b6cc0",
+      "validation_manifest_sha256": "d7341e1fc982a2ec192d6bcea225b45641e8d8b387eaa73785c982ebd7f32730"
+    },
+    "sdk": "25694e880798108129a1fa8e49e6fff7464ebc9075e5042cc379a6709343e29b",
+    "gateway_binary": "4fc4e77480ba96709cb1172ebe8fd7a3e6f58d0f2469142cea2adc29d1ad57d0",
+    "processor_binary": "2d0e7e9b910789bf34b8d263475c71a720a2ee650628fc88a3292a64e26d454c",
+    "offsets": [
+      0,
+      24576,
+      49152,
+      73728,
+      98304,
+      122880
+    ],
+    "selected_bytes": 131058,
+    "selected_sha256": "101c6c3dc1f7cc3d3f10a417d364821b71a1ecff564d2555d20a16584c963dc4",
+    "operation": "ed61ac12-6e24-481e-928b-b1b35242281f",
+    "model_http": 2,
+    "native": [
+      {
+        "method": "socket-ack",
+        "serial": 17
+      },
+      {
+        "method": "token",
+        "domain": "feishu"
+      },
+      {
+        "method": "resource",
+        "domain": "feishu",
+        "bytes": 131058,
+        "sha256": "101c6c3dc1f7cc3d3f10a417d364821b71a1ecff564d2555d20a16584c963dc4"
+      }
+    ],
+    "published": false
+  }
+}

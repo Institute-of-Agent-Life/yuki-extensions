@@ -1,0 +1,37 @@
+{
+  "task": "EXT-006",
+  "status": "PASS",
+  "scope": "selected original ingress attachment, Windows native candidates with loopback platform and model",
+  "formal_card_acceptance": false,
+  "host_source": "0ef956a9c6d90fae79c0d4488296c064ccf29f54",
+  "frozen_sdk": {
+    "python": "1.0.0a13",
+    "rust": "1.0.0-alpha.13"
+  },
+  "gateway_test_sha256": "e3af20b71dc466345a31008ba8948fad6de6664b35576c140b888b3bb4306064",
+  "source_tree_of_executed_dependencies": "9e072834e150bdce554452d4c04f898d11102cb3",
+  "configuration_discovery": {
+    "code": 1,
+    "stderr": "{\"error\":\"TOML parse error at line 15, column 1\\n   |\\n15 | unrecognized_extension_config_key=true\\r\\n   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\nunknown field `unrecognized_extension_config_key`, expected `application` or `tenant`\\n\"}\n"
+  },
+  "preliminary_run": {
+    "iteration": "01",
+    "real_gateway_read": "observed",
+    "processor": "codec_unavailable because the driver copied the executable without its pinned adjacent Python reader; full original package used thereafter",
+    "superseded_by": "03",
+    "transfers": {
+      "feishu": "fa9d4216d6542136e0227221eb2c5a21b91e413d95966a2fb394aeb650ea9651",
+      "lark": "586761877cff10d146e0135d608ce7c3f4447bf34437c881db0942b90978fe37"
+    }
+  },
+  "members": {
+    "feishu-03.json": "a18d89fd9d046f4c2a1baa656720aedbe8e75a15d5fcaf7df4825f24c3252019",
+    "feishu-03.zip": "3e9308217aa5bc9ebc6ab3b19e487b8e35795b170db804579e50220d7e8aca7e",
+    "feishu-wrong-03.json": "3259a706b2ec7470250b1c0e9d54c41b0bf3434d698b5dade2db229df43a48bc",
+    "feishu-wrong-03.zip": "ebab83bef585e16eda46f5720e180712a3132cb65a16e62d9c9c2215d19799d5",
+    "lark-03.json": "8434522ece7ad936efc5df7caeaf5e613c6d0e45c5c98507d6e2a364e959a947",
+    "lark-03.zip": "3040fd59c3e9bd7d864bc12d49a1d6aede4dde81a5373e7593b76d0cdc707fda",
+    "lark-wrong-03.json": "c9d3548b29a648cfacb7d7dc64b600ae2a659e81e96977cb8601797cd6984b37",
+    "lark-wrong-03.zip": "92ec5e950467fe3b3829a51de015946708687bd398248847c136cc84e973e303"
+  }
+}

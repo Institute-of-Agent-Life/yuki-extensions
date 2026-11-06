@@ -8,7 +8,9 @@
 
 **EXT-004 原 Bot 取件。** 真 Host `0ef956a9c6d9`、SDK alpha.13 與原 Rust 插件在 HJW 完成選取 slot 0 和錯 slot 1。單次原生 GET、7 塊共 161,058 bytes，原處理器及 Main 回讀兩頁 PDF。錯 slot 零取件。完整原始 wire、模型 HTTP、配置、SHA 與失敗回條在 `artifacts/EXT-004/selected-native-03/`。正式完成 7/68。舊結果以下依執行時間保留。
 
-**EXT-006 飛書／Lark 部分候選；正式完成 7/68。** 分支 `codex/ext-006-feishu-media`，實作 `2db0fa096b2f`。
+**EXT-006 原 app/tenant 取件。** HJW 用相同資源鍵、兩個原 app 及各自的 tenant 收件。飛書 131,058 bytes／6 塊，Lark 101,058 bytes／5 塊，各一次原生 GET。錯 slot 各收到 failed，取件與處理器呼叫均為零。回條、可重放命令和完整 SHA 分別在 `artifacts/EXT-006/selected-native-03/`、`docs/EXT-004-006-selected-native.md`。只使用回環平台及模型。仍待出站投遞、逐平台動作與正式發布。
+
+**舊 EXT-006 候選快照。** 分支 `codex/ext-006-feishu-media`，實作 `2db0fa096b2f`。
 HJW Windows 的 Rust alpha.2 在兩個區域端點各取回 26,789 bytes；同名 key 的內容摘要不同。
 下載中原 WS 可回 ACK；錯 app/tenant 不發 HTTP、403 不重試。修正 Windows 複製 socket 導致原讀取逾時沒有更新的問題。
 同一執行檔 `4fc4e77480ba` 對固定 CORE-038 `0ef956a9c6d9`／SDK alpha.13、Host `4dd7a9fc3456`，
