@@ -1,0 +1,38 @@
+{
+  "formal_cards_completed": 7,
+  "formal_cards_total": 68,
+  "ci_dedup": {
+    "pr": 16,
+    "head": "972c66d6e40e37b4b6ca9075969f88bcc26f9d6e",
+    "base": "ac8c1b287e5a320107f64975dfd318b521bd8f13",
+    "run": 42179984095,
+    "status": "QUEUED; one PR run, no branch push run observed",
+    "source": 33
+  },
+  "ci_cache": {
+    "branch": "codex/ci-locked-cache",
+    "implementation": "0daf4c9d324bd5c80e738119bc2366ef67863f61",
+    "windows": "PASS",
+    "hosted_ci": "PENDING",
+    "artifact": "artifacts/readiness/ci-cache/receipt.json",
+    "sequence": "docs/ci-performance.md"
+  },
+  "latest_functional_progress": "../work-media-main/docs/implementation-progress.md",
+  "candidate_prs": {
+    "selected_client": 32,
+    "main_media": 34
+  },
+  "unconsumed_new_deliveries": [
+    "CORE-032 terminal-work 61999b662f1e / SDK alpha.14",
+    "CORE-038 gateway.media b99b01a92443",
+    "CORE-023 canonical QQ fece25119850"
+  ],
+  "next": "Verify current PR16 gates and inspect true taskbook/runtime prerequisites of new terminal/gateway deliveries; no formal acceptance assumed",
+  "wip_preserved": [
+    "root four Code adapters",
+    "work-asr",
+    "work-rebuild",
+    "work-subscription"
+  ],
+  "automation": "PAUSED while authorized ready work is in progress"
+}

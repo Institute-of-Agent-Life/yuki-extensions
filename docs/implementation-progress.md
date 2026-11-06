@@ -15,8 +15,10 @@
 
 ## 2026-11-06 Rust CI 快取候選
 
-- `codex/ci-locked-cache` 從去重提交 `972c66d` 延續；快取作為獨立後續 PR，
-  等 PR #16／當前 main 前置及完整新基底 CI 後才可合併。正常／故障時序與來源策略見
+- `codex/ci-locked-cache` 實作 `0daf4c9d324bd5c80e738119bc2366ef67863f61`，從去重提交 `972c66d` 延續；快取作為獨立後續 PR，
+  PR #16 新 head `972c66d6e40e` 已推；新 PR run `42179984095` 已建立，原
+  `58cd960` 的 push／PR 兩輪均核無失敗後請求取消，產物未刪。快取需等 PR #16／
+  當前 main 前置及完整新基底 CI 後才可合併。正常／故障時序與來源策略見
   `docs/ci-performance.md`。三平台與全部受影響單位的 gates 保留；沒有新增 job。
 - HJW Windows 10 項 cache 回歸與真 local-agent 冷／熱 build 通過。207.235 秒／
   26.719 秒，38／0 筆 registry GET，熱輪無重編譯，原 SQLite 回歸兩輪皆執行。
