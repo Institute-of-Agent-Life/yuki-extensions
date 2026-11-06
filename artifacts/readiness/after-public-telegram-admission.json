@@ -1,0 +1,22 @@
+{
+  "previous": "after-public-native-setup.json",
+  "counts": {
+    "formally_accepted": 9,
+    "signed_candidate_acceptance_pass": 2,
+    "partial_or_diagnostic_evidence": 19,
+    "no_named_card_artifact": 38
+  },
+  "EXT-003": {
+    "state": "formally_accepted",
+    "evidence": "artifacts/EXT-003/01/telegram-offset.json",
+    "wire": "artifacts/EXT-003/01/wire.jsonl",
+    "reader_evidence": [
+      "artifacts/EXT-003/cursor-compat-04/windows.zip",
+      "artifacts/EXT-043/01/extension-release-lock.json"
+    ],
+    "core_release": "plugin-base-v1.0.0",
+    "core_source": "c6bd0c75e38717abc71373201d31a77982428d5b",
+    "extension_published": false
+  },
+  "next": "EXT-005 published Host admission. EXT-004 still needs native quote, recall, typing and positive attachment delivery."
+}
