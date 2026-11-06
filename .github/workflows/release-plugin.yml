@@ -1,0 +1,68 @@
+name: Independent plugin release
+on:
+  push:
+    tags: ['plugin/*/v*']
+  pull_request:
+    paths:
+      - '.github/workflows/release-plugin.yml'
+      - 'catalog/verified.json'
+      - 'releases/**'
+      - 'ci/publish-plugin.py'
+      - 'compat/stable-1.0/**'
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: 'Publish the selected existing version tag'
+        required: true
+        type: boolean
+        default: false
+permissions:
+  contents: read
+jobs:
+  prepare:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, macos-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: rustup toolchain install 1.96.0 --profile minimal
+      - name: Build and bind the selected package
+        shell: bash
+        env:
+          RELEASE_TAG: ${{ github.event_name == 'pull_request' && 'plugin/telegram/v0.1.0' || github.ref_name }}
+        run: |
+          python ci/publish-plugin.py --tag "$RELEASE_TAG" --commit "$GITHUB_SHA" --out release-package
+          python -m zipfile -c "plugin-${{ matrix.os }}-$GITHUB_SHA.zip" release-package
+      - uses: actions/upload-artifact@v4
+        with:
+          name: stable-plugin-${{ matrix.os }}-${{ github.sha }}
+          path: plugin-*.zip
+          if-no-files-found: error
+  publish:
+    if: github.event_name == 'workflow_dispatch' && github.ref_type == 'tag' && inputs.publish
+    needs: prepare
+    runs-on: ubuntu-latest
+    environment: plugin-release
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: 'stable-plugin-*'
+          merge-multiple: true
+          path: packages
+      - name: Publish verified tag assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$(gh api "repos/$GITHUB_REPOSITORY/commits/$GITHUB_REF_NAME" --jq .sha)" = "$GITHUB_SHA"
+          cd packages
+          sha256sum *.zip > SHA256SUMS
+          gh release create "$GITHUB_REF_NAME" --verify-tag --title "$GITHUB_REF_NAME" --notes "Source $GITHUB_SHA" *.zip SHA256SUMS

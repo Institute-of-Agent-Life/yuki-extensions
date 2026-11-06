@@ -7,6 +7,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
 import os
 from pathlib import Path
+import shutil
 import socket
 import subprocess
 import sys
@@ -52,16 +53,9 @@ DENIALS = {
 MEDIA_DENIALS = {'unsupported-emoji', 'missing-media-reader'}
 
 
-def run(root, assets, archive, out, case):
+def preview_host(root, archive, case, consumer, work):
     sys.path.insert(0, str(root/'compat/base'))
     from verify_dist import verify, native_target
-    sys.path.insert(0, str(root/'ci'))
-    from personal_preview import free_address
-
-    out.mkdir()
-    work = out/'work'
-    work.mkdir()
-    consumer = json.loads((root/'compat/base/source.lock.json').read_bytes())
     lock = consumer
     if case in DENIALS:
         contract = 'media-refusal' if case in MEDIA_DENIALS else 'gateway-refusal'
@@ -78,6 +72,37 @@ def run(root, assets, archive, out, case):
     executable = 'yuki-core.exe' if os.name == 'nt' else 'yuki-core'
     host = work/'host/bin'/executable
     assert digest(host) == platform['binary_sha256']
+    return host, lock, candidate['host_schema_sha256']
+
+
+def published_host(root, archive, work):
+    import zipfile
+    pin = root/'compat/stable-1.0'
+    lock = json.loads((pin/'source.lock.json').read_bytes())
+    platform, = (p for p in lock['platforms'].values() if p['archive'] == archive.name)
+    key = pin/'signer.pub'
+    assert digest(key) == lock['signer_sha256']
+    raw = subprocess.check_output([sys.executable, pin/'verify_base.py', archive, '--public-key', key,
+                                   '--sha256', platform['sha256'], '--commit', lock['source_commit']])
+    manifest = json.loads(raw)
+    host = work/Path(manifest['binary']).name
+    with zipfile.ZipFile(archive) as z:
+        host.write_bytes(z.read(manifest['binary']))
+    assert digest(host) == platform['binary_sha256']
+    host.chmod(0o755)
+    return host, lock, lock['schema_sha256']
+
+
+def run(root, assets, archive, out, case, *, rollback=None):
+    sys.path.insert(0, str(root/'ci'))
+    from personal_preview import free_address
+
+    out.mkdir()
+    work = out/'work'
+    work.mkdir()
+    consumer = json.loads((root/'compat/base/source.lock.json').read_bytes())
+    host, lock, schema = (published_host(root, archive, work) if rollback is not None
+                          else preview_host(root, archive, case, consumer, work))
     package_hash = {}
     for unit in ['telegram', 'web-fetch']:
         package = assets/unit
@@ -86,7 +111,8 @@ def run(root, assets, archive, out, case):
         assert all(digest(package/name) == h for name,h in manifest['artifacts'].items())
         dependencies = tomllib.loads((package/'Cargo.lock').read_text(encoding='utf-8'))['package']
         sdk, = [dep for dep in dependencies if dep['name'] == 'yuki-plugin-sdk']
-        assert sdk['checksum'] == consumer['rust_crate_sha256'] and sdk['version'] == lock['sdk']['rust']
+        package_pin = lock if rollback is not None and unit == 'telegram' else consumer
+        assert sdk['checksum'] == package_pin['rust_crate_sha256'] and sdk['version'] == package_pin['sdk']['rust']
         package_hash[unit] = {'version': manifest['version'], 'artifacts': manifest['artifacts'],
                               'manifest_sha256': digest(package/'package-manifest.json')}
 
@@ -328,6 +354,12 @@ def run(root, assets, archive, out, case):
             package=assets/unit
             config=tomllib.loads((package/'plugin.toml').read_text(encoding='utf-8'))
             binary=package/(config['program']+('.exe' if os.name=='nt' else ''))
+            if rollback is not None and unit == 'telegram':
+                installed_binary = work/'installed'/binary.name
+                installed_binary.parent.mkdir()
+                shutil.copy2(binary, installed_binary)
+                assert digest(installed_binary) == digest(binary)
+                binary = installed_binary
             state_dir=work/('state-'+unit)
             state_dir.mkdir()
             entry={'id':unit,'namespace':namespace,'program':sys.executable,'args':[str(root/'tests/peers/base_relay.py'),
@@ -390,6 +422,14 @@ def run(root, assets, archive, out, case):
         assert set(live_inventory['cursor'])==set(after_kill['cursor'])
         assert all(after_kill['cursor'][k]==v for k,v in live_inventory['cursor'].items() if k!='101.lock')
         assert after_kill['cursor']['101.lock']==hashlib.sha256(b'').hexdigest()
+        if rollback is not None:
+            previous = rollback/'telegram'/('yuki-telegram.exe' if os.name=='nt' else 'yuki-telegram')
+            upgraded = assets/'telegram'/previous.name
+            assert digest(installed_binary) == digest(upgraded)
+            shutil.copy2(previous, installed_binary)
+            assert digest(installed_binary) == digest(previous)
+            write(out/'rollback.json', {'from':digest(upgraded),'to':digest(previous),
+                  'web_fetch':installed[0]['program_digest'],'before_restart':after_kill})
         replay.set()
         before=(len(models),len(native),len(requests))
         offset_count=len(offsets)
@@ -436,9 +476,9 @@ def run(root, assets, archive, out, case):
             assert len(reads)>=2 and bytes(original)==page
             assert [p['text'] for p in native]==[text[i:i+4096] for i in range(0,len(text),4096)][:len(parts)]
             assert states==[{'state':'unknown'} if case=='lost-second' and i==1 else {'state':'confirmed','locator':'8:'+str(701+i)} for i in range(len(parts))]
-        write(out/'result.json',{'case':case,'status':'PASS','published':False,'source':lock['source_commit'],
-              'host':digest(host),'sdk':lock['rust_crate_sha256'],'schema':candidate['host_schema_sha256'],
-              'consumer_sdk':consumer['rust_crate_sha256'],'packages':package_hash,'event':ingress[0][1]['result']['event'],'web_status_checks':len(checks),
+        write(out/'result.json',{'case':case,'status':'PASS','published':lock['published'],'source':lock['source_commit'],
+              'host':digest(host),'sdk':lock['rust_crate_sha256'],'schema':schema,
+              'consumer_sdk':consumer['rust_crate_sha256'], 'sdk_by_package':{u:(lock if rollback is not None and u=='telegram' else consumer)['rust_crate_sha256'] for u in package_hash},'packages':package_hash,'event':ingress[0][1]['result']['event'],'web_status_checks':len(checks),
               'ack_offsets_after_original_receipt':sorted(checked_offsets),'original_pages':len(reads),'page_bytes':len(page),'page_sha256':hashlib.sha256(page).hexdigest(),
               'native_parts':states,'confirmed_offset_after_restart':ack_offset,'redelivered_old_update':replayed.is_set(),'post_restart_effects':0,
               'live_private_directories':live_inventory,'private_directories_after_kill':after_kill,'private_directories_after_restart':after_reopen,'killed_children':{u:int((out/(u+'.killed')).read_text()) for u in package_hash}})

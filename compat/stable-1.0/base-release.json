@@ -1,0 +1,51 @@
+{
+  "consumer_replay_archive_sha256": "115a70590e717a0b79463c0627f7bc8f860773c515e66fc48acf80a350eeda4d",
+  "database_reader": 54,
+  "handshake_schema_revision": 1,
+  "host_schema_revision": 2,
+  "methods": [
+    "initialize",
+    "gateway.dispatch_part",
+    "gateway.inbound",
+    "gateway.plan_send",
+    "tool.call",
+    "tool.status"
+  ],
+  "platforms": {
+    "linux": {
+      "acceptance_sha256": "0c83fff40f0a1b978e5fb0180edd427defeda19682721858fd2baddc62014ce5",
+      "archive": "yuki-plugin-base-1.0.0-linux-arm64.zip",
+      "native_candidate_sha256": "eccac860c84b22872918a27ccc0f09360887df9b11e01f33e462804422d240e0",
+      "sha256": "737d5d0ff9ec8e77adc898f5a6112f742c7785bc395730b65a1e4b13310eb69f"
+    },
+    "macos": {
+      "acceptance_sha256": "8253345b2496f11fab2da3dcf5735ae34d326976a6737d36de45c75b89479e8a",
+      "archive": "yuki-plugin-base-1.0.0-darwin-arm64.zip",
+      "native_candidate_sha256": "790598699440700353cfbd94267f23f8db2b125d4c364c4c0ec32e7d2b9ce180",
+      "sha256": "ed0aef8a02d216133a21dc784c67d2c344f5bd667f168884ae5475ea1465e533"
+    },
+    "windows": {
+      "acceptance_sha256": "b3789a78484daf98956deb9bc2860c990c82161e701b56bc3faa61ac736c9c42",
+      "archive": "yuki-plugin-base-1.0.0-windows-x86_64.zip",
+      "native_candidate_sha256": "801a5a6ae3c9d1ab17013f917c437c75839618f429af327250217d50c425706b",
+      "sha256": "287167dae7b2b1222efd22fa5a0aa58e1c39f7129c7112e5b81cebb6278a7ecd"
+    }
+  },
+  "release": "plugin-base-v1.0.0",
+  "replay_receipts_sha256": {
+    "linux/base": "7bdf00cb46adf726c8cfb4f16a213f493ca300f3217474a9e9acbc7860d404f4",
+    "linux/candidate": "fb823069ceb6d351a502190ea505ec821654d9c77f16f51e0ca82013e567baba",
+    "macos/base": "84ac874f5d19fc5aa3ad5caf77ae1771b39502fe70a2951e44e737d842c7871c",
+    "macos/candidate": "1584fcbd63b12cf25dfb1cc1870a9e8b3be3a693d5a875c3b06859f941b9b6bc",
+    "windows/base": "0055df2a7963ea5b99936786fe588e398e2d1163dab7d0bdd4c7688c5834cd71",
+    "windows/candidate": "65ac16f542e9dcae57c3f6ddac3b348d55bdd56638dcc829cf9f8be903a211dc"
+  },
+  "sdk_versions": {
+    "python": "1.0.0",
+    "rust": "1.0.0"
+  },
+  "signer_pub_sha256": "b94f861a2d7a4a53ae689cea4990cbff6387ae9f019bba1780a1f832fadb8541",
+  "source_commit": "c6bd0c75e38717abc71373201d31a77982428d5b",
+  "source_tree_sha256": "4fd151798a39c4b3a2b9c84ce36704870e8ef5a40686cd839d672fb85b80bbc4",
+  "support_archive_sha256": "f9ffec757b415a745a9bec5c45897c771f22237584e7f78a4513fd0ebd28e317"
+}

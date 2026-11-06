@@ -1,0 +1,24 @@
+{
+  "task": "EXT-043",
+  "status": "PASS",
+  "phase": "acceptance",
+  "card_status": "VERIFIED_ON_PUBLISHED_BASE",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "25244c6844cf8631a88dd771a887c365f3cdbe6d5c612e3427b8c2ccffac4d38",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-043",
+    "--out",
+    "C:\\Users\\Hilbert\\yuki-extension-tests\\local-b048\\r2\\out"
+  ],
+  "files": {
+    "confirmed.zip": "280fa665d724ef4c7d972d06ec01836d01cd82e2109a1da5bc0cf62d5681f7ec",
+    "extension-release-lock.json": "849d51c14652e10850d074d21cba482287c62abc751a7a42091c25c7d97f2cf2",
+    "lost-second.zip": "f8bc802a1543e119e80d8b71d1adfe04f64475c3741e165e275ee41422a21832",
+    "package-manifest.json": "3f1b394410d9e4465b3de23425edce2327afed85ac00247f0f75a2eee7eabcd7",
+    "sbom.cdx.json": "2e962b8b4fe7d524d283926a3a55bf80cdffda5d49e82a8385da8d9750b10454"
+  }
+}

@@ -1,0 +1,404 @@
+{
+  "status": "PASS",
+  "card_status": "VERIFIED_ON_PUBLISHED_BASE",
+  "release_tag": "plugin/telegram/v0.1.0",
+  "extension_published": false,
+  "host": {
+    "repository": "Institute-of-Agent-Life/yuki-core",
+    "tag": "plugin-base-v1.0.0",
+    "release_id": 437071990,
+    "url": "https://github.com/Institute-of-Agent-Life/yuki-core/releases/tag/plugin-base-v1.0.0",
+    "published_at": "2026-11-06T21:30:07Z",
+    "github_immutable": false,
+    "source_commit": "c6bd0c75e38717abc71373201d31a77982428d5b",
+    "source_tree_sha256": "4fd151798a39c4b3a2b9c84ce36704870e8ef5a40686cd839d672fb85b80bbc4",
+    "published": true,
+    "sdk": {
+      "python": "1.0.0",
+      "rust": "1.0.0"
+    },
+    "rust_crate_sha256": "21aceed53a465aaefe6a74560a4d283b947c55dc6f5fb3fd5d5e10f4dc842711",
+    "schema_sha256": "131754fbc818d26557eb31958782624eb38bbe19d1f4e3c6f42e2e62f8d9001e",
+    "signer_sha256": "b94f861a2d7a4a53ae689cea4990cbff6387ae9f019bba1780a1f832fadb8541",
+    "assets": {
+      "base-1.0.0-consumer-replay.zip": {
+        "id": 718628791,
+        "size": 4862075,
+        "digest": "sha256:115a70590e717a0b79463c0627f7bc8f860773c515e66fc48acf80a350eeda4d"
+      },
+      "base-release.json": {
+        "id": 718628823,
+        "size": 2466,
+        "digest": "sha256:a98fb1e4d36f895f02db8614b88638ed73339f21d03bd42c76719ab54274dabc"
+      },
+      "SHA256SUMS": {
+        "id": 718628927,
+        "size": 678,
+        "digest": "sha256:8be3e720618e01dff0d9b869561e34698361d58260648ae09e67a267e428b5ef"
+      },
+      "SHA256SUMS.sig": {
+        "id": 718628962,
+        "size": 322,
+        "digest": "sha256:2036625d046663373751c489ec6e118c63ae92e850a5e34f470e0e7dbdd8bdf5"
+      },
+      "signer.pub": {
+        "id": 718628794,
+        "size": 104,
+        "digest": "sha256:b94f861a2d7a4a53ae689cea4990cbff6387ae9f019bba1780a1f832fadb8541"
+      },
+      "yuki-plugin-base-1.0.0-darwin-arm64.zip": {
+        "id": 718628830,
+        "size": 13780295,
+        "digest": "sha256:ed0aef8a02d216133a21dc784c67d2c344f5bd667f168884ae5475ea1465e533"
+      },
+      "yuki-plugin-base-1.0.0-linux-arm64.zip": {
+        "id": 718628826,
+        "size": 14550465,
+        "digest": "sha256:737d5d0ff9ec8e77adc898f5a6112f742c7785bc395730b65a1e4b13310eb69f"
+      },
+      "yuki-plugin-base-1.0.0-support.zip": {
+        "id": 718628886,
+        "size": 76423,
+        "digest": "sha256:f9ffec757b415a745a9bec5c45897c771f22237584e7f78a4513fd0ebd28e317"
+      },
+      "yuki-plugin-base-1.0.0-windows-x86_64.zip": {
+        "id": 718628893,
+        "size": 17597555,
+        "digest": "sha256:287167dae7b2b1222efd22fa5a0aa58e1c39f7129c7112e5b81cebb6278a7ecd"
+      }
+    },
+    "platforms": {
+      "linux-arm64": {
+        "acceptance_sha256": "0c83fff40f0a1b978e5fb0180edd427defeda19682721858fd2baddc62014ce5",
+        "archive": "yuki-plugin-base-1.0.0-linux-arm64.zip",
+        "native_candidate_sha256": "eccac860c84b22872918a27ccc0f09360887df9b11e01f33e462804422d240e0",
+        "sha256": "737d5d0ff9ec8e77adc898f5a6112f742c7785bc395730b65a1e4b13310eb69f",
+        "binary": "bin/yuki-base",
+        "binary_sha256": "e2435386c53541628898861d1a1f162ecadae51e815020d78d162d57130e7d1b",
+        "verified_members": 495
+      },
+      "darwin-arm64": {
+        "acceptance_sha256": "8253345b2496f11fab2da3dcf5735ae34d326976a6737d36de45c75b89479e8a",
+        "archive": "yuki-plugin-base-1.0.0-darwin-arm64.zip",
+        "native_candidate_sha256": "790598699440700353cfbd94267f23f8db2b125d4c364c4c0ec32e7d2b9ce180",
+        "sha256": "ed0aef8a02d216133a21dc784c67d2c344f5bd667f168884ae5475ea1465e533",
+        "binary": "bin/yuki-base",
+        "binary_sha256": "8768e4cf17fe2a355e11570002bb37d7adfc81c5f8ae77063f90094e025ea4cb",
+        "verified_members": 492
+      },
+      "windows-x86_64": {
+        "acceptance_sha256": "b3789a78484daf98956deb9bc2860c990c82161e701b56bc3faa61ac736c9c42",
+        "archive": "yuki-plugin-base-1.0.0-windows-x86_64.zip",
+        "native_candidate_sha256": "801a5a6ae3c9d1ab17013f917c437c75839618f429af327250217d50c425706b",
+        "sha256": "287167dae7b2b1222efd22fa5a0aa58e1c39f7129c7112e5b81cebb6278a7ecd",
+        "binary": "bin/yuki-base.exe",
+        "binary_sha256": "7ad3dc1659c5ef53809da5c0faf3b6ca885c4e3c7f0c7d46155803c86accf095",
+        "verified_members": 504
+      }
+    },
+    "windows_fallback": {
+      "telegram": {
+        "artifact_id": "13523402982",
+        "sha256": "5227f287eb2afad02fe3295e251a1b21c79baa2460ad748531bef2b86cf94f84",
+        "members": {
+          "Cargo.lock": "48220d028b84338e07d47d3d4b7a4c8cf37d6eb8e76df532e147621e68e5e763",
+          "package-manifest.json": "19ee9c1ecaf66897d9d2bf6a22b8abd45f5a67b78502b612afe14e1137078b80",
+          "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+          "plugin.toml": "2bbeca542c94e4fecf993dfea52c8906e8d2662378d54bfbe55b2d4426aa22ad",
+          "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+          "yuki-telegram.exe": "e49fac00669f9175814a1b06f6034626d4bc6514639576d23020817eb16b93b0"
+        }
+      },
+      "web-fetch": {
+        "artifact_id": "13524465074",
+        "sha256": "51dd857899c6350353fe289d4955981f2fa97ca8ff51ad7857b916ba5801d963",
+        "members": {
+          "Cargo.lock": "20609ae0ee4935d761204f1aec7618a95439e591e3bf6876cc5be9a61b5d94ba",
+          "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+          "package-manifest.json": "3da6a9e77e9ecd19eb2550cf1ecae0783d4c0d1cebdcb50c94a09589a819db91",
+          "plugin.toml": "116d0aa6cb5d635118d8abecdd405f5bef0d8a5eb475eae0217430f3c5bc20cd",
+          "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+          "yuki-web-fetch.exe": "90912616d2e50ffce88c82422ebe58740e8c28235b83365ac43e07ef413659b2"
+        }
+      }
+    }
+  },
+  "original_freeze": {
+    "version": "1.0.0",
+    "extension_repository": "https://github.com/Institute-of-Agent-Life/yuki-extensions",
+    "evidence_commit": "bc58ec7e703e691a7b00736673d068397646901b",
+    "evidence_directory": "artifacts/EXT-067/01/",
+    "consumer_source": "49f7b190406c59adb15b1a5fe70f442942addbb7",
+    "producer_candidate": "4a41470e89b4e4ac82ad7891d24bfdf604544598",
+    "witness_sha256": "d735e535b30c41c32fc62ade3b5ae3863c9cbf39404856f3401640b7544034e1",
+    "acceptance_manifest_sha256": "95559de9ff5564121122455bc190e481bf4c276db8aac35b24555770d77d600a",
+    "handshake_sha256": "b10819c5865917a0eb39fcdd06c7c2ad271ea5427581ee29e354360114158b10",
+    "methods": {
+      "gateway.dispatch_part": "a6215aa23261dd9bc32bee776daab79a9fef5e1855fce53f4ba94e2a6b4cd8ae",
+      "gateway.inbound": "3831354b3781b71b46667193c6c84f372de609340f2c44f8e761742c6440a33b",
+      "gateway.plan_send": "43d6a5a8c2ed83a3c0098233f477e30d524e287616a0c7323d7f9e0484318f8f",
+      "tool.call": "b1936a9198c152b4af382fc09f05436dd375e44f25b8375ede63d1fa5205db6e",
+      "tool.status": "012adfa0e30b8ad461826c219f7155eead2f36727ec672f8cda4f47b4acc8364"
+    },
+    "data_profile": "new installation; transient plugin payloads; persistent-source owner RPC excluded",
+    "windows_replay": {
+      "independent_consumer_evidence": "10a24f8d559e93b8369e398b6dcd983804fcfefe",
+      "original_host_replay_witness_sha256": "b238bb3ca06702f08691b9dcfbbf4206fe40be92e1a8a7348ef9836f471044ef",
+      "actions_artifacts": {
+        "telegram": "13523402982",
+        "web-fetch": "13524465074"
+      },
+      "executable_sha256": {
+        "telegram": "e49fac00669f9175814a1b06f6034626d4bc6514639576d23020817eb16b93b0",
+        "web-fetch": "90912616d2e50ffce88c82422ebe58740e8c28235b83365ac43e07ef413659b2"
+      }
+    }
+  },
+  "package": {
+    "Cargo.lock": "ce3e844dbdc18ebbafb6c8e3ed55b9f8bd3359e2028335cf489c189bf68b0a00",
+    "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+    "plugin.toml": "780ecff8d4681631655556ba6d8b1771a84b9a13ba7f2f97ef3a4c693a3d8499",
+    "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+    "yuki-telegram.exe": "822d12faf175dbb0577a0586a1a9465aa40dfa31551a18297348c6f8637377ba",
+    "sbom.cdx.json": "2e962b8b4fe7d524d283926a3a55bf80cdffda5d49e82a8385da8d9750b10454"
+  },
+  "refused": [
+    {
+      "tag": "plugin/web-fetch/v0.1.0",
+      "reason": "no registered release for this tag"
+    },
+    {
+      "tag": "plugin/telegram/v0.2.0",
+      "reason": "no registered release for this tag"
+    },
+    {
+      "tag": "connector/v0.1.0",
+      "reason": "invalid plugin release tag"
+    },
+    {
+      "swapped_archive": "fallback ZIP digest mismatch"
+    },
+    {
+      "modified_registered_package": "release input differs from the verified sources"
+    }
+  ],
+  "cases": {
+    "confirmed": {
+      "wire_zip_sha256": "280fa665d724ef4c7d972d06ec01836d01cd82e2109a1da5bc0cf62d5681f7ec",
+      "replacement": {
+        "from": "822d12faf175dbb0577a0586a1a9465aa40dfa31551a18297348c6f8637377ba",
+        "to": "e49fac00669f9175814a1b06f6034626d4bc6514639576d23020817eb16b93b0",
+        "web_fetch": "90912616d2e50ffce88c82422ebe58740e8c28235b83365ac43e07ef413659b2",
+        "before_restart": {
+          "state-telegram": {},
+          "state-web-fetch": {},
+          "cursor": {
+            "101.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "101.offset": "6f3e559bbd93fa2f9b25cbd9b5f348a4b20c902d8e6498de5c28d73df8e2f571"
+          }
+        }
+      },
+      "observed": {
+        "case": "confirmed",
+        "status": "PASS",
+        "published": true,
+        "source": "c6bd0c75e38717abc71373201d31a77982428d5b",
+        "host": "7ad3dc1659c5ef53809da5c0faf3b6ca885c4e3c7f0c7d46155803c86accf095",
+        "sdk": "21aceed53a465aaefe6a74560a4d283b947c55dc6f5fb3fd5d5e10f4dc842711",
+        "schema": "131754fbc818d26557eb31958782624eb38bbe19d1f4e3c6f42e2e62f8d9001e",
+        "consumer_sdk": "e41a2375efb2f8f479fa86b022168f02d3b098d3366c1f8f9a6ed9dc22ff4c40",
+        "sdk_by_package": {
+          "telegram": "21aceed53a465aaefe6a74560a4d283b947c55dc6f5fb3fd5d5e10f4dc842711",
+          "web-fetch": "e41a2375efb2f8f479fa86b022168f02d3b098d3366c1f8f9a6ed9dc22ff4c40"
+        },
+        "packages": {
+          "telegram": {
+            "version": "0.1.0",
+            "artifacts": {
+              "Cargo.lock": "ce3e844dbdc18ebbafb6c8e3ed55b9f8bd3359e2028335cf489c189bf68b0a00",
+              "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+              "plugin.toml": "780ecff8d4681631655556ba6d8b1771a84b9a13ba7f2f97ef3a4c693a3d8499",
+              "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+              "yuki-telegram.exe": "822d12faf175dbb0577a0586a1a9465aa40dfa31551a18297348c6f8637377ba",
+              "sbom.cdx.json": "2e962b8b4fe7d524d283926a3a55bf80cdffda5d49e82a8385da8d9750b10454"
+            },
+            "manifest_sha256": "3f1b394410d9e4465b3de23425edce2327afed85ac00247f0f75a2eee7eabcd7"
+          },
+          "web-fetch": {
+            "version": "0.1.0-alpha.2",
+            "artifacts": {
+              "Cargo.lock": "20609ae0ee4935d761204f1aec7618a95439e591e3bf6876cc5be9a61b5d94ba",
+              "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+              "plugin.toml": "116d0aa6cb5d635118d8abecdd405f5bef0d8a5eb475eae0217430f3c5bc20cd",
+              "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+              "yuki-web-fetch.exe": "90912616d2e50ffce88c82422ebe58740e8c28235b83365ac43e07ef413659b2"
+            },
+            "manifest_sha256": "3da6a9e77e9ecd19eb2550cf1ecae0783d4c0d1cebdcb50c94a09589a819db91"
+          }
+        },
+        "event": 1,
+        "web_status_checks": 2,
+        "ack_offsets_after_original_receipt": [
+          52
+        ],
+        "original_pages": 4,
+        "page_bytes": 1582,
+        "page_sha256": "c38540e3ba965ac1e5da1d1f623dffbac04098bdf0b7b92ac788512fc62c6800",
+        "native_parts": [
+          {
+            "locator": "8:701",
+            "state": "confirmed"
+          },
+          {
+            "locator": "8:702",
+            "state": "confirmed"
+          },
+          {
+            "locator": "8:703",
+            "state": "confirmed"
+          }
+        ],
+        "confirmed_offset_after_restart": 52,
+        "redelivered_old_update": true,
+        "post_restart_effects": 0,
+        "live_private_directories": {
+          "state-telegram": {},
+          "state-web-fetch": {},
+          "cursor": {
+            "101.lock": {
+              "bytes": 0,
+              "access": "process lock held"
+            },
+            "101.offset": "6f3e559bbd93fa2f9b25cbd9b5f348a4b20c902d8e6498de5c28d73df8e2f571"
+          }
+        },
+        "private_directories_after_kill": {
+          "state-telegram": {},
+          "state-web-fetch": {},
+          "cursor": {
+            "101.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "101.offset": "6f3e559bbd93fa2f9b25cbd9b5f348a4b20c902d8e6498de5c28d73df8e2f571"
+          }
+        },
+        "private_directories_after_restart": {
+          "state-telegram": {},
+          "state-web-fetch": {},
+          "cursor": {
+            "101.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "101.offset": "6f3e559bbd93fa2f9b25cbd9b5f348a4b20c902d8e6498de5c28d73df8e2f571"
+          }
+        },
+        "killed_children": {
+          "telegram": 7188,
+          "web-fetch": 28008
+        }
+      }
+    },
+    "lost-second": {
+      "wire_zip_sha256": "f8bc802a1543e119e80d8b71d1adfe04f64475c3741e165e275ee41422a21832",
+      "replacement": {
+        "from": "822d12faf175dbb0577a0586a1a9465aa40dfa31551a18297348c6f8637377ba",
+        "to": "e49fac00669f9175814a1b06f6034626d4bc6514639576d23020817eb16b93b0",
+        "web_fetch": "90912616d2e50ffce88c82422ebe58740e8c28235b83365ac43e07ef413659b2",
+        "before_restart": {
+          "state-telegram": {},
+          "state-web-fetch": {},
+          "cursor": {
+            "101.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "101.offset": "6f3e559bbd93fa2f9b25cbd9b5f348a4b20c902d8e6498de5c28d73df8e2f571"
+          }
+        }
+      },
+      "observed": {
+        "case": "lost-second",
+        "status": "PASS",
+        "published": true,
+        "source": "c6bd0c75e38717abc71373201d31a77982428d5b",
+        "host": "7ad3dc1659c5ef53809da5c0faf3b6ca885c4e3c7f0c7d46155803c86accf095",
+        "sdk": "21aceed53a465aaefe6a74560a4d283b947c55dc6f5fb3fd5d5e10f4dc842711",
+        "schema": "131754fbc818d26557eb31958782624eb38bbe19d1f4e3c6f42e2e62f8d9001e",
+        "consumer_sdk": "e41a2375efb2f8f479fa86b022168f02d3b098d3366c1f8f9a6ed9dc22ff4c40",
+        "sdk_by_package": {
+          "telegram": "21aceed53a465aaefe6a74560a4d283b947c55dc6f5fb3fd5d5e10f4dc842711",
+          "web-fetch": "e41a2375efb2f8f479fa86b022168f02d3b098d3366c1f8f9a6ed9dc22ff4c40"
+        },
+        "packages": {
+          "telegram": {
+            "version": "0.1.0",
+            "artifacts": {
+              "Cargo.lock": "ce3e844dbdc18ebbafb6c8e3ed55b9f8bd3359e2028335cf489c189bf68b0a00",
+              "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+              "plugin.toml": "780ecff8d4681631655556ba6d8b1771a84b9a13ba7f2f97ef3a4c693a3d8499",
+              "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+              "yuki-telegram.exe": "822d12faf175dbb0577a0586a1a9465aa40dfa31551a18297348c6f8637377ba",
+              "sbom.cdx.json": "2e962b8b4fe7d524d283926a3a55bf80cdffda5d49e82a8385da8d9750b10454"
+            },
+            "manifest_sha256": "3f1b394410d9e4465b3de23425edce2327afed85ac00247f0f75a2eee7eabcd7"
+          },
+          "web-fetch": {
+            "version": "0.1.0-alpha.2",
+            "artifacts": {
+              "Cargo.lock": "20609ae0ee4935d761204f1aec7618a95439e591e3bf6876cc5be9a61b5d94ba",
+              "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+              "plugin.toml": "116d0aa6cb5d635118d8abecdd405f5bef0d8a5eb475eae0217430f3c5bc20cd",
+              "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+              "yuki-web-fetch.exe": "90912616d2e50ffce88c82422ebe58740e8c28235b83365ac43e07ef413659b2"
+            },
+            "manifest_sha256": "3da6a9e77e9ecd19eb2550cf1ecae0783d4c0d1cebdcb50c94a09589a819db91"
+          }
+        },
+        "event": 1,
+        "web_status_checks": 2,
+        "ack_offsets_after_original_receipt": [
+          52
+        ],
+        "original_pages": 4,
+        "page_bytes": 1582,
+        "page_sha256": "9bd19530e9adec178db4760c23b1cf2744a85063cdc1f3944fe836c4e0a38517",
+        "native_parts": [
+          {
+            "locator": "8:701",
+            "state": "confirmed"
+          },
+          {
+            "state": "unknown"
+          }
+        ],
+        "confirmed_offset_after_restart": 52,
+        "redelivered_old_update": true,
+        "post_restart_effects": 0,
+        "live_private_directories": {
+          "state-telegram": {},
+          "state-web-fetch": {},
+          "cursor": {
+            "101.lock": {
+              "bytes": 0,
+              "access": "process lock held"
+            },
+            "101.offset": "6f3e559bbd93fa2f9b25cbd9b5f348a4b20c902d8e6498de5c28d73df8e2f571"
+          }
+        },
+        "private_directories_after_kill": {
+          "state-telegram": {},
+          "state-web-fetch": {},
+          "cursor": {
+            "101.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "101.offset": "6f3e559bbd93fa2f9b25cbd9b5f348a4b20c902d8e6498de5c28d73df8e2f571"
+          }
+        },
+        "private_directories_after_restart": {
+          "state-telegram": {},
+          "state-web-fetch": {},
+          "cursor": {
+            "101.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "101.offset": "6f3e559bbd93fa2f9b25cbd9b5f348a4b20c902d8e6498de5c28d73df8e2f571"
+          }
+        },
+        "killed_children": {
+          "telegram": 12308,
+          "web-fetch": 16296
+        }
+      }
+    }
+  }
+}
