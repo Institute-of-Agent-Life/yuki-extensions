@@ -4,6 +4,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import runpy
 import shutil
 import subprocess
 import sys
@@ -45,7 +46,13 @@ def prepare(root, output, *, contract="core-032", package_builder=build, reader_
     work=output/"work"
     work.mkdir()
     Frame,serve=fixture_imports(root,work)
-    host,pin,platform=materialize(root,work,contract)
+    published = contract == "stable-1.0"
+    if published:
+        verify = runpy.run_path(str(root / "tests/peers/joint_base.py"))["published_host"]
+        host, pin, _ = verify(root, Path(os.environ["YUKI_STABLE_BASE_ZIP"]), work)
+        platform = pin["platforms"]["windows-x86_64"]
+    else:
+        host,pin,platform=materialize(root,work,contract)
     packages=output/"packages"
     binary=packages/("yuki-feishu.exe" if os.name=="nt" else "yuki-feishu")
     if reader_archives:
@@ -58,6 +65,8 @@ def prepare(root, output, *, contract="core-032", package_builder=build, reader_
     data=work/"host"; proc=None
     routes={"cli_a":("a","feishu"),"cli_b":("b","lark")}
     auth=[]; native=[]; failures=[]
+    model_calls = []
+    foreground = threading.Event()
     phase="break"
     complete=threading.Event()
     release=threading.Event()
@@ -143,6 +152,17 @@ def prepare(root, output, *, contract="core-032", package_builder=build, reader_
         def log_message(self,*args):pass
         def do_POST(self):
             body=json.loads(self.rfile.read(int(self.headers["Content-Length"])))
+            if published and self.path == "/model":
+                model_calls.append({"phase": phase, "body": body})
+                payload = json.dumps({"id":"fixture","choices":[{"index":0,"finish_reason":"stop",
+                    "message":{"role":"assistant","content":"done"}}],
+                    "usage":{"prompt_tokens":2,"completion_tokens":1,"total_tokens":3}}).encode()
+                self.send_response(200)
+                self.send_header("Content-Length", str(len(payload)))
+                self.end_headers()
+                self.wfile.write(payload)
+                foreground.set()
+                return
             app=body.get("AppID")
             valid=app in routes and body.get("AppSecret")=="fixture-"+app
             auth.append({"path":self.path,"app":app,"authenticated":valid})
@@ -175,7 +195,7 @@ def prepare(root, output, *, contract="core-032", package_builder=build, reader_
         base=cfg.read_text(encoding="utf-8").split("[[plugins]]")[0]
         # Distinct production installations retain independent IDs. The historical
         # CORE-032 witness used a single ID, and its original scenario is preserved.
-        ident = "feishu-"+slug if contract=="core-038-main" else "feishu"
+        ident = "feishu" if contract == "core-032" else "feishu-" + slug
         vals={"id":ident,"namespace":"fs."+slug,"program":sys.executable,
             "args":[str(root/"tests/peers/feishu_relay.py"),str(binary),str(trace)],
             "platform":domain,"bot_stage":stage,"grants":["gateway.inbound"],
@@ -186,10 +206,16 @@ def prepare(root, output, *, contract="core-032", package_builder=build, reader_
         cfg.write_text(base+"\n[[plugins]]\n"+"\n".join(f"{k} = {json.dumps(v)}" for k,v in vals.items())+"\n",encoding="utf-8")
     try:
         cli("init")
-        if contract=="core-038-main":
+        if contract != "core-032":
             # This Host requires an explicit offline memory mode when no embedder is installed.
             cfg=data/"yuki.toml"
             cfg.write_text(cfg.read_text(encoding="utf-8").replace('mode = "hybrid"','mode = "lexical-only"'),encoding="utf-8")
+        if published:
+            from personal_preview import free_address
+            top = cfg.read_text(encoding="utf-8").replace('"127.0.0.1:0"', json.dumps(free_address()))
+            cfg.write_text(top + '\n[main]\nendpoint=' + json.dumps(env["YUKI_FEISHU_API"] + "/model")
+                           + '\nmodel="fixture"\nname="Yuki"\nmax_output=2000\nroot_slots=12\nroot_tool_calls=12\n'
+                           + 'merge_ms=1\nmax_input_units=1200000\nresult_page_budget=2000\nresult_storage_bytes=262144\n', encoding="utf-8")
         start()
         stages={}; accounts={}
         for n,(app,(slug,domain)) in enumerate(routes.items(),1):
@@ -244,10 +270,14 @@ def prepare(root, output, *, contract="core-032", package_builder=build, reader_
         assert not failures,failures
         assert (trace/"broken").exists()
         stop()
+        if published:
+            assert not model_calls  # ping, card and incomplete frames reached no writer
         for phase,app in [("replay","cli_a"),("other-app","cli_b")]:
             complete.clear()
             install(app,stages[app]);start()
             wait(complete.is_set);assert not failures,failures
+            if published and phase == "replay":
+                wait(foreground.is_set)
             stop()
         phase="invalid-auth"
         env["YUKI_FEISHU_APP_SECRET"]="invalid-fixture"
@@ -273,8 +303,19 @@ def prepare(root, output, *, contract="core-032", package_builder=build, reader_
             assert p["segments"] == expected, (app, p["segments"])
             assert p["occurred"]==1000 and p["sender"]=="ou_shared"
         assert all(e["type"]!="event" for e in native if e["phase"]=="break")
-        return "lark-frames.json",{"status":"PASS","card_status":"VERIFIED_ON_UNPUBLISHED_CANDIDATE",
-            "source_commit":pin["source_commit"],"host":platform,"sdk":pin["rust_crate_sha256"],
+        scope = {"card_status": "VERIFIED_ON_UNPUBLISHED_CANDIDATE"}
+        consumer_sdk = pin["rust_crate_sha256"]
+        if published:
+            consumer = json.loads((root / built["source"]["sdk_contract"]).read_bytes())
+            consumer_sdk = consumer["rust_crate_sha256"]
+            scope.update(card_status="VERIFIED_ON_PUBLISHED_BASE", host_published=True, extension_published=False,
+                host_sdk=pin["rust_crate_sha256"], host_schema=pin["schema_sha256"], consumer_version=built["version"],
+                artifact_id=13539727686, package_sha256=FEISHU_SHA256,
+                model_http_before_writer=0, model_http_after_admission=len(model_calls))
+            assert sum(n["type"] == "card" for n in native) == 3
+            assert all(call["params"]["kind"] == "message" for call in calls)
+        return "lark-frames.json",{"status":"PASS", **scope,
+            "source_commit":pin["source_commit"],"host":platform,"sdk":consumer_sdk,
             "plugin":built["artifacts"][binary.name],"accounts":accounts,"durable_events":ids,"native":native,"auth":auth,"transcript":records}
     except Exception:
         if contract != "core-032" and proc and proc.poll() is None:
@@ -285,10 +326,36 @@ def prepare(root, output, *, contract="core-032", package_builder=build, reader_
         raise
     finally:
         release.set();stop();api.shutdown();api.server_close();ws.shutdown()
+        if published:
+            (output/"model.json").write_text(json.dumps(model_calls, ensure_ascii=False), encoding="utf-8")
         if (trace/"wire.jsonl").exists():(output/"wire.jsonl").write_bytes((trace/"wire.jsonl").read_bytes())
         (output/"native.json").write_text(json.dumps({"native":native,"auth":auth,"failures":failures},indent=2),encoding="utf-8")
 
 
+
+FEISHU_SHA256 = "02f7a72a8ec093b00831f8fe2b198fdadf0b480aa48b26063e50fee7229e4a27"
+
+
+def qualified_package(root, unit, dest):
+    archive = Path(os.environ["YUKI_QUALIFIED_FEISHU_ZIP"])
+    if hashlib.sha256(archive.read_bytes()).hexdigest() != FEISHU_SHA256:
+        raise ValueError("expected the original PR 47 Windows Feishu artifact (13539727686)")
+    with zipfile.ZipFile(archive) as z:
+        m = json.loads(z.read("package-manifest.json"))
+        assert m["unit_id"] == unit and m["version"] == "0.1.0-alpha.4" and not m["published"]
+        assert sorted(z.namelist()) == sorted(["package-manifest.json", *m["artifacts"]])
+        dest.mkdir()
+        for name, expected in m["artifacts"].items():
+            data = z.read(name)
+            if Path(name).name != name or hashlib.sha256(data).hexdigest() != expected:
+                raise ValueError("invalid Feishu package member: " + name)
+            (dest / name).write_bytes(data)
+    return m
+
+
 def run(root, output):
-    return "lark-frames.json",{"status":"BLOCKED","card_status":"AWAITING_CORE_032_HANDOFF",
-        "reason":"The locked host is a pre-merge candidate."}
+    required = ["YUKI_STABLE_BASE_ZIP", "YUKI_QUALIFIED_FEISHU_ZIP", "UV_FIND_LINKS"]
+    if sys.platform != "win32" or not all(os.environ.get(k) for k in required):
+        return "lark-frames.json", {"status": "BLOCKED", "reason": "Requires Windows and qualified inputs",
+                                    "inputs": required}
+    return prepare(root, output, contract="stable-1.0", package_builder=qualified_package)

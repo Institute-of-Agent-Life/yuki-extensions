@@ -1,0 +1,25 @@
+{
+  "previous": "after-public-telegram-admission.json",
+  "counts": {
+    "formally_accepted": 10,
+    "signed_candidate_acceptance_pass": 2,
+    "partial_or_diagnostic_evidence": 18,
+    "no_named_card_artifact": 38
+  },
+  "EXT-005": {
+    "state": "formally_accepted",
+    "evidence": "artifacts/EXT-005/01/lark-frames.json",
+    "reader_evidence": "artifacts/EXT-005/reader-replay-02",
+    "core_tag": "plugin-base-v1.0.0",
+    "core_source": "c6bd0c75e38717abc71373201d31a77982428d5b",
+    "plugin_artifact_id": 13539727686,
+    "extension_published": false
+  },
+  "EXT-003": {
+    "implementation": "4c0af7fee853b0d951c1855fb937cb53ea6a3f3b",
+    "merge": "8ca5f7077f11eedce2c7161ced75735e428e024c",
+    "ci_run": 42312450175,
+    "archives_verified": 9
+  },
+  "next": "EXT-004/006 need granted native operations. EXT-068/069 also need native TG/Lark origin group proofs from CORE-056."
+}

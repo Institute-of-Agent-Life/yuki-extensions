@@ -11,3 +11,9 @@
 舊包取自擴展 #13 的合併測試樹 98eb7aab4850（Windows artifact 13393314223），新版來自 #40 的 4d744e700a59（13522719490）。兩份套件皆比對 GitHub digest、包內 manifest 與實際執行檔。首次測試曾在停 Host 後碰到 Windows 鎖住子程序工作目錄，原生 ACK 與 wire 留存在 reader-replay-02。最終六次都先經觀測程序終止並等到原生子程序退出，再停 Host 和複製目錄。
 
 用 Python 3.12 設定 YUKI_HOST_CANDIDATE 為相符的 Windows ZIP，UV_FIND_LINKS 指向 tests/peers/lark-fixture.lock.json 鎖定的兩個 wheel。執行 python tests/peers/feishu_reader_replay.py 舊包.zip 新包.zip 新輸出目錄。包內 Rust 程式與 SDK 沿既有版本，沒有部署平台服務。
+
+### 公開基底的接納與 ACK
+
+在 HJW Windows 將 #47 的原生 alpha.4 套件（Actions artifact 13539727686）接至公開 B0。兩個域各用原 app、tenant、namespace 和 Bot stage。傳送重複的尾段，先以獨立 card ACK 驗 writer 仍未收到完整事件，再補首段。首次在 writer 前斷開，不能有成功 ACK；冷啟後接納與重投都應取得同一事件，第二安裝同形 open_id 和 message_id 必須分開。錯租戶回錯，壞憑據不能取得連線。用逐方法 wire 比對原生 card 和 ping，不得為它們發出聊天事件。writer 前的回環模型 HTTP 必須為零；重投後以同一端點等到第一次普通訊息的模型請求。
+
+Windows 以 `YUKI_STABLE_BASE_ZIP` 指定原名的 CORE-044 Windows ZIP，以 `YUKI_QUALIFIED_FEISHU_ZIP` 指定 #47 的原 Actions ZIP，`UV_FIND_LINKS` 指向 lark-fixture.lock.json 所列兩個 wheel。執行 `python ci/check.py EXT-005 --out artifacts/EXT-005/01`。

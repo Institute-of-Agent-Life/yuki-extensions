@@ -1,0 +1,25 @@
+{
+  "task": "EXT-005",
+  "status": "PASS",
+  "phase": "acceptance",
+  "card_status": "VERIFIED_ON_PUBLISHED_BASE",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "7c9b09e90473d325360c0ab9613e2146952cc8a4096732a10c409f952f4deac8",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-005",
+    "--out",
+    "C:\\Users\\Hilbert\\yuki-extension-tests\\local-public-admission50\\fs02\\out"
+  ],
+  "files": {
+    "build.txt": "5f0cf7fb535b6942ab13936902f5cb017372b5a8acf35d04d1f2d9d76c8e61df",
+    "host.txt": "d4258fb69afeca9c30610b196817f68a98118398a9e64848c8a9f07a714a770d",
+    "lark-frames.json": "58831ac468db8ad34df676801295ba03189fafee52a3d00d93d45078ff327c9f",
+    "model.json": "829354724e2a6c1e5b8f2ae5b323e9a0a3b16a5a344cc9937e158f0076762915",
+    "native.json": "738fce6da184f2bef884db38bdaf8e0e9340a40453274ccbfd18555302f8d266",
+    "wire.jsonl": "ce3d6aaa5c8ec085463faac7d42e1109e6fc94beefc48852e5e4407584c7a7f2"
+  }
+}
