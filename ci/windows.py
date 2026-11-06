@@ -12,6 +12,7 @@ from pathlib import Path, PurePosixPath
 import re
 import subprocess
 import sys
+import tempfile
 import urllib.request
 import zipfile
 
@@ -63,6 +64,14 @@ def main():
     if not re.fullmatch(r"EXT-\d{3}", args.task) or not re.fullmatch(r"[a-zA-Z0-9-]+", args.run):
         parser.error("invalid task/run")
     root = Path(__file__).resolve().parents[1]
+    package_variable = {
+        "EXT-003": "YUKI_QUALIFIED_TELEGRAM_ZIP",
+        "EXT-005": "YUKI_QUALIFIED_FEISHU_ZIP",
+        "EXT-028": "YUKI_FROZEN_WEB_FETCH_ZIP",
+    }.get(args.task)
+    public_input = os.environ.get("YUKI_STABLE_BASE_ZIP") if package_variable and not args.preparation else None
+    if public_input and not os.environ.get(package_variable):
+        parser.error("the public Host requires " + package_variable)
     output = root / "artifacts" / args.task / args.run
     if output.exists():
         parser.error("output exists; use a new run ID")
@@ -73,7 +82,9 @@ def main():
     with zipfile.ZipFile(buffer, "w", zipfile.ZIP_DEFLATED) as archive:
         for name in files:
             parts = PurePosixPath(name).parts
-            if parts[0] in {"artifacts", ".ci-transfer"} or any(p.startswith("._") for p in parts):
+            include_receipt = (public_input and args.task == "EXT-003"
+                               and name == "artifacts/EXT-043/01/extension-release-lock.json")
+            if (parts[0] in {"artifacts", ".ci-transfer"} and not include_receipt) or any(p.startswith("._") for p in parts):
                 continue
             path = root / name
             if path.is_symlink() or not path.resolve().is_relative_to(root.resolve()):
@@ -84,10 +95,14 @@ def main():
     digest = hashlib.sha256(buffer.getvalue()).hexdigest()
     transfer = root / ".ci-transfer"
     transfer.mkdir(exist_ok=True)
+    if public_input:
+        transfer = Path(tempfile.mkdtemp(dir=transfer, prefix=f"public-{args.task.lower()}-{args.run}-"))
     snapshot = transfer / (digest + ".zip")
     snapshot.write_bytes(buffer.getvalue())
     # A separate per-task test directory, never the user's existing checkout/journal.
     remote = args.remote_root.rstrip("/\\") + "/" + digest[:20]
+    if public_input:
+        remote += "-" + transfer.name
     tooling = "C:/Users/Hilbert/yuki-extension-tests/tooling-uv-0.12.0"
     locked = json.loads((root / "ci/tooling.lock.json").read_text(encoding="utf-8"))["packages"]
     wheelhouse = transfer / "wheelhouse"
@@ -163,14 +178,14 @@ def main():
     # Include only locked wheels, not arbitrary files already in the transport cache.
     tools_zip = transfer / "tooling.zip"
     host_candidate = None
-    if args.task in {"EXT-003", "EXT-005", "EXT-011", "EXT-015", "EXT-020", "EXT-028", "EXT-031", "EXT-036", "EXT-037", "EXT-038"}:
+    if not public_input and args.task in {"EXT-003", "EXT-005", "EXT-011", "EXT-015", "EXT-020", "EXT-028", "EXT-031", "EXT-036", "EXT-037", "EXT-038"}:
         host_candidate = Path(os.environ["YUKI_HOST_CANDIDATE"])
         contract = "core-033-client" if args.task == "EXT-015" else "core-033-connector" if args.task == "EXT-011" else "core-037" if args.task in {"EXT-037", "EXT-038"} else "core-035" if args.task == "EXT-036" else "core-038" if args.task == "EXT-031" else ("core-033" if args.task in {"EXT-011","EXT-015"} else "core-032")
         pin = json.loads((root / "compat" / contract / "source.lock.json").read_bytes())["platforms"]["windows-x86_64"]
         if hashlib.sha256(host_candidate.read_bytes()).hexdigest() != pin["sha256"]:
             raise ValueError("unexpected Windows host candidate")
     native_crates = []
-    if args.task in {"EXT-003", "EXT-004", "EXT-005", "EXT-006", "EXT-011", "EXT-015", "EXT-020", "EXT-028", "EXT-031", "EXT-036", "EXT-037", "EXT-038"}:
+    if not public_input and args.task in {"EXT-003", "EXT-004", "EXT-005", "EXT-006", "EXT-011", "EXT-015", "EXT-020", "EXT-028", "EXT-031", "EXT-036", "EXT-037", "EXT-038"}:
         import tomllib
         from handshake_cargo import registry_crate
         cache = transfer / "native-crates"
@@ -211,7 +226,19 @@ def main():
         if hashlib.sha256(plugin.read_bytes()).hexdigest() != plug["binary_sha256"]:
             raise ValueError("unexpected optional web-fetch binary")
         setup_inputs.append(("YUKI_SETUP_WEB_FETCH", plugin))
+    if public_input:
+        # Preserve the signed Host filename used by the release verifier.
+        # ci/check independently verifies both archives before starting a process.
+        stable = json.loads((root / "compat/stable-1.0/source.lock.json").read_bytes())
+        expected = stable["platforms"]["windows-x86_64"]
+        host_archive = Path(public_input)
+        if host_archive.name != expected["archive"] or hashlib.sha256(host_archive.read_bytes()).hexdigest() != expected["sha256"]:
+            raise ValueError("unexpected published Windows base")
+        plugin_archive = Path(os.environ[package_variable])
     with zipfile.ZipFile(tools_zip, "w", zipfile.ZIP_DEFLATED) as archive:
+        if public_input:
+            archive.write(host_archive, "published/" + expected["archive"])
+            archive.write(plugin_archive, "published/consumer.zip")
         for package in codec_inputs:
             archive.write(package, "media-codecs/" + package.name)
         for _, package in setup_inputs:
@@ -254,6 +281,10 @@ if (Test-Path (Join-Path {fixture_home} 'toolchains/1.90.0-x86_64-pc-windows-gnu
     $env:RUSTUP_TOOLCHAIN='1.90.0-x86_64-pc-windows-gnu'
 }}
 """
+    if public_input:
+        published_dir = remote + "/wheelhouse/published/"
+        sdk_environment += "$env:YUKI_STABLE_BASE_ZIP=" + quote(published_dir + expected["archive"]) + "\n"
+        sdk_environment += "$env:" + package_variable + "=" + quote(published_dir + "consumer.zip") + "\n"
     for key, package in setup_inputs:
         sdk_environment += "$env:" + key + "=" + quote(remote + "/wheelhouse/setup-inputs/" + package.name) + "\n"
     if codec_inputs:

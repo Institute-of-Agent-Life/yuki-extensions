@@ -1,0 +1,33 @@
+{
+  "runner_sha256": "0752060d9f77a18016c098d161ab619968f5f07e53215aa911bc1dbe0e70d0c6",
+  "concurrent_windows_runs": {
+    "EXT-003": {
+      "host": "hjw",
+      "remote_directory": "C:/Users/Hilbert/yuki-extension-tests/a3522e95d828f5a3f18d-public-ext-003-public-runner-02-9tf1_t_w",
+      "source_snapshot_sha256": "a3522e95d828f5a3f18db5612be874049eedbe5eef3ab46092523bda63cb396a",
+      "evidence_zip_sha256": "17f1ae9b894c54756f67a61abeba4b8742fe22ac92e077cc115f659b897f8309",
+      "exit_code": 0,
+      "manifest_sha256": "abed53f8b0db8c83ba32094ff2dd6f6f1440c5004b95601b99a328a24656a31a",
+      "result_sha256": "45255c090ed71c09fe14f1d9237d8a0201d39ff0936a352188031bd15193635e"
+    },
+    "EXT-005": {
+      "host": "hjw",
+      "remote_directory": "C:/Users/Hilbert/yuki-extension-tests/eae82e89fe1f768bd102-public-ext-005-public-runner-02-_u6_xq14",
+      "source_snapshot_sha256": "eae82e89fe1f768bd1020b5ebf2b61797c976c00629192006c5a3f27254615a6",
+      "evidence_zip_sha256": "57e6368a42c0af7ba6f8860a8a8684a354f1aa7b0644b8a617da30a89fafdb4e",
+      "exit_code": 0,
+      "manifest_sha256": "d96445737ad97e1bd58ba0fe5ef4358887e36865aa0b87271d7d7efcb3db0c18",
+      "result_sha256": "a3bbc79aedb54921d071c2e180710b4def00a4cd586c330350f63cf5527e6bc6"
+    },
+    "EXT-028": {
+      "host": "hjw",
+      "remote_directory": "C:/Users/Hilbert/yuki-extension-tests/eae82e89fe1f768bd102-public-ext-028-public-runner-02-th3xgewo",
+      "source_snapshot_sha256": "eae82e89fe1f768bd1020b5ebf2b61797c976c00629192006c5a3f27254615a6",
+      "evidence_zip_sha256": "07ada949bc4ebd7b7be96297ddc071d9a151cbaecc3928d85d0182109ad86df0",
+      "exit_code": 0,
+      "manifest_sha256": "58a613420fbdd3a1a5bba64e39cb85420b7e53e57640bc4d600c7f8b777c1578",
+      "result_sha256": "1412cea95d4dee68afe539cd644a54a31ebef05b7a81a51990e9cce1d60c1d10"
+    }
+  },
+  "release": "plugin-base-v1.0.0"
+}
