@@ -4,6 +4,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import shutil
 import subprocess
 import sys
 import threading
@@ -40,15 +41,20 @@ def fixture_imports(root, work):
     return Frame,serve
 
 
-def prepare(root, output, *, contract="core-032", package_builder=build):
+def prepare(root, output, *, contract="core-032", package_builder=build, reader_archives=None):
     work=output/"work"
     work.mkdir()
     Frame,serve=fixture_imports(root,work)
     host,pin,platform=materialize(root,work,contract)
     packages=output/"packages"
-    built=package_builder(root,"feishu",packages)
     binary=packages/("yuki-feishu.exe" if os.name=="nt" else "yuki-feishu")
-    (output/"build.txt").write_text("\n".join(cmd["stdout"]+cmd["stderr"] for cmd in built["commands"]),encoding="utf-8")
+    if reader_archives:
+        import feishu_reader_replay as readers
+        reader_pins = readers.packages(reader_archives, packages)
+        private = work/"installed-state"
+    else:
+        built=package_builder(root,"feishu",packages)
+        (output/"build.txt").write_text("\n".join(cmd["stdout"]+cmd["stderr"] for cmd in built["commands"]),encoding="utf-8")
     data=work/"host"; proc=None
     routes={"cli_a":("a","feishu"),"cli_b":("b","lark")}
     auth=[]; native=[]; failures=[]
@@ -56,7 +62,8 @@ def prepare(root, output, *, contract="core-032", package_builder=build):
     complete=threading.Event()
     release=threading.Event()
     trace=work/"observer";trace.mkdir()
-    (trace/"break-before-writer").touch()
+    if not reader_archives:
+        (trace/"break-before-writer").touch()
 
     def frame(kind, raw=b"", seq=0, count=1, *, serial=1):
         f=Frame(SeqID=serial,LogID=100+serial,service=9,method=0 if kind=="pong" else 1,payload=raw)
@@ -95,6 +102,11 @@ def prepare(root, output, *, contract="core-032", package_builder=build):
             assert receive()[0]=="ping"
             conn.send(frame("pong",b'{"PingInterval":1}'))
             event=packet(app)
+            if reader_archives:
+                readers.send_phase(local_phase,conn,frame,ack,event)
+                complete.set()
+                release.wait(18)
+                return
             split=len(event)//2
             second=frame("event",event[split:],1,2)
             conn.send(second);conn.send(second)
@@ -158,6 +170,9 @@ def prepare(root, output, *, contract="core-032", package_builder=build):
             "args":[str(root/"tests/peers/feishu_relay.py"),str(binary),str(trace)],
             "platform":domain,"bot_stage":stage,"grants":["gateway.inbound"],
             "env":[k for k in env if k.startswith("YUKI_FEISHU_")]}
+        if reader_archives:
+            vals["args"] = [str(root/"tests/peers/base_relay.py"), str(binary),
+                            str(trace/"wire.jsonl"), str(private), "none"]
         cfg.write_text(base+"\n[[plugins]]\n"+"\n".join(f"{k} = {json.dumps(v)}" for k,v in vals.items())+"\n",encoding="utf-8")
     try:
         cli("init")
@@ -173,6 +188,46 @@ def prepare(root, output, *, contract="core-032", package_builder=build):
             accounts[app]=cli("operator","account","open",domain,"fs."+slug,"ou_shared","1","--person",person,"--start","1")
             stages[app]=cli("operator","account","open",domain,"fs."+slug,app,"1","--start","1")["assignment"]
         stop()
+        if reader_archives:
+            observations = {}
+            killed = {}
+            wire = trace/"wire.jsonl"
+            for app in routes:
+                install(app,stages[app])
+                ids = {}
+                for phase, version in [("old","0.1.0-alpha.1"),("new","0.1.0-alpha.2"),("rollback","0.1.0-alpha.1")]:
+                    # Restore the previous stopped copy at the installation's stable cwd.
+                    if phase == "old":
+                        private.mkdir()
+                    else:
+                        shutil.copytree(stopped,private)
+                    package = reader_pins[version]
+                    shutil.copyfile(packages/package["binary"],binary)
+                    assert hashlib.sha256(binary.read_bytes()).hexdigest() == package["binary_sha256"]
+                    cursor = len(wire.read_bytes().splitlines()) if wire.exists() else 0
+                    complete.clear()
+                    start()
+                    wait(complete.is_set)
+                    assert not failures, failures
+                    # Stop the native child while its observing relay still owns the handle.
+                    wire.with_suffix(".kill").touch()
+                    marker = wire.with_suffix(".killed")
+                    wait(marker.exists)
+                    killed[app + "-" + phase] = int(marker.read_text(encoding="ascii"))
+                    marker.unlink()
+                    stop()
+                    rows = [json.loads(line) for line in wire.read_bytes().splitlines()[cursor:]]
+                    ids[phase] = readers.event_ids(rows,phase)
+                    stopped = work/(app+"-"+phase+"-stopped")
+                    private.rename(stopped)
+                    assert not list(stopped.iterdir())
+                assert ids["old"][0] == ids["new"][1] and ids["new"][0] == ids["rollback"][0]
+                assert ids["old"][0] != ids["rollback"][0]
+                observations[app] = ids
+            assert set(observations["cli_a"]["new"]).isdisjoint(observations["cli_b"]["new"])
+            return "reader-replay.json", {"status":"PASS","scope":"stopped-plugin-copy","host":platform,
+                "host_source":pin["source_commit"],"packages":reader_pins,"events":observations,
+                "accounts":accounts,"killed_native_pids":killed,"stopped_private_files":{p.name:[] for p in work.glob("*-stopped")}}
         install("cli_a",stages["cli_a"])
         start()
         wait(complete.is_set)
