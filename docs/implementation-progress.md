@@ -4,6 +4,11 @@
 行為基線 `329ca7c487414d2f54ddd98ff4727446ed2446cd`。官方插件接入層用 Rust。
 獨立 Connector 沿用 Python 3.12；共享預算沿總書 K05。
 
+**EXT-004 部分候選；正式完成 7/68。** 分支 `codex/ext-004-telegram-media`，實作 `adb9c36eae38`。
+HJW 的 Rust Telegram alpha.2（SDK alpha.13，來源 `0ef956a9c6d9`、crate `25694e880798`）已驗原 Bot 單次取檔、兩頁同摘要、跨身份零取件、轉址／超限拒絕及長輪詢中止。
+平台證據在 `artifacts/EXT-004/platform-01`；真 Host 的 ingress-only 寫入 event 1，新增 grant 時缺 application 核准而無法啟動（`host-02`）。待核公開配置、真選讀、發送／撤回／typing 與發布。
+前排 PR #16 等 macOS；CI 快取回條見 `dec012ed155c`。最新狀態：`artifacts/readiness/after-telegram-native-media.json`。
+
 | 任務／分支 | 實作、三平台 PR CI 與主線合併 | Windows 實機證據 |
 |---|---|---|
 | EXT-001 · codex/ext-001 系列 | `4cbaff3`、`033bb04`、`f136b4d`；CI `41819289910`；主線 `93adb61` 含 Rust 補驗 | `artifacts/EXT-001/03/`，隔離建包、Rust 真編譯與故障案例 |
