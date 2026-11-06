@@ -1,0 +1,59 @@
+{
+  "updated_at": "2026-11-06T03:59:55.599828+00:00",
+  "status": "waiting_CI_or_public_producer_contracts",
+  "previous": "after-core033-connector-auth.json",
+  "formal_cards_completed": 7,
+  "formal_cards_total": 68,
+  "branch": "codex/ext-070-address",
+  "implementation_commit": "cc39f5911859585385f48742defd536d61ae8a06",
+  "base_main": "ac8c1b287e5a320107f64975dfd318b521bd8f13",
+  "parent_EXT011_head": "ce1cec3a2092ac4d3fce36be12a579cbc22ca4c1",
+  "producer_source": "c85a00b121d0277578292e8b60170b799e4ad6db",
+  "producer_pin": "compat/core-033-connector/source.lock.json",
+  "producer_published": false,
+  "core_handoff_comment": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/66#issuecomment-6676124728",
+  "EXT070_evidence": [
+    "artifacts/EXT-070/candidate-03",
+    "artifacts/EXT-070/analysis-01"
+  ],
+  "native_cases": 15,
+  "historical_matched_cases": 11,
+  "runtime_bindings": 19,
+  "source_bindings": 73,
+  "native_launches": 1,
+  "wire_sha256": "919a7a90cd0e1db1ad5a20357d159e4dde272de254e1bfa6070b3db3baac127c",
+  "wheel_sha256": "2748ec830b56e38f404d33964350578e543232ab1fce02e2399fc3ab045a74d8",
+  "temporary_disabled_user_task_cleaned": true,
+  "next_executable": [],
+  "missing": [
+    "current SHA/current base full three-platform CI and downloaded artifacts before ordered merge",
+    "formal producer/consumer publication",
+    "EXT012/014 original accepted Work/run authorization and native callback contracts",
+    "legacy already-paired device and catalog import projection",
+    "EXT044 prerequisites EXT017/039/043/046"
+  ],
+  "PR_order": [
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30
+  ],
+  "preserved_WIP": [
+    "root four Code adapter files",
+    "work-asr",
+    "work-rebuild",
+    "work-subscription"
+  ],
+  "native134": "unresolved intermittent exit; existing diagnosis is not a root-cause repair"
+}

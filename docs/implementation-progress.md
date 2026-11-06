@@ -13,6 +13,37 @@
 | EXT-010 · codex/ext-010 | `ab16e07`；CI `41834791702`；PR #6 合併 `2c55dbb` | `artifacts/EXT-010/02/`，8 例含實際子進程退出碼 23、雙 session 取消及 unknown |
 | EXT-019 · codex/ext-019 | 實作 `7531d84`、PR head `9d1e8a8`；三平台 CI `41835863011`；PR #7 合併 `7625095` | `artifacts/EXT-019/02/`，呼叫表、schema 差分、5 個故障變異；`03/` 固定跨平台順序 |
 
+## 2026-11-06 EXT-070 原 Connector 改址候選
+
+- 分支 `codex/ext-070-address`，實作 `cc39f5911859585385f48742defd536d61ae8a06`，
+  基於 PR #30 的 `ce1cec3a2092`（已正常含 main `ac8c1b287e5a`）。
+  原 Connector 19 個 runtime／鎖檔 bindings 未改，wheel 仍
+  `2748ec830b56e38f404d33964350578e543232ab1fce02e2399fc3ab045a74d8`。
+- 基線 CI `41554925880` 的 integration artifact `13194877063` 已核 GitHub ZIP digest
+  `da2c0c140992b3a2af8dee54bd89e0a32caf4184dca5dae0dc131637c0e9b70b`、CRC、安全成員、
+  JUnit 的 11 個 pass 與原 11 回條／commit。原資料及只讀 source oracle 在
+  `compat/wire4/address_cases`；未執行舊 Host 私有模組，也不把歷史綠燈當本次測試。
+- HJW Windows `candidate-03` 15 例通過：CLI 僅改 URL／保原 token-instance，遠端非 TLS
+  拒絕、v0/v1 `[url,device]` journal 升級、另一 device 拒絕；真 pipe shell 在保存新址後
+  收 stdin、原 PID `13168`、exit 0，唯一 native exec／實體啟動各一次。
+- 真 CLI 重啟到第二個 TLS 1.3 WSS 後查原 succeeded 回條，unknown 保持 unknown；
+  B 的 event ID 集合精確等於重啟前未 ACK 集合，已 ACK 不補送。臨時 user task 用原
+  UserService 的 LeastPrivilege／InteractiveToken 註冊、禁用且未啟動；改址前後原 Task
+  XML／action／非 running 不變，finally 核 action 後清除，實收 installed=false。
+- `analysis-01` 在 Windows 逐份對上 11 個舊回條，核原 ZIP、15 例、73 個來源綁定、19 個
+  unchanged runtime、全部 14 發行單位邊界／選擇器；wire SHA
+  `919a7a90cd0e1db1ad5a20357d159e4dde272de254e1bfa6070b3db3baac127c`。
+  01／02 分別是功能與事件細化的已驗迭代，不冒充含真 OS task 的最終 03。
+- EXT-011 已推 [PR #30](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/30)，
+  head `ce1cec3a2092`；真消費回條已交
+  https://github.com/Institute-of-Agent-Life/yuki-core/pull/66#issuecomment-6676124728 。
+  兩卡的正式發布／公開部署仍缺，正式完成仍 **7／68**。
+- PR #16 當前 `58cd960e1a99` 無新失敗，三平台及套件仍有 runner 排隊；後續按既定順序，
+  main 前進才正常合入新 main 重驗。#23 原 504 全輪已結束，本輪已 rerun failed，attempt 2 排隊。
+- EXT-044 還缺 EXT-017／039／043／046 及原 Work／管理／發布整組，不因 EXT-070 局部
+  就緒就開空實作。其他核心回條無新回覆、現有固定交付未換；最新 readiness
+  `artifacts/readiness/after-connector-address.json`，剩 CI／上游契約等待，全部既有 WIP 保留。
+
 ## 2026-11-06 EXT-011 原 Connector 鑑權與 wire4 候選
 
 - 實作 `a7b35e96dda240f021f43efed7a46c7976d4197c`；正常合入 main `ac8c1b287e5a`，
