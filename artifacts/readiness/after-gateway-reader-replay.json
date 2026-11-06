@@ -1,0 +1,21 @@
+{
+  "previous": "after-signed-web-fetch.json",
+  "counts": {
+    "previously_accepted": 7,
+    "partial_or_diagnostic_evidence": 20,
+    "signed_candidate_acceptance_pass": 2,
+    "no_named_card_artifact": 39
+  },
+  "scope": {
+    "EXT-003": "artifacts/EXT-003/cursor-compat-04",
+    "EXT-005": "artifacts/EXT-005/reader-replay-02"
+  },
+  "core044": {
+    "merged": "c6bd0c75e38717abc71373201d31a77982428d5b",
+    "github_release_tags": [
+      "handshake-preview-dd694a0db605"
+    ],
+    "public_b0_observed": false
+  },
+  "next": "EXT-043 requires the immutable published Host/SDK. Existing EXT-067 evidence refers to the original signed pair."
+}
