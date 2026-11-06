@@ -1,0 +1,296 @@
+{
+  "pr": 46,
+  "run": 42289320736,
+  "merge": "f9ef9af07f9821642fac3fc4729d1d64702007bc",
+  "tree": "8aa622458206da6252db185df0fe6ca2d737a06f",
+  "parents": [
+    "667fe99e4d5bbc62b9946cf58eb79ea2d2e505b9",
+    "e80c3ce8c2509d41a83382de8ba221410edcae1a"
+  ],
+  "jobs": [
+    {
+      "id": 128138285401,
+      "name": "select",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128138285724,
+      "name": "acceptance (windows-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128138285743,
+      "name": "acceptance (ubuntu-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128138285822,
+      "name": "acceptance (macos-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128138388575,
+      "name": "package (feishu, ubuntu-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128138388585,
+      "name": "package (feishu, macos-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128138388698,
+      "name": "package (feishu, windows-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128138391039,
+      "name": "runtime (monty-runtime, ubuntu-latest)",
+      "status": "completed",
+      "conclusion": "skipped"
+    },
+    {
+      "id": 128138391237,
+      "name": "worker (codemode, ${{ matrix.os }})",
+      "status": "completed",
+      "conclusion": "skipped"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": 13539121316,
+      "name": "acceptance-macos-latest-f9ef9af07f9821642fac3fc4729d1d64702007bc",
+      "digest": "sha256:6f7709ab1e1b615c0e8a250493e034c8c52ab492df13ff7cb6da9d7964d6d90d",
+      "size": 28732,
+      "zip_members": 8,
+      "manifests": [
+        {
+          "path": "EXT-001/ci/manifest.json",
+          "file_sha256": "bce5786e87d3f80551a16bb50f3b4234b99424a8ce45b26b9f5813d35da5a3cf",
+          "task": "EXT-001",
+          "unit": null,
+          "members": {
+            "extension-build-isolation.json": "f04ef7bb3e74a69df00d96487e6bbe0a3363ad8350b11f3527ac695297060fa9"
+          }
+        },
+        {
+          "path": "EXT-002/ci/manifest.json",
+          "file_sha256": "33fcdc17245275fc1b1983ae0c83861da8fceb2cb8c66df12434dce2514e877f",
+          "task": "EXT-002",
+          "unit": null,
+          "members": {
+            "build.txt": "b31175547d55030130eb2c4496dc31448f30afb78d49be0432f7c7762ffad3af",
+            "published-sdk.json": "51fafaf859fdac2adf3cc5de3bfe1959c040660d271f376ac16eb03089df0d7b"
+          }
+        },
+        {
+          "path": "EXT-019/ci/manifest.json",
+          "file_sha256": "73fda4297e573bad1715401d2a9a44a6bc81ba76949b73d7446b3a051869e3fc",
+          "task": "EXT-019",
+          "unit": null,
+          "members": {
+            "desktop-callsite-pin.json": "d9d6caa43cb9dd36b65358fb0c06648b7c22784f98babfad63ba42bc00a9c7fe",
+            "desktop-surface-diff.json": "21d8a19696cd02bb91ad8079dd09948eeacbae32f31211d3a32f766abbb88550"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13539100937,
+      "name": "acceptance-windows-latest-f9ef9af07f9821642fac3fc4729d1d64702007bc",
+      "digest": "sha256:f2afd16c48d68d0a8735a726828aa5325ee315c99ebfb48343480ac3753e4c67",
+      "size": 28830,
+      "zip_members": 8,
+      "manifests": [
+        {
+          "path": "EXT-001/ci/manifest.json",
+          "file_sha256": "7684f37dac33602719317235db49dc2078e002f8eff457e73a7a797113f5e334",
+          "task": "EXT-001",
+          "unit": null,
+          "members": {
+            "extension-build-isolation.json": "d72b701b0723c279debf9afe217edc9fe934ae3d345f87bb8a2c0fcce971e050"
+          }
+        },
+        {
+          "path": "EXT-002/ci/manifest.json",
+          "file_sha256": "cf27181517ced4999650acf441bb9aaa1a7972213e8de5d6979f01135576246e",
+          "task": "EXT-002",
+          "unit": null,
+          "members": {
+            "build.txt": "ed951a03591d5f04068ca5675685b5f262a612b956b75718f325a4270a7a1a03",
+            "published-sdk.json": "50bc3764ea35a9dfa734d7c0377306ff6027b09428b29de45c8a0f1e2c471d5e"
+          }
+        },
+        {
+          "path": "EXT-019/ci/manifest.json",
+          "file_sha256": "c28f58e0e37a3731c690615a64c825bd4fec855e96522d6d25dcbd4de398266f",
+          "task": "EXT-019",
+          "unit": null,
+          "members": {
+            "desktop-callsite-pin.json": "d9d6caa43cb9dd36b65358fb0c06648b7c22784f98babfad63ba42bc00a9c7fe",
+            "desktop-surface-diff.json": "477f17ea1448f685d663477f373bf44b78f626a35b1533f36d9dea1f872d2f6a"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13538907823,
+      "name": "cache-inputs-feishu-windows-latest-f9ef9af07f9821642fac3fc4729d1d64702007bc",
+      "digest": "sha256:333fd9e5252ff4e0f1ff93c14ca9674b76436be36b1190451e27b7b815b907a9",
+      "size": 1934,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "feishu",
+          "cache_key": "rust-v1-Windows-AMD64-feishu-be3be8542571937570dfbfe2d277216876eaba8490f046fd00c8ad7504d3fac8",
+          "bound_sources": 12
+        }
+      ]
+    },
+    {
+      "id": 13538428342,
+      "name": "acceptance-ubuntu-latest-f9ef9af07f9821642fac3fc4729d1d64702007bc",
+      "digest": "sha256:aa93e876e1bccb961199cda7054a14103c81dc6b60597309d540a971c683c75e",
+      "size": 28560,
+      "zip_members": 8,
+      "manifests": [
+        {
+          "path": "EXT-002/ci/manifest.json",
+          "file_sha256": "ee6cdd0503300eaaa5e0ec9f48a8bd865ce51211bfbb550677b17764d350e4e1",
+          "task": "EXT-002",
+          "unit": null,
+          "members": {
+            "build.txt": "9cc00688ab19a77e4c0a21557858e4a610e9fc824a12c50c44c3b8f3a51ebe9b",
+            "published-sdk.json": "88f03131bf981cee1ca61c857c57fb727778ea6477cd8bd286f9c6794146223e"
+          }
+        },
+        {
+          "path": "EXT-001/ci/manifest.json",
+          "file_sha256": "32349eda8f6a175ff0a38cf35306f88bc53d8b0d69a8f58be7ce2682cc4cdfdb",
+          "task": "EXT-001",
+          "unit": null,
+          "members": {
+            "extension-build-isolation.json": "26fe5a6ce1aec16d79ce5ba15282b376adbeb6a2c2031dd1af9f2f288111e9ac"
+          }
+        },
+        {
+          "path": "EXT-019/ci/manifest.json",
+          "file_sha256": "29caab9a6d3c3d2168f7190dc84b16cb7419e504c288f4d55a1f77821ce3a21b",
+          "task": "EXT-019",
+          "unit": null,
+          "members": {
+            "desktop-callsite-pin.json": "d9d6caa43cb9dd36b65358fb0c06648b7c22784f98babfad63ba42bc00a9c7fe",
+            "desktop-surface-diff.json": "21d8a19696cd02bb91ad8079dd09948eeacbae32f31211d3a32f766abbb88550"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13538209165,
+      "name": "package-feishu-macos-latest-f9ef9af07f9821642fac3fc4729d1d64702007bc",
+      "digest": "sha256:2ae0d3cf6aabe66419a4fae7a179d60650413a4ed50e8a9ff4eaebbcbfa5209d",
+      "size": 804496,
+      "zip_members": 7,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "0f74ca72b71ce4a47fcb7614b5431745e562a5abc296d9ae7a89b4ae9811bfdf",
+          "task": null,
+          "unit": "feishu",
+          "members": {
+            "Cargo.lock": "3e1c05a494a33f1ae063308adbec1902947bc2b5918e2aaf5566e4ec338e395b",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "NOTICE": "51201cfac32f0bae2e3f4157609d1f4c268f76fef608d30e6809a7581b6746cb",
+            "plugin.toml": "73f798bd7f739de32b45cc75dc9ae73f339b4551e2715567e01400a7544b565d",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-feishu": "87e135a809e8b4e4d2513475a852f4eadc6be989f7838054035862c8605dee0a"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13538179355,
+      "name": "package-feishu-windows-latest-f9ef9af07f9821642fac3fc4729d1d64702007bc",
+      "digest": "sha256:9206e9d4b24e1fb789eadf556f25a219deabe33b415270c371329ec49fbf3c6f",
+      "size": 692089,
+      "zip_members": 7,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "14d93c76d7f8f42f92dd74988a6a2b00d3c7393028b29587ddf394a8a5bd89d2",
+          "task": null,
+          "unit": "feishu",
+          "members": {
+            "Cargo.lock": "3e1c05a494a33f1ae063308adbec1902947bc2b5918e2aaf5566e4ec338e395b",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "NOTICE": "51201cfac32f0bae2e3f4157609d1f4c268f76fef608d30e6809a7581b6746cb",
+            "plugin.toml": "73f798bd7f739de32b45cc75dc9ae73f339b4551e2715567e01400a7544b565d",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-feishu.exe": "85c661ddac8fa3e235b80d28bfe9302dd33183e4befacff8f9e19c0c3caa454f"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13538174350,
+      "name": "cache-inputs-feishu-macos-latest-f9ef9af07f9821642fac3fc4729d1d64702007bc",
+      "digest": "sha256:13cb50b86820cd0b6f1708900e648f46f8e7c968a693b39a4db7ab80bae2fbd4",
+      "size": 1924,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "feishu",
+          "cache_key": "rust-v1-Darwin-arm64-feishu-dcd873676738c49886e28c3c29f54ff44b2fc6c3b09fb3f39bac053f341c4f0b",
+          "bound_sources": 12
+        }
+      ]
+    },
+    {
+      "id": 13538144352,
+      "name": "package-feishu-ubuntu-latest-f9ef9af07f9821642fac3fc4729d1d64702007bc",
+      "digest": "sha256:ffdb9fbefdd49c041d56c38d1bb3718e9619a9537eb0360cc1aa7c89a2778226",
+      "size": 885455,
+      "zip_members": 7,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "acfcaf25b66c087266db06031af97ce1831b9eae6a35485cf8cb699989b167ae",
+          "task": null,
+          "unit": "feishu",
+          "members": {
+            "Cargo.lock": "3e1c05a494a33f1ae063308adbec1902947bc2b5918e2aaf5566e4ec338e395b",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "NOTICE": "51201cfac32f0bae2e3f4157609d1f4c268f76fef608d30e6809a7581b6746cb",
+            "plugin.toml": "73f798bd7f739de32b45cc75dc9ae73f339b4551e2715567e01400a7544b565d",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-feishu": "1b190c775054244b4acf305c80dba327203fb4591ef5628c48473085b4de99d7"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13538064465,
+      "name": "cache-inputs-feishu-ubuntu-latest-f9ef9af07f9821642fac3fc4729d1d64702007bc",
+      "digest": "sha256:e572955fe7431fd4e659fcde09a6465940072608ee8043ecc26ef27c8b5c801f",
+      "size": 1935,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "feishu",
+          "cache_key": "rust-v1-Linux-x86_64-feishu-4f8d31415fd1f353b94bd464f8a64cfb43302f942c4b019afeabb04632bddf50",
+          "bound_sources": 12
+        }
+      ]
+    }
+  ],
+  "utc": "2026-11-06T20:36:17.851876+00:00",
+  "actual_merge": "98b08c435a6f5027a05f27931906837d4886b289",
+  "actual_tree": "8aa622458206da6252db185df0fe6ca2d737a06f"
+}

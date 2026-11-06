@@ -31,7 +31,10 @@ fn inline(segments: &mut Vec<Value>, mut input: &str, mentions: &[Value]) {
                     key_position(input, key)?,
                     key,
                     m["id"]["open_id"].as_str().filter(|id| !id.is_empty())?,
-                    m["name"].as_str().unwrap_or(key),
+                    m["name"]
+                        .as_str()
+                        .filter(|s| !s.is_empty())
+                        .unwrap_or("未识别成员"),
                 ))
             })
             .min_by_key(|(pos, key, ..)| (*pos, std::cmp::Reverse(key.len())));
@@ -46,9 +49,80 @@ fn inline(segments: &mut Vec<Value>, mut input: &str, mentions: &[Value]) {
 }
 
 fn media(segments: &mut Vec<Value>, kind: &str, reference: &Value) {
-    if let Some(key) = reference.as_str() {
+    if let Some(key) = reference.as_str().filter(|s| !s.is_empty()) {
         segments.push(json!({"type":"media","kind":kind,"reference":key}));
     }
+}
+
+fn post_segments(
+    segments: &mut Vec<Value>,
+    content: &Value,
+    mentions: &[Value],
+) -> Result<(), Error> {
+    let body = if content["content"].is_array() {
+        content
+    } else {
+        content
+            .get("zh_cn")
+            .or_else(|| content.get("en_us"))
+            .or_else(|| {
+                content
+                    .as_object()?
+                    .values()
+                    .find(|value| value.is_object())
+            })
+            .ok_or("empty post")?
+    };
+    if let Some(title) = body["title"].as_str().filter(|s| !s.is_empty()) {
+        text(segments, &format!("{title}\n"));
+    }
+    let rows = body["content"].as_array().ok_or("invalid post")?;
+    for (index, row) in rows.iter().enumerate() {
+        if index > 0 {
+            text(segments, "\n");
+        }
+        for item in row.as_array().ok_or("invalid post row")? {
+            match item["tag"].as_str() {
+                Some("text" | "md" | "code_block") => {
+                    inline(segments, item["text"].as_str().unwrap_or(""), mentions)
+                }
+                Some("a") => {
+                    let label = item["text"].as_str().unwrap_or("");
+                    let href = item["href"].as_str().unwrap_or("");
+                    if label.is_empty() {
+                        text(segments, href);
+                    } else if href.is_empty() || href == label {
+                        text(segments, label);
+                    } else {
+                        text(segments, &format!("{label} ({href})"));
+                    }
+                }
+                Some("at") => {
+                    if let Some(id) = item["user_id"].as_str().filter(|s| !s.is_empty()) {
+                        let name = item["user_name"]
+                            .as_str()
+                            .filter(|s| !s.is_empty())
+                            .or_else(|| {
+                                mentions.iter().find(|m| m["id"]["open_id"] == id)?["name"]
+                                    .as_str()
+                                    .filter(|s| !s.is_empty())
+                            })
+                            .unwrap_or("未识别成员");
+                        mention(segments, id, name);
+                    }
+                }
+                Some("emotion") => {
+                    if let Some(name) = item["emoji_type"].as_str().filter(|s| !s.is_empty()) {
+                        text(segments, &format!("[{name}]"));
+                    }
+                }
+                Some("img") => media(segments, "image", &item["image_key"]),
+                Some("media") => media(segments, "video", &item["file_key"]),
+                _ => {}
+            }
+        }
+    }
+    Ok(())
 }
 
 pub fn normalize(payload: &Value, app: &str, tenant: &str) -> Result<Option<Value>, Error> {
@@ -87,44 +161,11 @@ pub fn normalize(payload: &Value, app: &str, tenant: &str) -> Result<Option<Valu
             mentions,
         ),
         Some("image") => media(&mut segments, "image", &content["image_key"]),
-        Some("file" | "sticker") => media(&mut segments, "file", &content["file_key"]),
+        Some("file") => media(&mut segments, "file", &content["file_key"]),
+        Some("sticker") => text(&mut segments, "[原生贴纸]"),
         Some("audio") => media(&mut segments, "audio", &content["file_key"]),
         Some("media") => media(&mut segments, "video", &content["file_key"]),
-        Some("post") => {
-            let body = if content["content"].is_array() {
-                content
-            } else {
-                content
-                    .get("zh_cn")
-                    .or_else(|| content.get("en_us"))
-                    .or_else(|| content.as_object()?.values().next())
-                    .ok_or("empty post")?
-            };
-            if let Some(title) = body["title"].as_str() {
-                text(&mut segments, title);
-            }
-            for row in body["content"].as_array().ok_or("invalid post")? {
-                for item in row.as_array().ok_or("invalid post row")? {
-                    match item["tag"].as_str() {
-                        Some("text" | "a") => {
-                            text(&mut segments, item["text"].as_str().unwrap_or(""))
-                        }
-                        Some("at") => {
-                            if let Some(id) = item["user_id"].as_str() {
-                                mention(
-                                    &mut segments,
-                                    id,
-                                    item["user_name"].as_str().unwrap_or(id),
-                                );
-                            }
-                        }
-                        Some("img") => media(&mut segments, "image", &item["image_key"]),
-                        Some("media") => media(&mut segments, "video", &item["file_key"]),
-                        _ => {}
-                    }
-                }
-            }
-        }
+        Some("post") => post_segments(&mut segments, content, mentions)?,
         _ => {}
     }
     let human = !segments.is_empty() && event["sender"]["sender_type"] == "user";
@@ -190,10 +231,31 @@ mod tests {
         assert_eq!(
             segments,
             vec![
-                json!({"type":"mention","native":"long","label":"@@x+"}),
+                json!({"type":"mention","native":"long","label":"@未识别成员"}),
                 json!({"type":"text","text":" "}),
-                json!({"type":"mention","native":"short","label":"@@x"}),
+                json!({"type":"mention","native":"short","label":"@未识别成员"}),
                 json!({"type":"text","text":" @z"}),
+            ]
+        );
+    }
+    #[test]
+    fn post_labels_do_not_replace_original_targets_or_duplicate_link_text() {
+        let body = json!({"content":[[
+            {"tag":"at","user_id":"original","user_name":"from post"},
+            {"tag":"at","user_id":"unknown"},
+            {"tag":"a","href":"bare"}, {"tag":"a","href":"same","text":"same"},
+            {"tag":"img","image_key":""}
+        ]]});
+        let mentions = [json!({"id":{"open_id":"original"},"name":"from table"})];
+        let mut segments = Vec::new();
+        post_segments(&mut segments, &body, &mentions).unwrap();
+        assert_eq!(
+            segments,
+            vec![
+                json!({"type":"mention","native":"original","label":"@from post"}),
+                json!({"type":"mention","native":"unknown","label":"@未识别成员"}),
+                json!({"type":"text","text":"bare"}),
+                json!({"type":"text","text":"same"}),
             ]
         );
     }

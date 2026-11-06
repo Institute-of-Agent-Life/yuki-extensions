@@ -41,7 +41,7 @@ def fixture_imports(root, work):
     return Frame,serve
 
 
-def prepare(root, output, *, contract="core-032", package_builder=build, reader_archives=None):
+def prepare(root, output, *, contract="core-032", package_builder=build, reader_archives=None, message_sample=None):
     work=output/"work"
     work.mkdir()
     Frame,serve=fixture_imports(root,work)
@@ -81,12 +81,14 @@ def prepare(root, output, *, contract="core-032", package_builder=build, reader_
             mentions.append({"key":"@_user_10","id":{"open_id":"ou_ten"},"name":"Ten"})
             if region == "lark":
                 mentions.reverse()
+        message = {"message_type":"text","content":json.dumps({"text":content})}
+        if message_sample:
+            message, _ = message_sample(app)
         return json.dumps({"header":{"app_id":app,"event_type":"im.message.receive_v1",
             "tenant_key":"wrong" if wrong_tenant else "tenant-"+slug},"event":{
             "sender":{"sender_type":"user","sender_id":{"open_id":"ou_shared"}},
             "message":{"message_id":"om_shared","chat_id":"oc_room","chat_type":"group",
-            "thread_id":"thread","parent_id":"om_original","create_time":"1000","message_type":"text",
-            "content":json.dumps({"text":content}),"mentions":mentions}}}).encode()
+            "thread_id":"thread","parent_id":"om_original","create_time":"1000",**message,"mentions":mentions}}}).encode()
 
     def scenario(conn):
         local_phase=phase
@@ -266,6 +268,8 @@ def prepare(root, output, *, contract="core-032", package_builder=build, reader_
                 {"type":"text","text":" / "}, {"type":"mention","native":"ou_ten","label":"@Ten"},
                 {"type":"text","text":" / @_user_100"}, {"type":"reply","native_id":"om_original"},
             ]
+            if message_sample:
+                _, expected = message_sample(app)
             assert p["segments"] == expected, (app, p["segments"])
             assert p["occurred"]==1000 and p["sender"]=="ou_shared"
         assert all(e["type"]!="event" for e in native if e["phase"]=="break")
