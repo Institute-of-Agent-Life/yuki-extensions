@@ -9,6 +9,18 @@ fn text(segments: &mut Vec<Value>, s: &str) {
 fn mention(segments: &mut Vec<Value>, id: &str, name: &str) {
     segments.push(json!({"type":"mention","native":id,"label":format!("@{name}")}));
 }
+// A numbered placeholder ends after its last digit. An unlisted @_user_100
+// must stay text even when this event supplies a binding for @_user_1.
+fn key_position(input: &str, key: &str) -> Option<usize> {
+    let numbered = key
+        .strip_prefix("@_user_")
+        .is_some_and(|suffix| !suffix.is_empty() && suffix.bytes().all(|b| b.is_ascii_digit()));
+    input.match_indices(key).find_map(|(pos, _)| {
+        let next = input.as_bytes().get(pos + key.len());
+        (!numbered || !next.is_some_and(u8::is_ascii_digit)).then_some(pos)
+    })
+}
+
 fn inline(segments: &mut Vec<Value>, mut input: &str, mentions: &[Value]) {
     while !input.is_empty() {
         let hit = mentions
@@ -16,13 +28,13 @@ fn inline(segments: &mut Vec<Value>, mut input: &str, mentions: &[Value]) {
             .filter_map(|m| {
                 let key = m["key"].as_str().filter(|k| !k.is_empty())?;
                 Some((
-                    input.find(key)?,
+                    key_position(input, key)?,
                     key,
-                    m["id"]["open_id"].as_str()?,
+                    m["id"]["open_id"].as_str().filter(|id| !id.is_empty())?,
                     m["name"].as_str().unwrap_or(key),
                 ))
             })
-            .min_by_key(|(pos, ..)| *pos);
+            .min_by_key(|(pos, key, ..)| (*pos, std::cmp::Reverse(key.len())));
         let Some((pos, key, id, name)) = hit else {
             text(segments, input);
             break;
@@ -135,4 +147,54 @@ pub fn normalize(payload: &Value, app: &str, tenant: &str) -> Result<Option<Valu
         json!({"source":id,"native_id":id,"sender":sender,"space":group,"topic":raw["thread_id"],
         "occurred":time,"kind":kind,"segments":segments,"accept":human}),
     ))
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn text_mentions_bind_the_complete_original_key() {
+        let short = json!({"key":"@_user_1","id":{"open_id":"short"},"name":"One"});
+        let long = json!({"key":"@_user_10","id":{"open_id":"long"},"name":"Ten"});
+        for mentions in [[short.clone(), long.clone()], [long, short]] {
+            let mut segments = Vec::new();
+            inline(
+                &mut segments,
+                "未列 @_user_100；@_user_10@_user_1",
+                &mentions,
+            );
+            assert_eq!(
+                segments,
+                vec![
+                    json!({"type":"text","text":"未列 @_user_100；"}),
+                    json!({"type":"mention","native":"long","label":"@Ten"}),
+                    json!({"type":"mention","native":"short","label":"@One"}),
+                ]
+            );
+        }
+    }
+
+    #[test]
+    fn opaque_keys_use_the_longest_binding_and_require_an_open_id() {
+        let mut segments = Vec::new();
+        inline(
+            &mut segments,
+            "@x+ @x @z",
+            &[
+                json!({"key":"@x","id":{"open_id":"short"}}),
+                json!({"key":"@z","id":{"open_id":""}}),
+                json!({"key":"@x+","id":{"open_id":"long"}}),
+            ],
+        );
+        assert_eq!(
+            segments,
+            vec![
+                json!({"type":"mention","native":"long","label":"@@x+"}),
+                json!({"type":"text","text":" "}),
+                json!({"type":"mention","native":"short","label":"@@x"}),
+                json!({"type":"text","text":" @z"}),
+            ]
+        );
+    }
 }

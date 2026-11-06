@@ -73,12 +73,20 @@ def prepare(root, output, *, contract="core-032", package_builder=build, reader_
 
     def packet(app, wrong_tenant=False):
         slug,region=routes[app]
+        content = "hi @_user_1"
+        mentions = [{"key":"@_user_1","id":{"open_id":app},"name":"Yuki"}]
+        if not reader_archives:
+            # The short key sorts first in one tenant, and last in the other.
+            content = "🌨 @_user_10 / @_user_1 / @_user_10 / @_user_100"
+            mentions.append({"key":"@_user_10","id":{"open_id":"ou_ten"},"name":"Ten"})
+            if region == "lark":
+                mentions.reverse()
         return json.dumps({"header":{"app_id":app,"event_type":"im.message.receive_v1",
             "tenant_key":"wrong" if wrong_tenant else "tenant-"+slug},"event":{
             "sender":{"sender_type":"user","sender_id":{"open_id":"ou_shared"}},
             "message":{"message_id":"om_shared","chat_id":"oc_room","chat_type":"group",
             "thread_id":"thread","parent_id":"om_original","create_time":"1000","message_type":"text",
-            "content":"{\"text\":\"hi @_user_1\"}","mentions":[{"key":"@_user_1","id":{"open_id":app},"name":"Yuki"}]}}}).encode()
+            "content":json.dumps({"text":content}),"mentions":mentions}}}).encode()
 
     def scenario(conn):
         local_phase=phase
@@ -250,9 +258,15 @@ def prepare(root, output, *, contract="core-032", package_builder=build, reader_
         ids=[r["event"] for r in results]
         assert ids[0]==ids[1] and ids[2]==ids[3] and ids[0]!=ids[2],ids
         assert accounts["cli_a"]["account"]!=accounts["cli_b"]["account"]
-        for call in calls:
+        for call, app in zip(calls, ["cli_a"] * 3 + ["cli_b"] * 2, strict=True):
             p=call["params"];assert p["space"]=="oc_room" and p["topic"]=="thread"
-            assert [s["type"] for s in p["segments"]]==["text","mention","reply"]
+            expected = [
+                {"type":"text","text":"🌨 "}, {"type":"mention","native":"ou_ten","label":"@Ten"},
+                {"type":"text","text":" / "}, {"type":"mention","native":app,"label":"@Yuki"},
+                {"type":"text","text":" / "}, {"type":"mention","native":"ou_ten","label":"@Ten"},
+                {"type":"text","text":" / @_user_100"}, {"type":"reply","native_id":"om_original"},
+            ]
+            assert p["segments"] == expected, (app, p["segments"])
             assert p["occurred"]==1000 and p["sender"]=="ou_shared"
         assert all(e["type"]!="event" for e in native if e["phase"]=="break")
         return "lark-frames.json",{"status":"PASS","card_status":"VERIFIED_ON_UNPUBLISHED_CANDIDATE",

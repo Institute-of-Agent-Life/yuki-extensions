@@ -4,6 +4,8 @@
 行為基線 `329ca7c487414d2f54ddd98ff4727446ed2446cd`。官方插件接入層用 Rust。
 獨立 Connector 沿用 Python 3.12；共享預算沿總書 K05。
 
+**EXT-005 原群提及。** `codex/ext-005-exact-mentions` 的 `ac360c785115` 修正飛書與 Lark 文字事件中的身份錯配。HJW Windows 以 #40 alpha.2 重現短鍵截走長鍵及未列鍵，再以 Rust alpha.3 對同一 Host（CORE-038 `0ef956a9c6d9`、SDK alpha.13）重放兩種表順序。兩個域都將 `@_user_10` 交給原成員、將 `@_user_1` 交給原應用、將無登記的 `@_user_100` 保留為文字。writer 前斷線無成功 ACK，兩安裝各自重投回讀事件 1、2。兩份原始線路、ACK、Rust 測試及 digest 在 `artifacts/EXT-005/mention-identity-01/`。#45 的託管 macOS 套件也已通過，新增兩份 ZIP 已下載核對。68 卡分級及下一步見 `artifacts/readiness/after-exact-mentions.json`。
+
 **EXT-005 停機副本與跨版重投。** 分支 `codex/ext-005-reader-replay`，實作 `316e11fe5a68`。HJW Windows 以原 #13 / #40 的 Rust 套件在 CORE-038 `0ef956a9c6d9` 完成兩個安裝各三輪。飛書舊版／新版／回退回讀事件 1、2，Lark 同鍵回讀 3、4。半個 frame 經冷啟仍等補齊才發 ACK，已接納的重投回到原 ID。六次都核原生子程序退出，插件工作目錄各自為空。故障迭代、兩版 SDK 與執行檔 digest、原 ACK 及 Host wire 在 `artifacts/EXT-005/reader-replay-02/`。#44 三平台及 9 個產物已核，合併 `8db6b9afa013`。全卡正式發布與現場資料仍待上游。下一步是從公開 B0 發行包驗 EXT-043，或在生產者交付新路由後驗對應功能。
 
 **EXT-003 水位相容。** 分支 `codex/ext-003-cursor-compat`，實作 `8bef6ed6a34e`。Telegram alpha.5 在 HJW Windows 通過 8 例。alpha.4 寫 41，alpha.5 從 41 繼續，實收後寫 42；回退 alpha.4 第一次就讀 42。舊版會向回環平台送出負 offset，新版遇同一壞檔保留原 bytes 並停止輪詢；兩個無效 update ID 均在 Host 入站前停止。最終原始證據與 Host/SDK/兩個 binary SHA 在 `artifacts/EXT-003/cursor-compat-04/windows.zip`。簽署 Host 來源 4a41470e89b4，SDK alpha.14。CORE-044 已普通合併至 c6bd0c75e387；本次查到的公開版本仍只有握手預覽，EXT-043 等待可固定的 B0 發行包。68 張清冊沿用，正式 7 張、另 2 張通過簽署候選驗收。#43 合併回條在 `artifacts/ci/local-pr/43/receipt.json`。
