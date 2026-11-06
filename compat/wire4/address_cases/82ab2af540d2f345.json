@@ -1,0 +1,11 @@
+{
+  "nodeid": "tests/integration/test_connector_address_e2e.py::test_cli_start_rejects_another_device_without_rewriting_original_evidence",
+  "revision": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+  "facts": {
+    "original_device_id": "da44175d-3743-4185-9e5b-6a8a69e73b83",
+    "configured_device_id": "e900abfd-0d70-48a1-832b-12c66da5275c",
+    "exit_code": 1,
+    "stderr": "Connector: Journal belongs to another device; use a separate data directory\n",
+    "original_evidence_preserved": true
+  }
+}

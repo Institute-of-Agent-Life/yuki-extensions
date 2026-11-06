@@ -1,0 +1,13 @@
+{
+  "nodeid": "tests/integration/test_connector_address_e2e.py::test_server_cli_only_saves_original_installation[http://127.0.0.1:18767/role/yuki-ws://127.0.0.1:18767/role/yuki/agents/v1/connect]",
+  "revision": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+  "facts": {
+    "exit_code": 0,
+    "stdout": "Server address saved; used on the next Connector start.\n",
+    "stderr": "",
+    "device_id": "b0221e94-1701-47b1-8fdb-a695ea3705cc",
+    "expected_endpoint": "ws://127.0.0.1:18767/role/yuki/agents/v1/connect",
+    "journal_created": false,
+    "original_fields_preserved": true
+  }
+}

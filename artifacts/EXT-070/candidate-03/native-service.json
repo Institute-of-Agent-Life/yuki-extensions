@@ -1,0 +1,29 @@
+{
+  "case": "native-stopped-user-task-not-started-by-address-change",
+  "status": "PASS",
+  "before": {
+    "installed": false,
+    "running": false
+  },
+  "installed_disabled": {
+    "installed": true,
+    "running": false,
+    "executable": "C:\\Users\\Hilbert\\yuki-extension-tests\\aa596c3a90396972e7d5\\src\\artifacts\\EXT-070\\candidate-03\\work\\environment\\Scripts\\pythonw.exe",
+    "argumentLine": "-m yuki_agent_connector --config C:\\Users\\Hilbert\\yuki-extension-tests\\aa596c3a90396972e7d5\\src\\artifacts\\EXT-070\\candidate-03\\work\\stopped-task-f21535dec12e4b77b2ce510145bc5b4b\\config.json --data-dir C:\\Users\\Hilbert\\yuki-extension-tests\\aa596c3a90396972e7d5\\src\\artifacts\\EXT-070\\candidate-03\\work\\stopped-task-f21535dec12e4b77b2ce510145bc5b4b run"
+  },
+  "after_address_change": {
+    "installed": true,
+    "running": false,
+    "executable": "C:\\Users\\Hilbert\\yuki-extension-tests\\aa596c3a90396972e7d5\\src\\artifacts\\EXT-070\\candidate-03\\work\\environment\\Scripts\\pythonw.exe",
+    "argumentLine": "-m yuki_agent_connector --config C:\\Users\\Hilbert\\yuki-extension-tests\\aa596c3a90396972e7d5\\src\\artifacts\\EXT-070\\candidate-03\\work\\stopped-task-f21535dec12e4b77b2ce510145bc5b4b\\config.json --data-dir C:\\Users\\Hilbert\\yuki-extension-tests\\aa596c3a90396972e7d5\\src\\artifacts\\EXT-070\\candidate-03\\work\\stopped-task-f21535dec12e4b77b2ce510145bc5b4b run"
+  },
+  "task_xml_sha256": "b6422977e282415184b4df5896b3d2bd458ea525f1e6d90b1e28110853fc43fc",
+  "registration_file_sha256": "8ed16a04cfb8609a48376b10d887286b180351d834e8f2dc3bdddab44ea467cf",
+  "task_name": "yuki-agent-connector-80713fa88fe0",
+  "start_invoked": false,
+  "existing_task_replaced": false,
+  "after_cleanup": {
+    "installed": false,
+    "running": false
+  }
+}

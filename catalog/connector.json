@@ -29,6 +29,12 @@
     "tests/peers/codex_wire.py",
     "tests/cases/EXT-009.py",
     "tests/peers/native_case.py",
-    "tests/cases/EXT-010.py"
+    "tests/cases/EXT-010.py",
+    "tests/cases/EXT-070.py",
+    "tests/peers/connector_address.py",
+    "tests/peers/connector_tls.py",
+    "compat/wire4/address_cases/source.lock.json",
+    "compat/wire4/address_cases/consumer.lock.json",
+    "tests/peers/connector_service_address.py"
   ]
 }

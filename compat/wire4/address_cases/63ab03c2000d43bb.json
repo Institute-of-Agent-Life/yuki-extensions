@@ -1,0 +1,22 @@
+{
+  "nodeid": "tests/integration/test_connector_address_e2e.py::test_running_connector_keeps_original_shell_when_address_is_saved",
+  "revision": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+  "facts": {
+    "device_id": "9790a105-98cf-4109-a8e4-e0efe954247c",
+    "run_id": "085b97ee-8608-50ec-b025-498e99a71db5",
+    "original_pid": 4493,
+    "response": {
+      "device_id": "9790a105-98cf-4109-a8e4-e0efe954247c",
+      "request_id": "original-address-shell",
+      "run_id": "085b97ee-8608-50ec-b025-498e99a71db5",
+      "input_delivered": true,
+      "operation_id": "original-address-input",
+      "pending": true,
+      "state_sequence": 2,
+      "status": "running"
+    },
+    "original_socket_retained": true,
+    "saved_endpoint": "wss://localhost:41683/agents/v1/connect",
+    "running_endpoint": "wss://127.0.0.1:41683/agents/v1/connect"
+  }
+}

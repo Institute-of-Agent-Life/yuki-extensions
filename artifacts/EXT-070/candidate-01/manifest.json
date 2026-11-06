@@ -1,0 +1,26 @@
+{
+  "task": "EXT-070",
+  "status": "PASS",
+  "phase": "preparation",
+  "card_status": "CANDIDATE_ON_UNPUBLISHED_EXT011",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "c70eb4fe55cb3155ef9176a57b76e63b96da54adb0e4750b7f1f759657a41bd2",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-070",
+    "--preparation",
+    "--out",
+    "artifacts\\EXT-070\\candidate-01"
+  ],
+  "files": {
+    "address-results.json": "573b86d850151eaef2d5a6eab856f21aaff4b615c2e861a9a776d621d35fc1b9",
+    "cases.json": "1edfe36b4c5d3d113dffd8ad3815ee5a8af7f1a10191413726215dcc5aea985c",
+    "connector-address-continuity.json": "e26d89f20d632ecbda2e289224c7203a66e3dc7700429e3682816d6a79da5129",
+    "environment.json": "fd0d203c3f71581fc461fb0efda869504a4b3697dd90938c180bb746446024b6",
+    "peer.txt": "bf687d8e30eb20ee46e58abce966383e7b2705d87d8562604e8d4561b9b501f0",
+    "wire.json": "e768af9cb107fed10bb69fbd39d88ddacbb13c311c119536fa80a27a15c10a98"
+  }
+}

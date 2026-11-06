@@ -1,0 +1,40 @@
+{
+  "status": "VERIFIED_WINDOWS_CANDIDATE",
+  "native_manifest_sha256": "21e86af4501da9c30ec36f4e31f4b137490cdf943eb63973b4c894f644521a68",
+  "native_source_snapshot_sha256": "aa596c3a90396972e7d55a16e252bdaeba5c93ccf79ae9ac9a019ccfeb341864",
+  "historical_artifact_digest": "sha256:da2c0c140992b3a2af8dee54bd89e0a32caf4184dca5dae0dc131637c0e9b70b",
+  "historical_commit": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+  "historical_receipts_matched": 11,
+  "current_cases": 15,
+  "unchanged_runtime_bindings": 19,
+  "wheel_sha256": "2748ec830b56e38f404d33964350578e543232ab1fce02e2399fc3ab045a74d8",
+  "wire_sha256": "919a7a90cd0e1db1ad5a20357d159e4dde272de254e1bfa6070b3db3baac127c",
+  "native_exec_commands": 1,
+  "native_launches": 1,
+  "old_PID_retained": 13168,
+  "replayed_exact_pending_events": [
+    "retained-before-url"
+  ],
+  "unknown_remains_unknown": true,
+  "TLS": [
+    [
+      {
+        "version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384"
+      }
+    ],
+    [
+      {
+        "version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384"
+      }
+    ]
+  ],
+  "native_task_cleanup_verified": true,
+  "temporary_task_name": "yuki-agent-connector-80713fa88fe0",
+  "not_claimed": [
+    "core Work authority acceptance",
+    "public producer/consumer publication",
+    "production deployment"
+  ]
+}

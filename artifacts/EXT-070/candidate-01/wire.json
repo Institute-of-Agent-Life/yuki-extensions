@@ -1,0 +1,454 @@
+[
+  {
+    "endpoint": "legacy-0",
+    "direction": "from_connector",
+    "frame": {
+      "type": "hello",
+      "protocol_version": 4,
+      "device_id": "ef4b46ae-c353-46e5-b73d-156c871886b1",
+      "device_capabilities": {
+        "full_access": false,
+        "platform": "win32",
+        "shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+        "tty": false,
+        "interrupt_supported": false
+      },
+      "instances": []
+    },
+    "frame_sha256": "fb4710a4d888dff642ebf7295621ef04e1363713f5746bdf091eff38a4e04eda"
+  },
+  {
+    "endpoint": "legacy-0",
+    "direction": "from_connector",
+    "frame": {
+      "event_id": "original-unconfirmed-event",
+      "kind": "progress",
+      "operation_id": "original-pending",
+      "operation_state": {
+        "pending": true,
+        "run_id": "original-pending",
+        "state_sequence": 3,
+        "status": "running"
+      },
+      "result": {
+        "run_id": "original-pending",
+        "status": "running"
+      },
+      "sequence": 3,
+      "type": "terminal_event"
+    },
+    "frame_sha256": "80f9d57257311541cfd64f8046c5de79466e6796714e103e484bbb805d1e661b"
+  },
+  {
+    "endpoint": "legacy-1",
+    "direction": "from_connector",
+    "frame": {
+      "type": "hello",
+      "protocol_version": 4,
+      "device_id": "fb79158c-20ec-4448-a105-6a5bbfce015e",
+      "device_capabilities": {
+        "full_access": false,
+        "platform": "win32",
+        "shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+        "tty": false,
+        "interrupt_supported": false
+      },
+      "instances": []
+    },
+    "frame_sha256": "a14cf8f31701d4d4edcceb922c5d2f9d4e7d9cdbe58fbde1188b04c2023c889e"
+  },
+  {
+    "endpoint": "legacy-1",
+    "direction": "from_connector",
+    "frame": {
+      "event_id": "original-unconfirmed-event",
+      "kind": "progress",
+      "operation_id": "original-pending",
+      "operation_state": {
+        "pending": true,
+        "run_id": "original-pending",
+        "state_sequence": 3,
+        "status": "running"
+      },
+      "result": {
+        "run_id": "original-pending",
+        "status": "running"
+      },
+      "sequence": 3,
+      "type": "terminal_event"
+    },
+    "frame_sha256": "80f9d57257311541cfd64f8046c5de79466e6796714e103e484bbb805d1e661b"
+  },
+  {
+    "endpoint": "WSS-A",
+    "direction": "from_connector",
+    "frame": {
+      "type": "hello",
+      "protocol_version": 4,
+      "device_id": "394a5db9-3067-41be-abda-33d79ee577b5",
+      "device_capabilities": {
+        "full_access": true,
+        "platform": "win32",
+        "shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+        "tty": false,
+        "interrupt_supported": false
+      },
+      "instances": []
+    },
+    "frame_sha256": "6bb6cbe9ef8aebab80025459f51e295ff7be48bede66bae24fba069f5f07bdc9"
+  },
+  {
+    "endpoint": "WSS-A",
+    "direction": "from_connector",
+    "frame": {
+      "event_id": "already-acked",
+      "kind": "progress",
+      "result": {
+        "status": "unknown"
+      },
+      "sequence": 1,
+      "type": "terminal_event"
+    },
+    "frame_sha256": "73137093fb9d5d5bbc818e6e5dda3080b9be782c2143d51070007e008649e635"
+  },
+  {
+    "endpoint": "WSS-A",
+    "direction": "from_connector",
+    "frame": {
+      "event_id": "retained-before-url",
+      "kind": "progress",
+      "result": {
+        "status": "unknown"
+      },
+      "sequence": 2,
+      "type": "terminal_event"
+    },
+    "frame_sha256": "d8fca42bfc7a46efde519c14b31fad7d2d2933734d23e0817e2fa2e7d4f0096e"
+  },
+  {
+    "endpoint": "WSS-A",
+    "direction": "to_connector",
+    "frame": {
+      "type": "command",
+      "id": "original-address-shell",
+      "resource": "terminal",
+      "action": "exec",
+      "run_id": "original-address-run",
+      "arguments": {
+        "command": "& 'C:\\Users\\Hilbert\\yuki-extension-tests\\c70eb4fe55cb3155ef91\\src\\artifacts\\EXT-070\\candidate-01\\work\\environment\\Scripts\\python.exe' -X utf8 -u 'C:\\Users\\Hilbert\\yuki-extension-tests\\c70eb4fe55cb3155ef91\\src\\artifacts\\EXT-070\\candidate-01\\work\\live-shell\\original-shell.py'",
+        "cwd": "C:\\Users\\Hilbert\\yuki-extension-tests\\c70eb4fe55cb3155ef91\\src\\artifacts\\EXT-070\\candidate-01\\work\\live-shell",
+        "tty": false
+      }
+    },
+    "frame_sha256": "405ba9ea4f0f6920fb02c2b8404c0564be6b61a22a1b6739845ffd69932a91ba"
+  },
+  {
+    "endpoint": "WSS-A",
+    "direction": "from_connector",
+    "frame": {
+      "type": "response",
+      "id": "original-address-shell",
+      "result": {
+        "admitted": true,
+        "cwd": "C:\\Users\\Hilbert\\yuki-extension-tests\\c70eb4fe55cb3155ef91\\src\\artifacts\\EXT-070\\candidate-01\\work\\live-shell",
+        "pending": true,
+        "request_id": "original-address-shell",
+        "run_id": "original-address-run",
+        "shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+        "state_sequence": 3,
+        "status": "running"
+      }
+    },
+    "frame_sha256": "ad62f4bb83237a9597b17abd81023234e434cbfe5ef64b8a3ebd0ad173741e55"
+  },
+  {
+    "endpoint": "WSS-A",
+    "direction": "to_connector",
+    "frame": {
+      "type": "command",
+      "id": "original-address-input",
+      "resource": "terminal",
+      "action": "input",
+      "run_id": "original-address-run",
+      "arguments": {
+        "text": "continue\n"
+      }
+    },
+    "frame_sha256": "e6c486d8b709225054a2b78237d95fb302bd2c6fe4402adeb88193cc4d420c7b"
+  },
+  {
+    "endpoint": "WSS-A",
+    "direction": "from_connector",
+    "frame": {
+      "type": "response",
+      "id": "original-address-input",
+      "result": {
+        "input_delivered": true,
+        "operation_id": "original-address-input",
+        "pending": true,
+        "run_id": "original-address-run",
+        "state_sequence": 4,
+        "status": "running"
+      }
+    },
+    "frame_sha256": "8a8ed516d8f8c652a42d92d911497c240a5edfdca311f330df4a3fe7b6ce00fe"
+  },
+  {
+    "endpoint": "WSS-A",
+    "direction": "to_connector",
+    "frame": {
+      "type": "command",
+      "id": "read-0",
+      "resource": "terminal",
+      "action": "get",
+      "arguments": {
+        "operation_id": "original-address-shell"
+      }
+    },
+    "frame_sha256": "0ff341281475c568efe5c3f792b2899724de3b8028e0679c3051af921ed14676"
+  },
+  {
+    "endpoint": "WSS-A",
+    "direction": "from_connector",
+    "frame": {
+      "type": "response",
+      "id": "read-0",
+      "result": {
+        "admitted": true,
+        "cwd": "C:\\Users\\Hilbert\\yuki-extension-tests\\c70eb4fe55cb3155ef91\\src\\artifacts\\EXT-070\\candidate-01\\work\\live-shell",
+        "pending": true,
+        "request_id": "original-address-shell",
+        "run_id": "original-address-run",
+        "shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+        "state_sequence": 3,
+        "status": "running"
+      }
+    },
+    "frame_sha256": "2bfa63dc9c41c1eb6f2f57e3025e774bcf087d5cc415d4c10e9009346b703e8c"
+  },
+  {
+    "endpoint": "WSS-A",
+    "direction": "from_connector",
+    "frame": {
+      "event_id": "089b4f58-8ae2-4943-a872-257d8cd956ff",
+      "kind": "completed",
+      "operation_id": "original-address-shell",
+      "operation_state": {
+        "admitted": true,
+        "completion": {
+          "exit_code": 0,
+          "pending": false,
+          "run_id": "original-address-run",
+          "status": "succeeded"
+        },
+        "cwd": "C:\\Users\\Hilbert\\yuki-extension-tests\\c70eb4fe55cb3155ef91\\src\\artifacts\\EXT-070\\candidate-01\\work\\live-shell",
+        "exit_code": 0,
+        "pending": false,
+        "request_id": "original-address-shell",
+        "run_id": "original-address-run",
+        "shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+        "state_sequence": 5,
+        "status": "succeeded"
+      },
+      "request_id": "original-address-shell",
+      "result": {
+        "exit_code": 0,
+        "pending": false,
+        "run_id": "original-address-run",
+        "status": "succeeded"
+      },
+      "run_id": "original-address-run",
+      "sequence": 5,
+      "type": "terminal_event"
+    },
+    "frame_sha256": "632f93b661f4e94e8adbff9719d4fa590418772d513b8d1a39a2333b97a790db"
+  },
+  {
+    "endpoint": "WSS-A",
+    "direction": "to_connector",
+    "frame": {
+      "type": "command",
+      "id": "read-1",
+      "resource": "terminal",
+      "action": "get",
+      "arguments": {
+        "operation_id": "original-address-shell"
+      }
+    },
+    "frame_sha256": "21ceecf9e4a80cefbd21c318c27af65f04cfd7425a56416bb2e077e7f33fd06b"
+  },
+  {
+    "endpoint": "WSS-A",
+    "direction": "from_connector",
+    "frame": {
+      "type": "response",
+      "id": "read-1",
+      "result": {
+        "admitted": true,
+        "completion": {
+          "exit_code": 0,
+          "pending": false,
+          "run_id": "original-address-run",
+          "status": "succeeded"
+        },
+        "cwd": "C:\\Users\\Hilbert\\yuki-extension-tests\\c70eb4fe55cb3155ef91\\src\\artifacts\\EXT-070\\candidate-01\\work\\live-shell",
+        "exit_code": 0,
+        "pending": false,
+        "request_id": "original-address-shell",
+        "run_id": "original-address-run",
+        "shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+        "state_sequence": 5,
+        "status": "succeeded"
+      }
+    },
+    "frame_sha256": "085bf9ddcf3070ce06462b20e15e5b76056b22930eaa17c9d255960020f6d937"
+  },
+  {
+    "endpoint": "WSS-A",
+    "direction": "to_connector",
+    "frame": {
+      "type": "command",
+      "id": "output-before-restart",
+      "resource": "terminal",
+      "action": "read",
+      "run_id": "original-address-run",
+      "arguments": {
+        "cursor": 0
+      }
+    },
+    "frame_sha256": "9aa9ee85cc7ef7005d309f5ceab275d5960704015583a56886b64b6540899243"
+  },
+  {
+    "endpoint": "WSS-A",
+    "direction": "from_connector",
+    "frame": {
+      "type": "response",
+      "id": "output-before-restart",
+      "result": {
+        "admitted": true,
+        "completion": {
+          "exit_code": 0,
+          "pending": false,
+          "run_id": "original-address-run",
+          "status": "succeeded"
+        },
+        "cwd": "C:\\Users\\Hilbert\\yuki-extension-tests\\c70eb4fe55cb3155ef91\\src\\artifacts\\EXT-070\\candidate-01\\work\\live-shell",
+        "exit_code": 0,
+        "pending": false,
+        "request_id": "original-address-shell",
+        "run_id": "original-address-run",
+        "shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+        "state_sequence": 5,
+        "status": "succeeded",
+        "output": "original-shell-completed-完成\r\n",
+        "output_offset": 0,
+        "output_lost": false,
+        "next_cursor": 33,
+        "eof": true
+      }
+    },
+    "frame_sha256": "c39ede2c9fab4cee7b45135c710527ced74a02c90360253e9a41c4529717af4a"
+  },
+  {
+    "endpoint": "WSS-B",
+    "direction": "from_connector",
+    "frame": {
+      "type": "hello",
+      "protocol_version": 4,
+      "device_id": "394a5db9-3067-41be-abda-33d79ee577b5",
+      "device_capabilities": {
+        "full_access": true,
+        "platform": "win32",
+        "shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+        "tty": false,
+        "interrupt_supported": false
+      },
+      "instances": []
+    },
+    "frame_sha256": "6bb6cbe9ef8aebab80025459f51e295ff7be48bede66bae24fba069f5f07bdc9"
+  },
+  {
+    "endpoint": "WSS-B",
+    "direction": "from_connector",
+    "frame": {
+      "event_id": "retained-before-url",
+      "kind": "progress",
+      "result": {
+        "status": "unknown"
+      },
+      "sequence": 2,
+      "type": "terminal_event"
+    },
+    "frame_sha256": "d8fca42bfc7a46efde519c14b31fad7d2d2933734d23e0817e2fa2e7d4f0096e"
+  },
+  {
+    "endpoint": "WSS-B",
+    "direction": "to_connector",
+    "frame": {
+      "type": "command",
+      "id": "get-after-restart",
+      "resource": "terminal",
+      "action": "get",
+      "arguments": {
+        "operation_id": "original-address-shell"
+      }
+    },
+    "frame_sha256": "67250999551b7c39bb19a5984779e836570b85a1a168370a72cdc3e3cac3d10a"
+  },
+  {
+    "endpoint": "WSS-B",
+    "direction": "from_connector",
+    "frame": {
+      "type": "response",
+      "id": "get-after-restart",
+      "result": {
+        "admitted": true,
+        "completion": {
+          "exit_code": 0,
+          "pending": false,
+          "run_id": "original-address-run",
+          "status": "succeeded"
+        },
+        "cwd": "C:\\Users\\Hilbert\\yuki-extension-tests\\c70eb4fe55cb3155ef91\\src\\artifacts\\EXT-070\\candidate-01\\work\\live-shell",
+        "exit_code": 0,
+        "pending": false,
+        "request_id": "original-address-shell",
+        "run_id": "original-address-run",
+        "shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+        "state_sequence": 5,
+        "status": "succeeded"
+      }
+    },
+    "frame_sha256": "1f17d1f214c2ddd699f94c690fd01d5f6e038ee36300297ddd570f3346a813d0"
+  },
+  {
+    "endpoint": "WSS-B",
+    "direction": "to_connector",
+    "frame": {
+      "type": "command",
+      "id": "get-offline-unknown",
+      "resource": "terminal",
+      "action": "get",
+      "arguments": {
+        "operation_id": "offline-unknown"
+      }
+    },
+    "frame_sha256": "a9385161d082b550cc6f0777454dd9f4d1814a99aac32c49671507e752a989bc"
+  },
+  {
+    "endpoint": "WSS-B",
+    "direction": "from_connector",
+    "frame": {
+      "type": "response",
+      "id": "get-offline-unknown",
+      "result": {
+        "pending": true,
+        "reason": "original_dispatch_not_confirmed",
+        "run_id": "unknown-run",
+        "state_sequence": 0,
+        "status": "unknown"
+      }
+    },
+    "frame_sha256": "042484a7e4476eeb155d6579150d75d536d6857385c5432618414898204ace60"
+  }
+]

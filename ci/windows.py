@@ -57,7 +57,7 @@ def main():
     parser.add_argument("--preparation", action="store_true", help="run the card preparation entry point")
     args = parser.parse_args()
     driver_case = args.task in {"EXT-008", "EXT-009", "EXT-010"}
-    connector_mode = args.connector_source or args.connector_candidate or driver_case or args.task == "EXT-011"
+    connector_mode = args.connector_source or args.connector_candidate or driver_case or args.task in {"EXT-011", "EXT-070"}
     if args.connector_source and args.connector_candidate:
         parser.error("select one connector verification mode")
     if not re.fullmatch(r"EXT-\d{3}", args.task) or not re.fullmatch(r"[a-zA-Z0-9-]+", args.run):
@@ -111,7 +111,7 @@ def main():
                 raise ValueError("platform fixture wheel digest mismatch: " + wheel.name)
             extra.append(wheel)
     if connector_mode:
-        if not driver_case and args.task not in {"EXT-007", "EXT-011"}:
+        if not driver_case and args.task not in {"EXT-007", "EXT-011", "EXT-070"}:
             parser.error("connector source mode belongs to EXT-007 preparation")
         manifest_path = transfer / "connector-wheels.json"
         helper = invoke(["uv", "run", "--no-project", "--offline", "--python", "3.12", "python",

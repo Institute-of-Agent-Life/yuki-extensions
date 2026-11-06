@@ -1,0 +1,274 @@
+[
+  {
+    "historical_nodeid": "tests/integration/test_connector_address_e2e.py::test_server_cli_only_saves_original_installation[http://[::1]:18767-ws://[::1]:18767/agents/v1/connect]",
+    "historical_receipt_sha256": "cbe6ba3d288505d9b4786fa97f52100bb31f0be76ba0b135a315bb4e6d939da7",
+    "new_case": {
+      "case": "save-original-installation",
+      "target": "http://[::1]:18767",
+      "expected_endpoint": "ws://[::1]:18767/agents/v1/connect",
+      "original_fields_preserved": true,
+      "service_marker_sha256": "ee351a1f0bcd41cecfbea883f531c8c697b569f7223cee7f0bad2c3a651493d3",
+      "journal_created": false
+    },
+    "result": "MATCHED"
+  },
+  {
+    "historical_nodeid": "tests/integration/test_connector_address_e2e.py::test_server_cli_keeps_remote_tls_requirement[http://remote.invalid]",
+    "historical_receipt_sha256": "ba896c805296b03809f29baabc346b5a2394da5e32dee5154a06adf0d3cf0022",
+    "new_case": {
+      "case": "remote-TLS-required",
+      "target": "http://remote.invalid",
+      "exit_code": 1,
+      "config_unchanged": true
+    },
+    "result": "MATCHED"
+  },
+  {
+    "historical_nodeid": "tests/integration/test_connector_address_e2e.py::test_server_cli_only_saves_original_installation[https://new.example/role/yuki/-wss://new.example/role/yuki/agents/v1/connect]",
+    "historical_receipt_sha256": "0bbce19c1cd88e0c8743345dc17f01ad84f0bf1b86e66a3a16523cf2b06f1cd3",
+    "new_case": {
+      "case": "save-original-installation",
+      "target": "https://new.example/role/yuki/",
+      "expected_endpoint": "wss://new.example/role/yuki/agents/v1/connect",
+      "original_fields_preserved": true,
+      "service_marker_sha256": "ee351a1f0bcd41cecfbea883f531c8c697b569f7223cee7f0bad2c3a651493d3",
+      "journal_created": false
+    },
+    "result": "MATCHED"
+  },
+  {
+    "historical_nodeid": "tests/integration/test_connector_address_e2e.py::test_server_cli_only_saves_original_installation[http://127.0.0.1:18767/role/yuki-ws://127.0.0.1:18767/role/yuki/agents/v1/connect]",
+    "historical_receipt_sha256": "1039782a271ab538dda23e61ade2d07ddf01c14602b27a98860e2c70e1c92987",
+    "new_case": {
+      "case": "save-original-installation",
+      "target": "http://127.0.0.1:18767/role/yuki",
+      "expected_endpoint": "ws://127.0.0.1:18767/role/yuki/agents/v1/connect",
+      "original_fields_preserved": true,
+      "service_marker_sha256": "ee351a1f0bcd41cecfbea883f531c8c697b569f7223cee7f0bad2c3a651493d3",
+      "journal_created": false
+    },
+    "result": "MATCHED"
+  },
+  {
+    "historical_nodeid": "tests/integration/test_connector_address_e2e.py::test_server_cli_only_saves_original_installation[http://localhost:18767-ws://localhost:18767/agents/v1/connect]",
+    "historical_receipt_sha256": "fa37752e35c005a767978a8b844e607459d109cbca71d2037a7085cd4a1f1d3c",
+    "new_case": {
+      "case": "save-original-installation",
+      "target": "http://localhost:18767",
+      "expected_endpoint": "ws://localhost:18767/agents/v1/connect",
+      "original_fields_preserved": true,
+      "service_marker_sha256": "ee351a1f0bcd41cecfbea883f531c8c697b569f7223cee7f0bad2c3a651493d3",
+      "journal_created": false
+    },
+    "result": "MATCHED"
+  },
+  {
+    "historical_nodeid": "tests/integration/test_connector_address_e2e.py::test_running_connector_keeps_original_shell_when_address_is_saved",
+    "historical_receipt_sha256": "63ab03c2000d43bbf91c2a9d15a78e5580fe3dbee64fdc4d6baaa2449a14a151",
+    "new_case": {
+      "case": "live-shell-kept-while-saving-address",
+      "original_pid": 13168,
+      "run_id": "original-address-run",
+      "input_delivered": true,
+      "original_socket_retained": true,
+      "new_endpoint_connections": 0,
+      "receipt": {
+        "admitted": true,
+        "completion": {
+          "exit_code": 0,
+          "pending": false,
+          "run_id": "original-address-run",
+          "status": "succeeded"
+        },
+        "cwd": "C:\\Users\\Hilbert\\yuki-extension-tests\\aa596c3a90396972e7d5\\src\\artifacts\\EXT-070\\candidate-03\\work\\live-shell",
+        "exit_code": 0,
+        "pending": false,
+        "request_id": "original-address-shell",
+        "run_id": "original-address-run",
+        "shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+        "state_sequence": 5,
+        "status": "succeeded"
+      },
+      "service_marker_sha256": "c367d8bbf542a7f8b8425bd01d41394625a2afce0e8bc4cfb2ea5641e96e9147"
+    },
+    "result": "MATCHED"
+  },
+  {
+    "historical_nodeid": "tests/integration/test_connector_address_e2e.py::test_cli_start_upgrades_old_url_namespace_before_connecting[1]",
+    "historical_receipt_sha256": "184d1ef4e8614e1b59cedf64d0c5fbfaed797ff758fd490cd0483a2d5de28960",
+    "new_case": {
+      "case": "upgrade-original-url-namespace",
+      "receipt_version": 1,
+      "before": {
+        "installation": [
+          [
+            "[\"wss://old.example/agents/v1/connect\", \"522b8e1d-f384-4a3e-85f1-81e1a0af4332\"]"
+          ]
+        ],
+        "operations": [
+          [
+            "original-completed",
+            "{\"action\":\"exec\",\"id\":\"original-completed\",\"resource\":\"terminal\",\"run_id\":\"original-completed\"}",
+            "{\"result\":{\"run_id\":\"original-completed\",\"status\":\"succeeded\"}}",
+            0,
+            "{\"pending\":false,\"run_id\":\"original-completed\",\"state_sequence\":1,\"status\":\"succeeded\"}"
+          ],
+          [
+            "original-pending",
+            "{\"action\":\"exec\",\"id\":\"original-pending\",\"resource\":\"terminal\",\"run_id\":\"original-pending\"}",
+            "{\"result\":{\"run_id\":\"original-pending\",\"status\":\"running\"}}",
+            1,
+            "{\"pending\":true,\"run_id\":\"original-pending\",\"state_sequence\":3,\"status\":\"running\"}"
+          ]
+        ],
+        "events": [
+          [
+            3,
+            "original-unconfirmed-event",
+            "{\"event_id\":\"original-unconfirmed-event\",\"kind\":\"progress\",\"operation_id\":\"original-pending\",\"operation_state\":{\"pending\":true,\"run_id\":\"original-pending\",\"state_sequence\":3,\"status\":\"running\"},\"result\":{\"run_id\":\"original-pending\",\"status\":\"running\"},\"sequence\":3,\"type\":\"terminal_event\"}"
+          ]
+        ]
+      },
+      "after": {
+        "installation": [
+          [
+            "522b8e1d-f384-4a3e-85f1-81e1a0af4332"
+          ]
+        ],
+        "operations": [
+          [
+            "original-completed",
+            "{\"action\":\"exec\",\"id\":\"original-completed\",\"resource\":\"terminal\",\"run_id\":\"original-completed\"}",
+            "{\"result\":{\"run_id\":\"original-completed\",\"status\":\"succeeded\"}}",
+            0,
+            "{\"pending\":false,\"run_id\":\"original-completed\",\"state_sequence\":1,\"status\":\"succeeded\"}",
+            null
+          ],
+          [
+            "original-pending",
+            "{\"action\":\"exec\",\"id\":\"original-pending\",\"resource\":\"terminal\",\"run_id\":\"original-pending\"}",
+            "{\"result\":{\"run_id\":\"original-pending\",\"status\":\"running\"}}",
+            1,
+            "{\"pending\":true,\"run_id\":\"original-pending\",\"state_sequence\":3,\"status\":\"running\"}",
+            null
+          ]
+        ],
+        "events": [
+          [
+            3,
+            "original-unconfirmed-event",
+            "{\"event_id\":\"original-unconfirmed-event\",\"kind\":\"progress\",\"operation_id\":\"original-pending\",\"operation_state\":{\"pending\":true,\"run_id\":\"original-pending\",\"state_sequence\":3,\"status\":\"running\"},\"result\":{\"run_id\":\"original-pending\",\"status\":\"running\"},\"sequence\":3,\"type\":\"terminal_event\"}"
+          ]
+        ]
+      },
+      "original_unconfirmed_event_preserved": true,
+      "same_device_reopen": true
+    },
+    "result": "MATCHED"
+  },
+  {
+    "historical_nodeid": "tests/integration/test_connector_address_e2e.py::test_cli_start_upgrades_old_url_namespace_before_connecting[0]",
+    "historical_receipt_sha256": "b085e8517b23a00ff24671ec30856d9390857c228bf1fa0dc243b9e801ffba88",
+    "new_case": {
+      "case": "upgrade-original-url-namespace",
+      "receipt_version": 0,
+      "before": {
+        "installation": [
+          [
+            "[\"wss://old.example/agents/v1/connect\", \"1fb68ada-0a5e-46e4-a846-f99a9dfa5b4a\"]"
+          ]
+        ],
+        "operations": [
+          [
+            "original-completed",
+            "{\"action\":\"exec\",\"id\":\"original-completed\",\"resource\":\"terminal\",\"run_id\":\"original-completed\"}",
+            "{\"result\":{\"run_id\":\"original-completed\",\"status\":\"succeeded\"}}",
+            0,
+            null
+          ],
+          [
+            "original-pending",
+            "{\"action\":\"exec\",\"id\":\"original-pending\",\"resource\":\"terminal\",\"run_id\":\"original-pending\"}",
+            "{\"result\":{\"run_id\":\"original-pending\",\"status\":\"running\"}}",
+            1,
+            null
+          ]
+        ],
+        "events": [
+          [
+            3,
+            "original-unconfirmed-event",
+            "{\"event_id\":\"original-unconfirmed-event\",\"kind\":\"progress\",\"operation_id\":\"original-pending\",\"operation_state\":{\"pending\":true,\"run_id\":\"original-pending\",\"state_sequence\":3,\"status\":\"running\"},\"result\":{\"run_id\":\"original-pending\",\"status\":\"running\"},\"sequence\":3,\"type\":\"terminal_event\"}"
+          ]
+        ]
+      },
+      "after": {
+        "installation": [
+          [
+            "1fb68ada-0a5e-46e4-a846-f99a9dfa5b4a"
+          ]
+        ],
+        "operations": [
+          [
+            "original-completed",
+            "{\"action\":\"exec\",\"id\":\"original-completed\",\"resource\":\"terminal\",\"run_id\":\"original-completed\"}",
+            "{\"result\":{\"run_id\":\"original-completed\",\"status\":\"succeeded\"}}",
+            0,
+            "{\"pending\":false,\"run_id\":\"original-completed\",\"state_sequence\":0,\"status\":\"succeeded\"}",
+            null
+          ],
+          [
+            "original-pending",
+            "{\"action\":\"exec\",\"id\":\"original-pending\",\"resource\":\"terminal\",\"run_id\":\"original-pending\"}",
+            "{\"result\":{\"run_id\":\"original-pending\",\"status\":\"running\"}}",
+            1,
+            "{\"pending\":true,\"run_id\":\"original-pending\",\"state_sequence\":3,\"status\":\"running\"}",
+            null
+          ]
+        ],
+        "events": [
+          [
+            3,
+            "original-unconfirmed-event",
+            "{\"event_id\":\"original-unconfirmed-event\",\"kind\":\"progress\",\"operation_id\":\"original-pending\",\"operation_state\":{\"pending\":true,\"run_id\":\"original-pending\",\"state_sequence\":3,\"status\":\"running\"},\"result\":{\"run_id\":\"original-pending\",\"status\":\"running\"},\"sequence\":3,\"type\":\"terminal_event\"}"
+          ]
+        ]
+      },
+      "original_unconfirmed_event_preserved": true,
+      "same_device_reopen": true
+    },
+    "result": "MATCHED"
+  },
+  {
+    "historical_nodeid": "tests/integration/test_connector_address_e2e.py::test_cli_start_rejects_another_device_without_rewriting_original_evidence",
+    "historical_receipt_sha256": "82ab2af540d2f345535ba448a869bd377cac607447e79c8c1ba3c49313ac90fd",
+    "new_case": {
+      "case": "different-device-rejected-before-connect",
+      "exit_code": 1,
+      "original_evidence_preserved": true
+    },
+    "result": "MATCHED"
+  },
+  {
+    "historical_nodeid": "tests/integration/test_connector_address_e2e.py::test_server_cli_keeps_remote_tls_requirement[http://100.100.100.100]",
+    "historical_receipt_sha256": "07f74cc6d8675e33c6d434b8a7ad35e4e30e81e255a6a57349e115bebc54a09f",
+    "new_case": {
+      "case": "remote-TLS-required",
+      "target": "http://100.100.100.100",
+      "exit_code": 1,
+      "config_unchanged": true
+    },
+    "result": "MATCHED"
+  },
+  {
+    "historical_nodeid": "tests/integration/test_connector_address_e2e.py::test_server_cli_keeps_remote_tls_requirement[ftp://host]",
+    "historical_receipt_sha256": "57f4b40fb479cb80bc522d9aac0eeed7dc0f5bfc00011b1dcd9f91512c3714ea",
+    "new_case": {
+      "case": "remote-TLS-required",
+      "target": "ftp://host",
+      "exit_code": 1,
+      "config_unchanged": true
+    },
+    "result": "MATCHED"
+  }
+]

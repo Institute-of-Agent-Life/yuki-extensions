@@ -1,0 +1,26 @@
+{
+  "source_commit": "ce1cec3a2092ac4d3fce36be12a579cbc22ca4c1",
+  "version": "0.4.4.dev1",
+  "scope": "unchanged existing Connector runtime; EXT-070 adds consumer evidence only",
+  "files": {
+    "connector/LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+    "connector/pyproject.toml": "d199287f0528f66d51aaeab2fa7ec19d902cf71f8ce2daa4ff4c7f5ac3e626e3",
+    "connector/src/yuki_agent_connector/__init__.py": "cc07486fee395b63cadba9de635fcc22c6bef241bc75744587a2b9df53bce474",
+    "connector/src/yuki_agent_connector/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "connector/src/yuki_agent_connector/claude_inspect.py": "07724d443860ed50b4017a80f183d3842ffb30ce9a09dcc41aeef92dbc05e0c0",
+    "connector/src/yuki_agent_connector/cli.py": "12f3ba4614c066a612b45fe19f11184596e1e4a9388beb0745ccd24f232d5f25",
+    "connector/src/yuki_agent_connector/computer.py": "ebbdd07a48aaa696d6b58aefd42003fbfb22d51a1bc7751bd62dfb8724f48940",
+    "connector/src/yuki_agent_connector/config.py": "e038b5eae10a3ba1d951ac7bdd73b9c49e96ee88a7d4b126e8e51ad1a9552bef",
+    "connector/src/yuki_agent_connector/connector.py": "69187496704d96b1e074462786d35932231f2c9f7959fd197a6d68c93c0b6083",
+    "connector/src/yuki_agent_connector/discovery.py": "450c6388225be284d91cf40e5e7c6d8ad9fc70f18abb63c399f039cbdfdb41b5",
+    "connector/src/yuki_agent_connector/drivers/__init__.py": "616c53b04a3a414d996131430439587dd2300eb44473c0946279079994aa49ec",
+    "connector/src/yuki_agent_connector/drivers/acp.py": "f144340d75dd1b137507440594f500744fa7ca9a1812c98ba2233478d4edf77b",
+    "connector/src/yuki_agent_connector/drivers/claude.py": "13853c868ceccf56e55674799cf59c84eb1d9d5ee8bd6922781d14d90751ca54",
+    "connector/src/yuki_agent_connector/drivers/codex.py": "18929eb03bb87ca4c9794dc3d0eb94596af892d20c2e80626799311601f7184b",
+    "connector/src/yuki_agent_connector/files.py": "72941999fabe6813090f44dc207775d485b27813b771fbf3386fe8114577078c",
+    "connector/src/yuki_agent_connector/journal.py": "140e58fb667a1ad897bc3b73f1f389d44cef109804c813beb493131407c763e6",
+    "connector/src/yuki_agent_connector/service.py": "84ca6cc53fac396c60181e0c7d70d5a291368351281bb711341699b3c0fbb054",
+    "connector/src/yuki_agent_connector/terminal.py": "25c45184af7355d88fabf96844093f9274bcd49486ac8bdd21bf553c54fea6f4",
+    "connector/uv.lock": "20473bace4005ddd06df3c0d5b08a6239f5a6e33a7f8f24b20f2d4382a95336a"
+  }
+}

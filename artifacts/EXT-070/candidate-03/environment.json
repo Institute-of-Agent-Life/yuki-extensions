@@ -1,0 +1,29 @@
+[
+  {
+    "argv": [
+      "uv",
+      "venv",
+      "--python",
+      "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "C:\\Users\\Hilbert\\yuki-extension-tests\\aa596c3a90396972e7d5\\src\\artifacts\\EXT-070\\candidate-03\\work\\environment"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "Using CPython 3.12.0 interpreter at: C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\nCreating virtual environment at: artifacts\\EXT-070\\candidate-03\\work\\environment\nActivate with: artifacts\\EXT-070\\candidate-03\\work\\environment\\Scripts\\activate\n"
+  },
+  {
+    "argv": [
+      "uv",
+      "pip",
+      "install",
+      "--python",
+      "C:\\Users\\Hilbert\\yuki-extension-tests\\aa596c3a90396972e7d5\\src\\artifacts\\EXT-070\\candidate-03\\work\\environment\\Scripts\\python.exe",
+      "--offline",
+      "--no-index",
+      "C:\\Users\\Hilbert\\yuki-extension-tests\\aa596c3a90396972e7d5\\src\\artifacts\\EXT-070\\candidate-03\\packages\\yuki_agent_connector-0.4.4.dev1-py3-none-any.whl"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "Using Python 3.12.0 environment at: artifacts\\EXT-070\\candidate-03\\work\\environment\nResolved 40 packages in 16ms\nPrepared 40 packages in 2.18s\nInstalled 40 packages in 585ms\n + agent-client-protocol==0.12.1\n + annotated-types==0.8.0\n + anyio==4.15.1\n + attrs==26.1.0\n + certifi==2026.10.19\n + cffi==2.1.1\n + claude-agent-sdk==0.2.172\n + click==8.5.0\n + cryptography==50.0.2\n + h11==0.16.0\n + httpcore==1.0.9\n + httpcore2==2.16.0\n + httpx==0.28.1\n + httpx2==2.16.0\n + idna==3.20\n + jsonschema==4.26.0\n + jsonschema-specifications==2025.9.1\n + mcp==2.3.0\n + mcp-types==2.3.0\n + opentelemetry-api==1.45.1\n + platformdirs==4.13.5\n + pycparser==3.12\n + pydantic==2.14.1\n + pydantic-core==2.50.1\n + pyjwt==2.15.1\n + python-multipart==0.0.32\n + python-socks==2.8.2\n + pywin32==312\n + referencing==0.37.0\n + rpds-py==2026.9.1\n + sniffio==1.3.1\n + socksio==1.0.0\n + sse-starlette==3.5.0\n + starlette==1.9.0\n + truststore==0.10.5\n + typing-extensions==4.16.0\n + typing-inspection==0.4.4\n + uvicorn==0.54.0\n + websockets==16.1.1\n + yuki-agent-connector==0.4.4.dev1 (from file:///C:/Users/Hilbert/yuki-extension-tests/aa596c3a90396972e7d5/src/artifacts/EXT-070/candidate-03/packages/yuki_agent_connector-0.4.4.dev1-py3-none-any.whl)\n"
+  }
+]
