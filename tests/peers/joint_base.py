@@ -53,7 +53,9 @@ def run(root, assets, archive, out, case):
     out.mkdir()
     work = out/'work'
     work.mkdir()
-    lock = json.loads((root/'compat/base/source.lock.json').read_bytes())
+    consumer = json.loads((root/'compat/base/source.lock.json').read_bytes())
+    lock = (json.loads((root/'compat/gateway-refusal/source.lock.json').read_bytes())
+            if case == 'denied-send' else consumer)
     platform = lock['platforms']['-'.join(native_target())]
     key = work/'signer.pub'
     key.write_bytes((platform['signer'] + '\n').encode('ascii'))
@@ -74,7 +76,7 @@ def run(root, assets, archive, out, case):
         assert all(digest(package/name) == h for name,h in manifest['artifacts'].items())
         dependencies = tomllib.loads((package/'Cargo.lock').read_text(encoding='utf-8'))['package']
         sdk, = [dep for dep in dependencies if dep['name'] == 'yuki-plugin-sdk']
-        assert sdk['checksum'] == lock['rust_crate_sha256'] and sdk['version'] == lock['sdk']['rust']
+        assert sdk['checksum'] == consumer['rust_crate_sha256'] and sdk['version'] == lock['sdk']['rust']
         package_hash[unit] = {'version': manifest['version'], 'artifacts': manifest['artifacts'],
                               'manifest_sha256': digest(package/'package-manifest.json')}
 
@@ -85,6 +87,7 @@ def run(root, assets, archive, out, case):
     cursor = 0
     original = bytearray()
     result_ref = {}
+    denial = {}
     second_entry = threading.Event()
     replay = threading.Event()
     replayed = threading.Event()
@@ -157,6 +160,10 @@ def run(root, assets, archive, out, case):
                     else:
                         assert n==4 and receipt['state']=='failed' and result.get('error')!='invalid_tool_arguments', receipt
                         done.set()
+                elif case == 'denied-send' and text is not None:
+                    assert receipt['state'] == 'failed' and result == {'error':'gateway_send_not_granted'}, receipt
+                    denial['original'] = receipt
+                    done.set()
                 elif case=='missing-method' and text is not None:
                     assert receipt['state']=='unknown' and result['plan']['state']=='unknown' and result['plan']['result']=={'unavailable':True},receipt
                     done.set()
@@ -311,7 +318,9 @@ def run(root, assets, archive, out, case):
             entry={'id':unit,'namespace':namespace,'program':sys.executable,'args':[str(root/'tests/peers/base_relay.py'),
                    str(binary),str(out/(unit+'.jsonl')),str(state_dir),case if unit=='telegram' else 'none'],'env':list(environment),'grants':config['grants']}
             if unit=='telegram':
-                entry.update(platform='telegram',bot_stage=bot,grants=['gateway.inbound','gateway.send'])
+                entry.update(platform='telegram',bot_stage=bot,grants=['gateway.inbound'])
+                if case != 'denied-send':
+                    entry['grants'].append('gateway.send')
             installed.append({'unit':unit,'namespace':namespace,'grants':entry['grants'],'environment_names':list(environment),'program_digest':digest(binary)})
             top += '\n[[plugins]]\n'+'\n'.join(k+'='+json.dumps(v) for k,v in entry.items())+'\n'
             if unit=='web-fetch':
@@ -366,6 +375,12 @@ def run(root, assets, archive, out, case):
         before=(len(models),len(native),len(requests))
         offset_count=len(offsets)
         with running():
+            if case == 'denied-send':
+                original_receipt = denial['original']
+                recovered = cli('operator','effect','read',original_receipt['namespace'],original_receipt['id'],person)
+                assert recovered['id'] == original_receipt['id'] and recovered['result'] == original_receipt['result']
+                assert recovered['state'] == original_receipt['state']
+                denial['after_restart'] = recovered
             if case=='erased-readback':
                 assert done.wait(25) and not failures,failures
                 ack_offset=53
@@ -386,7 +401,7 @@ def run(root, assets, archive, out, case):
         assert len(calls)==1 and len(checks)==2 and all(c[0]['params']['handle']==calls[0][0]['params']['handle'] for c in checks)
         ingress=list(exchange(traces['telegram'],'gateway.inbound','from_plugin'));assert len(ingress)==(2 if case in ('swapped','erased-readback') else 1) and all(pair[1]['result']['accepted'] for pair in ingress)
         parts=list(exchange(traces['telegram'],'gateway.dispatch_part','from_host'))
-        assert len(parts)==len(native)=={'confirmed':3,'lost-second':2,'wrong-handle':0,'revoked':0,'swapped':0,'missing-method':0,'erased-readback':0}[case]
+        assert len(parts)==len(native)=={'confirmed':3,'lost-second':2,'wrong-handle':0,'revoked':0,'swapped':0,'missing-method':0,'erased-readback':0,'denied-send':0}[case]
         assert all(n['chat_id']=='8' for n in native)
         states=[r['result'] for _,r in parts]
         if case=='missing-method':
@@ -394,13 +409,17 @@ def run(root, assets, archive, out, case):
             assert original_negotiation and all(any(m['name']=='gateway.dispatch_part' for m in x['frame']['result']['method_revisions']) for x in original_negotiation)
             plan,=exchange(traces['telegram'],'gateway.plan_send','from_host')
             assert plan[1]['error']['code']==-32601 and not parts
+        if case=='denied-send':
+            assert not list(exchange(traces['telegram'],'gateway.plan_send','from_host')) and not parts
+            assert len(reads)>=2 and bytes(original)==page and denial['after_restart']
+            write(out/'denial.json',denial)
         if case in ('confirmed','lost-second'):
             assert len(reads)>=2 and bytes(original)==page
             assert [p['text'] for p in native]==[text[i:i+4096] for i in range(0,len(text),4096)][:len(parts)]
             assert states==[{'state':'unknown'} if case=='lost-second' and i==1 else {'state':'confirmed','locator':'8:'+str(701+i)} for i in range(len(parts))]
         write(out/'result.json',{'case':case,'status':'PASS','published':False,'source':lock['source_commit'],
               'host':digest(host),'sdk':lock['rust_crate_sha256'],'schema':candidate['host_schema_sha256'],
-              'packages':package_hash,'event':ingress[0][1]['result']['event'],'web_status_checks':len(checks),
+              'consumer_sdk':consumer['rust_crate_sha256'],'packages':package_hash,'event':ingress[0][1]['result']['event'],'web_status_checks':len(checks),
               'ack_offsets_after_original_receipt':sorted(checked_offsets),'original_pages':len(reads),'page_bytes':len(page),'page_sha256':hashlib.sha256(page).hexdigest(),
               'native_parts':states,'confirmed_offset_after_restart':ack_offset,'redelivered_old_update':replayed.is_set(),'post_restart_effects':0,
               'live_private_directories':live_inventory,'private_directories_after_kill':after_kill,'private_directories_after_restart':after_reopen,'killed_children':{u:int((out/(u+'.killed')).read_text()) for u in package_hash}})
@@ -415,6 +434,6 @@ if __name__ == '__main__':
     parser=argparse.ArgumentParser()
     for name in ['root','assets','archive','out']:
         parser.add_argument(name,type=lambda value:Path(value).resolve())
-    parser.add_argument('--case',choices=['confirmed','lost-second','wrong-handle','revoked','swapped','missing-method','erased-readback'],required=True)
+    parser.add_argument('--case',choices=['confirmed','lost-second','wrong-handle','revoked','swapped','missing-method','erased-readback','denied-send'],required=True)
     args=parser.parse_args()
     run(args.root,args.assets,args.archive,args.out,args.case)
