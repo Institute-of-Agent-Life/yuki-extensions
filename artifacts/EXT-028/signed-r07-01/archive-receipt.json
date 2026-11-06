@@ -1,0 +1,12 @@
+{
+  "windows_zip_sha256": "8f1a975c4f5575917fbf04547d9abcc9e2157964946759596376a77ad552eca0",
+  "manifest_sha256": "3cc671e25361acecc26a0902812ea34879b1dc1b781bf80db4d833ca9873edb7",
+  "fetch_source_sha256": "cebba1a36271f88e4bc8a46276d8c54722ade93c873ed550d1286a4521e6ff34",
+  "verified_members": 7,
+  "plugin_sha256": "375d0fc76fb248d134489db54748062e6ab018825decbd57356e768f3f63ed0c",
+  "source": "2a14937ac3c247d0dc139ee95b651180ac879d19",
+  "host": "4a41470e89b4e4ac82ad7891d24bfdf604544598",
+  "original_bytes": 6250,
+  "original_pages": 49,
+  "text_pages": 19
+}

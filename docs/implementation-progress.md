@@ -4,6 +4,10 @@
 行為基線 `329ca7c487414d2f54ddd98ff4727446ed2446cd`。官方插件接入層用 Rust。
 獨立 Connector 沿用 Python 3.12；共享預算沿總書 K05。
 
+**EXT-028 簽署候選驗收。** 在 HJW Windows 以分支 `codex/ext-028-signed-fetch` 的乾淨提交 `f4f4e2653e28` 跑預設 `ci/check.py EXT-028`。Host 來源 `4a41470e89b4`，SDK alpha.14，Rust web-fetch alpha.2。三次真工具派發分別讀取正文、大頁及只有 style/script 的 HTML。原文 6,250 bytes 分 49 頁核回，正文分 19 頁；第三個工具結果為 `empty_page`，保留原 bytes。六項 Rust 網路回歸涵蓋跨 origin 清除憑據、DNS 換址、合法 304 與代理故障。測試使用隔離 HTTP 和模型端點。Windows 執行檔 `a39fc7dbaa33`，與 EXT-067 獨立建置。回條、原連線、封包、三類資料所有者在 `artifacts/EXT-028/01/`。重現時將 `YUKI_BASE_HOST_ARCHIVE` 指向 `compat/base/source.lock.json` 固定的本機平台 ZIP。
+
+**合併與交接。** PR #16 至 #40 已合入主線；#40 合併 `1a2ed566a06e`，59 份 Windows/Linux 產物及本機 macOS 16 項檢查見 `artifacts/ci/local-pr/40/receipt.json`。68 張逐卡清冊見 `artifacts/readiness/after-signed-web-fetch.json`，分列先前正式通過、此次簽署候選驗收、部分證據及尚無具名產物。CORE-044 已收到 EXT-067 兩個真包的原始見證，待生產者發布。後續追蹤 CORE-038 真權限拒絕與原回執，以及 EXT-004/006 平台引用、撤回及媒體出站。
+
 **EXT-067 兩個真包的 Windows 驗收。** 分支 `codex/ext-067-joint-candidates`，實作 `18fba3707948`，乾淨重跑提交 `49f7b19`。簽署來源 `4a41470e89b4`、SDK alpha.14 `e41a2375efb2`，三平台逐包驗簽。HJW 在空資料目錄同時安裝 Telegram alpha.4 及 web-fetch alpha.2。七例通過，涵蓋取回原件後三段送達、第二段回覆丟失、殺兩個子程序後重播、跨人物換 handle、移除必要 RPC，以及取件中和重啟後的擦除拒絕。兩個插件的工作目錄為空，Telegram 自有的持久檔只有 offset 和空鎖。六個方法的方向、grant、schema、原始 wire 與各包 digest 在 `artifacts/EXT-067/01/base-consumer-witness.json`；CORE-044 可據此裁決基礎發布。正式總表此前為 7/68，完整 EXT-004 仍待引用、撤回、附件出站和 typing。此包尚未發布。
 
 PR #39 普通合併 `48b634a060d7`，受測樹 `9b95740c3270`；Windows/Linux 原 6 份 ZIP、本機 macOS 兩項回條見 `artifacts/ci/local-pr/39/receipt.json`。PR #37 已另在 HJW 原生補跑 16 項，含 14 套件、四張 Connector 回歸卡、acceptance 和 worker；逐檔校驗見 `artifacts/ci/local-pr/37/hjw-supplement.zip`。本機首次 archive 遇到正在使用的 Windows 零位元鎖；改讀 live 大小，kill 後核原 SHA，再從乾淨提交重跑完整入口。

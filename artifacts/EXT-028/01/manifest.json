@@ -1,0 +1,25 @@
+{
+  "task": "EXT-028",
+  "status": "PASS",
+  "phase": "acceptance",
+  "card_status": "VERIFIED_ON_SIGNED_DEVELOPMENT_CANDIDATE",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": "f4f4e2653e28c0c472674864fb5a1db3b497fbe2",
+  "source_snapshot_sha256": null,
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-028",
+    "--out",
+    "D:\\yuki-extension-tests\\local-web-empty-01\\web-empty-01"
+  ],
+  "files": {
+    "build.txt": "88837f275bad74cdc760327f3533117c939544593e7d3edf60382b48e1b53a4e",
+    "fetch-source.json": "8a10aaf7a961a251778c4285c07e75c9535e996a338a46e10be9bd1631985858",
+    "host.txt": "179d1ad70a992a51900c5d61078fb8cebc5f63d4b3d93d60189dfc14d528475c",
+    "native.json": "f16b573c388ba09a063d4d1c36bf6ca3c78c367858c83145bfe9b17cbc6e8a8d",
+    "owner-disposition.json": "f70d2e289f35bb4ecf616d128e9103cdf056c749749f6801b2b07c4765768500",
+    "wire.jsonl": "18e927ca81bf14d9afccff35378161c7d711af90cd39143eba265f4ee37dd9a9"
+  }
+}
