@@ -13,6 +13,43 @@
 | EXT-010 · codex/ext-010 | `ab16e07`；CI `41834791702`；PR #6 合併 `2c55dbb` | `artifacts/EXT-010/02/`，8 例含實際子進程退出碼 23、雙 session 取消及 unknown |
 | EXT-019 · codex/ext-019 | 實作 `7531d84`、PR head `9d1e8a8`；三平台 CI `41835863011`；PR #7 合併 `7625095` | `artifacts/EXT-019/02/`，呼叫表、schema 差分、5 個故障變異；`03/` 固定跨平台順序 |
 
+## 2026-11-06 PR #15 合併與 PR #16 新基底
+
+- PR #15 head `0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3` 的 push `42058530137`、
+  PR `42058542237` 全 44 項檢查成功：三平台 acceptance、六個 release units package
+  及 Connector 回歸。已下載核對全部 48 ZIP 的 GitHub digest、安全成員、CRC、
+  manifest／逐成員 SHA、36 個 package 的真 binary／wheel 與已鎖 native tests。
+- CI merge `dfff7d48543b` parents 為舊 main `996deedef3e1`／該 head。普通合併
+  `ac8c1b287e5a320107f64975dfd318b521bd8f13` 的相同 parents 及 tree
+  `54a39c56ca2d0ee204bbb19c8f0f12c43132519d` 已重核，與測試 merge tree 相同。
+  完整回條 `artifacts/EXT-011/ci-receipt-0107c0a.json`。
+- PR #16 原 `12b3ace901e3` 在獨立 `codex/ext-011-gates` 工作樹正常合入此 main；
+  只進度有衝突，兩邊完整保留，local-agent／Connector 原碼未改。新 head／current
+  base 的三平台 acceptance、受影響 package 與具名產物須重驗後才可普通合併。
+- 另有 `work-connector-auth` 的新 CORE-033 alpha.12 Rust 接入 WIP，獨立保留，
+  正在 HJW 驗證；本 PR #16 的原配對候選不冒充新 wire4 鑑權整卡驗收。
+  其餘 Code／ASR／rebuild／subscription WIP 未動。正式完成仍 7／68。
+
+## 2026-11-05 PR #14 合併與 PR #15 新基底
+
+- PR #14 head `dfe8eb46d64a` 的三平台 acceptance、五套 package 和 Connector 回歸
+  全過，24 份 ZIP／GitHub digest／manifest／來源 parents 已核。普通合併 main
+  `996deedef3e119246651050dc8cac186044a925a`；實際 tree 與 CI merge `a5ece9e35203` 相同。
+  回條 `artifacts/EXT-040/ci-receipt-dfe8eb4.json`。EXT-020 的完整前置仍待核心交付。
+- 本分支 `codex/ext-040-setup` 從原 head `a2285c3bc6a2` 正常合入新 main；
+  同步提交 `f8aef1b` 只合併歷次回條／進度，安裝器與插件程式樹未改。當前 SHA 三平台 acceptance
+  和受影響 packages 需重新通過並驗產物，才可合併 PR #15，不能使用舊 base 綠燈。
+- 隨後把已驗固定資產下載修正 `b82112b5b452` 同步到本分支，避免後續 CI 繼續
+  遇到相同 504。四個來源檔和原 contract inputs 逐 bytes 相同；在此新基底又於 HJW
+  Windows 驗七例通過，回條 `artifacts/readiness/ci-release-504-pr15/`。只改 CI
+  讀取；安裝器、插件、原 SDK／資產和授權未變。本地修正提交 `f707400a754a`；新 SHA 要重跑全部 gates。
+- 正式完成仍 7／68。PR #26 已推固定資產 GET 的有限重試，修正 `b82112b5b452`、
+  head `c2600d644a02`；Windows 七例過。原 native exit134 只有診斷補強，根因未解。
+  後續卡與核心包 pin 的完整進度固定於
+  https://github.com/Institute-of-Agent-Life/yuki-extensions/blob/c2600d644a027a163d7533300c7dd111d5e0f9c1/docs/implementation-progress.md 。
+  這些後續 PR 尚未合入本分支；原 Code／ASR／rebuild／subscription WIP 保留。
+- 合併佇列最新 snapshot：`artifacts/readiness/after-pr14-merge.json`。
+
 ## 核心輸入與可交還證據
 
 CORE-002 未發布 oracle 產自 `89f15dbbfc5535a0d9fa94244a9e5cde96638ece`，
@@ -118,6 +155,13 @@ Windows 重驗 `artifacts/EXT-003/candidate-03/telegram-offset.json` SHA-256
 新 binary `0eb1cc4cbbc40321028032fc5ba5175ff51bce4e9c99c9af77d23c0fea95c0f2`。在本次三條的故障序列中仍得到 event 3 重投回原 ID。
 [擴展 PR #11](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/11)
 
+PR #11 的 head `03cabaa6f53d` 已完成三平台 acceptance、Connector 與 Telegram
+package jobs；push `41902511932`、PR `41902523876` 的 24 份產物逐一下載驗
+ZIP digest、manifest 和套件成員。2026-11-05 普通合併至 main `8d2f3c6d85e1`。
+回條為 `artifacts/EXT-003/ci-receipt-03cabaa.json`。EXT-003 仍是未發布宿主的
+開發候選；正式驗收待 CORE-032 交付。PR #12 合入此 main 後程式樹未改，
+在新 head／base 重跑三平台 CI；依 #12→#13→#14→#15→#16→#17→#18 順序合併。
+
 ## EXT-028 Windows 開發候選對拍
 
 分支 `codex/ext-028-web-fetch`。實機回條 `artifacts/EXT-028/candidate-04/fetch-source.json`
@@ -191,6 +235,24 @@ PR #15 的 Linux push 檢查曾在 Codex 測試代理重連時逾時。Windows �
 `artifacts/EXT-007/proxy-eof-regression.json` 記原錯與修正 SHA。
 `artifacts/EXT-007/proxy-eof-01/` 是修正後 Windows 完整升級與 wire4 對拍；
 172 個 pytest 案例中 171 通過、1 跳過。Connector 的發行程式與鎖檔未改。
+
+## PR #12 合併與 PR #13 新基底
+
+PR #12 head `f0843e106711` 的 push `41939834061` 與 PR `41939841639` 全過。
+已下載 18 份 ZIP，核 GitHub SHA-256、成員雜湊及各 task PASS；PR 產物來自
+`867562e4c971`，parents 為 main `8d2f3c6d85e1` 與該 head。普通合併提交
+`e90035586e9b91af19a5c6162c2e565dbfe966cf`，回條 `artifacts/EXT-028/ci-receipt-f0843e1.json`。
+PR #13 已正常合入此 main；程式樹未變，新增前卡回條與進度。新 head 的三平台
+與受影響套件仍須重驗，舊基底綠燈不作合併證據。
+
+## PR #13 合併與 PR #14 新基底
+
+PR #13 head `9db51914174e` 的 push `41980406600`、PR `41980413395` 三平台及
+四套件全過。下載核驗 21 份 ZIP、所有 manifest 成員與執行回條；測試 merge
+`98eb7aab4850` 的 parents 為 `e90035586e9b` 和該 head。普通合併至 main
+`526a35382d9bb464f92adc947e1b212e0ea41c3c`，回條 `artifacts/EXT-005/ci-receipt-9db5191.json`。
+PR #14 正常合入此 main；僅合併回條與進度，程式樹不變。新 SHA 的三平台及套件
+檢查仍需全過並驗下載產物，才可合併。
 
 ## EXT-011 個人入口開發候選
 

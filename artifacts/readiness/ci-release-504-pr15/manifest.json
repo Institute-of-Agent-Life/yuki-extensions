@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "scope": "CI GET transport backport on PR15; no new formal card acceptance",
+  "backport_source_commit": "b82112b5b45202f10672e32de6f3b104b5aad30f",
+  "base_merge": "f8aef1bb976d5fd813b8bf63857dbce0c3943de6",
+  "base": "996deedef3e119246651050dc8cac186044a925a",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "tests": 7,
+  "source_snapshot_sha256": "699ab0ccc6ed3edf4b04e018b2951cefd0956fbbf83d87e8763baaca3b20509e",
+  "source_sha256": {
+    "ci/download_http.py": "07555229c39c25d96d4c39c090d0c86a6457d58630ca2a4393a605dad4c6c40b",
+    "ci/fetch-contract.py": "5998af49eb0c2c79eaa49ba8602536d59cd0efe4b37deec2ce43135dbc535600",
+    "tests/unit/test_download_http.py": "9d5bc645eabc014dcdb27379a9387048324ab6b489a2d4ec504e749e9704a071",
+    ".github/workflows/plugin.yml": "d1a2bdde082222555fdbd896592be4fe21032a5df06b9eb7ddafefb43192b11e",
+    "contracts.lock": "201aaf9791cb3f051fe9732748984f267c6a3a0baa20426f23c298391ae1241a",
+    "compat/core-031/yuki-handshake-preview.zip": "6e2ca1040f6d1eac2f70b0ff363887faf662782f72a7acd367d4a52a17b2caa2",
+    "compat/core-031/manifest.json": "a55d1f2e6e3fb4d0a8eab00dc4dee2dbe28dca84a5ea47ed90bb97f86f90f41b",
+    "compat/core-031/sdk-crosswire.json": "a6f06ea848efc8a530c956e7cb302e852da5140177461cd18ec4a5b019143f10"
+  },
+  "original_failure": "https://github.com/Institute-of-Agent-Life/yuki-extensions/blob/b82112b5b45202f10672e32de6f3b104b5aad30f/artifacts/readiness/ci-release-504-20261105/download-receipt.json",
+  "files": {
+    "verification-01/manifest.json": "4fb0d09cbba8e5d7141f82999de68b0aa3ee5b20f4ab25c5023361128da76927",
+    "verification-01/windows-checks.json": "7b32c61e149f6a9195ebf77bcb1944140b05162deb59d9ca44d282bbd1c87f2c"
+  }
+}
