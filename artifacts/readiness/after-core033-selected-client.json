@@ -1,0 +1,72 @@
+{
+  "updated_at": "2026-11-06T05:42:50.808393+00:00",
+  "status": "working_ready_new_deliveries",
+  "previous": "after-connector-address.json",
+  "formal_cards_completed": 7,
+  "formal_cards_total": 68,
+  "branch": "codex/ext-015-selected-client",
+  "implementation_commit": "59e0d07c21b44609af2e3e12fbc0ec950930adba",
+  "base_main": "ac8c1b287e5a320107f64975dfd318b521bd8f13",
+  "producer_source": "c616cf35e4424e2b9f3c99a4481bfab1c99a34f3",
+  "producer_pin": "compat/core-033-client/source.lock.json",
+  "producer_published": false,
+  "native_cases": 9,
+  "source_bindings": 35,
+  "evidence": [
+    "artifacts/EXT-015/selected-08",
+    "artifacts/EXT-015/selected-analysis-01",
+    "artifacts/EXT-015/selected-06"
+  ],
+  "missing": [
+    "public ACP session/presence setup matching home selection",
+    "local App Main/Social receiving Presence route",
+    "full H24 operation/target/agent_target and legacy NULL",
+    "H27 last overflow and H28 download/forget race",
+    "published tuple"
+  ],
+  "next_executable": [
+    "verify CORE-038 PR74 original EXT-031 consumer receipt",
+    "check PR73/75/76 new fixed contracts against real consumers"
+  ],
+  "PR_order": [
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32
+  ],
+  "automation_status": "PAUSED",
+  "PR16": {
+    "head": "58cd960e1a992f2103f3d75b89e12c52a16ca288",
+    "base": "ac8c1b287e5a320107f64975dfd318b521bd8f13",
+    "push": {
+      "run": 42149145226,
+      "success": 15,
+      "queued": 9,
+      "in_progress": 1
+    },
+    "pull_request": {
+      "run": 42149150676,
+      "success": 16,
+      "queued": 9
+    }
+  },
+  "WIP_preserved": [
+    "root four Code adapters",
+    "work-asr",
+    "work-rebuild",
+    "work-subscription"
+  ]
+}

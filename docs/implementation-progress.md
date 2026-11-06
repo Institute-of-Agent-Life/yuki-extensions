@@ -13,6 +13,37 @@
 | EXT-010 · codex/ext-010 | `ab16e07`；CI `41834791702`；PR #6 合併 `2c55dbb` | `artifacts/EXT-010/02/`，8 例含實際子進程退出碼 23、雙 session 取消及 unknown |
 | EXT-019 · codex/ext-019 | 實作 `7531d84`、PR head `9d1e8a8`；三平台 CI `41835863011`；PR #7 合併 `7625095` | `artifacts/EXT-019/02/`，呼叫表、schema 差分、5 個故障變異；`03/` 固定跨平台順序 |
 
+## 2026-11-06 EXT-015 明選 Client9 候選
+
+- 分支 `codex/ext-015-selected-client`，實作 `59e0d07c21b44609af2e3e12fbc0ec950930adba`；
+  由 PR #31 `4801377c8fbe` 建獨立樹，含 main `ac8c1b287e5a`，沒有改其他 WIP。
+- 原 Rust Client 升至 alpha.2／SDK alpha.12，轉送原 X-Yuki-Entry／Conversation、
+  UUID／有序附件、home、串流上傳及 SSE；沒有插件身份／去重庫。SSE 四、上傳四、
+  一般八個名額分開，65 秒上游 response 上限讓遺留流釋放名額；原 bytes 逐塊 flush。
+- CORE-033 固定 source `c616cf35e4424e2b9f3c99a4481bfab1c99a34f3`、DB48，
+  三平台 ZIP／全部成員／producer manifest 及 dirty=false 已核；完整 pin 在
+  `compat/core-033-client`。Win ZIP `5260a4f063fa`、Host `7e78050e2032`、
+  crate `29f5e9f0b89d`；仍未發布，不是 PR head。
+- HJW Windows `selected-08` 九組功能案例、兩項 Rust 回歸、release build、14 單位
+  邊界及選擇器通過。涵蓋兩設備原 UUID、合併後分辨原人物及明選 B、錯誤／重複
+  標頭、附件改序衝突、**入站**持久游標／SSE 重連、滿四流仍可一般 GET、撤權關
+  原四流、停用入口讀舊件／拒新寫及冷啟。模型 fixture HTTP 四筆，無付費供應者。
+- `selected-analysis-01` 在 Windows 核 35 個來源、原 ZIP／manifest／所有 SHA、
+  Host／SDK／plugin／wire 及原失敗；binary `ecd3200867585a7c38ed5682d855cb5177e960a1776e7c49211583ed0587f960`，
+  wire `0d81770a1414d6b34dc0e8dc9de8bf374bc3f24902f0e78961db4c365b27ac69`。
+- ACP：公開 account／entry／ingress／home 已列真 ACP conversation，匹配 header
+  仍 404。Social：原 06 沒有 binding fixture，Main 接納後 send 段 held/runner_failed；
+  原 05 fixture ACK 沒有本地事件，不能算 Social 成功。具體公開安裝／ACP session／
+  receiving Presence 設定需求在 `docs/core-interface-requests.md`；原失敗全保留。
+- **正式完成仍 7／68。** H24 ACP／NULL／完整 target/operation、原本地 Social、
+  H27 最後溢出、H28 原件與忘記競態及正式發布仍缺。預備候選不改整卡 BLOCKED。
+- PR #16 最新 head `58cd960e1a99`／base `ac8c1b2`：push 15 success/9 queued/1 running，
+  PR 16 success/9 queued，沒有新失敗；不能合併。#23 原 504 attempt2 已 success。
+- 新核心 PR #67／71／72 已消費本卡固定包；#73 gateway media、#74 Main 媒體、
+  #75 原 Work/Manager terminal、#76 canonical QQ send、#77 memory merge／#78 native
+  mentions 為新交付，逐項看真前置。下一步核 #74 已實跑本倉原 EXT-031 binary 的
+  Windows 回條，續做真正就緒工作；不能沿用上一輪「沒有新 PR」的判斷。
+
 ## 2026-11-06 EXT-070 原 Connector 改址候選
 
 - 分支 `codex/ext-070-address`，實作 `cc39f5911859585385f48742defd536d61ae8a06`，
