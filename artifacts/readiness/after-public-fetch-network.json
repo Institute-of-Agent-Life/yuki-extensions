@@ -1,0 +1,26 @@
+{
+  "previous": "after-public-feishu-admission.json",
+  "counts": {
+    "formally_accepted": 11,
+    "signed_candidate_acceptance_pass": 1,
+    "partial_or_diagnostic_evidence": 18,
+    "no_named_card_artifact": 38
+  },
+  "EXT-028": {
+    "state": "formally_accepted",
+    "signed_full_matrix": "artifacts/EXT-028/01",
+    "public_positive_and_negative": "artifacts/EXT-028/public-network-01",
+    "core_source": "c6bd0c75e38717abc71373201d31a77982428d5b",
+    "public_release": "plugin-base-v1.0.0",
+    "original_plugin_sha256": "90912616d2e50ffce88c82422ebe58740e8c28235b83365ac43e07ef413659b2",
+    "extension_published": false
+  },
+  "EXT-005": {
+    "implementation": "67103b301cbc75eb96c911db4145e085be1351ac",
+    "merge": "a56cffde23ce44ec2fe5fec03b172c44227200d8",
+    "ci_run": 42312919798,
+    "archives_verified": 9
+  },
+  "consumer_return": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/103#issuecomment-6698733854",
+  "next": "EXT-029 requires per-attempt budget/grant from CORE-024/032. EXT-067 retains the signed pre-release witness named by the freeze."
+}
