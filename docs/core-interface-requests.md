@@ -480,3 +480,7 @@ message_id 及 resource_key。兩域的原安裝公開核准配置沿用 [核心
 不能用同名 key 互相補件。對出站，已有 plan／dispatch 與 dispatch handle 的原 media.open。
 仍請附原路由授權下的文件/附言逐步計畫、引用及撤回、活動提示的公開方法、定位欄位
 與真回條，以驗證第二步超時不再建立新操作。現有一般 arguments 不授予任意跨域路由。
+
+### CORE-038 原安裝配置與所選附件（Windows 已驗）
+
+固定 `0ef956a9c6d9` 的公開 `doctor` 列出 `[plugins.gateway_media]`，其子欄位是 `application` 及 `tenant`。Telegram 明選原 application，飛書與 Lark 另明選原 tenant。既有 Rust binary 可向同一安裝取件。此配置問題已關閉。逐方法證據見各卡的 `selected-native-03`。後續仍需出站撤回、活動提示與對應原路由的操作契約。

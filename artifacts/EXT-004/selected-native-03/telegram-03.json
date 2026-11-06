@@ -1,0 +1,68 @@
+{
+  "case": "telegram-03",
+  "transfer_zip_sha256": "c26931475e25f0f4a2109b6b63caefbafdd2145836652f219581269f80bc53fa",
+  "archive_bytes": 50898,
+  "members": {
+    "gateway.jsonl": "913ed241bbf82f0d4bc213d0499307a8b24fdee2914c48bb5ae379f467b63f0b",
+    "host.txt": "35427edb2cec63071ba5dc44d2d56a7c4b78524da5cc36bf3c17a3ac7b547ceb",
+    "installation.toml": "235aa72ab57a85eea053ab6f281b7810c42fe4697eba413f520daa7056e1976d",
+    "model-http.json": "db4c3b8e149fe165b0a8db9c43a9d4d4b335978b147d8b884c7e8f3720a35aa5",
+    "native-http.json": "409d27ca1a6e1597bc18275dd326b2517b1d607f1231fa6c84d88aee1efe82d4",
+    "result.json": "06d17c3ecdac61799aa20b3af1f18817b018a242b8c9f78165941412e926081a",
+    "wire.jsonl": "c2bf0186640b3ce84d48c52030844bf8c77847d95f99baf168021826614970c7",
+    "processor-wire.jsonl": "c2bf0186640b3ce84d48c52030844bf8c77847d95f99baf168021826614970c7",
+    "test.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "methods": {
+    "initialize": 3,
+    "gateway.inbound": 1,
+    "gateway.media": 7,
+    "media.process": 1,
+    "media.open": 11
+  },
+  "result": {
+    "status": "PASS",
+    "domain": "telegram",
+    "source_event": 1,
+    "stage": "952b6a34-2e0e-4c79-9d32-80c5e4ec0a58",
+    "installation": {
+      "application": "101"
+    },
+    "host_source": "0ef956a9c6d90fae79c0d4488296c064ccf29f54",
+    "host": {
+      "archive": "yuki-media-preview-0ef956a9c6d9-windows-x86_64.zip",
+      "sha256": "a81c49a722b9e1e420d5084856f7a13aed116865f7ca0a4c1304ac10881c62f3",
+      "binary_sha256": "4dd7a9fc345664f85d59b9c83d17e03b9dc452bbc2fb7bb01eba7d73c47b6cc0",
+      "validation_manifest_sha256": "d7341e1fc982a2ec192d6bcea225b45641e8d8b387eaa73785c982ebd7f32730"
+    },
+    "sdk": "25694e880798108129a1fa8e49e6fff7464ebc9075e5042cc379a6709343e29b",
+    "gateway_binary": "a07413f4b0b351eea85bb97b52f2e16d7fd59978f45414f948c4e9fd821b79e5",
+    "processor_binary": "2d0e7e9b910789bf34b8d263475c71a720a2ee650628fc88a3292a64e26d454c",
+    "offsets": [
+      0,
+      24576,
+      49152,
+      73728,
+      98304,
+      122880,
+      147456
+    ],
+    "selected_bytes": 161058,
+    "selected_sha256": "509877f8d0fdbadbd36f41d40d6ca454e6501cf5e4da290cc90d9b5264ccdf15",
+    "operation": "3c12026e-2bf1-49cd-a423-4bf307ea007c",
+    "model_http": 2,
+    "native": [
+      {
+        "method": "getFile",
+        "domain": "telegram"
+      },
+      {
+        "method": "resource",
+        "domain": "telegram",
+        "bytes": 161058,
+        "sha256": "509877f8d0fdbadbd36f41d40d6ca454e6501cf5e4da290cc90d9b5264ccdf15"
+      }
+    ],
+    "published": false
+  }
+}

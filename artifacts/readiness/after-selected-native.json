@@ -1,0 +1,29 @@
+{
+  "formal_completed": 7,
+  "formal_total": 68,
+  "previous": "after-feishu-native-media.json",
+  "selected_native": {
+    "EXT-004": {
+      "receipt": "artifacts/EXT-004/selected-native-03/manifest.json",
+      "platform": "HJW Windows",
+      "sdk": "1.0.0-alpha.13",
+      "host_source": "0ef956a9c6d90fae79c0d4488296c064ccf29f54"
+    },
+    "EXT-006": {
+      "receipt": "artifacts/EXT-006/selected-native-03/manifest.json",
+      "platform": "HJW Windows",
+      "sdk": "1.0.0-alpha.13",
+      "host_source": "0ef956a9c6d90fae79c0d4488296c064ccf29f54"
+    }
+  },
+  "queue": {
+    "prior_prs": "16..37",
+    "merged_main": "d3f231b2fc0260ba7c036ac7e567771aee666b0b",
+    "receipt": "artifacts/ci/local-pr/37/receipt.json"
+  },
+  "open_acceptance": [
+    "EXT-004/006 original outbound per-part failure, reply/recall and activity contracts",
+    "EXT-067 two release candidates with common host/SDK and end-to-end dispatch",
+    "formal release and downstream witnesses"
+  ]
+}

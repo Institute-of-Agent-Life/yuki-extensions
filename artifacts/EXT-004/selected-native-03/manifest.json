@@ -1,0 +1,32 @@
+{
+  "task": "EXT-004",
+  "status": "PASS",
+  "scope": "selected original ingress attachment, Windows native candidates with loopback platform and model",
+  "formal_card_acceptance": false,
+  "host_source": "0ef956a9c6d90fae79c0d4488296c064ccf29f54",
+  "frozen_sdk": {
+    "python": "1.0.0a13",
+    "rust": "1.0.0-alpha.13"
+  },
+  "gateway_test_sha256": "e3af20b71dc466345a31008ba8948fad6de6664b35576c140b888b3bb4306064",
+  "source_tree_of_executed_dependencies": "9e072834e150bdce554452d4c04f898d11102cb3",
+  "configuration_discovery": {
+    "code": 1,
+    "stderr": "{\"error\":\"TOML parse error at line 15, column 1\\n   |\\n15 | unrecognized_extension_config_key=true\\r\\n   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\nunknown field `unrecognized_extension_config_key`, expected `application` or `tenant`\\n\"}\n"
+  },
+  "preliminary_run": {
+    "iteration": "01",
+    "real_gateway_read": "observed",
+    "processor": "codec_unavailable because the driver copied the executable without its pinned adjacent Python reader; full original package used thereafter",
+    "superseded_by": "03",
+    "transfers": {
+      "telegram": "6f0b80d4eaf3f7c2dc74b0faf3ed6fa66ea5fe836ba942a9d6598eec747ec566"
+    }
+  },
+  "members": {
+    "telegram-03.json": "76277d642ebd267b4358f6ac09f6c2bbcf2bad4cb30261c6ec068b497e17b07a",
+    "telegram-03.zip": "c26931475e25f0f4a2109b6b63caefbafdd2145836652f219581269f80bc53fa",
+    "telegram-wrong-03.json": "b2c4afbf8fb0e14e0bcaa32cc9f4f16a752c8dacc70c60f7d05ee0d98909f9a9",
+    "telegram-wrong-03.zip": "477e47de1bbe983e4db0b4c33a31dc579da577d91ff8ebbb0600898cb1d88e3d"
+  }
+}

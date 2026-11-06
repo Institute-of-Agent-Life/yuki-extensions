@@ -1,0 +1,760 @@
+{
+  "pr": 37,
+  "repo": "Institute-of-Agent-Life/yuki-extensions",
+  "run": 42247055487,
+  "tree": "9e072834e150bdce554452d4c04f898d11102cb3",
+  "synthetic": "5b7f65f58e0ce99bfe6fb7562e1c328aa33cf1f2",
+  "parents": [
+    "41cb089afe8328a4ef760c7c8dc246f374698bd2",
+    "edee66ad4e483be15b4fa58eb2c7f9a9b02f5142"
+  ],
+  "integrated_open_heads": [
+    {
+      "baseRefName": "main",
+      "headRefName": "codex/ext-006-feishu-media",
+      "headRefOid": "edee66ad4e483be15b4fa58eb2c7f9a9b02f5142",
+      "number": 37,
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/37"
+    },
+    {
+      "baseRefName": "main",
+      "headRefName": "codex/ext-004-telegram-media",
+      "headRefOid": "5ad17ab4507b20aa97e64c114bbf16635f26a62d",
+      "number": 36,
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/36"
+    },
+    {
+      "baseRefName": "main",
+      "headRefName": "codex/ci-locked-cache",
+      "headRefOid": "8eba25f1c44b70983293bdc6b46b00edb5979174",
+      "number": 35,
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/35"
+    },
+    {
+      "baseRefName": "main",
+      "headRefName": "codex/ext-031-main-media",
+      "headRefOid": "6c5be41e98d96146d5941b857f7d18ac5ed22542",
+      "number": 34,
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/34"
+    },
+    {
+      "baseRefName": "main",
+      "headRefName": "codex/ci-dedupe",
+      "headRefOid": "11fbc352c9ca748b4180706c294fd5b5bfd94a3f",
+      "number": 33,
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/33"
+    },
+    {
+      "baseRefName": "main",
+      "headRefName": "codex/ext-015-selected-client",
+      "headRefOid": "3014ed0f1c28b72e5ec3f6a8ca67fd911aa8a9d3",
+      "number": 32,
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/32"
+    },
+    {
+      "baseRefName": "main",
+      "headRefName": "codex/ext-070-address",
+      "headRefOid": "4801377c8fbeb237df54b5f28fc86ea186f3c56a",
+      "number": 31,
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/31"
+    },
+    {
+      "baseRefName": "main",
+      "headRefName": "codex/ext-011-connector-auth",
+      "headRefOid": "ce1cec3a2092ac4d3fce36be12a579cbc22ca4c1",
+      "number": 30,
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/30"
+    },
+    {
+      "baseRefName": "main",
+      "headRefName": "codex/ext-024-rejection-continuation",
+      "headRefOid": "5986cba55c45be2bc84990f94a8ba7b959514e5a",
+      "number": 29,
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/29"
+    },
+    {
+      "baseRefName": "main",
+      "headRefName": "codex/ext-038-character",
+      "headRefOid": "d9cfee9826c3da7d0472f3e6ab6c29fa1e38ec90",
+      "number": 28,
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/28"
+    },
+    {
+      "baseRefName": "main",
+      "headRefName": "codex/ext-037-trace",
+      "headRefOid": "20534f8ed7b060b903082eccb6d569dab4d9bbe6",
+      "number": 27,
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/27"
+    },
+    {
+      "baseRefName": "main",
+      "headRefName": "codex/ext-047-scoped-session",
+      "headRefOid": "c2600d644a027a163d7533300c7dd111d5e0f9c1",
+      "number": 26,
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/26"
+    },
+    {
+      "baseRefName": "main",
+      "headRefName": "codex/ext-027-subscription",
+      "headRefOid": "07b4da6ddece0e1dabae7afa033ccccad46e3cdc",
+      "number": 25,
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/25"
+    },
+    {
+      "baseRefName": "main",
+      "headRefName": "codex/ext-023-feed-recovery",
+      "headRefOid": "0a1ebf41c9101e102b4912bb533742e13255e149",
+      "number": 24,
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/24"
+    },
+    {
+      "baseRefName": "main",
+      "headRefName": "codex/ext-034-rebuild",
+      "headRefOid": "ab63ec24827f163b4922a01d17837f0c86fbbe77",
+      "number": 23,
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/23"
+    },
+    {
+      "baseRefName": "main",
+      "headRefName": "codex/ext-036-maintenance",
+      "headRefOid": "fdaa47576a547daabf6cf36f339805a0c18622dd",
+      "number": 22,
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/22"
+    },
+    {
+      "baseRefName": "main",
+      "headRefName": "codex/ext-030-asr",
+      "headRefOid": "b8cfe0de4aa716fc4ac7b049d24cd81cc1eae8e5",
+      "number": 21,
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/21"
+    },
+    {
+      "baseRefName": "main",
+      "headRefName": "codex/ext-025-participation",
+      "headRefOid": "1e9c4b3052878d4244acc1df89b50dc16a712e21",
+      "number": 20,
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/20"
+    },
+    {
+      "baseRefName": "main",
+      "headRefName": "codex/ext-023-codemode",
+      "headRefOid": "5ea1d55fc99590f8b54883885948d0d813e83518",
+      "number": 19,
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/19"
+    },
+    {
+      "baseRefName": "main",
+      "headRefName": "codex/ext-031-media",
+      "headRefOid": "3c6c25e76f11d9f98fe4cc0ec1b56560999688ea",
+      "number": 18,
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/18"
+    },
+    {
+      "baseRefName": "main",
+      "headRefName": "codex/ext-015-client",
+      "headRefOid": "25075e2be2a029e229bea54abf384f567b71d950",
+      "number": 17,
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/17"
+    }
+  ],
+  "hosted_audit_snapshot_sha256": "140bab6148d47e2cb07a7d99a88fea6182312163a53e8f9364f87b6ea52af828",
+  "verified_archives": 60,
+  "local_mac": {
+    "acceptance": {
+      "status": "PASS",
+      "runner": "local-macOS",
+      "machine": "arm64",
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "job": "acceptance",
+      "commit": "5b7f65f58e0ce99bfe6fb7562e1c328aa33cf1f2",
+      "tree": "9e072834e150bdce554452d4c04f898d11102cb3",
+      "parents": [
+        "41cb089afe8328a4ef760c7c8dc246f374698bd2",
+        "edee66ad4e483be15b4fa58eb2c7f9a9b02f5142"
+      ],
+      "cases": [
+        "EXT-001",
+        "EXT-002",
+        "EXT-019"
+      ],
+      "units": [],
+      "members": {
+        "EXT-001/manifest.json": "3a94dbb265df84d364ebf0c615c5ed13e24e39e6d1275faaac02fa1565bee709",
+        "EXT-001/extension-build-isolation.json": "2a628228a5a00425b22e5ca9b43e9f66ef84311cfd63b453aa72d329810c8998",
+        "EXT-002/manifest.json": "b8284ba869d99a19547d4be6b21824ad4a1cc831a45382700727ea1d470d87b5",
+        "EXT-002/build.txt": "79594c89f7ec80ec6932bc1080f9e4d3d441518ed3eb5fb80fdca2e5a0ed5473",
+        "EXT-002/published-sdk.json": "02811e72afe1a932ebce99ee3036227fbc3ae0dac6211f21d1d99381082935f5",
+        "EXT-019/manifest.json": "3e6b68104fe60faa14f73c761dc55e2d6801f083ceabf3843047f883bc17480e",
+        "EXT-019/desktop-callsite-pin.json": "d9d6caa43cb9dd36b65358fb0c06648b7c22784f98babfad63ba42bc00a9c7fe",
+        "EXT-019/desktop-surface-diff.json": "21d8a19696cd02bb91ad8079dd09948eeacbae32f31211d3a32f766abbb88550"
+      }
+    },
+    "connector": {
+      "status": "PASS",
+      "runner": "local-macOS",
+      "machine": "arm64",
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "job": "connector",
+      "commit": "5b7f65f58e0ce99bfe6fb7562e1c328aa33cf1f2",
+      "tree": "9e072834e150bdce554452d4c04f898d11102cb3",
+      "parents": [
+        "41cb089afe8328a4ef760c7c8dc246f374698bd2",
+        "edee66ad4e483be15b4fa58eb2c7f9a9b02f5142"
+      ],
+      "cases": [
+        "EXT-007",
+        "EXT-008",
+        "EXT-009",
+        "EXT-010"
+      ],
+      "units": [
+        "connector"
+      ],
+      "members": {
+        "cache-input.json": "4a30c9be3f878a9b2ecf59f5e0ada934c9d7e390f09c232597a46d5b4e929a50",
+        "package/package-manifest.json": "57e5ee09f23dac72b4208986829277f7b33e5b0a8d42c9e513c4bd2b62144d36",
+        "package/.gitignore": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1",
+        "package/yuki_agent_connector-0.4.4.dev1.tar.gz": "691ff2efa037744310409fc0cd1b84b6c7b32049ef062b65b658dd7f308364b3",
+        "package/yuki_agent_connector-0.4.4.dev1-py3-none-any.whl": "7a143a2d128bde2de038f26ce0a44cee8e9bcbd9249960bf68beb0b5032d85b5",
+        "EXT-007/manifest.json": "1a8c5730b282c3982ccbcacc0ebe8308a1d57608a2bdff4036f8a1503b68339a",
+        "EXT-007/candidate-tests.xml": "d4024ee2bc4b4d797bd6650a38b9afaeebbfc138e3441ce94874515a5c2a4420",
+        "EXT-007/commands.json": "4bae315e55bfd50a088918be32deba03d1ba7330dc33d25a508cdb73cb52c929",
+        "EXT-007/connector-package.json": "57e5ee09f23dac72b4208986829277f7b33e5b0a8d42c9e513c4bd2b62144d36",
+        "EXT-007/connector-runtime.json": "a338f92abb977e6368a76352154826ac552fd1d69fb5612ce15dc7e1577535d2",
+        "EXT-007/connector-upgrade.json": "b2b7e5f14582f1446f669a04109ca595da61b330846b62eaa8b9b3277a26a10f",
+        "EXT-007/wire4-candidate.json": "73009d32e2204222595fc36fd83eb49e6ac26712cbf752199e540b2e62b32070",
+        "EXT-007/wire4-old.json": "73009d32e2204222595fc36fd83eb49e6ac26712cbf752199e540b2e62b32070",
+        "EXT-008/manifest.json": "513492547da07e9e09bed811d6bc451b4788c00fba386804caa3711db0f1646c",
+        "EXT-008/codex-driver-wire.json": "f90a68feb812c633b977eec13faf803b5c4f21db70cd24a5c070ff6a4b25c4b7",
+        "EXT-008/commands.txt": "ff0350ce323cfd69b1eface0b85d2b04cf98d81978ce555ba90b5426fd4eec33",
+        "EXT-009/manifest.json": "f774418b79fdfbc6b7798d3f58333e680334df1de0ffbdef1ed93634dd5673d1",
+        "EXT-009/claude-driver-wire.json": "888baf7acfcac683674ecba78016c807571f5c39fede00d8909263096b548919",
+        "EXT-009/commands.txt": "54df509838be7b5ccfa3dde30a09925e2a753a5d0b928795fb98af58357dde23",
+        "EXT-010/manifest.json": "d4a928a3c49947e09841c4dcece1e9f82913e3ae79ea32c51f5db9df232d808d",
+        "EXT-010/commands.txt": "461504b10f7775f689e860e8ff6b26fbd7dfd70a053e0074780e8c93ee501279",
+        "EXT-010/native-acp-v1.json": "da6860016d7092b7752db47cc0138458b86e24861342206473e50e6c0227239e"
+      }
+    },
+    "monty-runtime": {
+      "status": "PASS",
+      "runner": "local-macOS",
+      "machine": "arm64",
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "job": "monty-runtime",
+      "commit": "5b7f65f58e0ce99bfe6fb7562e1c328aa33cf1f2",
+      "tree": "9e072834e150bdce554452d4c04f898d11102cb3",
+      "parents": [
+        "41cb089afe8328a4ef760c7c8dc246f374698bd2",
+        "edee66ad4e483be15b4fa58eb2c7f9a9b02f5142"
+      ],
+      "cases": [],
+      "units": [
+        "monty-runtime"
+      ],
+      "members": {
+        "cache-input.json": "4a30c9be3f878a9b2ecf59f5e0ada934c9d7e390f09c232597a46d5b4e929a50",
+        "package/package-manifest.json": "e72566f980bd1e00a4b2cca8352e72b2b68266052edc7fafa954afc31346a70d",
+        "package/monty-runtime-0.1.0-alpha.1-source.tar.gz": "3e6a382d5ca806163f7496c3b0c3a5eec99023fe74aee883084e79159f8b045b"
+      }
+    },
+    "worker-codemode": {
+      "status": "PASS",
+      "runner": "local-macOS",
+      "machine": "arm64",
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "job": "worker-codemode",
+      "commit": "5b7f65f58e0ce99bfe6fb7562e1c328aa33cf1f2",
+      "tree": "9e072834e150bdce554452d4c04f898d11102cb3",
+      "parents": [
+        "41cb089afe8328a4ef760c7c8dc246f374698bd2",
+        "edee66ad4e483be15b4fa58eb2c7f9a9b02f5142"
+      ],
+      "cases": [],
+      "units": [],
+      "members": {
+        "worker/portable.txt": "d1b2ab788208215968f3e94a5e6ff24e6e34c629007c56589ca5020fbc06f50a",
+        "worker/manifest.json": "2ce935e5dda444f5331afebb13aa4b9e2cb075ca3f876410767cf135673d1c29"
+      }
+    },
+    "character": {
+      "status": "PASS",
+      "runner": "local-macOS",
+      "machine": "arm64",
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "job": "character",
+      "commit": "5b7f65f58e0ce99bfe6fb7562e1c328aa33cf1f2",
+      "tree": "9e072834e150bdce554452d4c04f898d11102cb3",
+      "parents": [
+        "41cb089afe8328a4ef760c7c8dc246f374698bd2",
+        "edee66ad4e483be15b4fa58eb2c7f9a9b02f5142"
+      ],
+      "cases": [],
+      "units": [
+        "character"
+      ],
+      "members": {
+        "cache-input.json": "aa36b029c61ca9719570dfef46c8cf6b2749b62e62735c687c2d7114aa0f4091",
+        "package/package-manifest.json": "6b1b0769723ff64592db0306cb03b43d50187330c0030c2c19422b688cf23d57",
+        "package/LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "package/Cargo.lock": "73b8cbf823418cdf84b9f424a4c5938a9fe980ed25f14e0f51b45e1d14a90793",
+        "package/README.md": "3a33f343615ed042a08b717db68694a9b7132b3eeb2b5b8190efcd0458c0198d",
+        "package/rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "package/yuki-character": "851216b79a27b994d2e21e73ffd06cf603ed26b11b4c41e5b6e53aed237d5284",
+        "package/plugin.toml": "88dbc6f11d296ace75e217fd9f2d9d000813c05c1b93762e0154be6cfdbb4024"
+      }
+    },
+    "client": {
+      "status": "PASS",
+      "runner": "local-macOS",
+      "machine": "arm64",
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "job": "client",
+      "commit": "5b7f65f58e0ce99bfe6fb7562e1c328aa33cf1f2",
+      "tree": "9e072834e150bdce554452d4c04f898d11102cb3",
+      "parents": [
+        "41cb089afe8328a4ef760c7c8dc246f374698bd2",
+        "edee66ad4e483be15b4fa58eb2c7f9a9b02f5142"
+      ],
+      "cases": [],
+      "units": [
+        "client"
+      ],
+      "members": {
+        "cache-input.json": "c3e210b175241f11d3906c05a0f7d8799e7ef16b6f6542c46a75f3cfdb94565b",
+        "package/package-manifest.json": "ffa93e98f89064ea4c198f648f2e6a1e99bdee3aa87192f1f69b19c7a8ca3e89",
+        "package/LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "package/Cargo.lock": "3b4f6f60bcbd9f26930e0efdef0e4b70dda3b92a8b85d041ea54199c783840cc",
+        "package/rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "package/yuki-client": "44d08ef83d9dd9595d37cf3bb17a1dc392974ffe27527aef68a51405816e2df9",
+        "package/plugin.toml": "555166fcc444e7ab9ebd86524ff74d49673374fb7a93558fd2535f301c433d75"
+      }
+    },
+    "codemode": {
+      "status": "PASS",
+      "runner": "local-macOS",
+      "machine": "arm64",
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "job": "codemode",
+      "commit": "5b7f65f58e0ce99bfe6fb7562e1c328aa33cf1f2",
+      "tree": "9e072834e150bdce554452d4c04f898d11102cb3",
+      "parents": [
+        "41cb089afe8328a4ef760c7c8dc246f374698bd2",
+        "edee66ad4e483be15b4fa58eb2c7f9a9b02f5142"
+      ],
+      "cases": [],
+      "units": [
+        "codemode"
+      ],
+      "members": {
+        "cache-input.json": "dc06caf8d2762c4e17bd782ac64125fd0aac95da4f456b810589a00ee1812597",
+        "package/package-manifest.json": "ccb78b15f6ba5b3b7f734d50d606bf356ef247b891d478f404371bfd2df393d2",
+        "package/LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "package/Cargo.lock": "2b584722fd3618fe935bf31c00bc741e8ae03643abd416d057f5ab9e25d227d3",
+        "package/README.md": "1357634fcc2410afe4e41ebd92b092d2528de5ed39da67000dbd210e8bb77f8b",
+        "package/yuki-codemode": "d142b4ea28b0237ab686dc175ad774055c3def7f80a53fd1e396cf5a78a4d426",
+        "package/rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "package/plugin.toml": "4b633e319716a8c158c693db2bc5135294a40f776b87ac31350e3130768eb621"
+      }
+    },
+    "env": {
+      "status": "PASS",
+      "runner": "local-macOS",
+      "machine": "arm64",
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "job": "env",
+      "commit": "5b7f65f58e0ce99bfe6fb7562e1c328aa33cf1f2",
+      "tree": "9e072834e150bdce554452d4c04f898d11102cb3",
+      "parents": [
+        "41cb089afe8328a4ef760c7c8dc246f374698bd2",
+        "edee66ad4e483be15b4fa58eb2c7f9a9b02f5142"
+      ],
+      "cases": [],
+      "units": [
+        "env"
+      ],
+      "members": {
+        "cache-input.json": "65ab89434276e62f486bb83cc18679602f9fb017c82d8c4451fae1f9b447779d",
+        "package/package-manifest.json": "f9a0a2b9de5fa252f223d4017cd047eab5ad9527deb3160a1f905b73d66045e6",
+        "package/LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "package/Cargo.lock": "f8ad380038ce0ef39f902b3d9b982ee5601e1e7d11574ab49fe79990559f0816",
+        "package/yuki-env": "486285e2e28bea28753ab962a1fc47f9de16a7d26faad2a35cbb830849ac9cb2",
+        "package/rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "package/plugin.toml": "969067f56ef5b152aeb56ba8145097175f29107576f19f607be531869cb7ca08"
+      }
+    },
+    "feishu": {
+      "status": "PASS",
+      "runner": "local-macOS",
+      "machine": "arm64",
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "job": "feishu",
+      "commit": "5b7f65f58e0ce99bfe6fb7562e1c328aa33cf1f2",
+      "tree": "9e072834e150bdce554452d4c04f898d11102cb3",
+      "parents": [
+        "41cb089afe8328a4ef760c7c8dc246f374698bd2",
+        "edee66ad4e483be15b4fa58eb2c7f9a9b02f5142"
+      ],
+      "cases": [],
+      "units": [
+        "feishu"
+      ],
+      "members": {
+        "cache-input.json": "9fb941f63490746ebafa4cdb248ac0e5c1f0cb174b6da4c245cb9dfd39571267",
+        "package/yuki-feishu": "289f1fb3b77f148aef8c8dd37df0f5d04cd9e04319f4d6d91d2ba020b1807c87",
+        "package/package-manifest.json": "def77afcdecfda1cb7a0bbabba00aecb0031f2b9432dfc9934cdcc17f11a1859",
+        "package/LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "package/Cargo.lock": "18c9a6d11db3c78c4f24c2ecd16ee6ed7b4be7b411f5bac9937067b6dd1387bc",
+        "package/NOTICE": "51201cfac32f0bae2e3f4157609d1f4c268f76fef608d30e6809a7581b6746cb",
+        "package/rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "package/plugin.toml": "6b67e7561066f06a1f90004f880b52a0b691fd3b88dc40a169a7895dd515d26f"
+      }
+    },
+    "local-agent": {
+      "status": "PASS",
+      "runner": "local-macOS",
+      "machine": "arm64",
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "job": "local-agent",
+      "commit": "5b7f65f58e0ce99bfe6fb7562e1c328aa33cf1f2",
+      "tree": "9e072834e150bdce554452d4c04f898d11102cb3",
+      "parents": [
+        "41cb089afe8328a4ef760c7c8dc246f374698bd2",
+        "edee66ad4e483be15b4fa58eb2c7f9a9b02f5142"
+      ],
+      "cases": [],
+      "units": [
+        "local-agent"
+      ],
+      "members": {
+        "cache-input.json": "15497b8ed8087ca7e9f1be51a52c4f1f4eb46edd8e4b6160f275809ef7f32b0d",
+        "package/package-manifest.json": "06a93724d95eb78654b2295fcdbb31f06aacc6f3ee4d207607e62704a4a6746e",
+        "package/LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "package/yuki-local-agent": "a4312a8cb5aa3e6f53cda6214040ea01fa90c6d4b75be1d206ece98ae997577a",
+        "package/Cargo.lock": "5eb68a8cac1947d55729a5d735427fc025601ecbbee39ab5d2b6841e69a82f3c",
+        "package/rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "package/plugin.toml": "52321a64782f2542600b3c7b80d6bf30d868177f9fe7e035a133c7ca6ce76d36"
+      }
+    },
+    "media": {
+      "status": "PASS",
+      "runner": "local-macOS",
+      "machine": "arm64",
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "job": "media",
+      "commit": "5b7f65f58e0ce99bfe6fb7562e1c328aa33cf1f2",
+      "tree": "9e072834e150bdce554452d4c04f898d11102cb3",
+      "parents": [
+        "41cb089afe8328a4ef760c7c8dc246f374698bd2",
+        "edee66ad4e483be15b4fa58eb2c7f9a9b02f5142"
+      ],
+      "cases": [],
+      "units": [
+        "media"
+      ],
+      "members": {
+        "cache-input.json": "1f58376396eabc9282c696042a80325e0748122e6338024d2725f3d1910abba1",
+        "package/package-manifest.json": "1e4871020d400572a74374018b095976c4fde1ee7f226f42feaa0117ecafe6da",
+        "package/yuki-media": "843f40df971c1a2ad8cb4472eb758bcb7e3ac3f977c98e0ff64b184d0179f863",
+        "package/LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "package/Cargo.lock": "95257131bd4d94e9a5dc8e0fbbd2a0e1c518c6f5c1fc17e9a1b495f418949929",
+        "package/rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "package/plugin.toml": "7cfca2fe51f2e14676727339f4665605c588b79d8dee963cf00fc52802828a73",
+        "package/packaging/codecs.lock": "92e058e12e25c10b2cff0764dfac8b9b66d085b77055b6e4a77e595ed6e41bb7",
+        "package/backend/source.lock.json": "e0b6d68b94370a41ad5bdb59e2640905cdb6ca435de4b69ed2baf75b06e8e040",
+        "package/backend/document_reader.py": "3eaa8ccdd25bbc764d73eb9be7d5c57a8ca7c0a997a9d4d9695902f6f441998a"
+      }
+    },
+    "memory-maintenance": {
+      "status": "PASS",
+      "runner": "local-macOS",
+      "machine": "arm64",
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "job": "memory-maintenance",
+      "commit": "5b7f65f58e0ce99bfe6fb7562e1c328aa33cf1f2",
+      "tree": "9e072834e150bdce554452d4c04f898d11102cb3",
+      "parents": [
+        "41cb089afe8328a4ef760c7c8dc246f374698bd2",
+        "edee66ad4e483be15b4fa58eb2c7f9a9b02f5142"
+      ],
+      "cases": [],
+      "units": [
+        "memory-maintenance"
+      ],
+      "members": {
+        "cache-input.json": "06c239b7e5ebf2cfc453851a66dff4030298439dd490742f564a1d6f182f1c33",
+        "package/package-manifest.json": "e913226703528655a7fb8ff9ec00168360a1ecadcb4319e9bc9cf5950b3d6b00",
+        "package/LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "package/yuki-memory-maintenance": "cf83099aa09ec2ca3c7a09c3ef404645c9e53581010492222a66ca9ea8a4815d",
+        "package/Cargo.lock": "f3700e4bee26d4ad934d273273871c831503c1f063419e91964c2e98579e3ff6",
+        "package/README.md": "1b938c93174b4fbd4104a07867680fd7c2a6c95f81a4c95c0e2a6bd7b442944a",
+        "package/rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "package/plugin.toml": "b190c6c3fd67ca87d0f5d2b9f282eccf1ddcdce441833e012d38a1074f1e620a"
+      }
+    },
+    "telegram": {
+      "status": "PASS",
+      "runner": "local-macOS",
+      "machine": "arm64",
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "job": "telegram",
+      "commit": "5b7f65f58e0ce99bfe6fb7562e1c328aa33cf1f2",
+      "tree": "9e072834e150bdce554452d4c04f898d11102cb3",
+      "parents": [
+        "41cb089afe8328a4ef760c7c8dc246f374698bd2",
+        "edee66ad4e483be15b4fa58eb2c7f9a9b02f5142"
+      ],
+      "cases": [],
+      "units": [
+        "telegram"
+      ],
+      "members": {
+        "cache-input.json": "b50abb596057086e356937cbb787c85cf0c7cbcfc57f53957ed26a61c8a6af9b",
+        "package/package-manifest.json": "bcad7e74bde86453525cd7926827db92ad182ec0a8b64bd8cfc462d46ed3b1d4",
+        "package/LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "package/yuki-telegram": "f459e4548d725a56f3fe7d25e7a5eee16ac559fe264a4d0eb16c817a1e94d71c",
+        "package/Cargo.lock": "8b6beebb6fd68cfb419a6488c5808948cbcdf425bd5be83ce228879fb16f0f47",
+        "package/rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "package/plugin.toml": "1e5408591b7c725e887288a97a31bb38beebab70c6dfed9f01481afe7beca789"
+      }
+    },
+    "trace": {
+      "status": "PASS",
+      "runner": "local-macOS",
+      "machine": "arm64",
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "job": "trace",
+      "commit": "5b7f65f58e0ce99bfe6fb7562e1c328aa33cf1f2",
+      "tree": "9e072834e150bdce554452d4c04f898d11102cb3",
+      "parents": [
+        "41cb089afe8328a4ef760c7c8dc246f374698bd2",
+        "edee66ad4e483be15b4fa58eb2c7f9a9b02f5142"
+      ],
+      "cases": [],
+      "units": [
+        "trace"
+      ],
+      "members": {
+        "cache-input.json": "cd343106b0712667bf7dcb47c9c1ce10aa2cc8cf993cfea57a9561289e93f3f6",
+        "package/package-manifest.json": "b05135211d0ed9f3b06e1304b55bb4b0a07cdce34fbd4423e261e6311bf35058",
+        "package/LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "package/Cargo.lock": "adf7e201a7f790356894bb617040a90802f6d0c979db7a1656a5fc94659d9ec9",
+        "package/README.md": "641cda42bd38979d5a0c8f0da90b16c44d0d96601615473822e505533ad09f4f",
+        "package/rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "package/yuki-trace": "81d167b678a7a6892308242a03104aa9ee3724fe903eb8b982cfd196b6068bce",
+        "package/plugin.toml": "1c9003baafd100c94a13b2d4be8e5cc6892e4098fe4b621388cebe59c9b28add"
+      }
+    },
+    "web-fetch": {
+      "status": "PASS",
+      "runner": "local-macOS",
+      "machine": "arm64",
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "job": "web-fetch",
+      "commit": "5b7f65f58e0ce99bfe6fb7562e1c328aa33cf1f2",
+      "tree": "9e072834e150bdce554452d4c04f898d11102cb3",
+      "parents": [
+        "41cb089afe8328a4ef760c7c8dc246f374698bd2",
+        "edee66ad4e483be15b4fa58eb2c7f9a9b02f5142"
+      ],
+      "cases": [],
+      "units": [
+        "web-fetch"
+      ],
+      "members": {
+        "cache-input.json": "85329531a712528a40cc675fde494bd842242c57e24859c22395d09bd5279175",
+        "package/package-manifest.json": "a4c2caf9beba94404745afa145c7ee5797eed7078409271b3ae8901592702d77",
+        "package/LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "package/Cargo.lock": "464fc9374e68c11bc37652c611b739af5759dcbf6231c8ea9cc48d37bbffb3ff",
+        "package/rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "package/yuki-web-fetch": "784361b6a571aeab7438ee92c37410a675834a4a1d160642ee03230dc4d6bc22",
+        "package/plugin.toml": "c67dd07b6613398e1bde628918e24d03c48494afad34bd481d17e94ece557cf6"
+      }
+    },
+    "yuki-setup": {
+      "status": "PASS",
+      "runner": "local-macOS",
+      "machine": "arm64",
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "job": "yuki-setup",
+      "commit": "5b7f65f58e0ce99bfe6fb7562e1c328aa33cf1f2",
+      "tree": "9e072834e150bdce554452d4c04f898d11102cb3",
+      "parents": [
+        "41cb089afe8328a4ef760c7c8dc246f374698bd2",
+        "edee66ad4e483be15b4fa58eb2c7f9a9b02f5142"
+      ],
+      "cases": [],
+      "units": [
+        "yuki-setup"
+      ],
+      "members": {
+        "cache-input.json": "7200f419b147b80cca90a92eb834d6ecf243ec2a8263618f57038e2f592351ec",
+        "package/package-manifest.json": "5f7db06048dfdb7d2721a481892b7c8d568fee4b3595e5a00e6f424db9d62153",
+        "package/LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "package/Cargo.lock": "9365e3881889c89db7ec71ab2218bb70e765635f159a535d2937284dc42da829",
+        "package/yuki-setup": "89a23d1984e74a4c9b699815d24a1f55bcb23e57a186942f08b391640c9c830d",
+        "package/rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "package/inputs/CORE-NOTICE": "92eec243bb25b89d47a7fa29ce6c863a14487a9c9e1078d0538775e6ec8f5a34",
+        "package/inputs/CORE-LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99"
+      }
+    }
+  },
+  "actual_merge": "d3f231b2fc0260ba7c036ac7e567771aee666b0b",
+  "all_22_prs": [
+    {
+      "pr": 37,
+      "head": "edee66ad4e483be15b4fa58eb2c7f9a9b02f5142",
+      "state": "MERGED",
+      "ahead_of_main": 0,
+      "merged_at": "2026-11-06T16:08:48Z"
+    },
+    {
+      "pr": 36,
+      "head": "5ad17ab4507b20aa97e64c114bbf16635f26a62d",
+      "state": "MERGED",
+      "ahead_of_main": 0,
+      "merged_at": "2026-11-06T16:08:50Z"
+    },
+    {
+      "pr": 35,
+      "head": "8eba25f1c44b70983293bdc6b46b00edb5979174",
+      "state": "MERGED",
+      "ahead_of_main": 0,
+      "merged_at": "2026-11-06T16:08:50Z"
+    },
+    {
+      "pr": 34,
+      "head": "6c5be41e98d96146d5941b857f7d18ac5ed22542",
+      "state": "MERGED",
+      "ahead_of_main": 0,
+      "merged_at": "2026-11-06T16:08:50Z"
+    },
+    {
+      "pr": 33,
+      "head": "11fbc352c9ca748b4180706c294fd5b5bfd94a3f",
+      "state": "MERGED",
+      "ahead_of_main": 0,
+      "merged_at": "2026-11-06T16:08:50Z"
+    },
+    {
+      "pr": 32,
+      "head": "3014ed0f1c28b72e5ec3f6a8ca67fd911aa8a9d3",
+      "state": "MERGED",
+      "ahead_of_main": 0,
+      "merged_at": "2026-11-06T16:08:50Z"
+    },
+    {
+      "pr": 31,
+      "head": "4801377c8fbeb237df54b5f28fc86ea186f3c56a",
+      "state": "MERGED",
+      "ahead_of_main": 0,
+      "merged_at": "2026-11-06T16:08:50Z"
+    },
+    {
+      "pr": 30,
+      "head": "ce1cec3a2092ac4d3fce36be12a579cbc22ca4c1",
+      "state": "MERGED",
+      "ahead_of_main": 0,
+      "merged_at": "2026-11-06T16:08:50Z"
+    },
+    {
+      "pr": 29,
+      "head": "5986cba55c45be2bc84990f94a8ba7b959514e5a",
+      "state": "MERGED",
+      "ahead_of_main": 0,
+      "merged_at": "2026-11-06T16:08:50Z"
+    },
+    {
+      "pr": 28,
+      "head": "d9cfee9826c3da7d0472f3e6ab6c29fa1e38ec90",
+      "state": "MERGED",
+      "ahead_of_main": 0,
+      "merged_at": "2026-11-06T16:08:50Z"
+    },
+    {
+      "pr": 27,
+      "head": "20534f8ed7b060b903082eccb6d569dab4d9bbe6",
+      "state": "MERGED",
+      "ahead_of_main": 0,
+      "merged_at": "2026-11-06T16:08:50Z"
+    },
+    {
+      "pr": 26,
+      "head": "c2600d644a027a163d7533300c7dd111d5e0f9c1",
+      "state": "MERGED",
+      "ahead_of_main": 0,
+      "merged_at": "2026-11-06T16:08:50Z"
+    },
+    {
+      "pr": 25,
+      "head": "07b4da6ddece0e1dabae7afa033ccccad46e3cdc",
+      "state": "MERGED",
+      "ahead_of_main": 0,
+      "merged_at": "2026-11-06T16:08:50Z"
+    },
+    {
+      "pr": 24,
+      "head": "0a1ebf41c9101e102b4912bb533742e13255e149",
+      "state": "MERGED",
+      "ahead_of_main": 0,
+      "merged_at": "2026-11-06T16:08:50Z"
+    },
+    {
+      "pr": 23,
+      "head": "ab63ec24827f163b4922a01d17837f0c86fbbe77",
+      "state": "MERGED",
+      "ahead_of_main": 0,
+      "merged_at": "2026-11-06T16:08:50Z"
+    },
+    {
+      "pr": 22,
+      "head": "fdaa47576a547daabf6cf36f339805a0c18622dd",
+      "state": "MERGED",
+      "ahead_of_main": 0,
+      "merged_at": "2026-11-06T16:08:50Z"
+    },
+    {
+      "pr": 21,
+      "head": "b8cfe0de4aa716fc4ac7b049d24cd81cc1eae8e5",
+      "state": "MERGED",
+      "ahead_of_main": 0,
+      "merged_at": "2026-11-06T16:08:50Z"
+    },
+    {
+      "pr": 20,
+      "head": "1e9c4b3052878d4244acc1df89b50dc16a712e21",
+      "state": "MERGED",
+      "ahead_of_main": 0,
+      "merged_at": "2026-11-06T16:08:50Z"
+    },
+    {
+      "pr": 19,
+      "head": "5ea1d55fc99590f8b54883885948d0d813e83518",
+      "state": "MERGED",
+      "ahead_of_main": 0,
+      "merged_at": "2026-11-06T16:08:50Z"
+    },
+    {
+      "pr": 18,
+      "head": "3c6c25e76f11d9f98fe4cc0ec1b56560999688ea",
+      "state": "MERGED",
+      "ahead_of_main": 0,
+      "merged_at": "2026-11-06T16:08:50Z"
+    },
+    {
+      "pr": 17,
+      "head": "25075e2be2a029e229bea54abf384f567b71d950",
+      "state": "MERGED",
+      "ahead_of_main": 0,
+      "merged_at": "2026-11-06T16:08:50Z"
+    },
+    {
+      "pr": 16,
+      "head": "972c66d6e40e37b4b6ca9075969f88bcc26f9d6e",
+      "state": "MERGED",
+      "ahead_of_main": 0,
+      "merged_at": "2026-11-06T15:50:47Z"
+    }
+  ],
+  "open_prs_after_merge": 0,
+  "actual_tree": "9e072834e150bdce554452d4c04f898d11102cb3"
+}
