@@ -15,11 +15,14 @@
       "compatible OCI deployment",
       "external entry",
       "selected gateway service readiness"
-    ]
+    ],
+    "implementation": "bc2fe451a0d8cd9cfc940f2d7963cd7034fa3581"
   },
   "EXT-043": {
     "implementation": "e9e012d761da06548ecdd7ae2f39deeaf2b4b33d",
-    "return": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/103#issuecomment-6696988335"
+    "return": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/103#issuecomment-6696988335",
+    "merge": "24258c7c8c5c00b7d216f6c2f265493adfff262d",
+    "ci_receipt": "artifacts/ci/local-pr/48/merge.json"
   },
   "next": "EXT-029 awaits original-attempt accounting; EXT-044 awaits EXT-017/039/046 and the remaining Desktop and Work integration. Check upstream configuration receipts before rerunning consumers."
 }

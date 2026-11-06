@@ -1,0 +1,105 @@
+{
+  "pr": 48,
+  "run": 42301450545,
+  "merge": "2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+  "tree": "c1aa065458c1603a6be1c03d1c74e270d2eebf74",
+  "parents": [
+    "3b597631285376da97f5bc39e71c71df660e75d3",
+    "e9e012d761da06548ecdd7ae2f39deeaf2b4b33d"
+  ],
+  "jobs": [
+    {
+      "id": 128179977875,
+      "name": "prepare (macos-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128179978066,
+      "name": "prepare (ubuntu-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128179978114,
+      "name": "prepare (windows-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180453415,
+      "name": "publish",
+      "status": "completed",
+      "conclusion": "skipped"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": 13544946079,
+      "name": "stable-plugin-windows-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:71a423330c99e8127dcb1f2efc71c4b13b0279c0b7fdaca37b039ddc9110cbce",
+      "size": 394605,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "telegram",
+          "tag": "plugin/telegram/v0.1.0",
+          "members": {
+            "Cargo.lock": "ce3e844dbdc18ebbafb6c8e3ed55b9f8bd3359e2028335cf489c189bf68b0a00",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "plugin.toml": "780ecff8d4681631655556ba6d8b1771a84b9a13ba7f2f97ef3a4c693a3d8499",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-telegram.exe": "21987dba7221001d26f9d4e987a70e88b717a4be891de29d96945ee89bed6fdb",
+            "sbom.cdx.json": "2e962b8b4fe7d524d283926a3a55bf80cdffda5d49e82a8385da8d9750b10454"
+          },
+          "release_zip_sha256": "734e01d2142b43a8177a35c225f9de7090fc0c123fa5e69281ff456df311906e"
+        }
+      ]
+    },
+    {
+      "id": 13544062423,
+      "name": "stable-plugin-macos-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:570c92dd1f7e347fc5bebe7671115cecf583918089b245f3d77cdf524c13e75e",
+      "size": 479656,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "telegram",
+          "tag": "plugin/telegram/v0.1.0",
+          "members": {
+            "Cargo.lock": "ce3e844dbdc18ebbafb6c8e3ed55b9f8bd3359e2028335cf489c189bf68b0a00",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "plugin.toml": "780ecff8d4681631655556ba6d8b1771a84b9a13ba7f2f97ef3a4c693a3d8499",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-telegram": "437dc6245e38e17808a534060149495d2418b94bc3a1917bb74b2104fe1d1800",
+            "sbom.cdx.json": "8666c76d5869f66f7fc142e79c4ace87d85f07bbf858da1b371e6b1f29704868"
+          },
+          "release_zip_sha256": "ddf3e28f93a1fe4a429c892cab4d2964faebd71ccd288bf66b6a8fb7b52a4e68"
+        }
+      ]
+    },
+    {
+      "id": 13543673071,
+      "name": "stable-plugin-ubuntu-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:4d7cad901a029a49a1beb4349e809d346489c6c39eb9e673e11408c3e5487856",
+      "size": 541038,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "telegram",
+          "tag": "plugin/telegram/v0.1.0",
+          "members": {
+            "Cargo.lock": "ce3e844dbdc18ebbafb6c8e3ed55b9f8bd3359e2028335cf489c189bf68b0a00",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "plugin.toml": "780ecff8d4681631655556ba6d8b1771a84b9a13ba7f2f97ef3a4c693a3d8499",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-telegram": "19eb631268900592830e420a5619160d735c5b8bf8dcb04de3097bcae20ef552",
+            "sbom.cdx.json": "8666c76d5869f66f7fc142e79c4ace87d85f07bbf858da1b371e6b1f29704868"
+          },
+          "release_zip_sha256": "c95997674926bd1b2de61d3fe90e5789a27542f62086d85192fc1102eff89611"
+        }
+      ]
+    }
+  ],
+  "utc": "2026-11-06T22:03:28.041220+00:00"
+}
