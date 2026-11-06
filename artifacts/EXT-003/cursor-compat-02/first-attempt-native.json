@@ -1,0 +1,42 @@
+[
+  {
+    "phase": "old-writes",
+    "method": "getMe",
+    "params": {}
+  },
+  {
+    "phase": "old-writes",
+    "method": "getUpdates",
+    "params": {
+      "allowed_updates": [
+        "message",
+        "edited_message"
+      ],
+      "timeout": 30
+    }
+  },
+  {
+    "phase": "old-writes",
+    "method": "getUpdates",
+    "params": {
+      "allowed_updates": [
+        "message",
+        "edited_message"
+      ],
+      "offset": 41,
+      "timeout": 30
+    }
+  },
+  {
+    "phase": "old-writes",
+    "method": "getUpdates",
+    "params": {
+      "allowed_updates": [
+        "message",
+        "edited_message"
+      ],
+      "offset": 41,
+      "timeout": 30
+    }
+  }
+]

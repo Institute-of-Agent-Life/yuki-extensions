@@ -1,0 +1,165 @@
+{
+  "status": "PASS",
+  "host_source": "4a41470e89b4e4ac82ad7891d24bfdf604544598",
+  "host_sha256": "e7dba346ab1a8a3bad4529d674bc57e8d21e20ff2310723f40dee209fafb326c",
+  "sdk_sha256": "e41a2375efb2f8f479fa86b022168f02d3b098d3366c1f8f9a6ed9dc22ff4c40",
+  "old_archive_sha256": "5227f287eb2afad02fe3295e251a1b21c79baa2460ad748531bef2b86cf94f84",
+  "old_binary_sha256": "e49fac00669f9175814a1b06f6034626d4bc6514639576d23020817eb16b93b0",
+  "new_binary_sha256": "ad4b2ee49eff23896b19b0752119fa290cb9aa44c3e21fd8eb2444eb5d54fbcf",
+  "phases": [
+    {
+      "case": "old-writes",
+      "polls": [
+        null,
+        41
+      ],
+      "original": null,
+      "after": "41\n",
+      "inbound": [
+        [
+          {
+            "id": 40,
+            "jsonrpc": "2.0",
+            "method": "gateway.inbound",
+            "params": {
+              "accept": false,
+              "kind": "data",
+              "native_id": "-42:40",
+              "native_version": null,
+              "occurred": 1000,
+              "segments": [
+                {
+                  "text": "40",
+                  "type": "text"
+                }
+              ],
+              "sender": "8",
+              "source": "-42:40",
+              "space": "-42",
+              "topic": null
+            }
+          },
+          {
+            "id": 40,
+            "jsonrpc": "2.0",
+            "result": {
+              "accepted": false,
+              "event": 1
+            }
+          }
+        ]
+      ],
+      "expected_error": null,
+      "child_exit": null
+    },
+    {
+      "case": "new-resumes",
+      "polls": [
+        41,
+        42
+      ],
+      "original": "41\n",
+      "after": "42\n",
+      "inbound": [
+        [
+          {
+            "id": 41,
+            "jsonrpc": "2.0",
+            "method": "gateway.inbound",
+            "params": {
+              "accept": false,
+              "kind": "data",
+              "native_id": "-42:41",
+              "native_version": null,
+              "occurred": 1000,
+              "segments": [
+                {
+                  "text": "41",
+                  "type": "text"
+                }
+              ],
+              "sender": "8",
+              "source": "-42:41",
+              "space": "-42",
+              "topic": null
+            }
+          },
+          {
+            "id": 41,
+            "jsonrpc": "2.0",
+            "result": {
+              "accepted": false,
+              "event": 2
+            }
+          }
+        ]
+      ],
+      "expected_error": null,
+      "child_exit": null
+    },
+    {
+      "case": "previous-reads-new",
+      "polls": [
+        42,
+        42
+      ],
+      "original": "42\n",
+      "after": "42\n",
+      "inbound": [],
+      "expected_error": null,
+      "child_exit": null
+    },
+    {
+      "case": "old-negative-control",
+      "polls": [
+        -2,
+        -2
+      ],
+      "original": "-2\n",
+      "after": "-2\n",
+      "inbound": [],
+      "expected_error": null,
+      "child_exit": null
+    },
+    {
+      "case": "new-negative",
+      "polls": [],
+      "original": "-2\n",
+      "after": "-2\n",
+      "inbound": [],
+      "expected_error": "negative saved Telegram offset",
+      "child_exit": 1
+    },
+    {
+      "case": "new-truncated",
+      "polls": [],
+      "original": "x",
+      "after": "x",
+      "inbound": [],
+      "expected_error": "InvalidDigit",
+      "child_exit": 1
+    },
+    {
+      "case": "negative-update",
+      "polls": [
+        null
+      ],
+      "original": null,
+      "after": null,
+      "inbound": [],
+      "expected_error": "invalid update_id",
+      "child_exit": 1
+    },
+    {
+      "case": "overflow-update",
+      "polls": [
+        null
+      ],
+      "original": null,
+      "after": null,
+      "inbound": [],
+      "expected_error": "offset overflow",
+      "child_exit": 1
+    }
+  ]
+}
