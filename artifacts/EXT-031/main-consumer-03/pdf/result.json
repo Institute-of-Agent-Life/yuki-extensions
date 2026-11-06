@@ -1,0 +1,53 @@
+{
+  "case": "pdf",
+  "status": "PASS",
+  "source_commit": "0ef956a9c6d90fae79c0d4488296c064ccf29f54",
+  "handoff_commit": null,
+  "published": false,
+  "host": {
+    "archive": "yuki-media-preview-0ef956a9c6d9-windows-x86_64.zip",
+    "sha256": "a81c49a722b9e1e420d5084856f7a13aed116865f7ca0a4c1304ac10881c62f3",
+    "binary_sha256": "4dd7a9fc345664f85d59b9c83d17e03b9dc452bbc2fb7bb01eba7d73c47b6cc0",
+    "validation_manifest_sha256": "d7341e1fc982a2ec192d6bcea225b45641e8d8b387eaa73785c982ebd7f32730"
+  },
+  "host_schema_sha256": "a992235f27698eb5b904741e09ec950c6a18a3fd923d70b804a4ac3d53b11f3b",
+  "personal_schema_sha256": null,
+  "media_schema_sha256": "d7af4bc4b1ea38decb0654af563410cc731fb2f27bb02568211d519a1c96a45f",
+  "plugin_sha256": "2d0e7e9b910789bf34b8d263475c71a720a2ee650628fc88a3292a64e26d454c",
+  "wire_sha256": "ad7209cfdde9afe1fbde1913d750fbf5f9f60f5fe7c5eba522901a3804936eb6",
+  "host_sdk": {
+    "version": "1.0.0-alpha.13",
+    "sha256": "25694e880798108129a1fa8e49e6fff7464ebc9075e5042cc379a6709343e29b"
+  },
+  "consumer_sdk": {
+    "version": "1.0.0-alpha.4",
+    "sha256": "fb01271d99ba222f8c84c9821374d6edf03bd32ac172f39b5e83c0beb1010ca9"
+  },
+  "model_http_requests": 3,
+  "physical_processor_calls": 1,
+  "source": {
+    "event": 1,
+    "slot": 1
+  },
+  "operation": "c60110e5-0af0-4c63-bac2-4d4a06f56667",
+  "receipt": {
+    "kind": "pdf",
+    "source": {
+      "event": 1,
+      "slot": 1
+    },
+    "state": "read",
+    "text": "\n[page 1]\nSelected page one\n[page 2]\nSelected page two\n[PDF text extraction only; embedded images were not read.]\n",
+    "total_units": 2,
+    "truncated": false,
+    "units_read": 2,
+    "version": "753e25b038830e03768f05449dab4b8f05ef0534927abb9282eab60f4c5ecf42"
+  },
+  "model_frame_sha256": [],
+  "trusted_cache_setup": "public execution namespace from original capability receipt; protected operator cache-file",
+  "selection_model_request_range": [
+    1,
+    3
+  ],
+  "continuation_request_sha256": "29d5c7e7864563528467dd52144340de986dd702655962a600ceeac57f8655f8"
+}

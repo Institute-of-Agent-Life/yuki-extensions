@@ -19,6 +19,14 @@ def sha(p):
 
 
 def prepare(root, output):
+    if os.environ.get("YUKI_MEDIA_MAIN_AUDIT") == "1":
+        sys.path.insert(0, str(root / "tests/peers"))
+        from media_main_audit import exercise
+        return exercise(root, output)
+    if os.environ.get("YUKI_MEDIA_MAIN_WITNESS") == "1":
+        sys.path.insert(0, str(root / "tests/peers"))
+        from media_main import exercise
+        return exercise(root, output)
     lock = json.loads((root / "plugins/media/packaging/codecs.lock").read_bytes())
     wheels = Path(os.environ["YUKI_MEDIA_CODEC_WHEELS"])
     backend = output / "work" / "codecs"
@@ -319,5 +327,5 @@ def prepare(root, output):
 def run(root, output):
     return "media-inspection.json", {
         "status": "BLOCKED",
-        "card_status": "AWAITING_PUBLIC_MEDIA_RELEASE_AND_MODEL_PRESENTATION",
+        "card_status": "AWAITING_FIXED_MAIN_ERASURE_NATIVE_GATEWAY_AND_PUBLICATION",
     }

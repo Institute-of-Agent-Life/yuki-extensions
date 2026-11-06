@@ -1,0 +1,31 @@
+{
+  "task": "EXT-031",
+  "status": "FAIL",
+  "phase": "preparation",
+  "card_status": "FAIL",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "45ae5feefb70a740b044150e286df02b5eeee597bd7f80c82d3ad7cc4fb69876",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-031",
+    "--preparation",
+    "--out",
+    "D:\\yuki-extension-tests\\media-main-main-consumer-02\\evidence"
+  ],
+  "files": {
+    "consumer.lock.json": "9839b9f1114ec4067c51ea70acc4a0f37bd8379d406273d64e9125b8e18246f2",
+    "failure.txt": "90cac2ef234aaef50aac820ba8149cd35fb2bedf5d17effb1ceabe5f31f63c5f",
+    "pdf/gateway-transfer/good.pdf": "753e25b038830e03768f05449dab4b8f05ef0534927abb9282eab60f4c5ecf42",
+    "pdf/gateway-transfer/unselected.pdf": "50370931a0b76d5de10746daf717053d7fb76c3f4f726c0052cc6140d0a88683",
+    "pdf/gateway-transfer/video.mp4": "c07d7e011bc253f0e6ad6d8a958093abf6bb04fe0afee7f14536e6091a0fd1b9",
+    "pdf/host-config.json": "65613d5f0e42a75019b8cf3cca044a4aaf9f573697e83507934e44ff84030987",
+    "pdf/host.txt": "cd67a943214abc183412eb2d8ada437fba9f3968530d3474aa75e8698e6c129a",
+    "pdf/model-http.json": "f8e6247f791261af0e58196da2579a2fd7df68d98d33daa533b6baae805af204",
+    "pdf/model-responses.json": "538dea9a628e52280ce4b4f95f080412199aa0e760ae327c144cf98a9a88814c",
+    "pdf/operator.json": "ca1cf0aad5d8f2e31f580f05d45ff0a468fde87cd52fe4a1056f35f6597fff5e",
+    "pdf/wire.jsonl": "dfd6762cd8b5974d3dbe3c9457a81b1df7fda265731bf0de688c0d46582b1c58"
+  }
+}

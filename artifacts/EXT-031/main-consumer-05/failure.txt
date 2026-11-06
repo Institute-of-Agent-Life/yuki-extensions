@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "D:\yuki-extension-tests\media-main-main-consumer-05\src\ci\check.py", line 37, in main
+    report_name, report = runner(root, args.out.resolve())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\media-main-main-consumer-05\src\tests\cases\EXT-031.py", line 25, in prepare
+    return exercise(root, output)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\media-main-main-consumer-05\src\tests\peers\media_main.py", line 129, in exercise
+    assert frames is not None, 'original processor transcript not complete'
+AssertionError: original processor transcript not complete

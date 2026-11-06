@@ -1,0 +1,1 @@
+{"listen":"127.0.0.1:15147","operator":"\\\\.\\pipe\\yuki-core-05f2adf18160c265d4d9658140fa6e309029f3fd6c7f7ee42131bc4e9647623b","status":"ready"}

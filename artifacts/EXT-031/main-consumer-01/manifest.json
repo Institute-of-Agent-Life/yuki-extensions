@@ -1,0 +1,21 @@
+{
+  "task": "EXT-031",
+  "status": "FAIL",
+  "phase": "preparation",
+  "card_status": "FAIL",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "18910960b51931bee060a87cc380b118afdb10dcc25944dd8f1a15c192cd0585",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-031",
+    "--preparation",
+    "--out",
+    "D:\\yuki-extension-tests\\media-main-main-consumer-01\\evidence"
+  ],
+  "files": {
+    "failure.txt": "2ae99a07ebfc49a67028bc8a87b259e7faa4c54b2262cefbd8e39e22f1e6c6e8"
+  }
+}

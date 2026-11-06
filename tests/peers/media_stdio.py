@@ -46,7 +46,7 @@ def incoming():
             log("from_host", frame)
             if (
                 frame.get("method") == "media.process"
-                and frame["params"]["operation"] == "erase-race"
+                and (frame["params"]["operation"] == "erase-race" or (control / "erase-next").exists())
             ):
                 with state_lock:
                     race_handle = frame["params"]["handle"]

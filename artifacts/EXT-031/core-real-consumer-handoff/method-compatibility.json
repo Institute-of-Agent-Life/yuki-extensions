@@ -1,0 +1,21 @@
+{
+  "exact_methods": {
+    "media.process": true,
+    "media.open": true,
+    "media.publish": false
+  },
+  "media_publish_addition": {
+    "optional": "ttl_seconds",
+    "schema": {
+      "type": "integer",
+      "minimum": 60,
+      "maximum": 604800
+    }
+  },
+  "forget_methods": "not included in the old media fragment; no equality claim",
+  "entire_schema_equal": false,
+  "consumer_sdk": "1.0.0-alpha.4",
+  "producer_sdk": "1.0.0-alpha.13",
+  "consumer_binary_sha256": "2d0e7e9b910789bf34b8d263475c71a720a2ee650628fc88a3292a64e26d454c",
+  "consumer_snapshot_sha256": "fd7fb275dae5aa500f4249a077b858bbbdfa5982643b97aaae4a5e918fc8cd90"
+}

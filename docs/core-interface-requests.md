@@ -433,3 +433,22 @@ Windows 真 Rust Client alpha.2 / SDK alpha.12 已驗九組明選入口、原 UU
   不從 runner_failed 推斷派發、費用或根因，不重發該原未知操作。
 - 取得公開配置或固定修正後，只重驗受影響的 ACP／Social／agent_target／operation
   及遺失最後提示案例；已通過的同 tuple 功能回條沿用。完整卡與正式發布仍待驗。
+# EXT-031 / CORE-038 0ef956a9c6d9：Main forget 的外鍵拒絕
+
+已在 Windows 以原 Rust binary 2d0e7e9b9107／SDK alpha.4、Host source
+0ef956a9c6d9／SDK alpha.13 實收同一 Main 的原 PDF 頁文與 0/5 秒原影片像素。
+原 processor 未重編，沒有另購 vision 輪；Main 呈現缺口已在這個 tuple 解除，
+舊 e25c2b8 上的自動 forget 成功回條仍保留。
+
+新的 Main 路徑故障在 `artifacts/EXT-031/faults-07/forget`：原 QQ event slot 1，
+從公開 capability 回條取得原 execution，以 protected media cache-file 交原 bytes；
+Core media.process/open 讀第二塊時透明 relay 暫停原 response，公開
+`operator privacy erase main-selected-forget <原Person> [1]` 返回 SQLite 787
+FOREIGN KEY constraint failed。沒有成功 erase receipt，不推斷已清或未清、派發或費用，
+不自行送 forget ACK、不重試原未知效果、不讀／改主庫。請提供固定 Windows 包、
+source commit／SDK／hash 與公開成功／故障序列，能在 Main 正常處理器路徑清除原
+依賴，原 owner ACK 後阻止晚到頁文／影格回流。
+
+`audit-09` 在 Windows 核五個已通過案例、原 artifact/member hashes、原方法配對、
+實際模型 HTTP bytes 與原 FK 錯誤。原 receiving gateway 真取件及正式發布仍另待；
+受保護 cache-file fixture 不能代替 Telegram／飛書的原平台取件。

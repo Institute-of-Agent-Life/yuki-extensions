@@ -1,0 +1,59 @@
+[
+  {
+    "args": [
+      "person",
+      "create",
+      "fd14410a-0f63-4719-a155-b015320cc9e6"
+    ],
+    "result": {
+      "original": "fd14410a-0f63-4719-a155-b015320cc9e6",
+      "root": "fd14410a-0f63-4719-a155-b015320cc9e6"
+    }
+  },
+  {
+    "args": [
+      "account",
+      "open",
+      "qq",
+      "media-main",
+      "200",
+      1,
+      "--person",
+      "fd14410a-0f63-4719-a155-b015320cc9e6",
+      "--start",
+      1
+    ],
+    "result": {
+      "account": "5f6c21f7-aead-4b63-bbaf-100bcf6d2ecc",
+      "assignment": "be5541b9-b04d-4a9f-b75c-8f6c3ea4436c"
+    }
+  },
+  {
+    "args": [
+      "account",
+      "open",
+      "qq",
+      "media-main",
+      "100",
+      1,
+      "--start",
+      1
+    ],
+    "result": {
+      "account": "2902b391-2c91-46bf-b8b8-3c0152ad37b4",
+      "assignment": "c14df366-943e-473c-b1ba-97c5809ab3ab"
+    }
+  },
+  {
+    "args": [
+      "ingress",
+      "record",
+      "{\"source\": \"main-pdf\", \"account\": \"5f6c21f7-aead-4b63-bbaf-100bcf6d2ecc\", \"bot_stage\": \"c14df366-943e-473c-b1ba-97c5809ab3ab\", \"kind\": \"message\", \"reply_bot\": \"100\", \"occurred\": 100, \"observed\": 100, \"segments\": [{\"type\": \"media\", \"kind\": \"file\", \"reference\": \"unselected.pdf\"}, {\"type\": \"media\", \"kind\": \"file\", \"reference\": \"good.pdf\"}]}",
+      "--accept"
+    ],
+    "result": {
+      "accepted": true,
+      "event": 1
+    }
+  }
+]

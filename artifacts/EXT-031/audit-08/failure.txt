@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "D:\yuki-extension-tests\media-main-audit-08\src\ci\check.py", line 37, in main
+    report_name, report = runner(root, args.out.resolve())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\media-main-audit-08\src\tests\cases\EXT-031.py", line 25, in prepare
+    return exercise(root, output)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\media-main-audit-08\src\tests\peers\media_main_audit.py", line 49, in exercise
+    assert paid['result']['data'] == reply['result']['data'] == report['receipt']
+AssertionError
