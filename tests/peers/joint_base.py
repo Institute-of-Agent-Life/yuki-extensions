@@ -44,6 +44,14 @@ def exchange(frames, method, direction):
             yield frame, reply
 
 
+DENIALS = {
+    'denied-send': 'gateway_send_not_granted',
+    'unsupported-emoji': 'gateway_media_unsupported',
+    'missing-media-reader': 'gateway_media_read_not_granted',
+}
+MEDIA_DENIALS = {'unsupported-emoji', 'missing-media-reader'}
+
+
 def run(root, assets, archive, out, case):
     sys.path.insert(0, str(root/'compat/base'))
     from verify_dist import verify, native_target
@@ -54,8 +62,10 @@ def run(root, assets, archive, out, case):
     work = out/'work'
     work.mkdir()
     consumer = json.loads((root/'compat/base/source.lock.json').read_bytes())
-    lock = (json.loads((root/'compat/gateway-refusal/source.lock.json').read_bytes())
-            if case == 'denied-send' else consumer)
+    lock = consumer
+    if case in DENIALS:
+        contract = 'media-refusal' if case in MEDIA_DENIALS else 'gateway-refusal'
+        lock = json.loads((root/'compat'/contract/'source.lock.json').read_bytes())
     platform = lock['platforms']['-'.join(native_target())]
     key = work/'signer.pub'
     key.write_bytes((platform['signer'] + '\n').encode('ascii'))
@@ -160,8 +170,8 @@ def run(root, assets, archive, out, case):
                     else:
                         assert n==4 and receipt['state']=='failed' and result.get('error')!='invalid_tool_arguments', receipt
                         done.set()
-                elif case == 'denied-send' and text is not None:
-                    assert receipt['state'] == 'failed' and result == {'error':'gateway_send_not_granted'}, receipt
+                elif case in DENIALS and text is not None:
+                    assert receipt['state'] == 'failed' and result == {'error': DENIALS[case]}, receipt
                     denial['original'] = receipt
                     done.set()
                 elif case=='missing-method' and text is not None:
@@ -189,7 +199,12 @@ def run(root, assets, archive, out, case):
                             assert bytes(original) == page
                             marker = original.decode().splitlines()[0]
                             text = marker + '雪' * (8197-len(marker))
-                            tool = ('send', {'text':text})
+                            arguments = {'text':text}
+                            if case == 'unsupported-emoji':
+                                arguments['emoji'] = {'goal':'source found'}
+                            elif case == 'missing-media-reader':
+                                arguments = {'artifact_id':'unread-version','attachment_kind':'file'}
+                            tool = ('send', arguments)
                         else:
                             assert section['next_offset'] == cursor
                 else:
@@ -321,8 +336,12 @@ def run(root, assets, archive, out, case):
                 entry.update(platform='telegram',bot_stage=bot,grants=['gateway.inbound'])
                 if case != 'denied-send':
                     entry['grants'].append('gateway.send')
+                if case in MEDIA_DENIALS:
+                    entry['grants'].append('gateway.media')
             installed.append({'unit':unit,'namespace':namespace,'grants':entry['grants'],'environment_names':list(environment),'program_digest':digest(binary)})
             top += '\n[[plugins]]\n'+'\n'.join(k+'='+json.dumps(v) for k,v in entry.items())+'\n'
+            if unit=='telegram' and case in MEDIA_DENIALS:
+                top += '[plugins.gateway_media]\napplication="101"\n'
             if unit=='web-fetch':
                 tools=(package/'plugin.toml').read_text(encoding='utf-8').split('[[tools]]',1)[1]
                 top += '[[plugins.tools]]'+tools
@@ -375,7 +394,7 @@ def run(root, assets, archive, out, case):
         before=(len(models),len(native),len(requests))
         offset_count=len(offsets)
         with running():
-            if case == 'denied-send':
+            if case in DENIALS:
                 original_receipt = denial['original']
                 recovered = cli('operator','effect','read',original_receipt['namespace'],original_receipt['id'],person)
                 assert recovered['id'] == original_receipt['id'] and recovered['result'] == original_receipt['result']
@@ -401,7 +420,7 @@ def run(root, assets, archive, out, case):
         assert len(calls)==1 and len(checks)==2 and all(c[0]['params']['handle']==calls[0][0]['params']['handle'] for c in checks)
         ingress=list(exchange(traces['telegram'],'gateway.inbound','from_plugin'));assert len(ingress)==(2 if case in ('swapped','erased-readback') else 1) and all(pair[1]['result']['accepted'] for pair in ingress)
         parts=list(exchange(traces['telegram'],'gateway.dispatch_part','from_host'))
-        assert len(parts)==len(native)=={'confirmed':3,'lost-second':2,'wrong-handle':0,'revoked':0,'swapped':0,'missing-method':0,'erased-readback':0,'denied-send':0}[case]
+        assert len(parts)==len(native)=={'confirmed':3,'lost-second':2,'wrong-handle':0,'revoked':0,'swapped':0,'missing-method':0,'erased-readback':0,**dict.fromkeys(DENIALS,0)}[case]
         assert all(n['chat_id']=='8' for n in native)
         states=[r['result'] for _,r in parts]
         if case=='missing-method':
@@ -409,7 +428,7 @@ def run(root, assets, archive, out, case):
             assert original_negotiation and all(any(m['name']=='gateway.dispatch_part' for m in x['frame']['result']['method_revisions']) for x in original_negotiation)
             plan,=exchange(traces['telegram'],'gateway.plan_send','from_host')
             assert plan[1]['error']['code']==-32601 and not parts
-        if case=='denied-send':
+        if case in DENIALS:
             assert not list(exchange(traces['telegram'],'gateway.plan_send','from_host')) and not parts
             assert len(reads)>=2 and bytes(original)==page and denial['after_restart']
             write(out/'denial.json',denial)
@@ -434,6 +453,6 @@ if __name__ == '__main__':
     parser=argparse.ArgumentParser()
     for name in ['root','assets','archive','out']:
         parser.add_argument(name,type=lambda value:Path(value).resolve())
-    parser.add_argument('--case',choices=['confirmed','lost-second','wrong-handle','revoked','swapped','missing-method','erased-readback','denied-send'],required=True)
+    parser.add_argument('--case',choices=['confirmed','lost-second','wrong-handle','revoked','swapped','missing-method','erased-readback',*DENIALS],required=True)
     args=parser.parse_args()
     run(args.root,args.assets,args.archive,args.out,args.case)

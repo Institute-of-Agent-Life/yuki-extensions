@@ -22,6 +22,8 @@
     "tests/cases/EXT-028.py",
     "compat/base/source.lock.json",
     "compat/base/yuki-plugin-sdk-1.0.0-alpha.14.crate",
+    "compat/gateway-refusal/source.lock.json",
+    "compat/media-refusal/source.lock.json",
     "tests/peers/joint_base.py",
     "tests/peers/base_relay.py",
     "ci/base-witness.py",
