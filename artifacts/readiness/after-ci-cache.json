@@ -15,7 +15,9 @@
     "windows": "PASS",
     "hosted_ci": "PENDING",
     "artifact": "artifacts/readiness/ci-cache/receipt.json",
-    "sequence": "docs/ci-performance.md"
+    "sequence": "docs/ci-performance.md",
+    "pr": 35,
+    "observed_head": "324d189721ef599f82d81ad501068a936869ca6c"
   },
   "latest_functional_progress": "../work-media-main/docs/implementation-progress.md",
   "candidate_prs": {
@@ -27,12 +29,22 @@
     "CORE-038 gateway.media b99b01a92443",
     "CORE-023 canonical QQ fece25119850"
   ],
-  "next": "Verify current PR16 gates and inspect true taskbook/runtime prerequisites of new terminal/gateway deliveries; no formal acceptance assumed",
+  "next": "Wait current PR16 full gates; apply actual new main to each next PR, verify all artifacts before ordinary merge. Gateway media and terminal consumers await the public minimal approved installation/real Work activation sequences requested in core73/75.",
   "wip_preserved": [
     "root four Code adapters",
     "work-asr",
     "work-rebuild",
     "work-subscription"
   ],
-  "automation": "PAUSED while authorized ready work is in progress"
+  "automation": "Restore ACTIVE through the app after final push and status verification",
+  "core_interface_intake": {
+    "artifacts": "artifacts/readiness/new-interface-deliveries",
+    "zip_and_all_members": "VERIFIED, six platforms/tuples",
+    "consumption": "NOT_RUN",
+    "requests": {
+      "gateway_media": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/73#issuecomment-6679830369",
+      "terminal_work": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/75#issuecomment-6679830928"
+    }
+  },
+  "current_pr_snapshot": "artifacts/readiness/current-pr-gates-before-cache-metadata.json"
 }

@@ -13,6 +13,27 @@
 | EXT-010 · codex/ext-010 | `ab16e07`；CI `41834791702`；PR #6 合併 `2c55dbb` | `artifacts/EXT-010/02/`，8 例含實際子進程退出碼 23、雙 session 取消及 unknown |
 | EXT-019 · codex/ext-019 | 實作 `7531d84`、PR head `9d1e8a8`；三平台 CI `41835863011`；PR #7 合併 `7625095` | `artifacts/EXT-019/02/`，呼叫表、schema 差分、5 個故障變異；`03/` 固定跨平台順序 |
 
+## 2026-11-06 收尾核對
+
+- 快取 [PR #35](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/35)
+  已推 `324d189721ef`（實作 `0daf4c9`）；PR #16 的去重 `972c66d` 已推。
+  07:45 UTC 全部目前 open PR #16…35 的所有 runs／分頁 jobs 無 failure，快照
+  `artifacts/readiness/current-pr-gates-before-cache-metadata.json`。PR #16 當時 7 success／
+  13 queued／5 running；PR #35 3 success／22 queued，均未全過，不合併。
+  本進度快照屬寫入前 head；後續合併只採 API 即時 head／base 與完整產物。
+- 原 PR #16 head `58cd960` 的 push `42149145226`、PR `42149150676` 已確認
+  completed/cancelled；新 head run `42179984095` 的完整 25 jobs 仍保留。
+- 新 CORE-038 gateway.media `b99b01a92443`／alpha.13、CORE-032 terminal
+  `61999b662f1e`／alpha.14 的六份 ZIP／全部 member SHA／來源與 dirty=false 已核。
+  `artifacts/readiness/new-interface-deliveries/` 是靜態交付核對，不是安裝或真插件消費。
+  公開方法已交付；尚需原 application／tenant 安裝核准與真 Main Work 路由的最小
+  公開配置序列。具體字段／正反例已交核心 PR #73 comment6679830369、
+  #75 comment6679830928，詳 `docs/core-interface-requests.md`。
+- 核心 main 仍 `ce66753708ef`，唯一公開 release 仍已驗 EXT-002 的握手預發版；
+  沒有新的正式 SDK／Host 發布。原 44／45／46／47／48／51／61 回條及本次
+  73／75 配置請求未見新回覆。只剩 runner／公開配置及既有上游合同等待。
+  正式完成 7／68；原四份 WIP 和未驗功能均保留。排程在本次收尾後恢復每小時檢查。
+
 ## 2026-11-06 Rust CI 快取候選
 
 - `codex/ci-locked-cache` 實作 `0daf4c9d324bd5c80e738119bc2366ef67863f61`，從去重提交 `972c66d` 延續；快取作為獨立後續 PR，
