@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "D:\yuki-extension-tests\ci-cache-f294dcf151749061\diagnose.py", line 5, in <module>
+    try:build(root/'src','local-agent',root/'diagnostic-build-01')
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\ci-cache-f294dcf151749061\src\ci\package.py", line 61, in build
+    vendor_sdk(crate, build_path, build_path / "Cargo.lock")
+  File "D:\yuki-extension-tests\ci-cache-f294dcf151749061\src\ci\handshake_cargo.py", line 80, in vendor_sdk
+    unpack_crate(data, directory, f"{entry['name']}-{entry['version']}")
+  File "D:\yuki-extension-tests\ci-cache-f294dcf151749061\src\ci\handshake_cargo.py", line 54, in unpack_crate
+    crate.extractall(directory, filter="data")
+  File "C:\Users\Hilbert\AppData\Local\Programs\Python\Python312\Lib\tarfile.py", line 2268, in extractall
+    self._extract_one(tarinfo, path, set_attrs=not tarinfo.isdir(),
+  File "C:\Users\Hilbert\AppData\Local\Programs\Python\Python312\Lib\tarfile.py", line 2335, in _extract_one
+    self._handle_fatal_error(e)
+  File "C:\Users\Hilbert\AppData\Local\Programs\Python\Python312\Lib\tarfile.py", line 2331, in _extract_one
+    self._extract_member(tarinfo, os.path.join(path, tarinfo.name),
+  File "C:\Users\Hilbert\AppData\Local\Programs\Python\Python312\Lib\tarfile.py", line 2414, in _extract_member
+    self.makefile(tarinfo, targetpath)
+  File "C:\Users\Hilbert\AppData\Local\Programs\Python\Python312\Lib\tarfile.py", line 2459, in makefile
+    with bltn_open(targetpath, "wb") as target:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\yuki-extension-tests\\ci-cache-f294dcf151749061\\run-01\\cache\\rust\\work\\local-agent\\f2f409394a6cb7c7cd14b060e5e5eaadafe7605ba04b22e43aa7739a8eddaba8\\unit\\vendor\\vcpkg-0.2.15\\test-data\\multiline-description\\installed\\vcpkg\\info\\graphite2_1.3.10_x86-windows.list'

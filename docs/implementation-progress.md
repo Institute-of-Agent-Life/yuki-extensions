@@ -13,6 +13,24 @@
 | EXT-010 · codex/ext-010 | `ab16e07`；CI `41834791702`；PR #6 合併 `2c55dbb` | `artifacts/EXT-010/02/`，8 例含實際子進程退出碼 23、雙 session 取消及 unknown |
 | EXT-019 · codex/ext-019 | 實作 `7531d84`、PR head `9d1e8a8`；三平台 CI `41835863011`；PR #7 合併 `7625095` | `artifacts/EXT-019/02/`，呼叫表、schema 差分、5 個故障變異；`03/` 固定跨平台順序 |
 
+## 2026-11-06 Rust CI 快取候選
+
+- `codex/ci-locked-cache` 從去重提交 `972c66d` 延續；快取作為獨立後續 PR，
+  等 PR #16／當前 main 前置及完整新基底 CI 後才可合併。正常／故障時序與來源策略見
+  `docs/ci-performance.md`。三平台與全部受影響單位的 gates 保留；沒有新增 job。
+- HJW Windows 10 項 cache 回歸與真 local-agent 冷／熱 build 通過。207.235 秒／
+  26.719 秒，38／0 筆 registry GET，熱輪無重編譯，原 SQLite 回歸兩輪皆執行。
+  actionlint 通過；十九份來源與原矩陣／步驟核對一致。具名回條
+  `artifacts/readiness/ci-cache/receipt.json`；第一輪路徑限制失敗保留於 windows-01。
+- 快取以 OS／架構／實際 Rust host／版本／lock／來源／實含 SDK SHA 隔離。
+  命中不跳過測試、重新建包和逐 bytes 驗證。原碼／vendor 不入快取；不寫使用者的
+  Cargo cache。SDK 仍為原 CORE-033 alpha.3，沒有新 Host／插件行為主張。
+- GitHub 當前 SHA 的三平台 CI、真正 cache hit、具名 ZIP／merge tree 仍待驗。
+  正式完成仍 7／68。Client9 PR #32 及 Main 媒體 PR #34 已推候選；最新功能進度見
+  `.ci-transfer/work-media-main/docs/implementation-progress.md`，本次新擦除阻塞回條
+  https://github.com/Institute-of-Agent-Life/yuki-core/pull/74#issuecomment-6679099141 。
+  CORE-032 terminal.work 的新候選已讀公開說明；尚未逐成員核包或消費，後續核真前置。
+
 ## 2026-11-06 CI 去重同步至佇列首張 PR #16
 
 - 沿用 PR #33 的 `11fbc352c9ca`：本提交工作流與已在 HJW Windows 驗過的

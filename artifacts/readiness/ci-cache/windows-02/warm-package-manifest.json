@@ -1,0 +1,68 @@
+{
+  "unit_id": "local-agent",
+  "version": "0.1.0-alpha.1",
+  "release_tag": "local-agent/v0.1.0-alpha.1",
+  "published": false,
+  "manifest_sha256": "afee67840c891e835c2dd951bf74be2100e662d43424f93f425010555d67c41b",
+  "lock_sha256": "bcbc25db19e2c8726488b7a5db9da69ce6cab44eed5e998d315dcba0ec2b554d",
+  "source": {
+    "repository": "Institute-of-Agent-Life/yuki-extensions",
+    "baseline": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+    "sdk_contract": "compat/core-033/source.lock.json"
+  },
+  "license": "AGPL-3.0-only",
+  "artifacts": {
+    "Cargo.lock": "bcbc25db19e2c8726488b7a5db9da69ce6cab44eed5e998d315dcba0ec2b554d",
+    "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+    "plugin.toml": "6b4bc8bf5757778b1553173e7d69f7e6c32441994dfe173e66ffdca769621b1c",
+    "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+    "yuki-local-agent.exe": "fdfb6d7d15eef8fe34e518f3eaf6139c88f7b06aa26b2eb6461acfb65b30bd1f"
+  },
+  "commands": [
+    {
+      "command": [
+        "rustc",
+        "--version",
+        "--verbose"
+      ],
+      "exit_code": 0,
+      "stdout": "rustc 1.96.0 (ac68faa20 2026-05-25)\nbinary: rustc\ncommit-hash: ac68faa20c58cbccd01ee7208bf3b6e93a7d7f96\ncommit-date: 2026-05-25\nhost: x86_64-pc-windows-gnu\nrelease: 1.96.0\nLLVM version: 22.1.2\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "cargo",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "cargo 1.96.0 (30a34c682 2026-05-25)\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--target-dir",
+        "D:\\yuki-extension-tests\\ci-cache-33be2e0c131d2359\\run-01\\cache\\rust\\target\\local-agent\\b20d419007e8b763bc08c2d44b35ef9569227bb3836cb75938d75b3f157c47e7"
+      ],
+      "exit_code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest reopening_is_idempotent_and_rejects_foreign_databases ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s\n\n",
+      "stderr": "    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.32s\n     Running unittests src\\main.rs (D:\\yuki-extension-tests\\ci-cache-33be2e0c131d2359\\run-01\\cache\\rust\\target\\local-agent\\b20d419007e8b763bc08c2d44b35ef9569227bb3836cb75938d75b3f157c47e7\\debug\\deps\\yuki_local_agent-04045904ffef2f48.exe)\n     Running tests\\catalog.rs (D:\\yuki-extension-tests\\ci-cache-33be2e0c131d2359\\run-01\\cache\\rust\\target\\local-agent\\b20d419007e8b763bc08c2d44b35ef9569227bb3836cb75938d75b3f157c47e7\\debug\\deps\\catalog-ba8a454a504f3958.exe)\n"
+    },
+    {
+      "command": [
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "--target-dir",
+        "D:\\yuki-extension-tests\\ci-cache-33be2e0c131d2359\\run-01\\cache\\rust\\target\\local-agent\\b20d419007e8b763bc08c2d44b35ef9569227bb3836cb75938d75b3f157c47e7"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "    Finished `release` profile [optimized] target(s) in 0.03s\n"
+    }
+  ]
+}
