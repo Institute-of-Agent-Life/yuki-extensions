@@ -1,0 +1,278 @@
+{
+  "macOS": [
+    {
+      "status": "PASS",
+      "runner": "local-macOS",
+      "machine": "arm64",
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "job": "acceptance",
+      "commit": "5255535ceb8006496badfa186def7f701da5197a",
+      "tree": "9b95740c3270e90c780003ec3a2b9c0c55521242",
+      "parents": [
+        "8f5edca469a4f00347274e9a0b162a0036991b8f",
+        "7b392dec23ee0dced04c02cf99154ec2b37c0913"
+      ],
+      "cases": [
+        "EXT-001",
+        "EXT-002",
+        "EXT-019"
+      ],
+      "units": [],
+      "members": {
+        "EXT-001/manifest.json": "90e379789c251b97de10fe7009e5f367c802c4b7b90302c7d6d5c3e26b801b16",
+        "EXT-001/extension-build-isolation.json": "8aca9b9d27afd15bfa95fadebd10ad0d67a61d71cd349634c72f74a29236cd2f",
+        "EXT-002/manifest.json": "2f5d2501f66ed63f443a08c5108b8d4f3bff2e6a0e9fbd145489fa161636459d",
+        "EXT-002/build.txt": "5fcd9254247c4f75ef579487cd05fb6822439302b460bcc2479c186d10647917",
+        "EXT-002/published-sdk.json": "96696f1cfc992c5cca04ee123799a445181b77c970f86d07d48eb3e6ff959a75",
+        "EXT-019/manifest.json": "9e0bb188304a4666109eb9f0bdcd44449b35a0257845625e0d4a8987e6a4fa22",
+        "EXT-019/desktop-callsite-pin.json": "d9d6caa43cb9dd36b65358fb0c06648b7c22784f98babfad63ba42bc00a9c7fe",
+        "EXT-019/desktop-surface-diff.json": "21d8a19696cd02bb91ad8079dd09948eeacbae32f31211d3a32f766abbb88550"
+      }
+    },
+    {
+      "status": "PASS",
+      "runner": "local-macOS",
+      "machine": "arm64",
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "job": "telegram",
+      "commit": "5255535ceb8006496badfa186def7f701da5197a",
+      "tree": "9b95740c3270e90c780003ec3a2b9c0c55521242",
+      "parents": [
+        "8f5edca469a4f00347274e9a0b162a0036991b8f",
+        "7b392dec23ee0dced04c02cf99154ec2b37c0913"
+      ],
+      "cases": [],
+      "units": [
+        "telegram"
+      ],
+      "members": {
+        "cache-input.json": "5c4b5220c50a436dbe890498e6e9e91332e608d309569d664789d8ed35369e9a",
+        "package/package-manifest.json": "68d358800da63c5f2857f53b31eb5d530f46e8037e99c7576076e79a511f4c95",
+        "package/LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "package/yuki-telegram": "d4c362f13d302d917fb378d14eee850b9db99ee8b4b0f5047dfcab751bc65353",
+        "package/Cargo.lock": "5a4b56764922029d7cf6b66337a2ecde114b79abb3bee798ea4726bd2cddb945",
+        "package/rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "package/plugin.toml": "84f3c2356d649e2c9a1d4f693a61cda370c213d3101ad70b0136866bcf3a6da4"
+      }
+    }
+  ],
+  "hosted": {
+    "pr": 39,
+    "run": 42253314680,
+    "merge": "5255535ceb8006496badfa186def7f701da5197a",
+    "tree": "9b95740c3270e90c780003ec3a2b9c0c55521242",
+    "parents": [
+      "8f5edca469a4f00347274e9a0b162a0036991b8f",
+      "7b392dec23ee0dced04c02cf99154ec2b37c0913"
+    ],
+    "jobs": [
+      {
+        "id": 128013809412,
+        "name": "select",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 128013809688,
+        "name": "acceptance (windows-latest)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 128013809897,
+        "name": "acceptance (ubuntu-latest)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 128013810075,
+        "name": "acceptance (macos-latest)",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 128013933958,
+        "name": "package (telegram, windows-latest)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 128013934002,
+        "name": "package (telegram, macos-latest)",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 128013934043,
+        "name": "package (telegram, ubuntu-latest)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 128013935960,
+        "name": "runtime (monty-runtime, ubuntu-latest)",
+        "status": "completed",
+        "conclusion": "skipped"
+      },
+      {
+        "id": 128013937086,
+        "name": "worker (codemode, ${{ matrix.os }})",
+        "status": "completed",
+        "conclusion": "skipped"
+      }
+    ],
+    "artifacts": [
+      {
+        "id": 13521801528,
+        "name": "acceptance-ubuntu-latest-5255535ceb8006496badfa186def7f701da5197a",
+        "digest": "sha256:1578b1984707fe6621afa42d66bef417e7db43862bab678ebac41c1f2feecf49",
+        "size": 28555,
+        "zip_members": 8,
+        "manifests": [
+          {
+            "path": "EXT-001/ci/manifest.json",
+            "file_sha256": "5fd4f94de2fdb325cfc7fe9071670d238c7d8e81b64e4b9396b6c27fe796b167",
+            "task": "EXT-001",
+            "unit": null,
+            "members": {
+              "extension-build-isolation.json": "874c6b67c101abb56038d7b9732678736e37d7f99f7c271157c9cd40602cd7b4"
+            }
+          },
+          {
+            "path": "EXT-002/ci/manifest.json",
+            "file_sha256": "2c99f442c92266822f9648641b952004d84ee55f9a033b5e1e101b2ff5f57987",
+            "task": "EXT-002",
+            "unit": null,
+            "members": {
+              "build.txt": "da99e7bc40a6e716930500c92f30d24f323b5f02560824f6c86ac65f5d4108ae",
+              "published-sdk.json": "4f5be9e6ced1232df5f75c6fbb37cc6676f2888565125b2f8c6036388247066a"
+            }
+          },
+          {
+            "path": "EXT-019/ci/manifest.json",
+            "file_sha256": "2c6ef28243faffbb7cff8ac237da4bd17b4ae362193686ca7a4d272c033995bd",
+            "task": "EXT-019",
+            "unit": null,
+            "members": {
+              "desktop-callsite-pin.json": "d9d6caa43cb9dd36b65358fb0c06648b7c22784f98babfad63ba42bc00a9c7fe",
+              "desktop-surface-diff.json": "21d8a19696cd02bb91ad8079dd09948eeacbae32f31211d3a32f766abbb88550"
+            }
+          }
+        ]
+      },
+      {
+        "id": 13521717056,
+        "name": "cache-inputs-telegram-ubuntu-latest-5255535ceb8006496badfa186def7f701da5197a",
+        "digest": "sha256:0ab92cbf9323413c18c928f35488bbfe73bca2abeed14404d306d42c163752f9",
+        "size": 1889,
+        "zip_members": 1,
+        "manifests": [
+          {
+            "unit": "telegram",
+            "cache_key": "rust-v1-Linux-x86_64-telegram-27bb058c03e14820d6b0444758d6caed4d1e6d0513b6b36e57a020c16af8bc1a",
+            "bound_sources": 11
+          }
+        ]
+      },
+      {
+        "id": 13521193573,
+        "name": "cache-inputs-telegram-windows-latest-5255535ceb8006496badfa186def7f701da5197a",
+        "digest": "sha256:3a7c055501b5bb57acb8c6dc5af32ee7cd64fdeb8b62e9865d03a390d573ff52",
+        "size": 1894,
+        "zip_members": 1,
+        "manifests": [
+          {
+            "unit": "telegram",
+            "cache_key": "rust-v1-Windows-AMD64-telegram-fc2745269775f12cc1fcc0e7c21ff77b40243acadfa02e2e3d034efe37dcfb5d",
+            "bound_sources": 11
+          }
+        ]
+      },
+      {
+        "id": 13521143579,
+        "name": "package-telegram-windows-latest-5255535ceb8006496badfa186def7f701da5197a",
+        "digest": "sha256:3a4faaf05ecc8ee2289d31894baa45a4c36f8970772f90228e152facb2692e87",
+        "size": 413600,
+        "zip_members": 6,
+        "manifests": [
+          {
+            "path": "package-manifest.json",
+            "file_sha256": "ebb3ae7d11635268f3c640abece46275dea24936f46203433b3e03dfb059c1f3",
+            "task": null,
+            "unit": "telegram",
+            "members": {
+              "Cargo.lock": "5a4b56764922029d7cf6b66337a2ecde114b79abb3bee798ea4726bd2cddb945",
+              "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+              "plugin.toml": "84f3c2356d649e2c9a1d4f693a61cda370c213d3101ad70b0136866bcf3a6da4",
+              "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+              "yuki-telegram.exe": "c43ed6d64f89bca092bdd82b7b024aeb719c801eed82252d57f737195d358fb9"
+            }
+          }
+        ]
+      },
+      {
+        "id": 13520708966,
+        "name": "package-telegram-ubuntu-latest-5255535ceb8006496badfa186def7f701da5197a",
+        "digest": "sha256:a9e7ccac2b8e7082d8cd743dfc9fa5a68013f018adf0437bfed3f0ded2f5d15e",
+        "size": 556815,
+        "zip_members": 6,
+        "manifests": [
+          {
+            "path": "package-manifest.json",
+            "file_sha256": "d4afc57ad7fa48bb2cfa1ff42fefc5085c98c9b68a0734b729ddb3195ed83eaa",
+            "task": null,
+            "unit": "telegram",
+            "members": {
+              "Cargo.lock": "5a4b56764922029d7cf6b66337a2ecde114b79abb3bee798ea4726bd2cddb945",
+              "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+              "plugin.toml": "84f3c2356d649e2c9a1d4f693a61cda370c213d3101ad70b0136866bcf3a6da4",
+              "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+              "yuki-telegram": "fcb52c6c3b8aac0db48e2d30184a449aa07b63cab4a5c34e847a0266870c7c9b"
+            }
+          }
+        ]
+      },
+      {
+        "id": 13520484512,
+        "name": "acceptance-windows-latest-5255535ceb8006496badfa186def7f701da5197a",
+        "digest": "sha256:8deef8abdefaee84f0c013046a6cf73ce4363f9416b547ff0bcc2129864e6688",
+        "size": 28837,
+        "zip_members": 8,
+        "manifests": [
+          {
+            "path": "EXT-001/ci/manifest.json",
+            "file_sha256": "c7b6a084e26c66753b52cc0b451ee43e38d53b5eb51fa79d873240306bb173ae",
+            "task": "EXT-001",
+            "unit": null,
+            "members": {
+              "extension-build-isolation.json": "9ca0c11be0527f0b7e00f9f8265deb862fea2b28c145b9e0a69279513be55d96"
+            }
+          },
+          {
+            "path": "EXT-002/ci/manifest.json",
+            "file_sha256": "cc0fd57ee99113d7454f9b72ec3cafc2514bb7a31d1e2e5cd4c66c11112156fe",
+            "task": "EXT-002",
+            "unit": null,
+            "members": {
+              "build.txt": "fbda06d4614b55c204156ab59885c96afb512844af7cd6916c9c98f19155961f",
+              "published-sdk.json": "5fef3c7a3431418991c32c51b3e653e38d743145121373553fa6cdf9d80378d3"
+            }
+          },
+          {
+            "path": "EXT-019/ci/manifest.json",
+            "file_sha256": "f2ce49ca76b030825f93a68a0c39098291c38a1c2d9f18e18b722fef2ee39443",
+            "task": "EXT-019",
+            "unit": null,
+            "members": {
+              "desktop-callsite-pin.json": "d9d6caa43cb9dd36b65358fb0c06648b7c22784f98babfad63ba42bc00a9c7fe",
+              "desktop-surface-diff.json": "477f17ea1448f685d663477f373bf44b78f626a35b1533f36d9dea1f872d2f6a"
+            }
+          }
+        ]
+      }
+    ],
+    "utc": "2026-11-06T16:35:04.824045+00:00"
+  },
+  "actual_merge": "48b634a060d7e0bfa87774d67e7622fe7f016b08",
+  "actual_tree": "9b95740c3270e90c780003ec3a2b9c0c55521242"
+}

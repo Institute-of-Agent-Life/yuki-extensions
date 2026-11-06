@@ -1,0 +1,37 @@
+{
+  "formal_completed_before_producer_disposition": 7,
+  "formal_total": 68,
+  "branch": "codex/ext-067-joint-candidates",
+  "consumer_source": "49f7b190406c59adb15b1a5fe70f442942addbb7",
+  "signed_core_source": "4a41470e89b4e4ac82ad7891d24bfdf604544598",
+  "version": "1.0.0-alpha.14",
+  "sdk_sha256": "e41a2375efb2f8f479fa86b022168f02d3b098d3366c1f8f9a6ed9dc22ff4c40",
+  "producer_release": false,
+  "windows": {
+    "telegram": {
+      "version": "0.1.0-alpha.4",
+      "binary_sha256": "a2fd50df791254cd70836d943899a13470b8f3156eb642ec66b0e9071b8463eb",
+      "package_manifest_sha256": "b7448e365c20fbc0fd041bab6e1e4514ca24d9427b83c4d655bf6e3be4290c89"
+    },
+    "web-fetch": {
+      "version": "0.1.0-alpha.2",
+      "binary_sha256": "cb10c9c12886bf83de2170e38bfcc2d63308dd3e71324eee2fed8b3d5c817a47",
+      "package_manifest_sha256": "f9f3e9960891161f753d8bb640078bdbfccd4d87ac396f8469d6aa8cc5e463b7"
+    }
+  },
+  "method_count": 6,
+  "cases": [
+    "confirmed",
+    "lost-second",
+    "swapped",
+    "wrong-handle",
+    "revoked",
+    "missing-method",
+    "erased-readback"
+  ],
+  "file": "artifacts/EXT-067/01/base-consumer-witness.json",
+  "witness_sha256": "d735e535b30c41c32fc62ade3b5ae3863c9cbf39404856f3401640b7544034e1",
+  "outer_zip_sha256": "1c6d8606fd0a5a0748ebf95d8fdd390d6ec5804929dbeafe8dfc9c8c5600ea6f",
+  "previous": "after-selected-native.json",
+  "next_producer": "CORE-044 reviews the six-method bootstrap; EXT-043 consumes its published tuple. Full EXT-004 and EXT-006 have separate open native reply, recall, activity and outbound media cases."
+}
