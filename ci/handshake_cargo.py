@@ -4,23 +4,43 @@ import io
 import json
 import os
 from pathlib import Path
+import re
 import tarfile
+import tempfile
 import tomllib
 from urllib.request import urlopen
 
 
 def registry_crate(package):
+    if (not re.fullmatch(r"[A-Za-z0-9_-]+", package["name"])
+            or not re.fullmatch(r"[A-Za-z0-9.+_-]+", package["version"])
+            or not re.fullmatch(r"[0-9a-f]{64}", package["checksum"])):
+        raise ValueError("invalid locked registry package")
     filename = f"{package['name']}-{package['version']}.crate"
     cache = Path(os.environ.get("CARGO_HOME", Path.home() / ".cargo")) / "registry/cache"
     cache = Path(os.environ.get("YUKI_CRATE_CACHE", cache))
-    for cached in cache.glob("*/" + filename):
-        if hashlib.sha256(cached.read_bytes()).hexdigest() == package["checksum"]:
-            return cached.read_bytes()
+    for cached in [cache / filename, *cache.glob("*/" + filename)]:
+        if cached.is_file():
+            data = cached.read_bytes()
+            if hashlib.sha256(data).hexdigest() == package["checksum"]:
+                return data
     url = f"https://static.crates.io/crates/{package['name']}/{filename}"
     with urlopen(url, timeout=60) as response:
         data = response.read()
     if hashlib.sha256(data).hexdigest() != package["checksum"]:
         raise ValueError("registry checksum mismatch: " + filename)
+    # Only an explicitly selected CI cache is writable. Cargo's user cache is
+    # read-only here. Different distributions of the same version cannot alias.
+    if "YUKI_CRATE_CACHE" in os.environ:
+        destination = cache / package["checksum"] / filename
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        with tempfile.NamedTemporaryFile(dir=destination.parent, delete=False) as pending:
+            pending.write(data)
+            temporary = Path(pending.name)
+        try:
+            os.replace(temporary, destination)
+        finally:
+            temporary.unlink(missing_ok=True)
     return data
 
 

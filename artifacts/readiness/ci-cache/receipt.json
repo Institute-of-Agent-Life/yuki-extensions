@@ -1,0 +1,29 @@
+{
+  "status": "WINDOWS_VERIFIED_HOSTED_PENDING",
+  "dedup_commit": "972c66d",
+  "base_main": "ac8c1b287e5a320107f64975dfd318b521bd8f13",
+  "unit": "local-agent",
+  "plugin_version": "0.1.0-alpha.1",
+  "sdk_version": "1.0.0-alpha.3",
+  "sdk": {
+    "contract_sha256": "5a25676ee401c2535d4efd7ec7cd3b9475e41a3d01de60c6b39c03fe760880b4",
+    "crate_sha256": "e5b9fde5298eb71ff252fc8acd430b44d8d965761d5d3c948da47fced49c7dbd"
+  },
+  "source_snapshot": "33be2e0c131d23597f396dcc4b1d95182eed851262266e2e5aa99f5610a51e4a",
+  "native_zip_sha256": "f832ed7c3b78e2fd841763e7efa3a10248927ea75d7614ad627ba813c59ade11",
+  "cold_seconds": 207.23500000033528,
+  "warm_seconds": 26.719000000040978,
+  "cold_registry_requests": 38,
+  "warm_registry_requests": 0,
+  "warm_compile_lines": [],
+  "unit_regressions": 10,
+  "rust_test": "reopening_is_idempotent_and_rejects_foreign_databases",
+  "tests_and_build_both_times": true,
+  "same_binary_sha256": "fdfb6d7d15eef8fe34e518f3eaf6139c88f7b06aa26b2eb6461acfb65b30bd1f",
+  "artifact_shapes_unchanged": true,
+  "hosted_cache_hit": "PENDING",
+  "queue_wait_change": "NOT_MEASURED",
+  "provider_calls": 0,
+  "formal_cards_completed": 7,
+  "prior_failure": "windows-01/disposition.json"
+}

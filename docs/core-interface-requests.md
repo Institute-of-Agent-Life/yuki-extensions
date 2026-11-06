@@ -1,5 +1,11 @@
 # 下一批跨倉交付需求
 
+本分支保留 PR #16 原消費者的歷史請求；後續功能的完整修訂與解除記錄見
+[固定的最新功能請求](https://github.com/Institute-of-Agent-Life/yuki-extensions/blob/6c5be41e98d96146d5941b857f7d18ac5ed22542/docs/core-interface-requests.md)。
+例如下方舊 CORE-033 Workless 請求已由 PR #30 的 alpha.12 真消費解除；本分支仍建
+原 alpha.3 package，不把舊候選限制重新當成目前核心缺口。下方終端／原收件媒體已更新。
+
+
 Telegram、飛書、web-fetch 與 env 的 Windows 候選回條已記入實作進度。
 以下需求沿用核心已發布的方法與授權規則，未定欄位由核心生產者確認。
 
@@ -58,34 +64,40 @@ reply/native_id；舊 Telegram 的巢狀 data 會回 `-32003`，與拒絕未授�
 
 ### EXT-020 original Work and terminal run
 
-The CORE-032 tool.call at `199dff095be0` carries the operation, call handle and
-parent/ordinal. Its tool.status result supplies that handle and state. Identify
-the public lookup or add a capability-scoped binding for original Work,
-execution, installation and permitted target run. The original Manager sets
-YUKI_WORK_ID from trusted context, and its status contains other runs.
-A model-supplied Work or guessed run cannot authorize read/input/cancel.
-Required cases cover cross-Work guesses, redispatch/restart of one original
-request, a changed Work after dispatch and cancelling an observation while the
-terminal continues. The partial plugin exposes readiness only.
+更新：CORE-032 `61999b662f1ead1cfd526efdb9b163b02d389cdf`／SDK alpha.14 已交
+`terminal.scope` 與 `terminal.bind`。三平台 ZIP／逐成員／dirty=false 已核，靜態回條在
+`artifacts/readiness/new-interface-deliveries/terminal-work-inspection.json`。
+原先缺公開 Work／Manager 綁定方法的請求已由此候選補上；本分支尚未消費此 tuple。
 
-### CORE-025 → EXT-004／EXT-006 的附件授權
+`terminal.scope(handle)` 的原 `operation`、`installation`、`work_id`、`execution`、
+`request_id`、`launch_request`、`run_id` 及 `mode` 原樣用於原 Manager 對賬；模型提供的
+Work／run 不是授權。仍需可解析安裝／Main Work route 的公開最小配置與操作序列，
+讓真正已接納 Work 的正常 Main 呼叫 `terminal_exec`；不能拿 producer 合成 peer 或
+舊 Client9 的 held/runner_failed 當這個新候選的測試結果。
 
-核心 PR #34 的提交 `d40d4f524e11c5590c45ca16478cb2979a40c698` 提供 QQ 收件、
-快照與到期案例。其公開 Host schema revision 2 的 SHA-256 仍為
-`4822f19fb937eba524e475b35c0753a713587f48feee87ae6bd7b53ccab06cba`。
-`gateway.dispatch_part` 接受一般 arguments；公開索引沒有標出從這些 arguments
-取得附件版本的授權方式。[核心 PR #34](https://github.com/Institute-of-Agent-Life/yuki-core/pull/34)
+具體請求、合法啟動／reconcile 不重啟、跨 Work 拒絕和取消觀察案例已交
+https://github.com/Institute-of-Agent-Life/yuki-core/pull/75#issuecomment-6679830928 。
+取得該序列後接原 Python Manager/runsc/execd，在 HJW Windows／Arch 驗 PTY、
+byte cursor、輪轉、原 run 重啟讀回與非零退出後文件。當前只保留原 readiness consumer。
 
-- 請指明既有 callback 或 SDK 方法如何讓原收件 gateway 解析 Telegram file_id
-  或飛書／Lark media key。宿主需要綁定原安裝、接收 Bot／app 階段、租戶、
-  event、attachment_index 及原 segment 位置。換 Bot 或跨 app／租戶重用同一 key
-  應遭拒，原生下載次數為零。
-- 發送時請給出原 operation／part handle 如何授權讀取已固定的版本、SHA-256
-  與位元組。替換來源檔後仍應發送原版本；到期、撤權或 forget 後應返回相應狀態。
-  平台回應未知時，重連只能查原 part，不得生成一次新的派發。
+### CORE-025／038 → EXT-004／EXT-006 的附件授權
 
-下一個可用交付須附該公開方法的 grant、欄位、乾淨宿主／SDK digest，以及
-同安裝成功、換安裝拒絕的回條。擴展才能把以上案例接入 EXT-004／006。
+更新：CORE-038 `b99b01a924439b4104bd087808d789ba46809202`／SDK alpha.13 已交
+原收件 callback `gateway.media`，不再列為缺失方法。三平台 ZIP／全部成員／來源已核，
+`artifacts/readiness/new-interface-deliveries/gateway-media-inspection.json`；尚無本倉真消費。
+
+callback 固定原 namespace、platform、Bot stage、application／tenant、source_event、
+attachment／segment、locator／reference 與 transfer 的 offset／length；回同 transfer、
+offset、size、SHA-256 和 bounded base64。Host 在原執行和 writer 再核來源。這些欄位
+只作候選合同核對，未形成第二套身份／授權規則或生產依賴。
+
+公開兩份 gateway 說明要求核准 application／tenant，但未列這一批准的可解析 TOML
+欄位及真正 ingress→明選讀取的最小操作序列。已請核心指向既有公開例子或給配置：
+https://github.com/Institute-of-Agent-Life/yuki-core/pull/73#issuecomment-6679830369 。
+需原 Telegram Bot、Feishu app／tenant、錯裝／換部署／撤權／forget 及遲到最後頁案例，
+不猜配置，不以 producer 的 207 項檢查充作擴展驗收。新終端／媒體包皆未發布。
+出站不可變版本與原 operation／part 回條沿既有媒體／發送卡，原 e25 tuple 自動 forget
+既有通過結果保留；0ef Main 擦除 FK 787 是另外一個已交回核心的阻塞。
 
 CORE-038 `e25c2b8acce3` 已提供出站原 plan 的 `media` 描述與 dispatch handle 的
 `media.open` 讀取，此部分缺口已收斂。仍需入站 Telegram file_id／飛書 key

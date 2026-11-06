@@ -1,0 +1,15 @@
+test_compiler_arch_flags_lock_and_sdk_all_change_the_key (test_ci_cache.BuildCache.test_compiler_arch_flags_lock_and_sdk_all_change_the_key) ... ok
+test_project_reuses_only_a_path_and_preserves_preexisting_content (test_ci_cache.BuildCache.test_project_reuses_only_a_path_and_preserves_preexisting_content) ... ok
+test_python_units_need_no_rust_compiler (test_ci_cache.BuildCache.test_python_units_need_no_rust_compiler) ... ok
+test_cold_download_then_warm_offline_hit (test_ci_cache.RegistryCache.test_cold_download_then_warm_offline_hit) ... ok
+test_corrupt_flat_and_nested_candidates_do_not_bypass_hash (test_ci_cache.RegistryCache.test_corrupt_flat_and_nested_candidates_do_not_bypass_hash) ... ok
+test_default_cargo_cache_is_not_written (test_ci_cache.RegistryCache.test_default_cargo_cache_is_not_written) ... ok
+test_package_coordinates_are_rejected_before_io (test_ci_cache.RegistryCache.test_package_coordinates_are_rejected_before_io) ... ok
+test_same_version_different_distribution_remains_isolated (test_ci_cache.RegistryCache.test_same_version_different_distribution_remains_isolated) ... ok
+test_valid_flat_candidate_is_read_only (test_ci_cache.RegistryCache.test_valid_flat_candidate_is_read_only) ... ok
+test_wrong_network_digest_is_never_persisted (test_ci_cache.RegistryCache.test_wrong_network_digest_is_never_persisted) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.408s
+
+OK

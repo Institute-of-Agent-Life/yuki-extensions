@@ -1,0 +1,330 @@
+{
+  "pr": 16,
+  "current_head": "972c66d6e40e37b4b6ca9075969f88bcc26f9d6e",
+  "current_base": "ac8c1b287e5a320107f64975dfd318b521bd8f13",
+  "replacement_run": 42179984095,
+  "replacement_status": "queued",
+  "full_gate_status": "PENDING; unchanged workflow jobs/matrices/selectors; no merge",
+  "superseded": [
+    {
+      "run": 42149145226,
+      "event": "push",
+      "head_sha": "58cd960e1a992f2103f3d75b89e12c52a16ca288",
+      "status_before": "queued",
+      "jobs": [
+        {
+          "id": 127667818723,
+          "name": "select",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 127667819036,
+          "name": "acceptance (ubuntu-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 127667819050,
+          "name": "acceptance (windows-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 127667819054,
+          "name": "acceptance (macos-latest)",
+          "status": "queued",
+          "conclusion": null
+        },
+        {
+          "id": 127686613233,
+          "name": "package (connector, ubuntu-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 127686613248,
+          "name": "package (connector, windows-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 127686613250,
+          "name": "package (feishu, macos-latest)",
+          "status": "queued",
+          "conclusion": null
+        },
+        {
+          "id": 127686613254,
+          "name": "package (env, windows-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 127686613262,
+          "name": "package (web-fetch, macos-latest)",
+          "status": "queued",
+          "conclusion": null
+        },
+        {
+          "id": 127686613265,
+          "name": "package (local-agent, macos-latest)",
+          "status": "queued",
+          "conclusion": null
+        },
+        {
+          "id": 127686613277,
+          "name": "package (connector, macos-latest)",
+          "status": "queued",
+          "conclusion": null
+        },
+        {
+          "id": 127686613315,
+          "name": "package (web-fetch, ubuntu-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 127686613320,
+          "name": "package (env, ubuntu-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 127686613333,
+          "name": "package (env, macos-latest)",
+          "status": "queued",
+          "conclusion": null
+        },
+        {
+          "id": 127686613348,
+          "name": "package (yuki-setup, ubuntu-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 127686613355,
+          "name": "package (telegram, windows-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 127686613361,
+          "name": "package (local-agent, windows-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 127686613411,
+          "name": "package (web-fetch, windows-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 127686613442,
+          "name": "package (feishu, windows-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 127686613453,
+          "name": "package (feishu, ubuntu-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 127686613460,
+          "name": "package (local-agent, ubuntu-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 127686613468,
+          "name": "package (yuki-setup, windows-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 127686613496,
+          "name": "package (telegram, macos-latest)",
+          "status": "queued",
+          "conclusion": null
+        },
+        {
+          "id": 127686613532,
+          "name": "package (yuki-setup, macos-latest)",
+          "status": "queued",
+          "conclusion": null
+        },
+        {
+          "id": 127686613572,
+          "name": "package (telegram, ubuntu-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "artifacts_deleted": false,
+      "cancellation": "requested after current PR16 head and replacement PR run verified"
+    },
+    {
+      "run": 42149150676,
+      "event": "pull_request",
+      "head_sha": "58cd960e1a992f2103f3d75b89e12c52a16ca288",
+      "status_before": "queued",
+      "jobs": [
+        {
+          "id": 127667836435,
+          "name": "select",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 127667836670,
+          "name": "acceptance (macos-latest)",
+          "status": "queued",
+          "conclusion": null
+        },
+        {
+          "id": 127667836721,
+          "name": "acceptance (ubuntu-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 127667836933,
+          "name": "acceptance (windows-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 127681778052,
+          "name": "package (env, ubuntu-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 127681778079,
+          "name": "package (env, windows-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 127681778094,
+          "name": "package (telegram, ubuntu-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 127681778103,
+          "name": "package (connector, windows-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 127681778105,
+          "name": "package (feishu, windows-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 127681778106,
+          "name": "package (web-fetch, ubuntu-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 127681778109,
+          "name": "package (yuki-setup, ubuntu-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 127681778110,
+          "name": "package (local-agent, macos-latest)",
+          "status": "queued",
+          "conclusion": null
+        },
+        {
+          "id": 127681778125,
+          "name": "package (telegram, windows-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 127681778137,
+          "name": "package (local-agent, ubuntu-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 127681778148,
+          "name": "package (yuki-setup, windows-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 127681778149,
+          "name": "package (telegram, macos-latest)",
+          "status": "queued",
+          "conclusion": null
+        },
+        {
+          "id": 127681778168,
+          "name": "package (feishu, ubuntu-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 127681778174,
+          "name": "package (env, macos-latest)",
+          "status": "queued",
+          "conclusion": null
+        },
+        {
+          "id": 127681778177,
+          "name": "package (feishu, macos-latest)",
+          "status": "queued",
+          "conclusion": null
+        },
+        {
+          "id": 127681778218,
+          "name": "package (connector, macos-latest)",
+          "status": "queued",
+          "conclusion": null
+        },
+        {
+          "id": 127681778238,
+          "name": "package (yuki-setup, macos-latest)",
+          "status": "queued",
+          "conclusion": null
+        },
+        {
+          "id": 127681778241,
+          "name": "package (local-agent, windows-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 127681778253,
+          "name": "package (connector, ubuntu-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 127681778266,
+          "name": "package (web-fetch, windows-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 127681778724,
+          "name": "package (web-fetch, macos-latest)",
+          "status": "queued",
+          "conclusion": null
+        }
+      ],
+      "artifacts_deleted": false,
+      "cancellation": "requested after current PR16 head and replacement PR run verified"
+    }
+  ]
+}

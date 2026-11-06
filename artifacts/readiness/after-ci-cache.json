@@ -1,0 +1,50 @@
+{
+  "formal_cards_completed": 7,
+  "formal_cards_total": 68,
+  "ci_dedup": {
+    "pr": 16,
+    "head": "972c66d6e40e37b4b6ca9075969f88bcc26f9d6e",
+    "base": "ac8c1b287e5a320107f64975dfd318b521bd8f13",
+    "run": 42179984095,
+    "status": "QUEUED; one PR run, no branch push run observed",
+    "source": 33
+  },
+  "ci_cache": {
+    "branch": "codex/ci-locked-cache",
+    "implementation": "0daf4c9d324bd5c80e738119bc2366ef67863f61",
+    "windows": "PASS",
+    "hosted_ci": "PENDING",
+    "artifact": "artifacts/readiness/ci-cache/receipt.json",
+    "sequence": "docs/ci-performance.md",
+    "pr": 35,
+    "observed_head": "324d189721ef599f82d81ad501068a936869ca6c"
+  },
+  "latest_functional_progress": "../work-media-main/docs/implementation-progress.md",
+  "candidate_prs": {
+    "selected_client": 32,
+    "main_media": 34
+  },
+  "unconsumed_new_deliveries": [
+    "CORE-032 terminal-work 61999b662f1e / SDK alpha.14",
+    "CORE-038 gateway.media b99b01a92443",
+    "CORE-023 canonical QQ fece25119850"
+  ],
+  "next": "Wait current PR16 full gates; apply actual new main to each next PR, verify all artifacts before ordinary merge. Gateway media and terminal consumers await the public minimal approved installation/real Work activation sequences requested in core73/75.",
+  "wip_preserved": [
+    "root four Code adapters",
+    "work-asr",
+    "work-rebuild",
+    "work-subscription"
+  ],
+  "automation": "Restore ACTIVE through the app after final push and status verification",
+  "core_interface_intake": {
+    "artifacts": "artifacts/readiness/new-interface-deliveries",
+    "zip_and_all_members": "VERIFIED, six platforms/tuples",
+    "consumption": "NOT_RUN",
+    "requests": {
+      "gateway_media": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/73#issuecomment-6679830369",
+      "terminal_work": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/75#issuecomment-6679830928"
+    }
+  },
+  "current_pr_snapshot": "artifacts/readiness/current-pr-gates-before-cache-metadata.json"
+}

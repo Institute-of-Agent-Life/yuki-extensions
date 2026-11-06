@@ -1,0 +1,22 @@
+{
+  "updated_at": "2026-11-06T02:14:56.029434+00:00",
+  "status": "waiting_current_head_CI",
+  "main": "ac8c1b287e5a320107f64975dfd318b521bd8f13",
+  "merged_PR": 15,
+  "merged_head": "0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+  "ci_merge": "dfff7d48543ba23f02d8f9587e8189154c279aa7",
+  "tree": "54a39c56ca2d0ee204bbb19c8f0f12c43132519d",
+  "artifact_receipt": "artifacts/EXT-011/ci-receipt-0107c0a.json",
+  "verified_ZIPs": 48,
+  "formal_cards_completed": 7,
+  "next_PR": 16,
+  "PR16_original_head": "12b3ace901e367bde217ae2fc3745de2c7847679",
+  "branch": "codex/ext-011-gates",
+  "preserved_WIP": [
+    "root Code adapters",
+    "work-asr",
+    "work-rebuild",
+    "work-subscription",
+    "work-connector-auth"
+  ]
+}

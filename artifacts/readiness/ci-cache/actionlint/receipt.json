@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "scope": "actionlint on HJW Windows; external shellcheck/pyflakes not installed",
+  "actionlint": "1.7.12",
+  "executable_sha256": "54ca21be3de4c7cfa26914aa8b61bd76bf573ef3caac5f80d110558cdf241718",
+  "workflow_sha256": "1e21556d395420eca151bc2f7955e8172a43189f9d3139b06c80d192e2af54a3",
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": ""
+}
