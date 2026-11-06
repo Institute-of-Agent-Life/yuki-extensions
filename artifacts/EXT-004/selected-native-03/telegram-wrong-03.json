@@ -1,0 +1,57 @@
+{
+  "case": "telegram-wrong-03",
+  "transfer_zip_sha256": "477e47de1bbe983e4db0b4c33a31dc579da577d91ff8ebbb0600898cb1d88e3d",
+  "archive_bytes": 41860,
+  "members": {
+    "gateway.jsonl": "94de38deba74ad3d784fc3f7664123e34f9225c5ffec4460deeb35ee8a08399a",
+    "host.txt": "a6073a4b47b1c507211657644a249373e8a0fd9913c1496288431b429526301b",
+    "installation.toml": "eade676b4ffa167129c7abc32b0b2eaf706d6418ef1b1e3fe6a3ffe61c97a4ed",
+    "model-http.json": "c38c41f4340694e75956e2ff1698de88145817de0d869ef3e7904aa06613a76a",
+    "native-http.json": "8d60e9f0df246e80426d1ecf9a8ef2ce0baafe401be17ebcc679fa2bc8043ef5",
+    "result.json": "5ea8ccf0be66a48e24259df4c2872b0a3bed56f05f4049b359e4eb9048fb747c",
+    "wire.jsonl": "6715323967c9fd1eb44c11164aaf475c02d9e97d5ca03f53e94b0f0905a9d4f7",
+    "processor-wire.jsonl": "6715323967c9fd1eb44c11164aaf475c02d9e97d5ca03f53e94b0f0905a9d4f7",
+    "test.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "methods": {
+    "initialize": 3,
+    "gateway.inbound": 1
+  },
+  "result": {
+    "status": "PASS",
+    "domain": "telegram",
+    "host_source": "0ef956a9c6d90fae79c0d4488296c064ccf29f54",
+    "host": {
+      "archive": "yuki-media-preview-0ef956a9c6d9-windows-x86_64.zip",
+      "sha256": "a81c49a722b9e1e420d5084856f7a13aed116865f7ca0a4c1304ac10881c62f3",
+      "binary_sha256": "4dd7a9fc345664f85d59b9c83d17e03b9dc452bbc2fb7bb01eba7d73c47b6cc0",
+      "validation_manifest_sha256": "d7341e1fc982a2ec192d6bcea225b45641e8d8b387eaa73785c982ebd7f32730"
+    },
+    "sdk": "25694e880798108129a1fa8e49e6fff7464ebc9075e5042cc379a6709343e29b",
+    "gateway_binary": "a07413f4b0b351eea85bb97b52f2e16d7fd59978f45414f948c4e9fd821b79e5",
+    "stage": "c24b2bd6-2c91-4b3c-8b86-22318284d022",
+    "source_event": 1,
+    "requested_slot": 1,
+    "actual_slots": [
+      0
+    ],
+    "installation": {
+      "application": "101"
+    },
+    "gateway_callbacks": 0,
+    "native_gets": 0,
+    "model_http": 2,
+    "original_receipt": {
+      "id": "453f27ee-34b6-44e1-a9f1-4c3a804ce1b4",
+      "namespace": "277f93e2-b5de-4159-8f9b-3cb92151652a",
+      "ordinal": null,
+      "parent": null,
+      "result": {
+        "error": "no rows returned by a query that expected to return at least one row"
+      },
+      "state": "failed"
+    },
+    "native": [],
+    "published": false
+  }
+}
