@@ -13,6 +13,24 @@
 | EXT-010 · codex/ext-010 | `ab16e07`；CI `41834791702`；PR #6 合併 `2c55dbb` | `artifacts/EXT-010/02/`，8 例含實際子進程退出碼 23、雙 session 取消及 unknown |
 | EXT-019 · codex/ext-019 | 實作 `7531d84`、PR head `9d1e8a8`；三平台 CI `41835863011`；PR #7 合併 `7625095` | `artifacts/EXT-019/02/`，呼叫表、schema 差分、5 個故障變異；`03/` 固定跨平台順序 |
 
+## 2026-11-06 PR #35 兩平台 CI／產物實收
+
+- 候選分支 `codex/ci-locked-cache` 及 PR #35 固定在 `8eba25f1c44b70983293bdc6b46b00edb5979174`；
+  快取實作 `0daf4c9`。本樹／分支 `codex/ci-cache-evidence` 只提交實收證據，保留已驗候選 head。
+- run `42183667489` 的 Windows／Linux acceptance、七個套件和 Connector 回歸全部通過，
+  17 個 jobs success；8 個 macOS checks 尚 queued。沒有合併。
+- 已下載核 30 ZIP：14 package、2 acceptance、2 Connector upgrade、12 cache-inputs；
+  GitHub digest／CRC／安全唯一成員／全部成員 SHA／manifest 內容、原 lock／來源 SDK
+  和實際 cache inputs 均符本 head。synthetic merge `f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4`
+  parents 為 main `ac8c1b2`／本 head，tree 與本 head 相同。
+- 12 個已完成 Rust package jobs 有 8 個從完整原 key 真命中；由原 GitHub job log／SHA
+  與 cache-input artifact 交叉核對。命中後仍跑 cargo test/build，依賴得到重用，插件本體
+  在新 checkout 的 debug／release 各編一次。未把本機熱輪零編譯推成 CI 全部零編譯。
+- 回條 `artifacts/readiness/ci-cache/hosted-8eba25f/receipt.json`／`summary.json`，原 ZIP 和
+  job logs 留在 source.json 所列本機只讀快取。macOS 尚缺 15 份 artifacts，完整 gate=false；
+  等其通過且核完全部產物才普通合併。原 Native Windows 207.235／26.719 秒結果仍沿用。
+  不由 hit 或執行快推斷排隊／組織配額改善。正式完成仍 7／68，原 WIP 保留。
+
 ## 2026-11-06 收尾核對
 
 - 快取 [PR #35](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/35)

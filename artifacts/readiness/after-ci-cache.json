@@ -13,11 +13,17 @@
     "branch": "codex/ci-locked-cache",
     "implementation": "0daf4c9d324bd5c80e738119bc2366ef67863f61",
     "windows": "PASS",
-    "hosted_ci": "PENDING",
+    "hosted_ci": "Windows/Linux PASS, 17 success / 8 macOS queued",
     "artifact": "artifacts/readiness/ci-cache/receipt.json",
     "sequence": "docs/ci-performance.md",
     "pr": 35,
-    "observed_head": "324d189721ef599f82d81ad501068a936869ca6c"
+    "observed_head": "324d189721ef599f82d81ad501068a936869ca6c",
+    "head": "8eba25f1c44b70983293bdc6b46b00edb5979174",
+    "hosted_artifacts": "artifacts/readiness/ci-cache/hosted-8eba25f",
+    "verified_zip_count": 30,
+    "exact_cache_hits": 8,
+    "observed_rust_package_jobs": 12,
+    "full_gate_pass": false
   },
   "latest_functional_progress": "../work-media-main/docs/implementation-progress.md",
   "candidate_prs": {
@@ -36,7 +42,7 @@
     "work-rebuild",
     "work-subscription"
   ],
-  "automation": "Restore ACTIVE through the app after final push and status verification",
+  "automation": "Return ACTIVE after this evidence push; only macOS runner and upstream public configuration waits",
   "core_interface_intake": {
     "artifacts": "artifacts/readiness/new-interface-deliveries",
     "zip_and_all_members": "VERIFIED, six platforms/tuples",
@@ -46,5 +52,6 @@
       "terminal_work": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/75#issuecomment-6679830928"
     }
   },
-  "current_pr_snapshot": "artifacts/readiness/current-pr-gates-before-cache-metadata.json"
+  "current_pr_snapshot": "artifacts/readiness/current-pr-gates-before-cache-metadata.json",
+  "evidence_branch": "codex/ci-cache-evidence"
 }

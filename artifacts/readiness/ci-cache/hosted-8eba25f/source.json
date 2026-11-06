@@ -1,0 +1,16 @@
+{
+  "status": "VERIFIED_TWO_PLATFORMS_WAITING_MACOS",
+  "source_head": "8eba25f1c44b70983293bdc6b46b00edb5979174",
+  "base": "ac8c1b287e5a320107f64975dfd318b521bd8f13",
+  "synthetic_merge": "f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4",
+  "source_run": 42183667489,
+  "artifact_receipt_sha256": "3876abd56dee9c9d6f0b1e4f98f3bfc46049568278eeeacde7905d9d076ffc63",
+  "summary_sha256": "7776839be5e078bd1497badb27e3a17fdd2730a02c4c0f1f3fbc04ef0738a9a3",
+  "evidence_branch": "codex/ci-cache-evidence",
+  "candidate_branch": "codex/ci-locked-cache",
+  "candidate_head_unchanged": true,
+  "no_new_ci_run_needed_for_this_evidence_branch": true,
+  "zip_and_logs_local_cache": "/Volumes/huawei/\u9805\u76ee\u5be6\u6230/yuki-extensions/.ci-transfer/pr35-8eba25f-ci",
+  "full_mac_gate_pass": false,
+  "merge_performed": false
+}
