@@ -1,0 +1,89 @@
+{
+  "card": "EXT-005",
+  "platform": "HJW Windows",
+  "host": {
+    "source": "0ef956a9c6d90fae79c0d4488296c064ccf29f54",
+    "sha256": "4dd7a9fc345664f85d59b9c83d17e03b9dc452bbc2fb7bb01eba7d73c47b6cc0",
+    "package_sha256": "a81c49a722b9e1e420d5084856f7a13aed116865f7ca0a4c1304ac10881c62f3",
+    "sdk": "1.0.0-alpha.13",
+    "crate_sha256": "25694e880798108129a1fa8e49e6fff7464ebc9075e5042cc379a6709343e29b"
+  },
+  "scope": "source-to-gateway ingress and native admission ACK only; original sticker key is not a downloadable resource",
+  "fixture_sha256": {
+    "post/cli_a": "61e5e4e14ba4e30f777ffde71530e51c93a3a5091201f537bc02b1b3c2a40ed7",
+    "post/cli_b": "2dd771f6dab62614347411ae39da151d32e65ab2c0d406f84bdc1a93ba684fb0",
+    "sticker/cli_a": "d0ee4ebaaba0e63d664a0cb4ae1967741ce0d64bccbe91e57ebf4a8b27b82255",
+    "sticker/cli_b": "d0ee4ebaaba0e63d664a0cb4ae1967741ce0d64bccbe91e57ebf4a8b27b82255"
+  },
+  "runs": {
+    "red": {
+      "result": "REPRODUCED",
+      "archive_sha256": "7274fc4cc6f56dd637952973cdfa3ac71862bf75c3c9d44fda5b99f107a1b766",
+      "source_bindings": 88,
+      "cases": {
+        "post": {
+          "wire_sha256": "1d9ed560b18467e23ebd8823f354ac466e8ac0fb94a82aba4d42d3a335e0a9b4",
+          "source_events": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "segment_count": 7,
+          "advertised_media": [
+            "image",
+            "video"
+          ]
+        },
+        "sticker": {
+          "wire_sha256": "8c8ece94b33daf794d2a6cd444a925e0e3a6adb1da2563a32412e790a676f770",
+          "source_events": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "segment_count": 2,
+          "advertised_media": [
+            "file"
+          ]
+        }
+      },
+      "original_package_sha256": "9206e9d4b24e1fb789eadf556f25a219deabe33b415270c371329ec49fbf3c6f",
+      "binary_sha256": "85c661ddac8fa3e235b80d28bfe9302dd33183e4befacff8f9e19c0c3caa454f"
+    },
+    "green": {
+      "result": "PASS",
+      "archive_sha256": "e635b83dabed9f3aa3c0aaefd3b4768272f6281850f1b45b5a545bf337136d7e",
+      "source_bindings": 88,
+      "cases": {
+        "post": {
+          "wire_sha256": "b151e501091ec5ae7156bb65fb45176e1feb5cce7e5f418f9c1c6bc439c60314",
+          "source_events": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "segment_count": 12,
+          "advertised_media": [
+            "image",
+            "video"
+          ]
+        },
+        "sticker": {
+          "wire_sha256": "21254e5cbb1a3e0049aea0ef34dfa5a0b697202183a3fa40f90032596009e3f5",
+          "source_events": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "segment_count": 2,
+          "advertised_media": []
+        }
+      },
+      "binary_sha256": "e337b88a7573b4cd1ac6e6a7983102158c15b944f029f27a751b097b423cb24a"
+    }
+  }
+}

@@ -881,7 +881,7 @@ dependencies = [
 
 [[package]]
 name = "yuki-feishu"
-version = "0.1.0-alpha.3"
+version = "0.1.0-alpha.4"
 dependencies = [
  "data-encoding",
  "native-tls",
