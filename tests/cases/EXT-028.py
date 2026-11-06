@@ -4,6 +4,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
 import os
 from pathlib import Path
+import runpy
 import subprocess
 import sys
 import threading
@@ -13,10 +14,20 @@ from host_preview import materialize
 from package import build
 
 
-def exercise(root, output, signed):
+def exercise(root, output, signed, *, published=False):
     work=output/"work"
     work.mkdir()
-    if signed:
+    packages = output / "packages"
+    fixtures = work / "http-fixtures"
+    fixtures.mkdir()
+    if published:
+        archive = Path(os.environ["YUKI_STABLE_BASE_ZIP"])
+        host, pin, _ = runpy.run_path(str(root / "tests/peers/joint_base.py"))["published_host"](root, archive, work)
+        platform = pin["platforms"]["windows-x86_64"]
+        packages.mkdir()
+        runpy.run_path(str(root / "tests/cases/EXT-043.py"))["unpack"](
+            Path(os.environ["YUKI_FROZEN_WEB_FETCH_ZIP"]), pin["windows_fallback"]["web-fetch"], packages)
+    elif signed:
         from runpy import run_path
         contract = root/"compat/base"
         verifier = run_path(str(contract/"verify_dist.py"))
@@ -33,10 +44,8 @@ def exercise(root, output, signed):
         assert hashlib.sha256(host.read_bytes()).hexdigest()==platform["binary_sha256"]
     else:
         host, pin, platform=materialize(root,work)
-    packages=output/"packages"
-    fixtures=work/"http-fixtures"
-    fixtures.mkdir()
-    distribution=build(root,"web-fetch",packages,test_evidence=fixtures)
+    distribution = (json.loads((packages / "package-manifest.json").read_bytes()) if published
+                    else build(root, "web-fetch", packages, test_evidence=fixtures))
     consumer_pin = json.loads((root / distribution["source"]["sdk_contract"]).read_bytes())
     binary=packages/("yuki-web-fetch.exe" if os.name=="nt" else "yuki-web-fetch")
     (output/"build.txt").write_text("\n".join(cmd["stdout"]+cmd["stderr"] for cmd in distribution["commands"]),encoding="utf-8")
@@ -50,6 +59,11 @@ def exercise(root, output, signed):
     html=b"<html><style>hidden</style><p>Original &amp; public</p></html>"
     big_text="記錄 one two three 雪 "*250
     large_url=source.replace("/document","/large")
+
+    limit = 2 * 1024 * 1024
+    oversize = b"abcdefghijk " * (limit // 12 + 1000) if published else b""
+    denied_url = source.replace("/document", "/private-redirect")
+    oversized_url = source.replace("/document", "/oversized")
 
     class HTTP(BaseHTTPRequestHandler):
         protocol_version="HTTP/1.1"
@@ -73,7 +87,17 @@ def exercise(root, output, signed):
             self.close_connection=False
         def do_GET(self):
             pages.append({"method":"GET","host":self.headers["Host"],"path":self.path})
-            if self.path=="/document":
+            if published and self.path == "/private-redirect":
+                self.send_response(302)
+                self.send_header("Location", f"http://127.0.0.1:{self.server.server_port}/tripwire")
+                self.send_header("Content-Length", "0")
+                self.end_headers()
+            elif published and self.path == "/oversized":
+                try:
+                    self.body(200, oversize, "text/plain")
+                except (ConnectionResetError, ConnectionAbortedError, BrokenPipeError):
+                    pass  # The reader can stop as soon as it reaches its byte ceiling.
+            elif self.path=="/document":
                 self.body(200,html,"text/html")
             elif self.path=="/empty":
                 self.body(200,empty_html,"text/html")
@@ -88,7 +112,9 @@ def exercise(root, output, signed):
             model_requests.append(received)
             n=len(model_requests)
             targets = {1: source, 3: large_url}
-            if signed:
+            if published:
+                targets = {1: denied_url, 3: oversized_url}
+            elif signed:
                 targets[5] = source.replace("/document", "/empty")
             calls=[{"type":"function","id":f"fixture-tool-{n}","function":{
                 "name":"web_fetch","arguments":json.dumps({"url":targets[n]})}}] if n in targets else []
@@ -131,6 +157,61 @@ def exercise(root, output, signed):
             try:proc.wait(timeout=8)
             except subprocess.TimeoutExpired:proc.kill();proc.wait()
 
+    def public_result(refused):
+        denial = refused["result"]
+        assert denial["error"] == "destination_denied" and not denial["ok"]
+        assert denial["data"]["source"] == denied_url
+        assert denial["data"]["url"] == f"http://127.0.0.1:{proxy.server_port}/tripwire"
+        cli("operator", "main", "register", "plugin", "web-reader", entry)
+        finished.clear()
+        run = cli("operator", "main", "trigger", "web-reader", "oversize",
+                  json.dumps({"text":"Read the oversized test page"}))["execution"]
+        if not finished.wait(40):
+            raise RuntimeError("missing partial-result continuation")
+        assert len(model_requests) == 4
+        result = json.loads(model_requests[-1]["messages"][-1]["content"])["result"]
+        artifact = result["artifact"]
+
+        def read(field):
+            return cli("operator", "tools", "read-artifact", run, "web-reader", json.dumps({
+                "handle":artifact["handle"], "version":artifact["version"],
+                "path":"/result/data/" + field, "offset":0, "limit":128}))
+
+        frames = [json.loads(row) for row in trace.read_bytes().splitlines()]
+        exchange = runpy.run_path(str(root / "tests/peers/joint_base.py"))["exchange"]
+        dispatched = list(exchange(frames, "tool.call", "from_host"))
+        assert [call["params"]["arguments"]["url"] for call, _ in dispatched] == [denied_url, oversized_url]
+        checks = list(exchange(frames, "tool.status", "from_plugin"))
+        for call, _ in dispatched:
+            handle = call["params"]["handle"]
+            receipts = [reply["result"] for req, reply in checks if req["params"]["handle"] == handle]
+            assert len(receipts) == 2 and all(row["state"] == "dispatched" and row["handle"] == handle for row in receipts)
+        raw = dispatched[1][1]["result"]["data"]
+        assert raw["source"] == raw["url"] == oversized_url and raw["state"] == "partial"
+        assert raw["observed_bytes"] == limit < len(oversize)
+        assert not raw["transport_complete"] and not raw["original_complete"] and raw["text_truncated"]
+        assert raw["observed_sha256"] == hashlib.sha256(oversize[:limit]).hexdigest()
+        retained = bytes.fromhex(raw["original_hex"])
+        assert 0 < len(retained) < limit and retained == oversize[:len(retained)]
+        assert raw["text"] and oversize.startswith(raw["text"].encode("utf-8"))
+        projections = {field: read(field) for field in ["original_hex", "text", "source", "state", "observed_sha256"]}
+        for field, page in projections.items():
+            assert page["value"] == raw[field][:128]
+        assert projections["original_hex"]["next_offset"] == projections["text"]["next_offset"] == 128
+        assert pages == [row for url in (denied_url, oversized_url) for row in (
+            {"method":"CONNECT", "target":"93.184.216.34:8100"},
+            {"method":"GET", "host":"93.184.216.34:8100", "path":"/" + url.rsplit("/", 1)[1]})]
+        owner = (root / "plugins/web-fetch/owner-disposition.json").read_bytes()
+        (output / "owner-disposition.json").write_bytes(owner)
+        return "fetch-source.json", {"status":"PASS", "card_status":"VERIFIED_ON_PUBLISHED_BASE",
+            "host":platform, "source_commit":pin["source_commit"], "host_sdk":pin["rust_crate_sha256"],
+            "sdk":consumer_pin["rust_crate_sha256"], "package":pin["windows_fallback"]["web-fetch"],
+            "plugin":hashlib.sha256(binary.read_bytes()).hexdigest(), "extension_published":False,
+            "ingress":original, "redirect_refusal":denial, "requests":pages, "private_destination_requests":0,
+            "served_bytes":len(oversize), "observed_bytes":limit, "retained_bytes":len(retained),
+            "observed_sha256":raw["observed_sha256"], "run":run, "artifact":artifact, "projections":projections,
+            "signed_candidate_evidence":"artifacts/EXT-028/01"}
+
     try:
         cli("init")
         if signed:
@@ -165,6 +246,8 @@ def exercise(root, output, signed):
         if not finished.wait(40):
             raise RuntimeError("missing model continuation after tool dispatch")
         follow=json.loads(model_requests[1]["messages"][-1]["content"])
+        if published:
+            return public_result(follow)
         page=follow["result"]["data"]
         assert page["state"]=="read" and page["text"]=="Original & public"
         assert page["source"]==source and bytes.fromhex(page["original_hex"])==html
@@ -233,11 +316,17 @@ def exercise(root, output, signed):
         (output/"native.json").write_bytes((json.dumps({"requests":pages,"model_requests":model_requests},indent=2)+"\n").encode())
 
 
+
+
 def prepare(root, output):
     return exercise(root, output, signed=False)
 
 
 def run(root, output):
+    if os.environ.get("YUKI_STABLE_BASE_ZIP"):
+        if sys.platform != "win32" or not os.environ.get("YUKI_FROZEN_WEB_FETCH_ZIP"):
+            return "fetch-source.json", {"status":"BLOCKED", "reason":"The frozen public-base path requires Windows and YUKI_FROZEN_WEB_FETCH_ZIP."}
+        return exercise(root, output, signed=True, published=True)
     if not os.environ.get("YUKI_BASE_HOST_ARCHIVE"):
         return "fetch-source.json", {
             "status": "BLOCKED",
