@@ -13,6 +13,31 @@
 | EXT-010 · codex/ext-010 | `ab16e07`；CI `41834791702`；PR #6 合併 `2c55dbb` | `artifacts/EXT-010/02/`，8 例含實際子進程退出碼 23、雙 session 取消及 unknown |
 | EXT-019 · codex/ext-019 | 實作 `7531d84`、PR head `9d1e8a8`；三平台 CI `41835863011`；PR #7 合併 `7625095` | `artifacts/EXT-019/02/`，呼叫表、schema 差分、5 個故障變異；`03/` 固定跨平台順序 |
 
+## 2026-11-06 EXT-031 原 Main 頁文／影格見證
+
+- 分支 `codex/ext-031-main-media`，實作 `3b65ab18830f6dc349f7f5dc20cdf492c11a3a84`。
+  CORE-038 source `0ef956a9c6d9`／SDK alpha.13／DB50，三平台 ZIP 全成員已核，
+  pin 在 `compat/core-038-main`；Win ZIP `a81c49a722b9`、Host `4dd7a9fc3456`、
+  crate `25694e880798`，未發布。原 Rust binary `2d0e7e9b9107`／SDK alpha.4、
+  document_reader.py／FFmpeg 原樣重用，沒有重新編譯後端。
+- HJW Windows 五例已驗：原 PDF 頁文與 operation／version 完整回到同一 Main；
+  影片 0/5 秒原像素按 SHA／id／version／ordinal 進同一正常續輪；未選零處理、
+  無 vision 零處理、壞 PDF 一次處理且結構化失敗。每個正例三筆正常 Main HTTP，
+  其中一筆 capability 供公開 cache-file fixture 取得原 execution，選讀／續輪兩筆；
+  沒有額外 vision 路由或付費供應者。保護的 cache fixture 不是原平台取件。
+- `faults-07/forget` 第二塊讀取中，公開 privacy erase 回 SQLite 787 外鍵錯誤；
+  沒有成功清除回執，不改核心／主庫、不重送未知效果。`audit-09` 在 Windows 核
+  原 ZIP／manifest／方法配對／頁文／實際影像 bytes、五例與原失敗；14 單位邊界
+  及 media 選擇器通過。詳 `main-evidence-index.json`、`main-iteration-disposition.json`。
+- Main 呈現缺口已在這個固定 tuple 解除。新 Main forget 阻塞、原 receiving gateway
+  真取件與正式發布仍待；舊 e25 tuple 的自動 forget 回條保留，正式完成仍 **7／68**。
+- EXT-015 已推 [PR #32](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/32)，
+  head `3014ed0`；回條已交核心 #67 `6677934279`、#71 `6677939829`、#72 `6677943216`。
+- 使用者最新 CI 建議：先去重與取消舊 PR 執行，再做分 OS／arch／Rust／lock／實際
+  SDK hash 的快取，最後才評估有限分組；排隊不算佔用執行中名額，組織限額未知。
+  下一項先落實本倉 CI，維持三平台、當前 merge SHA 與原產物驗證門檻。
+  最新 readiness：`artifacts/readiness/after-core038-main-witness.json`。排程仍 PAUSED。
+
 ## 2026-11-06 EXT-015 明選 Client9 候選
 
 - 分支 `codex/ext-015-selected-client`，實作 `59e0d07c21b44609af2e3e12fbc0ec950930adba`；
