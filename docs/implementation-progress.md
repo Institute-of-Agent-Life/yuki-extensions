@@ -4,6 +4,8 @@
 行為基線 `329ca7c487414d2f54ddd98ff4727446ed2446cd`。官方插件接入層用 Rust。
 獨立 Connector 沿用 Python 3.12；共享預算沿總書 K05。
 
+**EXT-005 富文字與原生貼紙。** `codex/ext-005-feishu-rich-post` 實作 `afb432bc50d5`。HJW Windows 用 #46 原套件與 alpha.4 在同一 CORE-038 Host（`0ef956a9c6d9`、SDK alpha.13）分別接收飛書及 Lark 原群訊息。新版富文字的 12 段保留標題與換行、提及、連結目的地、程式碼、表情及原圖／影片鍵；原生貼紙只有文字標記和回覆定位，可下載附件為零。正常重投、writer 斷開及錯租戶回條、兩版 wire、binary 與來源 digest 在 `artifacts/EXT-005/rich-message-01`。#46 三平台全過、9 份 ZIP 已核，合併 `98b08c435a6f`。正式 7/68，另 2 張簽署候選通過。EXT-043 等核心 B0 公開發行，EXT-029 的物理 attempt 對帳已向核心 #101 提交具體需求。見 `artifacts/readiness/after-feishu-rich-messages.json`。
+
 **EXT-005 原群提及。** `codex/ext-005-exact-mentions` 的 `ac360c785115` 修正飛書與 Lark 文字事件中的身份錯配。HJW Windows 以 #40 alpha.2 重現短鍵截走長鍵及未列鍵，再以 Rust alpha.3 對同一 Host（CORE-038 `0ef956a9c6d9`、SDK alpha.13）重放兩種表順序。兩個域都將 `@_user_10` 交給原成員、將 `@_user_1` 交給原應用、將無登記的 `@_user_100` 保留為文字。writer 前斷線無成功 ACK，兩安裝各自重投回讀事件 1、2。兩份原始線路、ACK、Rust 測試及 digest 在 `artifacts/EXT-005/mention-identity-01/`。#45 的託管 macOS 套件也已通過，新增兩份 ZIP 已下載核對。68 卡分級及下一步見 `artifacts/readiness/after-exact-mentions.json`。
 
 **EXT-005 停機副本與跨版重投。** 分支 `codex/ext-005-reader-replay`，實作 `316e11fe5a68`。HJW Windows 以原 #13 / #40 的 Rust 套件在 CORE-038 `0ef956a9c6d9` 完成兩個安裝各三輪。飛書舊版／新版／回退回讀事件 1、2，Lark 同鍵回讀 3、4。半個 frame 經冷啟仍等補齊才發 ACK，已接納的重投回到原 ID。六次都核原生子程序退出，插件工作目錄各自為空。故障迭代、兩版 SDK 與執行檔 digest、原 ACK 及 Host wire 在 `artifacts/EXT-005/reader-replay-02/`。#44 三平台及 9 個產物已核，合併 `8db6b9afa013`。全卡正式發布與現場資料仍待上游。下一步是從公開 B0 發行包驗 EXT-043，或在生產者交付新路由後驗對應功能。

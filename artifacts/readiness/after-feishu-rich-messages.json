@@ -1,0 +1,33 @@
+{
+  "previous": "after-exact-mentions.json",
+  "counts": {
+    "previously_accepted": 7,
+    "partial_or_diagnostic_evidence": 20,
+    "signed_candidate_acceptance_pass": 2,
+    "no_named_card_artifact": 39
+  },
+  "implementation": "afb432bc50d5533b087f874ed282fa05a835c9b6",
+  "scope": {
+    "EXT-005": "artifacts/EXT-005/rich-message-01/comparison.json"
+  },
+  "pr46": {
+    "merge": "98b08c435a6f5027a05f27931906837d4886b289",
+    "acceptance_and_package_platforms": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "verified_ci_archives": 9,
+    "receipt": "artifacts/ci/local-pr/46/receipt.json",
+    "consumer_return": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/24#issuecomment-6694949233"
+  },
+  "core_release_tags": [
+    "handshake-preview-dd694a0db605"
+  ],
+  "next": {
+    "EXT-043": "Publish the immutable B0 Host/SDK, then reuse the EXT-067 manifest.",
+    "EXT-029": "CORE-024 fixed the deployment limit of native web_search. Its packaged plugin schema exposes tool.call/status but no binding for dispatch, response or unknown cost of an external paid HTTP attempt against the original reservation.",
+    "EXT-068/069": "Verify original gateway group activation and owner authorization once available. This case covers native ingress identity only."
+  },
+  "EXT-029_producer_request": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/101#issuecomment-6695081523"
+}
