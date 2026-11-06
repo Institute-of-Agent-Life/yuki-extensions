@@ -1,0 +1,24 @@
+{
+  "base": "3b597631285376da97f5bc39e71c71df660e75d3",
+  "head": "e9e012d761da06548ecdd7ae2f39deeaf2b4b33d",
+  "synthetic": "2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+  "tree": "c1aa065458c1603a6be1c03d1c74e270d2eebf74",
+  "workflows": {
+    "42301450545": {
+      "verified_zips": 3,
+      "passed_jobs": 3,
+      "skipped": [
+        "publish"
+      ],
+      "snapshot_sha256": "3b1a83976eb15ebc059e69276357572c57f7b2e3b48fcb23892ba7495f8d78d8"
+    },
+    "42301450408": {
+      "verified_zips": 88,
+      "passed_jobs": 50,
+      "skipped": [],
+      "snapshot_sha256": "24d954bb85bf97ab6b449f7d2b6949560d7864244c4231db509e000ed8637679"
+    }
+  },
+  "utc": "2026-11-06T22:18:22.904031+00:00",
+  "merged": "24258c7c8c5c00b7d216f6c2f265493adfff262d"
+}

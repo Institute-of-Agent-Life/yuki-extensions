@@ -19,5 +19,6 @@ def use_pinned_verifier(module):
     def run(args, **kwargs):
         if args[:3] != ["ssh-keygen", "-Y", "verify"]:
             raise ValueError("unexpected signature verifier command")
-        return subprocess.run([str(program), *args[1:]], timeout=15, **kwargs)
+        kwargs["timeout"] = min(kwargs.get("timeout") or 15, 15)
+        return subprocess.run([str(program), *args[1:]], **kwargs)
     module.subprocess = SimpleNamespace(run=run)

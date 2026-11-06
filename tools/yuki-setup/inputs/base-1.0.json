@@ -1,0 +1,35 @@
+{
+  "source_commit": "c6bd0c75e38717abc71373201d31a77982428d5b",
+  "version": "1.0.0",
+  "signer": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBKKuDX5nAXQep58OVNLyKqNnzzCTXalc0pOh7WdJc95 yuki-plugin-base-1.0.0\n",
+  "platforms": {
+    "linux-arm64": {
+      "archive_sha256": "737d5d0ff9ec8e77adc898f5a6112f742c7785bc395730b65a1e4b13310eb69f",
+      "binary_sha256": "e2435386c53541628898861d1a1f162ecadae51e815020d78d162d57130e7d1b"
+    },
+    "darwin-arm64": {
+      "archive_sha256": "ed0aef8a02d216133a21dc784c67d2c344f5bd667f168884ae5475ea1465e533",
+      "binary_sha256": "8768e4cf17fe2a355e11570002bb37d7adfc81c5f8ae77063f90094e025ea4cb"
+    },
+    "windows-x86_64": {
+      "archive_sha256": "287167dae7b2b1222efd22fa5a0aa58e1c39f7129c7112e5b81cebb6278a7ecd",
+      "binary_sha256": "7ad3dc1659c5ef53809da5c0faf3b6ca885c4e3c7f0c7d46155803c86accf095"
+    }
+  },
+  "verifiers": {
+    "verify_base.py": "ae90ec1b1101f3aeb7b47727933ba46fb5403de4e032fb8ae2880f196c6e38d9",
+    "verify_dist.py": "79dcde55f58e3c25f8cb682e5e71722a6cd1deaa764d96eb209a685c56525886"
+  },
+  "windows_web_fetch": {
+    "artifact_id": "13524465074",
+    "sha256": "51dd857899c6350353fe289d4955981f2fa97ca8ff51ad7857b916ba5801d963",
+    "members": {
+      "Cargo.lock": "20609ae0ee4935d761204f1aec7618a95439e591e3bf6876cc5be9a61b5d94ba",
+      "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+      "package-manifest.json": "3da6a9e77e9ecd19eb2550cf1ecae0783d4c0d1cebdcb50c94a09589a819db91",
+      "plugin.toml": "116d0aa6cb5d635118d8abecdd405f5bef0d8a5eb475eae0217430f3c5bc20cd",
+      "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+      "yuki-web-fetch.exe": "90912616d2e50ffce88c82422ebe58740e8c28235b83365ac43e07ef413659b2"
+    }
+  }
+}

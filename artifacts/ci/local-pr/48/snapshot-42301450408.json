@@ -1,0 +1,2334 @@
+{
+  "pr": 48,
+  "run": 42301450408,
+  "merge": "2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+  "tree": "c1aa065458c1603a6be1c03d1c74e270d2eebf74",
+  "parents": [
+    "3b597631285376da97f5bc39e71c71df660e75d3",
+    "e9e012d761da06548ecdd7ae2f39deeaf2b4b33d"
+  ],
+  "jobs": [
+    {
+      "id": 128179977466,
+      "name": "acceptance (ubuntu-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128179977567,
+      "name": "select",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128179977621,
+      "name": "acceptance (macos-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128179977626,
+      "name": "acceptance (windows-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180081083,
+      "name": "runtime (monty-runtime, ubuntu-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180081130,
+      "name": "worker (codemode, windows-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180081245,
+      "name": "worker (codemode, macos-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180081297,
+      "name": "worker (codemode, ubuntu-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180082627,
+      "name": "package (character, ubuntu-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180082631,
+      "name": "package (client, ubuntu-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180082645,
+      "name": "package (codemode, macos-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180082646,
+      "name": "package (character, windows-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180082670,
+      "name": "package (codemode, ubuntu-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180082721,
+      "name": "package (character, macos-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180082780,
+      "name": "package (connector, windows-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180082821,
+      "name": "package (client, windows-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180082851,
+      "name": "package (feishu, ubuntu-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180082867,
+      "name": "package (codemode, windows-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180082882,
+      "name": "package (feishu, windows-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180082889,
+      "name": "package (connector, macos-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180082907,
+      "name": "package (env, ubuntu-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180082910,
+      "name": "package (client, macos-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180082950,
+      "name": "package (monty-runtime, windows-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180082997,
+      "name": "package (local-agent, windows-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180083005,
+      "name": "package (feishu, macos-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180083034,
+      "name": "package (local-agent, ubuntu-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180083039,
+      "name": "package (memory-maintenance, macos-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180083052,
+      "name": "package (connector, ubuntu-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180083077,
+      "name": "package (media, ubuntu-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180083086,
+      "name": "package (env, windows-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180083091,
+      "name": "package (monty-runtime, macos-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180083094,
+      "name": "package (env, macos-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180083098,
+      "name": "package (local-agent, macos-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180083103,
+      "name": "package (memory-maintenance, ubuntu-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180083125,
+      "name": "package (memory-maintenance, windows-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180083131,
+      "name": "package (telegram, ubuntu-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180083158,
+      "name": "package (web-fetch, macos-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180083164,
+      "name": "package (web-fetch, ubuntu-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180083172,
+      "name": "package (trace, macos-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180083194,
+      "name": "package (monty-runtime, ubuntu-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180083197,
+      "name": "package (trace, ubuntu-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180083212,
+      "name": "package (web-fetch, windows-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180083243,
+      "name": "package (media, windows-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180083254,
+      "name": "package (yuki-setup, windows-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180083266,
+      "name": "package (media, macos-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180083268,
+      "name": "package (yuki-setup, macos-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180083285,
+      "name": "package (telegram, macos-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180083290,
+      "name": "package (yuki-setup, ubuntu-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180083339,
+      "name": "package (trace, windows-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 128180083404,
+      "name": "package (telegram, windows-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": 13545080024,
+      "name": "cache-inputs-web-fetch-macos-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:1c3c2d761680476a53bd6f2d814854d08d8111bb147976b5c4a7824a3f339995",
+      "size": 1861,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "web-fetch",
+          "cache_key": "rust-v1-Darwin-arm64-web-fetch-de821e3d1fc0147403aedce9b4e1ac2bff8a2141bb916577cbc49765fabebec9",
+          "bound_sources": 10
+        }
+      ]
+    },
+    {
+      "id": 13545020248,
+      "name": "package-web-fetch-macos-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:8cd7dd69f3c1a42feefe3ced17318f415e92948e3a1f68002486d1c078ebfc32",
+      "size": 675511,
+      "zip_members": 6,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "c59d7a5a9e63fed97d1ea4f0c515850b0220e6f6e13c07145b593854eb0edda8",
+          "task": null,
+          "unit": "web-fetch",
+          "members": {
+            "Cargo.lock": "20609ae0ee4935d761204f1aec7618a95439e591e3bf6876cc5be9a61b5d94ba",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "plugin.toml": "116d0aa6cb5d635118d8abecdd405f5bef0d8a5eb475eae0217430f3c5bc20cd",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-web-fetch": "6078b07ed0127727545d8ff3ea9a49c95129b1c6b4d7d250b4ea8e8efd7e776a"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13545010199,
+      "name": "package-web-fetch-windows-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:d8b10baf34132641c6b4826529e75d37bde758e03e092a70f1edbc42d91e4cc7",
+      "size": 584318,
+      "zip_members": 6,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "d8d50b8260732f934fed6270c209d5fec25fdb9980b58c42f13eb6987b00e073",
+          "task": null,
+          "unit": "web-fetch",
+          "members": {
+            "Cargo.lock": "20609ae0ee4935d761204f1aec7618a95439e591e3bf6876cc5be9a61b5d94ba",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "plugin.toml": "116d0aa6cb5d635118d8abecdd405f5bef0d8a5eb475eae0217430f3c5bc20cd",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-web-fetch.exe": "c77846c8dc588f0cde208f518877d43cd5a1ac94c77c3794a484884e80e0a61f"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13544991249,
+      "name": "package-monty-runtime-ubuntu-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:709fa64574362b84285368ebd839edecf08682539985d9ddc7ff9edcc2427290",
+      "size": 67872,
+      "zip_members": 2,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "e72566f980bd1e00a4b2cca8352e72b2b68266052edc7fafa954afc31346a70d",
+          "task": null,
+          "unit": "monty-runtime",
+          "members": {
+            "monty-runtime-0.1.0-alpha.1-source.tar.gz": "3e6a382d5ca806163f7496c3b0c3a5eec99023fe74aee883084e79159f8b045b"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13544926893,
+      "name": "package-feishu-macos-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:cd7761cde90ef4a80eef427cb982d54582f2e8b24e0c83e12df0bb3f8f55947c",
+      "size": 807364,
+      "zip_members": 7,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "6cb2c38c157974cd5537de78e8e63b547f427185dad3cffd171e84fc685b7f0a",
+          "task": null,
+          "unit": "feishu",
+          "members": {
+            "Cargo.lock": "3a4e9084f82e8700adf97f56b096027a68afd19523c3e940d3abc43a6010eb9a",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "NOTICE": "51201cfac32f0bae2e3f4157609d1f4c268f76fef608d30e6809a7581b6746cb",
+            "plugin.toml": "3baed4cec586fe13605bc4d096687541e902b2222501ad58feec835dbd760e42",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-feishu": "841d9f3d5d01078da587a970e091ad7a04919797b069ac6951e9a1d8ba5fcebf"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13544916958,
+      "name": "cache-inputs-yuki-setup-macos-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:681aaa9772e2ff618c638d58ab81e0ea8ad9a2b2c6ed16a397066b7e9becdc1d",
+      "size": 1993,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "yuki-setup",
+          "cache_key": "rust-v1-Darwin-arm64-yuki-setup-d1bfa75ca004c299b7a3f84c8bd1cfc3a2ea65e2337f78dec43c28d6c2b90b80",
+          "bound_sources": 19
+        }
+      ]
+    },
+    {
+      "id": 13544901660,
+      "name": "package-trace-macos-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:0fee3d74d1099fdc9254e97c0c0ca018e7ed1aecbb6f76c519696061c7ed7341",
+      "size": 422261,
+      "zip_members": 7,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "721d00f47294995ed6f132ef5695f9abcb4826398255d225a8ab89c9a9199c96",
+          "task": null,
+          "unit": "trace",
+          "members": {
+            "Cargo.lock": "adf7e201a7f790356894bb617040a90802f6d0c979db7a1656a5fc94659d9ec9",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "README.md": "641cda42bd38979d5a0c8f0da90b16c44d0d96601615473822e505533ad09f4f",
+            "plugin.toml": "1c9003baafd100c94a13b2d4be8e5cc6892e4098fe4b621388cebe59c9b28add",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-trace": "084a2308f54eca6dc8da43abc45839da2d378be4da42ba7aea52a373a718f4b7"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13544887018,
+      "name": "cache-inputs-feishu-macos-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:9c316b3215af5c8f6d3d275753bb60de8381fb49278ba5c6cccfc69d7caccce1",
+      "size": 1930,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "feishu",
+          "cache_key": "rust-v1-Darwin-arm64-feishu-4e80ae6b05efa15af850afba2711d4ca6f4be749135c62d998fed9286aa32bf6",
+          "bound_sources": 12
+        }
+      ]
+    },
+    {
+      "id": 13544881887,
+      "name": "package-client-macos-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:44531b7f02b3027e25bcfe1ffe0f577a62870080bbe1860c2bbd1ad49da2fd73",
+      "size": 767993,
+      "zip_members": 6,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "3b013061f3d19be51f569a0e897cc944b625a1f55ace87271bbce9b93e96733a",
+          "task": null,
+          "unit": "client",
+          "members": {
+            "Cargo.lock": "3b4f6f60bcbd9f26930e0efdef0e4b70dda3b92a8b85d041ea54199c783840cc",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "plugin.toml": "555166fcc444e7ab9ebd86524ff74d49673374fb7a93558fd2535f301c433d75",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-client": "304957e19026f8b8d7879ce9e6d9cdf1c8100e81c0944afd2b9dffe6852a7280"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13544871551,
+      "name": "package-connector-ubuntu-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:9354ca6d8ca128b43220c3e5b7a3fd984c41767d2ca1a0d9b2e5e92b6949f8ab",
+      "size": 230576,
+      "zip_members": 3,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "e397b474a2309056970734bf3a83dba58eafed1ecb47f6a2a307749bb502db4a",
+          "task": null,
+          "unit": "connector",
+          "members": {
+            "yuki_agent_connector-0.4.4.dev1-py3-none-any.whl": "7a143a2d128bde2de038f26ce0a44cee8e9bcbd9249960bf68beb0b5032d85b5",
+            "yuki_agent_connector-0.4.4.dev1.tar.gz": "691ff2efa037744310409fc0cd1b84b6c7b32049ef062b65b658dd7f308364b3"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13544866189,
+      "name": "package-memory-maintenance-macos-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:ebd90807f3e693f177ab72b6db58fbdd350b27a6ad036cb803ecd169ae38d702",
+      "size": 445137,
+      "zip_members": 7,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "dd758d1e97d459030ce3549c782f34f54854bbd381a369cf2a8f279706af43c7",
+          "task": null,
+          "unit": "memory-maintenance",
+          "members": {
+            "Cargo.lock": "f3700e4bee26d4ad934d273273871c831503c1f063419e91964c2e98579e3ff6",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "README.md": "1b938c93174b4fbd4104a07867680fd7c2a6c95f81a4c95c0e2a6bd7b442944a",
+            "plugin.toml": "b190c6c3fd67ca87d0f5d2b9f282eccf1ddcdce441833e012d38a1074f1e620a",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-memory-maintenance": "c8021d47dc1166eb4e067e82ea6d92c8cb074662afea8367944771cb48379079"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13544866142,
+      "name": "cache-inputs-yuki-setup-ubuntu-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:c15f782ac63127acf6da7e0bb3a0138108a8947f7aa6db1528ee7a46e7fc6091",
+      "size": 2004,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "yuki-setup",
+          "cache_key": "rust-v1-Linux-x86_64-yuki-setup-75f4c481bbda91cbb9ff802390eadaf0548cef2fafb3fff97350045e99f14526",
+          "bound_sources": 19
+        }
+      ]
+    },
+    {
+      "id": 13544861767,
+      "name": "package-media-windows-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:bc93b513cf617d2a00941ca572931b152ed877816fb5a17722ebea82c133457d",
+      "size": 421490,
+      "zip_members": 9,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "d012288517db57a557cb068a6b220b8b5de70bf97710afcb03449abc16589cf5",
+          "task": null,
+          "unit": "media",
+          "members": {
+            "backend/document_reader.py": "3eaa8ccdd25bbc764d73eb9be7d5c57a8ca7c0a997a9d4d9695902f6f441998a",
+            "backend/source.lock.json": "e0b6d68b94370a41ad5bdb59e2640905cdb6ca435de4b69ed2baf75b06e8e040",
+            "Cargo.lock": "95257131bd4d94e9a5dc8e0fbbd2a0e1c518c6f5c1fc17e9a1b495f418949929",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "packaging/codecs.lock": "92e058e12e25c10b2cff0764dfac8b9b66d085b77055b6e4a77e595ed6e41bb7",
+            "plugin.toml": "7cfca2fe51f2e14676727339f4665605c588b79d8dee963cf00fc52802828a73",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-media.exe": "5de71a010b5dd59cbdf9261951cc0a380650715728a1356d9eefcc0a35ccd95c"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13544861607,
+      "name": "package-feishu-windows-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:0fea3207bce866e96840a89dabc0887e4cd05bf75a2dc87ce77d9492345dcee5",
+      "size": 693669,
+      "zip_members": 7,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "61d27b4ceed003675b5c37a75089773335adb6c050d74489458db76f3a20f388",
+          "task": null,
+          "unit": "feishu",
+          "members": {
+            "Cargo.lock": "3a4e9084f82e8700adf97f56b096027a68afd19523c3e940d3abc43a6010eb9a",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "NOTICE": "51201cfac32f0bae2e3f4157609d1f4c268f76fef608d30e6809a7581b6746cb",
+            "plugin.toml": "3baed4cec586fe13605bc4d096687541e902b2222501ad58feec835dbd760e42",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-feishu.exe": "8e994c70c18ed5fddd686d397cae9d94cd48ee416ccae20081b1a0559fe3393c"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13544843348,
+      "name": "runtime-monty-runtime-ubuntu-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:52eee011f38ba958dccddb40b2ea14a4887670f6d95ca2db5c215b24750284d1",
+      "size": 69939595,
+      "zip_members": 23,
+      "manifests": [
+        {
+          "path": "manifest.json",
+          "file_sha256": "23ab206ce5a6b52d75f74371d1adada8919f703ce2a889f35fd81844960ec58f",
+          "task": null,
+          "unit": "monty-runtime",
+          "members": {
+            "codec.txt": "cca856e350dcb0ef8f2d71df547756adde6ac9d0f61ce132ff24cc6110ccdaff",
+            "image-id.txt": "54f417bdfb51f59289930705654a1185dfb6d366a4990133e254a48fa0dc1890",
+            "artifacts.json": "36e54b7a70ec809a206beb8ab43526642180a8a9e6966a1089662c9b790bbcc1",
+            "build.txt": "cf12c4843f3e0708e6887b5759312d2ce27c95458ab2f56174f83b2febe6b62c",
+            "native-codec.json": "505117b25ec1a90a206d29d5655410cc84b5ddba8cd14c075eccd678d944d9c8",
+            "rust-worker.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "image.tar": "2a6b4af4be024bfca8eda8689234c6576b7a74105e6561f6d58a19df34f6b3cc",
+            "copy-THIRD_PARTY_NOTICES.json.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "runtime-contract.json": "a55502abb16b6a846e22bb84e693942f606aeca67145fbaee94bc8fb69bec1e9",
+            "image-inspect.json": "23b5b9e5d0f6e469be9ec7c3c01b5bc50c66817fc7a63cb6eabf509c33d07b99",
+            "THIRD_PARTY_NOTICES.json": "9648e9c23e66af2f18c10a26f30c7e850773975ddadef746ea86f403d7f25980",
+            "inputs.txt": "7e5377a03e19550fcff3d6b59488c33be85ac2c0f7f113c8b3f635062b9c8ca8",
+            "copy-artifacts.json.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "copy-runtime-contract.json.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "export.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "isolation.txt": "4379854b127767c00ae00b39257ada428e9eb95260df7dd9a625a3599628ed9d",
+            "apparmor.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "native-isolation.json": "f0bb90a3ca058ae23d6cee8c93c59479272667afb8449ea8e30d6b9216b708c0"
+          }
+        },
+        {
+          "native_worker": true,
+          "image": "sha256:0a273a8c8ffe02cc3487187679cd16c75bdfa866569ea80906a67007fc8959bd",
+          "docker_blobs": {
+            "03bae8c42fd263744bece3ce909f210ba42c9829d663130f2a0e71c8f0a4fc2a": 477,
+            "070e6b0141bf4656107be21bf10a695ae97d733b5e9026f54c1d63f9f5fa39dd": 477,
+            "0a273a8c8ffe02cc3487187679cd16c75bdfa866569ea80906a67007fc8959bd": 10928,
+            "1a2bd7e8b1827c5bfa237415c2bba7946ff45d9d2fbb257fd2e5006338498f1e": 477,
+            "1d7bc1f368bae8e44eab3d362d45b55127dc2645ec54ca239fa3aefef5b176fc": 477,
+            "1d7cd1eac8a5a1492557770653a2386f5a3b87cbfe7c5179c07b1d9d4fe3745f": 14848,
+            "2793d6d4dfc1de8490a44c8c524985dded44d0bdb29e49cf1f5a61bb7b1db993": 401,
+            "2b5db98ba26f5374b50a1670fd3eb2bd7bdbec4e68dccf5fcfb24307fd8398d9": 477,
+            "32eb673d02173b1cd5d32e0a67fe54621f86582c49116fdc8786b290d8481808": 477,
+            "37d8f28a8dc8fb9a094b0853c502735d682f0d0a2a29f4ccde1982bf5d6a768b": 477,
+            "3ae4acf28f16cc9e31e353df6c594ac9dc7e02d810d8008104693688477c5561": 477,
+            "3d532229596e02863ab33902cd4cf24996bf2543e1572b609027d96a08d3e6e0": 4096,
+            "40d5a8850eb5187a071dbf8d290c5f534a297ff65c7be1bc01bd0b63805dafd0": 22331392,
+            "47c7641683aee40207588f2fd995b6a9a313a09f546b7e7c142633ce1952d09d": 477,
+            "49f34639403cd9d6d49afeeff2e7e635d0abd0e89fcb1030181b685ff1c422af": 477,
+            "4bca429da40d43987167d09f571ece6a8083e7328af0917630513801c28861fb": 1230,
+            "5b5020b99f7f7e4913313a92bba81ef979b95f519844f7887079326ad4bf463c": 477,
+            "5df4dce08caa57391b7aded1fbd37b472c1561feaf0a0d2c2f25f20b54344572": 487424,
+            "5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef": 1024,
+            "624a777af942f9df461e4d9d6dfda80b4d37e275b034a78b51ecce368083e3ca": 477,
+            "62bfc615c7d8ca6ffe15b1f4ea5f2d6632306c00ae6458e473e13199ba39a1b8": 477,
+            "67e7e72dea116b95a1e67635b2b92599cfeb1dcca221455ae52aa08bded622cd": 15872,
+            "7e219f1b7f3f1d3c2a11e10ced284718344c2653f95bf6fc2c4e592a8c5707d0": 477,
+            "8c43af4bc3e59b666c506f5a2cfc2ecac3ab3536305f8cad1c3c74f45a95b825": 477,
+            "94fb73e013798850bfe4e1bcb17e45a352a2b3b55fdd5aefee64cf219bc10e29": 50688,
+            "9950b5f2e7d1fcdbeddb530a52ddca20239841dd27dbecc963a73ccace14ef8a": 3282,
+            "9bdd6cfde3e7758766c5a0e4cfed8a4d86a780c764e4177f157249dcc7ee6ab4": 37888,
+            "a5d6d345f6afa08d7c31272055746d60a838b290bfcc82c0a23e8e984d61a933": 81295360,
+            "aa73fe4de1544ec85de67c68ef3f0f4e3d7fca7d6047ac3885916264530d4bf7": 477,
+            "b3cdb78e0d3ac8d73db0425b65f2e16b164a644fe41c21bbb274986094677537": 477,
+            "b3f1a4e1434ce255d5f37034a4275ef95511d68ed7c6179a5f75347ce5ea0038": 477,
+            "bca572b9549074f7cbc5f2d9d29f589038ff21c5f68cef2965167a33f177a9c0": 38150656,
+            "cae4cb2b5e819765b847e67faa443b377607452f2ec949d142cad15d9d7ea0b3": 5120,
+            "d6178a5e4482e9d1100bbc7a1b43926af10c622f90fa53c57fa56d1a2c415ac4": 17408,
+            "f6450d069c12f0f553f5c768513388a2cfbd3f6e5652d123c9f9ac3913e50357": 3072,
+            "f6b72f8e3167f44d918390dc4e987c9c1517a54dcc091276086fe9e1611d335c": 30571520,
+            "fab99bd4639aec48a77ec4d2e3564c0907e0e1e962bbf773219a0b503a168955": 4118528,
+            "fcfa7f650c32f86b951a7abc21b2ebd8570951ee5c7ff0b6ded4347de2d4d490": 1567232,
+            "fd69f31faa92a546e5d4668ba4f8390c4d9e73d6350fe60b189e23c43e7add0e": 4608,
+            "fefc51c807595e70844958dacd63d0cb669b1c5a4232c3c78582dfca123a408b": 19456,
+            "ff420f86d8880b13df7f331add78895f64f358e5d012c6b22c3a6befa0d1d6ab": 5045760
+          },
+          "docker_manifest": [
+            {
+              "Config": "blobs/sha256/0a273a8c8ffe02cc3487187679cd16c75bdfa866569ea80906a67007fc8959bd",
+              "RepoTags": null,
+              "Layers": [
+                "blobs/sha256/a5d6d345f6afa08d7c31272055746d60a838b290bfcc82c0a23e8e984d61a933",
+                "blobs/sha256/fab99bd4639aec48a77ec4d2e3564c0907e0e1e962bbf773219a0b503a168955",
+                "blobs/sha256/bca572b9549074f7cbc5f2d9d29f589038ff21c5f68cef2965167a33f177a9c0",
+                "blobs/sha256/cae4cb2b5e819765b847e67faa443b377607452f2ec949d142cad15d9d7ea0b3",
+                "blobs/sha256/5df4dce08caa57391b7aded1fbd37b472c1561feaf0a0d2c2f25f20b54344572",
+                "blobs/sha256/f6b72f8e3167f44d918390dc4e987c9c1517a54dcc091276086fe9e1611d335c",
+                "blobs/sha256/fefc51c807595e70844958dacd63d0cb669b1c5a4232c3c78582dfca123a408b",
+                "blobs/sha256/ff420f86d8880b13df7f331add78895f64f358e5d012c6b22c3a6befa0d1d6ab",
+                "blobs/sha256/fcfa7f650c32f86b951a7abc21b2ebd8570951ee5c7ff0b6ded4347de2d4d490",
+                "blobs/sha256/f6450d069c12f0f553f5c768513388a2cfbd3f6e5652d123c9f9ac3913e50357",
+                "blobs/sha256/9bdd6cfde3e7758766c5a0e4cfed8a4d86a780c764e4177f157249dcc7ee6ab4",
+                "blobs/sha256/fd69f31faa92a546e5d4668ba4f8390c4d9e73d6350fe60b189e23c43e7add0e",
+                "blobs/sha256/67e7e72dea116b95a1e67635b2b92599cfeb1dcca221455ae52aa08bded622cd",
+                "blobs/sha256/1d7cd1eac8a5a1492557770653a2386f5a3b87cbfe7c5179c07b1d9d4fe3745f",
+                "blobs/sha256/d6178a5e4482e9d1100bbc7a1b43926af10c622f90fa53c57fa56d1a2c415ac4",
+                "blobs/sha256/40d5a8850eb5187a071dbf8d290c5f534a297ff65c7be1bc01bd0b63805dafd0",
+                "blobs/sha256/94fb73e013798850bfe4e1bcb17e45a352a2b3b55fdd5aefee64cf219bc10e29",
+                "blobs/sha256/3d532229596e02863ab33902cd4cf24996bf2543e1572b609027d96a08d3e6e0",
+                "blobs/sha256/5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+                "blobs/sha256/5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef"
+              ],
+              "LayerSources": {
+                "sha256:1d7cd1eac8a5a1492557770653a2386f5a3b87cbfe7c5179c07b1d9d4fe3745f": {
+                  "mediaType": "application/vnd.oci.image.layer.v1.tar",
+                  "size": 14848,
+                  "digest": "sha256:1d7cd1eac8a5a1492557770653a2386f5a3b87cbfe7c5179c07b1d9d4fe3745f"
+                },
+                "sha256:3d532229596e02863ab33902cd4cf24996bf2543e1572b609027d96a08d3e6e0": {
+                  "mediaType": "application/vnd.oci.image.layer.v1.tar",
+                  "size": 4096,
+                  "digest": "sha256:3d532229596e02863ab33902cd4cf24996bf2543e1572b609027d96a08d3e6e0"
+                },
+                "sha256:40d5a8850eb5187a071dbf8d290c5f534a297ff65c7be1bc01bd0b63805dafd0": {
+                  "mediaType": "application/vnd.oci.image.layer.v1.tar",
+                  "size": 22331392,
+                  "digest": "sha256:40d5a8850eb5187a071dbf8d290c5f534a297ff65c7be1bc01bd0b63805dafd0"
+                },
+                "sha256:5df4dce08caa57391b7aded1fbd37b472c1561feaf0a0d2c2f25f20b54344572": {
+                  "mediaType": "application/vnd.oci.image.layer.v1.tar",
+                  "size": 487424,
+                  "digest": "sha256:5df4dce08caa57391b7aded1fbd37b472c1561feaf0a0d2c2f25f20b54344572"
+                },
+                "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef": {
+                  "mediaType": "application/vnd.oci.image.layer.v1.tar",
+                  "size": 1024,
+                  "digest": "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef"
+                },
+                "sha256:67e7e72dea116b95a1e67635b2b92599cfeb1dcca221455ae52aa08bded622cd": {
+                  "mediaType": "application/vnd.oci.image.layer.v1.tar",
+                  "size": 15872,
+                  "digest": "sha256:67e7e72dea116b95a1e67635b2b92599cfeb1dcca221455ae52aa08bded622cd"
+                },
+                "sha256:94fb73e013798850bfe4e1bcb17e45a352a2b3b55fdd5aefee64cf219bc10e29": {
+                  "mediaType": "application/vnd.oci.image.layer.v1.tar",
+                  "size": 50688,
+                  "digest": "sha256:94fb73e013798850bfe4e1bcb17e45a352a2b3b55fdd5aefee64cf219bc10e29"
+                },
+                "sha256:9bdd6cfde3e7758766c5a0e4cfed8a4d86a780c764e4177f157249dcc7ee6ab4": {
+                  "mediaType": "application/vnd.oci.image.layer.v1.tar",
+                  "size": 37888,
+                  "digest": "sha256:9bdd6cfde3e7758766c5a0e4cfed8a4d86a780c764e4177f157249dcc7ee6ab4"
+                },
+                "sha256:a5d6d345f6afa08d7c31272055746d60a838b290bfcc82c0a23e8e984d61a933": {
+                  "mediaType": "application/vnd.oci.image.layer.v1.tar",
+                  "size": 81295360,
+                  "digest": "sha256:a5d6d345f6afa08d7c31272055746d60a838b290bfcc82c0a23e8e984d61a933"
+                },
+                "sha256:bca572b9549074f7cbc5f2d9d29f589038ff21c5f68cef2965167a33f177a9c0": {
+                  "mediaType": "application/vnd.oci.image.layer.v1.tar",
+                  "size": 38150656,
+                  "digest": "sha256:bca572b9549074f7cbc5f2d9d29f589038ff21c5f68cef2965167a33f177a9c0"
+                },
+                "sha256:cae4cb2b5e819765b847e67faa443b377607452f2ec949d142cad15d9d7ea0b3": {
+                  "mediaType": "application/vnd.oci.image.layer.v1.tar",
+                  "size": 5120,
+                  "digest": "sha256:cae4cb2b5e819765b847e67faa443b377607452f2ec949d142cad15d9d7ea0b3"
+                },
+                "sha256:d6178a5e4482e9d1100bbc7a1b43926af10c622f90fa53c57fa56d1a2c415ac4": {
+                  "mediaType": "application/vnd.oci.image.layer.v1.tar",
+                  "size": 17408,
+                  "digest": "sha256:d6178a5e4482e9d1100bbc7a1b43926af10c622f90fa53c57fa56d1a2c415ac4"
+                },
+                "sha256:f6450d069c12f0f553f5c768513388a2cfbd3f6e5652d123c9f9ac3913e50357": {
+                  "mediaType": "application/vnd.oci.image.layer.v1.tar",
+                  "size": 3072,
+                  "digest": "sha256:f6450d069c12f0f553f5c768513388a2cfbd3f6e5652d123c9f9ac3913e50357"
+                },
+                "sha256:f6b72f8e3167f44d918390dc4e987c9c1517a54dcc091276086fe9e1611d335c": {
+                  "mediaType": "application/vnd.oci.image.layer.v1.tar",
+                  "size": 30571520,
+                  "digest": "sha256:f6b72f8e3167f44d918390dc4e987c9c1517a54dcc091276086fe9e1611d335c"
+                },
+                "sha256:fab99bd4639aec48a77ec4d2e3564c0907e0e1e962bbf773219a0b503a168955": {
+                  "mediaType": "application/vnd.oci.image.layer.v1.tar",
+                  "size": 4118528,
+                  "digest": "sha256:fab99bd4639aec48a77ec4d2e3564c0907e0e1e962bbf773219a0b503a168955"
+                },
+                "sha256:fcfa7f650c32f86b951a7abc21b2ebd8570951ee5c7ff0b6ded4347de2d4d490": {
+                  "mediaType": "application/vnd.oci.image.layer.v1.tar",
+                  "size": 1567232,
+                  "digest": "sha256:fcfa7f650c32f86b951a7abc21b2ebd8570951ee5c7ff0b6ded4347de2d4d490"
+                },
+                "sha256:fd69f31faa92a546e5d4668ba4f8390c4d9e73d6350fe60b189e23c43e7add0e": {
+                  "mediaType": "application/vnd.oci.image.layer.v1.tar",
+                  "size": 4608,
+                  "digest": "sha256:fd69f31faa92a546e5d4668ba4f8390c4d9e73d6350fe60b189e23c43e7add0e"
+                },
+                "sha256:fefc51c807595e70844958dacd63d0cb669b1c5a4232c3c78582dfca123a408b": {
+                  "mediaType": "application/vnd.oci.image.layer.v1.tar",
+                  "size": 19456,
+                  "digest": "sha256:fefc51c807595e70844958dacd63d0cb669b1c5a4232c3c78582dfca123a408b"
+                },
+                "sha256:ff420f86d8880b13df7f331add78895f64f358e5d012c6b22c3a6befa0d1d6ab": {
+                  "mediaType": "application/vnd.oci.image.layer.v1.tar",
+                  "size": 5045760,
+                  "digest": "sha256:ff420f86d8880b13df7f331add78895f64f358e5d012c6b22c3a6befa0d1d6ab"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 13544841668,
+      "name": "package-connector-windows-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:57a9b38bdbb7fd5d3182dbe9b35be6bfeea94675f3ee6da6b262a249de905bef",
+      "size": 230587,
+      "zip_members": 3,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "36c9b29293e7b65e9917306527cf0b7fc554fd33e24aa737dbcd3b3fc3a8a4ff",
+          "task": null,
+          "unit": "connector",
+          "members": {
+            "yuki_agent_connector-0.4.4.dev1-py3-none-any.whl": "2748ec830b56e38f404d33964350578e543232ab1fce02e2399fc3ab045a74d8",
+            "yuki_agent_connector-0.4.4.dev1.tar.gz": "691ff2efa037744310409fc0cd1b84b6c7b32049ef062b65b658dd7f308364b3"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13544832199,
+      "name": "package-env-macos-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:657b77f068df486c647b77f95dbfdd1ee820ef5830796de30d5d7e5b5501018f",
+      "size": 379819,
+      "zip_members": 6,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "041cf14b3c4b6f4dc066d411bb406d487a0a613f39550f8ed9d6503b9c803070",
+          "task": null,
+          "unit": "env",
+          "members": {
+            "Cargo.lock": "f8ad380038ce0ef39f902b3d9b982ee5601e1e7d11574ab49fe79990559f0816",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "plugin.toml": "969067f56ef5b152aeb56ba8145097175f29107576f19f607be531869cb7ca08",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-env": "c31354ceffb3ea653d6db41e0459c9e44c1dd102fada2f7c449c3d16738544e0"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13544796729,
+      "name": "package-character-windows-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:c7057ef7bf1df328b1893034dd859eb31e8a9c5582331d44fc2698ccab2e7ca8",
+      "size": 309942,
+      "zip_members": 7,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "fc04ea2cd02b1a0ef98feca1af2f6fa9b632c71c638bff197795d6216c4cb43c",
+          "task": null,
+          "unit": "character",
+          "members": {
+            "Cargo.lock": "73b8cbf823418cdf84b9f424a4c5938a9fe980ed25f14e0f51b45e1d14a90793",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "plugin.toml": "88dbc6f11d296ace75e217fd9f2d9d000813c05c1b93762e0154be6cfdbb4024",
+            "README.md": "3a33f343615ed042a08b717db68694a9b7132b3eeb2b5b8190efcd0458c0198d",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-character.exe": "ae95abf4b158e30e79b2da3019d091df057b0961a118176ee220b6aa692fb329"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13544791823,
+      "name": "package-telegram-macos-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:16df05ec4400b08106d2c25982c162648ebc9e1146cbeff4d3e883ccb5b47c13",
+      "size": 502801,
+      "zip_members": 6,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "073ff3f12f575c990e4680a2049ef08cbf5751de8e951c7e3503d1a25cdade82",
+          "task": null,
+          "unit": "telegram",
+          "members": {
+            "Cargo.lock": "7bdef152f5f2aa219b3251c6033b15a65d5cb2677bf01f59dd94e6e8c6666144",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "plugin.toml": "ff28074c1c17161af89eba47bae5f263ff268c04fb4792e81617dd1410940928",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-telegram": "e13ee056f0cdd970b48730a51f26268b82b2a6879bd067c9253d71c736642859"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13544787057,
+      "name": "cache-inputs-client-macos-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:52df70e338fd216a9ffaad73e8ec61cf0a4913754118662acdcdca218cb2a466",
+      "size": 1837,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "client",
+          "cache_key": "rust-v1-Darwin-arm64-client-3e25fdf53d62927184d214e778e25323f9e72ca7bf5db853cefd45d96dcc056d",
+          "bound_sources": 11
+        }
+      ]
+    },
+    {
+      "id": 13544741422,
+      "name": "cache-inputs-memory-maintenance-macos-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:000367ca4666d78fc2b14e6d1556ad6ee8f0dc9299c1cb941359b15e3228c67b",
+      "size": 1752,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "memory-maintenance",
+          "cache_key": "rust-v1-Darwin-arm64-memory-maintenance-ae7430edeccc3581559534a961541bb5071de7cb7f1662bc995f771416b32416",
+          "bound_sources": 9
+        }
+      ]
+    },
+    {
+      "id": 13544731387,
+      "name": "package-codemode-macos-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:7c56214beed72724d0c09c1d3a600f30fcd2d6c1e70112e83c63e42f39462481",
+      "size": 402710,
+      "zip_members": 7,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "c214232b0d709c2c5e20a7063e614335d034f36c2ea4611da04ab8de91059bf1",
+          "task": null,
+          "unit": "codemode",
+          "members": {
+            "Cargo.lock": "2b584722fd3618fe935bf31c00bc741e8ae03643abd416d057f5ab9e25d227d3",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "README.md": "1357634fcc2410afe4e41ebd92b092d2528de5ed39da67000dbd210e8bb77f8b",
+            "plugin.toml": "4b633e319716a8c158c693db2bc5135294a40f776b87ac31350e3130768eb621",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-codemode": "57991eec0fec9664785dd2aa742351c76f64aa898b94f8731830f09c87a06b03"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13544651684,
+      "name": "cache-inputs-client-ubuntu-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:ce794abb336b39d44bc2879c432669aab919a8cce43863c0b1c305f2f33c1135",
+      "size": 1845,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "client",
+          "cache_key": "rust-v1-Linux-x86_64-client-f3a225d7997e127d96196cce620b7e7ee33fb0d4952744544f88b627f68d3eed",
+          "bound_sources": 11
+        }
+      ]
+    },
+    {
+      "id": 13544606813,
+      "name": "connector-upgrade-windows-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:8667d6d42eb90f661fdc2051a7c4dd4669b628fcf44459188b09c679756286fd",
+      "size": 316335,
+      "zip_members": 17,
+      "manifests": [
+        {
+          "path": "EXT-007/candidate-ci/manifest.json",
+          "file_sha256": "707e2a5e575b5a95db6e49e490664dcd80ab876defaf6ba3362bf9ededbd6d7c",
+          "task": "EXT-007",
+          "unit": null,
+          "members": {
+            "candidate-tests.xml": "7f3cef7d5f2707276fadc3616300fb641d96a6ee460c49b330af5574875628aa",
+            "commands.json": "c83d9701147f51cc04ab07bc04f2394cd5639b8a554e4666c7da09358b958988",
+            "connector-package.json": "6190c8651d30f3cdcd993cdb660e9156fa72bf8affc6678f9f57f0eb3672cfb6",
+            "connector-runtime.json": "b302116d8122e069b486acf4f88cd5327fc952af76e8a61a35ba08088a2afa68",
+            "connector-upgrade.json": "e4324a4273106e17e554e055413b5e14dabc6611ffee64249e11ae5c1dddf789",
+            "wire4-candidate.json": "906ac87e0ab895e9764374b1605149c8dfaece4bd6804a6fa4f843a8eca1e827",
+            "wire4-old.json": "906ac87e0ab895e9764374b1605149c8dfaece4bd6804a6fa4f843a8eca1e827"
+          }
+        },
+        {
+          "path": "EXT-008/ci/manifest.json",
+          "file_sha256": "40324a50e6129c01f5f2225981ded11027dfa3bb5afb295839d00a452cc2e939",
+          "task": "EXT-008",
+          "unit": null,
+          "members": {
+            "codex-driver-wire.json": "e113a22d7cf8b80d1ded124f48e9052ae8e03f28b87ab2ab35cfb5a14655b894",
+            "commands.txt": "6434d069a63aa9498d63c0ffc142c4089f4d33e1c7abf83d2668c21f05720417"
+          }
+        },
+        {
+          "path": "EXT-009/ci/manifest.json",
+          "file_sha256": "73877ef379de1ae0bb0763032d55544932ceec8254138cc841be8679f54d33b8",
+          "task": "EXT-009",
+          "unit": null,
+          "members": {
+            "claude-driver-wire.json": "04b51eb832ea51451ea5b82802af0fc65fe8b521b16079dcb141d8b3056a903f",
+            "commands.txt": "32900cae495edaecb57299d7261e5fe09276a81f6ef81deca631e7ab3d8e760a"
+          }
+        },
+        {
+          "path": "EXT-010/ci/manifest.json",
+          "file_sha256": "753ee844334295f3a50b13ca41101ccf5976f990bdc37630e8377bcc3be207cf",
+          "task": "EXT-010",
+          "unit": null,
+          "members": {
+            "commands.txt": "19c1b760f06810f34a79dbccb25cefc7463533c2156775446501d23779e38ccc",
+            "native-acp-v1.json": "6ac1163a512048a461af5dee9842baae4127b581447dddc621009590946a408b"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13544606470,
+      "name": "cache-inputs-codemode-macos-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:fe21112a740d432f7909b7d18e4dca00cfbdc78c58dbcbf9a9b4e4e325d28a8e",
+      "size": 1943,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "codemode",
+          "cache_key": "rust-v1-Darwin-arm64-codemode-d6368bd6bfe1b6b412bc29b6983462e779f8ded77ee2a0ae6063f4f738877943",
+          "bound_sources": 13
+        }
+      ]
+    },
+    {
+      "id": 13544581784,
+      "name": "package-local-agent-windows-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:e3b6f8737740751427d1d5793d553a8baf295c0ed68f501c03df97ad0710036b",
+      "size": 1676755,
+      "zip_members": 6,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "0510cce10b71de911e7e26a94d46cb3416d6c59ddf6b21a2e120464fad330c42",
+          "task": null,
+          "unit": "local-agent",
+          "members": {
+            "Cargo.lock": "5eb68a8cac1947d55729a5d735427fc025601ecbbee39ab5d2b6841e69a82f3c",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "plugin.toml": "52321a64782f2542600b3c7b80d6bf30d868177f9fe7e035a133c7ca6ce76d36",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-local-agent.exe": "94eaf701d43bb75d51ce8d0c970723e61834d99c46ef910c85e76f95ef234e65"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13544537107,
+      "name": "cache-inputs-trace-macos-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:cc76d48c3aece2bdd1f15478b01a86536df37746fa3f2db139dda457d422b421",
+      "size": 1723,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "trace",
+          "cache_key": "rust-v1-Darwin-arm64-trace-6a50c765b41d16b3daba637acbd4fc02e3119a9a128d62361706a6b863743a6b",
+          "bound_sources": 9
+        }
+      ]
+    },
+    {
+      "id": 13544491860,
+      "name": "cache-inputs-env-windows-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:c35a3b1c61d32388595053d39b876e258ada72a6c9f12fee2c63ab09dce3423d",
+      "size": 1755,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "env",
+          "cache_key": "rust-v1-Windows-AMD64-env-18ab26de68dde260863d8e01ce19a07868a7447fa6bc6a86929b843f9022201c",
+          "bound_sources": 9
+        }
+      ]
+    },
+    {
+      "id": 13544452243,
+      "name": "connector-upgrade-ubuntu-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:9e182a146ef11537fdcea4f73c2ba43a18758c444a954a43045c03842f08c1ce",
+      "size": 298112,
+      "zip_members": 17,
+      "manifests": [
+        {
+          "path": "EXT-007/candidate-ci/manifest.json",
+          "file_sha256": "3d21e2c864c68af736e490c436e3d0c1d85d10910ca6609becae414e8541885d",
+          "task": "EXT-007",
+          "unit": null,
+          "members": {
+            "candidate-tests.xml": "5049eaba9bc5d9144339cc3267625b6e4810653ad229cfe392c2557cab79fe5c",
+            "commands.json": "6dee3283709b18855c591b5b3e0db4d0225e430d0db372103cfd0d0687b07baf",
+            "connector-package.json": "e397b474a2309056970734bf3a83dba58eafed1ecb47f6a2a307749bb502db4a",
+            "connector-runtime.json": "c0160c9f7eb02bc145cf95cb847dc74e19db53e7b676b241e19f9ccde3bdf702",
+            "connector-upgrade.json": "a5cfad5b9fbc6b9978de1e7de48cf3ad8d4593591e6db7e854e6710f87fc1456",
+            "wire4-candidate.json": "d012511998b4c4835adf51c3ff2921635ee6cbb765a98b59b44d3edecd1d54e0",
+            "wire4-old.json": "d012511998b4c4835adf51c3ff2921635ee6cbb765a98b59b44d3edecd1d54e0"
+          }
+        },
+        {
+          "path": "EXT-008/ci/manifest.json",
+          "file_sha256": "6053c4ead48599163d92a862573a3e3331edb99f822845998b2be4b02557b974",
+          "task": "EXT-008",
+          "unit": null,
+          "members": {
+            "codex-driver-wire.json": "cf9b76aafa5f8944aaf27e864416f9561edb49002cd6daadf561cd87ac8fa9e6",
+            "commands.txt": "28b2722ab6204097b82f4cc2a2b8a52325d656f9d61f63c09b48b421b570771e"
+          }
+        },
+        {
+          "path": "EXT-009/ci/manifest.json",
+          "file_sha256": "6a3d386babca4a1ad2f58114909d0d65385a59e33940c362b99ca1855d399786",
+          "task": "EXT-009",
+          "unit": null,
+          "members": {
+            "claude-driver-wire.json": "90c5de79f14c682342f074c556600f29ed312fd30e9726a3421a49086e92a6e4",
+            "commands.txt": "520a0110fdd6ba593fd7e7591e4f2c5fd5847d893ab0e18628cf7cefdd16425f"
+          }
+        },
+        {
+          "path": "EXT-010/ci/manifest.json",
+          "file_sha256": "9b78d9d93db7c1357ba59e8e888daf820e50e75d6a2c787f5e6dfe09764d960a",
+          "task": "EXT-010",
+          "unit": null,
+          "members": {
+            "commands.txt": "1611b7491da196855524b162080e85d196d951477579c3ac6e9302730dce10d1",
+            "native-acp-v1.json": "e13ac468f327c4942efdc39dff379a87c095338f0780c671ef9cddfa6f58fcac"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13544416720,
+      "name": "worker-codemode-windows-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:4362933132057b69c08064ec80204384ac1ebe855860c389e936f7ed7a7bd845",
+      "size": 1559,
+      "zip_members": 2,
+      "manifests": [
+        {
+          "source": {
+            "Cargo.toml": "6c5c47fb41912f30b747e8d5b555220ea076515d2091c239612140954952765d",
+            "Cargo.lock": "2b584722fd3618fe935bf31c00bc741e8ae03643abd416d057f5ab9e25d227d3",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "src/lib.rs": "ef788443d7fdc472cb3e1924ea2434f216fbc519a8ca9272eef6bfaaf612f288",
+            "src/worker.rs": "6a08230aa60f356305b1624c8d853b6da22c5c9fdaaef00b13ad5cb2dcd13894",
+            "tests/native_worker.rs": "4a5c90ae71e8659c50036d5eafed31a8f342970adc93860034b661c020adebe7"
+          },
+          "sdk_sha256": "ea6a1c2f5e8e5ff5b53ef7b8ab89baa9c8bb26cbd9ba45f116eaaafd73406794",
+          "commands": [
+            {
+              "argv": [
+                "C:\\Users\\runneradmin\\.cargo\\bin\\cargo.EXE",
+                "test",
+                "--locked",
+                "--offline",
+                "--test",
+                "native_worker"
+              ],
+              "exit_code": 0,
+              "log": "portable.txt"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 13544396784,
+      "name": "cache-inputs-telegram-ubuntu-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:47bdbe760e61e37e0ed8e08138101c503ae68a697240f07aeb97e53fa19a86fd",
+      "size": 1966,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "telegram",
+          "cache_key": "rust-v1-Linux-x86_64-telegram-5b15fc72163168035105f82afc9a04b76efb7b7f30c008698078c1f48b28e637",
+          "bound_sources": 11
+        }
+      ]
+    },
+    {
+      "id": 13544386731,
+      "name": "package-character-ubuntu-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:fbd44799eb2dc3c8c3f792ec28e4ae7c1b0b93e9114e55fa8f6161e8a44574fc",
+      "size": 464659,
+      "zip_members": 7,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "0a02a8e864fee54225e968569c9ca5834eba5b0dea864420587f5b13e9609215",
+          "task": null,
+          "unit": "character",
+          "members": {
+            "Cargo.lock": "73b8cbf823418cdf84b9f424a4c5938a9fe980ed25f14e0f51b45e1d14a90793",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "README.md": "3a33f343615ed042a08b717db68694a9b7132b3eeb2b5b8190efcd0458c0198d",
+            "plugin.toml": "88dbc6f11d296ace75e217fd9f2d9d000813c05c1b93762e0154be6cfdbb4024",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-character": "2e76fba183c44fcba13dccafd890f28db603df4d109f8b25bcfa969d53a537e2"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13544346879,
+      "name": "cache-inputs-character-ubuntu-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:e271bd23f2057548dc6d68f139f58abe070ce88cb09a17d7b52590ae05ced6f5",
+      "size": 1744,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "character",
+          "cache_key": "rust-v1-Linux-x86_64-character-1cbfe83e2cbe10971a1f4afac1aad7d7815860462ee2655dc6413996e4470e50",
+          "bound_sources": 9
+        }
+      ]
+    },
+    {
+      "id": 13544312122,
+      "name": "acceptance-windows-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:cf06eb78715ce330de12e96bcd4866ddcd519e42e82a65e77be5574cd40c40a7",
+      "size": 28834,
+      "zip_members": 8,
+      "manifests": [
+        {
+          "path": "EXT-001/ci/manifest.json",
+          "file_sha256": "5dea0c370c59199cfdc5f00f96bec19d13fc4916eb15d360b659b534db3f7d1a",
+          "task": "EXT-001",
+          "unit": null,
+          "members": {
+            "extension-build-isolation.json": "5a397a20a46468b945d2f327fe19c2e644ddec7565bbac9b4811cae8222048a6"
+          }
+        },
+        {
+          "path": "EXT-002/ci/manifest.json",
+          "file_sha256": "a2c201d699d8a3084ee321326f164d2f733503c1bd40e1f24684a7936eabda14",
+          "task": "EXT-002",
+          "unit": null,
+          "members": {
+            "build.txt": "2e4d515c393e49d0771127ff3483474aecfd29365bc8eab07fea628c6212e372",
+            "published-sdk.json": "3ed8327c92ff0c1a0cdd85e8ba01f6b300e45b020c8e071e2fcdaf3d3fea5944"
+          }
+        },
+        {
+          "path": "EXT-019/ci/manifest.json",
+          "file_sha256": "7f3f483ad2ad64335f8f6ed4c924a926341b1d02986cd7d3bc7af910d684c906",
+          "task": "EXT-019",
+          "unit": null,
+          "members": {
+            "desktop-callsite-pin.json": "d9d6caa43cb9dd36b65358fb0c06648b7c22784f98babfad63ba42bc00a9c7fe",
+            "desktop-surface-diff.json": "477f17ea1448f685d663477f373bf44b78f626a35b1533f36d9dea1f872d2f6a"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13544262931,
+      "name": "acceptance-macos-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:dea9dcc7bb478c6e2da22c69054cef030cbe86b6f3feebfbb8e6d675060d0baf",
+      "size": 28735,
+      "zip_members": 8,
+      "manifests": [
+        {
+          "path": "EXT-001/ci/manifest.json",
+          "file_sha256": "616b515938fcd1c3c90345939698e2136febec7feed93878afcbfffa189f3dc5",
+          "task": "EXT-001",
+          "unit": null,
+          "members": {
+            "extension-build-isolation.json": "5a3753829ca93228a683f1cae02aa7ac40591f1866db9162343127eef7664267"
+          }
+        },
+        {
+          "path": "EXT-002/ci/manifest.json",
+          "file_sha256": "534a8b33c998c36d8ec0520c258454d483214eb56f1480a64fef8638afb96265",
+          "task": "EXT-002",
+          "unit": null,
+          "members": {
+            "build.txt": "6b49e4d5cb125e9f209822e63ba6cfffeac017a599aac4807396467feca956a4",
+            "published-sdk.json": "f20993dfaf855775c0987ea5d533369cef37b6c9ed3248ff4bfc21c7f9ad946e"
+          }
+        },
+        {
+          "path": "EXT-019/ci/manifest.json",
+          "file_sha256": "c4d4982a2f57ecddf0ec9384baf4f3d4579672386b9db907ba91446d490589f0",
+          "task": "EXT-019",
+          "unit": null,
+          "members": {
+            "desktop-callsite-pin.json": "d9d6caa43cb9dd36b65358fb0c06648b7c22784f98babfad63ba42bc00a9c7fe",
+            "desktop-surface-diff.json": "21d8a19696cd02bb91ad8079dd09948eeacbae32f31211d3a32f766abbb88550"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13544242212,
+      "name": "cache-inputs-feishu-ubuntu-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:9e1439bd9facec4be5a0718fbc7e85f0aacbf8483e871444415fd33b01ce5fa4",
+      "size": 1938,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "feishu",
+          "cache_key": "rust-v1-Linux-x86_64-feishu-f2db6d4851328ce606849007440362535c525bd8aae247c4e69e695e3bc74878",
+          "bound_sources": 12
+        }
+      ]
+    },
+    {
+      "id": 13544222508,
+      "name": "cache-inputs-local-agent-windows-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:edaf2a42929d2ca375950b33375fa8d71ced52517fe62122ad5c783e14134930",
+      "size": 2080,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "local-agent",
+          "cache_key": "rust-v1-Windows-AMD64-local-agent-a80c3c963325ce16ceed829ca4e5d233566be82e54673bfd9177a6b0fe59f73a",
+          "bound_sources": 15
+        }
+      ]
+    },
+    {
+      "id": 13544222408,
+      "name": "package-client-windows-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:5f4edee1670036ae9979c206a2bcc3deb5f44c5693a96f146724dbdd4e80a71b",
+      "size": 622132,
+      "zip_members": 6,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "bde8e02a84bba8cc57513dae8f41447d44663606b25f46670ed365695a218822",
+          "task": null,
+          "unit": "client",
+          "members": {
+            "Cargo.lock": "3b4f6f60bcbd9f26930e0efdef0e4b70dda3b92a8b85d041ea54199c783840cc",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "plugin.toml": "555166fcc444e7ab9ebd86524ff74d49673374fb7a93558fd2535f301c433d75",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-client.exe": "8d59c292c62060920d5c9f183951bca56a125c836a8bb3fb42cd65d9d12b2319"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13544203107,
+      "name": "package-memory-maintenance-windows-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:4f9f55a4e1f6c55e7136a0d18493e208d4e75d708c85b6be6ff9f961dce21d3b",
+      "size": 339916,
+      "zip_members": 7,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "2e56ce6bbc974abe1daffc2cc2092cd0be598d675185ae97ac662e6f28e742c7",
+          "task": null,
+          "unit": "memory-maintenance",
+          "members": {
+            "Cargo.lock": "f3700e4bee26d4ad934d273273871c831503c1f063419e91964c2e98579e3ff6",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "plugin.toml": "b190c6c3fd67ca87d0f5d2b9f282eccf1ddcdce441833e012d38a1074f1e620a",
+            "README.md": "1b938c93174b4fbd4104a07867680fd7c2a6c95f81a4c95c0e2a6bd7b442944a",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-memory-maintenance.exe": "6921713cab9269a4d181e90fb0b63612b6d50a9faa05f0e7a5df87eb79c8814d"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13544117335,
+      "name": "package-telegram-ubuntu-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:4b634a91dd88aaf7ccd8a2b3871355c42ea447604e3861513f435d0a1b4ca557",
+      "size": 557119,
+      "zip_members": 6,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "af5954bf274aa6eeafad4fdf7d6917c8d2ad8375b7a6ac575831539e2c8c99cc",
+          "task": null,
+          "unit": "telegram",
+          "members": {
+            "Cargo.lock": "7bdef152f5f2aa219b3251c6033b15a65d5cb2677bf01f59dd94e6e8c6666144",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "plugin.toml": "ff28074c1c17161af89eba47bae5f263ff268c04fb4792e81617dd1410940928",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-telegram": "fb81476a610dd055e0fe3630a83e22349f9a6c5944e643df88f84e828aafaf21"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13544062682,
+      "name": "cache-inputs-client-windows-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:04d335a71cadc1a06ee5796b0b0c7d0f5097f96880e2b13b590ef2a5a590fffa",
+      "size": 1850,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "client",
+          "cache_key": "rust-v1-Windows-AMD64-client-881dc3f6ef786fa6662dc9efbb7b5da027b3cd0b6a0bb3488221970422fcfe5d",
+          "bound_sources": 11
+        }
+      ]
+    },
+    {
+      "id": 13544062612,
+      "name": "package-monty-runtime-windows-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:bd191c0e1f95707924ee1b12e24643a681e27a04400ef50b35fcaff1009969c0",
+      "size": 67828,
+      "zip_members": 2,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "a5f9f8ef1ca01969ad25b4d2bc65e3b50be541c08b83d61a8882ce5ea7d6b28c",
+          "task": null,
+          "unit": "monty-runtime",
+          "members": {
+            "monty-runtime-0.1.0-alpha.1-source.tar.gz": "ea2be3844979d3fdada2e600015a7d8f221f3f209b8caf1f5af0c25dc29b57a3"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13544058183,
+      "name": "worker-codemode-macos-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:756ac0c87c7fd7bacd6c4340dcc8f26cc1092b1db4d0e165b15b7bf94c65c414",
+      "size": 1554,
+      "zip_members": 2,
+      "manifests": [
+        {
+          "source": {
+            "Cargo.toml": "6c5c47fb41912f30b747e8d5b555220ea076515d2091c239612140954952765d",
+            "Cargo.lock": "2b584722fd3618fe935bf31c00bc741e8ae03643abd416d057f5ab9e25d227d3",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "src/lib.rs": "ef788443d7fdc472cb3e1924ea2434f216fbc519a8ca9272eef6bfaaf612f288",
+            "src/worker.rs": "6a08230aa60f356305b1624c8d853b6da22c5c9fdaaef00b13ad5cb2dcd13894",
+            "tests/native_worker.rs": "4a5c90ae71e8659c50036d5eafed31a8f342970adc93860034b661c020adebe7"
+          },
+          "sdk_sha256": "ea6a1c2f5e8e5ff5b53ef7b8ab89baa9c8bb26cbd9ba45f116eaaafd73406794",
+          "commands": [
+            {
+              "argv": [
+                "/opt/homebrew/opt/rustup/bin/cargo",
+                "test",
+                "--locked",
+                "--offline",
+                "--test",
+                "native_worker"
+              ],
+              "exit_code": 0,
+              "log": "portable.txt"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 13543987971,
+      "name": "package-media-macos-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:11a903c1cffea47382024dbb93c6ee5c2301c8288895ee8e96011b7355175a87",
+      "size": 506772,
+      "zip_members": 9,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "28f3421d92c8f4d6c5201acb77ff73479d78bebf36d545b4bd4922777a23f5c1",
+          "task": null,
+          "unit": "media",
+          "members": {
+            "Cargo.lock": "95257131bd4d94e9a5dc8e0fbbd2a0e1c518c6f5c1fc17e9a1b495f418949929",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "backend/document_reader.py": "3eaa8ccdd25bbc764d73eb9be7d5c57a8ca7c0a997a9d4d9695902f6f441998a",
+            "backend/source.lock.json": "e0b6d68b94370a41ad5bdb59e2640905cdb6ca435de4b69ed2baf75b06e8e040",
+            "packaging/codecs.lock": "92e058e12e25c10b2cff0764dfac8b9b66d085b77055b6e4a77e595ed6e41bb7",
+            "plugin.toml": "7cfca2fe51f2e14676727339f4665605c588b79d8dee963cf00fc52802828a73",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-media": "956e8c30291448fe3019ce0b41d5ee22ad37729dcc00e02032bf6c82970e5985"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13543903161,
+      "name": "package-client-ubuntu-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:5c4f4780504bcfcc252266be373079656b5fce1b465b9edaaf7b4341a25c9e62",
+      "size": 835835,
+      "zip_members": 6,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "04906100f86821408b68620a63fbfcfe74a25afc90f711caace8600af6ba6dbe",
+          "task": null,
+          "unit": "client",
+          "members": {
+            "Cargo.lock": "3b4f6f60bcbd9f26930e0efdef0e4b70dda3b92a8b85d041ea54199c783840cc",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "plugin.toml": "555166fcc444e7ab9ebd86524ff74d49673374fb7a93558fd2535f301c433d75",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-client": "d7d9fef5b24eb02b1847c3b30c58a15b9dfc4aef9f77ad670f756d96112a6692"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13543893325,
+      "name": "cache-inputs-memory-maintenance-windows-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:7b2c166e7c775543d8e1c248e9e0a3358790f9488cfe5b2e3c1cf75d56dfdff6",
+      "size": 1764,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "memory-maintenance",
+          "cache_key": "rust-v1-Windows-AMD64-memory-maintenance-05e2040aff787fadbe175e5a80f01128d0678eb97c5cd91b257fdf77085a87ca",
+          "bound_sources": 9
+        }
+      ]
+    },
+    {
+      "id": 13543867826,
+      "name": "cache-inputs-yuki-setup-windows-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:68eaec96636d5a7a58ab11d52d8348a444bda980eee426e02ebbb416c57e8766",
+      "size": 2001,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "yuki-setup",
+          "cache_key": "rust-v1-Windows-AMD64-yuki-setup-42588a42fd480e35a087c4e148c3170a173094bbe1b35fab656fb30da8472b10",
+          "bound_sources": 19
+        }
+      ]
+    },
+    {
+      "id": 13543863319,
+      "name": "cache-inputs-telegram-macos-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:c356fcae297df70d4cce0aa599d4c0f13666937ef533958cc7be986d16b06112",
+      "size": 1956,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "telegram",
+          "cache_key": "rust-v1-Darwin-arm64-telegram-dc7c07dd2d1e6414f2f5e57a804e26f6f6109cf3fae89155f3d5c6537a18bc9a",
+          "bound_sources": 11
+        }
+      ]
+    },
+    {
+      "id": 13543848851,
+      "name": "cache-inputs-env-macos-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:c50590caf6f44d06c825cbc3829235d60472d6e68647a8a73ca949bc2c20412f",
+      "size": 1746,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "env",
+          "cache_key": "rust-v1-Darwin-arm64-env-ba8ec4c216fc8a22c9695933d7726112bcf22495c9302a8ad3c2b887078d6d9a",
+          "bound_sources": 9
+        }
+      ]
+    },
+    {
+      "id": 13543793409,
+      "name": "package-telegram-windows-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:454a1100d0f0fc9f29ec8bc7b08d2bf616ad2315a8de8c58b0487446814d6644",
+      "size": 413827,
+      "zip_members": 6,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "8752668ef9d438df6ef5832aaea5370bddcf9be9fb6e4f0d1ce460d0b8c1bb9d",
+          "task": null,
+          "unit": "telegram",
+          "members": {
+            "Cargo.lock": "7bdef152f5f2aa219b3251c6033b15a65d5cb2677bf01f59dd94e6e8c6666144",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "plugin.toml": "ff28074c1c17161af89eba47bae5f263ff268c04fb4792e81617dd1410940928",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-telegram.exe": "b33c4c3af705cd729d93042a4d50b172fd509c5f6c32e58096c9372f03d88e00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13543793104,
+      "name": "cache-inputs-trace-ubuntu-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:46b662f43d2a4270b32935bdb12bb76232f9c54ebc5d4d61f054d1e21bc821cb",
+      "size": 1733,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "trace",
+          "cache_key": "rust-v1-Linux-x86_64-trace-2a3b871b5025b140267a50d3e2433a5a1ee305ee09d06d30f196e8fa4c033849",
+          "bound_sources": 9
+        }
+      ]
+    },
+    {
+      "id": 13543788392,
+      "name": "cache-inputs-character-windows-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:87d84497565b3499ec99d24cd78c9e3f4e6935c55f5c5dd04f13000a11450bea",
+      "size": 1748,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "character",
+          "cache_key": "rust-v1-Windows-AMD64-character-312c8078d54ce2cd6f75339cbe2038048933ae7f767aea0d5e307a86ea9ba9f2",
+          "bound_sources": 9
+        }
+      ]
+    },
+    {
+      "id": 13543788236,
+      "name": "acceptance-ubuntu-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:1972edf94673d142d2c440af8afff5a66099664fe58d3a9076e587b5b7c3bd72",
+      "size": 28547,
+      "zip_members": 8,
+      "manifests": [
+        {
+          "path": "EXT-001/ci/manifest.json",
+          "file_sha256": "8efd40db5906b602a3f574c9242489fa3211b628e66cea9e36faf01b441f8425",
+          "task": "EXT-001",
+          "unit": null,
+          "members": {
+            "extension-build-isolation.json": "6d000f01839b7b1c84891f3cd6d6285b3ba942f508b82ccba981abd26335919a"
+          }
+        },
+        {
+          "path": "EXT-002/ci/manifest.json",
+          "file_sha256": "0ae7b58bdef6de997fb9665831628e7b2da0282717488d3c304803c3d092e0ac",
+          "task": "EXT-002",
+          "unit": null,
+          "members": {
+            "build.txt": "fd6a9db646d47f9f2bab00e1fa0d34601ba550430567af9a2e4324634b80ad33",
+            "published-sdk.json": "3ae09e0246b0c1487496c7db9b7ebac28c2f0d47598aba1c81ce1264752f5eb2"
+          }
+        },
+        {
+          "path": "EXT-019/ci/manifest.json",
+          "file_sha256": "4f31eeb66647e2a97f3a23a530abd02b61b7c71a3be236d9762c5cde70fe207c",
+          "task": "EXT-019",
+          "unit": null,
+          "members": {
+            "desktop-callsite-pin.json": "d9d6caa43cb9dd36b65358fb0c06648b7c22784f98babfad63ba42bc00a9c7fe",
+            "desktop-surface-diff.json": "21d8a19696cd02bb91ad8079dd09948eeacbae32f31211d3a32f766abbb88550"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13543788209,
+      "name": "worker-codemode-ubuntu-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:6ac6cd0feb5b680984e86cef3ada97bc0b9adc3518810de66dc85ec8031c6010",
+      "size": 1569,
+      "zip_members": 2,
+      "manifests": [
+        {
+          "source": {
+            "Cargo.toml": "6c5c47fb41912f30b747e8d5b555220ea076515d2091c239612140954952765d",
+            "Cargo.lock": "2b584722fd3618fe935bf31c00bc741e8ae03643abd416d057f5ab9e25d227d3",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "src/lib.rs": "ef788443d7fdc472cb3e1924ea2434f216fbc519a8ca9272eef6bfaaf612f288",
+            "src/worker.rs": "6a08230aa60f356305b1624c8d853b6da22c5c9fdaaef00b13ad5cb2dcd13894",
+            "tests/native_worker.rs": "4a5c90ae71e8659c50036d5eafed31a8f342970adc93860034b661c020adebe7"
+          },
+          "sdk_sha256": "ea6a1c2f5e8e5ff5b53ef7b8ab89baa9c8bb26cbd9ba45f116eaaafd73406794",
+          "commands": [
+            {
+              "argv": [
+                "/home/runner/.cargo/bin/cargo",
+                "test",
+                "--locked",
+                "--offline",
+                "--test",
+                "native_worker"
+              ],
+              "exit_code": 0,
+              "log": "portable.txt"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 13543768716,
+      "name": "package-yuki-setup-macos-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:fc9734654d568ecdcd26067eaea6e68f70b4720d5f12a933ab48e864dc9fe304",
+      "size": 261453,
+      "zip_members": 7,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "0f0a8d681fec84280ba404d6d963f5227212b95f4025e034494a6372e0e5ec94",
+          "task": null,
+          "unit": "yuki-setup",
+          "members": {
+            "Cargo.lock": "9365e3881889c89db7ec71ab2218bb70e765635f159a535d2937284dc42da829",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "inputs/CORE-LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "inputs/CORE-NOTICE": "92eec243bb25b89d47a7fa29ce6c863a14487a9c9e1078d0538775e6ec8f5a34",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-setup": "2124b2d0f683966675fa885fbeecef2fb900b63cf499beb877190f08914722ee"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13543737884,
+      "name": "cache-inputs-feishu-windows-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:c605ecb9381c78ce080307ecc7c97d436405d3c44df962cb115457801a93b0f4",
+      "size": 1944,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "feishu",
+          "cache_key": "rust-v1-Windows-AMD64-feishu-bbf02c6989cd514137d3cdb37e7019d8a5930371a4940ac0b174ca88f7f89bc5",
+          "bound_sources": 12
+        }
+      ]
+    },
+    {
+      "id": 13543718600,
+      "name": "cache-inputs-media-windows-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:e6f1a581d5259576d7e97ff6ab15bfef245e1569db30a2a871c7e446ddb366ea",
+      "size": 1926,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "media",
+          "cache_key": "rust-v1-Windows-AMD64-media-9dd7abc0fe4ce442e5296ed7b051a8bb7aedf1c9616981dc6338e13509e5eae8",
+          "bound_sources": 12
+        }
+      ]
+    },
+    {
+      "id": 13543713157,
+      "name": "package-codemode-ubuntu-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:f23340e05bda0c6ce9e0e1ec4930553de2c260b8f5e7a137e1880588fff24a48",
+      "size": 553317,
+      "zip_members": 7,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "f15f4c8933f6d811d72a065ae553c3caa83275d57b9320763fc270e507981061",
+          "task": null,
+          "unit": "codemode",
+          "members": {
+            "Cargo.lock": "2b584722fd3618fe935bf31c00bc741e8ae03643abd416d057f5ab9e25d227d3",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "README.md": "1357634fcc2410afe4e41ebd92b092d2528de5ed39da67000dbd210e8bb77f8b",
+            "plugin.toml": "4b633e319716a8c158c693db2bc5135294a40f776b87ac31350e3130768eb621",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-codemode": "f8d601240b2c3f8ac9fda6c41748b1cf0a2ff20e6f8ee455c3571b8f6f3c0094"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13543702860,
+      "name": "package-yuki-setup-ubuntu-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:7a71510905ca00f20aa6f1053f197bd9b3561d013586f453798fe5ccb052dc79",
+      "size": 285493,
+      "zip_members": 7,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "5876168189785f8b6fb556def0c72bce2ec8e5270e85c93d1b2feb97f1524f54",
+          "task": null,
+          "unit": "yuki-setup",
+          "members": {
+            "Cargo.lock": "9365e3881889c89db7ec71ab2218bb70e765635f159a535d2937284dc42da829",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "inputs/CORE-LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "inputs/CORE-NOTICE": "92eec243bb25b89d47a7fa29ce6c863a14487a9c9e1078d0538775e6ec8f5a34",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-setup": "952c860119f1ada18443b375d8f84a2eced162442f1491aba4f47d445a9d5067"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13543692977,
+      "name": "package-env-windows-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:1c3b9faeb070145461c79c968ca955efccdf973d12fb201b91ac8554321683e8",
+      "size": 265556,
+      "zip_members": 6,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "e83abce215b43c50e78a9c0a09c70ed84ae8acb66396ac4aeb53602d0c500fae",
+          "task": null,
+          "unit": "env",
+          "members": {
+            "Cargo.lock": "f8ad380038ce0ef39f902b3d9b982ee5601e1e7d11574ab49fe79990559f0816",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "plugin.toml": "969067f56ef5b152aeb56ba8145097175f29107576f19f607be531869cb7ca08",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-env.exe": "bc901c5c16feb3990466444f6e3999f8bd123f866c461ca77988799efcfcaea0"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13543653112,
+      "name": "cache-inputs-character-macos-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:c3130535a392700e29fb28fa0660230a7f34d030fc193443b732e37d2f8203ad",
+      "size": 1736,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "character",
+          "cache_key": "rust-v1-Darwin-arm64-character-96d454926c798e363fffa9220be49b27bfe256b127fefabce3a6b0d244125566",
+          "bound_sources": 9
+        }
+      ]
+    },
+    {
+      "id": 13543648131,
+      "name": "package-trace-ubuntu-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:f45185d2f439edb3e50d10f3e169557514295023741dc5e71332cb1781aaa147",
+      "size": 465555,
+      "zip_members": 7,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "1030c6a7cb2d9ac9df68fe1264886f6c6762e47215f360dce32794f4d71ef66e",
+          "task": null,
+          "unit": "trace",
+          "members": {
+            "Cargo.lock": "adf7e201a7f790356894bb617040a90802f6d0c979db7a1656a5fc94659d9ec9",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "README.md": "641cda42bd38979d5a0c8f0da90b16c44d0d96601615473822e505533ad09f4f",
+            "plugin.toml": "1c9003baafd100c94a13b2d4be8e5cc6892e4098fe4b621388cebe59c9b28add",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-trace": "6b5c847d6cc19ac5ef686f99e7b7c822cbaac9fddba868976e807f4068b8caed"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13543642792,
+      "name": "package-feishu-ubuntu-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:083c0dcf1f28c2df3d355b930517821f52cd855fa7c3c8b739cef77502c3a185",
+      "size": 889488,
+      "zip_members": 7,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "0bfa9c7a942df743422b0ad1bcd7c385fe67f349d543639d1a176513342c2d4e",
+          "task": null,
+          "unit": "feishu",
+          "members": {
+            "Cargo.lock": "3a4e9084f82e8700adf97f56b096027a68afd19523c3e940d3abc43a6010eb9a",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "NOTICE": "51201cfac32f0bae2e3f4157609d1f4c268f76fef608d30e6809a7581b6746cb",
+            "plugin.toml": "3baed4cec586fe13605bc4d096687541e902b2222501ad58feec835dbd760e42",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-feishu": "2852418cd616f4740a6549c364314bd5b4ab5d755a847c9f27a72f2dd57c5696"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13543632921,
+      "name": "package-yuki-setup-windows-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:e25aa63179fd25380b274036cab5ada49de1a0e00f70dc8042c42e52c29df1d8",
+      "size": 176681,
+      "zip_members": 7,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "794510ec85c91edad99e9c3ef37d7788fa72e477c8af6132b3a5c905d152e6c6",
+          "task": null,
+          "unit": "yuki-setup",
+          "members": {
+            "Cargo.lock": "9365e3881889c89db7ec71ab2218bb70e765635f159a535d2937284dc42da829",
+            "inputs/CORE-LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "inputs/CORE-NOTICE": "92eec243bb25b89d47a7fa29ce6c863a14487a9c9e1078d0538775e6ec8f5a34",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-setup.exe": "fce4ddd377bb4f9c78ac90de3d8c344ee660a6d4b1755a4e96bfc0053318c80f"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13543618730,
+      "name": "package-monty-runtime-macos-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:a47e442d15028d8ea9ae1c30a16c6d9b1c10f2926d8fc135ff7ba95076033ffb",
+      "size": 67872,
+      "zip_members": 2,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "e72566f980bd1e00a4b2cca8352e72b2b68266052edc7fafa954afc31346a70d",
+          "task": null,
+          "unit": "monty-runtime",
+          "members": {
+            "monty-runtime-0.1.0-alpha.1-source.tar.gz": "3e6a382d5ca806163f7496c3b0c3a5eec99023fe74aee883084e79159f8b045b"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13543563663,
+      "name": "cache-inputs-local-agent-macos-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:a57f8460480e05ced7fc364840328c5321bc664e8d0a00ceb5e1636e70a35386",
+      "size": 2069,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "local-agent",
+          "cache_key": "rust-v1-Darwin-arm64-local-agent-3463fc90732dc4443570b65e081ff6e4a8448d3dbf760ffabfbfa8b6a06b0bf1",
+          "bound_sources": 15
+        }
+      ]
+    },
+    {
+      "id": 13543558421,
+      "name": "cache-inputs-codemode-ubuntu-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:6ba2ffc7a09c5bf60d1a9cc8e8054fc85175a4b6ea734b51715169f8df11127f",
+      "size": 1953,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "codemode",
+          "cache_key": "rust-v1-Linux-x86_64-codemode-adcce4e53c005f13a307fa399c6908919ae9c8d6cca10ab6b28925433a0da796",
+          "bound_sources": 13
+        }
+      ]
+    },
+    {
+      "id": 13543533993,
+      "name": "connector-upgrade-macos-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:e9ae157d7c435d2b225dc137f64ec8234458e509ac0d86eb30fc343367ba8062",
+      "size": 209185,
+      "zip_members": 17,
+      "manifests": [
+        {
+          "path": "EXT-007/candidate-ci/manifest.json",
+          "file_sha256": "873b265dfddd477d239dbd9ce7128c0e988c0221d963fd90fe098fb337866ffa",
+          "task": "EXT-007",
+          "unit": null,
+          "members": {
+            "candidate-tests.xml": "a2fe42d553f6178deca0cd136a0880c43b3608379b41e3dcec9b8a66c13bb117",
+            "commands.json": "ae0f36d22b99b6bfaa95cbe845ee9b6a35548872ea589239c954b2226f1c2120",
+            "connector-package.json": "a5624972cbc7ed5d6b9bc3d0634dda71d83563c7c5617257a556b83e95bd51c6",
+            "connector-runtime.json": "52555aa27cf6a4e69abca03b6a4661502f519079be08bad1f30fbb947068850a",
+            "connector-upgrade.json": "aa3ce0c3c1a1fd370762f37e3a5b322d376a1d573674a2f882fa68723921daa4",
+            "wire4-candidate.json": "6a8c4a9feb1d4db803e86fe629d935636ee9507338804432799b760df0f78531",
+            "wire4-old.json": "6a8c4a9feb1d4db803e86fe629d935636ee9507338804432799b760df0f78531"
+          }
+        },
+        {
+          "path": "EXT-008/ci/manifest.json",
+          "file_sha256": "09b30a2089bc3e294e80db08aefe7196c9308d30142851e5be1523fb8831a058",
+          "task": "EXT-008",
+          "unit": null,
+          "members": {
+            "codex-driver-wire.json": "ca751a83cb29b221beb2912d1b68d1a70e52947c6c83df2d718edb79396371e0",
+            "commands.txt": "01dfdf9c119a81cb065c8476333e0522950b3f0c3e74b98c84d845452f7c182b"
+          }
+        },
+        {
+          "path": "EXT-009/ci/manifest.json",
+          "file_sha256": "e81ab38bb7f93f8ed528aeddf149fcfd727071ca30560466d67a402a2172e8f8",
+          "task": "EXT-009",
+          "unit": null,
+          "members": {
+            "claude-driver-wire.json": "2fb49e4cd7c04789c6dde436a84310140bf1158f6c13556556fda56de6bcb416",
+            "commands.txt": "c8422b046b2362ff128240c21d4fe882649a58cf4f70189ab3a07923a1b00c11"
+          }
+        },
+        {
+          "path": "EXT-010/ci/manifest.json",
+          "file_sha256": "7b8b049619485820ab6c16074660aca5cf226c12232c984d250899f304473bd1",
+          "task": "EXT-010",
+          "unit": null,
+          "members": {
+            "commands.txt": "573577e33484a50ec493d11619abbe652020a64eadca7e51dde7b817ef51b1b1",
+            "native-acp-v1.json": "5bd5f05986be9ce01f54db14814fb20cf7de9d9e58438861b47f5fe99af9064c"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13543453673,
+      "name": "cache-inputs-local-agent-ubuntu-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:54e807c9ae247a1df42013d7c13f650df85fe127954762aec7b52cfc4e6d3998",
+      "size": 2079,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "local-agent",
+          "cache_key": "rust-v1-Linux-x86_64-local-agent-9293f9c694552ccf7611b479e75d503a439934f0be1ebaa4ede66898a25ae878",
+          "bound_sources": 15
+        }
+      ]
+    },
+    {
+      "id": 13543433783,
+      "name": "package-trace-windows-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:195f9287d00c97077d9f9c92509abec3c1f86112dc223fef959cbb2468ffe272",
+      "size": 310028,
+      "zip_members": 7,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "57c595d5cb0c29f47aed56e94da2a17ed6ab5beb9b49fc00a9f05a51c70d1c4d",
+          "task": null,
+          "unit": "trace",
+          "members": {
+            "Cargo.lock": "adf7e201a7f790356894bb617040a90802f6d0c979db7a1656a5fc94659d9ec9",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "plugin.toml": "1c9003baafd100c94a13b2d4be8e5cc6892e4098fe4b621388cebe59c9b28add",
+            "README.md": "641cda42bd38979d5a0c8f0da90b16c44d0d96601615473822e505533ad09f4f",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-trace.exe": "49852583ba89580aaf4af30202f6713c566f4b8a704340082e3ccbb0c4f518b1"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13543409014,
+      "name": "package-local-agent-ubuntu-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:cc71eb266511ce4a2aaaf79f89cc6c3f1ee878a97e95ec4461086a64409c6527",
+      "size": 2029531,
+      "zip_members": 6,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "83d0f18a995bc76afb48dc6a91147110e064a4d2537d6d56ec44dd21223c034b",
+          "task": null,
+          "unit": "local-agent",
+          "members": {
+            "Cargo.lock": "5eb68a8cac1947d55729a5d735427fc025601ecbbee39ab5d2b6841e69a82f3c",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "plugin.toml": "52321a64782f2542600b3c7b80d6bf30d868177f9fe7e035a133c7ca6ce76d36",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-local-agent": "03899fd22a8f32fb4f4438c44a08385469dc16308ce67359074b5465318c938b"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13543358907,
+      "name": "package-media-ubuntu-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:78f2d7826ec9906ca819bd59fa67086ac0b1cd46bfcbc5f364243c6d1d758873",
+      "size": 562157,
+      "zip_members": 9,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "99fdf51693aa220203a44c146a81e3ca267dc7cc22ead62c7a1f56be98050065",
+          "task": null,
+          "unit": "media",
+          "members": {
+            "Cargo.lock": "95257131bd4d94e9a5dc8e0fbbd2a0e1c518c6f5c1fc17e9a1b495f418949929",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "backend/document_reader.py": "3eaa8ccdd25bbc764d73eb9be7d5c57a8ca7c0a997a9d4d9695902f6f441998a",
+            "backend/source.lock.json": "e0b6d68b94370a41ad5bdb59e2640905cdb6ca435de4b69ed2baf75b06e8e040",
+            "packaging/codecs.lock": "92e058e12e25c10b2cff0764dfac8b9b66d085b77055b6e4a77e595ed6e41bb7",
+            "plugin.toml": "7cfca2fe51f2e14676727339f4665605c588b79d8dee963cf00fc52802828a73",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-media": "852f8537780c3baff59e95d9f53a0678998f687fcbce8dacf787279841a60db7"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13543343780,
+      "name": "package-web-fetch-ubuntu-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:c0d55e4e871d53d192ed879576d24e8586f7b43ab495ff4610f567f69b1fb0d0",
+      "size": 748196,
+      "zip_members": 6,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "5aa55e15a89da627655cbd77de7cb74b476b5647e823755b09bf16582c33a370",
+          "task": null,
+          "unit": "web-fetch",
+          "members": {
+            "Cargo.lock": "20609ae0ee4935d761204f1aec7618a95439e591e3bf6876cc5be9a61b5d94ba",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "plugin.toml": "116d0aa6cb5d635118d8abecdd405f5bef0d8a5eb475eae0217430f3c5bc20cd",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-web-fetch": "ff39ed5caf901103d73f958772da9e4582129883a0aacfa0c35d37f3c95174da"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13543299546,
+      "name": "cache-inputs-media-macos-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:4b30bf3219698da7bc71d45efaedb8f2bd2031ea61393794f5cd44c238d945bc",
+      "size": 1919,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "media",
+          "cache_key": "rust-v1-Darwin-arm64-media-df7526f4eb935a7c80f7e18c1ec6f414832b7bde26aec9f4f88dbfc9811a187d",
+          "bound_sources": 12
+        }
+      ]
+    },
+    {
+      "id": 13543299214,
+      "name": "cache-inputs-trace-windows-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:7cedea4d563f149d4b1943b6e19df3ef2e1fc5b482d50a1bcfa7ce958dcc1608",
+      "size": 1737,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "trace",
+          "cache_key": "rust-v1-Windows-AMD64-trace-9fd3249cabce6cff7557fb2cf5220565187697bb9b436f5676879bf766261334",
+          "bound_sources": 9
+        }
+      ]
+    },
+    {
+      "id": 13543274435,
+      "name": "cache-inputs-telegram-windows-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:cf1dc7df31b75551e1919e3b0a3f80bc896cd3ee94eb1223a2dc85518ce81ef4",
+      "size": 1966,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "telegram",
+          "cache_key": "rust-v1-Windows-AMD64-telegram-a7d82acd16cb1e32f52437937a86bf4342ef735af4aaaff28ec441893f8010a7",
+          "bound_sources": 11
+        }
+      ]
+    },
+    {
+      "id": 13543274239,
+      "name": "package-character-macos-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:6ad8319fb8de3c40d71bd63663eef23bfc1686c5ac05a267cb3fb3c765d6ccbe",
+      "size": 421883,
+      "zip_members": 7,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "95dff9bcee2d737ccb680374dc372911df1e57e1ef8dc379adb205f49ff6a478",
+          "task": null,
+          "unit": "character",
+          "members": {
+            "Cargo.lock": "73b8cbf823418cdf84b9f424a4c5938a9fe980ed25f14e0f51b45e1d14a90793",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "README.md": "3a33f343615ed042a08b717db68694a9b7132b3eeb2b5b8190efcd0458c0198d",
+            "plugin.toml": "88dbc6f11d296ace75e217fd9f2d9d000813c05c1b93762e0154be6cfdbb4024",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-character": "4ba0897c4f43ba1f2f342de6f95bff3a1a18ee5aaf3f998fd534c31322a97217"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13543259457,
+      "name": "cache-inputs-codemode-windows-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:62e84134beb0f2b2b98074ec883114773734c5dcbcd174d4fb7575121620b6b0",
+      "size": 1952,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "codemode",
+          "cache_key": "rust-v1-Windows-AMD64-codemode-71d2d36e9970536d8241909702b8919690b7b0e725e494f04c2f6660aae405d8",
+          "bound_sources": 13
+        }
+      ]
+    },
+    {
+      "id": 13543234955,
+      "name": "package-connector-macos-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:30a3892f8f7df786fee7fa256f8bac938224072a59b721d2dbb2fe5304fca331",
+      "size": 230582,
+      "zip_members": 3,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "a5624972cbc7ed5d6b9bc3d0634dda71d83563c7c5617257a556b83e95bd51c6",
+          "task": null,
+          "unit": "connector",
+          "members": {
+            "yuki_agent_connector-0.4.4.dev1-py3-none-any.whl": "7a143a2d128bde2de038f26ce0a44cee8e9bcbd9249960bf68beb0b5032d85b5",
+            "yuki_agent_connector-0.4.4.dev1.tar.gz": "691ff2efa037744310409fc0cd1b84b6c7b32049ef062b65b658dd7f308364b3"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13543224427,
+      "name": "cache-inputs-memory-maintenance-ubuntu-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:1cb227b19919f3de98c082390a752aab5a5f8904ed75351b4308a1ca625aeded",
+      "size": 1763,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "memory-maintenance",
+          "cache_key": "rust-v1-Linux-x86_64-memory-maintenance-d7e6fefdb4127691174076de82066937fadafe9c761d2ef0056ab3af35abb4dc",
+          "bound_sources": 9
+        }
+      ]
+    },
+    {
+      "id": 13543204655,
+      "name": "package-local-agent-macos-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:dd60b67ca4e415e2adb3aab7ab9bab5f2b5e1e246932723b3fe8353851af1cd3",
+      "size": 1823009,
+      "zip_members": 6,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "fb6a0de133b9d35df0ccad927f41683e8c1ec76c17bf9e242cd562d834e63ff3",
+          "task": null,
+          "unit": "local-agent",
+          "members": {
+            "Cargo.lock": "5eb68a8cac1947d55729a5d735427fc025601ecbbee39ab5d2b6841e69a82f3c",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "plugin.toml": "52321a64782f2542600b3c7b80d6bf30d868177f9fe7e035a133c7ca6ce76d36",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-local-agent": "162118a711375ee7b9f86439fe660c1b6072d267a7b0c9f5a867206f8837581f"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13543164704,
+      "name": "cache-inputs-media-ubuntu-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:5f3ef86b7ebdc3c95d58d9fa5d6b5b3dad8bfc58614982ca4395dadf7b501677",
+      "size": 1927,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "media",
+          "cache_key": "rust-v1-Linux-x86_64-media-08b915c456e45b6ba64687ced8c21c6287fb7af63ac8eafe27aa2285395ed530",
+          "bound_sources": 12
+        }
+      ]
+    },
+    {
+      "id": 13543159560,
+      "name": "cache-inputs-web-fetch-ubuntu-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:8a04982872c67269635c638f47c0847ea6323c86ef21b5c5fbce75ad74263647",
+      "size": 1871,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "web-fetch",
+          "cache_key": "rust-v1-Linux-x86_64-web-fetch-8ce18e138d664566fd9a2ea99ed004575dc11dcd8f8125cb1c7a19c602e1eae3",
+          "bound_sources": 10
+        }
+      ]
+    },
+    {
+      "id": 13543154467,
+      "name": "cache-inputs-env-ubuntu-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:8fc6011c6a1e49cb89a97d10aa70c5054792814331a1dd9ec012f4e1db60483d",
+      "size": 1754,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "env",
+          "cache_key": "rust-v1-Linux-x86_64-env-ef62d4cade3ee2221a8d9e9fe9802cba655623a6811cedb2a6abf23218d12bdf",
+          "bound_sources": 9
+        }
+      ]
+    },
+    {
+      "id": 13543144599,
+      "name": "package-env-ubuntu-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:29be8d4c929894c8908183973d498f58dce09b53f9385bdc1518b32d7cb30553",
+      "size": 424417,
+      "zip_members": 6,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "c1d8369819a7382ab7d61de9c913775a69b2ef6e74e8f8993147d9331d3041c9",
+          "task": null,
+          "unit": "env",
+          "members": {
+            "Cargo.lock": "f8ad380038ce0ef39f902b3d9b982ee5601e1e7d11574ab49fe79990559f0816",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "plugin.toml": "969067f56ef5b152aeb56ba8145097175f29107576f19f607be531869cb7ca08",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-env": "7d4bcba8b0219838a56b68cb6418c3cb581125999252da09ac11b1fc18847d84"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13543139880,
+      "name": "cache-inputs-web-fetch-windows-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:b9fc9b129de1bc8c3aac1f7def0b2ae37da98e8a85902303bce9f4fe5ebcfb13",
+      "size": 1874,
+      "zip_members": 1,
+      "manifests": [
+        {
+          "unit": "web-fetch",
+          "cache_key": "rust-v1-Windows-AMD64-web-fetch-73989a2ed44623c3c5782b6b6d96b010d5d3e566e154fd060f25b1ed7e9f9d80",
+          "bound_sources": 10
+        }
+      ]
+    },
+    {
+      "id": 13543089395,
+      "name": "package-memory-maintenance-ubuntu-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:f79469e6e1407661bd10060618e838704e9e8eefb829d2a89d1abbfe5c8a32a4",
+      "size": 491334,
+      "zip_members": 7,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "2936aa398992c60bfbcee889757e58051578024faab1bf3802c993975f16e7b2",
+          "task": null,
+          "unit": "memory-maintenance",
+          "members": {
+            "Cargo.lock": "f3700e4bee26d4ad934d273273871c831503c1f063419e91964c2e98579e3ff6",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "README.md": "1b938c93174b4fbd4104a07867680fd7c2a6c95f81a4c95c0e2a6bd7b442944a",
+            "plugin.toml": "b190c6c3fd67ca87d0f5d2b9f282eccf1ddcdce441833e012d38a1074f1e620a",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-memory-maintenance": "5030358dd4ecb633ddc818f803bcd9e48f3379bb720464a70ed6af8e9fea7771"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13543079872,
+      "name": "package-codemode-windows-latest-2d5bbc7a216aec7f29a1cf78d5fee1cd776374d5",
+      "digest": "sha256:b247e23a48be2435460daa7842b2169520ca41d51108708c4e89f461a7728693",
+      "size": 290897,
+      "zip_members": 7,
+      "manifests": [
+        {
+          "path": "package-manifest.json",
+          "file_sha256": "5ac8bb87dfaaec14787fa08e3fc8247b48ce1a37ac0755814938b149ca8217cb",
+          "task": null,
+          "unit": "codemode",
+          "members": {
+            "Cargo.lock": "2b584722fd3618fe935bf31c00bc741e8ae03643abd416d057f5ab9e25d227d3",
+            "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+            "plugin.toml": "4b633e319716a8c158c693db2bc5135294a40f776b87ac31350e3130768eb621",
+            "README.md": "1357634fcc2410afe4e41ebd92b092d2528de5ed39da67000dbd210e8bb77f8b",
+            "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+            "yuki-codemode.exe": "b41c014129b578fb178ee9ad6c46938f4631455e964b5d6b1adffb03ef110df8"
+          }
+        }
+      ]
+    }
+  ],
+  "utc": "2026-11-06T22:18:00.816266+00:00"
+}

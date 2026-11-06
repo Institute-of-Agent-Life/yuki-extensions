@@ -1,0 +1,28 @@
+{
+  "previous": "after-public-base-upgrade.json",
+  "counts": {
+    "formally_accepted": 8,
+    "signed_candidate_acceptance_pass": 2,
+    "partial_or_diagnostic_evidence": 20,
+    "no_named_card_artifact": 38
+  },
+  "EXT-040": {
+    "branch": "codex/ext-040-public-base",
+    "qualification": "artifacts/EXT-040/public-native-01/setup-install.json",
+    "kind": "published native base and original optional Windows plugin; preparation",
+    "core_source": "c6bd0c75e38717abc71373201d31a77982428d5b",
+    "pending": [
+      "compatible OCI deployment",
+      "external entry",
+      "selected gateway service readiness"
+    ],
+    "implementation": "bc2fe451a0d8cd9cfc940f2d7963cd7034fa3581"
+  },
+  "EXT-043": {
+    "implementation": "e9e012d761da06548ecdd7ae2f39deeaf2b4b33d",
+    "return": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/103#issuecomment-6696988335",
+    "merge": "24258c7c8c5c00b7d216f6c2f265493adfff262d",
+    "ci_receipt": "artifacts/ci/local-pr/48/merge.json"
+  },
+  "next": "EXT-029 awaits original-attempt accounting; EXT-044 awaits EXT-017/039/046 and the remaining Desktop and Work integration. Check upstream configuration receipts before rerunning consumers."
+}

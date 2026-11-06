@@ -11,6 +11,10 @@ from package import build
 
 
 def prepare(root, output):
+    if os.environ.get("YUKI_STABLE_BASE_ZIP"):
+        import runpy
+        return runpy.run_path(str(root / "tests/peers/setup_published.py"))["verify"](root, output)
+
     work=output/"work";work.mkdir()
     pkg=output/"packages"
     release=build(root,"yuki-setup",pkg)
@@ -119,4 +123,4 @@ def prepare(root, output):
 
 def run(root, output):
     return "setup-install.json",{"status":"BLOCKED","card_status":"AWAITING_PRODUCER_AND_DEPLOYMENT_INPUTS",
-        "reason":"The current signed CORE-039 development candidate is unmerged and unpublished."}
+        "reason":"Complete external-entry, optional-service and deployed Compose acceptance remains pending. Use --preparation for either the signed CORE-039 candidate or the released native base."}

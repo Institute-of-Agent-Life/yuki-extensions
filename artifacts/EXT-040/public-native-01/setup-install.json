@@ -1,0 +1,102 @@
+{
+  "status": "PASS",
+  "card_status": "PUBLIC_NATIVE_PROFILE_VERIFIED",
+  "full_card_accepted": false,
+  "offline": true,
+  "core_source": "c6bd0c75e38717abc71373201d31a77982428d5b",
+  "host_zip_sha256": "287167dae7b2b1222efd22fa5a0aa58e1c39f7129c7112e5b81cebb6278a7ecd",
+  "plugin_zip_sha256": "51dd857899c6350353fe289d4955981f2fa97ca8ff51ad7857b916ba5801d963",
+  "installer": {
+    "Cargo.lock": "5bb0a3c15c7b9e7ec383e8c39f8c821de2b729ee39a2097329d6ace5eab8dc1b",
+    "inputs/CORE-LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+    "inputs/CORE-NOTICE": "92eec243bb25b89d47a7fa29ce6c863a14487a9c9e1078d0538775e6ec8f5a34",
+    "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+    "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+    "yuki-setup.exe": "63618229c7fe77f6de423dc3f0748f3220a126ca3af619fb6fe0623a236694b7"
+  },
+  "actions": [
+    {
+      "case": "new offline base",
+      "exit": 0,
+      "stdout": "{\"version\": \"1.0.0\", \"source\": \"c6bd0c75e38717abc71373201d31a77982428d5b\", \"binary\": \"7ad3dc1659c5ef53809da5c0faf3b6ca885c4e3c7f0c7d46155803c86accf095\", \"platform\": \"windows-x86_64\", \"plugins\": []}\n",
+      "stderr": ""
+    },
+    {
+      "case": "existing installation",
+      "exit": 1,
+      "stdout": "",
+      "stderr": "ValueError: native destination must be new\nnative base input refused\n"
+    },
+    {
+      "case": "wrong version",
+      "exit": 1,
+      "stdout": "",
+      "stderr": "native --core 1.0.0 accepts the base archive and optionally the frozen web-fetch package\n"
+    },
+    {
+      "case": "wrong archive",
+      "exit": 1,
+      "stdout": "",
+      "stderr": "ValueError: published base archive digest mismatch\nnative base input refused\n"
+    },
+    {
+      "case": "unknown option",
+      "exit": 1,
+      "stdout": "",
+      "stderr": "native --core 1.0.0 accepts the base archive and optionally the frozen web-fetch package\n"
+    },
+    {
+      "case": "missing optional package",
+      "exit": 1,
+      "stdout": "",
+      "stderr": "native --core 1.0.0 accepts the base archive and optionally the frozen web-fetch package\n"
+    },
+    {
+      "case": "changed optional package",
+      "exit": 1,
+      "stdout": "",
+      "stderr": "ValueError: web-fetch package digest mismatch\nnative base input refused\n"
+    },
+    {
+      "case": "explicit frozen web-fetch",
+      "exit": 0,
+      "stdout": "{\"version\": \"1.0.0\", \"source\": \"c6bd0c75e38717abc71373201d31a77982428d5b\", \"binary\": \"7ad3dc1659c5ef53809da5c0faf3b6ca885c4e3c7f0c7d46155803c86accf095\", \"platform\": \"windows-x86_64\", \"plugins\": [\"web-fetch\"]}\n",
+      "stderr": ""
+    }
+  ],
+  "without_plugins": {
+    "host_sha256": "7ad3dc1659c5ef53809da5c0faf3b6ca885c4e3c7f0c7d46155803c86accf095",
+    "health": {
+      "ready": true
+    },
+    "status": {
+      "host_schema_revision": 2,
+      "plugins": []
+    },
+    "config_sha256": "ca62b76e1ff70557572888e79caeb8612e0c02bee34acd42da199a0164e79414"
+  },
+  "explicit_original": {
+    "host_sha256": "7ad3dc1659c5ef53809da5c0faf3b6ca885c4e3c7f0c7d46155803c86accf095",
+    "health": {
+      "ready": true
+    },
+    "status": {
+      "host_schema_revision": 2,
+      "plugins": [
+        {
+          "enabled": true,
+          "generation": "5e796474-13f9-4ce5-9987-3d9cc5f56abe",
+          "namespace": "official.web-fetch",
+          "online": true,
+          "plugin": "web-fetch",
+          "revision": "4dd044da2889d09a91d23eb0acb47a5481966d2e974ab121a760c8b3c8da8355"
+        }
+      ]
+    },
+    "config_sha256": "c73d2c24a57e4e36c8574371b14bba6853a027149663acc8e3a3657f81fa679b"
+  },
+  "preserved": {
+    "yuki.toml": "ca62b76e1ff70557572888e79caeb8612e0c02bee34acd42da199a0164e79414",
+    "SOUL.md": "6747661cde8ed9587064327e2cceb35394b91c522c9758ead4916ee117efce26"
+  }
+}

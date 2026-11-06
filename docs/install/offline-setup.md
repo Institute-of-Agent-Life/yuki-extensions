@@ -48,3 +48,11 @@ tool and its original grants. The binary's SHA-256, original consumer SDK and
 manifest are pinned in `tools/yuki-setup/inputs/web-fetch.lock.json`. Other
 installations, unsupported tools and missing binaries are untouched. To start the
 composed owner, run its verified core executable with `--data NEW_NATIVE_DIRECTORY/owner run`.
+
+## 公開原生基底 1.0.0
+
+在空目錄用 `yuki-setup native --core 1.0.0 --archive <本機公開平台ZIP> --dir <新目錄>` 安裝。不下載套件、不啟動服務。可另行執行 `bin/yuki-base --data <新owner> init --memory-mode lexical-only` 及 `run`。Windows 程式帶 .exe 副檔名。
+
+Windows 如明選原 web-fetch，加 `--plugin web-fetch --plugin-file <原Actions ZIP>`（資產 13524465074）。安裝器核實原包、建立獨立 owner 並寫入該包授權及工具宣告。無 QQ／其他插件的新 owner 應可 ready；明選原包的新 owner 應只啟用 web-fetch。錯平台、錯版本、壞 ZIP、未知選配或已有目的地必須拒絕，且舊 owner 的配置與 SOUL 逐 bytes 保留。候選原生安裝與 Compose 原先的入口繼續使用各自的鎖。CORE-044 此次發布提供原生基底與 SDK，Compose 映像及外部入口另行驗證。
+
+Windows 原生驗證可同時指定 `YUKI_STABLE_BASE_ZIP` 與 `YUKI_FROZEN_WEB_FETCH_ZIP`，執行 `python ci/check.py EXT-040 --preparation --out <新回條目錄>`。測試會在隔離目錄另外啟動宿主，安裝命令本身不開服務。回條在 `artifacts/EXT-040/public-native-01`。第一輪修正新舊簽名驗證器重複傳入 timeout；第二輪觀察到公開 Host 在無插件時回覆成功且清單為空。第三輪核對該原回應與明選插件的 online 狀態。
