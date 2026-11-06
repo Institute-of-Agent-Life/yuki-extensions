@@ -484,3 +484,7 @@ message_id 及 resource_key。兩域的原安裝公開核准配置沿用 [核心
 ### CORE-038 原安裝配置與所選附件（Windows 已驗）
 
 固定 `0ef956a9c6d9` 的公開 `doctor` 列出 `[plugins.gateway_media]`，其子欄位是 `application` 及 `tenant`。Telegram 明選原 application，飛書與 Lark 另明選原 tenant。既有 Rust binary 可向同一安裝取件。此配置問題已關閉。逐方法證據見各卡的 `selected-native-03`。後續仍需出站撤回、活動提示與對應原路由的操作契約。
+
+### EXT-004 回覆與活動提示
+
+本倉 Telegram alpha.3 已實收同一原 Host 的文字 plan/dispatch，失聯的第二段保留 unknown，見 `artifacts/EXT-004/text-delivery-02/`。群話題引用案例收到了 `route.bot/chat/entry/topic` 及 `message.reply_to_event_id`，但無該 event 原生 chat/message_id。請提供對既有 handle 授權的原 event→native locator 回讀，或提供包含同一入口、Bot、topic 和原 native ID 的派發欄位；換 Bot/entry 或已擦除需拒絕。撤回需原已確認 native locator，並保留原 operation。活動提示需可按原 chat/topic 啟停的授權與關閉時序。這些動作仍沿核心授權。

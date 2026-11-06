@@ -22,3 +22,11 @@ continue to omit that optional identity. The adapter calls getFile and the
 same Bot's download endpoint only when the Host selects a file. Transfers
 are limited to 16 MiB, one active stream and 24 KiB per page; remaining bytes
 are discarded after 30 seconds idle or on process exit.
+
+When the original installation grants `gateway.send`, the Host may plan and
+dispatch plain Telegram text. The planner splits at 4,096 Unicode characters.
+Each physical call uses the original Bot, chat and topic. The gateway returns
+the native chat/message locator only after a matching successful response.
+A lost or ambiguous response returns `unknown` without another send.
+This version refuses quoted events and outbound media during planning; those
+need a resolved native locator or the original authorized immutable media.

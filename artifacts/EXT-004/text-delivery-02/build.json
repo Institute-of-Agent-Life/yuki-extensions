@@ -1,0 +1,69 @@
+{
+  "unit_id": "telegram",
+  "version": "0.1.0-alpha.3",
+  "release_tag": "telegram/v0.1.0-alpha.3",
+  "published": false,
+  "manifest_sha256": "b7614ede520a2f6e1164a348740da8e7a3e49afb95e67394519f3f175f342a73",
+  "lock_sha256": "5a4b56764922029d7cf6b66337a2ecde114b79abb3bee798ea4726bd2cddb945",
+  "source": {
+    "repository": "Institute-of-Agent-Life/yuki-extensions",
+    "baseline": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+    "upstream_path": "src/yuki/gateway/providers/telegram_ingress.py",
+    "sdk_contract": "compat/core-038-main/source.lock.json"
+  },
+  "license": "AGPL-3.0-only",
+  "artifacts": {
+    "Cargo.lock": "5a4b56764922029d7cf6b66337a2ecde114b79abb3bee798ea4726bd2cddb945",
+    "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+    "plugin.toml": "84f3c2356d649e2c9a1d4f693a61cda370c213d3101ad70b0136866bcf3a6da4",
+    "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+    "yuki-telegram.exe": "b593e691e5fa9a848c4b01ca5223ecdf679bdf0df8e71aa0c6059569e425b1eb"
+  },
+  "commands": [
+    {
+      "command": [
+        "rustc",
+        "--version",
+        "--verbose"
+      ],
+      "exit_code": 0,
+      "stdout": "rustc 1.96.0 (ac68faa20 2026-05-25)\nbinary: rustc\ncommit-hash: ac68faa20c58cbccd01ee7208bf3b6e93a7d7f96\ncommit-date: 2026-05-25\nhost: x86_64-pc-windows-gnu\nrelease: 1.96.0\nLLVM version: 22.1.2\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "cargo",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "cargo 1.96.0 (30a34c682 2026-05-25)\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--target-dir",
+        "D:\\yuki-extension-tests\\local-tg-parts-01\\tmp\\yuki-rust-build-zthh7un3"
+      ],
+      "exit_code": 0,
+      "stdout": "\nrunning 5 tests\ntest media::tests::platform_path_is_always_relative_to_the_same_bot ... ok\ntest social::tests::preserves_unicode_and_rejects_unsupported_parts_before_dispatch ... ok\ntest ingress::tests::edit_and_migration_do_not_request_main_admission ... ok\ntest ingress::tests::utf16_caption_tracks_native_mentions_after_an_astral_scalar ... ok\ntest media::tests::abandoned_transfer_releases_its_bytes_without_another_download ... ok\n\ntest result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "   Compiling version_check v0.9.5\n   Compiling proc-macro2 v1.0.107\n   Compiling quote v1.0.47\n   Compiling unicode-ident v1.0.27\n   Compiling typenum v1.20.1\n   Compiling serde_core v1.0.228\n   Compiling serde_json v1.0.145\n   Compiling serde v1.0.228\n   Compiling memchr v2.8.3\n   Compiling itoa v1.0.18\n   Compiling ryu v1.0.23\n   Compiling cpufeatures v0.2.17\n   Compiling cfg-if v1.0.5\n   Compiling base64 v0.22.1\n   Compiling generic-array v0.14.7\n   Compiling syn v2.0.119\n   Compiling crypto-common v0.1.7\n   Compiling block-buffer v0.10.4\n   Compiling digest v0.10.7\n   Compiling sha2 v0.10.9\n   Compiling serde_derive v1.0.228\n   Compiling yuki-plugin-sdk v1.0.0-alpha.13\n   Compiling yuki-telegram v0.1.0-alpha.3 (D:\\yuki-extension-tests\\local-tg-parts-01\\tmp\\yuki-rust-build-zthh7un3\\unit)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 11.23s\n     Running unittests src\\main.rs (D:\\yuki-extension-tests\\local-tg-parts-01\\tmp\\yuki-rust-build-zthh7un3\\debug\\deps\\yuki_telegram-5b4a9a484470ee45.exe)\n"
+    },
+    {
+      "command": [
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "--target-dir",
+        "D:\\yuki-extension-tests\\local-tg-parts-01\\tmp\\yuki-rust-build-zthh7un3"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "   Compiling version_check v0.9.5\n   Compiling proc-macro2 v1.0.107\n   Compiling quote v1.0.47\n   Compiling unicode-ident v1.0.27\n   Compiling serde_core v1.0.228\n   Compiling typenum v1.20.1\n   Compiling serde v1.0.228\n   Compiling serde_json v1.0.145\n   Compiling itoa v1.0.18\n   Compiling ryu v1.0.23\n   Compiling memchr v2.8.3\n   Compiling cpufeatures v0.2.17\n   Compiling cfg-if v1.0.5\n   Compiling base64 v0.22.1\n   Compiling generic-array v0.14.7\n   Compiling syn v2.0.119\n   Compiling crypto-common v0.1.7\n   Compiling block-buffer v0.10.4\n   Compiling digest v0.10.7\n   Compiling sha2 v0.10.9\n   Compiling serde_derive v1.0.228\n   Compiling yuki-plugin-sdk v1.0.0-alpha.13\n   Compiling yuki-telegram v0.1.0-alpha.3 (D:\\yuki-extension-tests\\local-tg-parts-01\\tmp\\yuki-rust-build-zthh7un3\\unit)\n    Finished `release` profile [optimized] target(s) in 12.29s\n"
+    }
+  ]
+}

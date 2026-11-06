@@ -17,7 +17,7 @@ impl Request {
         Ok(self.child.try_wait()?.is_some())
     }
 
-    pub fn finish(mut self) -> Result<Vec<u8>, Error> {
+    pub fn response(mut self) -> Result<(u16, Vec<u8>), Error> {
         let ok = self.child.wait()?.success();
         let mut data = self
             .reader
@@ -25,10 +25,19 @@ impl Request {
             .ok_or("missing Telegram pipe")?
             .join()
             .map_err(|_| "Telegram pipe closed")??;
-        if !ok || data.len() < 3 || data.len() > self.limit + 3 || !data.ends_with(b"200") {
+        if !ok || data.len() < 3 || data.len() > self.limit + 3 {
             return Err("Telegram transport failed".into());
         }
+        let status = std::str::from_utf8(&data[data.len() - 3..])?.parse()?;
         data.truncate(data.len() - 3);
+        Ok((status, data))
+    }
+
+    pub fn finish(self) -> Result<Vec<u8>, Error> {
+        let (status, data) = self.response()?;
+        if status != 200 {
+            return Err("Telegram transport failed".into());
+        }
         Ok(data)
     }
 }

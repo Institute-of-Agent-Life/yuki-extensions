@@ -1,6 +1,6 @@
 id = "telegram"
-version = "0.1.0-alpha.2"
+version = "0.1.0-alpha.3"
 program = "yuki-telegram"
 platform = "telegram"
-grants = ["gateway.inbound", "gateway.media"]
+grants = ["gateway.inbound", "gateway.media", "gateway.send"]
 env = ["YUKI_TELEGRAM_TOKEN", "YUKI_TELEGRAM_BOT_ID", "YUKI_TELEGRAM_STATE", "YUKI_TELEGRAM_API"]
