@@ -1,0 +1,158 @@
+{
+  "arch": "x86_64",
+  "binary_profile": "tested debug",
+  "dirty": false,
+  "handshake_schema_revision": 1,
+  "host_schema_revision": 2,
+  "host_schema_sha256": "4f5cdeb464c5fb275feeed766019ba159561a7335d13daec4d2d030b95cd4ec2",
+  "implemented_methods": [
+    "code.resume",
+    "code.snapshot.get",
+    "code.snapshot.put",
+    "code.sources",
+    "command.invoke",
+    "device.auth",
+    "forget.ack",
+    "forget.request",
+    "gateway.dispatch_part",
+    "gateway.inbound",
+    "gateway.part_status",
+    "gateway.plan_send",
+    "gateway.status",
+    "llm.complete",
+    "llm.result",
+    "maintenance.audit",
+    "maintenance.audit.apply",
+    "maintenance.content",
+    "maintenance.dependencies",
+    "maintenance.evidence",
+    "maintenance.extract.apply",
+    "maintenance.extract.preview",
+    "maintenance.fact.page",
+    "maintenance.history.page",
+    "maintenance.model.open",
+    "maintenance.reembed",
+    "maintenance.tool.page",
+    "media.open",
+    "media.process",
+    "media.publish",
+    "native.notify",
+    "native.queryAck",
+    "observer.event",
+    "participation.feedback",
+    "participation.promote",
+    "participation.self_propose",
+    "participation.source",
+    "participation.sources",
+    "tool.call",
+    "tool.catalog",
+    "tool.invoke",
+    "tool.resume",
+    "tool.schema",
+    "tool.status",
+    "work.cancel",
+    "work.get",
+    "work.input"
+  ],
+  "maintenance_schema_revision": 1,
+  "maintenance_schema_sha256": "d82f8da58ac0e190aa206a401c2e1f7c892eb2285235d266bc5834fc13d23d39",
+  "members": {
+    "LICENSE": {
+      "bytes": 34600,
+      "sha256": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99"
+    },
+    "NOTICE": {
+      "bytes": 666,
+      "sha256": "92eec243bb25b89d47a7fa29ce6c863a14487a9c9e1078d0538775e6ec8f5a34"
+    },
+    "bin/yuki-core.exe": {
+      "bytes": 347745955,
+      "sha256": "7b8b374306f0081f0b80494cbc0cd4f0b7394c392a025da7e19f8468dcf192e7"
+    },
+    "evidence/maintenance-grants.json": {
+      "bytes": 11675,
+      "sha256": "1cec1cc360b11be4d46fc93319ce457829c7d00a035e1fd87839d93037706a8d"
+    },
+    "licenses/GCC/COPYING.RUNTIME": {
+      "bytes": 3324,
+      "sha256": "9d6b43ce4d8de0c878bf16b54d8e7a10d9bd42b75178153e3af6a815bdc90f74"
+    },
+    "licenses/GCC/COPYING3": {
+      "bytes": 35147,
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+    },
+    "licenses/GCC/provenance.json": {
+      "bytes": 623,
+      "sha256": "3922fe567874ca1cb7943d33d3576da0f4b0c02051817b97b0aabfcaa2d686c9"
+    },
+    "licenses/OpenCC.txt": {
+      "bytes": 12835,
+      "sha256": "913605727253219eecf1f5ef2bd5ac7b0a524a9893d1c8de04304f0edd59756d"
+    },
+    "licenses/Vec1.txt": {
+      "bytes": 734,
+      "sha256": "f19ceac9154f61607007a294703456609c4ff3e64573e3673e1e8af1b4e95e97"
+    },
+    "protocol/handshake.schema.json": {
+      "bytes": 5319,
+      "sha256": "d31bacf30733b31d9c6cbdd9e01477d88f70e6c8414181b2070a89eaee9cafb9"
+    },
+    "protocol/host-preview.json": {
+      "bytes": 101063,
+      "sha256": "4f5cdeb464c5fb275feeed766019ba159561a7335d13daec4d2d030b95cd4ec2"
+    },
+    "protocol/maintenance/methods.json": {
+      "bytes": 47646,
+      "sha256": "d82f8da58ac0e190aa206a401c2e1f7c892eb2285235d266bc5834fc13d23d39"
+    },
+    "sdk/handshake.ndjson": {
+      "bytes": 502,
+      "sha256": "5275ee7b90b6af4221693f92ea9c1b4fb1d1b306c2b6ebb85947273dba0bcfa3"
+    },
+    "sdk/sdk-verification.json": {
+      "bytes": 2248,
+      "sha256": "f591c746dfcf13d5a6acccff7b7b0cf3cc5da6f52ffde9cf2de4c6ffd8cd858c"
+    },
+    "sdk/yuki-plugin-sdk-1.0.0-alpha.8.crate": {
+      "bytes": 25725,
+      "sha256": "a8739c74d300f1044c94749ced333d9694920aa7c91728b19f624ff9fbaf2e63"
+    },
+    "sdk/yuki_plugin_sdk-1.0.0a8-py3-none-any.whl": {
+      "bytes": 160201,
+      "sha256": "90f921e85f2fee01acde60fddb910162acaadb974256a69a838a290bf3db8657"
+    }
+  },
+  "os": "windows",
+  "rust_host": "x86_64-pc-windows-gnu",
+  "sdk_versions": {
+    "python": "1.0.0a8",
+    "rust": "1.0.0-alpha.8"
+  },
+  "source_commit": "0cdd9dffe07c18949990492fd2a9944919c455d3",
+  "source_tree_sha256": "991bafb2f70c4571da5ae956be9cc903adc00d237670961ab23d99a456e9f1c5",
+  "status": "unpublished-development-candidate",
+  "validated_maintenance_methods": [
+    "maintenance.audit",
+    "maintenance.audit.apply",
+    "maintenance.content",
+    "maintenance.dependencies",
+    "maintenance.evidence",
+    "maintenance.extract.apply",
+    "maintenance.extract.preview",
+    "maintenance.fact.page",
+    "maintenance.history.page",
+    "maintenance.model.open",
+    "maintenance.reembed",
+    "maintenance.tool.page"
+  ],
+  "validation": {
+    "assertions": 303,
+    "card": "CORE-035",
+    "clean_path_launch": "verified",
+    "consumer": "synthetic SDK subprocesses",
+    "manifest_sha256": "e74b03e48ecd4c98198325ac51f367531019a192ce03e51ed3b190bff5f1f41f",
+    "platform": "Windows-11-10.0.22000-SP0",
+    "real_extension_consumers": "pending EXT-033, EXT-034, EXT-035, EXT-036 and EXT-048",
+    "stable": false
+  }
+}

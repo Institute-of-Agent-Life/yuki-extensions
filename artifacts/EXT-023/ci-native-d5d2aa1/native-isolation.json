@@ -1,0 +1,343 @@
+{
+  "image": "sha256:92b3ab6849f868142975eb453b078a26169a113c23a71b38ece353d619b17d05",
+  "native": {
+    "format": "yuki_monty_linux_isolation_v1",
+    "platform": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.41",
+    "worker_sha256": "6b431c5bbba98ec16f74edee5cc36c0b7bc577bea533003c10427ebbfed0ac4f",
+    "launcher_sha256": "a3d43e7ab1d4a115a12607f1a44d2e5a4a0f1d7f7c451a77a1b81ce6b8da18fb",
+    "bwrap_sha256": "573236e5328ac2ebb08f59ae3a9805b4f8d12bdef14be8af4450d5463294985f",
+    "verdict": "passed",
+    "worker": {
+      "host_uid": 10001,
+      "apparmor_profile": "yuki-bot-codemode//launcher//&yuki-bot-codemode//launcher//worker (enforce)",
+      "procfs_exposed": false,
+      "worker_namespace_uid": 65534,
+      "namespaces": {
+        "user": {
+          "host": "user:[4026531837]",
+          "worker": "user:[4026532396]"
+        },
+        "mnt": {
+          "host": "mnt:[4026532218]",
+          "worker": "mnt:[4026532333]"
+        },
+        "pid": {
+          "host": "pid:[4026532271]",
+          "worker": "pid:[4026532336]"
+        },
+        "net": {
+          "host": "net:[4026532274]",
+          "worker": "net:[4026532338]"
+        },
+        "ipc": {
+          "host": "ipc:[4026532270]",
+          "worker": "ipc:[4026532335]"
+        },
+        "uts": {
+          "host": "uts:[4026532219]",
+          "worker": "uts:[4026532334]"
+        }
+      },
+      "uid_map": [
+        [
+          65534,
+          10001,
+          1
+        ]
+      ],
+      "gid_map": [
+        [
+          65534,
+          10001,
+          1
+        ]
+      ],
+      "environment": {
+        "PWD": "/tmp"
+      },
+      "mountinfo": "465 400 0:54 /newroot / rw,nosuid,nodev,relatime - tmpfs tmpfs rw,uid=10001,gid=10001,inode64\n479 465 0:51 /opt/yuki-monty/monty /worker/monty ro,nosuid,nodev,relatime - overlay overlay rw,lowerdir=/var/lib/docker/overlay2/l/2EEPT45TVAIP4FM3CXV2PIDDP6:/var/lib/docker/overlay2/l/4ZEUNZLMQPBTTBHPZKGMBLC37P:/var/lib/docker/overlay2/l/I4YFDF6ZPDYELV7NWH5ERAXUYQ:/var/lib/docker/overlay2/l/XAUULQ7YCQTBLUFTFJHIBMPJ64:/var/lib/docker/overlay2/l/DS3VDGTRIZCATEAAZXBZO3WTQM:/var/lib/docker/overlay2/l/N3ZBEURCBVKDC5M635KWVYZYST:/var/lib/docker/overlay2/l/4W2C7E2JGB2KYUQZVEBDGPNU3L:/var/lib/docker/overlay2/l/KUSQYWWO6E66HITJP7ZSD7NM7P:/var/lib/docker/overlay2/l/7C6FTDRUBA34FKE4G4SQJWM2UK:/var/lib/docker/overlay2/l/5ULV2TQ6N4DJXGKC5PMHEH43GK:/var/lib/docker/overlay2/l/YTYHY663HHMDQ63X4HIFH2H2D7:/var/lib/docker/overlay2/l/RUH3THBOM5G22RTNDZYCQ4ZKMA:/var/lib/docker/overlay2/l/GL4ZNBUONDPLTAQKUZ4G7Q7N7G:/var/lib/docker/overlay2/l/U2EKT6ZGSL2EQ35CJOQ5VQSIUT:/var/lib/docker/overlay2/l/V3IMZIO664OIUU2RQZQPTR2UHK:/var/lib/docker/overlay2/l/QQWBQX53UEWHFVKVZALQ4WF2NB:/var/lib/docker/overlay2/l/5YCFGWUOW7SPJMHR3B44EQKJZT:/var/lib/docker/overlay2/l/PZEF3ZOVUNS6MSVOPEMAGM2YNJ:/var/lib/docker/overlay2/l/YBZSDTVYURJMA2AI6YWUBTBXW7:/var/lib/docker/overlay2/l/O7RYISZKWK7HMEME6HYTMSS6OU:/var/lib/docker/overlay2/l/IBHCVYVANXRYQF4JCDTPIKLQ2D,upperdir=/var/lib/docker/overlay2/38382fd252e0f061ea67bd30c2aae5a8eee9e91203a078fe3c58b4f607987f25/diff,workdir=/var/lib/docker/overlay2/38382fd252e0f061ea67bd30c2aae5a8eee9e91203a078fe3c58b4f607987f25/work,nouserxattr\n480 465 0:51 /usr/lib /usr/lib ro,nosuid,nodev,relatime - overlay overlay rw,lowerdir=/var/lib/docker/overlay2/l/2EEPT45TVAIP4FM3CXV2PIDDP6:/var/lib/docker/overlay2/l/4ZEUNZLMQPBTTBHPZKGMBLC37P:/var/lib/docker/overlay2/l/I4YFDF6ZPDYELV7NWH5ERAXUYQ:/var/lib/docker/overlay2/l/XAUULQ7YCQTBLUFTFJHIBMPJ64:/var/lib/docker/overlay2/l/DS3VDGTRIZCATEAAZXBZO3WTQM:/var/lib/docker/overlay2/l/N3ZBEURCBVKDC5M635KWVYZYST:/var/lib/docker/overlay2/l/4W2C7E2JGB2KYUQZVEBDGPNU3L:/var/lib/docker/overlay2/l/KUSQYWWO6E66HITJP7ZSD7NM7P:/var/lib/docker/overlay2/l/7C6FTDRUBA34FKE4G4SQJWM2UK:/var/lib/docker/overlay2/l/5ULV2TQ6N4DJXGKC5PMHEH43GK:/var/lib/docker/overlay2/l/YTYHY663HHMDQ63X4HIFH2H2D7:/var/lib/docker/overlay2/l/RUH3THBOM5G22RTNDZYCQ4ZKMA:/var/lib/docker/overlay2/l/GL4ZNBUONDPLTAQKUZ4G7Q7N7G:/var/lib/docker/overlay2/l/U2EKT6ZGSL2EQ35CJOQ5VQSIUT:/var/lib/docker/overlay2/l/V3IMZIO664OIUU2RQZQPTR2UHK:/var/lib/docker/overlay2/l/QQWBQX53UEWHFVKVZALQ4WF2NB:/var/lib/docker/overlay2/l/5YCFGWUOW7SPJMHR3B44EQKJZT:/var/lib/docker/overlay2/l/PZEF3ZOVUNS6MSVOPEMAGM2YNJ:/var/lib/docker/overlay2/l/YBZSDTVYURJMA2AI6YWUBTBXW7:/var/lib/docker/overlay2/l/O7RYISZKWK7HMEME6HYTMSS6OU:/var/lib/docker/overlay2/l/IBHCVYVANXRYQF4JCDTPIKLQ2D,upperdir=/var/lib/docker/overlay2/38382fd252e0f061ea67bd30c2aae5a8eee9e91203a078fe3c58b4f607987f25/diff,workdir=/var/lib/docker/overlay2/38382fd252e0f061ea67bd30c2aae5a8eee9e91203a078fe3c58b4f607987f25/work,nouserxattr\n481 465 0:51 /usr/lib /lib ro,nosuid,nodev,relatime - overlay overlay rw,lowerdir=/var/lib/docker/overlay2/l/2EEPT45TVAIP4FM3CXV2PIDDP6:/var/lib/docker/overlay2/l/4ZEUNZLMQPBTTBHPZKGMBLC37P:/var/lib/docker/overlay2/l/I4YFDF6ZPDYELV7NWH5ERAXUYQ:/var/lib/docker/overlay2/l/XAUULQ7YCQTBLUFTFJHIBMPJ64:/var/lib/docker/overlay2/l/DS3VDGTRIZCATEAAZXBZO3WTQM:/var/lib/docker/overlay2/l/N3ZBEURCBVKDC5M635KWVYZYST:/var/lib/docker/overlay2/l/4W2C7E2JGB2KYUQZVEBDGPNU3L:/var/lib/docker/overlay2/l/KUSQYWWO6E66HITJP7ZSD7NM7P:/var/lib/docker/overlay2/l/7C6FTDRUBA34FKE4G4SQJWM2UK:/var/lib/docker/overlay2/l/5ULV2TQ6N4DJXGKC5PMHEH43GK:/var/lib/docker/overlay2/l/YTYHY663HHMDQ63X4HIFH2H2D7:/var/lib/docker/overlay2/l/RUH3THBOM5G22RTNDZYCQ4ZKMA:/var/lib/docker/overlay2/l/GL4ZNBUONDPLTAQKUZ4G7Q7N7G:/var/lib/docker/overlay2/l/U2EKT6ZGSL2EQ35CJOQ5VQSIUT:/var/lib/docker/overlay2/l/V3IMZIO664OIUU2RQZQPTR2UHK:/var/lib/docker/overlay2/l/QQWBQX53UEWHFVKVZALQ4WF2NB:/var/lib/docker/overlay2/l/5YCFGWUOW7SPJMHR3B44EQKJZT:/var/lib/docker/overlay2/l/PZEF3ZOVUNS6MSVOPEMAGM2YNJ:/var/lib/docker/overlay2/l/YBZSDTVYURJMA2AI6YWUBTBXW7:/var/lib/docker/overlay2/l/O7RYISZKWK7HMEME6HYTMSS6OU:/var/lib/docker/overlay2/l/IBHCVYVANXRYQF4JCDTPIKLQ2D,upperdir=/var/lib/docker/overlay2/38382fd252e0f061ea67bd30c2aae5a8eee9e91203a078fe3c58b4f607987f25/diff,workdir=/var/lib/docker/overlay2/38382fd252e0f061ea67bd30c2aae5a8eee9e91203a078fe3c58b4f607987f25/work,nouserxattr\n482 465 0:51 /usr/lib64 /lib64 ro,nosuid,nodev,relatime - overlay overlay rw,lowerdir=/var/lib/docker/overlay2/l/2EEPT45TVAIP4FM3CXV2PIDDP6:/var/lib/docker/overlay2/l/4ZEUNZLMQPBTTBHPZKGMBLC37P:/var/lib/docker/overlay2/l/I4YFDF6ZPDYELV7NWH5ERAXUYQ:/var/lib/docker/overlay2/l/XAUULQ7YCQTBLUFTFJHIBMPJ64:/var/lib/docker/overlay2/l/DS3VDGTRIZCATEAAZXBZO3WTQM:/var/lib/docker/overlay2/l/N3ZBEURCBVKDC5M635KWVYZYST:/var/lib/docker/overlay2/l/4W2C7E2JGB2KYUQZVEBDGPNU3L:/var/lib/docker/overlay2/l/KUSQYWWO6E66HITJP7ZSD7NM7P:/var/lib/docker/overlay2/l/7C6FTDRUBA34FKE4G4SQJWM2UK:/var/lib/docker/overlay2/l/5ULV2TQ6N4DJXGKC5PMHEH43GK:/var/lib/docker/overlay2/l/YTYHY663HHMDQ63X4HIFH2H2D7:/var/lib/docker/overlay2/l/RUH3THBOM5G22RTNDZYCQ4ZKMA:/var/lib/docker/overlay2/l/GL4ZNBUONDPLTAQKUZ4G7Q7N7G:/var/lib/docker/overlay2/l/U2EKT6ZGSL2EQ35CJOQ5VQSIUT:/var/lib/docker/overlay2/l/V3IMZIO664OIUU2RQZQPTR2UHK:/var/lib/docker/overlay2/l/QQWBQX53UEWHFVKVZALQ4WF2NB:/var/lib/docker/overlay2/l/5YCFGWUOW7SPJMHR3B44EQKJZT:/var/lib/docker/overlay2/l/PZEF3ZOVUNS6MSVOPEMAGM2YNJ:/var/lib/docker/overlay2/l/YBZSDTVYURJMA2AI6YWUBTBXW7:/var/lib/docker/overlay2/l/O7RYISZKWK7HMEME6HYTMSS6OU:/var/lib/docker/overlay2/l/IBHCVYVANXRYQF4JCDTPIKLQ2D,upperdir=/var/lib/docker/overlay2/38382fd252e0f061ea67bd30c2aae5a8eee9e91203a078fe3c58b4f607987f25/diff,workdir=/var/lib/docker/overlay2/38382fd252e0f061ea67bd30c2aae5a8eee9e91203a078fe3c58b4f607987f25/work,nouserxattr\n483 465 0:55 / /dev rw,nosuid,nodev,relatime - tmpfs tmpfs rw,mode=755,uid=10001,gid=10001,inode64\n484 483 0:61 /null /dev/null rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755,inode64\n485 483 0:61 /zero /dev/zero rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755,inode64\n486 483 0:61 /full /dev/full rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755,inode64\n487 483 0:61 /random /dev/random rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755,inode64\n488 483 0:61 /urandom /dev/urandom rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755,inode64\n489 483 0:61 /tty /dev/tty rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755,inode64\n490 483 0:56 / /dev/pts rw,nosuid,noexec,relatime - devpts devpts rw,mode=620,ptmxmode=666\n491 465 0:57 / /tmp rw,nosuid,nodev,relatime - tmpfs tmpfs rw,mode=755,uid=10001,gid=10001,inode64\n",
+      "network_interfaces": [
+        "lo"
+      ],
+      "limits": "Limit                     Soft Limit           Hard Limit           Units     \nMax cpu time              30                   30                   seconds   \nMax file size             4194304              4194304              bytes     \nMax data size             unlimited            unlimited            bytes     \nMax stack size            16777216             unlimited            bytes     \nMax core file size        0                    0                    bytes     \nMax resident set          unlimited            unlimited            bytes     \nMax processes             unlimited            unlimited            processes \nMax open files            32                   32                   files     \nMax locked memory         8388608              8388608              bytes     \nMax address space         536870912            536870912            bytes     \nMax file locks            unlimited            unlimited            locks     \nMax pending signals       58121                58121                signals   \nMax msgqueue size         819200               819200               bytes     \nMax nice priority         0                    0                    \nMax realtime priority     0                    0                    \nMax realtime timeout      unlimited            unlimited            us        \n",
+      "status": "Name:\tmonty\nUmask:\t0022\nState:\tS (sleeping)\nTgid:\t16\nNgid:\t0\nPid:\t16\nPPid:\t15\nTracerPid:\t0\nUid:\t10001\t10001\t10001\t10001\nGid:\t10001\t10001\t10001\t10001\nFDSize:\t64\nGroups:\t10001 \nNStgid:\t16\t2\nNSpid:\t16\t2\nNSpgid:\t15\t1\nNSsid:\t15\t1\nKthread:\t0\nVmPeak:\t  181012 kB\nVmSize:\t  115496 kB\nVmLck:\t       0 kB\nVmPin:\t       0 kB\nVmHWM:\t   13628 kB\nVmRSS:\t   13628 kB\nRssAnon:\t    1080 kB\nRssFile:\t   12548 kB\nRssShmem:\t       0 kB\nVmData:\t   16784 kB\nVmStk:\t     132 kB\nVmExe:\t   21296 kB\nVmLib:\t    2228 kB\nVmPTE:\t     104 kB\nVmSwap:\t       0 kB\nHugetlbPages:\t       0 kB\nCoreDumping:\t0\nTHP_enabled:\t1\nuntag_mask:\t0xffffffffffffffff\nThreads:\t2\nSigQ:\t0/58121\nSigPnd:\t0000000000000000\nShdPnd:\t0000000000000000\nSigBlk:\t0000000000000000\nSigIgn:\t0000000081001000\nSigCgt:\t0000000100000440\nCapInh:\t0000000000000000\nCapPrm:\t0000000000000000\nCapEff:\t0000000000000000\nCapBnd:\t0000000000000000\nCapAmb:\t0000000000000000\nNoNewPrivs:\t1\nSeccomp:\t2\nSeccomp_filters:\t1\nSpeculation_Store_Bypass:\tvulnerable\nSpeculationIndirectBranch:\talways enabled\nCpus_allowed:\tf\nCpus_allowed_list:\t0-3\nMems_allowed:\t00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001\nMems_allowed_list:\t0\nvoluntary_ctxt_switches:\t1\nnonvoluntary_ctxt_switches:\t0\nx86_Thread_features:\t\nx86_Thread_features_locked:\t\n",
+      "process_ids": [
+        14,
+        15,
+        16
+      ],
+      "native_pid": 16
+    },
+    "infinite_loop": "engine_time_limit",
+    "terminated_process_ids": [
+      14,
+      15,
+      16,
+      18,
+      19,
+      20
+    ],
+    "termination": "all_original_process_ids_gone",
+    "parent_death": {
+      "owner_signal": "SIGKILL",
+      "process_ids": [
+        29,
+        30,
+        31
+      ],
+      "verdict": "passed"
+    },
+    "host_policy": {
+      "max_native_workers": 2,
+      "background_limit": 1,
+      "observed_peak_native_workers": 2,
+      "native_high_water_rss_kib": [
+        13624,
+        13680
+      ],
+      "queued_cancellation_created_no_worker": true,
+      "all_capacity_process_ids_gone": [
+        33,
+        34,
+        35,
+        37,
+        38,
+        39
+      ],
+      "measurement_scope": "two suspended synthetic scripts; not production capacity sizing",
+      "host_watchdog": {
+        "configured_seconds": 0.5,
+        "elapsed_seconds": 0.501851262999935,
+        "failure_category": "limit_time",
+        "all_process_ids_gone": [
+          42,
+          43,
+          44
+        ]
+      }
+    }
+  },
+  "container": {
+    "Id": "9f520678aed33bff3ac1508ba638fd6dce4ab091439262edfab324510874c99b",
+    "Created": "2026-11-05T04:39:38.792911978Z",
+    "Path": "python",
+    "Args": [
+      "-c",
+      "import runpy,asyncio,json;from pathlib import Path;ns=runpy.run_path('/opt/yuki-monty/verify_monty_isolation.py');print(json.dumps(asyncio.run(ns['verify'](Path('/opt/yuki-monty/monty'),Path('/opt/yuki-monty/monty-isolated')))))"
+    ],
+    "State": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-05T04:39:38.832373524Z",
+      "FinishedAt": "2026-11-05T04:39:40.274431094Z"
+    },
+    "Image": "sha256:92b3ab6849f868142975eb453b078a26169a113c23a71b38ece353d619b17d05",
+    "ResolvConfPath": "/var/lib/docker/containers/9f520678aed33bff3ac1508ba638fd6dce4ab091439262edfab324510874c99b/resolv.conf",
+    "HostnamePath": "/var/lib/docker/containers/9f520678aed33bff3ac1508ba638fd6dce4ab091439262edfab324510874c99b/hostname",
+    "HostsPath": "/var/lib/docker/containers/9f520678aed33bff3ac1508ba638fd6dce4ab091439262edfab324510874c99b/hosts",
+    "LogPath": "/var/lib/docker/containers/9f520678aed33bff3ac1508ba638fd6dce4ab091439262edfab324510874c99b/9f520678aed33bff3ac1508ba638fd6dce4ab091439262edfab324510874c99b-json.log",
+    "Name": "/vigilant_banach",
+    "RestartCount": 0,
+    "Driver": "overlay2",
+    "Platform": "linux",
+    "MountLabel": "",
+    "ProcessLabel": "",
+    "AppArmorProfile": "yuki-bot-codemode",
+    "ExecIDs": null,
+    "HostConfig": {
+      "Binds": null,
+      "ContainerIDFile": "",
+      "LogConfig": {
+        "Type": "json-file",
+        "Config": {}
+      },
+      "NetworkMode": "none",
+      "PortBindings": {},
+      "RestartPolicy": {
+        "Name": "no",
+        "MaximumRetryCount": 0
+      },
+      "AutoRemove": false,
+      "VolumeDriver": "",
+      "VolumesFrom": null,
+      "ConsoleSize": [
+        0,
+        0
+      ],
+      "CapAdd": null,
+      "CapDrop": [
+        "ALL"
+      ],
+      "CgroupnsMode": "private",
+      "Dns": [],
+      "DnsOptions": [],
+      "DnsSearch": [],
+      "ExtraHosts": null,
+      "GroupAdd": null,
+      "IpcMode": "private",
+      "Cgroup": "",
+      "Links": null,
+      "OomScoreAdj": 0,
+      "PidMode": "",
+      "Privileged": false,
+      "PublishAllPorts": false,
+      "ReadonlyRootfs": true,
+      "SecurityOpt": [
+        "apparmor=yuki-bot-codemode",
+        "seccomp={\"defaultAction\":\"SCMP_ACT_ERRNO\",\"defaultErrnoRet\":1,\"archMap\":[{\"architecture\":\"SCMP_ARCH_X86_64\",\"subArchitectures\":[\"SCMP_ARCH_X86\",\"SCMP_ARCH_X32\"]},{\"architecture\":\"SCMP_ARCH_AARCH64\",\"subArchitectures\":[\"SCMP_ARCH_ARM\"]},{\"architecture\":\"SCMP_ARCH_MIPS64\",\"subArchitectures\":[\"SCMP_ARCH_MIPS\",\"SCMP_ARCH_MIPS64N32\"]},{\"architecture\":\"SCMP_ARCH_MIPS64N32\",\"subArchitectures\":[\"SCMP_ARCH_MIPS\",\"SCMP_ARCH_MIPS64\"]},{\"architecture\":\"SCMP_ARCH_MIPSEL64\",\"subArchitectures\":[\"SCMP_ARCH_MIPSEL\",\"SCMP_ARCH_MIPSEL64N32\"]},{\"architecture\":\"SCMP_ARCH_MIPSEL64N32\",\"subArchitectures\":[\"SCMP_ARCH_MIPSEL\",\"SCMP_ARCH_MIPSEL64\"]},{\"architecture\":\"SCMP_ARCH_S390X\",\"subArchitectures\":[\"SCMP_ARCH_S390\"]},{\"architecture\":\"SCMP_ARCH_RISCV64\",\"subArchitectures\":null},{\"architecture\":\"SCMP_ARCH_LOONGARCH64\",\"subArchitectures\":null}],\"syscalls\":[{\"names\":[\"accept\",\"accept4\",\"access\",\"adjtimex\",\"alarm\",\"bind\",\"brk\",\"cachestat\",\"capget\",\"capset\",\"chdir\",\"chmod\",\"chown\",\"chown32\",\"clock_adjtime\",\"clock_adjtime64\",\"clock_getres\",\"clock_getres_time64\",\"clock_gettime\",\"clock_gettime64\",\"clock_nanosleep\",\"clock_nanosleep_time64\",\"close\",\"close_range\",\"connect\",\"copy_file_range\",\"creat\",\"dup\",\"dup2\",\"dup3\",\"epoll_create\",\"epoll_create1\",\"epoll_ctl\",\"epoll_ctl_old\",\"epoll_pwait\",\"epoll_pwait2\",\"epoll_wait\",\"epoll_wait_old\",\"eventfd\",\"eventfd2\",\"execve\",\"execveat\",\"exit\",\"exit_group\",\"faccessat\",\"faccessat2\",\"fadvise64\",\"fadvise64_64\",\"fallocate\",\"fanotify_mark\",\"fchdir\",\"fchmod\",\"fchmodat\",\"fchmodat2\",\"fchown\",\"fchown32\",\"fchownat\",\"fcntl\",\"fcntl64\",\"fdatasync\",\"fgetxattr\",\"flistxattr\",\"flock\",\"fork\",\"fremovexattr\",\"fsetxattr\",\"fstat\",\"fstat64\",\"fstatat64\",\"fstatfs\",\"fstatfs64\",\"fsync\",\"ftruncate\",\"ftruncate64\",\"futex\",\"futex_requeue\",\"futex_time64\",\"futex_wait\",\"futex_waitv\",\"futex_wake\",\"futimesat\",\"getcpu\",\"getcwd\",\"getdents\",\"getdents64\",\"getegid\",\"getegid32\",\"geteuid\",\"geteuid32\",\"getgid\",\"getgid32\",\"getgroups\",\"getgroups32\",\"getitimer\",\"getpeername\",\"getpgid\",\"getpgrp\",\"getpid\",\"getppid\",\"getpriority\",\"getrandom\",\"getresgid\",\"getresgid32\",\"getresuid\",\"getresuid32\",\"getrlimit\",\"get_robust_list\",\"getrusage\",\"getsid\",\"getsockname\",\"getsockopt\",\"get_thread_area\",\"gettid\",\"gettimeofday\",\"getuid\",\"getuid32\",\"getxattr\",\"getxattrat\",\"inotify_add_watch\",\"inotify_init\",\"inotify_init1\",\"inotify_rm_watch\",\"io_cancel\",\"ioctl\",\"io_destroy\",\"io_getevents\",\"io_pgetevents\",\"io_pgetevents_time64\",\"ioprio_get\",\"ioprio_set\",\"io_setup\",\"io_submit\",\"ipc\",\"kill\",\"landlock_add_rule\",\"landlock_create_ruleset\",\"landlock_restrict_self\",\"lchown\",\"lchown32\",\"lgetxattr\",\"link\",\"linkat\",\"listen\",\"listmount\",\"listxattr\",\"listxattrat\",\"llistxattr\",\"_llseek\",\"lremovexattr\",\"lseek\",\"lsetxattr\",\"lstat\",\"lstat64\",\"madvise\",\"map_shadow_stack\",\"membarrier\",\"memfd_create\",\"memfd_secret\",\"mincore\",\"mkdir\",\"mkdirat\",\"mknod\",\"mknodat\",\"mlock\",\"mlock2\",\"mlockall\",\"mmap\",\"mmap2\",\"mprotect\",\"mq_getsetattr\",\"mq_notify\",\"mq_open\",\"mq_timedreceive\",\"mq_timedreceive_time64\",\"mq_timedsend\",\"mq_timedsend_time64\",\"mq_unlink\",\"mremap\",\"mseal\",\"msgctl\",\"msgget\",\"msgrcv\",\"msgsnd\",\"msync\",\"munlock\",\"munlockall\",\"munmap\",\"name_to_handle_at\",\"nanosleep\",\"newfstatat\",\"_newselect\",\"open\",\"openat\",\"openat2\",\"pause\",\"pidfd_open\",\"pidfd_send_signal\",\"pipe\",\"pipe2\",\"pkey_alloc\",\"pkey_free\",\"pkey_mprotect\",\"poll\",\"ppoll\",\"ppoll_time64\",\"prctl\",\"pread64\",\"preadv\",\"preadv2\",\"prlimit64\",\"process_mrelease\",\"pselect6\",\"pselect6_time64\",\"pwrite64\",\"pwritev\",\"pwritev2\",\"read\",\"readahead\",\"readlink\",\"readlinkat\",\"readv\",\"recv\",\"recvfrom\",\"recvmmsg\",\"recvmmsg_time64\",\"recvmsg\",\"remap_file_pages\",\"removexattr\",\"removexattrat\",\"rename\",\"renameat\",\"renameat2\",\"restart_syscall\",\"riscv_hwprobe\",\"rmdir\",\"rseq\",\"rt_sigaction\",\"rt_sigpending\",\"rt_sigprocmask\",\"rt_sigqueueinfo\",\"rt_sigreturn\",\"rt_sigsuspend\",\"rt_sigtimedwait\",\"rt_sigtimedwait_time64\",\"rt_tgsigqueueinfo\",\"sched_getaffinity\",\"sched_getattr\",\"sched_getparam\",\"sched_get_priority_max\",\"sched_get_priority_min\",\"sched_getscheduler\",\"sched_rr_get_interval\",\"sched_rr_get_interval_time64\",\"sched_setaffinity\",\"sched_setattr\",\"sched_setparam\",\"sched_setscheduler\",\"sched_yield\",\"seccomp\",\"select\",\"semctl\",\"semget\",\"semop\",\"semtimedop\",\"semtimedop_time64\",\"send\",\"sendfile\",\"sendfile64\",\"sendmmsg\",\"sendmsg\",\"sendto\",\"setfsgid\",\"setfsgid32\",\"setfsuid\",\"setfsuid32\",\"setgid\",\"setgid32\",\"setgroups\",\"setgroups32\",\"setitimer\",\"setpgid\",\"setpriority\",\"setregid\",\"setregid32\",\"setresgid\",\"setresgid32\",\"setresuid\",\"setresuid32\",\"setreuid\",\"setreuid32\",\"setrlimit\",\"set_robust_list\",\"setsid\",\"setsockopt\",\"set_thread_area\",\"set_tid_address\",\"setuid\",\"setuid32\",\"setxattr\",\"setxattrat\",\"shmat\",\"shmctl\",\"shmdt\",\"shmget\",\"shutdown\",\"sigaltstack\",\"signalfd\",\"signalfd4\",\"sigprocmask\",\"sigreturn\",\"socketcall\",\"socketpair\",\"splice\",\"stat\",\"stat64\",\"statfs\",\"statfs64\",\"statmount\",\"statx\",\"symlink\",\"symlinkat\",\"sync\",\"sync_file_range\",\"syncfs\",\"sysinfo\",\"tee\",\"tgkill\",\"time\",\"timer_create\",\"timer_delete\",\"timer_getoverrun\",\"timer_gettime\",\"timer_gettime64\",\"timer_settime\",\"timer_settime64\",\"timerfd_create\",\"timerfd_gettime\",\"timerfd_gettime64\",\"timerfd_settime\",\"timerfd_settime64\",\"times\",\"tkill\",\"truncate\",\"truncate64\",\"ugetrlimit\",\"umask\",\"uname\",\"unlink\",\"unlinkat\",\"uretprobe\",\"utime\",\"utimensat\",\"utimensat_time64\",\"utimes\",\"vfork\",\"vmsplice\",\"wait4\",\"waitid\",\"waitpid\",\"write\",\"writev\"],\"action\":\"SCMP_ACT_ALLOW\"},{\"names\":[\"process_vm_readv\",\"process_vm_writev\",\"ptrace\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"minKernel\":\"4.8\"}},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":3,\"op\":\"SCMP_CMP_LT\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":7,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":8,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":9,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":10,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":13,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":14,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":15,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":16,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":17,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":18,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":21,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":22,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":24,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":26,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":27,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":28,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":29,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":30,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":31,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":32,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":33,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":35,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":36,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":39,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":41,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":42,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":43,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":44,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":45,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":0,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":8,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":131072,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":131080,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":4294967295,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"sync_file_range2\",\"swapcontext\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"ppc64le\"]}},{\"names\":[\"arm_fadvise64_64\",\"arm_sync_file_range\",\"sync_file_range2\",\"breakpoint\",\"cacheflush\",\"set_tls\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"arm\",\"arm64\"]}},{\"names\":[\"arch_prctl\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"amd64\",\"x32\"]}},{\"names\":[\"modify_ldt\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"amd64\",\"x32\",\"x86\"]}},{\"names\":[\"s390_pci_mmio_read\",\"s390_pci_mmio_write\",\"s390_runtime_instr\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"s390\",\"s390x\"]}},{\"names\":[\"riscv_flush_icache\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"riscv64\"]}},{\"names\":[\"open_by_handle_at\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_DAC_READ_SEARCH\"]}},{\"names\":[\"bpf\",\"clone\",\"clone3\",\"fanotify_init\",\"fsconfig\",\"fsmount\",\"fsopen\",\"fspick\",\"lookup_dcookie\",\"lsm_get_self_attr\",\"lsm_list_modules\",\"lsm_set_self_attr\",\"mount\",\"mount_setattr\",\"move_mount\",\"open_tree\",\"perf_event_open\",\"quotactl\",\"quotactl_fd\",\"setdomainname\",\"sethostname\",\"setns\",\"syslog\",\"umount\",\"umount2\",\"unshare\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_ADMIN\"]}},{\"names\":[\"clone\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":2114060288,\"op\":\"SCMP_CMP_MASKED_EQ\"}],\"excludes\":{\"caps\":[\"CAP_SYS_ADMIN\"],\"arches\":[\"s390\",\"s390x\"]}},{\"names\":[\"clone\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":1,\"value\":2114060288,\"op\":\"SCMP_CMP_MASKED_EQ\"}],\"comment\":\"s390 parameter ordering for clone is different\",\"includes\":{\"arches\":[\"s390\",\"s390x\"]},\"excludes\":{\"caps\":[\"CAP_SYS_ADMIN\"]}},{\"names\":[\"clone3\"],\"action\":\"SCMP_ACT_ERRNO\",\"errnoRet\":38,\"excludes\":{\"caps\":[\"CAP_SYS_ADMIN\"]}},{\"names\":[\"reboot\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_BOOT\"]}},{\"names\":[\"chroot\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_CHROOT\"]}},{\"names\":[\"delete_module\",\"init_module\",\"finit_module\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_MODULE\"]}},{\"names\":[\"acct\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_PACCT\"]}},{\"names\":[\"kcmp\",\"pidfd_getfd\",\"process_madvise\",\"process_vm_readv\",\"process_vm_writev\",\"ptrace\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_PTRACE\"]}},{\"names\":[\"iopl\",\"ioperm\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_RAWIO\"]}},{\"names\":[\"settimeofday\",\"stime\",\"clock_settime\",\"clock_settime64\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_TIME\"]}},{\"names\":[\"vhangup\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_TTY_CONFIG\"]}},{\"names\":[\"get_mempolicy\",\"mbind\",\"set_mempolicy\",\"set_mempolicy_home_node\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_NICE\"]}},{\"names\":[\"syslog\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYSLOG\"]}},{\"names\":[\"bpf\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_BPF\"]}},{\"names\":[\"perf_event_open\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_PERFMON\"]}},{\"names\":[\"clone\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"amd64\"]},\"args\":[{\"index\":0,\"value\":2114060305,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"unshare\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"amd64\"]},\"args\":[{\"index\":0,\"value\":268435456,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"mount\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"amd64\"]},\"args\":[{\"index\":3,\"value\":573440,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"mount\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"amd64\"]},\"args\":[{\"index\":3,\"value\":6,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"mount\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"amd64\"]},\"args\":[{\"index\":3,\"value\":3236810752,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"mount\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"amd64\"]},\"args\":[{\"index\":3,\"value\":53248,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"mount\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"amd64\"]},\"args\":[{\"index\":3,\"value\":2134055,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"mount\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"amd64\"]},\"args\":[{\"index\":3,\"value\":10,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"mount\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"amd64\"]},\"args\":[{\"index\":3,\"value\":311296,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"umount2\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"amd64\"]},\"args\":[{\"index\":1,\"value\":2,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"pivot_root\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"amd64\"]}}]}"
+      ],
+      "Tmpfs": {
+        "/tmp": "rw,nosuid,nodev,size=256m"
+      },
+      "UTSMode": "",
+      "UsernsMode": "",
+      "ShmSize": 67108864,
+      "Runtime": "runc",
+      "Isolation": "",
+      "CpuShares": 0,
+      "Memory": 1073741824,
+      "NanoCpus": 0,
+      "CgroupParent": "",
+      "BlkioWeight": 0,
+      "BlkioWeightDevice": [],
+      "BlkioDeviceReadBps": [],
+      "BlkioDeviceWriteBps": [],
+      "BlkioDeviceReadIOps": [],
+      "BlkioDeviceWriteIOps": [],
+      "CpuPeriod": 0,
+      "CpuQuota": 0,
+      "CpuRealtimePeriod": 0,
+      "CpuRealtimeRuntime": 0,
+      "CpusetCpus": "",
+      "CpusetMems": "",
+      "Devices": [],
+      "DeviceCgroupRules": null,
+      "DeviceRequests": null,
+      "MemoryReservation": 0,
+      "MemorySwap": 2147483648,
+      "MemorySwappiness": null,
+      "OomKillDisable": null,
+      "PidsLimit": 64,
+      "Ulimits": [],
+      "CpuCount": 0,
+      "CpuPercent": 0,
+      "IOMaximumIOps": 0,
+      "IOMaximumBandwidth": 0,
+      "MaskedPaths": [
+        "/proc/asound",
+        "/proc/acpi",
+        "/proc/interrupts",
+        "/proc/kcore",
+        "/proc/keys",
+        "/proc/latency_stats",
+        "/proc/timer_list",
+        "/proc/timer_stats",
+        "/proc/sched_debug",
+        "/proc/scsi",
+        "/sys/firmware",
+        "/sys/devices/virtual/powercap"
+      ],
+      "ReadonlyPaths": [
+        "/proc/bus",
+        "/proc/fs",
+        "/proc/irq",
+        "/proc/sys",
+        "/proc/sysrq-trigger"
+      ],
+      "Init": true
+    },
+    "GraphDriver": {
+      "Data": {
+        "ID": "9f520678aed33bff3ac1508ba638fd6dce4ab091439262edfab324510874c99b",
+        "LowerDir": "/var/lib/docker/overlay2/38382fd252e0f061ea67bd30c2aae5a8eee9e91203a078fe3c58b4f607987f25-init/diff:/var/lib/docker/overlay2/5m3visg1u295eft2p750c07q2/diff:/var/lib/docker/overlay2/uyexjk8mtbhwnpo2s4cdqqj4v/diff:/var/lib/docker/overlay2/4p512eziayt85fym2wdi1bgcb/diff:/var/lib/docker/overlay2/qgw2zh8hw855nblh9mpaz6m42/diff:/var/lib/docker/overlay2/s9wy8i5u8aokm6lqn5x4gbr0b/diff:/var/lib/docker/overlay2/bu41wb6l2nelyuio0n9kf2jd5/diff:/var/lib/docker/overlay2/ihhah747jf88toz1ngdhoi2n7/diff:/var/lib/docker/overlay2/ttifshnkswk8e0k9u7myhw2ep/diff:/var/lib/docker/overlay2/jwecsk8v3tyu5bheaddt3g47y/diff:/var/lib/docker/overlay2/tz480jt7c5j0mf813k34uvydq/diff:/var/lib/docker/overlay2/gpvwzylron3lr1mjtgdao8km1/diff:/var/lib/docker/overlay2/g5ptwn2wkhrve0x2zezyo3pzr/diff:/var/lib/docker/overlay2/1p05f6qlubveuz0h9bp2eryre/diff:/var/lib/docker/overlay2/4nq38kemjigoiju4b7jqn6g3y/diff:/var/lib/docker/overlay2/9ul9ehfp5i02v122aendmbazv/diff:/var/lib/docker/overlay2/g6t790rkq6u8z152et66loaec/diff:/var/lib/docker/overlay2/995ef9d5256554cb57e2fd0dd8d8e007dd024b01fe5c57b6be125106ecf8e6aa/diff:/var/lib/docker/overlay2/88503809b75214de336f8363303d291ef4689ac4b26189b7fe7023704480a1f3/diff:/var/lib/docker/overlay2/b086b2516cbe72cb184b1bf925d6589015cc019c910166b9fe7cfb4a152d6b16/diff:/var/lib/docker/overlay2/6655a23cac0daf041f29b6e731d3c3927017c541a613a687b73deb7691213184/diff",
+        "MergedDir": "/var/lib/docker/overlay2/38382fd252e0f061ea67bd30c2aae5a8eee9e91203a078fe3c58b4f607987f25/merged",
+        "UpperDir": "/var/lib/docker/overlay2/38382fd252e0f061ea67bd30c2aae5a8eee9e91203a078fe3c58b4f607987f25/diff",
+        "WorkDir": "/var/lib/docker/overlay2/38382fd252e0f061ea67bd30c2aae5a8eee9e91203a078fe3c58b4f607987f25/work"
+      },
+      "Name": "overlay2"
+    },
+    "Mounts": [],
+    "Config": {
+      "Hostname": "9f520678aed3",
+      "Domainname": "",
+      "User": "10001:10001",
+      "AttachStdin": false,
+      "AttachStdout": true,
+      "AttachStderr": true,
+      "Tty": false,
+      "OpenStdin": false,
+      "StdinOnce": false,
+      "Env": [
+        "PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+        "LANG=C.UTF-8",
+        "GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305",
+        "PYTHON_VERSION=3.12.16",
+        "PYTHON_SHA256=b5796915dc45ff745cfb4e990a7e7c93d6f546328a102ce31448d69ebc37575c",
+        "PYTHONPATH=/opt/yuki-monty/backend"
+      ],
+      "Cmd": [
+        "-c",
+        "import runpy,asyncio,json;from pathlib import Path;ns=runpy.run_path('/opt/yuki-monty/verify_monty_isolation.py');print(json.dumps(asyncio.run(ns['verify'](Path('/opt/yuki-monty/monty'),Path('/opt/yuki-monty/monty-isolated')))))"
+      ],
+      "Image": "sha256:92b3ab6849f868142975eb453b078a26169a113c23a71b38ece353d619b17d05",
+      "Volumes": null,
+      "WorkingDir": "/tmp",
+      "Entrypoint": [
+        "python"
+      ],
+      "OnBuild": null,
+      "Labels": {
+        "org.opencontainers.image.title": "Yuki Monty runtime",
+        "org.opencontainers.image.version": "0.1.0-alpha.1"
+      }
+    },
+    "NetworkSettings": {
+      "Bridge": "",
+      "SandboxID": "",
+      "SandboxKey": "",
+      "Ports": {},
+      "HairpinMode": false,
+      "LinkLocalIPv6Address": "",
+      "LinkLocalIPv6PrefixLen": 0,
+      "SecondaryIPAddresses": null,
+      "SecondaryIPv6Addresses": null,
+      "EndpointID": "",
+      "Gateway": "",
+      "GlobalIPv6Address": "",
+      "GlobalIPv6PrefixLen": 0,
+      "IPAddress": "",
+      "IPPrefixLen": 0,
+      "IPv6Gateway": "",
+      "MacAddress": "",
+      "Networks": {
+        "none": {
+          "IPAMConfig": null,
+          "Links": null,
+          "Aliases": null,
+          "MacAddress": "",
+          "DriverOpts": null,
+          "GwPriority": 0,
+          "NetworkID": "e70f13bb53d6bd87e3ca6095e085ae90e8b530fcdf97b39768cc2ac079be2ca4",
+          "EndpointID": "",
+          "Gateway": "",
+          "IPAddress": "",
+          "IPPrefixLen": 0,
+          "IPv6Gateway": "",
+          "GlobalIPv6Address": "",
+          "GlobalIPv6PrefixLen": 0,
+          "DNSNames": null
+        }
+      }
+    }
+  },
+  "scope": "native image isolation",
+  "formal_card_acceptance": false,
+  "status": "PASS"
+}

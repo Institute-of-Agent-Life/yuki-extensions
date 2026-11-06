@@ -1,0 +1,11 @@
+{
+  "previous_archive_sha256": "ea6a1c2f5e8e5ff5b53ef7b8ab89baa9c8bb26cbd9ba45f116eaaafd73406794",
+  "new_archive_sha256": "b1581148a1f0a9881dc1b08a147c6ff949e12caff6a51a8598cd43069709e865",
+  "member_differences": {
+    ".cargo_vcs_info.json": {
+      "old": "{\"git\": {\"dirty\": false, \"sha1\": \"f3f3723aa5322c6a2a20e8cb3b04d845cd7773cc\"}, \"path_in_vcs\": \"sdk/rust\"}\n",
+      "new": "{\"git\": {\"dirty\": false, \"sha1\": \"f74ecdd86b732d0fb34fa12f0ca9defa377db6b8\"}, \"path_in_vcs\": \"sdk/rust\"}\n"
+    }
+  },
+  "runtime_source_identical": true
+}

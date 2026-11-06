@@ -1,0 +1,157 @@
+[
+  {
+    "case": "missing-credential-denied",
+    "result": 401
+  },
+  {
+    "case": "chat-credential-denied",
+    "result": 401
+  },
+  {
+    "case": "original-connector-empty-device",
+    "result": {
+      "connected": true,
+      "connection_epoch": 1,
+      "device_capabilities": {
+        "full_access": false,
+        "interrupt_supported": false,
+        "platform": "win32",
+        "shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+        "tty": false
+      },
+      "device_id": "8558d640-af7b-4af9-8cfc-4599c4f2e10d",
+      "instances": [],
+      "journal_namespace": "connector:b7ef0595184e2c4cb5d81e504bbaca9702a6b852063ebe0f1dbd2e8662e62d01"
+    }
+  },
+  {
+    "case": "old-catalog-and-close-fenced",
+    "result": {
+      "connected": true,
+      "connection_epoch": 2,
+      "device_capabilities": {
+        "full_access": false,
+        "interrupt_supported": false,
+        "platform": "win32",
+        "shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+        "tty": false
+      },
+      "device_id": "8558d640-af7b-4af9-8cfc-4599c4f2e10d",
+      "instances": [
+        {
+          "capabilities": [],
+          "driver": "codex",
+          "id": "native",
+          "label": "new snapshot",
+          "status": "unavailable"
+        }
+      ],
+      "journal_namespace": "connector:b7ef0595184e2c4cb5d81e504bbaca9702a6b852063ebe0f1dbd2e8662e62d01"
+    }
+  },
+  {
+    "case": "full-snapshot-removes-instances-keeps-device",
+    "result": {
+      "connected": true,
+      "connection_epoch": 2,
+      "device_capabilities": {
+        "full_access": false,
+        "interrupt_supported": false,
+        "platform": "win32",
+        "shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+        "tty": false
+      },
+      "device_id": "8558d640-af7b-4af9-8cfc-4599c4f2e10d",
+      "instances": [],
+      "journal_namespace": "connector:b7ef0595184e2c4cb5d81e504bbaca9702a6b852063ebe0f1dbd2e8662e62d01"
+    }
+  },
+  {
+    "case": "original-run-renews-before-expiry-without-authorization-loss",
+    "result": {
+      "elapsed_seconds": 240.1410000002943,
+      "before": {
+        "connected": true,
+        "connection_epoch": 3,
+        "device_capabilities": {
+          "full_access": false,
+          "interrupt_supported": false,
+          "platform": "win32",
+          "shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+          "tty": false
+        },
+        "device_id": "8558d640-af7b-4af9-8cfc-4599c4f2e10d",
+        "instances": [],
+        "journal_namespace": "connector:b7ef0595184e2c4cb5d81e504bbaca9702a6b852063ebe0f1dbd2e8662e62d01"
+      },
+      "after": {
+        "connected": true,
+        "connection_epoch": 4,
+        "device_capabilities": {
+          "full_access": false,
+          "interrupt_supported": false,
+          "platform": "win32",
+          "shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+          "tty": false
+        },
+        "device_id": "8558d640-af7b-4af9-8cfc-4599c4f2e10d",
+        "instances": [],
+        "journal_namespace": "connector:b7ef0595184e2c4cb5d81e504bbaca9702a6b852063ebe0f1dbd2e8662e62d01"
+      },
+      "original_run": {
+        "journal_namespace": "8558d640-af7b-4af9-8cfc-4599c4f2e10d",
+        "connector_version": "0.4.4.dev1",
+        "tls": {
+          "version": "TLSv1.3",
+          "certificate_required": true,
+          "hostname_check": true
+        },
+        "connection": 2,
+        "automatic_run": true,
+        "owner_stopped": false
+      }
+    }
+  },
+  {
+    "case": "person-merge-keeps-original-device-namespace",
+    "result": {
+      "connected": true,
+      "connection_epoch": 5,
+      "device_capabilities": {
+        "full_access": false,
+        "interrupt_supported": false,
+        "platform": "win32",
+        "shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+        "tty": false
+      },
+      "device_id": "8558d640-af7b-4af9-8cfc-4599c4f2e10d",
+      "instances": [
+        {
+          "capabilities": [],
+          "driver": "codex",
+          "id": "same",
+          "label": "same device",
+          "status": "unavailable"
+        }
+      ],
+      "journal_namespace": "connector:b7ef0595184e2c4cb5d81e504bbaca9702a6b852063ebe0f1dbd2e8662e62d01"
+    }
+  },
+  {
+    "case": "account-reassignment-does-not-transfer-device",
+    "result": {
+      "connected": true,
+      "connection_epoch": 6,
+      "device_capabilities": {
+        "full_access": false,
+        "interrupt_supported": false,
+        "platform": "win32",
+        "shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+        "tty": false
+      },
+      "device_id": "8558d640-af7b-4af9-8cfc-4599c4f2e10d",
+      "instances": [],
+      "journal_namespace": "connector:b7ef0595184e2c4cb5d81e504bbaca9702a6b852063ebe0f1dbd2e8662e62d01"
+    }
+  }
+]

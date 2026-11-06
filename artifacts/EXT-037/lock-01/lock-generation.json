@@ -1,0 +1,10 @@
+{
+  "command": [
+    "cargo",
+    "generate-lockfile",
+    "--offline"
+  ],
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "     Locking 12 packages to latest Rust 1.96 compatible versions\n"
+}

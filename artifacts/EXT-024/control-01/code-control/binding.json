@@ -1,0 +1,10 @@
+[
+  {
+    "arguments": {
+      "text": "before original refusal"
+    },
+    "execution": "3f7478ef-8158-41b6-8f92-1dbe8334ff0a",
+    "operation": "5cd7e591-5ef7-494d-8faa-1e61ec747e0a",
+    "tool": "send"
+  }
+]

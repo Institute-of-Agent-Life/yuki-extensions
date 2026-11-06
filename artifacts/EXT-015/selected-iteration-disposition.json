@@ -1,0 +1,13 @@
+{
+  "card_status": "BLOCKED_COMPLETE_H24_AND_PUBLICATION",
+  "lock-01": "Windows Cargo updated only client version and the pinned SDK; two Rust regressions and release build passed.",
+  "selected-attempt-01": "Original model barrier did not produce a Social event; original failed snapshot and ZIP retained.",
+  "selected-02": "Work accepted; Social event assertion failed. This fixture reused a tool call id. No core defect conclusion.",
+  "selected-03": "Public ACP setup without an observed persisted conversation returned 404; failed assertion retained.",
+  "selected-04": "Public ingress and home expose the ACP conversation; original matching selectors still return 404. Public setup contract remains required.",
+  "selected-05": "Unique tool ids and fixture binding ACK succeeded, but no local Social event. This ACK is not a Social publication witness. A diagnostic command also used an unsupported work get action.",
+  "selected-06": "No fixture binding endpoint. Original Work accepted; main inspect records held/runner_failed after send. Preserve this exact diagnostic, no unknown resend or cost inference.",
+  "selected-07": "Seven feature groups passed; binding disable fixture omitted the required expected_revision. Original invalid_command_body retained.",
+  "selected-08": "Nine feature groups, two Rust regressions, release build, all 14 boundaries/selectors passed. ACP remains a separately named BLOCKED diagnostic. Inbound SSE is not a Social outbound claim.",
+  "selected-analysis-01": "Windows verified all 35 current source bindings, runtime tuple, exact original ZIP/member hashes, nine cases and the unresolved original Social diagnostic. Formal card acceptance remains blocked."
+}

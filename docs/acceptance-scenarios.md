@@ -164,3 +164,27 @@ device must fence late catalog/close from the older generation. Reopening the
 plugin preserves devices, including an offline device with zero instances. A
 self-reported device ID never establishes authority and a revoked credential
 cannot write a snapshot. Record any missing Host authority separately.
+
+## EXT-015 original Client9 request entry
+
+Pair phone and desktop with one original App entry. Replay the same UUID through
+the other device, including reversed JSON field order, and read back the single
+event and its durable receipt. Change the text and expect conflict. A different
+entry cannot see the receipt and can use the same UUID for its own event.
+Exercise used codes, foreign entry/conversation selectors, service restart and
+the original SSE route. Reject ambiguous selectors before any write when the
+owner cannot select them. A Social delivery or merged-entry claim needs its own
+observed Host effect.
+
+## EXT-031 selected document and video inspection
+
+Use the clean packaged CORE-038 owner and the installed Rust media plugin.
+Create two source attachments and process only the second. Compare media.open
+handles with the selected call and verify the first source has no decode.
+Read page-tagged PDF text with the pinned original document backend, return
+encrypted/corrupt documents as unread, and publish sampled video images only
+under the original call. Verify frame times and immutable image digests.
+Expire or erase the original source before processing and during decode, then
+require scope denial with no late text or pixel publication. Local decoding
+must generate no model request. Record the remaining original-model pixel
+presentation boundary separately if the producer cannot expose it.

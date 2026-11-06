@@ -1,0 +1,37 @@
+format_version = 1
+listen = "127.0.0.1:0"
+
+[memory]
+mode = "lexical-only"
+
+[main]
+endpoint="http://127.0.0.1:45415/v1/chat/completions"
+binding_endpoint="http://127.0.0.1:45415/binding"
+model="fixture"
+name="Yuki"
+max_output=512
+root_slots=8
+root_tool_calls=8
+max_input_units=4000000
+merge_ms=1
+code_tool="code_a"
+
+[[plugins]]
+id="code_a"
+namespace="code_a"
+program="C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe"
+args=["D:\\yuki-extension-tests\\core034-public-help\\codemode_wsl.py", "D:\\yuki-extension-tests\\core034-public-help\\case-before-feed-02\\wire.jsonl", "before-feed", "/var/tmp/yuki-ext023/rust-plugin-01/runtime.json"]
+grants=["tool.call","composition.read","composition.execute","forget.owner"]
+[plugins.composition]
+tool="code_a"
+abi="monty-3f9d6ef-cpython312-linux-x86_64-codec1"
+engine_sha256="19867d12ee8dea8281f70bffa24d4b1a4bc832469b33dbda7d091e20dd347dc3"
+codec_sha256="b4e80e73450d7fb18265779fc7dd5fed49626beca98118a32383cae89c4ae4ba"
+launcher_sha256="a3d43e7ab1d4a115a12607f1a44d2e5a4a0f1d7f7c451a77a1b81ce6b8da18fb"
+[[plugins.tools]]
+name="code_a"
+description="Rust isolated Monty candidate"
+parallel_read=false
+cacheable=false
+code_direct=true
+schema={type="object",properties={code={type="string"}},required=["code"],additionalProperties=false}

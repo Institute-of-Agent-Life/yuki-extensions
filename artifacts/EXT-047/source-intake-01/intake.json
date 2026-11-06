@@ -1,0 +1,139 @@
+{
+  "status": "BLOCKED",
+  "observations_verified": true,
+  "diagnostic_only": true,
+  "card_status": "BLOCKED",
+  "core": {
+    "source_commit": "9db8b3f073e34a6b86c8f93e878c2de09f0e25ba",
+    "handoff_commit": "e913c81ca6c29244f3d6e29e6747ac4934d2461c",
+    "published": false,
+    "host": {
+      "archive": "yuki-session-preview-9db8b3f073e3-windows-x86_64.zip",
+      "sha256": "1e0d5856740899539c9f4adac2b4c6ce6d01aff6d7697597203d37f2d87d7f56",
+      "binary_sha256": "cb2e2e8592bc46a991b04d74430b4078c06039667f00415b6f1f0848ad34a4d4"
+    },
+    "sdk": {
+      "version": "1.0.0-alpha.9",
+      "sha256": "2b1e5fbe107a3460528f526546768e8aa21e737f6d4b8ded4543360d1b1ac22f"
+    },
+    "host_schema_sha256": "38600a59f63c64fe1eb45ddd2da618b0db25c3af10a2fee49416f6a3f4a4c252",
+    "personal_schema_sha256": null,
+    "media_schema_sha256": null,
+    "plugin_sha256": "3644baf1e9c68f87b7686da6fd5f11bda900937e59715fe6469ffefc64018038",
+    "wire_sha256": "195b711c07b6e745b6c2426b12a9aa9f1845d99ebd3707753b0c05fdae271478"
+  },
+  "person": "da47f240-b966-4e25-9532-c09a930b05df",
+  "entry": "38364020-5849-498d-990f-afc3b5496e3e",
+  "grants": [
+    {
+      "mode": "foreground",
+      "original_call": {
+        "arguments": {
+          "mode": "foreground"
+        },
+        "handle": "78a12b5f-9565-49d3-88b7-4c71d68c2754",
+        "name": "session_probe",
+        "operation": "da9e06be-88be-4e2e-ae01-ab2ecf16655a",
+        "ordinal": null,
+        "parent": null,
+        "revision": "29138d9f412a75e3a5840cf70adfde7d3697d48b32d8c40e29e0fd8f423133aa"
+      },
+      "request": {
+        "authority": {
+          "handle": "78a12b5f-9565-49d3-88b7-4c71d68c2754"
+        },
+        "context_profile": "none",
+        "instructions": "Run a cooperative lighthouse puzzle. The player must find a lens, align the lamp, and signal the boat. Keep all inventory and puzzle dialogue in this isolated session. Never use Main tools or memory.",
+        "key": "game:da9e06be-88be-4e2e-ae01-ab2ecf16655a",
+        "name": "The lighthouse",
+        "persistence": "durable",
+        "purpose": "game",
+        "route": "game"
+      },
+      "response": {
+        "Err": "{\"code\":-32003,\"message\":\"method, grant or original scope denied\"}"
+      },
+      "status": {
+        "Ok": {
+          "handle": "78a12b5f-9565-49d3-88b7-4c71d68c2754",
+          "result": null,
+          "state": "dispatched"
+        }
+      }
+    },
+    {
+      "mode": "accepted-work",
+      "original_call": {
+        "arguments": {
+          "mode": "accepted-work"
+        },
+        "handle": "24a28b4e-ef29-443e-9ba9-8490d5d466cb",
+        "name": "session_probe",
+        "operation": "fd5cf252-5a4b-4734-ac0a-ce08e4c81149",
+        "ordinal": null,
+        "parent": null,
+        "revision": "29138d9f412a75e3a5840cf70adfde7d3697d48b32d8c40e29e0fd8f423133aa"
+      },
+      "request": {
+        "authority": {
+          "handle": "24a28b4e-ef29-443e-9ba9-8490d5d466cb"
+        },
+        "context_profile": "none",
+        "instructions": "Run a cooperative lighthouse puzzle. The player must find a lens, align the lamp, and signal the boat. Keep all inventory and puzzle dialogue in this isolated session. Never use Main tools or memory.",
+        "key": "game:fd5cf252-5a4b-4734-ac0a-ce08e4c81149",
+        "name": "The lighthouse",
+        "persistence": "durable",
+        "purpose": "game",
+        "route": "game"
+      },
+      "response": {
+        "Err": "{\"code\":-32003,\"message\":\"method, grant or original scope denied\"}"
+      },
+      "status": {
+        "Ok": {
+          "handle": "24a28b4e-ef29-443e-9ba9-8490d5d466cb",
+          "result": null,
+          "state": "dispatched"
+        }
+      }
+    },
+    {
+      "mode": "actorless",
+      "original_call": {
+        "arguments": {
+          "mode": "actorless"
+        },
+        "handle": "1f84cca8-ce64-46f5-b59f-69f64cef45d4",
+        "name": "session_probe",
+        "operation": "554fa82f-044c-4efe-b07e-4876cac28598",
+        "ordinal": null,
+        "parent": null,
+        "revision": "29138d9f412a75e3a5840cf70adfde7d3697d48b32d8c40e29e0fd8f423133aa"
+      },
+      "request": {
+        "context_profile": "none",
+        "instructions": "Run a cooperative lighthouse puzzle. The player must find a lens, align the lamp, and signal the boat. Keep all inventory and puzzle dialogue in this isolated session. Never use Main tools or memory.",
+        "key": "game:554fa82f-044c-4efe-b07e-4876cac28598",
+        "name": "The lighthouse",
+        "persistence": "durable",
+        "purpose": "game",
+        "route": "game"
+      },
+      "response": {
+        "Err": "{\"code\":-32003,\"message\":\"method, grant or original scope denied\"}"
+      },
+      "status": {
+        "Ok": {
+          "handle": "1f84cca8-ce64-46f5-b59f-69f64cef45d4",
+          "result": null,
+          "state": "dispatched"
+        }
+      }
+    }
+  ],
+  "session_run_calls": 0,
+  "remaining": [
+    "public sessions policy and auxiliary route configuration",
+    "real isolated game and R11 consumer acceptance"
+  ]
+}

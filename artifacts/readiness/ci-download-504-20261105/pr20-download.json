@@ -1,0 +1,20 @@
+{
+  "id": 13401558915,
+  "node_id": "MDg6QXJ0aWZhY3QxMzQwMTU1ODkxNQ==",
+  "name": "connector-upgrade-macos-latest-069aa55303242e2d6ee4f6f3702fe8f094b85bfd",
+  "size_in_bytes": 27168,
+  "url": "https://api.github.com/repos/Institute-of-Agent-Life/yuki-extensions/actions/artifacts/13401558915",
+  "archive_download_url": "https://api.github.com/repos/Institute-of-Agent-Life/yuki-extensions/actions/artifacts/13401558915/zip",
+  "expired": false,
+  "digest": "sha256:04a31d8b32f37199c179674b89f8e89fc9b3afc29429f468fa760e3fdd855a24",
+  "created_at": "2026-11-05T09:15:27Z",
+  "updated_at": "2026-11-05T09:15:27Z",
+  "expires_at": "2027-02-03T05:12:50Z",
+  "workflow_run": {
+    "id": 41972572502,
+    "repository_id": 1445117268,
+    "head_repository_id": 1445117268,
+    "head_branch": "codex/ext-025-participation",
+    "head_sha": "1e9c4b3052878d4244acc1df89b50dc16a712e21"
+  }
+}

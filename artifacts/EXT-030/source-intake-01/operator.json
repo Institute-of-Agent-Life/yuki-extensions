@@ -1,0 +1,175 @@
+[
+  {
+    "command": [
+      "person",
+      "create",
+      "c7cc0b85-029a-4935-9ba1-925fe4b9791e"
+    ],
+    "result": {
+      "original": "c7cc0b85-029a-4935-9ba1-925fe4b9791e",
+      "root": "c7cc0b85-029a-4935-9ba1-925fe4b9791e"
+    }
+  },
+  {
+    "command": [
+      "account",
+      "open",
+      "qq"
+    ],
+    "result": {
+      "account": "ee5e8a98-06c3-4ee8-bdfe-2ed6db604ddd",
+      "assignment": "82780c03-73b1-4c8f-8d21-766f720d4e04"
+    }
+  },
+  {
+    "command": [
+      "account",
+      "open",
+      "qq"
+    ],
+    "result": {
+      "account": "0f7653b5-7d2d-4e1a-9d93-8174b7482f76",
+      "assignment": "d3df5940-c4c7-430b-ad2e-7cefdf731e9b"
+    }
+  },
+  {
+    "command": [
+      "entry",
+      "group",
+      "[\"qq\",\"asr-fixture\",\"702\"]"
+    ],
+    "result": {
+      "entry": "7e051622-6598-476d-9e56-c766e5915719"
+    }
+  },
+  {
+    "command": [
+      "ingress",
+      "record",
+      "{\"source\": \"original\", \"account\": \"ee5e8a98-06c3-4ee8-bdfe-2ed6db604ddd\", \"bot_stage\": \"d3df5940-c4c7-430b-ad2e-7cefdf731e9b\", \"kind\": \"message\", \"reply_bot\": \"100\", \"space\": \"[\\\"qq\\\",\\\"asr-fixture\\\",\\\"702\\\"]\", \"occurred\": 100, \"observed\": 100, \"segments\": [{\"type\": \"media\", \"kind\": \"audio\", \"reference\": \"original\"}]}"
+    ],
+    "result": {
+      "accepted": true,
+      "event": 1
+    }
+  },
+  {
+    "command": [
+      "ingress",
+      "claim",
+      "1"
+    ],
+    "result": {
+      "entry": "7e051622-6598-476d-9e56-c766e5915719",
+      "envelope": {
+        "account": "ee5e8a98-06c3-4ee8-bdfe-2ed6db604ddd",
+        "bot_stage": "d3df5940-c4c7-430b-ad2e-7cefdf731e9b",
+        "kind": "message",
+        "native_id": null,
+        "observed": 100,
+        "occurred": 100,
+        "reply_bot": "100",
+        "segments": [
+          {
+            "kind": "audio",
+            "reference": "original",
+            "type": "media"
+          }
+        ],
+        "source": "original",
+        "space": "[\"qq\",\"asr-fixture\",\"702\"]",
+        "topic": null
+      },
+      "execution": "2df8e5e6-a4ac-43e2-bacc-8cb719672b67",
+      "mentions": [],
+      "original_actor": "c7cc0b85-029a-4935-9ba1-925fe4b9791e",
+      "source": 1
+    }
+  },
+  {
+    "command": [
+      "model",
+      "root",
+      "2df8e5e6-a4ac-43e2-bacc-8cb719672b67"
+    ],
+    "result": {
+      "execution": "2df8e5e6-a4ac-43e2-bacc-8cb719672b67",
+      "root": "2df8e5e6-a4ac-43e2-bacc-8cb719672b67"
+    }
+  },
+  {
+    "command": [
+      "media",
+      "cache-file",
+      "2df8e5e6-a4ac-43e2-bacc-8cb719672b67"
+    ],
+    "result": {
+      "digest": "9a1215ca91037cc6916a991befd4a8205175b62e41fa591d1818935a86394e62",
+      "expires": 1793941273595,
+      "handle": 0,
+      "kind": "audio",
+      "mime": "audio/wav",
+      "origin": "original",
+      "segment": 0,
+      "slot": 0,
+      "source": 1,
+      "stage": "d3df5940-c4c7-430b-ad2e-7cefdf731e9b",
+      "state": "cached"
+    }
+  },
+  {
+    "command": [
+      "host",
+      "process",
+      "media"
+    ],
+    "result": {
+      "handle": "04fe8fff-cb72-43ea-8ec9-bcf90f071b40",
+      "result": {
+        "data": {
+          "calls": [
+            {
+              "open": {
+                "Ok": {
+                  "bytes": "Ug==",
+                  "done": false,
+                  "mime": "audio/wav",
+                  "offset": 0,
+                  "total": 3244,
+                  "version": "9a1215ca91037cc6916a991befd4a8205175b62e41fa591d1818935a86394e62"
+                }
+              }
+            },
+            {
+              "result": {
+                "Ok": {
+                  "erased": false,
+                  "logical": "plugin-aux:6645391d-d82a-4eb1-934d-9a97b2c73e22",
+                  "request": "6645391d-d82a-4eb1-934d-9a97b2c73e22",
+                  "root": "2df8e5e6-a4ac-43e2-bacc-8cb719672b67",
+                  "state": "response",
+                  "usage": {
+                    "input": 4,
+                    "output": 8,
+                    "total": 12
+                  }
+                }
+              },
+              "selected_media": false
+            },
+            {
+              "result": {
+                "Err": "Object {\"code\": Number(-32003), \"message\": String(\"method, grant or original scope denied\")}"
+              },
+              "selected_media": true
+            }
+          ],
+          "diagnostic_only": true,
+          "transcript_stored": false
+        },
+        "ok": true
+      },
+      "state": "confirmed"
+    }
+  }
+]

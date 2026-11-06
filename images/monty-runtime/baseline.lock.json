@@ -1,0 +1,58 @@
+{
+  "repository": "https://github.com/Institute-of-Agent-Life/Yuki",
+  "commit": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+  "files": [
+    {
+      "path": "scripts/build_monty_distribution.sh",
+      "sha256": "d00f3667534f946967d2a5fb6ff0cef021e7264c2c4b986511bcd91bf80de5eb"
+    },
+    {
+      "path": "scripts/export_monty_notices.py",
+      "sha256": "23577436cec70444e9e97b332ccaf86678fb93969eb5a64480609c746ac175e8"
+    },
+    {
+      "path": "vendor/patches/monty-3f9d6ef-string-cache-iterator.patch",
+      "sha256": "2d2e83ecc44353faeccaa1069b11053e0154c0f5cf0e02d55ab592e7706dddb4"
+    },
+    {
+      "path": "vendor/monty/launcher.c",
+      "sha256": "93b768c06dfe05a932254cd3fbe110af0cd4ea8dbe1877c534783634e164ffe5"
+    },
+    {
+      "path": "vendor/monty/LICENSE",
+      "sha256": "5841db47ee6e1f0becafe2d19ca43c08cbc6d2c0952822ccf88cbbf2bd0749bd"
+    },
+    {
+      "path": "vendor/monty/TYPESHED-LICENSE",
+      "sha256": "295f8538c94ae5c3043301cf7cff1c852dab6a786a8ddee471e061b40d5ecabe"
+    },
+    {
+      "path": "deploy/security/yuki-bot-codemode.apparmor",
+      "sha256": "06ac5a94ad26f7300666641cead6698f24a6960985c655b7c20e517a42ab94cb"
+    },
+    {
+      "path": "deploy/security/yuki-codemode-seccomp.json",
+      "sha256": "57457313430e0bb513ccab8a6906c5e05ffc217459f9c5b01cc77d827dcedc81"
+    },
+    {
+      "path": "deploy/codemode/Dockerfile.validation",
+      "sha256": "244caff510cb659d8f4e20beddbb8b819b27c53c2b09c9924829827a7991d1bd"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99"
+    },
+    {
+      "path": "scripts/verify_monty_isolation.py",
+      "sha256": "ac46dff95aa3798ae21326d9917d07fe7d7454d699599b5d5148577e18f69ce0"
+    },
+    {
+      "path": "deploy/security/MOBY-PROFILES-LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "deploy/security/README.md",
+      "sha256": "19e179034204572537c5dd9795c88abacaae2d21d6a0ed253b48b237af895105"
+    }
+  ]
+}

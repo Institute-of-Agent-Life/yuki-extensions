@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "old_binary_sha256": "51a4dde84c7eb06127793c62a82fa3e7d6ee8b46c1b5d94f81db4ef49f0f2ee1",
+  "new_binary_sha256": "791e7ceb89fd526be00bc390831afa0889e8cd503adfc3beb9fb3577d44860a5",
+  "old_open": {
+    "exit_code": 0,
+    "stdout": "{\"devices\":[]}\n",
+    "stderr": ""
+  },
+  "schema1_to_schema2": {
+    "exit_code": 0,
+    "stdout": "{\"catalog\":[{\"connected\":false,\"connection_epoch\":null,\"device_capabilities\":{},\"device_id\":\"paired-original-copy\",\"instances\":[],\"journal_namespace\":null}],\"devices\":[\"paired-original-copy\"]}\n",
+    "stderr": ""
+  },
+  "old_refuses_new_facts_without_modification": {
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "Error: \"incompatible device catalog\"\n"
+  },
+  "schema2_db_sha256": "867c8f0e0a5991ba49399d26a7979f777149bc13cac798f308cfc145d4a05788",
+  "rollback_disposition": "forward repair after schema2 facts; no reset or downgrade"
+}

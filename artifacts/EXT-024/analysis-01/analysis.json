@@ -1,0 +1,203 @@
+{
+  "status": "DIAGNOSTIC_VERIFIED",
+  "formal_card_status": "BLOCKED",
+  "source_commit": "969fb62e34de6a52a5fbe31d798e6b5436d6e9a8",
+  "host_sha256": "9cd0c5ac8c8acbbd8e703acc832878f5efd31a16c1cea395c3c90f147e31f387",
+  "host_archive_sha256": "3b45be537020e1aa094afbd1c2e9f0ed81dda90defdf6b1518aa0cf61aa08dca",
+  "linux_plugin_sha256": "23f888dc639f01754f4122dd606bfeebddf9e77f84757bee8db8fc318e05bb47",
+  "model_http_calls": 9,
+  "binding_deliveries": {
+    "direct": 1,
+    "code": 0,
+    "code-control": 1
+  },
+  "direct_refusal": {
+    "dispatched": false,
+    "error": "invalid_tool_arguments",
+    "executed": false
+  },
+  "nested_rpc_error": {
+    "code": -32003,
+    "message": "method, grant or original scope denied"
+  },
+  "cold_restarts": 6,
+  "container_sets_restored": true,
+  "original_success_preserved": "5cd7e591-5ef7-494d-8faa-1e61ec747e0a",
+  "transfers": [
+    {
+      "manifest_sha256": "33cd3f92bdc88b9177c361ebd9e663320d7b6888b57ce4a23f3ec7470a3e1172",
+      "source_snapshot_sha256": "d4021d8b69d24b94f69a851e2d0fc5abaa9a9d65547e15c2649df8da74de79b7",
+      "evidence_zip_sha256": "f08b8a856b1785fb1d3b283c67259b20360bf2d769fac7917b2046b163185dd7"
+    },
+    {
+      "manifest_sha256": "a2483c50e8dd232542d40859bf754e5f87ddc43db5fb272914e9de0373fc8297",
+      "source_snapshot_sha256": "b53cb474e0f8d61257c6f22d5d5f94aec1ffa1fa4b6527918aff411030659fb2",
+      "evidence_zip_sha256": "18fe3b1ed92246dd70e1d30f166f00a972f400466a9e972345b838433500c8f0"
+    }
+  ],
+  "methods": {
+    "bad-first": [
+      {
+        "request": {
+          "id": 42,
+          "jsonrpc": "2.0",
+          "method": "tool.invoke",
+          "params": {
+            "arguments": {
+              "text": 42
+            },
+            "checkpoint": 0,
+            "engine_call_id": "0",
+            "feed_index": 0,
+            "handle": "ea712db8-10f6-41c0-8cff-126488b5c2b1",
+            "name": "send",
+            "ordinal": 0,
+            "snapshot": "daca6ef88f8080c93754720e8df6d9511e9342a11f7cef47d20db75d1c9e78a8"
+          }
+        },
+        "reply": {
+          "error": {
+            "code": -32003,
+            "message": "method, grant or original scope denied"
+          },
+          "id": 42,
+          "jsonrpc": "2.0"
+        }
+      }
+    ],
+    "positive-control": [
+      {
+        "request": {
+          "id": 42,
+          "jsonrpc": "2.0",
+          "method": "tool.invoke",
+          "params": {
+            "arguments": {
+              "text": "before original refusal"
+            },
+            "checkpoint": 0,
+            "engine_call_id": "0",
+            "feed_index": 0,
+            "handle": "b971d165-e3d4-420d-af9f-2e039c551cd6",
+            "name": "send",
+            "ordinal": 0,
+            "snapshot": "b09b925d5c093d85248c68e99978796410347fe58534f755ca4ac9f2d514b156"
+          }
+        },
+        "reply": {
+          "id": 42,
+          "jsonrpc": "2.0",
+          "result": {
+            "can_feed": true,
+            "checkpoint": 1,
+            "closed": false,
+            "engine_call_id": "0",
+            "execution": "3f7478ef-8158-41b6-8f92-1dbe8334ff0a",
+            "fed": false,
+            "fed_snapshot": null,
+            "feed_index": 0,
+            "handle": "b971d165-e3d4-420d-af9f-2e039c551cd6",
+            "intent_checkpoint": 0,
+            "operation": "5cd7e591-5ef7-494d-8faa-1e61ec747e0a",
+            "ordinal": 0,
+            "receipt": {
+              "id": "5cd7e591-5ef7-494d-8faa-1e61ec747e0a",
+              "namespace": "3f7478ef-8158-41b6-8f92-1dbe8334ff0a",
+              "ordinal": 0,
+              "parent": "5206b811-6f13-4259-b276-77588090a27e",
+              "result": {
+                "accepted": "5cd7e591-5ef7-494d-8faa-1e61ec747e0a",
+                "sequence": 1
+              },
+              "state": "confirmed"
+            },
+            "snapshot": "b09b925d5c093d85248c68e99978796410347fe58534f755ca4ac9f2d514b156",
+            "state": "confirmed"
+          }
+        }
+      },
+      {
+        "request": {
+          "id": 44,
+          "jsonrpc": "2.0",
+          "method": "tool.resume",
+          "params": {
+            "ack": {
+              "checkpoint": 1,
+              "feed_index": 0,
+              "snapshot": "259a9c93141fbdaebce72b09c4aaa355a44a4fc5035e0d18e171aaaf04344ffe"
+            },
+            "engine_call_id": "0",
+            "feed_index": 0,
+            "handle": "b971d165-e3d4-420d-af9f-2e039c551cd6",
+            "ordinal": 0
+          }
+        },
+        "reply": {
+          "id": 44,
+          "jsonrpc": "2.0",
+          "result": {
+            "can_feed": false,
+            "checkpoint": 2,
+            "closed": false,
+            "engine_call_id": "0",
+            "execution": "3f7478ef-8158-41b6-8f92-1dbe8334ff0a",
+            "fed": true,
+            "fed_snapshot": "259a9c93141fbdaebce72b09c4aaa355a44a4fc5035e0d18e171aaaf04344ffe",
+            "feed_index": 0,
+            "handle": "b971d165-e3d4-420d-af9f-2e039c551cd6",
+            "intent_checkpoint": 0,
+            "operation": "5cd7e591-5ef7-494d-8faa-1e61ec747e0a",
+            "ordinal": 0,
+            "receipt": {
+              "id": "5cd7e591-5ef7-494d-8faa-1e61ec747e0a",
+              "namespace": "3f7478ef-8158-41b6-8f92-1dbe8334ff0a",
+              "ordinal": 0,
+              "parent": "5206b811-6f13-4259-b276-77588090a27e",
+              "result": {
+                "accepted": "5cd7e591-5ef7-494d-8faa-1e61ec747e0a",
+                "sequence": 1
+              },
+              "state": "confirmed"
+            },
+            "snapshot": "b09b925d5c093d85248c68e99978796410347fe58534f755ca4ac9f2d514b156",
+            "state": "confirmed"
+          }
+        }
+      },
+      {
+        "request": {
+          "id": 46,
+          "jsonrpc": "2.0",
+          "method": "tool.invoke",
+          "params": {
+            "arguments": {
+              "text": 42
+            },
+            "checkpoint": 2,
+            "engine_call_id": "1",
+            "feed_index": 0,
+            "handle": "b971d165-e3d4-420d-af9f-2e039c551cd6",
+            "name": "send",
+            "ordinal": 1,
+            "snapshot": "259a9c93141fbdaebce72b09c4aaa355a44a4fc5035e0d18e171aaaf04344ffe"
+          }
+        },
+        "reply": {
+          "error": {
+            "code": -32003,
+            "message": "method, grant or original scope denied"
+          },
+          "id": 46,
+          "jsonrpc": "2.0"
+        }
+      }
+    ]
+  },
+  "limits": [
+    "generic RPC error does not classify admission or failed child identity",
+    "no public root reserve ledger or budget claim",
+    "no authorization-revocation parity claim",
+    "no full H14, Work/run future, frozen-alias or publication acceptance"
+  ]
+}

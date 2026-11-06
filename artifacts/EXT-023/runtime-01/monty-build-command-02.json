@@ -1,0 +1,5 @@
+{
+  "exit_code": 101,
+  "stdout": "",
+  "stderr": "wsl: Failed to start the systemd user session for 'root'. See journalctl for more details.\nWARNING: IPv4 forwarding is disabled\n"
+}

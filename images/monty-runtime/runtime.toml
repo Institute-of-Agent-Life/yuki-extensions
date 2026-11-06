@@ -1,0 +1,11 @@
+name = "yuki-monty-runtime"
+version = "0.1.0-alpha.1"
+license = "AGPL-3.0-only"
+platform = "linux/amd64"
+release_tag_prefix = "monty-runtime/v"
+source_commit = "329ca7c487414d2f54ddd98ff4727446ed2446cd"
+monty_commit = "3f9d6ef413fb951e5b80113b7088d535bd028fcb"
+rust = "1.96.0"
+python_abi = "3.12"
+build_release_lto = false
+build_release_codegen_units = 16

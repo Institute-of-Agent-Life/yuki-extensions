@@ -1,0 +1,116 @@
+{
+  "status": "DIAGNOSTIC_OBSERVED",
+  "source": "0ef956a9c6d90fae79c0d4488296c064ccf29f54",
+  "host": {
+    "archive": "yuki-media-preview-0ef956a9c6d9-windows-x86_64.zip",
+    "sha256": "a81c49a722b9e1e420d5084856f7a13aed116865f7ca0a4c1304ac10881c62f3",
+    "binary_sha256": "4dd7a9fc345664f85d59b9c83d17e03b9dc452bbc2fb7bb01eba7d73c47b6cc0",
+    "validation_manifest_sha256": "d7341e1fc982a2ec192d6bcea225b45641e8d8b387eaa73785c982ebd7f32730"
+  },
+  "plugin": "a07413f4b0b351eea85bb97b52f2e16d7fd59978f45414f948c4e9fd821b79e5",
+  "sdk": "25694e880798108129a1fa8e49e6fff7464ebc9075e5042cc379a6709343e29b",
+  "phases": [
+    {
+      "case": "ingress-only",
+      "installation": {
+        "id": "telegram",
+        "namespace": "tg.bot101",
+        "program": "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "args": [
+          "D:\\yuki-extension-tests\\telegram-media-platform-01\\src\\tests\\peers\\observe_stdio.py",
+          "D:\\yuki-extension-tests\\telegram-media-platform-01\\evidence\\packages\\yuki-telegram.exe",
+          "D:\\yuki-extension-tests\\telegram-media-host-host-02\\evidence\\ingress-only.jsonl"
+        ],
+        "platform": "telegram",
+        "bot_stage": "2139fe66-c12d-4b91-8e57-ab117de2fc8f",
+        "grants": [
+          "gateway.inbound"
+        ],
+        "env": [
+          "YUKI_TELEGRAM_BOT_ID",
+          "YUKI_TELEGRAM_TOKEN",
+          "YUKI_TELEGRAM_STATE",
+          "YUKI_TELEGRAM_API"
+        ]
+      },
+      "wire_frames": 4,
+      "inbound": {
+        "id": 50,
+        "jsonrpc": "2.0",
+        "method": "gateway.inbound",
+        "params": {
+          "accept": false,
+          "kind": "edit",
+          "native_id": "8:50",
+          "native_version": "50",
+          "occurred": 2000,
+          "segments": [
+            {
+              "kind": "file",
+              "reference": "origin-file",
+              "type": "media"
+            }
+          ],
+          "sender": "8",
+          "source": "8:50",
+          "space": null,
+          "topic": null
+        }
+      },
+      "receipt": {
+        "id": 50,
+        "jsonrpc": "2.0",
+        "result": {
+          "accepted": false,
+          "event": 1
+        }
+      },
+      "exit_before_shutdown": null
+    },
+    {
+      "case": "documented-grants",
+      "installation": {
+        "id": "telegram",
+        "namespace": "tg.bot101",
+        "program": "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "args": [
+          "D:\\yuki-extension-tests\\telegram-media-platform-01\\src\\tests\\peers\\observe_stdio.py",
+          "D:\\yuki-extension-tests\\telegram-media-platform-01\\evidence\\packages\\yuki-telegram.exe",
+          "D:\\yuki-extension-tests\\telegram-media-host-host-02\\evidence\\documented-grants.jsonl"
+        ],
+        "platform": "telegram",
+        "bot_stage": "2139fe66-c12d-4b91-8e57-ab117de2fc8f",
+        "grants": [
+          "gateway.inbound",
+          "gateway.media"
+        ],
+        "env": [
+          "YUKI_TELEGRAM_BOT_ID",
+          "YUKI_TELEGRAM_TOKEN",
+          "YUKI_TELEGRAM_STATE",
+          "YUKI_TELEGRAM_API"
+        ]
+      },
+      "wire_frames": 0,
+      "inbound": null,
+      "receipt": null,
+      "exit_before_shutdown": 1
+    }
+  ],
+  "native_requests": [
+    {
+      "method": "getMe",
+      "phase": "ingress-only"
+    },
+    {
+      "method": "getUpdates",
+      "phase": "ingress-only"
+    },
+    {
+      "method": "getUpdates",
+      "phase": "ingress-only"
+    }
+  ],
+  "media_callbacks": 0,
+  "model_endpoint_configured": false
+}

@@ -1,0 +1,7 @@
+{
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "wsl: Failed to start the systemd user session for 'root'. See journalctl for more details.\nWARNING: IPv4 forwarding is disabled\n",
+  "script_sha256": "040c60e140b690054d7724e705fbc78014d3c99e346bacfd6c515f3acd48a3c6",
+  "contract_sha256": "d0d3e892fc7529aa5da9004610a297eabd283fba3d7755c73da0964fbb27edc3"
+}

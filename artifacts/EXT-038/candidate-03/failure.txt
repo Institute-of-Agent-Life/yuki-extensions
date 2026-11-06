@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "C:\Users\Hilbert\yuki-extension-tests\65900e73251120ced6b2\src\ci\check.py", line 37, in main
+    report_name, report = runner(root, args.out.resolve())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hilbert\yuki-extension-tests\65900e73251120ced6b2\src\tests\cases\EXT-038.py", line 155, in prepare
+    failed_reload = pending_reload.result(timeout=20)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hilbert\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\_base.py", line 458, in result
+    raise TimeoutError()
+TimeoutError

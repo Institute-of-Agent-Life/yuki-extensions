@@ -1,0 +1,21 @@
+{
+  "task": "EXT-011",
+  "status": "FAIL",
+  "phase": "preparation",
+  "card_status": "FAIL",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "16fbeb425eddc8013dacfcee38736290a4953a674e4a4d737a834215f3629f5c",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-011",
+    "--preparation",
+    "--out",
+    "D:\\yuki-extension-tests\\connector-auth-candidate-01\\evidence"
+  ],
+  "files": {
+    "failure.txt": "3034c46ee4eaddbd872d7e06c44d0319e6c8ff43577b203fad3c1fdb39786b7c"
+  }
+}

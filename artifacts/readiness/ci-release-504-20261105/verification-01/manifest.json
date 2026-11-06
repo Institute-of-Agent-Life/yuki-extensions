@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "scope": "CI asset GET transport; no business request retries",
+  "source_snapshot_sha256": "b58e7fbff922ba3090ee9d3f7232ef2b770610df685548595f0322dc0c4face2",
+  "files": {
+    "windows-checks.json": "29342fc17e908567e9e89f81b17e7a2359be38c91e7bc69ab9cd4c9200558768"
+  }
+}

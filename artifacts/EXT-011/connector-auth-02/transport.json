@@ -1,0 +1,7 @@
+{
+  "host": "hjw",
+  "remote_directory": "C:/Users/Hilbert/yuki-extension-tests/9f11d1949c0778cf8266",
+  "source_snapshot_sha256": "9f11d1949c0778cf826696b09dc300e2b98ea5af32e4d1af78f9c0e9ce437b92",
+  "evidence_zip_sha256": "bb63ead761f3436536088e1bd23f7123121be0d7d5d349e69b86f99bf98ad44c",
+  "exit_code": 1
+}

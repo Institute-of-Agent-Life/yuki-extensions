@@ -1,0 +1,88 @@
+[
+  {
+    "args": [
+      "person",
+      "create",
+      "420c9dae-0cce-45a2-b6eb-56a17522ead0"
+    ],
+    "exit": 0,
+    "stdout": "{\"original\":\"420c9dae-0cce-45a2-b6eb-56a17522ead0\",\"root\":\"420c9dae-0cce-45a2-b6eb-56a17522ead0\"}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "account",
+      "open",
+      "qq",
+      "quality-fixture",
+      "200",
+      "1",
+      "--person",
+      "420c9dae-0cce-45a2-b6eb-56a17522ead0",
+      "--start",
+      "1"
+    ],
+    "exit": 0,
+    "stdout": "{\"account\":\"4a335544-a102-487b-b7f9-d12f583bd8a6\",\"assignment\":\"e0dd9a91-50f2-4d26-b6d2-0c738389bc5e\"}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "account",
+      "open",
+      "qq",
+      "quality-fixture",
+      "100",
+      "1",
+      "--start",
+      "1"
+    ],
+    "exit": 0,
+    "stdout": "{\"account\":\"76c89544-394e-4db5-ae7a-ec8a72fad438\",\"assignment\":\"eb534f79-bd99-420e-9dba-0f973a0770b6\"}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "entry",
+      "group",
+      "[\"qq\",\"quality-fixture\",\"702\"]"
+    ],
+    "exit": 0,
+    "stdout": "{\"entry\":\"a576a0ad-948d-4b52-a490-9e00b7d05cd8\"}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "ingress",
+      "record",
+      "{\"source\": \"quality-original\", \"account\": \"4a335544-a102-487b-b7f9-d12f583bd8a6\", \"bot_stage\": \"eb534f79-bd99-420e-9dba-0f973a0770b6\", \"reply_bot\": \"100\", \"space\": \"[\\\"qq\\\",\\\"quality-fixture\\\",\\\"702\\\"]\", \"kind\": \"message\", \"occurred\": 100, \"observed\": 100, \"segments\": [{\"type\": \"text\", \"text\": \"Original EXT-036 quality source; no invented evidence.\"}]}",
+      "--accept"
+    ],
+    "exit": 0,
+    "stdout": "{\"accepted\":true,\"event\":1}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "ingress",
+      "claim",
+      "1"
+    ],
+    "exit": 0,
+    "stdout": "{\"entry\":\"a576a0ad-948d-4b52-a490-9e00b7d05cd8\",\"envelope\":{\"account\":\"4a335544-a102-487b-b7f9-d12f583bd8a6\",\"bot_stage\":\"eb534f79-bd99-420e-9dba-0f973a0770b6\",\"kind\":\"message\",\"native_id\":null,\"observed\":100,\"occurred\":100,\"reply_bot\":\"100\",\"segments\":[{\"text\":\"Original EXT-036 quality source; no invented evidence.\",\"type\":\"text\"}],\"source\":\"quality-original\",\"space\":\"[\\\"qq\\\",\\\"quality-fixture\\\",\\\"702\\\"]\",\"topic\":null},\"execution\":\"bd62771f-78d6-4a39-87c7-8289cdf99ee2\",\"mentions\":[],\"original_actor\":\"420c9dae-0cce-45a2-b6eb-56a17522ead0\",\"source\":1}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "memory",
+      "edit",
+      "bd62771f-78d6-4a39-87c7-8289cdf99ee2",
+      "420c9dae-0cce-45a2-b6eb-56a17522ead0",
+      "quality-add",
+      "{\"action\": \"add\", \"body\": \"Original quality fixture\", \"fact_key\": \"quality-fixture\", \"subject\": {\"kind\": \"person\", \"person\": \"420c9dae-0cce-45a2-b6eb-56a17522ead0\", \"space\": null, \"visibility\": null, \"entry\": null}, \"evidence\": [{\"kind\": \"event\", \"id\": 1, \"quote\": \"Original EXT-036 quality source; no invented evidence.\"}]}"
+    ],
+    "exit": 0,
+    "stdout": "{\"fact\":\"0564ee16-a0fe-446f-8d06-5f16f4f1ec97\",\"outcome\":\"active\",\"revision\":1}\n",
+    "stderr": ""
+  }
+]

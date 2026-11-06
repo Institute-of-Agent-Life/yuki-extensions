@@ -1,0 +1,107 @@
+[
+  {
+    "args": [
+      "person",
+      "create",
+      "5d058eda-eaa9-4be5-91f7-77825919dbb0"
+    ],
+    "result": {
+      "original": "5d058eda-eaa9-4be5-91f7-77825919dbb0",
+      "root": "5d058eda-eaa9-4be5-91f7-77825919dbb0"
+    }
+  },
+  {
+    "args": [
+      "account",
+      "open",
+      "qq",
+      "code-refusal",
+      "200",
+      1,
+      "--person",
+      "5d058eda-eaa9-4be5-91f7-77825919dbb0",
+      "--start",
+      1
+    ],
+    "result": {
+      "account": "097c07b5-c3e8-4b3f-8bdb-44a2502a731b",
+      "assignment": "f23dacc8-edf2-4b20-8c1b-47bb1254a747"
+    }
+  },
+  {
+    "args": [
+      "account",
+      "open",
+      "qq",
+      "code-refusal",
+      "100",
+      1,
+      "--start",
+      1
+    ],
+    "result": {
+      "account": "73ab1226-6545-43d7-a410-dfd6086ffded",
+      "assignment": "3913b27c-6307-4cc3-8aa9-b48a0ebef593"
+    }
+  },
+  {
+    "args": [
+      "ingress",
+      "record",
+      "{\"source\": \"code-refusal-code-control\", \"account\": \"097c07b5-c3e8-4b3f-8bdb-44a2502a731b\", \"bot_stage\": \"3913b27c-6307-4cc3-8aa9-b48a0ebef593\", \"kind\": \"message\", \"reply_bot\": \"100\", \"occurred\": 100, \"observed\": 100, \"segments\": [{\"type\": \"text\", \"text\": \"compare original refusals\"}]}",
+      "--accept"
+    ],
+    "result": {
+      "accepted": true,
+      "event": 1
+    }
+  },
+  {
+    "args": [
+      "main",
+      "inspect",
+      "3f7478ef-8158-41b6-8f92-1dbe8334ff0a"
+    ],
+    "result": {
+      "activations": [
+        [
+          "main:3f7478ef-8158-41b6-8f92-1dbe8334ff0a",
+          "chat-v1:c9ff21d98b998a5446bfe390707fffaaa359d240c117664cb6ad87361b10760f"
+        ]
+      ],
+      "attempts": [
+        [
+          "3f7478ef-8158-41b6-8f92-1dbe8334ff0a:logical:0:http:0",
+          "paired",
+          null
+        ],
+        [
+          "3f7478ef-8158-41b6-8f92-1dbe8334ff0a:logical:1:http:0",
+          "paired",
+          null
+        ],
+        [
+          "3f7478ef-8158-41b6-8f92-1dbe8334ff0a:logical:2:http:0",
+          "response",
+          null
+        ]
+      ],
+      "cancelled": false,
+      "conversation": "fad16baf-94ed-4e87-b3a4-cba73350776d",
+      "diagnostic": null,
+      "execution": "3f7478ef-8158-41b6-8f92-1dbe8334ff0a",
+      "inputs": [
+        1
+      ],
+      "kind": "human",
+      "origin": "5d058eda-eaa9-4be5-91f7-77825919dbb0",
+      "result": "done",
+      "root": "3f7478ef-8158-41b6-8f92-1dbe8334ff0a",
+      "source": 1,
+      "state": "completed",
+      "tool_contract": "main-chat-v1",
+      "tool_revision": "3e93b5509d2ef86396aa34f639a9b4d5dd444c2c9ecd100210c7cddaa892f8b0",
+      "window": 1
+    }
+  }
+]

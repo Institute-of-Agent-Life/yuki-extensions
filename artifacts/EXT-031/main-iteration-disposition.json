@@ -1,0 +1,10 @@
+{
+  "formal_card_status": "BLOCKED",
+  "main-consumer-01": "README metadata differs; runtime and build sources match the frozen snapshot.",
+  "main-consumer-02": "No authorized original byte source; denied before processor.",
+  "main-consumer-03_04_05": "PDF passed. Video fixture incorrectly used file/octet-stream. This was not a PDF observer or core decoder repair.",
+  "video-consumer-06": "Native video type: two original frames reached the same Main continuation; PASS.",
+  "faults-07": "No selection, no native vision and corrupt PDF passed. Main erasure failed with SQLite 787; no successful clear receipt.",
+  "audit-08": "Whole DTO comparison incorrectly equated immutable SDK image references with the Main ready projection.",
+  "audit-09": "Retained both DTOs; verified IDs, versions, ordinals, actual pixels, five cases and the original FK blocker on Windows."
+}

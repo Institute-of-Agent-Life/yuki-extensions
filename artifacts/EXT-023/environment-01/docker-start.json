@@ -1,0 +1,5 @@
+{
+  "exit_code": 1,
+  "stdout": "capability,landlock,yama,safesetid,apparmor,ima",
+  "stderr": "wsl: Failed to start the systemd user session for 'root'. See journalctl for more details.\nJob for docker.service canceled.\n"
+}

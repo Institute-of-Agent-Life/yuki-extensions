@@ -1,0 +1,231 @@
+{
+  "updated_at": "2026-11-05T12:12:50Z",
+  "previous": "after-core034-feed-recovery.json",
+  "formal_cards": [
+    "EXT-001",
+    "EXT-002",
+    "EXT-007",
+    "EXT-008",
+    "EXT-009",
+    "EXT-010",
+    "EXT-019"
+  ],
+  "ext036": {
+    "branch": "codex/ext-036-maintenance",
+    "status": "candidate_verified_card_blocked",
+    "evidence": "artifacts/EXT-036/candidate-06",
+    "host": {
+      "source_commit": "0cdd9dffe07c18949990492fd2a9944919c455d3",
+      "handoff_commit": "69cfdfd7b0efba36c41080f5fae424401cfc1b5c",
+      "published": false,
+      "host": {
+        "archive": "yuki-maintenance-preview-0cdd9dffe07c-windows-x86_64.zip",
+        "sha256": "e2b964e87a30d5c230fbb0805a9de973cb91160b6e8b52606b363ca0fd77a152",
+        "binary_sha256": "7b8b374306f0081f0b80494cbc0cd4f0b7394c392a025da7e19f8468dcf192e7",
+        "validation_manifest_sha256": "e74b03e48ecd4c98198325ac51f367531019a192ce03e51ed3b190bff5f1f41f"
+      },
+      "sdk": {
+        "version": "1.0.0-alpha.8",
+        "sha256": "a8739c74d300f1044c94749ced333d9694920aa7c91728b19f624ff9fbaf2e63"
+      },
+      "host_schema_sha256": "4f5cdeb464c5fb275feeed766019ba159561a7335d13daec4d2d030b95cd4ec2",
+      "personal_schema_sha256": null,
+      "media_schema_sha256": null,
+      "plugin_sha256": "0f53bd9841b4c2c5ac525f56e597947afb3ef3e7b5426e69bf6e9cbedf98a560",
+      "wire_sha256": "2ce00aa5158b47222ed62d8bf24d874d2fa5a4773c481db7855f0b6800673f21"
+    },
+    "missing": [
+      "Full original SQL quality findings",
+      "Audit/reembed metadata source retention and forget contract"
+    ],
+    "implementation_commit": "fdaa47576a547daabf6cf36f339805a0c18622dd",
+    "handoff": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/46#issuecomment-6651927585"
+  },
+  "next_executable": [
+    "EXT-047 isolated-session consumer preparation"
+  ],
+  "other_maintenance": {
+    "EXT-033": "missing authorized exact vector/profile and ownership partition projection",
+    "EXT-035": "missing original SELF partition and foreground yield contract",
+    "EXT-048": "EXT-015/038 and CORE-037 personal mutation dependencies unmet",
+    "EXT-047": "CORE-051/058 candidates available; true Monitor target grant blocked by EXT-027 intake; isolated game still unverified"
+  },
+  "pull_requests": {
+    "13": {
+      "merged": "526a35382d9bb464f92adc947e1b212e0ea41c3c",
+      "receipt": "artifacts/EXT-005/ci-receipt-9db5191.json"
+    },
+    "23": {
+      "head": "ab63ec24827f163b4922a01d17837f0c86fbbe77",
+      "base": "e90035586e9b91af19a5c6162c2e565dbfe966cf",
+      "checks": {
+        "SUCCESS": 64,
+        "FAILURE": 1,
+        "QUEUED": 17
+      },
+      "merge_state": "UNKNOWN"
+    },
+    "22": {
+      "head": "fdaa47576a547daabf6cf36f339805a0c18622dd",
+      "base": "e90035586e9b91af19a5c6162c2e565dbfe966cf",
+      "checks": {
+        "SUCCESS": 74,
+        "QUEUED": 8
+      },
+      "merge_state": "UNKNOWN"
+    },
+    "21": {
+      "head": "b8cfe0de4aa716fc4ac7b049d24cd81cc1eae8e5",
+      "base": "8d2f3c6d85e1a3a638e28014f4fa131b91f1cbdc",
+      "checks": {
+        "SUCCESS": 30,
+        "QUEUED": 12,
+        "SKIPPED": 3
+      },
+      "merge_state": "UNKNOWN"
+    },
+    "20": {
+      "head": "1e9c4b3052878d4244acc1df89b50dc16a712e21",
+      "base": "8d2f3c6d85e1a3a638e28014f4fa131b91f1cbdc",
+      "checks": {
+        "SUCCESS": 45,
+        "FAILURE": 1,
+        "QUEUED": 3
+      },
+      "merge_state": "UNKNOWN"
+    },
+    "19": {
+      "head": "5ea1d55fc99590f8b54883885948d0d813e83518",
+      "base": "8d2f3c6d85e1a3a638e28014f4fa131b91f1cbdc",
+      "checks": {
+        "SUCCESS": 49
+      },
+      "merge_state": "DIRTY"
+    },
+    "18": {
+      "head": "3c6c25e76f11d9f98fe4cc0ec1b56560999688ea",
+      "base": "969a0595db8ab70e21305b0cdff67cfd31eca649",
+      "checks": {
+        "SUCCESS": 25,
+        "QUEUED": 10,
+        "SKIPPED": 1
+      },
+      "merge_state": "UNKNOWN"
+    },
+    "17": {
+      "head": "25075e2be2a029e229bea54abf384f567b71d950",
+      "base": "969a0595db8ab70e21305b0cdff67cfd31eca649",
+      "checks": {
+        "SUCCESS": 56
+      },
+      "merge_state": "UNKNOWN"
+    },
+    "16": {
+      "head": "12b3ace901e367bde217ae2fc3745de2c7847679",
+      "base": "969a0595db8ab70e21305b0cdff67cfd31eca649",
+      "checks": {
+        "SUCCESS": 50
+      },
+      "merge_state": "UNKNOWN"
+    },
+    "15": {
+      "head": "a2285c3bc6a22da587f9d586cf26ada8ae65c821",
+      "base": "969a0595db8ab70e21305b0cdff67cfd31eca649",
+      "checks": {
+        "SUCCESS": 25,
+        "SKIPPED": 1,
+        "QUEUED": 1
+      },
+      "merge_state": "UNKNOWN"
+    },
+    "14": {
+      "head": "dfe8eb46d64ac12e68596a457fe5cc3554ce6acf",
+      "base": "526a35382d9bb464f92adc947e1b212e0ea41c3c",
+      "checks": {
+        "SUCCESS": 17,
+        "QUEUED": 6,
+        "SKIPPED": 1
+      },
+      "merge_state": "UNSTABLE"
+    }
+  },
+  "source_boundaries": "unpublished candidate; no direct database or private core module access",
+  "ext034": {
+    "status": "blocked_route_intake_verified",
+    "branch": "codex/ext-034-rebuild",
+    "evidence": "artifacts/EXT-034/source-intake-02",
+    "model_open_error": -32003,
+    "extract_preview_error": -32003,
+    "http_calls": 0,
+    "unfinished_worktree_files": [
+      "catalog/memory-maintenance.json",
+      "ci/windows.py",
+      "plugins/memory-maintenance/plugin.toml",
+      "plugins/memory-maintenance/src/main.rs",
+      "plugins/memory-maintenance/src/rebuild.rs",
+      "tests/cases/EXT-034.py",
+      "tests/peers/rebuild_stdio.py",
+      "docs/EXT-034-sequences.md"
+    ],
+    "candidate_only": true,
+    "diagnostic_commit": "69e4e5a"
+  },
+  "main": "526a35382d9bb464f92adc947e1b212e0ea41c3c",
+  "ext023_024": {
+    "status": "native_candidate_verified_cards_blocked",
+    "branch": "codex/ext-023-feed-recovery",
+    "implementation_commit": "fe7c9c0411cca43cec931c34e9338d26237ae6fa",
+    "core_source": "f74ecdd86b732d0fb34fa12f0ca9defa377db6b8",
+    "producer_handoff": "befb6668530668e6b10a9bb49abdd63b14909097",
+    "published": false,
+    "plugin_sha256": "23f888dc639f01754f4122dd606bfeebddf9e77f84757bee8db8fc318e05bb47",
+    "cases": [
+      "normal same-feed equal-argument effects",
+      "missing runtime",
+      "malformed frame cleanup",
+      "before-feed kill",
+      "after-feed two restarts",
+      "paired unknown two restarts"
+    ],
+    "evidence": [
+      "artifacts/EXT-023/candidate-03",
+      "artifacts/EXT-024/candidate-03",
+      "artifacts/EXT-024/evidence-analysis-01"
+    ],
+    "missing": [
+      "light frozen alias projection",
+      "original Work/run future waiting contract",
+      "public full H14 budget/stop and authority parity witness",
+      "formal release"
+    ]
+  },
+  "ext027": {
+    "status": "blocked_target_grant_intake_verified",
+    "branch": "codex/ext-027-subscription",
+    "source": "cb02f74ea48b85c6b6932423b93e6332b97f2871",
+    "sdk": "1.0.0-alpha.10",
+    "evidence": "artifacts/EXT-027/source-intake-01",
+    "published": false,
+    "methods": {
+      "tool.status": "three original calls dispatched",
+      "notification.grant_target": "three -32003 rejections",
+      "notification.publish": "not invoked"
+    },
+    "wip": [
+      "plugins/subscription-monitor",
+      "catalog/subscription-monitor.json",
+      "tests/cases/EXT-027.py",
+      "tests/peers/subscription_stdio.py",
+      "docs/EXT-027-sequences.md",
+      "ci/windows.py"
+    ],
+    "next": "producer-approved target grant policy/receiving bot recipe"
+  },
+  "ci_retry": {
+    "run": 41972572502,
+    "head": "1e9c4b3052878d4244acc1df89b50dc16a712e21",
+    "attempt": 2,
+    "reason": "pinned runtime HTTP 504",
+    "scope": "failed jobs only"
+  }
+}

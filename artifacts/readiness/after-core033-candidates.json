@@ -1,0 +1,86 @@
+{
+  "observed_utc": "2026-11-04T21:46:19.154716+00:00",
+  "previous": "artifacts/readiness/after-core032-039-candidates.json",
+  "previous_sha256": "3fcbb4514bef78f6ca0cb9f21af5a00890b34e637f3c5feda38a741c370c4230",
+  "core_main": "7fd10027bd520dfaa497e06e4f9d20ec869041c8",
+  "producer_prs": {
+    "CORE-032": {
+      "baseRefName": "main",
+      "headRefOid": "6c1c1db6c7b7c168e088e047fb3d8ba2a452ea73",
+      "number": 24,
+      "state": "OPEN",
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/24"
+    },
+    "CORE-039": {
+      "baseRefName": "codex/core-032-host",
+      "headRefOid": "6e80686e1ce70e0e83681435bf06a0d68dd01308",
+      "number": 28,
+      "state": "OPEN",
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/28"
+    },
+    "CORE-025": {
+      "baseRefName": "codex/core-027-extract",
+      "headRefOid": "c73f1fc5e0fb44faa6e083a13d9a45029739f891",
+      "number": 34,
+      "state": "OPEN",
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/34"
+    },
+    "CORE-033": {
+      "baseRefName": "codex/core-025-media",
+      "headRefOid": "becbdb0316aa96911370bc5f0f5f79dff71af67f",
+      "number": 36,
+      "state": "OPEN",
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/36"
+    }
+  },
+  "core_release_tags": [
+    "handshake-preview-dd694a0db605"
+  ],
+  "formal_windows_passed": [
+    "EXT-001",
+    "EXT-002",
+    "EXT-007",
+    "EXT-008",
+    "EXT-009",
+    "EXT-010",
+    "EXT-019"
+  ],
+  "new_formal_acceptances": [],
+  "new_development_candidates": {
+    "EXT-011": {
+      "branch": "codex/ext-011-local-agent",
+      "pr": 16,
+      "receipt": "artifacts/EXT-011/candidate-03/device-catalog.json",
+      "sha256": "410fd6c97aafcfe5c3a896291b7d6332e12a1bf0326c5c5d5e188101cd195434",
+      "plugin_sha256": "51a4dde84c7eb06127793c62a82fa3e7d6ee8b46c1b5d94f81db4ef49f0f2ee1",
+      "producer_commit": "994aee20ced762d4132186144e718d8946321347",
+      "published": false,
+      "unresolved": "Work-independent connector credential validation and original authenticated device identity"
+    },
+    "EXT-015": {
+      "branch": "codex/ext-015-client",
+      "pr": 17,
+      "receipt": "artifacts/EXT-015/candidate-01/original-uuid-entry.json",
+      "sha256": "a4767cdd810ab075363ee2d269232ce95f5527d4480dca2487916e7cfc8bf216",
+      "plugin_sha256": "5b890f5e8244a82738633682a1e7a49f94e3fa576602fd57c503a564aa0a2cad",
+      "producer_commit": "994aee20ced762d4132186144e718d8946321347",
+      "published": false,
+      "unresolved": "explicit entry/conversation selection, attachment/agent-target conflict semantics and Social delivery stream"
+    }
+  },
+  "core033_lock": "compat/core-033/source.lock.json",
+  "core033_lock_sha256": "5a25676ee401c2535d4efd7ec7cd3b9475e41a3d01de60c6b39c03fe760880b4",
+  "ready_uncompleted_cards": [],
+  "additional_prerequisites": {
+    "EXT-004/006": "CORE-025 still lacks publicly consumable originating gateway attachment authority and immutable versions; require EXT-003/005.",
+    "EXT-029": {
+      "core024_manifest_sha256": "771ba8afaf238a7d45e1a9debae437d04a834417764ffb9f4198000f70e50298",
+      "source_commit": "7fd10027bd520dfaa497e06e4f9d20ec869041c8",
+      "dirty": true,
+      "reason": "Native search development receipt only. No consumable tool-attempt/root-accounting contract for the plugin."
+    },
+    "EXT-012/014/070": "EXT-011 authenticated wire4 device, revocation and connection generations",
+    "EXT-016/017": "EXT-015 entry selection and original scope authority",
+    "remaining": "See previous remaining_direct_prerequisites."
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "status": "PASS",
+  "card_status": "BLOCKED",
+  "published": false,
+  "scope": "real Windows Host and isolated native Rust/Monty candidate",
+  "cases": {
+    "normal": {
+      "host_sha256": "502f190d036f55c9f4348aa832642f82aa3bc5bb1ae153ac100bffc87f68052b",
+      "plugin_sha256": "23f888dc639f01754f4122dd606bfeebddf9e77f84757bee8db8fc318e05bb47",
+      "native_inventory_before": {
+        "plugin_sha256": "23f888dc639f01754f4122dd606bfeebddf9e77f84757bee8db8fc318e05bb47",
+        "containers": [
+          "014df5c6dec1",
+          "d620452a9cef",
+          "f6870be17a2a"
+        ]
+      },
+      "native_inventory_after": {
+        "plugin_sha256": "23f888dc639f01754f4122dd606bfeebddf9e77f84757bee8db8fc318e05bb47",
+        "containers": [
+          "014df5c6dec1",
+          "d620452a9cef",
+          "f6870be17a2a"
+        ]
+      },
+      "fixture_sha256": "3c56d97b91b7a8546f36ee2130357777bd5d526816bfd349980292ca1b5a109e",
+      "transport_sha256": "1338b68a9114de0e0c47a4c60d709b0b4a8a23c359aaa909a79c08445a20bf6e",
+      "status": "PASS",
+      "candidate_only": true,
+      "mode": "normal",
+      "restarts": 0,
+      "event": {
+        "accepted": true,
+        "event": 1
+      },
+      "wire_count": 3,
+      "deliveries": [
+        {
+          "arguments": {
+            "text": "same original arguments"
+          },
+          "execution": "87035f55-54e0-444e-92f8-f0cc93c2bd28",
+          "operation": "925521b5-8372-43f7-bb38-3238fb62c1e7",
+          "tool": "send"
+        },
+        {
+          "arguments": {
+            "text": "same original arguments"
+          },
+          "execution": "87035f55-54e0-444e-92f8-f0cc93c2bd28",
+          "operation": "722aa67e-531e-4140-9028-0fae0246fbad",
+          "tool": "send"
+        }
+      ],
+      "host": {
+        "host_schema_revision": 2,
+        "plugins": [
+          {
+            "enabled": true,
+            "generation": "042c02c2-effd-42f6-8e09-eacf4be8c087",
+            "namespace": "code_a",
+            "online": true,
+            "plugin": "code_a",
+            "revision": "fe16e18e0af3d5032954fadc9e64a9b1adf37127ae43854a5a0adb9d639e294c"
+          }
+        ]
+      }
+    },
+    "missing-runtime": {
+      "host_sha256": "502f190d036f55c9f4348aa832642f82aa3bc5bb1ae153ac100bffc87f68052b",
+      "plugin_sha256": "23f888dc639f01754f4122dd606bfeebddf9e77f84757bee8db8fc318e05bb47",
+      "native_inventory_before": {
+        "plugin_sha256": "23f888dc639f01754f4122dd606bfeebddf9e77f84757bee8db8fc318e05bb47",
+        "containers": [
+          "014df5c6dec1",
+          "d620452a9cef",
+          "f6870be17a2a"
+        ]
+      },
+      "native_inventory_after": {
+        "plugin_sha256": "23f888dc639f01754f4122dd606bfeebddf9e77f84757bee8db8fc318e05bb47",
+        "containers": [
+          "014df5c6dec1",
+          "d620452a9cef",
+          "f6870be17a2a"
+        ]
+      },
+      "fixture_sha256": "3c56d97b91b7a8546f36ee2130357777bd5d526816bfd349980292ca1b5a109e",
+      "transport_sha256": "1338b68a9114de0e0c47a4c60d709b0b4a8a23c359aaa909a79c08445a20bf6e",
+      "status": "PASS",
+      "candidate_only": true,
+      "mode": "missing-runtime",
+      "restarts": 0,
+      "event": {
+        "accepted": true,
+        "event": 1
+      },
+      "wire_count": 3,
+      "deliveries": [],
+      "host": {
+        "host_schema_revision": 2,
+        "plugins": [
+          {
+            "enabled": true,
+            "generation": "336ed9fd-6a0e-48cc-afad-0d02830bac83",
+            "namespace": "code_a",
+            "online": true,
+            "plugin": "code_a",
+            "revision": "fe16e18e0af3d5032954fadc9e64a9b1adf37127ae43854a5a0adb9d639e294c"
+          }
+        ]
+      }
+    },
+    "malformed-frame": {
+      "host_sha256": "502f190d036f55c9f4348aa832642f82aa3bc5bb1ae153ac100bffc87f68052b",
+      "plugin_sha256": "23f888dc639f01754f4122dd606bfeebddf9e77f84757bee8db8fc318e05bb47",
+      "native_inventory_before": {
+        "plugin_sha256": "23f888dc639f01754f4122dd606bfeebddf9e77f84757bee8db8fc318e05bb47",
+        "containers": [
+          "014df5c6dec1",
+          "d620452a9cef",
+          "f6870be17a2a"
+        ]
+      },
+      "native_inventory_after": {
+        "plugin_sha256": "23f888dc639f01754f4122dd606bfeebddf9e77f84757bee8db8fc318e05bb47",
+        "containers": [
+          "014df5c6dec1",
+          "d620452a9cef",
+          "f6870be17a2a"
+        ]
+      },
+      "fixture_sha256": "3c56d97b91b7a8546f36ee2130357777bd5d526816bfd349980292ca1b5a109e",
+      "transport_sha256": "1338b68a9114de0e0c47a4c60d709b0b4a8a23c359aaa909a79c08445a20bf6e",
+      "status": "PASS",
+      "candidate_only": true,
+      "mode": "malformed-frame",
+      "restarts": 0,
+      "event": {
+        "accepted": true,
+        "event": 1
+      },
+      "wire_count": 3,
+      "deliveries": [],
+      "host": {
+        "host_schema_revision": 2,
+        "plugins": [
+          {
+            "enabled": true,
+            "generation": "1ef4da51-7405-4a97-b923-faf0781f4c0e",
+            "namespace": "code_a",
+            "online": false,
+            "plugin": "code_a",
+            "revision": "fe16e18e0af3d5032954fadc9e64a9b1adf37127ae43854a5a0adb9d639e294c"
+          }
+        ]
+      }
+    }
+  },
+  "remaining": [
+    "published compatible producer/runtime tuple",
+    "full EXT-024 acceptance"
+  ]
+}

@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "D:\yuki-extension-tests\client-selected-selected-04\src\ci\check.py", line 37, in main
+    report_name, report = runner(root, args.out.resolve())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\client-selected-selected-04\src\tests\cases\EXT-015.py", line 8, in prepare
+    return exercise(root, output)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\client-selected-selected-04\src\tests\peers\client_selected.py", line 168, in exercise
+    view = call('GET', '/client/v1/me', 200, token=phone['token'], headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\client-selected-selected-04\src\tests\peers\client_selected.py", line 70, in call
+    assert status in (expected if isinstance(expected, tuple) else (expected,)), (record, expected)
+AssertionError: ({'method': 'GET', 'path': '/client/v1/me', 'headers': {'X-Yuki-Entry': 'd21e8724-94cb-43df-b878-94cc4883abc2', 'X-Yuki-Conversation': 'c3056b21-44d6-4fa0-b8f9-8cdbce6bfe12'}, 'status': 404, 'body': None, 'response': {'problem': {'code': 'not_found', 'message': 'not_found'}}}, 200)

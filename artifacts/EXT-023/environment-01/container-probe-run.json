@@ -1,0 +1,5 @@
+{
+  "exit_code": 127,
+  "stdout": "yuki-bot-codemode (enforce)\nyuki-bot-codemode//launcher (enforce)\nyuki-bot-codemode//launcher//worker (enforce)\nLoaded image ID: sha256:1148dbb014615300fa7e713b2f94f550c0d1c69780c0805f84f093ceee34dd0b\n",
+  "stderr": "wsl: Failed to start the systemd user session for 'root'. See journalctl for more details.\nWARNING: IPv4 forwarding is disabled\ndocker: Error response from daemon: failed to create temp dir: stat /run/user/0: no such file or directory\n\nRun 'docker run --help' for more information\n"
+}

@@ -1,0 +1,41 @@
+{
+  "task": "EXT-031",
+  "status": "FAIL",
+  "phase": "preparation",
+  "card_status": "FAIL",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "c7449cf6d7f292629cb4d0da21ed456f03178aa879acf9eca8173533ddcfc4fc",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-031",
+    "--preparation",
+    "--out",
+    "D:\\yuki-extension-tests\\media-main-main-consumer-05\\evidence"
+  ],
+  "files": {
+    "consumer.lock.json": "9839b9f1114ec4067c51ea70acc4a0f37bd8379d406273d64e9125b8e18246f2",
+    "failure.txt": "2edda7e00f913a51d35a2d5b8f3947023a4be52d56e27e141eb76623ad549f39",
+    "pdf/gateway-transfer/good.pdf": "753e25b038830e03768f05449dab4b8f05ef0534927abb9282eab60f4c5ecf42",
+    "pdf/gateway-transfer/unselected.pdf": "50370931a0b76d5de10746daf717053d7fb76c3f4f726c0052cc6140d0a88683",
+    "pdf/gateway-transfer/video.mp4": "c07d7e011bc253f0e6ad6d8a958093abf6bb04fe0afee7f14536e6091a0fd1b9",
+    "pdf/host-config.json": "79e57f8ddb2c84e5770355aa04172c9b54f6ac0691af8676c789639581d0006d",
+    "pdf/host.txt": "d83f1cb1bb98745d4fefcb78119ff3584c6e36c17e61b7c568cf1a42654efa9b",
+    "pdf/model-http.json": "d10918d30e4b332c8ffa9f68e9d911fab750375c1e176302edfa190b12cc4f76",
+    "pdf/model-responses.json": "d3026558a1b171cd6389a25b7e5bd488f4f13e881e29cf292f8257180d812961",
+    "pdf/operator.json": "120dd20345a7fdc92e7ba19de1a6c6a73b42746b540936adca238a6e850fe039",
+    "pdf/result.json": "506de201f4b7a4d610a6a853dcb3e510ba754c6559465369b3318130fc27e979",
+    "pdf/wire.jsonl": "6d0e0b52f33f340db5ee1834c83ae432aff1f80d32df7094c32564cc729115ad",
+    "video/gateway-transfer/good.pdf": "753e25b038830e03768f05449dab4b8f05ef0534927abb9282eab60f4c5ecf42",
+    "video/gateway-transfer/unselected.pdf": "50370931a0b76d5de10746daf717053d7fb76c3f4f726c0052cc6140d0a88683",
+    "video/gateway-transfer/video.mp4": "c07d7e011bc253f0e6ad6d8a958093abf6bb04fe0afee7f14536e6091a0fd1b9",
+    "video/host-config.json": "c10ea01f55db44d8b102fc5f26643edf0b72005aeb09c515bd7ce22107e4de89",
+    "video/host.txt": "c9f14cbaffd4515992b679179ed76bf4ac15f665c58d1d1693b3ce0f1851054f",
+    "video/model-http.json": "2073dcf404fbb4be11faf91ed5a11b79ee110b5074115bfbe425a1925c3d524d",
+    "video/model-responses.json": "d3026558a1b171cd6389a25b7e5bd488f4f13e881e29cf292f8257180d812961",
+    "video/operator.json": "dcb6248a4357cadf8be892e1b24284fefe7781e5bb6b593156bfe0a683c2202f",
+    "video/wire.jsonl": "dfd6762cd8b5974d3dbe3c9457a81b1df7fda265731bf0de688c0d46582b1c58"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "task": "EXT-024",
+  "status": "PASS",
+  "formal_card_status": "BLOCKED",
+  "phase": "source-contract-validation",
+  "source_snapshot_sha256": "13c9a2e02cee49b14055511dfc9668b60cd63383b7ca9a88225571ee89a1dcfc",
+  "files": {
+    "command.json": "37836143ee0e409a1a2c6c9afb6782c943087d53cbd345efcfc2afd6a6dbeb8f",
+    "validation.json": "fd3a8d1ccceaf0eb1af7863175a01c90d531aec439629dc9e5e664220e315417"
+  }
+}

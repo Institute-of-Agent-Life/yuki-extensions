@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "C:\Users\Hilbert\yuki-extension-tests\9f11d1949c0778cf8266\src\ci\check.py", line 37, in main
+    report_name, report = runner(root, args.out.resolve())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hilbert\yuki-extension-tests\9f11d1949c0778cf8266\src\tests\cases\EXT-011.py", line 108, in prepare
+    with owner.running():
+  File "C:\Users\Hilbert\AppData\Local\Programs\Python\Python312\Lib\contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "C:\Users\Hilbert\yuki-extension-tests\9f11d1949c0778cf8266\src\ci\personal_preview.py", line 159, in running
+    raise RuntimeError("candidate exited before handshake")
+RuntimeError: candidate exited before handshake

@@ -1,0 +1,1639 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 3.53kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/rust@sha256:811d6caab4a84e6148c8722128993c1caf152156868b2b66f3a26af189b0dad8
+#2 ...
+
+#3 [auth] library/python:pull token for registry-1.docker.io
+#3 DONE 0.0s
+
+#4 [auth] library/rust:pull token for registry-1.docker.io
+#4 DONE 0.0s
+
+#5 [internal] load metadata for ghcr.io/astral-sh/uv@sha256:812f4717f0002c1c5400653454de9a29b7cbe93bdfe19451376d6aaac522a9bf
+#5 DONE 0.7s
+
+#6 [internal] load metadata for docker.io/library/python@sha256:1148dbb014615300fa7e713b2f94f550c0d1c69780c0805f84f093ceee34dd0b
+#6 DONE 0.7s
+
+#2 [internal] load metadata for docker.io/library/rust@sha256:811d6caab4a84e6148c8722128993c1caf152156868b2b66f3a26af189b0dad8
+#2 DONE 0.7s
+
+#7 [internal] load .dockerignore
+#7 transferring context: 78B done
+#7 DONE 0.0s
+
+#8 [monty  1/14] FROM docker.io/library/python@sha256:1148dbb014615300fa7e713b2f94f550c0d1c69780c0805f84f093ceee34dd0b
+#8 resolve docker.io/library/python@sha256:1148dbb014615300fa7e713b2f94f550c0d1c69780c0805f84f093ceee34dd0b done
+#8 ...
+
+#9 [internal] load build context
+#9 transferring context: 4.06MB 0.0s done
+#9 DONE 0.0s
+
+#8 [monty  1/14] FROM docker.io/library/python@sha256:1148dbb014615300fa7e713b2f94f550c0d1c69780c0805f84f093ceee34dd0b
+#8 sha256:1148dbb014615300fa7e713b2f94f550c0d1c69780c0805f84f093ceee34dd0b 1.75kB / 1.75kB done
+#8 sha256:ae4e8b7c575fabea88a029b6cae757f342ca2525e07f7c22272d5105c346b35e 5.66kB / 5.66kB done
+#8 sha256:6fc242d221a673263eabd14a9ad9584d3177c96e5cb504c891497338e2f912f5 29.86MB / 29.86MB 0.2s
+#8 sha256:3eb77115150676568f88e2957181b8f7e3014e797f1ce8cd640086dfbed45e35 1.29MB / 1.29MB 0.2s
+#8 sha256:f574edac59d9f092df596f54e5b52656c803fd3ae30825b8ee5a189ed05f63d3 6.29MB / 12.12MB 0.2s
+#8 sha256:f574edac59d9f092df596f54e5b52656c803fd3ae30825b8ee5a189ed05f63d3 12.12MB / 12.12MB 0.3s
+#8 sha256:6fc242d221a673263eabd14a9ad9584d3177c96e5cb504c891497338e2f912f5 29.86MB / 29.86MB 0.4s done
+#8 sha256:3eb77115150676568f88e2957181b8f7e3014e797f1ce8cd640086dfbed45e35 1.29MB / 1.29MB 0.4s done
+#8 sha256:f574edac59d9f092df596f54e5b52656c803fd3ae30825b8ee5a189ed05f63d3 12.12MB / 12.12MB 0.4s done
+#8 extracting sha256:6fc242d221a673263eabd14a9ad9584d3177c96e5cb504c891497338e2f912f5 0.1s
+#8 sha256:acca7542dfc736e9ce20cbefc58b2d09822276d15d4a0c531531a6f1b057928e 0B / 251B 0.4s
+#8 sha256:acca7542dfc736e9ce20cbefc58b2d09822276d15d4a0c531531a6f1b057928e 251B / 251B 0.4s done
+#8 extracting sha256:6fc242d221a673263eabd14a9ad9584d3177c96e5cb504c891497338e2f912f5 1.1s done
+#8 extracting sha256:3eb77115150676568f88e2957181b8f7e3014e797f1ce8cd640086dfbed45e35
+#8 extracting sha256:3eb77115150676568f88e2957181b8f7e3014e797f1ce8cd640086dfbed45e35 0.6s done
+#8 ...
+
+#10 [uv 1/1] FROM ghcr.io/astral-sh/uv@sha256:812f4717f0002c1c5400653454de9a29b7cbe93bdfe19451376d6aaac522a9bf
+#10 resolve ghcr.io/astral-sh/uv@sha256:812f4717f0002c1c5400653454de9a29b7cbe93bdfe19451376d6aaac522a9bf done
+#10 sha256:b564d385ee29b620762c2dd57517ee6445c70ed6b2e83182c133450fa539433f 1.30kB / 1.30kB done
+#10 sha256:812f4717f0002c1c5400653454de9a29b7cbe93bdfe19451376d6aaac522a9bf 669B / 669B done
+#10 sha256:cda240020e81920e192da93d87033de34189154be1df86a33c4e22c77fba6c09 27.41MB / 27.41MB 0.8s done
+#10 extracting sha256:cda240020e81920e192da93d87033de34189154be1df86a33c4e22c77fba6c09 0.4s done
+#10 sha256:5f4890a2f45c597ad64eaa54bbb6f516fa0499788121d4e4fb738ca3579bfb41 93B / 93B 0.9s done
+#10 extracting sha256:5f4890a2f45c597ad64eaa54bbb6f516fa0499788121d4e4fb738ca3579bfb41 done
+#10 DONE 4.4s
+
+#11 [rust 1/1] FROM docker.io/library/rust@sha256:811d6caab4a84e6148c8722128993c1caf152156868b2b66f3a26af189b0dad8
+#11 resolve docker.io/library/rust@sha256:811d6caab4a84e6148c8722128993c1caf152156868b2b66f3a26af189b0dad8 done
+#11 sha256:811d6caab4a84e6148c8722128993c1caf152156868b2b66f3a26af189b0dad8 1.36kB / 1.36kB done
+#11 sha256:071fe4ea7ecf00d2d0138316f1b5f840086ad36b18071203799beab418bb0bb8 3.46kB / 3.46kB done
+#11 sha256:e95a6c7ea7d49b37920899b023ecd0e32796c976c1748491f76cae53ba86d13a 29.79MB / 29.79MB 0.8s done
+#11 sha256:c7505bdadba87cbd8ec5e818e33e479ad20c36e423bf26bad22d733eae37a455 290.63MB / 290.63MB 2.7s done
+#11 extracting sha256:e95a6c7ea7d49b37920899b023ecd0e32796c976c1748491f76cae53ba86d13a 1.5s done
+#11 extracting sha256:c7505bdadba87cbd8ec5e818e33e479ad20c36e423bf26bad22d733eae37a455 1.5s
+#11 extracting sha256:c7505bdadba87cbd8ec5e818e33e479ad20c36e423bf26bad22d733eae37a455 4.3s done
+#11 ...
+
+#8 [monty  1/14] FROM docker.io/library/python@sha256:1148dbb014615300fa7e713b2f94f550c0d1c69780c0805f84f093ceee34dd0b
+#8 extracting sha256:f574edac59d9f092df596f54e5b52656c803fd3ae30825b8ee5a189ed05f63d3 0.6s done
+#8 extracting sha256:acca7542dfc736e9ce20cbefc58b2d09822276d15d4a0c531531a6f1b057928e done
+#8 DONE 14.9s
+
+#11 [rust 1/1] FROM docker.io/library/rust@sha256:811d6caab4a84e6148c8722128993c1caf152156868b2b66f3a26af189b0dad8
+#11 DONE 14.9s
+
+#12 [monty  2/14] COPY --from=rust /usr/local/cargo /usr/local/cargo
+#12 DONE 0.1s
+
+#13 [runtime  2/17] RUN apt-get update && apt-get install -y --no-install-recommends bubblewrap     && rm -rf /var/lib/apt/lists/*     && groupadd --gid 10001 validator     && useradd --uid 10001 --gid validator --no-create-home validator
+#13 0.278 Hit:1 http://deb.debian.org/debian trixie InRelease
+#13 0.278 Get:2 http://deb.debian.org/debian trixie-updates InRelease [47.3 kB]
+#13 0.279 Get:3 http://deb.debian.org/debian-security trixie-security InRelease [43.4 kB]
+#13 0.294 Get:4 http://deb.debian.org/debian trixie/main amd64 Packages [9678 kB]
+#13 0.343 Get:5 http://deb.debian.org/debian trixie-updates/main amd64 Packages [1108 B]
+#13 0.344 Get:6 http://deb.debian.org/debian-security trixie-security/main amd64 Packages [298 kB]
+#13 0.856 Fetched 10.1 MB in 1s (16.5 MB/s)
+#13 0.856 Reading package lists...
+#13 1.198 Reading package lists...
+#13 1.560 Building dependency tree...
+#13 1.673 Reading state information...
+#13 1.779 Recommended packages:
+#13 1.779   procps
+#13 1.792 The following NEW packages will be installed:
+#13 1.793   bubblewrap
+#13 1.903 0 upgraded, 1 newly installed, 0 to remove and 3 not upgraded.
+#13 1.903 Need to get 56.9 kB of archives.
+#13 1.903 After this operation, 145 kB of additional disk space will be used.
+#13 1.903 Get:1 http://deb.debian.org/debian trixie/main amd64 bubblewrap amd64 0.12.0-1~deb13u1 [56.9 kB]
+#13 2.304 debconf: unable to initialize frontend: Dialog
+#13 2.304 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#13 2.304 debconf: falling back to frontend: Readline
+#13 2.304 debconf: unable to initialize frontend: Readline
+#13 2.304 debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC entries checked: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.40.1 /usr/local/share/perl/5.40.1 /usr/lib/x86_64-linux-gnu/perl5/5.40 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.40 /usr/share/perl/5.40 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 8, <STDIN> line 1.)
+#13 2.304 debconf: falling back to frontend: Teletype
+#13 2.308 debconf: unable to initialize frontend: Teletype
+#13 2.308 debconf: (This frontend requires a controlling tty.)
+#13 2.308 debconf: falling back to frontend: Noninteractive
+#13 2.986 Fetched 56.9 kB in 0s (437 kB/s)
+#13 3.897 Selecting previously unselected package bubblewrap.
+#13 3.897 (Reading database ... #13 ...
+
+#14 [monty  3/14] COPY --from=rust /usr/local/rustup /usr/local/rustup
+#14 DONE 3.5s
+
+#13 [runtime  2/17] RUN apt-get update && apt-get install -y --no-install-recommends bubblewrap     && rm -rf /var/lib/apt/lists/*     && groupadd --gid 10001 validator     && useradd --uid 10001 --gid validator --no-create-home validator
+#13 3.897 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 5658 files and directories currently installed.)
+#13 3.905 Preparing to unpack .../bubblewrap_0.12.0-1~deb13u1_amd64.deb ...
+#13 3.908 Unpacking bubblewrap (0.12.0-1~deb13u1) ...
+#13 3.929 Setting up bubblewrap (0.12.0-1~deb13u1) ...
+#13 ...
+
+#15 [monty  4/14] COPY --from=uv /uv /uvx /bin/
+#15 DONE 0.9s
+
+#13 [runtime  2/17] RUN apt-get update && apt-get install -y --no-install-recommends bubblewrap     && rm -rf /var/lib/apt/lists/*     && groupadd --gid 10001 validator     && useradd --uid 10001 --gid validator --no-create-home validator
+#13 DONE 4.9s
+
+#16 [monty  5/14] RUN apt-get update && apt-get install -y --no-install-recommends     ca-certificates git gcc libc6-dev && rm -rf /var/lib/apt/lists/*
+#16 0.283 Hit:1 http://deb.debian.org/debian trixie InRelease
+#16 0.284 Get:2 http://deb.debian.org/debian trixie-updates InRelease [47.3 kB]
+#16 0.285 Get:3 http://deb.debian.org/debian-security trixie-security InRelease [43.4 kB]
+#16 0.296 Get:4 http://deb.debian.org/debian trixie/main amd64 Packages [9678 kB]
+#16 0.344 Get:5 http://deb.debian.org/debian trixie-updates/main amd64 Packages [1108 B]
+#16 0.345 Get:6 http://deb.debian.org/debian-security trixie-security/main amd64 Packages [298 kB]
+#16 0.848 Fetched 10.1 MB in 1s (16.1 MB/s)
+#16 0.848 Reading package lists...
+#16 1.223 Reading package lists...
+#16 1.611 Building dependency tree...
+#16 1.719 Reading state information...
+#16 1.837 ca-certificates is already the newest version (20250419+deb13u1).
+#16 1.837 The following additional packages will be installed:
+#16 1.837   binutils binutils-common binutils-x86-64-linux-gnu cpp cpp-14
+#16 1.837   cpp-14-x86-64-linux-gnu cpp-x86-64-linux-gnu gcc-14 gcc-14-x86-64-linux-gnu
+#16 1.837   gcc-x86-64-linux-gnu git-man libasan8 libatomic1 libbinutils libbrotli1
+#16 1.837   libc-dev-bin libcc1-0 libcom-err2 libcrypt-dev libctf-nobfd0 libctf0
+#16 1.837   libcurl3t64-gnutls liberror-perl libexpat1 libgcc-14-dev libgdbm-compat4t64
+#16 1.837   libgnutls30t64 libgomp1 libgprofng0 libgssapi-krb5-2 libhwasan0 libidn2-0
+#16 1.837   libisl23 libitm1 libjansson4 libk5crypto3 libkeyutils1 libkrb5-3
+#16 1.837   libkrb5support0 libldap2 liblsan0 libmpc3 libmpfr6 libnghttp2-14
+#16 1.837   libnghttp3-9 libngtcp2-16 libngtcp2-crypto-gnutls8 libp11-kit0 libperl5.40
+#16 1.838   libpsl5t64 libquadmath0 librtmp1 libsasl2-2 libsasl2-modules-db libsframe1
+#16 1.838   libssh2-1t64 libtasn1-6 libtsan2 libubsan1 libunistring5 linux-libc-dev perl
+#16 1.838   perl-modules-5.40 rpcsvc-proto
+#16 1.839 Suggested packages:
+#16 1.839   binutils-doc gprofng-gui binutils-gold cpp-doc gcc-14-locales cpp-14-doc
+#16 1.839   gcc-multilib make manpages-dev autoconf automake libtool flex bison gdb
+#16 1.839   gcc-doc gcc-14-multilib gcc-14-doc gdb-x86-64-linux-gnu gettext-base git-doc
+#16 1.839   git-email git-gui gitk gitweb git-cvs git-mediawiki git-svn libc-devtools
+#16 1.839   glibc-doc gnutls-bin krb5-doc krb5-user sensible-utils perl-doc
+#16 1.839   libterm-readline-gnu-perl | libterm-readline-perl-perl
+#16 1.839   libtap-harness-archive-perl
+#16 1.839 Recommended packages:
+#16 1.839   patch less ssh-client manpages manpages-dev krb5-locales libldap-common
+#16 1.839   publicsuffix libsasl2-modules
+#16 2.008 The following NEW packages will be installed:
+#16 2.008   binutils binutils-common binutils-x86-64-linux-gnu cpp cpp-14
+#16 2.008   cpp-14-x86-64-linux-gnu cpp-x86-64-linux-gnu gcc gcc-14
+#16 2.008   gcc-14-x86-64-linux-gnu gcc-x86-64-linux-gnu git git-man libasan8 libatomic1
+#16 2.008   libbinutils libbrotli1 libc-dev-bin libc6-dev libcc1-0 libcom-err2
+#16 2.008   libcrypt-dev libctf-nobfd0 libctf0 libcurl3t64-gnutls liberror-perl
+#16 2.008   libexpat1 libgcc-14-dev libgdbm-compat4t64 libgnutls30t64 libgomp1
+#16 2.008   libgprofng0 libgssapi-krb5-2 libhwasan0 libidn2-0 libisl23 libitm1
+#16 2.008   libjansson4 libk5crypto3 libkeyutils1 libkrb5-3 libkrb5support0 libldap2
+#16 2.008   liblsan0 libmpc3 libmpfr6 libnghttp2-14 libnghttp3-9 libngtcp2-16
+#16 2.008   libngtcp2-crypto-gnutls8 libp11-kit0 libperl5.40 libpsl5t64 libquadmath0
+#16 2.009   librtmp1 libsasl2-2 libsasl2-modules-db libsframe1 libssh2-1t64 libtasn1-6
+#16 2.009   libtsan2 libubsan1 libunistring5 linux-libc-dev perl perl-modules-5.40
+#16 2.009   rpcsvc-proto
+#16 2.057 0 upgraded, 67 newly installed, 0 to remove and 3 not upgraded.
+#16 2.057 Need to get 80.8 MB of archives.
+#16 2.057 After this operation, 336 MB of additional disk space will be used.
+#16 2.057 Get:1 http://deb.debian.org/debian-security trixie-security/main amd64 libexpat1 amd64 2.9.0-1~deb13u1 [126 kB]
+#16 2.080 Get:2 http://deb.debian.org/debian trixie/main amd64 perl-modules-5.40 all 5.40.1-6+deb13u1 [3014 kB]
+#16 2.116 Get:3 http://deb.debian.org/debian trixie/main amd64 libgdbm-compat4t64 amd64 1.24-2 [50.3 kB]
+#16 2.117 Get:4 http://deb.debian.org/debian trixie/main amd64 libperl5.40 amd64 5.40.1-6+deb13u1 [4326 kB]
+#16 2.129 Get:5 http://deb.debian.org/debian trixie/main amd64 perl amd64 5.40.1-6+deb13u1 [268 kB]
+#16 2.129 Get:6 http://deb.debian.org/debian trixie/main amd64 libsframe1 amd64 2.44-3 [78.4 kB]
+#16 2.130 Get:7 http://deb.debian.org/debian trixie/main amd64 binutils-common amd64 2.44-3 [2509 kB]
+#16 2.136 Get:8 http://deb.debian.org/debian trixie/main amd64 libbinutils amd64 2.44-3 [534 kB]
+#16 2.137 Get:9 http://deb.debian.org/debian trixie/main amd64 libgprofng0 amd64 2.44-3 [808 kB]
+#16 2.139 Get:10 http://deb.debian.org/debian trixie/main amd64 libctf-nobfd0 amd64 2.44-3 [156 kB]
+#16 2.139 Get:11 http://deb.debian.org/debian trixie/main amd64 libctf0 amd64 2.44-3 [88.6 kB]
+#16 2.140 Get:12 http://deb.debian.org/debian trixie/main amd64 libjansson4 amd64 2.14-2+b3 [39.8 kB]
+#16 2.143 Get:13 http://deb.debian.org/debian trixie/main amd64 binutils-x86-64-linux-gnu amd64 2.44-3 [1014 kB]
+#16 2.143 Get:14 http://deb.debian.org/debian trixie/main amd64 binutils amd64 2.44-3 [265 kB]
+#16 2.147 Get:15 http://deb.debian.org/debian trixie/main amd64 libisl23 amd64 0.27-1 [659 kB]
+#16 2.151 Get:16 http://deb.debian.org/debian trixie/main amd64 libmpfr6 amd64 4.2.2-1 [729 kB]
+#16 2.156 Get:17 http://deb.debian.org/debian trixie/main amd64 libmpc3 amd64 1.3.1-1+b3 [52.2 kB]
+#16 2.157 Get:18 http://deb.debian.org/debian trixie/main amd64 cpp-14-x86-64-linux-gnu amd64 14.2.0-19 [11.0 MB]
+#16 2.191 Get:19 http://deb.debian.org/debian trixie/main amd64 cpp-14 amd64 14.2.0-19 [1280 B]
+#16 2.191 Get:20 http://deb.debian.org/debian trixie/main amd64 cpp-x86-64-linux-gnu amd64 4:14.2.0-1 [4840 B]
+#16 2.191 Get:21 http://deb.debian.org/debian trixie/main amd64 cpp amd64 4:14.2.0-1 [1568 B]
+#16 2.191 Get:22 http://deb.debian.org/debian trixie/main amd64 libcc1-0 amd64 14.2.0-19 [42.8 kB]
+#16 2.191 Get:23 http://deb.debian.org/debian trixie/main amd64 libgomp1 amd64 14.2.0-19 [137 kB]
+#16 2.192 Get:24 http://deb.debian.org/debian trixie/main amd64 libitm1 amd64 14.2.0-19 [26.0 kB]
+#16 2.192 Get:25 http://deb.debian.org/debian trixie/main amd64 libatomic1 amd64 14.2.0-19 [9308 B]
+#16 2.192 Get:26 http://deb.debian.org/debian trixie/main amd64 libasan8 amd64 14.2.0-19 [2725 kB]
+#16 2.199 Get:27 http://deb.debian.org/debian trixie/main amd64 liblsan0 amd64 14.2.0-19 [1204 kB]
+#16 2.205 Get:28 http://deb.debian.org/debian trixie/main amd64 libtsan2 amd64 14.2.0-19 [2460 kB]
+#16 2.212 Get:29 http://deb.debian.org/debian trixie/main amd64 libubsan1 amd64 14.2.0-19 [1074 kB]
+#16 2.217 Get:30 http://deb.debian.org/debian trixie/main amd64 libhwasan0 amd64 14.2.0-19 [1488 kB]
+#16 2.221 Get:31 http://deb.debian.org/debian trixie/main amd64 libquadmath0 amd64 14.2.0-19 [145 kB]
+#16 2.222 Get:32 http://deb.debian.org/debian trixie/main amd64 libgcc-14-dev amd64 14.2.0-19 [2672 kB]
+#16 2.304 Get:33 http://deb.debian.org/debian trixie/main amd64 gcc-14-x86-64-linux-gnu amd64 14.2.0-19 [21.4 MB]
+#16 2.362 Get:34 http://deb.debian.org/debian trixie/main amd64 gcc-14 amd64 14.2.0-19 [540 kB]
+#16 2.363 Get:35 http://deb.debian.org/debian trixie/main amd64 gcc-x86-64-linux-gnu amd64 4:14.2.0-1 [1436 B]
+#16 2.363 Get:36 http://deb.debian.org/debian trixie/main amd64 gcc amd64 4:14.2.0-1 [5136 B]
+#16 2.363 Get:37 http://deb.debian.org/debian-security trixie-security/main amd64 libbrotli1 amd64 1.1.0-2+deb13u1 [304 kB]
+#16 2.364 Get:38 http://deb.debian.org/debian trixie/main amd64 libunistring5 amd64 1.3-2 [477 kB]
+#16 2.365 Get:39 http://deb.debian.org/debian trixie/main amd64 libidn2-0 amd64 2.3.8-2 [109 kB]
+#16 2.366 Get:40 http://deb.debian.org/debian trixie/main amd64 libp11-kit0 amd64 0.25.5-3 [425 kB]
+#16 2.367 Get:41 http://deb.debian.org/debian trixie/main amd64 libtasn1-6 amd64 4.20.0-2+deb13u1 [50.1 kB]
+#16 2.367 Get:42 http://deb.debian.org/debian trixie/main amd64 libgnutls30t64 amd64 3.8.9-3+deb13u4 [1469 kB]
+#16 2.482 Get:43 http://deb.debian.org/debian trixie/main amd64 libkrb5support0 amd64 1.21.3-5+deb13u1 [33.1 kB]
+#16 2.482 Get:44 http://deb.debian.org/debian trixie/main amd64 libcom-err2 amd64 1.47.2-3+b12 [25.0 kB]
+#16 2.483 Get:45 http://deb.debian.org/debian trixie/main amd64 libk5crypto3 amd64 1.21.3-5+deb13u1 [81.2 kB]
+#16 2.483 Get:46 http://deb.debian.org/debian trixie/main amd64 libkeyutils1 amd64 1.6.3-6 [9456 B]
+#16 2.483 Get:47 http://deb.debian.org/debian trixie/main amd64 libkrb5-3 amd64 1.21.3-5+deb13u1 [326 kB]
+#16 2.484 Get:48 http://deb.debian.org/debian trixie/main amd64 libgssapi-krb5-2 amd64 1.21.3-5+deb13u1 [138 kB]
+#16 2.485 Get:49 http://deb.debian.org/debian trixie/main amd64 libsasl2-modules-db amd64 2.1.28+dfsg1-9 [19.8 kB]
+#16 2.485 Get:50 http://deb.debian.org/debian trixie/main amd64 libsasl2-2 amd64 2.1.28+dfsg1-9 [57.5 kB]
+#16 2.485 Get:51 http://deb.debian.org/debian trixie/main amd64 libldap2 amd64 2.6.10+dfsg-1 [194 kB]
+#16 2.491 Get:52 http://deb.debian.org/debian trixie/main amd64 libnghttp2-14 amd64 1.64.0-1.1+deb13u1 [76.2 kB]
+#16 2.500 Get:53 http://deb.debian.org/debian trixie/main amd64 libnghttp3-9 amd64 1.8.0-1 [67.7 kB]
+#16 2.501 Get:54 http://deb.debian.org/debian trixie/main amd64 libngtcp2-16 amd64 1.11.0-1+deb13u1 [132 kB]
+#16 2.501 Get:55 http://deb.debian.org/debian trixie/main amd64 libngtcp2-crypto-gnutls8 amd64 1.11.0-1+deb13u1 [29.5 kB]
+#16 2.502 Get:56 http://deb.debian.org/debian trixie/main amd64 libpsl5t64 amd64 0.21.2-1.1+b1 [57.2 kB]
+#16 2.502 Get:57 http://deb.debian.org/debian trixie/main amd64 librtmp1 amd64 2.4+20151223.gitfa8646d.1-2+b5 [58.8 kB]
+#16 2.503 Get:58 http://deb.debian.org/debian trixie/main amd64 libssh2-1t64 amd64 1.11.1-1+deb13u2 [245 kB]
+#16 2.504 Get:59 http://deb.debian.org/debian-security trixie-security/main amd64 libcurl3t64-gnutls amd64 8.14.1-2+deb13u7 [385 kB]
+#16 2.506 Get:60 http://deb.debian.org/debian trixie/main amd64 liberror-perl all 0.17030-1 [26.9 kB]
+#16 2.506 Get:61 http://deb.debian.org/debian trixie/main amd64 git-man all 1:2.47.3-0+deb13u1 [2205 kB]
+#16 2.515 Get:62 http://deb.debian.org/debian trixie/main amd64 git amd64 1:2.47.3-0+deb13u1 [8862 kB]
+#16 2.544 Get:63 http://deb.debian.org/debian trixie/main amd64 libc-dev-bin amd64 2.41-12+deb13u4 [60.0 kB]
+#16 2.544 Get:64 http://deb.debian.org/debian-security trixie-security/main amd64 linux-libc-dev all 6.12.115-2 [3050 kB]
+#16 2.548 Get:65 http://deb.debian.org/debian trixie/main amd64 libcrypt-dev amd64 1:4.4.38-1 [119 kB]
+#16 2.549 Get:66 http://deb.debian.org/debian trixie/main amd64 rpcsvc-proto amd64 1.4.3-1 [63.3 kB]
+#16 2.549 Get:67 http://deb.debian.org/debian trixie/main amd64 libc6-dev amd64 2.41-12+deb13u4 [1995 kB]
+#16 2.649 debconf: unable to initialize frontend: Dialog
+#16 2.649 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#16 2.649 debconf: falling back to frontend: Readline
+#16 2.649 debconf: unable to initialize frontend: Readline
+#16 2.649 debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC entries checked: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.40.1 /usr/local/share/perl/5.40.1 /usr/lib/x86_64-linux-gnu/perl5/5.40 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.40 /usr/share/perl/5.40 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 8, <STDIN> line 67.)
+#16 2.649 debconf: falling back to frontend: Teletype
+#16 2.653 debconf: unable to initialize frontend: Teletype
+#16 2.653 debconf: (This frontend requires a controlling tty.)
+#16 2.653 debconf: falling back to frontend: Noninteractive
+#16 3.746 Fetched 80.8 MB in 1s (151 MB/s)
+#16 3.758 Selecting previously unselected package libexpat1:amd64.
+#16 3.758 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 5658 files and directories currently installed.)
+#16 3.763 Preparing to unpack .../00-libexpat1_2.9.0-1~deb13u1_amd64.deb ...
+#16 3.765 Unpacking libexpat1:amd64 (2.9.0-1~deb13u1) ...
+#16 3.780 Selecting previously unselected package perl-modules-5.40.
+#16 3.780 Preparing to unpack .../01-perl-modules-5.40_5.40.1-6+deb13u1_all.deb ...
+#16 3.781 Unpacking perl-modules-5.40 (5.40.1-6+deb13u1) ...
+#16 3.960 Selecting previously unselected package libgdbm-compat4t64:amd64.
+#16 3.961 Preparing to unpack .../02-libgdbm-compat4t64_1.24-2_amd64.deb ...
+#16 3.962 Unpacking libgdbm-compat4t64:amd64 (1.24-2) ...
+#16 3.974 Selecting previously unselected package libperl5.40:amd64.
+#16 3.975 Preparing to unpack .../03-libperl5.40_5.40.1-6+deb13u1_amd64.deb ...
+#16 3.976 Unpacking libperl5.40:amd64 (5.40.1-6+deb13u1) ...
+#16 4.150 Selecting previously unselected package perl.
+#16 4.152 Preparing to unpack .../04-perl_5.40.1-6+deb13u1_amd64.deb ...
+#16 4.152 Unpacking perl (5.40.1-6+deb13u1) ...
+#16 4.173 Selecting previously unselected package libsframe1:amd64.
+#16 4.174 Preparing to unpack .../05-libsframe1_2.44-3_amd64.deb ...
+#16 4.175 Unpacking libsframe1:amd64 (2.44-3) ...
+#16 4.187 Selecting previously unselected package binutils-common:amd64.
+#16 4.188 Preparing to unpack .../06-binutils-common_2.44-3_amd64.deb ...
+#16 4.189 Unpacking binutils-common:amd64 (2.44-3) ...
+#16 4.297 Selecting previously unselected package libbinutils:amd64.
+#16 4.298 Preparing to unpack .../07-libbinutils_2.44-3_amd64.deb ...
+#16 4.299 Unpacking libbinutils:amd64 (2.44-3) ...
+#16 4.331 Selecting previously unselected package libgprofng0:amd64.
+#16 4.332 Preparing to unpack .../08-libgprofng0_2.44-3_amd64.deb ...
+#16 4.333 Unpacking libgprofng0:amd64 (2.44-3) ...
+#16 4.394 Selecting previously unselected package libctf-nobfd0:amd64.
+#16 4.396 Preparing to unpack .../09-libctf-nobfd0_2.44-3_amd64.deb ...
+#16 4.396 Unpacking libctf-nobfd0:amd64 (2.44-3) ...
+#16 4.413 Selecting previously unselected package libctf0:amd64.
+#16 4.414 Preparing to unpack .../10-libctf0_2.44-3_amd64.deb ...
+#16 4.415 Unpacking libctf0:amd64 (2.44-3) ...
+#16 4.430 Selecting previously unselected package libjansson4:amd64.
+#16 4.431 Preparing to unpack .../11-libjansson4_2.14-2+b3_amd64.deb ...
+#16 4.432 Unpacking libjansson4:amd64 (2.14-2+b3) ...
+#16 4.444 Selecting previously unselected package binutils-x86-64-linux-gnu.
+#16 4.445 Preparing to unpack .../12-binutils-x86-64-linux-gnu_2.44-3_amd64.deb ...
+#16 4.446 Unpacking binutils-x86-64-linux-gnu (2.44-3) ...
+#16 4.508 Selecting previously unselected package binutils.
+#16 4.509 Preparing to unpack .../13-binutils_2.44-3_amd64.deb ...
+#16 4.511 Unpacking binutils (2.44-3) ...
+#16 4.533 Selecting previously unselected package libisl23:amd64.
+#16 4.534 Preparing to unpack .../14-libisl23_0.27-1_amd64.deb ...
+#16 4.535 Unpacking libisl23:amd64 (0.27-1) ...
+#16 4.567 Selecting previously unselected package libmpfr6:amd64.
+#16 4.568 Preparing to unpack .../15-libmpfr6_4.2.2-1_amd64.deb ...
+#16 4.569 Unpacking libmpfr6:amd64 (4.2.2-1) ...
+#16 4.594 Selecting previously unselected package libmpc3:amd64.
+#16 4.595 Preparing to unpack .../16-libmpc3_1.3.1-1+b3_amd64.deb ...
+#16 4.596 Unpacking libmpc3:amd64 (1.3.1-1+b3) ...
+#16 4.609 Selecting previously unselected package cpp-14-x86-64-linux-gnu.
+#16 4.610 Preparing to unpack .../17-cpp-14-x86-64-linux-gnu_14.2.0-19_amd64.deb ...
+#16 4.611 Unpacking cpp-14-x86-64-linux-gnu (14.2.0-19) ...
+#16 4.958 Selecting previously unselected package cpp-14.
+#16 4.959 Preparing to unpack .../18-cpp-14_14.2.0-19_amd64.deb ...
+#16 4.960 Unpacking cpp-14 (14.2.0-19) ...
+#16 4.971 Selecting previously unselected package cpp-x86-64-linux-gnu.
+#16 4.972 Preparing to unpack .../19-cpp-x86-64-linux-gnu_4%3a14.2.0-1_amd64.deb ...
+#16 4.973 Unpacking cpp-x86-64-linux-gnu (4:14.2.0-1) ...
+#16 4.986 Selecting previously unselected package cpp.
+#16 4.987 Preparing to unpack .../20-cpp_4%3a14.2.0-1_amd64.deb ...
+#16 4.991 Unpacking cpp (4:14.2.0-1) ...
+#16 5.003 Selecting previously unselected package libcc1-0:amd64.
+#16 5.004 Preparing to unpack .../21-libcc1-0_14.2.0-19_amd64.deb ...
+#16 5.005 Unpacking libcc1-0:amd64 (14.2.0-19) ...
+#16 5.018 Selecting previously unselected package libgomp1:amd64.
+#16 5.019 Preparing to unpack .../22-libgomp1_14.2.0-19_amd64.deb ...
+#16 5.020 Unpacking libgomp1:amd64 (14.2.0-19) ...
+#16 5.035 Selecting previously unselected package libitm1:amd64.
+#16 5.036 Preparing to unpack .../23-libitm1_14.2.0-19_amd64.deb ...
+#16 5.037 Unpacking libitm1:amd64 (14.2.0-19) ...
+#16 5.049 Selecting previously unselected package libatomic1:amd64.
+#16 5.050 Preparing to unpack .../24-libatomic1_14.2.0-19_amd64.deb ...
+#16 5.050 Unpacking libatomic1:amd64 (14.2.0-19) ...
+#16 5.063 Selecting previously unselected package libasan8:amd64.
+#16 5.064 Preparing to unpack .../25-libasan8_14.2.0-19_amd64.deb ...
+#16 5.064 Unpacking libasan8:amd64 (14.2.0-19) ...
+#16 5.172 Selecting previously unselected package liblsan0:amd64.
+#16 5.173 Preparing to unpack .../26-liblsan0_14.2.0-19_amd64.deb ...
+#16 5.173 Unpacking liblsan0:amd64 (14.2.0-19) ...
+#16 5.226 Selecting previously unselected package libtsan2:amd64.
+#16 5.227 Preparing to unpack .../27-libtsan2_14.2.0-19_amd64.deb ...
+#16 5.228 Unpacking libtsan2:amd64 (14.2.0-19) ...
+#16 5.324 Selecting previously unselected package libubsan1:amd64.
+#16 5.325 Preparing to unpack .../28-libubsan1_14.2.0-19_amd64.deb ...
+#16 5.326 Unpacking libubsan1:amd64 (14.2.0-19) ...
+#16 5.375 Selecting previously unselected package libhwasan0:amd64.
+#16 5.376 Preparing to unpack .../29-libhwasan0_14.2.0-19_amd64.deb ...
+#16 5.377 Unpacking libhwasan0:amd64 (14.2.0-19) ...
+#16 5.438 Selecting previously unselected package libquadmath0:amd64.
+#16 5.439 Preparing to unpack .../30-libquadmath0_14.2.0-19_amd64.deb ...
+#16 5.439 Unpacking libquadmath0:amd64 (14.2.0-19) ...
+#16 5.462 Selecting previously unselected package libgcc-14-dev:amd64.
+#16 5.463 Preparing to unpack .../31-libgcc-14-dev_14.2.0-19_amd64.deb ...
+#16 5.463 Unpacking libgcc-14-dev:amd64 (14.2.0-19) ...
+#16 5.561 Selecting previously unselected package gcc-14-x86-64-linux-gnu.
+#16 5.562 Preparing to unpack .../32-gcc-14-x86-64-linux-gnu_14.2.0-19_amd64.deb ...
+#16 5.563 Unpacking gcc-14-x86-64-linux-gnu (14.2.0-19) ...
+#16 5.946 Selecting previously unselected package gcc-14.
+#16 5.947 Preparing to unpack .../33-gcc-14_14.2.0-19_amd64.deb ...
+#16 5.948 Unpacking gcc-14 (14.2.0-19) ...
+#16 5.964 Selecting previously unselected package gcc-x86-64-linux-gnu.
+#16 5.965 Preparing to unpack .../34-gcc-x86-64-linux-gnu_4%3a14.2.0-1_amd64.deb ...
+#16 5.966 Unpacking gcc-x86-64-linux-gnu (4:14.2.0-1) ...
+#16 5.978 Selecting previously unselected package gcc.
+#16 5.978 Preparing to unpack .../35-gcc_4%3a14.2.0-1_amd64.deb ...
+#16 5.979 Unpacking gcc (4:14.2.0-1) ...
+#16 5.991 Selecting previously unselected package libbrotli1:amd64.
+#16 5.992 Preparing to unpack .../36-libbrotli1_1.1.0-2+deb13u1_amd64.deb ...
+#16 5.993 Unpacking libbrotli1:amd64 (1.1.0-2+deb13u1) ...
+#16 6.015 Selecting previously unselected package libunistring5:amd64.
+#16 6.016 Preparing to unpack .../37-libunistring5_1.3-2_amd64.deb ...
+#16 6.016 Unpacking libunistring5:amd64 (1.3-2) ...
+#16 6.060 Selecting previously unselected package libidn2-0:amd64.
+#16 6.061 Preparing to unpack .../38-libidn2-0_2.3.8-2_amd64.deb ...
+#16 6.062 Unpacking libidn2-0:amd64 (2.3.8-2) ...
+#16 6.077 Selecting previously unselected package libp11-kit0:amd64.
+#16 6.078 Preparing to unpack .../39-libp11-kit0_0.25.5-3_amd64.deb ...
+#16 6.079 Unpacking libp11-kit0:amd64 (0.25.5-3) ...
+#16 6.102 Selecting previously unselected package libtasn1-6:amd64.
+#16 6.103 Preparing to unpack .../40-libtasn1-6_4.20.0-2+deb13u1_amd64.deb ...
+#16 6.104 Unpacking libtasn1-6:amd64 (4.20.0-2+deb13u1) ...
+#16 6.117 Selecting previously unselected package libgnutls30t64:amd64.
+#16 6.118 Preparing to unpack .../41-libgnutls30t64_3.8.9-3+deb13u4_amd64.deb ...
+#16 6.119 Unpacking libgnutls30t64:amd64 (3.8.9-3+deb13u4) ...
+#16 6.162 Selecting previously unselected package libkrb5support0:amd64.
+#16 6.163 Preparing to unpack .../42-libkrb5support0_1.21.3-5+deb13u1_amd64.deb ...
+#16 6.164 Unpacking libkrb5support0:amd64 (1.21.3-5+deb13u1) ...
+#16 6.177 Selecting previously unselected package libcom-err2:amd64.
+#16 6.178 Preparing to unpack .../43-libcom-err2_1.47.2-3+b12_amd64.deb ...
+#16 6.178 Unpacking libcom-err2:amd64 (1.47.2-3+b12) ...
+#16 6.190 Selecting previously unselected package libk5crypto3:amd64.
+#16 6.191 Preparing to unpack .../44-libk5crypto3_1.21.3-5+deb13u1_amd64.deb ...
+#16 6.192 Unpacking libk5crypto3:amd64 (1.21.3-5+deb13u1) ...
+#16 6.206 Selecting previously unselected package libkeyutils1:amd64.
+#16 6.207 Preparing to unpack .../45-libkeyutils1_1.6.3-6_amd64.deb ...
+#16 6.208 Unpacking libkeyutils1:amd64 (1.6.3-6) ...
+#16 6.220 Selecting previously unselected package libkrb5-3:amd64.
+#16 6.221 Preparing to unpack .../46-libkrb5-3_1.21.3-5+deb13u1_amd64.deb ...
+#16 6.222 Unpacking libkrb5-3:amd64 (1.21.3-5+deb13u1) ...
+#16 6.263 Selecting previously unselected package libgssapi-krb5-2:amd64.
+#16 6.264 Preparing to unpack .../47-libgssapi-krb5-2_1.21.3-5+deb13u1_amd64.deb ...
+#16 6.265 Unpacking libgssapi-krb5-2:amd64 (1.21.3-5+deb13u1) ...
+#16 6.281 Selecting previously unselected package libsasl2-modules-db:amd64.
+#16 6.282 Preparing to unpack .../48-libsasl2-modules-db_2.1.28+dfsg1-9_amd64.deb ...
+#16 6.283 Unpacking libsasl2-modules-db:amd64 (2.1.28+dfsg1-9) ...
+#16 6.295 Selecting previously unselected package libsasl2-2:amd64.
+#16 6.296 Preparing to unpack .../49-libsasl2-2_2.1.28+dfsg1-9_amd64.deb ...
+#16 6.297 Unpacking libsasl2-2:amd64 (2.1.28+dfsg1-9) ...
+#16 6.310 Selecting previously unselected package libldap2:amd64.
+#16 6.311 Preparing to unpack .../50-libldap2_2.6.10+dfsg-1_amd64.deb ...
+#16 6.312 Unpacking libldap2:amd64 (2.6.10+dfsg-1) ...
+#16 6.329 Selecting previously unselected package libnghttp2-14:amd64.
+#16 6.330 Preparing to unpack .../51-libnghttp2-14_1.64.0-1.1+deb13u1_amd64.deb ...
+#16 6.331 Unpacking libnghttp2-14:amd64 (1.64.0-1.1+deb13u1) ...
+#16 6.345 Selecting previously unselected package libnghttp3-9:amd64.
+#16 6.346 Preparing to unpack .../52-libnghttp3-9_1.8.0-1_amd64.deb ...
+#16 6.347 Unpacking libnghttp3-9:amd64 (1.8.0-1) ...
+#16 6.361 Selecting previously unselected package libngtcp2-16:amd64.
+#16 6.362 Preparing to unpack .../53-libngtcp2-16_1.11.0-1+deb13u1_amd64.deb ...
+#16 6.363 Unpacking libngtcp2-16:amd64 (1.11.0-1+deb13u1) ...
+#16 6.379 Selecting previously unselected package libngtcp2-crypto-gnutls8:amd64.
+#16 6.380 Preparing to unpack .../54-libngtcp2-crypto-gnutls8_1.11.0-1+deb13u1_amd64.deb ...
+#16 6.381 Unpacking libngtcp2-crypto-gnutls8:amd64 (1.11.0-1+deb13u1) ...
+#16 6.393 Selecting previously unselected package libpsl5t64:amd64.
+#16 6.394 Preparing to unpack .../55-libpsl5t64_0.21.2-1.1+b1_amd64.deb ...
+#16 6.394 Unpacking libpsl5t64:amd64 (0.21.2-1.1+b1) ...
+#16 6.408 Selecting previously unselected package librtmp1:amd64.
+#16 6.409 Preparing to unpack .../56-librtmp1_2.4+20151223.gitfa8646d.1-2+b5_amd64.deb ...
+#16 6.409 Unpacking librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2+b5) ...
+#16 6.422 Selecting previously unselected package libssh2-1t64:amd64.
+#16 6.423 Preparing to unpack .../57-libssh2-1t64_1.11.1-1+deb13u2_amd64.deb ...
+#16 6.424 Unpacking libssh2-1t64:amd64 (1.11.1-1+deb13u2) ...
+#16 6.465 Selecting previously unselected package libcurl3t64-gnutls:amd64.
+#16 6.466 Preparing to unpack .../58-libcurl3t64-gnutls_8.14.1-2+deb13u7_amd64.deb ...
+#16 6.467 Unpacking libcurl3t64-gnutls:amd64 (8.14.1-2+deb13u7) ...
+#16 6.489 Selecting previously unselected package liberror-perl.
+#16 6.490 Preparing to unpack .../59-liberror-perl_0.17030-1_all.deb ...
+#16 6.491 Unpacking liberror-perl (0.17030-1) ...
+#16 6.503 Selecting previously unselected package git-man.
+#16 6.504 Preparing to unpack .../60-git-man_1%3a2.47.3-0+deb13u1_all.deb ...
+#16 6.505 Unpacking git-man (1:2.47.3-0+deb13u1) ...
+#16 6.543 Selecting previously unselected package git.
+#16 6.545 Preparing to unpack .../61-git_1%3a2.47.3-0+deb13u1_amd64.deb ...
+#16 6.549 Unpacking git (1:2.47.3-0+deb13u1) ...
+#16 6.748 Selecting previously unselected package libc-dev-bin.
+#16 6.750 Preparing to unpack .../62-libc-dev-bin_2.41-12+deb13u4_amd64.deb ...
+#16 6.750 Unpacking libc-dev-bin (2.41-12+deb13u4) ...
+#16 6.764 Selecting previously unselected package linux-libc-dev.
+#16 6.765 Preparing to unpack .../63-linux-libc-dev_6.12.115-2_all.deb ...
+#16 6.766 Unpacking linux-libc-dev (6.12.115-2) ...
+#16 7.001 Selecting previously unselected package libcrypt-dev:amd64.
+#16 7.002 Preparing to unpack .../64-libcrypt-dev_1%3a4.4.38-1_amd64.deb ...
+#16 7.007 Unpacking libcrypt-dev:amd64 (1:4.4.38-1) ...
+#16 7.045 Selecting previously unselected package rpcsvc-proto.
+#16 7.047 Preparing to unpack .../65-rpcsvc-proto_1.4.3-1_amd64.deb ...
+#16 7.048 Unpacking rpcsvc-proto (1.4.3-1) ...
+#16 7.064 Selecting previously unselected package libc6-dev:amd64.
+#16 7.065 Preparing to unpack .../66-libc6-dev_2.41-12+deb13u4_amd64.deb ...
+#16 7.066 Unpacking libc6-dev:amd64 (2.41-12+deb13u4) ...
+#16 7.190 Setting up libexpat1:amd64 (2.9.0-1~deb13u1) ...
+#16 7.191 Setting up libkeyutils1:amd64 (1.6.3-6) ...
+#16 7.193 Setting up libgdbm-compat4t64:amd64 (1.24-2) ...
+#16 7.195 Setting up libbrotli1:amd64 (1.1.0-2+deb13u1) ...
+#16 7.197 Setting up binutils-common:amd64 (2.44-3) ...
+#16 7.198 Setting up libnghttp2-14:amd64 (1.64.0-1.1+deb13u1) ...
+#16 7.200 Setting up linux-libc-dev (6.12.115-2) ...
+#16 7.201 Setting up libctf-nobfd0:amd64 (2.44-3) ...
+#16 7.203 Setting up libcom-err2:amd64 (1.47.2-3+b12) ...
+#16 7.205 Setting up libgomp1:amd64 (14.2.0-19) ...
+#16 7.206 Setting up libsframe1:amd64 (2.44-3) ...
+#16 7.208 Setting up libjansson4:amd64 (2.14-2+b3) ...
+#16 7.210 Setting up libkrb5support0:amd64 (1.21.3-5+deb13u1) ...
+#16 7.211 Setting up libsasl2-modules-db:amd64 (2.1.28+dfsg1-9) ...
+#16 7.213 Setting up rpcsvc-proto (1.4.3-1) ...
+#16 7.214 Setting up libmpfr6:amd64 (4.2.2-1) ...
+#16 7.216 Setting up libquadmath0:amd64 (14.2.0-19) ...
+#16 7.217 Setting up libp11-kit0:amd64 (0.25.5-3) ...
+#16 7.219 Setting up libunistring5:amd64 (1.3-2) ...
+#16 7.235 Setting up libmpc3:amd64 (1.3.1-1+b3) ...
+#16 7.236 Setting up libatomic1:amd64 (14.2.0-19) ...
+#16 7.238 Setting up libk5crypto3:amd64 (1.21.3-5+deb13u1) ...
+#16 7.239 Setting up libsasl2-2:amd64 (2.1.28+dfsg1-9) ...
+#16 7.241 Setting up libnghttp3-9:amd64 (1.8.0-1) ...
+#16 7.243 Setting up libubsan1:amd64 (14.2.0-19) ...
+#16 7.245 Setting up perl-modules-5.40 (5.40.1-6+deb13u1) ...
+#16 7.246 Setting up libhwasan0:amd64 (14.2.0-19) ...
+#16 7.248 Setting up libcrypt-dev:amd64 (1:4.4.38-1) ...
+#16 7.254 Setting up libasan8:amd64 (14.2.0-19) ...
+#16 7.255 Setting up libtasn1-6:amd64 (4.20.0-2+deb13u1) ...
+#16 7.257 Setting up git-man (1:2.47.3-0+deb13u1) ...
+#16 7.259 Setting up libngtcp2-16:amd64 (1.11.0-1+deb13u1) ...
+#16 7.260 Setting up libkrb5-3:amd64 (1.21.3-5+deb13u1) ...
+#16 7.262 Setting up libssh2-1t64:amd64 (1.11.1-1+deb13u2) ...
+#16 7.263 Setting up libtsan2:amd64 (14.2.0-19) ...
+#16 7.265 Setting up libbinutils:amd64 (2.44-3) ...
+#16 7.267 Setting up libisl23:amd64 (0.27-1) ...
+#16 7.269 Setting up libc-dev-bin (2.41-12+deb13u4) ...
+#16 7.270 Setting up libcc1-0:amd64 (14.2.0-19) ...
+#16 7.272 Setting up libldap2:amd64 (2.6.10+dfsg-1) ...
+#16 7.273 Setting up liblsan0:amd64 (14.2.0-19) ...
+#16 7.275 Setting up libitm1:amd64 (14.2.0-19) ...
+#16 7.277 Setting up libctf0:amd64 (2.44-3) ...
+#16 7.279 Setting up libidn2-0:amd64 (2.3.8-2) ...
+#16 7.280 Setting up libperl5.40:amd64 (5.40.1-6+deb13u1) ...
+#16 7.282 Setting up perl (5.40.1-6+deb13u1) ...
+#16 7.287 Setting up libgprofng0:amd64 (2.44-3) ...
+#16 7.289 Setting up libgssapi-krb5-2:amd64 (1.21.3-5+deb13u1) ...
+#16 7.292 Setting up cpp-14-x86-64-linux-gnu (14.2.0-19) ...
+#16 7.294 Setting up cpp-14 (14.2.0-19) ...
+#16 7.295 Setting up libc6-dev:amd64 (2.41-12+deb13u4) ...
+#16 7.297 Setting up libgcc-14-dev:amd64 (14.2.0-19) ...
+#16 7.299 Setting up binutils-x86-64-linux-gnu (2.44-3) ...
+#16 7.300 Setting up cpp-x86-64-linux-gnu (4:14.2.0-1) ...
+#16 7.302 Setting up libgnutls30t64:amd64 (3.8.9-3+deb13u4) ...
+#16 7.304 Setting up libpsl5t64:amd64 (0.21.2-1.1+b1) ...
+#16 7.306 Setting up binutils (2.44-3) ...
+#16 7.308 Setting up liberror-perl (0.17030-1) ...
+#16 7.310 Setting up librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2+b5) ...
+#16 7.312 Setting up cpp (4:14.2.0-1) ...
+#16 7.321 Setting up gcc-14-x86-64-linux-gnu (14.2.0-19) ...
+#16 7.323 Setting up libngtcp2-crypto-gnutls8:amd64 (1.11.0-1+deb13u1) ...
+#16 7.326 Setting up gcc-x86-64-linux-gnu (4:14.2.0-1) ...
+#16 7.327 Setting up libcurl3t64-gnutls:amd64 (8.14.1-2+deb13u7) ...
+#16 7.329 Setting up gcc-14 (14.2.0-19) ...
+#16 7.331 Setting up git (1:2.47.3-0+deb13u1) ...
+#16 7.337 Setting up gcc (4:14.2.0-1) ...
+#16 7.344 Processing triggers for libc-bin (2.41-12+deb13u4) ...
+#16 DONE 9.0s
+
+#17 [monty  6/14] WORKDIR /build
+#17 DONE 0.0s
+
+#18 [monty  7/14] COPY scripts/build_monty_distribution.sh /build/scripts/
+#18 DONE 0.0s
+
+#19 [monty  8/14] COPY vendor/patches /build/vendor/patches
+#19 DONE 0.0s
+
+#20 [monty  9/14] COPY vendor/monty/launcher.c /build/vendor/monty/launcher.c
+#20 DONE 0.0s
+
+#21 [monty 10/14] COPY inputs/monty.git /inputs/monty.git
+#21 DONE 0.0s
+
+#22 [monty 11/14] RUN git config --global url.file:///inputs/monty.git.insteadOf https://github.com/pydantic/monty.git
+#22 DONE 0.1s
+
+#23 [monty 12/14] RUN bash /build/scripts/build_monty_distribution.sh /build/distribution /usr/local/bin/python build
+#23 0.121 hint: Using 'master' as the name for the initial branch. This default branch name
+#23 0.121 hint: is subject to change. To configure the initial branch name to use in all
+#23 0.121 hint: of your new repositories, which will suppress this warning, call:
+#23 0.121 hint:
+#23 0.121 hint: 	git config --global init.defaultBranch <name>
+#23 0.121 hint:
+#23 0.121 hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+#23 0.121 hint: 'development'. The just-created branch can be renamed via this command:
+#23 0.121 hint:
+#23 0.121 hint: 	git branch -m <name>
+#23 0.122 Initialized empty Git repository in /build/distribution/monty/.git/
+#23 0.467     Updating crates.io index
+#23 1.110  Downloading crates ...
+#23 1.212   Downloaded allocator-api2 v0.2.21
+#23 1.216   Downloaded ahash v0.8.12
+#23 1.219   Downloaded funty v2.0.0
+#23 1.220   Downloaded cfg-if v1.0.4
+#23 1.222   Downloaded embedded-io v0.6.1
+#23 1.224   Downloaded crypto-common v0.1.7
+#23 1.225   Downloaded bit-set v0.8.0
+#23 1.227   Downloaded adler2 v2.0.1
+#23 1.229   Downloaded constant_time_eq v0.1.5
+#23 1.231   Downloaded cobs v0.3.0
+#23 1.233   Downloaded boxcar v0.2.14
+#23 1.238   Downloaded indexmap v2.14.2
+#23 1.244   Downloaded fs-set-times v0.20.3
+#23 1.246   Downloaded inventory v0.3.24
+#23 1.249   Downloaded intrusive-collections v0.10.3
+#23 1.251   Downloaded cpufeatures v0.2.17
+#23 1.253   Downloaded interpolator v0.5.0
+#23 1.257   Downloaded ruff_memory_usage v0.0.14
+#23 1.259   Downloaded heck v0.5.0
+#23 1.261   Downloaded maybe-owned v0.3.4
+#23 1.263   Downloaded manyhow-macros v0.11.4
+#23 1.265   Downloaded phf_codegen v0.11.3
+#23 1.266   Downloaded path-slash v0.2.1
+#23 1.269   Downloaded inout v0.1.4
+#23 1.271   Downloaded rustc_version v0.4.1
+#23 1.275   Downloaded scopeguard v1.2.0
+#23 1.278   Downloaded sha1 v0.10.7
+#23 1.281   Downloaded same-file v1.0.6
+#23 1.285   Downloaded serde_bytes v0.11.19
+#23 1.289   Downloaded strum v0.27.2
+#23 1.291   Downloaded tap v1.0.1
+#23 1.294   Downloaded strsim v0.11.1
+#23 1.298   Downloaded thiserror v2.0.20
+#23 1.307   Downloaded tracing-attributes v0.1.31
+#23 1.311   Downloaded zerofrom-derive v0.1.7
+#23 1.314   Downloaded utf8parse v0.2.2
+#23 1.315   Downloaded utf8_iter v1.0.4
+#23 1.317   Downloaded zstd-safe v5.0.2+zstd.1.5.2
+#23 1.318   Downloaded uuid v1.26.1
+#23 1.322   Downloaded zip v0.6.6
+#23 1.327   Downloaded typed-path v0.12.3
+#23 1.336   Downloaded yoke v0.8.3
+#23 1.339   Downloaded typenum v1.20.1
+#23 1.344   Downloaded unicode-normalization v0.1.25
+#23 1.348   Downloaded zerovec v0.11.8
+#23 1.356   Downloaded chrono v0.4.45
+#23 1.363   Downloaded zip v8.6.0
+#23 1.368   Downloaded ty_python_core v0.0.14
+#23 1.373   Downloaded winnow v1.0.4
+#23 1.383   Downloaded salsa v0.28.2
+#23 1.407   Downloaded zerocopy v0.8.57
+#23 1.431   Downloaded time v0.3.55
+#23 1.446   Downloaded unicode_names2 v1.3.0
+#23 1.452   Downloaded syn v3.0.5
+#23 1.463   Downloaded rustix v1.1.4
+#23 1.492   Downloaded regex-automata v0.4.18
+#23 1.506   Downloaded jiff v0.2.37
+#23 1.521   Downloaded syn v2.0.119
+#23 1.531   Downloaded ruff_python_parser v0.0.14
+#23 1.630   Downloaded bstr v1.13.1
+#23 1.638   Downloaded tracing v0.1.44
+#23 1.653   Downloaded unicode-width v0.2.2
+#23 1.658   Downloaded bitvec v1.1.1
+#23 1.675   Downloaded ty_module_resolver v0.0.14
+#23 1.678   Downloaded toml v1.1.6+spec-1.1.0
+#23 1.682   Downloaded serde_json v1.0.151
+#23 1.690   Downloaded regex-syntax v0.8.11
+#23 1.696   Downloaded bzip2-sys v0.1.13+1.0.8
+#23 1.706   Downloaded libc v0.2.189
+#23 1.752   Downloaded object v0.39.1
+#23 1.763   Downloaded icu_properties_data v2.3.0
+#23 1.774   Downloaded tinyvec v1.13.2
+#23 1.777   Downloaded hashbrown v0.17.1
+#23 1.783   Downloaded clap_builder v4.6.6
+#23 1.789   Downloaded zerotrie v0.2.5
+#23 1.793   Downloaded zstd-sys v2.1.0+zstd.1.5.7
+#23 1.808   Downloaded writeable v0.6.4
+#23 1.811   Downloaded tracing-core v0.1.36
+#23 1.813   Downloaded toml_writer v1.1.2+spec-1.1.0
+#23 1.815   Downloaded toml_datetime v1.1.1+spec-1.1.0
+#23 1.816   Downloaded hashbrown v0.14.5
+#23 1.820   Downloaded hashbrown v0.16.1
+#23 1.825   Downloaded zstd v0.11.2+zstd.1.5.2
+#23 1.829   Downloaded zmij v1.0.23
+#23 1.831   Downloaded zerovec-derive v0.11.6
+#23 1.832   Downloaded wyz v0.5.1
+#23 1.834   Downloaded walkdir v2.5.0
+#23 1.836   Downloaded unicode-ident v1.0.24
+#23 1.838   Downloaded pyo3 v0.29.2
+#23 1.867   Downloaded unicode-general-category v1.1.0
+#23 1.869   Downloaded ty_static v0.0.14
+#23 1.870   Downloaded thin-vec v0.2.19
+#23 1.871   Downloaded aho-corasick v1.1.5
+#23 1.876   Downloaded unicode_names2_generator v1.3.0
+#23 1.878   Downloaded typeid v1.0.3
+#23 1.879   Downloaded ty_site_packages v0.0.14
+#23 1.880   Downloaded toml_parser v1.1.3+spec-1.1.0
+#23 1.883   Downloaded jiter v0.17.0
+#23 1.888   Downloaded zerofrom v0.1.8
+#23 1.889   Downloaded yoke-derive v0.8.2
+#23 1.890   Downloaded version_check v0.9.5
+#23 1.892   Downloaded ty_vendored v0.0.14
+#23 1.958   Downloaded ty_combine v0.0.14
+#23 1.959   Downloaded tinyvec_macros v0.1.1
+#23 1.959   Downloaded tinystr v0.8.4
+#23 1.962   Downloaded time-core v0.1.9
+#23 1.963   Downloaded thiserror-impl v2.0.20
+#23 1.964   Downloaded target-lexicon v0.13.5
+#23 1.966   Downloaded regex v1.13.1
+#23 1.971   Downloaded rayon v1.12.0
+#23 1.981   Downloaded portable-atomic v1.15.0
+#23 1.988   Downloaded libm v0.2.16
+#23 1.999   Downloaded lexical-parse-float v1.0.6
+#23 2.005   Downloaded fancy-regex v0.17.0
+#23 2.008   Downloaded compact_str v0.10.0
+#23 2.012   Downloaded cc v1.4.6
+#23 2.015   Downloaded cap-primitives v4.0.3
+#23 2.028   Downloaded ar_archive_writer v0.5.3
+#23 2.031   Downloaded aes v0.8.4
+#23 2.035   Downloaded synstructure v0.13.2
+#23 2.036   Downloaded strum_macros v0.28.0
+#23 2.038   Downloaded speedate v0.17.0
+#23 2.041   Downloaded ruff_python_ast v0.0.14
+#23 2.045   Downloaded ruff_db v0.0.14
+#23 2.051   Downloaded jiff-core v0.1.1
+#23 2.055   Downloaded itertools v0.15.0
+#23 2.062   Downloaded itertools v0.14.0
+#23 2.069   Downloaded icu_properties v2.3.0
+#23 2.072   Downloaded icu_collections v2.3.0
+#23 2.079   Downloaded flate2 v1.1.10
+#23 2.084   Downloaded supports-hyperlinks v3.2.0
+#23 2.085   Downloaded subtle v2.6.1
+#23 2.086   Downloaded strum_macros v0.27.2
+#23 2.089   Downloaded static_assertions v1.1.0
+#23 2.090   Downloaded smallvec v1.16.1
+#23 2.092   Downloaded similar v3.2.0
+#23 2.095   Downloaded ryu v1.0.23
+#23 2.099   Downloaded ruff_annotate_snippets v0.0.14
+#23 2.109   Downloaded lexical-util v1.0.7
+#23 2.114   Downloaded icu_locale_core v2.3.0
+#23 2.121   Downloaded heapless v0.7.17
+#23 2.125   Downloaded char_str v0.0.4
+#23 2.130   Downloaded siphasher v1.0.3
+#23 2.131   Downloaded shlex v2.0.1
+#23 2.133   Downloaded sha2 v0.10.9
+#23 2.135   Downloaded serde v1.0.229
+#23 2.139   Downloaded rand v0.10.2
+#23 2.143   Downloaded pyo3-macros-backend v0.29.2
+#23 2.145   Downloaded ordermap v1.2.2
+#23 2.149   Downloaded num-bigint v0.4.8
+#23 2.154   Downloaded memchr v2.8.3
+#23 2.159   Downloaded icu_provider v2.3.1
+#23 2.162   Downloaded strum v0.28.0
+#23 2.163   Downloaded stacker v0.1.25
+#23 2.165   Downloaded spin v0.9.9
+#23 2.167   Downloaded simd-adler32 v0.3.10
+#23 2.171   Downloaded serde_derive v1.0.229
+#23 2.174   Downloaded serde_core v1.0.229
+#23 2.176   Downloaded rayon-core v1.13.0
+#23 2.180   Downloaded rand v0.8.8
+#23 2.184   Downloaded pyo3-ffi v0.29.2
+#23 2.192   Downloaded proc-macro2 v1.0.107
+#23 2.195   Downloaded miniz_oxide v0.9.1
+#23 2.198   Downloaded jiff-tzdb v0.1.8
+#23 2.199   Downloaded getrandom v0.3.4
+#23 2.203   Downloaded find-msvc-tools v0.1.12
+#23 2.204   Downloaded filetime v0.2.29
+#23 2.206   Downloaded derive-where v1.6.1
+#23 2.210   Downloaded clap v4.6.6
+#23 2.221   Downloaded arc-swap v1.9.2
+#23 2.225   Downloaded stable_deref_trait v1.2.1
+#23 2.226   Downloaded serde_spanned v1.1.1
+#23 2.227   Downloaded semver v1.0.28
+#23 2.230   Downloaded salsa-macros v0.28.2
+#23 2.232   Downloaded pyo3-build-config v0.29.2
+#23 2.233   Downloaded prost v0.14.4
+#23 2.235   Downloaded proc-macro-utils v0.10.0
+#23 2.236   Downloaded parking_lot v0.12.5
+#23 2.239   Downloaded num-traits v0.2.19
+#23 2.242   Downloaded matchit v0.9.2
+#23 2.244   Downloaded log v0.4.34
+#23 2.247   Downloaded ipnet v2.12.2
+#23 2.248   Downloaded io-lifetimes v3.0.1
+#23 2.250   Downloaded cap-std v4.0.3
+#23 2.253   Downloaded bytes v1.12.1
+#23 2.257   Downloaded ruff_ranged_value v0.0.14
+#23 2.258   Downloaded ruff_notebook v0.0.14
+#23 2.262   Downloaded ruff_macros v0.0.14
+#23 2.263   Downloaded rand_core v0.6.4
+#23 2.265   Downloaded quote v1.0.47
+#23 2.268   Downloaded linux-raw-sys v0.12.1
+#23 2.325   Downloaded pyo3-macros v0.29.2
+#23 2.326   Downloaded psm v0.1.32
+#23 2.329   Downloaded prost-derive v0.14.4
+#23 2.331   Downloaded postcard v1.1.3
+#23 2.333   Downloaded pin-project-lite v0.2.17
+#23 2.340   Downloaded password-hash v0.4.2
+#23 2.341   Downloaded once_cell v1.21.4
+#23 2.344   Downloaded minicbor v2.3.0
+#23 2.346   Downloaded litemap v0.8.3
+#23 2.348   Downloaded lexical-parse-integer v1.0.6
+#23 2.350   Downloaded is_terminal_polyfill v1.70.2
+#23 2.351   Downloaded io-lifetimes v2.0.4
+#23 2.353   Downloaded iana-time-zone v0.1.65
+#23 2.356   Downloaded hmac v0.12.1
+#23 2.358   Downloaded foldhash v0.2.0
+#23 2.359   Downloaded colored v3.1.1
+#23 2.362   Downloaded clap_derive v4.6.4
+#23 2.364   Downloaded salsa-macro-rules v0.28.2
+#23 2.366   Downloaded ruff_source_file v0.0.14
+#23 2.367   Downloaded ruff_python_trivia v0.0.14
+#23 2.368   Downloaded ty_python_semantic v0.0.14
+#23 2.473   Downloaded ruff_python_edits v0.0.14
+#23 2.474   Downloaded ruff_python_codegen v0.0.14
+#23 2.475   Downloaded ruff_diagnostics v0.0.14
+#23 2.476   Downloaded rand_core v0.10.1
+#23 2.477   Downloaded rand_chacha v0.3.1
+#23 2.479   Downloaded ppv-lite86 v0.2.21
+#23 2.480   Downloaded pkg-config v0.3.34
+#23 2.481   Downloaded pbkdf2 v0.11.0
+#23 2.484   Downloaded parking_lot_core v0.9.12
+#23 2.486   Downloaded num-integer v0.1.47
+#23 2.488   Downloaded manyhow v0.11.4
+#23 2.489   Downloaded jobserver v0.1.35
+#23 2.491   Downloaded getrandom v0.2.17
+#23 2.494   Downloaded rustversion v1.0.23
+#23 2.497   Downloaded rustix-linux-procfs v0.1.1
+#23 2.498   Downloaded ruff_python_literal v0.0.14
+#23 2.500   Downloaded phf v0.11.3
+#23 2.501   Downloaded lock_api v0.4.14
+#23 2.502   Downloaded itoa v1.0.18
+#23 2.503   Downloaded is-macro v0.3.8
+#23 2.505   Downloaded getopts v0.2.24
+#23 2.506   Downloaded errno v0.3.14
+#23 2.508   Downloaded defmt v1.1.1
+#23 2.513   Downloaded dashmap v6.2.1
+#23 2.515   Downloaded crossbeam-utils v0.8.23
+#23 2.518   Downloaded crossbeam-queue v0.3.14
+#23 2.520   Downloaded crossbeam-deque v0.8.8
+#23 2.521   Downloaded crc32fast v1.5.2
+#23 2.523   Downloaded chacha20 v0.10.2
+#23 2.525   Downloaded bzip2 v0.4.4
+#23 2.527   Downloaded bitflags v2.13.2
+#23 2.532   Downloaded bitflags v1.3.2
+#23 2.535   Downloaded base64ct v1.8.3
+#23 2.538   Downloaded arrayvec v0.7.8
+#23 2.540   Downloaded anstyle v1.0.14
+#23 2.541   Downloaded ambient-authority v0.0.2
+#23 2.542   Downloaded ruff_python_stdlib v0.0.14
+#23 2.544   Downloaded ruff_python_importer v0.0.14
+#23 2.545   Downloaded ruff_index v0.0.14
+#23 2.546   Downloaded radium v0.7.0
+#23 2.547   Downloaded quote-use-macros v0.8.4
+#23 2.548   Downloaded quote-use v0.8.4
+#23 2.548   Downloaded powerfmt v0.2.0
+#23 2.550   Downloaded potential_utf v0.1.6
+#23 2.551   Downloaded phf_shared v0.11.3
+#23 2.552   Downloaded phf_generator v0.11.3
+#23 2.553   Downloaded num-conv v0.2.2
+#23 2.554   Downloaded minicbor-serde v0.7.1
+#23 2.555   Downloaded hashlink v0.12.2
+#23 2.557   Downloaded digest v0.10.7
+#23 2.559   Downloaded deranged v0.5.8
+#23 2.560   Downloaded defmt-macros v1.1.1
+#23 2.564   Downloaded crossbeam-epoch v0.9.21
+#23 2.566   Downloaded cipher v0.4.4
+#23 2.568   Downloaded camino v1.2.5
+#23 2.569   Downloaded byteorder v1.5.0
+#23 2.571   Downloaded bit-vec v0.8.0
+#23 2.572   Downloaded autocfg v1.5.1
+#23 2.574   Downloaded attribute-derive v0.10.5
+#23 2.576   Downloaded anstream v1.0.0
+#23 2.578   Downloaded rustc-hash v2.1.3
+#23 2.579   Downloaded ruff_text_size v0.0.14
+#23 2.581   Downloaded generic-array v0.14.7
+#23 2.582   Downloaded dunce v1.0.5
+#23 2.583   Downloaded drop_bomb v0.1.5
+#23 2.584   Downloaded clap_lex v1.1.0
+#23 2.585   Downloaded hash32 v0.2.1
+#23 2.586   Downloaded get-size-derive2 v0.11.0
+#23 2.587   Downloaded equivalent v1.0.2
+#23 2.588   Downloaded embedded-io v0.4.0
+#23 2.590   Downloaded defmt-parser v1.0.0
+#23 2.591   Downloaded collection_literals v1.0.3
+#23 2.592   Downloaded block-buffer v0.10.4
+#23 2.593   Downloaded attribute-derive-macro v0.10.5
+#23 2.594   Downloaded castaway v0.2.4
+#23 2.595   Downloaded anstyle-query v1.1.5
+#23 2.597   Downloaded pathdiff v0.2.3
+#23 2.597   Downloaded io-extras v0.19.0
+#23 2.600   Downloaded either v1.18.0
+#23 2.601   Downloaded colorchoice v1.0.5
+#23 2.602   Downloaded anyhow v1.0.104
+#23 2.606   Downloaded cpufeatures v0.3.1
+#23 2.608   Downloaded anstyle-parse v1.0.0
+#23 2.609   Downloaded get-size2 v0.11.0
+#23 2.613   Downloaded displaydoc v0.2.7
+#23 2.727    Compiling unicode-ident v1.0.24
+#23 2.767    Compiling proc-macro2 v1.0.107
+#23 2.921    Compiling quote v1.0.47
+#23 3.375    Compiling libc v0.2.189
+#23 3.491    Compiling syn v3.0.5
+#23 5.706    Compiling syn v2.0.119
+#23 8.055    Compiling serde_core v1.0.229
+#23 9.906    Compiling serde v1.0.229
+#23 9.995    Compiling cfg-if v1.0.4
+#23 10.04    Compiling serde_derive v1.0.229
+#23 11.83    Compiling jobserver v0.1.35
+#23 11.99    Compiling shlex v2.0.1
+#23 12.06    Compiling smallvec v1.16.1
+#23 12.15    Compiling find-msvc-tools v0.1.12
+#23 12.25    Compiling cc v1.4.6
+#23 13.05    Compiling proc-macro-utils v0.10.0
+#23 13.37    Compiling heck v0.5.0
+#23 13.45    Compiling allocator-api2 v0.2.21
+#23 13.66    Compiling equivalent v1.0.2
+#23 13.69    Compiling foldhash v0.2.0
+#23 13.78    Compiling rustversion v1.0.23
+#23 13.91    Compiling hashbrown v0.17.1
+#23 14.42    Compiling zmij v1.0.23
+#23 14.50    Compiling memchr v2.8.3
+#23 15.00    Compiling manyhow-macros v0.11.4
+#23 15.16    Compiling quote-use-macros v0.8.4
+#23 15.33    Compiling zerocopy v0.8.57
+#23 15.45    Compiling version_check v0.9.5
+#23 15.57    Compiling quote-use v0.8.4
+#23 15.60    Compiling manyhow v0.11.4
+#23 15.86    Compiling indexmap v2.14.2
+#23 16.30    Compiling collection_literals v1.0.3
+#23 16.33    Compiling itoa v1.0.18
+#23 16.43    Compiling interpolator v0.5.0
+#23 16.57    Compiling attribute-derive-macro v0.10.5
+#23 17.45    Compiling castaway v0.2.4
+#23 17.49    Compiling getrandom v0.2.17
+#23 17.56    Compiling derive-where v1.6.1
+#23 18.07    Compiling once_cell v1.21.4
+#23 18.82    Compiling static_assertions v1.1.0
+#23 18.84    Compiling compact_str v0.10.0
+#23 19.52    Compiling attribute-derive v0.10.5
+#23 19.78    Compiling rand_core v0.6.4
+#23 19.87    Compiling ordermap v1.2.2
+#23 20.01    Compiling thin-vec v0.2.19
+#23 20.16    Compiling crossbeam-utils v0.8.23
+#23 20.26    Compiling get-size-derive2 v0.11.0
+#23 20.48    Compiling get-size2 v0.11.0
+#23 20.97    Compiling scopeguard v1.2.0
+#23 21.01    Compiling lock_api v0.4.14
+#23 21.11    Compiling generic-array v0.14.7
+#23 21.19    Compiling bitflags v2.13.2
+#23 23.15    Compiling crc32fast v1.5.2
+#23 23.23    Compiling parking_lot_core v0.9.12
+#23 23.31    Compiling ppv-lite86 v0.2.21
+#23 23.46    Compiling thiserror v2.0.20
+#23 23.60    Compiling rand_chacha v0.3.1
+#23 23.94    Compiling ruff_text_size v0.0.14
+#23 24.03    Compiling aho-corasick v1.1.5
+#23 27.36    Compiling thiserror-impl v2.0.20
+#23 27.88    Compiling siphasher v1.0.3
+#23 27.95    Compiling typeid v1.0.3
+#23 28.03    Compiling portable-atomic v1.15.0
+#23 28.19    Compiling object v0.39.1
+#23 28.27    Compiling either v1.18.0
+#23 28.42    Compiling phf_shared v0.11.3
+#23 28.52    Compiling rand v0.8.8
+#23 28.84    Compiling tracing-core v0.1.36
+#23 29.43    Compiling tracing-attributes v0.1.31
+#23 29.96    Compiling pin-project-lite v0.2.17
+#23 29.99    Compiling rustc-hash v2.1.3
+#23 30.04    Compiling tracing v0.1.44
+#23 30.25    Compiling phf_generator v0.11.3
+#23 32.55    Compiling ruff_source_file v0.0.14
+#23 33.01    Compiling parking_lot v0.12.5
+#23 33.57    Compiling crossbeam-queue v0.3.14
+#23 33.65    Compiling hashlink v0.12.2
+#23 33.81    Compiling is-macro v0.3.8
+#23 33.99    Compiling salsa-macros v0.28.2
+#23 34.93    Compiling unicode-width v0.2.2
+#23 35.04    Compiling inventory v0.3.24
+#23 35.08    Compiling intrusive-collections v0.10.3
+#23 35.37    Compiling salsa-macro-rules v0.28.2
+#23 35.40    Compiling boxcar v0.2.14
+#23 35.51    Compiling salsa v0.28.2
+#23 39.73    Compiling getopts v0.2.24
+#23 39.87    Compiling ar_archive_writer v0.5.3
+#23 40.22    Compiling phf_codegen v0.11.3
+#23 40.26    Compiling itertools v0.15.0
+#23 41.19    Compiling synstructure v0.13.2
+#23 41.43    Compiling ryu v1.0.23
+#23 41.56    Compiling log v0.4.34
+#23 41.72    Compiling anyhow v1.0.104
+#23 41.81    Compiling regex-syntax v0.8.11
+#23 46.21    Compiling regex-automata v0.4.18
+#23 55.80    Compiling unicode_names2_generator v1.3.0
+#23 56.08    Compiling char_str v0.0.4
+#23 56.45    Compiling ruff_python_trivia v0.0.14
+#23 57.12    Compiling psm v0.1.32
+#23 57.26    Compiling stable_deref_trait v1.2.1
+#23 57.29    Compiling arrayvec v0.7.8
+#23 57.57    Compiling ruff_python_ast v0.0.14
+#23 66.00    Compiling unicode_names2 v1.3.0
+#23 66.09    Compiling zerofrom-derive v0.1.7
+#23 66.55    Compiling stacker v0.1.25
+#23 66.62    Compiling tinyvec_macros v0.1.1
+#23 66.64    Compiling typenum v1.20.1
+#23 67.17    Compiling tinyvec v1.13.2
+#23 67.39    Compiling zerofrom v0.1.8
+#23 68.26    Compiling phf v0.11.3
+#23 68.32    Compiling yoke-derive v0.8.2
+#23 70.54    Compiling pkg-config v0.3.34
+#23 72.28    Compiling yoke v0.8.3
+#23 73.12    Compiling unicode-normalization v0.1.25
+#23 73.39    Compiling bstr v1.13.1
+#23 74.97    Compiling drop_bomb v0.1.5
+#23 75.02    Compiling anstyle v1.0.14
+#23 75.14    Compiling ruff_python_parser v0.0.14
+#23 81.15    Compiling regex v1.13.1
+#23 81.41    Compiling zerovec-derive v0.11.6
+#23 81.86    Compiling rand_core v0.10.1
+#23 81.93    Compiling serde_json v1.0.151
+#23 81.98    Compiling cpufeatures v0.3.1
+#23 82.01    Compiling chacha20 v0.10.2
+#23 82.17    Compiling zerovec v0.11.8
+#23 83.16    Compiling ruff_macros v0.0.14
+#23 83.91    Compiling crypto-common v0.1.7
+#23 83.95    Compiling ruff_diagnostics v0.0.14
+#23 84.12    Compiling displaydoc v0.2.7
+#23 84.37    Compiling autocfg v1.5.1
+#23 84.53    Compiling camino v1.2.5
+#23 84.65    Compiling num-traits v0.2.19
+#23 86.35    Compiling rand v0.10.2
+#23 86.57    Compiling typed-path v0.12.3
+#23 88.25    Compiling uuid v1.26.1
+#23 88.56    Compiling hashbrown v0.14.5
+#23 88.93    Compiling subtle v2.6.1
+#23 89.12    Compiling ruff_annotate_snippets v0.0.14
+#23 91.85    Compiling dashmap v6.2.1
+#23 92.17    Compiling ruff_notebook v0.0.14
+#23 95.63    Compiling zip v8.6.0
+#23 97.36    Compiling ty_static v0.0.14
+#23 97.40    Compiling zstd-sys v2.1.0+zstd.1.5.7
+#23 97.52    Compiling block-buffer v0.10.4
+#23 97.57    Compiling ruff_memory_usage v0.0.14
+#23 97.68    Compiling filetime v0.2.29
+#23 97.79    Compiling arc-swap v1.9.2
+#23 97.93    Compiling same-file v1.0.6
+#23 97.98    Compiling supports-hyperlinks v3.2.0
+#23 98.09    Compiling path-slash v0.2.1
+#23 98.20    Compiling dunce v1.0.5
+#23 98.24    Compiling matchit v0.9.2
+#23 98.67    Compiling pathdiff v0.2.3
+#23 98.71    Compiling similar v3.2.0
+#23 106.2    Compiling ruff_db v0.0.14
+#23 124.4    Compiling walkdir v2.5.0
+#23 124.5    Compiling digest v0.10.7
+#23 131.5    Compiling tinystr v0.8.4
+#23 131.6    Compiling litemap v0.8.3
+#23 131.7    Compiling writeable v0.6.4
+#23 131.9    Compiling cpufeatures v0.2.17
+#23 131.9    Compiling icu_properties_data v2.3.0
+#23 132.0    Compiling icu_locale_core v2.3.0
+#23 133.5    Compiling zerotrie v0.2.5
+#23 133.7    Compiling potential_utf v0.1.6
+#23 133.8    Compiling bzip2-sys v0.1.13+1.0.8
+#23 133.9    Compiling zstd-safe v5.0.2+zstd.1.5.2
+#23 134.2    Compiling radium v0.7.0
+#23 134.3    Compiling utf8_iter v1.0.4
+#23 134.4    Compiling icu_collections v2.3.0
+#23 135.8    Compiling icu_provider v2.3.1
+#23 136.3    Compiling num-integer v0.1.47
+#23 136.6    Compiling inout v0.1.4
+#23 136.6    Compiling strum_macros v0.27.2
+#23 137.4    Compiling crossbeam-epoch v0.9.21
+#23 137.5    Compiling base64ct v1.8.3
+#23 138.1    Compiling byteorder v1.5.0
+#23 138.2    Compiling tap v1.0.1
+#23 138.2    Compiling adler2 v2.0.1
+#23 138.3    Compiling simd-adler32 v0.3.10
+#23 138.3    Compiling winnow v1.0.4
+#23 138.5    Compiling unicode-general-category v1.1.0
+#23 138.9    Compiling toml_parser v1.1.3+spec-1.1.0
+#23 139.7    Compiling miniz_oxide v0.9.1
+#23 139.9    Compiling wyz v0.5.1
+#23 140.5    Compiling password-hash v0.4.2
+#23 140.6    Compiling strum v0.27.2
+#23 140.7    Compiling cipher v0.4.4
+#23 140.8    Compiling num-bigint v0.4.8
+#23 143.2    Compiling icu_properties v2.3.0
+#23 144.2    Compiling sha2 v0.10.9
+#23 144.3    Compiling hmac v0.12.1
+#23 144.4    Compiling strum_macros v0.28.0
+#23 145.2    Compiling serde_spanned v1.1.1
+#23 145.3    Compiling toml_datetime v1.1.1+spec-1.1.0
+#23 145.5    Compiling deranged v0.5.8
+#23 145.9    Compiling jiff-core v0.1.1
+#23 146.9    Compiling rustix v1.1.4
+#23 147.1    Compiling powerfmt v0.2.0
+#23 147.1    Compiling funty v2.0.0
+#23 147.6    Compiling crossbeam-deque v0.8.8
+#23 148.0    Compiling getrandom v0.3.4
+#23 148.1    Compiling iana-time-zone v0.1.65
+#23 148.4    Compiling semver v1.0.28
+#23 148.5    Compiling time-core v0.1.9
+#23 148.6    Compiling jiff-tzdb v0.1.8
+#23 148.7    Compiling toml_writer v1.1.2+spec-1.1.0
+#23 148.8    Compiling num-conv v0.2.2
+#23 148.9    Compiling time v0.3.55
+#23 149.2    Compiling toml v1.1.6+spec-1.1.0
+#23 151.9    Compiling jiff v0.2.37
+#23 157.2    Compiling rustc_version v0.4.1
+#23 157.4    Compiling chrono v0.4.45
+#23 159.8    Compiling bitvec v1.1.1
+#23 161.2    Compiling strum v0.28.0
+#23 161.2    Compiling pbkdf2 v0.11.0
+#23 161.3    Compiling bzip2 v0.4.4
+#23 161.4    Compiling ruff_python_literal v0.0.14
+#23 162.1    Compiling zstd v0.11.2+zstd.1.5.2
+#23 162.2    Compiling aes v0.8.4
+#23 162.8    Compiling ty_vendored v0.0.14
+#23 162.9    Compiling flate2 v1.1.10
+#23 163.3    Compiling sha1 v0.10.7
+#23 163.4    Compiling ruff_python_stdlib v0.0.14
+#23 164.0    Compiling ahash v0.8.12
+#23 164.1    Compiling serde_bytes v0.11.19
+#23 164.2    Compiling monty-macros v1.0.1 (/build/distribution/monty/crates/monty-macros)
+#23 164.5    Compiling io-lifetimes v2.0.4
+#23 164.5    Compiling constant_time_eq v0.1.5
+#23 164.6    Compiling lexical-util v1.0.7
+#23 164.9    Compiling io-lifetimes v3.0.1
+#23 165.1    Compiling linux-raw-sys v0.12.1
+#23 165.2    Compiling rayon-core v1.13.0
+#23 167.9    Compiling zip v0.6.6
+#23 168.2    Compiling lexical-parse-integer v1.0.6
+#23 168.3    Compiling monty-types v1.0.1 (/build/distribution/monty/crates/monty-types)
+#23 173.1    Compiling ruff_python_codegen v0.0.14
+#23 174.3    Compiling heapless v0.7.17
+#23 174.4    Compiling ruff_ranged_value v0.0.14
+#23 175.4    Compiling io-extras v0.19.0
+#23 175.5    Compiling colored v3.1.1
+#23 175.8    Compiling ty_site_packages v0.0.14
+#23 177.2    Compiling ty_module_resolver v0.0.14
+#23 184.1    Compiling ty_combine v0.0.14
+#23 185.4    Compiling lexical-parse-float v1.0.6
+#23 185.7    Compiling monty-typeshed v1.0.1 (/build/distribution/monty/crates/monty-typeshed)
+#23 186.0    Compiling hash32 v0.2.1
+#23 186.0    Compiling ruff_index v0.0.14
+#23 186.1    Compiling spin v0.9.9
+#23 186.2    Compiling libm v0.2.16
+#23 186.3    Compiling utf8parse v0.2.2
+#23 186.4    Compiling bit-vec v0.8.0
+#23 186.5    Compiling cap-primitives v4.0.3
+#23 186.6    Compiling jiter v0.17.0
+#23 186.7    Compiling bit-set v0.8.0
+#23 186.8    Compiling anstyle-parse v1.0.0
+#23 187.4    Compiling ty_python_core v0.0.14
+#23 205.3    Compiling fs-set-times v0.20.3
+#23 205.4    Compiling rayon v1.12.0
+#23 206.8    Compiling ruff_python_importer v0.0.14
+#23 206.9    Compiling rustix-linux-procfs v0.1.1
+#23 207.8    Compiling ruff_python_edits v0.0.14
+#23 207.9    Compiling itertools v0.14.0
+#23 208.6    Compiling cobs v0.3.0
+#23 208.7    Compiling ambient-authority v0.0.2
+#23 208.8    Compiling maybe-owned v0.3.4
+#23 208.8    Compiling ipnet v2.12.2
+#23 209.6    Compiling is_terminal_polyfill v1.70.2
+#23 209.6    Compiling anstyle-query v1.1.5
+#23 209.6    Compiling minicbor v2.3.0
+#23 210.4    Compiling colorchoice v1.0.5
+#23 210.5    Compiling cap-std v4.0.3
+#23 210.6    Compiling anstream v1.0.0
+#23 210.9    Compiling minicbor-serde v0.7.1
+#23 212.7    Compiling postcard v1.1.3
+#23 212.9    Compiling prost-derive v0.14.4
+#23 213.5    Compiling ty_python_semantic v0.0.14
+#23 388.6    Compiling fancy-regex v0.17.0
+#23 392.9    Compiling speedate v0.17.0
+#23 394.3    Compiling hashbrown v0.16.1
+#23 394.7    Compiling strsim v0.11.1
+#23 395.1    Compiling bytes v1.12.1
+#23 395.6    Compiling clap_lex v1.1.0
+#23 395.8    Compiling clap_builder v4.6.6
+#23 401.8    Compiling prost v0.14.4
+#23 402.1    Compiling monty v1.0.1 (/build/distribution/monty/crates/monty)
+#23 472.5    Compiling monty-type-checking v1.0.1 (/build/distribution/monty/crates/monty-type-checking)
+#23 474.9    Compiling clap_derive v4.6.4
+#23 475.6    Compiling clap v4.6.6
+#23 475.6    Compiling monty-fs v1.0.1 (/build/distribution/monty/crates/monty-fs)
+#23 477.7    Compiling monty-proto v1.0.1 (/build/distribution/monty/crates/monty-proto)
+#23 482.6    Compiling monty-alloc v1.0.1 (/build/distribution/monty/crates/monty-alloc)
+#23 482.7    Compiling monty-runtime v1.0.1 (/build/distribution/monty/crates/monty-runtime)
+#23 486.2     Finished `release` profile [optimized] target(s) in 8m 05s
+#23 486.5 Downloading maturin (8.2MiB)
+#23 486.6  Downloaded maturin
+#23 486.6 Installed 1 package in 1ms
+#23 486.8  Downloading crates ...
+#23 486.9   Downloaded allocation-counter v0.8.1
+#23 486.9   Downloaded anes v0.1.6
+#23 486.9   Downloaded core-foundation-sys v0.8.7
+#23 486.9   Downloaded logfire-core v0.12.0
+#23 486.9   Downloaded nohash-hasher v0.2.0
+#23 486.9   Downloaded plotters v0.3.7
+#23 486.9   Downloaded wit-bindgen-rust v0.46.0
+#23 486.9   Downloaded wit-parser v0.239.0
+#23 486.9   Downloaded plotters-svg v0.3.7
+#23 486.9   Downloaded winx v0.36.4
+#23 487.0   Downloaded wit-bindgen v0.46.0
+#23 487.0   Downloaded wit-bindgen-core v0.46.0
+#23 487.0   Downloaded zerocopy-derive v0.8.57
+#23 487.0   Downloaded zeroize v1.9.0
+#23 487.0   Downloaded windows-result v0.4.1
+#23 487.0   Downloaded mio v1.2.3
+#23 487.0   Downloaded windows-strings v0.5.1
+#23 487.0   Downloaded webpki-roots v0.26.11
+#23 487.0   Downloaded rand_chacha v0.9.0
+#23 487.0   Downloaded wasm-metadata v0.239.0
+#23 487.0   Downloaded wit-component v0.239.0
+#23 487.1   Downloaded windows_x86_64_msvc v0.53.1
+#23 487.1   Downloaded yansi v1.0.1
+#23 487.1   Downloaded wasm-encoder v0.239.0
+#23 487.1   Downloaded unicode-segmentation v1.13.3
+#23 487.1   Downloaded symbolic-demangle v12.18.3
+#23 487.1   Downloaded wasm-bindgen-macro-support v0.2.128
+#23 487.1   Downloaded statrs v0.18.0
+#23 487.1   Downloaded rustyline v15.0.0
+#23 487.1   Downloaded quick-xml v0.26.0
+#23 487.1   Downloaded tracing-subscriber v0.3.23
+#23 487.1   Downloaded webpki-roots v1.0.9
+#23 487.1   Downloaded radix_trie v0.2.1
+#23 487.1   Downloaded wasmparser v0.239.0
+#23 487.1   Downloaded opentelemetry_sdk v0.32.1
+#23 487.1   Downloaded nix v0.29.0
+#23 487.2   Downloaded rand v0.9.5
+#23 487.2   Downloaded codspeed v4.7.0
+#23 487.2   Downloaded opentelemetry v0.32.0
+#23 487.2   Downloaded rustls v0.23.44
+#23 487.2   Downloaded wasm-bindgen v0.2.128
+#23 487.2   Downloaded windows_aarch64_gnullvm v0.52.6
+#23 487.2   Downloaded socket2 v0.6.5
+#23 487.2   Downloaded rustls-webpki v0.103.15
+#23 487.2   Downloaded windows_i686_gnullvm v0.52.6
+#23 487.2   Downloaded opentelemetry-otlp v0.32.0
+#23 487.2   Downloaded rustdoc-types v0.61.0
+#23 487.2   Downloaded r-efi v5.3.0
+#23 487.2   Downloaded windows_x86_64_gnullvm v0.53.1
+#23 487.2   Downloaded prettyplease v0.2.37
+#23 487.2   Downloaded nix v0.31.3
+#23 487.3   Downloaded aws-lc-rs v1.18.1
+#23 487.3   Downloaded tracing-opentelemetry v0.33.0
+#23 487.3   Downloaded windows_x86_64_msvc v0.52.6
+#23 487.3   Downloaded similar v2.7.0
+#23 487.3   Downloaded windows_x86_64_gnu v0.52.6
+#23 487.3   Downloaded web-sys v0.3.105
+#23 487.4   Downloaded windows_i686_msvc v0.53.1
+#23 487.4   Downloaded sharded-slab v0.1.7
+#23 487.4   Downloaded windows_x86_64_gnu v0.53.1
+#23 487.5   Downloaded windows_aarch64_gnullvm v0.53.1
+#23 487.5   Downloaded windows_aarch64_msvc v0.53.1
+#23 487.5   Downloaded windows_aarch64_msvc v0.52.6
+#23 487.5   Downloaded windows_i686_gnullvm v0.53.1
+#23 487.5   Downloaded windows_i686_msvc v0.52.6
+#23 487.5   Downloaded windows-core v0.62.2
+#23 487.5   Downloaded windows_i686_gnu v0.52.6
+#23 487.5   Downloaded tokio v1.53.1
+#23 487.6   Downloaded windows_i686_gnu v0.53.1
+#23 487.6   Downloaded valuable v0.1.1
+#23 487.6   Downloaded tokio-tungstenite v0.27.0
+#23 487.6   Downloaded tokio-stream v0.1.19
+#23 487.6   Downloaded tokio-rustls v0.26.5
+#23 487.6   Downloaded symbolic-common v12.18.3
+#23 487.6   Downloaded spin v0.10.1
+#23 487.6   Downloaded rustc-demangle v0.1.28
+#23 487.6   Downloaded oorandom v11.1.5
+#23 487.6   Downloaded gimli v0.32.3
+#23 487.6   Downloaded hashbrown v0.15.5
+#23 487.6   Downloaded tinytemplate v1.2.1
+#23 487.6   Downloaded rand_core v0.9.5
+#23 487.6   Downloaded futures-util v0.3.34
+#23 487.6   Downloaded web-time v1.1.0
+#23 487.6   Downloaded wasi v0.11.1+wasi-snapshot-preview1
+#23 487.6   Downloaded tracing-log v0.2.0
+#23 487.6   Downloaded tokio-macros v2.7.2
+#23 487.6   Downloaded winapi v0.3.9
+#23 487.7   Downloaded slab v0.4.12
+#23 487.7   Downloaded signal-hook-registry v1.4.8
+#23 487.7   Downloaded rgb v0.8.53
+#23 487.7   Downloaded percent-encoding v2.3.2
+#23 487.7   Downloaded js-sys v0.3.105
+#23 487.7   Downloaded windows-interface v0.59.3
+#23 487.7   Downloaded str_stack v0.1.1
+#23 487.7   Downloaded libfuzzer-sys v0.4.13
+#23 487.7   Downloaded inferno v0.11.21
+#23 487.7   Downloaded windows-targets v0.53.5
+#23 487.7   Downloaded windows-link v0.2.1
+#23 487.7   Downloaded winapi-util v0.1.11
+#23 487.7   Downloaded wasm-bindgen-macro v0.2.128
+#23 487.7   Downloaded ring v0.17.14
+#23 487.8   Downloaded logfire v0.12.0
+#23 487.8   Downloaded cpp_demangle v0.4.5
+#23 487.8   Downloaded wit-bindgen-rust-macro v0.46.0
+#23 487.8   Downloaded windows-targets v0.52.6
+#23 487.8   Downloaded wasm-bindgen-shared v0.2.128
+#23 487.8   Downloaded utf-8 v0.7.6
+#23 487.8   Downloaded untrusted v0.9.0
+#23 487.8   Downloaded thread_local v1.1.10
+#23 487.8   Downloaded critical-section v1.2.0
+#23 487.8   Downloaded windows-implement v0.60.2
+#23 487.8   Downloaded unicode-xid v0.2.6
+#23 487.8   Downloaded tempfile v3.27.0
+#23 487.8   Downloaded memmap2 v0.9.11
+#23 487.8   Downloaded glob v0.3.4
+#23 487.8   Downloaded futures-task v0.3.34
+#23 487.8   Downloaded endian-type v0.1.2
+#23 487.8   Downloaded console v0.16.6
+#23 487.8   Downloaded codspeed-criterion-compat-walltime v4.7.0
+#23 487.8   Downloaded cast v0.3.0
+#23 487.8   Downloaded wasip2 v1.0.4+wasi-0.2.12
+#23 487.8   Downloaded tungstenite v0.27.0
+#23 487.8   Downloaded pyo3-async-runtimes v0.29.0
+#23 487.8   Downloaded num-format v0.4.4
+#23 487.8   Downloaded lazy_static v1.5.0
+#23 487.8   Downloaded jiff-static v0.2.37
+#23 487.8   Downloaded insta v1.48.0
+#23 487.8   Downloaded futures-macro v0.3.34
+#23 487.8   Downloaded futures-channel v0.3.34
+#23 487.8   Downloaded foldhash v0.1.5
+#23 487.8   Downloaded fastrand v2.5.0
+#23 487.8   Downloaded debugid v0.8.0
+#23 487.8   Downloaded ctor v1.0.13
+#23 487.8   Downloaded codspeed-criterion-compat v4.7.0
+#23 487.8   Downloaded rustls-pki-types v1.15.1
+#23 487.8   Downloaded redox_syscall v0.5.18
+#23 487.8   Downloaded r-efi v6.0.0
+#23 487.8   Downloaded pprof v0.15.0
+#23 487.9   Downloaded opentelemetry-proto v0.32.0
+#23 487.9   Downloaded libtest-mimic v0.8.2
+#23 487.9   Downloaded leb128fmt v0.1.0
+#23 487.9   Downloaded fd-lock v4.0.4
+#23 487.9   Downloaded cmake v0.1.58
+#23 487.9   Downloaded windows-sys v0.59.0
+#23 487.9   Downloaded bytemuck v1.25.2
+#23 487.9   Downloaded backtrace v0.3.76
+#23 487.9   Downloaded approx v0.5.1
+#23 487.9   Downloaded anstyle-wincon v3.0.11
+#23 487.9   Downloaded anstream v0.6.21
+#23 487.9   Downloaded object v0.37.3
+#23 488.0   Downloaded napi-derive v3.6.5
+#23 488.0   Downloaded libloading v0.9.0
+#23 488.0   Downloaded is-terminal v0.4.17
+#23 488.0   Downloaded http v1.5.0
+#23 488.0   Downloaded windows-sys v0.60.2
+#23 488.0   Downloaded futures-sink v0.3.34
+#23 488.0   Downloaded futures-io v0.3.34
+#23 488.0   Downloaded windows-sys v0.61.2
+#23 488.1   Downloaded futures-core v0.3.34
+#23 488.1   Downloaded futures v0.3.34
+#23 488.1   Downloaded windows-sys v0.52.0
+#23 488.1   Downloaded equator-macro v0.4.2
+#23 488.2   Downloaded equator v0.4.2
+#23 488.2   Downloaded derive_arbitrary v1.4.2
+#23 488.2   Downloaded data-encoding v2.11.1
+#23 488.2   Downloaded convert_case v0.12.0
+#23 488.2   Downloaded ciborium v0.2.2
+#23 488.2   Downloaded atomic-polyfill v1.0.3
+#23 488.2   Downloaded pretty_assertions v1.4.1
+#23 488.2   Downloaded portable-atomic-util v0.2.8
+#23 488.2   Downloaded napi-sys v3.3.1
+#23 488.2   Downloaded napi-build v2.4.2
+#23 488.2   Downloaded matchers v0.2.0
+#23 488.2   Downloaded winapi-x86_64-pc-windows-gnu v0.4.0
+#23 488.3   Downloaded winapi-i686-pc-windows-gnu v0.4.0
+#23 488.5   Downloaded itertools v0.10.5
+#23 488.5   Downloaded iana-time-zone-haiku v0.1.2
+#23 488.5   Downloaded home v0.5.12
+#23 488.5   Downloaded getrandom v0.4.3
+#23 488.5   Downloaded fs_extra v1.3.0
+#23 488.5   Downloaded fancy-regex v0.14.0
+#23 488.5   Downloaded escape8259 v0.5.3
+#23 488.5   Downloaded encode_unicode v1.0.0
+#23 488.5   Downloaded diff v0.1.13
+#23 488.5   Downloaded crunchy v0.2.4
+#23 488.5   Downloaded criterion-plot v0.5.0
+#23 488.5   Downloaded clipboard-win v5.4.1
+#23 488.5   Downloaded ciborium-io v0.2.2
+#23 488.5   Downloaded anstyle-parse v0.2.7
+#23 488.5   Downloaded wit-bindgen v0.57.1
+#23 488.5   Downloaded windows_x86_64_gnullvm v0.52.6
+#23 488.5   Downloaded plotters-backend v0.3.7
+#23 488.5   Downloaded once_cell_polyfill v1.70.2
+#23 488.5   Downloaded nix v0.26.4
+#23 488.5   Downloaded nibble_vec v0.1.0
+#23 488.5   Downloaded napi v3.12.4
+#23 488.5   Downloaded id-arena v2.3.0
+#23 488.5   Downloaded hermit-abi v0.5.3
+#23 488.5   Downloaded findshlibs v0.10.2
+#23 488.5   Downloaded criterion v0.5.1
+#23 488.6   Downloaded bumpalo v3.20.3
+#23 488.6   Downloaded nu-ansi-term v0.50.3
+#23 488.6   Downloaded miniz_oxide v0.8.9
+#23 488.6   Downloaded half v2.7.1
+#23 488.6   Downloaded futures-executor v0.3.34
+#23 488.6   Downloaded env_filter v2.0.0
+#23 488.6   Downloaded napi-derive-backend v6.1.3
+#23 488.6   Downloaded error-code v3.4.0
+#23 488.6   Downloaded datatest-stable v0.2.10
+#23 488.6   Downloaded colored v2.2.0
+#23 488.6   Downloaded arbitrary v1.4.2
+#23 488.6   Downloaded httparse v1.10.1
+#23 488.6   Downloaded ciborium-ll v0.2.2
+#23 488.6   Downloaded cfg_aliases v0.2.2
+#23 488.6   Downloaded addr2line v0.25.1
+#23 488.6   Downloaded android_system_properties v0.1.6
+#23 488.6   Downloaded aligned-vec v0.6.4
+#23 488.6   Downloaded aws-lc-sys v0.45.0
+#23 489.2 🍹 Building a mixed python/rust project
+#23 489.2 🔗 Found pyo3 bindings
+#23 489.3 🐍 Found CPython 3.12 at /usr/local/bin/python
+#23 489.3 📡 Using build options features from pyproject.toml
+#23 489.4    Compiling syn v3.0.5
+#23 491.0    Compiling syn v2.0.119
+#23 493.1    Compiling serde_core v1.0.229
+#23 494.4    Compiling getrandom v0.3.4
+#23 494.5    Compiling target-lexicon v0.13.5
+#23 494.6    Compiling bytes v1.12.1
+#23 495.1    Compiling futures-core v0.3.34
+#23 495.4    Compiling cmake v0.1.58
+#23 495.6    Compiling dunce v1.0.5
+#23 495.6    Compiling fs_extra v1.3.0
+#23 495.8    Compiling serde v1.0.229
+#23 495.9    Compiling aws-lc-sys v0.45.0
+#23 496.4    Compiling pyo3-build-config v0.29.2
+#23 496.8    Compiling errno v0.3.14
+#23 496.9    Compiling serde_derive v1.0.229
+#23 498.2    Compiling futures-sink v0.3.34
+#23 498.6    Compiling signal-hook-registry v1.4.8
+#23 559.3    Compiling tracing-core v0.1.36
+#23 559.9    Compiling mio v1.2.3
+#23 560.3    Compiling socket2 v0.6.5
+#23 560.9    Compiling thiserror-impl v2.0.20
+#23 561.4    Compiling tokio-macros v2.7.2
+#23 561.6    Compiling memchr v2.8.3
+#23 562.3    Compiling log v0.4.34
+#23 562.4    Compiling zeroize v1.9.0
+#23 562.5    Compiling tokio v1.53.1
+#23 568.7    Compiling thiserror v2.0.20
+#23 568.7    Compiling ppv-lite86 v0.2.21
+#23 568.9    Compiling rand_core v0.9.5
+#23 569.0    Compiling tracing-attributes v0.1.31
+#23 569.6    Compiling futures-macro v0.3.34
+#23 570.0    Compiling aws-lc-rs v1.18.1
+#23 570.0    Compiling futures-task v0.3.34
+#23 570.1    Compiling slab v0.4.12
+#23 570.2    Compiling futures-util v0.3.34
+#23 571.8    Compiling tracing v0.1.44
+#23 572.0    Compiling rand_chacha v0.9.0
+#23 572.3    Compiling rustls-pki-types v1.15.1
+#23 572.9    Compiling aho-corasick v1.1.5
+#23 576.5    Compiling pyo3-ffi v0.29.2
+#23 576.6    Compiling regex-syntax v0.8.11
+#23 580.7    Compiling regex-automata v0.4.18
+#23 590.8    Compiling rand v0.9.5
+#23 591.6    Compiling num-integer v0.1.47
+#23 591.9    Compiling num-bigint v0.4.8
+#23 596.4    Compiling prost-derive v0.14.4
+#23 597.1    Compiling opentelemetry v0.32.0
+#23 599.0    Compiling pyo3 v0.29.2
+#23 599.1    Compiling futures-channel v0.3.34
+#23 599.2    Compiling rustls v0.23.44
+#23 599.2    Compiling untrusted v0.9.0
+#23 599.3    Compiling rustls-webpki v0.103.15
+#23 600.9    Compiling chrono v0.4.45
+#23 603.1    Compiling prost v0.14.4
+#23 603.5    Compiling crypto-common v0.1.7
+#23 603.5    Compiling futures-executor v0.3.34
+#23 603.9    Compiling tokio-stream v0.1.19
+#23 604.1    Compiling pyo3-macros-backend v0.29.2
+#23 606.4    Compiling strum_macros v0.27.2
+#23 607.3    Compiling httparse v1.10.1
+#23 607.4    Compiling percent-encoding v2.3.2
+#23 607.6    Compiling getrandom v0.4.3
+#23 607.6    Compiling lazy_static v1.5.0
+#23 607.7    Compiling hashbrown v0.17.1
+#23 608.1    Compiling subtle v2.6.1
+#23 621.3    Compiling jiff v0.2.37
+#23 627.2    Compiling indexmap v2.14.2
+#23 627.7    Compiling sharded-slab v0.1.7
+#23 628.1    Compiling opentelemetry_sdk v0.32.1
+#23 638.3    Compiling strum v0.27.2
+#23 638.4    Compiling pyo3-macros v0.29.2
+#23 638.7    Compiling digest v0.10.7
+#23 639.1    Compiling matchers v0.2.0
+#23 639.2    Compiling tracing-log v0.2.0
+#23 639.5    Compiling serde_bytes v0.11.19
+#23 639.6    Compiling thread_local v1.1.10
+#23 639.8    Compiling monty-macros v1.0.1 (/build/distribution/monty/crates/monty-macros)
+#23 640.1    Compiling smallvec v1.16.1
+#23 640.3    Compiling nu-ansi-term v0.50.3
+#23 640.6    Compiling tracing-subscriber v0.3.23
+#23 644.3    Compiling sha1 v0.10.7
+#23 644.6    Compiling monty-types v1.0.1 (/build/distribution/monty/crates/monty-types)
+#23 653.0    Compiling opentelemetry-proto v0.32.0
+#23 656.0    Compiling http v1.5.0
+#23 657.2    Compiling regex v1.13.1
+#23 658.2    Compiling webpki-roots v1.0.9
+#23 658.2    Compiling data-encoding v2.11.1
+#23 659.9    Compiling utf-8 v0.7.6
+#23 660.0    Compiling tungstenite v0.27.0
+#23 663.0    Compiling webpki-roots v0.26.11
+#23 663.0    Compiling env_filter v2.0.0
+#23 663.7    Compiling rand v0.10.2
+#23 664.2    Compiling opentelemetry-otlp v0.32.0
+#23 664.3    Compiling ahash v0.8.12
+#23 664.4    Compiling tracing-opentelemetry v0.33.0
+#23 665.6    Compiling tokio-rustls v0.26.5
+#23 665.7    Compiling logfire-core v0.12.0
+#23 665.8    Compiling logfire v0.12.0
+#23 673.2    Compiling tokio-tungstenite v0.27.0
+#23 673.4    Compiling serde_json v1.0.151
+#23 675.1    Compiling monty-fs v1.0.1 (/build/distribution/monty/crates/monty-fs)
+#23 677.3    Compiling monty-proto v1.0.1 (/build/distribution/monty/crates/monty-proto)
+#23 682.0    Compiling pydantic-monty-client v1.0.1 (/build/distribution/monty/crates/monty-python)
+#23 682.1    Compiling monty-pool v1.0.1 (/build/distribution/monty/crates/monty-pool)
+#23 689.6    Compiling pyo3-async-runtimes v0.29.0
+#23 732.4     Finished `release` profile [optimized] target(s) in 4m 03s
+#23 733.6 📦 Built wheel for CPython 3.12 to /build/distribution/wheels/pydantic_monty_client-1.0.1-cp312-cp312-manylinux_2_39_x86_64.whl
+#23 733.7 {
+#23 733.7   "worker": {
+#23 733.7     "filename": "monty",
+#23 733.7     "sha256": "fd99d98c378fac26a0b6ef508b3c41ae9d3647bfc1453fc5b496f83ca4d53589"
+#23 733.7   },
+#23 733.7   "binding": {
+#23 733.7     "filename": "pydantic_monty_client-1.0.1-cp312-cp312-manylinux_2_39_x86_64.whl",
+#23 733.7     "sha256": "de0127d7fdc62099e10755f6ee9e33cd7d8f2a95e7c646592b68efb3351c3956"
+#23 733.7   },
+#23 733.7   "launcher": {
+#23 733.7     "filename": "monty-isolated",
+#23 733.7     "sha256": "a3d43e7ab1d4a115a12607f1a44d2e5a4a0f1d7f7c451a77a1b81ce6b8da18fb"
+#23 733.7   }
+#23 733.7 }
+#23 DONE 734.0s
+
+#24 [monty 13/14] COPY scripts/export_monty_notices.py /build/scripts/
+#24 DONE 0.0s
+
+#25 [monty 14/14] RUN bash /build/scripts/build_monty_distribution.sh /build/distribution /usr/local/bin/python notices
+#25 0.374  Downloading crates ...
+#25 0.459   Downloaded unicode-width v0.1.14
+#25 0.464   Downloaded tower-layer v0.3.3
+#25 0.466   Downloaded reqwest v0.13.5
+#25 0.472   Downloaded rustls-native-certs v0.8.4
+#25 0.473   Downloaded rustls-platform-verifier-android v0.1.1
+#25 0.475   Downloaded lru-slab v0.1.3
+#25 0.476   Downloaded icu_normalizer_data v2.3.0
+#25 0.479   Downloaded http-body-util v0.1.5
+#25 0.481   Downloaded opentelemetry-http v0.32.0
+#25 0.482   Downloaded hyper-rustls v0.27.9
+#25 0.484   Downloaded rand_pcg v0.10.2
+#25 0.486   Downloaded sync_wrapper v1.0.2
+#25 0.488   Downloaded async-trait v0.1.92
+#25 0.492   Downloaded combine v4.6.8
+#25 0.496   Downloaded url v2.5.8
+#25 0.499   Downloaded base64 v0.23.1
+#25 0.503   Downloaded rustls-platform-verifier v0.7.0
+#25 0.507   Downloaded hyper-util v0.1.20
+#25 0.514   Downloaded quinn-proto v0.11.17
+#25 0.520   Downloaded hyper v1.11.1
+#25 0.527   Downloaded jni v0.22.4
+#25 0.534   Downloaded prost-reflect v0.16.5
+#25 0.551   Downloaded tower v0.5.3
+#25 0.562   Downloaded base64 v0.22.1
+#25 0.566   Downloaded jni-macros v0.22.4
+#25 0.568   Downloaded security-framework v3.7.0
+#25 0.572   Downloaded webpki-root-certs v1.0.9
+#25 0.574   Downloaded prost-build v0.14.4
+#25 0.578   Downloaded logos-codegen v0.16.1
+#25 0.584   Downloaded simd_cesu8 v1.2.0
+#25 0.588   Downloaded schannel v0.1.29
+#25 0.590   Downloaded fixedbitset v0.5.7
+#25 0.592   Downloaded icu_normalizer v2.3.0
+#25 0.600   Downloaded quinn v0.11.11
+#25 0.603   Downloaded jni-sys-macros v0.4.1
+#25 0.604   Downloaded core-foundation v0.10.1
+#25 0.606   Downloaded multimap v0.10.1
+#25 0.607   Downloaded logos v0.16.1
+#25 0.609   Downloaded beef v0.5.2
+#25 0.611   Downloaded miette-derive v7.6.0
+#25 0.613   Downloaded http-body v1.1.0
+#25 0.614   Downloaded atomic-waker v1.1.2
+#25 0.615   Downloaded want v0.3.1
+#25 0.616   Downloaded quinn-udp v0.5.15
+#25 0.618   Downloaded logos-derive v0.15.1
+#25 0.618   Downloaded try-lock v0.2.5
+#25 0.619   Downloaded jni-sys v0.4.1
+#25 0.620   Downloaded openssl-probe v0.2.1
+#25 0.622   Downloaded security-framework-sys v2.17.0
+#25 0.624   Downloaded simdutf8 v0.1.5
+#25 0.626   Downloaded tower-service v0.3.3
+#25 0.627   Downloaded fnv v1.0.7
+#25 0.628   Downloaded tower-http v0.6.11
+#25 0.638   Downloaded form_urlencoded v1.2.2
+#25 0.639   Downloaded logos-derive v0.16.1
+#25 0.640   Downloaded logos-codegen v0.15.1
+#25 0.645   Downloaded petgraph v0.8.3
+#25 0.665   Downloaded idna v1.1.0
+#25 0.668   Downloaded wasm-bindgen-futures v0.4.78
+#25 0.669   Downloaded protox-parse v0.9.0
+#25 0.671   Downloaded miette v7.6.0
+#25 0.676   Downloaded prost-types v0.14.4
+#25 0.677   Downloaded protox v0.9.1
+#25 0.682   Downloaded idna_adapter v1.2.2
+#25 0.683   Downloaded logos v0.15.1
+#25 19.45 {'locked_packages': 598, 'target_packages': 355, 'notice_texts': 326, 'license_text_gaps': 0}
+#25 DONE 19.7s
+
+#26 [runtime  3/17] COPY --from=monty /build/distribution/monty/target/release/monty /opt/yuki-monty/monty
+#26 DONE 0.2s
+
+#27 [runtime  4/17] COPY --from=monty /build/distribution/monty-isolated /opt/yuki-monty/monty-isolated
+#27 DONE 0.0s
+
+#28 [runtime  5/17] COPY --from=monty /build/distribution/wheels /opt/yuki-monty/wheels
+#28 DONE 0.0s
+
+#29 [runtime  6/17] COPY --from=monty /build/distribution/THIRD_PARTY_NOTICES.json /opt/yuki-monty/THIRD_PARTY_NOTICES.json
+#29 DONE 0.0s
+
+#30 [runtime  7/17] COPY --from=monty /build/distribution/artifacts.json /opt/yuki-monty/artifacts.json
+#30 DONE 0.0s
+
+#31 [runtime  8/17] COPY LICENSE /opt/yuki-monty/licenses/Yuki-LICENSE
+#31 DONE 0.0s
+
+#32 [runtime  9/17] COPY vendor/monty/LICENSE /opt/yuki-monty/licenses/Monty-LICENSE
+#32 DONE 0.0s
+
+#33 [runtime 10/17] COPY vendor/monty/TYPESHED-LICENSE /opt/yuki-monty/licenses/TYPESHED-LICENSE
+#33 DONE 0.0s
+
+#34 [runtime 11/17] COPY deploy/security/MOBY-PROFILES-LICENSE /opt/yuki-monty/licenses/MOBY-PROFILES-LICENSE
+#34 DONE 0.0s
+
+#35 [runtime 12/17] COPY scripts/verify_monty_isolation.py /opt/yuki-monty/verify_monty_isolation.py
+#35 DONE 0.0s
+
+#36 [runtime 13/17] RUN pip install --no-deps --disable-pip-version-check     'https://files.pythonhosted.org/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl#sha256=481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8'     /opt/yuki-monty/wheels/*.whl
+#36 0.983 Collecting typing-extensions==4.16.0
+#36 1.025   Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+#36 1.038 Processing /opt/yuki-monty/wheels/pydantic_monty_client-1.0.1-cp312-cp312-manylinux_2_39_x86_64.whl
+#36 1.043 Installing collected packages: typing-extensions, pydantic-monty-client
+#36 1.114 Successfully installed pydantic-monty-client-1.0.1 typing-extensions-4.16.0
+#36 1.115 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+#36 DONE 1.3s
+
+#37 [runtime 14/17] COPY backend /opt/yuki-monty/backend
+#37 DONE 0.0s
+
+#38 [runtime 15/17] RUN python /opt/yuki-monty/backend/make_contract.py
+#38 DONE 0.2s
+
+#39 [runtime 16/17] RUN chmod -R u=rwX,go=rX /opt/yuki-monty
+#39 DONE 0.3s
+
+#40 [runtime 17/17] WORKDIR /tmp
+#40 DONE 0.0s
+
+#41 exporting to image
+#41 exporting layers
+#41 exporting layers 1.0s done
+#41 writing image sha256:c8cdd922e0ea990e794f0d758937ddad2115d2849e9195444d36bbb620ad4e91 done
+#41 DONE 1.0s

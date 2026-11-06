@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "scope": "crate extraction canonical base and OCI source package on HJW Windows",
+  "ci_run": 41964358286,
+  "ci_job": 127037883124,
+  "prior_probe": "windows.json: unit tests PASS; source package missing unrelated paths in probe input, fixed by selecting only the target catalog entry",
+  "remote_recheck": "pending",
+  "files": {
+    "windows.json": "3b4908703278cb9c03346e08d6f5e03b4680fcd1a82331758a2873fe365afb7f",
+    "github-windows-failure.txt": "272a45ecdda3de957909b4a39685d770b87a55f2b1818db1d65e3125a10e3e45",
+    "windows-02.json": "41ba32294a558e6ff9fd7602a3929745309aeb1171cf7fae61e4d83724eefe76"
+  }
+}

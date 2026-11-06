@@ -1,0 +1,475 @@
+{
+  "observed_utc": "2026-11-04T23:07:48.676239+00:00",
+  "previous": "artifacts/readiness/after-core033-candidates.json",
+  "previous_sha256": "8de37baefbf9129e9c2da2abe7bce8d67f5c05433eb032d5d7e3b19bc5aa0381",
+  "core_main": "7fd10027bd520dfaa497e06e4f9d20ec869041c8",
+  "producer_prs": {
+    "CORE-038": {
+      "number": 40,
+      "headRefOid": "685b1d59ae645162cfc4216df0ecaa0d5afc7746",
+      "baseRefName": "codex/core-033-personal",
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/40",
+      "state": "OPEN"
+    },
+    "CORE-024": {
+      "number": 38,
+      "headRefOid": "3c92300e68c2f006393ca65952e892e2704e68fe",
+      "baseRefName": "main",
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/38",
+      "state": "OPEN"
+    },
+    "CORE-033": {
+      "number": 36,
+      "headRefOid": "30e1d78519f654fa691ff6ae371240286f1c75ca",
+      "baseRefName": "codex/core-025-media",
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/36",
+      "state": "OPEN"
+    },
+    "CORE-025": {
+      "number": 34,
+      "headRefOid": "c73f1fc5e0fb44faa6e083a13d9a45029739f891",
+      "baseRefName": "codex/core-027-extract",
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/34",
+      "state": "OPEN"
+    },
+    "CORE-039": {
+      "number": 28,
+      "headRefOid": "6e80686e1ce70e0e83681435bf06a0d68dd01308",
+      "baseRefName": "codex/core-032-host",
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/28",
+      "state": "OPEN"
+    },
+    "CORE-032": {
+      "number": 24,
+      "headRefOid": "6c1c1db6c7b7c168e088e047fb3d8ba2a452ea73",
+      "baseRefName": "main",
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/24",
+      "state": "OPEN"
+    }
+  },
+  "core_release_tags": [
+    "handshake-preview-dd694a0db605"
+  ],
+  "formal_windows_passed": [
+    "EXT-001",
+    "EXT-002",
+    "EXT-007",
+    "EXT-008",
+    "EXT-009",
+    "EXT-010",
+    "EXT-019"
+  ],
+  "new_formal_acceptances": [],
+  "new_development_candidates": {
+    "EXT-031": {
+      "branch": "codex/ext-031-media",
+      "receipt": "artifacts/EXT-031/candidate-02/media-inspection.json",
+      "sha256": "3cdd5fd92089a927627f9cdd5f3bd842bbd39600c9ad5175738075c6ea29ab1b",
+      "plugin_sha256": "ad83ae19b484349ace01f83a3bbb491c97fd6ef7e444dc57fe17be247324ee46",
+      "producer_commit": "e25c2b8acce34858d5fd67ac408186e49a1da160",
+      "published": false,
+      "unresolved": [
+        "original model pixel presentation through a selected profile",
+        "automatic volatile media ownership registration; this callback fixture uses operator privacy acquire",
+        "public producer release and full cross-platform runtime"
+      ]
+    }
+  },
+  "core038_lock": "compat/core-038/source.lock.json",
+  "core038_lock_sha256": "6efa4a2fb7c68cac5e76856bf45825e80e9b66c168f3682b2935d926bc082b10",
+  "ready_uncompleted_cards": [],
+  "additional_prerequisites": {
+    "EXT-004/006": "CORE-038 supplies dispatch handle media.open for immutable outbound versions. Original receiving Bot/app native attachment-fetch callback and its source scope remain unspecified; full incoming media cases are blocked.",
+    "EXT-011/015": "CORE-033 718cba6b1cf2 adds original artifact HTTP routes; no Work-independent connector auth, entry selector or Social SSE capability change. Do not repeat 994aee20ced7 consumption.",
+    "EXT-029": "CORE-024 3c92300e68c2 has clean native search validation; no extension physical-attempt/root-budget host contract.",
+    "EXT-030/032": "CORE-050 serving contract not delivered; media processor and encoder alone do not authorize model calls.",
+    "remaining": "See prior readiness snapshots and core-interface-requests.md."
+  },
+  "ci_gate_snapshot": [
+    {
+      "n": 11,
+      "head": "03cabaa6f53db966888e3bf4d62a2113436482ec",
+      "merge_state": "UNSTABLE",
+      "runs": {
+        "push": {
+          "id": 41902511932,
+          "artifact_sha": "03cabaa6f53db966888e3bf4d62a2113436482ec",
+          "units": [
+            "connector",
+            "telegram"
+          ],
+          "failed": [],
+          "required": 10,
+          "pass": 9,
+          "pending_windows_linux": [],
+          "valid_artifacts": 10,
+          "missing_artifacts": [
+            "package-connector-macos-latest-",
+            "connector-upgrade-macos-latest-"
+          ],
+          "complete": false
+        },
+        "pull_request": {
+          "id": 41902523876,
+          "artifact_sha": "39dfdd163536c825a801359f59e7727a34a8e1fb",
+          "units": [
+            "connector",
+            "telegram"
+          ],
+          "failed": [],
+          "required": 10,
+          "pass": 9,
+          "pending_windows_linux": [],
+          "valid_artifacts": 11,
+          "missing_artifacts": [
+            "package-telegram-macos-latest-"
+          ],
+          "complete": false
+        }
+      },
+      "ready": false
+    },
+    {
+      "n": 12,
+      "head": "f8aac847ba3c6807b7ff2574fc80ff4f6f98ad30",
+      "merge_state": "UNSTABLE",
+      "runs": {
+        "push": {
+          "id": 41902555719,
+          "artifact_sha": "f8aac847ba3c6807b7ff2574fc80ff4f6f98ad30",
+          "units": [
+            "connector",
+            "telegram",
+            "web-fetch"
+          ],
+          "failed": [],
+          "required": 13,
+          "pass": 11,
+          "pending_windows_linux": [],
+          "valid_artifacts": 12,
+          "missing_artifacts": [
+            "package-connector-macos-latest-",
+            "package-telegram-macos-latest-",
+            "connector-upgrade-macos-latest-"
+          ],
+          "complete": false
+        },
+        "pull_request": {
+          "id": 41902572423,
+          "artifact_sha": "6ca44ea25cf50d779c3445e5f2677e7a69c83db2",
+          "units": [
+            "connector",
+            "telegram",
+            "web-fetch"
+          ],
+          "failed": [],
+          "required": 13,
+          "pass": 11,
+          "pending_windows_linux": [],
+          "valid_artifacts": 12,
+          "missing_artifacts": [
+            "package-connector-macos-latest-",
+            "package-web-fetch-macos-latest-",
+            "connector-upgrade-macos-latest-"
+          ],
+          "complete": false
+        }
+      },
+      "ready": false
+    },
+    {
+      "n": 13,
+      "head": "a9851426968903270e2f0c1ff87b704714f25d65",
+      "merge_state": "UNSTABLE",
+      "runs": {
+        "push": {
+          "id": 41902563812,
+          "artifact_sha": "a9851426968903270e2f0c1ff87b704714f25d65",
+          "units": [
+            "connector",
+            "feishu",
+            "telegram",
+            "web-fetch"
+          ],
+          "failed": [],
+          "required": 16,
+          "pass": 15,
+          "pending_windows_linux": [],
+          "valid_artifacts": 17,
+          "missing_artifacts": [
+            "acceptance-macos-latest-"
+          ],
+          "complete": false
+        },
+        "pull_request": {
+          "id": 41902574597,
+          "artifact_sha": "3a409c2c82e07da21365dd41427bb74f3e632866",
+          "units": [
+            "connector",
+            "feishu",
+            "telegram",
+            "web-fetch"
+          ],
+          "failed": [],
+          "required": 16,
+          "pass": 16,
+          "pending_windows_linux": [],
+          "valid_artifacts": 18,
+          "missing_artifacts": [],
+          "complete": true
+        }
+      },
+      "ready": false
+    },
+    {
+      "n": 14,
+      "head": "c66dbe17227493b102da82e230fd7404e0b490cb",
+      "merge_state": "UNSTABLE",
+      "runs": {
+        "push": {
+          "id": 41902570970,
+          "artifact_sha": "c66dbe17227493b102da82e230fd7404e0b490cb",
+          "units": [
+            "connector",
+            "env",
+            "feishu",
+            "telegram",
+            "web-fetch"
+          ],
+          "failed": [],
+          "required": 19,
+          "pass": 13,
+          "pending_windows_linux": [],
+          "valid_artifacts": 14,
+          "missing_artifacts": [
+            "acceptance-macos-latest-",
+            "package-connector-macos-latest-",
+            "package-env-macos-latest-",
+            "package-feishu-macos-latest-",
+            "package-telegram-macos-latest-",
+            "package-web-fetch-macos-latest-",
+            "connector-upgrade-macos-latest-"
+          ],
+          "complete": false
+        },
+        "pull_request": {
+          "id": 41902585385,
+          "artifact_sha": "8a34c46be1ded13f74e0bf384a76909c0a6fa130",
+          "units": [
+            "connector",
+            "env",
+            "feishu",
+            "telegram",
+            "web-fetch"
+          ],
+          "failed": [],
+          "required": 19,
+          "pass": 14,
+          "pending_windows_linux": [],
+          "valid_artifacts": 15,
+          "missing_artifacts": [
+            "package-connector-macos-latest-",
+            "package-env-macos-latest-",
+            "package-feishu-macos-latest-",
+            "package-telegram-macos-latest-",
+            "package-web-fetch-macos-latest-",
+            "connector-upgrade-macos-latest-"
+          ],
+          "complete": false
+        }
+      },
+      "ready": false
+    },
+    {
+      "n": 15,
+      "head": "a2285c3bc6a22da587f9d586cf26ada8ae65c821",
+      "merge_state": "UNSTABLE",
+      "runs": {
+        "push": {
+          "id": 41904941694,
+          "artifact_sha": "a2285c3bc6a22da587f9d586cf26ada8ae65c821",
+          "units": [],
+          "failed": [],
+          "required": 4,
+          "pass": 3,
+          "pending_windows_linux": [],
+          "valid_artifacts": 2,
+          "missing_artifacts": [
+            "acceptance-macos-latest-"
+          ],
+          "complete": false
+        },
+        "pull_request": {
+          "id": 41904950491,
+          "artifact_sha": "f0154ce7bf75f9da40e74d85ad1807e287aae130",
+          "units": [
+            "connector",
+            "env",
+            "feishu",
+            "telegram",
+            "web-fetch",
+            "yuki-setup"
+          ],
+          "failed": [],
+          "required": 22,
+          "pass": 15,
+          "pending_windows_linux": [],
+          "valid_artifacts": 16,
+          "missing_artifacts": [
+            "acceptance-macos-latest-",
+            "package-connector-macos-latest-",
+            "package-env-macos-latest-",
+            "package-feishu-macos-latest-",
+            "package-telegram-macos-latest-",
+            "package-web-fetch-macos-latest-",
+            "package-yuki-setup-macos-latest-",
+            "connector-upgrade-macos-latest-"
+          ],
+          "complete": false
+        }
+      },
+      "ready": false
+    },
+    {
+      "n": 16,
+      "head": "12b3ace901e367bde217ae2fc3745de2c7847679",
+      "merge_state": "UNSTABLE",
+      "runs": {
+        "push": {
+          "id": 41919148239,
+          "artifact_sha": "12b3ace901e367bde217ae2fc3745de2c7847679",
+          "units": [
+            "connector",
+            "env",
+            "feishu",
+            "local-agent",
+            "telegram",
+            "web-fetch",
+            "yuki-setup"
+          ],
+          "failed": [],
+          "required": 25,
+          "pass": 17,
+          "pending_windows_linux": [],
+          "valid_artifacts": 18,
+          "missing_artifacts": [
+            "acceptance-macos-latest-",
+            "package-connector-macos-latest-",
+            "package-env-macos-latest-",
+            "package-feishu-macos-latest-",
+            "package-local-agent-macos-latest-",
+            "package-telegram-macos-latest-",
+            "package-web-fetch-macos-latest-",
+            "package-yuki-setup-macos-latest-",
+            "connector-upgrade-macos-latest-"
+          ],
+          "complete": false
+        },
+        "pull_request": {
+          "id": 41919159072,
+          "artifact_sha": "6921bbda66abcd52e533e1a81b6a85d7e2cd945b",
+          "units": [
+            "connector",
+            "env",
+            "feishu",
+            "local-agent",
+            "telegram",
+            "web-fetch",
+            "yuki-setup"
+          ],
+          "failed": [],
+          "required": 25,
+          "pass": 17,
+          "pending_windows_linux": [],
+          "valid_artifacts": 18,
+          "missing_artifacts": [
+            "acceptance-macos-latest-",
+            "package-connector-macos-latest-",
+            "package-env-macos-latest-",
+            "package-feishu-macos-latest-",
+            "package-local-agent-macos-latest-",
+            "package-telegram-macos-latest-",
+            "package-web-fetch-macos-latest-",
+            "package-yuki-setup-macos-latest-",
+            "connector-upgrade-macos-latest-"
+          ],
+          "complete": false
+        }
+      },
+      "ready": false
+    },
+    {
+      "n": 17,
+      "head": "25075e2be2a029e229bea54abf384f567b71d950",
+      "merge_state": "UNSTABLE",
+      "runs": {
+        "push": {
+          "id": 41919254623,
+          "artifact_sha": "25075e2be2a029e229bea54abf384f567b71d950",
+          "units": [
+            "client",
+            "connector",
+            "env",
+            "feishu",
+            "local-agent",
+            "telegram",
+            "web-fetch",
+            "yuki-setup"
+          ],
+          "failed": [],
+          "required": 28,
+          "pass": 19,
+          "pending_windows_linux": [],
+          "valid_artifacts": 20,
+          "missing_artifacts": [
+            "acceptance-macos-latest-",
+            "package-client-macos-latest-",
+            "package-connector-macos-latest-",
+            "package-env-macos-latest-",
+            "package-feishu-macos-latest-",
+            "package-local-agent-macos-latest-",
+            "package-telegram-macos-latest-",
+            "package-web-fetch-macos-latest-",
+            "package-yuki-setup-macos-latest-",
+            "connector-upgrade-macos-latest-"
+          ],
+          "complete": false
+        },
+        "pull_request": {
+          "id": 41919267123,
+          "artifact_sha": "648184390ec812a3947c621aa72c83cb5c340c5d",
+          "units": [
+            "client",
+            "connector",
+            "env",
+            "feishu",
+            "local-agent",
+            "telegram",
+            "web-fetch",
+            "yuki-setup"
+          ],
+          "failed": [],
+          "required": 28,
+          "pass": 19,
+          "pending_windows_linux": [],
+          "valid_artifacts": 20,
+          "missing_artifacts": [
+            "acceptance-macos-latest-",
+            "package-client-macos-latest-",
+            "package-connector-macos-latest-",
+            "package-env-macos-latest-",
+            "package-feishu-macos-latest-",
+            "package-local-agent-macos-latest-",
+            "package-telegram-macos-latest-",
+            "package-web-fetch-macos-latest-",
+            "package-yuki-setup-macos-latest-",
+            "connector-upgrade-macos-latest-"
+          ],
+          "complete": false
+        }
+      },
+      "ready": false
+    }
+  ],
+  "next_executable": "Inspect current PR CI for failures/green gates; consume changed producer interfaces when delivered."
+}

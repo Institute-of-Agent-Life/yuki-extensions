@@ -1,0 +1,54 @@
+{
+  "host_sha256": "502f190d036f55c9f4348aa832642f82aa3bc5bb1ae153ac100bffc87f68052b",
+  "plugin_sha256": "23f888dc639f01754f4122dd606bfeebddf9e77f84757bee8db8fc318e05bb47",
+  "native_inventory_before": {
+    "plugin_sha256": "23f888dc639f01754f4122dd606bfeebddf9e77f84757bee8db8fc318e05bb47",
+    "containers": [
+      "014df5c6dec1",
+      "d620452a9cef",
+      "f6870be17a2a"
+    ]
+  },
+  "native_inventory_after": {
+    "plugin_sha256": "23f888dc639f01754f4122dd606bfeebddf9e77f84757bee8db8fc318e05bb47",
+    "containers": [
+      "014df5c6dec1",
+      "d620452a9cef",
+      "f6870be17a2a"
+    ]
+  },
+  "fixture_sha256": "3c56d97b91b7a8546f36ee2130357777bd5d526816bfd349980292ca1b5a109e",
+  "transport_sha256": "1338b68a9114de0e0c47a4c60d709b0b4a8a23c359aaa909a79c08445a20bf6e",
+  "status": "PASS",
+  "candidate_only": true,
+  "mode": "unknown",
+  "restarts": 0,
+  "event": {
+    "accepted": true,
+    "event": 1
+  },
+  "wire_count": 3,
+  "deliveries": [
+    {
+      "arguments": {
+        "text": "same original arguments"
+      },
+      "execution": "b697bdf7-e348-492d-a818-de092e6027f8",
+      "operation": "e1a9164b-692c-4471-85fe-243c06ae75a2",
+      "tool": "send"
+    }
+  ],
+  "host": {
+    "host_schema_revision": 2,
+    "plugins": [
+      {
+        "enabled": true,
+        "generation": "df68f4b4-bde8-4939-ac48-c66d8706670d",
+        "namespace": "code_a",
+        "online": true,
+        "plugin": "code_a",
+        "revision": "fe16e18e0af3d5032954fadc9e64a9b1adf37127ae43854a5a0adb9d639e294c"
+      }
+    ]
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "exit_code": 0,
+  "stdout": "yuki-bot-codemode (enforce)\nyuki-bot-codemode//launcher (enforce)\nyuki-bot-codemode//launcher//worker (enforce)\nLoaded image ID: sha256:1148dbb014615300fa7e713b2f94f550c0d1c69780c0805f84f093ceee34dd0b\n{\"scope\": \"Prepared HJW Arch container environment; no Monty VM has run in this probe.\", \"status\": \"PASS\", \"apparmor\": \"yuki-bot-codemode (enforce)\", \"uid\": 10001, \"security\": {\"CapEff\": \"0000000000000000\", \"CapPrm\": \"0000000000000000\", \"CapBnd\": \"0000000000000000\", \"NoNewPrivs\": \"1\", \"Seccomp\": \"2\"}, \"network_interfaces\": [[1, \"lo\"]], \"outbound_connection_denied\": {\"errno\": 101, \"type\": \"OSError\"}, \"host_file_unavailable\": {\"errno\": 2, \"type\": \"FileNotFoundError\"}, \"image_write_denied\": {\"errno\": 30, \"type\": \"OSError\"}, \"keyctl_errno\": 1, \"ext023_acceptance\": false}\n",
+  "stderr": "wsl: Failed to start the systemd user session for 'root'. See journalctl for more details.\nWARNING: IPv4 forwarding is disabled\n"
+}

@@ -1,0 +1,199 @@
+[
+  {
+    "args": [
+      "person",
+      "create",
+      "40860e03-2142-4edb-a627-96a1f457402b"
+    ],
+    "result": {
+      "original": "40860e03-2142-4edb-a627-96a1f457402b",
+      "root": "40860e03-2142-4edb-a627-96a1f457402b"
+    }
+  },
+  {
+    "args": [
+      "person",
+      "create",
+      "02148a70-18eb-447a-bbb4-0f92ec717c97"
+    ],
+    "result": {
+      "original": "02148a70-18eb-447a-bbb4-0f92ec717c97",
+      "root": "02148a70-18eb-447a-bbb4-0f92ec717c97"
+    }
+  },
+  {
+    "args": [
+      "person",
+      "create",
+      "3b8a5c61-e2fe-42be-b4f2-682c18fd8e68"
+    ],
+    "result": {
+      "original": "3b8a5c61-e2fe-42be-b4f2-682c18fd8e68",
+      "root": "3b8a5c61-e2fe-42be-b4f2-682c18fd8e68"
+    }
+  },
+  {
+    "args": [
+      "person",
+      "merge",
+      "40860e03-2142-4edb-a627-96a1f457402b",
+      "02148a70-18eb-447a-bbb4-0f92ec717c97"
+    ],
+    "result": {
+      "changed": true,
+      "original": "40860e03-2142-4edb-a627-96a1f457402b",
+      "root": "02148a70-18eb-447a-bbb4-0f92ec717c97"
+    }
+  },
+  {
+    "args": [
+      "account",
+      "open",
+      "acp",
+      "selected-client",
+      "actor",
+      1,
+      "--person",
+      "02148a70-18eb-447a-bbb4-0f92ec717c97",
+      "--start",
+      1
+    ],
+    "result": {
+      "account": "9918308d-3b6e-40e0-8038-21ca8d757ff2",
+      "assignment": "029d285f-fade-4d97-8fe6-a5051146d960"
+    }
+  },
+  {
+    "args": [
+      "account",
+      "open",
+      "acp",
+      "selected-client",
+      "bot",
+      1,
+      "--start",
+      1
+    ],
+    "result": {
+      "account": "029d159d-b184-4b36-85ae-a14f28893dae",
+      "assignment": "eda544c9-4186-464d-a53b-e1e9207afa86"
+    }
+  },
+  {
+    "args": [
+      "entry",
+      "private",
+      "029d285f-fade-4d97-8fe6-a5051146d960",
+      "eda544c9-4186-464d-a53b-e1e9207afa86",
+      "--topic",
+      "original-thread-one"
+    ],
+    "result": {
+      "entry": "ebba7147-6dcd-46af-86b4-a6b5db0bad95"
+    }
+  },
+  {
+    "args": [
+      "ingress",
+      "record",
+      "{\"source\": \"original-thread-one\", \"account\": \"9918308d-3b6e-40e0-8038-21ca8d757ff2\", \"bot_stage\": \"eda544c9-4186-464d-a53b-e1e9207afa86\", \"reply_bot\": \"bot\", \"kind\": \"message\", \"topic\": \"original-thread-one\", \"occurred\": 100, \"observed\": 100, \"segments\": [{\"type\": \"text\", \"text\": \"original-thread-one\"}]}"
+    ],
+    "result": {
+      "accepted": false,
+      "event": 3
+    }
+  },
+  {
+    "args": [
+      "personal",
+      "revoke",
+      "cf6df7fb-f82f-418b-ba13-755a4337e51c"
+    ],
+    "result": {
+      "device_id": "cf6df7fb-f82f-418b-ba13-755a4337e51c",
+      "revoked": true
+    }
+  },
+  {
+    "args": [
+      "control",
+      "read",
+      "binding.get",
+      "{\"id\": \"9ccb6719-de4a-4404-b1e0-cb0e6adc9e69\"}"
+    ],
+    "result": {
+      "account_id": "227bcfb8-b8c4-4b21-91c8-029813b73262",
+      "current_person_id": "02148a70-18eb-447a-bbb4-0f92ec717c97",
+      "display_name": "",
+      "ended_at": null,
+      "external_account_id": "40860e03-2142-4edb-a627-96a1f457402b",
+      "id": "9ccb6719-de4a-4404-b1e0-cb0e6adc9e69",
+      "person_id": "40860e03-2142-4edb-a627-96a1f457402b",
+      "platform": "app",
+      "revision": 1,
+      "started_at": null,
+      "status": "active"
+    }
+  },
+  {
+    "args": [
+      "control",
+      "write",
+      "binding.disable",
+      "{\"id\": \"9ccb6719-de4a-4404-b1e0-cb0e6adc9e69\", \"request_id\": \"14126eb8-e31f-4a69-aad7-409f598f4deb\", \"expected_revision\": 1}"
+    ],
+    "result": {
+      "audit_id": "14126eb8-e31f-4a69-aad7-409f598f4deb",
+      "effective_state": {
+        "resource": "9ccb6719-de4a-4404-b1e0-cb0e6adc9e69",
+        "revision": 2,
+        "status": "disabled"
+      },
+      "operation": null,
+      "resource_id": "9ccb6719-de4a-4404-b1e0-cb0e6adc9e69",
+      "revision": 2,
+      "success": true
+    }
+  },
+  {
+    "args": [
+      "control",
+      "read",
+      "binding.get",
+      "{\"id\": \"9ccb6719-de4a-4404-b1e0-cb0e6adc9e69\"}"
+    ],
+    "result": {
+      "account_id": "227bcfb8-b8c4-4b21-91c8-029813b73262",
+      "current_person_id": "02148a70-18eb-447a-bbb4-0f92ec717c97",
+      "display_name": "",
+      "ended_at": null,
+      "external_account_id": "40860e03-2142-4edb-a627-96a1f457402b",
+      "id": "9ccb6719-de4a-4404-b1e0-cb0e6adc9e69",
+      "person_id": "40860e03-2142-4edb-a627-96a1f457402b",
+      "platform": "app",
+      "revision": 2,
+      "started_at": null,
+      "status": "disabled"
+    }
+  },
+  {
+    "args": [
+      "control",
+      "write",
+      "binding.enable",
+      "{\"id\": \"9ccb6719-de4a-4404-b1e0-cb0e6adc9e69\", \"request_id\": \"91ffd9c3-da31-4c8d-9ed1-58b674ebaf19\", \"expected_revision\": 2}"
+    ],
+    "result": {
+      "audit_id": "91ffd9c3-da31-4c8d-9ed1-58b674ebaf19",
+      "effective_state": {
+        "resource": "9ccb6719-de4a-4404-b1e0-cb0e6adc9e69",
+        "revision": 3,
+        "status": "active"
+      },
+      "operation": null,
+      "resource_id": "9ccb6719-de4a-4404-b1e0-cb0e6adc9e69",
+      "revision": 3,
+      "success": true
+    }
+  }
+]

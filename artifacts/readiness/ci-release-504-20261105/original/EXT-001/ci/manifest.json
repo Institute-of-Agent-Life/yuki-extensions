@@ -1,0 +1,20 @@
+{
+  "task": "EXT-001",
+  "status": "PASS",
+  "phase": "acceptance",
+  "card_status": "PASS",
+  "platform": "Linux-7.0.0-1014-aws-x86_64-with-glibc2.39",
+  "python": "3.12.16 (main, Oct 26 2026, 02:50:49) [GCC 13.3.0]",
+  "source_commit": "42d5396dfe19eada5cf0de45563b68b6f9ede01d",
+  "source_snapshot_sha256": null,
+  "command": [
+    "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+    "ci/check.py",
+    "EXT-001",
+    "--out",
+    "artifacts/EXT-001/ci"
+  ],
+  "files": {
+    "extension-build-isolation.json": "8971e249f8015b13cc68b52997350ac8b5576274594387381649f8efa05be365"
+  }
+}

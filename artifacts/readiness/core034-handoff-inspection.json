@@ -1,0 +1,112 @@
+{
+  "observed_utc": "2026-11-05T01:27:48.819054+00:00",
+  "handoff_commit": "bfd8d796c9d61ab08e7532e940763aaa2e818337",
+  "published": false,
+  "producer_manifest_sha256": "52e528ad1f0b787cc3347799ca426048b82d9bc186c61bec1c9571bfce107998",
+  "packages": [
+    {
+      "path": "/Volumes/huawei/\u9805\u76ee\u5be6\u6230/yuki-core/artifacts/CORE-034/handoff-f3f3723aa532/macos-arm64/yuki-code-preview-f3f3723aa532-darwin-arm64.zip",
+      "sha256": "a404610ee179994885f136417d195d7b13b55ee09fd43e3581bf1e648957e355",
+      "source_commit": "f3f3723aa5322c6a2a20e8cb3b04d845cd7773cc",
+      "dirty": false,
+      "sdk_versions": {
+        "python": "1.0.0a5",
+        "rust": "1.0.0-alpha.5"
+      },
+      "composition_schema_sha256": "e001485289af1561f9a6dfd9136fb8e15bb6fd6b47f03c6fcd152e1ece6dcd7d",
+      "host_schema_sha256": "1f22ed740b83bf78d0e26ac79d028a36d9b504580c7784bc80bcfaab7e723cee",
+      "sdk_crate_sha256": "ea6a1c2f5e8e5ff5b53ef7b8ab89baa9c8bb26cbd9ba45f116eaaafd73406794",
+      "implemented_methods": [
+        "code.resume",
+        "code.snapshot.get",
+        "code.snapshot.put",
+        "code.sources",
+        "tool.catalog",
+        "tool.invoke",
+        "tool.resume",
+        "tool.schema"
+      ],
+      "all_member_hashes_verified": true,
+      "validation": {
+        "assertions": 381,
+        "card": "CORE-034",
+        "clean_path_launch": "verified",
+        "consumer": "opaque SDK checkpoint fixtures",
+        "manifest_sha256": "5a2089f4dca403a1173cae93140b7b92ae8ae3f18f302144487e3fe488304388",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "real_vm_consumer": "pending EXT-023 and EXT-024",
+        "stable": false
+      }
+    },
+    {
+      "path": "/Volumes/huawei/\u9805\u76ee\u5be6\u6230/yuki-core/artifacts/CORE-034/handoff-f3f3723aa532/windows-validation/handoff/yuki-code-preview-f3f3723aa532-windows-x86_64.zip",
+      "sha256": "fc5f6f1cb8ddd2fe4c62b335705699b6fb8e181993b0a57fa920fe0798e67d04",
+      "source_commit": "f3f3723aa5322c6a2a20e8cb3b04d845cd7773cc",
+      "dirty": false,
+      "sdk_versions": {
+        "python": "1.0.0a5",
+        "rust": "1.0.0-alpha.5"
+      },
+      "composition_schema_sha256": "e001485289af1561f9a6dfd9136fb8e15bb6fd6b47f03c6fcd152e1ece6dcd7d",
+      "host_schema_sha256": "1f22ed740b83bf78d0e26ac79d028a36d9b504580c7784bc80bcfaab7e723cee",
+      "sdk_crate_sha256": "ea6a1c2f5e8e5ff5b53ef7b8ab89baa9c8bb26cbd9ba45f116eaaafd73406794",
+      "implemented_methods": [
+        "code.resume",
+        "code.snapshot.get",
+        "code.snapshot.put",
+        "code.sources",
+        "tool.catalog",
+        "tool.invoke",
+        "tool.resume",
+        "tool.schema"
+      ],
+      "all_member_hashes_verified": true,
+      "validation": {
+        "assertions": 381,
+        "card": "CORE-034",
+        "clean_path_launch": "verified",
+        "consumer": "opaque SDK checkpoint fixtures",
+        "manifest_sha256": "2ccb3fe3d1f4003021a12e123711811dad5879756c24d1d5e944f572195ccab1",
+        "platform": "Windows-11-10.0.22000-SP0",
+        "real_vm_consumer": "pending EXT-023 and EXT-024",
+        "stable": false
+      }
+    },
+    {
+      "path": "/Volumes/huawei/\u9805\u76ee\u5be6\u6230/yuki-core/artifacts/CORE-034/handoff-f3f3723aa532/linux-arm64/candidate/yuki-code-preview-f3f3723aa532-linux-arm64.zip",
+      "sha256": "2e0704581efe0b0133c15e8e7700e4d4d40806a4e752d4b715790919257254db",
+      "source_commit": "f3f3723aa5322c6a2a20e8cb3b04d845cd7773cc",
+      "dirty": false,
+      "sdk_versions": {
+        "python": "1.0.0a5",
+        "rust": "1.0.0-alpha.5"
+      },
+      "composition_schema_sha256": "e001485289af1561f9a6dfd9136fb8e15bb6fd6b47f03c6fcd152e1ece6dcd7d",
+      "host_schema_sha256": "1f22ed740b83bf78d0e26ac79d028a36d9b504580c7784bc80bcfaab7e723cee",
+      "sdk_crate_sha256": "ea6a1c2f5e8e5ff5b53ef7b8ab89baa9c8bb26cbd9ba45f116eaaafd73406794",
+      "implemented_methods": [
+        "code.resume",
+        "code.snapshot.get",
+        "code.snapshot.put",
+        "code.sources",
+        "tool.catalog",
+        "tool.invoke",
+        "tool.resume",
+        "tool.schema"
+      ],
+      "all_member_hashes_verified": true,
+      "validation": {
+        "assertions": 381,
+        "card": "CORE-034",
+        "clean_path_launch": "verified",
+        "consumer": "opaque SDK checkpoint fixtures",
+        "manifest_sha256": "e68d55a8e34dd58bdf559ddd0d4a24df29d810260dbfcb0511df21ec4a6554d8",
+        "platform": "Linux-6.12.54-linuxkit-aarch64-with-glibc2.36",
+        "real_vm_consumer": "pending EXT-023 and EXT-024",
+        "stable": false
+      }
+    }
+  ],
+  "consumer_execution": false,
+  "prerequisite": "CORE-034 available for EXT-023 development; original Linux worker isolation is not executable in current HJW session"
+}

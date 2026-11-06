@@ -1,0 +1,140 @@
+{
+  "status": "VERIFIED_UNPUBLISHED_CANDIDATE",
+  "source_snapshot_sha256": "aaacdf35449e1ade3d51e5e9a5682d173d0ee326f4ae04a8192689daa263cd6b",
+  "evidence_zip_sha256": "4ea4ca8556971f9b2d961583eb9bdf7848ab65c86991e99f840506061a467b68",
+  "host": {
+    "archive": "yuki-personal-preview-c85a00b121d0-windows-x86_64.zip",
+    "sha256": "6249cf5145c4f0ac2164724928c75879027894009d17760bbb1452ad581de17b",
+    "binary_sha256": "e26626a017c5ce4b1dd207d0a04d1a4d8741ee62aee49f790f401576e4ca19db",
+    "validation_manifest_sha256": "b43614941572cf77784b35f4d20d88e0067f896ac07515a3f23d70e4997d7689"
+  },
+  "sdk": {
+    "version": "1.0.0-alpha.12",
+    "sha256": "7f260fdd21a7a67efbd3272ea9cf0c96f2dc4c1822bee60a1b72eddde48778f2"
+  },
+  "core_source_commit": "c85a00b121d0277578292e8b60170b799e4ad6db",
+  "plugin_sha256": "791e7ceb89fd526be00bc390831afa0889e8cd503adfc3beb9fb3577d44860a5",
+  "wire_sha256": "bc94657fe5a687444f39959e12f2453b2cfe42d236b87ecc8bb351059cf8c3e0",
+  "method_pairs": 47,
+  "method_counts": {
+    "device.connect": 9,
+    "device.check": 29,
+    "device.close": 9
+  },
+  "cases": [
+    "missing-credential-denied",
+    "chat-credential-denied",
+    "original-connector-empty-device",
+    "old-catalog-and-close-fenced",
+    "full-snapshot-removes-instances-keeps-device",
+    "original-run-renews-before-expiry-without-authorization-loss",
+    "person-merge-keeps-original-device-namespace",
+    "account-reassignment-does-not-transfer-device",
+    "forged-hello-cannot-create-device",
+    "unscoped-native-event-keeps-original-journal-no-ACK",
+    "revoked-device-cannot-publish-or-reconnect",
+    "cold-restart-retains-namespace-and-offline-membership"
+  ],
+  "model_http_calls": 0,
+  "source_binding_count": 31,
+  "TLS": [
+    {
+      "journal_namespace": "a4468c14-f5b0-4385-aea0-86be7c229d38",
+      "connector_version": "0.4.4.dev1",
+      "tls": {
+        "version": "TLSv1.3",
+        "certificate_required": true,
+        "hostname_check": true
+      },
+      "connection": 1,
+      "automatic_run": false,
+      "owner_stopped": false
+    },
+    {
+      "journal_namespace": "a4468c14-f5b0-4385-aea0-86be7c229d38",
+      "connector_version": "0.4.4.dev1",
+      "tls": {
+        "version": "TLSv1.3",
+        "certificate_required": true,
+        "hostname_check": true
+      },
+      "connection": 1,
+      "automatic_run": false,
+      "owner_stopped": false
+    },
+    {
+      "journal_namespace": "forged-device",
+      "connector_version": "0.4.4.dev1",
+      "tls": {
+        "version": "TLSv1.3",
+        "certificate_required": true,
+        "hostname_check": true
+      },
+      "connection": 1,
+      "automatic_run": false,
+      "owner_stopped": false
+    },
+    {
+      "journal_namespace": "a4468c14-f5b0-4385-aea0-86be7c229d38",
+      "connector_version": "0.4.4.dev1",
+      "tls": {
+        "version": "TLSv1.3",
+        "certificate_required": true,
+        "hostname_check": true
+      },
+      "connection": 1,
+      "automatic_run": true,
+      "owner_stopped": false
+    },
+    {
+      "journal_namespace": "a4468c14-f5b0-4385-aea0-86be7c229d38",
+      "connector_version": "0.4.4.dev1",
+      "tls": {
+        "version": "TLSv1.3",
+        "certificate_required": true,
+        "hostname_check": true
+      },
+      "connection": 1,
+      "automatic_run": false,
+      "owner_stopped": false
+    },
+    {
+      "journal_namespace": "a4468c14-f5b0-4385-aea0-86be7c229d38",
+      "connector_version": "0.4.4.dev1",
+      "tls": {
+        "version": "TLSv1.3",
+        "certificate_required": true,
+        "hostname_check": true
+      },
+      "connection": 1,
+      "automatic_run": false,
+      "owner_stopped": false
+    },
+    {
+      "journal_namespace": "a4468c14-f5b0-4385-aea0-86be7c229d38",
+      "connector_version": "0.4.4.dev1",
+      "tls": {
+        "version": "TLSv1.3",
+        "certificate_required": true,
+        "hostname_check": true
+      },
+      "connection": 1,
+      "automatic_run": false,
+      "owner_stopped": false
+    },
+    {
+      "journal_namespace": "a4468c14-f5b0-4385-aea0-86be7c229d38",
+      "connector_version": "0.4.4.dev1",
+      "tls": {
+        "version": "TLSv1.3",
+        "certificate_required": true,
+        "hostname_check": true
+      },
+      "connection": 1,
+      "automatic_run": false,
+      "owner_stopped": false
+    }
+  ],
+  "catalog_migration_and_old_reader": "PASS",
+  "acceptance_status": "candidate only; publication/deployment and legacy catalogue import remain separate"
+}

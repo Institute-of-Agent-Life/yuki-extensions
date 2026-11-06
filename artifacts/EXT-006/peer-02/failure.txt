@@ -1,0 +1,23 @@
+Traceback (most recent call last):
+  File "D:\yuki-extension-tests\fs-media-peer-02\tests\peers\feishu_media_wire.py", line 95, in read
+    try:line=lines.get(timeout=7)
+             ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hilbert\AppData\Local\Programs\Python\Python312\Lib\queue.py", line 179, in get
+    raise Empty
+_queue.Empty
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\yuki-extension-tests\fs-media-peer-02\run.py", line 24, in <module>
+    o=modwire.one(binary,Frame,serve,domain,kind)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\fs-media-peer-02\tests\peers\feishu_media_wire.py", line 125, in one
+    reply(call({**key,**change}),False)
+  File "D:\yuki-extension-tests\fs-media-peer-02\tests\peers\feishu_media_wire.py", line 108, in reply
+    m=read()
+      ^^^^^^
+  File "D:\yuki-extension-tests\fs-media-peer-02\tests\peers\feishu_media_wire.py", line 96, in read
+    except queue.Empty as e:raise RuntimeError(f"peer timeout: last={[(r['from'],r['frame'].get('id'),r['frame'].get('method')) for r in wire[-5:]]}, HTTP={requests}, WS={errors}, exited={proc.poll()}") from e
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: peer timeout: last=[('plugin', 1, 'initialize'), ('fixture', 1, None), ('plugin', 2, 'gateway.inbound'), ('fixture', 91, 'gateway.media')], HTTP=[], WS=[], exited=None

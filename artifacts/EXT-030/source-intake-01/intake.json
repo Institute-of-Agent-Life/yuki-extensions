@@ -1,0 +1,91 @@
+{
+  "status": "OBSERVED",
+  "card_status": "BLOCKED",
+  "candidate_only": true,
+  "provider": "deterministic loopback HTTP, not a speech model",
+  "result": {
+    "handle": "04fe8fff-cb72-43ea-8ec9-bcf90f071b40",
+    "result": {
+      "data": {
+        "calls": [
+          {
+            "open": {
+              "Ok": {
+                "bytes": "Ug==",
+                "done": false,
+                "mime": "audio/wav",
+                "offset": 0,
+                "total": 3244,
+                "version": "9a1215ca91037cc6916a991befd4a8205175b62e41fa591d1818935a86394e62"
+              }
+            }
+          },
+          {
+            "result": {
+              "Ok": {
+                "erased": false,
+                "logical": "plugin-aux:6645391d-d82a-4eb1-934d-9a97b2c73e22",
+                "request": "6645391d-d82a-4eb1-934d-9a97b2c73e22",
+                "root": "2df8e5e6-a4ac-43e2-bacc-8cb719672b67",
+                "state": "response",
+                "usage": {
+                  "input": 4,
+                  "output": 8,
+                  "total": 12
+                }
+              }
+            },
+            "selected_media": false
+          },
+          {
+            "result": {
+              "Err": "Object {\"code\": Number(-32003), \"message\": String(\"method, grant or original scope denied\")}"
+            },
+            "selected_media": true
+          }
+        ],
+        "diagnostic_only": true,
+        "transcript_stored": false
+      },
+      "ok": true
+    },
+    "state": "confirmed"
+  },
+  "http_requests": 1,
+  "core": {
+    "source_commit": "952954d86166c6bb8ef1cec0683480df28787970",
+    "handoff_commit": null,
+    "published": false,
+    "host": {
+      "archive": "yuki-aux-model-preview-952954d86166-windows-x86_64.zip",
+      "sha256": "ec0088c957caf21ca11b344cb69db539e22085f4aa8520c56feb19b272f29fe4",
+      "binary_sha256": "cba774439b078e5b6879f93271f2bbb08d06e2601c1e8d81a05f64dc15e5006e"
+    },
+    "sdk": {
+      "version": "1.0.0-alpha.6",
+      "sha256": "7b435f21042ec0bed2c7b4ffb67751371552e0fb1e3e3cc36f937c759a865816"
+    },
+    "host_schema_sha256": "27387ac156952be1f93b3615bc8ea7fb308fd8aabceecb7b046a87fc5eabc370",
+    "personal_schema_sha256": null,
+    "media_schema_sha256": null,
+    "plugin_sha256": "d1c5277638265bc52aceba1dc77328494b21f5e0a15495554ad71a3ed32333b9",
+    "wire_sha256": "f93b8b72f84c0d762f606343ce7f5a71a9baca2d7b5cf056438a653e913c2b5a"
+  },
+  "operator_root_explicit": true,
+  "transcript_acceptance": false,
+  "configuration": {
+    "origins": [
+      "call"
+    ],
+    "purposes": [
+      "transcript"
+    ],
+    "entries": [
+      "7e051622-6598-476d-9e56-c766e5915719"
+    ],
+    "protocol": "chat",
+    "max_input_units": 32000,
+    "max_output": 128
+  },
+  "needed": "Producer media route configuration and scope; text succeeds but selected audio is denied"
+}

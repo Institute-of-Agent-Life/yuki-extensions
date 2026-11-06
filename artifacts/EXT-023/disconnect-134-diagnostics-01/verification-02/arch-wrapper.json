@@ -1,0 +1,5 @@
+{
+  "exit_code": 0,
+  "stdout": "{\"status\": \"DIAGNOSTICS_VERIFIED\", \"original_ci_exit134_fixed\": false, \"containers_restored\": true}\n",
+  "stderr": "wsl: Failed to start the systemd user session for 'root'. See journalctl for more details.\nWARNING: IPv4 forwarding is disabled\n"
+}

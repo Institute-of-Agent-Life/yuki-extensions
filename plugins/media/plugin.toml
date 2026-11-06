@@ -1,0 +1,5 @@
+id = "media"
+version = "0.1.0-alpha.1"
+program = "yuki-media"
+grants = ["media.process", "media.open", "media.publish", "forget.owner"]
+env = ["YUKI_MEDIA_PYTHON", "YUKI_MEDIA_FFMPEG", "YUKI_MEDIA_TEMP"]

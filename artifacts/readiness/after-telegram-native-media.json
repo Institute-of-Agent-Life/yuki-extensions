@@ -1,0 +1,23 @@
+{
+  "formal_completed": 7,
+  "formal_total": 68,
+  "task": "EXT-004",
+  "state": "partial_candidate",
+  "implementation": "adb9c36eae387fbc098c52cffd5a3c8be53800b3",
+  "branch": "codex/ext-004-telegram-media",
+  "sdk": {
+    "version": "1.0.0-alpha.13",
+    "sha256": "25694e880798108129a1fa8e49e6fff7464ebc9075e5042cc379a6709343e29b",
+    "source": "0ef956a9c6d90fae79c0d4488296c064ccf29f54"
+  },
+  "plugin_sha256": "a07413f4b0b351eea85bb97b52f2e16d7fd59978f45414f948c4e9fd821b79e5",
+  "windows_platform_receipt": "artifacts/EXT-004/platform-01",
+  "windows_host_receipt": "artifacts/EXT-004/host-02",
+  "host_callback_count": 0,
+  "ingress_only_event": 1,
+  "changes_after_native_run": "Only plugins/telegram/README.md among recorded input bindings; compilation, runtime and tests match.",
+  "next": "Obtain accepted application identity installation TOML and selected original event/slot on fixed Host; validate real callback. Social send/recall/typing still pending. Check Feishu original resource route separately.",
+  "current_queue_front": 16,
+  "prior_functional_readiness": "after-core038-main-witness.json",
+  "ci_progress": "PR16 dedup; PR35 locked cache, evidence dec012ed155ca8cd5e824a7f5845bc146ce103c1"
+}

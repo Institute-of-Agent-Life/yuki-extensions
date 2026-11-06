@@ -1,0 +1,13 @@
+{
+  "status": "HARNESS_FAILURE",
+  "scope": "candidate diagnostic; not full card acceptance",
+  "files": {
+    "before-1.json": "ebd10457541094fb3db27a8be3ce6c6731286bc7b829a3c8194116847c818ee7",
+    "cut-1.json": "714f9f102d82ad2c50d8e02d4343b1345d85c8026bab5afb14ff467f17a3cdf0",
+    "host-config.toml": "4a03e12d71a2b493d18ead97d00aeb1c43125ee42dbb656e31f3707eba0c99e7",
+    "host.txt": "dd0baf621e2d5cfc24be7f4bd598dedd5551acce60f63443da4084722473528d",
+    "model.json": "6f43ebf35ce46c70af6fc2146d8bf0f4d77e942bbd12e5329158510933f27d25",
+    "transfer.json": "72d1b6277a9f362b798c806a82c72a9d4e4b856ac763df58252307a07c1f34a2",
+    "wire.jsonl": "f0d1f92a7bd7b853cba9436ead8e8442798b4f0c40752d322112a05912ff848a"
+  }
+}

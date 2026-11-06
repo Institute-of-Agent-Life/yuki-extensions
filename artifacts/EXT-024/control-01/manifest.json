@@ -1,0 +1,19 @@
+{
+  "task": "EXT-024",
+  "status": "BLOCKED",
+  "formal_card_status": "BLOCKED",
+  "phase": "ordinary-refusal-intake",
+  "source_snapshot_sha256": "b53cb474e0f8d61257c6f22d5d5f94aec1ffa1fa4b6527918aff411030659fb2",
+  "files": {
+    "intake.json": "67e529bbbdfb21ebc98ca60eff8fbabd9f5a2956c55ded86276671079f672c1e",
+    "runtime-setup.json": "6c7ae00cdafdea05f72e6ee1ae6a4105b5e62563646fa34876eb2c0e9ff8d370",
+    "code-control/after.json": "05bd0179bba3555e807f8560a0eb0e204d15a541d27e0c8bca4d1eb601f3ef07",
+    "code-control/binding.json": "e78ad4011879e48d423e854e76f7f5efd81ebaf96d20a2bce3275cb0cdc3b057",
+    "code-control/host-config.toml": "2f91e38b9aefe0ff2f8448d64f5cafcdb63f5f461abae7c1c7e0cbbd230eaa2e",
+    "code-control/host.txt": "54b3322c8a6e15a4851397ad3dcbbff6741120ae546b3f9b844aa94e19cd1628",
+    "code-control/model.json": "254ba41ed240aedac844d84f41c08970a65ef08b85fdcbe4889ccac8f49b58e0",
+    "code-control/operator.json": "ac279c5ec3b5fb3115013bc25f538a0ce37dc590aff68539f6b7e9c673c8f535",
+    "code-control/result.json": "b2ab3947a2546cee815d2fef5e9c9dca8b44317b81d4b813305af77d3d2ba91f",
+    "code-control/wire.jsonl": "2d5d181619210319cc49350aefecd5660c00b2842593fd12304cfb984474ea7a"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "scope": "candidate diagnostic; not full card acceptance",
+  "files": {
+    "after.json": "da98bfa4a7bcfdaf6c198eff8523c4d4c262b18c0134d1f54413609bf032eb1b",
+    "before.json": "fce012654b3a62743fca2560c22f887e390c489d6ca633e91c49bc47690847b4",
+    "cut-ready.json": "5db597fc0547a8fe5701f9cf6ea02e701c8ccd63ed176840a88985887a75bb8a",
+    "host-restart.txt": "0baa9046f8ea8173caf79f61b29a6c8aa21218ab1a6a4dc4dab63236dc5f146a",
+    "host.txt": "19b73e2e14a6745b4df006c14ebe05d20389704f8470965aa6be1a51dda564fe",
+    "model.json": "207328db4f88a4ce3c1ef33a523cbb495e0cb1a0ea4785c9949cf46919713a26",
+    "result.json": "2d506a0a88f1773b7c0dd19fd42df62fc9a0d1f09e862d38b703b3d68fe3ceb0",
+    "transport-exit.json": "c2fcc9e331e8a03c78e301298dd3c075059375303a9778882039920fca5df12a",
+    "wire.jsonl": "a7f052ab8b489865be5f1bbddab1d76cca3a0c6f221211345ea82d83a3c1fa27"
+  }
+}

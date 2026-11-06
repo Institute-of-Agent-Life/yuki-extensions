@@ -1,0 +1,146 @@
+{
+  "native": [
+    {
+      "phase": "break",
+      "app": "cli_a",
+      "type": "ping",
+      "seq": 0,
+      "log": 0,
+      "headers": {
+        "type": "ping"
+      },
+      "payload": null
+    },
+    {
+      "phase": "break",
+      "app": "cli_a",
+      "type": "card",
+      "seq": 2,
+      "log": 102,
+      "headers": {
+        "type": "card",
+        "message_id": "2",
+        "sum": "1",
+        "seq": "0",
+        "biz_rt": "0"
+      },
+      "payload": {
+        "code": 200
+      }
+    },
+    {
+      "phase": "replay",
+      "app": "cli_a",
+      "type": "ping",
+      "seq": 0,
+      "log": 0,
+      "headers": {
+        "type": "ping"
+      },
+      "payload": null
+    },
+    {
+      "phase": "replay",
+      "app": "cli_a",
+      "type": "card",
+      "seq": 2,
+      "log": 102,
+      "headers": {
+        "type": "card",
+        "message_id": "2",
+        "sum": "1",
+        "seq": "0",
+        "biz_rt": "0"
+      },
+      "payload": {
+        "code": 200
+      }
+    },
+    {
+      "phase": "replay",
+      "app": "cli_a",
+      "type": "event",
+      "seq": 1,
+      "log": 101,
+      "headers": {
+        "type": "event",
+        "message_id": "1",
+        "sum": "2",
+        "seq": "0",
+        "biz_rt": "8002"
+      },
+      "payload": {
+        "code": 200
+      }
+    },
+    {
+      "phase": "replay",
+      "app": "cli_a",
+      "type": "ping",
+      "seq": 0,
+      "log": 0,
+      "headers": {
+        "type": "ping"
+      },
+      "payload": null
+    },
+    {
+      "phase": "replay",
+      "app": "cli_a",
+      "type": "event",
+      "seq": 3,
+      "log": 103,
+      "headers": {
+        "type": "event",
+        "message_id": "3",
+        "sum": "1",
+        "seq": "0",
+        "biz_rt": "8008"
+      },
+      "payload": {
+        "code": 200
+      }
+    },
+    {
+      "phase": "replay",
+      "app": "cli_a",
+      "type": "ping",
+      "seq": 0,
+      "log": 0,
+      "headers": {
+        "type": "ping"
+      },
+      "payload": null
+    },
+    {
+      "phase": "replay",
+      "app": "cli_a",
+      "type": "event",
+      "seq": 4,
+      "log": 104,
+      "headers": {
+        "type": "event",
+        "message_id": "4",
+        "sum": "1",
+        "seq": "0",
+        "biz_rt": "0"
+      },
+      "payload": {
+        "code": 500
+      }
+    }
+  ],
+  "auth": [
+    {
+      "path": "/callback/ws/endpoint",
+      "app": "cli_a",
+      "authenticated": true
+    },
+    {
+      "path": "/callback/ws/endpoint",
+      "app": "cli_a",
+      "authenticated": true
+    }
+  ],
+  "failures": []
+}

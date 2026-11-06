@@ -641,6 +641,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "sha2"
+version = "0.10.9"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a7507d819769d01a365ab707794a4084392c824f54a7a6a7862f8c3d0892b283"
+dependencies = [
+ "cfg-if",
+ "cpufeatures",
+ "digest",
+]
+
+[[package]]
 name = "shlex"
 version = "2.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -870,13 +881,14 @@ dependencies = [
 
 [[package]]
 name = "yuki-feishu"
-version = "0.1.0-alpha.1"
+version = "0.1.0-alpha.2"
 dependencies = [
  "data-encoding",
  "native-tls",
  "percent-encoding",
  "prost",
  "serde_json",
+ "sha2",
  "tungstenite",
  "url",
  "yuki-plugin-sdk",
@@ -884,9 +896,9 @@ dependencies = [
 
 [[package]]
 name = "yuki-plugin-sdk"
-version = "1.0.0-alpha.2"
+version = "1.0.0-alpha.13"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9408022bdf1322a8d6e07914685869771a5738280e36145e46da5c36facbfce0"
+checksum = "25694e880798108129a1fa8e49e6fff7464ebc9075e5042cc379a6709343e29b"
 dependencies = [
  "serde",
  "serde_json",

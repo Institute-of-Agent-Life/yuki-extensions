@@ -1,0 +1,281 @@
+[
+  {
+    "args": [
+      "person",
+      "create",
+      "605d0365-a8af-4c08-925e-927860e46de6"
+    ],
+    "result": {
+      "original": "605d0365-a8af-4c08-925e-927860e46de6",
+      "root": "605d0365-a8af-4c08-925e-927860e46de6"
+    }
+  },
+  {
+    "args": [
+      "person",
+      "set-admin",
+      "605d0365-a8af-4c08-925e-927860e46de6",
+      "true"
+    ],
+    "result": {
+      "admin": true,
+      "original": "605d0365-a8af-4c08-925e-927860e46de6",
+      "root": "605d0365-a8af-4c08-925e-927860e46de6"
+    }
+  },
+  {
+    "args": [
+      "person",
+      "create",
+      "5e31e1a8-ced0-4e6b-8bc6-40acc4e2ae60"
+    ],
+    "result": {
+      "original": "5e31e1a8-ced0-4e6b-8bc6-40acc4e2ae60",
+      "root": "5e31e1a8-ced0-4e6b-8bc6-40acc4e2ae60"
+    }
+  },
+  {
+    "args": [
+      "account",
+      "open",
+      "qq",
+      "character-intake",
+      "200",
+      1,
+      "--person",
+      "605d0365-a8af-4c08-925e-927860e46de6",
+      "--start",
+      1
+    ],
+    "result": {
+      "account": "8fdf675b-17e0-49e8-b825-581bffb7ac98",
+      "assignment": "1dc48807-2699-41c8-a953-55c27688fa9c"
+    }
+  },
+  {
+    "args": [
+      "account",
+      "open",
+      "qq",
+      "character-intake",
+      "201",
+      1,
+      "--person",
+      "5e31e1a8-ced0-4e6b-8bc6-40acc4e2ae60",
+      "--start",
+      1
+    ],
+    "result": {
+      "account": "99b895e6-edd6-490c-9213-c863c1cccf95",
+      "assignment": "d0e45607-8329-427a-820f-024df5665d8e"
+    }
+  },
+  {
+    "args": [
+      "account",
+      "open",
+      "qq",
+      "character-intake",
+      "100",
+      1,
+      "--start",
+      1
+    ],
+    "result": {
+      "account": "f684a822-be02-4396-b0e1-578f32e130e8",
+      "assignment": "d9843daf-03cd-4181-8057-d5de31512272"
+    }
+  },
+  {
+    "args": [
+      "ingress",
+      "record",
+      "{\"source\": \"ordinary-public\", \"account\": \"99b895e6-edd6-490c-9213-c863c1cccf95\", \"bot_stage\": \"d9843daf-03cd-4181-8057-d5de31512272\", \"reply_bot\": \"100\", \"kind\": \"message\", \"occurred\": 106, \"observed\": 106, \"segments\": [{\"type\": \"text\", \"text\": \"ordinary-public\"}]}",
+      "--accept"
+    ],
+    "result": {
+      "accepted": true,
+      "event": 1
+    }
+  },
+  {
+    "args": [
+      "ingress",
+      "record",
+      "{\"source\": \"ordinary-soul\", \"account\": \"99b895e6-edd6-490c-9213-c863c1cccf95\", \"bot_stage\": \"d9843daf-03cd-4181-8057-d5de31512272\", \"reply_bot\": \"100\", \"kind\": \"message\", \"occurred\": 107, \"observed\": 107, \"segments\": [{\"type\": \"text\", \"text\": \"ordinary-soul\"}]}",
+      "--accept"
+    ],
+    "result": {
+      "accepted": true,
+      "event": 2
+    }
+  },
+  {
+    "args": [
+      "ingress",
+      "record",
+      "{\"source\": \"admin-role\", \"account\": \"8fdf675b-17e0-49e8-b825-581bffb7ac98\", \"bot_stage\": \"d9843daf-03cd-4181-8057-d5de31512272\", \"reply_bot\": \"100\", \"kind\": \"message\", \"occurred\": 108, \"observed\": 108, \"segments\": [{\"type\": \"text\", \"text\": \"admin-role\"}]}",
+      "--accept"
+    ],
+    "result": {
+      "accepted": true,
+      "event": 3
+    }
+  },
+  {
+    "args": [
+      "ingress",
+      "record",
+      "{\"source\": \"rename\", \"account\": \"8fdf675b-17e0-49e8-b825-581bffb7ac98\", \"bot_stage\": \"d9843daf-03cd-4181-8057-d5de31512272\", \"reply_bot\": \"100\", \"kind\": \"message\", \"occurred\": 109, \"observed\": 109, \"segments\": [{\"type\": \"text\", \"text\": \"rename\"}]}",
+      "--accept"
+    ],
+    "result": {
+      "accepted": true,
+      "event": 4
+    }
+  },
+  {
+    "args": [
+      "ingress",
+      "record",
+      "{\"source\": \"rename-replay\", \"account\": \"8fdf675b-17e0-49e8-b825-581bffb7ac98\", \"bot_stage\": \"d9843daf-03cd-4181-8057-d5de31512272\", \"reply_bot\": \"100\", \"kind\": \"message\", \"occurred\": 110, \"observed\": 110, \"segments\": [{\"type\": \"text\", \"text\": \"rename-replay\"}]}",
+      "--accept"
+    ],
+    "result": {
+      "accepted": true,
+      "event": 5
+    }
+  },
+  {
+    "args": [
+      "ingress",
+      "record",
+      "{\"source\": \"role-identity\", \"account\": \"8fdf675b-17e0-49e8-b825-581bffb7ac98\", \"bot_stage\": \"d9843daf-03cd-4181-8057-d5de31512272\", \"reply_bot\": \"100\", \"kind\": \"message\", \"occurred\": 111, \"observed\": 111, \"segments\": [{\"type\": \"text\", \"text\": \"role-identity\"}]}",
+      "--accept"
+    ],
+    "result": {
+      "accepted": true,
+      "event": 6
+    }
+  },
+  {
+    "args": [
+      "ingress",
+      "record",
+      "{\"source\": \"same-id-different-body\", \"account\": \"8fdf675b-17e0-49e8-b825-581bffb7ac98\", \"bot_stage\": \"d9843daf-03cd-4181-8057-d5de31512272\", \"reply_bot\": \"100\", \"kind\": \"message\", \"occurred\": 112, \"observed\": 112, \"segments\": [{\"type\": \"text\", \"text\": \"same-id-different-body\"}]}",
+      "--accept"
+    ],
+    "result": {
+      "accepted": true,
+      "event": 7
+    }
+  },
+  {
+    "args": [
+      "ingress",
+      "record",
+      "{\"source\": \"stale-revision\", \"account\": \"8fdf675b-17e0-49e8-b825-581bffb7ac98\", \"bot_stage\": \"d9843daf-03cd-4181-8057-d5de31512272\", \"reply_bot\": \"100\", \"kind\": \"message\", \"occurred\": 113, \"observed\": 113, \"segments\": [{\"type\": \"text\", \"text\": \"stale-revision\"}]}",
+      "--accept"
+    ],
+    "result": {
+      "accepted": true,
+      "event": 8
+    }
+  },
+  {
+    "args": [
+      "ingress",
+      "record",
+      "{\"source\": \"ordinary-write\", \"account\": \"99b895e6-edd6-490c-9213-c863c1cccf95\", \"bot_stage\": \"d9843daf-03cd-4181-8057-d5de31512272\", \"reply_bot\": \"100\", \"kind\": \"message\", \"occurred\": 114, \"observed\": 114, \"segments\": [{\"type\": \"text\", \"text\": \"ordinary-write\"}]}",
+      "--accept"
+    ],
+    "result": {
+      "accepted": true,
+      "event": 9
+    }
+  },
+  {
+    "args": [
+      "ingress",
+      "record",
+      "{\"source\": \"role-after-denials\", \"account\": \"8fdf675b-17e0-49e8-b825-581bffb7ac98\", \"bot_stage\": \"d9843daf-03cd-4181-8057-d5de31512272\", \"reply_bot\": \"100\", \"kind\": \"message\", \"occurred\": 115, \"observed\": 115, \"segments\": [{\"type\": \"text\", \"text\": \"role-after-denials\"}]}",
+      "--accept"
+    ],
+    "result": {
+      "accepted": true,
+      "event": 10
+    }
+  },
+  {
+    "args": [
+      "ingress",
+      "record",
+      "{\"source\": \"soul-before\", \"account\": \"8fdf675b-17e0-49e8-b825-581bffb7ac98\", \"bot_stage\": \"d9843daf-03cd-4181-8057-d5de31512272\", \"reply_bot\": \"100\", \"kind\": \"message\", \"occurred\": 116, \"observed\": 116, \"segments\": [{\"type\": \"text\", \"text\": \"soul-before\"}]}",
+      "--accept"
+    ],
+    "result": {
+      "accepted": true,
+      "event": 11
+    }
+  },
+  {
+    "args": [
+      "ingress",
+      "record",
+      "{\"source\": \"empty-soul-save\", \"account\": \"8fdf675b-17e0-49e8-b825-581bffb7ac98\", \"bot_stage\": \"d9843daf-03cd-4181-8057-d5de31512272\", \"reply_bot\": \"100\", \"kind\": \"message\", \"occurred\": 117, \"observed\": 117, \"segments\": [{\"type\": \"text\", \"text\": \"empty-soul-save\"}]}",
+      "--accept"
+    ],
+    "result": {
+      "accepted": true,
+      "event": 12
+    }
+  },
+  {
+    "args": [
+      "ingress",
+      "record",
+      "{\"source\": \"empty-soul-read\", \"account\": \"8fdf675b-17e0-49e8-b825-581bffb7ac98\", \"bot_stage\": \"d9843daf-03cd-4181-8057-d5de31512272\", \"reply_bot\": \"100\", \"kind\": \"message\", \"occurred\": 118, \"observed\": 118, \"segments\": [{\"type\": \"text\", \"text\": \"empty-soul-read\"}]}",
+      "--accept"
+    ],
+    "result": {
+      "accepted": true,
+      "event": 13
+    }
+  },
+  {
+    "args": [
+      "ingress",
+      "record",
+      "{\"source\": \"soul-save\", \"account\": \"8fdf675b-17e0-49e8-b825-581bffb7ac98\", \"bot_stage\": \"d9843daf-03cd-4181-8057-d5de31512272\", \"reply_bot\": \"100\", \"kind\": \"message\", \"occurred\": 119, \"observed\": 119, \"segments\": [{\"type\": \"text\", \"text\": \"soul-save\"}]}",
+      "--accept"
+    ],
+    "result": {
+      "accepted": true,
+      "event": 14
+    }
+  },
+  {
+    "args": [
+      "ingress",
+      "record",
+      "{\"source\": \"soul-active\", \"account\": \"8fdf675b-17e0-49e8-b825-581bffb7ac98\", \"bot_stage\": \"d9843daf-03cd-4181-8057-d5de31512272\", \"reply_bot\": \"100\", \"kind\": \"message\", \"occurred\": 120, \"observed\": 120, \"segments\": [{\"type\": \"text\", \"text\": \"soul-active\"}]}",
+      "--accept"
+    ],
+    "result": {
+      "accepted": true,
+      "event": 15
+    }
+  },
+  {
+    "args": [
+      "ingress",
+      "record",
+      "{\"source\": \"reload-invalid-file\", \"account\": \"8fdf675b-17e0-49e8-b825-581bffb7ac98\", \"bot_stage\": \"d9843daf-03cd-4181-8057-d5de31512272\", \"reply_bot\": \"100\", \"kind\": \"message\", \"occurred\": 121, \"observed\": 121, \"segments\": [{\"type\": \"text\", \"text\": \"reload-invalid-file\"}]}",
+      "--accept"
+    ],
+    "result": {
+      "accepted": true,
+      "event": 16
+    }
+  }
+]

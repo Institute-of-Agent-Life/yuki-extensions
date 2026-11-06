@@ -1,0 +1,35 @@
+{
+  "task": "EXT-036",
+  "status": "FAIL",
+  "phase": "preparation",
+  "card_status": "FAIL",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "fc42f041bdc8d8ee24001e273b02f1151f707706b6aa43c52052a1b045392079",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-036",
+    "--preparation",
+    "--out",
+    "artifacts\\EXT-036\\candidate-01"
+  ],
+  "files": {
+    "failure.txt": "948e4dd25bf571f984afaa19f181bd243bf47275e13996108f40a646be6f6ad2",
+    "first-scan.json": "7787a72f74fb0fa935a0e45d0a310f55d69456225200d4cad49df36901422109",
+    "host.txt": "58aea97bb90d52e84864c5872887a98b8d562c1b88125f156c95a4e2092e91e6",
+    "operator-jobs/apply-1.job": "0660c0ba8b2833df051e19b621857da92055ddfa1f898cc0be1ffa6ee24d2544",
+    "operator-jobs/apply-1.result": "e333e76ebdd0aba9283e0e7ea16d0cfbd4ba51fcf06a22e9a3e160f8349448fb",
+    "operator-jobs/apply-1.started": "cb89c534594d3cdbcc54c1e47fe5876a0f5b700b647b79d1a6288263e19b879a",
+    "operator-jobs/foreign-scope.job": "b37a68bacddf998a01391af67af745fc82eeab1bf0b2bab7e18633bb5b9b1c81",
+    "operator-jobs/foreign-scope.result": "e333e76ebdd0aba9283e0e7ea16d0cfbd4ba51fcf06a22e9a3e160f8349448fb",
+    "operator-jobs/foreign-scope.started": "cb89c534594d3cdbcc54c1e47fe5876a0f5b700b647b79d1a6288263e19b879a",
+    "operator-jobs/scan-1.job": "29191c65c2ec94988da30f1653587be494456ddb7f67384f3d17496b3666dc80",
+    "operator-jobs/scan-1.result": "3e7b9b025c4111d41717c66e5f7ea0401d35e2237458923bae3186fa26cabb46",
+    "operator-jobs/scan-1.started": "cb89c534594d3cdbcc54c1e47fe5876a0f5b700b647b79d1a6288263e19b879a",
+    "operator.json": "018d135fab6dfa9234cc547ebc0cb9fbeb6ed9ff11d94c61154868d20be471f2",
+    "seed-fact.json": "1d71d9d83a9875f325afb5ec96d5f3bb51cb47fb01f146a3a5c4e39fa982f7a0",
+    "wire.jsonl": "6ec9d4cce046182aac169ad42f37af25109f8deea9b1302c1dd9fb3684fc700a"
+  }
+}

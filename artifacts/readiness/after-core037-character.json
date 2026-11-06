@@ -1,0 +1,102 @@
+{
+  "updated_at": "2026-11-05T21:58:03.794107+00:00",
+  "status": "waiting_CI_or_public_producer_contracts",
+  "previous": "after-core037-trace-query.json",
+  "main": "996deedef3e119246651050dc8cac186044a925a",
+  "formal_cards": [
+    "EXT-001",
+    "EXT-002",
+    "EXT-007",
+    "EXT-008",
+    "EXT-009",
+    "EXT-010",
+    "EXT-019"
+  ],
+  "branch": "codex/ext-038-character",
+  "implementation_commit": "87c3f6531a8d5c412e1212047a84a494e366aeec",
+  "trace_ci_selection_merge": "82c731f8351a48d36f791e518ebe41a3317153e2",
+  "core037_pin": {
+    "path": "compat/core-037/source.lock.json",
+    "sha256": "ee0a25db75e881ce5a5bc3f5b107fcd55f13d83ff694049195a585a6886f3a98",
+    "published": false,
+    "source_commit": "1e7b89362b6f806aa11eed841b28071b22151e7e",
+    "sdk": "1.0.0-alpha.11"
+  },
+  "EXT-038": {
+    "status": "shared_role_candidate_verified_full_card_pending",
+    "evidence": "artifacts/EXT-038/candidate-04",
+    "real_platform": "HJW Windows x86_64",
+    "cases": 21,
+    "model_http_calls": 42,
+    "plugin_sha256": "1e321b8852d8ef3af1ffbab7a2600426d379bdfd1054cbbb147f3060f24f74b6",
+    "source_binding_files": 26,
+    "private_store": false,
+    "old_data": "legacy avatar/platform receipts field verification pending",
+    "missing": [
+      "public immutable avatar asset/version, retention and control DTO",
+      "original Bot/stage nickname/avatar bridge and per-platform receipts",
+      "historical owner asset import and disposition",
+      "formal producer/consumer publication"
+    ]
+  },
+  "EXT-037": {
+    "implementation": "76feabd5cb5c354309e4556e881f5bd1579a7baf",
+    "head": "20534f8ed7b060b903082eccb6d569dab4d9bbe6",
+    "PR": 27,
+    "evidence": "artifacts/EXT-037/candidate-03",
+    "core_handoff": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/51#issuecomment-6669933736",
+    "missing": [
+      "opt-in trace event subscription and current scope",
+      "SourceHold/forget for private store and queued copies",
+      "R18 late writer and authoritative effect reconciliation",
+      "versioned export and publication"
+    ]
+  },
+  "PR15_last_observation": {
+    "head": "0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3",
+    "success": 36,
+    "macos_package_queued": 8,
+    "new_failures": 0
+  },
+  "PR23": {
+    "run": 41986818687,
+    "attempt": 1,
+    "status": "queued",
+    "rerun_failed_not_yet_allowed": true
+  },
+  "PR27": {
+    "head": "20534f8ed7b060b903082eccb6d569dab4d9bbe6",
+    "push_run": 42116257171,
+    "pr_run": 42116267407,
+    "pending_CI": true,
+    "superseded_SHA_cancel_requested": [
+      42112285691,
+      42112156466
+    ]
+  },
+  "PR_order": [
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28
+  ],
+  "next_executable": [],
+  "next": "Check current SHA/base CI and verified artifacts in order, producer replies to trace/avatar and existing maintenance/session/notification/ASR requests; do not rerun these fixed control deliveries.",
+  "upstream_notes": "CORE-055 PR52, original-history PR53 and CORE-057 PR54 appeared; no consumption or EXT-049 prerequisite completion claimed.",
+  "preserved_WIP": [
+    "root/codemode four untracked adapters",
+    "work-asr",
+    "work-rebuild",
+    "work-subscription"
+  ]
+}

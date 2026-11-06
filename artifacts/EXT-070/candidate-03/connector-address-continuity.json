@@ -1,0 +1,370 @@
+{
+  "status": "PASS",
+  "card_status": "CANDIDATE_ON_UNPUBLISHED_EXT011",
+  "connector_version": "0.4.4.dev1",
+  "wheel_sha256": "2748ec830b56e38f404d33964350578e543232ab1fce02e2399fc3ab045a74d8",
+  "runtime_source_changed": false,
+  "runtime_bindings": {
+    "source_commit": "ce1cec3a2092ac4d3fce36be12a579cbc22ca4c1",
+    "version": "0.4.4.dev1",
+    "scope": "unchanged existing Connector runtime; EXT-070 adds consumer evidence only",
+    "files": {
+      "connector/LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+      "connector/pyproject.toml": "d199287f0528f66d51aaeab2fa7ec19d902cf71f8ce2daa4ff4c7f5ac3e626e3",
+      "connector/src/yuki_agent_connector/__init__.py": "cc07486fee395b63cadba9de635fcc22c6bef241bc75744587a2b9df53bce474",
+      "connector/src/yuki_agent_connector/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+      "connector/src/yuki_agent_connector/claude_inspect.py": "07724d443860ed50b4017a80f183d3842ffb30ce9a09dcc41aeef92dbc05e0c0",
+      "connector/src/yuki_agent_connector/cli.py": "12f3ba4614c066a612b45fe19f11184596e1e4a9388beb0745ccd24f232d5f25",
+      "connector/src/yuki_agent_connector/computer.py": "ebbdd07a48aaa696d6b58aefd42003fbfb22d51a1bc7751bd62dfb8724f48940",
+      "connector/src/yuki_agent_connector/config.py": "e038b5eae10a3ba1d951ac7bdd73b9c49e96ee88a7d4b126e8e51ad1a9552bef",
+      "connector/src/yuki_agent_connector/connector.py": "69187496704d96b1e074462786d35932231f2c9f7959fd197a6d68c93c0b6083",
+      "connector/src/yuki_agent_connector/discovery.py": "450c6388225be284d91cf40e5e7c6d8ad9fc70f18abb63c399f039cbdfdb41b5",
+      "connector/src/yuki_agent_connector/drivers/__init__.py": "616c53b04a3a414d996131430439587dd2300eb44473c0946279079994aa49ec",
+      "connector/src/yuki_agent_connector/drivers/acp.py": "f144340d75dd1b137507440594f500744fa7ca9a1812c98ba2233478d4edf77b",
+      "connector/src/yuki_agent_connector/drivers/claude.py": "13853c868ceccf56e55674799cf59c84eb1d9d5ee8bd6922781d14d90751ca54",
+      "connector/src/yuki_agent_connector/drivers/codex.py": "18929eb03bb87ca4c9794dc3d0eb94596af892d20c2e80626799311601f7184b",
+      "connector/src/yuki_agent_connector/files.py": "72941999fabe6813090f44dc207775d485b27813b771fbf3386fe8114577078c",
+      "connector/src/yuki_agent_connector/journal.py": "140e58fb667a1ad897bc3b73f1f389d44cef109804c813beb493131407c763e6",
+      "connector/src/yuki_agent_connector/service.py": "84ca6cc53fac396c60181e0c7d70d5a291368351281bb711341699b3c0fbb054",
+      "connector/src/yuki_agent_connector/terminal.py": "25c45184af7355d88fabf96844093f9274bcd49486ac8bdd21bf553c54fea6f4",
+      "connector/uv.lock": "20473bace4005ddd06df3c0d5b08a6239f5a6e33a7f8f24b20f2d4382a95336a"
+    }
+  },
+  "cases": [
+    {
+      "case": "save-original-installation",
+      "target": "https://new.example/role/yuki/",
+      "expected_endpoint": "wss://new.example/role/yuki/agents/v1/connect",
+      "original_fields_preserved": true,
+      "service_marker_sha256": "ee351a1f0bcd41cecfbea883f531c8c697b569f7223cee7f0bad2c3a651493d3",
+      "journal_created": false
+    },
+    {
+      "case": "save-original-installation",
+      "target": "http://127.0.0.1:18767/role/yuki",
+      "expected_endpoint": "ws://127.0.0.1:18767/role/yuki/agents/v1/connect",
+      "original_fields_preserved": true,
+      "service_marker_sha256": "ee351a1f0bcd41cecfbea883f531c8c697b569f7223cee7f0bad2c3a651493d3",
+      "journal_created": false
+    },
+    {
+      "case": "save-original-installation",
+      "target": "http://localhost:18767",
+      "expected_endpoint": "ws://localhost:18767/agents/v1/connect",
+      "original_fields_preserved": true,
+      "service_marker_sha256": "ee351a1f0bcd41cecfbea883f531c8c697b569f7223cee7f0bad2c3a651493d3",
+      "journal_created": false
+    },
+    {
+      "case": "save-original-installation",
+      "target": "http://[::1]:18767",
+      "expected_endpoint": "ws://[::1]:18767/agents/v1/connect",
+      "original_fields_preserved": true,
+      "service_marker_sha256": "ee351a1f0bcd41cecfbea883f531c8c697b569f7223cee7f0bad2c3a651493d3",
+      "journal_created": false
+    },
+    {
+      "case": "remote-TLS-required",
+      "target": "http://100.100.100.100",
+      "exit_code": 1,
+      "config_unchanged": true
+    },
+    {
+      "case": "remote-TLS-required",
+      "target": "http://remote.invalid",
+      "exit_code": 1,
+      "config_unchanged": true
+    },
+    {
+      "case": "remote-TLS-required",
+      "target": "ftp://host",
+      "exit_code": 1,
+      "config_unchanged": true
+    },
+    {
+      "case": "upgrade-original-url-namespace",
+      "receipt_version": 0,
+      "before": {
+        "installation": [
+          [
+            "[\"wss://old.example/agents/v1/connect\", \"1fb68ada-0a5e-46e4-a846-f99a9dfa5b4a\"]"
+          ]
+        ],
+        "operations": [
+          [
+            "original-completed",
+            "{\"action\":\"exec\",\"id\":\"original-completed\",\"resource\":\"terminal\",\"run_id\":\"original-completed\"}",
+            "{\"result\":{\"run_id\":\"original-completed\",\"status\":\"succeeded\"}}",
+            0,
+            null
+          ],
+          [
+            "original-pending",
+            "{\"action\":\"exec\",\"id\":\"original-pending\",\"resource\":\"terminal\",\"run_id\":\"original-pending\"}",
+            "{\"result\":{\"run_id\":\"original-pending\",\"status\":\"running\"}}",
+            1,
+            null
+          ]
+        ],
+        "events": [
+          [
+            3,
+            "original-unconfirmed-event",
+            "{\"event_id\":\"original-unconfirmed-event\",\"kind\":\"progress\",\"operation_id\":\"original-pending\",\"operation_state\":{\"pending\":true,\"run_id\":\"original-pending\",\"state_sequence\":3,\"status\":\"running\"},\"result\":{\"run_id\":\"original-pending\",\"status\":\"running\"},\"sequence\":3,\"type\":\"terminal_event\"}"
+          ]
+        ]
+      },
+      "after": {
+        "installation": [
+          [
+            "1fb68ada-0a5e-46e4-a846-f99a9dfa5b4a"
+          ]
+        ],
+        "operations": [
+          [
+            "original-completed",
+            "{\"action\":\"exec\",\"id\":\"original-completed\",\"resource\":\"terminal\",\"run_id\":\"original-completed\"}",
+            "{\"result\":{\"run_id\":\"original-completed\",\"status\":\"succeeded\"}}",
+            0,
+            "{\"pending\":false,\"run_id\":\"original-completed\",\"state_sequence\":0,\"status\":\"succeeded\"}",
+            null
+          ],
+          [
+            "original-pending",
+            "{\"action\":\"exec\",\"id\":\"original-pending\",\"resource\":\"terminal\",\"run_id\":\"original-pending\"}",
+            "{\"result\":{\"run_id\":\"original-pending\",\"status\":\"running\"}}",
+            1,
+            "{\"pending\":true,\"run_id\":\"original-pending\",\"state_sequence\":3,\"status\":\"running\"}",
+            null
+          ]
+        ],
+        "events": [
+          [
+            3,
+            "original-unconfirmed-event",
+            "{\"event_id\":\"original-unconfirmed-event\",\"kind\":\"progress\",\"operation_id\":\"original-pending\",\"operation_state\":{\"pending\":true,\"run_id\":\"original-pending\",\"state_sequence\":3,\"status\":\"running\"},\"result\":{\"run_id\":\"original-pending\",\"status\":\"running\"},\"sequence\":3,\"type\":\"terminal_event\"}"
+          ]
+        ]
+      },
+      "original_unconfirmed_event_preserved": true,
+      "same_device_reopen": true
+    },
+    {
+      "case": "upgrade-original-url-namespace",
+      "receipt_version": 1,
+      "before": {
+        "installation": [
+          [
+            "[\"wss://old.example/agents/v1/connect\", \"522b8e1d-f384-4a3e-85f1-81e1a0af4332\"]"
+          ]
+        ],
+        "operations": [
+          [
+            "original-completed",
+            "{\"action\":\"exec\",\"id\":\"original-completed\",\"resource\":\"terminal\",\"run_id\":\"original-completed\"}",
+            "{\"result\":{\"run_id\":\"original-completed\",\"status\":\"succeeded\"}}",
+            0,
+            "{\"pending\":false,\"run_id\":\"original-completed\",\"state_sequence\":1,\"status\":\"succeeded\"}"
+          ],
+          [
+            "original-pending",
+            "{\"action\":\"exec\",\"id\":\"original-pending\",\"resource\":\"terminal\",\"run_id\":\"original-pending\"}",
+            "{\"result\":{\"run_id\":\"original-pending\",\"status\":\"running\"}}",
+            1,
+            "{\"pending\":true,\"run_id\":\"original-pending\",\"state_sequence\":3,\"status\":\"running\"}"
+          ]
+        ],
+        "events": [
+          [
+            3,
+            "original-unconfirmed-event",
+            "{\"event_id\":\"original-unconfirmed-event\",\"kind\":\"progress\",\"operation_id\":\"original-pending\",\"operation_state\":{\"pending\":true,\"run_id\":\"original-pending\",\"state_sequence\":3,\"status\":\"running\"},\"result\":{\"run_id\":\"original-pending\",\"status\":\"running\"},\"sequence\":3,\"type\":\"terminal_event\"}"
+          ]
+        ]
+      },
+      "after": {
+        "installation": [
+          [
+            "522b8e1d-f384-4a3e-85f1-81e1a0af4332"
+          ]
+        ],
+        "operations": [
+          [
+            "original-completed",
+            "{\"action\":\"exec\",\"id\":\"original-completed\",\"resource\":\"terminal\",\"run_id\":\"original-completed\"}",
+            "{\"result\":{\"run_id\":\"original-completed\",\"status\":\"succeeded\"}}",
+            0,
+            "{\"pending\":false,\"run_id\":\"original-completed\",\"state_sequence\":1,\"status\":\"succeeded\"}",
+            null
+          ],
+          [
+            "original-pending",
+            "{\"action\":\"exec\",\"id\":\"original-pending\",\"resource\":\"terminal\",\"run_id\":\"original-pending\"}",
+            "{\"result\":{\"run_id\":\"original-pending\",\"status\":\"running\"}}",
+            1,
+            "{\"pending\":true,\"run_id\":\"original-pending\",\"state_sequence\":3,\"status\":\"running\"}",
+            null
+          ]
+        ],
+        "events": [
+          [
+            3,
+            "original-unconfirmed-event",
+            "{\"event_id\":\"original-unconfirmed-event\",\"kind\":\"progress\",\"operation_id\":\"original-pending\",\"operation_state\":{\"pending\":true,\"run_id\":\"original-pending\",\"state_sequence\":3,\"status\":\"running\"},\"result\":{\"run_id\":\"original-pending\",\"status\":\"running\"},\"sequence\":3,\"type\":\"terminal_event\"}"
+          ]
+        ]
+      },
+      "original_unconfirmed_event_preserved": true,
+      "same_device_reopen": true
+    },
+    {
+      "case": "different-device-rejected-before-connect",
+      "exit_code": 1,
+      "original_evidence_preserved": true
+    },
+    {
+      "case": "live-shell-kept-while-saving-address",
+      "original_pid": 13168,
+      "run_id": "original-address-run",
+      "input_delivered": true,
+      "original_socket_retained": true,
+      "new_endpoint_connections": 0,
+      "receipt": {
+        "admitted": true,
+        "completion": {
+          "exit_code": 0,
+          "pending": false,
+          "run_id": "original-address-run",
+          "status": "succeeded"
+        },
+        "cwd": "C:\\Users\\Hilbert\\yuki-extension-tests\\aa596c3a90396972e7d5\\src\\artifacts\\EXT-070\\candidate-03\\work\\live-shell",
+        "exit_code": 0,
+        "pending": false,
+        "request_id": "original-address-shell",
+        "run_id": "original-address-run",
+        "shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+        "state_sequence": 5,
+        "status": "succeeded"
+      },
+      "service_marker_sha256": "c367d8bbf542a7f8b8425bd01d41394625a2afce0e8bc4cfb2ea5641e96e9147"
+    },
+    {
+      "case": "same-device-new-WSS-reuses-originals",
+      "original_receipt": {
+        "admitted": true,
+        "completion": {
+          "exit_code": 0,
+          "pending": false,
+          "run_id": "original-address-run",
+          "status": "succeeded"
+        },
+        "cwd": "C:\\Users\\Hilbert\\yuki-extension-tests\\aa596c3a90396972e7d5\\src\\artifacts\\EXT-070\\candidate-03\\work\\live-shell",
+        "exit_code": 0,
+        "pending": false,
+        "request_id": "original-address-shell",
+        "run_id": "original-address-run",
+        "shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+        "state_sequence": 5,
+        "status": "succeeded"
+      },
+      "unknown_receipt": {
+        "pending": true,
+        "reason": "original_dispatch_not_confirmed",
+        "run_id": "unknown-run",
+        "state_sequence": 0,
+        "status": "unknown"
+      },
+      "first_events": [
+        "already-acked",
+        "retained-before-url",
+        "bf6de2b2-985c-4266-a602-239fec75cfd4"
+      ],
+      "second_events": [
+        "retained-before-url"
+      ],
+      "native_launches": 1,
+      "namespace": [
+        [
+          "89b7b726-90e1-4827-ac13-aa4d82df6be5"
+        ]
+      ],
+      "original_pid": 13168,
+      "pending_before_restart": [
+        "retained-before-url"
+      ],
+      "pending_after_ACK": [],
+      "first_TLS": [
+        {
+          "version": "TLSv1.3",
+          "cipher": "TLS_AES_256_GCM_SHA384"
+        }
+      ],
+      "second_TLS": [
+        {
+          "version": "TLSv1.3",
+          "cipher": "TLS_AES_256_GCM_SHA384"
+        }
+      ],
+      "service_scope": "unchanged registration marker; no OS service install/start exercised"
+    },
+    {
+      "case": "protocol-does-not-replay-native-operation",
+      "connections": 1,
+      "original_evidence_preserved": true,
+      "foreground_exit_code": null,
+      "emitted_events": []
+    },
+    {
+      "case": "revoked-does-not-replay-native-operation",
+      "connections": 1,
+      "original_evidence_preserved": true,
+      "foreground_exit_code": null,
+      "emitted_events": []
+    },
+    {
+      "case": "native-stopped-user-task-not-started-by-address-change",
+      "status": "PASS",
+      "before": {
+        "installed": false,
+        "running": false
+      },
+      "installed_disabled": {
+        "installed": true,
+        "running": false,
+        "executable": "C:\\Users\\Hilbert\\yuki-extension-tests\\aa596c3a90396972e7d5\\src\\artifacts\\EXT-070\\candidate-03\\work\\environment\\Scripts\\pythonw.exe",
+        "argumentLine": "-m yuki_agent_connector --config C:\\Users\\Hilbert\\yuki-extension-tests\\aa596c3a90396972e7d5\\src\\artifacts\\EXT-070\\candidate-03\\work\\stopped-task-f21535dec12e4b77b2ce510145bc5b4b\\config.json --data-dir C:\\Users\\Hilbert\\yuki-extension-tests\\aa596c3a90396972e7d5\\src\\artifacts\\EXT-070\\candidate-03\\work\\stopped-task-f21535dec12e4b77b2ce510145bc5b4b run"
+      },
+      "after_address_change": {
+        "installed": true,
+        "running": false,
+        "executable": "C:\\Users\\Hilbert\\yuki-extension-tests\\aa596c3a90396972e7d5\\src\\artifacts\\EXT-070\\candidate-03\\work\\environment\\Scripts\\pythonw.exe",
+        "argumentLine": "-m yuki_agent_connector --config C:\\Users\\Hilbert\\yuki-extension-tests\\aa596c3a90396972e7d5\\src\\artifacts\\EXT-070\\candidate-03\\work\\stopped-task-f21535dec12e4b77b2ce510145bc5b4b\\config.json --data-dir C:\\Users\\Hilbert\\yuki-extension-tests\\aa596c3a90396972e7d5\\src\\artifacts\\EXT-070\\candidate-03\\work\\stopped-task-f21535dec12e4b77b2ce510145bc5b4b run"
+      },
+      "task_xml_sha256": "b6422977e282415184b4df5896b3d2bd458ea525f1e6d90b1e28110853fc43fc",
+      "registration_file_sha256": "8ed16a04cfb8609a48376b10d887286b180351d834e8f2dc3bdddab44ea467cf",
+      "task_name": "yuki-agent-connector-80713fa88fe0",
+      "start_invoked": false,
+      "existing_task_replaced": false,
+      "after_cleanup": {
+        "installed": false,
+        "running": false
+      }
+    }
+  ],
+  "old_inputs": {
+    "count": 11,
+    "source_commit": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+    "github_artifact_digest": "sha256:da2c0c140992b3a2af8dee54bd89e0a32caf4184dca5dae0dc131637c0e9b70b",
+    "historical_only": true
+  },
+  "transport": "two isolated WSS wire4 fixtures with original TLS verification",
+  "core_host_substituted": false,
+  "service_scope": "wire phase uses registration markers; a separate native helper verifies a disabled owned Windows task",
+  "paid_calls": "not configured or invoked",
+  "ext011_witness": "artifacts/EXT-011/connector-analysis-01/analysis.json",
+  "not_claimed": [
+    "a core Work authorization test",
+    "public deployment",
+    "formal publication"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "run_id": 42043545403,
+  "job_id": 127300355097,
+  "artifact_id": 13423437627,
+  "source_commit": "b2393fcb3ef499d90b2df9d30428c925b34f5725",
+  "merge_commit": "42d5396dfe19eada5cf0de45563b68b6f9ede01d",
+  "archive_sha256": "52db6dd1f504eecbabfaf1ad5435e3979c76a9c36f3f9e337a1a67e758ee47e8",
+  "members": {
+    "EXT-001/ci/extension-build-isolation.json": "8971e249f8015b13cc68b52997350ac8b5576274594387381649f8efa05be365",
+    "EXT-001/ci/manifest.json": "ca68ec3759b3c50d5f6fb387e2f236d872e829739ab5f739f14cf841aa9858f2",
+    "EXT-002/ci/failure.txt": "85e93a5edb2183d5e058cc9d18e8442a926de3d86417ee0fc30c7e1112dad112",
+    "EXT-002/ci/manifest.json": "48f4c1d1057efc6947ec8eb9b21e657dee0d6ae627c616d1aad664814cf135dc"
+  },
+  "failure": "HTTP 504 during released handshake asset GET; not native codec failure",
+  "merge_parents": [
+    "526a35382d9bb464f92adc947e1b212e0ea41c3c",
+    "b2393fcb3ef499d90b2df9d30428c925b34f5725"
+  ],
+  "all_manifest_members_verified": true
+}

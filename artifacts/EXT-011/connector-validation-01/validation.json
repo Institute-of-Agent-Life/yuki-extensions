@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "boundary_files": {
+    "character": 9,
+    "client": 10,
+    "codemode": 13,
+    "connector": 52,
+    "env": 9,
+    "feishu": 11,
+    "local-agent": 15,
+    "media": 12,
+    "memory-maintenance": 9,
+    "monty-runtime": 33,
+    "telegram": 8,
+    "trace": 9,
+    "web-fetch": 10,
+    "yuki-setup": 19
+  },
+  "selected": [
+    "character",
+    "client",
+    "codemode",
+    "connector",
+    "env",
+    "feishu",
+    "local-agent",
+    "media",
+    "memory-maintenance",
+    "monty-runtime",
+    "telegram",
+    "trace",
+    "web-fetch",
+    "yuki-setup"
+  ],
+  "syntax": "PASS",
+  "native_source_snapshot_sha256": "aaacdf35449e1ade3d51e5e9a5682d173d0ee326f4ae04a8192689daa263cd6b"
+}

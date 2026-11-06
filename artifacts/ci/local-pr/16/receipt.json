@@ -1,0 +1,308 @@
+{
+  "pr": 16,
+  "base": "ac8c1b287e5a320107f64975dfd318b521bd8f13",
+  "head": "972c66d6e40e37b4b6ca9075969f88bcc26f9d6e",
+  "merge": "a76833caac8dcd61dd8503bda14149c3587b4818",
+  "tree": "470201b0b3a71382d490cffbcadcbf1295856a98",
+  "status": "PASS",
+  "observed_at": "2026-11-06T15:50:34.911204+00:00",
+  "units": [
+    "connector",
+    "env",
+    "feishu",
+    "local-agent",
+    "telegram",
+    "web-fetch",
+    "yuki-setup"
+  ],
+  "workflow_run": 42179984095,
+  "hosted": {
+    "windows-latest": {
+      "jobs": {
+        "acceptance (windows-latest)": 127767102330,
+        "package (connector, windows-latest)": 127772452128,
+        "package (telegram, windows-latest)": 127772452160,
+        "package (yuki-setup, windows-latest)": 127772452165,
+        "package (env, windows-latest)": 127772452186,
+        "package (web-fetch, windows-latest)": 127772452210,
+        "package (local-agent, windows-latest)": 127772452259,
+        "package (feishu, windows-latest)": 127772452292
+      },
+      "verified_zips": [
+        "sha256:90b351340e57ff6c4cbb4c901741dbc0118fe2d866a05af05bc96f3f400ecf0b",
+        "sha256:1bd3d63811ac3997a97f3012edfcb17fb31417f8c9928eb389889c45cf519f14",
+        "sha256:3ae1ce2db0f62db556aef739fc9ef50f8b2c84f28969c4fcfcef4a885fda3ef2",
+        "sha256:a49e761fd811975ba1018e98591912cc1294ed41bb0224ab82e832533e4d3a5d",
+        "sha256:328f26024ab2fec417afce057dacf4a04f7e7ce05123eae6763f6c6a0237a1aa",
+        "sha256:65b1b10c9e08c1f2b08c3157c6425c2ed78910bb0adacd2cd2da8ac78bad8a3d",
+        "sha256:f02b2459252c9dad5e8733043b02b32bced454049e169ae5a7c00f383cee7761",
+        "sha256:297b338cea2c26c0d9007bb867db23a5b35d151a76d33d0795646e805ec2a618",
+        "sha256:4cdc9046a750488f7d60b253615ccc0aee3bfedca9af85ec7013449dcc8e3f88"
+      ]
+    },
+    "ubuntu-latest": {
+      "jobs": {
+        "acceptance (ubuntu-latest)": 127767102078,
+        "package (telegram, ubuntu-latest)": 127772452154,
+        "package (yuki-setup, ubuntu-latest)": 127772452190,
+        "package (connector, ubuntu-latest)": 127772452209,
+        "package (env, ubuntu-latest)": 127772452212,
+        "package (feishu, ubuntu-latest)": 127772452218,
+        "package (local-agent, ubuntu-latest)": 127772452227,
+        "package (web-fetch, ubuntu-latest)": 127772452243
+      },
+      "verified_zips": [
+        "sha256:dba9ae601458d73adf8ac0eea55e0bc0d8c573bd74fa3ebd9e5008d4e1922864",
+        "sha256:faa0dfa84e4779b1625c146950062adcbc38f6d628d33e84afce71f784774f9c",
+        "sha256:ed0dfb938f94d555d9b327a512485287e0d6f0f6a61328be8774d9e9458f9168",
+        "sha256:7e5780fa9edb7a9a7d72360ef8a1b12acabe9e0e5c50609aa4c73bea4d215023",
+        "sha256:577cd430ddd211cc55b28c8611b10444582e42d37545cd8bc985a0fe4926715e",
+        "sha256:72f1109b5f0b7d906b521c9f644f3d5ce09370e278f18836a3b0f136c1145edc",
+        "sha256:057eec5f477a11269dc7824f069aaaaa2ce3a8ecbf6f134d0803f9d4a38f308b",
+        "sha256:b09b11c7ac6582ae5a3edb752615fe9e80dc76a33a4543117edf26480e65f6a0",
+        "sha256:75d9579f6f0ea816ec1b5bab5165fec683f51702f2a4ce9229d49a02cc9c02f1"
+      ]
+    }
+  },
+  "macOS_arm64_local": {
+    "acceptance": {
+      "status": "PASS",
+      "runner": "local-macOS",
+      "machine": "arm64",
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "job": "acceptance",
+      "commit": "a76833caac8dcd61dd8503bda14149c3587b4818",
+      "tree": "470201b0b3a71382d490cffbcadcbf1295856a98",
+      "parents": [
+        "ac8c1b287e5a320107f64975dfd318b521bd8f13",
+        "972c66d6e40e37b4b6ca9075969f88bcc26f9d6e"
+      ],
+      "cases": [
+        "EXT-001",
+        "EXT-002",
+        "EXT-019"
+      ],
+      "units": [],
+      "members": {
+        "EXT-001/manifest.json": "b89cd25f9f74f137329334ce0e294c3d2383822f778f65eabf3d6bf722b7ecb2",
+        "EXT-001/extension-build-isolation.json": "e2cc9ced766e25a6402e3dcc3401b740770d8d3eea4e416727a027b6844b1f2f",
+        "EXT-002/manifest.json": "c4f4a23ed365d6b88e52f487892546716aadcc869f4768627336c1767aa14092",
+        "EXT-002/build.txt": "70cab2951f5a8f6ff532c49babaffdb5ce3acecdb9f6162ed961c8581fbd785d",
+        "EXT-002/published-sdk.json": "c5c804493eaf97150addefba3b4e43f10bf1069343de93c8a945f18fcb70b033",
+        "EXT-019/manifest.json": "2112b1a618bb9da0c58464c42dd6ab694a081ecdbe38aa90b26a990feb21183a",
+        "EXT-019/desktop-callsite-pin.json": "d9d6caa43cb9dd36b65358fb0c06648b7c22784f98babfad63ba42bc00a9c7fe",
+        "EXT-019/desktop-surface-diff.json": "21d8a19696cd02bb91ad8079dd09948eeacbae32f31211d3a32f766abbb88550"
+      }
+    },
+    "connector": {
+      "status": "PASS",
+      "runner": "local-macOS",
+      "machine": "arm64",
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "job": "connector",
+      "commit": "a76833caac8dcd61dd8503bda14149c3587b4818",
+      "tree": "470201b0b3a71382d490cffbcadcbf1295856a98",
+      "parents": [
+        "ac8c1b287e5a320107f64975dfd318b521bd8f13",
+        "972c66d6e40e37b4b6ca9075969f88bcc26f9d6e"
+      ],
+      "cases": [
+        "EXT-007",
+        "EXT-008",
+        "EXT-009",
+        "EXT-010"
+      ],
+      "units": [
+        "connector"
+      ],
+      "members": {
+        "package/package-manifest.json": "3e6b4d07ac46591c55063332bb34f49629f03a5b9da787d8469b91a3b5264bf8",
+        "package/.gitignore": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1",
+        "package/yuki_agent_connector-0.4.4.dev1.tar.gz": "691ff2efa037744310409fc0cd1b84b6c7b32049ef062b65b658dd7f308364b3",
+        "package/yuki_agent_connector-0.4.4.dev1-py3-none-any.whl": "7a143a2d128bde2de038f26ce0a44cee8e9bcbd9249960bf68beb0b5032d85b5",
+        "EXT-007/manifest.json": "792daabcf7ed1eab49659023ea4669336af729ff2d34ca0405d78b6d99082780",
+        "EXT-007/candidate-tests.xml": "bc11b7952160eb4f92dadeab91fa78d573e9b71c035b4bd59d1c0154e55d9398",
+        "EXT-007/commands.json": "ff93d1f524b13bdd93af44339c6a088333387086ec6afee40bfd4ea8b94ef2e7",
+        "EXT-007/connector-package.json": "3e6b4d07ac46591c55063332bb34f49629f03a5b9da787d8469b91a3b5264bf8",
+        "EXT-007/connector-runtime.json": "7a2cb81473be09b7259f84be6fe58da501d1ec45202ec0542d7911b6a9002350",
+        "EXT-007/connector-upgrade.json": "a72c7d4d02c2ef77fc1d358696f0965637153e17c5076c473e3feabd0777e0e6",
+        "EXT-007/wire4-candidate.json": "73009d32e2204222595fc36fd83eb49e6ac26712cbf752199e540b2e62b32070",
+        "EXT-007/wire4-old.json": "73009d32e2204222595fc36fd83eb49e6ac26712cbf752199e540b2e62b32070",
+        "EXT-008/manifest.json": "e5621b1261b545ab595374e45ac95de353a504457952ec5cba7113eeb3720561",
+        "EXT-008/codex-driver-wire.json": "0ac557bc25367964c52e97adb9bad0cb6afa76bfaefe4cde8c85caaefee17b90",
+        "EXT-008/commands.txt": "2a4c2a565138db4c1f8260da55462b4a2a07cef0dbfbccd0417c2fb4ac73dfbd",
+        "EXT-009/manifest.json": "7d51074372b132f2b6fa1c9edc7e51ed6e8a56f658216baec2e1689fa21bfef1",
+        "EXT-009/claude-driver-wire.json": "4129fe5f69c4f2d087b55f93c5ffd3af9f3d6593ef76d9611294c971b33a5d91",
+        "EXT-009/commands.txt": "acf983aad5364e87240249dfe26d403c5aada5d55baffb61da93f2312aa961d6",
+        "EXT-010/manifest.json": "55da0352f84429e79a441d1b4ef45c44b2714081ed0d87acf27ab0f6bd3b9a9d",
+        "EXT-010/commands.txt": "b9900e443c6181094608ea6ecdd0932bd23ab758b33e1e6f2a4797d88eb332ca",
+        "EXT-010/native-acp-v1.json": "2e30fe26d58122a0cabfc2db859256cdf99b473dd2c830910a9a7c7cebf0a8b8"
+      }
+    },
+    "env": {
+      "status": "PASS",
+      "runner": "local-macOS",
+      "machine": "arm64",
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "job": "env",
+      "commit": "a76833caac8dcd61dd8503bda14149c3587b4818",
+      "tree": "470201b0b3a71382d490cffbcadcbf1295856a98",
+      "parents": [
+        "ac8c1b287e5a320107f64975dfd318b521bd8f13",
+        "972c66d6e40e37b4b6ca9075969f88bcc26f9d6e"
+      ],
+      "cases": [],
+      "units": [
+        "env"
+      ],
+      "members": {
+        "package/package-manifest.json": "be7e02c1e5b7d515ba4e0238bce8ad8e5cf1ddc21eec16e1b0f85257eb5dc692",
+        "package/LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "package/Cargo.lock": "f8ad380038ce0ef39f902b3d9b982ee5601e1e7d11574ab49fe79990559f0816",
+        "package/yuki-env": "9e17b46fbff993c42c6ebeb03c389cbb6caf6e467a7d103a32c6facf195b8b13",
+        "package/rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "package/plugin.toml": "969067f56ef5b152aeb56ba8145097175f29107576f19f607be531869cb7ca08"
+      }
+    },
+    "feishu": {
+      "status": "PASS",
+      "runner": "local-macOS",
+      "machine": "arm64",
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "job": "feishu",
+      "commit": "a76833caac8dcd61dd8503bda14149c3587b4818",
+      "tree": "470201b0b3a71382d490cffbcadcbf1295856a98",
+      "parents": [
+        "ac8c1b287e5a320107f64975dfd318b521bd8f13",
+        "972c66d6e40e37b4b6ca9075969f88bcc26f9d6e"
+      ],
+      "cases": [],
+      "units": [
+        "feishu"
+      ],
+      "members": {
+        "package/yuki-feishu": "e1eb254d440ceec137491ab6c8f548bd5260264faf0ac675ced346680893208c",
+        "package/package-manifest.json": "6b2fb19a357ad2cf86f6a22b2c0f75b8cee0ae0ab5894bc2bb4fe1cf7b36a9f6",
+        "package/LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "package/Cargo.lock": "4b35a6537e4c867bfd1f1ac72718a470ded7688c410cab84af4544371f7fd846",
+        "package/NOTICE": "51201cfac32f0bae2e3f4157609d1f4c268f76fef608d30e6809a7581b6746cb",
+        "package/rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "package/plugin.toml": "3d099ddd3fe2e1aef0663aa4ddc79913ef05890731ea697498b4349b28653e33"
+      }
+    },
+    "local-agent": {
+      "status": "PASS",
+      "runner": "local-macOS",
+      "machine": "arm64",
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "job": "local-agent",
+      "commit": "a76833caac8dcd61dd8503bda14149c3587b4818",
+      "tree": "470201b0b3a71382d490cffbcadcbf1295856a98",
+      "parents": [
+        "ac8c1b287e5a320107f64975dfd318b521bd8f13",
+        "972c66d6e40e37b4b6ca9075969f88bcc26f9d6e"
+      ],
+      "cases": [],
+      "units": [
+        "local-agent"
+      ],
+      "members": {
+        "package/package-manifest.json": "2f1590195f8d9b77117304a0016b4394d5ef35ed605299296d8f90a7c242c459",
+        "package/LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "package/yuki-local-agent": "1d6fdf61730701c4574d044af989288dc4d2a187edf470c13f9894c10c055ce6",
+        "package/Cargo.lock": "bcbc25db19e2c8726488b7a5db9da69ce6cab44eed5e998d315dcba0ec2b554d",
+        "package/rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "package/plugin.toml": "6b4bc8bf5757778b1553173e7d69f7e6c32441994dfe173e66ffdca769621b1c"
+      }
+    },
+    "telegram": {
+      "status": "PASS",
+      "runner": "local-macOS",
+      "machine": "arm64",
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "job": "telegram",
+      "commit": "a76833caac8dcd61dd8503bda14149c3587b4818",
+      "tree": "470201b0b3a71382d490cffbcadcbf1295856a98",
+      "parents": [
+        "ac8c1b287e5a320107f64975dfd318b521bd8f13",
+        "972c66d6e40e37b4b6ca9075969f88bcc26f9d6e"
+      ],
+      "cases": [],
+      "units": [
+        "telegram"
+      ],
+      "members": {
+        "package/package-manifest.json": "32152092f33ce2eda22426a3a2e55b3dbc1bb93843b09feb7910a407826bda5c",
+        "package/LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "package/yuki-telegram": "b314384dc490a79c03ee31dfb2008bf863912ba5ac95762863f2729380cd6b74",
+        "package/Cargo.lock": "4b2b29014370b0a0a4f31596e413f991775eec3871f420559a5e2cbdddfc9f5b",
+        "package/rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "package/plugin.toml": "1f0c387a9ae89eacebf993717dd8f08c352cfebff0170a483c8f2fcc052867d6"
+      }
+    },
+    "web-fetch": {
+      "status": "PASS",
+      "runner": "local-macOS",
+      "machine": "arm64",
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "job": "web-fetch",
+      "commit": "a76833caac8dcd61dd8503bda14149c3587b4818",
+      "tree": "470201b0b3a71382d490cffbcadcbf1295856a98",
+      "parents": [
+        "ac8c1b287e5a320107f64975dfd318b521bd8f13",
+        "972c66d6e40e37b4b6ca9075969f88bcc26f9d6e"
+      ],
+      "cases": [],
+      "units": [
+        "web-fetch"
+      ],
+      "members": {
+        "package/package-manifest.json": "3da3ff92fdb348ac0c2d6bda4aaa8a36978c156102ba54ff659c61c38a5dcb5e",
+        "package/LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "package/Cargo.lock": "464fc9374e68c11bc37652c611b739af5759dcbf6231c8ea9cc48d37bbffb3ff",
+        "package/rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "package/yuki-web-fetch": "7eb17e533b2a29b8255befe1390df4113d771f8709a7c77b76cd02c73f9568a8",
+        "package/plugin.toml": "c67dd07b6613398e1bde628918e24d03c48494afad34bd481d17e94ece557cf6"
+      }
+    },
+    "yuki-setup": {
+      "status": "PASS",
+      "runner": "local-macOS",
+      "machine": "arm64",
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "job": "yuki-setup",
+      "commit": "a76833caac8dcd61dd8503bda14149c3587b4818",
+      "tree": "470201b0b3a71382d490cffbcadcbf1295856a98",
+      "parents": [
+        "ac8c1b287e5a320107f64975dfd318b521bd8f13",
+        "972c66d6e40e37b4b6ca9075969f88bcc26f9d6e"
+      ],
+      "cases": [],
+      "units": [
+        "yuki-setup"
+      ],
+      "members": {
+        "package/package-manifest.json": "283fe5982935add15dc3f3b2764076219fc044945c5e295b6f442d5affff31e3",
+        "package/LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "package/Cargo.lock": "9365e3881889c89db7ec71ab2218bb70e765635f159a535d2937284dc42da829",
+        "package/yuki-setup": "89a23d1984e74a4c9b699815d24a1f55bcb23e57a186942f08b391640c9c830d",
+        "package/rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "package/inputs/CORE-NOTICE": "92eec243bb25b89d47a7fa29ce6c863a14487a9c9e1078d0538775e6ec8f5a34",
+        "package/inputs/CORE-LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99"
+      }
+    }
+  },
+  "hosted_extra_mac": [
+    "package-feishu-macos-latest-a76833caac8dcd61dd8503bda14149c3587b4818",
+    "package-local-agent-macos-latest-a76833caac8dcd61dd8503bda14149c3587b4818"
+  ],
+  "mac_setup_iteration": "The first local Connector run selected a Windows-only wheel directory; the native Mac retry used the required hashes and passed.",
+  "main_merge": {
+    "sha": "41cb089afe8328a4ef760c7c8dc246f374698bd2",
+    "tree": "470201b0b3a71382d490cffbcadcbf1295856a98",
+    "parents": [
+      "ac8c1b287e5a320107f64975dfd318b521bd8f13",
+      "972c66d6e40e37b4b6ca9075969f88bcc26f9d6e"
+    ]
+  }
+}

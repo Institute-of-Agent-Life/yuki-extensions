@@ -1,0 +1,9 @@
+{
+  "platform":"HJW Windows x86_64 GNU Rust 1.96",
+  "original_handle_timeout_ms":3000,
+  "cloned_handle_timeout_ms":300,
+  "actual_read_elapsed_ms_after_setting_clone":3004,
+  "actual_read_elapsed_ms_after_setting_original":307,
+  "both_reads":"TimedOut",
+  "observation":"Configuring the duplicate did not change the socket used by the original reader."
+}

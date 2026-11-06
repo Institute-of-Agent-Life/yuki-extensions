@@ -1,0 +1,11 @@
+{
+  "task": "EXT-070",
+  "status": "PASS",
+  "platform": "HJW Windows",
+  "files": {
+    "analysis.json": "882cd6411a633dcfb3390dffff1b41c892752b272ceb25100bcaf63574358170",
+    "old-comparison.json": "bd7550092fe939b25d0d3fc2e4c9c77fec8238429264a3b3117223c95c91fd94",
+    "source-binding.json": "bed6f8826963fd245162a61137816bc2704c43eca68876cefe7f1c3917f5a043",
+    "boundaries.json": "6586232db4d60265e068587183b4109717d712a3a5f0f7660e697bcb0656f6a0"
+  }
+}

@@ -57,7 +57,7 @@ def main():
     parser.add_argument("--preparation", action="store_true", help="run the card preparation entry point")
     args = parser.parse_args()
     driver_case = args.task in {"EXT-008", "EXT-009", "EXT-010"}
-    connector_mode = args.connector_source or args.connector_candidate or driver_case or args.task == "EXT-011"
+    connector_mode = args.connector_source or args.connector_candidate or driver_case or args.task in {"EXT-011", "EXT-070"}
     if args.connector_source and args.connector_candidate:
         parser.error("select one connector verification mode")
     if not re.fullmatch(r"EXT-\d{3}", args.task) or not re.fullmatch(r"[a-zA-Z0-9-]+", args.run):
@@ -100,7 +100,7 @@ def main():
         if hashlib.sha256(wheel.read_bytes()).hexdigest() != package["sha256"]:
             raise ValueError("build-tool wheel digest mismatch: " + wheel.name)
     extra = []
-    if args.task == "EXT-005":
+    if args.task in {"EXT-005", "EXT-006"}:
         pins = json.loads((root / "tests/peers/lark-fixture.lock.json").read_bytes())
         for entry in pins["wheels"]:
             wheel = wheelhouse / entry["filename"]
@@ -111,7 +111,7 @@ def main():
                 raise ValueError("platform fixture wheel digest mismatch: " + wheel.name)
             extra.append(wheel)
     if connector_mode:
-        if not driver_case and args.task not in {"EXT-007", "EXT-011"}:
+        if not driver_case and args.task not in {"EXT-007", "EXT-011", "EXT-070"}:
             parser.error("connector source mode belongs to EXT-007 preparation")
         manifest_path = transfer / "connector-wheels.json"
         helper = invoke(["uv", "run", "--no-project", "--offline", "--python", "3.12", "python",
@@ -163,19 +163,19 @@ def main():
     # Include only locked wheels, not arbitrary files already in the transport cache.
     tools_zip = transfer / "tooling.zip"
     host_candidate = None
-    if args.task in {"EXT-003", "EXT-005", "EXT-011", "EXT-020", "EXT-028"}:
+    if args.task in {"EXT-003", "EXT-005", "EXT-011", "EXT-015", "EXT-020", "EXT-028", "EXT-031", "EXT-036", "EXT-037", "EXT-038"}:
         host_candidate = Path(os.environ["YUKI_HOST_CANDIDATE"])
-        contract = "core-033" if args.task == "EXT-011" else "core-032"
+        contract = "core-033-client" if args.task == "EXT-015" else "core-033-connector" if args.task == "EXT-011" else "core-037" if args.task in {"EXT-037", "EXT-038"} else "core-035" if args.task == "EXT-036" else "core-038" if args.task == "EXT-031" else ("core-033" if args.task in {"EXT-011","EXT-015"} else "core-032")
         pin = json.loads((root / "compat" / contract / "source.lock.json").read_bytes())["platforms"]["windows-x86_64"]
         if hashlib.sha256(host_candidate.read_bytes()).hexdigest() != pin["sha256"]:
             raise ValueError("unexpected Windows host candidate")
     native_crates = []
-    if args.task in {"EXT-005", "EXT-011", "EXT-020", "EXT-028"}:
+    if args.task in {"EXT-003", "EXT-004", "EXT-005", "EXT-006", "EXT-011", "EXT-015", "EXT-020", "EXT-028", "EXT-031", "EXT-036", "EXT-037", "EXT-038"}:
         import tomllib
         from handshake_cargo import registry_crate
         cache = transfer / "native-crates"
         cache.mkdir(exist_ok=True)
-        unit = {"EXT-005": "feishu", "EXT-011": "local-agent", "EXT-020": "env", "EXT-028": "web-fetch"}[args.task]
+        unit = {"EXT-003": "telegram", "EXT-004": "telegram", "EXT-005": "feishu", "EXT-006": "feishu", "EXT-011": "local-agent", "EXT-015": "client", "EXT-020": "env", "EXT-028": "web-fetch", "EXT-031": "media", "EXT-036": "memory-maintenance", "EXT-037": "trace", "EXT-038": "character"}[args.task]
         project = tomllib.loads((root / "plugins" / unit / "Cargo.lock").read_text())
         for package in project["package"]:
             if not package.get("source") or package["name"] == "yuki-plugin-sdk":
@@ -184,6 +184,18 @@ def main():
             if not path.exists() or hashlib.sha256(path.read_bytes()).hexdigest() != package["checksum"]:
                 path.write_bytes(registry_crate(package))
             native_crates.append(path)
+    codec_inputs = []
+    if args.task == "EXT-031":
+        codecs = json.loads((root / "plugins/media/packaging/codecs.lock").read_bytes())
+        for codec in [*codecs["document_backend"]["packages"].values(), codecs["ffmpeg"]["platforms"]["windows-x86_64"]]:
+            path = transfer / "media-codecs" / codec["filename"]
+            path.parent.mkdir(exist_ok=True)
+            if not path.exists() or hashlib.sha256(path.read_bytes()).hexdigest() != codec["sha256"]:
+                with urllib.request.urlopen(codec["url"], timeout=90) as response:
+                    path.write_bytes(response.read())
+            if hashlib.sha256(path.read_bytes()).hexdigest() != codec["sha256"]:
+                raise ValueError("codec wheel hash mismatch")
+            codec_inputs.append(path)
     setup_inputs = []
     if args.task == "EXT-040":
         pins = root / "tools/yuki-setup/inputs"
@@ -200,6 +212,8 @@ def main():
             raise ValueError("unexpected optional web-fetch binary")
         setup_inputs.append(("YUKI_SETUP_WEB_FETCH", plugin))
     with zipfile.ZipFile(tools_zip, "w", zipfile.ZIP_DEFLATED) as archive:
+        for package in codec_inputs:
+            archive.write(package, "media-codecs/" + package.name)
         for _, package in setup_inputs:
             archive.write(package, "setup-inputs/" + package.name)
         for crate in native_crates:
@@ -223,7 +237,7 @@ def main():
     assert invoke(["scp", "-q", str(snapshot), f"{args.host}:{remote}/source.zip"]).returncode == 0
     assert invoke(["scp", "-q", str(tools_zip), f"{args.host}:{remote}/tooling.zip"]).returncode == 0
     sdk_environment = ""
-    if args.task in {"EXT-001", "EXT-002", "EXT-003", "EXT-005", "EXT-011", "EXT-020", "EXT-028", "EXT-040"}:
+    if args.task in {"EXT-001", "EXT-002", "EXT-003", "EXT-004", "EXT-005", "EXT-006", "EXT-011", "EXT-015", "EXT-020", "EXT-028", "EXT-031", "EXT-036", "EXT-037", "EXT-038", "EXT-040"}:
         # Use the host's existing pinned toolchain, with a separate writable Cargo home.
         sdk_environment = r"""
 $tools=Join-Path $env:USERPROFILE 'yuki-core-tooling'
@@ -242,6 +256,8 @@ if (Test-Path (Join-Path {fixture_home} 'toolchains/1.90.0-x86_64-pc-windows-gnu
 """
     for key, package in setup_inputs:
         sdk_environment += "$env:" + key + "=" + quote(remote + "/wheelhouse/setup-inputs/" + package.name) + "\n"
+    if codec_inputs:
+        sdk_environment += "$env:YUKI_MEDIA_CODEC_WHEELS=" + quote(remote + "/wheelhouse/media-codecs") + "\n"
     if host_candidate:
         sdk_environment += "$env:YUKI_HOST_CANDIDATE=" + quote(remote + "/wheelhouse/extension-host-candidate.zip") + "\n"
     if native_crates:

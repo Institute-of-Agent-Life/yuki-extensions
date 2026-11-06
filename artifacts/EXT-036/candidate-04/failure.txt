@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "D:\yuki-extension-tests\maintenance-candidate-04\src\ci\check.py", line 37, in main
+    report_name, report = runner(root, args.out.resolve())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\maintenance-candidate-04\src\tests\cases\EXT-036.py", line 26, in prepare
+    try:return exercise(root,output,server,calls)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\maintenance-candidate-04\src\tests\cases\EXT-036.py", line 152, in exercise
+    assert callback is not None
+AssertionError

@@ -1,0 +1,40 @@
+{
+  "task": "EXT-023",
+  "status": "PASS",
+  "phase": "acceptance",
+  "card_status": "BLOCKED",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "81a159d60ad299ff45100979d0b1cd5b47ba2c089ac202325f49e9a1e36b5de7",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-023",
+    "--out",
+    "D:\\yuki-extension-tests\\code-cases-candidate-03\\EXT-023"
+  ],
+  "files": {
+    "malformed-frame/command.json": "832767ee757e3fbb5df4b30f95524aa013bd22cca451c11ed0591496856b6e67",
+    "malformed-frame/host-config.toml": "1f9afeab72072629fb6cf58e5bd58009c9cfafdaa065f976a015f012ecd0bb9c",
+    "malformed-frame/host.txt": "053b2e2cff4e0a75508e27682c96dcd0774855b9c2a5678ba134d41a54e4be73",
+    "malformed-frame/model.json": "a793cdc3f7b41f6d56e3b2193fd476146bf80d2f7283257434f0f5ff3521cc50",
+    "malformed-frame/result.json": "e921bc448c956153598062e53ba45b8d549559a53f59247b58090db1c281ae2f",
+    "malformed-frame/transport-exit-0.json": "dc44f5bdd4e141ed1917f15d8685b8f54e81690a72044fcc2e54afed6d451341",
+    "malformed-frame/wire.jsonl": "91fd7ffeaac3e5e73dfc8fd468d4c7b1063c887628bca29efd15d6dfa3634d3e",
+    "missing-runtime/command.json": "ced404bc85d961a9cd3545f9eb440ca736c97357b48790dc40d1f50c181a043f",
+    "missing-runtime/host-config.toml": "7e942c8d827ddad48a0ecec66e04872d46ce63624e76a1fc9cb00c2a4aefc326",
+    "missing-runtime/host.txt": "d3f17b6893601a18b11ecb15d54f0ba02ff5cf40aabf34ab616438ddd39b4be8",
+    "missing-runtime/model.json": "7ff44c5fe6b69102d3cf7950e038588966330769495df2f7df9e5aa626283011",
+    "missing-runtime/result.json": "207971cf300261753ff43faebc87dd6eacc5e078fd4c2f1ef32578f679eb0da2",
+    "missing-runtime/wire.jsonl": "8e173baa2a89ca64926c844af7ea0e4f5ef37221d7028e80561cbbdbb992db11",
+    "monty-sandbox.json": "8d3ee46884c1d3803ab1c0b411efe60ea52f4a2d92fb6c7e762c3dc59dc48aef",
+    "normal/after.json": "24597311ebf4dce2049fc0e550f24392c03f94096e4c7e307b79ec216cf57a36",
+    "normal/command.json": "032cb5d9a32bf8b74502da2c6031aa0de0b973b82557bd573e08402de3a2317b",
+    "normal/host-config.toml": "a90846fbeb77961a7b3222103c15e01a8b85a97af74f51ae95d7e7e666432336",
+    "normal/host.txt": "cc2e50eb5acf8176f04719d68a90104ee759bcc67debe72f711227d4656b0cf2",
+    "normal/model.json": "e44fe0b59843a6bf4c019ab6aa5f93803597ea88c6ddd4b4cc4a644867895914",
+    "normal/result.json": "2bcdcf0afcc374bc1b658f1fb862ba9b6bdd91d2aed44068fa656a54d56aaa05",
+    "normal/wire.jsonl": "186d0ec82c881347819a598ab2e0832aee730f206b6c31188fad69972f410a5b"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "task": "EXT-031",
+  "status": "PASS",
+  "phase": "preparation",
+  "card_status": "UNPUBLISHED_DECODE_CANDIDATE",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "fd7fb275dae5aa500f4249a077b858bbbdfa5982643b97aaae4a5e918fc8cd90",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-031",
+    "--preparation",
+    "--out",
+    "artifacts\\EXT-031\\candidate-03"
+  ],
+  "files": {
+    "host.txt": "e811e511d1d439c9c08fa8f31f96abc72b7ddcb540ce01605b240e69b9f195d9",
+    "media-inspection.json": "405e7c1359165dced882df1c6400bdd29ae2f781106b583e56225d17b587ea55",
+    "owner-disposition.json": "b5b008505becdfeea15c00fde61083ee184cd4d2b8b812e872e4d6a933fc4cce",
+    "wire.jsonl": "f120f2ce7859b28b013b78ba22205b6ae9e5e9e5b6745d954a1cff0ea8cdd1e3"
+  }
+}

@@ -1,0 +1,454 @@
+[
+  [
+    {
+      "event": "sync",
+      "id": "1",
+      "data": {
+        "activity": [
+          {
+            "conversation_id": "98e5fe5b-93ca-4f0f-ba72-146c0390002e",
+            "evidence": "insufficient",
+            "revision": 10,
+            "sources": [],
+            "step_kind": null
+          },
+          {
+            "conversation_id": "af1dceb3-aee2-4c12-a96a-ee667511b0b6",
+            "evidence": "insufficient",
+            "revision": 0,
+            "sources": [],
+            "step_kind": null
+          },
+          {
+            "conversation_id": "f7f2df07-d22c-4c29-b2e8-5f666985d0e2",
+            "evidence": "executing",
+            "revision": 11,
+            "sources": [
+              {
+                "kind": "turn",
+                "origin": "user_message",
+                "started_at": "2026-11-06T05:32:14Z"
+              }
+            ],
+            "step_kind": "turn"
+          }
+        ],
+        "character": {
+          "avatar_revision": 0,
+          "id": "a4612100-441d-4dc8-b9c0-e2efad75e360",
+          "revision": 1
+        },
+        "conversations": [
+          {
+            "binding_id": "4e68a70c-b3f2-46c7-89af-4585c20d335a",
+            "conversation_id": "98e5fe5b-93ca-4f0f-ba72-146c0390002e",
+            "display_name": "",
+            "generation": 1,
+            "latest_event_id": 2,
+            "platform": "app",
+            "revision": 1,
+            "status": "active"
+          },
+          {
+            "binding_id": "82498f2d-14a6-44b3-861f-285cc76ee46b",
+            "conversation_id": "af1dceb3-aee2-4c12-a96a-ee667511b0b6",
+            "display_name": "",
+            "generation": 1,
+            "latest_event_id": 3,
+            "platform": "acp",
+            "revision": 1,
+            "status": "active"
+          },
+          {
+            "binding_id": "9ac700c0-203b-4636-8072-841f38d83960",
+            "conversation_id": "f7f2df07-d22c-4c29-b2e8-5f666985d0e2",
+            "display_name": "",
+            "generation": 1,
+            "latest_event_id": 4,
+            "platform": "app",
+            "revision": 1,
+            "status": "active"
+          }
+        ],
+        "works": []
+      }
+    },
+    {
+      "event": "sync",
+      "id": "2",
+      "data": {
+        "activity": [
+          {
+            "conversation_id": "98e5fe5b-93ca-4f0f-ba72-146c0390002e",
+            "evidence": "insufficient",
+            "revision": 10,
+            "sources": [],
+            "step_kind": null
+          },
+          {
+            "conversation_id": "af1dceb3-aee2-4c12-a96a-ee667511b0b6",
+            "evidence": "insufficient",
+            "revision": 0,
+            "sources": [],
+            "step_kind": null
+          },
+          {
+            "conversation_id": "f7f2df07-d22c-4c29-b2e8-5f666985d0e2",
+            "evidence": "executing",
+            "revision": 13,
+            "sources": [
+              {
+                "kind": "turn",
+                "origin": "user_message",
+                "started_at": "2026-11-06T05:32:14Z"
+              }
+            ],
+            "step_kind": "model"
+          }
+        ],
+        "character": {
+          "avatar_revision": 0,
+          "id": "a4612100-441d-4dc8-b9c0-e2efad75e360",
+          "revision": 1
+        },
+        "conversations": [
+          {
+            "binding_id": "4e68a70c-b3f2-46c7-89af-4585c20d335a",
+            "conversation_id": "98e5fe5b-93ca-4f0f-ba72-146c0390002e",
+            "display_name": "",
+            "generation": 1,
+            "latest_event_id": 2,
+            "platform": "app",
+            "revision": 1,
+            "status": "active"
+          },
+          {
+            "binding_id": "82498f2d-14a6-44b3-861f-285cc76ee46b",
+            "conversation_id": "af1dceb3-aee2-4c12-a96a-ee667511b0b6",
+            "display_name": "",
+            "generation": 1,
+            "latest_event_id": 3,
+            "platform": "acp",
+            "revision": 1,
+            "status": "active"
+          },
+          {
+            "binding_id": "9ac700c0-203b-4636-8072-841f38d83960",
+            "conversation_id": "f7f2df07-d22c-4c29-b2e8-5f666985d0e2",
+            "display_name": "",
+            "generation": 1,
+            "latest_event_id": 4,
+            "platform": "app",
+            "revision": 1,
+            "status": "active"
+          }
+        ],
+        "works": []
+      }
+    },
+    {
+      "event": "activity",
+      "id": "3",
+      "data": {
+        "conversation_id": "f7f2df07-d22c-4c29-b2e8-5f666985d0e2",
+        "evidence": "executing",
+        "revision": 14,
+        "sources": [
+          {
+            "kind": "turn",
+            "origin": "user_message",
+            "started_at": "2026-11-06T05:32:14Z"
+          }
+        ],
+        "step_kind": "model"
+      }
+    },
+    {
+      "event": "activity",
+      "id": "4",
+      "data": {
+        "conversation_id": "f7f2df07-d22c-4c29-b2e8-5f666985d0e2",
+        "evidence": "insufficient",
+        "revision": 15,
+        "sources": [],
+        "step_kind": null
+      }
+    },
+    {
+      "event": "conversation",
+      "id": "5",
+      "data": {
+        "binding_id": "9ac700c0-203b-4636-8072-841f38d83960",
+        "conversation_id": "f7f2df07-d22c-4c29-b2e8-5f666985d0e2",
+        "display_name": "",
+        "generation": 1,
+        "latest_event_id": 5,
+        "platform": "app",
+        "revision": 1,
+        "status": "active"
+      }
+    },
+    {
+      "event": "activity",
+      "id": "6",
+      "data": {
+        "conversation_id": "f7f2df07-d22c-4c29-b2e8-5f666985d0e2",
+        "evidence": "insufficient",
+        "revision": 16,
+        "sources": [],
+        "step_kind": null
+      }
+    },
+    {
+      "event": "activity",
+      "id": "7",
+      "data": {
+        "conversation_id": "f7f2df07-d22c-4c29-b2e8-5f666985d0e2",
+        "evidence": "executing",
+        "revision": 16,
+        "sources": [
+          {
+            "kind": "turn",
+            "origin": "user_message",
+            "started_at": "2026-11-06T05:32:15Z"
+          }
+        ],
+        "step_kind": "turn"
+      }
+    },
+    {
+      "event": "activity",
+      "id": "8",
+      "data": {
+        "conversation_id": "f7f2df07-d22c-4c29-b2e8-5f666985d0e2",
+        "evidence": "executing",
+        "revision": 17,
+        "sources": [
+          {
+            "kind": "turn",
+            "origin": "user_message",
+            "started_at": "2026-11-06T05:32:15Z"
+          }
+        ],
+        "step_kind": "turn"
+      }
+    },
+    {
+      "event": "activity",
+      "id": "9",
+      "data": {
+        "conversation_id": "f7f2df07-d22c-4c29-b2e8-5f666985d0e2",
+        "evidence": "executing",
+        "revision": 18,
+        "sources": [
+          {
+            "kind": "turn",
+            "origin": "user_message",
+            "started_at": "2026-11-06T05:32:15Z"
+          }
+        ],
+        "step_kind": "model"
+      }
+    },
+    {
+      "event": "activity",
+      "id": "10",
+      "data": {
+        "conversation_id": "f7f2df07-d22c-4c29-b2e8-5f666985d0e2",
+        "evidence": "executing",
+        "revision": 20,
+        "sources": [
+          {
+            "kind": "turn",
+            "origin": "user_message",
+            "started_at": "2026-11-06T05:32:15Z"
+          }
+        ],
+        "step_kind": "model"
+      }
+    },
+    {
+      "event": "refresh",
+      "id": "11",
+      "data": {}
+    },
+    {
+      "event": "refresh",
+      "id": "12",
+      "data": {}
+    },
+    {
+      "event": "work",
+      "id": "13",
+      "data": {
+        "revision": 1,
+        "steps_token": "1:21",
+        "work_id": "cf9b5dcc-726e-4e67-94e6-b5a01a1bb312"
+      }
+    },
+    {
+      "event": "activity",
+      "id": "14",
+      "data": {
+        "conversation_id": "f7f2df07-d22c-4c29-b2e8-5f666985d0e2",
+        "evidence": "executing",
+        "revision": 21,
+        "sources": [
+          {
+            "kind": "turn",
+            "origin": "user_message",
+            "started_at": "2026-11-06T05:32:15Z"
+          }
+        ],
+        "step_kind": "tool"
+      }
+    },
+    {
+      "event": "activity",
+      "id": "15",
+      "data": {
+        "conversation_id": "f7f2df07-d22c-4c29-b2e8-5f666985d0e2",
+        "evidence": "executing",
+        "revision": 22,
+        "sources": [
+          {
+            "kind": "turn",
+            "origin": "user_message",
+            "started_at": "2026-11-06T05:32:15Z"
+          }
+        ],
+        "step_kind": "model"
+      }
+    },
+    {
+      "event": "sync",
+      "id": "16",
+      "data": {
+        "activity": [
+          {
+            "conversation_id": "98e5fe5b-93ca-4f0f-ba72-146c0390002e",
+            "evidence": "insufficient",
+            "revision": 10,
+            "sources": [],
+            "step_kind": null
+          },
+          {
+            "conversation_id": "af1dceb3-aee2-4c12-a96a-ee667511b0b6",
+            "evidence": "insufficient",
+            "revision": 0,
+            "sources": [],
+            "step_kind": null
+          },
+          {
+            "conversation_id": "f7f2df07-d22c-4c29-b2e8-5f666985d0e2",
+            "evidence": "executing",
+            "revision": 23,
+            "sources": [
+              {
+                "kind": "turn",
+                "origin": "user_message",
+                "started_at": "2026-11-06T05:32:15Z"
+              }
+            ],
+            "step_kind": "model"
+          }
+        ],
+        "character": {
+          "avatar_revision": 0,
+          "id": "a4612100-441d-4dc8-b9c0-e2efad75e360",
+          "revision": 1
+        },
+        "conversations": [
+          {
+            "binding_id": "4e68a70c-b3f2-46c7-89af-4585c20d335a",
+            "conversation_id": "98e5fe5b-93ca-4f0f-ba72-146c0390002e",
+            "display_name": "",
+            "generation": 1,
+            "latest_event_id": 2,
+            "platform": "app",
+            "revision": 1,
+            "status": "active"
+          },
+          {
+            "binding_id": "82498f2d-14a6-44b3-861f-285cc76ee46b",
+            "conversation_id": "af1dceb3-aee2-4c12-a96a-ee667511b0b6",
+            "display_name": "",
+            "generation": 1,
+            "latest_event_id": 3,
+            "platform": "acp",
+            "revision": 1,
+            "status": "active"
+          },
+          {
+            "binding_id": "9ac700c0-203b-4636-8072-841f38d83960",
+            "conversation_id": "f7f2df07-d22c-4c29-b2e8-5f666985d0e2",
+            "display_name": "",
+            "generation": 1,
+            "latest_event_id": 5,
+            "platform": "app",
+            "revision": 1,
+            "status": "active"
+          }
+        ],
+        "works": [
+          {
+            "revision": 1,
+            "steps_token": "1:21",
+            "work_id": "cf9b5dcc-726e-4e67-94e6-b5a01a1bb312"
+          }
+        ]
+      }
+    },
+    {
+      "event": "work",
+      "id": "17",
+      "data": {
+        "revision": 1,
+        "steps_token": "1:24",
+        "work_id": "cf9b5dcc-726e-4e67-94e6-b5a01a1bb312"
+      }
+    },
+    {
+      "event": "activity",
+      "id": "18",
+      "data": {
+        "conversation_id": "f7f2df07-d22c-4c29-b2e8-5f666985d0e2",
+        "evidence": "executing",
+        "revision": 25,
+        "sources": [
+          {
+            "kind": "turn",
+            "origin": "user_message",
+            "started_at": "2026-11-06T05:32:15Z"
+          }
+        ],
+        "step_kind": "model"
+      }
+    },
+    {
+      "event": "refresh",
+      "id": "19",
+      "data": {}
+    },
+    {
+      "event": "work",
+      "id": "20",
+      "data": {
+        "revision": 1,
+        "steps_token": "2:24",
+        "work_id": "cf9b5dcc-726e-4e67-94e6-b5a01a1bb312"
+      }
+    },
+    {
+      "event": "activity",
+      "id": "21",
+      "data": {
+        "conversation_id": "f7f2df07-d22c-4c29-b2e8-5f666985d0e2",
+        "evidence": "insufficient",
+        "revision": 26,
+        "sources": [],
+        "step_kind": null
+      }
+    }
+  ]
+]

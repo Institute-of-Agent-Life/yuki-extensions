@@ -1,0 +1,78 @@
+{
+  "status": "DIAGNOSTICS_VERIFIED",
+  "formal_card_acceptance": false,
+  "original_ci_exit134_fixed": false,
+  "github": {
+    "artifact_id": 13418650191,
+    "run_id": 42031856344,
+    "job_id": 127260154799,
+    "source_commit": "e0625154c09a84967e678ebd63997867aa83fee7",
+    "sha256": "5926a977bc64982960b1ace015e77888cad4ba84173b0357348b2e9d041130ce",
+    "members": 9,
+    "all_manifest_members_verified": true,
+    "current_failure_resolved": false
+  },
+  "scope": "retain crash trace, exact failing image and original gate failure; no engine or Host protocol change",
+  "windows": {
+    "verification": "verification-03/manifest.json",
+    "orchestration_tests": 5,
+    "oci_integrity_tests": 3,
+    "package_verified": true
+  },
+  "hjw_arch": {
+    "native_image": "sha256:65fcd704d953a9ca9be9c1e70269fc21768b571635e8fa8c38bc8b30c84ceb9a",
+    "old_image_timing_cuts": 60,
+    "all_original_processes_gone": true,
+    "controlled_abort": {
+      "before_stderr_marker_received": true,
+      "before_fatal_trace_received": false,
+      "after_stderr_marker_received": true,
+      "after_fatal_trace_received": true,
+      "exit_code": 134
+    },
+    "native_codec": "PASS",
+    "containers_restored": true,
+    "verification": "verification-02/manifest.json"
+  },
+  "limits_retained": [
+    "blocked-feed exit code 0",
+    "original PID/start-time disappearance",
+    "five-second disconnect deadline",
+    "AppArmor and seccomp profiles",
+    "unpublished FAIL artifact on any native failure"
+  ],
+  "next": "Current-head CI must pass; if native exit134 recurs, consume the preserved exact image and fatal traceback before a causal fix claim.",
+  "changed_source_sha256": {
+    "ci/monty_linux_check.py": "feaa99edb62b036c51f25af0c45159b10affd2cc84ce3d47f65dcbbc9af51765",
+    "images/monty-runtime/scripts/verify_bridge.py": "8164f968a085f78a53e4c35ac8b15ff4a9c98a6cab7adfef3f13cbfa63789cb2",
+    "images/monty-runtime/runtime.lock": "77333a36ead6939371dc008ed0c9b99ee38cf4724ff5718d274cce1dceb4b559",
+    "tests/unit/test_monty_ci_evidence.py": "472f48b4cfcf0f22cff0e6995fbc1ab23c284e8eca801e3d5945e522b1f6617e",
+    ".github/workflows/plugin.yml": "a32a462ed19bc11a55a37a157cb9b392204902dac350aa577a6b7316136aceb0"
+  },
+  "files": {
+    "github-job.log": "3e61ae703dc49aea526d66c467a8012352ca9d9d1ecbe82dbc4ac66884c934e2",
+    "download-receipt.json": "06090f79c465b56b70f727d9b873d41a4c4224f03f56f162088370900fac6744",
+    "hjw-timing-cuts-60.json": "c11c00bfa52be45553b7d97d8f3cabbbfc3ae574011efa2103a3abc09e38013f",
+    "timing-cut-probe.py": "c7cd6e00d2c35d2c9e7403e9dc57a3933cda58a032b40312d2fd9cd809ff218d",
+    "native-diagnostic-probe.py": "93b5d4fcdc1b5eeb4b085487133be3db85d3bb51ec15898aedf0359ecb9c22ea",
+    "original/apparmor.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "original/build.txt": "4ce86a9f74b80c881f408cfc1bf9a524edd538435a49e12344d06779941eaee1",
+    "original/codec.txt": "e48e4c990bbfeddc22c1101b28bac7645c93a01f1446a9c55b94d41a9cddc1c2",
+    "original/image-id.txt": "2f3fb992b56446fcd53487077b5cd3f653bba7e1e64996fbd82a241338528ae7",
+    "original/image-inspect.json": "379a3c9b6565ea19aaa2f4840d57636cbdee54cf68743c2f3e2060e2567a548c",
+    "original/inputs.txt": "7e5377a03e19550fcff3d6b59488c33be85ac2c0f7f113c8b3f635062b9c8ca8",
+    "original/isolation.txt": "8a627e9ac6f718a5963b6e89c1dcb0b6f3d8b4ee9b0be135ff6a3176f70494af",
+    "original/manifest.json": "2df52e2a91476ebdb2f8c5a577a5a2697939d5ba654f7300ec84b88462088fa1",
+    "original/native-isolation.json": "b192703c1cf7a4bebc55f41a280dba7f992f2d70aa97aa8a466536335b177f27",
+    "verification-02/arch-wrapper.json": "b4a65466cd76defb381d18fd68b96bc0fc9e7e51e4f4a919ce034e230574a068",
+    "verification-02/manifest.json": "3ae9ca939c3286e7c9a4056302dcc45a5882cf038a2861aad1269d5f95857891",
+    "verification-02/windows-checks.json": "8b43d0c387cda24bb3d9efe4173eaa8eef15bbca1608e970cd709d3e93b6a747",
+    "verification-03/manifest.json": "b26d3a303b91fbf1f6d88bb2bd6eff816842b2579d467fb616e905d6b4d9a222",
+    "verification-03/windows-checks.json": "8d9a5e2802c62d94ef8fffb6779977c56efd2ef8e11e99f56188963d70b835ac",
+    "verification-02/native/native-diagnostics.json": "2c3f75f2d07066acbd95149c693acf436f8ea19488e078f17025a5d666e54057",
+    "verification-02/package/monty-runtime-0.1.0-alpha.1-source.tar.gz": "ea2be3844979d3fdada2e600015a7d8f221f3f209b8caf1f5af0c25dc29b57a3",
+    "verification-02/package/package-manifest.json": "a5f9f8ef1ca01969ad25b4d2bc65e3b50be541c08b83d61a8882ce5ea7d6b28c",
+    "verification-03/package/monty-runtime-0.1.0-alpha.1-source.tar.gz": "ea2be3844979d3fdada2e600015a7d8f221f3f209b8caf1f5af0c25dc29b57a3",
+    "verification-03/package/package-manifest.json": "a5f9f8ef1ca01969ad25b4d2bc65e3b50be541c08b83d61a8882ce5ea7d6b28c"
+  }
+}

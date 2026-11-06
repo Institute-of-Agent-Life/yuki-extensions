@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "D:\yuki-extension-tests\client-selected-selected-06\src\ci\check.py", line 37, in main
+    report_name, report = runner(root, args.out.resolve())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\client-selected-selected-06\src\tests\cases\EXT-015.py", line 8, in prepare
+    return exercise(root, output)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\client-selected-selected-06\src\tests\peers\client_selected.py", line 200, in exercise
+    committed = wait(lambda: next((e for e in page(phone, a['conversation_id'])['items'] if e.get('text') == reply), None), 'Social event not committed')
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\client-selected-selected-06\src\tests\peers\client_selected.py", line 105, in wait
+    raise AssertionError(label)
+AssertionError: Social event not committed

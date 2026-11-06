@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "-X",
+    "utf8",
+    "-c",
+    "\nimport hashlib,json,pathlib,py_compile,sys\nroot=pathlib.Path.cwd()\nfor name in ['ci/codemode_rejection_intake.py','ci/codemode_rejection_verify.py']:py_compile.compile(name,doraise=True)\npin=json.loads((root/'compat/core-015-isolation/source.lock.json').read_bytes())\nconsumer=json.loads((root/'compat/core-015-isolation/consumer.lock.json').read_bytes())\nfor name,sha in consumer['files'].items():assert hashlib.sha256((root/name).read_bytes()).hexdigest()==sha,name\nassert hashlib.sha256((root/consumer['build_evidence']).read_bytes()).hexdigest()==consumer['build_evidence_sha256']\ncrate=root/'compat/core-015-isolation/yuki-plugin-sdk-1.0.0-alpha.11.crate'\nassert hashlib.sha256(crate.read_bytes()).hexdigest()==pin['rust_crate_sha256']\nold=json.loads((root/'compat/core-034/host-preview.json').read_bytes())\nnew=json.loads((root/'compat/core-015-isolation/host-preview.json').read_bytes())\nfor name in consumer['method_DTO_equality']:assert old['methods'][name]==new['methods'][name],name\nsys.path.insert(0,str(root/'ci'))\nfrom units import load_catalog,validate_unit,select_units\nunits=load_catalog(root);checked=validate_unit(root,units['codemode'])\nselected=select_units(root,['ci/codemode_rejection_intake.py'])\nassert selected==sorted(units)\nprint(json.dumps({'status':'PASS','scope':'Python syntax, source/SDK/method bindings and release boundaries; no new runtime run','bound_consumer_files':len(consumer['files']),'composition_methods':len(consumer['method_DTO_equality']),'checked_release_files':len(checked),'selected_units':selected}))\n"
+  ],
+  "exit_code": 0,
+  "stdout": "{\"status\": \"PASS\", \"scope\": \"Python syntax, source/SDK/method bindings and release boundaries; no new runtime run\", \"bound_consumer_files\": 13, \"composition_methods\": 8, \"checked_release_files\": 13, \"selected_units\": [\"character\", \"client\", \"codemode\", \"connector\", \"env\", \"feishu\", \"local-agent\", \"media\", \"memory-maintenance\", \"monty-runtime\", \"telegram\", \"trace\", \"web-fetch\", \"yuki-setup\"]}\n",
+  "stderr": ""
+}

@@ -1,0 +1,130 @@
+[
+  {
+    "id": "fixture-1",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": ""
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2,
+      "completion_tokens": 1,
+      "total_tokens": 3
+    }
+  },
+  {
+    "id": "fixture-2",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": ""
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2,
+      "completion_tokens": 1,
+      "total_tokens": 3
+    }
+  },
+  {
+    "id": "fixture-3",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": ""
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2,
+      "completion_tokens": 1,
+      "total_tokens": 3
+    }
+  },
+  {
+    "id": "fixture-4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": null,
+          "tool_calls": [
+            {
+              "id": "original-social-4",
+              "type": "function",
+              "function": {
+                "name": "task_control",
+                "arguments": "{\"action\": \"accept\", \"goal\": \"publish one original local Social reply\"}"
+              }
+            }
+          ]
+        },
+        "finish_reason": "tool_calls"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2,
+      "completion_tokens": 1,
+      "total_tokens": 3
+    }
+  },
+  {
+    "id": "fixture-5",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": null,
+          "tool_calls": [
+            {
+              "id": "original-social-5",
+              "type": "function",
+              "function": {
+                "name": "send",
+                "arguments": "{\"text\": \"committed-social-652976ae6dd947f5aa9f21feec6aa1bb\"}"
+              }
+            }
+          ]
+        },
+        "finish_reason": "tool_calls"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2,
+      "completion_tokens": 1,
+      "total_tokens": 3
+    }
+  },
+  {
+    "id": "fixture-6",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": ""
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2,
+      "completion_tokens": 1,
+      "total_tokens": 3
+    }
+  }
+]

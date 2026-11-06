@@ -1,0 +1,8 @@
+{
+  "task": "EXT-015",
+  "status": "PASS",
+  "phase": "native-evidence-audit",
+  "files": {
+    "analysis.json": "d699960f8147fd025bef624e215e85a1d2023eba013945d4d3d287f67c4e3330"
+  }
+}

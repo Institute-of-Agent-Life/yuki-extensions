@@ -1,0 +1,194 @@
+[
+  {
+    "case": "missing-credential-denied",
+    "result": 401
+  },
+  {
+    "case": "chat-credential-denied",
+    "result": 401
+  },
+  {
+    "case": "original-connector-empty-device",
+    "result": {
+      "connected": true,
+      "connection_epoch": 1,
+      "device_capabilities": {
+        "full_access": false,
+        "interrupt_supported": false,
+        "platform": "win32",
+        "shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+        "tty": false
+      },
+      "device_id": "41df2b3d-35d4-48de-9955-48930162acf2",
+      "instances": [],
+      "journal_namespace": "connector:6dee50bec2901b27fb06395a43eff17bd20293b91198f931050eb2a62690cac4"
+    }
+  },
+  {
+    "case": "old-catalog-and-close-fenced",
+    "result": {
+      "connected": true,
+      "connection_epoch": 2,
+      "device_capabilities": {
+        "full_access": false,
+        "interrupt_supported": false,
+        "platform": "win32",
+        "shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+        "tty": false
+      },
+      "device_id": "41df2b3d-35d4-48de-9955-48930162acf2",
+      "instances": [
+        {
+          "capabilities": [],
+          "driver": "codex",
+          "id": "native",
+          "label": "new snapshot",
+          "status": "unavailable"
+        }
+      ],
+      "journal_namespace": "connector:6dee50bec2901b27fb06395a43eff17bd20293b91198f931050eb2a62690cac4"
+    }
+  },
+  {
+    "case": "full-snapshot-removes-instances-keeps-device",
+    "result": {
+      "connected": true,
+      "connection_epoch": 2,
+      "device_capabilities": {
+        "full_access": false,
+        "interrupt_supported": false,
+        "platform": "win32",
+        "shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+        "tty": false
+      },
+      "device_id": "41df2b3d-35d4-48de-9955-48930162acf2",
+      "instances": [],
+      "journal_namespace": "connector:6dee50bec2901b27fb06395a43eff17bd20293b91198f931050eb2a62690cac4"
+    }
+  },
+  {
+    "case": "original-WebSocket-ping-closes-before-handle-expiry",
+    "result": {
+      "kind": "ConnectionClosedError",
+      "code": 1008,
+      "reason": "connector_reauthentication_required"
+    }
+  },
+  {
+    "case": "person-merge-keeps-original-device-namespace",
+    "result": {
+      "connected": true,
+      "connection_epoch": 3,
+      "device_capabilities": {
+        "full_access": false,
+        "interrupt_supported": false,
+        "platform": "win32",
+        "shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+        "tty": false
+      },
+      "device_id": "41df2b3d-35d4-48de-9955-48930162acf2",
+      "instances": [
+        {
+          "capabilities": [],
+          "driver": "codex",
+          "id": "same",
+          "label": "same device",
+          "status": "unavailable"
+        }
+      ],
+      "journal_namespace": "connector:6dee50bec2901b27fb06395a43eff17bd20293b91198f931050eb2a62690cac4"
+    }
+  },
+  {
+    "case": "account-reassignment-does-not-transfer-device",
+    "result": {
+      "connected": true,
+      "connection_epoch": 4,
+      "device_capabilities": {
+        "full_access": false,
+        "interrupt_supported": false,
+        "platform": "win32",
+        "shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+        "tty": false
+      },
+      "device_id": "41df2b3d-35d4-48de-9955-48930162acf2",
+      "instances": [],
+      "journal_namespace": "connector:6dee50bec2901b27fb06395a43eff17bd20293b91198f931050eb2a62690cac4"
+    }
+  },
+  {
+    "case": "forged-hello-cannot-create-device",
+    "result": {
+      "catalog": [
+        {
+          "connected": false,
+          "connection_epoch": 5,
+          "device_capabilities": {
+            "full_access": false,
+            "interrupt_supported": false,
+            "platform": "win32",
+            "shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+            "tty": false
+          },
+          "device_id": "41df2b3d-35d4-48de-9955-48930162acf2",
+          "instances": [],
+          "journal_namespace": "connector:6dee50bec2901b27fb06395a43eff17bd20293b91198f931050eb2a62690cac4"
+        }
+      ],
+      "devices": [
+        "41df2b3d-35d4-48de-9955-48930162acf2"
+      ]
+    }
+  },
+  {
+    "case": "unscoped-native-event-keeps-original-journal-no-ACK",
+    "result": {
+      "journal_namespace": "41df2b3d-35d4-48de-9955-48930162acf2",
+      "pending_event": true
+    }
+  },
+  {
+    "case": "revoked-device-cannot-publish-or-reconnect",
+    "result": {
+      "http": 401,
+      "catalog": {
+        "connected": false,
+        "connection_epoch": 7,
+        "device_capabilities": {
+          "full_access": false,
+          "interrupt_supported": false,
+          "platform": "win32",
+          "shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+          "tty": false
+        },
+        "device_id": "41df2b3d-35d4-48de-9955-48930162acf2",
+        "instances": [],
+        "journal_namespace": "connector:6dee50bec2901b27fb06395a43eff17bd20293b91198f931050eb2a62690cac4"
+      }
+    }
+  },
+  {
+    "case": "cold-restart-retains-namespace-and-offline-membership",
+    "result": {
+      "catalog": [
+        {
+          "connected": false,
+          "connection_epoch": 7,
+          "device_capabilities": {
+            "full_access": false,
+            "interrupt_supported": false,
+            "platform": "win32",
+            "shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+            "tty": false
+          },
+          "device_id": "41df2b3d-35d4-48de-9955-48930162acf2",
+          "instances": [],
+          "journal_namespace": "connector:6dee50bec2901b27fb06395a43eff17bd20293b91198f931050eb2a62690cac4"
+        }
+      ],
+      "devices": [
+        "41df2b3d-35d4-48de-9955-48930162acf2"
+      ]
+    }
+  }
+]

@@ -1,0 +1,21 @@
+{
+  "task": "EXT-006",
+  "status": "FAIL",
+  "phase": "preparation",
+  "card_status": "FAIL",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "0eeffae827741d76302f1abff08691115ac21a2aa0d8de4ad19d33b513346462",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-006",
+    "--preparation",
+    "--out",
+    "D:\\yuki-extension-tests\\feishu-media-platform-03\\evidence"
+  ],
+  "files": {
+    "failure.txt": "7b3e4d3d098bfafc2a7f4ca5a011bf86e1c02aa0d7dfcf20aeb38ff57dab588e"
+  }
+}

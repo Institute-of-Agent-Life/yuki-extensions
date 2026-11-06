@@ -1,0 +1,8 @@
+{
+  "status": "FAILED_PRESERVED",
+  "source_snapshot": "f294dcf1517490612264712c82bb557a33614ddb2b941dd8c4e17258dd392d84",
+  "diagnosis": "Windows path limit while extracting vcpkg-0.2.15 test-data into the new deep cache source path",
+  "test_transport": "PowerShell stderr handling interrupted the first traceback; same-source diagnostic-build-01 recovered the actual exception",
+  "fix": "short scratch source root and 16-character scratch-only digest; target cache and keys keep full SHA-256",
+  "core_or_plugin_behavior_changed": false
+}

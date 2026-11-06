@@ -1,0 +1,6 @@
+{
+  "exit": 1,
+  "stdout": "",
+  "stderr": "{\"error\":\"TOML parse error at line 18, column 10\\n   |\\n18 | protocol=\\\"jev\\\"\\r\\n   |          ^^^^^\\nunknown variant `jev`, expected one of `chat`, `openai_responses`, `deepseek_responses_legacy`, `deepseek_responses`, `anthropic_messages`, `gemini`\\n\"}\n",
+  "scope": "configuration parse only; endpoint has no listener; no model purchase"
+}

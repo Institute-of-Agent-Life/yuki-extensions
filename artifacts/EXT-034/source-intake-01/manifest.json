@@ -1,0 +1,19 @@
+{
+  "task": "EXT-034",
+  "status": "BLOCKED",
+  "phase": "diagnostic",
+  "observations_verified": true,
+  "source_snapshot_sha256": "8f85e7ceeab1412b6c8bd270b3e96f640d2fa766e7b51642f8d0c5a353de26e9",
+  "files": {
+    "build.json": "d055655afdb4fa8fdec4ead4764f6ae46a502679ec783e2ef77b01d8f01e127d",
+    "generated-Cargo.lock": "5e1b6dfc68064e56f42e4d94c6429f29eb2fe6ed8dbf724d092e242515871c89",
+    "host.txt": "42d9ddc846a76a090b1766e65a110b3c1fa09344624fc91eb695b483fcba917a",
+    "intake.json": "98d9a6ff2c79f744aaf3850012105eba6a6eb7b7e2a5f637fc7fc9b21212f56a",
+    "maintenance-policy.toml": "b54cf5fa4cbc11488a5b58243cacb2ec704fe56a793fc55ca582e73e0f929846",
+    "operator.json": "1d113bf9f014164de17ec1db11ed57a50e92546596f162fa375f928d7a32a713",
+    "provider.json": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "wire.jsonl": "a42e3ce0ef0f39175f0a17cc1caf3a588a030d3b0ba0a121ecbcfa9c47bb6959",
+    "probe/request.json": "dcaf4582e85cb1e3d026b88ee09cb2b222b8a6dc239ff1a474c9b414b903a9b6",
+    "probe/result.json": "f7242108e063e974dd5643da9af2870052bda06c8e7c4b8ff441ffe54b998d75"
+  }
+}

@@ -1,0 +1,3 @@
+{"listen":"127.0.0.1:31737","operator":"\\\\.\\pipe\\yuki-core-feec414c0b6a5eb92c22d4fdcd7e830ab86318d029d2d400875c244751d23fdf","status":"ready"}
+{"listen":"127.0.0.1:31737","operator":"\\\\.\\pipe\\yuki-core-feec414c0b6a5eb92c22d4fdcd7e830ab86318d029d2d400875c244751d23fdf","status":"ready"}
+{"error":"gateway.media requires an inbound installation with an explicit application identity"}

@@ -1,0 +1,5 @@
+id = "client"
+version = "0.1.0-alpha.2"
+program = "yuki-client"
+grants = []
+env = ["YUKI_CLIENT_CORE", "YUKI_CLIENT_LISTEN"]

@@ -1,0 +1,41 @@
+{
+  "run": 41972572502,
+  "job": 127064263207,
+  "artifact_id": 13391755107,
+  "head": "1e9c4b3052878d4244acc1df89b50dc16a712e21",
+  "base": "8d2f3c6d85e1a3a638e28014f4fa131b91f1cbdc",
+  "artifact_sha": "069aa55303242e2d6ee4f6f3702fe8f094b85bfd",
+  "zip_sha256": "09be6a2742ce217058f2fd91928513af35f88c4c5c7b904822ed99f3057c7e44",
+  "verified_files": {
+    "codec.txt": "e4245cf9fa77195aa501f2fed19520a0fa264cbe8cee634a23c59a48721ed0ba",
+    "image-id.txt": "1e81c4d1577265ed9802d4897ed7271571697f1a0184bb7f4063f0f996d385df",
+    "artifacts.json": "dfccf7575e065cb678cfc9cb1924a495399f4d8cfde97e9542f0070274b63b6d",
+    "build.txt": "f6225dd9116a9a67f5e03db4de4d5dbb1a0ab974a2c210bceabd44e382d0f6ca",
+    "native-codec.json": "f9d6cf682d480bdcf350e3d18ac1793f05d200119d8b93a18c3c226010166560",
+    "rust-worker.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "image.tar": "e80bb60956ed22f454093d7e8efe19843e446e2182524920387003d54e18c829",
+    "copy-THIRD_PARTY_NOTICES.json.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runtime-contract.json": "46fda499c93caeac2e8fad90b622a7f990a09c5a6f2e00c9819c914ad077232c",
+    "image-inspect.json": "c908520b68259c05d1357a196d6a5ede18e1103fbb081f638e7f279e2a6ff611",
+    "THIRD_PARTY_NOTICES.json": "d66e540339f76e4b053710e416cb47384e6939cd5db25032d62f05c9ad7b92e5",
+    "inputs.txt": "7e5377a03e19550fcff3d6b59488c33be85ac2c0f7f113c8b3f635062b9c8ca8",
+    "copy-artifacts.json.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy-runtime-contract.json.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "export.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "isolation.txt": "6b07d83dc9958128b66d8a1fdb9b31fda77c34512e3d39b47248f5b3c9060bc6",
+    "apparmor.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "native-isolation.json": "ebb851a7ecfe9c0e25afc27d4f511f4d6d668b2ceb94db422a972f9fedd42914"
+  },
+  "rust_worker_source": {
+    "Cargo.toml": "6c5c47fb41912f30b747e8d5b555220ea076515d2091c239612140954952765d",
+    "Cargo.lock": "2b584722fd3618fe935bf31c00bc741e8ae03643abd416d057f5ab9e25d227d3",
+    "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+    "src/lib.rs": "ef788443d7fdc472cb3e1924ea2434f216fbc519a8ca9272eef6bfaaf612f288",
+    "src/worker.rs": "6a08230aa60f356305b1624c8d853b6da22c5c9fdaaef00b13ad5cb2dcd13894",
+    "tests/native_worker.rs": "4a5c90ae71e8659c50036d5eafed31a8f342970adc93860034b661c020adebe7"
+  },
+  "status": "PASS",
+  "entire_pr_ready": false,
+  "previous_failure_reproduced": false,
+  "causal_fix_claimed": false
+}

@@ -1,0 +1,23 @@
+{
+  "task": "EXT-004",
+  "status": "PASS",
+  "phase": "preparation",
+  "card_status": "PLATFORM_MEDIA_VERIFIED_HOST_AUTHORIZATION_AND_SOCIAL_PENDING",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "12cc7671c15db682f91d6c0811aa3ca553b924618a6481dc6400af3536597113",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-004",
+    "--preparation",
+    "--out",
+    "D:\\yuki-extension-tests\\telegram-media-platform-01\\evidence"
+  ],
+  "files": {
+    "build-receipt.json": "32078043f01c9c54530f8bdcf85c2ed5317c01a3ef82a8571d970e668b98938d",
+    "telegram-delivery.json": "b6001c9e5c11be8527eb23f33087fb071688ac416f8ded5f28b3d358a03505df",
+    "wire.json": "8916af2be88e214722fccabc3cb46b44c514eb6e68e2f671e02a5aa6b1873bb8"
+  }
+}

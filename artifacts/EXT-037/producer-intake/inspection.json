@@ -1,0 +1,279 @@
+{
+  "status": "PASS",
+  "published": false,
+  "consumer_executed": false,
+  "source_commit": "1e7b89362b6f806aa11eed841b28071b22151e7e",
+  "index_sha256": "8519f27ea2c10a9f692ac6b34e47e8a92bf3751b871b07dcaf02f9597e5b946b",
+  "platforms": [
+    {
+      "platform": "darwin-arm64",
+      "archive": "yuki-control-preview-1e7b89362b6f-darwin-arm64.zip",
+      "sha256": "37945f2a6abda16c54fd024271471a0adaa78343b093fae3fac7313867ee9e9c",
+      "candidate_sha256": "7c99dd2120f67bfc59e8bf0b85bb61d471fa8671f699bb26b7a9aec0d1a3ae1b",
+      "members": {
+        "LICENSE": {
+          "bytes": 34600,
+          "sha256": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99"
+        },
+        "NOTICE": {
+          "bytes": 666,
+          "sha256": "92eec243bb25b89d47a7fa29ce6c863a14487a9c9e1078d0538775e6ec8f5a34"
+        },
+        "bin/yuki-core": {
+          "bytes": 76239656,
+          "sha256": "2ae13f1f5f6edbc0eada5e2dc6e9d27f75d220d44d6de9989d2630850fec65e2"
+        },
+        "evidence/control-grants.json": {
+          "bytes": 31366,
+          "sha256": "d3c3b1707b49e83a5598c0436b4ca7b6c37500a54f8a2e6fa8a9f09d61c69666"
+        },
+        "licenses/OpenCC.txt": {
+          "bytes": 12835,
+          "sha256": "913605727253219eecf1f5ef2bd5ac7b0a524a9893d1c8de04304f0edd59756d"
+        },
+        "licenses/Vec1.txt": {
+          "bytes": 734,
+          "sha256": "f19ceac9154f61607007a294703456609c4ff3e64573e3673e1e8af1b4e95e97"
+        },
+        "protocol/admin/capabilities.json": {
+          "bytes": 2869,
+          "sha256": "20b8f6a62f7acc0cb1e53b1c5296022be6a883b509bb0e8d0dd8c1515211574e"
+        },
+        "protocol/admin/person-capabilities.json": {
+          "bytes": 1700,
+          "sha256": "a65fff32af8ba516c5874228495609fc8f127ba5849b78013d06819d50503f50"
+        },
+        "protocol/baseline-v4/admin-openapi.json": {
+          "bytes": 159149,
+          "sha256": "6caf8f1a6da0c09a9f033b06eb5f6b27b179e60c740d437a393907f04c5aa51c"
+        },
+        "protocol/handshake.schema.json": {
+          "bytes": 5321,
+          "sha256": "c4946589e2de76b2a9af6e2793af10651e8b6c29e84ddf41a75db015a71d3d0a"
+        },
+        "protocol/host-preview.json": {
+          "bytes": 150069,
+          "sha256": "217d402c00a0c7d47f41b206162f3d96156e8787e15bffce5cf45d886c0be750"
+        },
+        "protocol/plugin/control/README.md": {
+          "bytes": 4488,
+          "sha256": "a0e2a5f0ed883c4332da3bcc44da7ff8db99ab6b54616338bb9852fb074372e3"
+        },
+        "protocol/plugin/control/methods.json": {
+          "bytes": 3248,
+          "sha256": "ff3efce8020cbc6aff324c2aebfb6a90c863f3c60ea27b54df4af17d59a9c213"
+        },
+        "sdk/handshake.ndjson": {
+          "bytes": 502,
+          "sha256": "5275ee7b90b6af4221693f92ea9c1b4fb1d1b306c2b6ebb85947273dba0bcfa3"
+        },
+        "sdk/sdk-verification.json": {
+          "bytes": 2248,
+          "sha256": "f591c746dfcf13d5a6acccff7b7b0cf3cc5da6f52ffde9cf2de4c6ffd8cd858c"
+        },
+        "sdk/yuki-plugin-sdk-1.0.0-alpha.11.crate": {
+          "bytes": 27931,
+          "sha256": "cb6db37ce6b3b40d258e209a8561e01e4d496ad14640615a6676e34665031193"
+        },
+        "sdk/yuki_plugin_sdk-1.0.0a11-py3-none-any.whl": {
+          "bytes": 209230,
+          "sha256": "993ba8bde65cb6deac4e1b1b7a364a05664c97e1ea87b5bc2f5227eb35509e28"
+        }
+      },
+      "producer_validation": {
+        "assertions": 977,
+        "card": "CORE-037",
+        "clean_path_launch": "verified",
+        "consumer": "installed Python wheel and external Rust crate consumer; native Admin and OS operator",
+        "manifest_sha256": "a1499f0835a15ade21d4fdecb1f17a012870ab0740168c8a7c4bec83422fe35b",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "real_extension_consumers": "pending EXT-022, EXT-037, EXT-038, EXT-039 and EXT-049",
+        "stable": false
+      }
+    },
+    {
+      "platform": "linux-arm64",
+      "archive": "yuki-control-preview-1e7b89362b6f-linux-arm64.zip",
+      "sha256": "673662bd73e0a89418c8aeb2740a00c34c491ea3da56c735b0bb7f6540f5b625",
+      "candidate_sha256": "95af271db1eb45635c2eadd7de914527482d969ad65ba7edb5739d0b8750015d",
+      "members": {
+        "LICENSE": {
+          "bytes": 34600,
+          "sha256": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99"
+        },
+        "NOTICE": {
+          "bytes": 666,
+          "sha256": "92eec243bb25b89d47a7fa29ce6c863a14487a9c9e1078d0538775e6ec8f5a34"
+        },
+        "bin/yuki-core": {
+          "bytes": 285960192,
+          "sha256": "6fe621895780f834f776f6fd36ce0637610722ec2fd07532e4d59946d3b8db22"
+        },
+        "evidence/control-grants.json": {
+          "bytes": 31364,
+          "sha256": "848545beb20c9e0b57a922f169ba363e7db8d8f1951db618040b2ef78ed8f5c1"
+        },
+        "licenses/OpenCC.txt": {
+          "bytes": 12835,
+          "sha256": "913605727253219eecf1f5ef2bd5ac7b0a524a9893d1c8de04304f0edd59756d"
+        },
+        "licenses/Vec1.txt": {
+          "bytes": 734,
+          "sha256": "f19ceac9154f61607007a294703456609c4ff3e64573e3673e1e8af1b4e95e97"
+        },
+        "protocol/admin/capabilities.json": {
+          "bytes": 2869,
+          "sha256": "20b8f6a62f7acc0cb1e53b1c5296022be6a883b509bb0e8d0dd8c1515211574e"
+        },
+        "protocol/admin/person-capabilities.json": {
+          "bytes": 1700,
+          "sha256": "a65fff32af8ba516c5874228495609fc8f127ba5849b78013d06819d50503f50"
+        },
+        "protocol/baseline-v4/admin-openapi.json": {
+          "bytes": 159149,
+          "sha256": "6caf8f1a6da0c09a9f033b06eb5f6b27b179e60c740d437a393907f04c5aa51c"
+        },
+        "protocol/handshake.schema.json": {
+          "bytes": 5321,
+          "sha256": "c4946589e2de76b2a9af6e2793af10651e8b6c29e84ddf41a75db015a71d3d0a"
+        },
+        "protocol/host-preview.json": {
+          "bytes": 150069,
+          "sha256": "217d402c00a0c7d47f41b206162f3d96156e8787e15bffce5cf45d886c0be750"
+        },
+        "protocol/plugin/control/README.md": {
+          "bytes": 4488,
+          "sha256": "a0e2a5f0ed883c4332da3bcc44da7ff8db99ab6b54616338bb9852fb074372e3"
+        },
+        "protocol/plugin/control/methods.json": {
+          "bytes": 3248,
+          "sha256": "ff3efce8020cbc6aff324c2aebfb6a90c863f3c60ea27b54df4af17d59a9c213"
+        },
+        "sdk/handshake.ndjson": {
+          "bytes": 502,
+          "sha256": "5275ee7b90b6af4221693f92ea9c1b4fb1d1b306c2b6ebb85947273dba0bcfa3"
+        },
+        "sdk/sdk-verification.json": {
+          "bytes": 2248,
+          "sha256": "f591c746dfcf13d5a6acccff7b7b0cf3cc5da6f52ffde9cf2de4c6ffd8cd858c"
+        },
+        "sdk/yuki-plugin-sdk-1.0.0-alpha.11.crate": {
+          "bytes": 27931,
+          "sha256": "cb6db37ce6b3b40d258e209a8561e01e4d496ad14640615a6676e34665031193"
+        },
+        "sdk/yuki_plugin_sdk-1.0.0a11-py3-none-any.whl": {
+          "bytes": 209230,
+          "sha256": "993ba8bde65cb6deac4e1b1b7a364a05664c97e1ea87b5bc2f5227eb35509e28"
+        }
+      },
+      "producer_validation": {
+        "assertions": 977,
+        "card": "CORE-037",
+        "clean_path_launch": "verified",
+        "consumer": "installed Python wheel and external Rust crate consumer; native Admin and OS operator",
+        "manifest_sha256": "d4ebf48a78085057b90fbc0b458b054eba4cf4556dd941eabeb12d7acea13bae",
+        "platform": "Linux-6.12.54-linuxkit-aarch64-with-glibc2.36",
+        "real_extension_consumers": "pending EXT-022, EXT-037, EXT-038, EXT-039 and EXT-049",
+        "stable": false
+      }
+    },
+    {
+      "platform": "windows-x86_64",
+      "archive": "yuki-control-preview-1e7b89362b6f-windows-x86_64.zip",
+      "sha256": "cfad9951aa18cb1e0a9677b8d6e042d84dafdc6e6b13ba95feb4ab943fd9a4e6",
+      "candidate_sha256": "96247da00772549c9740e677dc0e3bc9aa7bfc31f88b6ed051053ca1a7904ea0",
+      "members": {
+        "LICENSE": {
+          "bytes": 34600,
+          "sha256": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99"
+        },
+        "NOTICE": {
+          "bytes": 666,
+          "sha256": "92eec243bb25b89d47a7fa29ce6c863a14487a9c9e1078d0538775e6ec8f5a34"
+        },
+        "bin/yuki-core.exe": {
+          "bytes": 384785729,
+          "sha256": "b3fbd607fe5a5fc9547156bbbfc86fb3ecbb7aeb13a2752f3c812ecf41b4294c"
+        },
+        "evidence/control-grants.json": {
+          "bytes": 32333,
+          "sha256": "37dddd9c6ea98a162f344e73612f6162d9f59ef8489a1e4a0bc864c8c9a73a0f"
+        },
+        "licenses/GCC/COPYING.RUNTIME": {
+          "bytes": 3324,
+          "sha256": "9d6b43ce4d8de0c878bf16b54d8e7a10d9bd42b75178153e3af6a815bdc90f74"
+        },
+        "licenses/GCC/COPYING3": {
+          "bytes": 35147,
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+        },
+        "licenses/GCC/provenance.json": {
+          "bytes": 623,
+          "sha256": "3922fe567874ca1cb7943d33d3576da0f4b0c02051817b97b0aabfcaa2d686c9"
+        },
+        "licenses/OpenCC.txt": {
+          "bytes": 12835,
+          "sha256": "913605727253219eecf1f5ef2bd5ac7b0a524a9893d1c8de04304f0edd59756d"
+        },
+        "licenses/Vec1.txt": {
+          "bytes": 734,
+          "sha256": "f19ceac9154f61607007a294703456609c4ff3e64573e3673e1e8af1b4e95e97"
+        },
+        "protocol/admin/capabilities.json": {
+          "bytes": 2869,
+          "sha256": "20b8f6a62f7acc0cb1e53b1c5296022be6a883b509bb0e8d0dd8c1515211574e"
+        },
+        "protocol/admin/person-capabilities.json": {
+          "bytes": 1700,
+          "sha256": "a65fff32af8ba516c5874228495609fc8f127ba5849b78013d06819d50503f50"
+        },
+        "protocol/baseline-v4/admin-openapi.json": {
+          "bytes": 159149,
+          "sha256": "6caf8f1a6da0c09a9f033b06eb5f6b27b179e60c740d437a393907f04c5aa51c"
+        },
+        "protocol/handshake.schema.json": {
+          "bytes": 5321,
+          "sha256": "c4946589e2de76b2a9af6e2793af10651e8b6c29e84ddf41a75db015a71d3d0a"
+        },
+        "protocol/host-preview.json": {
+          "bytes": 150069,
+          "sha256": "217d402c00a0c7d47f41b206162f3d96156e8787e15bffce5cf45d886c0be750"
+        },
+        "protocol/plugin/control/README.md": {
+          "bytes": 4488,
+          "sha256": "a0e2a5f0ed883c4332da3bcc44da7ff8db99ab6b54616338bb9852fb074372e3"
+        },
+        "protocol/plugin/control/methods.json": {
+          "bytes": 3248,
+          "sha256": "ff3efce8020cbc6aff324c2aebfb6a90c863f3c60ea27b54df4af17d59a9c213"
+        },
+        "sdk/handshake.ndjson": {
+          "bytes": 502,
+          "sha256": "5275ee7b90b6af4221693f92ea9c1b4fb1d1b306c2b6ebb85947273dba0bcfa3"
+        },
+        "sdk/sdk-verification.json": {
+          "bytes": 2248,
+          "sha256": "f591c746dfcf13d5a6acccff7b7b0cf3cc5da6f52ffde9cf2de4c6ffd8cd858c"
+        },
+        "sdk/yuki-plugin-sdk-1.0.0-alpha.11.crate": {
+          "bytes": 27931,
+          "sha256": "cb6db37ce6b3b40d258e209a8561e01e4d496ad14640615a6676e34665031193"
+        },
+        "sdk/yuki_plugin_sdk-1.0.0a11-py3-none-any.whl": {
+          "bytes": 209230,
+          "sha256": "993ba8bde65cb6deac4e1b1b7a364a05664c97e1ea87b5bc2f5227eb35509e28"
+        }
+      },
+      "producer_validation": {
+        "assertions": 977,
+        "card": "CORE-037",
+        "clean_path_launch": "verified",
+        "consumer": "installed Python wheel and external Rust crate consumer; native Admin and OS operator",
+        "manifest_sha256": "b784241abcbb6c6e25059c790ce16ef09abd16eafc945797700480270b33140d",
+        "platform": "Windows-11-10.0.22000-SP0",
+        "real_extension_consumers": "pending EXT-022, EXT-037, EXT-038, EXT-039 and EXT-049",
+        "stable": false
+      }
+    }
+  ]
+}

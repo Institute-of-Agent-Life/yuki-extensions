@@ -1,0 +1,11 @@
+{
+  "status": "BLOCKED",
+  "case": "real native feed acknowledgement after confirmed child",
+  "files": {
+    "wire.jsonl": "003f7e7ea51b8854b5871ef2b689c2ec9b8f5ab533ad4d67079073aa52eb95ac",
+    "model.json": "7c68b8c53974563a7b1999af7ac8d2ea1777ca3933a69235661ed79dcef23940",
+    "host.txt": "c10770bda4d6d03bf29590be08e880b42351b7b7ba5060ca40241523bc2dbe3e",
+    "native-feed-ack.json": "6b8fc8a5029880d68d7c15285de33a36e57d05003b58779740b9eae303060f11",
+    "build-linux-04.json": "9acb2c826aa9c1e046231ebd23a98a43868fdf463a785e0bdbc5a09c92a2d037"
+  }
+}

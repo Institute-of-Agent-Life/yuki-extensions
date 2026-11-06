@@ -1,0 +1,89 @@
+{
+  "status": "BLOCKED",
+  "observations_verified": true,
+  "card_status": "BLOCKED",
+  "diagnostic_only": true,
+  "core": {
+    "source_commit": "0cdd9dffe07c18949990492fd2a9944919c455d3",
+    "handoff_commit": "69cfdfd7b0efba36c41080f5fae424401cfc1b5c",
+    "published": false,
+    "host": {
+      "archive": "yuki-maintenance-preview-0cdd9dffe07c-windows-x86_64.zip",
+      "sha256": "e2b964e87a30d5c230fbb0805a9de973cb91160b6e8b52606b363ca0fd77a152",
+      "binary_sha256": "7b8b374306f0081f0b80494cbc0cd4f0b7394c392a025da7e19f8468dcf192e7",
+      "validation_manifest_sha256": "e74b03e48ecd4c98198325ac51f367531019a192ce03e51ed3b190bff5f1f41f"
+    },
+    "sdk": {
+      "version": "1.0.0-alpha.8",
+      "sha256": "a8739c74d300f1044c94749ced333d9694920aa7c91728b19f624ff9fbaf2e63"
+    },
+    "host_schema_sha256": "4f5cdeb464c5fb275feeed766019ba159561a7335d13daec4d2d030b95cd4ec2",
+    "personal_schema_sha256": null,
+    "media_schema_sha256": null,
+    "plugin_sha256": "356498aaa59c4bc4b2a78423210068e9d81d3e9e7a2789021824876c6cfb8a27",
+    "wire_sha256": "db92872a711647b678ffc3034d1891d9e951d173e0b294c1223d56790bb6fc25"
+  },
+  "actual": {
+    "extract_preview": {
+      "Err": "{\"code\":-32003,\"message\":\"method, grant or original scope denied\"}"
+    },
+    "model_open": {
+      "Err": "{\"code\":-32003,\"message\":\"method, grant or original scope denied\"}"
+    },
+    "pages": [
+      {
+        "items": [
+          {
+            "actor": "5556db82-b8ae-4bf5-a831-bb57f17226e1",
+            "entry": "410dd389-5930-455c-b0c9-4ac0a3bc2647",
+            "event": 1,
+            "next_offset": null,
+            "offset": 0,
+            "text": "我每天喝烏龍茶。",
+            "version": "626e36dd29efab9af4edd09c3150bc205dc1afcfd4c2a358064e3291e3ee8ed5"
+          }
+        ],
+        "next_event": 1
+      },
+      {
+        "items": [
+          {
+            "actor": "5556db82-b8ae-4bf5-a831-bb57f17226e1",
+            "entry": "410dd389-5930-455c-b0c9-4ac0a3bc2647",
+            "event": 2,
+            "next_offset": null,
+            "offset": 0,
+            "text": "上下文原句，不當成主要來源。",
+            "version": "3ad78c48745b26bacb168aae408908990f8ea2bd4e776671f3a15031e3b9abb7"
+          }
+        ],
+        "next_event": 2
+      }
+    ],
+    "request": {
+      "format": "extraction",
+      "key": "original-preview-probe",
+      "mode": "text_json",
+      "purpose": "rebuild",
+      "route": "extract",
+      "scope": "own",
+      "sources": [
+        {
+          "event": 1,
+          "role": "primary",
+          "version": "626e36dd29efab9af4edd09c3150bc205dc1afcfd4c2a358064e3291e3ee8ed5"
+        },
+        {
+          "event": 2,
+          "role": "context",
+          "version": "3ad78c48745b26bacb168aae408908990f8ea2bd4e776671f3a15031e3b9abb7"
+        }
+      ]
+    }
+  },
+  "http_calls": 0,
+  "remaining": [
+    "producer-approved public maintenance extraction route configuration",
+    "original paid preview, subset writes, crash recovery and erasure consumer acceptance"
+  ]
+}

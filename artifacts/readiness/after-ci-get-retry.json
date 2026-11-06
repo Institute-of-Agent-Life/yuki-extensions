@@ -1,0 +1,711 @@
+{
+  "updated_at": "2026-11-05T15:35:32.343845+00:00",
+  "previous": "after-native134-diagnostics.json",
+  "formal_cards": [
+    "EXT-001",
+    "EXT-002",
+    "EXT-007",
+    "EXT-008",
+    "EXT-009",
+    "EXT-010",
+    "EXT-019"
+  ],
+  "ext036": {
+    "branch": "codex/ext-036-maintenance",
+    "status": "candidate_verified_card_blocked",
+    "evidence": "artifacts/EXT-036/candidate-06",
+    "host": {
+      "source_commit": "0cdd9dffe07c18949990492fd2a9944919c455d3",
+      "handoff_commit": "69cfdfd7b0efba36c41080f5fae424401cfc1b5c",
+      "published": false,
+      "host": {
+        "archive": "yuki-maintenance-preview-0cdd9dffe07c-windows-x86_64.zip",
+        "sha256": "e2b964e87a30d5c230fbb0805a9de973cb91160b6e8b52606b363ca0fd77a152",
+        "binary_sha256": "7b8b374306f0081f0b80494cbc0cd4f0b7394c392a025da7e19f8468dcf192e7",
+        "validation_manifest_sha256": "e74b03e48ecd4c98198325ac51f367531019a192ce03e51ed3b190bff5f1f41f"
+      },
+      "sdk": {
+        "version": "1.0.0-alpha.8",
+        "sha256": "a8739c74d300f1044c94749ced333d9694920aa7c91728b19f624ff9fbaf2e63"
+      },
+      "host_schema_sha256": "4f5cdeb464c5fb275feeed766019ba159561a7335d13daec4d2d030b95cd4ec2",
+      "personal_schema_sha256": null,
+      "media_schema_sha256": null,
+      "plugin_sha256": "0f53bd9841b4c2c5ac525f56e597947afb3ef3e7b5426e69bf6e9cbedf98a560",
+      "wire_sha256": "2ce00aa5158b47222ed62d8bf24d874d2fa5a4773c481db7855f0b6800673f21"
+    },
+    "missing": [
+      "Full original SQL quality findings",
+      "Audit/reembed metadata source retention and forget contract"
+    ],
+    "implementation_commit": "fdaa47576a547daabf6cf36f339805a0c18622dd",
+    "handoff": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/46#issuecomment-6651927585"
+  },
+  "next_executable": [],
+  "other_maintenance": {
+    "EXT-033": "missing authorized exact vector/profile and ownership partition projection",
+    "EXT-035": "missing original SELF partition and foreground yield contract",
+    "EXT-048": "EXT-015/038 and CORE-037 personal mutation dependencies unmet",
+    "EXT-047": "session.create denied with current documented method grants; public installation policy needed. Monitor target grants blocked by EXT-027."
+  },
+  "pull_requests": {
+    "13": {
+      "merged": "526a35382d9bb464f92adc947e1b212e0ea41c3c",
+      "receipt": "artifacts/EXT-005/ci-receipt-9db5191.json"
+    },
+    "23": {
+      "head": "ab63ec24827f163b4922a01d17837f0c86fbbe77",
+      "base": "e90035586e9b91af19a5c6162c2e565dbfe966cf",
+      "merge_state": "DIRTY",
+      "checks": {
+        "SUCCESS": 74,
+        "FAILURE": 1,
+        "QUEUED": 7
+      },
+      "pending": [
+        {
+          "name": "package (feishu, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/41986818687/job/127109517685"
+        },
+        {
+          "name": "package (memory-maintenance, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/41986726504/job/127109190090"
+        },
+        {
+          "name": "package (monty-runtime, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/41986818687/job/127109518007"
+        },
+        {
+          "name": "package (telegram, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/41986818687/job/127109517621"
+        },
+        {
+          "name": "package (telegram, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/41986726504/job/127109190072"
+        },
+        {
+          "name": "package (web-fetch, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/41986818687/job/127109517884"
+        },
+        {
+          "name": "package (yuki-setup, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/41986726504/job/127109189964"
+        }
+      ],
+      "failed": [
+        {
+          "name": "acceptance (macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/41986818687/job/127109394991"
+        }
+      ]
+    },
+    "22": {
+      "head": "fdaa47576a547daabf6cf36f339805a0c18622dd",
+      "base": "e90035586e9b91af19a5c6162c2e565dbfe966cf",
+      "merge_state": "DIRTY",
+      "checks": {
+        "SUCCESS": 82
+      },
+      "pending": [],
+      "failed": []
+    },
+    "21": {
+      "head": "b8cfe0de4aa716fc4ac7b049d24cd81cc1eae8e5",
+      "base": "8d2f3c6d85e1a3a638e28014f4fa131b91f1cbdc",
+      "merge_state": "DIRTY",
+      "checks": {
+        "SUCCESS": 30,
+        "QUEUED": 12,
+        "SKIPPED": 3
+      },
+      "pending": [
+        {
+          "name": "acceptance (macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/41973249052/job/127066108550"
+        },
+        {
+          "name": "worker (codemode, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/41973249052/job/127067193421"
+        },
+        {
+          "name": "package (client, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/41973249052/job/127067193685"
+        },
+        {
+          "name": "package (connector, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/41973249052/job/127067193696"
+        },
+        {
+          "name": "package (env, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/41973249052/job/127067193732"
+        },
+        {
+          "name": "package (feishu, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/41973249052/job/127067193825"
+        },
+        {
+          "name": "package (local-agent, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/41973249052/job/127067193668"
+        },
+        {
+          "name": "package (media, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/41973249052/job/127067193621"
+        },
+        {
+          "name": "package (monty-runtime, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/41973249052/job/127067193683"
+        },
+        {
+          "name": "package (telegram, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/41973249052/job/127067193936"
+        },
+        {
+          "name": "package (web-fetch, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/41973249052/job/127067193689"
+        },
+        {
+          "name": "package (yuki-setup, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/41973249052/job/127067193837"
+        }
+      ],
+      "failed": []
+    },
+    "20": {
+      "head": "1e9c4b3052878d4244acc1df89b50dc16a712e21",
+      "base": "8d2f3c6d85e1a3a638e28014f4fa131b91f1cbdc",
+      "merge_state": "DIRTY",
+      "checks": {
+        "SUCCESS": 48,
+        "QUEUED": 1
+      },
+      "pending": [
+        {
+          "name": "package (connector, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/41972572502/job/127245698667"
+        }
+      ],
+      "failed": []
+    },
+    "19": {
+      "head": "5ea1d55fc99590f8b54883885948d0d813e83518",
+      "base": "8d2f3c6d85e1a3a638e28014f4fa131b91f1cbdc",
+      "merge_state": "DIRTY",
+      "checks": {
+        "SUCCESS": 49
+      },
+      "pending": [],
+      "failed": []
+    },
+    "18": {
+      "head": "3c6c25e76f11d9f98fe4cc0ec1b56560999688ea",
+      "base": "969a0595db8ab70e21305b0cdff67cfd31eca649",
+      "merge_state": "DIRTY",
+      "checks": {
+        "SUCCESS": 33,
+        "SKIPPED": 1,
+        "QUEUED": 2
+      },
+      "pending": [
+        {
+          "name": "package (client, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/41950683897/job/126993703493"
+        },
+        {
+          "name": "package (media, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/41950683897/job/126993703469"
+        }
+      ],
+      "failed": []
+    },
+    "17": {
+      "head": "25075e2be2a029e229bea54abf384f567b71d950",
+      "base": "969a0595db8ab70e21305b0cdff67cfd31eca649",
+      "merge_state": "DIRTY",
+      "checks": {
+        "SUCCESS": 56
+      },
+      "pending": [],
+      "failed": []
+    },
+    "16": {
+      "head": "12b3ace901e367bde217ae2fc3745de2c7847679",
+      "base": "969a0595db8ab70e21305b0cdff67cfd31eca649",
+      "merge_state": "DIRTY",
+      "checks": {
+        "SUCCESS": 50
+      },
+      "pending": [],
+      "failed": []
+    },
+    "15": {
+      "head": "a2285c3bc6a22da587f9d586cf26ada8ae65c821",
+      "base": "969a0595db8ab70e21305b0cdff67cfd31eca649",
+      "merge_state": "DIRTY",
+      "checks": {
+        "SUCCESS": 26,
+        "SKIPPED": 1
+      },
+      "pending": [],
+      "failed": []
+    },
+    "14": {
+      "head": "dfe8eb46d64ac12e68596a457fe5cc3554ce6acf",
+      "base": "526a35382d9bb464f92adc947e1b212e0ea41c3c",
+      "merge_state": "UNSTABLE",
+      "checks": {
+        "SUCCESS": 21,
+        "SKIPPED": 1,
+        "QUEUED": 2
+      },
+      "pending": [
+        {
+          "name": "package (connector, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42003406379/job/127165347504"
+        },
+        {
+          "name": "package (feishu, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42003406379/job/127165347492"
+        }
+      ],
+      "failed": []
+    },
+    "25": {
+      "head": "07b4da6ddece0e1dabae7afa033ccccad46e3cdc",
+      "base": "526a35382d9bb464f92adc947e1b212e0ea41c3c",
+      "merge_state": "UNSTABLE",
+      "checks": {
+        "SUCCESS": 64,
+        "QUEUED": 24
+      },
+      "pending": [
+        {
+          "name": "worker (codemode, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42029432912/job/127251877973"
+        },
+        {
+          "name": "package (client, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42029634067/job/127252599625"
+        },
+        {
+          "name": "package (client, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42029432912/job/127251878791"
+        },
+        {
+          "name": "package (codemode, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42029634067/job/127252599618"
+        },
+        {
+          "name": "package (connector, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42029634067/job/127252599666"
+        },
+        {
+          "name": "package (connector, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42029432912/job/127251878615"
+        },
+        {
+          "name": "package (env, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42029634067/job/127252599582"
+        },
+        {
+          "name": "package (env, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42029432912/job/127251878762"
+        },
+        {
+          "name": "package (feishu, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42029634067/job/127252599816"
+        },
+        {
+          "name": "package (feishu, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42029432912/job/127251878911"
+        },
+        {
+          "name": "package (local-agent, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42029634067/job/127252599684"
+        },
+        {
+          "name": "package (local-agent, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42029432912/job/127251878598"
+        },
+        {
+          "name": "package (media, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42029634067/job/127252599714"
+        },
+        {
+          "name": "package (media, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42029432912/job/127251878910"
+        },
+        {
+          "name": "package (memory-maintenance, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42029634067/job/127252599829"
+        },
+        {
+          "name": "package (memory-maintenance, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42029432912/job/127251878770"
+        },
+        {
+          "name": "package (monty-runtime, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42029634067/job/127252599674"
+        },
+        {
+          "name": "package (monty-runtime, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42029432912/job/127251878747"
+        },
+        {
+          "name": "package (telegram, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42029634067/job/127252599877"
+        },
+        {
+          "name": "package (telegram, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42029432912/job/127251878656"
+        },
+        {
+          "name": "package (web-fetch, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42029634067/job/127252599987"
+        },
+        {
+          "name": "package (web-fetch, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42029432912/job/127251878734"
+        },
+        {
+          "name": "package (yuki-setup, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42029634067/job/127252599806"
+        },
+        {
+          "name": "package (yuki-setup, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42029432912/job/127251878869"
+        }
+      ],
+      "failed": []
+    },
+    "24": {
+      "head": "0a1ebf41c9101e102b4912bb533742e13255e149",
+      "base": "526a35382d9bb464f92adc947e1b212e0ea41c3c",
+      "merge_state": "UNSTABLE",
+      "checks": {
+        "SUCCESS": 38,
+        "SKIPPED": 3,
+        "QUEUED": 10
+      },
+      "pending": [
+        {
+          "name": "package (client, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42008516349/job/127181374641"
+        },
+        {
+          "name": "package (connector, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42008516349/job/127181374402"
+        },
+        {
+          "name": "package (env, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42008516349/job/127181374377"
+        },
+        {
+          "name": "package (feishu, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42008516349/job/127181374281"
+        },
+        {
+          "name": "package (local-agent, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42008516349/job/127181374315"
+        },
+        {
+          "name": "package (media, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42008516349/job/127181374374"
+        },
+        {
+          "name": "package (memory-maintenance, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42008516349/job/127181375023"
+        },
+        {
+          "name": "package (monty-runtime, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42008516349/job/127181374371"
+        },
+        {
+          "name": "package (telegram, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42008516349/job/127181374460"
+        },
+        {
+          "name": "package (web-fetch, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42008516349/job/127181374507"
+        }
+      ],
+      "failed": []
+    },
+    "26": {
+      "head": "e0625154c09a84967e678ebd63997867aa83fee7",
+      "base": "526a35382d9bb464f92adc947e1b212e0ea41c3c",
+      "merge_state": "UNSTABLE",
+      "checks": {
+        "SUCCESS": 60,
+        "QUEUED": 27,
+        "FAILURE": 1
+      },
+      "pending": [
+        {
+          "name": "acceptance (macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42032011685/job/127260553909"
+        },
+        {
+          "name": "worker (codemode, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42032011685/job/127261357611"
+        },
+        {
+          "name": "worker (codemode, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42031856344/job/127260155305"
+        },
+        {
+          "name": "package (client, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42032011685/job/127261357903"
+        },
+        {
+          "name": "package (client, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42031856344/job/127260155795"
+        },
+        {
+          "name": "package (codemode, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42032011685/job/127261357929"
+        },
+        {
+          "name": "package (codemode, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42031856344/job/127260155676"
+        },
+        {
+          "name": "package (connector, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42032011685/job/127261357886"
+        },
+        {
+          "name": "package (connector, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42031856344/job/127260155934"
+        },
+        {
+          "name": "package (env, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42032011685/job/127261357951"
+        },
+        {
+          "name": "package (env, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42031856344/job/127260155911"
+        },
+        {
+          "name": "package (feishu, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42032011685/job/127261357958"
+        },
+        {
+          "name": "package (feishu, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42031856344/job/127260156174"
+        },
+        {
+          "name": "package (local-agent, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42032011685/job/127261357920"
+        },
+        {
+          "name": "package (local-agent, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42031856344/job/127260155947"
+        },
+        {
+          "name": "package (media, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42032011685/job/127261358021"
+        },
+        {
+          "name": "package (media, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42031856344/job/127260156159"
+        },
+        {
+          "name": "package (memory-maintenance, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42032011685/job/127261357910"
+        },
+        {
+          "name": "package (memory-maintenance, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42031856344/job/127260156055"
+        },
+        {
+          "name": "package (monty-runtime, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42032011685/job/127261357888"
+        },
+        {
+          "name": "package (monty-runtime, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42031856344/job/127260156263"
+        },
+        {
+          "name": "package (telegram, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42032011685/job/127261357909"
+        },
+        {
+          "name": "package (telegram, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42031856344/job/127260156279"
+        },
+        {
+          "name": "package (web-fetch, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42032011685/job/127261358052"
+        },
+        {
+          "name": "package (web-fetch, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42031856344/job/127260156196"
+        },
+        {
+          "name": "package (yuki-setup, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42032011685/job/127261357927"
+        },
+        {
+          "name": "package (yuki-setup, macos-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42031856344/job/127260156359"
+        }
+      ],
+      "failed": [
+        {
+          "name": "runtime (monty-runtime, ubuntu-latest)",
+          "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/42031856344/job/127260154799"
+        }
+      ]
+    }
+  },
+  "source_boundaries": "unpublished candidate; no direct database or private core module access",
+  "ext034": {
+    "status": "blocked_route_intake_verified",
+    "branch": "codex/ext-034-rebuild",
+    "evidence": "artifacts/EXT-034/source-intake-02",
+    "model_open_error": -32003,
+    "extract_preview_error": -32003,
+    "http_calls": 0,
+    "unfinished_worktree_files": [
+      "catalog/memory-maintenance.json",
+      "ci/windows.py",
+      "plugins/memory-maintenance/plugin.toml",
+      "plugins/memory-maintenance/src/main.rs",
+      "plugins/memory-maintenance/src/rebuild.rs",
+      "tests/cases/EXT-034.py",
+      "tests/peers/rebuild_stdio.py",
+      "docs/EXT-034-sequences.md"
+    ],
+    "candidate_only": true,
+    "diagnostic_commit": "69e4e5a"
+  },
+  "main": "526a35382d9bb464f92adc947e1b212e0ea41c3c",
+  "ext023_024": {
+    "status": "native_candidate_verified_cards_blocked",
+    "branch": "codex/ext-023-feed-recovery",
+    "implementation_commit": "fe7c9c0411cca43cec931c34e9338d26237ae6fa",
+    "core_source": "f74ecdd86b732d0fb34fa12f0ca9defa377db6b8",
+    "producer_handoff": "befb6668530668e6b10a9bb49abdd63b14909097",
+    "published": false,
+    "plugin_sha256": "23f888dc639f01754f4122dd606bfeebddf9e77f84757bee8db8fc318e05bb47",
+    "cases": [
+      "normal same-feed equal-argument effects",
+      "missing runtime",
+      "malformed frame cleanup",
+      "before-feed kill",
+      "after-feed two restarts",
+      "paired unknown two restarts"
+    ],
+    "evidence": [
+      "artifacts/EXT-023/candidate-03",
+      "artifacts/EXT-024/candidate-03",
+      "artifacts/EXT-024/evidence-analysis-01"
+    ],
+    "missing": [
+      "light frozen alias projection",
+      "original Work/run future waiting contract",
+      "public full H14 budget/stop and authority parity witness",
+      "formal release"
+    ]
+  },
+  "ext027": {
+    "status": "blocked_target_grant_intake_verified",
+    "branch": "codex/ext-027-subscription",
+    "source": "cb02f74ea48b85c6b6932423b93e6332b97f2871",
+    "sdk": "1.0.0-alpha.10",
+    "evidence": "artifacts/EXT-027/source-intake-01",
+    "published": false,
+    "methods": {
+      "tool.status": "three original calls dispatched",
+      "notification.grant_target": "three -32003 rejections",
+      "notification.publish": "not invoked"
+    },
+    "wip": [
+      "plugins/subscription-monitor",
+      "catalog/subscription-monitor.json",
+      "tests/cases/EXT-027.py",
+      "tests/peers/subscription_stdio.py",
+      "docs/EXT-027-sequences.md",
+      "ci/windows.py"
+    ],
+    "next": "producer-approved target grant policy/receiving bot recipe",
+    "pr": 25,
+    "handoff": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/48#issuecomment-6658294529",
+    "implementation_commit": "07b4da6ddece0e1dabae7afa033ccccad46e3cdc"
+  },
+  "ci_retry": {
+    "run": 41972572502,
+    "head": "1e9c4b3052878d4244acc1df89b50dc16a712e21",
+    "attempt": 2,
+    "reason": "pinned runtime HTTP 504",
+    "scope": "failed jobs only"
+  },
+  "ext047": {
+    "status": "blocked_install_policy_intake_verified",
+    "branch": "codex/ext-047-scoped-session",
+    "core": {
+      "source_commit": "9db8b3f073e34a6b86c8f93e878c2de09f0e25ba",
+      "handoff_commit": "e913c81ca6c29244f3d6e29e6747ac4934d2461c",
+      "published": false,
+      "host": {
+        "archive": "yuki-session-preview-9db8b3f073e3-windows-x86_64.zip",
+        "sha256": "1e0d5856740899539c9f4adac2b4c6ce6d01aff6d7697597203d37f2d87d7f56",
+        "binary_sha256": "cb2e2e8592bc46a991b04d74430b4078c06039667f00415b6f1f0848ad34a4d4"
+      },
+      "sdk": {
+        "version": "1.0.0-alpha.9",
+        "sha256": "2b1e5fbe107a3460528f526546768e8aa21e737f6d4b8ded4543360d1b1ac22f"
+      },
+      "host_schema_sha256": "38600a59f63c64fe1eb45ddd2da618b0db25c3af10a2fee49416f6a3f4a4c252",
+      "personal_schema_sha256": null,
+      "media_schema_sha256": null,
+      "plugin_sha256": "3644baf1e9c68f87b7686da6fd5f11bda900937e59715fe6469ffefc64018038",
+      "wire_sha256": "195b711c07b6e745b6c2426b12a9aa9f1845d99ebd3707753b0c05fdae271478"
+    },
+    "evidence": "artifacts/EXT-047/source-intake-01",
+    "ledger": "artifacts/EXT-047/external-consumer-ledger.json",
+    "missing": [
+      "Public sessions policy and auxiliary route configuration",
+      "Actual isolated game, R11 two-target Monitor and API9/QQ runtime acceptance"
+    ],
+    "implementation_commit": "cfd405d5dc82c4c3d48e973f4e89d924c43fa626",
+    "pr": 26,
+    "handoff": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/47#issuecomment-6658636728"
+  },
+  "core_latest_head": "0f723ad7e152f5da298ba5081c77f2a29e0ef022",
+  "core_latest_change": "CORE-034 test file receipt preservation only; CORE-051/058 binary delivery unchanged",
+  "native_ci_exit134": {
+    "status": "diagnostics_verified_cause_unresolved",
+    "evidence": "artifacts/EXT-023/disconnect-134-diagnostics-01",
+    "original_sha": "e0625154c09a84967e678ebd63997867aa83fee7",
+    "failed_job": 127260154799,
+    "failed_run": 42031856344,
+    "zip_sha256": "5926a977bc64982960b1ace015e77888cad4ba84173b0357348b2e9d041130ce",
+    "old_hjw_image_timing_attempts": 60,
+    "github_exit134_fixed": false,
+    "native_check_assertions_relaxed": false,
+    "implementation_commit": "335bc62e0d3ead0e7c945f62984dc8fb956b6831",
+    "new_head_validation": "pending push and current-head CI",
+    "last_observed_jobs": {
+      "127300387575": "success",
+      "127301499397": "success"
+    }
+  },
+  "core_main": "3d7d12c0d329aef5fb0db117161cc81a07242946",
+  "core039": "PR28 merged; candidate already consumed, no new release",
+  "ci_get_retry": {
+    "status": "windows_regression_verified_current_ci_pending",
+    "evidence": "artifacts/readiness/ci-release-504-20261105",
+    "original_run": 42043545403,
+    "original_job": 127300355097,
+    "http_status": 504,
+    "business_retry_policy_changed": false,
+    "implementation_commit": "b82112b5b45202f10672e32de6f3b104b5aad30f"
+  },
+  "pr14_partial": {
+    "evidence": "artifacts/readiness/pr14-dfe8eb4-ci-partial.json",
+    "status": "WAITING_JOBS",
+    "verified_artifacts": 22,
+    "required_artifacts": 24,
+    "pending_job": 127165347504
+  }
+}

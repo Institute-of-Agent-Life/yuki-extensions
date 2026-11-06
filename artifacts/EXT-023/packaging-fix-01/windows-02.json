@@ -1,0 +1,34 @@
+{
+  "source_zip_sha256": "15c59ef49591c3dc66b5da3648ad6f5f7872cf94f5cd6eedd54ba8e6eef3e26a",
+  "temp_raw": "C:\\Users\\Hilbert\\AppData\\Local\\Temp",
+  "temp_canonical": "C:\\Users\\Hilbert\\AppData\\Local\\Temp",
+  "results": [
+    {
+      "args": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/unit",
+        "-p",
+        "test_oci_package.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_crate_checksums_only_cover_actual_archive_members (test_oci_package.ImageInputs.test_crate_checksums_only_cover_actual_archive_members) ... ok\ntest_crate_relative_base_preserves_traversal_guard (test_oci_package.ImageInputs.test_crate_relative_base_preserves_traversal_guard) ... ok\ntest_package_and_reject_changed_or_unlocked_inputs (test_oci_package.ImageInputs.test_package_and_reject_changed_or_unlocked_inputs) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.468s\n\nOK\n"
+    },
+    {
+      "args": [
+        "ci/package.py",
+        "--unit",
+        "monty-runtime",
+        "--out",
+        "dist/monty-runtime"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"unit_id\": \"monty-runtime\",\n  \"version\": \"0.1.0-alpha.1\",\n  \"release_tag\": \"monty-runtime/v0.1.0-alpha.1\",\n  \"published\": false,\n  \"scope\": \"portable OCI build source; no native execution in this package job\",\n  \"runtime_platform\": \"linux/amd64\",\n  \"source\": {\n    \"repository\": \"Institute-of-Agent-Life/yuki-extensions\",\n    \"baseline\": \"329ca7c487414d2f54ddd98ff4727446ed2446cd\",\n    \"monty\": \"3f9d6ef413fb951e5b80113b7088d535bd028fcb\"\n  },\n  \"license\": \"AGPL-3.0-only\",\n  \"manifest_sha256\": \"feec617447c39e4de6f12bd17b28001befa1a02e03720ed7f8f7b4cff9510357\",\n  \"lock_sha256\": \"2a36b8910b8045f2b137eb89ec1f20e00c8297f90e8677b5a05b65dc87ae7a74\",\n  \"members\": {\n    \".dockerignore\": \"dbbaf58359240410c47b0b677376fa4e5ebf32d33c0c7e8f534803bc14f426f2\",\n    \".gitignore\": \"75ff93ce92b792778e18822d94a300a3fab8293c63bf4b395698b48fbd9cfe0d\",\n    \"backend/bridge.py\": \"2de631a23dea699bf5f40ddbc471d9d8a8303b9e5d32b86027a4225c91bbe415\",\n    \"backend/make_contract.py\": \"4f9889a1665645cecdcc942922678ee079b794f461f48a0642f784a7bb4b5b9f\",\n    \"backend/yuki_monty_backend/capacity.py\": \"86f6b0f25a14b80e7576cf7a0f1fb52927ca8ea1875444940ffdc6ac67c2fcb1\",\n    \"backend/yuki_monty_backend/driver_types.py\": \"46b78b27b91297653e1569177d6a5eefbabd4882e95290073ba2c9e762a29b65\",\n    \"backend/yuki_monty_backend/engine_monty.py\": \"87a2cdb45d431aed2d6127885fb718bf26bcefaf0c40b6b2396f27348aab6343\",\n    \"backend/yuki_monty_backend/limits.py\": \"8987eec952ce230dcad31b4f8086d5e800835ceb4791d5a69574a9cb88591e36\",\n    \"backend/yuki_monty_backend/snapshot_binding.py\": \"b7b78f43368fcae7151291583e2c3f6e8bbb33338ff1ebf0472bac646ce96dae\",\n    \"backend-adaptation.lock.json\": \"9c6cbad51f82e5f165ac11e576d3d5b868bd0f6db0780344a7cdfc6aa5f7479d\",\n    \"base-images.lock.json\": \"629233ab1890d83b793efc304ebbb475645b7411ab3450d68582cdbb61214754\",\n    \"baseline.lock.json\": \"64ae18e601ed6fb24e67457b556a6f6f65294a0b265e6f28a4270702e11dd924\",\n    \"deploy/codemode/Dockerfile.validation\": \"244caff510cb659d8f4e20beddbb8b819b27c53c2b09c9924829827a7991d1bd\",\n    \"deploy/security/MOBY-PROFILES-LICENSE\": \"cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30\",\n    \"deploy/security/README.md\": \"19e179034204572537c5dd9795c88abacaae2d21d6a0ed253b48b237af895105\",\n    \"deploy/security/yuki-bot-codemode.apparmor\": \"06ac5a94ad26f7300666641cead6698f24a6960985c655b7c20e517a42ab94cb\",\n    \"deploy/security/yuki-codemode-seccomp.json\": \"57457313430e0bb513ccab8a6906c5e05ffc217459f9c5b01cc77d827dcedc81\",\n    \"Dockerfile\": \"0391f9d1d6053fae99ccb04adea1dd3676d10e155dfed241c94016e330cbb76f\",\n    \"LICENSE\": \"e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99\",\n    \"README.md\": \"13db8ae52665948ccb5fb69c2bc8357ca358c3c77d82c56829e125bc1afb14aa\",\n    \"runtime.lock\": \"2a36b8910b8045f2b137eb89ec1f20e00c8297f90e8677b5a05b65dc87ae7a74\",\n    \"runtime.toml\": \"feec617447c39e4de6f12bd17b28001befa1a02e03720ed7f8f7b4cff9510357\",\n    \"scripts/build_monty_distribution.sh\": \"d00f3667534f946967d2a5fb6ff0cef021e7264c2c4b986511bcd91bf80de5eb\",\n    \"scripts/export_monty_notices.py\": \"23577436cec70444e9e97b332ccaf86678fb93969eb5a64480609c746ac175e8\",\n    \"scripts/prepare_inputs.py\": \"3713de3204e72a92a82656dcab3a347d08e2de5a7459e5d96f5f77c2cd15d63b\",\n    \"scripts/verify_bridge.py\": \"0be3a152b63dac70c727a9d10948c29f098ead9e5876d44b74240fed1b99a96f\",\n    \"scripts/verify_image.py\": \"a8cca834d126bb01f08edf3a8ab98ac3dfdd7625c9d813e4c3498d8ae2a14f23\",\n    \"scripts/verify_monty_isolation.py\": \"7ca9ae41e80b9d426e76f0123d6c6bf82c7755074cf81e6f091d45b7915ac3fc\",\n    \"upstream-mirror.lock.json\": \"de0c74809a4ae58633d39f2bb8abf35b6595888b32b93c9a9e4fa4a71d6c2780\",\n    \"vendor/monty/launcher.c\": \"93b768c06dfe05a932254cd3fbe110af0cd4ea8dbe1877c534783634e164ffe5\",\n    \"vendor/monty/LICENSE\": \"5841db47ee6e1f0becafe2d19ca43c08cbc6d2c0952822ccf88cbbf2bd0749bd\",\n    \"vendor/monty/TYPESHED-LICENSE\": \"295f8538c94ae5c3043301cf7cff1c852dab6a786a8ddee471e061b40d5ecabe\",\n    \"vendor/patches/monty-3f9d6ef-string-cache-iterator.patch\": \"2d2e83ecc44353faeccaa1069b11053e0154c0f5cf0e02d55ab592e7706dddb4\"\n  },\n  \"artifacts\": {\n    \"monty-runtime-0.1.0-alpha.1-source.tar.gz\": \"aa20ed3f7e89188f45e76b5f195d85c55c91ce98f2d73aabcdd37d31a238ccc1\"\n  }\n}\n",
+      "stderr": ""
+    }
+  ]
+}

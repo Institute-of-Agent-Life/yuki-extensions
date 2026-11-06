@@ -1,0 +1,78 @@
+{
+  "updated_at": "2026-11-05",
+  "previous": "after-core035-maintenance.json",
+  "formal_cards": [
+    "EXT-001",
+    "EXT-002",
+    "EXT-007",
+    "EXT-008",
+    "EXT-009",
+    "EXT-010",
+    "EXT-019"
+  ],
+  "ext036": {
+    "branch": "codex/ext-036-maintenance",
+    "status": "candidate_verified_card_blocked",
+    "evidence": "artifacts/EXT-036/candidate-06",
+    "host": {
+      "source_commit": "0cdd9dffe07c18949990492fd2a9944919c455d3",
+      "handoff_commit": "69cfdfd7b0efba36c41080f5fae424401cfc1b5c",
+      "published": false,
+      "host": {
+        "archive": "yuki-maintenance-preview-0cdd9dffe07c-windows-x86_64.zip",
+        "sha256": "e2b964e87a30d5c230fbb0805a9de973cb91160b6e8b52606b363ca0fd77a152",
+        "binary_sha256": "7b8b374306f0081f0b80494cbc0cd4f0b7394c392a025da7e19f8468dcf192e7",
+        "validation_manifest_sha256": "e74b03e48ecd4c98198325ac51f367531019a192ce03e51ed3b190bff5f1f41f"
+      },
+      "sdk": {
+        "version": "1.0.0-alpha.8",
+        "sha256": "a8739c74d300f1044c94749ced333d9694920aa7c91728b19f624ff9fbaf2e63"
+      },
+      "host_schema_sha256": "4f5cdeb464c5fb275feeed766019ba159561a7335d13daec4d2d030b95cd4ec2",
+      "personal_schema_sha256": null,
+      "media_schema_sha256": null,
+      "plugin_sha256": "0f53bd9841b4c2c5ac525f56e597947afb3ef3e7b5426e69bf6e9cbedf98a560",
+      "wire_sha256": "2ce00aa5158b47222ed62d8bf24d874d2fa5a4773c481db7855f0b6800673f21"
+    },
+    "missing": [
+      "Full original SQL quality findings",
+      "Audit/reembed metadata source retention and forget contract"
+    ],
+    "implementation_commit": "fdaa47576a547daabf6cf36f339805a0c18622dd",
+    "handoff": "https://github.com/Institute-of-Agent-Life/yuki-core/pull/46#issuecomment-6651927585"
+  },
+  "next_executable": [],
+  "other_maintenance": {
+    "EXT-033": "missing authorized exact vector/profile and ownership partition projection",
+    "EXT-035": "missing original SELF partition and foreground yield contract",
+    "EXT-048": "EXT-015/038 and CORE-037 personal mutation dependencies unmet",
+    "EXT-047": "CORE-051 has local Mac development evidence, no verified Windows Host handoff; CORE-058 unmet"
+  },
+  "pull_requests": {
+    "12": "merged e90035586e9b91af19a5c6162c2e565dbfe966cf",
+    "13": "9db51914174ef6f7ed2d8dd756561a9cdb063b1e; macOS queued",
+    "20": "native job 127064263207 PASS, old failure not reproduced; other checks pending",
+    "22": "fdaa47576a547daabf6cf36f339805a0c18622dd; Windows/Linux jobs passed, macOS queued"
+  },
+  "source_boundaries": "unpublished candidate; no direct database or private core module access",
+  "ext034": {
+    "status": "blocked_route_intake_verified",
+    "branch": "codex/ext-034-rebuild",
+    "evidence": "artifacts/EXT-034/source-intake-02",
+    "model_open_error": -32003,
+    "extract_preview_error": -32003,
+    "http_calls": 0,
+    "unfinished_worktree_files": [
+      "catalog/memory-maintenance.json",
+      "ci/windows.py",
+      "plugins/memory-maintenance/plugin.toml",
+      "plugins/memory-maintenance/src/main.rs",
+      "plugins/memory-maintenance/src/rebuild.rs",
+      "tests/cases/EXT-034.py",
+      "tests/peers/rebuild_stdio.py",
+      "docs/EXT-034-sequences.md"
+    ],
+    "candidate_only": true,
+    "diagnostic_commit": "69e4e5a"
+  }
+}

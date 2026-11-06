@@ -1,0 +1,30 @@
+format_version = 1
+listen = "127.0.0.1:4960"
+
+[memory]
+mode = "lexical-only"
+
+[main]
+endpoint="http://127.0.0.1:4922/model"
+model="fixture"
+name="Yuki"
+merge_ms=1
+root_slots=8
+root_tool_calls=8
+max_input_units=200000
+max_output=512
+
+[[plugins]]
+id="session-probe"
+namespace="session-probe"
+program="C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe"
+args=["D:\\yuki-extension-tests\\session-source-intake-01\\src\\tests\\peers\\observe_stdio.py", "D:\\yuki-extension-tests\\session-source-intake-01\\evidence\\packages\\session-scope-probe.exe", "D:\\yuki-extension-tests\\session-source-intake-01\\evidence\\work\\wire.jsonl"]
+grants=["session.create", "session.run", "session.page", "tool.call"]
+env=["YUKI_SESSION_PROBE_CORE", "YUKI_SESSION_PROBE_LISTEN"]
+[[plugins.tools]]
+name="session_probe"
+description="Diagnose isolated session policy"
+parallel_read=false
+cacheable=false
+code_direct=true
+schema={type="object",properties={mode={type="string"}},required=["mode"],additionalProperties=false}

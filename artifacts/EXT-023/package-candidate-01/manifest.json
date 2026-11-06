@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "scope": "candidate diagnostic; not full card acceptance",
+  "files": {
+    "build-driver.txt": "18ba071a817cbd702853edb412fc389f41c7c3ee78daa765c55dbe5b2cc9fb98",
+    "command.json": "fcbc91ae7b46c67bea4e52d3ba8fab32efd1c2fae111e3202354838e0c72f8c8",
+    "package-manifest.json": "d2f5aeb26facb8d0f111a2bd6d4c93b241d7fdaf323f9c6453eaef6bc436894b",
+    "source-transfer.json": "113fb10b347a60542676f701a878fc2e4c0f670438d97f0bdc102bd5378e34a3"
+  }
+}

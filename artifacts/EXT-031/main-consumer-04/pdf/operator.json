@@ -1,0 +1,111 @@
+[
+  {
+    "args": [
+      "person",
+      "create",
+      "ba41b2df-dd0d-48cd-b659-deef2e71ce78"
+    ],
+    "result": {
+      "original": "ba41b2df-dd0d-48cd-b659-deef2e71ce78",
+      "root": "ba41b2df-dd0d-48cd-b659-deef2e71ce78"
+    }
+  },
+  {
+    "args": [
+      "account",
+      "open",
+      "qq",
+      "media-main",
+      "200",
+      1,
+      "--person",
+      "ba41b2df-dd0d-48cd-b659-deef2e71ce78",
+      "--start",
+      1
+    ],
+    "result": {
+      "account": "6dc4dc04-1571-446a-92e9-3c31beb3d5dd",
+      "assignment": "69d8a757-c8fc-4f83-94f6-f088f6f61cbd"
+    }
+  },
+  {
+    "args": [
+      "account",
+      "open",
+      "qq",
+      "media-main",
+      "100",
+      1,
+      "--start",
+      1
+    ],
+    "result": {
+      "account": "3e07dd48-1696-4016-b06d-672e2bf7acc7",
+      "assignment": "6b4e965a-34a2-4eea-aa79-0279512e69c7"
+    }
+  },
+  {
+    "args": [
+      "ingress",
+      "record",
+      "{\"source\": \"main-pdf\", \"account\": \"6dc4dc04-1571-446a-92e9-3c31beb3d5dd\", \"bot_stage\": \"6b4e965a-34a2-4eea-aa79-0279512e69c7\", \"kind\": \"message\", \"reply_bot\": \"100\", \"occurred\": 1793944950108, \"observed\": 1793944950108, \"segments\": [{\"type\": \"media\", \"kind\": \"file\", \"reference\": \"unselected.pdf\"}, {\"type\": \"media\", \"kind\": \"file\", \"reference\": \"good.pdf\"}]}",
+      "--accept"
+    ],
+    "result": {
+      "accepted": true,
+      "event": 1
+    }
+  },
+  {
+    "args": [
+      "media",
+      "cache-file",
+      "a96ffdbf-fc21-41d3-aa91-c395cba71c25",
+      "ba41b2df-dd0d-48cd-b659-deef2e71ce78",
+      1,
+      0,
+      "6b4e965a-34a2-4eea-aa79-0279512e69c7",
+      "unselected.pdf",
+      "unselected.pdf"
+    ],
+    "result": {
+      "digest": "50370931a0b76d5de10746daf717053d7fb76c3f4f726c0052cc6140d0a88683",
+      "expires": 1794031350443,
+      "handle": 0,
+      "kind": "file",
+      "mime": "application/pdf",
+      "origin": "unselected.pdf",
+      "segment": 0,
+      "slot": 0,
+      "source": 1,
+      "stage": "6b4e965a-34a2-4eea-aa79-0279512e69c7",
+      "state": "cached"
+    }
+  },
+  {
+    "args": [
+      "media",
+      "cache-file",
+      "a96ffdbf-fc21-41d3-aa91-c395cba71c25",
+      "ba41b2df-dd0d-48cd-b659-deef2e71ce78",
+      1,
+      1,
+      "6b4e965a-34a2-4eea-aa79-0279512e69c7",
+      "good.pdf",
+      "good.pdf"
+    ],
+    "result": {
+      "digest": "753e25b038830e03768f05449dab4b8f05ef0534927abb9282eab60f4c5ecf42",
+      "expires": 1794031350509,
+      "handle": 1,
+      "kind": "file",
+      "mime": "application/pdf",
+      "origin": "good.pdf",
+      "segment": 1,
+      "slot": 1,
+      "source": 1,
+      "stage": "6b4e965a-34a2-4eea-aa79-0279512e69c7",
+      "state": "cached"
+    }
+  }
+]

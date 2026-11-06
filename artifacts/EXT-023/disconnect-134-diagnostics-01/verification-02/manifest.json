@@ -1,0 +1,12 @@
+{
+  "status": "DIAGNOSTICS_VERIFIED",
+  "github_exit134_fixed": false,
+  "source_snapshot_sha256": "0271123d79dc87c4fb55df8a429826842c8ee58576c1603bdc3d16b1fc7efe96",
+  "files": {
+    "arch-wrapper.json": "b4a65466cd76defb381d18fd68b96bc0fc9e7e51e4f4a919ce034e230574a068",
+    "windows-checks.json": "8b43d0c387cda24bb3d9efe4173eaa8eef15bbca1608e970cd709d3e93b6a747",
+    "native/native-diagnostics.json": "2c3f75f2d07066acbd95149c693acf436f8ea19488e078f17025a5d666e54057",
+    "package/monty-runtime-0.1.0-alpha.1-source.tar.gz": "ea2be3844979d3fdada2e600015a7d8f221f3f209b8caf1f5af0c25dc29b57a3",
+    "package/package-manifest.json": "a5f9f8ef1ca01969ad25b4d2bc65e3b50be541c08b83d61a8882ce5ea7d6b28c"
+  }
+}

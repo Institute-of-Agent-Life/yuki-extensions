@@ -1,0 +1,34 @@
+{
+  "source_zip_sha256": "c07f7282d1652f8b6593ba498f7f58fe062d38df400438fcffdea8b57e38c47f",
+  "temp_raw": "C:\\Users\\Hilbert\\AppData\\Local\\Temp",
+  "temp_canonical": "C:\\Users\\Hilbert\\AppData\\Local\\Temp",
+  "results": [
+    {
+      "args": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/unit",
+        "-p",
+        "test_oci_package.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_crate_checksums_only_cover_actual_archive_members (test_oci_package.ImageInputs.test_crate_checksums_only_cover_actual_archive_members) ... ok\ntest_crate_relative_base_preserves_traversal_guard (test_oci_package.ImageInputs.test_crate_relative_base_preserves_traversal_guard) ... ok\ntest_package_and_reject_changed_or_unlocked_inputs (test_oci_package.ImageInputs.test_package_and_reject_changed_or_unlocked_inputs) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.944s\n\nOK\n"
+    },
+    {
+      "args": [
+        "ci/package.py",
+        "--unit",
+        "monty-runtime",
+        "--out",
+        "dist/monty-runtime"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"D:\\yuki-extension-tests\\oci-path-fix-01\\ci\\package.py\", line 104, in <module>\n    main()\n  File \"D:\\yuki-extension-tests\\oci-path-fix-01\\ci\\package.py\", line 100, in main\n    print(json.dumps(build(args.root, args.unit, args.out), indent=2))\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\yuki-extension-tests\\oci-path-fix-01\\ci\\package.py\", line 24, in build\n    units = load_catalog(root)\n            ^^^^^^^^^^^^^^^^^^\n  File \"D:\\yuki-extension-tests\\oci-path-fix-01\\ci\\units.py\", line 48, in load_catalog\n    raise BoundaryError(f\"unit directory is missing/too broad: {unit['path']}\")\nunits.BoundaryError: unit directory is missing/too broad: plugins/client\n"
+    }
+  ]
+}

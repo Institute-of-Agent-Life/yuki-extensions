@@ -1,0 +1,26 @@
+{
+  "task": "EXT-024",
+  "status": "BLOCKED",
+  "formal_card_status": "BLOCKED",
+  "phase": "ordinary-refusal-intake",
+  "source_snapshot_sha256": "d4021d8b69d24b94f69a851e2d0fc5abaa9a9d65547e15c2649df8da74de79b7",
+  "files": {
+    "intake.json": "e716708efbd2f21a26c64dffb5e9c1e17b8077442bc27699206432a96c0ffd1d",
+    "runtime-setup.json": "a5463940039a66ec3b9d4f9bfbf9f8a82835e69cf71807e295e4324ebc815f60",
+    "code/after.json": "6f712256e6cb0c935400a6495d24761525e1ef0b76a7595ff57f8d19e3d74a50",
+    "code/binding.json": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+    "code/host-config.toml": "0ec1b9e9e6a61c0813a484fff0ad708c239c22190bfea56f17e1f991561bf3a4",
+    "code/host.txt": "d404cc36181b85529e72555debe6e6cbc24426afe480fd9ca474222d6b9870c8",
+    "code/model.json": "f3de4c1e2b97969998c67968e483062ccd4a36e5757f88bca0ac3a98be048a11",
+    "code/operator.json": "d223fdd9879bd98418a286a1b5fb4057b28ccb7be3f29e0e0f866db30bad6498",
+    "code/result.json": "c88044f4ccdd29c473671cf5cd998dec671024e06cf23f6b42d223698ce182a6",
+    "code/wire.jsonl": "3e0f5eb19bb837db8d5f5a347ddd0e06f7877d071ae2db1c022ad2b02d334093",
+    "direct/after.json": "0cfdb50968eddfa30000e783245c66c78f1f8a2340152cd0abf5cb78ed429c80",
+    "direct/binding.json": "afacb1a8fe1207a46989fd8890b8994c705dabea88375c78c42f825015391670",
+    "direct/host-config.toml": "b0971b351e76d7e359f3aec3da7c9cc14f8381bbad3d2f9130428a0f509a4f3b",
+    "direct/host.txt": "3f3280f6caa4e02aacecf8583816518ebccbf2c89cebde9b44cdc609e4eb6c31",
+    "direct/model.json": "a028de2c20c924b619ecd78af4359ad5cb53897903e5442fd93792b4dbdfc5fa",
+    "direct/operator.json": "dd5a0abd77d888bfb1395068cdad9493a22a4878444fa9afefd1c89ae585b02b",
+    "direct/result.json": "dd9f2f752ecd9252a3d0c3dbc0ea110339c34fbe50b99ff1ba66ec4aeaa32bf1"
+  }
+}

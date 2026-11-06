@@ -1,0 +1,88 @@
+{
+  "status": "PASS",
+  "card_status": "BLOCKED",
+  "published": false,
+  "producer": {
+    "source_commit": "f74ecdd86b732d0fb34fa12f0ca9defa377db6b8",
+    "source_tree_sha256": "cc219a06edc93e62d87a960bbd54893d7ff9e31c7a9cc2a0a52327c63fd0f208",
+    "handoff_commit": "befb6668530668e6b10a9bb49abdd63b14909097",
+    "published": false,
+    "sdk": {
+      "python": "1.0.0a5",
+      "rust": "1.0.0-alpha.5"
+    },
+    "runtime_sdk_archive_sha256": "ea6a1c2f5e8e5ff5b53ef7b8ab89baa9c8bb26cbd9ba45f116eaaafd73406794",
+    "producer_sdk_archive_sha256": "b1581148a1f0a9881dc1b08a147c6ff949e12caff6a51a8598cd43069709e865",
+    "platforms": {
+      "linux-arm64": {
+        "archive": "yuki-code-preview-f74ecdd86b73-linux-arm64.zip",
+        "sha256": "7a2a68e2e2be6009962948b2015b266ab613f233790111765f345163b6e05da2",
+        "binary_sha256": "c54f9de107ec540b10ff79060ed9ee882269fa6cc15ac895b03f2abf4ca041be",
+        "validation_manifest_sha256": "c3ecdf2eda1b59af39e59a68658172062d0a84e91a91f30f970c39a790e58cac"
+      },
+      "darwin-arm64": {
+        "archive": "yuki-code-preview-f74ecdd86b73-darwin-arm64.zip",
+        "sha256": "4f65192f02e234e7c2146f8eebb3c472e3656b41fabeac89dde7d05c4a7a99b1",
+        "binary_sha256": "06595ef543cc6ba7813f9fb3c9f72cf184ede87fb43f6a4a193e04bb14326710",
+        "validation_manifest_sha256": "236a9552cc4597671773b8fbd0479f76ba310b243420fb53d21dddd390eecf6e"
+      },
+      "windows-x86_64": {
+        "archive": "yuki-code-preview-f74ecdd86b73-windows-x86_64.zip",
+        "sha256": "4d073b6f15f5d10c0c8594064c568555671e90c49394f7da64ff1d9568b7ec2e",
+        "binary_sha256": "502f190d036f55c9f4348aa832642f82aa3bc5bb1ae153ac100bffc87f68052b",
+        "validation_manifest_sha256": "baeb33eee68e83d2efe61c3e1dec39e56f9187d52219df8103be1cce6c0d740c"
+      }
+    }
+  },
+  "rust_plugin_sha256": "23f888dc639f01754f4122dd606bfeebddf9e77f84757bee8db8fc318e05bb47",
+  "build_evidence": "artifacts/EXT-023/package-candidate-02",
+  "native_runtime_image": "sha256:65fcd704d953a9ca9be9c1e70269fc21768b571635e8fa8c38bc8b30c84ceb9a",
+  "runtime_contract": {
+    "abi": "monty-3f9d6ef-cpython312-linux-x86_64-codec1",
+    "engine_sha256": "19867d12ee8dea8281f70bffa24d4b1a4bc832469b33dbda7d091e20dd347dc3",
+    "launcher_sha256": "a3d43e7ab1d4a115a12607f1a44d2e5a4a0f1d7f7c451a77a1b81ce6b8da18fb",
+    "codec_sha256": "b4e80e73450d7fb18265779fc7dd5fed49626beca98118a32383cae89c4ae4ba",
+    "codec_members": {
+      "binding_wheel": "8961fa5428412ed9ec8446e5146e9b2786a7280234d055003554579f416e4b43",
+      "cpython_binary": "0e6475dfda68a9b2d93501449fc47593ca169010e8f4881577b97463fd0c1263",
+      "backend/bridge.py": "2de631a23dea699bf5f40ddbc471d9d8a8303b9e5d32b86027a4225c91bbe415",
+      "backend/make_contract.py": "4f9889a1665645cecdcc942922678ee079b794f461f48a0642f784a7bb4b5b9f",
+      "backend/yuki_monty_backend/capacity.py": "86f6b0f25a14b80e7576cf7a0f1fb52927ca8ea1875444940ffdc6ac67c2fcb1",
+      "backend/yuki_monty_backend/driver_types.py": "46b78b27b91297653e1569177d6a5eefbabd4882e95290073ba2c9e762a29b65",
+      "backend/yuki_monty_backend/engine_monty.py": "87a2cdb45d431aed2d6127885fb718bf26bcefaf0c40b6b2396f27348aab6343",
+      "backend/yuki_monty_backend/limits.py": "8987eec952ce230dcad31b4f8086d5e800835ceb4791d5a69574a9cb88591e36",
+      "backend/yuki_monty_backend/snapshot_binding.py": "b7b78f43368fcae7151291583e2c3f6e8bbb33338ff1ebf0472bac646ce96dae"
+    },
+    "monty_source": "3f9d6ef413fb951e5b80113b7088d535bd028fcb"
+  },
+  "native_tests": "artifacts/EXT-023/candidate-03",
+  "runtime_sources": {
+    "plugins/codemode/Cargo.lock": "2b584722fd3618fe935bf31c00bc741e8ae03643abd416d057f5ab9e25d227d3",
+    "plugins/codemode/Cargo.toml": "6c5c47fb41912f30b747e8d5b555220ea076515d2091c239612140954952765d",
+    "plugins/codemode/rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+    "plugins/codemode/src/._catalog.rs": "f3bad5b302237b647db06386a1ea9efd86388064f8d12a45d354ea4cd0cca2b6",
+    "plugins/codemode/src/._compose.rs": "f3bad5b302237b647db06386a1ea9efd86388064f8d12a45d354ea4cd0cca2b6",
+    "plugins/codemode/src/._lib.rs": "f3bad5b302237b647db06386a1ea9efd86388064f8d12a45d354ea4cd0cca2b6",
+    "plugins/codemode/src/._main.rs": "f3bad5b302237b647db06386a1ea9efd86388064f8d12a45d354ea4cd0cca2b6",
+    "plugins/codemode/src/._rpc.rs": "f3bad5b302237b647db06386a1ea9efd86388064f8d12a45d354ea4cd0cca2b6",
+    "plugins/codemode/src/._worker.rs": "f3bad5b302237b647db06386a1ea9efd86388064f8d12a45d354ea4cd0cca2b6",
+    "plugins/codemode/src/catalog.rs": "a3c0104cf5843be7ac44a311bee44060dbcd9af0c20e0f5a656a7e22eca99618",
+    "plugins/codemode/src/compose.rs": "f6c221e735dea7710690bb935b816f3402f41d575305e6a6cc474b9e8d60560b",
+    "plugins/codemode/src/lib.rs": "ef788443d7fdc472cb3e1924ea2434f216fbc519a8ca9272eef6bfaaf612f288",
+    "plugins/codemode/src/main.rs": "a98fc7706d63a2394ec4b791d7ff27e874153c4b9ff139105e9bb9a7276d7b93",
+    "plugins/codemode/src/rpc.rs": "1e0d29a48c0292c27f17a940a344546bb4f95859a7212432d1c8b7e5b1dba527",
+    "plugins/codemode/src/worker.rs": "6a08230aa60f356305b1624c8d853b6da22c5c9fdaaef00b13ad5cb2dcd13894",
+    "plugins/codemode/tests/._native_worker.rs": "f3bad5b302237b647db06386a1ea9efd86388064f8d12a45d354ea4cd0cca2b6",
+    "plugins/codemode/tests/native_worker.rs": "4a5c90ae71e8659c50036d5eafed31a8f342970adc93860034b661c020adebe7"
+  },
+  "original_consumer_reproduction": {
+    "binary": "f26e88f764a44c666cdee68b012e28d422ebd46a9ffbeae5240bee71d33d6b0d",
+    "location": "artifacts/EXT-023/feed-fix-intake",
+    "purpose": "same original Rust/Monty consumer proves new Host feed ACK behavior before plugin changes"
+  },
+  "remaining": [
+    "formal producer/runtime release",
+    "lightweight frozen alias projection",
+    "Work/run future contract and remaining EXT-024 acceptance"
+  ]
+}

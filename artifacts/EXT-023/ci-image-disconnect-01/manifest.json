@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "scope": "10 native disconnect cuts on the exact downloaded PR19 image; unresolved PR20 runner failure remains",
+  "formal_card_acceptance": false,
+  "published": false,
+  "files": {
+    "image-digests.json": "ed6f3ffd46d1a9e443c0e6fc6436d5fcf598b12409af96a1baded258e5c37c9c",
+    "load-id-mismatch.json": "63d50acc882c48964654cf0cd2d8c12ad7b8c3933e9873f3ab3eb5c0850d6988",
+    "hjw-ci-image.json": "5d1daa2fd3bd514e9582a80751bee0edc5372d9a876e40379946fb7f23d41712",
+    "repro.sh": "45f1e69b49e0efd0c231ffcb51627a79a73284d5247194e59b0f7ee093bd49cc"
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "repository": "Institute-of-Agent-Life/yuki-core",
+  "source_commit": "9f9c3d0eaace08c2abe59e0a6ca229c9293dd8e1",
+  "published": false,
+  "platforms": {
+    "linux-arm64": {
+      "archive": "yuki-participation-preview-9f9c3d0eaace-linux-arm64.zip",
+      "sha256": "127847f6cab2d7cb8c3378068701ffd51d6610467a0d7ef4c42d0affb5d1174a",
+      "binary_sha256": "abcde1b6b359ba8c21cba0a57e30b41992be32794b139fe88f1c68e8c0af2269",
+      "validation_manifest_sha256": "53fcb8e8ce71556d9ac38b9144b72d13b41c6517e14fbd88386cf8dfcdeb14ad"
+    },
+    "darwin-arm64": {
+      "archive": "yuki-participation-preview-9f9c3d0eaace-darwin-arm64.zip",
+      "sha256": "c438c7f23c4549210b13e9d77bd3ed5360e853fd47164854ec4d74cac0de4584",
+      "binary_sha256": "dcb4de05d1ff4cd0cc876051c92c96a83d19b55dda81500595494a45cd35b54d",
+      "validation_manifest_sha256": "ee9d9a87fe56a580144dcae09f5065fb0a7b6450821354c82057c9c45c1a6ec2"
+    },
+    "windows-x86_64": {
+      "archive": "yuki-participation-preview-9f9c3d0eaace-windows-x86_64.zip",
+      "sha256": "6c2d5f22416836ac0c489b3fe1bb308e8f79b813e21c9ca321d4ec619eb59f1f",
+      "binary_sha256": "429b1797ffdda7411314572f812123bac2ca31826ca0dd725acdc1c36a45db38",
+      "validation_manifest_sha256": "79f46db6440286fd5784b1f76a95c78caa585789c449f4cebc0003e7dc8e666f"
+    }
+  },
+  "sdk": {
+    "python": "1.0.0a7",
+    "rust": "1.0.0-alpha.7"
+  },
+  "schema_sha256": "7920690ee7970a2ec1040be51b6779b44707fc0d2a002efcb7598df04577467b",
+  "participation_schema_sha256": "7b6d68a47d0afbb53e32ecc9d68e76dca41a51231f964bf024770d5049d86e23",
+  "rust_crate_sha256": "1b54d505f3017fb40396dc19427ad10af5df702a4434105f20ed1d3587c2617b",
+  "methods": [
+    "code.resume",
+    "code.snapshot.get",
+    "code.snapshot.put",
+    "code.sources",
+    "command.invoke",
+    "device.auth",
+    "forget.ack",
+    "forget.request",
+    "gateway.dispatch_part",
+    "gateway.inbound",
+    "gateway.part_status",
+    "gateway.plan_send",
+    "gateway.status",
+    "llm.complete",
+    "llm.result",
+    "media.open",
+    "media.process",
+    "media.publish",
+    "native.notify",
+    "native.queryAck",
+    "observer.event",
+    "participation.feedback",
+    "participation.promote",
+    "participation.self_propose",
+    "participation.source",
+    "participation.sources",
+    "tool.call",
+    "tool.catalog",
+    "tool.invoke",
+    "tool.resume",
+    "tool.schema",
+    "tool.status",
+    "work.cancel",
+    "work.get",
+    "work.input"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "nodeid": "tests/integration/test_connector_address_e2e.py::test_server_cli_only_saves_original_installation[http://localhost:18767-ws://localhost:18767/agents/v1/connect]",
+  "revision": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+  "facts": {
+    "exit_code": 0,
+    "stdout": "Server address saved; used on the next Connector start.\n",
+    "stderr": "",
+    "device_id": "46605f34-7f4f-4017-928c-d815d3d215f0",
+    "expected_endpoint": "ws://localhost:18767/agents/v1/connect",
+    "journal_created": false,
+    "original_fields_preserved": true
+  }
+}

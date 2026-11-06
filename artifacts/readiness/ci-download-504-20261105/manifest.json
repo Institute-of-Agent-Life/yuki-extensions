@@ -1,0 +1,15 @@
+{
+  "status": "CI_FAILURE",
+  "cause": "HTTP 504 downloading checksum-pinned external build inputs",
+  "rerun": "GitHub HTTP 403: containing workflow run is still running; no rerun started",
+  "jobs": [
+    127064263493,
+    127109394991
+  ],
+  "files": {
+    "pr20-connector-macos.log": "433e33b6ad969ce5079d195daae2e5d5b6da90891db113c4c15678444b38da89",
+    "pr23-acceptance-macos.log": "50fee03791746f3ea8cb70270ff1d33ecc1bd9f8c808e70a4a56c8f579d90f33",
+    "pr20-download.json": "2d8e745b58cf0e500085dec409bb74f861f5b9a5cc385b4b1a152adf66ddc6b3",
+    "pr23-download.json": "1c6f8d0dbb9f1519822ae697f5591c4c4cbac07a28384c7c6aea2c850250c9d7"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "status": "VERIFIED_FEATURES_WITH_BLOCKED_ERASURE",
+  "host_source": "0ef956a9c6d90fae79c0d4488296c064ccf29f54",
+  "host_sdk": "1.0.0-alpha.13",
+  "consumer_sdk": "1.0.0-alpha.4",
+  "consumer_binary_sha256": "2d0e7e9b910789bf34b8d263475c71a720a2ee650628fc88a3292a64e26d454c",
+  "positive_cases": {
+    "pdf": "main-consumer-05/pdf",
+    "video": "video-consumer-06/video",
+    "not-selected": "faults-07/not-selected",
+    "video-no-vision": "faults-07/video-no-vision",
+    "corrupt": "faults-07/corrupt"
+  },
+  "erasure": "faults-07/forget",
+  "erasure_failure": "faults-07/failure.txt",
+  "new_host_published": false,
+  "formal_card_status": "BLOCKED",
+  "original_consumer_transport_zip_reverified": false
+}

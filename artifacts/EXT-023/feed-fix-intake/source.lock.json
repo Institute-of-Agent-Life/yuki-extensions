@@ -1,0 +1,32 @@
+{
+  "source_commit": "f74ecdd86b732d0fb34fa12f0ca9defa377db6b8",
+  "source_tree_sha256": "cc219a06edc93e62d87a960bbd54893d7ff9e31c7a9cc2a0a52327c63fd0f208",
+  "handoff_commit": "befb6668530668e6b10a9bb49abdd63b14909097",
+  "published": false,
+  "sdk": {
+    "python": "1.0.0a5",
+    "rust": "1.0.0-alpha.5"
+  },
+  "runtime_sdk_archive_sha256": "ea6a1c2f5e8e5ff5b53ef7b8ab89baa9c8bb26cbd9ba45f116eaaafd73406794",
+  "producer_sdk_archive_sha256": "b1581148a1f0a9881dc1b08a147c6ff949e12caff6a51a8598cd43069709e865",
+  "platforms": {
+    "linux-arm64": {
+      "archive": "yuki-code-preview-f74ecdd86b73-linux-arm64.zip",
+      "sha256": "7a2a68e2e2be6009962948b2015b266ab613f233790111765f345163b6e05da2",
+      "binary_sha256": "c54f9de107ec540b10ff79060ed9ee882269fa6cc15ac895b03f2abf4ca041be",
+      "validation_manifest_sha256": "c3ecdf2eda1b59af39e59a68658172062d0a84e91a91f30f970c39a790e58cac"
+    },
+    "darwin-arm64": {
+      "archive": "yuki-code-preview-f74ecdd86b73-darwin-arm64.zip",
+      "sha256": "4f65192f02e234e7c2146f8eebb3c472e3656b41fabeac89dde7d05c4a7a99b1",
+      "binary_sha256": "06595ef543cc6ba7813f9fb3c9f72cf184ede87fb43f6a4a193e04bb14326710",
+      "validation_manifest_sha256": "236a9552cc4597671773b8fbd0479f76ba310b243420fb53d21dddd390eecf6e"
+    },
+    "windows-x86_64": {
+      "archive": "yuki-code-preview-f74ecdd86b73-windows-x86_64.zip",
+      "sha256": "4d073b6f15f5d10c0c8594064c568555671e90c49394f7da64ff1d9568b7ec2e",
+      "binary_sha256": "502f190d036f55c9f4348aa832642f82aa3bc5bb1ae153ac100bffc87f68052b",
+      "validation_manifest_sha256": "baeb33eee68e83d2efe61c3e1dec39e56f9187d52219df8103be1cce6c0d740c"
+    }
+  }
+}

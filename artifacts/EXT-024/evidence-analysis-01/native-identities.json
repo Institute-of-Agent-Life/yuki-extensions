@@ -1,0 +1,626 @@
+{
+  "EXT-023/malformed-frame": {
+    "original_parent": "340be13a-3eaf-4409-aef3-188dc8164649",
+    "actual_effects": [],
+    "invocations": [],
+    "acknowledgements": [],
+    "snapshots": [
+      {
+        "sha256": "568172bb433e7995d4e2bc4e5a2ec18c0dd3e765a8a55dc456c676ab1c10774b",
+        "next_ordinal": 0,
+        "native_call": {
+          "args": [
+            {
+              "text": "same original arguments"
+            }
+          ],
+          "engine_call_id": 0,
+          "feed_index": 0,
+          "function_name": "yuki_send",
+          "kind": "function",
+          "kwargs": {},
+          "pending_call_ids": []
+        },
+        "counters": {
+          "denied_calls": 0,
+          "feeds": 1,
+          "output_bytes": 0,
+          "suspensions": 1
+        },
+        "operation": "340be13a-3eaf-4409-aef3-188dc8164649"
+      }
+    ],
+    "model_http_count": 3,
+    "native_plugin_sha256": "23f888dc639f01754f4122dd606bfeebddf9e77f84757bee8db8fc318e05bb47"
+  },
+  "EXT-023/missing-runtime": {
+    "original_parent": "e2cb0794-5924-4814-a49f-85206cba3d80",
+    "actual_effects": [],
+    "invocations": [],
+    "acknowledgements": [],
+    "snapshots": [],
+    "model_http_count": 3,
+    "native_plugin_sha256": "23f888dc639f01754f4122dd606bfeebddf9e77f84757bee8db8fc318e05bb47"
+  },
+  "EXT-023/normal": {
+    "original_parent": "4a040a47-c541-457d-a063-a252820d7ed2",
+    "actual_effects": [
+      {
+        "arguments": {
+          "text": "same original arguments"
+        },
+        "execution": "87035f55-54e0-444e-92f8-f0cc93c2bd28",
+        "operation": "925521b5-8372-43f7-bb38-3238fb62c1e7",
+        "tool": "send"
+      },
+      {
+        "arguments": {
+          "text": "same original arguments"
+        },
+        "execution": "87035f55-54e0-444e-92f8-f0cc93c2bd28",
+        "operation": "722aa67e-531e-4140-9028-0fae0246fbad",
+        "tool": "send"
+      }
+    ],
+    "invocations": [
+      {
+        "arguments": {
+          "text": "same original arguments"
+        },
+        "checkpoint": 0,
+        "engine_call_id": "0",
+        "feed_index": 0,
+        "handle": "21605520-8a5b-4a93-a9eb-18cf81733f97",
+        "name": "send",
+        "ordinal": 0,
+        "snapshot": "6207cecf0f8354648e276d0fe8d19109d910caea6606b31f439f97dd7fb4378f"
+      },
+      {
+        "arguments": {
+          "text": "same original arguments"
+        },
+        "checkpoint": 2,
+        "engine_call_id": "1",
+        "feed_index": 0,
+        "handle": "21605520-8a5b-4a93-a9eb-18cf81733f97",
+        "name": "send",
+        "ordinal": 1,
+        "snapshot": "8ce6943eed073504dcbdea2009883412843a5b7668f0a05fab20e9f90ea419ec"
+      }
+    ],
+    "acknowledgements": [
+      {
+        "ack": {
+          "checkpoint": 1,
+          "feed_index": 0,
+          "snapshot": "8ce6943eed073504dcbdea2009883412843a5b7668f0a05fab20e9f90ea419ec"
+        },
+        "engine_call_id": "0",
+        "feed_index": 0,
+        "handle": "21605520-8a5b-4a93-a9eb-18cf81733f97",
+        "ordinal": 0
+      },
+      {
+        "ack": {
+          "checkpoint": 3,
+          "feed_index": 0,
+          "snapshot": "19d4b83c7f03cb3875a5e56cd6e8842a594b7e0c78329e9c4f4699c357c65fe4"
+        },
+        "engine_call_id": "1",
+        "feed_index": 0,
+        "handle": "21605520-8a5b-4a93-a9eb-18cf81733f97",
+        "ordinal": 1
+      }
+    ],
+    "snapshots": [
+      {
+        "sha256": "6207cecf0f8354648e276d0fe8d19109d910caea6606b31f439f97dd7fb4378f",
+        "next_ordinal": 0,
+        "native_call": {
+          "args": [
+            {
+              "text": "same original arguments"
+            }
+          ],
+          "engine_call_id": 0,
+          "feed_index": 0,
+          "function_name": "yuki_send",
+          "kind": "function",
+          "kwargs": {},
+          "pending_call_ids": []
+        },
+        "counters": {
+          "denied_calls": 0,
+          "feeds": 1,
+          "output_bytes": 0,
+          "suspensions": 1
+        },
+        "operation": "4a040a47-c541-457d-a063-a252820d7ed2"
+      },
+      {
+        "sha256": "8ce6943eed073504dcbdea2009883412843a5b7668f0a05fab20e9f90ea419ec",
+        "next_ordinal": 1,
+        "native_call": {
+          "args": [
+            {
+              "text": "same original arguments"
+            }
+          ],
+          "engine_call_id": 1,
+          "feed_index": 0,
+          "function_name": "yuki_send",
+          "kind": "function",
+          "kwargs": {},
+          "pending_call_ids": []
+        },
+        "counters": {
+          "denied_calls": 0,
+          "feeds": 1,
+          "output_bytes": 0,
+          "suspensions": 2
+        },
+        "operation": "4a040a47-c541-457d-a063-a252820d7ed2"
+      },
+      {
+        "sha256": "8ce6943eed073504dcbdea2009883412843a5b7668f0a05fab20e9f90ea419ec",
+        "next_ordinal": 1,
+        "native_call": {
+          "args": [
+            {
+              "text": "same original arguments"
+            }
+          ],
+          "engine_call_id": 1,
+          "feed_index": 0,
+          "function_name": "yuki_send",
+          "kind": "function",
+          "kwargs": {},
+          "pending_call_ids": []
+        },
+        "counters": {
+          "denied_calls": 0,
+          "feeds": 1,
+          "output_bytes": 0,
+          "suspensions": 2
+        },
+        "operation": "4a040a47-c541-457d-a063-a252820d7ed2"
+      },
+      {
+        "sha256": "19d4b83c7f03cb3875a5e56cd6e8842a594b7e0c78329e9c4f4699c357c65fe4",
+        "next_ordinal": 2,
+        "native_call": null,
+        "counters": {
+          "denied_calls": 0,
+          "feeds": 1,
+          "output_bytes": 0,
+          "suspensions": 2
+        },
+        "operation": "4a040a47-c541-457d-a063-a252820d7ed2"
+      }
+    ],
+    "model_http_count": 3,
+    "native_plugin_sha256": "23f888dc639f01754f4122dd606bfeebddf9e77f84757bee8db8fc318e05bb47"
+  },
+  "EXT-024/after-feed-twice": {
+    "original_parent": "4dfbd6f4-0c22-436a-b55a-7d4345fd2be6",
+    "actual_effects": [
+      {
+        "arguments": {
+          "text": "same original arguments"
+        },
+        "execution": "3b9301c3-27ed-4359-854d-813c13b87d95",
+        "operation": "c06fb1f0-59d6-42ba-ad68-3d8257b19b5d",
+        "tool": "send"
+      },
+      {
+        "arguments": {
+          "text": "same original arguments"
+        },
+        "execution": "3b9301c3-27ed-4359-854d-813c13b87d95",
+        "operation": "b4debebc-336a-47a4-be90-d76d73a89e34",
+        "tool": "send"
+      }
+    ],
+    "invocations": [
+      {
+        "arguments": {
+          "text": "same original arguments"
+        },
+        "checkpoint": 0,
+        "engine_call_id": "0",
+        "feed_index": 0,
+        "handle": "e4fe5828-419f-4a91-9392-e14f737dd502",
+        "name": "send",
+        "ordinal": 0,
+        "snapshot": "51d08210271e3c56af67f4b49deb9d3ce828b06204c98f67ea1a17424783163c"
+      },
+      {
+        "arguments": {
+          "text": "same original arguments"
+        },
+        "checkpoint": 2,
+        "engine_call_id": "1",
+        "feed_index": 0,
+        "handle": "e4fe5828-419f-4a91-9392-e14f737dd502",
+        "name": "send",
+        "ordinal": 1,
+        "snapshot": "41e920f7e96c9fb8ac9179858939955394af07378802abb34a60b1bd309d72b4"
+      }
+    ],
+    "acknowledgements": [
+      {
+        "ack": {
+          "checkpoint": 1,
+          "feed_index": 0,
+          "snapshot": "e5be9ebbe33aff078296ec2cce4e19c68e21372395c8366cd92f425724e50346"
+        },
+        "engine_call_id": "0",
+        "feed_index": 0,
+        "handle": "e4fe5828-419f-4a91-9392-e14f737dd502",
+        "ordinal": 0
+      },
+      {
+        "ack": {
+          "checkpoint": 3,
+          "feed_index": 0,
+          "snapshot": "47245e9d45f78e6a09832760cb8c1499027a4627c10b9c67a48a01ab9b3ffec7"
+        },
+        "engine_call_id": "1",
+        "feed_index": 0,
+        "handle": "e4fe5828-419f-4a91-9392-e14f737dd502",
+        "ordinal": 1
+      }
+    ],
+    "snapshots": [
+      {
+        "sha256": "51d08210271e3c56af67f4b49deb9d3ce828b06204c98f67ea1a17424783163c",
+        "next_ordinal": 0,
+        "native_call": {
+          "args": [
+            {
+              "text": "same original arguments"
+            }
+          ],
+          "engine_call_id": 0,
+          "feed_index": 0,
+          "function_name": "yuki_send",
+          "kind": "function",
+          "kwargs": {},
+          "pending_call_ids": []
+        },
+        "counters": {
+          "denied_calls": 0,
+          "feeds": 1,
+          "output_bytes": 0,
+          "suspensions": 1
+        },
+        "operation": "4dfbd6f4-0c22-436a-b55a-7d4345fd2be6"
+      },
+      {
+        "sha256": "e5be9ebbe33aff078296ec2cce4e19c68e21372395c8366cd92f425724e50346",
+        "next_ordinal": 1,
+        "native_call": {
+          "args": [
+            {
+              "text": "same original arguments"
+            }
+          ],
+          "engine_call_id": 1,
+          "feed_index": 0,
+          "function_name": "yuki_send",
+          "kind": "function",
+          "kwargs": {},
+          "pending_call_ids": []
+        },
+        "counters": {
+          "denied_calls": 0,
+          "feeds": 1,
+          "output_bytes": 0,
+          "suspensions": 2
+        },
+        "operation": "4dfbd6f4-0c22-436a-b55a-7d4345fd2be6"
+      },
+      {
+        "sha256": "e5be9ebbe33aff078296ec2cce4e19c68e21372395c8366cd92f425724e50346",
+        "next_ordinal": 1,
+        "native_call": {
+          "args": [
+            {
+              "text": "same original arguments"
+            }
+          ],
+          "engine_call_id": 1,
+          "feed_index": 0,
+          "function_name": "yuki_send",
+          "kind": "function",
+          "kwargs": {},
+          "pending_call_ids": []
+        },
+        "counters": {
+          "denied_calls": 0,
+          "feeds": 1,
+          "output_bytes": 0,
+          "suspensions": 2
+        },
+        "operation": "4dfbd6f4-0c22-436a-b55a-7d4345fd2be6"
+      },
+      {
+        "sha256": "41e920f7e96c9fb8ac9179858939955394af07378802abb34a60b1bd309d72b4",
+        "next_ordinal": 1,
+        "native_call": {
+          "args": [
+            {
+              "text": "same original arguments"
+            }
+          ],
+          "engine_call_id": 1,
+          "feed_index": 0,
+          "function_name": "yuki_send",
+          "kind": "function",
+          "kwargs": {},
+          "pending_call_ids": []
+        },
+        "counters": {
+          "denied_calls": 0,
+          "feeds": 1,
+          "output_bytes": 0,
+          "suspensions": 3
+        },
+        "operation": "4dfbd6f4-0c22-436a-b55a-7d4345fd2be6"
+      },
+      {
+        "sha256": "41e920f7e96c9fb8ac9179858939955394af07378802abb34a60b1bd309d72b4",
+        "next_ordinal": 1,
+        "native_call": {
+          "args": [
+            {
+              "text": "same original arguments"
+            }
+          ],
+          "engine_call_id": 1,
+          "feed_index": 0,
+          "function_name": "yuki_send",
+          "kind": "function",
+          "kwargs": {},
+          "pending_call_ids": []
+        },
+        "counters": {
+          "denied_calls": 0,
+          "feeds": 1,
+          "output_bytes": 0,
+          "suspensions": 3
+        },
+        "operation": "4dfbd6f4-0c22-436a-b55a-7d4345fd2be6"
+      },
+      {
+        "sha256": "47245e9d45f78e6a09832760cb8c1499027a4627c10b9c67a48a01ab9b3ffec7",
+        "next_ordinal": 2,
+        "native_call": null,
+        "counters": {
+          "denied_calls": 0,
+          "feeds": 1,
+          "output_bytes": 0,
+          "suspensions": 3
+        },
+        "operation": "4dfbd6f4-0c22-436a-b55a-7d4345fd2be6"
+      }
+    ],
+    "model_http_count": 3,
+    "native_plugin_sha256": "23f888dc639f01754f4122dd606bfeebddf9e77f84757bee8db8fc318e05bb47"
+  },
+  "EXT-024/before-feed": {
+    "original_parent": "d314a0d7-6488-4a7a-8ac9-e58a2eefbf3d",
+    "actual_effects": [
+      {
+        "arguments": {
+          "text": "same original arguments"
+        },
+        "execution": "27e2a7a1-d1eb-4106-9b09-6ae8d9542e03",
+        "operation": "dbf9d219-1eec-466f-89d8-7d607dceadbb",
+        "tool": "send"
+      },
+      {
+        "arguments": {
+          "text": "same original arguments"
+        },
+        "execution": "27e2a7a1-d1eb-4106-9b09-6ae8d9542e03",
+        "operation": "c1fc134d-e674-4b5d-926e-877d1a989de1",
+        "tool": "send"
+      }
+    ],
+    "invocations": [
+      {
+        "arguments": {
+          "text": "same original arguments"
+        },
+        "checkpoint": 0,
+        "engine_call_id": "0",
+        "feed_index": 0,
+        "handle": "8cc7d613-d308-4a1f-af8c-248ba67683ae",
+        "name": "send",
+        "ordinal": 0,
+        "snapshot": "29e989ac21c04b27b00e14d81aa04ff186b7e00676b4aeb9a4873293d05a107a"
+      },
+      {
+        "arguments": {
+          "text": "same original arguments"
+        },
+        "checkpoint": 2,
+        "engine_call_id": "1",
+        "feed_index": 0,
+        "handle": "8cc7d613-d308-4a1f-af8c-248ba67683ae",
+        "name": "send",
+        "ordinal": 1,
+        "snapshot": "cdb35816c15f9452c2c2a5882f594297840f2c3531e53c138c1ad05a8a1e1ebf"
+      }
+    ],
+    "acknowledgements": [
+      {
+        "ack": {
+          "checkpoint": 1,
+          "feed_index": 0,
+          "snapshot": "cdb35816c15f9452c2c2a5882f594297840f2c3531e53c138c1ad05a8a1e1ebf"
+        },
+        "engine_call_id": "0",
+        "feed_index": 0,
+        "handle": "8cc7d613-d308-4a1f-af8c-248ba67683ae",
+        "ordinal": 0
+      },
+      {
+        "ack": {
+          "checkpoint": 3,
+          "feed_index": 0,
+          "snapshot": "41bbb09c3eae3d891db7ef0fa581e0ce727abc399f58b1cc5f495dd3ce00419d"
+        },
+        "engine_call_id": "1",
+        "feed_index": 0,
+        "handle": "8cc7d613-d308-4a1f-af8c-248ba67683ae",
+        "ordinal": 1
+      }
+    ],
+    "snapshots": [
+      {
+        "sha256": "29e989ac21c04b27b00e14d81aa04ff186b7e00676b4aeb9a4873293d05a107a",
+        "next_ordinal": 0,
+        "native_call": {
+          "args": [
+            {
+              "text": "same original arguments"
+            }
+          ],
+          "engine_call_id": 0,
+          "feed_index": 0,
+          "function_name": "yuki_send",
+          "kind": "function",
+          "kwargs": {},
+          "pending_call_ids": []
+        },
+        "counters": {
+          "denied_calls": 0,
+          "feeds": 1,
+          "output_bytes": 0,
+          "suspensions": 1
+        },
+        "operation": "d314a0d7-6488-4a7a-8ac9-e58a2eefbf3d"
+      },
+      {
+        "sha256": "cdb35816c15f9452c2c2a5882f594297840f2c3531e53c138c1ad05a8a1e1ebf",
+        "next_ordinal": 1,
+        "native_call": {
+          "args": [
+            {
+              "text": "same original arguments"
+            }
+          ],
+          "engine_call_id": 1,
+          "feed_index": 0,
+          "function_name": "yuki_send",
+          "kind": "function",
+          "kwargs": {},
+          "pending_call_ids": []
+        },
+        "counters": {
+          "denied_calls": 0,
+          "feeds": 1,
+          "output_bytes": 0,
+          "suspensions": 3
+        },
+        "operation": "d314a0d7-6488-4a7a-8ac9-e58a2eefbf3d"
+      },
+      {
+        "sha256": "cdb35816c15f9452c2c2a5882f594297840f2c3531e53c138c1ad05a8a1e1ebf",
+        "next_ordinal": 1,
+        "native_call": {
+          "args": [
+            {
+              "text": "same original arguments"
+            }
+          ],
+          "engine_call_id": 1,
+          "feed_index": 0,
+          "function_name": "yuki_send",
+          "kind": "function",
+          "kwargs": {},
+          "pending_call_ids": []
+        },
+        "counters": {
+          "denied_calls": 0,
+          "feeds": 1,
+          "output_bytes": 0,
+          "suspensions": 3
+        },
+        "operation": "d314a0d7-6488-4a7a-8ac9-e58a2eefbf3d"
+      },
+      {
+        "sha256": "41bbb09c3eae3d891db7ef0fa581e0ce727abc399f58b1cc5f495dd3ce00419d",
+        "next_ordinal": 2,
+        "native_call": null,
+        "counters": {
+          "denied_calls": 0,
+          "feeds": 1,
+          "output_bytes": 0,
+          "suspensions": 3
+        },
+        "operation": "d314a0d7-6488-4a7a-8ac9-e58a2eefbf3d"
+      }
+    ],
+    "model_http_count": 3,
+    "native_plugin_sha256": "23f888dc639f01754f4122dd606bfeebddf9e77f84757bee8db8fc318e05bb47"
+  },
+  "EXT-024/unknown": {
+    "original_parent": "be644481-2a88-4241-992d-e0d7e709e601",
+    "actual_effects": [
+      {
+        "arguments": {
+          "text": "same original arguments"
+        },
+        "execution": "b697bdf7-e348-492d-a818-de092e6027f8",
+        "operation": "e1a9164b-692c-4471-85fe-243c06ae75a2",
+        "tool": "send"
+      }
+    ],
+    "invocations": [
+      {
+        "arguments": {
+          "text": "same original arguments"
+        },
+        "checkpoint": 0,
+        "engine_call_id": "0",
+        "feed_index": 0,
+        "handle": "e4197779-eb79-4e45-b53d-895172e4800b",
+        "name": "send",
+        "ordinal": 0,
+        "snapshot": "932d985586a41b6bb638431519f440b643d908bd71799e5540edcd88597dfb12"
+      }
+    ],
+    "acknowledgements": [],
+    "snapshots": [
+      {
+        "sha256": "932d985586a41b6bb638431519f440b643d908bd71799e5540edcd88597dfb12",
+        "next_ordinal": 0,
+        "native_call": {
+          "args": [
+            {
+              "text": "same original arguments"
+            }
+          ],
+          "engine_call_id": 0,
+          "feed_index": 0,
+          "function_name": "yuki_send",
+          "kind": "function",
+          "kwargs": {},
+          "pending_call_ids": []
+        },
+        "counters": {
+          "denied_calls": 0,
+          "feeds": 1,
+          "output_bytes": 0,
+          "suspensions": 1
+        },
+        "operation": "be644481-2a88-4241-992d-e0d7e709e601"
+      }
+    ],
+    "model_http_count": 3,
+    "native_plugin_sha256": "23f888dc639f01754f4122dd606bfeebddf9e77f84757bee8db8fc318e05bb47"
+  }
+}

@@ -4,6 +4,24 @@
 行為基線 `329ca7c487414d2f54ddd98ff4727446ed2446cd`。官方插件接入層用 Rust。
 獨立 Connector 沿用 Python 3.12；共享預算沿總書 K05。
 
+**本地 CI 與合併**　PR #16 已普通合併至 `41cb089afe83`，實際 tree 與受測 tree `470201b0b3a7` 相同。Windows/Linux 的 GitHub 產物及 macOS arm64 本機驗收、七個套件和 Connector 升級/三個 driver 的回條在 `artifacts/ci/local-pr/16/`。其餘 PR 以同一整合樹驗三端，記錄原 head 的祖先關係、實際合併和工作目錄清理。候選功能的正式驗收仍各自依卡片判定。
+
+**EXT-006 飛書／Lark 部分候選；正式完成 7/68。** 分支 `codex/ext-006-feishu-media`，實作 `2db0fa096b2f`。
+HJW Windows 的 Rust alpha.2 在兩個區域端點各取回 26,789 bytes；同名 key 的內容摘要不同。
+下載中原 WS 可回 ACK；錯 app/tenant 不發 HTTP、403 不重試。修正 Windows 複製 socket 導致原讀取逾時沒有更新的問題。
+同一執行檔 `4fc4e77480ba` 對固定 CORE-038 `0ef956a9c6d9`／SDK alpha.13、Host `4dd7a9fc3456`，
+用兩個獨立安裝接納與重放，真回執 event 1/1/2/2；這條測試只授入站權限，附件 callback 為零。
+見 `artifacts/EXT-006/evidence-index.json`、`platform-05`、`ingress-05`。平台端為回環 fixture，
+真選讀需原 app/tenant 的公開安裝配置，Social 和舊資料導入仍待。
+上張 [EXT-004 PR #36](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/36) 已推；
+[原安裝配置回條](https://github.com/Institute-of-Agent-Life/yuki-core/pull/73#issuecomment-6680974214)。
+合併佇列先處理 #16；最新清單：`artifacts/readiness/after-feishu-native-media.json`。
+
+**EXT-004 部分候選；正式完成 7/68。** 分支 `codex/ext-004-telegram-media`，實作 `adb9c36eae38`。
+HJW 的 Rust Telegram alpha.2（SDK alpha.13，來源 `0ef956a9c6d9`、crate `25694e880798`）已驗原 Bot 單次取檔、兩頁同摘要、跨身份零取件、轉址／超限拒絕及長輪詢中止。
+平台證據在 `artifacts/EXT-004/platform-01`；真 Host 的 ingress-only 寫入 event 1，新增 grant 時缺 application 核准而無法啟動（`host-02`）。待核公開配置、真選讀、發送／撤回／typing 與發布。
+前排 PR #16 等 macOS；CI 快取回條見 `dec012ed155c`。最新狀態：`artifacts/readiness/after-telegram-native-media.json`。
+
 | 任務／分支 | 實作、三平台 PR CI 與主線合併 | Windows 實機證據 |
 |---|---|---|
 | EXT-001 · codex/ext-001 系列 | `4cbaff3`、`033bb04`、`f136b4d`；CI `41819289910`；主線 `93adb61` 含 Rust 補驗 | `artifacts/EXT-001/03/`，隔離建包、Rust 真編譯與故障案例 |
@@ -12,6 +30,421 @@
 | EXT-009 · codex/ext-009 | `c0d30fb`；CI `41834256598`；PR #5 合併 `9eb9223` | `artifacts/EXT-009/01/`，4 例含真 SDK、原問題回執、EOF 與檔案保留 |
 | EXT-010 · codex/ext-010 | `ab16e07`；CI `41834791702`；PR #6 合併 `2c55dbb` | `artifacts/EXT-010/02/`，8 例含實際子進程退出碼 23、雙 session 取消及 unknown |
 | EXT-019 · codex/ext-019 | 實作 `7531d84`、PR head `9d1e8a8`；三平台 CI `41835863011`；PR #7 合併 `7625095` | `artifacts/EXT-019/02/`，呼叫表、schema 差分、5 個故障變異；`03/` 固定跨平台順序 |
+
+## 2026-11-06 EXT-031 原 Main 頁文／影格見證
+
+- 分支 `codex/ext-031-main-media`，實作 `3b65ab18830f6dc349f7f5dc20cdf492c11a3a84`。
+  CORE-038 source `0ef956a9c6d9`／SDK alpha.13／DB50，三平台 ZIP 全成員已核，
+  pin 在 `compat/core-038-main`；Win ZIP `a81c49a722b9`、Host `4dd7a9fc3456`、
+  crate `25694e880798`，未發布。原 Rust binary `2d0e7e9b9107`／SDK alpha.4、
+  document_reader.py／FFmpeg 原樣重用，沒有重新編譯後端。
+- HJW Windows 五例已驗：原 PDF 頁文與 operation／version 完整回到同一 Main；
+  影片 0/5 秒原像素按 SHA／id／version／ordinal 進同一正常續輪；未選零處理、
+  無 vision 零處理、壞 PDF 一次處理且結構化失敗。每個正例三筆正常 Main HTTP，
+  其中一筆 capability 供公開 cache-file fixture 取得原 execution，選讀／續輪兩筆；
+  沒有額外 vision 路由或付費供應者。保護的 cache fixture 不是原平台取件。
+- `faults-07/forget` 第二塊讀取中，公開 privacy erase 回 SQLite 787 外鍵錯誤；
+  沒有成功清除回執，不改核心／主庫、不重送未知效果。`audit-09` 在 Windows 核
+  原 ZIP／manifest／方法配對／頁文／實際影像 bytes、五例與原失敗；14 單位邊界
+  及 media 選擇器通過。詳 `main-evidence-index.json`、`main-iteration-disposition.json`。
+- Main 呈現缺口已在這個固定 tuple 解除。新 Main forget 阻塞、原 receiving gateway
+  真取件與正式發布仍待；舊 e25 tuple 的自動 forget 回條保留，正式完成仍 **7／68**。
+- EXT-015 已推 [PR #32](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/32)，
+  head `3014ed0`；回條已交核心 #67 `6677934279`、#71 `6677939829`、#72 `6677943216`。
+- 使用者最新 CI 建議：先去重與取消舊 PR 執行，再做分 OS／arch／Rust／lock／實際
+  SDK hash 的快取，最後才評估有限分組；排隊不算佔用執行中名額，組織限額未知。
+  下一項先落實本倉 CI，維持三平台、當前 merge SHA 與原產物驗證門檻。
+  最新 readiness：`artifacts/readiness/after-core038-main-witness.json`。排程仍 PAUSED。
+
+## 2026-11-06 EXT-015 明選 Client9 候選
+
+- 分支 `codex/ext-015-selected-client`，實作 `59e0d07c21b44609af2e3e12fbc0ec950930adba`；
+  由 PR #31 `4801377c8fbe` 建獨立樹，含 main `ac8c1b287e5a`，沒有改其他 WIP。
+- 原 Rust Client 升至 alpha.2／SDK alpha.12，轉送原 X-Yuki-Entry／Conversation、
+  UUID／有序附件、home、串流上傳及 SSE；沒有插件身份／去重庫。SSE 四、上傳四、
+  一般八個名額分開，65 秒上游 response 上限讓遺留流釋放名額；原 bytes 逐塊 flush。
+- CORE-033 固定 source `c616cf35e4424e2b9f3c99a4481bfab1c99a34f3`、DB48，
+  三平台 ZIP／全部成員／producer manifest 及 dirty=false 已核；完整 pin 在
+  `compat/core-033-client`。Win ZIP `5260a4f063fa`、Host `7e78050e2032`、
+  crate `29f5e9f0b89d`；仍未發布，不是 PR head。
+- HJW Windows `selected-08` 九組功能案例、兩項 Rust 回歸、release build、14 單位
+  邊界及選擇器通過。涵蓋兩設備原 UUID、合併後分辨原人物及明選 B、錯誤／重複
+  標頭、附件改序衝突、**入站**持久游標／SSE 重連、滿四流仍可一般 GET、撤權關
+  原四流、停用入口讀舊件／拒新寫及冷啟。模型 fixture HTTP 四筆，無付費供應者。
+- `selected-analysis-01` 在 Windows 核 35 個來源、原 ZIP／manifest／所有 SHA、
+  Host／SDK／plugin／wire 及原失敗；binary `ecd3200867585a7c38ed5682d855cb5177e960a1776e7c49211583ed0587f960`，
+  wire `0d81770a1414d6b34dc0e8dc9de8bf374bc3f24902f0e78961db4c365b27ac69`。
+- ACP：公開 account／entry／ingress／home 已列真 ACP conversation，匹配 header
+  仍 404。Social：原 06 沒有 binding fixture，Main 接納後 send 段 held/runner_failed；
+  原 05 fixture ACK 沒有本地事件，不能算 Social 成功。具體公開安裝／ACP session／
+  receiving Presence 設定需求在 `docs/core-interface-requests.md`；原失敗全保留。
+- **正式完成仍 7／68。** H24 ACP／NULL／完整 target/operation、原本地 Social、
+  H27 最後溢出、H28 原件與忘記競態及正式發布仍缺。預備候選不改整卡 BLOCKED。
+- PR #16 最新 head `58cd960e1a99`／base `ac8c1b2`：push 15 success/9 queued/1 running，
+  PR 16 success/9 queued，沒有新失敗；不能合併。#23 原 504 attempt2 已 success。
+- 新核心 PR #67／71／72 已消費本卡固定包；#73 gateway media、#74 Main 媒體、
+  #75 原 Work/Manager terminal、#76 canonical QQ send、#77 memory merge／#78 native
+  mentions 為新交付，逐項看真前置。下一步核 #74 已實跑本倉原 EXT-031 binary 的
+  Windows 回條，續做真正就緒工作；不能沿用上一輪「沒有新 PR」的判斷。
+
+## 2026-11-06 EXT-070 原 Connector 改址候選
+
+- 分支 `codex/ext-070-address`，實作 `cc39f5911859585385f48742defd536d61ae8a06`，
+  基於 PR #30 的 `ce1cec3a2092`（已正常含 main `ac8c1b287e5a`）。
+  原 Connector 19 個 runtime／鎖檔 bindings 未改，wheel 仍
+  `2748ec830b56e38f404d33964350578e543232ab1fce02e2399fc3ab045a74d8`。
+- 基線 CI `41554925880` 的 integration artifact `13194877063` 已核 GitHub ZIP digest
+  `da2c0c140992b3a2af8dee54bd89e0a32caf4184dca5dae0dc131637c0e9b70b`、CRC、安全成員、
+  JUnit 的 11 個 pass 與原 11 回條／commit。原資料及只讀 source oracle 在
+  `compat/wire4/address_cases`；未執行舊 Host 私有模組，也不把歷史綠燈當本次測試。
+- HJW Windows `candidate-03` 15 例通過：CLI 僅改 URL／保原 token-instance，遠端非 TLS
+  拒絕、v0/v1 `[url,device]` journal 升級、另一 device 拒絕；真 pipe shell 在保存新址後
+  收 stdin、原 PID `13168`、exit 0，唯一 native exec／實體啟動各一次。
+- 真 CLI 重啟到第二個 TLS 1.3 WSS 後查原 succeeded 回條，unknown 保持 unknown；
+  B 的 event ID 集合精確等於重啟前未 ACK 集合，已 ACK 不補送。臨時 user task 用原
+  UserService 的 LeastPrivilege／InteractiveToken 註冊、禁用且未啟動；改址前後原 Task
+  XML／action／非 running 不變，finally 核 action 後清除，實收 installed=false。
+- `analysis-01` 在 Windows 逐份對上 11 個舊回條，核原 ZIP、15 例、73 個來源綁定、19 個
+  unchanged runtime、全部 14 發行單位邊界／選擇器；wire SHA
+  `919a7a90cd0e1db1ad5a20357d159e4dde272de254e1bfa6070b3db3baac127c`。
+  01／02 分別是功能與事件細化的已驗迭代，不冒充含真 OS task 的最終 03。
+- EXT-011 已推 [PR #30](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/30)，
+  head `ce1cec3a2092`；真消費回條已交
+  https://github.com/Institute-of-Agent-Life/yuki-core/pull/66#issuecomment-6676124728 。
+  兩卡的正式發布／公開部署仍缺，正式完成仍 **7／68**。
+- PR #16 當前 `58cd960e1a99` 無新失敗，三平台及套件仍有 runner 排隊；後續按既定順序，
+  main 前進才正常合入新 main 重驗。#23 原 504 全輪已結束，本輪已 rerun failed，attempt 2 排隊。
+- EXT-044 還缺 EXT-017／039／043／046 及原 Work／管理／發布整組，不因 EXT-070 局部
+  就緒就開空實作。其他核心回條無新回覆、現有固定交付未換；最新 readiness
+  `artifacts/readiness/after-connector-address.json`，剩 CI／上游契約等待，全部既有 WIP 保留。
+
+## 2026-11-06 EXT-011 原 Connector 鑑權與 wire4 候選
+
+- 實作 `a7b35e96dda240f021f43efed7a46c7976d4197c`；正常合入 main `ac8c1b287e5a`，
+  僅進度有衝突，兩邊歷史保留，31 份實收來源未變。
+- 分支 `codex/ext-011-connector-auth`，基於 `5986cba`；Rust local-agent
+  `0.1.0-alpha.2` 已完成本輪可用接線。正式完成仍 **7／68**。
+- CORE-033 `c85a00b121d0277578292e8b60170b799e4ad6db`／SDK alpha.12，
+  三平台 ZIP／全成員／producer manifest 已核，完整 pin 在 `compat/core-033-connector`。
+  Windows ZIP `6249cf5145c4`、Host `e26626a017c5`、crate `7f260fdd21a7`；未發布。
+- HJW Windows `connector-auth-07`：真 Rust＋原安裝 Python Connector 的 WSS／TLS 1.3
+  12 例通過，模型 HTTP 0。涵蓋 chat／缺憑據拒絕、空設備、全量 catalog、舊 epoch
+  catalog／close fence、人物合併、原帳號 transfer、偽造 hello、無 Work 的 event 不 ACK、
+  撤權與冷啟。原 `Connector.run` 240.141 秒自動重連，epoch 3→4，未停止 owner。
+- `connector-analysis-01` 在 Windows 核 31 個來源綁定、47 組原方法配對
+  （connect 9／check 29／close 9）、build／SDK／Host／wire SHA；原 alpha.1 binary
+  實測 schema1→2 保留設備，舊 reader 拒絕新事實且 DB bytes 未變。新格式前向修復。
+  binary `791e7ceb89fd526be00bc390831afa0889e8cd503adfc3beb9fb3577d44860a5`；
+  wire `bc94657fe5a687444f39959e12f2453b2cfe42d236b87ecc8bb351059cf8c3e0`。
+- 原 Python Connector／驅動／journal 未改。原 raw Bearer 只交私有核心 exchange；
+  安裝 ID 明選、與 SDK namespace 分開；proof／handle 不落 catalog。續期用 1001，
+  原 1008 會停 owner，不能以只跑 connection() 的 PASS 冒充自動重連。
+  02…06 原配置／觀測失敗與 05 的覆蓋缺口全部保留，見 iteration-disposition。
+- 仍需正式發布、公開 WSS 部署、原設備／catalog 匯出導入演練；CORE-057 現有包只含
+  import-models，不能代替設備資料。EXT-012／014 的原 Work/run 授權、operation 綁定
+  與回流另交核心，不把 device.connections 當一般業務授權。
+- PR #15 本輪已核 48 ZIP 並普通合併 main `ac8c1b287e5a`；回條
+  `artifacts/EXT-011/ci-receipt-0107c0a.json`。PR #16 已正常合 main 至 `58cd960e1a99`，
+  新三平台 CI 等 runner；其後各 PR 輪到時仍須正常合入新 main。
+- 下一個獨立可做項是 EXT-070；已從基線 CI `41554925880` 核得 11 份原 address
+  回條、JUnit 與來源，尚未把它們當本次執行結果。所有既有 WIP 保留。
+
+## 2026-11-06 EXT-024 普通拒絕與後續效果對拍
+
+- 分支 `codex/ext-024-rejection-continuation`，從已驗角色／trace 的 `d9cfee9` 建獨立樹；
+  main 仍 `996deedef3e1`。本次只新增對拍與契約 pin，Rust Code 本體來源未變。
+  實作與原回條 `af6e61b95009b6a3c592ecbea302fe0df51a13e5` 已推
+  [PR #29](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/29)。
+- CORE-015 固定來源 `969fb62e34de`／SDK alpha.11 的三平台 ZIP、所有成員及原
+  producer manifest 已核；完整來源／版本／雜湊在 `compat/core-015-isolation`。
+  Windows ZIP `3b45be537020`、Host `9cd0c5ac8c8a`。候選仍未發布。
+- HJW Windows／Arch 三例共 9 筆模型 HTTP：direct 的原 bad call 收到明確 failed，
+  原 good call 實收；真 Rust／Monty 的同一無效項 `tool.invoke` 收到 -32003，後項
+  未執行。正對照先合法送達並 ACK，再遇相同無效項拒絕，已確認效果仍保留。
+  三例各冷啟兩次，未重買／重送，專用 daemon 容器集合回原集合。
+- `artifacts/EXT-024/refusal-01`、`control-01` 保留逐方法 wire、原配對與 binding；
+  `analysis-01` 是 Windows 原 ZIP／manifest／來源與原 child／ACK 的實際重核，
+  狀態 `DIAGNOSTIC_VERIFIED`。這不是整卡 PASS，不從 generic RPC error 猜 admission。
+- Windows `validation-02` 已過最新 Python 語法、SDK／13 個原來源／八個方法 DTO
+  綁定與 release 邊界；選擇器仍選全部 14 單位。`validation-01` 是測試傳輸漏帶
+  舊 build 回條的來源檢查失敗；補齊具名輸入後重驗，原失敗保留，不算 Host 缺陷。
+- 原 Rust binary `23f888dc639f`／alpha.5 consumer 沿用，13 個來源／建置檔與
+  `fe7c9c0411cc` 逐 bytes 相同；沒有重跑既有六個恢復案例或重編 Monty 後端。
+- **正式完成仍 7／68。** 新阻塞及精確方法／字段／授權／故障需求已列
+  `docs/core-interface-requests.md`；缺普通拒絕的可分類 child receipt／續跑路徑，
+  其餘 light alias、Work/run、H14／根帳本、越權等價及發布缺口延續。
+  真回條已交 [CORE-015 #61](https://github.com/Institute-of-Agent-Life/yuki-core/pull/61#issuecomment-6673430091)
+  及 [CORE-034 #43](https://github.com/Institute-of-Agent-Life/yuki-core/pull/43#issuecomment-6673443351)。
+  三平台當前 SHA CI 與合併仍待遠端 gates；佇列仍從 PR #15 起，最新 40 success／
+  4 個 macOS package queued，沒有新失敗。PR #29 輪到時仍需正常合入新 main 並重驗。
+  最新 readiness：`artifacts/readiness/after-core015-refusal-intake.json`。
+  其餘使用者 WIP 全部保留。
+
+## 2026-11-05 EXT-038 Rust 共用角色／SOUL 候選
+
+- 分支 `codex/ext-038-character`，實作 `87c3f6531a8d5c412e1212047a84a494e366aeec`；
+  正常合入 trace 的 CI 選擇修正 `20534f8ed7b0`，merge `82c731f8351a`，程式樹未變。
+  trace 已推 [PR #27](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/27)，
+  真回條交 [核心 #51](https://github.com/Institute-of-Agent-Life/yuki-core/pull/51#issuecomment-6669933736)。
+- 獨立 `character` Rust package／lock／catalog 已落實，使用同一已核 CORE-037
+  `1e7b89362b6f`／SDK alpha.11。角色、SOUL、身份與授權真源均留核心；沒有插件角色庫。
+- HJW Windows 正式 transport 的 `artifacts/EXT-038/candidate-04` 過 21 例、實收
+  模型 HTTP 42 筆：公開讀／權限拒絕、改名原 ID、原 UUID 重放、改 body／舊 revision
+  拒絕、空 SOUL、原已付 system 角色／SOUL 不變、新激活用新版本、冷啟和撤權。
+  插件 digest `1e321b8852d8ef3af1ffbab7a2600426d379bdfd1054cbbb147f3060f24f74b6`；
+  shared-character digest `bc8f2e6ff4b25dae0c7d82e1af0f3c50e4546f8e3a26aa65e27909ba0c55f261`。
+- 壞檔故障只改新 owner 的 fixture SOUL.md，真原 reload 和 Host 拒絕訊框均未改寫。
+  保存、原拒絕及後續新明選 reload 分欄；不從 generic -32003 推斷 admission。
+  candidate-02／03 保留兩個測試時點失敗；最終雙向 relay 在回傳前恢復原 fixture，
+  Main 完成原配對。26 個來源綁定、wire／build／manifest 和 owner-disposition 可交核心。
+- **整卡仍進行中，正式完成 7／68。** 頭像 immutable version／原圖保留、逐 Bot
+  平台 nickname/avatar 套用與真結果、舊資產導入及正式發布缺口列於 interface requests。
+  CORE-055 已開 PR #52，尚未消費；EXT-049 仍缺 EXT-015 真個人入口／Social 前置。
+- 合併佇列 main 仍 `996deedef3e1`；PR #15 最新 36 success／8 個 macOS package queued，
+  沒有新失敗；PR #23 原 504 仍未結束整輪，不到 rerun 條件。PR #27 新 head `20534f8`
+  push `42116257171`／PR `42116267407` 已啟動；已核過期 SHA 後請求取消舊 `646584e`
+  兩輪。當前 SHA／base 的三平台與全部 package/native/worker gates 均保留，未合併。
+  最新 readiness `artifacts/readiness/after-core037-character.json`；其餘 WIP 全保留。
+
+## 2026-11-05 EXT-037 Rust 查詢候選
+
+- 分支 `codex/ext-037-trace`；實作 `76feabd5cb5c354309e4556e881f5bd1579a7baf`。
+  正常合入已驗 main `996deedef3e1` 的提交 `1e177495404b` 只保留兩邊進度。
+  原主樹四個 Code adapter、ASR／rebuild／subscription WIP 均未動。
+- CORE-037 固定來源 `1e7b89362b6f`、tree `f58b344f4da4`、SDK alpha.11；
+  三平台 ZIP／成員及 producer manifest 已核。Windows ZIP `cfad9951aa18`、
+  Host `b3fbd607fe5a`、crate `cb6db37ce6b3`，完整 pin 在 `compat/core-037`。
+  候選未發布。CORE-055 新 PR 不代表 EXT-049 的個人入口前置已齊。
+- 獨立 `plugins/trace`／catalog／鎖檔／release unit 已可執行 `trace_query`。
+  HJW Windows `candidate-03` 通過 release build、兩項 Rust 回歸與真 Host 查詢：
+  metadata、明選正文、普通人／撤權拒絕、擦除後空頁；實收模型 HTTP 12 筆。
+  插件 digest `58c73b9d6fa28fb1e9801df972a9a7fd8d35c470e1b48f0b0cf88754cf28dde3`。
+  trace-query digest `7c1fa65768dd6f08ce61a9624f78107de2edcd33c76c276bcb6ec458f262c88e`。
+  原 wire／build／manifest／27 個來源綁定同目錄可交核心；正常與故障時序見 EXT-037-sequences。
+- `candidate-01` 保留未驗並行讀宣告被 Host 拒絕的原日誌；改為順序派發後，
+  `candidate-02` 真插件過，`candidate-03` 再驗正式 `ci/windows.py` 入口。
+  沒有修改核心驗權或改成接受失敗；macOS／Linux package 仍須 CI。
+- **整卡仍進行中，正式完成仍 7／68。** 已實作單次授權查詢，不保存私料。
+  opt-in trace 訂閱、私庫 SourceHold／forget、R18 遲到 writer 及 versioned export
+  尚缺公開契約，需求已列 core-interface-requests。下一可獨立進行項是 EXT-038
+  已公開的共用角色／SOUL；頭像版本與平台套用需另外核 CORE-038／Gateway 真接口。
+  最新 readiness：`artifacts/readiness/after-core037-trace-query.json`。
+
+## 2026-11-05 固定資產 GET 的 504 回歸
+
+已驗修正提交 `b82112b5b452`，分支 `codex/ext-047-scoped-session`，沿 PR #26 驗新 SHA。
+
+- PR #26 `b2393fc` 的新失敗是 PR run `42043545403`／job `127300355097`
+  acceptance/Ubuntu 在已發布握手資產 GET 收到 HTTP 504。原 ZIP
+  `52db6dd1f504eecbabfaf1ad5435e3979c76a9c36f3f9e337a1a67e758ee47e8`、四成員／manifest
+  及 merge parents 已核；證據 `artifacts/readiness/ci-release-504-20261105/original/`。
+- `ci/download_http.py` 只為無 body 的固定資產 GET 做 502／503／504 最多三次讀取，
+  等待 1、2 秒；Retry-After、其他 HTTP、TLS 錯誤直接失敗。原 checksum／來源／版本／
+  receipt／能力核對保留，壞 digest 不重試、不落盤；不增加任何業務或模型請求重試權。
+  正常與故障時序在 `docs/ci-download-sequences.md`。
+- HJW Windows 的七項真 loopback HTTP／TLS 例外／完整性回歸通過，產物
+  `ci-release-504-20261105/verification-01`；只驗 CI 讀取，不重做 EXT-002 消費者。
+  同一 `b2393fc` 的兩個 native jobs `127300387575`／`127301499397` 都 success，
+  此處僅核 job 狀態，未據此宣布間歇性 134 根因已修復或整張卡通過。
+- PR #14 的 22 份現有 ZIP 已核 GitHub digest、成員、manifest、當前 base／merge parents；
+  回條 `artifacts/readiness/pr14-dfe8eb4-ci-partial.json`。只差 Connector/macOS
+  `127165347504` 與 package／connector-upgrade 兩產物，未合併。
+- 核心 main 已普通合併 CORE-027 至 `3d7d12c0d329aef5fb0db117161cc81a07242946`；
+  CORE-035／051／058 只整合 CI window，CORE-025 只整合新 main，未補本倉所缺安裝配置
+  或新的公開 Host／SDK 交付。授權回條仍無回覆，公開 release 仍只有已驗握手版。
+  正式完成 7／68；最新 readiness `artifacts/readiness/after-ci-get-retry.json`。
+
+## 2026-11-05 native CI exit134 診斷補強
+
+已驗本地提交 `335bc62e0d3e`，分支 `codex/ext-047-scoped-session`，推送至 PR #26 後驗當前 CI。
+
+- PR #26 原 head `e0625154c09a` 的 push run `42031856344`／job `127260154799`
+  在 blocked-feed disconnect 退出 134，OOMKilled=false；另一 PR run 的同源 native job 通過。
+  原 ZIP `5926a977bc64982960b1ace015e77888cad4ba84173b0357348b2e9d041130ce` 的
+  9 個成員／manifest 已核，保留在 `artifacts/EXT-023/disconnect-134-diagnostics-01/original/`。
+- HJW 原 `65fcd704d953` 映像增加 60 次不同斷開時點驗證，exit=0、原 PID 全消失；
+  仍未重現 CI 134，沒有做根因修復主張。控制實驗確認 Docker 未宣告 AttachStderr
+  仍會傳回 stderr，故未採用該錯誤假設。
+- 診斷補強啟用 CPython fatal signal trace，並讀 Docker logs；真受控 abort 的退出碼
+  仍為 134，新增可讀堆疊。完整 native codec 通過，測後容器集合還原。
+  CI 先複製實含 runtime contract，失敗時仍保存該次 image.tar；原檢查或 export 失敗
+  仍 FAIL，後者不能遮蔽原錯。沒有修改 backend、原 worker／launcher 或授權規則。
+- Windows `verification-03` 的 5 項 evidence orchestration、3 項 OCI integrity 及
+  source package 皆通過；`verification-02` 保存真容器前後對照及 native 回條。
+  上述 artifact 根 manifest 鎖變更來源及逐檔 hash。PR #26 接續重跑當前 SHA 三平台 gates。
+- PR #14 仍差 Connector／飛書 macOS 排隊，未合併。核心 CORE-039 PR #28 已合併
+  `9a0b14afe68bc461220ec918f2dd6b1c917c995e`，尚無新增正式 release；各授權回條無新回覆。
+  正式完成仍 7／68。readiness 改為 `artifacts/readiness/after-native134-diagnostics.json`。
+
+## 2026-11-05 CORE-051 consumer intake
+
+- 最新工作樹 `.ci-transfer/work-scoped-session`，分支 `codex/ext-047-scoped-session`，已驗診斷提交 `cfd405d5dc82`。
+  EXT-027 的已驗診斷 `07b4da6` 已推 PR #25；核心回條
+  https://github.com/Institute-of-Agent-Life/yuki-core/pull/48#issuecomment-6658294529 。
+- EXT-047 的 `source-intake-01` 已在 HJW Windows 編譯／執行真 Rust consumer；
+  CORE-051 `9db8b3f073e3`、Host `cb2e2e8592bc`、SDK alpha.9 crate `2b1e5fbe107a`，
+  consumer `3644baf1e9c6`、wire `195b711c07b6`，全部輸入／回條 SHA 已核。
+  前景、已接納 Work、actorless 的 session.create 皆 -32003，session.run 為零。
+  原 method grants 可協商，缺公開 sessions policy／aux route 配置；沒有判成核心 bug。
+- GitHub Monitor 1.2.3／API9 固定 `efba5e1ad77f` 的原 manifest、註冊、命令、輪詢、
+  配置、觀察及授權已核 Git blob／SHA；唯讀對照在 `compat/external-plugins/` 和
+  `docs/sdk-migration.md`。沒有升版／發布／自動執行舊插件。R11、遊戲、QQ scope、
+  原 API9 新 Host 拒載和舊 Host 可用仍待驗，詳見 external-consumer-ledger。
+- 正式完成仍 7／68 卡。本輪新增的是兩張授權診斷，沒有新增正式驗收卡。
+  readiness 改為 `artifacts/readiness/after-core051-intake.json`。先等待公開安裝配置、
+  PR #14 的剩餘 macOS jobs 與其他已具名上游缺口；下一次 main 前進仍要更新後續 PR base。
+- 原主樹／ASR／rebuild 及 `work-subscription` 的完整 Rust 訂閱 WIP 保留。
+
+## 2026-11-05 CORE-058 intake
+
+- CORE-058 `cb02f74ea48b`／SDK alpha.10 的三平台 ZIP、source tree 和全部成員已核，
+  固定來源見 `compat/core-058/`，回條 `artifacts/EXT-027/producer-intake/inspection.json`。
+  包仍未發布；Windows Host SHA `44e051731197`，crate SHA `4975c4e27096`。
+- `codex/ext-027-subscription` 位於 `.ci-transfer/work-subscription`。Windows 最小 Rust
+  consumer 的 `source-intake-01` 已確認三種原呼叫都仍被 `notification.grant_target`
+  以 -32003 拒絕：前景、已接納 Work、略去 conversation／bot 使用原入口。
+  Person 已為 admin、三個 `tool.status` 都為 dispatched；notification.publish 次數為零。
+  診斷 binary `7ecb61ef9d779`，完整 policy、operator、model、wire 和 manifest 均保存。
+  此為已驗診斷，沒有把發布／送達算通過。
+- 完整 Rust 訂閱插件留 WIP：`plugins/subscription-monitor/`、catalog、EXT-027 case、
+  relay、`ci/windows.py` 與正常／故障時序。Windows 已編譯，5 項游標／journal 測試過；
+  candidate-01…03 皆在授權階段失敗，尚未跑到 outbox ACK 丟失、實際發布、撤權。
+  原 Code／ASR／rebuild WIP 保留。待生產者補最小安裝／授權設定後續跑，不提交成已驗插件。
+- PR #14 仍差 Connector、飛書的 macOS package；三平台 acceptance 已過。PR #20
+  原 504 workflow 已結束，`gh run rerun --failed` 成功請求第二次 attempt，只重跑失敗項。
+  GitHub connector 的同操作回 403 integration 權限不足，已用既有 gh 授權完成。
+  PR #23 原 504 workflow 尚在跑，未重試。新 main 仍 `526a35382d9b`。
+- EXT-047 已具 CORE-058／051 候選，但真 Monitor 的目標授權仍受本次 intake 阻塞；
+  原 GitHub Monitor 固定 `efba5e1ad77f`，未升版或聲稱遷移。隔離遊戲會話仍待實作驗證。
+
+## 2026-11-05 10:04 UTC 更新
+
+- PR #13 當前 head `9db5191` 的三平台與四套 package／Connector 升級檢查全過，
+  21 份 ZIP、GitHub digest、manifest 成員及 merge parents 已核；普通合併 main
+  `526a35382d9bb464f92adc947e1b212e0ea41c3c`。回條 `artifacts/EXT-005/ci-receipt-9db5191.json`。
+  PR #14 已正常合入此 main，head `dfe8eb46d64a`；Windows／Linux 過，七個 macOS job 排隊。
+- PR #20 的 connector/macOS、#23 的 acceptance/macOS 原日誌均為固定依賴下載 HTTP 504。
+  原 ZIP 已驗；整輪仍排隊時 GitHub 拒絕單 job rerun。等結束再重跑，沒有降檢查或合併。
+- `codex/ext-023-feed-recovery` 位於 `.ci-transfer/work-code-recovery`，從 `ab63ec2` 接續。
+  原主樹四個 Code adapter、work-asr 與 work-rebuild 的 WIP 均保留。
+  本次形成獨立 Rust `codemode` 建置單位，原 Monty 映像仍獨立發行；異常訊框也會
+  走 native worker 清理。Windows 建包與 HJW Arch 同源編譯通過，見
+  `artifacts/EXT-023/package-candidate-02/`，Linux binary `23f888dc639f`。
+- CORE-034 新候選來源 `f74ecdd86b732d0fb34fa12f0ca9defa377db6b8`，handoff `befb66685306`；
+  Windows ZIP `4d073b6f15f5d10c0c8594064c568555671e90c49394f7da64ff1d9568b7ec2e`。
+  三平台 ZIP 與每個成員已核。SDK alpha.5 的新包只變 `.cargo_vcs_info.json`，
+  插件沿已釘原 crate `ea6a1c2f5e8e`，來源逐成員一致；完整 pin 在 `feed-fix-intake/`。
+  原 binary `f26e88f7` 已先實收兩筆同參數 send，證實原 feed 0 ACK 問題解除。
+- EXT-023 `candidate-03` 三個真案例通過：兩筆不同 operation、缺 runtime 零效果、
+  畸形訊框後原 native 容器清除；全部在 Windows Host／HJW Arch 執行。
+  EXT-023／024 都仍是未發布候選，未加入七張正式驗收清單。
+- EXT-023 插件候選實作 `fe7c9c0411cc`、EXT-024 驗證 `75c3b42c5dc2` 已推遠端。EXT-024 `candidate-03` 已驗第一筆
+  回執未餵入時恢復、第一筆確認後雙重啟、unknown 配對後雙重啟不復活。
+  原父與兩筆實收 operation 對應完整；六個案例各三次模型 HTTP，容器集合均還原。
+  `evidence-analysis-01` 在 Windows 重算 snapshot SHA 與原位點；native restore 本身
+  計一次 suspension，正常累計 2、恢復累計 3，沒有歸零或把兩筆呼叫合併。
+- CORE-051 新交付 `9db8b3f073e3`／SDK alpha.9 的三平台 ZIP 與全部成員已核，
+  `artifacts/readiness/core051-handoff-inspection.json` 留來源與能力；尚未真消費。
+  EXT-047 仍缺 CORE-058，沒有建立空 scoped-session 插件。
+- 最新 readiness 為 `artifacts/readiness/after-core034-feed-recovery.json`。
+  下一步按 PR #14→…→#23→本次候選處理當前 base 的三平台 gate；CORE-035 extraction
+  配置、CORE-036 身份／Jev、CORE-050 音訊授權均仍無新回覆。EXT-024 的 light alias
+  投影、Work/run 等待及完整 H14 預算／停止見證需求見 `docs/core-interface-requests.md`。
+
+## 2026-11-05 08:28 UTC 已有進度
+
+- PR #12 已普通合併 `e90035586e9b`，18 份 CI ZIP／成員驗證回條在 PR #13 的
+  `artifacts/EXT-028/ci-receipt-f0843e1.json`。PR #13 head `9db51914174e` 已合入新 main；
+  Windows、Linux acceptance 與四個 package 通過，macOS 尚排隊。
+- PR #20 的 native job `127064263207` 已通過。`artifacts/EXT-023/ci-native-1e9c4b3/`
+  保留下載驗證：ZIP `09be6a2742ce217058f2fd91928513af35f88c4c5c7b904822ed99f3057c7e44`、
+  18 個頂層成員、真 Rust worker 與原 PID 清理。舊故障未重現；沒有新增因果修復主張。
+- 分支 `codex/ext-036-maintenance` 新增獨立 Rust `memory-maintenance`，管理者明選本地工作，
+  scope／指紋／原操作／Profile 均交核心核權。`candidate-06` 是當前 Windows 對拍；
+  已驗掃描、批准子集、重啟原回條、同筆數修訂拒舊指紋、兩個同維不同 Profile、
+  HTTP unknown 重啟不重發，以及清除來源後拒絕新 Reembed。正常 HTTP 2 次，未知 1 次。
+- CORE-035 固定來源 `0cdd9dffe07c18949990492fd2a9944919c455d3`，交付說明提交 `69cfdfd7b0ef`，
+  Rust SDK alpha.8；Windows ZIP `e2b964e87a30d5c230fbb0805a9de973cb91160b6e8b52606b363ca0fd77a152`，
+  crate `a8739c74d300f1044c94749ced333d9694920aa7c91728b19f624ff9fbaf2e63`。
+  三平台 bytes／成員均核驗，完整 pin 在 `compat/core-035/`，回條在 `producer-intake/`。
+  CORE-028 vector-coverage 回歸另鎖原 manifest／tree，標明 dirty 參考，不代替乾淨候選。
+- EXT-036 整卡仍 BLOCKED：公開 audit 未提供原 SQL FTS／向量／來源完整性問題清單；
+  audit/reembed 沒有自動清除回調，metadata 保留責任待釐清。`candidate-01` 留缺 write_subject
+  的拒絕，`candidate-04` 留未發生回調的失敗。插件收到此回調會停止並拒絕未證實的 ACK，
+  不刪無關工作。未發布、未部署、未計入七張正式驗收。
+- EXT-036 實作 `fdaa47576a54` 已推 [PR #22](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/22)，
+  Windows／Linux jobs 通過，macOS 排隊。真插件回條已交 [CORE-035 #46](https://github.com/Institute-of-Agent-Life/yuki-core/pull/46#issuecomment-6651927585)。
+- 已接續 EXT-034。`codex/ext-034-rebuild` 的診斷提交 `69e4e5a` 在
+  `artifacts/EXT-034/source-intake-02/` 保留真 Rust 最小重現：同一 Person／entry 的來源讀取成功，
+  `model.open`／`extract.preview` 皆 `-32003`，HTTP 零次；完整安裝設定、source version、
+  Host／SDK／consumer digest 與 transcript 均保存。這是可重現授權拒絕，未驗收重建。
+- `.ci-transfer/work-rebuild` 的完整 job journal／審閱／apply 尚未提交：
+  catalog、ci/windows.py、plugin.toml、main.rs、rebuild.rs、EXT-034.py、rebuild_stdio.py、
+  EXT-034-sequences.md 及 candidate-01…06 仍留工作樹。批准子集、kill 恢復、付費復用及
+  forget 尚未跑到，不把這些檔計入已驗插件。主樹四個 Code adapter 與 work-asr 改動均保留。
+- 最新 readiness 為 `artifacts/readiness/after-core035-intake.json`。暫無獨立就緒下一卡；
+  下一步等 CORE-035 公開 extraction route 設定或 PR #13 macOS gate。
+  EXT-033 缺精確選簇向量與權屬投影，EXT-035 缺原 SELF／真人前臺退讓交接。
+  EXT-048 還缺個人寫入及角色管理前置；CORE-051 目前只有 Mac 開發證據，沒有可驗 Windows
+  Host 交付，CORE-058／037 亦未見交付。CORE-034/036/050 三份回條仍待回覆。
+## 2026-11-06 PR #35 兩平台 CI／產物實收
+
+- 候選分支 `codex/ci-locked-cache` 及 PR #35 固定在 `8eba25f1c44b70983293bdc6b46b00edb5979174`；
+  快取實作 `0daf4c9`。本樹／分支 `codex/ci-cache-evidence` 只提交實收證據，保留已驗候選 head。
+- run `42183667489` 的 Windows／Linux acceptance、七個套件和 Connector 回歸全部通過，
+  17 個 jobs success；8 個 macOS checks 尚 queued。沒有合併。
+- 已下載核 30 ZIP：14 package、2 acceptance、2 Connector upgrade、12 cache-inputs；
+  GitHub digest／CRC／安全唯一成員／全部成員 SHA／manifest 內容、原 lock／來源 SDK
+  和實際 cache inputs 均符本 head。synthetic merge `f4772f760ee58e6bc8dd085ce4b7ff42eebc0fa4`
+  parents 為 main `ac8c1b2`／本 head，tree 與本 head 相同。
+- 12 個已完成 Rust package jobs 有 8 個從完整原 key 真命中；由原 GitHub job log／SHA
+  與 cache-input artifact 交叉核對。命中後仍跑 cargo test/build，依賴得到重用，插件本體
+  在新 checkout 的 debug／release 各編一次。未把本機熱輪零編譯推成 CI 全部零編譯。
+- 回條 `artifacts/readiness/ci-cache/hosted-8eba25f/receipt.json`／`summary.json`，原 ZIP 和
+  job logs 留在 source.json 所列本機只讀快取。macOS 尚缺 15 份 artifacts，完整 gate=false；
+  等其通過且核完全部產物才普通合併。原 Native Windows 207.235／26.719 秒結果仍沿用。
+  不由 hit 或執行快推斷排隊／組織配額改善。正式完成仍 7／68，原 WIP 保留。
+
+## 2026-11-06 收尾核對
+
+- 快取 [PR #35](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/35)
+  已推 `324d189721ef`（實作 `0daf4c9`）；PR #16 的去重 `972c66d` 已推。
+  07:45 UTC 全部目前 open PR #16…35 的所有 runs／分頁 jobs 無 failure，快照
+  `artifacts/readiness/current-pr-gates-before-cache-metadata.json`。PR #16 當時 7 success／
+  13 queued／5 running；PR #35 3 success／22 queued，均未全過，不合併。
+  本進度快照屬寫入前 head；後續合併只採 API 即時 head／base 與完整產物。
+- 原 PR #16 head `58cd960` 的 push `42149145226`、PR `42149150676` 已確認
+  completed/cancelled；新 head run `42179984095` 的完整 25 jobs 仍保留。
+- 新 CORE-038 gateway.media `b99b01a92443`／alpha.13、CORE-032 terminal
+  `61999b662f1e`／alpha.14 的六份 ZIP／全部 member SHA／來源與 dirty=false 已核。
+  `artifacts/readiness/new-interface-deliveries/` 是靜態交付核對，不是安裝或真插件消費。
+  公開方法已交付；尚需原 application／tenant 安裝核准與真 Main Work 路由的最小
+  公開配置序列。具體字段／正反例已交核心 PR #73 comment6679830369、
+  #75 comment6679830928，詳 `docs/core-interface-requests.md`。
+- 核心 main 仍 `ce66753708ef`，唯一公開 release 仍已驗 EXT-002 的握手預發版；
+  沒有新的正式 SDK／Host 發布。原 44／45／46／47／48／51／61 回條及本次
+  73／75 配置請求未見新回覆。只剩 runner／公開配置及既有上游合同等待。
+  正式完成 7／68；原四份 WIP 和未驗功能均保留。排程在本次收尾後恢復每小時檢查。
+
+## 2026-11-06 Rust CI 快取候選
+
+- `codex/ci-locked-cache` 實作 `0daf4c9d324bd5c80e738119bc2366ef67863f61`，從去重提交 `972c66d` 延續；快取作為獨立後續 PR，
+  PR #16 新 head `972c66d6e40e` 已推；新 PR run `42179984095` 已建立，原
+  `58cd960` 的 push／PR 兩輪均核無失敗後請求取消，產物未刪。快取需等 PR #16／
+  當前 main 前置及完整新基底 CI 後才可合併。正常／故障時序與來源策略見
+  `docs/ci-performance.md`。三平台與全部受影響單位的 gates 保留；沒有新增 job。
+- HJW Windows 10 項 cache 回歸與真 local-agent 冷／熱 build 通過。207.235 秒／
+  26.719 秒，38／0 筆 registry GET，熱輪無重編譯，原 SQLite 回歸兩輪皆執行。
+  actionlint 通過；十九份來源與原矩陣／步驟核對一致。具名回條
+  `artifacts/readiness/ci-cache/receipt.json`；第一輪路徑限制失敗保留於 windows-01。
+- 快取以 OS／架構／實際 Rust host／版本／lock／來源／實含 SDK SHA 隔離。
+  命中不跳過測試、重新建包和逐 bytes 驗證。原碼／vendor 不入快取；不寫使用者的
+  Cargo cache。SDK 仍為原 CORE-033 alpha.3，沒有新 Host／插件行為主張。
+- GitHub 當前 SHA 的三平台 CI、真正 cache hit、具名 ZIP／merge tree 仍待驗。
+  正式完成仍 7／68。Client9 PR #32 及 Main 媒體 PR #34 已推候選；最新功能進度見
+  `.ci-transfer/work-media-main/docs/implementation-progress.md`，本次新擦除阻塞回條
+  https://github.com/Institute-of-Agent-Life/yuki-core/pull/74#issuecomment-6679099141 。
+  CORE-032 terminal.work 的新候選已讀公開說明；尚未逐成員核包或消費，後續核真前置。
 
 ## 2026-11-06 CI 去重同步至佇列首張 PR #16
 
@@ -45,6 +478,13 @@
 - 另有 `work-connector-auth` 的新 CORE-033 alpha.12 Rust 接入 WIP，獨立保留，
   正在 HJW 驗證；本 PR #16 的原配對候選不冒充新 wire4 鑑權整卡驗收。
   其餘 Code／ASR／rebuild／subscription WIP 未動。正式完成仍 7／68。
+## CI 觸發去重（進行中）
+
+分支 `codex/ci-dedupe`，基於 main `ac8c1b287e5a320107f64975dfd318b521bd8f13`。
+PR 只跑一套 merge ref 檢查；更新 PR 時只取消同一 PR 的舊執行。
+main push 與手動執行仍保留，三平台及套件作業定義未改。Windows 實機的靜態檢查及
+事件模擬回條為 `artifacts/readiness/ci-dedupe-windows.json`；actionlint 1.7.12 通過。
+GitHub 實際觸發與當前 PR 的三平台、受影響套件及具名產物仍待驗證後才能合併。
 
 ## 2026-11-05 PR #14 合併與 PR #15 新基底
 
@@ -119,9 +559,9 @@ manifest。回條含來源提交、SDK／schema／peer／消費者 digest、逐�
 
 ## 當前進度
 
-七張卡已完成任務書驗收。另有六張卡完成下表的 Windows 候選工作。
+七張卡已完成任務書驗收。另有八張卡完成下表的 Windows 候選工作。
 三平台 CI 與合併狀態以各 PR 為準。此批開發對拍不計入七張正式驗收。
-最新依賴快照見 `artifacts/readiness/after-core032-039-candidates.json`。
+先前快照見 `artifacts/readiness/after-core032-039-candidates.json`、`after-core033-candidates.json`、`after-core038-candidate.json`。本輪更新見 `artifacts/readiness/after-core034-readiness.json`。
 
 | 卡／分支 | 實作提交 | Windows 已核實 | 仍需 |
 |---|---|---|---|
@@ -130,11 +570,14 @@ manifest。回條含來源提交、SDK／schema／peer／消費者 digest、逐�
 | EXT-005 · codex/ext-005-feishu | `6183e58` · [PR #13](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/13) | 飛書／Lark 身份隔離、亂序重組、writer 斷線無成功 ACK | CORE-032 正式交接 |
 | EXT-020 · codex/ext-020-env | `cf1c2a5`、`1e7906b` · [PR #14](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/14) | 原 Manager 來源包、run 查詢與缺後端局部失敗 | Work/run 授權，真 gVisor/execd、PTY 及輪轉 |
 | EXT-040 · codex/ext-040-setup | `a607e8c` · [PR #15](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/15) | 簽名原生／OCI 安裝，無 QQ ready，明選 web-fetch | CORE-039 正式交接、外部入口與選配服務實測 |
-| EXT-011 · codex/ext-011-local-agent | 候選提交 | 原 Connector 配對、無 instance 裝置跨重啟保存 | Work 以外的裝置授權與撤權狀態 |
+| EXT-011 · codex/ext-011-local-agent | 12b3ace · [PR #16](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/16) | 原 Connector 配對、無 instance 裝置跨重啟保存 | Work 以外的裝置授權與撤權狀態 |
+| EXT-015 · codex/ext-015-client | `1d8d377` · [PR #17](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/17) | 雙裝置重放、合併後原入口隔離、撤銷單台設備 | 原入口明選、附件／目標操作、Social 出站與 SSE |
+| EXT-031 · codex/ext-031-media | `b69ca40` · [PR #18](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/18) | 所選 PDF 頁文、原影片幀與時間、三類壞檔、自動清除回調與暫存回收 | 原模型呈現、正式交付 |
 
 CORE-033 已交接未發布的個人入口候選包，EXT-011／015 可做開發對拍。CORE-025 已開
 [核心 PR #34](https://github.com/Institute-of-Agent-Life/yuki-core/pull/34)。EXT-004／006
 仍缺原 Bot／租戶附件的公開授權與驗收回條，詳見 `docs/core-interface-requests.md`。
+CORE-038 已補齊出站媒體版本讀取；入站原 Bot／租戶取件回調仍待交接。
 EXT-067 完整基底對拍還需 EXT-004 的實際分段投遞證據。
 
 PR #15 修正外接磁碟打包時讀取 catalog 的問題。Windows 實機驗證
@@ -252,6 +695,134 @@ PR #15 的 Linux push 檢查曾在 Codex 測試代理重連時逾時。Windows �
 `artifacts/EXT-007/proxy-eof-01/` 是修正後 Windows 完整升級與 wire4 對拍；
 172 個 pytest 案例中 171 通過、1 跳過。Connector 的發行程式與鎖檔未改。
 
+## EXT-011 個人入口開發候選
+
+核心 PR #36 交接 `becbdb0316aa` 提供未發布的乾淨 CORE-033 `994aee20ced7`。三個 OS 包、宿主 schema、Client9／wire4 來源及方法索引釘在 `compat/core-033/`。HJW 實用 Windows 包 SHA-256 `ddc2cf1c01dd9df9e0eecf6b1b85984176810b8c763a4b7bd493d924e40a53f8`；宿主 SHA-256 `54e4825ddd9de64d3e71626e320fbec2e8ddd0d60099ef6775a5573aaf2bbfa3`，Rust SDK `1.0.0-alpha.3 / e5b9fde5298eb71ff252fc8acd430b44d8d965761d5d3c948da47fced49c7dbd`。
+
+原 Python Connector 用一次性碼向 Rust local-agent 配對。錯用途和重用配對碼回 401，重啟後仍能按原 device_id 列出沒有 instance 的設備。原 wire4 連線不帶 Work，宿主交換接口缺 Work 回 422；插件拒絕升級，保留舊 journal。需要核心給出與指定 Work 無關的 connector 鑑權、原裝置 ID／namespace 和即時撤權語義，再驗兩條連線的 fencing。
+
+實機插件 SHA-256 `51a4dde84c7eb06127793c62a82fa3e7d6ee8b46c1b5d94f81db4ef49f0f2ee1`。回條 `artifacts/EXT-011/candidate-03/device-catalog.json`，SHA-256 `410fd6c97aafcfe5c3a896291b7d6332e12a1bf0326c5c5d5e188101cd195434`。同目錄有 manifest、transport 與逐方向 `wire.jsonl`。
+
+## EXT-015 多裝置 Client9 開發候選
+
+同一 CORE-033 與 alpha.3 SDK，Rust client 透過真宿主握手，使用零業務 grant。HJW 的 34 次插件 HTTP 呼叫核實兩裝置共享入口、重放只留一事件、不同正文回 409、另一原入口可獨立使用同 UUID。Person A 併入 B 後兩個原 request_person_id 和各自回條仍可讀。單台被撤權時另一台仍能讀取，宿主重啟可取回原回條。
+
+直接向候選宿主明選另一入口仍回預設 binding。插件在派發前拒絕明選入口／會話，失敗寫入無回條。附件／agent_target 回 503，原 SSE 路由回 404；對應入口選擇、完整衝突判定與原子出站效果仍待核心。兩個 Rust 路由邊界回歸在 `artifacts/EXT-015/package-windows/`。
+
+實機插件 SHA-256 `5b890f5e8244a82738633682a1e7a49f94e3fa576602fd57c503a564aa0a2cad`。回條 `artifacts/EXT-015/candidate-01/original-uuid-entry.json`，SHA-256 `a4767cdd810ab075363ee2d269232ce95f5527d4480dca2487916e7cfc8bf216`。同目錄有 manifest、transport 與逐方向 `wire.jsonl`。
+
+## EXT-031 選讀文件與影片開發候選
+
+CORE-038 乾淨來源 `e25c2b8acce34858d5fd67ac408186e49a1da160`，交接提交 `685b1d59ae64`，SDK Rust `1.0.0-alpha.4`。三平台候選成員逐一驗雜湊，固定於 `compat/core-038/source.lock.json`。HJW 使用 Windows ZIP `f7bff236ca0c518016a4bf40dafaddb29b9d86d6fa92722fdce179620d296310`；原生宿主 `7b1c226caf099264dc74f64a988391963a50505a438c5f6d7a1d022f7c52af71a3`。均未公開發布。
+
+獨立 Rust media 插件按原 handle 分塊讀取，復用基線原版 document_reader.py 和鎖定的 FFmpeg 7.1；原解析器 bytes 未改。實機只解碼 slot 1，取得 PDF 兩頁文字和影片第 0／5 秒的兩個不可變 PNG。壞檔、加密、空文件回未讀。第二塊到達前清除來源，晚到結果失效，再讀遭拒，臨時目錄清空。`candidate-01` 太早截取 wire，漏等非同步 forget；`candidate-02` 曾加入手動暫存責任登記。原始回條保留。
+
+`artifacts/EXT-031/candidate-02/media-inspection.json` SHA-256 `3cdd5fd92089a927627f9cdd5f3bd842bbd39600c9ad5175738075c6ea29ab1b`；插件 SHA-256 `ad83ae19b484349ace01f83a3bbb491c97fd6ef7e444dc57fe17be247324ee46`。同目錄含逐方法 wire、manifest、transport 與 owner-disposition；`package-windows.json` 保留獨立建包命令。兩幀目前為 no_vision，待選讀與原 Main 呈現的公開串接。影片 runtime 現鎖 Windows x86_64，其他平台需另驗 codec；三平台 CI 建置／測試與真 Host 解碼分列。
+
+2026-11-05 修正測試等待時序。CORE-038 `d1b7c1b` 的診斷證實原包已登記持有者；Windows `candidate-03` 完全移除手動 acquire，實收原來源 `[6]` 的 forget 回調、原 key／watermark，等待 pending 清空。回條 SHA-256 `405e7c1359165dced882df1c6400bdd29ae2f781106b583e56225d17b587ea55`，新建插件 binary `2d0e7e9b910789bf34b8d263475c71a720a2ee650628fc88a3292a64e26d454c`。`package-windows-03.json` 記建包，宿主／SDK 鎖未變。撤回自動登記缺失的判定；原 Main 呈現與正式發布仍待交付。
+
+修正提交 `262d782` 已推 PR #18，[更正回條已交還核心](https://github.com/Institute-of-Agent-Life/yuki-core/pull/40#issuecomment-6646981531)。PR #11 已合併 `8d2f3c6`；PR #12 head `f0843e1` 合入新主線後正重跑 CI。其餘依順序合併，舊 base 的綠燈不可替代新 merge 產物。
+
+## 下一步：EXT-023 的執行環境
+
+CORE-034 未發布候選來源 `f3f3723aa5322c6a2a20e8cb3b04d845cd7773cc`，SDK alpha.5、composition 1；三平台 ZIP 與每個成員均已驗 SHA。Windows ZIP `fc5f6f1cb8ddd2fe4c62b335705699b6fb8e181993b0a57fa920fe0798e67d04`，完整能力及雜湊見 `artifacts/readiness/core034-handoff-inspection.json`。尚未記作真 Monty 消費證據。
+
+原 worker 固定 Monty `3f9d6ef413fb951e5b80113b7088d535bd028fcb`、原 string-cache 補丁、Linux bwrap launcher、Rust 1.96.0／CPython 3.12 codec。原平台清單沒有 Windows ABI。舊回條 `core034-windows-prerequisites.json` 只測 PATH 上的 System32 舊入口；其「拒絕訪問」不能證明 WSL 不可用。
+
+2026-11-04（太平洋時間）經 SSH 實收：`C:/Program Files/WSL/wsl.exe` 可使用 WSL 3.0.1.0，成功進入 Arch，核心為 `6.18.40.1-microsoft-standard-WSL2 x86_64`。核心已編入 AppArmor／seccomp filter，但 AppArmor enabled 為 `N`；Arch 沒有 apparmor、bubblewrap、docker、python、rust、gcc。具名回條 `artifacts/readiness/core034-ssh-wsl-prerequisites.json` SHA-256 `3ac09579389cb3eb5bbf2e74762b40e5d53fdc9d96098899c591c95fd3238bd0`，探測腳本 `codemode-ssh-wsl-preflight.py`；SSH 和 Linux 探測成功，尚未執行 worker 隔離驗收。
+
+使用者隨後明確授權準備 Arch、安裝隔離工具和必要的 WSL 重啟。`codex/ext-023-codemode` 已保留 `.wslconfig` 原有 memory／swap 設定，追加 AppArmor 啟動參數；重啟時只有本次探測的 Arch 在執行。原索引對應的 10 個 Arch 官方封存套件逐一核 SHA 並驗簽安裝，包含 Docker 29.6.0、AppArmor 4.1.7、bubblewrap 0.11.2，沒有升級既有基礎套件。
+
+`artifacts/EXT-023/environment-01/manifest.json` 記錄環境準備 PASS，含原始故障回條。Arch 的既有 systemd-firstboot 阻塞一般服務啟動，因此本次 daemon 使用專用 socket／資料目錄，未啟用開機服務。公開映像固定 digest 後傳入 HJW；真容器已驗 enforce、Seccomp=2、CapEff/CapPrm/CapBnd 全零、NoNewPrivs=1、只有 loopback、外網失敗、宿主檔不可見與根目錄不可寫。這是執行環境驗證；EXT-023 的原 Monty worker 建置及 Rust 插件仍在進行，尚無 VM 真消費回條或整卡驗收。
+
+### EXT-023 原生 runtime 已驗，Rust 插件對拍進行中
+
+分支 `codex/ext-023-codemode`、PR #19；環境提交 `3dda59a0e5a09c524f1575df54a8557c1b77b292` 已推遠端。原 Monty SHA／補丁／launcher 已在 HJW Arch 建成獨立映像，`images/monty-runtime` 有自身版本、來源鎖、建置、驗證與發行前綴。為符合原 4 GiB WSL 限額，建置期使用 16 codegen units、停用 LTO；執行期限制未變。
+
+未發布 OCI digest `65fcd704d953a9ca9be9c1e70269fc21768b571635e8fa8c38bc8b30c84ceb9a`，archive SHA `fc82cc61ab4b26bb07ef0978b58ff5de0173e41fe08b1879d870a9345502f1ee`。`artifacts/EXT-023/runtime-01/manifest.json` 彙總實收：原 worker 的 stacked AppArmor enforce、Seccomp=2、NoNewPrivs=1、零 capability、六種 namespace、無宿主資料與網路，以及取消／逾時／父程序死亡後清除。兩次同參數呼叫在原 feed 0 保留 call ID 0／1，跨三個新容器恢復；壞 dump 和非凍結函式遭拒。這是 VM／codec 證據，尚未證明核心業務父鍵／子序號及實體效果。
+
+映像封裝的讀取權限已修正。先前誤加的容器層 NoNewPrivs 阻止原 launcher 轉換；依原安全文檔恢復 bwrap 內的原邊界，worker 的 NoNewPrivs=1 斷言保留。598 個鎖定依賴及 326 份 notice 的稽核無未解析項，原兩項上游 MIT 通知缺項有明確記錄。Windows 獨立來源包、兩個完整性故障回歸及 `artifacts/EXT-001/codemode-packaging-01` 通過；三平台來源包與 Linux 真映像 CI 已加入，結果待遠端執行。
+
+CORE-034 `f3f3723aa532`／SDK alpha.5 的 crate、schema、三平台來源與 SHA 鎖在 `compat/core-034/`；Rust worker 控制模組初版已通過 Windows `cargo check`，尚未提交為完成插件。下一步是實收公開凍結投影、接入 Rust Code 插件，再對拍原父 operation／子 ordinal 和未知結果；未交還真插件消費回條，也未標記 EXT-023／024 整卡完成。
+
+映像與封裝提交 `d76aae47ec5853b9d373b55b4ccad663409c93c4` 已推 PR #19。其 Windows package job `127037883124` 的 OCI 來源包成功；archive 回歸在非正規化 TEMP 基底誤拒合法成員。修正為基底與成員都先 canonicalize，保留越界與非普通檔案拒絕。HJW 三項回歸與來源包均過，回條 `artifacts/EXT-023/packaging-fix-01/`；遠端須重驗當前 head。
+
+PR #19 的 d5d2aa1 Linux native job 已通過；PR #20 的 job 127051966392
+隨後在 blocked-feed disconnect 的退出碼斷言失敗。原日誌／artifact ZIP 已核 SHA。
+HJW Arch 完整重播五次、另做三十次斷開測試全部通過，尚未重現 CI 故障。
+驗證器保留退出碼為零及原 native PID 消失的斷言，失敗時增加容器 state、
+stdout／stderr；Windows 來源包驗證通過。回條在
+`artifacts/EXT-023/disconnect-diagnostics-01/`。等待新 CI 診斷，沒有宣稱故障已修復。
+
+### EXT-023 真 Rust／Host 對拍的具體阻塞
+
+Windows Host `f3f3723aa532` 與 Rust SDK alpha.5 已實際協商，Linux Rust binary
+`f26e88f764a44c666cdee68b012e28d422ebd46a9ffbeae5240bee71d33d6b0d` 經同一 HJW
+的 WSL 啟動真 Monty。第一筆 `send` 有 HTTP 實收與原 child 回條；第一筆餵入後
+原 VM 仍是 feed 0、下一 engine call ID 是 1。核心拒絕 feed 0 的 post-answer
+確認（`tool.resume` 回 -32003），所以第二筆未派發。具名回條及所有 digest 在
+`artifacts/EXT-023/core034-consumer-01/`。未偽造 feed 序號，未新增重試或模型購買。
+
+獨立 Rust worker 模組在 HJW Windows 編譯／預取消測試通過，原生 ABI 測試明列
+不適用；Arch 實跑兩項測試全部通過，包含跨容器原 dump、同參數的兩個原 call
+及清除。`plugins/codemode` 現提交可用 worker library；完整 `main.rs`、`rpc.rs`、
+`catalog.rs`、`compose.rs` 尚在工作樹，待公開接口修正後才可完成驗收與發行單位。
+下一步是消費核心相容 feed-ack 交付、續做原父／子恢復；同時等待順序 PR 的 CI。
+
+## EXT-025 候選輸入已對拍，等待具體生產者接口
+
+`codex/ext-025-participation` 從 `d5d2aa1` 建立獨立工作樹，保留 EXT-023 未完成的
+Host adapter。EXT-023 的 feed 回條已交還
+https://github.com/Institute-of-Agent-Life/yuki-core/pull/43#issuecomment-6649583219 。
+`b0b515f` 修正已使 PR #19 的 Windows／Linux OCI package 通過，最新 worker 的
+Windows／Linux jobs 也通過；macOS 與 native image 仍在執行／排隊。
+
+CORE-036 `9f9c3d0eaace`／SDK alpha.7 和 CORE-050 `952954d86166`／alpha.6 的
+三平台包逐成員核 SHA，鎖在 `compat/core-036` 與 `compat/core-050`。實際消費
+使用整合 aux 方法的 alpha.7 Windows Host，binary `429b1797ffdda7411314572f812123bac2ca31826ca0dd725acdc1c36a45db38`。
+Rust 診斷程式已實收 metadata 通知與 source bytes，沒有 promotion／模型呼叫。
+缺 canonical Person／Conversation／generation 等原庫必要輸入；原 Jev wire
+也沒有已驗的相容 Profile。回條 `artifacts/EXT-025/source-intake-01/` 與具體欄位
+需求已備妥。未建立空正式插件，未改寫參與庫，未聲稱 EXT-025 完成。
+
+EXT-025 intake 提交 `2874585` 已推 PR #20；[具體回條已交核心 #45](https://github.com/Institute-of-Agent-Life/yuki-core/pull/45#issuecomment-6649779250)。
+
+## EXT-030 音訊路由 intake 與本輪 CI
+
+分支 `codex/ext-030-asr` 位於 `.ci-transfer/work-asr`，從 `2874585` 建立。
+CORE-050 `952954d86166`／Rust SDK alpha.6 的實物鎖在 `compat/core-050/`。
+HJW Windows 的真 Rust 診斷 binary `d1c5277638265bc52aceba1dc77328494b21f5e0a15495554ad71a3ed32333b9`
+已讀到原 WAV 的 MIME／digest。同一 handle／route 的文字請求成功，HTTP 一次、
+usage 4+8；`selected_media=true` 被 -32003 拒絕，未派發音訊。
+`artifacts/EXT-030/source-intake-01/` 含逐方法 wire、原 provider bytes、build、
+manifest 與所有 helper/source hash。這是 scope 診斷，沒有 ASR 成功或逐字稿。
+
+Rust `asr.rs`、媒體 SDK 升級與整卡測試仍留本工作樹，尚未提交為完成插件。
+先前 `candidate-01` 是測試配置缺欄位；具名診斷已補原入口、原執行 root 及
+公開 `origins=["call"]`。目前需要生產者給出選定音訊的配置／授權條件。
+原 Main／歷史、雙 Bot、引用不再購買、轉碼與清除晚返均未宣稱通過。
+
+PR #19 `d5d2aa1` 的 Linux native image／Rust worker 已通過，下載 ZIP 與 18 個
+成員驗 SHA；回條在 `artifacts/EXT-023/ci-native-d5d2aa1/`。這份 CI 映像為
+`92b3ab6849f868142975eb453b078a26169a113c23a71b38ece353d619b17d05`，不可混同 HJW 映像。
+PR #20 的 native job `127051966392` 隨後在 blocked-feed disconnect 的退出碼
+斷言失敗，正在 HJW Arch 重現；先修此故障。PR #12 剩 macOS package 排隊，
+其餘順序 PR 不越過；最新 queue 檢查在 `artifacts/readiness/after-core050-intake.json`。
+CORE-032 已合併 `30a5ea77bf6c`，公開 release 仍只有握手預發版。
+
+本輪提交／交接：EXT-030 診斷 `b5a007c` 已推 [PR #21](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/21)，
+[回條交核心 #44](https://github.com/Institute-of-Agent-Life/yuki-core/pull/44#issuecomment-6650249495)。
+取消時序診斷 `5ea1d55` 已推 #19，正常合入 #20 `1e9c4b3`、#21 `cb52127`。
+另把 PR #19 的原 image.tar 核全部 blob SHA 後送到 HJW，再做十次 native
+斷開測試全部通過；`artifacts/EXT-023/ci-image-disconnect-01/` 留原件。Docker
+load 所用 OCI manifest `2be28421f615` 與 CI config ID `92b3ab6849f8` 明確分列。
+
+目前 45 次 Arch 斷開均無重現，仍等新 CI 的退出碼／container state／stdout／stderr，
+不宣稱已修復 runner 故障。已對 #19／#20 的十個過期 SHA workflow 請求取消，
+保留原 failure 回條；當前 SHA 的全部檢查仍為合併條件。PR #12 尚等 web-fetch
+macOS package，其餘 #13→#21 按新 main、當前 SHA 及下載產物逐張處理。
+已就緒本地工作已推；下步等待 CI 或核心回覆，原未完成 adapter／ASR 工作樹保留。
+
 ## PR #12 合併與 PR #13 新基底
 
 PR #12 head `f0843e106711` 的 push `41939834061` 與 PR `41939841639` 全過。
@@ -261,6 +832,8 @@ PR #12 head `f0843e106711` 的 push `41939834061` 與 PR `41939841639` 全過。
 PR #13 已正常合入此 main；程式樹未變，新增前卡回條與進度。新 head 的三平台
 與受影響套件仍須重驗，舊基底綠燈不作合併證據。
 
+本次 Code 候選已正常合入 main `526a35382d9b`；合併只加入前卡 CI 回條與進度，
+程式內容不變。後續 main 前進仍須再正常合入，不能沿用本次 base 的舊綠燈。
 ## PR #13 合併與 PR #14 新基底
 
 PR #13 head `9db51914174e` 的 push `41980406600`、PR `41980413395` 三平台及

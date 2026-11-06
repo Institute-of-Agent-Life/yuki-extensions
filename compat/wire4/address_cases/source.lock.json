@@ -1,0 +1,167 @@
+{
+  "baseline": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+  "source_path": "tests/integration/test_connector_address_e2e.py",
+  "source_git_blob": "e0ae1ad88dc5377f2f36d2e205e3426016974d94",
+  "source_sha256": "50fe9c60e0b6c230e393d592a140a1818ff9ac7503859dc4881d816279fceb03",
+  "source_use": "read-only oracle; never import original Host private modules",
+  "github_artifact": {
+    "id": 13194877063,
+    "node_id": "MDg6QXJ0aWZhY3QxMzE5NDg3NzA2Mw==",
+    "name": "tests-integration",
+    "size_in_bytes": 3625586,
+    "url": "https://api.github.com/repos/YuanYeYouTao/Yuki/actions/artifacts/13194877063",
+    "archive_download_url": "https://api.github.com/repos/YuanYeYouTao/Yuki/actions/artifacts/13194877063/zip",
+    "expired": false,
+    "digest": "sha256:da2c0c140992b3a2af8dee54bd89e0a32caf4184dca5dae0dc131637c0e9b70b",
+    "created_at": "2026-11-03T00:57:17Z",
+    "updated_at": "2026-11-03T00:57:17Z",
+    "expires_at": "2026-11-10T00:57:16Z",
+    "workflow_run": {
+      "id": 41554925880,
+      "repository_id": 1309150700,
+      "head_repository_id": 1309150700,
+      "head_branch": "main",
+      "head_sha": "329ca7c487414d2f54ddd98ff4727446ed2446cd"
+    }
+  },
+  "junit_sha256": "0452e543e7a4b30eb979d10756d33891647279d2eb86c3ae4f3bc0d1aeddb718",
+  "junit_tests": [
+    {
+      "classname": "tests.integration.test_connector_address_e2e",
+      "name": "test_server_cli_only_saves_original_installation[https://new.example/role/yuki/-wss://new.example/role/yuki/agents/v1/connect]",
+      "time": "0.132"
+    },
+    {
+      "classname": "tests.integration.test_connector_address_e2e",
+      "name": "test_server_cli_only_saves_original_installation[http://127.0.0.1:18767/role/yuki-ws://127.0.0.1:18767/role/yuki/agents/v1/connect]",
+      "time": "0.114"
+    },
+    {
+      "classname": "tests.integration.test_connector_address_e2e",
+      "name": "test_server_cli_only_saves_original_installation[http://localhost:18767-ws://localhost:18767/agents/v1/connect]",
+      "time": "0.119"
+    },
+    {
+      "classname": "tests.integration.test_connector_address_e2e",
+      "name": "test_server_cli_only_saves_original_installation[http://[::1]:18767-ws://[::1]:18767/agents/v1/connect]",
+      "time": "0.118"
+    },
+    {
+      "classname": "tests.integration.test_connector_address_e2e",
+      "name": "test_server_cli_keeps_remote_tls_requirement[http://100.100.100.100]",
+      "time": "0.115"
+    },
+    {
+      "classname": "tests.integration.test_connector_address_e2e",
+      "name": "test_server_cli_keeps_remote_tls_requirement[http://remote.invalid]",
+      "time": "0.113"
+    },
+    {
+      "classname": "tests.integration.test_connector_address_e2e",
+      "name": "test_server_cli_keeps_remote_tls_requirement[ftp://host]",
+      "time": "0.113"
+    },
+    {
+      "classname": "tests.integration.test_connector_address_e2e",
+      "name": "test_cli_start_upgrades_old_url_namespace_before_connecting[0]",
+      "time": "0.104"
+    },
+    {
+      "classname": "tests.integration.test_connector_address_e2e",
+      "name": "test_cli_start_upgrades_old_url_namespace_before_connecting[1]",
+      "time": "0.101"
+    },
+    {
+      "classname": "tests.integration.test_connector_address_e2e",
+      "name": "test_cli_start_rejects_another_device_without_rewriting_original_evidence",
+      "time": "0.118"
+    },
+    {
+      "classname": "tests.integration.test_connector_address_e2e",
+      "name": "test_running_connector_keeps_original_shell_when_address_is_saved",
+      "time": "0.454"
+    }
+  ],
+  "junit_result": "11 observed passes; no failure/error/skipped child",
+  "receipts": [
+    {
+      "path": "connector-address/12a54418d8b6e2b8/attempt-13xsi1b5/evidence.json",
+      "sha256": "cbe6ba3d288505d9b4786fa97f52100bb31f0be76ba0b135a315bb4e6d939da7",
+      "revision": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+      "nodeid": "tests/integration/test_connector_address_e2e.py::test_server_cli_only_saves_original_installation[http://[::1]:18767-ws://[::1]:18767/agents/v1/connect]",
+      "file": "cbe6ba3d288505d9.json"
+    },
+    {
+      "path": "connector-address/23ec17df6af7ba24/attempt-ugafd97r/evidence.json",
+      "sha256": "ba896c805296b03809f29baabc346b5a2394da5e32dee5154a06adf0d3cf0022",
+      "revision": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+      "nodeid": "tests/integration/test_connector_address_e2e.py::test_server_cli_keeps_remote_tls_requirement[http://remote.invalid]",
+      "file": "ba896c805296b038.json"
+    },
+    {
+      "path": "connector-address/27dd1d2a881484aa/attempt-y3j_qoyo/evidence.json",
+      "sha256": "0bbce19c1cd88e0c8743345dc17f01ad84f0bf1b86e66a3a16523cf2b06f1cd3",
+      "revision": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+      "nodeid": "tests/integration/test_connector_address_e2e.py::test_server_cli_only_saves_original_installation[https://new.example/role/yuki/-wss://new.example/role/yuki/agents/v1/connect]",
+      "file": "0bbce19c1cd88e0c.json"
+    },
+    {
+      "path": "connector-address/317b8dd1bd29002b/attempt-aagu5qbe/evidence.json",
+      "sha256": "1039782a271ab538dda23e61ade2d07ddf01c14602b27a98860e2c70e1c92987",
+      "revision": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+      "nodeid": "tests/integration/test_connector_address_e2e.py::test_server_cli_only_saves_original_installation[http://127.0.0.1:18767/role/yuki-ws://127.0.0.1:18767/role/yuki/agents/v1/connect]",
+      "file": "1039782a271ab538.json"
+    },
+    {
+      "path": "connector-address/6f0e72c06ccf93cf/attempt-ywmtc0d5/evidence.json",
+      "sha256": "fa37752e35c005a767978a8b844e607459d109cbca71d2037a7085cd4a1f1d3c",
+      "revision": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+      "nodeid": "tests/integration/test_connector_address_e2e.py::test_server_cli_only_saves_original_installation[http://localhost:18767-ws://localhost:18767/agents/v1/connect]",
+      "file": "fa37752e35c005a7.json"
+    },
+    {
+      "path": "connector-address/6f395ed93a719181/attempt-kwgqrlck/evidence.json",
+      "sha256": "63ab03c2000d43bbf91c2a9d15a78e5580fe3dbee64fdc4d6baaa2449a14a151",
+      "revision": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+      "nodeid": "tests/integration/test_connector_address_e2e.py::test_running_connector_keeps_original_shell_when_address_is_saved",
+      "file": "63ab03c2000d43bb.json"
+    },
+    {
+      "path": "connector-address/9daedb801d548130/attempt-e2ulviuh/evidence.json",
+      "sha256": "184d1ef4e8614e1b59cedf64d0c5fbfaed797ff758fd490cd0483a2d5de28960",
+      "revision": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+      "nodeid": "tests/integration/test_connector_address_e2e.py::test_cli_start_upgrades_old_url_namespace_before_connecting[1]",
+      "file": "184d1ef4e8614e1b.json"
+    },
+    {
+      "path": "connector-address/acaa79b44dd9cdf2/attempt-ytfynenx/evidence.json",
+      "sha256": "b085e8517b23a00ff24671ec30856d9390857c228bf1fa0dc243b9e801ffba88",
+      "revision": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+      "nodeid": "tests/integration/test_connector_address_e2e.py::test_cli_start_upgrades_old_url_namespace_before_connecting[0]",
+      "file": "b085e8517b23a00f.json"
+    },
+    {
+      "path": "connector-address/75fa73a40767b85f/attempt-4hib59tl/evidence.json",
+      "sha256": "82ab2af540d2f345535ba448a869bd377cac607447e79c8c1ba3c49313ac90fd",
+      "revision": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+      "nodeid": "tests/integration/test_connector_address_e2e.py::test_cli_start_rejects_another_device_without_rewriting_original_evidence",
+      "file": "82ab2af540d2f345.json"
+    },
+    {
+      "path": "connector-address/d8729712386bfe18/attempt-u502ggkx/evidence.json",
+      "sha256": "07f74cc6d8675e33c6d434b8a7ad35e4e30e81e255a6a57349e115bebc54a09f",
+      "revision": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+      "nodeid": "tests/integration/test_connector_address_e2e.py::test_server_cli_keeps_remote_tls_requirement[http://100.100.100.100]",
+      "file": "07f74cc6d8675e33.json"
+    },
+    {
+      "path": "connector-address/e6c12382cde92024/attempt-lev7cfrl/evidence.json",
+      "sha256": "57f4b40fb479cb80bc522d9aac0eeed7dc0f5bfc00011b1dcd9f91512c3714ea",
+      "revision": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+      "nodeid": "tests/integration/test_connector_address_e2e.py::test_server_cli_keeps_remote_tls_requirement[ftp://host]",
+      "file": "57f4b40fb479cb80.json"
+    }
+  ],
+  "oracle_file": "original-address-tests.py.txt",
+  "historical_only": true
+}

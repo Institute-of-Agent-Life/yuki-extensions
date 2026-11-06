@@ -1,0 +1,34 @@
+{
+  "card": "EXT-006",
+  "scope": "bounded fixture inventory only; no deployment or migration performed",
+  "synthetic_source": {
+    "path": "artifacts/EXT-005/candidate-01/lark-frames.json",
+    "sha256": "55fb682c455fc5f43349d87d9c7c6c3c760d2136579d8c6e92738ae754dce9a3",
+    "source": "199dff095be0bc87c9713beaa0419400cb424a7c",
+    "verified_events": [
+      1,
+      1,
+      2,
+      2
+    ],
+    "owner": "original Host event/admission writer",
+    "handling": "retain account/app/tenant/namespace and original event IDs. An observed ACK is evidence of that event, never a new send or a fake cursor."
+  },
+  "fresh_private_store": {
+    "scope": "REST client in a new plugin process",
+    "persistent_resource_files": false,
+    "credentials": "only deployment environment references; do not export values",
+    "reconstructible": [
+      "short-lived tenant token",
+      "incomplete transfer bytes",
+      "WS fragment buffer"
+    ],
+    "exported_secrets": 0,
+    "exported_cursors": 0
+  },
+  "field_verification_pending": [
+    "deployed app/tenant setup and secret references",
+    "any old installation-specific durable reconciliation or upload receipts",
+    "actual CORE-041 instance mapping. Do not declare a deployed store empty from the fixture."
+  ]
+}

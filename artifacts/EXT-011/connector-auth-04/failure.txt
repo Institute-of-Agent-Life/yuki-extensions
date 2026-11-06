@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "C:\Users\Hilbert\yuki-extension-tests\e02ee6fe4a8468e6f5a7\src\ci\check.py", line 37, in main
+    report_name, report = runner(root, args.out.resolve())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hilbert\yuki-extension-tests\e02ee6fe4a8468e6f5a7\src\tests\cases\EXT-011.py", line 173, in prepare
+    account_after = owner.cli("operator", "account", "open", "qq", "connector-auth", "external", "2", "--person", other, "--start", "2")
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hilbert\yuki-extension-tests\e02ee6fe4a8468e6f5a7\src\ci\personal_preview.py", line 135, in cli
+    raise RuntimeError(
+RuntimeError: Host CLI refused ('operator', 'account'): {"error":"operator: \"account has a different current assignment\""}
+

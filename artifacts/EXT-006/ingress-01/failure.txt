@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "D:\yuki-extension-tests\fs-media-ingress-01\run.py", line 17, in <module>
+    h=mod(root/'tests/peers/feishu_media_host.py');v=h.run(src,out,binary.parent,'0b28a8f2d044d31f4b8890cb1b276819656c6886fb19d84951d3bed27080f212')
+                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\fs-media-ingress-01\tests\peers\feishu_media_host.py", line 24, in run
+    filename,r=test.prepare(root,out,contract='core-038-main',package_builder=verified_package)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\fs-media-ingress-01\tests\cases\EXT-005.py", line 182, in prepare
+    wait(complete.is_set);assert not failures,failures
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\fs-media-ingress-01\tests\cases\EXT-005.py", line 23, in wait
+    raise RuntimeError("native fixture/host readiness timeout")
+RuntimeError: native fixture/host readiness timeout

@@ -1,0 +1,46 @@
+{
+  "source_commit": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+  "changes": [
+    {
+      "source": "src/yuki/codemode/capacity.py",
+      "source_sha256": "86f6b0f25a14b80e7576cf7a0f1fb52927ca8ea1875444940ffdc6ac67c2fcb1",
+      "packaged": "backend/yuki_monty_backend/capacity.py",
+      "packaged_sha256": "86f6b0f25a14b80e7576cf7a0f1fb52927ca8ea1875444940ffdc6ac67c2fcb1",
+      "change": "Rename backend imports; execution logic unchanged"
+    },
+    {
+      "source": "src/yuki/codemode/driver_types.py",
+      "source_sha256": "46b78b27b91297653e1569177d6a5eefbabd4882e95290073ba2c9e762a29b65",
+      "packaged": "backend/yuki_monty_backend/driver_types.py",
+      "packaged_sha256": "46b78b27b91297653e1569177d6a5eefbabd4882e95290073ba2c9e762a29b65",
+      "change": "Rename backend imports; execution logic unchanged"
+    },
+    {
+      "source": "src/yuki/codemode/engine_monty.py",
+      "source_sha256": "501b7fff8d2652e87f13afa43dc1a9e1477e70fd56658ac073b5756c07c8ca5b",
+      "packaged": "backend/yuki_monty_backend/engine_monty.py",
+      "packaged_sha256": "87a2cdb45d431aed2d6127885fb718bf26bcefaf0c40b6b2396f27348aab6343",
+      "change": "Rename backend imports; execution logic unchanged"
+    },
+    {
+      "source": "src/yuki/codemode/limits.py",
+      "source_sha256": "8987eec952ce230dcad31b4f8086d5e800835ceb4791d5a69574a9cb88591e36",
+      "packaged": "backend/yuki_monty_backend/limits.py",
+      "packaged_sha256": "8987eec952ce230dcad31b4f8086d5e800835ceb4791d5a69574a9cb88591e36",
+      "change": "Rename backend imports; execution logic unchanged"
+    },
+    {
+      "source": "src/yuki/codemode/snapshot_binding.py",
+      "source_sha256": "772eeed24ef5dd1ae9da0b1db4561234712aaaf606f2350708eeb5f3b8c0d337",
+      "packaged": "backend/yuki_monty_backend/snapshot_binding.py",
+      "packaged_sha256": "b7b78f43368fcae7151291583e2c3f6e8bbb33338ff1ebf0472bac646ce96dae",
+      "change": "Pure functions only; no database imports"
+    },
+    {
+      "source": "scripts/verify_monty_isolation.py",
+      "source_sha256": "ac46dff95aa3798ae21326d9917d07fe7d7454d699599b5d5148577e18f69ce0",
+      "packaged_sha256": "7ca9ae41e80b9d426e76f0123d6c6bf82c7755074cf81e6f091d45b7915ac3fc",
+      "change": "Rename backend imports only"
+    }
+  ]
+}

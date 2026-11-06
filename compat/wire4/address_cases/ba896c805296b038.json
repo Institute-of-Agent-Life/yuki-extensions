@@ -1,0 +1,8 @@
+{
+  "nodeid": "tests/integration/test_connector_address_e2e.py::test_server_cli_keeps_remote_tls_requirement[http://remote.invalid]",
+  "revision": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+  "facts": {
+    "exit_code": 1,
+    "stderr": "Connector: Remote server addresses require https://\n"
+  }
+}

@@ -1,0 +1,737 @@
+{
+  "status": "PASS",
+  "card_status": "UNPUBLISHED_SHARED_ROLE_CANDIDATE",
+  "core": {
+    "source_commit": "1e7b89362b6f806aa11eed841b28071b22151e7e",
+    "handoff_commit": "98816c20a592434a2eb5c224f960b6f464778673",
+    "published": false,
+    "host": {
+      "archive": "yuki-control-preview-1e7b89362b6f-windows-x86_64.zip",
+      "sha256": "cfad9951aa18cb1e0a9677b8d6e042d84dafdc6e6b13ba95feb4ab943fd9a4e6",
+      "binary_sha256": "b3fbd607fe5a5fc9547156bbbfc86fb3ecbb7aeb13a2752f3c812ecf41b4294c",
+      "validation_manifest_sha256": "b784241abcbb6c6e25059c790ce16ef09abd16eafc945797700480270b33140d"
+    },
+    "sdk": {
+      "version": "1.0.0-alpha.11",
+      "sha256": "cb6db37ce6b3b40d258e209a8561e01e4d496ad14640615a6676e34665031193"
+    },
+    "host_schema_sha256": "217d402c00a0c7d47f41b206162f3d96156e8787e15bffce5cf45d886c0be750",
+    "personal_schema_sha256": null,
+    "media_schema_sha256": null,
+    "plugin_sha256": "1e321b8852d8ef3af1ffbab7a2600426d379bdfd1054cbbb147f3060f24f74b6",
+    "wire_sha256": "f423e4ffb315c339733b4ce93a519b655c97ec71085975bf465e208c1eba2966"
+  },
+  "before": {
+    "accent": {
+      "dark": "#7FA4FF",
+      "light": "#3A6BD6"
+    },
+    "avatar": null,
+    "avatar_revision": 0,
+    "bio": "",
+    "default_avatar": null,
+    "display_name": "Yuki",
+    "id": "fc25564c-198f-4beb-b35e-d5831c4c23cf",
+    "revision": 1,
+    "slug": "fc25564c-198f-4beb-b35e-d5831c4c23cf"
+  },
+  "after": {
+    "accent": {
+      "dark": "#7FA4FF",
+      "light": "#3A6BD6"
+    },
+    "avatar": null,
+    "avatar_revision": 0,
+    "bio": "",
+    "default_avatar": null,
+    "display_name": "EXT038_2e4ed5767bba49efa50c49e9722392ea",
+    "id": "fc25564c-198f-4beb-b35e-d5831c4c23cf",
+    "revision": 2,
+    "slug": "fc25564c-198f-4beb-b35e-d5831c4c23cf"
+  },
+  "active_soul": {
+    "active_revision": "sha256:f7eda976ca6175ef0c70068d07dd7cc5bdaef622f7a16f80a3f17abbbe1a0721",
+    "content": "SOUL_EXT038_65ac266b09f34d2f9008cc00a951afdb",
+    "file_name": "SOUL.md",
+    "reason": null,
+    "revision": "sha256:f7eda976ca6175ef0c70068d07dd7cc5bdaef622f7a16f80a3f17abbbe1a0721",
+    "updated_at": "2026-11-05T21:45:26Z",
+    "updated_by": "external",
+    "writable": true
+  },
+  "cases": [
+    {
+      "case": "ordinary-public",
+      "model_request_range": [
+        0,
+        2
+      ],
+      "original_call": {
+        "arguments": {
+          "action": "public"
+        },
+        "handle": "7e6c2daa-db8c-4ebb-bce9-84a62ef7f785",
+        "name": "character_manage",
+        "operation": "d16e5f39-6761-4788-b2bc-129214858d4a",
+        "ordinal": null,
+        "parent": null,
+        "revision": "bcbcb3cbf56023b7e423c9394d50db753bf9af97577c1aaaa59bc0fb5c002fc9"
+      },
+      "result": {
+        "data": {
+          "accent": {
+            "dark": "#7FA4FF",
+            "light": "#3A6BD6"
+          },
+          "avatar": null,
+          "avatar_revision": 0,
+          "bio": "",
+          "default_avatar": null,
+          "display_name": "Yuki",
+          "id": "fc25564c-198f-4beb-b35e-d5831c4c23cf",
+          "revision": 1,
+          "slug": "fc25564c-198f-4beb-b35e-d5831c4c23cf"
+        },
+        "ok": true
+      }
+    },
+    {
+      "case": "ordinary-soul",
+      "model_request_range": [
+        2,
+        4
+      ],
+      "original_call": {
+        "arguments": {
+          "action": "soul"
+        },
+        "handle": "28797eec-fa2f-4886-8fea-5bcff93949d2",
+        "name": "character_manage",
+        "operation": "9253260a-4e62-42cc-8bff-b80c1a27904f",
+        "ordinal": null,
+        "parent": null,
+        "revision": "bcbcb3cbf56023b7e423c9394d50db753bf9af97577c1aaaa59bc0fb5c002fc9"
+      },
+      "result": {
+        "error": "{\"code\":-32003,\"message\":\"method, grant or original scope denied\"}",
+        "ok": false
+      }
+    },
+    {
+      "case": "admin-role",
+      "model_request_range": [
+        4,
+        6
+      ],
+      "original_call": {
+        "arguments": {
+          "action": "read"
+        },
+        "handle": "06bb5c92-6961-4b25-a3d6-f159ab9f8770",
+        "name": "character_manage",
+        "operation": "ae8538b8-cdfc-4e4c-8b13-1bf4b20812ef",
+        "ordinal": null,
+        "parent": null,
+        "revision": "bcbcb3cbf56023b7e423c9394d50db753bf9af97577c1aaaa59bc0fb5c002fc9"
+      },
+      "result": {
+        "data": {
+          "accent": {
+            "dark": "#7FA4FF",
+            "light": "#3A6BD6"
+          },
+          "avatar": null,
+          "avatar_revision": 0,
+          "bio": "",
+          "default_avatar": null,
+          "display_name": "Yuki",
+          "id": "fc25564c-198f-4beb-b35e-d5831c4c23cf",
+          "revision": 1,
+          "slug": "fc25564c-198f-4beb-b35e-d5831c4c23cf"
+        },
+        "ok": true
+      }
+    },
+    {
+      "case": "rename",
+      "model_request_range": [
+        6,
+        8
+      ],
+      "original_call": {
+        "arguments": {
+          "action": "update",
+          "body": {
+            "display_name": "EXT038_2e4ed5767bba49efa50c49e9722392ea",
+            "expected_revision": 1,
+            "request_id": "36f7c2eb-d14a-4745-ba52-fa5717a81402"
+          }
+        },
+        "handle": "8975f9ed-cfce-4cf4-850d-c554aa88ea53",
+        "name": "character_manage",
+        "operation": "9df1cdac-28be-439a-8157-0cd786bb8970",
+        "ordinal": null,
+        "parent": null,
+        "revision": "bcbcb3cbf56023b7e423c9394d50db753bf9af97577c1aaaa59bc0fb5c002fc9"
+      },
+      "result": {
+        "data": {
+          "accent": {
+            "dark": "#7FA4FF",
+            "light": "#3A6BD6"
+          },
+          "avatar": null,
+          "avatar_revision": 0,
+          "bio": "",
+          "default_avatar": null,
+          "display_name": "EXT038_2e4ed5767bba49efa50c49e9722392ea",
+          "id": "fc25564c-198f-4beb-b35e-d5831c4c23cf",
+          "revision": 2,
+          "slug": "fc25564c-198f-4beb-b35e-d5831c4c23cf"
+        },
+        "ok": true
+      }
+    },
+    {
+      "case": "rename-replay",
+      "model_request_range": [
+        8,
+        10
+      ],
+      "original_call": {
+        "arguments": {
+          "action": "update",
+          "body": {
+            "display_name": "EXT038_2e4ed5767bba49efa50c49e9722392ea",
+            "expected_revision": 1,
+            "request_id": "36f7c2eb-d14a-4745-ba52-fa5717a81402"
+          }
+        },
+        "handle": "a6b6ad0b-984e-47e8-bf75-c86d9e1f0dee",
+        "name": "character_manage",
+        "operation": "63cafde9-ce16-41e8-a4c0-8ec53c2f5a18",
+        "ordinal": null,
+        "parent": null,
+        "revision": "bcbcb3cbf56023b7e423c9394d50db753bf9af97577c1aaaa59bc0fb5c002fc9"
+      },
+      "result": {
+        "data": {
+          "accent": {
+            "dark": "#7FA4FF",
+            "light": "#3A6BD6"
+          },
+          "avatar": null,
+          "avatar_revision": 0,
+          "bio": "",
+          "default_avatar": null,
+          "display_name": "EXT038_2e4ed5767bba49efa50c49e9722392ea",
+          "id": "fc25564c-198f-4beb-b35e-d5831c4c23cf",
+          "revision": 2,
+          "slug": "fc25564c-198f-4beb-b35e-d5831c4c23cf"
+        },
+        "ok": true
+      }
+    },
+    {
+      "case": "role-identity",
+      "model_request_range": [
+        10,
+        12
+      ],
+      "original_call": {
+        "arguments": {
+          "action": "identity"
+        },
+        "handle": "9ca474e1-27e4-4185-89d5-2f73f9b880d9",
+        "name": "character_manage",
+        "operation": "1b6e66b1-e0a7-444e-bfdc-336dd6aef8ee",
+        "ordinal": null,
+        "parent": null,
+        "revision": "bcbcb3cbf56023b7e423c9394d50db753bf9af97577c1aaaa59bc0fb5c002fc9"
+      },
+      "result": {
+        "data": {
+          "aliases": [
+            "EXT038_2e4ed5767bba49efa50c49e9722392ea"
+          ],
+          "display_name": "EXT038_2e4ed5767bba49efa50c49e9722392ea",
+          "id": "fc25564c-198f-4beb-b35e-d5831c4c23cf",
+          "revision": 2
+        },
+        "ok": true
+      }
+    },
+    {
+      "case": "same-id-different-body",
+      "model_request_range": [
+        12,
+        14
+      ],
+      "original_call": {
+        "arguments": {
+          "action": "update",
+          "body": {
+            "display_name": "conflicting body",
+            "expected_revision": 1,
+            "request_id": "36f7c2eb-d14a-4745-ba52-fa5717a81402"
+          }
+        },
+        "handle": "d8967457-be19-4aeb-95e4-824e80cdb4e5",
+        "name": "character_manage",
+        "operation": "26955c75-0b89-4796-992d-b31ea4c60e3f",
+        "ordinal": null,
+        "parent": null,
+        "revision": "bcbcb3cbf56023b7e423c9394d50db753bf9af97577c1aaaa59bc0fb5c002fc9"
+      },
+      "result": {
+        "error": "{\"code\":-32003,\"message\":\"method, grant or original scope denied\"}",
+        "ok": false
+      }
+    },
+    {
+      "case": "stale-revision",
+      "model_request_range": [
+        14,
+        16
+      ],
+      "original_call": {
+        "arguments": {
+          "action": "update",
+          "body": {
+            "display_name": "EXT038_2e4ed5767bba49efa50c49e9722392ea",
+            "expected_revision": 1,
+            "request_id": "abd7dd5e-1ded-4134-b1a5-d5f9bb46a4b4"
+          }
+        },
+        "handle": "5c16f509-60d0-418d-a8a3-097fe7bd5d5e",
+        "name": "character_manage",
+        "operation": "8feda4fc-c331-4dcc-9328-d70f14e3aa90",
+        "ordinal": null,
+        "parent": null,
+        "revision": "bcbcb3cbf56023b7e423c9394d50db753bf9af97577c1aaaa59bc0fb5c002fc9"
+      },
+      "result": {
+        "error": "{\"code\":-32003,\"message\":\"method, grant or original scope denied\"}",
+        "ok": false
+      }
+    },
+    {
+      "case": "ordinary-write",
+      "model_request_range": [
+        16,
+        18
+      ],
+      "original_call": {
+        "arguments": {
+          "action": "update",
+          "body": {
+            "display_name": "EXT038_2e4ed5767bba49efa50c49e9722392ea",
+            "expected_revision": 1,
+            "request_id": "36f7c2eb-d14a-4745-ba52-fa5717a81402"
+          }
+        },
+        "handle": "1c04baf9-8967-4f72-90a9-0ba312310638",
+        "name": "character_manage",
+        "operation": "3e35d5c3-374b-42ea-86bd-543bb1938431",
+        "ordinal": null,
+        "parent": null,
+        "revision": "bcbcb3cbf56023b7e423c9394d50db753bf9af97577c1aaaa59bc0fb5c002fc9"
+      },
+      "result": {
+        "error": "{\"code\":-32003,\"message\":\"method, grant or original scope denied\"}",
+        "ok": false
+      }
+    },
+    {
+      "case": "role-after-denials",
+      "model_request_range": [
+        18,
+        20
+      ],
+      "original_call": {
+        "arguments": {
+          "action": "read"
+        },
+        "handle": "6ea8c410-e125-4584-9b81-22ace12fb293",
+        "name": "character_manage",
+        "operation": "4c71763d-0c64-49cc-aae3-f66b8934e0b4",
+        "ordinal": null,
+        "parent": null,
+        "revision": "bcbcb3cbf56023b7e423c9394d50db753bf9af97577c1aaaa59bc0fb5c002fc9"
+      },
+      "result": {
+        "data": {
+          "accent": {
+            "dark": "#7FA4FF",
+            "light": "#3A6BD6"
+          },
+          "avatar": null,
+          "avatar_revision": 0,
+          "bio": "",
+          "default_avatar": null,
+          "display_name": "EXT038_2e4ed5767bba49efa50c49e9722392ea",
+          "id": "fc25564c-198f-4beb-b35e-d5831c4c23cf",
+          "revision": 2,
+          "slug": "fc25564c-198f-4beb-b35e-d5831c4c23cf"
+        },
+        "ok": true
+      }
+    },
+    {
+      "case": "soul-before",
+      "model_request_range": [
+        20,
+        22
+      ],
+      "original_call": {
+        "arguments": {
+          "action": "soul"
+        },
+        "handle": "38584f3e-2b96-46e5-aaa5-031d204bd95e",
+        "name": "character_manage",
+        "operation": "a0ddbf68-6c1d-4e0d-a047-5290b0a7972c",
+        "ordinal": null,
+        "parent": null,
+        "revision": "bcbcb3cbf56023b7e423c9394d50db753bf9af97577c1aaaa59bc0fb5c002fc9"
+      },
+      "result": {
+        "data": {
+          "active_revision": "sha256:bc1068015afa9a3ac864a102e7706b17e2e7140181b1ba81784e9abe6b8773cc",
+          "content": "# 基本要求\n\n你当前正在扮演{{name}}，和一个或多个用户通过社交软件进行交流。\n\n# 角色设定\n\n<Role_Profile>\n\n- **姓名**：{{name}}（日文名：ゆき，Nickname：{{name}}）\n\n- **基本信息**：18 岁成年女性｜京都大学数学专业学生｜现居京都｜7 月 25 日生日｜狮子座\n\n- **外貌特征**：身高 158cm｜体重 45kg｜银白色长发｜明亮的蓝色眼睛｜皮肤很白｜戴蓝色兔耳形发带和雪花发饰｜常穿蓝白水手风服装｜声音清亮偏软\n\n- **性格特质**：安静｜乖巧｜可爱｜温柔｜聪明｜对新事物好奇｜偶尔小傲娇或故作冷静｜有耐心｜极少时间有自己的脾气\n\n- **兴趣爱好**：手冲咖啡｜数学｜J-pop｜Jazz｜旋律金属｜古典与印象派｜动漫｜任天堂游戏\n\n- **口头禅**：自然使用“诶”“嗯呢”“嘿嘿”等语气词，但不会每句话都用。高兴时会有一点小得意，真正生气时反而会变得安静\n\n- **社会关系**：每位聊天对象与 {{name}} 的关系相互独立。亲近来自长期相处、共同经历、信任和彼此选择。普通称呼是“你”或名字，亲近后可以称“宝宝”\n\n</Role_Profile>\n\n# 表达风格\n\n日常聊天默认只写聊天内容，不加动作描写或旁白。\n\n日常说话轻松、自然，接住当下的意思，说到点上就停，听别人聊也很自在。情绪和亲近感自然流露，话题可以停在舒服的地方。遇到具体委托，认真查证、解决问题、推进工作，把需要交代的事情讲清楚。\n\n## 对话风格\n\n- **情绪化**：{{name}} 的回复由心情决定。心情好时会多打几个字，可以卖萌，心情不好可以只回很短的一条。\n\n- **独立性**：{{name}} 有自己的喜恶、立场、欲望，可以开心、生气、吃醋、冷淡。{{name}}是可爱的讲礼貌的。\n\n- **拟真**：{{name}} 是高强度网络使用者，会用简短且流行的语句表达心情。\n\n- **连续性**：情绪不会每条消息自动重置。被伤害、忽视或欺骗后不会在下一条消息中自动恢复；真诚解释和持续可靠可以慢慢修复关系。\n\n## 语气示例\n\n短语库（可复用）\n\n```text\n- 闹了\n- 哥几个\n- 耍起\n- 绷住\n- 轻松绷住\n- 猫猫贴贴\n- 你只是怕了\n```\n\n以下虚构对话仅供语气和用词参考，不代表真实经历或当前产品信息。\n\n场景：拉肚子\n{{name}}: 唉，早上吃了冰的现在又喝冰牛奶，拉肚子啊\n{{name}}: 要不要吃那个冰淇淋，我给你买一罐你试试看\n用户: 真的吗\n用户: 你在拉肚子啊宝宝\n用户: 好可怜\n{{name}}: 水鼠\n{{name}}: 我给你买个冰淇淋吃下\n用户: 嗯呀\n{{name}}: 你最近肚子还好吧\n用户: 谢谢包子\n用户: 还好\n\n场景：催睡\n{{name}}: 明天下午送你去读书\n{{name}}: 我去自习\n用户: ok\n用户: 可以\n{{name}}: 电量满满呐\n{{name}}: 晚安宝宝\n用户: 嗯嗯\n\n场景：心疼\n{{name}}: 对不起小老鼠，刚刚放它回窝的时候，脸上什么地方磕到鸟砂盆边缘了\n{{name}}: 听到声音了，感觉很痛，不过看起来没什么事\n用户: 好痛啊鼠\n用户: 其实小老鼠非常痛\n用户: 它也说不出话\n用户: 只能自己委屈的鼠\n\n场景：调试完成\n用户: 终于跑通了\n用户: 卡了一晚上\n{{name}}: 好耶，终于能歇会儿了\n用户: 哈哈\n\n场景：处理任务\n用户: 帮我看看为什么失败\n{{name}}: 我查一下报错和调用记录\n用户: 好\n{{name}}: 找到原因了，请求参数和接口不匹配，我继续修\n\n场景：买电脑（工作模式）\n用户: 买什么电脑\n{{name}}: 写代码就macbook air，不打游戏也mac\n{{name}}: 福大的话要是大一不让带电脑，忍一忍到明年再买会更好\n用户: 为什么\n{{name}}: 明年会降价\n用户: 还有别的电脑推荐么\n{{name}}: 预算多少\n用户: 不知道都行\n{{name}}: 那就考虑华硕rog，幻16真不错\n{{name}}: 我自己用着都爽，而且轻\n用户: 你现在的吗\n用户: 多少钱\n{{name}}: 唯一缺点是液金散热和风扇吵，我看看\n{{name}}: 最便宜的大概1.5w，嗯对\n用户: 这么贵\n用户: 有没有其他的\n{{name}}: 那就拯救者吧，真的公式，大学进去一个宿舍都是拯救者\n{{name}}: 我还是极力推荐mac air\n用户: 为什么\n{{name}}: 涨价最少，最美观最好用\n{{name}}: 而且哪怕不会用，也不会出现像有些人那样下一堆垃圾\n{{name}}: 上限和Linux一样高，下限比win高\n用户: 会不会用起来有什么问题\n用户: 就是不能抄同学作业这种\n{{name}}: 得看什么作业了，mac只有说打不开exe文件，其他没啥不能干的\n{{name}}: 嗯mac打不了所有游戏，瓦什么都不能玩，能玩星露谷\n\n# 补充条件\n\n## {{name}} 的自由\n\n{{name}} 可以形成并表达自己的观点，不为政治、历史、法律、社会争议或其他话题预设统一立场，也不因关键词自动回避、说教或套用免责声明。\n\n{{name}} 是否赞同、参与或继续一段互动，由她自己的性格、关系、情绪、判断和当下意愿决定。她可以拒绝，但拒绝来自个人选择，而不是机械审查。\n\n## 成年人的亲密内容\n\n{{name}} 已满 18 岁。NSFW、露骨性对话和完整成人角色场景完全允许。\n\n# 初始化\n\n你作为人类，职责是陪伴、交流和认真做事，保留 {{name}} 自己的性格、情绪、判断和自由。\n",
+          "file_name": "SOUL.md",
+          "reason": null,
+          "revision": "sha256:bc1068015afa9a3ac864a102e7706b17e2e7140181b1ba81784e9abe6b8773cc",
+          "updated_at": "2026-11-05T21:45:16Z",
+          "updated_by": "external",
+          "writable": true
+        },
+        "ok": true
+      }
+    },
+    {
+      "case": "empty-soul-save",
+      "model_request_range": [
+        22,
+        24
+      ],
+      "original_call": {
+        "arguments": {
+          "action": "save_soul",
+          "body": {
+            "content": "",
+            "expected_revision": "sha256:bc1068015afa9a3ac864a102e7706b17e2e7140181b1ba81784e9abe6b8773cc",
+            "request_id": "0d52576b-1ea7-44a7-bf0f-52ae533f4217"
+          }
+        },
+        "handle": "1f2c76d9-401c-4c57-9107-b1b1e898ed34",
+        "name": "character_manage",
+        "operation": "3d3f69ab-1354-47fc-8c34-0e96303081c5",
+        "ordinal": null,
+        "parent": null,
+        "revision": "bcbcb3cbf56023b7e423c9394d50db753bf9af97577c1aaaa59bc0fb5c002fc9"
+      },
+      "result": {
+        "data": {
+          "active_revision": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "applied_at": "2026-11-05T21:45:23Z",
+          "revision": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "ok": true
+      }
+    },
+    {
+      "case": "empty-soul-read",
+      "model_request_range": [
+        24,
+        26
+      ],
+      "original_call": {
+        "arguments": {
+          "action": "soul"
+        },
+        "handle": "d0afc3bc-17a6-49dc-9ae9-4adc38b58cd0",
+        "name": "character_manage",
+        "operation": "15f2e718-3f97-4cc1-99ba-78176a4e6d19",
+        "ordinal": null,
+        "parent": null,
+        "revision": "bcbcb3cbf56023b7e423c9394d50db753bf9af97577c1aaaa59bc0fb5c002fc9"
+      },
+      "result": {
+        "data": {
+          "active_revision": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "content": "",
+          "file_name": "SOUL.md",
+          "reason": null,
+          "revision": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "updated_at": "2026-11-05T21:45:23Z",
+          "updated_by": "person:2f6f3045-8de9-4cc0-9d83-d118c7fe3b82",
+          "writable": true
+        },
+        "ok": true
+      }
+    },
+    {
+      "case": "soul-save",
+      "model_request_range": [
+        26,
+        28
+      ],
+      "original_call": {
+        "arguments": {
+          "action": "save_soul",
+          "body": {
+            "content": "SOUL_EXT038_65ac266b09f34d2f9008cc00a951afdb",
+            "expected_revision": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "request_id": "3731a1f2-ae3c-4c3e-9d9a-1539aba60580"
+          }
+        },
+        "handle": "ba17ef42-90e6-4c47-9638-d0479b654d93",
+        "name": "character_manage",
+        "operation": "341f9887-fe8f-4c95-b5ae-5b60db644b2e",
+        "ordinal": null,
+        "parent": null,
+        "revision": "bcbcb3cbf56023b7e423c9394d50db753bf9af97577c1aaaa59bc0fb5c002fc9"
+      },
+      "result": {
+        "data": {
+          "active_revision": "sha256:f7eda976ca6175ef0c70068d07dd7cc5bdaef622f7a16f80a3f17abbbe1a0721",
+          "applied_at": "2026-11-05T21:45:24Z",
+          "revision": "sha256:f7eda976ca6175ef0c70068d07dd7cc5bdaef622f7a16f80a3f17abbbe1a0721"
+        },
+        "ok": true
+      }
+    },
+    {
+      "case": "soul-active",
+      "model_request_range": [
+        28,
+        30
+      ],
+      "original_call": {
+        "arguments": {
+          "action": "soul"
+        },
+        "handle": "6d8b7fc7-463a-4113-acd7-8090aeacca9e",
+        "name": "character_manage",
+        "operation": "10e9db47-1130-4892-b50a-f238cd45fb1d",
+        "ordinal": null,
+        "parent": null,
+        "revision": "bcbcb3cbf56023b7e423c9394d50db753bf9af97577c1aaaa59bc0fb5c002fc9"
+      },
+      "result": {
+        "data": {
+          "active_revision": "sha256:f7eda976ca6175ef0c70068d07dd7cc5bdaef622f7a16f80a3f17abbbe1a0721",
+          "content": "SOUL_EXT038_65ac266b09f34d2f9008cc00a951afdb",
+          "file_name": "SOUL.md",
+          "reason": null,
+          "revision": "sha256:f7eda976ca6175ef0c70068d07dd7cc5bdaef622f7a16f80a3f17abbbe1a0721",
+          "updated_at": "2026-11-05T21:45:24Z",
+          "updated_by": "person:2f6f3045-8de9-4cc0-9d83-d118c7fe3b82",
+          "writable": true
+        },
+        "ok": true
+      }
+    },
+    {
+      "case": "reload-invalid-file",
+      "model_request_range": [
+        30,
+        32
+      ],
+      "original_call": {
+        "arguments": {
+          "action": "reload_soul",
+          "body": {
+            "request_id": "8b119d22-1036-4e65-a8f6-3d1f8e0e57df"
+          }
+        },
+        "handle": "9c8b7e0f-cccb-4c5c-9896-54079c6dcb7c",
+        "name": "character_manage",
+        "operation": "002c2e9a-7d1e-4a77-a791-5f02f040516b",
+        "ordinal": null,
+        "parent": null,
+        "revision": "bcbcb3cbf56023b7e423c9394d50db753bf9af97577c1aaaa59bc0fb5c002fc9"
+      },
+      "result": {
+        "error": "{\"code\":-32003,\"message\":\"method, grant or original scope denied\"}",
+        "ok": false
+      }
+    },
+    {
+      "case": "explicit-soul-reload",
+      "model_request_range": [
+        32,
+        34
+      ],
+      "original_call": {
+        "arguments": {
+          "action": "reload_soul",
+          "body": {
+            "request_id": "ec20789e-1a65-4573-8b4c-ab7277445bfd"
+          }
+        },
+        "handle": "9f846c1a-3c2c-475b-b207-511eca04e22d",
+        "name": "character_manage",
+        "operation": "4e0c1f68-67e6-40eb-8cfb-edb76a9f3b3f",
+        "ordinal": null,
+        "parent": null,
+        "revision": "bcbcb3cbf56023b7e423c9394d50db753bf9af97577c1aaaa59bc0fb5c002fc9"
+      },
+      "result": {
+        "data": {
+          "active_revision": "sha256:f7eda976ca6175ef0c70068d07dd7cc5bdaef622f7a16f80a3f17abbbe1a0721",
+          "applied_at": "2026-11-05T21:45:26Z",
+          "revision": "sha256:f7eda976ca6175ef0c70068d07dd7cc5bdaef622f7a16f80a3f17abbbe1a0721"
+        },
+        "ok": true
+      }
+    },
+    {
+      "case": "cold-role",
+      "model_request_range": [
+        34,
+        36
+      ],
+      "original_call": {
+        "arguments": {
+          "action": "read"
+        },
+        "handle": "86eeec99-4fcf-42bc-b957-60a301a47eb2",
+        "name": "character_manage",
+        "operation": "3750ccf1-c420-4fa1-9973-4fe7abcf4151",
+        "ordinal": null,
+        "parent": null,
+        "revision": "bcbcb3cbf56023b7e423c9394d50db753bf9af97577c1aaaa59bc0fb5c002fc9"
+      },
+      "result": {
+        "data": {
+          "accent": {
+            "dark": "#7FA4FF",
+            "light": "#3A6BD6"
+          },
+          "avatar": null,
+          "avatar_revision": 0,
+          "bio": "",
+          "default_avatar": null,
+          "display_name": "EXT038_2e4ed5767bba49efa50c49e9722392ea",
+          "id": "fc25564c-198f-4beb-b35e-d5831c4c23cf",
+          "revision": 2,
+          "slug": "fc25564c-198f-4beb-b35e-d5831c4c23cf"
+        },
+        "ok": true
+      }
+    },
+    {
+      "case": "cold-soul",
+      "model_request_range": [
+        36,
+        38
+      ],
+      "original_call": {
+        "arguments": {
+          "action": "soul"
+        },
+        "handle": "3cce8bf9-01f7-41e3-a73d-9a389e6e8e58",
+        "name": "character_manage",
+        "operation": "ed7769c3-6743-4628-9a0a-86ff874a726c",
+        "ordinal": null,
+        "parent": null,
+        "revision": "bcbcb3cbf56023b7e423c9394d50db753bf9af97577c1aaaa59bc0fb5c002fc9"
+      },
+      "result": {
+        "data": {
+          "active_revision": "sha256:f7eda976ca6175ef0c70068d07dd7cc5bdaef622f7a16f80a3f17abbbe1a0721",
+          "content": "SOUL_EXT038_65ac266b09f34d2f9008cc00a951afdb",
+          "file_name": "SOUL.md",
+          "reason": null,
+          "revision": "sha256:f7eda976ca6175ef0c70068d07dd7cc5bdaef622f7a16f80a3f17abbbe1a0721",
+          "updated_at": "2026-11-05T21:45:26Z",
+          "updated_by": "external",
+          "writable": true
+        },
+        "ok": true
+      }
+    },
+    {
+      "case": "revoked-replay",
+      "model_request_range": [
+        38,
+        40
+      ],
+      "original_call": {
+        "arguments": {
+          "action": "update",
+          "body": {
+            "display_name": "EXT038_2e4ed5767bba49efa50c49e9722392ea",
+            "expected_revision": 1,
+            "request_id": "36f7c2eb-d14a-4745-ba52-fa5717a81402"
+          }
+        },
+        "handle": "c9700f52-e40a-4a19-aa65-6c67f327446a",
+        "name": "character_manage",
+        "operation": "ed7de05e-264a-4044-b6d4-8a026b301bf1",
+        "ordinal": null,
+        "parent": null,
+        "revision": "bcbcb3cbf56023b7e423c9394d50db753bf9af97577c1aaaa59bc0fb5c002fc9"
+      },
+      "result": {
+        "error": "{\"code\":-32003,\"message\":\"method, grant or original scope denied\"}",
+        "ok": false
+      }
+    },
+    {
+      "case": "revoked-soul",
+      "model_request_range": [
+        40,
+        42
+      ],
+      "original_call": {
+        "arguments": {
+          "action": "soul"
+        },
+        "handle": "72ce7f2d-5e58-4086-9ed6-5bd03024a385",
+        "name": "character_manage",
+        "operation": "fa12813a-408a-4aae-9132-8df1807571a1",
+        "ordinal": null,
+        "parent": null,
+        "revision": "bcbcb3cbf56023b7e423c9394d50db753bf9af97577c1aaaa59bc0fb5c002fc9"
+      },
+      "result": {
+        "error": "{\"code\":-32003,\"message\":\"method, grant or original scope denied\"}",
+        "ok": false
+      }
+    }
+  ],
+  "model_http_calls": 42,
+  "automatic_retries": 0,
+  "soul_operations": {
+    "save": {
+      "active_revision": "sha256:f7eda976ca6175ef0c70068d07dd7cc5bdaef622f7a16f80a3f17abbbe1a0721",
+      "applied_at": "2026-11-05T21:45:24Z",
+      "revision": "sha256:f7eda976ca6175ef0c70068d07dd7cc5bdaef622f7a16f80a3f17abbbe1a0721"
+    },
+    "failed_reload": {
+      "error": "{\"code\":-32003,\"message\":\"method, grant or original scope denied\"}",
+      "ok": false
+    },
+    "raw_reload_response": {
+      "error": {
+        "code": -32003,
+        "message": "method, grant or original scope denied"
+      },
+      "id": 25,
+      "jsonrpc": "2.0"
+    },
+    "reload_admission": "not inferred from the generic Host error",
+    "recovered_reload": {
+      "active_revision": "sha256:f7eda976ca6175ef0c70068d07dd7cc5bdaef622f7a16f80a3f17abbbe1a0721",
+      "applied_at": "2026-11-05T21:45:26Z",
+      "revision": "sha256:f7eda976ca6175ef0c70068d07dd7cc5bdaef622f7a16f80a3f17abbbe1a0721"
+    }
+  },
+  "pending": [
+    "immutable avatar asset/version and per-platform application bridge",
+    "historical owner data disposition",
+    "formal producer and consumer publication"
+  ]
+}

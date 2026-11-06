@@ -1,0 +1,5 @@
+{
+  "exit_code": 137,
+  "stdout": "Loaded image ID: sha256:1148dbb014615300fa7e713b2f94f550c0d1c69780c0805f84f093ceee34dd0b\nLoaded image ID: sha256:811d6caab4a84e6148c8722128993c1caf152156868b2b66f3a26af189b0dad8\nLoaded image ID: sha256:812f4717f0002c1c5400653454de9a29b7cbe93bdfe19451376d6aaac522a9bf\n",
+  "stderr": "wsl: Failed to start the systemd user session for 'root'. See journalctl for more details.\nWARNING: IPv4 forwarding is disabled\n"
+}

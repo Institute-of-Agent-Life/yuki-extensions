@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "D:\yuki-extension-tests\8af3d9a35342284c8c75\src\ci\check.py", line 37, in main
+    report_name, report = runner(root, args.out.resolve())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\8af3d9a35342284c8c75\src\tests\cases\EXT-031.py", line 241, in prepare
+    assert any(r["frame"].get("method") == "forget.request" for r in wire)
+AssertionError

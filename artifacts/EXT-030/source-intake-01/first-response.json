@@ -1,0 +1,48 @@
+{
+  "handle": "04fe8fff-cb72-43ea-8ec9-bcf90f071b40",
+  "result": {
+    "data": {
+      "calls": [
+        {
+          "open": {
+            "Ok": {
+              "bytes": "Ug==",
+              "done": false,
+              "mime": "audio/wav",
+              "offset": 0,
+              "total": 3244,
+              "version": "9a1215ca91037cc6916a991befd4a8205175b62e41fa591d1818935a86394e62"
+            }
+          }
+        },
+        {
+          "result": {
+            "Ok": {
+              "erased": false,
+              "logical": "plugin-aux:6645391d-d82a-4eb1-934d-9a97b2c73e22",
+              "request": "6645391d-d82a-4eb1-934d-9a97b2c73e22",
+              "root": "2df8e5e6-a4ac-43e2-bacc-8cb719672b67",
+              "state": "response",
+              "usage": {
+                "input": 4,
+                "output": 8,
+                "total": 12
+              }
+            }
+          },
+          "selected_media": false
+        },
+        {
+          "result": {
+            "Err": "Object {\"code\": Number(-32003), \"message\": String(\"method, grant or original scope denied\")}"
+          },
+          "selected_media": true
+        }
+      ],
+      "diagnostic_only": true,
+      "transcript_stored": false
+    },
+    "ok": true
+  },
+  "state": "confirmed"
+}

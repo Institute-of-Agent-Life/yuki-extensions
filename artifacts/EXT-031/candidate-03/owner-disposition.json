@@ -1,0 +1,19 @@
+{
+  "synthetic_old_cache": {
+    "classification": "discardable_cache",
+    "proof": "decoded a synthetic source with the pinned original reader; isolated temporary directory empty after calls and erase"
+  },
+  "shared_transcripts": {
+    "classification": "other_authoritative_owner",
+    "owner": "yuki-core",
+    "copied": false
+  },
+  "empty_private_store": {
+    "classification": "empty_private_store",
+    "proof": "new media installation creates no persistent plugin database"
+  },
+  "deployed_unknown_data": {
+    "classification": "inspection_required",
+    "imported": false
+  }
+}

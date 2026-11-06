@@ -1,0 +1,70 @@
+{
+  "unit_id": "feishu",
+  "version": "0.1.0-alpha.2",
+  "release_tag": "feishu/v0.1.0-alpha.2",
+  "published": false,
+  "manifest_sha256": "e5ffe90cd2069fb39f4ee732fd42efc6c2d1715e9f9c99f7da341917d810eafb",
+  "lock_sha256": "18c9a6d11db3c78c4f24c2ecd16ee6ed7b4be7b411f5bac9937067b6dd1387bc",
+  "source": {
+    "repository": "Institute-of-Agent-Life/yuki-extensions",
+    "baseline": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+    "upstream_path": "src/yuki/gateway/providers/feishu_ws.py",
+    "sdk_contract": "compat/core-038-main/source.lock.json"
+  },
+  "license": "AGPL-3.0-only",
+  "artifacts": {
+    "Cargo.lock": "18c9a6d11db3c78c4f24c2ecd16ee6ed7b4be7b411f5bac9937067b6dd1387bc",
+    "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+    "NOTICE": "51201cfac32f0bae2e3f4157609d1f4c268f76fef608d30e6809a7581b6746cb",
+    "plugin.toml": "6b67e7561066f06a1f90004f880b52a0b691fd3b88dc40a169a7895dd515d26f",
+    "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+    "yuki-feishu.exe": "4fc4e77480ba96709cb1172ebe8fd7a3e6f58d0f2469142cea2adc29d1ad57d0"
+  },
+  "commands": [
+    {
+      "command": [
+        "rustc",
+        "--version",
+        "--verbose"
+      ],
+      "exit_code": 0,
+      "stdout": "rustc 1.96.0 (ac68faa20 2026-05-25)\nbinary: rustc\ncommit-hash: ac68faa20c58cbccd01ee7208bf3b6e93a7d7f96\ncommit-date: 2026-05-25\nhost: x86_64-pc-windows-gnu\nrelease: 1.96.0\nLLVM version: 22.1.2\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "cargo",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "cargo 1.96.0 (30a34c682 2026-05-25)\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--target-dir",
+        "C:\\Users\\Hilbert\\AppData\\Local\\Temp\\yuki-rust-build-eeqx_96p"
+      ],
+      "exit_code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "   Compiling proc-macro2 v1.0.107\n   Compiling unicode-ident v1.0.27\n   Compiling quote v1.0.47\n   Compiling stable_deref_trait v1.2.1\n   Compiling version_check v0.9.5\n   Compiling litemap v0.8.3\n   Compiling writeable v0.6.4\n   Compiling typenum v1.20.1\n   Compiling utf_types v1.0.0\n   Compiling cfg-if v1.0.5\n   Compiling serde_core v1.0.228\n   Compiling icu_normalizer_data v2.4.0\n   Compiling zerocopy v0.8.63\n   Compiling getrandom v0.3.4\n   Compiling icu_properties_data v2.4.0\n   Compiling smallvec v1.16.4\n   Compiling itoa v1.0.18\n   Compiling anyhow v1.0.104\n   Compiling serde v1.0.228\n   Compiling utf8_iter v1.1.0\n   Compiling windows-link v0.2.1\n   Compiling native-tls v0.2.18\n   Compiling serde_json v1.0.145\n   Compiling cpufeatures v0.2.17\n   Compiling windows-sys v0.61.2\n   Compiling generic-array v0.14.7\n   Compiling httparse v1.10.1\n   Compiling either v1.19.0\n   Compiling bytes v1.12.1\n   Compiling thiserror v2.0.21\n   Compiling itertools v0.14.0\n   Compiling ryu v1.0.23\n   Compiling percent-encoding v2.3.2\n   Compiling memchr v2.8.3\n   Compiling http v1.5.0\n   Compiling rand_core v0.9.5\n   Compiling data-encoding v2.11.1\n   Compiling log v0.4.35\n   Compiling form_urlencoded v1.2.2\n   Compiling utf-8 v0.7.6\n   Compiling syn v3.0.9\n   Compiling syn v2.0.119\n   Compiling block-buffer v0.10.4\n   Compiling crypto-common v0.1.7\n   Compiling schannel v0.1.30\n   Compiling digest v0.10.7\n   Compiling sha1 v0.10.7\n   Compiling sha2 v0.10.9\n   Compiling synstructure v0.14.0\n   Compiling serde_derive v1.0.228\n   Compiling prost-derive v0.14.4\n   Compiling zerofrom-derive v0.1.8\n   Compiling yoke-derive v0.8.4\n   Compiling zerovec-derive v0.11.7\n   Compiling displaydoc v0.2.7\n   Compiling thiserror-impl v2.0.21\n   Compiling zerofrom v0.1.8\n   Compiling prost v0.14.1\n   Compiling yoke v0.8.4\n   Compiling zerovec v0.11.9\n   Compiling zerotrie v0.2.5\n   Compiling tinystr v0.8.5\n   Compiling potential_utf v0.1.6\n   Compiling icu_collections v2.4.0\n   Compiling icu_locale_core v2.4.0\n   Compiling ppv-lite86 v0.2.21\n   Compiling rand_chacha v0.9.0\n   Compiling rand v0.9.5\n   Compiling yuki-plugin-sdk v1.0.0-alpha.13\n   Compiling icu_provider v2.4.0\n   Compiling tungstenite v0.28.0\n   Compiling icu_normalizer v2.4.0\n   Compiling icu_properties v2.4.0\n   Compiling idna_adapter v1.2.2\n   Compiling idna v1.1.0\n   Compiling url v2.5.7\n   Compiling yuki-feishu v0.1.0-alpha.2 (C:\\Users\\Hilbert\\AppData\\Local\\Temp\\yuki-rust-build-eeqx_96p\\unit)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 29.04s\n     Running unittests src\\main.rs (C:\\Users\\Hilbert\\AppData\\Local\\Temp\\yuki-rust-build-eeqx_96p\\debug\\deps\\yuki_feishu-3fabe07da361b41e.exe)\n"
+    },
+    {
+      "command": [
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "--target-dir",
+        "C:\\Users\\Hilbert\\AppData\\Local\\Temp\\yuki-rust-build-eeqx_96p"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "   Compiling proc-macro2 v1.0.107\n   Compiling quote v1.0.47\n   Compiling unicode-ident v1.0.27\n   Compiling stable_deref_trait v1.2.1\n   Compiling version_check v0.9.5\n   Compiling writeable v0.6.4\n   Compiling typenum v1.20.1\n   Compiling litemap v0.8.3\n   Compiling cfg-if v1.0.5\n   Compiling utf_types v1.0.0\n   Compiling icu_properties_data v2.4.0\n   Compiling getrandom v0.3.4\n   Compiling icu_normalizer_data v2.4.0\n   Compiling serde_core v1.0.228\n   Compiling zerocopy v0.8.63\n   Compiling serde v1.0.228\n   Compiling itoa v1.0.18\n   Compiling smallvec v1.16.4\n   Compiling windows-link v0.2.1\n   Compiling anyhow v1.0.104\n   Compiling utf8_iter v1.1.0\n   Compiling windows-sys v0.61.2\n   Compiling httparse v1.10.1\n   Compiling generic-array v0.14.7\n   Compiling either v1.19.0\n   Compiling serde_json v1.0.145\n   Compiling bytes v1.12.1\n   Compiling native-tls v0.2.18\n   Compiling thiserror v2.0.21\n   Compiling cpufeatures v0.2.17\n   Compiling percent-encoding v2.3.2\n   Compiling itertools v0.14.0\n   Compiling ryu v1.0.23\n   Compiling memchr v2.8.3\n   Compiling form_urlencoded v1.2.2\n   Compiling rand_core v0.9.5\n   Compiling syn v3.0.9\n   Compiling syn v2.0.119\n   Compiling http v1.5.0\n   Compiling data-encoding v2.11.1\n   Compiling log v0.4.35\n   Compiling utf-8 v0.7.6\n   Compiling block-buffer v0.10.4\n   Compiling crypto-common v0.1.7\n   Compiling digest v0.10.7\n   Compiling sha1 v0.10.7\n   Compiling sha2 v0.10.9\n   Compiling synstructure v0.14.0\n   Compiling serde_derive v1.0.228\n   Compiling prost-derive v0.14.4\n   Compiling zerofrom-derive v0.1.8\n   Compiling yoke-derive v0.8.4\n   Compiling zerovec-derive v0.11.7\n   Compiling displaydoc v0.2.7\n   Compiling thiserror-impl v2.0.21\n   Compiling prost v0.14.1\n   Compiling zerofrom v0.1.8\n   Compiling yoke v0.8.4\n   Compiling zerotrie v0.2.5\n   Compiling zerovec v0.11.9\n   Compiling schannel v0.1.30\n   Compiling tinystr v0.8.5\n   Compiling potential_utf v0.1.6\n   Compiling icu_collections v2.4.0\n   Compiling icu_locale_core v2.4.0\n   Compiling ppv-lite86 v0.2.21\n   Compiling yuki-plugin-sdk v1.0.0-alpha.13\n   Compiling rand_chacha v0.9.0\n   Compiling icu_provider v2.4.0\n   Compiling rand v0.9.5\n   Compiling icu_properties v2.4.0\n   Compiling icu_normalizer v2.4.0\n   Compiling tungstenite v0.28.0\n   Compiling idna_adapter v1.2.2\n   Compiling idna v1.1.0\n   Compiling url v2.5.7\n   Compiling yuki-feishu v0.1.0-alpha.2 (C:\\Users\\Hilbert\\AppData\\Local\\Temp\\yuki-rust-build-eeqx_96p\\unit)\n    Finished `release` profile [optimized] target(s) in 36.41s\n"
+    }
+  ]
+}

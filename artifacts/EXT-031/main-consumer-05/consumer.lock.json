@@ -1,0 +1,25 @@
+{
+  "consumer_binary_sha256": "2d0e7e9b910789bf34b8d263475c71a720a2ee650628fc88a3292a64e26d454c",
+  "consumer_snapshot_sha256": "fd7fb275dae5aa500f4249a077b858bbbdfa5982643b97aaae4a5e918fc8cd90",
+  "build_manifest_sha256": "33d1e9a61396d86e4b77781c5508260a6244c9eea0bb14ec7149d55ee57a5aa7",
+  "source_files": {
+    "Cargo.lock": "95257131bd4d94e9a5dc8e0fbbd2a0e1c518c6f5c1fc17e9a1b495f418949929",
+    "Cargo.toml": "1a212029eb41fbce3fcb956571f5bee571b9fa89b8467f4e9998568e289571d8",
+    "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+    "plugin.toml": "7cfca2fe51f2e14676727339f4665605c588b79d8dee963cf00fc52802828a73",
+    "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+    "backend/document_reader.py": "3eaa8ccdd25bbc764d73eb9be7d5c57a8ca7c0a997a9d4d9695902f6f441998a",
+    "backend/source.lock.json": "e0b6d68b94370a41ad5bdb59e2640905cdb6ca435de4b69ed2baf75b06e8e040",
+    "packaging/codecs.lock": "92e058e12e25c10b2cff0764dfac8b9b66d085b77055b6e4a77e595ed6e41bb7",
+    "src/inspect.rs": "7512fa80b42e39d8743cf35ba911a1c4ed62cde8e89b47e706ec31cd4b82d26a",
+    "src/main.rs": "74bb80326fd0d3e1185beace5fb730391a2007ca9fd92bfac2a25bbcb50e2f6e",
+    "src/rpc.rs": "f3c8975a8dae286a0a036a2f754412f4cc9ba3212e0cbff56fafdc64188762a9"
+  },
+  "consumer_sdk": {
+    "python": "1.0.0a4",
+    "rust": "1.0.0-alpha.4"
+  },
+  "consumer_crate_sha256": "fb01271d99ba222f8c84c9821374d6edf03bd32ac172f39b5e83c0beb1010ca9",
+  "ffmpeg_sha256": "2ce797a0f88d7f067180338fb227f7b1928ea727bd9a4d7a1d022f7c52af71a3",
+  "python_sha256": "d55736b9f3d6b4ca7985b82db8ce11edfa09994cf93ce31c6b506543b74f32eb"
+}

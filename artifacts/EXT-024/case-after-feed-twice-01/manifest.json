@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "scope": "candidate diagnostic; not full card acceptance",
+  "files": {
+    "after.json": "65b2a98d531d53e9c8d3d7764014c2d993cd19eeae630fb59a7e66f9e92f0fb8",
+    "before-1.json": "a29438c50ca0d5ee8d75540ce069b69d07dcb389880fb93f2357c042966249cb",
+    "before-2.json": "a29438c50ca0d5ee8d75540ce069b69d07dcb389880fb93f2357c042966249cb",
+    "cut-1.json": "f19287cca79dad302a8cc4202d9c282f852d4389ea455cda74880f635837b11d",
+    "cut-2.json": "1921ef75d9252e11a6d7e7cb896c4d7848eb3651d70d530671ded36fa778b4e1",
+    "host-config.toml": "ca16d24d3dc20979dc6e72eea1aea4624f5e1cd890c0abbfa085a7704cebd43a",
+    "host-restart-1.txt": "95b4e08895627b90125123874e08770959ef4fb488302f4ca2a7b37bba3e7e3d",
+    "host-restart-2.txt": "5441be2cdac9bef540e72d1d17db98fef5360bafa81c0fc60eb6c3420440e968",
+    "host.txt": "7bac1c5727b2731079f66a02f5f0e95df1d8a036cde2bb34ee1ddd721cb302ae",
+    "model.json": "5f030eed0917fb772fa30e8fb214d77d82a90a85f3ce74307c281ca255d738e8",
+    "result.json": "616a8d772951d8b759729f35bb41d95d6a7b9109ff39365c9b8c6110102a8b7d",
+    "transfer.json": "72d1b6277a9f362b798c806a82c72a9d4e4b856ac763df58252307a07c1f34a2",
+    "transport-exit-0.json": "7d0c4653384be769ff5d75d76be428e192c233033e491bf7bfd24ee20c0c0806",
+    "transport-exit-1.json": "f7f5b881097e7122586978d63f4b68c71ac41eb5f44c1b9ce50366407db9a96e",
+    "wire.jsonl": "dcadbe47a34d2462fd63ee2c6170222d791df05e6bfb860676109e3ce359db4b"
+  }
+}

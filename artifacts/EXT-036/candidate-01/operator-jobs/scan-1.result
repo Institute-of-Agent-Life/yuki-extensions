@@ -1,0 +1,33 @@
+{
+  "result": {
+    "audit": {
+      "embedding_routes": [],
+      "fingerprint": "9d97ca43d9b102efa0b5b9a1516024e20d526328cf4d851b8d19464427978dd6",
+      "items": [
+        {
+          "evidence_retained": 1,
+          "evidence_total": 1,
+          "fact": "5bbe2d2c-3426-4120-84e1-d3a7d918a919",
+          "revision": 1,
+          "status": "active",
+          "vector_profiles": []
+        }
+      ],
+      "paid_calls": 0
+    },
+    "bounded_page": true,
+    "coverage": [
+      {
+        "fact": "5bbe2d2c-3426-4120-84e1-d3a7d918a919",
+        "missing_profile_attempt_state": "not_observed_by_audit",
+        "missing_profiles": [],
+        "recorded_evidence": 1,
+        "retained_evidence": 1,
+        "revision": 1
+      }
+    ],
+    "paid_calls": 0,
+    "quality_findings": "not_exposed_by_candidate"
+  },
+  "state": "completed"
+}

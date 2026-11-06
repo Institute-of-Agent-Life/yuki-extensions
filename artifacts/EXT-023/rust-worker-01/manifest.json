@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "scope": "completed Rust worker controller component",
+  "formal_card_acceptance": false,
+  "source": {
+    "Cargo.toml": "6c5c47fb41912f30b747e8d5b555220ea076515d2091c239612140954952765d",
+    "Cargo.lock": "2b584722fd3618fe935bf31c00bc741e8ae03643abd416d057f5ab9e25d227d3",
+    "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+    "src/lib.rs": "ef788443d7fdc472cb3e1924ea2434f216fbc519a8ca9272eef6bfaaf612f288",
+    "src/worker.rs": "6a08230aa60f356305b1624c8d853b6da22c5c9fdaaef00b13ad5cb2dcd13894",
+    "tests/native_worker.rs": "4a5c90ae71e8659c50036d5eafed31a8f342970adc93860034b661c020adebe7"
+  },
+  "windows_native_case": "ignored: no Windows ABI",
+  "linux_native_cases": "2 passed, 0 ignored on HJW Arch",
+  "files": {
+    "linux.json": "786a24d7c8549efacefef6f91b5e46aa413746653b9972a77dc5e607e7c4f1c3",
+    "windows.json": "6c8dc2dd0b0be999f596c41501b1e8a51f57e6033f6676da026b2abe544aa156",
+    "windows-driver.json": "0f4078dd50a0dbd5ed9632266674d10492f6ec13aaac0a3965c76727e14985c0",
+    "windows-driver.txt": "77fbf4370ee2d437a0c30decee69796670ecdf90e598bad3cef841be23d7890d"
+  }
+}

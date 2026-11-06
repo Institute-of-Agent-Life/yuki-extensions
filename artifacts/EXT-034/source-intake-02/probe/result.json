@@ -1,0 +1,58 @@
+{
+  "extract_preview": {
+    "Err": "{\"code\":-32003,\"message\":\"method, grant or original scope denied\"}"
+  },
+  "model_open": {
+    "Err": "{\"code\":-32003,\"message\":\"method, grant or original scope denied\"}"
+  },
+  "pages": [
+    {
+      "items": [
+        {
+          "actor": "5556db82-b8ae-4bf5-a831-bb57f17226e1",
+          "entry": "410dd389-5930-455c-b0c9-4ac0a3bc2647",
+          "event": 1,
+          "next_offset": null,
+          "offset": 0,
+          "text": "我每天喝烏龍茶。",
+          "version": "626e36dd29efab9af4edd09c3150bc205dc1afcfd4c2a358064e3291e3ee8ed5"
+        }
+      ],
+      "next_event": 1
+    },
+    {
+      "items": [
+        {
+          "actor": "5556db82-b8ae-4bf5-a831-bb57f17226e1",
+          "entry": "410dd389-5930-455c-b0c9-4ac0a3bc2647",
+          "event": 2,
+          "next_offset": null,
+          "offset": 0,
+          "text": "上下文原句，不當成主要來源。",
+          "version": "3ad78c48745b26bacb168aae408908990f8ea2bd4e776671f3a15031e3b9abb7"
+        }
+      ],
+      "next_event": 2
+    }
+  ],
+  "request": {
+    "format": "extraction",
+    "key": "original-preview-probe",
+    "mode": "text_json",
+    "purpose": "rebuild",
+    "route": "extract",
+    "scope": "own",
+    "sources": [
+      {
+        "event": 1,
+        "role": "primary",
+        "version": "626e36dd29efab9af4edd09c3150bc205dc1afcfd4c2a358064e3291e3ee8ed5"
+      },
+      {
+        "event": 2,
+        "role": "context",
+        "version": "3ad78c48745b26bacb168aae408908990f8ea2bd4e776671f3a15031e3b9abb7"
+      }
+    ]
+  }
+}

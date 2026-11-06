@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "scope": "candidate diagnostic; not full card acceptance",
+  "files": {
+    "interpretation.json": "c7446c4d2b27281692017796c8679ba0e21ff1d7e2c6d62f5df765456fe7c041",
+    "native-identities.json": "e71cc75578711dc526025b64953300ef9781b22359759d3124235ceb3ba876b5",
+    "windows-check.json": "98e21991a3dfe48af3edbf39192197dec6d97b398449d5b3e8e6b347b1c29188"
+  }
+}

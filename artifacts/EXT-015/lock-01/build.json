@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "commands": [
+    {
+      "argv": [
+        "cargo",
+        "update",
+        "--offline",
+        "-p",
+        "yuki-plugin-sdk"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "     Locking 2 packages to latest Rust 1.96 compatible versions\n    Updating yuki-client v0.1.0-alpha.1 (D:\\yuki-extension-tests\\client-selected-lock-01\\project) -> v0.1.0-alpha.2\n    Updating yuki-plugin-sdk v1.0.0-alpha.3 -> v1.0.0-alpha.12\n"
+    },
+    {
+      "argv": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline"
+      ],
+      "exit_code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 2 tests\ntest only_the_supported_owner_routes_can_be_dispatched ... ok\ntest selected_entries_reach_the_owner_but_duplicate_authority_is_rejected ... ok\n\ntest result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "   Compiling proc-macro2 v1.0.107\n   Compiling quote v1.0.47\n   Compiling unicode-ident v1.0.27\n   Compiling serde_core v1.0.228\n   Compiling itoa v1.0.18\n   Compiling httparse v1.10.1\n   Compiling serde v1.0.228\n   Compiling log v0.4.35\n   Compiling bytes v1.12.1\n   Compiling serde_json v1.0.145\n   Compiling base64 v0.22.1\n   Compiling memchr v2.8.3\n   Compiling ryu v1.0.23\n   Compiling ascii v1.1.0\n   Compiling utf-8 v0.7.6\n   Compiling httpdate v1.0.3\n   Compiling chunked_transfer v1.5.0\n   Compiling percent-encoding v2.3.2\n   Compiling tiny_http v0.12.0\n   Compiling http v1.5.0\n   Compiling syn v2.0.119\n   Compiling ureq-proto v0.5.3\n   Compiling ureq v3.1.2\n   Compiling serde_derive v1.0.228\n   Compiling yuki-plugin-sdk v1.0.0-alpha.12\n   Compiling yuki-client v0.1.0-alpha.2 (D:\\yuki-extension-tests\\client-selected-lock-01\\project)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 14.40s\n     Running unittests src\\main.rs (target\\debug\\deps\\yuki_client-4ee36e990e572838.exe)\n     Running tests\\request_boundary.rs (target\\debug\\deps\\request_boundary-540fb7c5f62e7935.exe)\n"
+    },
+    {
+      "argv": [
+        "cargo",
+        "build",
+        "--locked",
+        "--offline",
+        "--release"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "   Compiling proc-macro2 v1.0.107\n   Compiling unicode-ident v1.0.27\n   Compiling quote v1.0.47\n   Compiling itoa v1.0.18\n   Compiling serde_core v1.0.228\n   Compiling httparse v1.10.1\n   Compiling bytes v1.12.1\n   Compiling serde_json v1.0.145\n   Compiling serde v1.0.228\n   Compiling log v0.4.35\n   Compiling ryu v1.0.23\n   Compiling base64 v0.22.1\n   Compiling memchr v2.8.3\n   Compiling utf-8 v0.7.6\n   Compiling chunked_transfer v1.5.0\n   Compiling httpdate v1.0.3\n   Compiling ascii v1.1.0\n   Compiling percent-encoding v2.3.2\n   Compiling tiny_http v0.12.0\n   Compiling http v1.5.0\n   Compiling syn v2.0.119\n   Compiling ureq-proto v0.5.3\n   Compiling ureq v3.1.2\n   Compiling serde_derive v1.0.228\n   Compiling yuki-plugin-sdk v1.0.0-alpha.12\n   Compiling yuki-client v0.1.0-alpha.2 (D:\\yuki-extension-tests\\client-selected-lock-01\\project)\n    Finished `release` profile [optimized] target(s) in 11.90s\n"
+    }
+  ],
+  "binary_sha256": "dc29c1c51f001229ed6283c7332dcd167705cd678fd7fcd8da977ba6b8fb0340"
+}

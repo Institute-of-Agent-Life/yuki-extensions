@@ -1,0 +1,85 @@
+{
+  "source": "Arch Linux Archive; versions from the preexisting June 2026 database, matched to the installed base. Signatures still require pacman verification on HJW.",
+  "packages": [
+    {
+      "name": "mpdecimal",
+      "version": "4.0.1-3",
+      "sha256": "8679f71ed9a982c91883adfaaf0f87a1b74d92d4060283180c4a105a6c7afb19",
+      "filename": "mpdecimal-4.0.1-3-x86_64.pkg.tar.zst",
+      "url": "https://archive.archlinux.org/packages/m/mpdecimal/mpdecimal-4.0.1-3-x86_64.pkg.tar.zst",
+      "signature_sha256": "bcc17af7b801c1eb181f32c1ce9fe6e087f8998fef087dff61669442ff711406"
+    },
+    {
+      "name": "python",
+      "version": "3.14.6-1",
+      "sha256": "fda7dc7b67bd316a0e6a18164ffd122599458f4f9736caa0c35a9eb649bade8d",
+      "filename": "python-3.14.6-1-x86_64.pkg.tar.zst",
+      "url": "https://archive.archlinux.org/packages/p/python/python-3.14.6-1-x86_64.pkg.tar.zst",
+      "signature_sha256": "7e8e0ee559d7453c0ba89473f6ee7affaa670edfab38650aa6b89f156034239a"
+    },
+    {
+      "name": "python-legacy-cgi",
+      "version": "2.6.4-2",
+      "sha256": "a7db2134b5b93d90ecd15390fd709c18df9fb457d99ad21a20b8732cdb56dc87",
+      "filename": "python-legacy-cgi-2.6.4-2-any.pkg.tar.zst",
+      "url": "https://archive.archlinux.org/packages/p/python-legacy-cgi/python-legacy-cgi-2.6.4-2-any.pkg.tar.zst",
+      "signature_sha256": "039987e879618436c6e33bfac711a4495514b7faaa40f0653434be28cc1a0d39"
+    },
+    {
+      "name": "apparmor",
+      "version": "4.1.7-1",
+      "sha256": "ec07e414a588029b44e662fb4ef4c3fc738344ee5d413e3b7cc798e27f991ca4",
+      "filename": "apparmor-4.1.7-1-x86_64.pkg.tar.zst",
+      "url": "https://archive.archlinux.org/packages/a/apparmor/apparmor-4.1.7-1-x86_64.pkg.tar.zst",
+      "signature_sha256": "9887744b61e0c5c631537f81b595b2e24368ace44ffdd274ed50c8d2d97ea72d"
+    },
+    {
+      "name": "bubblewrap",
+      "version": "0.11.2-1",
+      "sha256": "b5f58fb8dfcc8f8598ecc1b1d12f9a02abaf4439c3c68429d8c1675ccd498c76",
+      "filename": "bubblewrap-0.11.2-1-x86_64.pkg.tar.zst",
+      "url": "https://archive.archlinux.org/packages/b/bubblewrap/bubblewrap-0.11.2-1-x86_64.pkg.tar.zst",
+      "signature_sha256": "98a8719eb8e13f936a4e738a089db2c30952bd35e3a9ddf390fe5fe12d593d09"
+    },
+    {
+      "name": "libtool",
+      "version": "2.6.1-2",
+      "sha256": "6fcbcb5af550f379d9002d243ed63b54f8d9708b019c644b5c663d97ebfae67c",
+      "filename": "libtool-2.6.1-2-x86_64.pkg.tar.zst",
+      "url": "https://archive.archlinux.org/packages/l/libtool/libtool-2.6.1-2-x86_64.pkg.tar.zst",
+      "signature_sha256": "fe18de36bbaa8cea33340bd78e1ca23f348b23c3ad14edc1a11c118712808297"
+    },
+    {
+      "name": "libpathrs",
+      "version": "0.2.5-2",
+      "sha256": "20f7219bcc47e19d22d5ee4d1834e60a86d681e63bc9aadb784d0408ac519cc9",
+      "filename": "libpathrs-0.2.5-2-x86_64.pkg.tar.zst",
+      "url": "https://archive.archlinux.org/packages/l/libpathrs/libpathrs-0.2.5-2-x86_64.pkg.tar.zst",
+      "signature_sha256": "d0591b3779dc83fa802f5f00495872c5b2c85d4a254d3a04246fced431420d23"
+    },
+    {
+      "name": "runc",
+      "version": "1.5.0-1",
+      "sha256": "4545e4d147f51dc47883ddb7b8ceed5d885deacf7db2a6affba57e9c8efcb703",
+      "filename": "runc-1.5.0-1-x86_64.pkg.tar.zst",
+      "url": "https://archive.archlinux.org/packages/r/runc/runc-1.5.0-1-x86_64.pkg.tar.zst",
+      "signature_sha256": "c066ca5a1f1374305a29284ee1aa07c8156d7fe5dd341c600c64b8be76538947"
+    },
+    {
+      "name": "containerd",
+      "version": "2.3.2-1",
+      "sha256": "ac8820b33bdaa497a7b937a57ae2057822c1391895c9d84cdd93e9ffec1719a2",
+      "filename": "containerd-2.3.2-1-x86_64.pkg.tar.zst",
+      "url": "https://archive.archlinux.org/packages/c/containerd/containerd-2.3.2-1-x86_64.pkg.tar.zst",
+      "signature_sha256": "23bb006177b0458d91d16e701e68626a5d77e6bdd995b97348c17e344e145c8c"
+    },
+    {
+      "name": "docker",
+      "version": "1:29.6.0-1",
+      "sha256": "d21eb9e75ef354cd9e87d7e834d9f2dcf8cfcc83fd69136c1fb15376c29584a5",
+      "filename": "docker-1:29.6.0-1-x86_64.pkg.tar.zst",
+      "url": "https://archive.archlinux.org/packages/d/docker/docker-1%3A29.6.0-1-x86_64.pkg.tar.zst",
+      "signature_sha256": "b67394c399ed9f9e04324648ba96256be0eab031b8e8be38095538a212100a19"
+    }
+  ]
+}

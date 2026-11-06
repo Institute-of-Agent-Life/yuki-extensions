@@ -1,0 +1,101 @@
+{
+  "status": "PASS",
+  "card_status": "BLOCKED_MAIN_ERASURE_NATIVE_GATEWAY_AND_PUBLICATION",
+  "phase": "audit_sealed_native_evidence",
+  "native_cases": [
+    {
+      "case": "pdf",
+      "evidence": "D:\\yuki-extension-tests\\media-main-main-consumer-05\\evidence\\pdf",
+      "wire_sha256": "6d0e0b52f33f340db5ee1834c83ae432aff1f80d32df7094c32564cc729115ad",
+      "physical_processor_calls": 1,
+      "model_fixture_http": 3,
+      "result_sha256": "506de201f4b7a4d610a6a853dcb3e510ba754c6559465369b3318130fc27e979"
+    },
+    {
+      "case": "video",
+      "evidence": "D:\\yuki-extension-tests\\media-main-video-consumer-06\\evidence\\video",
+      "wire_sha256": "c88e52fb75b018e402fbb2599f9aa8856d1e18d6c3bb3e21b20c2428e1bdd2ec",
+      "physical_processor_calls": 1,
+      "model_fixture_http": 3,
+      "result_sha256": "8f3082a71ec13fe084f1b5c4617b5417ee407e38ce434ba675d0cc517a08317b"
+    },
+    {
+      "case": "not-selected",
+      "evidence": "D:\\yuki-extension-tests\\media-main-faults-07\\evidence\\not-selected",
+      "wire_sha256": "dfd6762cd8b5974d3dbe3c9457a81b1df7fda265731bf0de688c0d46582b1c58",
+      "physical_processor_calls": 0,
+      "model_fixture_http": 2,
+      "result_sha256": "39c31107093c2c202ebf9f6ebebe4214e7c7774c486a8761ebb075c1d740bfae"
+    },
+    {
+      "case": "video-no-vision",
+      "evidence": "D:\\yuki-extension-tests\\media-main-faults-07\\evidence\\video-no-vision",
+      "wire_sha256": "dfd6762cd8b5974d3dbe3c9457a81b1df7fda265731bf0de688c0d46582b1c58",
+      "physical_processor_calls": 0,
+      "model_fixture_http": 3,
+      "result_sha256": "a2983741459b1b1b66853e0ff7df4e0a81030239259b8c6782a5882d7ce1b51d"
+    },
+    {
+      "case": "corrupt",
+      "evidence": "D:\\yuki-extension-tests\\media-main-faults-07\\evidence\\corrupt",
+      "wire_sha256": "2cdf2abff5486c16abf965d661f25a664dd5ff606e07d846d4e1a684527db9d4",
+      "physical_processor_calls": 1,
+      "model_fixture_http": 3,
+      "result_sha256": "300c1f7d14bb313663ff3c8531bfa2dcf65eeb81570249badb8aa77fcf25a8c8"
+    }
+  ],
+  "source_containers": {
+    "media-main-main-consumer-05": {
+      "source_snapshot_sha256": "c7449cf6d7f292629cb4d0da21ed456f03178aa879acf9eca8173533ddcfc4fc",
+      "evidence_zip_sha256": "4c5cace69d234cb4ff95b13a9a8a533a033878aa3765752e69061848a3344fc5",
+      "container_status": "FAIL"
+    },
+    "media-main-video-consumer-06": {
+      "source_snapshot_sha256": "21c6f12f3d5b329edd1af3643c6d74eb4dcf5504eedf7770236b96b38ea4fac9",
+      "evidence_zip_sha256": "f3d5f4be39d508d00f0df8ed6ce81cfa4775682cb5b73594faab3b5fb38416ef",
+      "container_status": "PASS"
+    },
+    "media-main-faults-07": {
+      "source_snapshot_sha256": "b86c99e95b9293d74398adea952ea0999021bcce9df7152f3d7721a911600a79",
+      "evidence_zip_sha256": "e61f4131b2848577737b170de90b8292f219f75398d1a00c53c7a6eb24785fee",
+      "container_status": "FAIL"
+    }
+  },
+  "consumer_rebuilt": false,
+  "consumer_binary_sha256": "2d0e7e9b910789bf34b8d263475c71a720a2ee650628fc88a3292a64e26d454c",
+  "producer_source": "0ef956a9c6d90fae79c0d4488296c064ccf29f54",
+  "producer_published": false,
+  "main_erasure": {
+    "status": "BLOCKED",
+    "public_method": "operator privacy erase",
+    "error": "SQLite 787 FOREIGN KEY constraint failed",
+    "successful_erase_receipt": false,
+    "original_failure_sha256": "2759316898b9d058217f0713b597dd5a2f3754822a7ef935ad3a413aeddf5215",
+    "retry_attempted": false
+  },
+  "release_boundaries": [
+    "character",
+    "client",
+    "codemode",
+    "connector",
+    "env",
+    "feishu",
+    "local-agent",
+    "media",
+    "memory-maintenance",
+    "monty-runtime",
+    "telegram",
+    "trace",
+    "web-fetch",
+    "yuki-setup"
+  ],
+  "selected_units": [
+    "media"
+  ],
+  "test_sources": {
+    "tests/cases/EXT-031.py": "8bdd3bc164926bac21f7de7f1418a180a034f0773fb116f6db108d183877393c",
+    "tests/peers/media_main.py": "7080c7e8c0e5681bef1fe333a6a43010928b633924d86764f4270cb0d4f25846",
+    "tests/peers/media_main_audit.py": "8c7efee4fb7baf23a7c91246ee89986728120b2323c14be2e182c30ad08a4115",
+    "tests/peers/media_stdio.py": "7d1f75182ce5a1145a77d69287d9561fb8c320344f591fe3dcd19bb6c4ec95d9"
+  }
+}

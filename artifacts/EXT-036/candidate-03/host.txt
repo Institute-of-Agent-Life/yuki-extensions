@@ -1,0 +1,4 @@
+{"listen":"127.0.0.1:28272","operator":"\\\\.\\pipe\\yuki-core-01809bfacbfc8619abfed2bf54e4fa33abeabc1221ca027fc14c179be816fb75","status":"ready"}
+{"listen":"127.0.0.1:28272","operator":"\\\\.\\pipe\\yuki-core-01809bfacbfc8619abfed2bf54e4fa33abeabc1221ca027fc14c179be816fb75","status":"ready"}
+{"listen":"127.0.0.1:28272","operator":"\\\\.\\pipe\\yuki-core-01809bfacbfc8619abfed2bf54e4fa33abeabc1221ca027fc14c179be816fb75","status":"ready"}
+{"listen":"127.0.0.1:28272","operator":"\\\\.\\pipe\\yuki-core-01809bfacbfc8619abfed2bf54e4fa33abeabc1221ca027fc14c179be816fb75","status":"ready"}

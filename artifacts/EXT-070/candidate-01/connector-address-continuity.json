@@ -1,0 +1,298 @@
+{
+  "status": "PASS",
+  "card_status": "CANDIDATE_ON_UNPUBLISHED_EXT011",
+  "connector_version": "0.4.4.dev1",
+  "wheel_sha256": "2748ec830b56e38f404d33964350578e543232ab1fce02e2399fc3ab045a74d8",
+  "runtime_source_changed": false,
+  "cases": [
+    {
+      "case": "save-original-installation",
+      "target": "https://new.example/role/yuki/",
+      "expected_endpoint": "wss://new.example/role/yuki/agents/v1/connect",
+      "original_fields_preserved": true,
+      "service_marker_sha256": "ee351a1f0bcd41cecfbea883f531c8c697b569f7223cee7f0bad2c3a651493d3",
+      "journal_created": false
+    },
+    {
+      "case": "save-original-installation",
+      "target": "http://127.0.0.1:18767/role/yuki",
+      "expected_endpoint": "ws://127.0.0.1:18767/role/yuki/agents/v1/connect",
+      "original_fields_preserved": true,
+      "service_marker_sha256": "ee351a1f0bcd41cecfbea883f531c8c697b569f7223cee7f0bad2c3a651493d3",
+      "journal_created": false
+    },
+    {
+      "case": "save-original-installation",
+      "target": "http://localhost:18767",
+      "expected_endpoint": "ws://localhost:18767/agents/v1/connect",
+      "original_fields_preserved": true,
+      "service_marker_sha256": "ee351a1f0bcd41cecfbea883f531c8c697b569f7223cee7f0bad2c3a651493d3",
+      "journal_created": false
+    },
+    {
+      "case": "save-original-installation",
+      "target": "http://[::1]:18767",
+      "expected_endpoint": "ws://[::1]:18767/agents/v1/connect",
+      "original_fields_preserved": true,
+      "service_marker_sha256": "ee351a1f0bcd41cecfbea883f531c8c697b569f7223cee7f0bad2c3a651493d3",
+      "journal_created": false
+    },
+    {
+      "case": "remote-TLS-required",
+      "target": "http://100.100.100.100",
+      "exit_code": 1,
+      "config_unchanged": true
+    },
+    {
+      "case": "remote-TLS-required",
+      "target": "http://remote.invalid",
+      "exit_code": 1,
+      "config_unchanged": true
+    },
+    {
+      "case": "remote-TLS-required",
+      "target": "ftp://host",
+      "exit_code": 1,
+      "config_unchanged": true
+    },
+    {
+      "case": "upgrade-original-url-namespace",
+      "receipt_version": 0,
+      "before": {
+        "installation": [
+          [
+            "[\"wss://old.example/agents/v1/connect\", \"ef4b46ae-c353-46e5-b73d-156c871886b1\"]"
+          ]
+        ],
+        "operations": [
+          [
+            "original-completed",
+            "{\"action\":\"exec\",\"id\":\"original-completed\",\"resource\":\"terminal\",\"run_id\":\"original-completed\"}",
+            "{\"result\":{\"run_id\":\"original-completed\",\"status\":\"succeeded\"}}",
+            0,
+            null
+          ],
+          [
+            "original-pending",
+            "{\"action\":\"exec\",\"id\":\"original-pending\",\"resource\":\"terminal\",\"run_id\":\"original-pending\"}",
+            "{\"result\":{\"run_id\":\"original-pending\",\"status\":\"running\"}}",
+            1,
+            null
+          ]
+        ],
+        "events": [
+          [
+            3,
+            "original-unconfirmed-event",
+            "{\"event_id\":\"original-unconfirmed-event\",\"kind\":\"progress\",\"operation_id\":\"original-pending\",\"operation_state\":{\"pending\":true,\"run_id\":\"original-pending\",\"state_sequence\":3,\"status\":\"running\"},\"result\":{\"run_id\":\"original-pending\",\"status\":\"running\"},\"sequence\":3,\"type\":\"terminal_event\"}"
+          ]
+        ]
+      },
+      "after": {
+        "installation": [
+          [
+            "ef4b46ae-c353-46e5-b73d-156c871886b1"
+          ]
+        ],
+        "operations": [
+          [
+            "original-completed",
+            "{\"action\":\"exec\",\"id\":\"original-completed\",\"resource\":\"terminal\",\"run_id\":\"original-completed\"}",
+            "{\"result\":{\"run_id\":\"original-completed\",\"status\":\"succeeded\"}}",
+            0,
+            "{\"pending\":false,\"run_id\":\"original-completed\",\"state_sequence\":0,\"status\":\"succeeded\"}",
+            null
+          ],
+          [
+            "original-pending",
+            "{\"action\":\"exec\",\"id\":\"original-pending\",\"resource\":\"terminal\",\"run_id\":\"original-pending\"}",
+            "{\"result\":{\"run_id\":\"original-pending\",\"status\":\"running\"}}",
+            1,
+            "{\"pending\":true,\"run_id\":\"original-pending\",\"state_sequence\":3,\"status\":\"running\"}",
+            null
+          ]
+        ],
+        "events": [
+          [
+            3,
+            "original-unconfirmed-event",
+            "{\"event_id\":\"original-unconfirmed-event\",\"kind\":\"progress\",\"operation_id\":\"original-pending\",\"operation_state\":{\"pending\":true,\"run_id\":\"original-pending\",\"state_sequence\":3,\"status\":\"running\"},\"result\":{\"run_id\":\"original-pending\",\"status\":\"running\"},\"sequence\":3,\"type\":\"terminal_event\"}"
+          ]
+        ]
+      },
+      "original_unconfirmed_event_preserved": true,
+      "same_device_reopen": true
+    },
+    {
+      "case": "upgrade-original-url-namespace",
+      "receipt_version": 1,
+      "before": {
+        "installation": [
+          [
+            "[\"wss://old.example/agents/v1/connect\", \"fb79158c-20ec-4448-a105-6a5bbfce015e\"]"
+          ]
+        ],
+        "operations": [
+          [
+            "original-completed",
+            "{\"action\":\"exec\",\"id\":\"original-completed\",\"resource\":\"terminal\",\"run_id\":\"original-completed\"}",
+            "{\"result\":{\"run_id\":\"original-completed\",\"status\":\"succeeded\"}}",
+            0,
+            "{\"pending\":false,\"run_id\":\"original-completed\",\"state_sequence\":1,\"status\":\"succeeded\"}"
+          ],
+          [
+            "original-pending",
+            "{\"action\":\"exec\",\"id\":\"original-pending\",\"resource\":\"terminal\",\"run_id\":\"original-pending\"}",
+            "{\"result\":{\"run_id\":\"original-pending\",\"status\":\"running\"}}",
+            1,
+            "{\"pending\":true,\"run_id\":\"original-pending\",\"state_sequence\":3,\"status\":\"running\"}"
+          ]
+        ],
+        "events": [
+          [
+            3,
+            "original-unconfirmed-event",
+            "{\"event_id\":\"original-unconfirmed-event\",\"kind\":\"progress\",\"operation_id\":\"original-pending\",\"operation_state\":{\"pending\":true,\"run_id\":\"original-pending\",\"state_sequence\":3,\"status\":\"running\"},\"result\":{\"run_id\":\"original-pending\",\"status\":\"running\"},\"sequence\":3,\"type\":\"terminal_event\"}"
+          ]
+        ]
+      },
+      "after": {
+        "installation": [
+          [
+            "fb79158c-20ec-4448-a105-6a5bbfce015e"
+          ]
+        ],
+        "operations": [
+          [
+            "original-completed",
+            "{\"action\":\"exec\",\"id\":\"original-completed\",\"resource\":\"terminal\",\"run_id\":\"original-completed\"}",
+            "{\"result\":{\"run_id\":\"original-completed\",\"status\":\"succeeded\"}}",
+            0,
+            "{\"pending\":false,\"run_id\":\"original-completed\",\"state_sequence\":1,\"status\":\"succeeded\"}",
+            null
+          ],
+          [
+            "original-pending",
+            "{\"action\":\"exec\",\"id\":\"original-pending\",\"resource\":\"terminal\",\"run_id\":\"original-pending\"}",
+            "{\"result\":{\"run_id\":\"original-pending\",\"status\":\"running\"}}",
+            1,
+            "{\"pending\":true,\"run_id\":\"original-pending\",\"state_sequence\":3,\"status\":\"running\"}",
+            null
+          ]
+        ],
+        "events": [
+          [
+            3,
+            "original-unconfirmed-event",
+            "{\"event_id\":\"original-unconfirmed-event\",\"kind\":\"progress\",\"operation_id\":\"original-pending\",\"operation_state\":{\"pending\":true,\"run_id\":\"original-pending\",\"state_sequence\":3,\"status\":\"running\"},\"result\":{\"run_id\":\"original-pending\",\"status\":\"running\"},\"sequence\":3,\"type\":\"terminal_event\"}"
+          ]
+        ]
+      },
+      "original_unconfirmed_event_preserved": true,
+      "same_device_reopen": true
+    },
+    {
+      "case": "different-device-rejected-before-connect",
+      "exit_code": 1,
+      "original_evidence_preserved": true
+    },
+    {
+      "case": "live-shell-kept-while-saving-address",
+      "original_pid": 32568,
+      "run_id": "original-address-run",
+      "input_delivered": true,
+      "original_socket_retained": true,
+      "new_endpoint_connections": 0,
+      "receipt": {
+        "admitted": true,
+        "completion": {
+          "exit_code": 0,
+          "pending": false,
+          "run_id": "original-address-run",
+          "status": "succeeded"
+        },
+        "cwd": "C:\\Users\\Hilbert\\yuki-extension-tests\\c70eb4fe55cb3155ef91\\src\\artifacts\\EXT-070\\candidate-01\\work\\live-shell",
+        "exit_code": 0,
+        "pending": false,
+        "request_id": "original-address-shell",
+        "run_id": "original-address-run",
+        "shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+        "state_sequence": 5,
+        "status": "succeeded"
+      },
+      "service_marker_sha256": "c367d8bbf542a7f8b8425bd01d41394625a2afce0e8bc4cfb2ea5641e96e9147"
+    },
+    {
+      "case": "same-device-new-WSS-reuses-originals",
+      "original_receipt": {
+        "admitted": true,
+        "completion": {
+          "exit_code": 0,
+          "pending": false,
+          "run_id": "original-address-run",
+          "status": "succeeded"
+        },
+        "cwd": "C:\\Users\\Hilbert\\yuki-extension-tests\\c70eb4fe55cb3155ef91\\src\\artifacts\\EXT-070\\candidate-01\\work\\live-shell",
+        "exit_code": 0,
+        "pending": false,
+        "request_id": "original-address-shell",
+        "run_id": "original-address-run",
+        "shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+        "state_sequence": 5,
+        "status": "succeeded"
+      },
+      "unknown_receipt": {
+        "pending": true,
+        "reason": "original_dispatch_not_confirmed",
+        "run_id": "unknown-run",
+        "state_sequence": 0,
+        "status": "unknown"
+      },
+      "first_events": [
+        "already-acked",
+        "retained-before-url",
+        "089b4f58-8ae2-4943-a872-257d8cd956ff"
+      ],
+      "second_events": [
+        "retained-before-url"
+      ],
+      "native_launches": 1,
+      "namespace": [
+        [
+          "394a5db9-3067-41be-abda-33d79ee577b5"
+        ]
+      ],
+      "original_pid": 32568
+    },
+    {
+      "case": "protocol-does-not-replay-native-operation",
+      "connections": 1,
+      "original_evidence_preserved": true,
+      "foreground_exit_code": null,
+      "emitted_events": []
+    },
+    {
+      "case": "revoked-does-not-replay-native-operation",
+      "connections": 1,
+      "original_evidence_preserved": true,
+      "foreground_exit_code": null,
+      "emitted_events": []
+    }
+  ],
+  "old_inputs": {
+    "count": 11,
+    "source_commit": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+    "github_artifact_digest": "sha256:da2c0c140992b3a2af8dee54bd89e0a32caf4184dca5dae0dc131637c0e9b70b",
+    "historical_only": true
+  },
+  "transport": "two isolated WSS wire4 fixtures with original TLS verification",
+  "core_host_substituted": false,
+  "os_service_installed_or_started": false,
+  "paid_calls": "not configured or invoked",
+  "ext011_witness": "artifacts/EXT-011/connector-analysis-01/analysis.json",
+  "not_claimed": [
+    "a core Work authorization test",
+    "public deployment",
+    "formal publication"
+  ]
+}

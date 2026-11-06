@@ -1,0 +1,76 @@
+[
+  {
+    "id": "fixture-1",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": null,
+          "tool_calls": [
+            {
+              "id": "original-capability",
+              "type": "function",
+              "function": {
+                "name": "get_my_capabilities",
+                "arguments": "{}"
+              }
+            }
+          ]
+        },
+        "finish_reason": "tool_calls"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2,
+      "completion_tokens": 1,
+      "total_tokens": 3
+    }
+  },
+  {
+    "id": "fixture-2",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": null,
+          "tool_calls": [
+            {
+              "id": "selected-original",
+              "type": "function",
+              "function": {
+                "name": "inspect_conversation_attachment",
+                "arguments": "{\"event_id\": 1, \"attachment_index\": 1, \"question\": \"Read the explicitly selected original attachment.\"}"
+              }
+            }
+          ]
+        },
+        "finish_reason": "tool_calls"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2,
+      "completion_tokens": 1,
+      "total_tokens": 3
+    }
+  },
+  {
+    "id": "fixture-3",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": ""
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2,
+      "completion_tokens": 1,
+      "total_tokens": 3
+    }
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "task": "EXT-038",
+  "status": "PASS",
+  "phase": "preparation",
+  "card_status": "UNPUBLISHED_SHARED_ROLE_CANDIDATE",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "f7b0c9bd39f3483ea32e357a4f50760bf813f698f285b2a9c5fbed4bda1728df",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-038",
+    "--preparation",
+    "--out",
+    "D:\\yuki-extension-tests\\character-candidate-01\\evidence"
+  ],
+  "files": {
+    "build.json": "66ff12895f7e98da8a905e754d1a3def4ad74ea8ce76cec60a2a18920dd4ea3d",
+    "cases.json": "2dfcfdb8637a8ce51f0ae3aa0b0723bb443bd25dee6651f55607d6fd25fb29a0",
+    "host-config.toml": "d189abb0e0e65ab7d4afa9950cfed88d016fe5531105e46199b9decfb81b8034",
+    "host.txt": "d503208a0a859e983ea88b22ee9c6ce6ee439dc3f4f2af62eda2db283e3a289c",
+    "model.json": "d1809b1f80c86216a200acc532d6224346a1b4c6e086e0a047121debd83fc10c",
+    "operator.json": "d4e2799a9947cf8a357efe4341619b5865beebf210c5a782bb1488446218f635",
+    "shared-character.json": "1b52660577892c026c10fba432bbcb0d93a5589f6996689b73a8e47b619ff24e",
+    "wire.jsonl": "7ffefe221822e406876273063c9130efa1e55c1b5772c11673b84cbe9ba75851"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "host": "HJW",
+  "target": "Windows x86_64",
+  "input_archive_sha256": "f8d6eb7226cc49871be5073f05ab41efd60209b9c358b331c5f9505f93947bba",
+  "source_files_sha256": {
+    "Cargo.lock": "c32dc8fb60db4882182c75d0e0ece88e6de938d98b98a39966cd7388afdde1d3",
+    "Cargo.toml": "4b4353a0c74604074ae1caf5e57e0f6586ca5352343926b0e1ec1358cd3343ac",
+    "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+    "README.md": "8c3a192c99cda73428078704dc12c3d27f4b776b1d835300ed88f099fe01e3f9",
+    "plugin.toml": "4c780549414c5c063d3bdecd6fa0333d35b6a2f4489959fd49e0b2f3ce5f4817",
+    "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+    "src/auth.rs": "a203d603ff8df772634096b505d2a7a227ac4726d3ef5c7db2766ad2e0171cf9",
+    "src/http.rs": "f7c0e55196b872ee78c6d8c9314aea9fcfb6b267871aaf39624323820d9b5625",
+    "src/main.rs": "86e55e6cad33ee81e799487541b067b84c75b50abaac1da68ecae3aa07ff03bd",
+    "tests/request_boundary.rs": "aae2974d6196831eaed6c884eb6e202b4ee309ddc0f531adf452f0d18282fe2f"
+  },
+  "sdk_sha256": "e5b9fde5298eb71ff252fc8acd430b44d8d965761d5d3c948da47fced49c7dbd",
+  "command": [
+    "cargo",
+    "test",
+    "--locked",
+    "--offline",
+    "--test",
+    "request_boundary"
+  ],
+  "exit_code": 0,
+  "cargo_log_sha256": "0b648b2ca7498358d7d3fbf1b12e0f2614bc927bbf90aabc2ae8b0a726b02c46"
+}

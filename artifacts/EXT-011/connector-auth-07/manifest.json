@@ -1,0 +1,43 @@
+{
+  "task": "EXT-011",
+  "status": "PASS",
+  "phase": "preparation",
+  "card_status": "UNPUBLISHED_CONNECTOR_AUTHORITY_CANDIDATE",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "aaacdf35449e1ade3d51e5e9a5682d173d0ee326f4ae04a8192689daa263cd6b",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-011",
+    "--preparation",
+    "--out",
+    "artifacts\\EXT-011\\connector-auth-07"
+  ],
+  "files": {
+    "account-reassigned-transport.json": "d62d7c5b8648bd1eba0916aa8d1c62eaaaca901f8ab5a5bd67c14ae80e087394",
+    "account-reassigned.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "cases.json": "b395e34dd4a54b7d632528eb3f9ca5f97392a5547cb7fa52cbcfb9ed6c57cd65",
+    "device-catalog.json": "f8543b2845979ad77c01d065ed801e7bfe9f6a5edc90afe2a3e2cf5ae9deab6e",
+    "empty-original-transport.json": "d62d7c5b8648bd1eba0916aa8d1c62eaaaca901f8ab5a5bd67c14ae80e087394",
+    "empty-original.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "forged-hello-transport.json": "525f0082190e9e25d95fca0344d762b883efab9a19dfa86039dc779d82adb37d",
+    "forged-hello.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "host.txt": "bdc2d9ad642aad0053ba53bb9f8c03bb31d1c18443f3b3a7a1d39fe8604f793d",
+    "model-http.json": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+    "operator-summary.json": "16f0a94ef11d6f84d59cfd7edb32a910a7f7155c9f19d3a2cee92bc5252aa930",
+    "original-run-renewal-transport.json": "9639b5d9e8eca1284dc5752b192f1f738e37d6add993c7894fd162e9a62c8dc8",
+    "original-run-renewal.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "person-merged-transport.json": "d62d7c5b8648bd1eba0916aa8d1c62eaaaca901f8ab5a5bd67c14ae80e087394",
+    "person-merged.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "replacement-transport.json": "d62d7c5b8648bd1eba0916aa8d1c62eaaaca901f8ab5a5bd67c14ae80e087394",
+    "replacement.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "revoke-current-transport.json": "d62d7c5b8648bd1eba0916aa8d1c62eaaaca901f8ab5a5bd67c14ae80e087394",
+    "revoke-current.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tls-ingress.json": "9289dec595eb2e7e0f38d03d85bef353726b55e93c22c2d5e282a34951769020",
+    "unscoped-event-transport.json": "d62d7c5b8648bd1eba0916aa8d1c62eaaaca901f8ab5a5bd67c14ae80e087394",
+    "unscoped-event.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "wire.jsonl": "bc94657fe5a687444f39959e12f2453b2cfe42d236b87ecc8bb351059cf8c3e0"
+  }
+}

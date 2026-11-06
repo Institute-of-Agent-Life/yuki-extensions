@@ -1,0 +1,6 @@
+{
+  "phase": "other-app",
+  "exit_code": 0,
+  "stdout": "{\"host_schema_revision\":2,\"plugins\":[{\"enabled\":false,\"generation\":\"eab742a1-8cf9-430f-90b3-936de4419194\",\"namespace\":\"fs.b\",\"online\":false,\"plugin\":\"feishu\",\"revision\":\"7952e877152d062f52cd929d61abf481d1270a2508396d730ac2b9d53405145d\"}]}\n",
+  "stderr": ""
+}

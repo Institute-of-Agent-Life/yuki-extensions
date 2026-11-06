@@ -1,0 +1,33 @@
+{
+  "task": "EXT-015",
+  "status": "FAIL",
+  "phase": "preparation",
+  "card_status": "FAIL",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "ad129be0228aa43003d7069fdb2228e0db33247e53b1f16e743d867b8223ccae",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-015",
+    "--preparation",
+    "--out",
+    "D:\\yuki-extension-tests\\client-selected-selected-05\\evidence"
+  ],
+  "files": {
+    "acp-diagnostic.json": "c55190c52210b890170ec2d740385e91e2d748aff3ac1102409e1de53111d679",
+    "binding-http.json": "ff71ef0b2dcd28f698291c9e9f0e8601c75f574ea894d2bdf7c6365d1ff977e4",
+    "build.json": "f3b7890f9e1ed394dce20b9fd0f5f1d044cb8bb5f5492b11a253165e566e7f11",
+    "cases.json": "b8e0fbab4d893911218970a9047e04f7e9e3b08f584238e8b39453f1c64f7bbb",
+    "failure.txt": "9910be18eb59d3e12e208c2e70842a7cb1b35622c3e35ca272cb7d7cee8339bd",
+    "host-config.json": "9a2c5af61da1f81274db79402223516af14d21e9cd671e604f7666096a11b75e",
+    "host.txt": "8d65298bdba797c45d8391e30a5df37430cea2b9733a4cf75fc95753d1b89678",
+    "http.json": "ec9e0fa8d5f42c7fac2f6d87d559e5b1d9579bec0747b8961f9d5ed0e83d14d5",
+    "model-http.json": "159fc8d4a4fbfbb47a7fa6cb38e8db7d03038cd0ffea7a4a9f9213c437cfea33",
+    "model-responses.json": "869b22386f8dc71b35df7405e996b26ef411936bae803467c59d5c3a22f6901d",
+    "operator.json": "8e222f357c6ab88ec781dad64eef09efe7131d01334e24d2e81a226af32fb69e",
+    "sse.json": "569a2eda8aba6d8c5657f2247601bdddb58c635a351955e3c68de0c6980d5744",
+    "wire.jsonl": "599c1cb4b698b02cc47fb1f634aef247586ff9bb725ed2f2864690a83a54281d"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "status": "OBSERVED",
+  "card_status": "BLOCKED",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "helpers": {
+    "ci\\aux_media_intake.py": "be60b81b30be592335598a9df4a63168e3ee6fd1339be5c79b7f0038accd8d57",
+    "ci\\personal_preview.py": "33b05b3eef6137ac44083a2aa2e9f716512d3177612856a3068b049a52a32d06",
+    "ci\\host_preview.py": "8c1e770bdeb901c28c08f4d1f1d35f08da0bb5abad042eddbcc1d5b21220f58b",
+    "ci\\handshake_cargo.py": "4aaeb82dcc8d70ebd61d4dc7ef0c3d64381b898ef58320b04a8c65f14213855f",
+    "compat\\core-050\\source.lock.json": "647f02876d1e42a956cc4187e3b563b27fedef4f105b1f3b49e369b0fdd2dbeb"
+  },
+  "files": {
+    "build.json": "670225b22b29e76940889427ffd32bcfff2cdbea9e6cfc3f6c6558a43ef3eea8",
+    "first-response.json": "fed2865c26056aec597ae317792a8a55c9f82b27477e6da456c0154e5ba8a70c",
+    "host.txt": "55724031e29222851a618aa7e20e2b3ebe7f46ff5036f24e881e3beb40570aaa",
+    "intake.json": "ede74d46baf84c0c2df341b98d04047d783cec467bfc587a335b16982d991cd9",
+    "operator.json": "07bb9308938508c711fce62d174a38aefcba2a6dbbece15dc8b81d456728de07",
+    "provider.json": "e1bd80dc1a3daad47f1280ca7d2ec0ab8e946f9c49faca4f9d59b31617b40074",
+    "wire.jsonl": "f93b8b72f84c0d762f606343ce7f5a71a9baca2d7b5cf056438a653e913c2b5a"
+  }
+}

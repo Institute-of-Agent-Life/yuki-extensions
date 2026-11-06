@@ -1,0 +1,34 @@
+{
+  "repository": "Institute-of-Agent-Life/yuki-core",
+  "source_commit": "952954d86166c6bb8ef1cec0683480df28787970",
+  "published": false,
+  "platforms": {
+    "linux-arm64": {
+      "archive": "yuki-aux-model-preview-952954d86166-linux-arm64.zip",
+      "sha256": "800bff7da32c81bb7173c9411c6edd898c32a2934dbf496a491dbca5d04023ee",
+      "binary_sha256": "88243e571afbf6a005ffe0bfe17dc5e58d319245f3752b4496063c793fcea497"
+    },
+    "darwin-arm64": {
+      "archive": "yuki-aux-model-preview-952954d86166-darwin-arm64.zip",
+      "sha256": "a4b05689a35b4fec34fea2657c187507611e71e6d079f75ab629ddcff55e7fb8",
+      "binary_sha256": "c10853ff294901a20bcc0b25fc56d28bfc6752469d5b30ca58ec158b2bfa75a5"
+    },
+    "windows-x86_64": {
+      "archive": "yuki-aux-model-preview-952954d86166-windows-x86_64.zip",
+      "sha256": "ec0088c957caf21ca11b344cb69db539e22085f4aa8520c56feb19b272f29fe4",
+      "binary_sha256": "cba774439b078e5b6879f93271f2bbb08d06e2601c1e8d81a05f64dc15e5006e"
+    }
+  },
+  "sdk": {
+    "python": "1.0.0a6",
+    "rust": "1.0.0-alpha.6"
+  },
+  "schema_sha256": "27387ac156952be1f93b3615bc8ea7fb308fd8aabceecb7b046a87fc5eabc370",
+  "aux_schema_sha256": "9ca7698aca1c22c96598d308503e0b7139c409cdee06fe1b7ede518ae9271883",
+  "integrated_host_source": "9f9c3d0eaace08c2abe59e0a6ca229c9293dd8e1",
+  "integrated_methods_equal": [
+    "llm.complete",
+    "llm.result"
+  ],
+  "rust_crate_sha256": "7b435f21042ec0bed2c7b4ffb67751371552e0fb1e3e3cc36f937c759a865816"
+}

@@ -1,0 +1,111 @@
+[
+  {
+    "args": [
+      "person",
+      "create",
+      "b8057938-1d55-4092-b570-4c2c103d514a"
+    ],
+    "result": {
+      "original": "b8057938-1d55-4092-b570-4c2c103d514a",
+      "root": "b8057938-1d55-4092-b570-4c2c103d514a"
+    }
+  },
+  {
+    "args": [
+      "account",
+      "open",
+      "qq",
+      "media-main",
+      "200",
+      1,
+      "--person",
+      "b8057938-1d55-4092-b570-4c2c103d514a",
+      "--start",
+      1
+    ],
+    "result": {
+      "account": "acbd2eb6-5c4d-467e-8402-07b81e249628",
+      "assignment": "84ffa4a6-5198-49b5-a80b-81e8c3a4dbbc"
+    }
+  },
+  {
+    "args": [
+      "account",
+      "open",
+      "qq",
+      "media-main",
+      "100",
+      1,
+      "--start",
+      1
+    ],
+    "result": {
+      "account": "5532e60f-7404-4c17-8220-f1ff48a81cd3",
+      "assignment": "1931f6c8-972b-41ec-8c03-35b3c5209327"
+    }
+  },
+  {
+    "args": [
+      "ingress",
+      "record",
+      "{\"source\": \"main-video\", \"account\": \"acbd2eb6-5c4d-467e-8402-07b81e249628\", \"bot_stage\": \"1931f6c8-972b-41ec-8c03-35b3c5209327\", \"kind\": \"message\", \"reply_bot\": \"100\", \"occurred\": 1793945529131, \"observed\": 1793945529132, \"segments\": [{\"type\": \"media\", \"kind\": \"file\", \"reference\": \"unselected.pdf\"}, {\"type\": \"media\", \"kind\": \"video\", \"reference\": \"video.mp4\"}]}",
+      "--accept"
+    ],
+    "result": {
+      "accepted": true,
+      "event": 1
+    }
+  },
+  {
+    "args": [
+      "media",
+      "cache-file",
+      "d1fe58e1-6b4b-454b-a38a-186223864063",
+      "b8057938-1d55-4092-b570-4c2c103d514a",
+      1,
+      0,
+      "1931f6c8-972b-41ec-8c03-35b3c5209327",
+      "unselected.pdf",
+      "unselected.pdf"
+    ],
+    "result": {
+      "digest": "50370931a0b76d5de10746daf717053d7fb76c3f4f726c0052cc6140d0a88683",
+      "expires": 1794031929384,
+      "handle": 0,
+      "kind": "file",
+      "mime": "application/pdf",
+      "origin": "unselected.pdf",
+      "segment": 0,
+      "slot": 0,
+      "source": 1,
+      "stage": "1931f6c8-972b-41ec-8c03-35b3c5209327",
+      "state": "cached"
+    }
+  },
+  {
+    "args": [
+      "media",
+      "cache-file",
+      "d1fe58e1-6b4b-454b-a38a-186223864063",
+      "b8057938-1d55-4092-b570-4c2c103d514a",
+      1,
+      1,
+      "1931f6c8-972b-41ec-8c03-35b3c5209327",
+      "video.mp4",
+      "video.mp4"
+    ],
+    "result": {
+      "digest": "c07d7e011bc253f0e6ad6d8a958093abf6bb04fe0afee7f14536e6091a0fd1b9",
+      "expires": 1794031929416,
+      "handle": 1,
+      "kind": "video",
+      "mime": "application/octet-stream",
+      "origin": "video.mp4",
+      "segment": 1,
+      "slot": 1,
+      "source": 1,
+      "stage": "1931f6c8-972b-41ec-8c03-35b3c5209327",
+      "state": "cached"
+    }
+  }
+]

@@ -4,36 +4,63 @@ import io
 import json
 import os
 from pathlib import Path
+import re
 import tarfile
+import tempfile
 import tomllib
 from urllib.request import urlopen
 
 
 def registry_crate(package):
+    if (not re.fullmatch(r"[A-Za-z0-9_-]+", package["name"])
+            or not re.fullmatch(r"[A-Za-z0-9.+_-]+", package["version"])
+            or not re.fullmatch(r"[0-9a-f]{64}", package["checksum"])):
+        raise ValueError("invalid locked registry package")
     filename = f"{package['name']}-{package['version']}.crate"
     cache = Path(os.environ.get("CARGO_HOME", Path.home() / ".cargo")) / "registry/cache"
     cache = Path(os.environ.get("YUKI_CRATE_CACHE", cache))
-    for cached in cache.glob("*/" + filename):
-        if hashlib.sha256(cached.read_bytes()).hexdigest() == package["checksum"]:
-            return cached.read_bytes()
+    for cached in [cache / filename, *cache.glob("*/" + filename)]:
+        if cached.is_file():
+            data = cached.read_bytes()
+            if hashlib.sha256(data).hexdigest() == package["checksum"]:
+                return data
     url = f"https://static.crates.io/crates/{package['name']}/{filename}"
     with urlopen(url, timeout=60) as response:
         data = response.read()
     if hashlib.sha256(data).hexdigest() != package["checksum"]:
         raise ValueError("registry checksum mismatch: " + filename)
+    # Only an explicitly selected CI cache is writable. Cargo's user cache is
+    # read-only here. Different distributions of the same version cannot alias.
+    if "YUKI_CRATE_CACHE" in os.environ:
+        destination = cache / package["checksum"] / filename
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        with tempfile.NamedTemporaryFile(dir=destination.parent, delete=False) as pending:
+            pending.write(data)
+            temporary = Path(pending.name)
+        try:
+            os.replace(temporary, destination)
+        finally:
+            temporary.unlink(missing_ok=True)
     return data
 
 
 def unpack_crate(data, directory, name):
+    # Resolve the base too: Windows TEMP may use an 8.3 alias while member
+    # resolve() expands it. Compare paths in the same canonical namespace.
+    directory = directory.resolve()
     target = directory / name
     with tarfile.open(fileobj=io.BytesIO(data), mode="r:gz") as crate:
-        for member in crate.getmembers():
+        members = crate.getmembers()
+        for member in members:
             path = directory / member.name
             if not path.resolve().is_relative_to(target) or not (member.isfile() or member.isdir()):
                 raise ValueError("invalid crate member: " + member.name)
         crate.extractall(directory, filter="data")
-    files = {p.relative_to(target).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
-             for p in sorted(target.rglob("*")) if p.is_file()}
+    # Hash the archive's actual members. Filesystems may create AppleDouble
+    # sidecars during extraction; those are not part of the locked crate.
+    files = {str(Path(m.name).relative_to(name)).replace("\\", "/"):
+             hashlib.sha256((directory / m.name).read_bytes()).hexdigest()
+             for m in members if m.isfile()}
     checksum = {"files": files, "package": hashlib.sha256(data).hexdigest()}
     (target / ".cargo-checksum.json").write_text(json.dumps(checksum), encoding="utf-8")
     return target

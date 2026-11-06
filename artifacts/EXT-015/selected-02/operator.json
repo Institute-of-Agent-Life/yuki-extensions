@@ -1,0 +1,48 @@
+[
+  {
+    "args": [
+      "person",
+      "create",
+      "837ac47c-5d53-42e1-93a7-e4f0c196168d"
+    ],
+    "result": {
+      "original": "837ac47c-5d53-42e1-93a7-e4f0c196168d",
+      "root": "837ac47c-5d53-42e1-93a7-e4f0c196168d"
+    }
+  },
+  {
+    "args": [
+      "person",
+      "create",
+      "de3970ff-e5bb-416f-baff-e4dd61bd3fca"
+    ],
+    "result": {
+      "original": "de3970ff-e5bb-416f-baff-e4dd61bd3fca",
+      "root": "de3970ff-e5bb-416f-baff-e4dd61bd3fca"
+    }
+  },
+  {
+    "args": [
+      "person",
+      "create",
+      "e3e345c1-5d01-4a09-a24f-b6baad715ee7"
+    ],
+    "result": {
+      "original": "e3e345c1-5d01-4a09-a24f-b6baad715ee7",
+      "root": "e3e345c1-5d01-4a09-a24f-b6baad715ee7"
+    }
+  },
+  {
+    "args": [
+      "person",
+      "merge",
+      "837ac47c-5d53-42e1-93a7-e4f0c196168d",
+      "de3970ff-e5bb-416f-baff-e4dd61bd3fca"
+    ],
+    "result": {
+      "changed": true,
+      "original": "837ac47c-5d53-42e1-93a7-e4f0c196168d",
+      "root": "de3970ff-e5bb-416f-baff-e4dd61bd3fca"
+    }
+  }
+]

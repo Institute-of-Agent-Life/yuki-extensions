@@ -1,0 +1,14 @@
+{
+  "worker": {
+    "filename": "monty",
+    "sha256": "19867d12ee8dea8281f70bffa24d4b1a4bc832469b33dbda7d091e20dd347dc3"
+  },
+  "binding": {
+    "filename": "pydantic_monty_client-1.0.1-cp312-cp312-manylinux_2_39_x86_64.whl",
+    "sha256": "8961fa5428412ed9ec8446e5146e9b2786a7280234d055003554579f416e4b43"
+  },
+  "launcher": {
+    "filename": "monty-isolated",
+    "sha256": "a3d43e7ab1d4a115a12607f1a44d2e5a4a0f1d7f7c451a77a1b81ce6b8da18fb"
+  }
+}

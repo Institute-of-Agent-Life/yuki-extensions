@@ -1,0 +1,71 @@
+{
+  "task": "EXT-047",
+  "status": "BLOCKED",
+  "formal_acceptance": false,
+  "published": false,
+  "session_intake": {
+    "status": "diagnostic_verified",
+    "evidence": "source-intake-01/manifest.json",
+    "core": {
+      "source_commit": "9db8b3f073e34a6b86c8f93e878c2de09f0e25ba",
+      "handoff_commit": "e913c81ca6c29244f3d6e29e6747ac4934d2461c",
+      "published": false,
+      "host": {
+        "archive": "yuki-session-preview-9db8b3f073e3-windows-x86_64.zip",
+        "sha256": "1e0d5856740899539c9f4adac2b4c6ce6d01aff6d7697597203d37f2d87d7f56",
+        "binary_sha256": "cb2e2e8592bc46a991b04d74430b4078c06039667f00415b6f1f0848ad34a4d4"
+      },
+      "sdk": {
+        "version": "1.0.0-alpha.9",
+        "sha256": "2b1e5fbe107a3460528f526546768e8aa21e737f6d4b8ded4543360d1b1ac22f"
+      },
+      "host_schema_sha256": "38600a59f63c64fe1eb45ddd2da618b0db25c3af10a2fee49416f6a3f4a4c252",
+      "personal_schema_sha256": null,
+      "media_schema_sha256": null,
+      "plugin_sha256": "3644baf1e9c68f87b7686da6fd5f11bda900937e59715fe6469ffefc64018038",
+      "wire_sha256": "195b711c07b6e745b6c2426b12a9aa9f1845d99ebd3707753b0c05fdae271478"
+    },
+    "create_modes": [
+      {
+        "mode": "foreground",
+        "response": {
+          "Err": "{\"code\":-32003,\"message\":\"method, grant or original scope denied\"}"
+        }
+      },
+      {
+        "mode": "accepted-work",
+        "response": {
+          "Err": "{\"code\":-32003,\"message\":\"method, grant or original scope denied\"}"
+        }
+      },
+      {
+        "mode": "actorless",
+        "response": {
+          "Err": "{\"code\":-32003,\"message\":\"method, grant or original scope denied\"}"
+        }
+      }
+    ],
+    "session_run_calls": 0,
+    "known_configuration_gap": "No public installed sessions policy or auxiliary session route recipe in the consumed handoff"
+  },
+  "github_monitor": {
+    "source": "compat/external-plugins/github-monitor/source.lock.json",
+    "version": "1.2.3",
+    "api": "9.0",
+    "license": "AGPL-3.0-only",
+    "pinned_files_verified": true,
+    "runtime_tested": false,
+    "installed": false,
+    "migrated": false,
+    "published": false,
+    "new_host_rejection": "not_run",
+    "old_host_usability": "not_run",
+    "R11_two_target_replay": "blocked_notification_target_grant",
+    "http_outage": "not_run",
+    "observation": "original code inspected, not executed"
+  },
+  "isolated_game": "not_implemented_until_public_policy_available",
+  "raw_qq_without_scope": "not_run_real_consumer_and_scope_required",
+  "message_normalized": "Monitor register entry inspected; other external consumers pending",
+  "host_source_access": "public package and contract only; no private imports or database access"
+}

@@ -1,0 +1,10 @@
+{
+  "task": "EXT-011",
+  "status": "FAIL",
+  "phase": "native-lock-build",
+  "source_snapshot_sha256": "7e307a3b1669ef6120c2529ab0f6dc13d487afdeee797c881d3bbc73742f712c",
+  "files": {
+    "build.json": "aac7c96aed2ee3b62ee7d777f22263d10828f17644b367929b27d43c881cc811",
+    "Cargo.lock": "bcbc25db19e2c8726488b7a5db9da69ce6cab44eed5e998d315dcba0ec2b554d"
+  }
+}

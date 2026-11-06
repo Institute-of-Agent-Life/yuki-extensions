@@ -1,0 +1,86 @@
+{
+  "scope": "native platform fixtures",
+  "actual_host_consumption": false,
+  "domains": [
+    {
+      "domain": "feishu",
+      "kind": "image",
+      "fixture_requests": [
+        {
+          "method": "token",
+          "app": "cli_feishu",
+          "tenant": "tenant-feishu",
+          "issuance": 1
+        },
+        {
+          "method": "resource",
+          "domain": "feishu",
+          "raw_path": "/open-apis/im/v1/messages/om_original/resources/res%20%23%2Fnative?type=image",
+          "key": "res #/native",
+          "type": "image",
+          "token_number": 1
+        },
+        {
+          "method": "token",
+          "app": "cli_feishu",
+          "tenant": "tenant-feishu",
+          "issuance": 2
+        },
+        {
+          "method": "resource",
+          "domain": "feishu",
+          "raw_path": "/open-apis/im/v1/messages/om_original/resources/denied?type=image",
+          "key": "denied",
+          "type": "image",
+          "token_number": 2
+        }
+      ],
+      "sha256": "f645b72f1b9186913bc62759858134c358d5ba6e86fc59a2c467c55fabaeeb8c",
+      "bytes": 26789,
+      "ws_ack_during_rest": true,
+      "wrong_identity_requests": 0,
+      "http_403_retries": 0,
+      "token_issuances": 2
+    },
+    {
+      "domain": "lark",
+      "kind": "file",
+      "fixture_requests": [
+        {
+          "method": "token",
+          "app": "cli_lark",
+          "tenant": "tenant-lark",
+          "issuance": 1
+        },
+        {
+          "method": "resource",
+          "domain": "lark",
+          "raw_path": "/open-apis/im/v1/messages/om_original/resources/res%20%23%2Fnative?type=file",
+          "key": "res #/native",
+          "type": "file",
+          "token_number": 1
+        },
+        {
+          "method": "token",
+          "app": "cli_lark",
+          "tenant": "tenant-lark",
+          "issuance": 2
+        },
+        {
+          "method": "resource",
+          "domain": "lark",
+          "raw_path": "/open-apis/im/v1/messages/om_original/resources/denied?type=file",
+          "key": "denied",
+          "type": "file",
+          "token_number": 2
+        }
+      ],
+      "sha256": "a6c7af0a14eaed92a4c7be304b665671d26dc531b207b518bc4518ea38c194bf",
+      "bytes": 26789,
+      "ws_ack_during_rest": true,
+      "wrong_identity_requests": 0,
+      "http_403_retries": 0,
+      "token_issuances": 2
+    }
+  ]
+}

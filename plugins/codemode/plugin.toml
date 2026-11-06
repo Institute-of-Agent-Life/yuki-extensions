@@ -1,0 +1,5 @@
+id = "codemode"
+version = "0.1.0-alpha.1"
+program = "yuki-codemode"
+grants = ["tool.call", "composition.read", "composition.execute", "forget.owner"]
+env = ["YUKI_CODE_RUNTIME_CONFIG"]

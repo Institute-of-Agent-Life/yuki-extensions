@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "D:\yuki-extension-tests\fs-media-ingress-03\run.py", line 17, in <module>
+    h=mod(root/'tests/peers/feishu_media_host.py');v=h.run(src,out,binary.parent,'35488fc4f14759b5d7a18088e4ca95aeec419d1b59c323dfc4f2e86d9a0d7168')
+                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\fs-media-ingress-03\tests\peers\feishu_media_host.py", line 24, in run
+    filename,r=test.prepare(root,out,contract='core-038-main',package_builder=verified_package)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\fs-media-ingress-03\tests\cases\EXT-005.py", line 188, in prepare
+    cli("operator","host","enable","feishu","true")
+  File "D:\yuki-extension-tests\fs-media-ingress-03\tests\cases\EXT-005.py", line 137, in cli
+    if check and r.returncode:raise RuntimeError(str(args[:3])+": "+r.stderr[:400])
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: ('operator', 'host', 'enable'): {"error":"operator: \"precondition_failed\""}
+

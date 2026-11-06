@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "D:\yuki-extension-tests\media-main-faults-07\src\ci\check.py", line 37, in main
+    report_name, report = runner(root, args.out.resolve())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\media-main-faults-07\src\tests\cases\EXT-031.py", line 25, in prepare
+    return exercise(root, output)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\media-main-faults-07\src\tests\peers\media_main.py", line 121, in exercise
+    op('privacy', 'erase', 'main-selected-forget', person, json.dumps([selected['event']]))
+  File "D:\yuki-extension-tests\media-main-faults-07\src\tests\peers\media_main.py", line 90, in op
+    value = owner.cli('operator', *map(str, args))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\media-main-faults-07\src\ci\personal_preview.py", line 135, in cli
+    raise RuntimeError(
+RuntimeError: Host CLI refused ('operator', 'privacy'): {"error":"operator: \"error returned from database: (code: 787) FOREIGN KEY constraint failed\""}
+

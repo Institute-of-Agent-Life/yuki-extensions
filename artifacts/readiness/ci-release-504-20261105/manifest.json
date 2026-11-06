@@ -1,0 +1,62 @@
+{
+  "status": "PASS",
+  "scope": "CI asset transport regression; no new formal EXT-002 consumer acceptance",
+  "platform": "HJW Windows 11 / Python 3.12",
+  "tests": 7,
+  "source_snapshot_sha256": "b58e7fbff922ba3090ee9d3f7232ef2b770610df685548595f0322dc0c4face2",
+  "original_failure": {
+    "run_id": 42043545403,
+    "job_id": 127300355097,
+    "artifact_id": 13423437627,
+    "source_commit": "b2393fcb3ef499d90b2df9d30428c925b34f5725",
+    "merge_commit": "42d5396dfe19eada5cf0de45563b68b6f9ede01d",
+    "archive_sha256": "52db6dd1f504eecbabfaf1ad5435e3979c76a9c36f3f9e337a1a67e758ee47e8",
+    "members": {
+      "EXT-001/ci/extension-build-isolation.json": "8971e249f8015b13cc68b52997350ac8b5576274594387381649f8efa05be365",
+      "EXT-001/ci/manifest.json": "ca68ec3759b3c50d5f6fb387e2f236d872e829739ab5f739f14cf841aa9858f2",
+      "EXT-002/ci/failure.txt": "85e93a5edb2183d5e058cc9d18e8442a926de3d86417ee0fc30c7e1112dad112",
+      "EXT-002/ci/manifest.json": "48f4c1d1057efc6947ec8eb9b21e657dee0d6ae627c616d1aad664814cf135dc"
+    },
+    "failure": "HTTP 504 during released handshake asset GET; not native codec failure",
+    "merge_parents": [
+      "526a35382d9bb464f92adc947e1b212e0ea41c3c",
+      "b2393fcb3ef499d90b2df9d30428c925b34f5725"
+    ],
+    "all_manifest_members_verified": true
+  },
+  "download_policy": {
+    "method": "GET without a request body",
+    "retry_status_codes": [
+      502,
+      503,
+      504
+    ],
+    "maximum_attempts": 3,
+    "delays_seconds": [
+      1,
+      2
+    ],
+    "retry_after": "fail without overriding server backoff",
+    "tls_errors": "fail without retry",
+    "wrong_digest": "fail after first 200 response; no write or retry",
+    "unchanged": "release URL/source/version/SHA256/receipt/schema/member validation"
+  },
+  "changed_source_sha256": {
+    "ci/download_http.py": "07555229c39c25d96d4c39c090d0c86a6457d58630ca2a4393a605dad4c6c40b",
+    "ci/fetch-contract.py": "5998af49eb0c2c79eaa49ba8602536d59cd0efe4b37deec2ce43135dbc535600",
+    "tests/unit/test_download_http.py": "9d5bc645eabc014dcdb27379a9387048324ab6b489a2d4ec504e749e9704a071",
+    ".github/workflows/plugin.yml": "c57fb781518f0756a09b96970fe069d10c4a0842441a079bc3fe138617cebbea",
+    "docs/ci-download-sequences.md": "aefeb79f0b321062c33f8bb2f7a06084f024c9e371f0854fc32feb8e78be05d1"
+  },
+  "contracts_lock_sha256": "201aaf9791cb3f051fe9732748984f267c6a3a0baa20426f23c298391ae1241a",
+  "files": {
+    "github-job.log": "97ceda437ca6f526c11df235ce8ac2b0424d5d40b78902116dd2ba908f4a0476",
+    "download-receipt.json": "008fa8937096d781fd0ca409dab829ec2f957b68a44a8d24f1a5c72ead43b040",
+    "verification-01/manifest.json": "6be73e1c5307c0de8b94c0df01b2f77a63c9211e0a83a6300ea4f9a3dc4aee5e",
+    "verification-01/windows-checks.json": "29342fc17e908567e9e89f81b17e7a2359be38c91e7bc69ab9cd4c9200558768",
+    "original/EXT-001/ci/extension-build-isolation.json": "8971e249f8015b13cc68b52997350ac8b5576274594387381649f8efa05be365",
+    "original/EXT-001/ci/manifest.json": "ca68ec3759b3c50d5f6fb387e2f236d872e829739ab5f739f14cf841aa9858f2",
+    "original/EXT-002/ci/failure.txt": "85e93a5edb2183d5e058cc9d18e8442a926de3d86417ee0fc30c7e1112dad112",
+    "original/EXT-002/ci/manifest.json": "48f4c1d1057efc6947ec8eb9b21e657dee0d6ae627c616d1aad664814cf135dc"
+  }
+}

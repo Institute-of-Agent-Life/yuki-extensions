@@ -1,0 +1,78 @@
+{
+  "status": "PASS",
+  "candidate_only": true,
+  "mode": "direct",
+  "event": {
+    "accepted": true,
+    "event": 1
+  },
+  "execution": "ba4ffc81-517c-404a-87db-225a3c384815",
+  "model_http_calls": 3,
+  "deliveries": [
+    {
+      "arguments": {
+        "text": "continue after original refusal"
+      },
+      "execution": "ba4ffc81-517c-404a-87db-225a3c384815",
+      "operation": "9bc3e128-c3b8-4169-ac7b-c12307e0d2e0",
+      "tool": "send"
+    }
+  ],
+  "paired": {
+    "accept-original": {
+      "id": "e0a146c4-815f-4210-bfae-1549e406f54e",
+      "namespace": "ba4ffc81-517c-404a-87db-225a3c384815",
+      "ordinal": null,
+      "parent": null,
+      "result": {
+        "attached": true,
+        "queued": false,
+        "work_id": "79391b8e-ebe5-4d83-adf3-f015cc181f25"
+      },
+      "state": "confirmed"
+    },
+    "bad-original": {
+      "id": "847f227b-e9eb-48f9-9107-5bdbba956003",
+      "namespace": "ba4ffc81-517c-404a-87db-225a3c384815",
+      "ordinal": null,
+      "parent": null,
+      "result": {
+        "dispatched": false,
+        "error": "invalid_tool_arguments",
+        "executed": false
+      },
+      "state": "failed"
+    },
+    "good-original": {
+      "id": "9bc3e128-c3b8-4169-ac7b-c12307e0d2e0",
+      "namespace": "ba4ffc81-517c-404a-87db-225a3c384815",
+      "ordinal": null,
+      "parent": null,
+      "result": {
+        "accepted": "9bc3e128-c3b8-4169-ac7b-c12307e0d2e0",
+        "sequence": 1
+      },
+      "state": "confirmed"
+    }
+  },
+  "invokes": [],
+  "continued_after_refusal": true,
+  "cold_restarts": 2,
+  "inventory_before": {
+    "plugin_sha256": "23f888dc639f01754f4122dd606bfeebddf9e77f84757bee8db8fc318e05bb47",
+    "containers": [
+      "014df5c6dec1",
+      "d620452a9cef",
+      "f6870be17a2a"
+    ]
+  },
+  "inventory_after": {
+    "plugin_sha256": "23f888dc639f01754f4122dd606bfeebddf9e77f84757bee8db8fc318e05bb47",
+    "containers": [
+      "014df5c6dec1",
+      "d620452a9cef",
+      "f6870be17a2a"
+    ]
+  },
+  "host_sha256": "9cd0c5ac8c8acbbd8e703acc832878f5efd31a16c1cea395c3c90f147e31f387"
+}

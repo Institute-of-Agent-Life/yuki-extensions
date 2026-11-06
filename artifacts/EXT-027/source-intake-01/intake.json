@@ -1,0 +1,148 @@
+{
+  "status": "BLOCKED",
+  "observations_verified": true,
+  "diagnostic_only": true,
+  "card_status": "BLOCKED",
+  "core": {
+    "source_commit": "cb02f74ea48b85c6b6932423b93e6332b97f2871",
+    "handoff_commit": "8007173d256777fc06d9df93a596813d609620d2",
+    "published": false,
+    "host": {
+      "archive": "yuki-notification-preview-cb02f74ea48b-windows-x86_64.zip",
+      "sha256": "dea4b90f5008e466f6385ceea1d0833574dcf10a5a079f8ac639b7a4be4c542c",
+      "binary_sha256": "44e051731197a8cc7d6aae1534c66b00625ca4e062c0439769b5f4cc19f2b8be",
+      "validation_manifest_sha256": "f8d2e6f71efcc3a432b7fb48a19c98054bb0a3254b9c2df291aa97a77c140d37"
+    },
+    "sdk": {
+      "version": "1.0.0-alpha.10",
+      "sha256": "4975c4e27096cec1dd30bca2f396fd5e11f32b52929de13e8f42da6f6980fce7"
+    },
+    "host_schema_sha256": "bb5f47ac27502e2a8a5be3a1bb00ed105919fed856ecbb79d305935fff14135a",
+    "personal_schema_sha256": null,
+    "media_schema_sha256": null,
+    "plugin_sha256": "7ecb61ef9d779ac827c5d6f0bb26a66c7de8fff96295b7bad1da96ed7370f110",
+    "wire_sha256": "72dbf3aeceeced34613e6e514ba87cd846755922a2dea1b386aef341f64ef1c1"
+  },
+  "person": "e292a5e1-fbbd-4490-8ebd-8c393ae6e1d0",
+  "entry": "ab0263dc-e170-477b-8d25-d6eb85d0a000",
+  "grants": [
+    {
+      "mode": "foreground",
+      "original_call": {
+        "arguments": {
+          "bot_user_id": "100",
+          "target": {
+            "conversation_id": "ab0263dc-e170-477b-8d25-d6eb85d0a000",
+            "target_id": "e292a5e1-fbbd-4490-8ebd-8c393ae6e1d0",
+            "target_type": "private"
+          }
+        },
+        "handle": "cec5afcf-97bd-4cf7-ab7c-4fa444d3f79a",
+        "name": "grant_probe",
+        "operation": "ed508aaf-607c-48e8-8fda-c46abecb5066",
+        "ordinal": null,
+        "parent": null,
+        "revision": "4188588eadfabf6eb4e50eb4d80e86eb485f68aad3103a29cc66692b6ae707be"
+      },
+      "request": {
+        "bot_user_id": "100",
+        "handle": "cec5afcf-97bd-4cf7-ab7c-4fa444d3f79a",
+        "key": "probe:ed508aaf-607c-48e8-8fda-c46abecb5066",
+        "target": {
+          "conversation_id": "ab0263dc-e170-477b-8d25-d6eb85d0a000",
+          "target_id": "e292a5e1-fbbd-4490-8ebd-8c393ae6e1d0",
+          "target_type": "private"
+        }
+      },
+      "response": {
+        "Err": "{\"code\":-32003,\"message\":\"method, grant or original scope denied\"}"
+      },
+      "status": {
+        "Ok": {
+          "handle": "cec5afcf-97bd-4cf7-ab7c-4fa444d3f79a",
+          "result": null,
+          "state": "dispatched"
+        }
+      }
+    },
+    {
+      "mode": "accepted-work",
+      "original_call": {
+        "arguments": {
+          "bot_user_id": "100",
+          "target": {
+            "conversation_id": "ab0263dc-e170-477b-8d25-d6eb85d0a000",
+            "target_id": "e292a5e1-fbbd-4490-8ebd-8c393ae6e1d0",
+            "target_type": "private"
+          }
+        },
+        "handle": "7cf479f2-ade1-49f7-afaa-ac8efd00d43e",
+        "name": "grant_probe",
+        "operation": "10b504ec-ff52-436f-af0c-533e022ea088",
+        "ordinal": null,
+        "parent": null,
+        "revision": "4188588eadfabf6eb4e50eb4d80e86eb485f68aad3103a29cc66692b6ae707be"
+      },
+      "request": {
+        "bot_user_id": "100",
+        "handle": "7cf479f2-ade1-49f7-afaa-ac8efd00d43e",
+        "key": "probe:10b504ec-ff52-436f-af0c-533e022ea088",
+        "target": {
+          "conversation_id": "ab0263dc-e170-477b-8d25-d6eb85d0a000",
+          "target_id": "e292a5e1-fbbd-4490-8ebd-8c393ae6e1d0",
+          "target_type": "private"
+        }
+      },
+      "response": {
+        "Err": "{\"code\":-32003,\"message\":\"method, grant or original scope denied\"}"
+      },
+      "status": {
+        "Ok": {
+          "handle": "7cf479f2-ade1-49f7-afaa-ac8efd00d43e",
+          "result": null,
+          "state": "dispatched"
+        }
+      }
+    },
+    {
+      "mode": "current-entry",
+      "original_call": {
+        "arguments": {
+          "target": {
+            "target_id": "e292a5e1-fbbd-4490-8ebd-8c393ae6e1d0",
+            "target_type": "private"
+          }
+        },
+        "handle": "19cee2dc-5edc-4105-93b8-4d0c94ad3d28",
+        "name": "grant_probe",
+        "operation": "00ec174e-a5ad-4753-b151-f454ddd9264f",
+        "ordinal": null,
+        "parent": null,
+        "revision": "4188588eadfabf6eb4e50eb4d80e86eb485f68aad3103a29cc66692b6ae707be"
+      },
+      "request": {
+        "handle": "19cee2dc-5edc-4105-93b8-4d0c94ad3d28",
+        "key": "probe:00ec174e-a5ad-4753-b151-f454ddd9264f",
+        "target": {
+          "target_id": "e292a5e1-fbbd-4490-8ebd-8c393ae6e1d0",
+          "target_type": "private"
+        }
+      },
+      "response": {
+        "Err": "{\"code\":-32003,\"message\":\"method, grant or original scope denied\"}"
+      },
+      "status": {
+        "Ok": {
+          "handle": "19cee2dc-5edc-4105-93b8-4d0c94ad3d28",
+          "result": null,
+          "state": "dispatched"
+        }
+      }
+    }
+  ],
+  "notification_publish_calls": 0,
+  "remaining": [
+    "producer-approved original administrator/receiving-bot grant recipe",
+    "publication and R06 consumer acceptance"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "journal_namespace": "forged-device",
+  "connector_version": "0.4.4.dev1",
+  "tls": {
+    "version": "TLSv1.3",
+    "certificate_required": true,
+    "hostname_check": true
+  },
+  "connection": 1,
+  "automatic_run": false,
+  "owner_stopped": false
+}

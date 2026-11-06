@@ -1,0 +1,553 @@
+[
+  {
+    "from": "plugin",
+    "frame": {
+      "id": 1,
+      "jsonrpc": "2.0",
+      "method": "initialize",
+      "params": {
+        "declarations": [],
+        "manifest_revision": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "optional_features": [],
+        "required_features": [
+          "initialize"
+        ],
+        "versions": {
+          "max": {
+            "major": 1,
+            "minor": 0
+          },
+          "min": {
+            "major": 1,
+            "minor": 0
+          }
+        }
+      }
+    }
+  },
+  {
+    "from": "fixture",
+    "frame": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": {
+        "schema_revision": 1,
+        "version": {
+          "major": 1,
+          "minor": 0
+        },
+        "namespace": "fs.lark",
+        "grants": [
+          "gateway.inbound",
+          "gateway.media"
+        ],
+        "manifest_revision": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "features": [
+          "initialize"
+        ],
+        "extension_points": [],
+        "host_schema_revision": 2,
+        "method_revisions": [
+          {
+            "name": "initialize",
+            "revision": 1
+          },
+          {
+            "name": "gateway.inbound",
+            "revision": 1
+          },
+          {
+            "name": "gateway.media",
+            "revision": 1
+          }
+        ]
+      }
+    }
+  },
+  {
+    "from": "plugin",
+    "frame": {
+      "id": 2,
+      "jsonrpc": "2.0",
+      "method": "gateway.inbound",
+      "params": {
+        "accept": true,
+        "kind": "message",
+        "media_identity": {
+          "application": "cli_lark",
+          "tenant": "tenant-lark"
+        },
+        "native_id": "om_original",
+        "occurred": 1000,
+        "segments": [
+          {
+            "kind": "file",
+            "reference": "res #/native",
+            "type": "media"
+          }
+        ],
+        "sender": "ou_user",
+        "source": "om_original",
+        "space": "oc_room",
+        "topic": "topic"
+      }
+    }
+  },
+  {
+    "from": "fixture",
+    "frame": {
+      "jsonrpc": "2.0",
+      "method": "gateway.media",
+      "id": 91,
+      "params": {
+        "transfer": "A",
+        "platform": "lark",
+        "namespace": "fs.lark",
+        "bot_stage": "fixture",
+        "source_event": 12,
+        "attachment_index": 0,
+        "segment_index": 0,
+        "media_identity": {
+          "application": "cli_lark",
+          "tenant": "foreign"
+        },
+        "locator": {
+          "source": "om_original",
+          "space": "oc_room",
+          "topic": "topic",
+          "sender": "ou_user",
+          "native_id": "om_original",
+          "native_version": null
+        },
+        "kind": "file",
+        "reference": "res #/native",
+        "offset": 0,
+        "length": 24576
+      }
+    }
+  },
+  {
+    "from": "plugin",
+    "frame": {
+      "error": {
+        "code": -32000,
+        "message": "original resource unavailable"
+      },
+      "id": 91,
+      "jsonrpc": "2.0"
+    }
+  },
+  {
+    "from": "fixture",
+    "frame": {
+      "jsonrpc": "2.0",
+      "method": "gateway.media",
+      "id": 92,
+      "params": {
+        "transfer": "A",
+        "platform": "lark",
+        "namespace": "fs.lark",
+        "bot_stage": "fixture",
+        "source_event": 12,
+        "attachment_index": 0,
+        "segment_index": 0,
+        "media_identity": {
+          "application": "foreign",
+          "tenant": "tenant-lark"
+        },
+        "locator": {
+          "source": "om_original",
+          "space": "oc_room",
+          "topic": "topic",
+          "sender": "ou_user",
+          "native_id": "om_original",
+          "native_version": null
+        },
+        "kind": "file",
+        "reference": "res #/native",
+        "offset": 0,
+        "length": 24576
+      }
+    }
+  },
+  {
+    "from": "plugin",
+    "frame": {
+      "error": {
+        "code": -32000,
+        "message": "original resource unavailable"
+      },
+      "id": 92,
+      "jsonrpc": "2.0"
+    }
+  },
+  {
+    "from": "fixture",
+    "frame": {
+      "jsonrpc": "2.0",
+      "method": "gateway.media",
+      "id": 93,
+      "params": {
+        "transfer": "A",
+        "platform": "telegram",
+        "namespace": "fs.lark",
+        "bot_stage": "fixture",
+        "source_event": 12,
+        "attachment_index": 0,
+        "segment_index": 0,
+        "media_identity": {
+          "application": "cli_lark",
+          "tenant": "tenant-lark"
+        },
+        "locator": {
+          "source": "om_original",
+          "space": "oc_room",
+          "topic": "topic",
+          "sender": "ou_user",
+          "native_id": "om_original",
+          "native_version": null
+        },
+        "kind": "file",
+        "reference": "res #/native",
+        "offset": 0,
+        "length": 24576
+      }
+    }
+  },
+  {
+    "from": "plugin",
+    "frame": {
+      "error": {
+        "code": -32000,
+        "message": "original resource unavailable"
+      },
+      "id": 93,
+      "jsonrpc": "2.0"
+    }
+  },
+  {
+    "from": "fixture",
+    "frame": {
+      "jsonrpc": "2.0",
+      "method": "gateway.media",
+      "id": 94,
+      "params": {
+        "transfer": "A",
+        "platform": "lark",
+        "namespace": "wrong",
+        "bot_stage": "fixture",
+        "source_event": 12,
+        "attachment_index": 0,
+        "segment_index": 0,
+        "media_identity": {
+          "application": "cli_lark",
+          "tenant": "tenant-lark"
+        },
+        "locator": {
+          "source": "om_original",
+          "space": "oc_room",
+          "topic": "topic",
+          "sender": "ou_user",
+          "native_id": "om_original",
+          "native_version": null
+        },
+        "kind": "file",
+        "reference": "res #/native",
+        "offset": 0,
+        "length": 24576
+      }
+    }
+  },
+  {
+    "from": "plugin",
+    "frame": {
+      "error": {
+        "code": -32000,
+        "message": "original resource unavailable"
+      },
+      "id": 94,
+      "jsonrpc": "2.0"
+    }
+  },
+  {
+    "from": "fixture",
+    "frame": {
+      "jsonrpc": "2.0",
+      "method": "gateway.media",
+      "id": 95,
+      "params": {
+        "transfer": "A",
+        "platform": "lark",
+        "namespace": "fs.lark",
+        "bot_stage": "fixture",
+        "source_event": 12,
+        "attachment_index": 0,
+        "segment_index": 0,
+        "media_identity": {
+          "application": "cli_lark",
+          "tenant": "tenant-lark"
+        },
+        "locator": {
+          "source": "om_original",
+          "space": "oc_room",
+          "topic": "topic",
+          "sender": "ou_user",
+          "native_id": "om_original",
+          "native_version": null
+        },
+        "kind": "file",
+        "reference": "res #/native",
+        "offset": 1,
+        "length": 24576
+      }
+    }
+  },
+  {
+    "from": "plugin",
+    "frame": {
+      "error": {
+        "code": -32000,
+        "message": "original resource unavailable"
+      },
+      "id": 95,
+      "jsonrpc": "2.0"
+    }
+  },
+  {
+    "from": "fixture",
+    "frame": {
+      "jsonrpc": "2.0",
+      "method": "gateway.media",
+      "id": 96,
+      "params": {
+        "transfer": "A",
+        "platform": "lark",
+        "namespace": "fs.lark",
+        "bot_stage": "fixture",
+        "source_event": 12,
+        "attachment_index": 0,
+        "segment_index": 0,
+        "media_identity": {
+          "application": "cli_lark",
+          "tenant": "tenant-lark"
+        },
+        "locator": {
+          "source": "another-message",
+          "space": "oc_room",
+          "topic": "topic",
+          "sender": "ou_user",
+          "native_id": "om_original",
+          "native_version": null
+        },
+        "kind": "file",
+        "reference": "res #/native",
+        "offset": 0,
+        "length": 24576
+      }
+    }
+  },
+  {
+    "from": "plugin",
+    "frame": {
+      "error": {
+        "code": -32000,
+        "message": "original resource unavailable"
+      },
+      "id": 96,
+      "jsonrpc": "2.0"
+    }
+  },
+  {
+    "from": "fixture",
+    "frame": {
+      "jsonrpc": "2.0",
+      "method": "gateway.media",
+      "id": 97,
+      "params": {
+        "transfer": "A",
+        "platform": "lark",
+        "namespace": "fs.lark",
+        "bot_stage": "fixture",
+        "source_event": 12,
+        "attachment_index": 0,
+        "segment_index": 0,
+        "media_identity": {
+          "application": "cli_lark",
+          "tenant": "tenant-lark"
+        },
+        "locator": {
+          "source": "om_original",
+          "space": "oc_room",
+          "topic": "topic",
+          "sender": "ou_user",
+          "native_id": "om_original",
+          "native_version": null
+        },
+        "kind": "file",
+        "reference": "res #/native",
+        "offset": 0,
+        "length": 24576
+      }
+    }
+  },
+  {
+    "from": "fixture",
+    "frame": {
+      "jsonrpc": "2.0",
+      "id": 2,
+      "result": {
+        "event": 12,
+        "accepted": true
+      }
+    }
+  },
+  {
+    "from": "plugin",
+    "frame": {
+      "id": 97,
+      "jsonrpc": "2.0",
+      "result": {
+        "data": "bGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJr",
+        "offset": 0,
+        "sha256": "a6c7af0a14eaed92a4c7be304b665671d26dc531b207b518bc4518ea38c194bf",
+        "size": 26789,
+        "transfer": "A"
+      }
+    }
+  },
+  {
+    "from": "fixture",
+    "frame": {
+      "jsonrpc": "2.0",
+      "method": "gateway.media",
+      "id": 98,
+      "params": {
+        "transfer": "A",
+        "platform": "lark",
+        "namespace": "fs.lark",
+        "bot_stage": "fixture",
+        "source_event": 13,
+        "attachment_index": 0,
+        "segment_index": 0,
+        "media_identity": {
+          "application": "cli_lark",
+          "tenant": "tenant-lark"
+        },
+        "locator": {
+          "source": "om_original",
+          "space": "oc_room",
+          "topic": "topic",
+          "sender": "ou_user",
+          "native_id": "om_original",
+          "native_version": null
+        },
+        "kind": "file",
+        "reference": "res #/native",
+        "offset": 24576,
+        "length": 24576
+      }
+    }
+  },
+  {
+    "from": "plugin",
+    "frame": {
+      "error": {
+        "code": -32000,
+        "message": "original resource unavailable"
+      },
+      "id": 98,
+      "jsonrpc": "2.0"
+    }
+  },
+  {
+    "from": "fixture",
+    "frame": {
+      "jsonrpc": "2.0",
+      "method": "gateway.media",
+      "id": 99,
+      "params": {
+        "transfer": "A",
+        "platform": "lark",
+        "namespace": "fs.lark",
+        "bot_stage": "fixture",
+        "source_event": 12,
+        "attachment_index": 0,
+        "segment_index": 0,
+        "media_identity": {
+          "application": "cli_lark",
+          "tenant": "tenant-lark"
+        },
+        "locator": {
+          "source": "om_original",
+          "space": "oc_room",
+          "topic": "topic",
+          "sender": "ou_user",
+          "native_id": "om_original",
+          "native_version": null
+        },
+        "kind": "file",
+        "reference": "res #/native",
+        "offset": 24576,
+        "length": 24576
+      }
+    }
+  },
+  {
+    "from": "plugin",
+    "frame": {
+      "id": 99,
+      "jsonrpc": "2.0",
+      "result": {
+        "data": "bGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2xhcmtsYXJrbGFya2w=",
+        "offset": 24576,
+        "sha256": "a6c7af0a14eaed92a4c7be304b665671d26dc531b207b518bc4518ea38c194bf",
+        "size": 26789,
+        "transfer": "A"
+      }
+    }
+  },
+  {
+    "from": "fixture",
+    "frame": {
+      "jsonrpc": "2.0",
+      "method": "gateway.media",
+      "id": 100,
+      "params": {
+        "transfer": "B",
+        "platform": "lark",
+        "namespace": "fs.lark",
+        "bot_stage": "fixture",
+        "source_event": 12,
+        "attachment_index": 0,
+        "segment_index": 0,
+        "media_identity": {
+          "application": "cli_lark",
+          "tenant": "tenant-lark"
+        },
+        "locator": {
+          "source": "om_original",
+          "space": "oc_room",
+          "topic": "topic",
+          "sender": "ou_user",
+          "native_id": "om_original",
+          "native_version": null
+        },
+        "kind": "file",
+        "reference": "denied",
+        "offset": 0,
+        "length": 24576
+      }
+    }
+  },
+  {
+    "from": "plugin",
+    "frame": {
+      "error": {
+        "code": -32000,
+        "message": "original resource unavailable"
+      },
+      "id": 100,
+      "jsonrpc": "2.0"
+    }
+  }
+]

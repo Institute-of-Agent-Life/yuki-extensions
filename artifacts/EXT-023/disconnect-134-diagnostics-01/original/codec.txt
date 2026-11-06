@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/runner/work/yuki-extensions/yuki-extensions/images/monty-runtime/scripts/verify_bridge.py", line 176, in <module>
+    result = verify(args.image, policy)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/yuki-extensions/yuki-extensions/images/monty-runtime/scripts/verify_bridge.py", line 160, in verify
+    assert exit_code == 0, diagnostics
+           ^^^^^^^^^^^^^^
+AssertionError: {'exit_code': 134, 'container_state': {'Status': 'exited', 'Running': False, 'Paused': False, 'Restarting': False, 'OOMKilled': False, 'Dead': False, 'Pid': 0, 'ExitCode': 134, 'Error': '', 'StartedAt': '2026-11-05T13:17:57.436614651Z', 'FinishedAt': '2026-11-05T13:17:58.275884779Z'}, 'stdout': '', 'stderr': ''}

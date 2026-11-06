@@ -1,0 +1,37 @@
+{
+  "source": {
+    "tests/peers/maintenance-route-probe/Cargo.lock": "5e1b6dfc68064e56f42e4d94c6429f29eb2fe6ed8dbf724d092e242515871c89",
+    "tests/peers/maintenance-route-probe/Cargo.toml": "4f1756e52088eb16d2945749f78624b7d2d015994049c2b273eb61109443e0a9",
+    "tests/peers/maintenance-route-probe/README.md": "b2970dddd132980ec766aad239fe623f6b4ad24f9155c9604a05f624cd03b851",
+    "tests/peers/maintenance-route-probe/rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+    "tests/peers/maintenance-route-probe/src/main.rs": "26f1b509d98194dc60246919d7f16e25779ebc79f40a95bb698af4bb26cff337",
+    "tests/peers/maintenance-route-probe/src/rpc.rs": "f3c8975a8dae286a0a036a2f754412f4cc9ba3212e0cbff56fafdc64188762a9"
+  },
+  "sdk_sha256": "a8739c74d300f1044c94749ced333d9694920aa7c91728b19f624ff9fbaf2e63",
+  "commands": [
+    {
+      "argv": [
+        "cargo",
+        "build",
+        "--locked",
+        "--offline"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "   Compiling proc-macro2 v1.0.107\n   Compiling quote v1.0.47\n   Compiling unicode-ident v1.0.27\n   Compiling serde_core v1.0.228\n   Compiling serde v1.0.228\n   Compiling serde_json v1.0.145\n   Compiling memchr v2.8.3\n   Compiling itoa v1.0.18\n   Compiling ryu v1.0.23\n   Compiling syn v2.0.119\n   Compiling serde_derive v1.0.228\n   Compiling yuki-plugin-sdk v1.0.0-alpha.8\n   Compiling maintenance-route-probe v0.0.0 (C:\\Users\\Hilbert\\AppData\\Local\\Temp\\yuki-maintenance-intake-dh2vzj18\\peer)\nwarning: method `reply` is never used\n  --> src\\rpc.rs:70:12\n   |\n63 | impl Rpc {\n   | -------- method in this implementation\n...\n70 |     pub fn reply(&self, id: Id, result: Value) {\n   |            ^^^^^\n   |\n   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default\n\nwarning: `maintenance-route-probe` (bin \"maintenance-route-probe\") generated 1 warning\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 10.79s\n"
+    },
+    {
+      "argv": [
+        "rustc",
+        "--version",
+        "--verbose"
+      ],
+      "exit_code": 0,
+      "stdout": "rustc 1.96.0 (ac68faa20 2026-05-25)\nbinary: rustc\ncommit-hash: ac68faa20c58cbccd01ee7208bf3b6e93a7d7f96\ncommit-date: 2026-05-25\nhost: x86_64-pc-windows-gnu\nrelease: 1.96.0\nLLVM version: 22.1.2\n",
+      "stderr": ""
+    }
+  ],
+  "artifacts": {
+    "maintenance-route-probe.exe": "356498aaa59c4bc4b2a78423210068e9d81d3e9e7a2789021824876c6cfb8a27"
+  }
+}

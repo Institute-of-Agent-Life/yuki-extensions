@@ -1,0 +1,21 @@
+{
+  "task": "EXT-031",
+  "status": "PASS",
+  "phase": "preparation",
+  "card_status": "BLOCKED_MAIN_ERASURE_NATIVE_GATEWAY_AND_PUBLICATION",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "eba66c1cfd6d4831af663b8c780a9e2455cae1d9c5103f10be76654005154518",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-031",
+    "--preparation",
+    "--out",
+    "D:\\yuki-extension-tests\\media-main-audit-09\\evidence"
+  ],
+  "files": {
+    "main-witness-audit.json": "d7b86c79c214ef160e569779395b029f0c89f38dd76c9c939a7f41febeb763b8"
+  }
+}

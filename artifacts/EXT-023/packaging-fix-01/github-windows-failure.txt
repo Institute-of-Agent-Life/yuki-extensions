@@ -1,0 +1,256 @@
+﻿2026-11-05T03:55:12.3096324Z Current runner version: '2.338.2'
+2026-11-05T03:55:12.3122965Z ##[group]Runner Image Provisioner
+2026-11-05T03:55:12.3123851Z Hosted Compute Agent
+2026-11-05T03:55:12.3124619Z Version: 20261021.618
+2026-11-05T03:55:12.3125313Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-11-05T03:55:12.3126116Z Build Date: 2026-10-21T00:45:21Z
+2026-11-05T03:55:12.3126830Z Worker ID: {25516f0c-a4fa-46ce-961f-cd809c2050fd}
+2026-11-05T03:55:12.3127547Z Region: westus
+2026-11-05T03:55:12.3128147Z Cloud: Azure
+2026-11-05T03:55:12.3128716Z ##[endgroup]
+2026-11-05T03:55:12.3130515Z ##[group]Operating System
+2026-11-05T03:55:12.3131796Z Microsoft Windows Server 2025
+2026-11-05T03:55:12.3132465Z 10.0.26100
+2026-11-05T03:55:12.3133073Z Datacenter
+2026-11-05T03:55:12.3133629Z ##[endgroup]
+2026-11-05T03:55:12.3134221Z ##[group]Runner Image
+2026-11-05T03:55:12.3134864Z Image: windows-2025-vs2026
+2026-11-05T03:55:12.3135503Z Version: 20261030.294.1
+2026-11-05T03:55:12.3137093Z Included Software: https://github.com/actions/runner-images/blob/win25-vs2026/20261030.294/images/windows/Windows2025-VS2026-Readme.md
+2026-11-05T03:55:12.3138751Z Image Release: https://github.com/actions/runner-images/releases/tag/win25-vs2026%2F20261030.294
+2026-11-05T03:55:12.3139770Z ##[endgroup]
+2026-11-05T03:55:12.3140982Z ##[group]GITHUB_TOKEN Permissions
+2026-11-05T03:55:12.3142893Z Contents: read
+2026-11-05T03:55:12.3143530Z Metadata: read
+2026-11-05T03:55:12.3144143Z ##[endgroup]
+2026-11-05T03:55:12.3146302Z Secret source: Actions
+2026-11-05T03:55:12.3147452Z Cache mode: write
+2026-11-05T03:55:12.3148217Z Prepare workflow directory
+2026-11-05T03:55:12.3577281Z Prepare all required actions
+2026-11-05T03:55:12.3626290Z Getting action download info
+2026-11-05T03:55:12.6821303Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-11-05T03:55:12.8178195Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-11-05T03:55:12.9760488Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-11-05T03:55:13.3192196Z Complete job name: package (monty-runtime, windows-latest)
+2026-11-05T03:55:13.5093470Z ##[group]Run actions/checkout@v4
+2026-11-05T03:55:13.5094531Z with:
+2026-11-05T03:55:13.5095042Z   repository: Institute-of-Agent-Life/yuki-extensions
+2026-11-05T03:55:13.5100056Z   token: ***
+2026-11-05T03:55:13.5100482Z   ssh-strict: true
+2026-11-05T03:55:13.5100909Z   ssh-user: git
+2026-11-05T03:55:13.5101339Z   persist-credentials: true
+2026-11-05T03:55:13.5101825Z   clean: true
+2026-11-05T03:55:13.5102309Z   sparse-checkout-cone-mode: true
+2026-11-05T03:55:13.5102833Z   fetch-depth: 1
+2026-11-05T03:55:13.5103252Z   fetch-tags: false
+2026-11-05T03:55:13.5103693Z   show-progress: true
+2026-11-05T03:55:13.5104119Z   lfs: false
+2026-11-05T03:55:13.5104509Z   submodules: false
+2026-11-05T03:55:13.5105317Z   set-safe-directory: true
+2026-11-05T03:55:13.5105896Z   allow-unsafe-pr-checkout: false
+2026-11-05T03:55:13.5106706Z env:
+2026-11-05T03:55:13.5107098Z   PYTHONUTF8: 1
+2026-11-05T03:55:13.5107507Z ##[endgroup]
+2026-11-05T03:55:13.6658012Z Syncing repository: Institute-of-Agent-Life/yuki-extensions
+2026-11-05T03:55:13.6661307Z ##[group]Getting Git version info
+2026-11-05T03:55:13.6662397Z Working directory is 'D:\a\yuki-extensions\yuki-extensions'
+2026-11-05T03:55:13.7655220Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-11-05T03:55:14.0639890Z git version 2.56.0.windows.4
+2026-11-05T03:55:14.0687222Z ##[endgroup]
+2026-11-05T03:55:14.0707370Z Temporarily overriding HOME='D:\a\_temp\d884b990-4d9e-420e-bfa1-aefed0c2774e' before making global git config changes
+2026-11-05T03:55:14.0709268Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-05T03:55:14.0717754Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\yuki-extensions\yuki-extensions
+2026-11-05T03:55:14.1313059Z Deleting the contents of 'D:\a\yuki-extensions\yuki-extensions'
+2026-11-05T03:55:14.1318631Z ##[group]Initializing the repository
+2026-11-05T03:55:14.1327711Z [command]"C:\Program Files\Git\bin\git.exe" init D:\a\yuki-extensions\yuki-extensions
+2026-11-05T03:55:14.2262997Z Initialized empty Git repository in D:/a/yuki-extensions/yuki-extensions/.git/
+2026-11-05T03:55:14.2310657Z [command]"C:\Program Files\Git\bin\git.exe" remote add origin https://github.com/Institute-of-Agent-Life/yuki-extensions
+2026-11-05T03:55:14.2964327Z ##[endgroup]
+2026-11-05T03:55:14.2966912Z ##[group]Disabling automatic garbage collection
+2026-11-05T03:55:14.2977679Z [command]"C:\Program Files\Git\bin\git.exe" config --local gc.auto 0
+2026-11-05T03:55:14.3398275Z ##[endgroup]
+2026-11-05T03:55:14.3400504Z ##[group]Setting up auth
+2026-11-05T03:55:14.3409619Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-11-05T03:55:14.3795907Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-11-05T03:55:15.8091734Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-05T03:55:15.8481502Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-11-05T03:55:16.4261883Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-05T03:55:16.4654406Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-11-05T03:55:17.0334660Z [command]"C:\Program Files\Git\bin\git.exe" config --local http.https://github.com/.extraheader "AUTHORIZATION: basic ***"
+2026-11-05T03:55:17.0753729Z ##[endgroup]
+2026-11-05T03:55:17.0754571Z ##[group]Fetching the repository
+2026-11-05T03:55:17.0775921Z [command]"C:\Program Files\Git\bin\git.exe" -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +e23d837436fca29156332bc9602444bc0c8941e8:refs/remotes/pull/19/merge
+2026-11-05T03:55:18.3945346Z From https://github.com/Institute-of-Agent-Life/yuki-extensions
+2026-11-05T03:55:18.3946347Z  * [new ref]         e23d837436fca29156332bc9602444bc0c8941e8 -> pull/19/merge
+2026-11-05T03:55:18.3985916Z ##[endgroup]
+2026-11-05T03:55:18.3986546Z ##[group]Determining the checkout info
+2026-11-05T03:55:18.3990137Z ##[endgroup]
+2026-11-05T03:55:18.3999763Z [command]"C:\Program Files\Git\bin\git.exe" sparse-checkout disable
+2026-11-05T03:55:18.4544809Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all extensions.worktreeConfig
+2026-11-05T03:55:18.4960298Z ##[group]Checking out the ref
+2026-11-05T03:55:18.4960966Z [command]"C:\Program Files\Git\bin\git.exe" checkout --progress --force refs/remotes/pull/19/merge
+2026-11-05T03:55:18.7598283Z Note: switching to 'refs/remotes/pull/19/merge'.
+2026-11-05T03:55:18.7598833Z 
+2026-11-05T03:55:18.7599164Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-11-05T03:55:18.7599982Z changes and commit them, and you can discard any commits you make in this
+2026-11-05T03:55:18.7600882Z state without impacting any branches by switching back to a branch.
+2026-11-05T03:55:18.7601394Z 
+2026-11-05T03:55:18.7601720Z If you want to create a new branch to retain commits you create, you may
+2026-11-05T03:55:18.7602547Z do so (now or later) by using -c with the switch command. Example:
+2026-11-05T03:55:18.7602995Z 
+2026-11-05T03:55:18.7603201Z   git switch -c <new-branch-name>
+2026-11-05T03:55:18.7603859Z 
+2026-11-05T03:55:18.7604024Z Or undo this operation with:
+2026-11-05T03:55:18.7604367Z 
+2026-11-05T03:55:18.7604525Z   git switch -
+2026-11-05T03:55:18.7606066Z 
+2026-11-05T03:55:18.7606471Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-11-05T03:55:18.7607123Z 
+2026-11-05T03:55:18.7607909Z HEAD is now at e23d837 Merge d76aae47ec5853b9d373b55b4ccad663409c93c4 into 8d2f3c6d85e1a3a638e28014f4fa131b91f1cbdc
+2026-11-05T03:55:18.7690633Z ##[endgroup]
+2026-11-05T03:55:18.8163056Z [command]"C:\Program Files\Git\bin\git.exe" log -1 --format=%H
+2026-11-05T03:55:18.8514197Z e23d837436fca29156332bc9602444bc0c8941e8
+2026-11-05T03:55:18.9013382Z ##[group]Run actions/setup-python@v5
+2026-11-05T03:55:18.9013725Z with:
+2026-11-05T03:55:18.9013942Z   python-version: 3.12
+2026-11-05T03:55:18.9014164Z   check-latest: false
+2026-11-05T03:55:18.9016916Z   token: ***
+2026-11-05T03:55:18.9017125Z   update-environment: true
+2026-11-05T03:55:18.9017360Z   allow-prereleases: false
+2026-11-05T03:55:18.9017584Z   freethreaded: false
+2026-11-05T03:55:18.9017778Z env:
+2026-11-05T03:55:18.9017946Z   PYTHONUTF8: 1
+2026-11-05T03:55:18.9018156Z ##[endgroup]
+2026-11-05T03:55:19.0663922Z ##[group]Installed versions
+2026-11-05T03:55:19.0879337Z (node:3236) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-05T03:55:19.0880045Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-05T03:55:19.0881344Z Successfully set up CPython (3.12.10)
+2026-11-05T03:55:19.0881952Z ##[endgroup]
+2026-11-05T03:55:19.1173746Z ##[group]Run python -m pip install --disable-pip-version-check uv==0.12.0
+2026-11-05T03:55:19.1174406Z [36;1mpython -m pip install --disable-pip-version-check uv==0.12.0[0m
+2026-11-05T03:55:19.1888276Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-11-05T03:55:19.1888673Z env:
+2026-11-05T03:55:19.1888873Z   PYTHONUTF8: 1
+2026-11-05T03:55:19.1889782Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-11-05T03:55:19.1890555Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.10\x64/lib/pkgconfig
+2026-11-05T03:55:19.1891404Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-11-05T03:55:19.1892057Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-11-05T03:55:19.1892501Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-11-05T03:55:19.1892840Z ##[endgroup]
+2026-11-05T03:55:24.4247340Z Collecting uv==0.12.0
+2026-11-05T03:55:24.8227365Z   Downloading uv-0.12.0-py3-none-win_amd64.whl.metadata (11 kB)
+2026-11-05T03:55:24.9260110Z Downloading uv-0.12.0-py3-none-win_amd64.whl (20.0 MB)
+2026-11-05T03:55:25.7233443Z    ---------------------------------------- 20.0/20.0 MB 35.1 MB/s  0:00:00
+2026-11-05T03:55:25.9869009Z Installing collected packages: uv
+2026-11-05T03:55:26.2740975Z Successfully installed uv-0.12.0
+2026-11-05T03:55:26.6510383Z ##[group]Run python ci/package.py --unit monty-runtime --out dist/monty-runtime
+2026-11-05T03:55:26.6511047Z [36;1mpython ci/package.py --unit monty-runtime --out dist/monty-runtime[0m
+2026-11-05T03:55:26.6584553Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-11-05T03:55:26.6584905Z env:
+2026-11-05T03:55:26.6585094Z   PYTHONUTF8: 1
+2026-11-05T03:55:26.6585378Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-11-05T03:55:26.6585849Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.10\x64/lib/pkgconfig
+2026-11-05T03:55:26.6586318Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-11-05T03:55:26.6586737Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-11-05T03:55:26.6587421Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-11-05T03:55:26.6587759Z ##[endgroup]
+2026-11-05T03:55:27.1832141Z {
+2026-11-05T03:55:27.1832585Z   "unit_id": "monty-runtime",
+2026-11-05T03:55:27.1833228Z   "version": "0.1.0-alpha.1",
+2026-11-05T03:55:27.1833729Z   "release_tag": "monty-runtime/v0.1.0-alpha.1",
+2026-11-05T03:55:27.1834307Z   "published": false,
+2026-11-05T03:55:27.1835258Z   "scope": "portable OCI build source; no native execution in this package job",
+2026-11-05T03:55:27.1835853Z   "runtime_platform": "linux/amd64",
+2026-11-05T03:55:27.1836235Z   "source": {
+2026-11-05T03:55:27.1836640Z     "repository": "Institute-of-Agent-Life/yuki-extensions",
+2026-11-05T03:55:27.1837244Z     "baseline": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+2026-11-05T03:55:27.1837792Z     "monty": "3f9d6ef413fb951e5b80113b7088d535bd028fcb"
+2026-11-05T03:55:27.1838232Z   },
+2026-11-05T03:55:27.1838509Z   "license": "AGPL-3.0-only",
+2026-11-05T03:55:27.1839140Z   "manifest_sha256": "feec617447c39e4de6f12bd17b28001befa1a02e03720ed7f8f7b4cff9510357",
+2026-11-05T03:55:27.1840065Z   "lock_sha256": "2a36b8910b8045f2b137eb89ec1f20e00c8297f90e8677b5a05b65dc87ae7a74",
+2026-11-05T03:55:27.1841118Z   "members": {
+2026-11-05T03:55:27.1841704Z     ".dockerignore": "dbbaf58359240410c47b0b677376fa4e5ebf32d33c0c7e8f534803bc14f426f2",
+2026-11-05T03:55:27.1842619Z     ".gitignore": "75ff93ce92b792778e18822d94a300a3fab8293c63bf4b395698b48fbd9cfe0d",
+2026-11-05T03:55:27.1843570Z     "backend/bridge.py": "2de631a23dea699bf5f40ddbc471d9d8a8303b9e5d32b86027a4225c91bbe415",
+2026-11-05T03:55:27.1844593Z     "backend/make_contract.py": "4f9889a1665645cecdcc942922678ee079b794f461f48a0642f784a7bb4b5b9f",
+2026-11-05T03:55:27.1845738Z     "backend/yuki_monty_backend/capacity.py": "86f6b0f25a14b80e7576cf7a0f1fb52927ca8ea1875444940ffdc6ac67c2fcb1",
+2026-11-05T03:55:27.1846971Z     "backend/yuki_monty_backend/driver_types.py": "46b78b27b91297653e1569177d6a5eefbabd4882e95290073ba2c9e762a29b65",
+2026-11-05T03:55:27.1847789Z     "backend/yuki_monty_backend/engine_monty.py": "87a2cdb45d431aed2d6127885fb718bf26bcefaf0c40b6b2396f27348aab6343",
+2026-11-05T03:55:27.1848591Z     "backend/yuki_monty_backend/limits.py": "8987eec952ce230dcad31b4f8086d5e800835ceb4791d5a69574a9cb88591e36",
+2026-11-05T03:55:27.1849406Z     "backend/yuki_monty_backend/snapshot_binding.py": "b7b78f43368fcae7151291583e2c3f6e8bbb33338ff1ebf0472bac646ce96dae",
+2026-11-05T03:55:27.1850221Z     "backend-adaptation.lock.json": "9c6cbad51f82e5f165ac11e576d3d5b868bd0f6db0780344a7cdfc6aa5f7479d",
+2026-11-05T03:55:27.1850921Z     "base-images.lock.json": "629233ab1890d83b793efc304ebbb475645b7411ab3450d68582cdbb61214754",
+2026-11-05T03:55:27.1851562Z     "baseline.lock.json": "64ae18e601ed6fb24e67457b556a6f6f65294a0b265e6f28a4270702e11dd924",
+2026-11-05T03:55:27.1852286Z     "deploy/codemode/Dockerfile.validation": "244caff510cb659d8f4e20beddbb8b819b27c53c2b09c9924829827a7991d1bd",
+2026-11-05T03:55:27.1853099Z     "deploy/security/MOBY-PROFILES-LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+2026-11-05T03:55:27.1856167Z     "deploy/security/README.md": "19e179034204572537c5dd9795c88abacaae2d21d6a0ed253b48b237af895105",
+2026-11-05T03:55:27.1857071Z     "deploy/security/yuki-bot-codemode.apparmor": "06ac5a94ad26f7300666641cead6698f24a6960985c655b7c20e517a42ab94cb",
+2026-11-05T03:55:27.1857903Z     "deploy/security/yuki-codemode-seccomp.json": "57457313430e0bb513ccab8a6906c5e05ffc217459f9c5b01cc77d827dcedc81",
+2026-11-05T03:55:27.1858692Z     "Dockerfile": "0391f9d1d6053fae99ccb04adea1dd3676d10e155dfed241c94016e330cbb76f",
+2026-11-05T03:55:27.1859254Z     "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+2026-11-05T03:55:27.1859790Z     "README.md": "13db8ae52665948ccb5fb69c2bc8357ca358c3c77d82c56829e125bc1afb14aa",
+2026-11-05T03:55:27.1860391Z     "runtime.lock": "2a36b8910b8045f2b137eb89ec1f20e00c8297f90e8677b5a05b65dc87ae7a74",
+2026-11-05T03:55:27.1861293Z     "runtime.toml": "feec617447c39e4de6f12bd17b28001befa1a02e03720ed7f8f7b4cff9510357",
+2026-11-05T03:55:27.1861937Z     "scripts/build_monty_distribution.sh": "d00f3667534f946967d2a5fb6ff0cef021e7264c2c4b986511bcd91bf80de5eb",
+2026-11-05T03:55:27.1862643Z     "scripts/export_monty_notices.py": "23577436cec70444e9e97b332ccaf86678fb93969eb5a64480609c746ac175e8",
+2026-11-05T03:55:27.1863496Z     "scripts/prepare_inputs.py": "3713de3204e72a92a82656dcab3a347d08e2de5a7459e5d96f5f77c2cd15d63b",
+2026-11-05T03:55:27.1864341Z     "scripts/verify_bridge.py": "0be3a152b63dac70c727a9d10948c29f098ead9e5876d44b74240fed1b99a96f",
+2026-11-05T03:55:27.1864992Z     "scripts/verify_image.py": "a8cca834d126bb01f08edf3a8ab98ac3dfdd7625c9d813e4c3498d8ae2a14f23",
+2026-11-05T03:55:27.1865820Z     "scripts/verify_monty_isolation.py": "7ca9ae41e80b9d426e76f0123d6c6bf82c7755074cf81e6f091d45b7915ac3fc",
+2026-11-05T03:55:27.1866826Z     "upstream-mirror.lock.json": "de0c74809a4ae58633d39f2bb8abf35b6595888b32b93c9a9e4fa4a71d6c2780",
+2026-11-05T03:55:27.1867496Z     "vendor/monty/launcher.c": "93b768c06dfe05a932254cd3fbe110af0cd4ea8dbe1877c534783634e164ffe5",
+2026-11-05T03:55:27.1868138Z     "vendor/monty/LICENSE": "5841db47ee6e1f0becafe2d19ca43c08cbc6d2c0952822ccf88cbbf2bd0749bd",
+2026-11-05T03:55:27.1868810Z     "vendor/monty/TYPESHED-LICENSE": "295f8538c94ae5c3043301cf7cff1c852dab6a786a8ddee471e061b40d5ecabe",
+2026-11-05T03:55:27.1869617Z     "vendor/patches/monty-3f9d6ef-string-cache-iterator.patch": "2d2e83ecc44353faeccaa1069b11053e0154c0f5cf0e02d55ab592e7706dddb4"
+2026-11-05T03:55:27.1870194Z   },
+2026-11-05T03:55:27.1870362Z   "artifacts": {
+2026-11-05T03:55:27.1870832Z     "monty-runtime-0.1.0-alpha.1-source.tar.gz": "aa20ed3f7e89188f45e76b5f195d85c55c91ce98f2d73aabcdd37d31a238ccc1"
+2026-11-05T03:55:27.1871333Z   }
+2026-11-05T03:55:27.1871491Z }
+2026-11-05T03:55:27.3155319Z ##[group]Run python -m unittest discover -s tests/unit -p test_oci_package.py -v
+2026-11-05T03:55:27.3155973Z [36;1mpython -m unittest discover -s tests/unit -p test_oci_package.py -v[0m
+2026-11-05T03:55:27.3228520Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-11-05T03:55:27.3228894Z env:
+2026-11-05T03:55:27.3229081Z   PYTHONUTF8: 1
+2026-11-05T03:55:27.3229388Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-11-05T03:55:27.3229890Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.10\x64/lib/pkgconfig
+2026-11-05T03:55:27.3230396Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-11-05T03:55:27.3230831Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-11-05T03:55:27.3231265Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-11-05T03:55:27.3231605Z ##[endgroup]
+2026-11-05T03:55:27.8337141Z test_crate_checksums_only_cover_actual_archive_members (test_oci_package.ImageInputs.test_crate_checksums_only_cover_actual_archive_members) ... ERROR
+2026-11-05T03:55:28.0295429Z test_package_and_reject_changed_or_unlocked_inputs (test_oci_package.ImageInputs.test_package_and_reject_changed_or_unlocked_inputs) ... ok
+2026-11-05T03:55:28.0296512Z 
+2026-11-05T03:55:28.0296734Z ======================================================================
+2026-11-05T03:55:28.0297960Z ERROR: test_crate_checksums_only_cover_actual_archive_members (test_oci_package.ImageInputs.test_crate_checksums_only_cover_actual_archive_members)
+2026-11-05T03:55:28.0299263Z ----------------------------------------------------------------------
+2026-11-05T03:55:28.0299908Z Traceback (most recent call last):
+2026-11-05T03:55:28.0307574Z   File "D:\a\yuki-extensions\yuki-extensions\tests\unit\test_oci_package.py", line 54, in test_crate_checksums_only_cover_actual_archive_members
+2026-11-05T03:55:28.0309046Z     target = unpack_crate(data.getvalue(), directory, "fixture-1")
+2026-11-05T03:55:28.0309819Z              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-05T03:55:28.0310686Z   File "D:\a\yuki-extensions\yuki-extensions\ci\handshake_cargo.py", line 34, in unpack_crate
+2026-11-05T03:55:28.0311613Z     raise ValueError("invalid crate member: " + member.name)
+2026-11-05T03:55:28.0312259Z ValueError: invalid crate member: fixture-1/src/lib.rs
+2026-11-05T03:55:28.0312660Z 
+2026-11-05T03:55:28.0312898Z ----------------------------------------------------------------------
+2026-11-05T03:55:28.0313452Z Ran 2 tests in 0.202s
+2026-11-05T03:55:28.0313674Z 
+2026-11-05T03:55:28.0315071Z FAILED (errors=1)
+2026-11-05T03:55:28.1477090Z ##[error]Process completed with exit code 1.
+2026-11-05T03:55:28.1780870Z Post job cleanup.
+2026-11-05T03:55:28.3835377Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-11-05T03:55:28.4235365Z git version 2.56.0.windows.4
+2026-11-05T03:55:28.4325508Z Temporarily overriding HOME='D:\a\_temp\660e0eb4-9e32-4ca1-b1b1-f2a4499bdce3' before making global git config changes
+2026-11-05T03:55:28.4327140Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-05T03:55:28.4339394Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\yuki-extensions\yuki-extensions
+2026-11-05T03:55:28.4782734Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-11-05T03:55:28.5210401Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-11-05T03:55:29.1229086Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-05T03:55:29.1572424Z http.https://github.com/.extraheader
+2026-11-05T03:55:29.1623214Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all http.https://github.com/.extraheader
+2026-11-05T03:55:29.2021163Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-11-05T03:55:29.7974827Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-05T03:55:29.8384011Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-11-05T03:55:30.4228327Z Cleaning up orphan processes
+2026-11-05T03:55:30.4329655Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

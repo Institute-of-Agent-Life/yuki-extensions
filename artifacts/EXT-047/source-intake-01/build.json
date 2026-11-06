@@ -1,0 +1,44 @@
+{
+  "source": {
+    "tests/peers/session-scope-probe/Cargo.toml": "bf9f168f828185bbaca890c8afb40cd2652c38a56ea854b3d52f690cb4205f5d",
+    "tests/peers/session-scope-probe/src/main.rs": "0e6cbddacd253ad1553e4194c487deede96236857f5cbe9dd02c94ef730400f9",
+    "tests/peers/session-scope-probe/src/rpc.rs": "f3c8975a8dae286a0a036a2f754412f4cc9ba3212e0cbff56fafdc64188762a9"
+  },
+  "sdk_sha256": "2b1e5fbe107a3460528f526546768e8aa21e737f6d4b8ded4543360d1b1ac22f",
+  "commands": [
+    {
+      "argv": [
+        "cargo",
+        "generate-lockfile",
+        "--offline"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "     Locking 12 packages to latest Rust 1.96 compatible versions\n"
+    },
+    {
+      "argv": [
+        "cargo",
+        "build",
+        "--locked",
+        "--offline"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "   Compiling proc-macro2 v1.0.107\n   Compiling unicode-ident v1.0.27\n   Compiling quote v1.0.47\n   Compiling serde_core v1.0.228\n   Compiling serde_json v1.0.145\n   Compiling serde v1.0.228\n   Compiling itoa v1.0.18\n   Compiling ryu v1.0.23\n   Compiling memchr v2.8.3\n   Compiling syn v2.0.119\n   Compiling serde_derive v1.0.228\n   Compiling yuki-plugin-sdk v1.0.0-alpha.9\n   Compiling session-scope-probe v0.1.0 (C:\\Users\\Hilbert\\AppData\\Local\\Temp\\yuki-session-intake-tyagkiil\\peer)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 10.08s\n"
+    },
+    {
+      "argv": [
+        "rustc",
+        "--version",
+        "--verbose"
+      ],
+      "exit_code": 0,
+      "stdout": "rustc 1.96.0 (ac68faa20 2026-05-25)\nbinary: rustc\ncommit-hash: ac68faa20c58cbccd01ee7208bf3b6e93a7d7f96\ncommit-date: 2026-05-25\nhost: x86_64-pc-windows-gnu\nrelease: 1.96.0\nLLVM version: 22.1.2\n",
+      "stderr": ""
+    }
+  ],
+  "artifacts": {
+    "session-scope-probe.exe": "3644baf1e9c68f87b7686da6fd5f11bda900937e59715fe6469ffefc64018038"
+  }
+}

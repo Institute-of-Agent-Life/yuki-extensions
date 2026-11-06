@@ -1,0 +1,117 @@
+{
+  "status": "BLOCKED",
+  "required_status": 200,
+  "actual_status": 404,
+  "home": {
+    "entries": [
+      {
+        "binding_id": "899127fc-bc93-46be-b21c-18cac70be5ef",
+        "conversation_id": "3513f8d7-e012-4270-9bd6-556a3c725062",
+        "display_name": "",
+        "generation": 1,
+        "latest_event_id": 2,
+        "platform": "app",
+        "revision": 1,
+        "status": "active"
+      },
+      {
+        "binding_id": "9ccb6719-de4a-4404-b1e0-cb0e6adc9e69",
+        "conversation_id": "a711babe-5fd8-42e0-9a00-d4524365d28c",
+        "display_name": "",
+        "generation": 1,
+        "latest_event_id": 1,
+        "platform": "app",
+        "revision": 1,
+        "status": "active"
+      },
+      {
+        "binding_id": "029d285f-fade-4d97-8fe6-a5051146d960",
+        "conversation_id": "ebba7147-6dcd-46af-86b4-a6b5db0bad95",
+        "display_name": "",
+        "generation": 1,
+        "latest_event_id": 3,
+        "platform": "acp",
+        "revision": 1,
+        "status": "active"
+      }
+    ],
+    "main": {
+      "binding_id": "9ccb6719-de4a-4404-b1e0-cb0e6adc9e69",
+      "conversation_id": "a711babe-5fd8-42e0-9a00-d4524365d28c",
+      "display_name": "",
+      "generation": 1,
+      "latest_event_id": 1,
+      "platform": "app",
+      "revision": 1,
+      "status": "active"
+    },
+    "snapshot_at": "2026-11-06T05:37:02Z",
+    "works": []
+  },
+  "original_headers": {
+    "X-Yuki-Entry": "029d285f-fade-4d97-8fe6-a5051146d960",
+    "X-Yuki-Conversation": "ebba7147-6dcd-46af-86b4-a6b5db0bad95"
+  },
+  "public_setup": [
+    {
+      "args": [
+        "account",
+        "open",
+        "acp",
+        "selected-client",
+        "actor",
+        1,
+        "--person",
+        "02148a70-18eb-447a-bbb4-0f92ec717c97",
+        "--start",
+        1
+      ],
+      "result": {
+        "account": "9918308d-3b6e-40e0-8038-21ca8d757ff2",
+        "assignment": "029d285f-fade-4d97-8fe6-a5051146d960"
+      }
+    },
+    {
+      "args": [
+        "account",
+        "open",
+        "acp",
+        "selected-client",
+        "bot",
+        1,
+        "--start",
+        1
+      ],
+      "result": {
+        "account": "029d159d-b184-4b36-85ae-a14f28893dae",
+        "assignment": "eda544c9-4186-464d-a53b-e1e9207afa86"
+      }
+    },
+    {
+      "args": [
+        "entry",
+        "private",
+        "029d285f-fade-4d97-8fe6-a5051146d960",
+        "eda544c9-4186-464d-a53b-e1e9207afa86",
+        "--topic",
+        "original-thread-one"
+      ],
+      "result": {
+        "entry": "ebba7147-6dcd-46af-86b4-a6b5db0bad95"
+      }
+    },
+    {
+      "args": [
+        "ingress",
+        "record",
+        "{\"source\": \"original-thread-one\", \"account\": \"9918308d-3b6e-40e0-8038-21ca8d757ff2\", \"bot_stage\": \"eda544c9-4186-464d-a53b-e1e9207afa86\", \"reply_bot\": \"bot\", \"kind\": \"message\", \"topic\": \"original-thread-one\", \"occurred\": 100, \"observed\": 100, \"segments\": [{\"type\": \"text\", \"text\": \"original-thread-one\"}]}"
+      ],
+      "result": {
+        "accepted": false,
+        "event": 3
+      }
+    }
+  ],
+  "consumer_accepted": false,
+  "need": "public ACP session/presence creation sequence; no DB fixture"
+}

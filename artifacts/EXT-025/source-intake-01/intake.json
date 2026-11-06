@@ -1,0 +1,47 @@
+{
+  "status": "BLOCKED",
+  "scope": "physical HJW Windows / actual Rust SDK diagnostic / actual packaged Host",
+  "formal_card_acceptance": false,
+  "host_source": "9f9c3d0eaace08c2abe59e0a6ca229c9293dd8e1",
+  "host_binary_sha256": "429b1797ffdda7411314572f812123bac2ca31826ca0dd725acdc1c36a45db38",
+  "sdk_version": "1.0.0-alpha.7",
+  "sdk_sha256": "1b54d505f3017fb40396dc19427ad10af5df702a4434105f20ed1d3587c2617b",
+  "probe_binary_sha256": "52ab65f9fc22373751c7e65895b5804ffc962df60774b346d4fcdea71a80bf56",
+  "probe_sources": {
+    "tests/peers/participation-source-probe/Cargo.toml": "75212072fd639224d3a77f2855e1872113f71981ff01531d26bda22950bbc13a",
+    "tests/peers/participation-source-probe/rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+    "tests/peers/participation-source-probe/Cargo.lock": "0f23b7b4cb01c2ff88fdd6b23de9bd348938e08be1b120c7e2e32bfdfca78ff8",
+    "tests/peers/participation-source-probe/README.md": "9b198e4e4dfd87114a396c1ec36bbbd7617f64a5a90f5bb1780ffe61a83dcd2e",
+    "tests/peers/participation-source-probe/src/main.rs": "f8dade842968903f839062a4e3936c693545033135be087421d23ca137ba58ff",
+    "tests/peers/participation-source-probe/src/rpc.rs": "1e0d29a48c0292c27f17a940a344546bb4f95859a7212432d1c8b7e5b1dba527"
+  },
+  "source_fields": [
+    "account",
+    "bot_stage",
+    "kind",
+    "native_id",
+    "observed",
+    "occurred",
+    "reply_bot",
+    "segments",
+    "source",
+    "space",
+    "topic"
+  ],
+  "metadata_fields": [
+    "entry",
+    "event",
+    "kind"
+  ],
+  "missing_inputs": [
+    "canonical conversation and scope generation",
+    "original Person/assignment and current canonical identity mapping",
+    "original human/self origin and authoritative reply/mention references",
+    "library-compatible source revision/order and ordinary UnitBinding facts"
+  ],
+  "native_jev_profile": "jev is not an accepted Profile protocol; no equivalent native request/response route demonstrated",
+  "model_calls": 0,
+  "promotions": 0,
+  "official_plugin_created": false,
+  "library_executed": false
+}

@@ -1,0 +1,106 @@
+[
+  {
+    "args": [
+      "person",
+      "create",
+      "85ee22ee-29a9-4ccf-bf8a-db2637566db0"
+    ],
+    "result": {
+      "original": "85ee22ee-29a9-4ccf-bf8a-db2637566db0",
+      "root": "85ee22ee-29a9-4ccf-bf8a-db2637566db0"
+    }
+  },
+  {
+    "args": [
+      "person",
+      "create",
+      "2d1cae49-0013-422d-99a7-51f69f28b318"
+    ],
+    "result": {
+      "original": "2d1cae49-0013-422d-99a7-51f69f28b318",
+      "root": "2d1cae49-0013-422d-99a7-51f69f28b318"
+    }
+  },
+  {
+    "args": [
+      "person",
+      "create",
+      "fb52f98a-9cac-43ac-ad08-601643397b18"
+    ],
+    "result": {
+      "original": "fb52f98a-9cac-43ac-ad08-601643397b18",
+      "root": "fb52f98a-9cac-43ac-ad08-601643397b18"
+    }
+  },
+  {
+    "args": [
+      "person",
+      "merge",
+      "85ee22ee-29a9-4ccf-bf8a-db2637566db0",
+      "2d1cae49-0013-422d-99a7-51f69f28b318"
+    ],
+    "result": {
+      "changed": true,
+      "original": "85ee22ee-29a9-4ccf-bf8a-db2637566db0",
+      "root": "2d1cae49-0013-422d-99a7-51f69f28b318"
+    }
+  },
+  {
+    "args": [
+      "account",
+      "open",
+      "acp",
+      "selected-client",
+      "actor",
+      1,
+      "--person",
+      "2d1cae49-0013-422d-99a7-51f69f28b318",
+      "--start",
+      1
+    ],
+    "result": {
+      "account": "7569b66e-33d7-4837-9c1b-39134c738c6f",
+      "assignment": "d21e8724-94cb-43df-b878-94cc4883abc2"
+    }
+  },
+  {
+    "args": [
+      "account",
+      "open",
+      "acp",
+      "selected-client",
+      "bot",
+      1,
+      "--start",
+      1
+    ],
+    "result": {
+      "account": "3cb4232f-c0f9-4a75-b503-fa0937c5bdd2",
+      "assignment": "c030b88a-b447-4c7b-a8b8-ffbb1bdf6c0a"
+    }
+  },
+  {
+    "args": [
+      "entry",
+      "private",
+      "d21e8724-94cb-43df-b878-94cc4883abc2",
+      "c030b88a-b447-4c7b-a8b8-ffbb1bdf6c0a",
+      "--topic",
+      "original-thread-one"
+    ],
+    "result": {
+      "entry": "c3056b21-44d6-4fa0-b8f9-8cdbce6bfe12"
+    }
+  },
+  {
+    "args": [
+      "ingress",
+      "record",
+      "{\"source\": \"original-thread-one\", \"account\": \"7569b66e-33d7-4837-9c1b-39134c738c6f\", \"bot_stage\": \"c030b88a-b447-4c7b-a8b8-ffbb1bdf6c0a\", \"reply_bot\": \"bot\", \"kind\": \"message\", \"topic\": \"original-thread-one\", \"occurred\": 100, \"observed\": 100, \"segments\": [{\"type\": \"text\", \"text\": \"original-thread-one\"}]}"
+    ],
+    "result": {
+      "accepted": false,
+      "event": 3
+    }
+  }
+]

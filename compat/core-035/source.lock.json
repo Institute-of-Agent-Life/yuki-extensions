@@ -1,0 +1,83 @@
+{
+  "repository": "Institute-of-Agent-Life/yuki-core",
+  "source_commit": "0cdd9dffe07c18949990492fd2a9944919c455d3",
+  "handoff_commit": "69cfdfd7b0efba36c41080f5fae424401cfc1b5c",
+  "published": false,
+  "platforms": {
+    "darwin-arm64": {
+      "archive": "yuki-maintenance-preview-0cdd9dffe07c-darwin-arm64.zip",
+      "sha256": "3060058a12b5b10efc9fc78f1dd5d6ddcd8fe820dd72f353885c8248f067079c",
+      "binary_sha256": "5dacef254338653cd829f110a13bb68f4d0a5f4909968271c257f97ef7a90ddc",
+      "validation_manifest_sha256": "1f4f87e382c10dcbdad4f2bc56eb9566fd4f965da3eace494c671a81639654e0"
+    },
+    "linux-arm64": {
+      "archive": "yuki-maintenance-preview-0cdd9dffe07c-linux-arm64.zip",
+      "sha256": "04c13a21ea2d42a84d11b285d93c46dafa98f20270bf3b285dcd2d48afb8011c",
+      "binary_sha256": "07f5bdc5b62e2a79860d6e2a03aecee1a4ce5d5478cdbe896ff801cb27377006",
+      "validation_manifest_sha256": "eb1a0f0c57f7ee70a94b7566a9feaada5144cebe3275de311978f2f443b4342d"
+    },
+    "windows-x86_64": {
+      "archive": "yuki-maintenance-preview-0cdd9dffe07c-windows-x86_64.zip",
+      "sha256": "e2b964e87a30d5c230fbb0805a9de973cb91160b6e8b52606b363ca0fd77a152",
+      "binary_sha256": "7b8b374306f0081f0b80494cbc0cd4f0b7394c392a025da7e19f8468dcf192e7",
+      "validation_manifest_sha256": "e74b03e48ecd4c98198325ac51f367531019a192ce03e51ed3b190bff5f1f41f"
+    }
+  },
+  "sdk": {
+    "python": "1.0.0a8",
+    "rust": "1.0.0-alpha.8"
+  },
+  "schema_sha256": "4f5cdeb464c5fb275feeed766019ba159561a7335d13daec4d2d030b95cd4ec2",
+  "maintenance_schema_sha256": "d82f8da58ac0e190aa206a401c2e1f7c892eb2285235d266bc5834fc13d23d39",
+  "methods": [
+    "code.resume",
+    "code.snapshot.get",
+    "code.snapshot.put",
+    "code.sources",
+    "command.invoke",
+    "device.auth",
+    "forget.ack",
+    "forget.request",
+    "gateway.dispatch_part",
+    "gateway.inbound",
+    "gateway.part_status",
+    "gateway.plan_send",
+    "gateway.status",
+    "llm.complete",
+    "llm.result",
+    "maintenance.audit",
+    "maintenance.audit.apply",
+    "maintenance.content",
+    "maintenance.dependencies",
+    "maintenance.evidence",
+    "maintenance.extract.apply",
+    "maintenance.extract.preview",
+    "maintenance.fact.page",
+    "maintenance.history.page",
+    "maintenance.model.open",
+    "maintenance.reembed",
+    "maintenance.tool.page",
+    "media.open",
+    "media.process",
+    "media.publish",
+    "native.notify",
+    "native.queryAck",
+    "observer.event",
+    "participation.feedback",
+    "participation.promote",
+    "participation.self_propose",
+    "participation.source",
+    "participation.sources",
+    "tool.call",
+    "tool.catalog",
+    "tool.invoke",
+    "tool.resume",
+    "tool.schema",
+    "tool.status",
+    "work.cancel",
+    "work.get",
+    "work.input"
+  ],
+  "source_tree_sha256": "991bafb2f70c4571da5ae956be9cc903adc00d237670961ab23d99a456e9f1c5",
+  "rust_crate_sha256": "a8739c74d300f1044c94749ced333d9694920aa7c91728b19f624ff9fbaf2e63"
+}

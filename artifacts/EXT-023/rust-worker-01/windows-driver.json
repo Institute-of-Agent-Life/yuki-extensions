@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "scope": "Rust native worker controller; Host composition not accepted",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "native_executed": false,
+  "formal_card_acceptance": false,
+  "published": false,
+  "source": {
+    "Cargo.toml": "6c5c47fb41912f30b747e8d5b555220ea076515d2091c239612140954952765d",
+    "Cargo.lock": "2b584722fd3618fe935bf31c00bc741e8ae03643abd416d057f5ab9e25d227d3",
+    "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+    "src/lib.rs": "ef788443d7fdc472cb3e1924ea2434f216fbc519a8ca9272eef6bfaaf612f288",
+    "src/worker.rs": "6a08230aa60f356305b1624c8d853b6da22c5c9fdaaef00b13ad5cb2dcd13894",
+    "tests/native_worker.rs": "4a5c90ae71e8659c50036d5eafed31a8f342970adc93860034b661c020adebe7"
+  },
+  "sdk_sha256": "ea6a1c2f5e8e5ff5b53ef7b8ab89baa9c8bb26cbd9ba45f116eaaafd73406794",
+  "commands": [
+    {
+      "argv": [
+        "C:\\Users\\Hilbert\\yuki-core-tooling\\cargo\\bin\\cargo.EXE",
+        "test",
+        "--locked",
+        "--offline",
+        "--test",
+        "native_worker"
+      ],
+      "exit_code": 0,
+      "log": "portable.txt"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "nodeid": "tests/integration/test_connector_address_e2e.py::test_cli_start_upgrades_old_url_namespace_before_connecting[0]",
+  "revision": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+  "facts": {
+    "device_id": "330decca-4dc3-4ba8-83ac-a05b72c44039",
+    "receipt_version": 0,
+    "connected": true,
+    "exit_code": null,
+    "before": {
+      "installation": [
+        [
+          "[\"wss://old.example/agents/v1/connect\", \"330decca-4dc3-4ba8-83ac-a05b72c44039\"]"
+        ]
+      ],
+      "operations": [
+        [
+          "original-completed",
+          "{\"action\":\"exec\",\"id\":\"original-completed\",\"resource\":\"terminal\",\"run_id\":\"original-completed\"}",
+          "{\"result\":{\"run_id\":\"original-completed\",\"status\":\"succeeded\"}}",
+          0,
+          null
+        ],
+        [
+          "original-pending",
+          "{\"action\":\"exec\",\"id\":\"original-pending\",\"resource\":\"terminal\",\"run_id\":\"original-pending\"}",
+          "{\"result\":{\"run_id\":\"original-pending\",\"status\":\"running\"}}",
+          1,
+          null
+        ]
+      ],
+      "events": [
+        [
+          3,
+          "original-unconfirmed-event",
+          "{\"event_id\":\"original-unconfirmed-event\",\"kind\":\"progress\",\"operation_id\":\"original-pending\",\"operation_state\":{\"pending\":true,\"run_id\":\"original-pending\",\"state_sequence\":3,\"status\":\"running\"},\"result\":{\"run_id\":\"original-pending\",\"status\":\"running\"},\"sequence\":3,\"type\":\"terminal_event\"}"
+        ]
+      ]
+    },
+    "after": {
+      "installation": [
+        [
+          "330decca-4dc3-4ba8-83ac-a05b72c44039"
+        ]
+      ],
+      "operations": [
+        [
+          "original-completed",
+          "{\"action\":\"exec\",\"id\":\"original-completed\",\"resource\":\"terminal\",\"run_id\":\"original-completed\"}",
+          "{\"result\":{\"run_id\":\"original-completed\",\"status\":\"succeeded\"}}",
+          0,
+          "{\"pending\":false,\"run_id\":\"original-completed\",\"state_sequence\":0,\"status\":\"succeeded\"}",
+          null
+        ],
+        [
+          "original-pending",
+          "{\"action\":\"exec\",\"id\":\"original-pending\",\"resource\":\"terminal\",\"run_id\":\"original-pending\"}",
+          "{\"result\":{\"run_id\":\"original-pending\",\"status\":\"running\"}}",
+          1,
+          "{\"pending\":true,\"run_id\":\"original-pending\",\"state_sequence\":3,\"status\":\"running\"}",
+          null
+        ]
+      ],
+      "events": [
+        [
+          3,
+          "original-unconfirmed-event",
+          "{\"event_id\":\"original-unconfirmed-event\",\"kind\":\"progress\",\"operation_id\":\"original-pending\",\"operation_state\":{\"pending\":true,\"run_id\":\"original-pending\",\"state_sequence\":3,\"status\":\"running\"},\"result\":{\"run_id\":\"original-pending\",\"status\":\"running\"},\"sequence\":3,\"type\":\"terminal_event\"}"
+        ]
+      ]
+    },
+    "stdout": "",
+    "stderr": "",
+    "same_device_reopen_preserved": true
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "task": "EXT-023",
+  "observed_utc": "2026-11-05T01:43:13.085658+00:00",
+  "host": "hjw",
+  "transport": "SSH / Windows Python / packaged WSL / Arch sh",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "probe_sha256": "16f4cd0ae22e28b24e28a59be968d1f900bb0030a34fc2768a519461c2d7bb75",
+  "windows_docker": null,
+  "path_wsl": "C:\\Windows\\system32\\wsl.EXE",
+  "selected_wsl": "C:\\Program Files\\WSL\\wsl.exe",
+  "distro": "Arch",
+  "status": "LINUX_REACHABLE_APPARMOR_DISABLED",
+  "isolation_acceptance": false,
+  "operations": "Read files and run inspection commands; starting the selected WSL distro may occur.",
+  "wslconfig": [
+    "[wsl2]",
+    "memory=4GB"
+  ],
+  "windows_ssh_hosts": [],
+  "version": {
+    "command": [
+      "C:\\Program Files\\WSL\\wsl.exe",
+      "--version"
+    ],
+    "exit_code": 0,
+    "stdout": "WSL 版本: 3.0.1.0\r\n内核版本: 6.18.40.1-1\r\nWSLg 版本: 1.0.79\r\nMSRDC 版本: 1.2.7214\r\nDirect3D 版本: 1.611.1-81528511\r\nDXCore 版本: 10.0.26100.1-240331-1435.ge-release\r\nWindows 版本: 10.0.22000.593\r\n",
+    "stderr": "",
+    "stdout_base64": "VwBTAEwAIABIcixnOgAgADMALgAwAC4AMQAuADAADQAKAIVROGhIcixnOgAgADYALgAxADgALgA0ADAALgAxAC0AMQANAAoAVwBTAEwAZwAgAEhyLGc6ACAAMQAuADAALgA3ADkADQAKAE0AUwBSAEQAQwAgAEhyLGc6ACAAMQAuADIALgA3ADIAMQA0AA0ACgBEAGkAcgBlAGMAdAAzAEQAIABIcixnOgAgADEALgA2ADEAMQAuADEALQA4ADEANQAyADgANQAxADEADQAKAEQAWABDAG8AcgBlACAASHIsZzoAIAAxADAALgAwAC4AMgA2ADEAMAAwAC4AMQAtADIANAAwADMAMwAxAC0AMQA0ADMANQAuAGcAZQAtAHIAZQBsAGUAYQBzAGUADQAKAFcAaQBuAGQAbwB3AHMAIABIcixnOgAgADEAMAAuADAALgAyADIAMAAwADAALgA1ADkAMwANAAoA",
+    "stderr_base64": ""
+  },
+  "distros": {
+    "command": [
+      "C:\\Program Files\\WSL\\wsl.exe",
+      "--list",
+      "--verbose"
+    ],
+    "exit_code": 0,
+    "stdout": "  NAME           STATE           VERSION\r\n* Arch           Stopped         2\r\n  Yuki-Bocchi    Stopped         2\r\n",
+    "stderr": "",
+    "stdout_base64": "IAAgAE4AQQBNAEUAIAAgACAAIAAgACAAIAAgACAAIAAgAFMAVABBAFQARQAgACAAIAAgACAAIAAgACAAIAAgACAAVgBFAFIAUwBJAE8ATgANAAoAKgAgAEEAcgBjAGgAIAAgACAAIAAgACAAIAAgACAAIAAgAFMAdABvAHAAcABlAGQAIAAgACAAIAAgACAAIAAgACAAMgANAAoAIAAgAFkAdQBrAGkALQBCAG8AYwBjAGgAaQAgACAAIAAgAFMAdABvAHAAcABlAGQAIAAgACAAIAAgACAAIAAgACAAMgANAAoA",
+    "stderr_base64": ""
+  },
+  "linux": {
+    "command": [
+      "C:\\Program Files\\WSL\\wsl.exe",
+      "-d",
+      "Arch",
+      "--exec",
+      "/bin/sh"
+    ],
+    "exit_code": 0,
+    "stdout": "Linux 6.18.40.1-microsoft-standard-WSL2 x86_64\nuid=1000(hilbert) gid=1000(hilbert) groups=1000(hilbert),998(wheel)\n\nCOMMANDS\n\nAPPARMOR\nN\n\nPROCESS_SECURITY\nCapEff:\t0000000000000000\nCapBnd:\t000001ffffffffff\nNoNewPrivs:\t0\nSeccomp:\t0\nSeccomp_filters:\t0\n\nLSM\ncat: /sys/kernel/security/lsm: No such file or directory\n\nCMDLINE\ninitrd=\\initrd.img WSL_ROOT_INIT=1 panic=-1 nr_cpus=16 hv_utils.timesync_implicit=1 printk.devkmsg=on page_reporting.page_reporting_order=9 hv_storvsc.storvsc_max_hw_queues=4 console=hvc0 debug pty.legacy_count=0 WSL_ENABLE_CRASH_DUMP=1\n\nKERNEL_CONFIG\nCONFIG_NAMESPACES=y\nCONFIG_USER_NS=y\nCONFIG_SECCOMP=y\nCONFIG_SECCOMP_FILTER=y\nCONFIG_SECURITY_APPARMOR=y\n# CONFIG_SECURITY_APPARMOR_DEBUG is not set\nCONFIG_SECURITY_APPARMOR_INTROSPECT_POLICY=y\nCONFIG_SECURITY_APPARMOR_HASH=y\nCONFIG_SECURITY_APPARMOR_HASH_DEFAULT=y\nCONFIG_SECURITY_APPARMOR_EXPORT_BINARY=y\nCONFIG_SECURITY_APPARMOR_PARANOID_LOAD=y\nCONFIG_LSM=\"landlock,lockdown,yama,loadpin,safesetid,integrity,selinux,apparmor,tomoyo\"\n\nPACKAGES\nerror: package 'apparmor' was not found\nerror: package 'bubblewrap' was not found\nerror: package 'docker' was not found\nerror: package 'python' was not found\nerror: package 'rust' was not found\nerror: package 'gcc' was not found\n\nSPACE\nFilesystem      Size  Used Avail Use% Mounted on\n/dev/sdd        251G  911M  238G   1% /\ntmpfs           2.0G     0  2.0G   0% /tmp\n",
+    "stderr": "wsl: Failed to start the systemd user session for 'hilbert'. See journalctl for more details.\n",
+    "stdout_base64": "TGludXggNi4xOC40MC4xLW1pY3Jvc29mdC1zdGFuZGFyZC1XU0wyIHg4Nl82NAp1aWQ9MTAwMChoaWxiZXJ0KSBnaWQ9MTAwMChoaWxiZXJ0KSBncm91cHM9MTAwMChoaWxiZXJ0KSw5OTgod2hlZWwpCgpDT01NQU5EUwoKQVBQQVJNT1IKTgoKUFJPQ0VTU19TRUNVUklUWQpDYXBFZmY6CTAwMDAwMDAwMDAwMDAwMDAKQ2FwQm5kOgkwMDAwMDFmZmZmZmZmZmZmCk5vTmV3UHJpdnM6CTAKU2VjY29tcDoJMApTZWNjb21wX2ZpbHRlcnM6CTAKCkxTTQpjYXQ6IC9zeXMva2VybmVsL3NlY3VyaXR5L2xzbTogTm8gc3VjaCBmaWxlIG9yIGRpcmVjdG9yeQoKQ01ETElORQppbml0cmQ9XGluaXRyZC5pbWcgV1NMX1JPT1RfSU5JVD0xIHBhbmljPS0xIG5yX2NwdXM9MTYgaHZfdXRpbHMudGltZXN5bmNfaW1wbGljaXQ9MSBwcmludGsuZGV2a21zZz1vbiBwYWdlX3JlcG9ydGluZy5wYWdlX3JlcG9ydGluZ19vcmRlcj05IGh2X3N0b3J2c2Muc3RvcnZzY19tYXhfaHdfcXVldWVzPTQgY29uc29sZT1odmMwIGRlYnVnIHB0eS5sZWdhY3lfY291bnQ9MCBXU0xfRU5BQkxFX0NSQVNIX0RVTVA9MQoKS0VSTkVMX0NPTkZJRwpDT05GSUdfTkFNRVNQQUNFUz15CkNPTkZJR19VU0VSX05TPXkKQ09ORklHX1NFQ0NPTVA9eQpDT05GSUdfU0VDQ09NUF9GSUxURVI9eQpDT05GSUdfU0VDVVJJVFlfQVBQQVJNT1I9eQojIENPTkZJR19TRUNVUklUWV9BUFBBUk1PUl9ERUJVRyBpcyBub3Qgc2V0CkNPTkZJR19TRUNVUklUWV9BUFBBUk1PUl9JTlRST1NQRUNUX1BPTElDWT15CkNPTkZJR19TRUNVUklUWV9BUFBBUk1PUl9IQVNIPXkKQ09ORklHX1NFQ1VSSVRZX0FQUEFSTU9SX0hBU0hfREVGQVVMVD15CkNPTkZJR19TRUNVUklUWV9BUFBBUk1PUl9FWFBPUlRfQklOQVJZPXkKQ09ORklHX1NFQ1VSSVRZX0FQUEFSTU9SX1BBUkFOT0lEX0xPQUQ9eQpDT05GSUdfTFNNPSJsYW5kbG9jayxsb2NrZG93bix5YW1hLGxvYWRwaW4sc2FmZXNldGlkLGludGVncml0eSxzZWxpbnV4LGFwcGFybW9yLHRvbW95byIKClBBQ0tBR0VTCmVycm9yOiBwYWNrYWdlICdhcHBhcm1vcicgd2FzIG5vdCBmb3VuZAplcnJvcjogcGFja2FnZSAnYnViYmxld3JhcCcgd2FzIG5vdCBmb3VuZAplcnJvcjogcGFja2FnZSAnZG9ja2VyJyB3YXMgbm90IGZvdW5kCmVycm9yOiBwYWNrYWdlICdweXRob24nIHdhcyBub3QgZm91bmQKZXJyb3I6IHBhY2thZ2UgJ3J1c3QnIHdhcyBub3QgZm91bmQKZXJyb3I6IHBhY2thZ2UgJ2djYycgd2FzIG5vdCBmb3VuZAoKU1BBQ0UKRmlsZXN5c3RlbSAgICAgIFNpemUgIFVzZWQgQXZhaWwgVXNlJSBNb3VudGVkIG9uCi9kZXYvc2RkICAgICAgICAyNTFHICA5MTFNICAyMzhHICAgMSUgLwp0bXBmcyAgICAgICAgICAgMi4wRyAgICAgMCAgMi4wRyAgIDAlIC90bXAK",
+    "stderr_base64": "d3NsOiBGYWlsZWQgdG8gc3RhcnQgdGhlIHN5c3RlbWQgdXNlciBzZXNzaW9uIGZvciAnaGlsYmVydCcuIFNlZSBqb3VybmFsY3RsIGZvciBtb3JlIGRldGFpbHMuCg=="
+  },
+  "linux_reachable": true,
+  "apparmor_enabled": false,
+  "apparmor_compiled": true,
+  "seccomp_filter_compiled": true
+}

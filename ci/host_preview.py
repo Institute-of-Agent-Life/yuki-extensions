@@ -22,6 +22,12 @@ def materialize(root, work, contract="core-032"):
             raise ValueError("incompatible host candidate")
         if "personal_schema_sha256" in pin and meta.get("personal_schema_sha256") != pin["personal_schema_sha256"]:
             raise ValueError("personal schema digest mismatch")
+        if "media_schema_sha256" in pin and meta.get("media_schema_sha256") != pin["media_schema_sha256"]:
+            raise ValueError("media schema digest mismatch")
+        if "aux_schema_sha256" in pin and meta.get("aux_schema_sha256") != pin["aux_schema_sha256"]:
+            raise ValueError("aux schema digest mismatch")
+        if "maintenance_schema_sha256" in pin and meta.get("maintenance_schema_sha256") != pin["maintenance_schema_sha256"]:
+            raise ValueError("maintenance schema digest mismatch")
         if sorted(bundle.namelist()) != sorted([*meta["members"], "candidate.json"]):
             raise ValueError("unexpected host package member set")
         for name, member in meta["members"].items():
