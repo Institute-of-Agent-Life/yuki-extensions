@@ -1,0 +1,22 @@
+{
+  "original": {
+    "id": "ec0b4b68-535d-430e-a418-89dd149c352c",
+    "namespace": "c5055b26-2953-4efd-afdc-1d91324deec0",
+    "ordinal": null,
+    "parent": null,
+    "result": {
+      "error": "gateway_send_not_granted"
+    },
+    "state": "failed"
+  },
+  "after_restart": {
+    "id": "ec0b4b68-535d-430e-a418-89dd149c352c",
+    "namespace": "c5055b26-2953-4efd-afdc-1d91324deec0",
+    "ordinal": null,
+    "parent": null,
+    "result": {
+      "error": "gateway_send_not_granted"
+    },
+    "state": "failed"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "status": "PASS",
+  "task": "EXT-004",
+  "scope": "original Main receipt after web fetch with inbound-only Telegram installation",
+  "host_source": "1eb6708fafd0a346cb14575ec0c124d89a81264a",
+  "source": "603a98bef211bb07cf2023dadc4b876900038e23",
+  "host_sha256": "1136e1899687248f765abe4e4ef689781d4ec87cec73e67aa416be11e8b759bf",
+  "source_sdk": "07114e6ddc22337da85cff5df80eb468f12f247a5acbc22dbf1f12855c0c1e3e",
+  "consumer_sdk": "e41a2375efb2f8f479fa86b022168f02d3b098d3366c1f8f9a6ed9dc22ff4c40",
+  "schema": "5a9790642d0eb0ee2dfc15bcebc459c7b0bf9971260e6576e47da7e2e363fb9f",
+  "original_pages": 4,
+  "parts_observed": 0,
+  "native_sends": 0,
+  "physical_web_requests": [
+    [
+      "CONNECT",
+      "93.184.216.34:8100"
+    ],
+    [
+      "GET",
+      "/document"
+    ]
+  ],
+  "receipt_retained_after_restart": true,
+  "replayed_update_deliveries": 0,
+  "windows_zip_sha256": "5b7cb3087afbbf96034636febf0feae875e186e0dbd8495d9f5a4fa816dc4dae",
+  "packages": {
+    "telegram": {
+      "artifact_id": 13523402982,
+      "archive_digest": "sha256:5227f287eb2afad02fe3295e251a1b21c79baa2460ad748531bef2b86cf94f84",
+      "build": {
+        "version": "0.1.0-alpha.4",
+        "artifacts": {
+          "Cargo.lock": "48220d028b84338e07d47d3d4b7a4c8cf37d6eb8e76df532e147621e68e5e763",
+          "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+          "plugin.toml": "2bbeca542c94e4fecf993dfea52c8906e8d2662378d54bfbe55b2d4426aa22ad",
+          "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+          "yuki-telegram.exe": "e49fac00669f9175814a1b06f6034626d4bc6514639576d23020817eb16b93b0"
+        },
+        "manifest_sha256": "19ee9c1ecaf66897d9d2bf6a22b8abd45f5a67b78502b612afe14e1137078b80"
+      }
+    },
+    "web-fetch": {
+      "artifact_id": 13524465074,
+      "archive_digest": "sha256:51dd857899c6350353fe289d4955981f2fa97ca8ff51ad7857b916ba5801d963",
+      "build": {
+        "version": "0.1.0-alpha.2",
+        "artifacts": {
+          "Cargo.lock": "20609ae0ee4935d761204f1aec7618a95439e591e3bf6876cc5be9a61b5d94ba",
+          "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+          "plugin.toml": "116d0aa6cb5d635118d8abecdd405f5bef0d8a5eb475eae0217430f3c5bc20cd",
+          "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+          "yuki-web-fetch.exe": "90912616d2e50ffce88c82422ebe58740e8c28235b83365ac43e07ef413659b2"
+        },
+        "manifest_sha256": "3da6a9e77e9ecd19eb2550cf1ecae0783d4c0d1cebdcb50c94a09589a819db91"
+      }
+    }
+  },
+  "transfer_red_runs": [
+    "01/02: missing harness Python dependencies; Host was never launched"
+  ],
+  "published": false
+}

@@ -1,0 +1,68 @@
+{
+  "repository": "Institute-of-Agent-Life/yuki-core",
+  "source_commit": "1eb6708fafd0a346cb14575ec0c124d89a81264a",
+  "index_sha256": "28c3fb9bf7f938a81f018c8fd8c33d4d8eb3d5a28717065b6c2d5981f64c2329",
+  "published": false,
+  "sdk": {
+    "rust": "1.0.0-alpha.14",
+    "python": "1.0.0a14"
+  },
+  "platforms": {
+    "darwin-arm64": {
+      "archive": "yuki-core-1eb6708fafd0-darwin-arm64.zip",
+      "sha256": "c1ace3108a87a9dc962ba8d550d85059690f9d592691a74e222f84cbed132124",
+      "binary_sha256": "bcd6c1c50e47540293660f3c192750f4f6a2eb051aef3c417c800e54c831c370",
+      "signed_manifest_sha256": "2e82874d931dfaa44b065a32d683bbbf23638dd60ebe3db6b7145565892af3ec",
+      "validation_manifest_sha256": "466e7fce696b56b3df78c2ec33f14f38d8047ae8534e354e869d4a2b2376d8b3",
+      "signer": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMU8Vub5EfvyItq5YN/VR9Nq8HvGNCILtrWiBX2xDfIC huangjiawei@huangjiaweideMac-mini.local",
+      "signer_sha256": "369cf82a4bb47f1fd8450f480c5e9dd096bc9ac940d6e6e368cd9effbcc36b6d",
+      "verified_members": 496
+    },
+    "linux-arm64": {
+      "archive": "yuki-core-1eb6708fafd0-linux-arm64.zip",
+      "sha256": "ec9cb11d6de8349a143dc760871148afc696e489c3ebcc4899735c9aa33a37cc",
+      "binary_sha256": "a76e941eb13e5441107e56a6870d6528a2ee334130d2946efe292955d1e6b42e",
+      "signed_manifest_sha256": "c2bc274126028fea43d8358acd8e75bbd232c6c13902e1947381383844936661",
+      "validation_manifest_sha256": "a06177312dbcaa84b820cf0b36bf85448db8fc3321bdd671fd04eeb8212f7cd6",
+      "signer": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB0/v2tq2krz1+V8RP/NFRMwBkWvfzsV/o+UujsTVPJx root@a5d055041319",
+      "signer_sha256": "a57426438d70966996ec08c3d8cc86380ca594c5905c27e74b531cacad9f16b3",
+      "verified_members": 499
+    },
+    "windows-x86_64": {
+      "archive": "yuki-core-1eb6708fafd0-windows-x86_64.zip",
+      "sha256": "8b25985b7277318cdf6ebc3631be5cad9848ed260a36adbb1ddc412ab1b0e2a2",
+      "binary_sha256": "1136e1899687248f765abe4e4ef689781d4ec87cec73e67aa416be11e8b759bf",
+      "signed_manifest_sha256": "da0867148421ccbc74977e19a7e8320bbedbffc28703249b782ef9e3f2bcdd46",
+      "validation_manifest_sha256": "444e597fedb3b836fb9f0c0b3ba5c96a0448ff7b8374d9b10e1e58380b287b30",
+      "signer": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDPLDVCJsbfnOLgq8LdzcIWozpZaB/NIk9R3km6UT5lF hilbert@hjw",
+      "signer_sha256": "2f7560739ae5b856c95beb2c91a720dac84520e947e6afd8c9b9cf5f965be55a",
+      "verified_members": 508
+    }
+  },
+  "source_tree_sha256": "65cc1abfd40f3b12b954e72a30f6247106459ca9d83ed0ce6b83d580e71921f0",
+  "rust_crate_sha256": "07114e6ddc22337da85cff5df80eb468f12f247a5acbc22dbf1f12855c0c1e3e",
+  "schema_sha256": "5a9790642d0eb0ee2dfc15bcebc459c7b0bf9971260e6576e47da7e2e363fb9f",
+  "golden_sha256": "5275ee7b90b6af4221693f92ea9c1b4fb1d1b306c2b6ebb85947273dba0bcfa3",
+  "fixtures_sha256": "2d986f7c2bf30d597fbf667f346d189a8aad9bf6194d1341fc13620e4907316e",
+  "methods": [
+    "command.invoke",
+    "forget.ack",
+    "forget.request",
+    "gateway.dispatch_part",
+    "gateway.inbound",
+    "gateway.media",
+    "gateway.part_status",
+    "gateway.plan_send",
+    "gateway.status",
+    "observer.event",
+    "terminal.bind",
+    "terminal.scope",
+    "tool.call",
+    "tool.status"
+  ],
+  "distribution": "pr97",
+  "consumer_sdk_sha256": "e41a2375efb2f8f479fa86b022168f02d3b098d3366c1f8f9a6ed9dc22ff4c40",
+  "sdk_member_changes": [
+    ".cargo_vcs_info.json"
+  ]
+}
