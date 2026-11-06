@@ -15,6 +15,8 @@
 
 ## 2026-11-06 EXT-011 原 Connector 鑑權與 wire4 候選
 
+- 實作 `a7b35e96dda240f021f43efed7a46c7976d4197c`；正常合入 main `ac8c1b287e5a`，
+  僅進度有衝突，兩邊歷史保留，31 份實收來源未變。
 - 分支 `codex/ext-011-connector-auth`，基於 `5986cba`；Rust local-agent
   `0.1.0-alpha.2` 已完成本輪可用接線。正式完成仍 **7／68**。
 - CORE-033 `c85a00b121d0277578292e8b60170b799e4ad6db`／SDK alpha.12，
@@ -280,6 +282,25 @@
   EXT-033 缺精確選簇向量與權屬投影，EXT-035 缺原 SELF／真人前臺退讓交接。
   EXT-048 還缺個人寫入及角色管理前置；CORE-051 目前只有 Mac 開發證據，沒有可驗 Windows
   Host 交付，CORE-058／037 亦未見交付。CORE-034/036/050 三份回條仍待回覆。
+## 2026-11-05 PR #14 合併與 PR #15 新基底
+
+- PR #14 head `dfe8eb46d64a` 的三平台 acceptance、五套 package 和 Connector 回歸
+  全過，24 份 ZIP／GitHub digest／manifest／來源 parents 已核。普通合併 main
+  `996deedef3e119246651050dc8cac186044a925a`；實際 tree 與 CI merge `a5ece9e35203` 相同。
+  回條 `artifacts/EXT-040/ci-receipt-dfe8eb4.json`。EXT-020 的完整前置仍待核心交付。
+- 本分支 `codex/ext-040-setup` 從原 head `a2285c3bc6a2` 正常合入新 main；
+  同步提交 `f8aef1b` 只合併歷次回條／進度，安裝器與插件程式樹未改。當前 SHA 三平台 acceptance
+  和受影響 packages 需重新通過並驗產物，才可合併 PR #15，不能使用舊 base 綠燈。
+- 隨後把已驗固定資產下載修正 `b82112b5b452` 同步到本分支，避免後續 CI 繼續
+  遇到相同 504。四個來源檔和原 contract inputs 逐 bytes 相同；在此新基底又於 HJW
+  Windows 驗七例通過，回條 `artifacts/readiness/ci-release-504-pr15/`。只改 CI
+  讀取；安裝器、插件、原 SDK／資產和授權未變。本地修正提交 `f707400a754a`；新 SHA 要重跑全部 gates。
+- 正式完成仍 7／68。PR #26 已推固定資產 GET 的有限重試，修正 `b82112b5b452`、
+  head `c2600d644a02`；Windows 七例過。原 native exit134 只有診斷補強，根因未解。
+  後續卡與核心包 pin 的完整進度固定於
+  https://github.com/Institute-of-Agent-Life/yuki-extensions/blob/c2600d644a027a163d7533300c7dd111d5e0f9c1/docs/implementation-progress.md 。
+  這些後續 PR 尚未合入本分支；原 Code／ASR／rebuild／subscription WIP 保留。
+- 合併佇列最新 snapshot：`artifacts/readiness/after-pr14-merge.json`。
 
 ## 核心輸入與可交還證據
 

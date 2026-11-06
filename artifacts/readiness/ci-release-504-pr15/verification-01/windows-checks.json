@@ -1,0 +1,18 @@
+[
+  {
+    "argv": [
+      "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests/unit",
+      "-p",
+      "test_download_http.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "test_continuous_504_stops_after_three_requests (test_download_http.AssetTransport.test_continuous_504_stops_after_three_requests) ... CI asset GET HTTP 504; retry 2/3 after 1s\nCI asset GET HTTP 504; retry 3/3 after 2s\nok\ntest_permanent_http_errors_are_not_retried (test_download_http.AssetTransport.test_permanent_http_errors_are_not_retried) ... ok\ntest_post_is_rejected_before_network_io (test_download_http.AssetTransport.test_post_is_rejected_before_network_io) ... ok\ntest_retry_after_is_not_overridden_by_local_backoff (test_download_http.AssetTransport.test_retry_after_is_not_overridden_by_local_backoff) ... ok\ntest_success_with_wrong_digest_is_not_retried_or_written (test_download_http.AssetTransport.test_success_with_wrong_digest_is_not_retried_or_written) ... ok\ntest_tls_verification_failure_is_not_retried (test_download_http.AssetTransport.test_tls_verification_failure_is_not_retried) ... ok\ntest_transient_errors_keep_original_get_headers_and_fixed_bundle (test_download_http.AssetTransport.test_transient_errors_keep_original_get_headers_and_fixed_bundle) ... CI asset GET HTTP 502; retry 2/3 after 1s\nCI asset GET HTTP 504; retry 3/3 after 2s\nok\n\n----------------------------------------------------------------------\nRan 7 tests in 3.294s\n\nOK\n"
+  }
+]
