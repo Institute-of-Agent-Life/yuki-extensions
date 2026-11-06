@@ -4,6 +4,8 @@
 行為基線 `329ca7c487414d2f54ddd98ff4727446ed2446cd`。官方插件接入層用 Rust。
 獨立 Connector 沿用 Python 3.12；共享預算沿總書 K05。
 
+**Windows 重現入口。** `codex/public-base-windows-runner` 讓 `ci/windows.py` 傳送三張卡各自已核的公開 Host 和原插件 ZIP。EXT-003、005、028 在 HJW 的三個獨立目錄併行執行，逐份核對返回的 ZIP、來源快照及 manifest。回條在 `artifacts/ci/windows-public/receipt.json`。#52 實作 `736bc7ffc6fe` 已合併 `32400b6d39f0`，三平台 7 個 CI 作業、9 個 ZIP 及實際合併樹均已核。正式 11/68；其餘分級及下一步見 `artifacts/readiness/after-public-fetch-network.json`。
+
 **EXT-028 公開基底網路驗收通過。** `codex/ext-028-public-fetch`。在 HJW 使用 CORE-044 `plugin-base-v1.0.0` 與公開 freeze 的原 web-fetch 套件。由 Main 明選的網頁重導至回環埠，原操作收到 `destination_denied`，目標收到零個請求。第二個原頁 2,109,144 bytes，reader 在 2,097,152 bytes 停止；原執行以相同 handle/version 讀回 `partial`、來源、實收 SHA 與 18,022 bytes 保留前綴的開頭。逐方法與逐跳回條在 `artifacts/EXT-028/public-network-01`。前一輪寫回條時變數名稱錯誤，原診斷保留；最終命令重驗通過。DNS 換址、跨來源憑據、代理故障、空 HTML 和完整頁由原 `artifacts/EXT-028/01` 與 R07 覆蓋。#51 已合併 `a56cffde23ce`；兩個入站插件實收已交核心 #103。正式 11/68，EXT-067 保留簽署候選見證。
 
 **EXT-005 公開基底入站驗收通過。** `codex/ext-005-public-admission` 在 HJW 將 #47 原 Windows 套件（飛書 alpha.4，SDK alpha.13）裝入公開 Host 1.0.0。writer 前斷線無成功事件 ACK，ping 與卡片無模型 HTTP；補齊分片後，飛書重投取得 1、1，Lark 同鍵取得 2、2，兩域的 open_id 分屬不同 account。錯租戶回 500、錯認證無連線。原生 ACK、Host transcript、模型正控與來源雜湊在 `artifacts/EXT-005/01`，停機副本沿用 #45。正式 10/68，另兩張簽署候選。#50 實作 `4c0af7fee853`，7 個 CI 作業和 9 個 ZIP 通過，普通合併 `8ca5f7077f11`。EXT-004/006 的原生操作與正向附件路由仍待核心交付。

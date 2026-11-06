@@ -17,3 +17,5 @@ HJW 的第 1 輪在更換測試安裝參數後沒有啟動第二個 reader。第
 在 Windows 設定 `YUKI_STABLE_BASE_ZIP` 為原名的公開 ZIP，`YUKI_QUALIFIED_TELEGRAM_ZIP` 為 EXT-043 的 Windows `tested-telegram.zip`，執行 `python ci/check.py EXT-003 --out artifacts/EXT-003/01`。停機副本與跨版本 reader 沿用上述八例及 EXT-043 的原位回退回條。
 
 初試的 Main 配置缺 root_slots。第二輪將資料更新排在一般工作冷啟後，HTTP 總數混入其他工作；第三輪先安裝 Bot 202 再移除，回裝後未收到預期輪詢。第四輪在空安裝先用 Bot 101 送純資料，原地完成斷線及重投後才安裝 Bot 202，分開取得零請求與一般請求正控。三輪原始失敗回條保留在 `artifacts/EXT-003/public-intake`。
+
+在控制端設好同兩個 ZIP 的環境變數後，也可執行 `python ci/windows.py EXT-003 --run <新名稱>`，由 SSH 傳至 HJW。EXT-005、EXT-028 可用相同命令，分別改設 `YUKI_QUALIFIED_FEISHU_ZIP` 或 `YUKI_FROZEN_WEB_FETCH_ZIP`。每次都由 Windows 上的驗收程式核對宿主與插件，再啟動。
