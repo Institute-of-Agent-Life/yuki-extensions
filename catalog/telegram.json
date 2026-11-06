@@ -3,7 +3,7 @@
   "kind": "plugin",
   "path": "plugins/telegram",
   "ecosystem": "rust",
-  "version": "0.1.0-alpha.4",
+  "version": "0.1.0-alpha.5",
   "tag_prefix": "telegram/v",
   "license": "AGPL-3.0-only",
   "notices": [
@@ -17,6 +17,8 @@
   },
   "check_paths": [
     "tests/cases/EXT-003.py",
+    "tests/peers/telegram_cursor_compat.py",
+    "tests/peers/observe_stdio.py",
     "tests/peers/telegram_media_wire.py",
     "tests/peers/telegram_text_delivery.py",
     "tests/cases/EXT-004.py",

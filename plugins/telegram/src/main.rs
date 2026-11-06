@@ -265,7 +265,14 @@ fn main() -> Result<(), Error> {
     lock.try_lock()?;
     let cursor = dir.join(format!("{bot}.offset"));
     let mut offset = match fs::read_to_string(&cursor) {
-        Ok(text) => Some(text.trim().parse::<i64>()?),
+        Ok(text) => {
+            let saved = text.trim().parse::<i64>()?;
+            if saved < 0 {
+                // Telegram interprets negative offsets as a request to discard older updates.
+                return Err("negative saved Telegram offset".into());
+            }
+            Some(saved)
+        }
         Err(e) if e.kind() == io::ErrorKind::NotFound => None,
         Err(e) => return Err(e.into()),
     };
@@ -306,10 +313,14 @@ fn main() -> Result<(), Error> {
             }
         };
         for update in batch.as_array().ok_or("invalid Telegram batch")? {
-            let id = update["update_id"].as_i64().ok_or("invalid update_id")?;
+            let id = update["update_id"]
+                .as_i64()
+                .filter(|id| *id >= 0)
+                .ok_or("invalid update_id")?;
             if offset.is_some_and(|next| id < next) {
                 continue;
             }
+            let next = id.checked_add(1).ok_or("offset overflow")?;
             let mut envelope = ingress::normalize(update, bot, username)?;
             if enabled {
                 envelope["media_identity"] = json!({"application":bot.to_string()});
@@ -345,7 +356,6 @@ fn main() -> Result<(), Error> {
                     other => gateway.callback(other, &mut out)?,
                 }
             }
-            let next = id.checked_add(1).ok_or("offset overflow")?;
             commit_cursor(&dir, &cursor, next)?;
             offset = Some(next);
         }

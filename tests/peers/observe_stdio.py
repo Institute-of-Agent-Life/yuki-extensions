@@ -6,10 +6,9 @@ import sys
 import threading
 
 
-def main():
-    program, trace=sys.argv[1:]
+def observe(program, trace, *, stderr=None):
     lock=threading.Lock()
-    child=subprocess.Popen([program],stdin=subprocess.PIPE,stdout=subprocess.PIPE)
+    child=subprocess.Popen([program],stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=stderr)
     def copy(stream, sink, direction):
         try:
             for line in stream:
@@ -20,15 +19,22 @@ def main():
         except (OSError,ValueError):
             pass
     def to_plugin():
-        copy(sys.stdin.buffer,child.stdin,"from_host")
+        # This thread can still be reading when the child exits on its own.
+        # Keep the blocking read off the interpreter's shared stdin buffer.
+        with open(sys.stdin.fileno(), "rb", closefd=False) as source:
+            copy(source,child.stdin,"from_host")
         child.stdin.close()
     threading.Thread(target=to_plugin,daemon=True).start()
     try:
         copy(child.stdout,sys.stdout.buffer,"from_plugin")
     finally:
-        child.kill()
-        child.wait()
+        try:
+            child.wait(timeout=2)
+        except subprocess.TimeoutExpired:
+            child.kill()
+            child.wait()
+    return child.returncode
 
 
 if __name__=="__main__":
-    main()
+    observe(*sys.argv[1:])
