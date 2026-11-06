@@ -13,6 +13,22 @@
 | EXT-010 · codex/ext-010 | `ab16e07`；CI `41834791702`；PR #6 合併 `2c55dbb` | `artifacts/EXT-010/02/`，8 例含實際子進程退出碼 23、雙 session 取消及 unknown |
 | EXT-019 · codex/ext-019 | 實作 `7531d84`、PR head `9d1e8a8`；三平台 CI `41835863011`；PR #7 合併 `7625095` | `artifacts/EXT-019/02/`，呼叫表、schema 差分、5 個故障變異；`03/` 固定跨平台順序 |
 
+## 2026-11-06 CI 去重同步至佇列首張 PR #16
+
+- 沿用 PR #33 的 `11fbc352c9ca`：本提交工作流與已在 HJW Windows 驗過的
+  `e8f3465def7ebdbf0aee8024b580eb2edc13cb3342652137dbf6f9a35de6fa22` 逐 bytes 相同。
+  分支 push 改由 PR merge ref 跑三平台；main push／手動執行保留。
+  只取消同 PR 過期執行，不讓 main 或手動執行互相取消。
+- 原 jobs、矩陣、選擇器、測試、建包與上傳步驟均保留。原 Windows 五事件／YAML
+  回條 `artifacts/readiness/ci-dedupe-windows.json`，本次來源核對
+  `artifacts/readiness/ci-dedupe-pr16.json`。這是既有驗證的精確重用，沒有重跑同件。
+- PR #16 基底仍為 `ac8c1b287e5a`；新 head 的三平台 acceptance、全部受影響套件與
+  ZIP／manifest／merge tree 未核完之前不合併。只有在新 head gates 已存在後，才取消
+  原 `58cd960` 的兩輪過期執行；保留其既有產物。
+- Rust 快取為獨立後續變更。原 local-agent、Connector 和 SDK 都未改。
+  正式完成仍 7／68。新的 Client9／Main 媒體候選在 PR #32／#34；
+  詳細進度見 `work-client-selection`／`work-media-main` 工作樹，原四份 WIP 保留。
+
 ## 2026-11-06 PR #15 合併與 PR #16 新基底
 
 - PR #15 head `0107c0afc9f79e30fa7c32a5466b3fcc18fb69b3` 的 push `42058530137`、

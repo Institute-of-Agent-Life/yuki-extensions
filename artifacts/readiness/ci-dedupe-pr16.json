@@ -1,0 +1,13 @@
+{
+  "status": "VERIFIED_SOURCE_REUSE",
+  "source_pr": 33,
+  "source_commit": "11fbc352c9ca748b4180706c294fd5b5bfd94a3f",
+  "applied_to_pr": 16,
+  "prior_head": "58cd960e1a992f2103f3d75b89e12c52a16ca288",
+  "base_main": "ac8c1b287e5a320107f64975dfd318b521bd8f13",
+  "workflow_sha256": "e8f3465def7ebdbf0aee8024b580eb2edc13cb3342652137dbf6f9a35de6fa22",
+  "windows_receipt_sha256": "5d4d4fd36d0006616ccc616b6235322cceb98a8f557566219b45ae8212e29a2e",
+  "native_scope": "Existing HJW Windows five-event/YAML receipt applies to byte-identical workflow; no new native runtime claim",
+  "full_current_merge_ci": "PENDING",
+  "cache_changes": "separate follow-up commit/PR; not in this commit"
+}
