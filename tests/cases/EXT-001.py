@@ -38,6 +38,19 @@ def run(root: Path, output: Path):
                       "version": "0.0.1", "tag_prefix": name + "/v", "license": "MIT", "notices": ["LICENSE"],
                       "source": {"kind": "test-only-original"}}
             (isolated / "catalog" / (name + ".json")).write_text(json.dumps(record), encoding="utf-8")
+        sidecar = isolated / "catalog/._alpha.json"
+        sidecar.write_bytes(bytes.fromhex("0005160700020000") + b"\xff")
+        assert set(load_catalog(isolated)) == {"alpha", "beta"}
+        sidecar_selection = select_units(isolated, ["catalog/._alpha.json"])
+        assert sidecar_selection == []
+        malformed = isolated / "catalog/broken.json"
+        malformed.write_text("{", encoding="utf-8")
+        try:
+            load_catalog(isolated)
+        except json.JSONDecodeError:
+            malformed.unlink()
+        else:
+            raise AssertionError("malformed release manifest was ignored")
         assert not (isolated / "yuki-core").exists()
         packages = {}
         for name in ["alpha", "beta"]:
@@ -133,7 +146,7 @@ def run(root: Path, output: Path):
         assert select_units(isolated, ["plugins\\alpha\\pyproject.toml"]) == ["alpha"]
         # These are test packages; no product plugin or host was substituted for one.
         report = {"status": "PASS", "scope": "two test-only Python distributions and one real Rust binary; independent builds + execution",
-                  "no_core_checkout": True, "selected_after_alpha_change": selected,
+                  "selected_after_catalog_sidecar_change": sidecar_selection, "no_core_checkout": True, "selected_after_alpha_change": selected,
                   "beta_bytes_unchanged": True, "packages": packages, "faults": faults,
                   "rust_scope": "Rust 1.90.0 compile, package and executable stdout; no product plugin/host",
                   "rust_stdout": observed, "gamma_bytes_unchanged": True,

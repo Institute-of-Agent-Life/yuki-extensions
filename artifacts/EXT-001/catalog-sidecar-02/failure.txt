@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "D:\yuki-extension-tests\6e49c8bbee134d7101d1\src\ci\check.py", line 37, in main
+    report_name, report = runner(root, args.out.resolve())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\6e49c8bbee134d7101d1\src\tests\cases\EXT-001.py", line 67, in run
+    execute(["cargo", "generate-lockfile", "--offline"], gamma)
+  File "D:\yuki-extension-tests\6e49c8bbee134d7101d1\src\tests\cases\EXT-001.py", line 21, in execute
+    assert result.returncode == 0, transcript[-1]
+AssertionError: {'command': ['cargo', 'generate-lockfile', '--offline'], 'exit_code': 101, 'stdout': '', 'stderr': "error: process didn't exit successfully: `rustc -vV` (exit code: 1)\n--- stderr\nerror: missing manifest in toolchain '1.90.0-x86_64-pc-windows-gnu'\nhelp: this may happen if the toolchain installation was interrupted\nhelp: try reinstalling or updating the toolchain\n\n"}

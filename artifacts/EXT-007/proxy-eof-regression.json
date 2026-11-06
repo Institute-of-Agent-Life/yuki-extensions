@@ -1,0 +1,40 @@
+{
+  "ci_run": 41888419615,
+  "ci_job": 126779093432,
+  "ci_head": "2ab3ad448e271c63b87d28cb51b2b5fc71d1bd6a",
+  "ci_failure": "Linux push: reconnect wait timed out, 1 failed, 168 passed, 2 skipped",
+  "same_head_pull_request_job": 126779207232,
+  "same_head_pull_request_result": "success",
+  "windows_probe": {
+    "physical_host": "HJW",
+    "method": "Hold fixture stdin open, forward native bytes, shut down the remote socket, wait for the process",
+    "original_fixture_sha256": "52d842509961f2f500ca838791e71df1ccd0c0dae49efa602aaca885dd8becfc",
+    "original_exit_codes": [
+      3221225477,
+      3221225477,
+      3221225477,
+      3221225477
+    ],
+    "original_stderr": "Fatal Python error: _enter_buffered_busy: could not acquire lock for <_io.BufferedReader name='<stdin>'> at interpreter shutdown, possibly due to daemon threads",
+    "fixed_fixture_sha256": "b9db390919ea38bc40386a1c52b4ed320e4d8073a329011c772eeed0cdb98a04",
+    "fixed_exit_codes": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "fixed_stderr": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "fixed_eof_seconds": [
+      0.016,
+      0,
+      0,
+      0
+    ],
+    "regression": "connector/tests/test_codex_proxy_eof.py"
+  }
+}

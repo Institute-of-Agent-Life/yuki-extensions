@@ -1,0 +1,22 @@
+{
+  "repository": "Institute-of-Agent-Life/yuki-core",
+  "source_commit": "093716ad01c0a0ce1f9364e7af26f97c7ad5bdc9",
+  "core_version": "core-039-093716ad01c0",
+  "published": false,
+  "platform": "linux/arm64",
+  "archive": "yuki-core-093716ad01c0-linux-arm64.oci.tar",
+  "archive_sha256": "b5975cbc593594c6b55222e7ae1fd8ac9a2bbb3bd147ee1081438df04c708ec9",
+  "image_digest": "sha256:d716bd4e692f421afd2d623264579a2702104bc4bbb8a7ba3299a7ae026977df",
+  "schema_sha256": "4822f19fb937eba524e475b35c0753a713587f48feee87ae6bd7b53ccab06cba",
+  "artifacts": {
+    "oci-candidate.json": "12c5483f1f924f66d9b5852962805063d243392f8ade5af37c6e82a42896100d",
+    "oci-candidate.json.sig": "0def13d3d28378f1b6bbca9a72ed1749ae7487968992d9f5f361ab6f0c819d31",
+    "signer.pub": "dfc60f5213b47f244a9cdc673d65ddc2f98e940d9c67768a19400bed9ef77ecb",
+    "verify_dist.py": "b542c9bdd5535e944aeadd8442b3a4c766eab010a14ed3d9e665c5e1bffbf2db",
+    "verify_oci.py": "381baff5676e44845f55b3d5e076298d780a6117ed7dba999a78d6b227829b4f"
+  },
+  "sdk_versions": {
+    "python": "1.0.0a2",
+    "rust": "1.0.0-alpha.2"
+  }
+}

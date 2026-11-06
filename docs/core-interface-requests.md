@@ -1,7 +1,7 @@
 # 下一批跨倉交付需求
 
-尚無真 Rust 插件消費證據。以下是依 v3.2 卡片列出的消費需求，不是新 IDL；欄位拼法、
-公共 wire、SDK 生成與授權真源均由核心發布。擴展不自行補出平行協議。
+Telegram、飛書、web-fetch 與 env 的 Windows 候選回條已記入實作進度。
+以下需求沿用核心已發布的方法與授權規則，未定欄位由核心生產者確認。
 
 ## CORE-002 → EXT-007／EXT-019
 
@@ -39,8 +39,9 @@ host／schema／SDK digest。以下名稱沿用總書方法族，實際欄位以
 邏輯預留一次；物理 attempt 的派發、回應、usage／未知費用分列。unknown 不是新的
 重試許可，也不能被填成零費用或成功。
 
-對拍完成後交回：同一 host／SDK／插件 digest、逐方法 transcript、實收效果、撤權／
-錯版／重投／部分未知等失敗案例。現階段沒有 SDK／Host 消費證據可交，勿標 B0 已驗。
+已交還核心的宿主、SDK、插件雜湊及逐方法回條見
+`artifacts/readiness/after-core032-039-candidates.json` 的 `handoffs`。
+EXT-067 的 B0 還需要同一候選上的實際分片投遞與原授權證據。
 
 
 ### CORE-032 候選的 Telegram 消費結果
@@ -66,3 +67,22 @@ A model-supplied Work or guessed run cannot authorize read/input/cancel.
 Required cases cover cross-Work guesses, redispatch/restart of one original
 request, a changed Work after dispatch and cancelling an observation while the
 terminal continues. The partial plugin exposes readiness only.
+
+### CORE-025 → EXT-004／EXT-006 的附件授權
+
+核心 PR #34 的提交 `d40d4f524e11c5590c45ca16478cb2979a40c698` 提供 QQ 收件、
+快照與到期案例。其公開 Host schema revision 2 的 SHA-256 仍為
+`4822f19fb937eba524e475b35c0753a713587f48feee87ae6bd7b53ccab06cba`。
+`gateway.dispatch_part` 接受一般 arguments；公開索引沒有標出從這些 arguments
+取得附件版本的授權方式。[核心 PR #34](https://github.com/Institute-of-Agent-Life/yuki-core/pull/34)
+
+- 請指明既有 callback 或 SDK 方法如何讓原收件 gateway 解析 Telegram file_id
+  或飛書／Lark media key。宿主需要綁定原安裝、接收 Bot／app 階段、租戶、
+  event、attachment_index 及原 segment 位置。換 Bot 或跨 app／租戶重用同一 key
+  應遭拒，原生下載次數為零。
+- 發送時請給出原 operation／part handle 如何授權讀取已固定的版本、SHA-256
+  與位元組。替換來源檔後仍應發送原版本；到期、撤權或 forget 後應返回相應狀態。
+  平台回應未知時，重連只能查原 part，不得生成一次新的派發。
+
+下一個可用交付須附該公開方法的 grant、欄位、乾淨宿主／SDK digest，以及
+同安裝成功、換安裝拒絕的回條。擴展才能把以上案例接入 EXT-004／006。

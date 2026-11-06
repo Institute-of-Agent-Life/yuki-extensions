@@ -1,0 +1,21 @@
+{
+  "task": "EXT-040",
+  "status": "FAIL",
+  "phase": "preparation",
+  "card_status": "FAIL",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "75b4c820adcd5cfd0a82f78b5800ae76e99c4f3008aed9287f90a403e800e0c9",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-040",
+    "--preparation",
+    "--out",
+    "artifacts\\EXT-040\\candidate-04"
+  ],
+  "files": {
+    "failure.txt": "d8297418e969c10202178cc7b15a84aea36e31a949dafb085adcd2f0a4c54f07"
+  }
+}

@@ -53,7 +53,7 @@ def build(root: Path, ident: str, output: Path, *, test_evidence: Path | None = 
             commands = [["rustc", "--version", "--verbose"],
                         ["cargo", "--version"],
                         ["cargo", "build", "--locked", "--release", "--target-dir", str(target)]]
-            if build_path != path:
+            if build_path != path or unit["kind"] == "tool":
                 commands.insert(-1, ["cargo", "test", "--locked", "--offline", "--target-dir", str(target)])
         transcripts = []
         for command in commands:

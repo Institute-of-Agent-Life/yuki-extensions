@@ -1,0 +1,309 @@
+{
+  "status": "PASS",
+  "scope": "two test-only Python distributions and one real Rust binary; independent builds + execution",
+  "selected_after_catalog_sidecar_change": [],
+  "no_core_checkout": true,
+  "selected_after_alpha_change": [
+    "alpha"
+  ],
+  "beta_bytes_unchanged": true,
+  "packages": {
+    "alpha": {
+      "unit_id": "alpha",
+      "version": "0.0.1",
+      "release_tag": "alpha/v0.0.1",
+      "published": false,
+      "manifest_sha256": "e3689cdb171aa01b030a5ec93b7b20ea3f4013eb9ff73f02f0d02cb94416f738",
+      "lock_sha256": "7ef7fd7fd3d93c1e0505dde6d3d3eecf7b4cdf69235c50c86aeff2a5f5eb156f",
+      "source": {
+        "kind": "test-only-original"
+      },
+      "license": "MIT",
+      "artifacts": {
+        "fixture_alpha-0.0.1-py3-none-any.whl": "099fc510f85cb259f430585afcb402b470da7420c7ddf9a1a7dd275333154abc",
+        "fixture_alpha-0.0.1.tar.gz": "4691d5093a6c364e9bf67eb462ac9da2e51fffdecf731e7947f0891fc9e420eb"
+      },
+      "commands": [
+        {
+          "command": [
+            "uv",
+            "lock",
+            "--check",
+            "--offline"
+          ],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": "Using CPython 3.12.0 interpreter at: C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\nResolved 1 package in 0.99ms\n"
+        },
+        {
+          "command": [
+            "uv",
+            "build",
+            "--no-sources",
+            "--out-dir",
+            "D:\\yuki-extension-tests\\dfd976ed6f94b4182ce3\\temp\\yuki-independent-iwasdxkk\\built\\alpha"
+          ],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": "Building source distribution...\nBuilding wheel from source distribution...\nSuccessfully built D:\\yuki-extension-tests\\dfd976ed6f94b4182ce3\\temp\\yuki-independent-iwasdxkk\\built\\alpha\\fixture_alpha-0.0.1.tar.gz\nSuccessfully built D:\\yuki-extension-tests\\dfd976ed6f94b4182ce3\\temp\\yuki-independent-iwasdxkk\\built\\alpha\\fixture_alpha-0.0.1-py3-none-any.whl\n"
+        }
+      ]
+    },
+    "beta": {
+      "unit_id": "beta",
+      "version": "0.0.1",
+      "release_tag": "beta/v0.0.1",
+      "published": false,
+      "manifest_sha256": "8c5188d95c1b28154181a9997f94e58190096d069ba3bb19c722bf5abafd3fc5",
+      "lock_sha256": "18e9c466162d037989c03b3baaefa10f6e65db6924e902c3c22525ef70a13cf9",
+      "source": {
+        "kind": "test-only-original"
+      },
+      "license": "MIT",
+      "artifacts": {
+        "fixture_beta-0.0.1-py3-none-any.whl": "48968d198a4eeb99300de7bd2300d06e0059a8d107a35c7f3bc4dbcd276b21c5",
+        "fixture_beta-0.0.1.tar.gz": "a2498c924f3c7aa0c285e9d4ceca0fe8cd99ed9f4d638223d57642a0537ba34a"
+      },
+      "commands": [
+        {
+          "command": [
+            "uv",
+            "lock",
+            "--check",
+            "--offline"
+          ],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": "Using CPython 3.12.0 interpreter at: C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\nResolved 1 package in 0.99ms\n"
+        },
+        {
+          "command": [
+            "uv",
+            "build",
+            "--no-sources",
+            "--out-dir",
+            "D:\\yuki-extension-tests\\dfd976ed6f94b4182ce3\\temp\\yuki-independent-iwasdxkk\\built\\beta"
+          ],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": "Building source distribution...\nBuilding wheel from source distribution...\nSuccessfully built D:\\yuki-extension-tests\\dfd976ed6f94b4182ce3\\temp\\yuki-independent-iwasdxkk\\built\\beta\\fixture_beta-0.0.1.tar.gz\nSuccessfully built D:\\yuki-extension-tests\\dfd976ed6f94b4182ce3\\temp\\yuki-independent-iwasdxkk\\built\\beta\\fixture_beta-0.0.1-py3-none-any.whl\n"
+        }
+      ]
+    },
+    "gamma": {
+      "unit_id": "gamma",
+      "version": "0.0.1",
+      "release_tag": "gamma/v0.0.1",
+      "published": false,
+      "manifest_sha256": "08a3c95ce7791307e6f242fb3e1e82e649c8ff8ac91c1f3019b8c24d44795a9b",
+      "lock_sha256": "a7b92351387bd2501467e1a702fd6ddb54e912f6f656297c3b2628cfd2e6497a",
+      "source": {
+        "kind": "test-only-original"
+      },
+      "license": "MIT",
+      "artifacts": {
+        "Cargo.lock": "a7b92351387bd2501467e1a702fd6ddb54e912f6f656297c3b2628cfd2e6497a",
+        "fixture-gamma.exe": "1fe94a8c2001f1be295843f9bf1131ae2ad58f99b28bbeed9decd45776f6f536",
+        "LICENSE": "31eed3049476ac0d441d8b1dc4fc340fa5bc22f7cfb566dfd95deb30857cc386",
+        "rust-toolchain.toml": "6c0f241b807b5da350cf517e5b40a04641e7dc400cfc29831b06855e3e220d2e"
+      },
+      "commands": [
+        {
+          "command": [
+            "rustc",
+            "--version",
+            "--verbose"
+          ],
+          "exit_code": 0,
+          "stdout": "rustc 1.90.0 (1159e78c4 2025-09-14)\nbinary: rustc\ncommit-hash: 1159e78c4747b02ef996e55082b704c09b970588\ncommit-date: 2025-09-14\nhost: x86_64-pc-windows-gnu\nrelease: 1.90.0\nLLVM version: 20.1.8\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "cargo",
+            "--version"
+          ],
+          "exit_code": 0,
+          "stdout": "cargo 1.90.0 (840b83a10 2025-07-30)\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "cargo",
+            "build",
+            "--locked",
+            "--release",
+            "--target-dir",
+            "D:\\yuki-extension-tests\\dfd976ed6f94b4182ce3\\temp\\yuki-rust-build-j3ek5zal"
+          ],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": "   Compiling fixture-gamma v0.0.1 (D:\\yuki-extension-tests\\dfd976ed6f94b4182ce3\\temp\\yuki-independent-iwasdxkk\\plugins\\gamma)\n    Finished `release` profile [optimized] target(s) in 0.95s\n"
+        }
+      ]
+    }
+  },
+  "faults": {
+    "core_checkout_path": {
+      "rejected": true,
+      "reason": "private core checkout dependency in pyproject.toml"
+    },
+    "outside_unit_path": {
+      "rejected": true,
+      "reason": "path must stay within its release unit: ../../other"
+    },
+    "mutable_git_main": {
+      "rejected": true,
+      "reason": "each Git dependency must pin its own immutable commit"
+    },
+    "unpinned_git": {
+      "rejected": true,
+      "reason": "each Git dependency must pin its own immutable commit"
+    },
+    "private_python_import": {
+      "rejected": true,
+      "reason": "private core import in src\\fixture_alpha\\__init__.py"
+    },
+    "missing_independent_lock": {
+      "rejected": true,
+      "reason": "alpha needs its own manifest and lock"
+    },
+    "cargo_pin_not_shared_between_dependencies": {
+      "rejected": true,
+      "reason": "each Git dependency must pin its own immutable commit"
+    }
+  },
+  "rust_scope": "Rust 1.90.0 compile, package and executable stdout; no product plugin/host",
+  "rust_stdout": "fixture-gamma 0.0.1",
+  "gamma_bytes_unchanged": true,
+  "not_run": [
+    "public SDK handshake",
+    "real plugin/host acceptance"
+  ],
+  "commands": [
+    {
+      "command": [
+        "uv",
+        "lock",
+        "--offline"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Using CPython 3.12.0 interpreter at: C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\nResolved 1 package in 2ms\n"
+    },
+    {
+      "command": [
+        "uv",
+        "lock",
+        "--offline"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Using CPython 3.12.0 interpreter at: C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\nResolved 1 package in 2ms\n"
+    },
+    {
+      "command": [
+        "uv",
+        "venv",
+        "--python",
+        "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "D:\\yuki-extension-tests\\dfd976ed6f94b4182ce3\\temp\\yuki-independent-iwasdxkk\\alpha-env"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Using CPython 3.12.0 interpreter at: C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\nCreating virtual environment at: alpha-env\nActivate with: alpha-env\\Scripts\\activate\n"
+    },
+    {
+      "command": [
+        "uv",
+        "pip",
+        "install",
+        "--python",
+        "D:\\yuki-extension-tests\\dfd976ed6f94b4182ce3\\temp\\yuki-independent-iwasdxkk\\alpha-env\\Scripts\\python.exe",
+        "--no-deps",
+        "--no-index",
+        "D:\\yuki-extension-tests\\dfd976ed6f94b4182ce3\\temp\\yuki-independent-iwasdxkk\\built\\alpha\\fixture_alpha-0.0.1-py3-none-any.whl"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Using Python 3.12.0 environment at: alpha-env\nResolved 1 package in 1ms\nPrepared 1 package in 10ms\nInstalled 1 package in 6ms\n + fixture-alpha==0.0.1 (from file:///D:/yuki-extension-tests/dfd976ed6f94b4182ce3/temp/yuki-independent-iwasdxkk/built/alpha/fixture_alpha-0.0.1-py3-none-any.whl)\n"
+    },
+    {
+      "command": [
+        "D:\\yuki-extension-tests\\dfd976ed6f94b4182ce3\\temp\\yuki-independent-iwasdxkk\\alpha-env\\Scripts\\python.exe",
+        "-I",
+        "-c",
+        "import importlib.util; assert importlib.util.find_spec('yuki') is None; import fixture_alpha; assert fixture_alpha.VALUE == 'independent'"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "uv",
+        "venv",
+        "--python",
+        "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "D:\\yuki-extension-tests\\dfd976ed6f94b4182ce3\\temp\\yuki-independent-iwasdxkk\\beta-env"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Using CPython 3.12.0 interpreter at: C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\nCreating virtual environment at: beta-env\nActivate with: beta-env\\Scripts\\activate\n"
+    },
+    {
+      "command": [
+        "uv",
+        "pip",
+        "install",
+        "--python",
+        "D:\\yuki-extension-tests\\dfd976ed6f94b4182ce3\\temp\\yuki-independent-iwasdxkk\\beta-env\\Scripts\\python.exe",
+        "--no-deps",
+        "--no-index",
+        "D:\\yuki-extension-tests\\dfd976ed6f94b4182ce3\\temp\\yuki-independent-iwasdxkk\\built\\beta\\fixture_beta-0.0.1-py3-none-any.whl"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Using Python 3.12.0 environment at: beta-env\nResolved 1 package in 2ms\nPrepared 1 package in 4ms\nInstalled 1 package in 3ms\n + fixture-beta==0.0.1 (from file:///D:/yuki-extension-tests/dfd976ed6f94b4182ce3/temp/yuki-independent-iwasdxkk/built/beta/fixture_beta-0.0.1-py3-none-any.whl)\n"
+    },
+    {
+      "command": [
+        "D:\\yuki-extension-tests\\dfd976ed6f94b4182ce3\\temp\\yuki-independent-iwasdxkk\\beta-env\\Scripts\\python.exe",
+        "-I",
+        "-c",
+        "import importlib.util; assert importlib.util.find_spec('yuki') is None; import fixture_beta; assert fixture_beta.VALUE == 'independent'"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "cargo",
+        "generate-lockfile",
+        "--offline"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "D:\\yuki-extension-tests\\dfd976ed6f94b4182ce3\\temp\\yuki-independent-iwasdxkk\\built\\gamma\\fixture-gamma.exe"
+      ],
+      "exit_code": 0,
+      "stdout": "fixture-gamma 0.0.1\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "uv",
+        "lock",
+        "--offline"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Using CPython 3.12.0 interpreter at: C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\nResolved 1 package in 4ms\nUpdated fixture-alpha v0.0.1 -> v0.0.2\n"
+    }
+  ]
+}

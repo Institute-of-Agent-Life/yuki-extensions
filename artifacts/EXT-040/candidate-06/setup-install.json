@@ -1,0 +1,195 @@
+{
+  "status": "PASS",
+  "card_status": "OFFLINE_SETUP_ON_UNPUBLISHED_SIGNED_CANDIDATE",
+  "source_commit": "093716ad01c0a0ce1f9364e7af26f97c7ad5bdc9",
+  "handoff_commit": "fe278a51dca88c50a4271186579d1f717d0b075d",
+  "installer_sha256": "9ed9a8aa2ae7415efe12cd38a92ce0ffc6638fcc57454b8806ee350e053a8a12",
+  "oci_sha256": "b5975cbc593594c6b55222e7ae1fd8ac9a2bbb3bd147ee1081438df04c708ec9",
+  "image": "sha256:d716bd4e692f421afd2d623264579a2702104bc4bbb8a7ba3299a7ae026977df",
+  "native": {
+    "archive": "yuki-core-093716ad01c0-windows-x86_64.zip",
+    "archive_sha256": "03989033a13260cb863d1ff81e2407f0593d43c7a6c0779704ca9eb2c6b1a871",
+    "signer": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA5Myoc8qo28ZGofA6lc3Jg/vYBJf2Qqn9hIVOxtAzi4 hilbert@hjw\n",
+    "signer_sha256": "86d9652f0bb90fcf0204869425d0313024c62c40ba3a49f170ce30a34207b7ef",
+    "binary_sha256": "c40c446a9fa40c9199d999b15671be668a03bd1e97127ac2caaffe71719f057a",
+    "reader_version": 13,
+    "methods": [
+      "command.invoke",
+      "forget.ack",
+      "forget.request",
+      "gateway.dispatch_part",
+      "gateway.inbound",
+      "gateway.part_status",
+      "gateway.plan_send",
+      "gateway.status",
+      "observer.event",
+      "tool.call",
+      "tool.status"
+    ]
+  },
+  "sdk_versions": {
+    "python": "1.0.0a2",
+    "rust": "1.0.0-alpha.2"
+  },
+  "schema_sha256": "4822f19fb937eba524e475b35c0753a713587f48feee87ae6bd7b53ccab06cba",
+  "ready_without_optional_gateways": {
+    "ready": true
+  },
+  "host_status": {
+    "configured": false,
+    "operator": {
+      "error": "operator: \"plugin host not configured\""
+    }
+  },
+  "existing_soul_preserved": true,
+  "operator_comments_and_napcat_reference_preserved": true,
+  "compose": "# Generated from a verified offline CORE-039 candidate.\nservices:\n  core:\n    image: yuki-core@sha256:d716bd4e692f421afd2d623264579a2702104bc4bbb8a7ba3299a7ae026977df\n    platform: linux/arm64\n    pull_policy: never\n    user: '65532:65532'\n    read_only: true\n    cap_drop: [ALL]\n    security_opt: [no-new-privileges:true]\n    environment:\n      TZ: ${YUKI_TIMEZONE:-UTC}\n    volumes:\n      - ./data:/data\n    entrypoint: ['/bin/sh', '-ec']\n    command:\n      - |\n        if [ ! -f /data/owner/yuki.toml ]; then yuki-core --data /data/owner init; fi\n        exec yuki-core --data /data/owner run\n    healthcheck:\n      test: ['CMD', 'yuki-core', '--data', '/data/owner', 'operator', 'database-info']\n      interval: 10s\n      timeout: 3s\n      retries: 5\n",
+  "actions": [
+    {
+      "command": "init",
+      "options": [
+        "--profile",
+        "direct",
+        "--entry",
+        "local",
+        "--core",
+        "core-039-093716ad01c0"
+      ],
+      "success": true,
+      "stdout": "offline doctor passed; candidate=core-039-093716ad01c0 platform=linux/arm64 image=sha256:d716bd4e692f421afd2d623264579a2702104bc4bbb8a7ba3299a7ae026977df profile=direct entry=local\n",
+      "stderr": ""
+    },
+    {
+      "command": "init",
+      "options": [
+        "--timezone",
+        "Asia/Shanghai"
+      ],
+      "success": true,
+      "stdout": "offline doctor passed; candidate=core-039-093716ad01c0 platform=linux/arm64 image=sha256:d716bd4e692f421afd2d623264579a2702104bc4bbb8a7ba3299a7ae026977df profile=direct entry=local\n",
+      "stderr": ""
+    },
+    {
+      "command": "doctor",
+      "options": [
+        "--timezone",
+        "Asia/Shanghai"
+      ],
+      "success": true,
+      "stdout": "offline doctor passed; candidate=core-039-093716ad01c0 platform=linux/arm64 image=sha256:d716bd4e692f421afd2d623264579a2702104bc4bbb8a7ba3299a7ae026977df profile=direct entry=local\n",
+      "stderr": ""
+    },
+    {
+      "command": "init",
+      "options": [
+        "--profile",
+        "code"
+      ],
+      "success": false,
+      "stdout": "",
+      "stderr": "selected component or external entry has no compatible pinned package in this candidate\n"
+    },
+    {
+      "command": "init",
+      "options": [
+        "--plugin",
+        "snowluma"
+      ],
+      "success": false,
+      "stdout": "",
+      "stderr": "selected component or external entry has no compatible pinned package in this candidate\n"
+    },
+    {
+      "command": "init",
+      "options": [
+        "--entry",
+        "external"
+      ],
+      "success": false,
+      "stdout": "",
+      "stderr": "selected component or external entry has no compatible pinned package in this candidate\n"
+    },
+    {
+      "command": "init",
+      "options": [
+        "--core",
+        "other"
+      ],
+      "success": false,
+      "stdout": "",
+      "stderr": "selected core version does not match the verified input\n"
+    },
+    {
+      "command": "init",
+      "options": [],
+      "success": false,
+      "stdout": "",
+      "stderr": "compose.yaml differs from the pinned offline kit; preserve it and use a separate directory\n"
+    },
+    {
+      "command": "doctor",
+      "options": [],
+      "success": false,
+      "stdout": "",
+      "stderr": "CORE-039 verification failed: ValueError: OCI source, platform or archive pin mismatch\noffline input refused\n"
+    },
+    {
+      "command": "native",
+      "options": [],
+      "success": true,
+      "stdout": "verified native candidate 093716ad01c0a0ce1f9364e7af26f97c7ad5bdc9 windows/x86_64 03989033a13260cb863d1ff81e2407f0593d43c7a6c0779704ca9eb2c6b1a871\n",
+      "stderr": ""
+    },
+    {
+      "command": "native",
+      "options": [],
+      "success": false,
+      "stdout": "",
+      "stderr": "ValueError: native destination must be new\nnative input refused\n"
+    },
+    {
+      "command": "native",
+      "options": [
+        "--plugin",
+        "web-fetch",
+        "--plugin-file",
+        "D:\\yuki-extension-tests\\89fd3ccbe13f5f6e91bb\\src\\artifacts\\EXT-040\\candidate-06\\work\\bad.oci"
+      ],
+      "success": false,
+      "stdout": "",
+      "stderr": "ValueError: optional plugin digest mismatch\nnative input refused\n"
+    },
+    {
+      "command": "native",
+      "options": [
+        "--plugin",
+        "web-fetch",
+        "--plugin-file",
+        "D:\\yuki-extension-tests\\89fd3ccbe13f5f6e91bb\\wheelhouse\\setup-inputs\\web-fetch-windows.exe"
+      ],
+      "success": true,
+      "stdout": "verified native candidate 093716ad01c0a0ce1f9364e7af26f97c7ad5bdc9 windows/x86_64 03989033a13260cb863d1ff81e2407f0593d43c7a6c0779704ca9eb2c6b1a871\n",
+      "stderr": ""
+    }
+  ],
+  "selected_plugin": {
+    "source_commit": "0bac1493a9cefc70f32a938f7aff4c6b24b844f6",
+    "binary_sha256": "e2f00b2f853a3a69485ac509cecce9f2247e928675ee4b9f2f5117902faed91c",
+    "consumer_sdk_sha256": "9408022bdf1322a8d6e07914685869771a5738280e36145e46da5c36facbfce0",
+    "host_sdk_sha256": "83b9609e3462b206e655e9c2cca4d5711dfad34ed4ebcae529ed5956469a9cb3",
+    "host_status": {
+      "host_schema_revision": 2,
+      "plugins": [
+        {
+          "enabled": true,
+          "generation": "1d68d638-d1d4-4530-be10-17967a6d41f5",
+          "namespace": "official.web-fetch",
+          "online": true,
+          "plugin": "web-fetch",
+          "revision": "4dd044da2889d09a91d23eb0acb47a5481966d2e974ab121a760c8b3c8da8355"
+        }
+      ]
+    }
+  },
+  "pending": "Full external ingress/optional packages and launched Compose need their actual producer/runtime."
+}

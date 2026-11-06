@@ -5,8 +5,9 @@ import io
 import json
 import os
 from pathlib import Path
-from urllib.request import urlopen
 import zipfile
+
+from download_http import read_get
 
 
 def digest(data):
@@ -85,8 +86,7 @@ def obtain_release(root, directory):
         if staged := os.environ.get("YUKI_CORE031_RELEASE_DIR"):
             data = (Path(staged) / name).read_bytes()
         else:
-            with urlopen(asset["url"], timeout=60) as response:
-                data = response.read()
+            data = read_get(asset["url"], timeout=60)
         if digest(data) != asset["sha256"]:
             raise ValueError("release asset digest mismatch: " + name)
         (directory / name).write_bytes(data)

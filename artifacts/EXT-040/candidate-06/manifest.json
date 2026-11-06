@@ -1,0 +1,23 @@
+{
+  "task": "EXT-040",
+  "status": "PASS",
+  "phase": "preparation",
+  "card_status": "OFFLINE_SETUP_ON_UNPUBLISHED_SIGNED_CANDIDATE",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "89fd3ccbe13f5f6e91bbb34f39bb94d7b5de8b47bb0de086da03381c58d8a93d",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-040",
+    "--preparation",
+    "--out",
+    "artifacts\\EXT-040\\candidate-06"
+  ],
+  "files": {
+    "native-host.txt": "8ce848619266ac831db51c43cc88565af8967e3532e3b192d40bd376dfe5cd4d",
+    "optional-host.txt": "0958c882151d69a34c960cde4b834096e932a07e7033382b0e7e46a82a760c19",
+    "setup-install.json": "ec6d75176646ddcebae6a22792f4e0a95c22669ffd6e146dd17dd219cc75fbd8"
+  }
+}

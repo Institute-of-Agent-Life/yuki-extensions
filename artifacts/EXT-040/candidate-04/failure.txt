@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "D:\yuki-extension-tests\75b4c820adcd5cfd0a82\src\ci\check.py", line 37, in main
+    report_name, report = runner(root, args.out.resolve())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\75b4c820adcd5cfd0a82\src\tests\cases\EXT-040.py", line 66, in prepare
+    cli("init");assert soul.read_bytes()==b"# Operator fixture\n"
+    ^^^^^^^^^^^
+  File "D:\yuki-extension-tests\75b4c820adcd5cfd0a82\src\tests\cases\EXT-040.py", line 62, in cli
+    return subprocess.run([host,"--data",owner,*args],capture_output=True,text=True,check=True,timeout=20)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hilbert\AppData\Local\Programs\Python\Python312\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '[WindowsPath('D:/yuki-extension-tests/75b4c820adcd5cfd0a82/src/artifacts/EXT-040/candidate-04/work/native/bin/yuki-core.exe'), '--data', WindowsPath('D:/yuki-extension-tests/75b4c820adcd5cfd0a82/src/artifacts/EXT-040/candidate-04/work/isolated-owner'), 'init']' returned non-zero exit status 1.

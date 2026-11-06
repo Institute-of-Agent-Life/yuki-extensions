@@ -13,6 +13,26 @@
 | EXT-010 · codex/ext-010 | `ab16e07`；CI `41834791702`；PR #6 合併 `2c55dbb` | `artifacts/EXT-010/02/`，8 例含實際子進程退出碼 23、雙 session 取消及 unknown |
 | EXT-019 · codex/ext-019 | 實作 `7531d84`、PR head `9d1e8a8`；三平台 CI `41835863011`；PR #7 合併 `7625095` | `artifacts/EXT-019/02/`，呼叫表、schema 差分、5 個故障變異；`03/` 固定跨平台順序 |
 
+## 2026-11-05 PR #14 合併與 PR #15 新基底
+
+- PR #14 head `dfe8eb46d64a` 的三平台 acceptance、五套 package 和 Connector 回歸
+  全過，24 份 ZIP／GitHub digest／manifest／來源 parents 已核。普通合併 main
+  `996deedef3e119246651050dc8cac186044a925a`；實際 tree 與 CI merge `a5ece9e35203` 相同。
+  回條 `artifacts/EXT-040/ci-receipt-dfe8eb4.json`。EXT-020 的完整前置仍待核心交付。
+- 本分支 `codex/ext-040-setup` 從原 head `a2285c3bc6a2` 正常合入新 main；
+  同步提交 `f8aef1b` 只合併歷次回條／進度，安裝器與插件程式樹未改。當前 SHA 三平台 acceptance
+  和受影響 packages 需重新通過並驗產物，才可合併 PR #15，不能使用舊 base 綠燈。
+- 隨後把已驗固定資產下載修正 `b82112b5b452` 同步到本分支，避免後續 CI 繼續
+  遇到相同 504。四個來源檔和原 contract inputs 逐 bytes 相同；在此新基底又於 HJW
+  Windows 驗七例通過，回條 `artifacts/readiness/ci-release-504-pr15/`。只改 CI
+  讀取；安裝器、插件、原 SDK／資產和授權未變。本地修正提交 `f707400a754a`；新 SHA 要重跑全部 gates。
+- 正式完成仍 7／68。PR #26 已推固定資產 GET 的有限重試，修正 `b82112b5b452`、
+  head `c2600d644a02`；Windows 七例過。原 native exit134 只有診斷補強，根因未解。
+  後續卡與核心包 pin 的完整進度固定於
+  https://github.com/Institute-of-Agent-Life/yuki-extensions/blob/c2600d644a027a163d7533300c7dd111d5e0f9c1/docs/implementation-progress.md 。
+  這些後續 PR 尚未合入本分支；原 Code／ASR／rebuild／subscription WIP 保留。
+- 合併佇列最新 snapshot：`artifacts/readiness/after-pr14-merge.json`。
+
 ## 核心輸入與可交還證據
 
 CORE-002 未發布 oracle 產自 `89f15dbbfc5535a0d9fa94244a9e5cde96638ece`，
@@ -28,7 +48,7 @@ CORE-002 未發布 oracle 產自 `89f15dbbfc5535a0d9fa94244a9e5cde96638ece`，
   Codex、Claude、ACP 各自的具名 JSON 包含本機 peer 的實際回執與故障邊界。
 - EXT-019 對拍的是 Desktop 源碼與舊協議。源安裝固定 rev 9；公開 beta.8
   的 tag 固定 rev 7。詳見 `docs/desktop-handoff.md`。
-- 握手 SDK 的 digest 見下方 EXT-002；完整 Host／正式插件仍無逐方法消費證據。
+- EXT-002 記握手 SDK digest。CORE-032 真插件與 CORE-039 原生宿主的逐方法證據見各候選回條。
 
 ## EXT-002 握手 SDK
 
@@ -64,11 +84,30 @@ manifest。回條含來源提交、SDK／schema／peer／消費者 digest、逐�
 錯誤碼與實收效果；正式狀態為 PASS。該預發版只含握手，生產插件採 Rust，
 宿主及各業務方法仍待核心後續交付。
 
-## 下一張可執行卡
+## 當前進度
 
-直接前置與最新觀察見 `artifacts/readiness/after-ext-002.json`。共有 7 張卡
-通過實機驗收。Telegram 與 web-fetch 的下一步分別是 EXT-003 與 EXT-028，
-兩者均待 CORE-032；EXT-011／015 待 CORE-033，EXT-040 待 CORE-039。
+七張卡已完成任務書驗收。另有五張卡完成下表的 Windows 候選工作。
+三平台 CI 與合併狀態以各 PR 為準。此批開發對拍不計入七張正式驗收。
+最新依賴快照見 `artifacts/readiness/after-core032-039-candidates.json`。
+
+| 卡／分支 | 實作提交 | Windows 已核實 | 仍需 |
+|---|---|---|---|
+| EXT-003 · codex/ext-003-telegram | `bef4def` · [PR #11](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/11) | 雙 Bot 接納、提交前斷線、提交後丟答與原 offset | CORE-032 正式交接 |
+| EXT-028 · codex/ext-028-web-fetch | `0bac149` · [PR #12](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/12) | 兩次 tool.call、R07、19 頁正文與 49 頁原件 | CORE-032 正式交接 |
+| EXT-005 · codex/ext-005-feishu | `6183e58` · [PR #13](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/13) | 飛書／Lark 身份隔離、亂序重組、writer 斷線無成功 ACK | CORE-032 正式交接 |
+| EXT-020 · codex/ext-020-env | `cf1c2a5`、`1e7906b` · [PR #14](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/14) | 原 Manager 來源包、run 查詢與缺後端局部失敗 | Work/run 授權，真 gVisor/execd、PTY 及輪轉 |
+| EXT-040 · codex/ext-040-setup | `a607e8c` · [PR #15](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/15) | 簽名原生／OCI 安裝，無 QQ ready，明選 web-fetch | CORE-039 正式交接、外部入口與選配服務實測 |
+
+對 CORE-033 尚無可消費交付，EXT-011／015 待核。CORE-025 已開
+[核心 PR #34](https://github.com/Institute-of-Agent-Life/yuki-core/pull/34)。EXT-004／006
+仍缺原 Bot／租戶附件的公開授權與驗收回條，詳見 `docs/core-interface-requests.md`。
+EXT-067 完整基底對拍還需 EXT-004 的實際分段投遞證據。
+
+PR #15 修正外接磁碟打包時讀取 catalog 的問題。Windows 實機驗證
+`catalog/._alpha.json` 不選任何單元，真正的 alpha 變更只選 alpha，損壞的正式
+manifest 會報錯。兩個 Python 套件及一個 Rust 執行檔均成功建置。
+`artifacts/EXT-001/catalog-sidecar-03/` 含完整回條。首兩次失敗分別記錄
+Cargo 不在 PATH 和共用工具鏈缺少 rustc；綠燈使用 HJW 擴展測試目錄內的 Rust 1.90.0。
 
 ## EXT-003 Windows 開發候選對拍
 
@@ -154,6 +193,30 @@ run_not_found 和 unknown_request。Rust env 對拍 `199dff095be0` 的 CORE-032
 EXT-020 實作提交 `cf1c2a5`。Linux package job 另以隔離的原 Manager Unix socket
 檢查 Rust 工具只回傳 ready。Windows `candidate-03` 通過相同宿主故障案例，
 插件 SHA-256 `44a5e57ec0941dcd067726cc41eaf0b11fd55723209e5674b73562ad30dc6440`。
+
+## EXT-040 Windows 離線安裝候選
+
+分支 `codex/ext-040-setup`。獨立 Rust 工具消費 CORE-039 `093716ad01c0`；
+由 `fe278a51` 交接記錄核對的 Windows 原生 ZIP SHA-256
+`03989033a13260cb863d1ff81e2407f0593d43c7a6c0779704ca9eb2c6b1a871`，
+Linux ARM64 OCI tar SHA-256 `b5975cbc593594c6b55222e7ae1fd8ac9a2bbb3bd147ee1081438df04c708ec9`。
+三平台原生包、簽署者、fixture、架構及方法釘在 `tools/yuki-setup/inputs/`。
+此版本尚未發布，ARM64 Compose 在 Windows 只完成產生和驗證。
+
+Windows 安裝器 SHA-256 `9ed9a8aa2ae7415efe12cd38a92ce0ffc6638fcc57454b8806ee350e053a8a12`。
+具名回條 `artifacts/EXT-040/candidate-06/setup-install.json` SHA-256
+`ec6d75176646ddcebae6a22792f4e0a95c22669ffd6e146dd17dd219cc75fbd8`。
+13 次安裝／doctor 操作驗過註釋、人工密鑰引用、NapCat 殘留、不支援的選配與錯誤檔案。
+空 owner 無插件時真實 /readyz 通過。明選 web-fetch 後，另一個新 owner 只載入該實際 binary。
+純安裝不啟服務。Windows 測試另外啟動兩個隔離 owner 驗證結果。CORE-032 消費者與
+CORE-039 宿主內的 SDK 同為 alpha.2，crate 雜湊不同；兩者均記在回條。
+正式外部入口、選配服務與 Compose 實際部署仍待相應交付。
+
+PR #15 的 Linux push 檢查曾在 Codex 測試代理重連時逾時。Windows 四次重現
+代理持有 stdin 緩衝鎖而異常退出；修正測試代理後四次均正常退出。
+`artifacts/EXT-007/proxy-eof-regression.json` 記原錯與修正 SHA。
+`artifacts/EXT-007/proxy-eof-01/` 是修正後 Windows 完整升級與 wire4 對拍；
+172 個 pytest 案例中 171 通過、1 跳過。Connector 的發行程式與鎖檔未改。
 
 ## PR #12 合併與 PR #13 新基底
 

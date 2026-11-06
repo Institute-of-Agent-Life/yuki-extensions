@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "D:\yuki-extension-tests\5dc0ec21c362c439488a\src\ci\check.py", line 37, in main
+    report_name, report = runner(root, args.out.resolve())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\yuki-extension-tests\5dc0ec21c362c439488a\src\tests\cases\EXT-040.py", line 31, in prepare
+    setup("init",kit,oci,"--profile","direct","--entry","local","--core",pin["core_version"])
+  File "D:\yuki-extension-tests\5dc0ec21c362c439488a\src\tests\cases\EXT-040.py", line 26, in setup
+    r=subprocess.run([exe,command,"--archive",archive,"--dir",location,*options],capture_output=True,text=True,timeout=120)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hilbert\AppData\Local\Programs\Python\Python312\Lib\subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hilbert\AppData\Local\Programs\Python\Python312\Lib\subprocess.py", line 1209, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hilbert\AppData\Local\Programs\Python\Python312\Lib\subprocess.py", line 1628, in _communicate
+    raise TimeoutExpired(self.args, orig_timeout)
+subprocess.TimeoutExpired: Command '[WindowsPath('D:/yuki-extension-tests/5dc0ec21c362c439488a/src/artifacts/EXT-040/candidate-03/packages/yuki-setup.exe'), 'init', '--archive', WindowsPath('D:/yuki-extension-tests/5dc0ec21c362c439488a/wheelhouse/setup-inputs/yuki-core-093716ad01c0-linux-arm64.oci.tar'), '--dir', WindowsPath('D:/yuki-extension-tests/5dc0ec21c362c439488a/src/artifacts/EXT-040/candidate-03/work/direct'), '--profile', 'direct', '--entry', 'local', '--core', 'core-039-093716ad01c0']' timed out after 120 seconds

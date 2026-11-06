@@ -1,0 +1,26 @@
+{
+  "task": "EXT-007",
+  "status": "PASS",
+  "phase": "acceptance",
+  "card_status": "PASS",
+  "platform": "Windows-11-10.0.22000-SP0",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "source_commit": null,
+  "source_snapshot_sha256": "dd2dd025967e0cb4f74d59a0f95e836ea20d2b26e32211d6e76e2052ca1047b0",
+  "command": [
+    "C:\\Users\\Hilbert\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "ci/check.py",
+    "EXT-007",
+    "--out",
+    "artifacts\\EXT-007\\proxy-eof-01"
+  ],
+  "files": {
+    "candidate-tests.xml": "6230f3b3885407fdd352e1bb3582b13b1dc81f94903421aff4fce78d4313ff21",
+    "commands.json": "6c31780ee11689851351d22b5798b438d4b94398076902a2ca872f4315e5f123",
+    "connector-package.json": "4f46a9b5898b855a6e28108d88ebee69d172d1b2dcd19af07b978d4f3b9e259f",
+    "connector-runtime.json": "7ce2576189bc4918ef4e49f2e4efbc2947953b5c45175a896f1759683cf18609",
+    "connector-upgrade.json": "dc0b2cb45c531e89cfe23ed1b70a73c09aec6a39494e621128bf459c8618c757",
+    "wire4-candidate.json": "38b288e670e16160cfbaf662b18dbe4f334637594bbd43471f5f99b47eba139e",
+    "wire4-old.json": "38b288e670e16160cfbaf662b18dbe4f334637594bbd43471f5f99b47eba139e"
+  }
+}
