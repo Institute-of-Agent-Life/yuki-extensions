@@ -4,6 +4,8 @@
 行為基線 `329ca7c487414d2f54ddd98ff4727446ed2446cd`。官方插件接入層用 Rust。
 獨立 Connector 沿用 Python 3.12；共享預算沿總書 K05。
 
+**本地 CI 與合併**　PR #16 已普通合併至 `41cb089afe83`，實際 tree 與受測 tree `470201b0b3a7` 相同。Windows/Linux 的 GitHub 產物及 macOS arm64 本機驗收、七個套件和 Connector 升級/三個 driver 的回條在 `artifacts/ci/local-pr/16/`。其餘 PR 以同一整合樹驗三端，記錄原 head 的祖先關係、實際合併和工作目錄清理。候選功能的正式驗收仍各自依卡片判定。
+
 **EXT-006 飛書／Lark 部分候選；正式完成 7/68。** 分支 `codex/ext-006-feishu-media`，實作 `2db0fa096b2f`。
 HJW Windows 的 Rust alpha.2 在兩個區域端點各取回 26,789 bytes；同名 key 的內容摘要不同。
 下載中原 WS 可回 ACK；錯 app/tenant 不發 HTTP、403 不重試。修正 Windows 複製 socket 導致原讀取逾時沒有更新的問題。
