@@ -319,9 +319,20 @@ def run(root, assets, archive, out, case):
                 top += '[[plugins.tools]]'+tools
         cfg.write_text(top,encoding='utf-8')
         write(out/'installed.json',installed)
-        def inventory():
-            return {folder:{f.relative_to(work/folder).as_posix():digest(f) for f in (work/folder).rglob('*') if f.is_file()}
-                    for folder in ('state-telegram','state-web-fetch','cursor')}
+        def inventory(*, live=False):
+            files={}
+            for folder in ('state-telegram','state-web-fetch','cursor'):
+                files[folder]={}
+                for f in (work/folder).rglob('*'):
+                    if not f.is_file():
+                        continue
+                    name=f.relative_to(work/folder).as_posix()
+                    if live and folder=='cursor' and name=='101.lock':
+                        assert f.stat().st_size==0
+                        files[folder][name]={'bytes':0,'access':'process lock held'}
+                    else:
+                        files[folder][name]=digest(f)
+            return files
         with running():
             if case in ('revoked','erased-readback'):
                 assert (fetch_started if case=='revoked' else second_entry).wait(20)
@@ -342,12 +353,15 @@ def run(root, assets, archive, out, case):
             assert not failures,failures
             ack_offset = 53 if case=='swapped' else 52
             wait_until(lambda: ack_offset in offsets)
-            live_inventory=inventory()
+            live_inventory=inventory(live=True)
             for unit in package_hash:
                 (out/(unit+'.kill')).touch()
             wait_until(lambda: all((out/(u+'.killed')).is_file() for u in package_hash))
         after_kill = inventory()
-        assert live_inventory==after_kill
+        assert live_inventory['state-telegram']==after_kill['state-telegram'] and live_inventory['state-web-fetch']==after_kill['state-web-fetch']
+        assert set(live_inventory['cursor'])==set(after_kill['cursor'])
+        assert all(after_kill['cursor'][k]==v for k,v in live_inventory['cursor'].items() if k!='101.lock')
+        assert after_kill['cursor']['101.lock']==hashlib.sha256(b'').hexdigest()
         replay.set()
         before=(len(models),len(native),len(requests))
         offset_count=len(offsets)
