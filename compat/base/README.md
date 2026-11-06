@@ -1,0 +1,5 @@
+# Two-consumer bootstrap package
+
+This directory pins the independently built development distributions at core source `4a41470e89b4e4ac82ad7891d24bfdf604544598`. The distribution index is `artifacts/CORE-039/pr95-4a41470e89b4/verified-candidates.json` in the core handoff. The verifier, public protocol fixtures and Rust crate here are byte copies from that handoff. Each operating system has its own externally supplied development verification key. The candidate archive and member hashes, executable architecture, signature, SDK package and protocol are checked before the Host is started.
+
+On a supported native target, set `YUKI_BASE_HOST_ARCHIVE` to the matching signed ZIP and run `python ci/check.py EXT-067 --out artifacts/EXT-067/<new-run>`. This builds Telegram and web-fetch independently and installs them with only the grants exercised by this profile. All upstream traffic is handled by loopback fixtures. The trace files, requester UUIDs, temporary state and kill controls belong to this isolated test environment.

@@ -1,0 +1,63 @@
+{
+  "repository": "Institute-of-Agent-Life/yuki-core",
+  "source_commit": "4a41470e89b4e4ac82ad7891d24bfdf604544598",
+  "index_sha256": "0fb4f75ff9a5a860e1db5d40b8d66b5905a8cb941e5f6987d88a30f48b6b2867",
+  "published": false,
+  "sdk": {
+    "rust": "1.0.0-alpha.14",
+    "python": "1.0.0a14"
+  },
+  "platforms": {
+    "darwin-arm64": {
+      "archive": "yuki-core-4a41470e89b4-darwin-arm64.zip",
+      "sha256": "065d920aefcae330ed7da7c8ce66a672ced7295a91f04aaf268c208bf71412b8",
+      "binary_sha256": "5d5b748024c3b676f508046fc871bf6d407fe5a586f48ef88bef436e5aaefdce",
+      "validation_manifest_sha256": "9e94c7a4ffe5256a396873f845fc00240ebc018012dca404c20d54abb6a6bab2",
+      "signed_manifest_sha256": "3a9e6f6393b8cc3a24f0a9c291880062ed85eb149ee8a779995e2399b0c468dc",
+      "signer": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEw9+SX8p46AwD4EGlp+jPmGm1txnQ3T4tkwr6VV+TtE huangjiawei@huangjiaweideMac-mini.local",
+      "signer_sha256": "859ffd8fe442d5ae89728b409581f76a28677c3a51f1d9514ad31fae4b6e8467",
+      "verified_members": 496
+    },
+    "linux-arm64": {
+      "archive": "yuki-core-4a41470e89b4-linux-arm64.zip",
+      "sha256": "2213810b662345efb0f91c8ec9405e942c8eaacb0f376e58667d8d2000a77382",
+      "binary_sha256": "a151d7f59582e4c105b06679a61adaf7fc2f4afad1f5b3068e6c36170ef1e28e",
+      "validation_manifest_sha256": "5999279db0ac9b55da052c9291dd49a6753c31d48a4dbb2aa07041c1e01cdea9",
+      "signed_manifest_sha256": "1742cff0b5043761503ad9ae8b9021993fdd9bccf2bfe29ab2fe4dc42df5e445",
+      "signer": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBwxFsSoinJPliwi7/I+VPyz1/w9Cwah7NbT+NkZEEhZ root@63667c989dbe",
+      "signer_sha256": "f9c4cf41175607c0979490801077a3174ef0c24d8aa3c5fb0c75c643832183ab",
+      "verified_members": 499
+    },
+    "windows-x86_64": {
+      "archive": "yuki-core-4a41470e89b4-windows-x86_64.zip",
+      "sha256": "47f8bddb37ca1ee4502bd12807d34172188d7287dc5e2f538e233d59b1c676fc",
+      "binary_sha256": "e7dba346ab1a8a3bad4529d674bc57e8d21e20ff2310723f40dee209fafb326c",
+      "validation_manifest_sha256": "cb89c8fd9d84d039e2d8cbfa1bfa107b612d934dacc5ca3d31a9f5b245c4d98a",
+      "signed_manifest_sha256": "6981e0d84fbf5e6f53f31eac487e81384914028f0786a35b4afcb3e40fd7d7d6",
+      "signer": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID4ltHyi03aOCwpoVglEc7uArFuy+FDsL7r/yDiti0Qg hilbert@hjw",
+      "signer_sha256": "61a95ec56ca8e375942d5db5c0043aaf59e187b8c90ee8eca1e2019cb72c40a9",
+      "verified_members": 508
+    }
+  },
+  "source_tree_sha256": "df00dc98a20667191f15b34732c172a49ed9b99d4f2cef3df75ab533b919d12d",
+  "rust_crate_sha256": "e41a2375efb2f8f479fa86b022168f02d3b098d3366c1f8f9a6ed9dc22ff4c40",
+  "schema_sha256": "5a9790642d0eb0ee2dfc15bcebc459c7b0bf9971260e6576e47da7e2e363fb9f",
+  "golden_sha256": "5275ee7b90b6af4221693f92ea9c1b4fb1d1b306c2b6ebb85947273dba0bcfa3",
+  "fixtures_sha256": "2d986f7c2bf30d597fbf667f346d189a8aad9bf6194d1341fc13620e4907316e",
+  "methods": [
+    "command.invoke",
+    "forget.ack",
+    "forget.request",
+    "gateway.dispatch_part",
+    "gateway.inbound",
+    "gateway.media",
+    "gateway.part_status",
+    "gateway.plan_send",
+    "gateway.status",
+    "observer.event",
+    "terminal.bind",
+    "terminal.scope",
+    "tool.call",
+    "tool.status"
+  ]
+}

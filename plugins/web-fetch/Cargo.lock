@@ -517,9 +517,9 @@ dependencies = [
 
 [[package]]
 name = "yuki-plugin-sdk"
-version = "1.0.0-alpha.2"
+version = "1.0.0-alpha.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9408022bdf1322a8d6e07914685869771a5738280e36145e46da5c36facbfce0"
+checksum = "e41a2375efb2f8f479fa86b022168f02d3b098d3366c1f8f9a6ed9dc22ff4c40"
 dependencies = [
  "serde",
  "serde_json",
@@ -527,7 +527,7 @@ dependencies = [
 
 [[package]]
 name = "yuki-web-fetch"
-version = "0.1.0-alpha.1"
+version = "0.1.0-alpha.2"
 dependencies = [
  "html5gum",
  "if-addrs",

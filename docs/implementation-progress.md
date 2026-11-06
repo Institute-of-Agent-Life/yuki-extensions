@@ -4,6 +4,10 @@
 行為基線 `329ca7c487414d2f54ddd98ff4727446ed2446cd`。官方插件接入層用 Rust。
 獨立 Connector 沿用 Python 3.12；共享預算沿總書 K05。
 
+**EXT-067 兩個真包的 Windows 驗收。** 分支 `codex/ext-067-joint-candidates`，實作 `18fba3707948`，乾淨重跑提交 `49f7b19`。簽署來源 `4a41470e89b4`、SDK alpha.14 `e41a2375efb2`，三平台逐包驗簽。HJW 在空資料目錄同時安裝 Telegram alpha.4 及 web-fetch alpha.2。七例通過，涵蓋取回原件後三段送達、第二段回覆丟失、殺兩個子程序後重播、跨人物換 handle、移除必要 RPC，以及取件中和重啟後的擦除拒絕。兩個插件的工作目錄為空，Telegram 自有的持久檔只有 offset 和空鎖。六個方法的方向、grant、schema、原始 wire 與各包 digest 在 `artifacts/EXT-067/01/base-consumer-witness.json`；CORE-044 可據此裁決基礎發布。正式總表此前為 7/68，完整 EXT-004 仍待引用、撤回、附件出站和 typing。此包尚未發布。
+
+PR #39 普通合併 `48b634a060d7`，受測樹 `9b95740c3270`；Windows/Linux 原 6 份 ZIP、本機 macOS 兩項回條見 `artifacts/ci/local-pr/39/receipt.json`。PR #37 已另在 HJW 原生補跑 16 項，含 14 套件、四張 Connector 回歸卡、acceptance 和 worker；逐檔校驗見 `artifacts/ci/local-pr/37/hjw-supplement.zip`。本機首次 archive 遇到正在使用的 Windows 零位元鎖；改讀 live 大小，kill 後核原 SHA，再從乾淨提交重跑完整入口。
+
 **EXT-004 Telegram 文字投遞候選。** `codex/ext-004-telegram-parts` 的 Rust alpha.3 和固定 CORE-038 `0ef956a9c6d9` 在 HJW 跑過 4 個真 Host 案例和 5 項 Rust 測試。私聊及群話題各將 8,197 個字元分 3 段，保留原 chat/topic 與各段 message_id。第二段被平台接收後斷線，首段 confirmed、第二段 unknown、第三段未派，雙程序重啟後原 cursor 接續且未重送。引用案例的計畫只收到核心 event ID，原生請求為零。完整收據 `artifacts/EXT-004/text-delivery-02/`。正式完成仍 7/68；附件出站、原引用定位、撤回與 typing 仍待交付或驗證。
 
 **合併佇列。** PR #16 已合併至 `41cb089afe83`。PR #37 整合其餘 21 張的原 head，普通合併至 `d3f231b2fc02`。實際 merge parents 與受測 tree `9e072834e150` 一致。Windows/Linux 各 14 個套件、三平台驗收、Linux native Monty 與三平台 worker 已核，本機 macOS arm64 跑完 16 個作業。60 份 GitHub ZIP 的回條在 `artifacts/ci/local-pr/37/`；GitHub 列原 #16–37 全部 MERGED。
