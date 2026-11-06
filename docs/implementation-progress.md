@@ -4,6 +4,8 @@
 行為基線 `329ca7c487414d2f54ddd98ff4727446ed2446cd`。官方插件接入層用 Rust。
 獨立 Connector 沿用 Python 3.12；共享預算沿總書 K05。
 
+**EXT-004 Telegram 文字投遞候選。** `codex/ext-004-telegram-parts` 的 Rust alpha.3 和固定 CORE-038 `0ef956a9c6d9` 在 HJW 跑過 4 個真 Host 案例和 5 項 Rust 測試。私聊及群話題各將 8,197 個字元分 3 段，保留原 chat/topic 與各段 message_id。第二段被平台接收後斷線，首段 confirmed、第二段 unknown、第三段未派，雙程序重啟後原 cursor 接續且未重送。引用案例的計畫只收到核心 event ID，原生請求為零。完整收據 `artifacts/EXT-004/text-delivery-02/`。正式完成仍 7/68；附件出站、原引用定位、撤回與 typing 仍待交付或驗證。
+
 **合併佇列。** PR #16 已合併至 `41cb089afe83`。PR #37 整合其餘 21 張的原 head，普通合併至 `d3f231b2fc02`。實際 merge parents 與受測 tree `9e072834e150` 一致。Windows/Linux 各 14 個套件、三平台驗收、Linux native Monty 與三平台 worker 已核，本機 macOS arm64 跑完 16 個作業。60 份 GitHub ZIP 的回條在 `artifacts/ci/local-pr/37/`；GitHub 列原 #16–37 全部 MERGED。
 
 **EXT-004 原 Bot 取件。** 真 Host `0ef956a9c6d9`、SDK alpha.13 與原 Rust 插件在 HJW 完成選取 slot 0 和錯 slot 1。單次原生 GET、7 塊共 161,058 bytes，原處理器及 Main 回讀兩頁 PDF。錯 slot 零取件。完整原始 wire、模型 HTTP、配置、SHA 與失敗回條在 `artifacts/EXT-004/selected-native-03/`。正式完成 7/68。舊結果以下依執行時間保留。

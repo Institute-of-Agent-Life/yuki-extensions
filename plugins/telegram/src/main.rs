@@ -1,5 +1,6 @@
 mod ingress;
 mod media;
+mod social;
 mod transport;
 
 use serde_json::{Value, json};
@@ -52,10 +53,14 @@ fn frame(input: &HostInput) -> Result<Vec<u8>, Error> {
     Ok(input.recv()??)
 }
 
-fn initialize(input: &HostInput, out: &mut impl Write) -> Result<(Calls, String, bool), Error> {
+fn initialize(
+    input: &HostInput,
+    out: &mut impl Write,
+) -> Result<(Calls, String, bool, bool), Error> {
     let binding: Binding = serde_json::from_str(&env::var("YUKI_PLUGIN_BINDING")?)?;
     let namespace = binding.namespace.clone();
     let media_grant = binding.grants.iter().any(|g| g == "gateway.media");
+    let send_grant = binding.grants.iter().any(|g| g == "gateway.send");
     let offer = binding.offer();
     let mut peer = Peer::new(binding)?;
     emit(out, &peer.request(Id::Number(1), offer)?)?;
@@ -71,7 +76,16 @@ fn initialize(input: &HostInput, out: &mut impl Write) -> Result<(Calls, String,
                         ms.iter()
                             .any(|m| m["name"] == "gateway.media" && m["revision"] == 1)
                     });
-                return Ok((Calls::negotiated(init)?, namespace, media));
+                let send = send_grant
+                    && ["gateway.plan_send", "gateway.dispatch_part"]
+                        .iter()
+                        .all(|method| {
+                            init["method_revisions"].as_array().is_some_and(|ms| {
+                                ms.iter()
+                                    .any(|m| m["name"] == *method && m["revision"] == 1)
+                            })
+                        });
+                return Ok((Calls::negotiated(init)?, namespace, media, send));
             }
             Received::Response { result: Err(_), .. } => return Err("initialize refused".into()),
             Received::Notification => {}
@@ -124,6 +138,8 @@ struct Gateway<'a> {
     base: &'a str,
     token: &'a str,
     enabled: bool,
+    send: bool,
+    pending: Option<social::Pending>,
     media: media::Media,
 }
 
@@ -133,6 +149,35 @@ impl Gateway<'_> {
             Incoming::Notification { .. } => Ok(()),
             Incoming::Result { .. } => Err("unexpected gateway receipt".into()),
             Incoming::Call { id, method, params } => {
+                if self.send && method == "gateway.plan_send" {
+                    let reply = match social::plan(&params["arguments"], self.bot) {
+                        Ok(plan) => json!({"jsonrpc":"2.0","id":id,"result":plan}),
+                        Err(_) => {
+                            json!({"jsonrpc":"2.0","id":id,"error":{"code":-32602,"message":"unsupported original Telegram delivery"}})
+                        }
+                    };
+                    return emit(out, &reply);
+                }
+                if self.send && method == "gateway.dispatch_part" {
+                    let result = if self.pending.is_some() {
+                        json!({"state":"failed"})
+                    } else {
+                        match social::Pending::start(
+                            id.clone(),
+                            &params["arguments"],
+                            self.bot,
+                            self.base,
+                            self.token,
+                        ) {
+                            Ok(request) => {
+                                self.pending = Some(request);
+                                return Ok(());
+                            }
+                            Err(result) => result,
+                        }
+                    };
+                    return emit(out, &json!({"jsonrpc":"2.0","id":id,"result":result}));
+                }
                 let reply = if self.enabled && method == "gateway.media" {
                     match self
                         .media
@@ -150,6 +195,18 @@ impl Gateway<'_> {
             }
         }
     }
+    fn poll_delivery(&mut self, out: &mut impl Write) -> Result<(), Error> {
+        if self.pending.as_mut().is_some_and(social::Pending::ready)
+            && let Some(request) = self.pending.take()
+        {
+            let id = request.id.clone();
+            emit(
+                out,
+                &json!({"jsonrpc":"2.0","id":id,"result":request.finish()}),
+            )?;
+        }
+        Ok(())
+    }
     fn tick(
         &mut self,
         input: &HostInput,
@@ -157,6 +214,7 @@ impl Gateway<'_> {
         out: &mut impl Write,
     ) -> Result<bool, Error> {
         self.media.expire();
+        self.poll_delivery(out)?;
         match input.recv_timeout(Duration::from_millis(25)) {
             Err(RecvTimeoutError::Disconnected) => Ok(false),
             Err(RecvTimeoutError::Timeout) => Ok(true),
@@ -170,7 +228,7 @@ impl Gateway<'_> {
 
 fn main() -> Result<(), Error> {
     let (input, mut out) = (host_input(), io::stdout().lock());
-    let (mut calls, namespace, enabled) = initialize(&input, &mut out)?;
+    let (mut calls, namespace, enabled, send) = initialize(&input, &mut out)?;
     let token = env::var("YUKI_TELEGRAM_TOKEN")?;
     let bot: i64 = env::var("YUKI_TELEGRAM_BOT_ID")?.parse()?;
     let (prefix, secret) = token.split_once(':').ok_or("invalid Telegram credential")?;
@@ -217,6 +275,8 @@ fn main() -> Result<(), Error> {
         base: &base,
         token: &token,
         enabled,
+        send,
+        pending: None,
         media: media::Media::default(),
     };
     loop {
@@ -258,7 +318,8 @@ fn main() -> Result<(), Error> {
             let request = calls.request(request_id.clone(), "gateway.inbound", envelope)?;
             emit(&mut out, &request)?;
             loop {
-                let raw = match input.recv_timeout(Duration::from_secs(1)) {
+                gateway.poll_delivery(&mut out)?;
+                let raw = match input.recv_timeout(Duration::from_millis(50)) {
                     Ok(raw) => raw?,
                     Err(RecvTimeoutError::Timeout) => {
                         gateway.media.expire();

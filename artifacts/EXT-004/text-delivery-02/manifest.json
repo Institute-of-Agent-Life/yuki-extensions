@@ -1,0 +1,363 @@
+{
+  "status": "PASS",
+  "formal_card_acceptance": false,
+  "published": false,
+  "task": "EXT-004",
+  "sdk": "1.0.0-alpha.13",
+  "consumer_sha256": "b593e691e5fa9a848c4b01ca5223ecdf679bdf0df8e71aa0c6059569e425b1eb",
+  "windows_overlay_sha256": "868848be1214921892168ea2afddcad9e03e11274f3c9c4f0988efbf95c67404",
+  "script_sha256": "bacace7e621f2c8840ab58a1ed5dd20d14b1c1edf1a5b16e19d582f1ce02a66c",
+  "cases": [
+    {
+      "case": "topic-02",
+      "zip_sha256": "b9e3c575796f60dbdfcb898817ec2f776496abc41736fd79b9857920ec3fd219",
+      "members": {
+        "gateway.jsonl": "9a6933835f89c829487afecc7133121a243bafda5d03dd1b499ebfa04e3ea614",
+        "host.txt": "0a59906becd7ae9509df5c96b2e31a835dc20abbe9b98f765104d9ea854411e3",
+        "model.json": "258143039090b5444a3c077723d92d6c56f53660bed9ee6c5719912839e87226",
+        "native.json": "721bf8f4061f416a1f63a128c29f5ef2a13039f99e6b53bb565a66f95ddbd6cb",
+        "result.json": "5cd6c3b3e2d32dd5d09609fd8345c95de59217c74ab97bbac6ea3719a0e31397",
+        "run.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "result": {
+        "status": "PASS",
+        "case": "topic",
+        "source": "0ef956a9c6d90fae79c0d4488296c064ccf29f54",
+        "host": {
+          "archive": "yuki-media-preview-0ef956a9c6d9-windows-x86_64.zip",
+          "sha256": "a81c49a722b9e1e420d5084856f7a13aed116865f7ca0a4c1304ac10881c62f3",
+          "binary_sha256": "4dd7a9fc345664f85d59b9c83d17e03b9dc452bbc2fb7bb01eba7d73c47b6cc0",
+          "validation_manifest_sha256": "d7341e1fc982a2ec192d6bcea225b45641e8d8b387eaa73785c982ebd7f32730"
+        },
+        "sdk": "25694e880798108129a1fa8e49e6fff7464ebc9075e5042cc379a6709343e29b",
+        "gateway": "b593e691e5fa9a848c4b01ca5223ecdf679bdf0df8e71aa0c6059569e425b1eb",
+        "paid_fixture_http": 2,
+        "plan": "db921f42-0edd-450b-9197-902c45c9622e:gateway:0",
+        "part_operations": [
+          "db921f42-0edd-450b-9197-902c45c9622e:gateway:1",
+          "db921f42-0edd-450b-9197-902c45c9622e:gateway:2",
+          "db921f42-0edd-450b-9197-902c45c9622e:gateway:3"
+        ],
+        "part_receipts": [
+          {
+            "locator": "-15:701",
+            "state": "confirmed"
+          },
+          {
+            "locator": "-15:702",
+            "state": "confirmed"
+          },
+          {
+            "locator": "-15:703",
+            "state": "confirmed"
+          }
+        ],
+        "model_operation": {
+          "id": "db921f42-0edd-450b-9197-902c45c9622e",
+          "namespace": "128e49ab-228a-46bf-997f-682468f9213c",
+          "ordinal": null,
+          "parent": null,
+          "result": {
+            "parts": [
+              {
+                "id": "db921f42-0edd-450b-9197-902c45c9622e:gateway:1",
+                "namespace": "128e49ab-228a-46bf-997f-682468f9213c",
+                "ordinal": 1,
+                "parent": "db921f42-0edd-450b-9197-902c45c9622e",
+                "result": {
+                  "locator": "-15:701",
+                  "state": "confirmed"
+                },
+                "state": "confirmed"
+              },
+              {
+                "id": "db921f42-0edd-450b-9197-902c45c9622e:gateway:2",
+                "namespace": "128e49ab-228a-46bf-997f-682468f9213c",
+                "ordinal": 2,
+                "parent": "db921f42-0edd-450b-9197-902c45c9622e",
+                "result": {
+                  "locator": "-15:702",
+                  "state": "confirmed"
+                },
+                "state": "confirmed"
+              },
+              {
+                "id": "db921f42-0edd-450b-9197-902c45c9622e:gateway:3",
+                "namespace": "128e49ab-228a-46bf-997f-682468f9213c",
+                "ordinal": 3,
+                "parent": "db921f42-0edd-450b-9197-902c45c9622e",
+                "result": {
+                  "locator": "-15:703",
+                  "state": "confirmed"
+                },
+                "state": "confirmed"
+              }
+            ],
+            "planned": 3
+          },
+          "state": "confirmed"
+        },
+        "native_sends": 3,
+        "post_restart_sends": 0,
+        "published": false
+      }
+    },
+    {
+      "case": "lost-second-02",
+      "zip_sha256": "d04b925f74f358c5069b6d0724f5f644fb86a4377e0d11f620d4689a7bd6b5ef",
+      "members": {
+        "gateway.jsonl": "7651c7954d8de8175b86e8e38f358b86c91de75a28f5c41e5e88c01043ffd26e",
+        "host.txt": "deb09a1781ec37ec1f16632777a7848b38186df80557ce5bbf7de21e358570ca",
+        "model.json": "10bc4cf224f98bfb4a6eda3e466408408b2fb90d9f1a2f50561dcdfbd95888b0",
+        "native.json": "b4163105f9f7c9c7c4d60db88c6c2ec8d0479d473fa2ecefd00144891134b0a3",
+        "result.json": "4a0796b4d3a314abdead37ec92ce514085000be6e931d511d0313882f00ef82b",
+        "run.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "result": {
+        "status": "PASS",
+        "case": "lost-second",
+        "source": "0ef956a9c6d90fae79c0d4488296c064ccf29f54",
+        "host": {
+          "archive": "yuki-media-preview-0ef956a9c6d9-windows-x86_64.zip",
+          "sha256": "a81c49a722b9e1e420d5084856f7a13aed116865f7ca0a4c1304ac10881c62f3",
+          "binary_sha256": "4dd7a9fc345664f85d59b9c83d17e03b9dc452bbc2fb7bb01eba7d73c47b6cc0",
+          "validation_manifest_sha256": "d7341e1fc982a2ec192d6bcea225b45641e8d8b387eaa73785c982ebd7f32730"
+        },
+        "sdk": "25694e880798108129a1fa8e49e6fff7464ebc9075e5042cc379a6709343e29b",
+        "gateway": "b593e691e5fa9a848c4b01ca5223ecdf679bdf0df8e71aa0c6059569e425b1eb",
+        "paid_fixture_http": 2,
+        "plan": "29c4e5aa-6b9e-42cd-aebf-fba05f31ce62:gateway:0",
+        "part_operations": [
+          "29c4e5aa-6b9e-42cd-aebf-fba05f31ce62:gateway:1",
+          "29c4e5aa-6b9e-42cd-aebf-fba05f31ce62:gateway:2"
+        ],
+        "part_receipts": [
+          {
+            "locator": "8:701",
+            "state": "confirmed"
+          },
+          {
+            "state": "unknown"
+          }
+        ],
+        "model_operation": {
+          "id": "29c4e5aa-6b9e-42cd-aebf-fba05f31ce62",
+          "namespace": "8242ee9d-fc2d-49f1-bb58-861753ad5d33",
+          "ordinal": null,
+          "parent": null,
+          "result": {
+            "parts": [
+              {
+                "id": "29c4e5aa-6b9e-42cd-aebf-fba05f31ce62:gateway:1",
+                "namespace": "8242ee9d-fc2d-49f1-bb58-861753ad5d33",
+                "ordinal": 1,
+                "parent": "29c4e5aa-6b9e-42cd-aebf-fba05f31ce62",
+                "result": {
+                  "locator": "8:701",
+                  "state": "confirmed"
+                },
+                "state": "confirmed"
+              },
+              {
+                "id": "29c4e5aa-6b9e-42cd-aebf-fba05f31ce62:gateway:2",
+                "namespace": "8242ee9d-fc2d-49f1-bb58-861753ad5d33",
+                "ordinal": 2,
+                "parent": "29c4e5aa-6b9e-42cd-aebf-fba05f31ce62",
+                "result": {
+                  "state": "unknown"
+                },
+                "state": "unknown"
+              }
+            ],
+            "planned": 3
+          },
+          "state": "unknown"
+        },
+        "native_sends": 2,
+        "post_restart_sends": 0,
+        "published": false
+      }
+    },
+    {
+      "case": "confirmed-02",
+      "zip_sha256": "4dd8e7e2a92c6e1a6971aba68675ca9f79c9b8d76469a86c8469148c6d6e7d22",
+      "members": {
+        "gateway.jsonl": "7cfebbff7d2a92c8eab3e73acc2f516e77db1a1108663138115aeb9422e9eed9",
+        "host.txt": "963173a6366756027ee486e890fe4ba4821e1a28939689a24ce35cf408cd55f3",
+        "model.json": "5bf8a4a14c6aa399b0b235e86ba41e7832eb43d7c08576c701de26b6f7e443c3",
+        "native.json": "2c3d5112a98e1df14bff1c9955802be0f8248d78406fdb89a62051b035a24f89",
+        "result.json": "e9141f6c9cde42c53f7423565c4109fcd5edd2ccd3200fd244c33e83b8e9a5d5",
+        "run.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "result": {
+        "status": "PASS",
+        "case": "confirmed",
+        "source": "0ef956a9c6d90fae79c0d4488296c064ccf29f54",
+        "host": {
+          "archive": "yuki-media-preview-0ef956a9c6d9-windows-x86_64.zip",
+          "sha256": "a81c49a722b9e1e420d5084856f7a13aed116865f7ca0a4c1304ac10881c62f3",
+          "binary_sha256": "4dd7a9fc345664f85d59b9c83d17e03b9dc452bbc2fb7bb01eba7d73c47b6cc0",
+          "validation_manifest_sha256": "d7341e1fc982a2ec192d6bcea225b45641e8d8b387eaa73785c982ebd7f32730"
+        },
+        "sdk": "25694e880798108129a1fa8e49e6fff7464ebc9075e5042cc379a6709343e29b",
+        "gateway": "b593e691e5fa9a848c4b01ca5223ecdf679bdf0df8e71aa0c6059569e425b1eb",
+        "paid_fixture_http": 2,
+        "plan": "5a59abf9-36d0-4688-9480-08dc6541882a:gateway:0",
+        "part_operations": [
+          "5a59abf9-36d0-4688-9480-08dc6541882a:gateway:1",
+          "5a59abf9-36d0-4688-9480-08dc6541882a:gateway:2",
+          "5a59abf9-36d0-4688-9480-08dc6541882a:gateway:3"
+        ],
+        "part_receipts": [
+          {
+            "locator": "8:701",
+            "state": "confirmed"
+          },
+          {
+            "locator": "8:702",
+            "state": "confirmed"
+          },
+          {
+            "locator": "8:703",
+            "state": "confirmed"
+          }
+        ],
+        "model_operation": {
+          "id": "5a59abf9-36d0-4688-9480-08dc6541882a",
+          "namespace": "80bef7be-0f29-4c4e-a1f0-1d15f9c46e2e",
+          "ordinal": null,
+          "parent": null,
+          "result": {
+            "parts": [
+              {
+                "id": "5a59abf9-36d0-4688-9480-08dc6541882a:gateway:1",
+                "namespace": "80bef7be-0f29-4c4e-a1f0-1d15f9c46e2e",
+                "ordinal": 1,
+                "parent": "5a59abf9-36d0-4688-9480-08dc6541882a",
+                "result": {
+                  "locator": "8:701",
+                  "state": "confirmed"
+                },
+                "state": "confirmed"
+              },
+              {
+                "id": "5a59abf9-36d0-4688-9480-08dc6541882a:gateway:2",
+                "namespace": "80bef7be-0f29-4c4e-a1f0-1d15f9c46e2e",
+                "ordinal": 2,
+                "parent": "5a59abf9-36d0-4688-9480-08dc6541882a",
+                "result": {
+                  "locator": "8:702",
+                  "state": "confirmed"
+                },
+                "state": "confirmed"
+              },
+              {
+                "id": "5a59abf9-36d0-4688-9480-08dc6541882a:gateway:3",
+                "namespace": "80bef7be-0f29-4c4e-a1f0-1d15f9c46e2e",
+                "ordinal": 3,
+                "parent": "5a59abf9-36d0-4688-9480-08dc6541882a",
+                "result": {
+                  "locator": "8:703",
+                  "state": "confirmed"
+                },
+                "state": "confirmed"
+              }
+            ],
+            "planned": 3
+          },
+          "state": "confirmed"
+        },
+        "native_sends": 3,
+        "post_restart_sends": 0,
+        "published": false
+      }
+    },
+    {
+      "case": "quote-02",
+      "zip_sha256": "f22a7c2dc00ee6605869ae9503437b04369ff590b9e608e7bc412bc8a1ec2cb2",
+      "members": {
+        "gateway.jsonl": "d56fa149dd993b9bd4d894aa7f92d842096b3e9a28da7343a9b98e4e6a42c82e",
+        "host.txt": "9ed497d6c5568a4eef5a7f45996a80ed6102c8ae4ab0f690f82c3f361477d95c",
+        "model.json": "6654c4a7844cd75dbd36d74d601e228bd9f4489fa7ffdece1a53e12f84e4c5a1",
+        "result.json": "d778381da44a339625c7fff7e96969b13a90621f81a819fe321ab4c2024109f7",
+        "run.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "result": {
+        "status": "PASS",
+        "case": "quote",
+        "scope": "unsupported event reference stops before native dispatch",
+        "source": "0ef956a9c6d90fae79c0d4488296c064ccf29f54",
+        "host": {
+          "archive": "yuki-media-preview-0ef956a9c6d9-windows-x86_64.zip",
+          "sha256": "a81c49a722b9e1e420d5084856f7a13aed116865f7ca0a4c1304ac10881c62f3",
+          "binary_sha256": "4dd7a9fc345664f85d59b9c83d17e03b9dc452bbc2fb7bb01eba7d73c47b6cc0",
+          "validation_manifest_sha256": "d7341e1fc982a2ec192d6bcea225b45641e8d8b387eaa73785c982ebd7f32730"
+        },
+        "sdk": "25694e880798108129a1fa8e49e6fff7464ebc9075e5042cc379a6709343e29b",
+        "gateway": "b593e691e5fa9a848c4b01ca5223ecdf679bdf0df8e71aa0c6059569e425b1eb",
+        "model_operation": {
+          "id": "22871d53-d312-45bb-9ae9-5686f1a34747",
+          "namespace": "8da32268-194e-4228-af0f-f46f2ae0a78a",
+          "ordinal": null,
+          "parent": null,
+          "result": {
+            "plan": {
+              "handle": "cd29b545-98d6-4b0e-a329-ef98043bd316",
+              "result": {
+                "unavailable": true
+              },
+              "state": "unknown"
+            }
+          },
+          "state": "unknown"
+        },
+        "native_sends": 0,
+        "plan": {
+          "method": "gateway.plan_send",
+          "params": {
+            "arguments": {
+              "message": {
+                "reply_to_event_id": 1,
+                "text": "original quote"
+              },
+              "route": {
+                "bot": "101",
+                "chat": "-15",
+                "entry": "ead08302-a114-49a9-8a94-2f8f6796adf6",
+                "topic": "7"
+              }
+            },
+            "handle": "cd29b545-98d6-4b0e-a329-ef98043bd316",
+            "name": "gateway.plan_send",
+            "operation": "22871d53-d312-45bb-9ae9-5686f1a34747:gateway:0",
+            "ordinal": 0,
+            "parent": "22871d53-d312-45bb-9ae9-5686f1a34747",
+            "revision": "65078b7e85a28672a3ad7ee79702077a3622a54362383dcc0d1aeb4d8199f3ca"
+          },
+          "reply": {
+            "error": {
+              "code": -32602,
+              "message": "unsupported original Telegram delivery"
+            },
+            "id": "host-1",
+            "jsonrpc": "2.0"
+          }
+        },
+        "published": false
+      }
+    }
+  ],
+  "windows_overlay_plugin_files": {
+    "plugins/telegram/Cargo.lock": "5a4b56764922029d7cf6b66337a2ecde114b79abb3bee798ea4726bd2cddb945",
+    "plugins/telegram/Cargo.toml": "b7614ede520a2f6e1164a348740da8e7a3e49afb95e67394519f3f175f342a73",
+    "plugins/telegram/LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+    "plugins/telegram/README.md": "c4cb16353772129a5b36b4cbddaddedb1bbac5d9255d7a8038ea68916e132025",
+    "plugins/telegram/plugin.toml": "84f3c2356d649e2c9a1d4f693a61cda370c213d3101ad70b0136866bcf3a6da4",
+    "plugins/telegram/rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+    "plugins/telegram/src/ingress.rs": "4b54cee0786dd5d6aec2737470ff4801b99c3d0f7596eabd00ce33c90733cd0f",
+    "plugins/telegram/src/main.rs": "ecce20e26d568232b57b9415d9d12fb0aab079dac2db09e46d86818cb37de22a",
+    "plugins/telegram/src/media.rs": "cb03132d32209dd27f620c2d315f4380044828eee603ed23219a22b6997c27bc",
+    "plugins/telegram/src/transport.rs": "0ea3d285718b0b1197023b74990a3e1fa348aaa903b4281ebd0f22c7e1fda2a8",
+    "plugins/telegram/src/social.rs": "d9311840de108714d0a3d4916ef66be5b3cf73540b4e041648b885deec51e103"
+  }
+}

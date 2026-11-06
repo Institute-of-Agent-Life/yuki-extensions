@@ -1,0 +1,165 @@
+{
+  "macOS": {
+    "status": "PASS",
+    "runner": "local-macOS",
+    "machine": "arm64",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "job": "acceptance",
+    "commit": "83fd2b08680d3f017e6d3c1a070815dd58e9db31",
+    "tree": "e899a0532d608f90e36a3979ab5578d460057cb0",
+    "parents": [
+      "d3f231b2fc0260ba7c036ac7e567771aee666b0b",
+      "5b1692da490f42bc0c65953eac5a95216182cdc2"
+    ],
+    "cases": [
+      "EXT-001",
+      "EXT-002",
+      "EXT-019"
+    ],
+    "units": [],
+    "members": {
+      "EXT-001/manifest.json": "6a3c0a75dde72ec98e9ccf4382d71a1d228ce00d06729f794d277733e80751b3",
+      "EXT-001/extension-build-isolation.json": "a53220f4ba4465d0948ea059642e41c4450c3226a27f67b62495d8a50f2866b3",
+      "EXT-002/manifest.json": "d93da6554dacaca115958d30cf3588f3fc87a3746bd42d4f72d0e5db98d7ce7b",
+      "EXT-002/build.txt": "16301cb81235ebe5dec49f0b1a2fd1a9420bd4a054e98020a570854cd307e4b4",
+      "EXT-002/published-sdk.json": "7e146e1d0be0873d5d2ebc4be9376ccff5856d6522e8e79a953c3936089eb750",
+      "EXT-019/manifest.json": "16534aacd2684c3848bb18d68e4ae41a75682ef23340af082f5cebc4ae625b84",
+      "EXT-019/desktop-callsite-pin.json": "d9d6caa43cb9dd36b65358fb0c06648b7c22784f98babfad63ba42bc00a9c7fe",
+      "EXT-019/desktop-surface-diff.json": "21d8a19696cd02bb91ad8079dd09948eeacbae32f31211d3a32f766abbb88550"
+    }
+  },
+  "hosted": {
+    "pr": 38,
+    "run": 42250560650,
+    "merge": "83fd2b08680d3f017e6d3c1a070815dd58e9db31",
+    "tree": "e899a0532d608f90e36a3979ab5578d460057cb0",
+    "parents": [
+      "d3f231b2fc0260ba7c036ac7e567771aee666b0b",
+      "5b1692da490f42bc0c65953eac5a95216182cdc2"
+    ],
+    "jobs": [
+      {
+        "id": 128004205523,
+        "name": "acceptance (ubuntu-latest)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 128004205935,
+        "name": "acceptance (windows-latest)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 128004206055,
+        "name": "acceptance (macos-latest)",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 128004206171,
+        "name": "select",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 128004339003,
+        "name": "worker (codemode, ${{ matrix.os }})",
+        "status": "completed",
+        "conclusion": "skipped"
+      },
+      {
+        "id": 128004339225,
+        "name": "runtime (monty-runtime, ubuntu-latest)",
+        "status": "completed",
+        "conclusion": "skipped"
+      },
+      {
+        "id": 128004339733,
+        "name": "package",
+        "status": "completed",
+        "conclusion": "skipped"
+      }
+    ],
+    "artifacts": [
+      {
+        "id": 13520645947,
+        "name": "acceptance-windows-latest-83fd2b08680d3f017e6d3c1a070815dd58e9db31",
+        "digest": "sha256:5644e25cd3cc30b3b5b07fdc6e67fb74fd1f85e7f2bce0aad421e5c843a826b4",
+        "size": 28836,
+        "zip_members": 8,
+        "manifests": [
+          {
+            "path": "EXT-001/ci/manifest.json",
+            "file_sha256": "5084012a9d1ec865270f0bf961be93e83bac295489d70564ba62c143c46ae6db",
+            "task": "EXT-001",
+            "unit": null,
+            "members": {
+              "extension-build-isolation.json": "5d99a6529546806ea315e48a669129c55f7e20c222cae95f595da8d67404a672"
+            }
+          },
+          {
+            "path": "EXT-002/ci/manifest.json",
+            "file_sha256": "8df911bb3a31f54adf423157a048859ec10d38b93ce12422ee4eadf5ecc1fb5a",
+            "task": "EXT-002",
+            "unit": null,
+            "members": {
+              "build.txt": "f714e20f6dbb5602ed0fce769e346d2e98a6300a4358b3362d59033c16b746a8",
+              "published-sdk.json": "00957b545c7f94f3cdb1c13a325a11fbb293b4f9aa4e6fc0107fea7ba57919a1"
+            }
+          },
+          {
+            "path": "EXT-019/ci/manifest.json",
+            "file_sha256": "113946dcc6b2d3b08dd2c71dbcad98b30094454a301549dcfa325a97476e812e",
+            "task": "EXT-019",
+            "unit": null,
+            "members": {
+              "desktop-callsite-pin.json": "d9d6caa43cb9dd36b65358fb0c06648b7c22784f98babfad63ba42bc00a9c7fe",
+              "desktop-surface-diff.json": "477f17ea1448f685d663477f373bf44b78f626a35b1533f36d9dea1f872d2f6a"
+            }
+          }
+        ]
+      },
+      {
+        "id": 13520021317,
+        "name": "acceptance-ubuntu-latest-83fd2b08680d3f017e6d3c1a070815dd58e9db31",
+        "digest": "sha256:f27a5293f5af5d625f0882593e27276438aa97df329b6943fdae27bebbbd99e0",
+        "size": 28553,
+        "zip_members": 8,
+        "manifests": [
+          {
+            "path": "EXT-001/ci/manifest.json",
+            "file_sha256": "ca9274179d1535a1db6fc66af21e9715a26019754b6d5dcba0a64339ab3455cb",
+            "task": "EXT-001",
+            "unit": null,
+            "members": {
+              "extension-build-isolation.json": "3db12a911d9b7cf931def71d595c4046fb7ec67ce078eb98d7a678159d95895f"
+            }
+          },
+          {
+            "path": "EXT-002/ci/manifest.json",
+            "file_sha256": "dca5a195ea6d0059caf05d0dfd9f0b724938d37a8a0c194814c5e1f6458e0f11",
+            "task": "EXT-002",
+            "unit": null,
+            "members": {
+              "build.txt": "fba4fe7944b00d1bcd0f088c2d47b65a24f65be9346018de2deaee05e69459c9",
+              "published-sdk.json": "f2a30a4c1f8e293ff8f2f1c722c2c5fd7f1080a96d79586ca17d892bb319c133"
+            }
+          },
+          {
+            "path": "EXT-019/ci/manifest.json",
+            "file_sha256": "07fc588be3a08e92ae45176b6ebd5564f89e87bc7d5ddc04e89888bcb125b62a",
+            "task": "EXT-019",
+            "unit": null,
+            "members": {
+              "desktop-callsite-pin.json": "d9d6caa43cb9dd36b65358fb0c06648b7c22784f98babfad63ba42bc00a9c7fe",
+              "desktop-surface-diff.json": "21d8a19696cd02bb91ad8079dd09948eeacbae32f31211d3a32f766abbb88550"
+            }
+          }
+        ]
+      }
+    ],
+    "utc": "2026-11-06T16:16:48.176773+00:00"
+  },
+  "actual_merge": "8f5edca469a4f00347274e9a0b162a0036991b8f"
+}
