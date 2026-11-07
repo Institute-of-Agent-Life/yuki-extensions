@@ -13,6 +13,7 @@ use std::{
 
 pub enum Job {
     Media(Value),
+    Upload(Value, String, Vec<u8>),
     Delivery(Value),
     Recall(Value),
 }
@@ -40,8 +41,15 @@ impl Worker {
                             json!({"error":{"code":-32000,"message":"original resource unavailable"}})
                         }
                     },
-                    Ok(Job::Delivery(args)) => json!({"result":client.effect(&cfg, &args, false)}),
-                    Ok(Job::Recall(args)) => json!({"result":client.effect(&cfg, &args, true)}),
+                    Ok(Job::Upload(args, mime, bytes)) => {
+                        json!({"result":client.upload(&cfg, &namespace, &args, &mime, bytes)})
+                    }
+                    Ok(Job::Delivery(args)) => {
+                        json!({"result":client.effect(&cfg, &namespace, &args, false)})
+                    }
+                    Ok(Job::Recall(args)) => {
+                        json!({"result":client.effect(&cfg, &namespace, &args, true)})
+                    }
                     Err(RecvTimeoutError::Timeout) => {
                         client.expire();
                         continue;

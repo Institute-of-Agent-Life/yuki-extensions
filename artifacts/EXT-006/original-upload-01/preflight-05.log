@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/Volumes/huawei/項目實戰/yuki-extensions/.ci-transfer/work-feishu-upload/ci/feishu_delivery_check.py", line 96, in <module>
+    run(
+  File "/Volumes/huawei/項目實戰/yuki-extensions/.ci-transfer/work-feishu-upload/ci/feishu_delivery_check.py", line 48, in run
+    exercise(
+  File "/Volumes/huawei/項目實戰/yuki-extensions/.ci-transfer/work-feishu-upload/tests/peers/feishu_delivery.py", line 590, in exercise
+    upload.verify(
+  File "/Volumes/huawei/項目實戰/yuki-extensions/.ci-transfer/work-feishu-upload/tests/peers/feishu_upload.py", line 218, in verify
+    assert len(native) == expected_count, (self.scenario, native)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('upload-token-recovered', [{'method': 'POST', 'path': '/open-apis/im/v1/files', 'type': 'upload', 'token': 1, 'kind': 'file', 'filename': '原始 "雪".bin', 'sha256': 'af8eaee08cbdd580ef238ae7797598711dc668a2ead477adb42310540c30458b', 'size': 24373}, {'method': 'POST', 'path': '/open-apis/im/v1/messages/om_root/reply', 'body': {'content': '{"text":"原始附言 caption"}', 'msg_type': 'text', 'reply_in_thread': True}, 'token': 2, 'app': 'cli_feishu', 'tenant': 'tenant-feishu'}])

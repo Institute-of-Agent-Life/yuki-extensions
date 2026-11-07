@@ -1,5 +1,5 @@
 //! Preserve the original native recipient, quote and v4 text byte limit.
-use crate::{Config, Error};
+use crate::{Config, Error, attachment};
 use serde_json::{Value, json};
 use url::Url;
 
@@ -66,25 +66,37 @@ pub fn plan(cfg: &Config, args: &Value) -> Result<Value, Error> {
         return Err("original quote mismatch".into());
     }
     let message = args["message"].as_object().ok_or("missing message")?;
-    if message
-        .keys()
-        .any(|k| !matches!(k.as_str(), "text" | "target" | "reply_to_event_id"))
-        || !args["media"].is_null()
-    {
+    if message.keys().any(|k| {
+        !matches!(
+            k.as_str(),
+            "text" | "target" | "reply_to_event_id" | "artifact_id" | "attachment_kind" | "name"
+        )
+    }) {
         return Err("unsupported original message".into());
     }
-    let text = message
-        .get("text")
-        .and_then(Value::as_str)
-        .filter(|s| !s.is_empty())
-        .ok_or("missing text")?;
+    let mut parts = Vec::new();
+    if !args["media"].is_null() {
+        parts.push(attachment::preparation(args)?);
+    } else if ["artifact_id", "attachment_kind", "name"]
+        .iter()
+        .any(|k| message.contains_key(*k))
+    {
+        return Err("missing selected attachment".into());
+    }
+    let text = match message.get("text") {
+        Some(value) => value.as_str().ok_or("invalid text")?,
+        None => "",
+    };
+    if text.is_empty() && parts.is_empty() {
+        return Err("missing text or selected attachment".into());
+    }
+    let first_visible = parts.len();
     let boundaries: Vec<_> = text
         .char_indices()
         .map(|(i, _)| i)
         .chain(std::iter::once(text.len()))
         .collect();
     let mut start = 0;
-    let mut parts = Vec::new();
     while start + 1 < boundaries.len() {
         let mut low = start + 1;
         let mut high = boundaries.len() - 1;
@@ -106,8 +118,11 @@ pub fn plan(cfg: &Config, args: &Value) -> Result<Value, Error> {
         parts.push(json!({"text":&text[boundaries[start]..boundaries[high]]}));
         start = high;
     }
+    if first_visible == 1 {
+        parts.push(json!({"prepared_part":0,"kind":message["attachment_kind"]}));
+    }
     if let Some(reply) = args.get("reply") {
-        parts[0]["reply"] = reply.clone();
+        parts[first_visible]["reply"] = reply.clone();
     }
     Ok(json!({"parts":parts}))
 }
@@ -119,18 +134,25 @@ pub fn delivery(cfg: &Config, args: &Value) -> Result<(Url, Value), Error> {
         return Err("original part quote mismatch".into());
     }
     let part = args["part"].as_object().ok_or("missing native part")?;
-    if part.keys().any(|k| !matches!(k.as_str(), "text" | "reply")) {
-        return Err("unsupported native part".into());
-    }
-    let text = part
-        .get("text")
-        .and_then(Value::as_str)
-        .filter(|s| !s.is_empty())
-        .ok_or("missing text")?;
-    let mut body = text_body(text);
-    if body.to_string().len() > TEXT_BYTES {
-        return Err("native text limit exceeded".into());
-    }
+    let mut body = if part.contains_key("prepared_part") {
+        attachment::message(args)?
+    } else {
+        if part.keys().any(|k| !matches!(k.as_str(), "text" | "reply"))
+            || args.get("prepared").is_some()
+        {
+            return Err("unsupported native part".into());
+        }
+        let text = part
+            .get("text")
+            .and_then(Value::as_str)
+            .filter(|s| !s.is_empty())
+            .ok_or("missing text")?;
+        let body = text_body(text);
+        if body.to_string().len() > TEXT_BYTES {
+            return Err("native text limit exceeded".into());
+        }
+        body
+    };
     let mut url = cfg.base.join("open-apis/im/v1/messages")?;
     if let Some(parent) = quote.or(root) {
         url.path_segments_mut()
@@ -233,5 +255,29 @@ mod tests {
         );
         args["route"]["bot"] = json!("another-app");
         assert!(delivery(&config(), &args).is_err());
+    }
+    #[test]
+    fn upload_precedes_caption_and_only_first_visible_part_quotes() {
+        let mut args = args();
+        let quote = json!({"event_id":4,"native_id":"om_quote"});
+        args["media"] = json!({"artifact_id":"original","version":"a".repeat(64)});
+        args["message"]["artifact_id"] = json!("original");
+        args["message"]["attachment_kind"] = json!("file");
+        args["message"]["name"] = json!("原始.bin");
+        args["message"]["reply_to_event_id"] = json!(4);
+        args["reply"] = quote.clone();
+        let planned = plan(&config(), &args).unwrap();
+        let parts = planned["parts"].as_array().unwrap();
+        assert_eq!(parts.len(), 3);
+        assert_eq!(parts[0]["preparation"], true);
+        assert_eq!(parts[0]["media"], args["media"]);
+        assert_eq!(parts[1]["text"], "你好");
+        assert_eq!(parts[1]["reply"], quote);
+        assert!(parts[0].get("reply").is_none() && parts[2].get("reply").is_none());
+        assert_eq!(parts[2], json!({"prepared_part":0,"kind":"file"}));
+        args["message"].as_object_mut().unwrap().remove("text");
+        let planned = plan(&config(), &args).unwrap();
+        assert_eq!(planned["parts"].as_array().unwrap().len(), 2);
+        assert_eq!(planned["parts"][1]["reply"], quote);
     }
 }

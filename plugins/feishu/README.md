@@ -19,7 +19,7 @@ reads up to 16 MiB and sends pages of up to 24 KiB, separately from WebSocket
 admission ACKs. The tenant token and one in-flight resource are held in memory.
 An idle transfer expires after 30 seconds. A failed resource GET is not retried.
 
-With `gateway.send`, the native worker delivers the pure text plan to the original
+With `gateway.send`, the native worker delivers the text plan to the original
 app and recipient. The Host supplies `route.scope`, original thread root and any
 explicit quote. Each confirmed response returns its original message ID. A
 platform refusal is failed, and response loss or a missing message ID is unknown.
@@ -33,7 +33,14 @@ original thread root. Token renewal stays inside this application's worker.
 `forget.owner` cancels and joins the current HTTP pipe, clears token and resource
 pages, then acknowledges the original key and watermark. An `erasure_only`
 process completes its handshake and cleanup without loading platform credentials.
-Outbound media and structured native mentions remain pending in EXT-006.
+With `media.open` and the negotiated `gateway.prepare_part`, the Host selects
+the original immutable image or file. The plugin reads bounded pages, verifies
+the complete digest and uploads the bytes with their original filename. The
+upload has its own physical receipt. Confirmed upload keys feed the subsequent
+caption parts and image/file message under the same application and tenant.
+An explicit quote belongs to the first visible part. Unknown results stop later
+parts, and a restart reads the original Host receipts. Structured native mentions
+and owner disposition remain pending in EXT-006.
 
 REST operations require curl 8.3 or newer. Set `YUKI_FEISHU_CURL` to the installed
 executable and include that name in the Host installation's environment allowlist.

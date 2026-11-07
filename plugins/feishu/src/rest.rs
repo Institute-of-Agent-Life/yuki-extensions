@@ -1,6 +1,6 @@
 //! Native message resources are addressed by the original application's token,
 //! message ID, resource key and resource type. Never accept a caller-provided URL.
-use crate::{Config, Error, segments, transport};
+use crate::{Config, Error, attachment, segments, transport};
 use data_encoding::BASE64;
 use serde_json::{Value, json};
 use sha2::{Digest, Sha256};
@@ -23,7 +23,7 @@ fn http(
         cfg,
         url,
         if body.is_some() { "POST" } else { "GET" },
-        body,
+        body.map(transport::Body::json),
         token,
         limit,
         cancelled,
@@ -151,7 +151,65 @@ impl Client {
             self.token = None;
         }
     }
-    pub fn effect(&mut self, cfg: &Config, args: &Value, recall: bool) -> Value {
+    pub fn upload(
+        &mut self,
+        cfg: &Config,
+        namespace: &str,
+        args: &Value,
+        mime: &str,
+        bytes: Vec<u8>,
+    ) -> Value {
+        if attachment::origin(cfg, namespace, &args["preparation_origin"]).is_err() {
+            return json!({"state":"failed"});
+        }
+        let Ok(body) = attachment::multipart(args, mime, bytes) else {
+            return json!({"state":"failed"});
+        };
+        let (path, key) = if args["part"]["kind"] == "image" {
+            ("open-apis/im/v1/images", "image_key")
+        } else {
+            ("open-apis/im/v1/files", "file_key")
+        };
+        let Ok(url) = cfg.base.join(path) else {
+            return json!({"state":"failed"});
+        };
+        let Ok(token) = self.token(cfg) else {
+            return json!({"state":"failed"});
+        };
+        let Ok((status, bytes)) = transport::request(
+            cfg,
+            &url,
+            "POST",
+            Some(body),
+            Some(&token),
+            128 * 1024,
+            &self.cancelled,
+        ) else {
+            return json!({"state":"unknown"});
+        };
+        let Ok(value) = serde_json::from_slice::<Value>(&bytes) else {
+            return json!({"state":"unknown"});
+        };
+        self.reject_token(&value["code"], &token);
+        if (200..500).contains(&status) && value["code"].as_i64().is_some_and(|code| code != 0) {
+            return json!({"state":"failed"});
+        }
+        if status != 200 || value["code"].as_i64() != Some(0) {
+            return json!({"state":"unknown"});
+        }
+        match segments::native(&value["data"][key]) {
+            Ok(key) => {
+                json!({"state":"confirmed","resource":{"kind":args["part"]["kind"],"key":key}})
+            }
+            Err(_) => json!({"state":"unknown"}),
+        }
+    }
+    pub fn effect(&mut self, cfg: &Config, namespace: &str, args: &Value, recall: bool) -> Value {
+        if args.get("prepared").is_some()
+            && attachment::origin(cfg, namespace, &args["prepared"]["origin"]).is_err()
+        {
+            return json!({"state":"failed"});
+        }
         let request = if recall {
             segments::recall(cfg, args).map(|url| (url, None))
         } else {
@@ -167,7 +225,7 @@ impl Client {
             cfg,
             &url,
             if recall { "DELETE" } else { "POST" },
-            body.as_ref(),
+            body.as_ref().map(transport::Body::json),
             Some(&token),
             128 * 1024,
             &self.cancelled,

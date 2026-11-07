@@ -12,6 +12,7 @@ from package import build
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tests/peers"))
 from feishu_delivery import exercise
+from feishu_upload import SCENARIOS as UPLOAD_SCENARIOS
 
 SCENARIOS = [
     "private",
@@ -52,13 +53,21 @@ def run(root, output, existing=None, scenarios=SCENARIOS):
     result = {
         "status": "PASS",
         "card": "EXT-006",
-        "card_status": "ORIGINAL_TEXT_DELIVERY_VERIFIED",
+        "card_status": (
+            "ORIGINAL_UPLOAD_VERIFIED"
+            if all(s.startswith("upload-") for s in scenarios)
+            else "ORIGINAL_TEXT_DELIVERY_VERIFIED"
+        ),
         "published": False,
         "package": package,
         "cases": cases,
         "paid_calls": 0,
         "pending": [
-            "original uploads and dependent sends",
+            *(
+                []
+                if all(s.startswith("upload-") for s in scenarios)
+                else ["original uploads and dependent sends"]
+            ),
             "structured native mentions",
             "owner disposition",
             "expanded published contract",
@@ -80,11 +89,14 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--package", type=Path)
-    parser.add_argument("--scenario", choices=SCENARIOS, action="append")
+    parser.add_argument("--uploads", action="store_true")
+    parser.add_argument(
+        "--scenario", choices=SCENARIOS + UPLOAD_SCENARIOS, action="append"
+    )
     args = parser.parse_args()
     run(
         ROOT,
         args.out.resolve(),
         args.package.resolve() if args.package else None,
-        args.scenario or SCENARIOS,
+        args.scenario or (UPLOAD_SCENARIOS if args.uploads else SCENARIOS),
     )

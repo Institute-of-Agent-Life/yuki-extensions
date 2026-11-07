@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "preview_sha256": "108d6fb6bf432300a42b737873ce727a97c821a56451f6e9fb49043a080f10e2",
+  "removed": [
+    {
+      "path": "/Volumes/huawei/\u9805\u76ee\u5be6\u6230/yuki-extensions/.ci-transfer/local-gate/feishu-rest-cache/target/feishu/68b348e1a72e71024df058a3edf0314955daeb351f547ab242744dc3ecfe454a",
+      "files": 4418,
+      "bytes": 471261972
+    },
+    {
+      "path": "/Volumes/huawei/\u9805\u76ee\u5be6\u6230/yuki-extensions/.ci-transfer/local-gate/feishu-rest-cache/target/feishu/7c61e6d02b734553bbab74977691658bc0bb5f608b98d37e74065ad61fe5ed6f",
+      "files": 4418,
+      "bytes": 471206366
+    }
+  ],
+  "retained_files_verified": 2437
+}

@@ -1,0 +1,9 @@
+feishu upload-file confirmed
+Traceback (most recent call last):
+  File "<stdin>", line 5, in <module>
+  File "/Volumes/huawei/項目實戰/yuki-extensions/.ci-transfer/work-feishu-upload/ci/feishu_delivery_check.py", line 48, in run
+    exercise(
+  File "/Volumes/huawei/項目實戰/yuki-extensions/.ci-transfer/work-feishu-upload/tests/peers/feishu_delivery.py", line 504, in exercise
+    assert not errors, errors
+           ^^^^^^^^^^
+AssertionError: ['Traceback (most recent call last):\n  File "/Volumes/huawei/項目實戰/yuki-extensions/.ci-transfer/work-feishu-upload/tests/peers/feishu_delivery.py", line 188, in do_POST\n    self.dispatch(False)\n  File "/Volumes/huawei/項目實戰/yuki-extensions/.ci-transfer/work-feishu-upload/tests/peers/feishu_delivery.py", line 237, in dispatch\n    upload.args(operator, models, person)\n  File "/Volumes/huawei/項目實戰/yuki-extensions/.ci-transfer/work-feishu-upload/tests/peers/feishu_upload.py", line 52, in args\n    self.selected = operator(\n                    ^^^^^^^^^\n  File "/Volumes/huawei/項目實戰/yuki-extensions/.ci-transfer/work-feishu-upload/tests/peers/feishu_delivery.py", line 87, in operator\n    result = cli("operator", *args)\n             ^^^^^^^^^^^^^^^^^^^^^^\n  File "/Volumes/huawei/項目實戰/yuki-extensions/.ci-transfer/work-feishu-upload/tests/peers/feishu_delivery.py", line 82, in cli\n    raise RuntimeError(result.stderr)\nRuntimeError: {"error":"operator: \\"source is not a supported image\\""}\n\n']

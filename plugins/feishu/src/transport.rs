@@ -10,6 +10,20 @@ use std::{
 };
 use url::Url;
 
+pub struct Body {
+    pub content_type: String,
+    pub bytes: Vec<u8>,
+}
+
+impl Body {
+    pub fn json(value: &Value) -> Self {
+        Self {
+            content_type: "application/json".into(),
+            bytes: value.to_string().into_bytes(),
+        }
+    }
+}
+
 struct Pipe {
     child: Child,
     reader: Option<JoinHandle<std::io::Result<Vec<u8>>>>,
@@ -31,7 +45,7 @@ pub fn request(
     cfg: &Config,
     url: &Url,
     method: &str,
-    body: Option<&Value>,
+    body: Option<Body>,
     token: Option<&str>,
     limit: usize,
     cancelled: &AtomicBool,
@@ -41,7 +55,6 @@ pub fn request(
     }
     // curl 8.3+ expands these child-only values without placing secrets or native IDs in argv.
     // The body uses binary stdin, independent of curl's configuration-line parser.
-    let input = body.map(Value::to_string).unwrap_or_default().into_bytes();
     let mut command =
         Command::new(std::env::var_os("YUKI_FEISHU_CURL").unwrap_or_else(|| "curl".into()));
     command.env("YUKI_FEISHU_REQUEST_URL", url.as_str());
@@ -62,14 +75,21 @@ pub fn request(
         "--request",
         method,
     ]);
-    if body.is_some() {
-        command.args([
-            "--header",
-            "Content-Type: application/json",
-            "--data-binary",
-            "@-",
-        ]);
-    }
+    let input = match body {
+        Some(body) => {
+            if body.content_type.chars().any(char::is_control) {
+                return Err("invalid request content type".into());
+            }
+            command.args([
+                "--header",
+                &format!("Content-Type: {}", body.content_type),
+                "--data-binary",
+                "@-",
+            ]);
+            body.bytes
+        }
+        None => Vec::new(),
+    };
     if let Some(token) = token {
         if token.is_empty()
             || !token.is_ascii()

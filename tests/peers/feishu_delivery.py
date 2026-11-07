@@ -19,6 +19,7 @@ import uuid
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "ci"))
 from personal_preview import free_address
 from telegram_attachment_delivery import materialize, write
+from feishu_upload import Upload
 
 
 def exercise(root, package, output, domain, scenario):
@@ -32,7 +33,10 @@ def exercise(root, package, output, domain, scenario):
         prefix="fs-send-", dir="/tmp" if os.name != "nt" else None
     ) as temporary:
         work = Path(temporary)
-        host, pin, target = materialize(root, work, "core-038-bounded-text")
+        contract = json.loads((root / "catalog/feishu.json").read_bytes())["source"][
+            "sdk_contract"
+        ]
+        host, pin, target = materialize(root, work, Path(contract).parent.name)
         spec = importlib.util.spec_from_file_location(
             "native_feishu", root / "tests/cases/EXT-005.py"
         )
@@ -41,9 +45,10 @@ def exercise(root, package, output, domain, scenario):
         Frame, serve = fixture.fixture_imports(root, work)
         app, tenant, namespace = "cli_" + domain, "tenant-" + domain, "fs." + domain
         person = str(uuid.uuid4())
-        private = scenario == "private"
-        thread = scenario not in {"private", "group"}
-        quoted = scenario == "reply"
+        upload = Upload(scenario) if scenario.startswith("upload-") else None
+        private = scenario in {"private", "upload-private"}
+        thread = scenario not in {"private", "group", "upload-private"}
+        quoted = scenario in {"reply", "upload-reply", "upload-reply-only"}
         recalling = scenario.startswith("recall")
         long = scenario in {"parts", "lost", "rejected", "expiry", "reply"}
         text = '雪\n"\\🌨' * 21000 if long else "原應用 original text"
@@ -199,11 +204,13 @@ def exercise(root, package, output, domain, scenario):
                     self.reply({"code": -1}, 500)
 
             def dispatch(self, recall):
-                body = (
-                    json.loads(self.rfile.read(int(self.headers["Content-Length"])))
-                    if self.headers.get("Content-Length")
-                    else None
-                )
+                raw = self.rfile.read(int(self.headers.get("Content-Length", 0)))
+                if upload and self.path in {
+                    "/open-apis/im/v1/images",
+                    "/open-apis/im/v1/files",
+                }:
+                    return upload.receive(self, raw, native, domain, len(tokens))
+                body = json.loads(raw) if raw else None
                 if self.path == "/callback/ws/endpoint":
                     assert body == {"AppID": app, "AppSecret": "fixture-" + app}
                     return self.reply(
@@ -226,7 +233,11 @@ def exercise(root, package, output, domain, scenario):
                     if count == 1:
                         call = ("get_my_capabilities", {})
                     elif count == 2:
-                        args = {"text": text}
+                        args = (
+                            upload.args(operator, models, person)
+                            if upload
+                            else {"text": text}
+                        )
                         if quoted:
                             wire = [
                                 json.loads(line)
@@ -245,7 +256,10 @@ def exercise(root, package, output, domain, scenario):
                             )
                             args["reply_to_event_id"] = accepted["event"]
                         call = ("send", args)
-                    elif scenario == "token-rejected" and count == 3:
+                    elif (
+                        scenario in {"token-rejected", "upload-token-recovered"}
+                        and count == 3
+                    ):
                         refused = json.loads(
                             next(
                                 v["content"]
@@ -257,7 +271,7 @@ def exercise(root, package, output, domain, scenario):
                             refused["state"] == "failed"
                             and len(native) == len(tokens) == 1
                         )
-                        call = ("send", {"text": text})
+                        call = ("send", {"text": upload.caption if upload else text})
                     elif recalling and count == 3:
                         call = (
                             "query_chat_history",
@@ -309,7 +323,13 @@ def exercise(root, package, output, domain, scenario):
                         }
                     )
                     if count == (
-                        6 if recalling else 4 if scenario == "token-rejected" else 3
+                        6
+                        if recalling
+                        else (
+                            4
+                            if scenario in {"token-rejected", "upload-token-recovered"}
+                            else 3
+                        )
                     ):
                         done.set()
                     return
@@ -347,7 +367,7 @@ def exercise(root, package, output, domain, scenario):
                         self.close_connection = True
                         return
                     return self.reply({"code": 0, "data": {}})
-                index = len(native)
+                index = len(native) - int(upload is not None)
                 location = urlsplit(self.path)
                 if thread:
                     parent = "om_original" if quoted and index == 1 else "om_root"
@@ -364,6 +384,8 @@ def exercise(root, package, output, domain, scenario):
                     assert body["receive_id"] == (
                         "ou_original" if private else "oc_original"
                     )
+                if upload:
+                    return upload.visible(self, body, native)
                 assert body["msg_type"] == "text" and isinstance(
                     json.loads(body["content"])["text"], str
                 )
@@ -428,6 +450,10 @@ def exercise(root, package, output, domain, scenario):
                 + '\nmodel="fixture"\nname="Yuki"\nmax_output=12000\nroot_slots=8\nroot_tool_calls=8\nmerge_ms=1\nmax_input_units=1200000\ncompact_soft_tokens=4000000\n'
             )
             cfg.write_text(initial)
+            if upload:
+                inputs = data / "media-inputs"
+                inputs.mkdir(exist_ok=True)
+                (inputs / "original.bin").write_bytes(upload.payload)
             with running():
                 operator("person", "create", person)
                 operator(
@@ -451,6 +477,8 @@ def exercise(root, package, output, domain, scenario):
                 "gateway.send",
                 "forget.owner",
             ]
+            if upload and scenario != "upload-denied":
+                grants.append("media.open")
             if scenario == "denied":
                 grants.remove("gateway.send")
             if recalling and scenario != "recall-denied":
@@ -506,6 +534,8 @@ def exercise(root, package, output, domain, scenario):
                     else "confirmed"
                 )
             )
+            if upload:
+                expected = upload.expected
             assert result["state"] == expected, result
             counts = len(native), len(models), len(tokens)
             with running():
@@ -515,6 +545,24 @@ def exercise(root, package, output, domain, scenario):
                     )
                     == result
                 )
+                if scenario == "upload-token-recovered":
+                    first = json.loads(
+                        next(
+                            v["content"]
+                            for v in models[-1]["messages"]
+                            if v.get("tool_call_id") == "original-2"
+                        )
+                    )
+                    assert (
+                        first["state"] == "failed"
+                        and len(first["result"]["parts"]) == 1
+                    )
+                    assert (
+                        operator(
+                            "effect", "read", first["namespace"], first["id"], person
+                        )
+                        == first
+                    )
                 until = time.monotonic() + 10
                 while len(acks) < 2:
                     assert time.monotonic() < until, "cold duplicate not acknowledged"
@@ -528,6 +576,7 @@ def exercise(root, package, output, domain, scenario):
             assert acks and not errors, errors
             if (
                 expected == "confirmed"
+                and not upload
                 and not recalling
                 and scenario != "token-rejected"
             ):
@@ -537,7 +586,14 @@ def exercise(root, package, output, domain, scenario):
                     )
                     == text
                 )
-            if long:
+            if upload:
+                upload.verify(
+                    result,
+                    native,
+                    tokens,
+                    [json.loads(line) for line in trace.read_bytes().splitlines()],
+                )
+            elif long:
                 assert len(native) == (2 if scenario in {"lost", "rejected"} else 3), {
                     "scenario": scenario,
                     "native_requests": len(native),

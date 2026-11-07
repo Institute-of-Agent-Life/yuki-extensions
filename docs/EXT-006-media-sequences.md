@@ -62,3 +62,13 @@ SDK alpha.20 先由原 plan handle 分頁讀取文字，核對每頁 offset、to
 ## Windows 長請求回歸
 
 系統 curl 7.79.1 的配置行讀取在大段文字上留下空正文與缺失授權頭。獨立回環重現保留於本次故障記錄。REST 改用 curl 8.3 以上的子程序環境展開 URL／token，正文從 binary stdin 傳送；部署可透過 `YUKI_FEISHU_CURL` 明選既有執行檔。三端 gate 保留含 Unicode、換行、引號與反斜線的 210,000-byte 原文，逐原生請求核收件路由、完整拼回及逐步回執。
+
+## 原生上傳、附言與原資源鍵
+
+規劃先產生一筆 `gateway.prepare_part`，從該 handle 分頁取得原不可變媒體。每頁核 offset、總長、MIME、版本及完整 SHA-256 後，以原 app／tenant token 上傳 image/file。上傳 confirmed 的原資源鍵只供同一 send 的後續步讀取。
+
+可見順序沿基線的附言再附件。準備步先完成，接著逐段附言，最後發送引用原資源鍵的 image/file 訊息。原事件引用只放在第一個可見步。沒有附言時直接從準備步進原附件訊息。未指定名稱由核心 #116 從原獲授權版本補齊，明確名稱沿原請求。
+
+正常例驗兩域、image/file、Unicode 名稱、長附言、話題／私聊及原事件引用。故障例驗上傳已確認而附言失敗、上傳回應遺失或缺鍵、可見訊息失敗／未知、token 拒絕後的新獨立操作、分頁讀取中遺忘與晚到頁、上傳中取消，以及冷啟原回條零重送。每筆原生 HTTP 有獨立物理結果，上傳未知時停止附言與訊息。
+
+上傳及發送欄位依原 Python 基線和官方組合範例核對。[發送檔案範例](https://github.com/larksuite/oapi-sdk-python-demo/blob/main/composite_api/im/send_file.py) [發送圖片範例](https://github.com/larksuite/oapi-sdk-python-demo/blob/main/composite_api/im/send_image.py)

@@ -94,7 +94,11 @@ if __name__ == "__main__":
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument(
         "--contract",
-        choices=["core-038-topic", "core-038-bounded-text"],
+        choices=[
+            "core-038-topic",
+            "core-038-bounded-text",
+            "core-038-original-filename",
+        ],
         default="core-038-topic",
     )
     parser.add_argument("--prior-topic-root", action="store_true")

@@ -1,0 +1,61 @@
+{
+  "repository": "Institute-of-Agent-Life/yuki-core",
+  "source_commit": "0e45e53958e77b5afddebd52e90936f1350c2ca6",
+  "source_tree_sha256": "d2e938cc9e6f1d4bdb591dd2e59074531a234008ad1412374ff9ce755ca888c7",
+  "published": false,
+  "source_pr": 116,
+  "platforms": {
+    "darwin-arm64": {
+      "archive": "yuki-core-0e45e53958e7-darwin-arm64.zip",
+      "sha256": "a4eab0fe612036f5e98126632502817898c05265dbbcd1f081cd38e70cf067cf",
+      "binary_sha256": "9601d03a377781a64f6f47f8d8a825513d08a5818ff2c219d2e56690f0032c4a",
+      "signer": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPQdOM7dcP+1Y1Lyf1GIJB07PwfLoH1j4iZXTyjgvpYt huangjiawei@huangjiaweideMac-mini.local",
+      "signer_sha256": "3729f2331c2fe869a8b98f1dd04d53f139620add1abbcbc7ac0b03d4f65c4073"
+    },
+    "linux-arm64": {
+      "archive": "yuki-core-0e45e53958e7-linux-arm64.zip",
+      "sha256": "8b7771c5ea294e70c76186216503ea4628fb568baba1122953b56cbdc65a8198",
+      "binary_sha256": "8591308977cc1220f6f5ca62d66a416490c3d61af6797a7efea0cb27e5586410",
+      "signer": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP7trb+kArVTSnk2nM2KGKOJ5NcTueTumSajwfUm0uww root@71c2124ac269",
+      "signer_sha256": "6a28622867ab5d9bb7ed584639c580d035b61d83ca2f9402fec3b978e1a2996e"
+    },
+    "windows-x86_64": {
+      "archive": "yuki-core-0e45e53958e7-windows-x86_64.zip",
+      "sha256": "8086e5afaa282ff635416e4d7185b2b0b5de64f72dc9f68549490417730440f9",
+      "binary_sha256": "63b9a6ae7d45dc9c6a8ca1f7eab793ea9fa5a2e8cac3320ebdcae1b63def8994",
+      "signer": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE17Z7XoZ0wQFy1VyclnQ06iFLPixqLu9BcstfYakUFT hilbert@hjw",
+      "signer_sha256": "617f9ad350381846543632cde6d17dc7bb660bce25d3f86fce4f1e3adf5317e3"
+    }
+  },
+  "schema_sha256": "e4ea0c7366984f750af96feb8e06b099ce90d5dd19f240f9f0712b7c47599004",
+  "fixtures_sha256": "2d986f7c2bf30d597fbf667f346d189a8aad9bf6194d1341fc13620e4907316e",
+  "sdk": {
+    "python": "1.0.0a20",
+    "rust": "1.0.0-alpha.20"
+  },
+  "methods": [
+    "command.invoke",
+    "forget.ack",
+    "forget.request",
+    "gateway.activity",
+    "gateway.dispatch_part",
+    "gateway.inbound",
+    "gateway.media",
+    "gateway.part_status",
+    "gateway.plan_send",
+    "gateway.prepare_part",
+    "gateway.read_text",
+    "gateway.recall",
+    "gateway.status",
+    "observer.event",
+    "search.begin",
+    "search.finish",
+    "search.status",
+    "terminal.bind",
+    "terminal.scope",
+    "tool.call",
+    "tool.status"
+  ],
+  "reader_version": 56,
+  "rust_crate_sha256": "ead6399dc90f70419bdfdf8a96e2694118501e62ab4aee5121fb5405cc100b50"
+}
