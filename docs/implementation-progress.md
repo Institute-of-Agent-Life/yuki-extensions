@@ -4,6 +4,8 @@
 行為基線 `329ca7c487414d2f54ddd98ff4727446ed2446cd`。官方插件接入層用 Rust。
 獨立 Connector 沿用 Python 3.12；共享預算沿總書 K05。
 
+**EXT-029 已按維護者指定的模型原生範圍通過 HJW 驗收。** `codex/ext-029-model-native` 以已發布 B0 1.0.0（來源 `c6bd0c75e387`）把原私聊的 Main 搜尋接到模型 Responses 的 `web_search`。成功來源、純文字無證、429、斷線與冷啟皆有原根逐次回執。三次普通對答／搜尋之後，各故障各新增一筆物理回執；冷啟沒有新增預留或請求。四個搜尋 HTTP 均到回環模型。操作步驟見 `docs/EXT-029-model-native.md`，Windows 原始 wire 與 Host、來源及封包雜湊見 `artifacts/EXT-029/01`。早期缺字段及舊版不接受 `max_results` 的失敗已留存。原 EXT-029 的 Tavily 插件移出本倉範圍，核心 #104 新增三個外部搜尋方法僅供核對。原 #53 合併後的主線 CI `42315421136` 全過。現行範圍 12/68（含 1 張改範圍），剩餘分級在 `artifacts/readiness/after-model-native-search.json`。
+
 **Windows 重現入口。** `codex/public-base-windows-runner` 讓 `ci/windows.py` 傳送三張卡各自已核的公開 Host 和原插件 ZIP。EXT-003、005、028 在 HJW 的三個獨立目錄併行執行，逐份核對返回的 ZIP、來源快照及 manifest。回條在 `artifacts/ci/windows-public/receipt.json`。#52 實作 `736bc7ffc6fe` 已合併 `32400b6d39f0`，三平台 7 個 CI 作業、9 個 ZIP 及實際合併樹均已核。正式 11/68；其餘分級及下一步見 `artifacts/readiness/after-public-fetch-network.json`。
 
 **EXT-028 公開基底網路驗收通過。** `codex/ext-028-public-fetch`。在 HJW 使用 CORE-044 `plugin-base-v1.0.0` 與公開 freeze 的原 web-fetch 套件。由 Main 明選的網頁重導至回環埠，原操作收到 `destination_denied`，目標收到零個請求。第二個原頁 2,109,144 bytes，reader 在 2,097,152 bytes 停止；原執行以相同 handle/version 讀回 `partial`、來源、實收 SHA 與 18,022 bytes 保留前綴的開頭。逐方法與逐跳回條在 `artifacts/EXT-028/public-network-01`。前一輪寫回條時變數名稱錯誤，原診斷保留；最終命令重驗通過。DNS 換址、跨來源憑據、代理故障、空 HTML 和完整頁由原 `artifacts/EXT-028/01` 與 R07 覆蓋。#51 已合併 `a56cffde23ce`；兩個入站插件實收已交核心 #103。正式 11/68，EXT-067 保留簽署候選見證。

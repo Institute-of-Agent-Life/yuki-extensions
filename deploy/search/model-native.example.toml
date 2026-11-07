@@ -1,0 +1,20 @@
+# Merge these sections into the selected owner's yuki.toml.
+# Set the endpoint and model to a connection supporting Responses web_search.
+[search]
+mode = "native"
+strategy = "bridge"
+connection_id = "native-model-search"
+credential_namespace = "search"
+cache_seconds = 600
+
+[search.connection]
+protocol = "openai_responses"
+endpoint = "https://model.example.invalid/v1/responses"
+model = "replace-with-search-capable-model"
+name = "Native search"
+key_env = "YUKI_NATIVE_SEARCH_KEY"
+merge_ms = 0
+root_slots = 8
+max_input_units = 400000
+max_output = 1024
+native_web_search = true

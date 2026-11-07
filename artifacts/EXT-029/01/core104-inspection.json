@@ -1,0 +1,55 @@
+{
+  "source": "e74e468e0485d23e5fef29487d536191505a3cb7",
+  "implementation": "29d5225ce545d0d1945cfae661aea3daffb4b6e3",
+  "merged": "3fb011eb6337b28a7a018923b46d80e21acefa87",
+  "handoff_sha256": "bab0b4e0dd36e0f49f82b173283154e6c1cd5fe1740e7de1bea152f6cc0a0947",
+  "index_sha256": "907aa1793a4e21e90da26e6a28f30af29d8d7fad421e7cedaa5f5b4fd20b39af",
+  "sdk": {
+    "python": "1.0.0a15",
+    "rust": "1.0.0-alpha.15"
+  },
+  "source_tree_sha256": "489a41cd88850fc3702acc2b3900938dba41b8ac48bcfa30dd85c1110b590a87",
+  "crate_sha256": "eb92e112fa581fc521929700eaa4ed15b68214ce253baf983db9e100eedf416a",
+  "schema_sha256": "d8202a4e581e8d1d7f76c29d92930e2ba21603b0ce0d2d06b1efefc04641226f",
+  "added_methods": [
+    "search.begin",
+    "search.finish",
+    "search.status"
+  ],
+  "gateway_methods_unchanged_from_core98": [
+    "gateway.dispatch_part",
+    "gateway.inbound",
+    "gateway.media",
+    "gateway.part_status",
+    "gateway.plan_send",
+    "gateway.status"
+  ],
+  "reviewed_packages": [
+    {
+      "platform": "darwin-arm64",
+      "zip_sha256": "ff2c47baf9bf8f4f4cc47e0a2a9070afc3c22d5c650571e9d2bd159bcf21e518",
+      "binary_sha256": "fcb6b13bc3e601553c9f8a4105bf58b3c24448f0cca2daff9da03e87e10e922e",
+      "signed_manifest_sha256": "e519ba65f123c36603eb4029aa71b0dc4cb2758fa10fce6978c09e2c7ce23636",
+      "verified_members": 498,
+      "signer_sha256": "e96174f3b537c2130a58cbc2c65c096ae5abc3982c664eaeab4290fd3a064577"
+    },
+    {
+      "platform": "linux-arm64",
+      "zip_sha256": "9550f2bd4b7e28e9fdce6e141e880d19db257b80b08ff846605e0a427642a2c7",
+      "binary_sha256": "346f843676747e17dc24f6a3ffcd6c8a55137a2bb8908de19b7462dbda1283c3",
+      "signed_manifest_sha256": "ca21ab4ff859c32b79a7972886234a0ca305d7d1998a1669729c40291a64f5fb",
+      "verified_members": 501,
+      "signer_sha256": "68736f7948cf021dc64a41968ac08a5eafd9caaf718cb56ef0db0c4aa4ce3fc9"
+    },
+    {
+      "platform": "windows-x86_64",
+      "zip_sha256": "bbf6d5380c384d923b4859917b359ef83b281ca571bb845328e93748dcf9f4d9",
+      "binary_sha256": "6e5a2b24697ab90340d066279bdf113010698055f70df37f2a173f309c349a91",
+      "signed_manifest_sha256": "dded7a2b4c426ee4fabe71c415b27a74f579e3ee2287e59c3b135882ad6655f1",
+      "verified_members": 510,
+      "signer_sha256": "15d18379b329cda4514063cf3206540ebcbfb7eaba5ebdc111ca959b894a82ae"
+    }
+  ],
+  "selected_for_native_run": false,
+  "published": false
+}

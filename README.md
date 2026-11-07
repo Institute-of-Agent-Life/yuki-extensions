@@ -34,3 +34,6 @@ Progress and current limitations: [docs/implementation-progress.md](docs/impleme
 The verified taskbook is retained under `docs/taskbook/v3.2`; its wording is
 reference material subject to the user's working agreements. K05 governs the
 shared logical-request reservation and separate physical-attempt accounting.
+
+For model-native web search, configure the Host's Responses connection using
+[EXT-029 setup and verification](docs/EXT-029-model-native.md).

@@ -1,0 +1,5 @@
+{
+  "r1": "Host rejected a test profile missing merge_ms. Included the required connection fields from the producer installation example.",
+  "r2": "Published 1.0.0 rejects the later search.max_results setting. Omitted the field for B0 and verified its actual default in the request.",
+  "r3": "Initial registered-tool trigger passed. Final r4 uses accepted private ingress and checks the bound root ledger and cold replay."
+}

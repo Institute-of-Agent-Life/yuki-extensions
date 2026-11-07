@@ -9,6 +9,10 @@
 Telegram、飛書、web-fetch 與 env 的 Windows 候選回條已記入實作進度。
 以下需求沿用核心已發布的方法與授權規則，未定欄位由核心生產者確認。
 
+## CORE-024／032 → EXT-029 模型原生搜尋
+
+核心 #104 的 `search.begin/finish/status` 已交付未發布的開發包。原 #101 提出的 Tavily 安裝與外部預算需求已隨本倉範圍變更結案。模型原生 `web_search` 使用現有核心連線與根帳本，Windows 回條在 `artifacts/EXT-029/01`。本卡無需等待 Tavily 配置。
+
 ## CORE-002 → EXT-007／EXT-019
 
 已收到 CORE-002 `89f15db` 的未發布 oracle、index 與 manifest，

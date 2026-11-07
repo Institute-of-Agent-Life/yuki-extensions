@@ -1,0 +1,20 @@
+{
+  "previous": "after-public-fetch-network.json",
+  "counts": {
+    "formally_accepted": 12,
+    "signed_candidate_acceptance_pass": 1,
+    "partial_or_diagnostic_evidence": 18,
+    "no_named_card_artifact": 37
+  },
+  "scope_change": "11 original-scope cards plus EXT-029 accepted against the maintainer-selected model-native replacement. The original Tavily plugin is out of scope.",
+  "EXT-029": {
+    "core": "plugin-base-v1.0.0",
+    "source": "c6bd0c75e38717abc71373201d31a77982428d5b",
+    "evidence": "artifacts/EXT-029/01",
+    "new_core104_external_contract": "inspected, not used",
+    "windows": "PASS",
+    "billing": "loopback fixtures only"
+  },
+  "EXT-004/006": "Core #104 adds external search only; all six gateway method schemas match #98. No new original-installation outbound media success handoff found in #73/#98.",
+  "next": "Positive native media-send routes and permission sequences; original Work/PTY and Social/entry; CORE-045 functional minor. Preserve prior evidence."
+}
