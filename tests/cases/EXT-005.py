@@ -47,7 +47,8 @@ def fixture_imports(root, work):
 def prepare(root, output, *, contract="core-032", package_builder=build, reader_archives=None,
             message_sample=None, expected_topic="thread", host_materializer=materialize,
             work_directory=None, native_topics=False, expected_topic_root=None,
-            reader_loader=None, reader_versions=("0.1.0-alpha.1", "0.1.0-alpha.2")):
+            reader_loader=None, reader_versions=("0.1.0-alpha.1", "0.1.0-alpha.2"),
+            reader_prior_topic_root=False):
     work=work_directory or output/"work"
     work.mkdir()
     Frame,serve=fixture_imports(root,work)
@@ -277,7 +278,12 @@ def prepare(root, output, *, contract="core-032", package_builder=build, reader_
             if native_topics:
                 with closing(sqlite3.connect((data / "core.sqlite").as_uri()+"?mode=ro",uri=True)) as database:
                     topic_roots = database.execute("SELECT event,namespace,topic_root FROM gateway_topic_origins ORDER BY event").fetchall()
-                assert topic_roots == [(observations[app]["new"][0],"fs."+routes[app][0],expected_topic_root) for app in routes]
+                phases = ["old", "new"] if reader_prior_topic_root else ["new"]
+                expected_roots = sorted(
+                    (observations[app][phase][0], "fs." + routes[app][0], expected_topic_root)
+                    for app in routes for phase in phases
+                )
+                assert topic_roots == expected_roots
             return "reader-replay.json", {"status":"PASS","scope":"stopped-plugin-copy","host":platform,
                 "host_source":pin["source_commit"],"packages":reader_pins,"events":observations,
                 "original_topic_roots":topic_roots,

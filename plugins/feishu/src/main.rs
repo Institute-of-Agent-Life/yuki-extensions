@@ -1,6 +1,10 @@
 mod host;
 mod ingress;
 mod rest;
+mod segments;
+mod text;
+mod transport;
+mod worker;
 mod ws;
 
 use data_encoding::BASE64;
@@ -108,7 +112,8 @@ impl Config {
     fn endpoint(&self) -> Result<Value, Error> {
         let url = self.base.join("callback/ws/endpoint")?;
         let payload = json!({"AppID":self.app,"AppSecret":self.secret});
-        let mut cmd = Command::new("curl");
+        let mut cmd =
+            Command::new(env::var_os("YUKI_FEISHU_CURL").unwrap_or_else(|| "curl".into()));
         cmd.args([
             "--disable",
             "--silent",
@@ -262,7 +267,7 @@ fn websocket(cfg: &Config, url: &Url) -> Result<Socket, Error> {
             }
             "WebSocket handshake failed"
         })?;
-    timer.set_read_timeout(Some(Duration::from_millis(500)))?;
+    timer.set_read_timeout(Some(Duration::from_millis(25)))?;
     Ok(ws)
 }
 
@@ -388,6 +393,9 @@ fn connection(
 }
 
 fn main() -> Result<(), Error> {
+    if env::var("YUKI_PLUGIN_START_MODE").as_deref() == Ok("erasure_only") {
+        return host::cleanup();
+    }
     let cfg = Config::load()?;
     let mut host = Host::connect(&cfg)?;
     let mut timing = Timing {

@@ -1,97 +1,37 @@
 //! Native message resources are addressed by the original application's token,
 //! message ID, resource key and resource type. Never accept a caller-provided URL.
-use crate::{Config, Error};
+use crate::{Config, Error, segments, transport};
 use data_encoding::BASE64;
 use serde_json::{Value, json};
 use sha2::{Digest, Sha256};
 use std::{
-    io::{Read, Write},
-    process::{Command, Stdio},
+    sync::{Arc, atomic::AtomicBool},
     time::{Duration, Instant},
 };
 use url::Url;
 
 const MAX: usize = 16 * 1024 * 1024;
-fn config_value(s: &str) -> Result<String, Error> {
-    if s.chars().any(char::is_control) {
-        return Err("invalid request".into());
-    }
-    Ok(s.replace('\\', "\\\\").replace('"', "\\\""))
-}
 fn http(
     cfg: &Config,
     url: &Url,
     body: Option<&Value>,
     token: Option<&str>,
     limit: usize,
+    cancelled: &AtomicBool,
 ) -> Result<Vec<u8>, Error> {
-    let mut config = format!("url = \"{}\"\n", config_value(url.as_str())?);
-    if let Some(v) = body {
-        config.push_str(&format!(
-            "header = \"Content-Type: application/json\"\ndata = \"{}\"\n",
-            config_value(&v.to_string())?
-        ));
+    let (status, bytes) = transport::request(
+        cfg,
+        url,
+        if body.is_some() { "POST" } else { "GET" },
+        body,
+        token,
+        limit,
+        cancelled,
+    )?;
+    if status != 200 {
+        return Err("resource endpoint refused".into());
     }
-    if let Some(t) = token {
-        config.push_str(&format!(
-            "header = \"Authorization: Bearer {}\"\n",
-            config_value(t)?
-        ));
-    }
-    let mut cmd = Command::new("curl");
-    cmd.args([
-        "--disable",
-        "--silent",
-        "--globoff",
-        "--max-time",
-        "12",
-        "--max-filesize",
-        &limit.to_string(),
-        "--write-out",
-        "%{http_code}",
-        "--config",
-        "-",
-    ]);
-    if let Some(p) = &cfg.proxy {
-        cmd.env("https_proxy", p.as_str())
-            .env("http_proxy", p.as_str())
-            .env("no_proxy", "");
-    } else {
-        cmd.args(["--noproxy", "*"]);
-    }
-    let mut child = cmd
-        .stdin(Stdio::piped())
-        .stdout(Stdio::piped())
-        .stderr(Stdio::null())
-        .spawn()?;
-    let result = (|| -> Result<Vec<u8>, Error> {
-        child
-            .stdin
-            .take()
-            .ok_or("missing pipe")?
-            .write_all(config.as_bytes())?;
-        let mut bytes = Vec::new();
-        child
-            .stdout
-            .take()
-            .ok_or("missing pipe")?
-            .take(limit as u64 + 4)
-            .read_to_end(&mut bytes)?;
-        if !child.wait()?.success()
-            || bytes.len() < 3
-            || bytes.len() > limit + 3
-            || !bytes.ends_with(b"200")
-        {
-            return Err("resource endpoint refused".into());
-        }
-        bytes.truncate(bytes.len() - 3);
-        Ok(bytes)
-    })();
-    if !matches!(child.try_wait(), Ok(Some(_))) {
-        let _ = child.kill();
-    }
-    let _ = child.wait();
-    result
+    Ok(bytes)
 }
 
 fn resource(cfg: &Config, p: &Value) -> Result<Url, Error> {
@@ -138,8 +78,15 @@ struct Page {
 pub struct Client {
     token: Option<(String, Instant)>,
     page: Option<Page>,
+    cancelled: Arc<AtomicBool>,
 }
 impl Client {
+    pub fn new(cancelled: Arc<AtomicBool>) -> Self {
+        Self {
+            cancelled,
+            ..Self::default()
+        }
+    }
     pub fn expire(&mut self) {
         if self
             .page
@@ -156,7 +103,7 @@ impl Client {
             self.token = None;
         }
     }
-    fn token(&mut self, cfg: &Config) -> Result<&str, Error> {
+    fn token(&mut self, cfg: &Config) -> Result<String, Error> {
         self.expire();
         if self.token.is_none() {
             let payload = json!({"app_id":cfg.app,"app_secret":cfg.secret});
@@ -167,6 +114,7 @@ impl Client {
                 Some(&payload),
                 None,
                 65536,
+                &self.cancelled,
             )?;
             let v: Value = serde_json::from_slice(&b)?;
             if v["code"].as_i64() != Some(0) {
@@ -191,7 +139,59 @@ impl Client {
                 .ok_or("invalid expiry")?;
             self.token = Some((t.into(), until));
         }
-        Ok(&self.token.as_ref().ok_or("no tenant token")?.0)
+        Ok(self.token.as_ref().ok_or("no tenant token")?.0.clone())
+    }
+    fn reject_token(&mut self, code: &Value, original: &str) {
+        if matches!(code.as_i64(), Some(99991663..=99991665))
+            && self
+                .token
+                .as_ref()
+                .is_some_and(|(token, _)| token == original)
+        {
+            self.token = None;
+        }
+    }
+    pub fn effect(&mut self, cfg: &Config, args: &Value, recall: bool) -> Value {
+        let request = if recall {
+            segments::recall(cfg, args).map(|url| (url, None))
+        } else {
+            segments::delivery(cfg, args).map(|(url, body)| (url, Some(body)))
+        };
+        let Ok((url, body)) = request else {
+            return json!({"state":"failed"});
+        };
+        let Ok(token) = self.token(cfg) else {
+            return json!({"state":"failed"});
+        };
+        let result = transport::request(
+            cfg,
+            &url,
+            if recall { "DELETE" } else { "POST" },
+            body.as_ref(),
+            Some(&token),
+            128 * 1024,
+            &self.cancelled,
+        );
+        let Ok((status, bytes)) = result else {
+            return json!({"state":"unknown"});
+        };
+        let Ok(value) = serde_json::from_slice::<Value>(&bytes) else {
+            return json!({"state":"unknown"});
+        };
+        self.reject_token(&value["code"], &token);
+        if (200..500).contains(&status) && value["code"].as_i64().is_some_and(|code| code != 0) {
+            return json!({"state":"failed"});
+        }
+        if status != 200 || value["code"].as_i64() != Some(0) {
+            return json!({"state":"unknown"});
+        }
+        if recall {
+            return json!({"state":"confirmed"});
+        }
+        match segments::native(&value["data"]["message_id"]) {
+            Ok(native_id) => json!({"state":"confirmed", "locator":native_id}),
+            Err(_) => json!({"state":"unknown"}),
+        }
     }
     pub fn chunk(&mut self, cfg: &Config, namespace: &str, params: Value) -> Result<Value, Error> {
         self.expire();
@@ -223,7 +223,14 @@ impl Client {
             }
             let url = resource(cfg, &key)?;
             let token = self.token(cfg)?;
-            let data = http(cfg, &url, None, Some(token), MAX)?;
+            let (status, data) =
+                transport::request(cfg, &url, "GET", None, Some(&token), MAX, &self.cancelled)?;
+            if status != 200 {
+                if let Ok(value) = serde_json::from_slice::<Value>(&data) {
+                    self.reject_token(&value["code"], &token);
+                }
+                return Err("resource endpoint refused".into());
+            }
             if data.is_empty() {
                 return Err("empty resource".into());
             }

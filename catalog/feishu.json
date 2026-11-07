@@ -3,7 +3,7 @@
   "kind": "plugin",
   "path": "plugins/feishu",
   "ecosystem": "rust",
-  "version": "0.1.0-alpha.5",
+  "version": "0.1.0-alpha.6",
   "tag_prefix": "feishu/v",
   "license": "AGPL-3.0-only",
   "notices": [
@@ -17,7 +17,7 @@
     "repository": "Institute-of-Agent-Life/yuki-extensions",
     "baseline": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
     "upstream_path": "src/yuki/gateway/providers/feishu_ws.py",
-    "sdk_contract": "compat/core-038-topic/source.lock.json"
+    "sdk_contract": "compat/core-038-bounded-text/source.lock.json"
   },
   "check_paths": [
     "tests/cases/EXT-005.py",
@@ -30,6 +30,10 @@
     "compat/core-038-topic/yuki-plugin-sdk-1.0.0-alpha.18.crate",
     "ci/feishu_topic_check.py",
     "ci/feishu_topic_readers.py",
-    "tests/peers/telegram_attachment_delivery.py"
+    "tests/peers/telegram_attachment_delivery.py",
+    "tests/peers/feishu_delivery.py",
+    "ci/feishu_delivery_check.py",
+    "compat/core-038-bounded-text/source.lock.json",
+    "compat/core-038-bounded-text/yuki-plugin-sdk-1.0.0-alpha.20.crate"
   ]
 }
