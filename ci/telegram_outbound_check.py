@@ -53,6 +53,7 @@ def run(root, output):
         "reply-text",
         "reply-rejected",
         "recall", "recall-lost", "recall-rejected", "recall-denied", "recall-malformed",
+        "typing", "typing-private", "typing-rejected", "typing-lost", "typing-malformed", "typing-denied", "typing-disabled",
     ]:
         case = output / scenario
         with (output / (scenario + ".log")).open("xb") as log:
@@ -77,8 +78,8 @@ def run(root, output):
     receipt = {
         "status": "PASS",
         "card": "EXT-004",
-        "card_status": "PARTIAL_OUTBOUND_ATTACHMENT_VERIFIED",
-        "pending": ["typing-lifecycle"],
+        "card_status": "VERIFIED_ON_CANDIDATE",
+        "pending": ["published activity, recall and attachment contract"],
         "platform": platform.platform(),
         "curl": {"program": curl_program, "version": curl},
         "package": built,
@@ -97,6 +98,7 @@ def run(root, output):
             {"status": "PASS", "platform": receipt["platform"], "cases": len(cases)}
         )
     )
+    return receipt
 
 
 if __name__ == "__main__":

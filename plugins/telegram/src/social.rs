@@ -5,7 +5,7 @@ use yuki_plugin_sdk::Id;
 
 const TEXT_LIMIT: usize = 4096;
 
-fn route(arguments: &Value, bot: i64) -> Result<(&str, Option<i64>), Error> {
+pub(crate) fn route(arguments: &Value, bot: i64) -> Result<(&str, Option<i64>), Error> {
     let route = &arguments["route"];
     if route["bot"].as_str() != Some(bot.to_string().as_str()) {
         return Err("wrong original Telegram bot".into());

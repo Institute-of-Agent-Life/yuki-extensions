@@ -4,6 +4,10 @@
 行為基線 `329ca7c487414d2f54ddd98ff4727446ed2446cd`。官方插件接入層用 Rust。
 獨立 Connector 沿用 Python 3.12；共享預算沿總書 K05。
 
+**EXT-004 三端候選驗收通過。** 分支 `codex/ext-004-typing`，Telegram Rust alpha.9／SDK alpha.17。Mac、Linux、HJW 各以核心 #109 受測提交 `78394082d8ea` 通過 22 組真 Host 重放，含附件、原事件引用、原消息撤回及 typing。UI 403、格式錯誤和懸停均保留成功投遞，停用、缺授權、到期及清除來源均有原線路證據。三端原包與完整 SHA-256 在 `artifacts/EXT-004/original-activity-17/telegram-delivery.json`，來源快照 `121ae753ad5f691b31e6d62a39396d9ea18c5ce98a695276770dd864d3ecc98b`。各端重跑 Rust 11 項、HTTP／cache／快照來源回歸及正常卡入口；EXT-001／002／019 的三端基線復用經 47 個相同輸入校驗，另驗變更後的卡入口，詳 `baseline-reuse.json`。早期 Linux 寫回條缺 Git 的故障已修正並重驗，原始失敗保留。
+
+核心 #109 已合併 `dc698f5a88dd`，#108 已合併 `427ffdf8a937`，擴展撤回 #57 已合併 `f2bb0c977eaf`，回條在 `artifacts/ci/local-pr/57/receipt.json`。三個 GitHub 工作流均只保留手動入口，後續 PR 與新標籤沿本地 CI。全部新增能力為未發布候選，EXT-004 正式跨倉驗收仍待擴充合同發布，正式總數維持 12/68。下一步推進 EXT-006 原 app／tenant 的原生投遞及 CORE-045 真實穩定插件相容驗收。
+
 **EXT-004 原消息撤回三端通過。** 分支 `codex/ext-004-original-recall`，Telegram Rust alpha.8／SDK alpha.16。Mac／Linux／HJW 各用核心 #108 同平台簽署候選 `120db2d663af` 通過十五組真 Host 重放，涵蓋公開歷史選取原消息、重複撤回、授權拒絕、平台拒絕、回應遺失與格式不明、冷啟原回執。三端二進位、SDK、原 wire 及完整 SHA-256 在 `artifacts/EXT-004/original-recall-14/telegram-delivery.json`。本輪重跑 HTTP／cache 單元測試及真插件重放，EXT-001／002／019 三端既有基線的 48 個輸入檔雜湊逐件相符，復用證據見 `baseline-reuse.json`。包為本地未發布候選，完整 EXT-004 接續 typing。
 
 **EXT-004 原事件引用三端通過。** `codex/ext-004-original-reply` 的 Telegram alpha.7 消費核心 #107 的簽署候選 `7965392bd7de`。Mac／Linux／HJW 各十組真 Host 重放通過，群話題內的附件與文字只有首段引用原 message ID，原訊息不存在時保留 failed，冷啟零重送。完整來源、版本、三端 ZIP 及 SHA-256 在 `artifacts/EXT-004/original-reply-13/telegram-delivery.json`。尚未發布，整卡繼續補撤回與 typing 生命周期。

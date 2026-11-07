@@ -1,3 +1,4 @@
+mod activity;
 mod attachment;
 mod ingress;
 mod media;
@@ -57,11 +58,12 @@ fn frame(input: &HostInput) -> Result<Vec<u8>, Error> {
 fn initialize(
     input: &HostInput,
     out: &mut impl Write,
-) -> Result<(Calls, String, bool, bool), Error> {
+) -> Result<(Calls, String, bool, bool, bool), Error> {
     let binding: Binding = serde_json::from_str(&env::var("YUKI_PLUGIN_BINDING")?)?;
     let namespace = binding.namespace.clone();
     let media_grant = binding.grants.iter().any(|g| g == "gateway.media");
     let send_grant = binding.grants.iter().any(|g| g == "gateway.send");
+    let activity_grant = binding.grants.iter().any(|g| g == "gateway.activity");
     let offer = binding.offer();
     let mut peer = Peer::new(binding)?;
     emit(out, &peer.request(Id::Number(1), offer)?)?;
@@ -86,7 +88,12 @@ fn initialize(
                                     .any(|m| m["name"] == *method && m["revision"] == 1)
                             })
                         });
-                return Ok((Calls::negotiated(init)?, namespace, media, send));
+                let activity = activity_grant
+                    && init["method_revisions"].as_array().is_some_and(|ms| {
+                        ms.iter()
+                            .any(|m| m["name"] == "gateway.activity" && m["revision"] == 1)
+                    });
+                return Ok((Calls::negotiated(init)?, namespace, media, send, activity));
             }
             Received::Response { result: Err(_), .. } => return Err("initialize refused".into()),
             Received::Notification => {}
@@ -140,6 +147,8 @@ struct Gateway<'a> {
     token: &'a str,
     enabled: bool,
     send: bool,
+    activity_enabled: bool,
+    activity: activity::Activity,
     pending: Option<social::Pending>,
     reading: Option<attachment::Read>,
     media: media::Media,
@@ -153,7 +162,12 @@ impl Gateway<'_> {
         out: &mut impl Write,
     ) -> Result<(), Error> {
         match incoming {
-            Incoming::Notification { .. } => Ok(()),
+            Incoming::Notification { method, params } => {
+                if self.activity_enabled && method == "gateway.activity" {
+                    self.activity.receive(&params, self.bot, Instant::now());
+                }
+                Ok(())
+            }
             Incoming::Result { id, method, result } if method == "media.open" => {
                 if self
                     .reading
@@ -202,6 +216,7 @@ impl Gateway<'_> {
                     // A forgotten source must not leave readable bytes or a live upload.
                     // Dropping the transfer waits for curl and its bounded pipe to close.
                     self.media = media::Media::default();
+                    self.activity.clear();
                     if let Some(read) = self.reading.take() {
                         emit(
                             out,
@@ -304,6 +319,7 @@ impl Gateway<'_> {
         Ok(())
     }
     fn poll_delivery(&mut self, out: &mut impl Write) -> Result<(), Error> {
+        self.activity.tick(self.base, self.token, Instant::now());
         if self.pending.as_mut().is_some_and(social::Pending::ready)
             && let Some(request) = self.pending.take()
         {
@@ -336,7 +352,7 @@ impl Gateway<'_> {
 
 fn main() -> Result<(), Error> {
     let (input, mut out) = (host_input(), io::stdout().lock());
-    let (mut calls, namespace, enabled, send) = initialize(&input, &mut out)?;
+    let (mut calls, namespace, enabled, send, activity_enabled) = initialize(&input, &mut out)?;
     if env::var("YUKI_PLUGIN_START_MODE").as_deref() == Ok("erasure_only") {
         // All retained media bytes and upload pipes belong to the previous process.
         // A cleanup-only instance acknowledges before opening any Bot connection.
@@ -409,6 +425,8 @@ fn main() -> Result<(), Error> {
         token: &token,
         enabled,
         send,
+        activity_enabled,
+        activity: activity::Activity::default(),
         pending: None,
         reading: None,
         media: media::Media::default(),

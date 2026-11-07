@@ -8,6 +8,7 @@ import importlib.util
 import json
 import os
 import platform
+import shutil
 from pathlib import Path
 import subprocess
 import sys
@@ -41,16 +42,20 @@ def main() -> int:
         status = "FAIL"
         (args.out / "failure.txt").write_text(traceback.format_exc(), encoding="utf-8")
         traceback.print_exc()
-    commit = subprocess.run(["git", "rev-parse", "HEAD"], cwd=root, text=True, capture_output=True)
+    snapshot = os.environ.get("YUKI_SOURCE_SNAPSHOT_SHA256")
+    git = shutil.which("git") if not snapshot else None
+    commit = subprocess.run([git, "rev-parse", "HEAD"], cwd=root, text=True, capture_output=True) if git else None
     manifest = {"task": args.task, "status": status,
                 "phase": "preparation" if args.preparation else "acceptance",
                 "card_status": report.get("card_status", status),
                 "platform": platform.platform(), "python": sys.version,
-                "source_commit": commit.stdout.strip() if commit.returncode == 0 else None,
-                "source_snapshot_sha256": os.environ.get("YUKI_SOURCE_SNAPSHOT_SHA256"),
+                "source_commit": commit.stdout.strip() if commit and commit.returncode == 0 else None,
+                "source_snapshot_sha256": snapshot,
                 "command": [sys.executable, "ci/check.py", args.task, *(["--preparation"] if args.preparation else []), "--out", str(args.out)],
                 "files": {p.relative_to(args.out).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
-                          for p in sorted(args.out.rglob("*")) if p.is_file() and not {"work", "packages"}.intersection(p.relative_to(args.out).parts)}}
+                          for p in sorted(args.out.rglob("*")) if p.is_file()
+                          and not any(part.startswith("._") for part in p.relative_to(args.out).parts)
+                          and not {"work", "packages"}.intersection(p.relative_to(args.out).parts)}}
     (args.out / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({"task": args.task, "status": status, "out": str(args.out)}))
     return 0 if status == "PASS" else 1

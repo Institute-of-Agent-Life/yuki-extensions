@@ -1,0 +1,110 @@
+{
+  "status": "verified-and-merged",
+  "pr": 57,
+  "head": "04d5b4b39edb05a7eb8f615d3769114a67a0de22",
+  "base": "5ba070ca10f8705b7de286b1995999d40c1dbf90",
+  "tested_merge": "18b7769c770264c905278e492e5b7e1bad6012a2",
+  "merged": "f2bb0c977eafe167094af8bab350adfedd613300",
+  "tree": "b995f87fde962835ed1d3a36dc634b36ef575d73",
+  "evidence": "/Volumes/huawei/\u9805\u76ee\u5be6\u6230/yuki-extensions/.ci-transfer/work-tg-recall/artifacts/EXT-004/original-recall-14/telegram-delivery.json",
+  "evidence_sha256": "c5a71ba9a0fde30e3c1d059ffe48c24dae2d1a39e6168c411741d203967455e0",
+  "source_files_checked": 589,
+  "post_test_documentation": [
+    "docs/implementation-progress.md",
+    "docs/EXT-004-outbound-attachment.md",
+    "docs/EXT-004-outbound-attachment.md"
+  ],
+  "platforms": {
+    "macos": {
+      "status": "PASS",
+      "archive": "macos.zip",
+      "sha256": "1f22f69d79c68c881f5fc88636ea845df15c521e9571bc34a495fe76b3d723e7",
+      "scenarios": [
+        "confirmed",
+        "denied",
+        "rejected",
+        "lost",
+        "caption",
+        "caption-lost",
+        "forget",
+        "reply",
+        "reply-text",
+        "reply-rejected",
+        "recall",
+        "recall-lost",
+        "recall-rejected",
+        "recall-denied",
+        "recall-malformed"
+      ],
+      "package_version": "0.1.0-alpha.8",
+      "artifacts": {
+        "Cargo.lock": "4f8624408f5018949c7628834825c302eb42302170cc01cd53dd92cdbff0dcd6",
+        "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "plugin.toml": "6f62d31145ff5672688f30d880f5ac3a6289b28c91ead7e7e8144daecd943ec2",
+        "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "yuki-telegram": "9cf358cf87e0e0e944636e9e4d02add60327b7f8308b59fdf06594835b39710d"
+      }
+    },
+    "linux": {
+      "status": "PASS",
+      "archive": "linux.zip",
+      "sha256": "327e6842b36ff45042b5be154fa4b36b9a0d60fcca06952e42ccfb9a1efc9814",
+      "scenarios": [
+        "confirmed",
+        "denied",
+        "rejected",
+        "lost",
+        "caption",
+        "caption-lost",
+        "forget",
+        "reply",
+        "reply-text",
+        "reply-rejected",
+        "recall",
+        "recall-lost",
+        "recall-rejected",
+        "recall-denied",
+        "recall-malformed"
+      ],
+      "package_version": "0.1.0-alpha.8",
+      "artifacts": {
+        "Cargo.lock": "4f8624408f5018949c7628834825c302eb42302170cc01cd53dd92cdbff0dcd6",
+        "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "plugin.toml": "6f62d31145ff5672688f30d880f5ac3a6289b28c91ead7e7e8144daecd943ec2",
+        "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "yuki-telegram": "f844c586e6caa7d7ccd822365a24733a4323743a6fb47e44cbd9c240cb565324"
+      }
+    },
+    "windows": {
+      "status": "PASS",
+      "archive": "windows.zip",
+      "sha256": "3ef32ac463e894989d8facaa36df4cad5b01784e27a82ef8de5674f6256c8d15",
+      "scenarios": [
+        "confirmed",
+        "denied",
+        "rejected",
+        "lost",
+        "caption",
+        "caption-lost",
+        "forget",
+        "reply",
+        "reply-text",
+        "reply-rejected",
+        "recall",
+        "recall-lost",
+        "recall-rejected",
+        "recall-denied",
+        "recall-malformed"
+      ],
+      "package_version": "0.1.0-alpha.8",
+      "artifacts": {
+        "Cargo.lock": "4f8624408f5018949c7628834825c302eb42302170cc01cd53dd92cdbff0dcd6",
+        "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "plugin.toml": "6f62d31145ff5672688f30d880f5ac3a6289b28c91ead7e7e8144daecd943ec2",
+        "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "yuki-telegram.exe": "0456678d9620d6117d04c01a7a37b5e753cd9dc8a83d8b4047f48dbf92d42fe1"
+      }
+    }
+  },
+  "card_status": "PARTIAL_ATTACHMENT_REPLY_AND_RECALL_VERIFIED"
+}

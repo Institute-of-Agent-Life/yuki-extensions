@@ -29,5 +29,5 @@ def prepare(root, output):
 
 
 def run(root, output):
-    return 'telegram-delivery.json', {'status':'BLOCKED','card_status':'AWAITING_ORIGINAL_INSTALLATION_AND_SOCIAL',
-        'scope':'Run --preparation for the native Telegram file path. Real Host selection, send, recall and typing remain open.'}
+    from telegram_outbound_check import run as check_original_delivery
+    return 'telegram-delivery.json', check_original_delivery(root, output / 'native')

@@ -66,13 +66,14 @@ def exercise(root, package, output, scenario):
         host, pin, target = materialize(root, work)
         data = work / "owner"
         trace = output / "gateway.jsonl"
-        native, models, operations, errors = [], [], [], []
+        native, models, operations, errors, activity = [], [], [], [], []
         person = str(uuid.uuid4())
         finished = threading.Event()
         cleanup_started = threading.Event()
         quoted = scenario.startswith("reply")
         recalling = scenario.startswith("recall")
-        grouped = quoted or recalling
+        typing = scenario.startswith("typing")
+        grouped = quoted or recalling or (typing and scenario != "typing-private")
         chat = -15 if grouped else 8
         topic = 7 if grouped else None
         payload = b"Yuki original attachment\n" + bytes(range(251)) * 97
@@ -187,6 +188,8 @@ def exercise(root, package, output, scenario):
                     count = len(models)
                     call = None
                     if count == 1:
+                        if typing:
+                            time.sleep(3.6)
                         call = ("get_my_capabilities", {})
                     elif count == 2:
                         receipt = json.loads(
@@ -232,6 +235,11 @@ def exercise(root, package, output, scenario):
                         assert original_event["direction"] == "outbound", original_event
                         call = ("recall_own_message", {"event_id":original_event["event_id"]})
                     message = {"role": "assistant", "content": "finished"}
+                    if scenario == "typing-disabled" and count == 3:
+                        operator("host", "enable", "telegram", "false")
+                        before = len(activity)
+                        time.sleep(3.6)
+                        assert len(activity) == before, "typing continued after disable"
                     if call:
                         message.update(
                             content=None,
@@ -264,6 +272,18 @@ def exercise(root, package, output, scenario):
                     if count == (6 if recalling else 3):
                         finished.set()
                     return
+                if self.path == "/bot101:fixture/sendChatAction":
+                    args = json.loads(body)
+                    assert args == {"chat_id":str(chat), "action":"typing",
+                        **({"message_thread_id":topic} if grouped else {})}, args
+                    activity.append({"method":"sendChatAction", "time":time.monotonic(), **args})
+                    if scenario == "typing-lost":
+                        time.sleep(8)
+                        self.close_connection = True
+                        return
+                    if scenario == "typing-rejected":
+                        return self.reply({"ok":False, "error_code":403}, 403)
+                    return self.reply({"ok":True, "result":{} if scenario == "typing-malformed" else True})
                 if self.path == "/bot101:fixture/deleteMessage":
                     args = json.loads(body)
                     assert args == {"chat_id":str(chat),"message_id":121}, args
@@ -416,6 +436,8 @@ def exercise(root, package, output, scenario):
                         1,
                     )["assignment"]
                 grants = ["gateway.inbound", "gateway.media", "gateway.send"]
+                if typing and scenario != "typing-denied":
+                    grants.append("gateway.activity")
                 if scenario != "denied":
                     grants.extend(["media.open", "forget.owner"])
                 if recalling and scenario != "recall-denied":
@@ -457,6 +479,24 @@ def exercise(root, package, output, scenario):
                             if v.get("role") == "tool"
                         )
                     )
+                    if typing:
+                        if scenario not in {"typing-denied", "typing-disabled"}:
+                            deadline = time.monotonic() + 8
+                            while True:
+                                frames = [json.loads(line)["frame"] for line in trace.read_bytes().splitlines()]
+                                if any(v.get("method") == "gateway.activity" and
+                                    v["params"]["enabled"] is False for v in frames):
+                                    break
+                                assert time.monotonic() < deadline, "turn did not end its activity lease"
+                                time.sleep(.05)
+                            assert len(activity) >= 2, activity
+                        elif scenario == "typing-denied":
+                            assert activity == [], activity
+                        else:
+                            assert len(activity) >= 2, activity
+                        before = len(activity)
+                        time.sleep(3.6)
+                        assert len(activity) == before, "typing renewed after turn ended"
                 expected = (
                     "unknown"
                     if scenario in {"lost", "caption-lost", "recall-lost", "recall-malformed"}
@@ -513,6 +553,7 @@ def exercise(root, package, output, scenario):
                 write(output / "native.json", native)
                 write(output / "models.json", models)
                 write(output / "errors.json", errors)
+                write(output / "activity.json", activity)
         proof = {
             "status": "PASS",
             "scenario": scenario,
@@ -522,6 +563,8 @@ def exercise(root, package, output, scenario):
             "core_source": pin["source_commit"],
             "paid_calls": 0,
             "native_requests": len(native),
+            "activity_requests": len(activity),
+            "activity_did_not_change_delivery": typing and result["state"] == "confirmed",
             "state": result["state"],
             "original_receipt_reopened": True,
             "receipt": result,
@@ -549,6 +592,7 @@ if __name__ == "__main__":
             "reply-text",
             "reply-rejected",
             "recall", "recall-lost", "recall-rejected", "recall-denied", "recall-malformed",
+            "typing", "typing-private", "typing-rejected", "typing-lost", "typing-malformed", "typing-denied", "typing-disabled",
         ],
         required=True,
     )

@@ -58,6 +58,9 @@ def exercise(binary, work):
                 result = {"file_path": paths[fid]}
                 if fid != "too-large":
                     result["file_size"] = {"declared-large": 16777217}.get(fid, len(DATA))
+            elif method == "sendChatAction":
+                assert body == {"chat_id":"-15","message_thread_id":7,"action":"typing"}
+                result = True
             else:
                 self.send_error(404)
                 return
@@ -84,7 +87,7 @@ def exercise(binary, work):
     server = ThreadingHTTPServer(("127.0.0.1", 0), Native)
     threading.Thread(target=server.serve_forever, daemon=True).start()
     ns = "tg.bot101"
-    grants = ["gateway.inbound", "gateway.media", "gateway.send", "media.open", "forget.owner"]
+    grants = ["gateway.inbound", "gateway.media", "gateway.send", "gateway.activity", "media.open", "forget.owner"]
     binding = {"namespace": ns, "grants": grants, "manifest_revision": "e"*64, "declarations": []}
     env = dict(os.environ, YUKI_PLUGIN_BINDING=json.dumps(binding), YUKI_TELEGRAM_BOT_ID="101",
         YUKI_TELEGRAM_TOKEN="101:fixture", YUKI_TELEGRAM_API=f"http://127.0.0.1:{server.server_port}",
@@ -138,6 +141,20 @@ def exercise(binary, work):
     def native():
         return [(r["method"],r.get("path", r.get("body",{}).get("file_id"))) for r in http
                 if r["method"] in ("getFile","GET")]
+
+    def actions():
+        return [r for r in http if r["method"] == "sendChatAction"]
+
+    def activity(enabled=True, bot="101"):
+        send({"jsonrpc":"2.0", "method":"gateway.activity", "params":{
+            "lease_id":"original-turn", "enabled":enabled,"ttl_ms":5000,
+            "route":{"entry":"original-entry","bot":bot,"chat":"-15","topic":"7"}}})
+
+    def await_action(count):
+        deadline = time.monotonic() + 4
+        while len(actions()) < count:
+            assert time.monotonic() < deadline, "native typing did not arrive"
+            time.sleep(.025)
 
     try:
         init = read()
@@ -202,6 +219,23 @@ def exercise(binary, work):
         call(offset=PAGE)
         assert native() == fetched and not release.is_set()
         checks.append("same digest and exact pages while waiting for admission and during getUpdates")
+        activity(bot="202")
+        time.sleep(.15)
+        assert actions() == []
+        activity()
+        await_action(1)
+        # With no Host renewal the last lease expires after five seconds.
+        time.sleep(6.2)
+        assert len(actions()) == 2, actions()
+        activity(False)
+        time.sleep(.1)
+        assert len(actions()) == 2
+        activity()
+        await_action(3)
+        activity(False)
+        time.sleep(3.2)
+        assert len(actions()) == 3
+        checks.append("original Bot/topic typing expires without renewal and explicit end stops new requests")
         for fid, gets in [("declared-large",0),("unsafe",0),("short",1),("redirect",1),("too-large",1)]:
             before=len(native())
             call({"reference":fid,"transfer":fid})
@@ -211,12 +245,17 @@ def exercise(binary, work):
         assert not any(r.get("path")=="unexpected-redirect" for r in http)
         call(ok=True)
         before = len(native())
+        activity()
+        await_action(4)
         send({"jsonrpc":"2.0","id":800,"method":"forget.request",
               "params":{"key":"erase-inbound","watermark":10}})
         assert read()["result"] == {"key":"erase-inbound","watermark":10,
             "proof":"volatile-media-cleared-and-upload-pipe-closed"}
         call(offset=PAGE)
         assert len(native()) == before
+        time.sleep(3.2)
+        assert len(actions()) == 4
+        checks.append("forget ends typing before the original watermark acknowledgement")
         checks.append("forget clears cached inbound bytes before acknowledging the original watermark")
 
         proc.stdin.close()

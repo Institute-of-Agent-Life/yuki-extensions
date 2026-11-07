@@ -61,13 +61,22 @@ impl Drop for Request {
 }
 
 pub fn start(url: &str, post: Option<&serde_json::Value>, limit: usize) -> Result<Request, Error> {
+    start_with_timeout(url, post, limit, 40)
+}
+
+pub fn start_with_timeout(
+    url: &str,
+    post: Option<&serde_json::Value>,
+    limit: usize,
+    timeout_seconds: u32,
+) -> Result<Request, Error> {
     let mut child = curl()
         .args([
             "--disable",
             "--silent",
             "--globoff",
             "--max-time",
-            "40",
+            &timeout_seconds.to_string(),
             "--max-filesize",
             &limit.to_string(),
             "--write-out",

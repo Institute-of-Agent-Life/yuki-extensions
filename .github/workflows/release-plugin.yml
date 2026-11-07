@@ -1,14 +1,5 @@
 name: Independent plugin release
 on:
-  push:
-    tags: ['plugin/*/v*']
-  pull_request:
-    paths:
-      - '.github/workflows/release-plugin.yml'
-      - 'catalog/verified.json'
-      - 'releases/**'
-      - 'ci/publish-plugin.py'
-      - 'compat/stable-1.0/**'
   workflow_dispatch:
     inputs:
       publish:
