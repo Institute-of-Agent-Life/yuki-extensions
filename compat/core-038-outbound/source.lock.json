@@ -1,32 +1,32 @@
 {
   "repository": "Institute-of-Agent-Life/yuki-core",
-  "source_commit": "120db2d663afe94f511e6f3117494f4da93a685e",
+  "source_commit": "78394082d8eae7f7918cbfbf235a22a616be1446",
   "published": false,
   "platforms": {
     "darwin-arm64": {
-      "archive": "yuki-core-120db2d663af-darwin-arm64.zip",
-      "sha256": "d9a7ced81fd8ed685efc4733d853f660d6b65eda71fdc2e1686c9fc11c64cb0d",
-      "binary_sha256": "46c3ccb1bca5ddf66f0e9d707f80236c3a094fd9e3c651f9dadd4ee6302b14de",
-      "signer": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIObC5Fc8l4Lp9F5cwSTCo1r8Nztck9upS7BfTXhmYGYA huangjiawei@huangjiaweideMac-mini.local",
-      "signer_sha256": "be14e97d822176a4b21de0be1d0e6993eaa97c512f54a2648e9507f027502df6"
+      "archive": "yuki-core-78394082d8ea-darwin-arm64.zip",
+      "sha256": "94919ddcd1da5d390659e3792d1bf5d880f20ee18a1571a13259a200c5a0d0c5",
+      "binary_sha256": "575a2cffbb55b4edcead2a9aa54a35c8dc7b0c0c9f304f59b43e665f8a6be721",
+      "signer": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF5QsjlJavjYYyV2BWcZnYFK9uM7qNxT6hMyl4+n/XYQ huangjiawei@huangjiaweideMac-mini.local",
+      "signer_sha256": "8656c5e67850da85bcaf8efd68773c4c6150d8e57ff7591e3c655ac430d867e1"
     },
     "linux-arm64": {
-      "archive": "yuki-core-120db2d663af-linux-arm64.zip",
-      "sha256": "12fec51d15ce52e1457f1b42c9229665de0a4096948cf3f7d73a82a334ca7937",
-      "binary_sha256": "ed3185056c2ce86888db65e07fe279a5cefd625c07995d91b96c13d63f88269b",
-      "signer": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJpKWFUehAQFzUmvsSiJUquaiPA+AtkZKy1tfeuVOBK6 root@84a56fefbe0a",
-      "signer_sha256": "b4ba67277511babb08754eaccbc622fdeb81b25b25e2467c0effdca5ddb8b8ba"
+      "archive": "yuki-core-78394082d8ea-linux-arm64.zip",
+      "sha256": "30cea538e132f651b9db5ff6ac1f4ba2681812ba7158f91188f7a0beae9c73a7",
+      "binary_sha256": "ffeefba129ca644f6dd1e760c4c1c649982adf71ed880500ed43890565a2cbc6",
+      "signer": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGtbVTvLKHMo5XTWLKOKSaA8WEUNUu7mbAKg8rnMdMbQ root@fa131bc69631",
+      "signer_sha256": "1a63ac9f823b018b44ec08f395418b4fbcfe6b3561af53e8c6022432108e690e"
     },
     "windows-x86_64": {
-      "archive": "yuki-core-120db2d663af-windows-x86_64.zip",
-      "sha256": "9a66ca01ffa9ae6dc37c784496e3984a8fa5ac65c358f0fbabe33f0a18966c92",
-      "binary_sha256": "d2b4ba68303313a5657718f6b69acb90cbff9e915210f81dccd189055d3d92e2",
-      "signer": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJdjEws/lByFobTOojsVpGeZq+sStf5+xquYPLAKD1cE hilbert@hjw",
-      "signer_sha256": "6482f34927c2e28e9a53cf12f1483cefcaf87b3caca2f953c9f5f363a73a6782"
+      "archive": "yuki-core-78394082d8ea-windows-x86_64.zip",
+      "sha256": "41af39a4910e6efc0781241cbe1dea06a9301582cc883261831300a1a4c63f70",
+      "binary_sha256": "e2467a9e7ae3905c08703a67aaf7bdb55dce6eabe2d8abbb6b9e0cd8e3e3f1d1",
+      "signer": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIByQGjyqQPF+eCDAAGlIFyEdV8ashUyJ0OU77/1a7RLL hilbert@hjw",
+      "signer_sha256": "672437ff7ea291dc4368d6bf89b20e5b6b9b60eef41b5e38650a216df6f86afc"
     }
   },
-  "schema_sha256": "8f1ac190d6f8471aac1f1f09d806015a8e2941a6d7e6d10f7d44c486762b086a",
+  "schema_sha256": "9451a4e0e64a625f680675ca5a3d1bde5d475e8c70b83a1dde43a90931354182",
   "fixtures_sha256": "2d986f7c2bf30d597fbf667f346d189a8aad9bf6194d1341fc13620e4907316e",
-  "source_tree_sha256": "2b9525f97f49ca1b110f51c7e0d3ab3285e05bc155b0ff9ddc7e2202b069d8b3",
-  "source_pr": 108
+  "source_tree_sha256": "7ea15f9cb0e1575617eaf8f2548fd3785fc69061a797414ba1cdaef5fbae714e",
+  "source_pr": 109
 }

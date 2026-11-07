@@ -1,0 +1,17 @@
+{
+  "repository": "Institute-of-Agent-Life/yuki-core",
+  "source_commit": "78394082d8eae7f7918cbfbf235a22a616be1446",
+  "source_pr": 109,
+  "published": false,
+  "sdk": {
+    "python": "1.0.0a17",
+    "rust": "1.0.0-alpha.17"
+  },
+  "rust_crate_sha256": "0aa6b01703908dc86fb9026eeaba3278842c089bd97832db09102dcd3496956b",
+  "python_wheel_sha256": "6ab2e3a1313a23b6b41edf2c84374c4ccc7fbd9ef6d9e0a7c5f2061883afff8e",
+  "schema_sha256": "7d3401a3147c6ef7e8b1890e46f1c4c198b5ed04fabd3a44fdf19c5454871f79",
+  "handshake_revision": 1,
+  "verification_sha256": "f591c746dfcf13d5a6acccff7b7b0cf3cc5da6f52ffde9cf2de4c6ffd8cd858c",
+  "verification": "both SDKs verified by producer",
+  "capability": "gateway.activity revision 1 requires its own grant"
+}
