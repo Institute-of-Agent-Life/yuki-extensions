@@ -1,3 +1,7 @@
+**EXT-006 原文字、引用與撤回三端通過。** 分支 `codex/ext-006-native-rest`，Rust alpha.6／SDK alpha.20，鎖定核心 #115 的受測來源 `942a534763ba`。Mac、Linux、HJW Windows 各 30 組真 Host 對拍、三種話題路由、alpha.5 → alpha.6 → alpha.5 回讀及兩域的原取件／遺忘取消全部通過，8 MB 原文分頁各端均在限時內完成。完整原包、逐次回執及來源綁定見 `artifacts/EXT-006/original-rest-22/original-rest.json`，SHA-256 `a4a2a93845c33d297ec180869aa440070b6d45a2dba0937dfa0a13afff225959`。三端均使用回環平台及模型，付費呼叫為零。
+
+本輪修正 Windows curl 7.79.1 長配置行遺失正文／授權的故障，REST 使用 curl 8.3 以上的 binary stdin 與子程序環境展開，HJW 明選現有 Git curl 8.17.0。獨立重現與修正對照見 `artifacts/EXT-006/curl-compatibility/`。另修正取消驗收對 Windows TCP reset 的判讀。前兩輪失敗詳 `original-rest-22/previous-attempts.json`，本輪三端編譯 target 已清理。全部候選尚未發布，正式總數維持 12／68，接續原生附件上傳、結構化提及與 owner-disposition。
+
 **EXT-006 原話題定位三端通過。** 分支 `codex/ext-006-original-delivery`，#60 的飛書 alpha.5 鎖定核心 #113 三端候選 `e6e4972a76911` 與 Rust SDK alpha.18。Mac、Linux、HJW 各完成三種話題情境、同安裝 alpha.4 → alpha.5 → alpha.4 回讀及原 app／tenant 媒體回歸。原 `thread_id` 保持事件去重鍵，原 `topic_root` 由首次接納獨立保存，舊事件重投沒有補填。601 個快照檔案與三端原包經核對，EXT-001／002／019 基線的 47 個輸入保持相同，完整證據在 `artifacts/EXT-006/original-topic-18/`。所有平台端點使用回環，付費呼叫為零。正式任務總數維持 12／68，原生投遞、上傳分步與 owner-disposition 繼續實作。
 
 # 擴展實作進度

@@ -38,8 +38,27 @@ HJW 對照：舊實作在 `try_clone()` 出來的 Windows socket 上設 500ms，
 
 引用、發送及撤回的路由欄位依官方 SDK 與 API 文件核對。[發送訊息](https://open.feishu.cn/document/server-docs/im-v1/message/create) [回覆訊息](https://open.feishu.cn/document/server-docs/im-v1/message/reply) [撤回訊息](https://open.feishu.cn/document/server-docs/im-v1/message/delete)
 
-此階段交付原文字、引用和撤回的候選。附件需要核心先提供獨立上傳回執及後續發送引用原資源的合同，提及需要原人物解析後的結構化欄位。完整 EXT-006 保持進行中。
+此階段交付原文字、引用和撤回的候選。附件的獨立上傳回執與後續引用合同已隨核心 #114 合併，下一步接入原生上傳。提及需要原人物解析後的結構化欄位。完整 EXT-006 保持進行中。
 
 既有去重鍵保留原 `thread_id` 作 `topic`。SDK alpha.18 的獨立 `topic_root` 保存原 `root_id`，缺少時採本次 `message_id`。只有獲授權的 app／tenant 入站附上原根定位。Mac 已以實際核心候選通過飛書／Lark 的原話題根、首條話題訊息及普通群三種情境，原事件為 1／1／2／2。
 
 `ci/feishu_topic_check.py` 執行三種情境。`ci/feishu_topic_readers.py` 接受已核對的舊、新原生包，對同一資料目錄跑 alpha.4 → alpha.5 → alpha.4。Mac 回讀 app A 的 1 → 2／1 → 2、app B 的 3 → 4／3 → 4，原根證據只存在新事件 2 和 4。三端同來源候選與回條由本地 CI 彙整後交接。完整 EXT-006 繼續等待原生投遞、上傳與 owner-disposition 驗收。
+
+## 原文字投遞的本輪驗收
+
+原話題 #60 已在三端通過並合併。下一候選以核心提供的 `route.scope` 選 `open_id` 或 `chat_id`，以原引用優先於話題根。計畫按 JSON 請求的實際 UTF-8 bytes 切分，逐步派發後保存 confirmed／failed／unknown；未知結果由 Host 冷啟讀原回條。測試覆蓋兩應用、私聊、普通群、話題、原引用、三段中斷、token 到期、撤回無權、平台懸停與 forget。共用 REST worker 的取消會先結束 curl 並清除 token／頁面，再回原 forget key／watermark。測試全走本地端點。
+
+## 長文字跨幀驗收缺口
+
+`rest-delivery-preflight-02/feishu-parts` 已到第二次模型回應，SDK 的 65,536-byte frame 上限阻止原大段文字進入計畫。該例的原生派發為零，完整 gate 保持失敗待修。核心的新 `gateway.read_text` 會以原 call handle 分頁讀取完整文字，計畫僅傳 byte range 與摘要，派發時只讀原已確認片段。三段、引用、token 到期和第二段失回應仍保留於預設驗收，待生產者交付後重跑。
+
+短文字與撤回使用原 #114 候選先驗獨立情境。`rest-delivery-preflight-04` 中飛書／Lark 各七例通過。原生回條欄位由首輪發現的 `native_id` 修正成合同的 `locator`。拒權例另補先等待原 ACK，再停止 Host，避免測試自身提前結束 native writer。
+
+
+## 原長文字的分頁與遺忘
+
+SDK alpha.20 先由原 plan handle 分頁讀取文字，核對每頁 offset、total、digest、done 和完整 UTF-8 摘要，再按原生上限產生連續 byte ranges。實際派發只用原 dispatch handle 取得該段。取消讀取時清除文字緩衝並先回應原請求，再確認 forget。舊頁回應由原 RPC ID 隔離，不能推進後來的計畫。無效頁、摘要或提前 done 必須拒絕，計畫階段的原生 HTTP 發送數為零。
+
+## Windows 長請求回歸
+
+系統 curl 7.79.1 的配置行讀取在大段文字上留下空正文與缺失授權頭。獨立回環重現保留於本次故障記錄。REST 改用 curl 8.3 以上的子程序環境展開 URL／token，正文從 binary stdin 傳送；部署可透過 `YUKI_FEISHU_CURL` 明選既有執行檔。三端 gate 保留含 Unicode、換行、引號與反斜線的 210,000-byte 原文，逐原生請求核收件路由、完整拼回及逐步回執。

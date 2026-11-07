@@ -1,0 +1,4573 @@
+{
+  "status": "PASS",
+  "card": "EXT-006",
+  "card_status": "ORIGINAL_TEXT_DELIVERY_VERIFIED",
+  "published": false,
+  "source_branch": "codex/ext-006-native-rest",
+  "source_snapshot_sha256": "63dc2f70e77a6530373690069bb2fa6b9d8eaed7516cc94589ed3349becc11d1",
+  "source_files": "source-files.json",
+  "source_files_sha256": "7053db00aeada37563bf4b8f5dc54542e813297a7a2ad843c1d7ddabd873deea",
+  "core_source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+  "sdk": {
+    "python": "1.0.0a20",
+    "rust": "1.0.0-alpha.20"
+  },
+  "sdk_crate_sha256": "b5a4c3e82cdd4914e93fdc235129147a84525b07421f7898ebb0dbb1d7f7790a",
+  "platforms": {
+    "macos": {
+      "status": "PASS",
+      "archive": "macos.zip",
+      "sha256": "a7f3dd5d8b98a16074743668fb99a9ab882e30dca1ba42a1f411427acdadeba0",
+      "delivery_cases": [
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "private",
+          "state": "confirmed",
+          "receipt": {
+            "id": "0ec73f4f-6873-4bc4-a65c-8bfd52a644e2",
+            "namespace": "a366346c-f41c-44bb-af65-76598da4eae8",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "0ec73f4f-6873-4bc4-a65c-8bfd52a644e2:gateway:1",
+                  "namespace": "a366346c-f41c-44bb-af65-76598da4eae8",
+                  "ordinal": 1,
+                  "parent": "0ec73f4f-6873-4bc4-a65c-8bfd52a644e2",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 1
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 1,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "a3bfcfa3da03c066f4860def35887602371498028e975426a86f5e47893bc5f9",
+          "host_zip_sha256": "d11671606ca1e3ba8bd8f7666f00b3405e3cc0db2d95f121f68a4f582d608f5d",
+          "plugin_sha256": "66b8def020f9084209165cd06d00c97d36ff48c02fde14d4d832c43ad479f822",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "denied",
+          "state": "failed",
+          "receipt": {
+            "id": "13a7c7d1-b8c6-437f-a85b-c0214e00b917",
+            "namespace": "2d87bbf2-cc26-42b4-911f-80966bc9406c",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "error": "gateway_send_not_granted"
+            },
+            "state": "failed"
+          },
+          "native_requests": 0,
+          "token_issuances": 0,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "a3bfcfa3da03c066f4860def35887602371498028e975426a86f5e47893bc5f9",
+          "host_zip_sha256": "d11671606ca1e3ba8bd8f7666f00b3405e3cc0db2d95f121f68a4f582d608f5d",
+          "plugin_sha256": "66b8def020f9084209165cd06d00c97d36ff48c02fde14d4d832c43ad479f822",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "token-rejected",
+          "state": "confirmed",
+          "receipt": {
+            "id": "5f0be9e4-f7a7-4a21-964f-f1cab6ba5f58",
+            "namespace": "b6f18a9d-1304-4452-9565-205ada6d4eff",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "5f0be9e4-f7a7-4a21-964f-f1cab6ba5f58:gateway:1",
+                  "namespace": "b6f18a9d-1304-4452-9565-205ada6d4eff",
+                  "ordinal": 1,
+                  "parent": "5f0be9e4-f7a7-4a21-964f-f1cab6ba5f58",
+                  "result": {
+                    "locator": "om_sent_2",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 1
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 2,
+          "token_issuances": 2,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "a3bfcfa3da03c066f4860def35887602371498028e975426a86f5e47893bc5f9",
+          "host_zip_sha256": "d11671606ca1e3ba8bd8f7666f00b3405e3cc0db2d95f121f68a4f582d608f5d",
+          "plugin_sha256": "66b8def020f9084209165cd06d00c97d36ff48c02fde14d4d832c43ad479f822",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "group",
+          "state": "confirmed",
+          "receipt": {
+            "id": "62e94aa3-ee16-481b-ae7c-46251abb1a59",
+            "namespace": "e580752b-40a2-4755-a899-043a1edc9ca4",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "62e94aa3-ee16-481b-ae7c-46251abb1a59:gateway:1",
+                  "namespace": "e580752b-40a2-4755-a899-043a1edc9ca4",
+                  "ordinal": 1,
+                  "parent": "62e94aa3-ee16-481b-ae7c-46251abb1a59",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 1
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 1,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "a3bfcfa3da03c066f4860def35887602371498028e975426a86f5e47893bc5f9",
+          "host_zip_sha256": "d11671606ca1e3ba8bd8f7666f00b3405e3cc0db2d95f121f68a4f582d608f5d",
+          "plugin_sha256": "66b8def020f9084209165cd06d00c97d36ff48c02fde14d4d832c43ad479f822",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "topic",
+          "state": "confirmed",
+          "receipt": {
+            "id": "da155c82-a8e8-45fb-9ee6-4e95a47abc82",
+            "namespace": "4d02439f-43ef-4a98-937f-6c3e1a3af66f",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "da155c82-a8e8-45fb-9ee6-4e95a47abc82:gateway:1",
+                  "namespace": "4d02439f-43ef-4a98-937f-6c3e1a3af66f",
+                  "ordinal": 1,
+                  "parent": "da155c82-a8e8-45fb-9ee6-4e95a47abc82",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 1
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 1,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "a3bfcfa3da03c066f4860def35887602371498028e975426a86f5e47893bc5f9",
+          "host_zip_sha256": "d11671606ca1e3ba8bd8f7666f00b3405e3cc0db2d95f121f68a4f582d608f5d",
+          "plugin_sha256": "66b8def020f9084209165cd06d00c97d36ff48c02fde14d4d832c43ad479f822",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "parts",
+          "state": "confirmed",
+          "receipt": {
+            "id": "5b593ba1-6df6-4df5-983f-c2a74477472d",
+            "namespace": "37f39393-a06c-4531-b362-2a00d0a69afd",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "5b593ba1-6df6-4df5-983f-c2a74477472d:gateway:1",
+                  "namespace": "37f39393-a06c-4531-b362-2a00d0a69afd",
+                  "ordinal": 1,
+                  "parent": "5b593ba1-6df6-4df5-983f-c2a74477472d",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "5b593ba1-6df6-4df5-983f-c2a74477472d:gateway:2",
+                  "namespace": "37f39393-a06c-4531-b362-2a00d0a69afd",
+                  "ordinal": 2,
+                  "parent": "5b593ba1-6df6-4df5-983f-c2a74477472d",
+                  "result": {
+                    "locator": "om_sent_2",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "5b593ba1-6df6-4df5-983f-c2a74477472d:gateway:3",
+                  "namespace": "37f39393-a06c-4531-b362-2a00d0a69afd",
+                  "ordinal": 3,
+                  "parent": "5b593ba1-6df6-4df5-983f-c2a74477472d",
+                  "result": {
+                    "locator": "om_sent_3",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 3
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 3,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "a3bfcfa3da03c066f4860def35887602371498028e975426a86f5e47893bc5f9",
+          "host_zip_sha256": "d11671606ca1e3ba8bd8f7666f00b3405e3cc0db2d95f121f68a4f582d608f5d",
+          "plugin_sha256": "66b8def020f9084209165cd06d00c97d36ff48c02fde14d4d832c43ad479f822",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "reply",
+          "state": "confirmed",
+          "receipt": {
+            "id": "878cc6a4-43e8-4100-b415-cb40f1e2f00b",
+            "namespace": "cc31efb8-e786-4eb0-a05a-f2515439f098",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "878cc6a4-43e8-4100-b415-cb40f1e2f00b:gateway:1",
+                  "namespace": "cc31efb8-e786-4eb0-a05a-f2515439f098",
+                  "ordinal": 1,
+                  "parent": "878cc6a4-43e8-4100-b415-cb40f1e2f00b",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "878cc6a4-43e8-4100-b415-cb40f1e2f00b:gateway:2",
+                  "namespace": "cc31efb8-e786-4eb0-a05a-f2515439f098",
+                  "ordinal": 2,
+                  "parent": "878cc6a4-43e8-4100-b415-cb40f1e2f00b",
+                  "result": {
+                    "locator": "om_sent_2",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "878cc6a4-43e8-4100-b415-cb40f1e2f00b:gateway:3",
+                  "namespace": "cc31efb8-e786-4eb0-a05a-f2515439f098",
+                  "ordinal": 3,
+                  "parent": "878cc6a4-43e8-4100-b415-cb40f1e2f00b",
+                  "result": {
+                    "locator": "om_sent_3",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 3
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 3,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "a3bfcfa3da03c066f4860def35887602371498028e975426a86f5e47893bc5f9",
+          "host_zip_sha256": "d11671606ca1e3ba8bd8f7666f00b3405e3cc0db2d95f121f68a4f582d608f5d",
+          "plugin_sha256": "66b8def020f9084209165cd06d00c97d36ff48c02fde14d4d832c43ad479f822",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "expiry",
+          "state": "confirmed",
+          "receipt": {
+            "id": "ffa72e5f-7219-421a-8418-7ed008e72efe",
+            "namespace": "33b12802-6a4a-472d-9855-ddf7c86bd9a5",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "ffa72e5f-7219-421a-8418-7ed008e72efe:gateway:1",
+                  "namespace": "33b12802-6a4a-472d-9855-ddf7c86bd9a5",
+                  "ordinal": 1,
+                  "parent": "ffa72e5f-7219-421a-8418-7ed008e72efe",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "ffa72e5f-7219-421a-8418-7ed008e72efe:gateway:2",
+                  "namespace": "33b12802-6a4a-472d-9855-ddf7c86bd9a5",
+                  "ordinal": 2,
+                  "parent": "ffa72e5f-7219-421a-8418-7ed008e72efe",
+                  "result": {
+                    "locator": "om_sent_2",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "ffa72e5f-7219-421a-8418-7ed008e72efe:gateway:3",
+                  "namespace": "33b12802-6a4a-472d-9855-ddf7c86bd9a5",
+                  "ordinal": 3,
+                  "parent": "ffa72e5f-7219-421a-8418-7ed008e72efe",
+                  "result": {
+                    "locator": "om_sent_3",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 3
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 3,
+          "token_issuances": 3,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "a3bfcfa3da03c066f4860def35887602371498028e975426a86f5e47893bc5f9",
+          "host_zip_sha256": "d11671606ca1e3ba8bd8f7666f00b3405e3cc0db2d95f121f68a4f582d608f5d",
+          "plugin_sha256": "66b8def020f9084209165cd06d00c97d36ff48c02fde14d4d832c43ad479f822",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "lost",
+          "state": "unknown",
+          "receipt": {
+            "id": "ee44a610-7d5f-4d94-b3b2-2777abf66f4e",
+            "namespace": "86983537-5883-4d4b-8923-96a4417b1312",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "ee44a610-7d5f-4d94-b3b2-2777abf66f4e:gateway:1",
+                  "namespace": "86983537-5883-4d4b-8923-96a4417b1312",
+                  "ordinal": 1,
+                  "parent": "ee44a610-7d5f-4d94-b3b2-2777abf66f4e",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "ee44a610-7d5f-4d94-b3b2-2777abf66f4e:gateway:2",
+                  "namespace": "86983537-5883-4d4b-8923-96a4417b1312",
+                  "ordinal": 2,
+                  "parent": "ee44a610-7d5f-4d94-b3b2-2777abf66f4e",
+                  "result": {
+                    "state": "unknown"
+                  },
+                  "state": "unknown"
+                }
+              ],
+              "planned": 3
+            },
+            "state": "unknown"
+          },
+          "native_requests": 2,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "a3bfcfa3da03c066f4860def35887602371498028e975426a86f5e47893bc5f9",
+          "host_zip_sha256": "d11671606ca1e3ba8bd8f7666f00b3405e3cc0db2d95f121f68a4f582d608f5d",
+          "plugin_sha256": "66b8def020f9084209165cd06d00c97d36ff48c02fde14d4d832c43ad479f822",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "rejected",
+          "state": "failed",
+          "receipt": {
+            "id": "4cbdc7cc-10fb-4292-aed3-0909b051a21b",
+            "namespace": "76f7dde0-f66c-4485-bb66-4809340102eb",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "4cbdc7cc-10fb-4292-aed3-0909b051a21b:gateway:1",
+                  "namespace": "76f7dde0-f66c-4485-bb66-4809340102eb",
+                  "ordinal": 1,
+                  "parent": "4cbdc7cc-10fb-4292-aed3-0909b051a21b",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "4cbdc7cc-10fb-4292-aed3-0909b051a21b:gateway:2",
+                  "namespace": "76f7dde0-f66c-4485-bb66-4809340102eb",
+                  "ordinal": 2,
+                  "parent": "4cbdc7cc-10fb-4292-aed3-0909b051a21b",
+                  "result": {
+                    "state": "failed"
+                  },
+                  "state": "failed"
+                }
+              ],
+              "planned": 3
+            },
+            "state": "failed"
+          },
+          "native_requests": 2,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "a3bfcfa3da03c066f4860def35887602371498028e975426a86f5e47893bc5f9",
+          "host_zip_sha256": "d11671606ca1e3ba8bd8f7666f00b3405e3cc0db2d95f121f68a4f582d608f5d",
+          "plugin_sha256": "66b8def020f9084209165cd06d00c97d36ff48c02fde14d4d832c43ad479f822",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "malformed",
+          "state": "unknown",
+          "receipt": {
+            "id": "90db6fde-91d3-4074-b5fe-3cd5db3b9748",
+            "namespace": "2e5d91a4-4d32-4088-a775-7994f2b3302d",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "90db6fde-91d3-4074-b5fe-3cd5db3b9748:gateway:1",
+                  "namespace": "2e5d91a4-4d32-4088-a775-7994f2b3302d",
+                  "ordinal": 1,
+                  "parent": "90db6fde-91d3-4074-b5fe-3cd5db3b9748",
+                  "result": {
+                    "state": "unknown"
+                  },
+                  "state": "unknown"
+                }
+              ],
+              "planned": 1
+            },
+            "state": "unknown"
+          },
+          "native_requests": 1,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "a3bfcfa3da03c066f4860def35887602371498028e975426a86f5e47893bc5f9",
+          "host_zip_sha256": "d11671606ca1e3ba8bd8f7666f00b3405e3cc0db2d95f121f68a4f582d608f5d",
+          "plugin_sha256": "66b8def020f9084209165cd06d00c97d36ff48c02fde14d4d832c43ad479f822",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "recall",
+          "state": "confirmed",
+          "receipt": {
+            "id": "6ebc31be-9025-49c0-af5a-82b0692eca80",
+            "namespace": "6a616ede-e7a4-4e36-b338-e20f741a448f",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "action": "recall_own_message",
+              "error_category": null,
+              "event_id": null,
+              "operation_id": "6ebc31be-9025-49c0-af5a-82b0692eca80",
+              "original_conversation_id": null,
+              "original_event_id": null,
+              "presence_id": "8368d7f5-3550-4f46-a0db-fe5a1f21221a",
+              "status": "succeeded",
+              "target": {
+                "id": "d62c1c0c-b8b2-4312-aaf2-078430bbc725",
+                "kind": "space"
+              }
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 2,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "a3bfcfa3da03c066f4860def35887602371498028e975426a86f5e47893bc5f9",
+          "host_zip_sha256": "d11671606ca1e3ba8bd8f7666f00b3405e3cc0db2d95f121f68a4f582d608f5d",
+          "plugin_sha256": "66b8def020f9084209165cd06d00c97d36ff48c02fde14d4d832c43ad479f822",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "recall-rejected",
+          "state": "failed",
+          "receipt": {
+            "id": "5a8b3eea-aa58-4cee-bd9f-4b56037c54f6",
+            "namespace": "d9ba8c77-d667-476a-b4ec-6477126a1259",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "action": "recall_own_message",
+              "error_category": "platform_rejected",
+              "event_id": null,
+              "operation_id": "5a8b3eea-aa58-4cee-bd9f-4b56037c54f6",
+              "original_conversation_id": null,
+              "original_event_id": null,
+              "presence_id": "2e506786-5517-404c-b996-39dfe9f4aa60",
+              "status": "failed",
+              "target": {
+                "id": "ad7b5040-97a4-4842-bf38-76bf4c366945",
+                "kind": "space"
+              }
+            },
+            "state": "failed"
+          },
+          "native_requests": 2,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "a3bfcfa3da03c066f4860def35887602371498028e975426a86f5e47893bc5f9",
+          "host_zip_sha256": "d11671606ca1e3ba8bd8f7666f00b3405e3cc0db2d95f121f68a4f582d608f5d",
+          "plugin_sha256": "66b8def020f9084209165cd06d00c97d36ff48c02fde14d4d832c43ad479f822",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "recall-lost",
+          "state": "unknown",
+          "receipt": {
+            "id": "103d93cb-1668-46cf-83f3-e35c506f551f",
+            "namespace": "2b440fb7-3723-429f-a477-56c2431d08b4",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "action": "recall_own_message",
+              "error_category": "delivery_unknown",
+              "event_id": null,
+              "operation_id": "103d93cb-1668-46cf-83f3-e35c506f551f",
+              "original_conversation_id": null,
+              "original_event_id": null,
+              "presence_id": "f7a5acc2-7bfd-4dd3-8920-c19e3b9cf5b5",
+              "status": "uncertain",
+              "target": {
+                "id": "da1a8b5b-7cd3-462e-8027-62aa4a96734e",
+                "kind": "space"
+              }
+            },
+            "state": "unknown"
+          },
+          "native_requests": 2,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "a3bfcfa3da03c066f4860def35887602371498028e975426a86f5e47893bc5f9",
+          "host_zip_sha256": "d11671606ca1e3ba8bd8f7666f00b3405e3cc0db2d95f121f68a4f582d608f5d",
+          "plugin_sha256": "66b8def020f9084209165cd06d00c97d36ff48c02fde14d4d832c43ad479f822",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "recall-denied",
+          "state": "failed",
+          "receipt": {
+            "id": "d4d721cf-ba58-445a-9940-a3c367a5587d",
+            "namespace": "a188cc7c-0dfb-4dd1-83fe-ba604367f92c",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "error": "plugin instance or grant unavailable"
+            },
+            "state": "failed"
+          },
+          "native_requests": 1,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "a3bfcfa3da03c066f4860def35887602371498028e975426a86f5e47893bc5f9",
+          "host_zip_sha256": "d11671606ca1e3ba8bd8f7666f00b3405e3cc0db2d95f121f68a4f582d608f5d",
+          "plugin_sha256": "66b8def020f9084209165cd06d00c97d36ff48c02fde14d4d832c43ad479f822",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "private",
+          "state": "confirmed",
+          "receipt": {
+            "id": "ab7b454d-33b6-4f4a-a365-be4bdb0302ae",
+            "namespace": "3e908fe6-7db7-4103-b3f5-24be32aa4840",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "ab7b454d-33b6-4f4a-a365-be4bdb0302ae:gateway:1",
+                  "namespace": "3e908fe6-7db7-4103-b3f5-24be32aa4840",
+                  "ordinal": 1,
+                  "parent": "ab7b454d-33b6-4f4a-a365-be4bdb0302ae",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 1
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 1,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "a3bfcfa3da03c066f4860def35887602371498028e975426a86f5e47893bc5f9",
+          "host_zip_sha256": "d11671606ca1e3ba8bd8f7666f00b3405e3cc0db2d95f121f68a4f582d608f5d",
+          "plugin_sha256": "66b8def020f9084209165cd06d00c97d36ff48c02fde14d4d832c43ad479f822",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "denied",
+          "state": "failed",
+          "receipt": {
+            "id": "d96f3058-817a-4697-9e42-01df73a84c92",
+            "namespace": "bd4bfb0d-6f0c-446f-9fb7-c017a25ed569",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "error": "gateway_send_not_granted"
+            },
+            "state": "failed"
+          },
+          "native_requests": 0,
+          "token_issuances": 0,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "a3bfcfa3da03c066f4860def35887602371498028e975426a86f5e47893bc5f9",
+          "host_zip_sha256": "d11671606ca1e3ba8bd8f7666f00b3405e3cc0db2d95f121f68a4f582d608f5d",
+          "plugin_sha256": "66b8def020f9084209165cd06d00c97d36ff48c02fde14d4d832c43ad479f822",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "token-rejected",
+          "state": "confirmed",
+          "receipt": {
+            "id": "5905e90f-668e-4fa7-8843-db82b9a31aa5",
+            "namespace": "a9a27dce-5857-4c10-a4fd-41d8786f074e",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "5905e90f-668e-4fa7-8843-db82b9a31aa5:gateway:1",
+                  "namespace": "a9a27dce-5857-4c10-a4fd-41d8786f074e",
+                  "ordinal": 1,
+                  "parent": "5905e90f-668e-4fa7-8843-db82b9a31aa5",
+                  "result": {
+                    "locator": "om_sent_2",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 1
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 2,
+          "token_issuances": 2,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "a3bfcfa3da03c066f4860def35887602371498028e975426a86f5e47893bc5f9",
+          "host_zip_sha256": "d11671606ca1e3ba8bd8f7666f00b3405e3cc0db2d95f121f68a4f582d608f5d",
+          "plugin_sha256": "66b8def020f9084209165cd06d00c97d36ff48c02fde14d4d832c43ad479f822",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "group",
+          "state": "confirmed",
+          "receipt": {
+            "id": "47e41fdf-a172-4cb9-8d4f-aaf3b871a0d7",
+            "namespace": "51d7a5d8-c49f-4dbb-9bf1-de7859eab403",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "47e41fdf-a172-4cb9-8d4f-aaf3b871a0d7:gateway:1",
+                  "namespace": "51d7a5d8-c49f-4dbb-9bf1-de7859eab403",
+                  "ordinal": 1,
+                  "parent": "47e41fdf-a172-4cb9-8d4f-aaf3b871a0d7",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 1
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 1,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "a3bfcfa3da03c066f4860def35887602371498028e975426a86f5e47893bc5f9",
+          "host_zip_sha256": "d11671606ca1e3ba8bd8f7666f00b3405e3cc0db2d95f121f68a4f582d608f5d",
+          "plugin_sha256": "66b8def020f9084209165cd06d00c97d36ff48c02fde14d4d832c43ad479f822",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "topic",
+          "state": "confirmed",
+          "receipt": {
+            "id": "496298f2-3dc5-4222-92e3-6a2e41e8645e",
+            "namespace": "231b14dc-ed82-44a0-a20c-b0c3271f284f",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "496298f2-3dc5-4222-92e3-6a2e41e8645e:gateway:1",
+                  "namespace": "231b14dc-ed82-44a0-a20c-b0c3271f284f",
+                  "ordinal": 1,
+                  "parent": "496298f2-3dc5-4222-92e3-6a2e41e8645e",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 1
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 1,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "a3bfcfa3da03c066f4860def35887602371498028e975426a86f5e47893bc5f9",
+          "host_zip_sha256": "d11671606ca1e3ba8bd8f7666f00b3405e3cc0db2d95f121f68a4f582d608f5d",
+          "plugin_sha256": "66b8def020f9084209165cd06d00c97d36ff48c02fde14d4d832c43ad479f822",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "parts",
+          "state": "confirmed",
+          "receipt": {
+            "id": "970939e4-3f90-4b41-8684-d4b8f7ee1453",
+            "namespace": "43da2d22-6e07-4e40-9816-5b0368d8c4c8",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "970939e4-3f90-4b41-8684-d4b8f7ee1453:gateway:1",
+                  "namespace": "43da2d22-6e07-4e40-9816-5b0368d8c4c8",
+                  "ordinal": 1,
+                  "parent": "970939e4-3f90-4b41-8684-d4b8f7ee1453",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "970939e4-3f90-4b41-8684-d4b8f7ee1453:gateway:2",
+                  "namespace": "43da2d22-6e07-4e40-9816-5b0368d8c4c8",
+                  "ordinal": 2,
+                  "parent": "970939e4-3f90-4b41-8684-d4b8f7ee1453",
+                  "result": {
+                    "locator": "om_sent_2",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "970939e4-3f90-4b41-8684-d4b8f7ee1453:gateway:3",
+                  "namespace": "43da2d22-6e07-4e40-9816-5b0368d8c4c8",
+                  "ordinal": 3,
+                  "parent": "970939e4-3f90-4b41-8684-d4b8f7ee1453",
+                  "result": {
+                    "locator": "om_sent_3",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 3
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 3,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "a3bfcfa3da03c066f4860def35887602371498028e975426a86f5e47893bc5f9",
+          "host_zip_sha256": "d11671606ca1e3ba8bd8f7666f00b3405e3cc0db2d95f121f68a4f582d608f5d",
+          "plugin_sha256": "66b8def020f9084209165cd06d00c97d36ff48c02fde14d4d832c43ad479f822",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "reply",
+          "state": "confirmed",
+          "receipt": {
+            "id": "26752977-52eb-4290-980b-ae71193705b6",
+            "namespace": "6589c9bd-d232-4bbc-835a-ef394d466a5b",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "26752977-52eb-4290-980b-ae71193705b6:gateway:1",
+                  "namespace": "6589c9bd-d232-4bbc-835a-ef394d466a5b",
+                  "ordinal": 1,
+                  "parent": "26752977-52eb-4290-980b-ae71193705b6",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "26752977-52eb-4290-980b-ae71193705b6:gateway:2",
+                  "namespace": "6589c9bd-d232-4bbc-835a-ef394d466a5b",
+                  "ordinal": 2,
+                  "parent": "26752977-52eb-4290-980b-ae71193705b6",
+                  "result": {
+                    "locator": "om_sent_2",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "26752977-52eb-4290-980b-ae71193705b6:gateway:3",
+                  "namespace": "6589c9bd-d232-4bbc-835a-ef394d466a5b",
+                  "ordinal": 3,
+                  "parent": "26752977-52eb-4290-980b-ae71193705b6",
+                  "result": {
+                    "locator": "om_sent_3",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 3
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 3,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "a3bfcfa3da03c066f4860def35887602371498028e975426a86f5e47893bc5f9",
+          "host_zip_sha256": "d11671606ca1e3ba8bd8f7666f00b3405e3cc0db2d95f121f68a4f582d608f5d",
+          "plugin_sha256": "66b8def020f9084209165cd06d00c97d36ff48c02fde14d4d832c43ad479f822",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "expiry",
+          "state": "confirmed",
+          "receipt": {
+            "id": "8ea6eba6-644e-41d8-bd25-aa700a40fb59",
+            "namespace": "af94ca54-7db1-430b-9b05-36dfbde8e652",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "8ea6eba6-644e-41d8-bd25-aa700a40fb59:gateway:1",
+                  "namespace": "af94ca54-7db1-430b-9b05-36dfbde8e652",
+                  "ordinal": 1,
+                  "parent": "8ea6eba6-644e-41d8-bd25-aa700a40fb59",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "8ea6eba6-644e-41d8-bd25-aa700a40fb59:gateway:2",
+                  "namespace": "af94ca54-7db1-430b-9b05-36dfbde8e652",
+                  "ordinal": 2,
+                  "parent": "8ea6eba6-644e-41d8-bd25-aa700a40fb59",
+                  "result": {
+                    "locator": "om_sent_2",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "8ea6eba6-644e-41d8-bd25-aa700a40fb59:gateway:3",
+                  "namespace": "af94ca54-7db1-430b-9b05-36dfbde8e652",
+                  "ordinal": 3,
+                  "parent": "8ea6eba6-644e-41d8-bd25-aa700a40fb59",
+                  "result": {
+                    "locator": "om_sent_3",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 3
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 3,
+          "token_issuances": 3,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "a3bfcfa3da03c066f4860def35887602371498028e975426a86f5e47893bc5f9",
+          "host_zip_sha256": "d11671606ca1e3ba8bd8f7666f00b3405e3cc0db2d95f121f68a4f582d608f5d",
+          "plugin_sha256": "66b8def020f9084209165cd06d00c97d36ff48c02fde14d4d832c43ad479f822",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "lost",
+          "state": "unknown",
+          "receipt": {
+            "id": "edbc1128-65b3-4425-b0a0-67e3e511b1f4",
+            "namespace": "71058809-f07c-415b-8c0c-0aeaea1bc4b7",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "edbc1128-65b3-4425-b0a0-67e3e511b1f4:gateway:1",
+                  "namespace": "71058809-f07c-415b-8c0c-0aeaea1bc4b7",
+                  "ordinal": 1,
+                  "parent": "edbc1128-65b3-4425-b0a0-67e3e511b1f4",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "edbc1128-65b3-4425-b0a0-67e3e511b1f4:gateway:2",
+                  "namespace": "71058809-f07c-415b-8c0c-0aeaea1bc4b7",
+                  "ordinal": 2,
+                  "parent": "edbc1128-65b3-4425-b0a0-67e3e511b1f4",
+                  "result": {
+                    "state": "unknown"
+                  },
+                  "state": "unknown"
+                }
+              ],
+              "planned": 3
+            },
+            "state": "unknown"
+          },
+          "native_requests": 2,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "a3bfcfa3da03c066f4860def35887602371498028e975426a86f5e47893bc5f9",
+          "host_zip_sha256": "d11671606ca1e3ba8bd8f7666f00b3405e3cc0db2d95f121f68a4f582d608f5d",
+          "plugin_sha256": "66b8def020f9084209165cd06d00c97d36ff48c02fde14d4d832c43ad479f822",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "rejected",
+          "state": "failed",
+          "receipt": {
+            "id": "c6ab5a1a-fa01-4557-a151-c2cba3cbed7f",
+            "namespace": "c29fb354-5d52-46b3-95e1-cfd99d977dd4",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "c6ab5a1a-fa01-4557-a151-c2cba3cbed7f:gateway:1",
+                  "namespace": "c29fb354-5d52-46b3-95e1-cfd99d977dd4",
+                  "ordinal": 1,
+                  "parent": "c6ab5a1a-fa01-4557-a151-c2cba3cbed7f",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "c6ab5a1a-fa01-4557-a151-c2cba3cbed7f:gateway:2",
+                  "namespace": "c29fb354-5d52-46b3-95e1-cfd99d977dd4",
+                  "ordinal": 2,
+                  "parent": "c6ab5a1a-fa01-4557-a151-c2cba3cbed7f",
+                  "result": {
+                    "state": "failed"
+                  },
+                  "state": "failed"
+                }
+              ],
+              "planned": 3
+            },
+            "state": "failed"
+          },
+          "native_requests": 2,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "a3bfcfa3da03c066f4860def35887602371498028e975426a86f5e47893bc5f9",
+          "host_zip_sha256": "d11671606ca1e3ba8bd8f7666f00b3405e3cc0db2d95f121f68a4f582d608f5d",
+          "plugin_sha256": "66b8def020f9084209165cd06d00c97d36ff48c02fde14d4d832c43ad479f822",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "malformed",
+          "state": "unknown",
+          "receipt": {
+            "id": "e1d7281e-d672-4efe-b321-04211bebad9a",
+            "namespace": "43057724-d268-440e-8276-5b4f7850a692",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "e1d7281e-d672-4efe-b321-04211bebad9a:gateway:1",
+                  "namespace": "43057724-d268-440e-8276-5b4f7850a692",
+                  "ordinal": 1,
+                  "parent": "e1d7281e-d672-4efe-b321-04211bebad9a",
+                  "result": {
+                    "state": "unknown"
+                  },
+                  "state": "unknown"
+                }
+              ],
+              "planned": 1
+            },
+            "state": "unknown"
+          },
+          "native_requests": 1,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "a3bfcfa3da03c066f4860def35887602371498028e975426a86f5e47893bc5f9",
+          "host_zip_sha256": "d11671606ca1e3ba8bd8f7666f00b3405e3cc0db2d95f121f68a4f582d608f5d",
+          "plugin_sha256": "66b8def020f9084209165cd06d00c97d36ff48c02fde14d4d832c43ad479f822",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "recall",
+          "state": "confirmed",
+          "receipt": {
+            "id": "0fdb559a-2dcb-41fe-8666-a3b41556f745",
+            "namespace": "26826c76-73b7-4a6d-b19d-fc7c4cadeb37",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "action": "recall_own_message",
+              "error_category": null,
+              "event_id": null,
+              "operation_id": "0fdb559a-2dcb-41fe-8666-a3b41556f745",
+              "original_conversation_id": null,
+              "original_event_id": null,
+              "presence_id": "1f825dfc-884c-4690-a03f-9fe913e0149b",
+              "status": "succeeded",
+              "target": {
+                "id": "78633f24-923a-4a14-9f51-ad5898647ce3",
+                "kind": "space"
+              }
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 2,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "a3bfcfa3da03c066f4860def35887602371498028e975426a86f5e47893bc5f9",
+          "host_zip_sha256": "d11671606ca1e3ba8bd8f7666f00b3405e3cc0db2d95f121f68a4f582d608f5d",
+          "plugin_sha256": "66b8def020f9084209165cd06d00c97d36ff48c02fde14d4d832c43ad479f822",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "recall-rejected",
+          "state": "failed",
+          "receipt": {
+            "id": "79d3f791-7d92-4024-b8f8-366c796e9e08",
+            "namespace": "00035bcb-58d9-4ef8-9651-ba2be186c8fe",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "action": "recall_own_message",
+              "error_category": "platform_rejected",
+              "event_id": null,
+              "operation_id": "79d3f791-7d92-4024-b8f8-366c796e9e08",
+              "original_conversation_id": null,
+              "original_event_id": null,
+              "presence_id": "6b250770-5476-4e04-b71a-3ea4dc66655d",
+              "status": "failed",
+              "target": {
+                "id": "676020f5-edcb-4a89-85df-4294084bfe2a",
+                "kind": "space"
+              }
+            },
+            "state": "failed"
+          },
+          "native_requests": 2,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "a3bfcfa3da03c066f4860def35887602371498028e975426a86f5e47893bc5f9",
+          "host_zip_sha256": "d11671606ca1e3ba8bd8f7666f00b3405e3cc0db2d95f121f68a4f582d608f5d",
+          "plugin_sha256": "66b8def020f9084209165cd06d00c97d36ff48c02fde14d4d832c43ad479f822",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "recall-lost",
+          "state": "unknown",
+          "receipt": {
+            "id": "a62b631a-138a-4ac5-b3b1-51e52236f6c6",
+            "namespace": "236883e2-13b5-4ec8-82a7-2f7822f9658c",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "action": "recall_own_message",
+              "error_category": "delivery_unknown",
+              "event_id": null,
+              "operation_id": "a62b631a-138a-4ac5-b3b1-51e52236f6c6",
+              "original_conversation_id": null,
+              "original_event_id": null,
+              "presence_id": "742ceac7-4ddf-40d0-8840-237762b24746",
+              "status": "uncertain",
+              "target": {
+                "id": "a7ed5c98-047c-4dcb-a2d7-bc8896c8158d",
+                "kind": "space"
+              }
+            },
+            "state": "unknown"
+          },
+          "native_requests": 2,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "a3bfcfa3da03c066f4860def35887602371498028e975426a86f5e47893bc5f9",
+          "host_zip_sha256": "d11671606ca1e3ba8bd8f7666f00b3405e3cc0db2d95f121f68a4f582d608f5d",
+          "plugin_sha256": "66b8def020f9084209165cd06d00c97d36ff48c02fde14d4d832c43ad479f822",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "recall-denied",
+          "state": "failed",
+          "receipt": {
+            "id": "1b5d1d0f-4fbf-445e-9746-82fbdf91eae8",
+            "namespace": "8e4b585e-8ac4-4ef2-ab27-a40090070cfd",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "error": "plugin instance or grant unavailable"
+            },
+            "state": "failed"
+          },
+          "native_requests": 1,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "a3bfcfa3da03c066f4860def35887602371498028e975426a86f5e47893bc5f9",
+          "host_zip_sha256": "d11671606ca1e3ba8bd8f7666f00b3405e3cc0db2d95f121f68a4f582d608f5d",
+          "plugin_sha256": "66b8def020f9084209165cd06d00c97d36ff48c02fde14d4d832c43ad479f822",
+          "paid_calls": 0
+        }
+      ],
+      "topic_cases": {
+        "original-root": {
+          "status": "PASS",
+          "topic": "omt_shared",
+          "topic_root": "om_root",
+          "original_topic_roots": [
+            [
+              1,
+              "fs.a",
+              "cli_a",
+              "tenant-a",
+              "omt_shared",
+              "om_root"
+            ],
+            [
+              2,
+              "fs.b",
+              "cli_b",
+              "tenant-b",
+              "omt_shared",
+              "om_root"
+            ]
+          ],
+          "durable_events": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "host_sha256": "a3bfcfa3da03c066f4860def35887602371498028e975426a86f5e47893bc5f9"
+        },
+        "first-thread-message": {
+          "status": "PASS",
+          "topic": "omt_shared",
+          "topic_root": "om_shared",
+          "original_topic_roots": [
+            [
+              1,
+              "fs.a",
+              "cli_a",
+              "tenant-a",
+              "omt_shared",
+              "om_shared"
+            ],
+            [
+              2,
+              "fs.b",
+              "cli_b",
+              "tenant-b",
+              "omt_shared",
+              "om_shared"
+            ]
+          ],
+          "durable_events": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "host_sha256": "a3bfcfa3da03c066f4860def35887602371498028e975426a86f5e47893bc5f9"
+        },
+        "ordinary-group": {
+          "status": "PASS",
+          "topic": null,
+          "topic_root": null,
+          "original_topic_roots": [],
+          "durable_events": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "host_sha256": "a3bfcfa3da03c066f4860def35887602371498028e975426a86f5e47893bc5f9"
+        }
+      },
+      "reader_events": {
+        "cli_a": {
+          "old": [
+            1
+          ],
+          "new": [
+            2,
+            1
+          ],
+          "rollback": [
+            2
+          ]
+        },
+        "cli_b": {
+          "old": [
+            3
+          ],
+          "new": [
+            4,
+            3
+          ],
+          "rollback": [
+            4
+          ]
+        }
+      },
+      "original_topic_roots": [
+        [
+          1,
+          "fs.a",
+          "om_root"
+        ],
+        [
+          2,
+          "fs.a",
+          "om_root"
+        ],
+        [
+          3,
+          "fs.b",
+          "om_root"
+        ],
+        [
+          4,
+          "fs.b",
+          "om_root"
+        ]
+      ],
+      "media_domains": [
+        {
+          "domain": "feishu",
+          "kind": "image",
+          "fixture_requests": [
+            {
+              "method": "token",
+              "app": "cli_feishu",
+              "tenant": "tenant-feishu",
+              "issuance": 1
+            },
+            {
+              "method": "resource",
+              "domain": "feishu",
+              "raw_path": "/open-apis/im/v1/messages/om_original/resources/res%20%23%2Fnative?type=image",
+              "key": "res #/native",
+              "type": "image",
+              "token_number": 1
+            },
+            {
+              "method": "token",
+              "app": "cli_feishu",
+              "tenant": "tenant-feishu",
+              "issuance": 2
+            },
+            {
+              "method": "resource",
+              "domain": "feishu",
+              "raw_path": "/open-apis/im/v1/messages/om_original/resources/denied?type=image",
+              "key": "denied",
+              "type": "image",
+              "token_number": 2
+            },
+            {
+              "method": "resource",
+              "domain": "feishu",
+              "raw_path": "/open-apis/im/v1/messages/om_original/resources/cancelled?type=image",
+              "key": "cancelled",
+              "type": "image",
+              "token_number": 2
+            },
+            {
+              "method": "token",
+              "app": "cli_feishu",
+              "tenant": "tenant-feishu",
+              "issuance": 3
+            },
+            {
+              "method": "resource",
+              "domain": "feishu",
+              "raw_path": "/open-apis/im/v1/messages/om_original/resources/res%20%23%2Fnative?type=image",
+              "key": "res #/native",
+              "type": "image",
+              "token_number": 3
+            }
+          ],
+          "sha256": "f645b72f1b9186913bc62759858134c358d5ba6e86fc59a2c467c55fabaeeb8c",
+          "bytes": 26789,
+          "ws_ack_during_rest": true,
+          "wrong_identity_requests": 0,
+          "http_403_retries": 0,
+          "token_issuances": 3,
+          "forget_cancelled_http": true,
+          "forgotten_page_rejected": true,
+          "paged_text": {
+            "status": "PASS",
+            "bytes": 8000000,
+            "pages": 652,
+            "elapsed_seconds": 0.9938025829615071,
+            "sha256": "fd392321b0b5775d5930e2dbd8842bcff5b2e6afc1919b5b3bce5ad59ca2f454",
+            "forgotten_plan_cancelled": true,
+            "late_page_did_not_advance_fresh_plan": true,
+            "malformed_page_rejected": true,
+            "native_effects": 0
+          }
+        },
+        {
+          "domain": "lark",
+          "kind": "file",
+          "fixture_requests": [
+            {
+              "method": "token",
+              "app": "cli_lark",
+              "tenant": "tenant-lark",
+              "issuance": 1
+            },
+            {
+              "method": "resource",
+              "domain": "lark",
+              "raw_path": "/open-apis/im/v1/messages/om_original/resources/res%20%23%2Fnative?type=file",
+              "key": "res #/native",
+              "type": "file",
+              "token_number": 1
+            },
+            {
+              "method": "token",
+              "app": "cli_lark",
+              "tenant": "tenant-lark",
+              "issuance": 2
+            },
+            {
+              "method": "resource",
+              "domain": "lark",
+              "raw_path": "/open-apis/im/v1/messages/om_original/resources/denied?type=file",
+              "key": "denied",
+              "type": "file",
+              "token_number": 2
+            },
+            {
+              "method": "resource",
+              "domain": "lark",
+              "raw_path": "/open-apis/im/v1/messages/om_original/resources/cancelled?type=file",
+              "key": "cancelled",
+              "type": "file",
+              "token_number": 2
+            },
+            {
+              "method": "token",
+              "app": "cli_lark",
+              "tenant": "tenant-lark",
+              "issuance": 3
+            },
+            {
+              "method": "resource",
+              "domain": "lark",
+              "raw_path": "/open-apis/im/v1/messages/om_original/resources/res%20%23%2Fnative?type=file",
+              "key": "res #/native",
+              "type": "file",
+              "token_number": 3
+            }
+          ],
+          "sha256": "a6c7af0a14eaed92a4c7be304b665671d26dc531b207b518bc4518ea38c194bf",
+          "bytes": 26789,
+          "ws_ack_during_rest": true,
+          "wrong_identity_requests": 0,
+          "http_403_retries": 0,
+          "token_issuances": 3,
+          "forget_cancelled_http": true,
+          "forgotten_page_rejected": true,
+          "paged_text": {
+            "status": "PASS",
+            "bytes": 8000000,
+            "pages": 652,
+            "elapsed_seconds": 0.987924333079718,
+            "sha256": "fd392321b0b5775d5930e2dbd8842bcff5b2e6afc1919b5b3bce5ad59ca2f454",
+            "forgotten_plan_cancelled": true,
+            "late_page_did_not_advance_fresh_plan": true,
+            "malformed_page_rejected": true,
+            "native_effects": 0
+          }
+        }
+      ],
+      "packages": {
+        "0.1.0-alpha.5": {
+          "binary": "0.1.0-alpha.5.bin",
+          "binary_sha256": "6a1a59f38d9dbf8f00957d982d3c274ec1f1db0bea059a0f5e837dc47f2761a0",
+          "sdk_version": "1.0.0-alpha.18",
+          "sdk_sha256": "7ca5f2c98169527bbc413e0bdeadc7a881fe8e94c57815c0011d3ce4e5d7d76e",
+          "manifest_sha256": "68673e4342520ea60cfefba166ea697caa93cf0e3ca2792d84bd458c53d3bc37"
+        },
+        "0.1.0-alpha.6": {
+          "binary": "0.1.0-alpha.6.bin",
+          "binary_sha256": "66b8def020f9084209165cd06d00c97d36ff48c02fde14d4d832c43ad479f822",
+          "sdk_version": "1.0.0-alpha.20",
+          "sdk_sha256": "b5a4c3e82cdd4914e93fdc235129147a84525b07421f7898ebb0dbb1d7f7790a",
+          "manifest_sha256": "7dae2a60d6799520d70b42300749ef2de79bde6658bca88efd6731c5c5385f2b"
+        }
+      }
+    },
+    "linux": {
+      "status": "PASS",
+      "archive": "linux.zip",
+      "sha256": "2901e01c759704463b63166245121fc5efa58340727bdf8b60bebc88dcfcb9c1",
+      "delivery_cases": [
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "private",
+          "state": "confirmed",
+          "receipt": {
+            "id": "073ebc87-dc47-4f74-8c82-294e6d7521ec",
+            "namespace": "58b8f427-f0b4-4461-8e55-557d02677caf",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "073ebc87-dc47-4f74-8c82-294e6d7521ec:gateway:1",
+                  "namespace": "58b8f427-f0b4-4461-8e55-557d02677caf",
+                  "ordinal": 1,
+                  "parent": "073ebc87-dc47-4f74-8c82-294e6d7521ec",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 1
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 1,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "3f0ef7867bed18ae879954113c6bb163f0243ecf2d6137994f3ca75cf2feb2eb",
+          "host_zip_sha256": "e54f20bec833d1bf44f508cf5f246390131c3a19a147d1df9d35a6389ff7574c",
+          "plugin_sha256": "4c29c5620d0bbc7c0c81305a76e28fd26d024fbb159479189faaccf3dcf404c7",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "denied",
+          "state": "failed",
+          "receipt": {
+            "id": "af84336b-aa94-438d-9e3d-c00e3d175428",
+            "namespace": "fa087b63-94af-4d9b-b9f6-c87263abdd73",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "error": "gateway_send_not_granted"
+            },
+            "state": "failed"
+          },
+          "native_requests": 0,
+          "token_issuances": 0,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "3f0ef7867bed18ae879954113c6bb163f0243ecf2d6137994f3ca75cf2feb2eb",
+          "host_zip_sha256": "e54f20bec833d1bf44f508cf5f246390131c3a19a147d1df9d35a6389ff7574c",
+          "plugin_sha256": "4c29c5620d0bbc7c0c81305a76e28fd26d024fbb159479189faaccf3dcf404c7",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "token-rejected",
+          "state": "confirmed",
+          "receipt": {
+            "id": "882c844c-b34c-421d-91cc-63d731022191",
+            "namespace": "458db51d-cd9d-4e10-adf6-ce395b3dd699",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "882c844c-b34c-421d-91cc-63d731022191:gateway:1",
+                  "namespace": "458db51d-cd9d-4e10-adf6-ce395b3dd699",
+                  "ordinal": 1,
+                  "parent": "882c844c-b34c-421d-91cc-63d731022191",
+                  "result": {
+                    "locator": "om_sent_2",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 1
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 2,
+          "token_issuances": 2,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "3f0ef7867bed18ae879954113c6bb163f0243ecf2d6137994f3ca75cf2feb2eb",
+          "host_zip_sha256": "e54f20bec833d1bf44f508cf5f246390131c3a19a147d1df9d35a6389ff7574c",
+          "plugin_sha256": "4c29c5620d0bbc7c0c81305a76e28fd26d024fbb159479189faaccf3dcf404c7",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "group",
+          "state": "confirmed",
+          "receipt": {
+            "id": "e546e016-ccfc-467c-9378-77dace374fe5",
+            "namespace": "04c3c196-77fd-49cb-b52b-f6cf31c8cfb3",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "e546e016-ccfc-467c-9378-77dace374fe5:gateway:1",
+                  "namespace": "04c3c196-77fd-49cb-b52b-f6cf31c8cfb3",
+                  "ordinal": 1,
+                  "parent": "e546e016-ccfc-467c-9378-77dace374fe5",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 1
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 1,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "3f0ef7867bed18ae879954113c6bb163f0243ecf2d6137994f3ca75cf2feb2eb",
+          "host_zip_sha256": "e54f20bec833d1bf44f508cf5f246390131c3a19a147d1df9d35a6389ff7574c",
+          "plugin_sha256": "4c29c5620d0bbc7c0c81305a76e28fd26d024fbb159479189faaccf3dcf404c7",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "topic",
+          "state": "confirmed",
+          "receipt": {
+            "id": "57022ffb-eb8a-432a-a87a-879f708e95a5",
+            "namespace": "5be743b4-8a40-48b7-bccc-da0c7aceb8ce",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "57022ffb-eb8a-432a-a87a-879f708e95a5:gateway:1",
+                  "namespace": "5be743b4-8a40-48b7-bccc-da0c7aceb8ce",
+                  "ordinal": 1,
+                  "parent": "57022ffb-eb8a-432a-a87a-879f708e95a5",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 1
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 1,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "3f0ef7867bed18ae879954113c6bb163f0243ecf2d6137994f3ca75cf2feb2eb",
+          "host_zip_sha256": "e54f20bec833d1bf44f508cf5f246390131c3a19a147d1df9d35a6389ff7574c",
+          "plugin_sha256": "4c29c5620d0bbc7c0c81305a76e28fd26d024fbb159479189faaccf3dcf404c7",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "parts",
+          "state": "confirmed",
+          "receipt": {
+            "id": "f4a7d23e-a1b2-47c3-b282-b125a50b4bc5",
+            "namespace": "17664abf-600a-46db-a4e9-3d488c977f35",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "f4a7d23e-a1b2-47c3-b282-b125a50b4bc5:gateway:1",
+                  "namespace": "17664abf-600a-46db-a4e9-3d488c977f35",
+                  "ordinal": 1,
+                  "parent": "f4a7d23e-a1b2-47c3-b282-b125a50b4bc5",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "f4a7d23e-a1b2-47c3-b282-b125a50b4bc5:gateway:2",
+                  "namespace": "17664abf-600a-46db-a4e9-3d488c977f35",
+                  "ordinal": 2,
+                  "parent": "f4a7d23e-a1b2-47c3-b282-b125a50b4bc5",
+                  "result": {
+                    "locator": "om_sent_2",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "f4a7d23e-a1b2-47c3-b282-b125a50b4bc5:gateway:3",
+                  "namespace": "17664abf-600a-46db-a4e9-3d488c977f35",
+                  "ordinal": 3,
+                  "parent": "f4a7d23e-a1b2-47c3-b282-b125a50b4bc5",
+                  "result": {
+                    "locator": "om_sent_3",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 3
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 3,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "3f0ef7867bed18ae879954113c6bb163f0243ecf2d6137994f3ca75cf2feb2eb",
+          "host_zip_sha256": "e54f20bec833d1bf44f508cf5f246390131c3a19a147d1df9d35a6389ff7574c",
+          "plugin_sha256": "4c29c5620d0bbc7c0c81305a76e28fd26d024fbb159479189faaccf3dcf404c7",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "reply",
+          "state": "confirmed",
+          "receipt": {
+            "id": "86a182aa-ece2-41de-8d57-5844a00e779d",
+            "namespace": "a6e4958a-a833-47d9-bc93-11d529995f85",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "86a182aa-ece2-41de-8d57-5844a00e779d:gateway:1",
+                  "namespace": "a6e4958a-a833-47d9-bc93-11d529995f85",
+                  "ordinal": 1,
+                  "parent": "86a182aa-ece2-41de-8d57-5844a00e779d",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "86a182aa-ece2-41de-8d57-5844a00e779d:gateway:2",
+                  "namespace": "a6e4958a-a833-47d9-bc93-11d529995f85",
+                  "ordinal": 2,
+                  "parent": "86a182aa-ece2-41de-8d57-5844a00e779d",
+                  "result": {
+                    "locator": "om_sent_2",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "86a182aa-ece2-41de-8d57-5844a00e779d:gateway:3",
+                  "namespace": "a6e4958a-a833-47d9-bc93-11d529995f85",
+                  "ordinal": 3,
+                  "parent": "86a182aa-ece2-41de-8d57-5844a00e779d",
+                  "result": {
+                    "locator": "om_sent_3",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 3
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 3,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "3f0ef7867bed18ae879954113c6bb163f0243ecf2d6137994f3ca75cf2feb2eb",
+          "host_zip_sha256": "e54f20bec833d1bf44f508cf5f246390131c3a19a147d1df9d35a6389ff7574c",
+          "plugin_sha256": "4c29c5620d0bbc7c0c81305a76e28fd26d024fbb159479189faaccf3dcf404c7",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "expiry",
+          "state": "confirmed",
+          "receipt": {
+            "id": "df57a7f5-80f9-4f91-a7ab-1e9d75fdd72e",
+            "namespace": "be52a132-7052-4e33-a510-e7e773eb3076",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "df57a7f5-80f9-4f91-a7ab-1e9d75fdd72e:gateway:1",
+                  "namespace": "be52a132-7052-4e33-a510-e7e773eb3076",
+                  "ordinal": 1,
+                  "parent": "df57a7f5-80f9-4f91-a7ab-1e9d75fdd72e",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "df57a7f5-80f9-4f91-a7ab-1e9d75fdd72e:gateway:2",
+                  "namespace": "be52a132-7052-4e33-a510-e7e773eb3076",
+                  "ordinal": 2,
+                  "parent": "df57a7f5-80f9-4f91-a7ab-1e9d75fdd72e",
+                  "result": {
+                    "locator": "om_sent_2",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "df57a7f5-80f9-4f91-a7ab-1e9d75fdd72e:gateway:3",
+                  "namespace": "be52a132-7052-4e33-a510-e7e773eb3076",
+                  "ordinal": 3,
+                  "parent": "df57a7f5-80f9-4f91-a7ab-1e9d75fdd72e",
+                  "result": {
+                    "locator": "om_sent_3",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 3
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 3,
+          "token_issuances": 3,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "3f0ef7867bed18ae879954113c6bb163f0243ecf2d6137994f3ca75cf2feb2eb",
+          "host_zip_sha256": "e54f20bec833d1bf44f508cf5f246390131c3a19a147d1df9d35a6389ff7574c",
+          "plugin_sha256": "4c29c5620d0bbc7c0c81305a76e28fd26d024fbb159479189faaccf3dcf404c7",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "lost",
+          "state": "unknown",
+          "receipt": {
+            "id": "cd37788d-66c0-47d3-b9f8-a5defa48581e",
+            "namespace": "28057d2f-005b-432e-bd96-d7df3eaa0d63",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "cd37788d-66c0-47d3-b9f8-a5defa48581e:gateway:1",
+                  "namespace": "28057d2f-005b-432e-bd96-d7df3eaa0d63",
+                  "ordinal": 1,
+                  "parent": "cd37788d-66c0-47d3-b9f8-a5defa48581e",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "cd37788d-66c0-47d3-b9f8-a5defa48581e:gateway:2",
+                  "namespace": "28057d2f-005b-432e-bd96-d7df3eaa0d63",
+                  "ordinal": 2,
+                  "parent": "cd37788d-66c0-47d3-b9f8-a5defa48581e",
+                  "result": {
+                    "state": "unknown"
+                  },
+                  "state": "unknown"
+                }
+              ],
+              "planned": 3
+            },
+            "state": "unknown"
+          },
+          "native_requests": 2,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "3f0ef7867bed18ae879954113c6bb163f0243ecf2d6137994f3ca75cf2feb2eb",
+          "host_zip_sha256": "e54f20bec833d1bf44f508cf5f246390131c3a19a147d1df9d35a6389ff7574c",
+          "plugin_sha256": "4c29c5620d0bbc7c0c81305a76e28fd26d024fbb159479189faaccf3dcf404c7",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "rejected",
+          "state": "failed",
+          "receipt": {
+            "id": "f35cc0f0-0beb-4950-b0ee-1a5dc02a452a",
+            "namespace": "ef4b9d66-3164-47a2-a880-99fe6cd83948",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "f35cc0f0-0beb-4950-b0ee-1a5dc02a452a:gateway:1",
+                  "namespace": "ef4b9d66-3164-47a2-a880-99fe6cd83948",
+                  "ordinal": 1,
+                  "parent": "f35cc0f0-0beb-4950-b0ee-1a5dc02a452a",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "f35cc0f0-0beb-4950-b0ee-1a5dc02a452a:gateway:2",
+                  "namespace": "ef4b9d66-3164-47a2-a880-99fe6cd83948",
+                  "ordinal": 2,
+                  "parent": "f35cc0f0-0beb-4950-b0ee-1a5dc02a452a",
+                  "result": {
+                    "state": "failed"
+                  },
+                  "state": "failed"
+                }
+              ],
+              "planned": 3
+            },
+            "state": "failed"
+          },
+          "native_requests": 2,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "3f0ef7867bed18ae879954113c6bb163f0243ecf2d6137994f3ca75cf2feb2eb",
+          "host_zip_sha256": "e54f20bec833d1bf44f508cf5f246390131c3a19a147d1df9d35a6389ff7574c",
+          "plugin_sha256": "4c29c5620d0bbc7c0c81305a76e28fd26d024fbb159479189faaccf3dcf404c7",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "malformed",
+          "state": "unknown",
+          "receipt": {
+            "id": "75006601-ec50-4d15-b979-3f9ecd038750",
+            "namespace": "1a1351f4-22b6-4bc2-bf13-0519853bbabb",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "75006601-ec50-4d15-b979-3f9ecd038750:gateway:1",
+                  "namespace": "1a1351f4-22b6-4bc2-bf13-0519853bbabb",
+                  "ordinal": 1,
+                  "parent": "75006601-ec50-4d15-b979-3f9ecd038750",
+                  "result": {
+                    "state": "unknown"
+                  },
+                  "state": "unknown"
+                }
+              ],
+              "planned": 1
+            },
+            "state": "unknown"
+          },
+          "native_requests": 1,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "3f0ef7867bed18ae879954113c6bb163f0243ecf2d6137994f3ca75cf2feb2eb",
+          "host_zip_sha256": "e54f20bec833d1bf44f508cf5f246390131c3a19a147d1df9d35a6389ff7574c",
+          "plugin_sha256": "4c29c5620d0bbc7c0c81305a76e28fd26d024fbb159479189faaccf3dcf404c7",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "recall",
+          "state": "confirmed",
+          "receipt": {
+            "id": "6e9b67bc-cb78-4fce-950b-1f7973717c7c",
+            "namespace": "787d9a9d-ff1e-4c87-93b3-d36bb95ef92e",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "action": "recall_own_message",
+              "error_category": null,
+              "event_id": null,
+              "operation_id": "6e9b67bc-cb78-4fce-950b-1f7973717c7c",
+              "original_conversation_id": null,
+              "original_event_id": null,
+              "presence_id": "0bf59749-bcd3-411a-bba2-b92edcf4614f",
+              "status": "succeeded",
+              "target": {
+                "id": "1dd41598-39c9-4f3c-bf3a-dbca549d3beb",
+                "kind": "space"
+              }
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 2,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "3f0ef7867bed18ae879954113c6bb163f0243ecf2d6137994f3ca75cf2feb2eb",
+          "host_zip_sha256": "e54f20bec833d1bf44f508cf5f246390131c3a19a147d1df9d35a6389ff7574c",
+          "plugin_sha256": "4c29c5620d0bbc7c0c81305a76e28fd26d024fbb159479189faaccf3dcf404c7",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "recall-rejected",
+          "state": "failed",
+          "receipt": {
+            "id": "663176d6-a4f4-47e5-bcc8-96b943d072ed",
+            "namespace": "aa34fb8d-6f18-45a5-8be2-a102e4c56545",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "action": "recall_own_message",
+              "error_category": "platform_rejected",
+              "event_id": null,
+              "operation_id": "663176d6-a4f4-47e5-bcc8-96b943d072ed",
+              "original_conversation_id": null,
+              "original_event_id": null,
+              "presence_id": "6cf11ab0-82c2-4adb-a282-3190a5ce03a3",
+              "status": "failed",
+              "target": {
+                "id": "b2560238-1abf-4e70-98ea-aad5ebe70752",
+                "kind": "space"
+              }
+            },
+            "state": "failed"
+          },
+          "native_requests": 2,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "3f0ef7867bed18ae879954113c6bb163f0243ecf2d6137994f3ca75cf2feb2eb",
+          "host_zip_sha256": "e54f20bec833d1bf44f508cf5f246390131c3a19a147d1df9d35a6389ff7574c",
+          "plugin_sha256": "4c29c5620d0bbc7c0c81305a76e28fd26d024fbb159479189faaccf3dcf404c7",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "recall-lost",
+          "state": "unknown",
+          "receipt": {
+            "id": "b3713ce9-a902-4ab6-b3a7-9d59fdbe5632",
+            "namespace": "9db39e7a-1981-4e97-9222-f45b90d6c0f7",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "action": "recall_own_message",
+              "error_category": "delivery_unknown",
+              "event_id": null,
+              "operation_id": "b3713ce9-a902-4ab6-b3a7-9d59fdbe5632",
+              "original_conversation_id": null,
+              "original_event_id": null,
+              "presence_id": "f0d0377c-3885-49c3-9c00-5a820d557f83",
+              "status": "uncertain",
+              "target": {
+                "id": "712b4bd4-6c6b-420c-bfb4-ff16dcd37155",
+                "kind": "space"
+              }
+            },
+            "state": "unknown"
+          },
+          "native_requests": 2,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "3f0ef7867bed18ae879954113c6bb163f0243ecf2d6137994f3ca75cf2feb2eb",
+          "host_zip_sha256": "e54f20bec833d1bf44f508cf5f246390131c3a19a147d1df9d35a6389ff7574c",
+          "plugin_sha256": "4c29c5620d0bbc7c0c81305a76e28fd26d024fbb159479189faaccf3dcf404c7",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "recall-denied",
+          "state": "failed",
+          "receipt": {
+            "id": "fa36786a-bc63-4328-a97a-cc81a56c41d0",
+            "namespace": "e3316a34-b9ea-443a-a0e5-2f1016bb84d6",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "error": "plugin instance or grant unavailable"
+            },
+            "state": "failed"
+          },
+          "native_requests": 1,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "3f0ef7867bed18ae879954113c6bb163f0243ecf2d6137994f3ca75cf2feb2eb",
+          "host_zip_sha256": "e54f20bec833d1bf44f508cf5f246390131c3a19a147d1df9d35a6389ff7574c",
+          "plugin_sha256": "4c29c5620d0bbc7c0c81305a76e28fd26d024fbb159479189faaccf3dcf404c7",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "private",
+          "state": "confirmed",
+          "receipt": {
+            "id": "182c8f0d-ba02-44f7-81f1-6d28e2a9704b",
+            "namespace": "65cccd77-b7fa-4a79-8a2e-3565d073e3fe",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "182c8f0d-ba02-44f7-81f1-6d28e2a9704b:gateway:1",
+                  "namespace": "65cccd77-b7fa-4a79-8a2e-3565d073e3fe",
+                  "ordinal": 1,
+                  "parent": "182c8f0d-ba02-44f7-81f1-6d28e2a9704b",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 1
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 1,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "3f0ef7867bed18ae879954113c6bb163f0243ecf2d6137994f3ca75cf2feb2eb",
+          "host_zip_sha256": "e54f20bec833d1bf44f508cf5f246390131c3a19a147d1df9d35a6389ff7574c",
+          "plugin_sha256": "4c29c5620d0bbc7c0c81305a76e28fd26d024fbb159479189faaccf3dcf404c7",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "denied",
+          "state": "failed",
+          "receipt": {
+            "id": "cf80e6db-c68e-4093-aab8-c6abb8b189bd",
+            "namespace": "ab0e5b31-7ed6-45e5-9ff8-5b97f5d3c8d0",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "error": "gateway_send_not_granted"
+            },
+            "state": "failed"
+          },
+          "native_requests": 0,
+          "token_issuances": 0,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "3f0ef7867bed18ae879954113c6bb163f0243ecf2d6137994f3ca75cf2feb2eb",
+          "host_zip_sha256": "e54f20bec833d1bf44f508cf5f246390131c3a19a147d1df9d35a6389ff7574c",
+          "plugin_sha256": "4c29c5620d0bbc7c0c81305a76e28fd26d024fbb159479189faaccf3dcf404c7",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "token-rejected",
+          "state": "confirmed",
+          "receipt": {
+            "id": "d5dea297-b5dd-4169-bc41-17268f71955e",
+            "namespace": "46554f52-63b1-48ff-8f31-25f97e8d46e0",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "d5dea297-b5dd-4169-bc41-17268f71955e:gateway:1",
+                  "namespace": "46554f52-63b1-48ff-8f31-25f97e8d46e0",
+                  "ordinal": 1,
+                  "parent": "d5dea297-b5dd-4169-bc41-17268f71955e",
+                  "result": {
+                    "locator": "om_sent_2",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 1
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 2,
+          "token_issuances": 2,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "3f0ef7867bed18ae879954113c6bb163f0243ecf2d6137994f3ca75cf2feb2eb",
+          "host_zip_sha256": "e54f20bec833d1bf44f508cf5f246390131c3a19a147d1df9d35a6389ff7574c",
+          "plugin_sha256": "4c29c5620d0bbc7c0c81305a76e28fd26d024fbb159479189faaccf3dcf404c7",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "group",
+          "state": "confirmed",
+          "receipt": {
+            "id": "4f98fbd7-7364-4896-98c9-2cf1bb8258b6",
+            "namespace": "cf80c167-fcab-4f4d-ab4c-c951991e32f0",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "4f98fbd7-7364-4896-98c9-2cf1bb8258b6:gateway:1",
+                  "namespace": "cf80c167-fcab-4f4d-ab4c-c951991e32f0",
+                  "ordinal": 1,
+                  "parent": "4f98fbd7-7364-4896-98c9-2cf1bb8258b6",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 1
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 1,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "3f0ef7867bed18ae879954113c6bb163f0243ecf2d6137994f3ca75cf2feb2eb",
+          "host_zip_sha256": "e54f20bec833d1bf44f508cf5f246390131c3a19a147d1df9d35a6389ff7574c",
+          "plugin_sha256": "4c29c5620d0bbc7c0c81305a76e28fd26d024fbb159479189faaccf3dcf404c7",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "topic",
+          "state": "confirmed",
+          "receipt": {
+            "id": "434c7565-a5aa-4c58-8298-7c7590b0a614",
+            "namespace": "cd785ae4-7b90-4623-baf6-1c1f94605e97",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "434c7565-a5aa-4c58-8298-7c7590b0a614:gateway:1",
+                  "namespace": "cd785ae4-7b90-4623-baf6-1c1f94605e97",
+                  "ordinal": 1,
+                  "parent": "434c7565-a5aa-4c58-8298-7c7590b0a614",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 1
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 1,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "3f0ef7867bed18ae879954113c6bb163f0243ecf2d6137994f3ca75cf2feb2eb",
+          "host_zip_sha256": "e54f20bec833d1bf44f508cf5f246390131c3a19a147d1df9d35a6389ff7574c",
+          "plugin_sha256": "4c29c5620d0bbc7c0c81305a76e28fd26d024fbb159479189faaccf3dcf404c7",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "parts",
+          "state": "confirmed",
+          "receipt": {
+            "id": "aec73b59-14a7-4f5d-8d0b-4dc30b8e9e8b",
+            "namespace": "307cd2e4-07ad-4020-9b61-e22d98d4dc74",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "aec73b59-14a7-4f5d-8d0b-4dc30b8e9e8b:gateway:1",
+                  "namespace": "307cd2e4-07ad-4020-9b61-e22d98d4dc74",
+                  "ordinal": 1,
+                  "parent": "aec73b59-14a7-4f5d-8d0b-4dc30b8e9e8b",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "aec73b59-14a7-4f5d-8d0b-4dc30b8e9e8b:gateway:2",
+                  "namespace": "307cd2e4-07ad-4020-9b61-e22d98d4dc74",
+                  "ordinal": 2,
+                  "parent": "aec73b59-14a7-4f5d-8d0b-4dc30b8e9e8b",
+                  "result": {
+                    "locator": "om_sent_2",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "aec73b59-14a7-4f5d-8d0b-4dc30b8e9e8b:gateway:3",
+                  "namespace": "307cd2e4-07ad-4020-9b61-e22d98d4dc74",
+                  "ordinal": 3,
+                  "parent": "aec73b59-14a7-4f5d-8d0b-4dc30b8e9e8b",
+                  "result": {
+                    "locator": "om_sent_3",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 3
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 3,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "3f0ef7867bed18ae879954113c6bb163f0243ecf2d6137994f3ca75cf2feb2eb",
+          "host_zip_sha256": "e54f20bec833d1bf44f508cf5f246390131c3a19a147d1df9d35a6389ff7574c",
+          "plugin_sha256": "4c29c5620d0bbc7c0c81305a76e28fd26d024fbb159479189faaccf3dcf404c7",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "reply",
+          "state": "confirmed",
+          "receipt": {
+            "id": "30366b8d-a3b4-4697-a794-b11e01903cac",
+            "namespace": "dfeadd55-9c70-4887-a78f-91d3a9e2e10a",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "30366b8d-a3b4-4697-a794-b11e01903cac:gateway:1",
+                  "namespace": "dfeadd55-9c70-4887-a78f-91d3a9e2e10a",
+                  "ordinal": 1,
+                  "parent": "30366b8d-a3b4-4697-a794-b11e01903cac",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "30366b8d-a3b4-4697-a794-b11e01903cac:gateway:2",
+                  "namespace": "dfeadd55-9c70-4887-a78f-91d3a9e2e10a",
+                  "ordinal": 2,
+                  "parent": "30366b8d-a3b4-4697-a794-b11e01903cac",
+                  "result": {
+                    "locator": "om_sent_2",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "30366b8d-a3b4-4697-a794-b11e01903cac:gateway:3",
+                  "namespace": "dfeadd55-9c70-4887-a78f-91d3a9e2e10a",
+                  "ordinal": 3,
+                  "parent": "30366b8d-a3b4-4697-a794-b11e01903cac",
+                  "result": {
+                    "locator": "om_sent_3",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 3
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 3,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "3f0ef7867bed18ae879954113c6bb163f0243ecf2d6137994f3ca75cf2feb2eb",
+          "host_zip_sha256": "e54f20bec833d1bf44f508cf5f246390131c3a19a147d1df9d35a6389ff7574c",
+          "plugin_sha256": "4c29c5620d0bbc7c0c81305a76e28fd26d024fbb159479189faaccf3dcf404c7",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "expiry",
+          "state": "confirmed",
+          "receipt": {
+            "id": "17e17d01-b119-44f6-bf32-dab648067f5e",
+            "namespace": "39354cee-80ac-4d30-a948-6e2543a6d7aa",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "17e17d01-b119-44f6-bf32-dab648067f5e:gateway:1",
+                  "namespace": "39354cee-80ac-4d30-a948-6e2543a6d7aa",
+                  "ordinal": 1,
+                  "parent": "17e17d01-b119-44f6-bf32-dab648067f5e",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "17e17d01-b119-44f6-bf32-dab648067f5e:gateway:2",
+                  "namespace": "39354cee-80ac-4d30-a948-6e2543a6d7aa",
+                  "ordinal": 2,
+                  "parent": "17e17d01-b119-44f6-bf32-dab648067f5e",
+                  "result": {
+                    "locator": "om_sent_2",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "17e17d01-b119-44f6-bf32-dab648067f5e:gateway:3",
+                  "namespace": "39354cee-80ac-4d30-a948-6e2543a6d7aa",
+                  "ordinal": 3,
+                  "parent": "17e17d01-b119-44f6-bf32-dab648067f5e",
+                  "result": {
+                    "locator": "om_sent_3",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 3
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 3,
+          "token_issuances": 3,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "3f0ef7867bed18ae879954113c6bb163f0243ecf2d6137994f3ca75cf2feb2eb",
+          "host_zip_sha256": "e54f20bec833d1bf44f508cf5f246390131c3a19a147d1df9d35a6389ff7574c",
+          "plugin_sha256": "4c29c5620d0bbc7c0c81305a76e28fd26d024fbb159479189faaccf3dcf404c7",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "lost",
+          "state": "unknown",
+          "receipt": {
+            "id": "fe562ed4-19f2-47de-82b9-9c02be75efaf",
+            "namespace": "e17c5ffa-5a27-4a2f-882b-4e20ab832b29",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "fe562ed4-19f2-47de-82b9-9c02be75efaf:gateway:1",
+                  "namespace": "e17c5ffa-5a27-4a2f-882b-4e20ab832b29",
+                  "ordinal": 1,
+                  "parent": "fe562ed4-19f2-47de-82b9-9c02be75efaf",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "fe562ed4-19f2-47de-82b9-9c02be75efaf:gateway:2",
+                  "namespace": "e17c5ffa-5a27-4a2f-882b-4e20ab832b29",
+                  "ordinal": 2,
+                  "parent": "fe562ed4-19f2-47de-82b9-9c02be75efaf",
+                  "result": {
+                    "state": "unknown"
+                  },
+                  "state": "unknown"
+                }
+              ],
+              "planned": 3
+            },
+            "state": "unknown"
+          },
+          "native_requests": 2,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "3f0ef7867bed18ae879954113c6bb163f0243ecf2d6137994f3ca75cf2feb2eb",
+          "host_zip_sha256": "e54f20bec833d1bf44f508cf5f246390131c3a19a147d1df9d35a6389ff7574c",
+          "plugin_sha256": "4c29c5620d0bbc7c0c81305a76e28fd26d024fbb159479189faaccf3dcf404c7",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "rejected",
+          "state": "failed",
+          "receipt": {
+            "id": "252ca16f-12f3-4d40-b83f-bff5fd8f7064",
+            "namespace": "d6c07e5e-0db8-4060-8cd2-dd0aeee3f8d1",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "252ca16f-12f3-4d40-b83f-bff5fd8f7064:gateway:1",
+                  "namespace": "d6c07e5e-0db8-4060-8cd2-dd0aeee3f8d1",
+                  "ordinal": 1,
+                  "parent": "252ca16f-12f3-4d40-b83f-bff5fd8f7064",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "252ca16f-12f3-4d40-b83f-bff5fd8f7064:gateway:2",
+                  "namespace": "d6c07e5e-0db8-4060-8cd2-dd0aeee3f8d1",
+                  "ordinal": 2,
+                  "parent": "252ca16f-12f3-4d40-b83f-bff5fd8f7064",
+                  "result": {
+                    "state": "failed"
+                  },
+                  "state": "failed"
+                }
+              ],
+              "planned": 3
+            },
+            "state": "failed"
+          },
+          "native_requests": 2,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "3f0ef7867bed18ae879954113c6bb163f0243ecf2d6137994f3ca75cf2feb2eb",
+          "host_zip_sha256": "e54f20bec833d1bf44f508cf5f246390131c3a19a147d1df9d35a6389ff7574c",
+          "plugin_sha256": "4c29c5620d0bbc7c0c81305a76e28fd26d024fbb159479189faaccf3dcf404c7",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "malformed",
+          "state": "unknown",
+          "receipt": {
+            "id": "d85261bd-c369-4287-bbb3-566212d16eb3",
+            "namespace": "084081ea-d3c3-4176-a3ab-8821817ab04e",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "d85261bd-c369-4287-bbb3-566212d16eb3:gateway:1",
+                  "namespace": "084081ea-d3c3-4176-a3ab-8821817ab04e",
+                  "ordinal": 1,
+                  "parent": "d85261bd-c369-4287-bbb3-566212d16eb3",
+                  "result": {
+                    "state": "unknown"
+                  },
+                  "state": "unknown"
+                }
+              ],
+              "planned": 1
+            },
+            "state": "unknown"
+          },
+          "native_requests": 1,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "3f0ef7867bed18ae879954113c6bb163f0243ecf2d6137994f3ca75cf2feb2eb",
+          "host_zip_sha256": "e54f20bec833d1bf44f508cf5f246390131c3a19a147d1df9d35a6389ff7574c",
+          "plugin_sha256": "4c29c5620d0bbc7c0c81305a76e28fd26d024fbb159479189faaccf3dcf404c7",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "recall",
+          "state": "confirmed",
+          "receipt": {
+            "id": "422dc125-30c8-4377-91f0-0ae11415b192",
+            "namespace": "4009d00a-2f9b-4143-894b-ca2a0dfc0512",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "action": "recall_own_message",
+              "error_category": null,
+              "event_id": null,
+              "operation_id": "422dc125-30c8-4377-91f0-0ae11415b192",
+              "original_conversation_id": null,
+              "original_event_id": null,
+              "presence_id": "4d98d0c3-2023-4a6e-a70c-7eddea5e3c19",
+              "status": "succeeded",
+              "target": {
+                "id": "7ce25036-6c6d-4ddf-adf5-c4d0df865dd7",
+                "kind": "space"
+              }
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 2,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "3f0ef7867bed18ae879954113c6bb163f0243ecf2d6137994f3ca75cf2feb2eb",
+          "host_zip_sha256": "e54f20bec833d1bf44f508cf5f246390131c3a19a147d1df9d35a6389ff7574c",
+          "plugin_sha256": "4c29c5620d0bbc7c0c81305a76e28fd26d024fbb159479189faaccf3dcf404c7",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "recall-rejected",
+          "state": "failed",
+          "receipt": {
+            "id": "90f15659-37a6-47f2-ba32-151adc49bb76",
+            "namespace": "a708911b-2f19-4420-a636-c9631296b5b6",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "action": "recall_own_message",
+              "error_category": "platform_rejected",
+              "event_id": null,
+              "operation_id": "90f15659-37a6-47f2-ba32-151adc49bb76",
+              "original_conversation_id": null,
+              "original_event_id": null,
+              "presence_id": "15bc5264-0bac-4931-b18f-7fceb44b2129",
+              "status": "failed",
+              "target": {
+                "id": "483dad9a-b3a0-4f92-8aa4-a768dcfc9fea",
+                "kind": "space"
+              }
+            },
+            "state": "failed"
+          },
+          "native_requests": 2,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "3f0ef7867bed18ae879954113c6bb163f0243ecf2d6137994f3ca75cf2feb2eb",
+          "host_zip_sha256": "e54f20bec833d1bf44f508cf5f246390131c3a19a147d1df9d35a6389ff7574c",
+          "plugin_sha256": "4c29c5620d0bbc7c0c81305a76e28fd26d024fbb159479189faaccf3dcf404c7",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "recall-lost",
+          "state": "unknown",
+          "receipt": {
+            "id": "a07b45b8-7e27-4f35-9040-4d4633d7680e",
+            "namespace": "1d1dad38-9d47-438f-9393-7032810b4ed1",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "action": "recall_own_message",
+              "error_category": "delivery_unknown",
+              "event_id": null,
+              "operation_id": "a07b45b8-7e27-4f35-9040-4d4633d7680e",
+              "original_conversation_id": null,
+              "original_event_id": null,
+              "presence_id": "062e89fe-5cce-4223-b6c8-49525dc9595e",
+              "status": "uncertain",
+              "target": {
+                "id": "9f2812f5-7523-4a0b-b52e-e3e107c268ec",
+                "kind": "space"
+              }
+            },
+            "state": "unknown"
+          },
+          "native_requests": 2,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "3f0ef7867bed18ae879954113c6bb163f0243ecf2d6137994f3ca75cf2feb2eb",
+          "host_zip_sha256": "e54f20bec833d1bf44f508cf5f246390131c3a19a147d1df9d35a6389ff7574c",
+          "plugin_sha256": "4c29c5620d0bbc7c0c81305a76e28fd26d024fbb159479189faaccf3dcf404c7",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "recall-denied",
+          "state": "failed",
+          "receipt": {
+            "id": "505800d2-c9f9-4dca-a7f1-c78fb30530fa",
+            "namespace": "8420956c-42cc-4db2-9d38-4c155f3bb699",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "error": "plugin instance or grant unavailable"
+            },
+            "state": "failed"
+          },
+          "native_requests": 1,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "3f0ef7867bed18ae879954113c6bb163f0243ecf2d6137994f3ca75cf2feb2eb",
+          "host_zip_sha256": "e54f20bec833d1bf44f508cf5f246390131c3a19a147d1df9d35a6389ff7574c",
+          "plugin_sha256": "4c29c5620d0bbc7c0c81305a76e28fd26d024fbb159479189faaccf3dcf404c7",
+          "paid_calls": 0
+        }
+      ],
+      "topic_cases": {
+        "original-root": {
+          "status": "PASS",
+          "topic": "omt_shared",
+          "topic_root": "om_root",
+          "original_topic_roots": [
+            [
+              1,
+              "fs.a",
+              "cli_a",
+              "tenant-a",
+              "omt_shared",
+              "om_root"
+            ],
+            [
+              2,
+              "fs.b",
+              "cli_b",
+              "tenant-b",
+              "omt_shared",
+              "om_root"
+            ]
+          ],
+          "durable_events": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "host_sha256": "3f0ef7867bed18ae879954113c6bb163f0243ecf2d6137994f3ca75cf2feb2eb"
+        },
+        "first-thread-message": {
+          "status": "PASS",
+          "topic": "omt_shared",
+          "topic_root": "om_shared",
+          "original_topic_roots": [
+            [
+              1,
+              "fs.a",
+              "cli_a",
+              "tenant-a",
+              "omt_shared",
+              "om_shared"
+            ],
+            [
+              2,
+              "fs.b",
+              "cli_b",
+              "tenant-b",
+              "omt_shared",
+              "om_shared"
+            ]
+          ],
+          "durable_events": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "host_sha256": "3f0ef7867bed18ae879954113c6bb163f0243ecf2d6137994f3ca75cf2feb2eb"
+        },
+        "ordinary-group": {
+          "status": "PASS",
+          "topic": null,
+          "topic_root": null,
+          "original_topic_roots": [],
+          "durable_events": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "host_sha256": "3f0ef7867bed18ae879954113c6bb163f0243ecf2d6137994f3ca75cf2feb2eb"
+        }
+      },
+      "reader_events": {
+        "cli_a": {
+          "old": [
+            1
+          ],
+          "new": [
+            2,
+            1
+          ],
+          "rollback": [
+            2
+          ]
+        },
+        "cli_b": {
+          "old": [
+            3
+          ],
+          "new": [
+            4,
+            3
+          ],
+          "rollback": [
+            4
+          ]
+        }
+      },
+      "original_topic_roots": [
+        [
+          1,
+          "fs.a",
+          "om_root"
+        ],
+        [
+          2,
+          "fs.a",
+          "om_root"
+        ],
+        [
+          3,
+          "fs.b",
+          "om_root"
+        ],
+        [
+          4,
+          "fs.b",
+          "om_root"
+        ]
+      ],
+      "media_domains": [
+        {
+          "domain": "feishu",
+          "kind": "image",
+          "fixture_requests": [
+            {
+              "method": "token",
+              "app": "cli_feishu",
+              "tenant": "tenant-feishu",
+              "issuance": 1
+            },
+            {
+              "method": "resource",
+              "domain": "feishu",
+              "raw_path": "/open-apis/im/v1/messages/om_original/resources/res%20%23%2Fnative?type=image",
+              "key": "res #/native",
+              "type": "image",
+              "token_number": 1
+            },
+            {
+              "method": "token",
+              "app": "cli_feishu",
+              "tenant": "tenant-feishu",
+              "issuance": 2
+            },
+            {
+              "method": "resource",
+              "domain": "feishu",
+              "raw_path": "/open-apis/im/v1/messages/om_original/resources/denied?type=image",
+              "key": "denied",
+              "type": "image",
+              "token_number": 2
+            },
+            {
+              "method": "resource",
+              "domain": "feishu",
+              "raw_path": "/open-apis/im/v1/messages/om_original/resources/cancelled?type=image",
+              "key": "cancelled",
+              "type": "image",
+              "token_number": 2
+            },
+            {
+              "method": "token",
+              "app": "cli_feishu",
+              "tenant": "tenant-feishu",
+              "issuance": 3
+            },
+            {
+              "method": "resource",
+              "domain": "feishu",
+              "raw_path": "/open-apis/im/v1/messages/om_original/resources/res%20%23%2Fnative?type=image",
+              "key": "res #/native",
+              "type": "image",
+              "token_number": 3
+            }
+          ],
+          "sha256": "f645b72f1b9186913bc62759858134c358d5ba6e86fc59a2c467c55fabaeeb8c",
+          "bytes": 26789,
+          "ws_ack_during_rest": true,
+          "wrong_identity_requests": 0,
+          "http_403_retries": 0,
+          "token_issuances": 3,
+          "forget_cancelled_http": true,
+          "forgotten_page_rejected": true,
+          "paged_text": {
+            "status": "PASS",
+            "bytes": 8000000,
+            "pages": 652,
+            "elapsed_seconds": 1.0189338750000019,
+            "sha256": "fd392321b0b5775d5930e2dbd8842bcff5b2e6afc1919b5b3bce5ad59ca2f454",
+            "forgotten_plan_cancelled": true,
+            "late_page_did_not_advance_fresh_plan": true,
+            "malformed_page_rejected": true,
+            "native_effects": 0
+          }
+        },
+        {
+          "domain": "lark",
+          "kind": "file",
+          "fixture_requests": [
+            {
+              "method": "token",
+              "app": "cli_lark",
+              "tenant": "tenant-lark",
+              "issuance": 1
+            },
+            {
+              "method": "resource",
+              "domain": "lark",
+              "raw_path": "/open-apis/im/v1/messages/om_original/resources/res%20%23%2Fnative?type=file",
+              "key": "res #/native",
+              "type": "file",
+              "token_number": 1
+            },
+            {
+              "method": "token",
+              "app": "cli_lark",
+              "tenant": "tenant-lark",
+              "issuance": 2
+            },
+            {
+              "method": "resource",
+              "domain": "lark",
+              "raw_path": "/open-apis/im/v1/messages/om_original/resources/denied?type=file",
+              "key": "denied",
+              "type": "file",
+              "token_number": 2
+            },
+            {
+              "method": "resource",
+              "domain": "lark",
+              "raw_path": "/open-apis/im/v1/messages/om_original/resources/cancelled?type=file",
+              "key": "cancelled",
+              "type": "file",
+              "token_number": 2
+            },
+            {
+              "method": "token",
+              "app": "cli_lark",
+              "tenant": "tenant-lark",
+              "issuance": 3
+            },
+            {
+              "method": "resource",
+              "domain": "lark",
+              "raw_path": "/open-apis/im/v1/messages/om_original/resources/res%20%23%2Fnative?type=file",
+              "key": "res #/native",
+              "type": "file",
+              "token_number": 3
+            }
+          ],
+          "sha256": "a6c7af0a14eaed92a4c7be304b665671d26dc531b207b518bc4518ea38c194bf",
+          "bytes": 26789,
+          "ws_ack_during_rest": true,
+          "wrong_identity_requests": 0,
+          "http_403_retries": 0,
+          "token_issuances": 3,
+          "forget_cancelled_http": true,
+          "forgotten_page_rejected": true,
+          "paged_text": {
+            "status": "PASS",
+            "bytes": 8000000,
+            "pages": 652,
+            "elapsed_seconds": 1.0155222500000036,
+            "sha256": "fd392321b0b5775d5930e2dbd8842bcff5b2e6afc1919b5b3bce5ad59ca2f454",
+            "forgotten_plan_cancelled": true,
+            "late_page_did_not_advance_fresh_plan": true,
+            "malformed_page_rejected": true,
+            "native_effects": 0
+          }
+        }
+      ],
+      "packages": {
+        "0.1.0-alpha.5": {
+          "binary": "0.1.0-alpha.5.bin",
+          "binary_sha256": "b8325b56e6c8490b764ba1ea86c35afeca2687274771d9921f14136c226d7d28",
+          "sdk_version": "1.0.0-alpha.18",
+          "sdk_sha256": "7ca5f2c98169527bbc413e0bdeadc7a881fe8e94c57815c0011d3ce4e5d7d76e",
+          "manifest_sha256": "1ecfad708b14b037b2b7f5d92323c5affc9412de69db261c05a181ab66768735"
+        },
+        "0.1.0-alpha.6": {
+          "binary": "0.1.0-alpha.6.bin",
+          "binary_sha256": "4c29c5620d0bbc7c0c81305a76e28fd26d024fbb159479189faaccf3dcf404c7",
+          "sdk_version": "1.0.0-alpha.20",
+          "sdk_sha256": "b5a4c3e82cdd4914e93fdc235129147a84525b07421f7898ebb0dbb1d7f7790a",
+          "manifest_sha256": "8dc73f28844b6f1470c42f7158f083a6604084701cbf4017e82f7e9ec54c7085"
+        }
+      }
+    },
+    "windows": {
+      "status": "PASS",
+      "archive": "windows.zip",
+      "sha256": "99ee58cde5c3ea3da5359c6810866e30a0d21ab0a0aacd98f9dfe98a08b0e322",
+      "delivery_cases": [
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "private",
+          "state": "confirmed",
+          "receipt": {
+            "id": "ec5a951c-1d10-4ac8-b992-f37821ba1904",
+            "namespace": "32450c46-a7dc-49fc-954e-e9e998956e06",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "ec5a951c-1d10-4ac8-b992-f37821ba1904:gateway:1",
+                  "namespace": "32450c46-a7dc-49fc-954e-e9e998956e06",
+                  "ordinal": 1,
+                  "parent": "ec5a951c-1d10-4ac8-b992-f37821ba1904",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 1
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 1,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "08c997b7409efce2ff97a1a1820599550810ef4d8e3763656777c6e7694d32e9",
+          "host_zip_sha256": "eaaba18e704632178d5e071800308c50f67f26b5ebe55b30f40dd1daa0d3f257",
+          "plugin_sha256": "b1b4a76a5ecc4252d6766bafc86251805cd178ac33557039af19325ca7cfcdf5",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "denied",
+          "state": "failed",
+          "receipt": {
+            "id": "5634ff44-6005-4293-85a2-15526ad5398a",
+            "namespace": "361331d3-6475-4a81-b346-43fb617545c9",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "error": "gateway_send_not_granted"
+            },
+            "state": "failed"
+          },
+          "native_requests": 0,
+          "token_issuances": 0,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "08c997b7409efce2ff97a1a1820599550810ef4d8e3763656777c6e7694d32e9",
+          "host_zip_sha256": "eaaba18e704632178d5e071800308c50f67f26b5ebe55b30f40dd1daa0d3f257",
+          "plugin_sha256": "b1b4a76a5ecc4252d6766bafc86251805cd178ac33557039af19325ca7cfcdf5",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "token-rejected",
+          "state": "confirmed",
+          "receipt": {
+            "id": "69f577bb-1f1d-4623-ade6-00f6b4e68db8",
+            "namespace": "74daa108-1a52-4136-8575-c37779dac3e2",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "69f577bb-1f1d-4623-ade6-00f6b4e68db8:gateway:1",
+                  "namespace": "74daa108-1a52-4136-8575-c37779dac3e2",
+                  "ordinal": 1,
+                  "parent": "69f577bb-1f1d-4623-ade6-00f6b4e68db8",
+                  "result": {
+                    "locator": "om_sent_2",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 1
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 2,
+          "token_issuances": 2,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "08c997b7409efce2ff97a1a1820599550810ef4d8e3763656777c6e7694d32e9",
+          "host_zip_sha256": "eaaba18e704632178d5e071800308c50f67f26b5ebe55b30f40dd1daa0d3f257",
+          "plugin_sha256": "b1b4a76a5ecc4252d6766bafc86251805cd178ac33557039af19325ca7cfcdf5",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "group",
+          "state": "confirmed",
+          "receipt": {
+            "id": "5e795364-5c45-4ff7-8dd3-30872b539e09",
+            "namespace": "1778556d-0382-4064-b832-554bc7f825c8",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "5e795364-5c45-4ff7-8dd3-30872b539e09:gateway:1",
+                  "namespace": "1778556d-0382-4064-b832-554bc7f825c8",
+                  "ordinal": 1,
+                  "parent": "5e795364-5c45-4ff7-8dd3-30872b539e09",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 1
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 1,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "08c997b7409efce2ff97a1a1820599550810ef4d8e3763656777c6e7694d32e9",
+          "host_zip_sha256": "eaaba18e704632178d5e071800308c50f67f26b5ebe55b30f40dd1daa0d3f257",
+          "plugin_sha256": "b1b4a76a5ecc4252d6766bafc86251805cd178ac33557039af19325ca7cfcdf5",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "topic",
+          "state": "confirmed",
+          "receipt": {
+            "id": "fb4d85c7-a79e-4284-9eb3-9c470463ea95",
+            "namespace": "5ad3c318-136b-4745-b6a7-0ded9f5291a9",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "fb4d85c7-a79e-4284-9eb3-9c470463ea95:gateway:1",
+                  "namespace": "5ad3c318-136b-4745-b6a7-0ded9f5291a9",
+                  "ordinal": 1,
+                  "parent": "fb4d85c7-a79e-4284-9eb3-9c470463ea95",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 1
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 1,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "08c997b7409efce2ff97a1a1820599550810ef4d8e3763656777c6e7694d32e9",
+          "host_zip_sha256": "eaaba18e704632178d5e071800308c50f67f26b5ebe55b30f40dd1daa0d3f257",
+          "plugin_sha256": "b1b4a76a5ecc4252d6766bafc86251805cd178ac33557039af19325ca7cfcdf5",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "parts",
+          "state": "confirmed",
+          "receipt": {
+            "id": "efd374f3-43cf-49e5-b048-40e7925d1883",
+            "namespace": "4394c9c5-a2d8-4c1e-b44d-71cb2c41c0a2",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "efd374f3-43cf-49e5-b048-40e7925d1883:gateway:1",
+                  "namespace": "4394c9c5-a2d8-4c1e-b44d-71cb2c41c0a2",
+                  "ordinal": 1,
+                  "parent": "efd374f3-43cf-49e5-b048-40e7925d1883",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "efd374f3-43cf-49e5-b048-40e7925d1883:gateway:2",
+                  "namespace": "4394c9c5-a2d8-4c1e-b44d-71cb2c41c0a2",
+                  "ordinal": 2,
+                  "parent": "efd374f3-43cf-49e5-b048-40e7925d1883",
+                  "result": {
+                    "locator": "om_sent_2",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "efd374f3-43cf-49e5-b048-40e7925d1883:gateway:3",
+                  "namespace": "4394c9c5-a2d8-4c1e-b44d-71cb2c41c0a2",
+                  "ordinal": 3,
+                  "parent": "efd374f3-43cf-49e5-b048-40e7925d1883",
+                  "result": {
+                    "locator": "om_sent_3",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 3
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 3,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "08c997b7409efce2ff97a1a1820599550810ef4d8e3763656777c6e7694d32e9",
+          "host_zip_sha256": "eaaba18e704632178d5e071800308c50f67f26b5ebe55b30f40dd1daa0d3f257",
+          "plugin_sha256": "b1b4a76a5ecc4252d6766bafc86251805cd178ac33557039af19325ca7cfcdf5",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "reply",
+          "state": "confirmed",
+          "receipt": {
+            "id": "d7e65d40-017f-40de-8b1f-2ead308fd898",
+            "namespace": "4f3a57f7-2d8f-47ea-b85e-bd7b7b9fb213",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "d7e65d40-017f-40de-8b1f-2ead308fd898:gateway:1",
+                  "namespace": "4f3a57f7-2d8f-47ea-b85e-bd7b7b9fb213",
+                  "ordinal": 1,
+                  "parent": "d7e65d40-017f-40de-8b1f-2ead308fd898",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "d7e65d40-017f-40de-8b1f-2ead308fd898:gateway:2",
+                  "namespace": "4f3a57f7-2d8f-47ea-b85e-bd7b7b9fb213",
+                  "ordinal": 2,
+                  "parent": "d7e65d40-017f-40de-8b1f-2ead308fd898",
+                  "result": {
+                    "locator": "om_sent_2",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "d7e65d40-017f-40de-8b1f-2ead308fd898:gateway:3",
+                  "namespace": "4f3a57f7-2d8f-47ea-b85e-bd7b7b9fb213",
+                  "ordinal": 3,
+                  "parent": "d7e65d40-017f-40de-8b1f-2ead308fd898",
+                  "result": {
+                    "locator": "om_sent_3",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 3
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 3,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "08c997b7409efce2ff97a1a1820599550810ef4d8e3763656777c6e7694d32e9",
+          "host_zip_sha256": "eaaba18e704632178d5e071800308c50f67f26b5ebe55b30f40dd1daa0d3f257",
+          "plugin_sha256": "b1b4a76a5ecc4252d6766bafc86251805cd178ac33557039af19325ca7cfcdf5",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "expiry",
+          "state": "confirmed",
+          "receipt": {
+            "id": "34724016-5d02-4b41-9f9b-74a560812516",
+            "namespace": "5cb70c81-081e-43e0-b0e7-5b64417300b7",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "34724016-5d02-4b41-9f9b-74a560812516:gateway:1",
+                  "namespace": "5cb70c81-081e-43e0-b0e7-5b64417300b7",
+                  "ordinal": 1,
+                  "parent": "34724016-5d02-4b41-9f9b-74a560812516",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "34724016-5d02-4b41-9f9b-74a560812516:gateway:2",
+                  "namespace": "5cb70c81-081e-43e0-b0e7-5b64417300b7",
+                  "ordinal": 2,
+                  "parent": "34724016-5d02-4b41-9f9b-74a560812516",
+                  "result": {
+                    "locator": "om_sent_2",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "34724016-5d02-4b41-9f9b-74a560812516:gateway:3",
+                  "namespace": "5cb70c81-081e-43e0-b0e7-5b64417300b7",
+                  "ordinal": 3,
+                  "parent": "34724016-5d02-4b41-9f9b-74a560812516",
+                  "result": {
+                    "locator": "om_sent_3",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 3
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 3,
+          "token_issuances": 3,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "08c997b7409efce2ff97a1a1820599550810ef4d8e3763656777c6e7694d32e9",
+          "host_zip_sha256": "eaaba18e704632178d5e071800308c50f67f26b5ebe55b30f40dd1daa0d3f257",
+          "plugin_sha256": "b1b4a76a5ecc4252d6766bafc86251805cd178ac33557039af19325ca7cfcdf5",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "lost",
+          "state": "unknown",
+          "receipt": {
+            "id": "a5799ab4-b8d8-4680-bc5d-283552061a06",
+            "namespace": "b44c89a8-4f72-4aee-a43f-bed8daac6249",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "a5799ab4-b8d8-4680-bc5d-283552061a06:gateway:1",
+                  "namespace": "b44c89a8-4f72-4aee-a43f-bed8daac6249",
+                  "ordinal": 1,
+                  "parent": "a5799ab4-b8d8-4680-bc5d-283552061a06",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "a5799ab4-b8d8-4680-bc5d-283552061a06:gateway:2",
+                  "namespace": "b44c89a8-4f72-4aee-a43f-bed8daac6249",
+                  "ordinal": 2,
+                  "parent": "a5799ab4-b8d8-4680-bc5d-283552061a06",
+                  "result": {
+                    "state": "unknown"
+                  },
+                  "state": "unknown"
+                }
+              ],
+              "planned": 3
+            },
+            "state": "unknown"
+          },
+          "native_requests": 2,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "08c997b7409efce2ff97a1a1820599550810ef4d8e3763656777c6e7694d32e9",
+          "host_zip_sha256": "eaaba18e704632178d5e071800308c50f67f26b5ebe55b30f40dd1daa0d3f257",
+          "plugin_sha256": "b1b4a76a5ecc4252d6766bafc86251805cd178ac33557039af19325ca7cfcdf5",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "rejected",
+          "state": "failed",
+          "receipt": {
+            "id": "e05bade1-b0da-4eb0-87e1-7a1ac098a899",
+            "namespace": "87cb7f83-ba41-4454-8e06-e56a056fb3b3",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "e05bade1-b0da-4eb0-87e1-7a1ac098a899:gateway:1",
+                  "namespace": "87cb7f83-ba41-4454-8e06-e56a056fb3b3",
+                  "ordinal": 1,
+                  "parent": "e05bade1-b0da-4eb0-87e1-7a1ac098a899",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "e05bade1-b0da-4eb0-87e1-7a1ac098a899:gateway:2",
+                  "namespace": "87cb7f83-ba41-4454-8e06-e56a056fb3b3",
+                  "ordinal": 2,
+                  "parent": "e05bade1-b0da-4eb0-87e1-7a1ac098a899",
+                  "result": {
+                    "state": "failed"
+                  },
+                  "state": "failed"
+                }
+              ],
+              "planned": 3
+            },
+            "state": "failed"
+          },
+          "native_requests": 2,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "08c997b7409efce2ff97a1a1820599550810ef4d8e3763656777c6e7694d32e9",
+          "host_zip_sha256": "eaaba18e704632178d5e071800308c50f67f26b5ebe55b30f40dd1daa0d3f257",
+          "plugin_sha256": "b1b4a76a5ecc4252d6766bafc86251805cd178ac33557039af19325ca7cfcdf5",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "malformed",
+          "state": "unknown",
+          "receipt": {
+            "id": "79c1e73a-c226-4fca-949a-7f4de2934c7b",
+            "namespace": "518fb5a0-caa4-49ca-b852-162b34304aa7",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "79c1e73a-c226-4fca-949a-7f4de2934c7b:gateway:1",
+                  "namespace": "518fb5a0-caa4-49ca-b852-162b34304aa7",
+                  "ordinal": 1,
+                  "parent": "79c1e73a-c226-4fca-949a-7f4de2934c7b",
+                  "result": {
+                    "state": "unknown"
+                  },
+                  "state": "unknown"
+                }
+              ],
+              "planned": 1
+            },
+            "state": "unknown"
+          },
+          "native_requests": 1,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "08c997b7409efce2ff97a1a1820599550810ef4d8e3763656777c6e7694d32e9",
+          "host_zip_sha256": "eaaba18e704632178d5e071800308c50f67f26b5ebe55b30f40dd1daa0d3f257",
+          "plugin_sha256": "b1b4a76a5ecc4252d6766bafc86251805cd178ac33557039af19325ca7cfcdf5",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "recall",
+          "state": "confirmed",
+          "receipt": {
+            "id": "2fa115cd-2d81-44a9-b691-73fa3b0c09ca",
+            "namespace": "de7fec30-78a4-4b5c-85be-987cd69ec800",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "action": "recall_own_message",
+              "error_category": null,
+              "event_id": null,
+              "operation_id": "2fa115cd-2d81-44a9-b691-73fa3b0c09ca",
+              "original_conversation_id": null,
+              "original_event_id": null,
+              "presence_id": "677fcba5-77eb-45fc-8c2e-ccd90c0e0f48",
+              "status": "succeeded",
+              "target": {
+                "id": "48ac87fb-d098-46d6-858d-74ede56738fe",
+                "kind": "space"
+              }
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 2,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "08c997b7409efce2ff97a1a1820599550810ef4d8e3763656777c6e7694d32e9",
+          "host_zip_sha256": "eaaba18e704632178d5e071800308c50f67f26b5ebe55b30f40dd1daa0d3f257",
+          "plugin_sha256": "b1b4a76a5ecc4252d6766bafc86251805cd178ac33557039af19325ca7cfcdf5",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "recall-rejected",
+          "state": "failed",
+          "receipt": {
+            "id": "9188bb34-98ec-4d78-a943-604db271ba0a",
+            "namespace": "a5be4d57-13ab-4b63-b930-6a9237b6c79c",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "action": "recall_own_message",
+              "error_category": "platform_rejected",
+              "event_id": null,
+              "operation_id": "9188bb34-98ec-4d78-a943-604db271ba0a",
+              "original_conversation_id": null,
+              "original_event_id": null,
+              "presence_id": "f5ad6f65-c899-423d-8ee9-9369fba226f5",
+              "status": "failed",
+              "target": {
+                "id": "0def7246-449e-4fce-b8ea-b7807a0dbb2a",
+                "kind": "space"
+              }
+            },
+            "state": "failed"
+          },
+          "native_requests": 2,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "08c997b7409efce2ff97a1a1820599550810ef4d8e3763656777c6e7694d32e9",
+          "host_zip_sha256": "eaaba18e704632178d5e071800308c50f67f26b5ebe55b30f40dd1daa0d3f257",
+          "plugin_sha256": "b1b4a76a5ecc4252d6766bafc86251805cd178ac33557039af19325ca7cfcdf5",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "recall-lost",
+          "state": "unknown",
+          "receipt": {
+            "id": "63220765-68aa-43b0-9da6-b40210658010",
+            "namespace": "8cd81d71-49d7-4711-8310-fc9e4dfcc4a3",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "action": "recall_own_message",
+              "error_category": "delivery_unknown",
+              "event_id": null,
+              "operation_id": "63220765-68aa-43b0-9da6-b40210658010",
+              "original_conversation_id": null,
+              "original_event_id": null,
+              "presence_id": "ea6c03f3-51f7-45f6-a0d2-cd11e4d430f7",
+              "status": "uncertain",
+              "target": {
+                "id": "5978ec8d-9ccd-4886-ba17-158c1cc01703",
+                "kind": "space"
+              }
+            },
+            "state": "unknown"
+          },
+          "native_requests": 2,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "08c997b7409efce2ff97a1a1820599550810ef4d8e3763656777c6e7694d32e9",
+          "host_zip_sha256": "eaaba18e704632178d5e071800308c50f67f26b5ebe55b30f40dd1daa0d3f257",
+          "plugin_sha256": "b1b4a76a5ecc4252d6766bafc86251805cd178ac33557039af19325ca7cfcdf5",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "feishu",
+          "scenario": "recall-denied",
+          "state": "failed",
+          "receipt": {
+            "id": "c4c6ae31-7c7c-4ec1-82f1-c3ba668be803",
+            "namespace": "aacec896-900c-4696-95af-74f1e19b9f91",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "error": "plugin instance or grant unavailable"
+            },
+            "state": "failed"
+          },
+          "native_requests": 1,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "08c997b7409efce2ff97a1a1820599550810ef4d8e3763656777c6e7694d32e9",
+          "host_zip_sha256": "eaaba18e704632178d5e071800308c50f67f26b5ebe55b30f40dd1daa0d3f257",
+          "plugin_sha256": "b1b4a76a5ecc4252d6766bafc86251805cd178ac33557039af19325ca7cfcdf5",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "private",
+          "state": "confirmed",
+          "receipt": {
+            "id": "6944a26d-7586-4964-9270-2f192a43e416",
+            "namespace": "a15065bb-ec83-422a-a491-76e8712262f2",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "6944a26d-7586-4964-9270-2f192a43e416:gateway:1",
+                  "namespace": "a15065bb-ec83-422a-a491-76e8712262f2",
+                  "ordinal": 1,
+                  "parent": "6944a26d-7586-4964-9270-2f192a43e416",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 1
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 1,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "08c997b7409efce2ff97a1a1820599550810ef4d8e3763656777c6e7694d32e9",
+          "host_zip_sha256": "eaaba18e704632178d5e071800308c50f67f26b5ebe55b30f40dd1daa0d3f257",
+          "plugin_sha256": "b1b4a76a5ecc4252d6766bafc86251805cd178ac33557039af19325ca7cfcdf5",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "denied",
+          "state": "failed",
+          "receipt": {
+            "id": "037ef985-69a1-46ad-8636-8b470b042883",
+            "namespace": "30426d7c-2408-4925-ab2c-01fbbee7678b",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "error": "gateway_send_not_granted"
+            },
+            "state": "failed"
+          },
+          "native_requests": 0,
+          "token_issuances": 0,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "08c997b7409efce2ff97a1a1820599550810ef4d8e3763656777c6e7694d32e9",
+          "host_zip_sha256": "eaaba18e704632178d5e071800308c50f67f26b5ebe55b30f40dd1daa0d3f257",
+          "plugin_sha256": "b1b4a76a5ecc4252d6766bafc86251805cd178ac33557039af19325ca7cfcdf5",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "token-rejected",
+          "state": "confirmed",
+          "receipt": {
+            "id": "afc38d84-e66b-4c7a-9a17-4f07fdca93ee",
+            "namespace": "a0397b62-ab1e-452b-938a-7953d401eaef",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "afc38d84-e66b-4c7a-9a17-4f07fdca93ee:gateway:1",
+                  "namespace": "a0397b62-ab1e-452b-938a-7953d401eaef",
+                  "ordinal": 1,
+                  "parent": "afc38d84-e66b-4c7a-9a17-4f07fdca93ee",
+                  "result": {
+                    "locator": "om_sent_2",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 1
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 2,
+          "token_issuances": 2,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "08c997b7409efce2ff97a1a1820599550810ef4d8e3763656777c6e7694d32e9",
+          "host_zip_sha256": "eaaba18e704632178d5e071800308c50f67f26b5ebe55b30f40dd1daa0d3f257",
+          "plugin_sha256": "b1b4a76a5ecc4252d6766bafc86251805cd178ac33557039af19325ca7cfcdf5",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "group",
+          "state": "confirmed",
+          "receipt": {
+            "id": "25486ace-f61a-4ffd-b1dd-2db2191d8a33",
+            "namespace": "4bc30b44-9476-4873-a055-faa61585bdc2",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "25486ace-f61a-4ffd-b1dd-2db2191d8a33:gateway:1",
+                  "namespace": "4bc30b44-9476-4873-a055-faa61585bdc2",
+                  "ordinal": 1,
+                  "parent": "25486ace-f61a-4ffd-b1dd-2db2191d8a33",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 1
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 1,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "08c997b7409efce2ff97a1a1820599550810ef4d8e3763656777c6e7694d32e9",
+          "host_zip_sha256": "eaaba18e704632178d5e071800308c50f67f26b5ebe55b30f40dd1daa0d3f257",
+          "plugin_sha256": "b1b4a76a5ecc4252d6766bafc86251805cd178ac33557039af19325ca7cfcdf5",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "topic",
+          "state": "confirmed",
+          "receipt": {
+            "id": "ab335ba4-6e9d-4011-a920-1696b8c3e77e",
+            "namespace": "5ff3009a-a63b-4caf-9c91-68aae40f8d58",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "ab335ba4-6e9d-4011-a920-1696b8c3e77e:gateway:1",
+                  "namespace": "5ff3009a-a63b-4caf-9c91-68aae40f8d58",
+                  "ordinal": 1,
+                  "parent": "ab335ba4-6e9d-4011-a920-1696b8c3e77e",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 1
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 1,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "08c997b7409efce2ff97a1a1820599550810ef4d8e3763656777c6e7694d32e9",
+          "host_zip_sha256": "eaaba18e704632178d5e071800308c50f67f26b5ebe55b30f40dd1daa0d3f257",
+          "plugin_sha256": "b1b4a76a5ecc4252d6766bafc86251805cd178ac33557039af19325ca7cfcdf5",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "parts",
+          "state": "confirmed",
+          "receipt": {
+            "id": "bee85bef-996d-4e41-9f47-69238eb7f4ec",
+            "namespace": "0e6819c3-af78-420d-9af0-c6fcb513e8de",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "bee85bef-996d-4e41-9f47-69238eb7f4ec:gateway:1",
+                  "namespace": "0e6819c3-af78-420d-9af0-c6fcb513e8de",
+                  "ordinal": 1,
+                  "parent": "bee85bef-996d-4e41-9f47-69238eb7f4ec",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "bee85bef-996d-4e41-9f47-69238eb7f4ec:gateway:2",
+                  "namespace": "0e6819c3-af78-420d-9af0-c6fcb513e8de",
+                  "ordinal": 2,
+                  "parent": "bee85bef-996d-4e41-9f47-69238eb7f4ec",
+                  "result": {
+                    "locator": "om_sent_2",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "bee85bef-996d-4e41-9f47-69238eb7f4ec:gateway:3",
+                  "namespace": "0e6819c3-af78-420d-9af0-c6fcb513e8de",
+                  "ordinal": 3,
+                  "parent": "bee85bef-996d-4e41-9f47-69238eb7f4ec",
+                  "result": {
+                    "locator": "om_sent_3",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 3
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 3,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "08c997b7409efce2ff97a1a1820599550810ef4d8e3763656777c6e7694d32e9",
+          "host_zip_sha256": "eaaba18e704632178d5e071800308c50f67f26b5ebe55b30f40dd1daa0d3f257",
+          "plugin_sha256": "b1b4a76a5ecc4252d6766bafc86251805cd178ac33557039af19325ca7cfcdf5",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "reply",
+          "state": "confirmed",
+          "receipt": {
+            "id": "7c03aa36-c819-40c3-b680-1d604024f111",
+            "namespace": "d41e67a3-e02d-4f14-aa71-d06331a5f9d4",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "7c03aa36-c819-40c3-b680-1d604024f111:gateway:1",
+                  "namespace": "d41e67a3-e02d-4f14-aa71-d06331a5f9d4",
+                  "ordinal": 1,
+                  "parent": "7c03aa36-c819-40c3-b680-1d604024f111",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "7c03aa36-c819-40c3-b680-1d604024f111:gateway:2",
+                  "namespace": "d41e67a3-e02d-4f14-aa71-d06331a5f9d4",
+                  "ordinal": 2,
+                  "parent": "7c03aa36-c819-40c3-b680-1d604024f111",
+                  "result": {
+                    "locator": "om_sent_2",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "7c03aa36-c819-40c3-b680-1d604024f111:gateway:3",
+                  "namespace": "d41e67a3-e02d-4f14-aa71-d06331a5f9d4",
+                  "ordinal": 3,
+                  "parent": "7c03aa36-c819-40c3-b680-1d604024f111",
+                  "result": {
+                    "locator": "om_sent_3",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 3
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 3,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "08c997b7409efce2ff97a1a1820599550810ef4d8e3763656777c6e7694d32e9",
+          "host_zip_sha256": "eaaba18e704632178d5e071800308c50f67f26b5ebe55b30f40dd1daa0d3f257",
+          "plugin_sha256": "b1b4a76a5ecc4252d6766bafc86251805cd178ac33557039af19325ca7cfcdf5",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "expiry",
+          "state": "confirmed",
+          "receipt": {
+            "id": "11281b29-3fcf-4e10-94ee-e672d8930f9c",
+            "namespace": "0daeccaa-f64d-4e2b-bf60-b68a9ca6fd14",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "11281b29-3fcf-4e10-94ee-e672d8930f9c:gateway:1",
+                  "namespace": "0daeccaa-f64d-4e2b-bf60-b68a9ca6fd14",
+                  "ordinal": 1,
+                  "parent": "11281b29-3fcf-4e10-94ee-e672d8930f9c",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "11281b29-3fcf-4e10-94ee-e672d8930f9c:gateway:2",
+                  "namespace": "0daeccaa-f64d-4e2b-bf60-b68a9ca6fd14",
+                  "ordinal": 2,
+                  "parent": "11281b29-3fcf-4e10-94ee-e672d8930f9c",
+                  "result": {
+                    "locator": "om_sent_2",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "11281b29-3fcf-4e10-94ee-e672d8930f9c:gateway:3",
+                  "namespace": "0daeccaa-f64d-4e2b-bf60-b68a9ca6fd14",
+                  "ordinal": 3,
+                  "parent": "11281b29-3fcf-4e10-94ee-e672d8930f9c",
+                  "result": {
+                    "locator": "om_sent_3",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                }
+              ],
+              "planned": 3
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 3,
+          "token_issuances": 3,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "08c997b7409efce2ff97a1a1820599550810ef4d8e3763656777c6e7694d32e9",
+          "host_zip_sha256": "eaaba18e704632178d5e071800308c50f67f26b5ebe55b30f40dd1daa0d3f257",
+          "plugin_sha256": "b1b4a76a5ecc4252d6766bafc86251805cd178ac33557039af19325ca7cfcdf5",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "lost",
+          "state": "unknown",
+          "receipt": {
+            "id": "ea9fd12c-26ce-4dc6-99c5-c143aac73e9d",
+            "namespace": "e7c0062e-9ac9-431d-82f2-9eb9d095be1c",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "ea9fd12c-26ce-4dc6-99c5-c143aac73e9d:gateway:1",
+                  "namespace": "e7c0062e-9ac9-431d-82f2-9eb9d095be1c",
+                  "ordinal": 1,
+                  "parent": "ea9fd12c-26ce-4dc6-99c5-c143aac73e9d",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "ea9fd12c-26ce-4dc6-99c5-c143aac73e9d:gateway:2",
+                  "namespace": "e7c0062e-9ac9-431d-82f2-9eb9d095be1c",
+                  "ordinal": 2,
+                  "parent": "ea9fd12c-26ce-4dc6-99c5-c143aac73e9d",
+                  "result": {
+                    "state": "unknown"
+                  },
+                  "state": "unknown"
+                }
+              ],
+              "planned": 3
+            },
+            "state": "unknown"
+          },
+          "native_requests": 2,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "08c997b7409efce2ff97a1a1820599550810ef4d8e3763656777c6e7694d32e9",
+          "host_zip_sha256": "eaaba18e704632178d5e071800308c50f67f26b5ebe55b30f40dd1daa0d3f257",
+          "plugin_sha256": "b1b4a76a5ecc4252d6766bafc86251805cd178ac33557039af19325ca7cfcdf5",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "rejected",
+          "state": "failed",
+          "receipt": {
+            "id": "451602ba-4610-450a-9256-a5db9ec9aaa1",
+            "namespace": "5b3a2a22-6e1a-4bdc-9671-dd7c1391f66a",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "451602ba-4610-450a-9256-a5db9ec9aaa1:gateway:1",
+                  "namespace": "5b3a2a22-6e1a-4bdc-9671-dd7c1391f66a",
+                  "ordinal": 1,
+                  "parent": "451602ba-4610-450a-9256-a5db9ec9aaa1",
+                  "result": {
+                    "locator": "om_sent_1",
+                    "state": "confirmed"
+                  },
+                  "state": "confirmed"
+                },
+                {
+                  "id": "451602ba-4610-450a-9256-a5db9ec9aaa1:gateway:2",
+                  "namespace": "5b3a2a22-6e1a-4bdc-9671-dd7c1391f66a",
+                  "ordinal": 2,
+                  "parent": "451602ba-4610-450a-9256-a5db9ec9aaa1",
+                  "result": {
+                    "state": "failed"
+                  },
+                  "state": "failed"
+                }
+              ],
+              "planned": 3
+            },
+            "state": "failed"
+          },
+          "native_requests": 2,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "08c997b7409efce2ff97a1a1820599550810ef4d8e3763656777c6e7694d32e9",
+          "host_zip_sha256": "eaaba18e704632178d5e071800308c50f67f26b5ebe55b30f40dd1daa0d3f257",
+          "plugin_sha256": "b1b4a76a5ecc4252d6766bafc86251805cd178ac33557039af19325ca7cfcdf5",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "malformed",
+          "state": "unknown",
+          "receipt": {
+            "id": "a18a340e-86b2-4478-a33c-bc8dd835e891",
+            "namespace": "36fb7dcd-4071-4b33-850a-14b117758fd7",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "parts": [
+                {
+                  "id": "a18a340e-86b2-4478-a33c-bc8dd835e891:gateway:1",
+                  "namespace": "36fb7dcd-4071-4b33-850a-14b117758fd7",
+                  "ordinal": 1,
+                  "parent": "a18a340e-86b2-4478-a33c-bc8dd835e891",
+                  "result": {
+                    "state": "unknown"
+                  },
+                  "state": "unknown"
+                }
+              ],
+              "planned": 1
+            },
+            "state": "unknown"
+          },
+          "native_requests": 1,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "08c997b7409efce2ff97a1a1820599550810ef4d8e3763656777c6e7694d32e9",
+          "host_zip_sha256": "eaaba18e704632178d5e071800308c50f67f26b5ebe55b30f40dd1daa0d3f257",
+          "plugin_sha256": "b1b4a76a5ecc4252d6766bafc86251805cd178ac33557039af19325ca7cfcdf5",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "recall",
+          "state": "confirmed",
+          "receipt": {
+            "id": "7fd871d6-fbd4-469a-9efe-90ea06c1aa05",
+            "namespace": "300810fd-00ce-4768-8ec6-5ca95ef42069",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "action": "recall_own_message",
+              "error_category": null,
+              "event_id": null,
+              "operation_id": "7fd871d6-fbd4-469a-9efe-90ea06c1aa05",
+              "original_conversation_id": null,
+              "original_event_id": null,
+              "presence_id": "ba28adda-f417-44f5-a914-8a6dbcd0c8af",
+              "status": "succeeded",
+              "target": {
+                "id": "408f68c7-1f6e-4fd9-9b24-cfea25974bea",
+                "kind": "space"
+              }
+            },
+            "state": "confirmed"
+          },
+          "native_requests": 2,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "08c997b7409efce2ff97a1a1820599550810ef4d8e3763656777c6e7694d32e9",
+          "host_zip_sha256": "eaaba18e704632178d5e071800308c50f67f26b5ebe55b30f40dd1daa0d3f257",
+          "plugin_sha256": "b1b4a76a5ecc4252d6766bafc86251805cd178ac33557039af19325ca7cfcdf5",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "recall-rejected",
+          "state": "failed",
+          "receipt": {
+            "id": "4a34b960-b18a-49ec-a323-467ef55a9ca7",
+            "namespace": "7004ef22-c8fc-4a31-a5b6-e1b0812226b2",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "action": "recall_own_message",
+              "error_category": "platform_rejected",
+              "event_id": null,
+              "operation_id": "4a34b960-b18a-49ec-a323-467ef55a9ca7",
+              "original_conversation_id": null,
+              "original_event_id": null,
+              "presence_id": "4a98f112-0e2b-4c3f-95f6-bf54336e3a9a",
+              "status": "failed",
+              "target": {
+                "id": "c97757bc-2de9-41aa-b9cd-12280cfdfeb6",
+                "kind": "space"
+              }
+            },
+            "state": "failed"
+          },
+          "native_requests": 2,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "08c997b7409efce2ff97a1a1820599550810ef4d8e3763656777c6e7694d32e9",
+          "host_zip_sha256": "eaaba18e704632178d5e071800308c50f67f26b5ebe55b30f40dd1daa0d3f257",
+          "plugin_sha256": "b1b4a76a5ecc4252d6766bafc86251805cd178ac33557039af19325ca7cfcdf5",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "recall-lost",
+          "state": "unknown",
+          "receipt": {
+            "id": "6e9899c5-7eec-4cc1-9b21-c194c88797d2",
+            "namespace": "9f9bd1d5-c022-4c7e-8f74-11561aca5c22",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "action": "recall_own_message",
+              "error_category": "delivery_unknown",
+              "event_id": null,
+              "operation_id": "6e9899c5-7eec-4cc1-9b21-c194c88797d2",
+              "original_conversation_id": null,
+              "original_event_id": null,
+              "presence_id": "abd4cdd4-e9ab-4802-9e3c-720907e153ea",
+              "status": "uncertain",
+              "target": {
+                "id": "58b6119f-a539-42c3-86fe-577c030f566b",
+                "kind": "space"
+              }
+            },
+            "state": "unknown"
+          },
+          "native_requests": 2,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "08c997b7409efce2ff97a1a1820599550810ef4d8e3763656777c6e7694d32e9",
+          "host_zip_sha256": "eaaba18e704632178d5e071800308c50f67f26b5ebe55b30f40dd1daa0d3f257",
+          "plugin_sha256": "b1b4a76a5ecc4252d6766bafc86251805cd178ac33557039af19325ca7cfcdf5",
+          "paid_calls": 0
+        },
+        {
+          "status": "PASS",
+          "domain": "lark",
+          "scenario": "recall-denied",
+          "state": "failed",
+          "receipt": {
+            "id": "36d98756-345c-4f06-be60-6afde011eda3",
+            "namespace": "75e8f235-f7e4-4ba1-85ca-62b6bcc5c374",
+            "ordinal": null,
+            "parent": null,
+            "result": {
+              "error": "plugin instance or grant unavailable"
+            },
+            "state": "failed"
+          },
+          "native_requests": 1,
+          "token_issuances": 1,
+          "original_receipt_reopened": true,
+          "source_commit": "942a534763bab7d028ba9174aeb26d9976d7184b",
+          "host_sha256": "08c997b7409efce2ff97a1a1820599550810ef4d8e3763656777c6e7694d32e9",
+          "host_zip_sha256": "eaaba18e704632178d5e071800308c50f67f26b5ebe55b30f40dd1daa0d3f257",
+          "plugin_sha256": "b1b4a76a5ecc4252d6766bafc86251805cd178ac33557039af19325ca7cfcdf5",
+          "paid_calls": 0
+        }
+      ],
+      "topic_cases": {
+        "original-root": {
+          "status": "PASS",
+          "topic": "omt_shared",
+          "topic_root": "om_root",
+          "original_topic_roots": [
+            [
+              1,
+              "fs.a",
+              "cli_a",
+              "tenant-a",
+              "omt_shared",
+              "om_root"
+            ],
+            [
+              2,
+              "fs.b",
+              "cli_b",
+              "tenant-b",
+              "omt_shared",
+              "om_root"
+            ]
+          ],
+          "durable_events": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "host_sha256": "08c997b7409efce2ff97a1a1820599550810ef4d8e3763656777c6e7694d32e9"
+        },
+        "first-thread-message": {
+          "status": "PASS",
+          "topic": "omt_shared",
+          "topic_root": "om_shared",
+          "original_topic_roots": [
+            [
+              1,
+              "fs.a",
+              "cli_a",
+              "tenant-a",
+              "omt_shared",
+              "om_shared"
+            ],
+            [
+              2,
+              "fs.b",
+              "cli_b",
+              "tenant-b",
+              "omt_shared",
+              "om_shared"
+            ]
+          ],
+          "durable_events": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "host_sha256": "08c997b7409efce2ff97a1a1820599550810ef4d8e3763656777c6e7694d32e9"
+        },
+        "ordinary-group": {
+          "status": "PASS",
+          "topic": null,
+          "topic_root": null,
+          "original_topic_roots": [],
+          "durable_events": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "host_sha256": "08c997b7409efce2ff97a1a1820599550810ef4d8e3763656777c6e7694d32e9"
+        }
+      },
+      "reader_events": {
+        "cli_a": {
+          "old": [
+            1
+          ],
+          "new": [
+            2,
+            1
+          ],
+          "rollback": [
+            2
+          ]
+        },
+        "cli_b": {
+          "old": [
+            3
+          ],
+          "new": [
+            4,
+            3
+          ],
+          "rollback": [
+            4
+          ]
+        }
+      },
+      "original_topic_roots": [
+        [
+          1,
+          "fs.a",
+          "om_root"
+        ],
+        [
+          2,
+          "fs.a",
+          "om_root"
+        ],
+        [
+          3,
+          "fs.b",
+          "om_root"
+        ],
+        [
+          4,
+          "fs.b",
+          "om_root"
+        ]
+      ],
+      "media_domains": [
+        {
+          "domain": "feishu",
+          "kind": "image",
+          "fixture_requests": [
+            {
+              "method": "token",
+              "app": "cli_feishu",
+              "tenant": "tenant-feishu",
+              "issuance": 1
+            },
+            {
+              "method": "resource",
+              "domain": "feishu",
+              "raw_path": "/open-apis/im/v1/messages/om_original/resources/res%20%23%2Fnative?type=image",
+              "key": "res #/native",
+              "type": "image",
+              "token_number": 1
+            },
+            {
+              "method": "token",
+              "app": "cli_feishu",
+              "tenant": "tenant-feishu",
+              "issuance": 2
+            },
+            {
+              "method": "resource",
+              "domain": "feishu",
+              "raw_path": "/open-apis/im/v1/messages/om_original/resources/denied?type=image",
+              "key": "denied",
+              "type": "image",
+              "token_number": 2
+            },
+            {
+              "method": "resource",
+              "domain": "feishu",
+              "raw_path": "/open-apis/im/v1/messages/om_original/resources/cancelled?type=image",
+              "key": "cancelled",
+              "type": "image",
+              "token_number": 2
+            },
+            {
+              "method": "token",
+              "app": "cli_feishu",
+              "tenant": "tenant-feishu",
+              "issuance": 3
+            },
+            {
+              "method": "resource",
+              "domain": "feishu",
+              "raw_path": "/open-apis/im/v1/messages/om_original/resources/res%20%23%2Fnative?type=image",
+              "key": "res #/native",
+              "type": "image",
+              "token_number": 3
+            }
+          ],
+          "sha256": "f645b72f1b9186913bc62759858134c358d5ba6e86fc59a2c467c55fabaeeb8c",
+          "bytes": 26789,
+          "ws_ack_during_rest": true,
+          "wrong_identity_requests": 0,
+          "http_403_retries": 0,
+          "token_issuances": 3,
+          "forget_cancelled_http": true,
+          "forgotten_page_rejected": true,
+          "paged_text": {
+            "status": "PASS",
+            "bytes": 8000000,
+            "pages": 652,
+            "elapsed_seconds": 2.766000000294298,
+            "sha256": "fd392321b0b5775d5930e2dbd8842bcff5b2e6afc1919b5b3bce5ad59ca2f454",
+            "forgotten_plan_cancelled": true,
+            "late_page_did_not_advance_fresh_plan": true,
+            "malformed_page_rejected": true,
+            "native_effects": 0
+          }
+        },
+        {
+          "domain": "lark",
+          "kind": "file",
+          "fixture_requests": [
+            {
+              "method": "token",
+              "app": "cli_lark",
+              "tenant": "tenant-lark",
+              "issuance": 1
+            },
+            {
+              "method": "resource",
+              "domain": "lark",
+              "raw_path": "/open-apis/im/v1/messages/om_original/resources/res%20%23%2Fnative?type=file",
+              "key": "res #/native",
+              "type": "file",
+              "token_number": 1
+            },
+            {
+              "method": "token",
+              "app": "cli_lark",
+              "tenant": "tenant-lark",
+              "issuance": 2
+            },
+            {
+              "method": "resource",
+              "domain": "lark",
+              "raw_path": "/open-apis/im/v1/messages/om_original/resources/denied?type=file",
+              "key": "denied",
+              "type": "file",
+              "token_number": 2
+            },
+            {
+              "method": "resource",
+              "domain": "lark",
+              "raw_path": "/open-apis/im/v1/messages/om_original/resources/cancelled?type=file",
+              "key": "cancelled",
+              "type": "file",
+              "token_number": 2
+            },
+            {
+              "method": "token",
+              "app": "cli_lark",
+              "tenant": "tenant-lark",
+              "issuance": 3
+            },
+            {
+              "method": "resource",
+              "domain": "lark",
+              "raw_path": "/open-apis/im/v1/messages/om_original/resources/res%20%23%2Fnative?type=file",
+              "key": "res #/native",
+              "type": "file",
+              "token_number": 3
+            }
+          ],
+          "sha256": "a6c7af0a14eaed92a4c7be304b665671d26dc531b207b518bc4518ea38c194bf",
+          "bytes": 26789,
+          "ws_ack_during_rest": true,
+          "wrong_identity_requests": 0,
+          "http_403_retries": 0,
+          "token_issuances": 3,
+          "forget_cancelled_http": true,
+          "forgotten_page_rejected": true,
+          "paged_text": {
+            "status": "PASS",
+            "bytes": 8000000,
+            "pages": 652,
+            "elapsed_seconds": 2.75,
+            "sha256": "fd392321b0b5775d5930e2dbd8842bcff5b2e6afc1919b5b3bce5ad59ca2f454",
+            "forgotten_plan_cancelled": true,
+            "late_page_did_not_advance_fresh_plan": true,
+            "malformed_page_rejected": true,
+            "native_effects": 0
+          }
+        }
+      ],
+      "packages": {
+        "0.1.0-alpha.5": {
+          "binary": "0.1.0-alpha.5.bin",
+          "binary_sha256": "efb922c3988e061d6c234bd642fdd8988c229bd80f51490477e64af8f41464f9",
+          "sdk_version": "1.0.0-alpha.18",
+          "sdk_sha256": "7ca5f2c98169527bbc413e0bdeadc7a881fe8e94c57815c0011d3ce4e5d7d76e",
+          "manifest_sha256": "a61b281d27cd050adc29ea82efd4b4cf2c801566c128948be9d3957389baaa03"
+        },
+        "0.1.0-alpha.6": {
+          "binary": "0.1.0-alpha.6.bin",
+          "binary_sha256": "b1b4a76a5ecc4252d6766bafc86251805cd178ac33557039af19325ca7cfcdf5",
+          "sdk_version": "1.0.0-alpha.20",
+          "sdk_sha256": "b5a4c3e82cdd4914e93fdc235129147a84525b07421f7898ebb0dbb1d7f7790a",
+          "manifest_sha256": "f8e34862b958bd72e13ca8b55729ad8a5d8d79704907f671982a2409cfd487c0"
+        }
+      }
+    }
+  },
+  "paid_calls": 0,
+  "platform_service": "loopback Feishu and Lark native endpoints",
+  "pending": [
+    "original uploads and dependent sends",
+    "structured native mentions",
+    "owner disposition",
+    "expanded published contract"
+  ],
+  "linux_image": "sha256:dfe19032c767b42cc4aebabea1b31da06a5443feb8e15f84cd756f5e12b2b866",
+  "baseline_reuse": {
+    "receipt": "baseline-reuse.json",
+    "sha256": "84446b74ee4ea481d29cd14eb79766f81f42556ac77c7e5a2e5b73b5dacf6cc0"
+  }
+}

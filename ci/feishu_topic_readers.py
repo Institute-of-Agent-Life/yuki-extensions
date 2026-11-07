@@ -47,7 +47,7 @@ def packages(inputs, output):
     return result
 
 
-def run(root, old, new, output):
+def run(root, old, new, output, contract="core-038-topic", prior_topic_root=False):
     output.mkdir(parents=True, exist_ok=False)
     spec = importlib.util.spec_from_file_location(
         "original_feishu_case", root / "tests/cases/EXT-005.py"
@@ -60,10 +60,14 @@ def run(root, old, new, output):
         name, proof = fixture.prepare(
             root,
             output,
-            contract="core-038-topic",
+            contract=contract,
             reader_archives=(old, new),
             reader_loader=packages,
-            reader_versions=("0.1.0-alpha.4", "0.1.0-alpha.5"),
+            reader_versions=tuple(
+                json.loads((package / "package-manifest.json").read_bytes())["version"]
+                for package in (old, new)
+            ),
+            reader_prior_topic_root=prior_topic_root,
             native_topics=True,
             expected_topic="omt_shared",
             expected_topic_root="om_root",
@@ -88,8 +92,21 @@ if __name__ == "__main__":
     parser.add_argument("--old", type=Path, required=True)
     parser.add_argument("--new", type=Path, required=True)
     parser.add_argument("--out", type=Path, required=True)
+    parser.add_argument(
+        "--contract",
+        choices=["core-038-topic", "core-038-bounded-text"],
+        default="core-038-topic",
+    )
+    parser.add_argument("--prior-topic-root", action="store_true")
     args = parser.parse_args()
-    proof = run(ROOT, args.old.resolve(), args.new.resolve(), args.out.resolve())
+    proof = run(
+        ROOT,
+        args.old.resolve(),
+        args.new.resolve(),
+        args.out.resolve(),
+        args.contract,
+        args.prior_topic_root,
+    )
     print(
         json.dumps(
             {

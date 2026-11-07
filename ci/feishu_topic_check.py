@@ -16,7 +16,7 @@ sys.path.insert(0, str(ROOT / "tests/peers"))
 from telegram_attachment_delivery import materialize
 
 
-def run(root, output):
+def run(root, output, contract="core-038-topic"):
     output.mkdir(parents=True, exist_ok=False)
     package = output / "packages"
     built = build(root, "feishu", package)
@@ -60,7 +60,7 @@ def run(root, output):
             name, proof = fixture.prepare(
                 root,
                 destination,
-                contract="core-038-topic",
+                contract=contract,
                 package_builder=original_package,
                 message_sample=sample,
                 expected_topic=thread or None,
@@ -109,4 +109,10 @@ def run(root, output):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--out", type=Path, required=True)
-    print(json.dumps(run(ROOT, parser.parse_args().out.resolve())["cases"]))
+    parser.add_argument(
+        "--contract",
+        choices=["core-038-topic", "core-038-bounded-text"],
+        default="core-038-topic",
+    )
+    args = parser.parse_args()
+    print(json.dumps(run(ROOT, args.out.resolve(), args.contract)["cases"]))

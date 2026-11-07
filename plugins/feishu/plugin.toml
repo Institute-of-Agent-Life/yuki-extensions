@@ -1,6 +1,6 @@
 id = "feishu"
-version = "0.1.0-alpha.5"
+version = "0.1.0-alpha.6"
 program = "yuki-feishu"
 platform = "feishu"
-grants = ["gateway.inbound", "gateway.media"]
+grants = ["gateway.inbound", "gateway.media", "gateway.send", "gateway.recall", "forget.owner"]
 env = ["YUKI_FEISHU_APP_ID","YUKI_FEISHU_APP_SECRET","YUKI_FEISHU_TENANT","YUKI_FEISHU_DOMAIN","YUKI_FEISHU_API","YUKI_FEISHU_PROXY"]

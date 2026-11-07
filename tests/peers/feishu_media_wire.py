@@ -17,7 +17,7 @@ def one(binary, Frame, serve, domain, kind):
     native_key='res #/native'
     content=(domain.encode()*7000)[:26789]
     assert len(content)>24576
-    entered,release,ack,shutdown=(threading.Event() for _ in range(4))
+    entered,release,ack,shutdown,cancel_entered,cancel_closed=(threading.Event() for _ in range(6))
     requests,wire,errors=[],[],[]
     issued=[]
 
@@ -73,6 +73,16 @@ def one(binary, Frame, serve, domain, kind):
             requests.append({'method':'resource','domain':domain,'raw_path':self.path,'key':key,'type':ty[0],'token_number':len(issued)})
             if key=='denied':
                 self.answer(b'',403);return
+            if key=='cancelled':
+                cancel_entered.set()
+                self.connection.settimeout(4)
+                try:
+                    assert self.connection.recv(1)==b'', 'cancelled resource kept its HTTP connection'
+                except ConnectionResetError:
+                    # Killing curl closes its socket with RST on Windows and EOF on Unix.
+                    pass
+                cancel_closed.set()
+                return
             assert key==native_key
             if not entered.is_set():
                 entered.set();release.wait(8)
@@ -80,7 +90,7 @@ def one(binary, Frame, serve, domain, kind):
         def log_message(self,*args):pass
     server=ThreadingHTTPServer(('127.0.0.1',0),HTTP)
     for obj in (ws,server):threading.Thread(target=obj.serve_forever,daemon=True).start()
-    grants=['gateway.inbound','gateway.media']
+    grants=['gateway.inbound','gateway.media','gateway.send','forget.owner']
     binding={'namespace':ns,'grants':grants,'manifest_revision':'f'*64,'declarations':[]}
     env=dict(os.environ,YUKI_PLUGIN_BINDING=json.dumps(binding),YUKI_FEISHU_DOMAIN=domain,
         YUKI_FEISHU_APP_ID=app,YUKI_FEISHU_TENANT=tenant,YUKI_FEISHU_APP_SECRET='fixture-'+app,
@@ -112,7 +122,7 @@ def one(binary, Frame, serve, domain, kind):
         init=read();assert init['method']=='initialize'
         send({'jsonrpc':'2.0','id':init['id'],'result':{'schema_revision':1,'version':{'major':1,'minor':0},
             **{k:binding[k] for k in ['namespace','grants','manifest_revision']},'features':['initialize'],
-            'extension_points':[],'host_schema_revision':2,'method_revisions':[{'name':m,'revision':1} for m in ['initialize',*grants]]}})
+            'extension_points':[],'host_schema_revision':2,'method_revisions':[{'name':m,'revision':1} for m in ['initialize','gateway.inbound','gateway.media','gateway.plan_send','gateway.dispatch_part','gateway.read_text','forget.request']]}})
         event=read();params=event['params']
         assert event['method']=='gateway.inbound' and params['media_identity']==identity
         assert params['segments'][0]=={'type':'media','kind':kind,'reference':native_key}
@@ -140,11 +150,161 @@ def one(binary, Frame, serve, domain, kind):
         reply(call({**key,'transfer':'B','reference':'denied'}),False)
         assert [x['method'] for x in requests]==['token','resource','token','resource']
         assert requests[-1]['token_number']==2 and not errors,errors
+        cancelled = call({**key,'transfer':'C','reference':'cancelled'})
+        assert cancel_entered.wait(6), 'resource was not dispatched'
+        send({'jsonrpc':'2.0','method':'forget.request','id':'forget-original',
+              'params':{'key':'original-forget','watermark':17,'sources':[12]}})
+        reply(cancelled, False)
+        forget = read()
+        assert forget['id']=='forget-original' and forget['result']['key']=='original-forget'
+        assert forget['result']['watermark']==17 and cancel_closed.wait(1)
+        count = len(requests)
+        reply(call({**key,'transfer':'C','reference':'cancelled','offset':24576}),False)
+        assert len(requests)==count, 'forgotten page restarted native download'
+        restored=reply(call({**key,'transfer':'D'}),True)
+        assert restored['sha256']==sha256(content).hexdigest()
+        assert len(issued)==3, 'forget did not clear the application token'
+        count = len(requests)
+        paged_text = text_pages(send, read, app)
+        assert len(requests) == count, 'text planning caused a native effect'
         return {'domain':domain,'kind':kind,'fixture_requests':requests,'wire':wire,
             'sha256':sha256(content).hexdigest(),'bytes':len(content),'ws_ack_during_rest':True,
-            'wrong_identity_requests':0,'http_403_retries':0,'token_issuances':len(issued)}
+            'wrong_identity_requests':0,'http_403_retries':0,'token_issuances':len(issued),'forget_cancelled_http':True,'forgotten_page_rejected':True,'paged_text':paged_text}
     finally:
         release.set();shutdown.set();proc.stdin.close()
         try:proc.wait(timeout=4)
         except subprocess.TimeoutExpired:proc.kill();proc.wait()
         ws.shutdown();server.shutdown();server.server_close()
+
+
+def cleanup_without_credentials(binary):
+    binding = {'namespace':'fs.cleanup','grants':['forget.owner'],
+               'manifest_revision':'f'*64,'declarations':[]}
+    env = {k:v for k,v in os.environ.items() if not k.startswith('YUKI_FEISHU_')}
+    env.update(YUKI_PLUGIN_BINDING=json.dumps(binding),YUKI_PLUGIN_START_MODE='erasure_only')
+    initialization = {'jsonrpc':'2.0','id':1,'result':{'schema_revision':1,
+        'version':{'major':1,'minor':0},
+        **{k:binding[k] for k in ['namespace','grants','manifest_revision']},
+        'features':['initialize'],'extension_points':[],'host_schema_revision':2,
+        'method_revisions':[{'name':m,'revision':1} for m in ['initialize','forget.request']]}}
+    forget = {'jsonrpc':'2.0','id':'cleanup','method':'forget.request',
+              'params':{'key':'original-cleanup','watermark':17,'sources':[12]}}
+    result = subprocess.run([binary],input='\n'.join(json.dumps(v) for v in [initialization,forget])+'\n',
+                            capture_output=True,text=True,encoding='utf8',env=env,timeout=4)
+    assert result.returncode==0,result.stderr
+    frames=[json.loads(line) for line in result.stdout.splitlines()]
+    assert len(frames)==2 and frames[0]['method']=='initialize'
+    assert frames[1]['id']=='cleanup' and frames[1]['result']['key']=='original-cleanup'
+    assert frames[1]['result']['watermark']==17
+    return {'status':'PASS','credentials_supplied':False,'native_network_requests':0,'wire':frames}
+
+
+def text_pages(send, read, app):
+    """A forgotten page cannot advance a later plan, even if its response arrives late."""
+    content = ("雪🌨original text" * 400000).encode()
+    digest = sha256(content).hexdigest()
+
+    def plan(ident):
+        send(
+            {
+                "jsonrpc": "2.0",
+                "id": ident,
+                "method": "gateway.plan_send",
+                "params": {
+                    "handle": "plan-" + ident,
+                    "arguments": {
+                        "route": {
+                            "bot": app,
+                            "scope": "group",
+                            "chat": "oc_original",
+                            "topic": None,
+                        },
+                        "message": {},
+                        "text_source": {"bytes": len(content), "sha256": digest},
+                    },
+                },
+            }
+        )
+
+    def page(request, *, wrong_done=False):
+        assert request["method"] == "gateway.read_text"
+        params = request["params"]
+        assert params["length"] == 12288
+        offset = params["offset"]
+        data = content[offset : offset + params["length"]]
+        send(
+            {
+                "jsonrpc": "2.0",
+                "id": request["id"],
+                "result": {
+                    "offset": offset,
+                    "total": len(content),
+                    "sha256": digest,
+                    "bytes": base64.b64encode(data).decode(),
+                    "done": wrong_done or offset + len(data) == len(content),
+                },
+            }
+        )
+
+    plan("cancelled-plan")
+    page(read())
+    old = read()
+    assert old["params"]["offset"] == 12288
+    send(
+        {
+            "jsonrpc": "2.0",
+            "id": "erase-text",
+            "method": "forget.request",
+            "params": {"key": "text-erasure", "watermark": 18, "sources": [12]},
+        }
+    )
+    cancelled = read()
+    ack = read()
+    assert cancelled["id"] == "cancelled-plan" and "error" in cancelled
+    assert ack["id"] == "erase-text" and ack["result"]["key"] == "text-erasure"
+    assert ack["result"]["watermark"] == 18
+    started = time.monotonic()
+    plan("fresh-plan")
+    fresh = read()
+    assert fresh["params"]["offset"] == 0
+    page(old)
+    page(fresh)
+    pages = 1
+    while True:
+        frame = read()
+        if frame.get("method") == "gateway.read_text":
+            assert frame["params"]["handle"] == "plan-fresh-plan"
+            assert frame["params"]["offset"] == pages * 12288
+            page(frame)
+            pages += 1
+        else:
+            assert frame["id"] == "fresh-plan" and "result" in frame
+            parts = frame["result"]["parts"]
+            break
+    offset = 0
+    for part in parts:
+        selected = part["text_range"]
+        assert "text" not in part
+        assert selected["start"] == offset
+        piece = content[offset : offset + selected["length"]]
+        piece.decode("utf8")
+        assert sha256(piece).hexdigest() == selected["sha256"]
+        offset += len(piece)
+    assert offset == len(content)
+    elapsed = time.monotonic() - started
+    assert elapsed < 10, {"paged_plan_seconds": elapsed}
+    plan("invalid-page")
+    page(read(), wrong_done=True)
+    rejected = read()
+    assert rejected["id"] == "invalid-page" and "error" in rejected
+    return {
+        "status": "PASS",
+        "bytes": len(content),
+        "pages": pages,
+        "elapsed_seconds": elapsed,
+        "sha256": digest,
+        "forgotten_plan_cancelled": True,
+        "late_page_did_not_advance_fresh_plan": True,
+        "malformed_page_rejected": True,
+        "native_effects": 0,
+    }

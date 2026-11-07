@@ -1,0 +1,20 @@
+{
+  "final": "PASS",
+  "attempts": [
+    {
+      "attempt": 20,
+      "status": "FAIL",
+      "reason": "Windows system curl 7.79.1 omitted large config body and authorization. macOS and Windows cache cleanup also required native/extended path handling.",
+      "evidence": "/Volumes/huawei/\u9805\u76ee\u5be6\u6230/yuki-extensions/.ci-transfer/local-gate/feishu-rest/windows-rest-20-evidence.zip",
+      "sha256": "1e0f73b6d67bfbddc8d86944069c4422d9b027be945eca6cb8db734cec97c9fd"
+    },
+    {
+      "attempt": 21,
+      "status": "FAIL",
+      "reason": "Windows cancellation closed the socket with TCP reset. The fixture required EOF and failed before recording closure.",
+      "evidence": "/Volumes/huawei/\u9805\u76ee\u5be6\u6230/yuki-extensions/.ci-transfer/local-gate/feishu-rest/windows-rest-21-evidence.zip",
+      "sha256": "766cd71fb81f0be124c823f8bbe11d787bcea28c651aec1e780cddb4476b770f"
+    }
+  ],
+  "final_source_snapshot_sha256": "63dc2f70e77a6530373690069bb2fa6b9d8eaed7516cc94589ed3349becc11d1"
+}
