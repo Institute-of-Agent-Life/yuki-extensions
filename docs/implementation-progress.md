@@ -1,3 +1,5 @@
+**EXT-006 原話題定位進行中。** 分支 `codex/ext-006-original-delivery`，飛書 alpha.5 鎖定核心 #113 的三端候選 `e6e4972a76911` 與 Rust SDK alpha.18。原 `thread_id` 繼續作事件去重鍵，另傳原 `topic_root`。Mac／Linux 已完成三種話題情境、同安裝 alpha.4 → alpha.5 → alpha.4 回讀及原 app／tenant 媒體回歸，Windows 等待本地核心 CI 釋放後接續。具名原包與回條在 `artifacts/EXT-006/original-topic-18/`。所有平台端點使用回環，付費呼叫為零。正式任務總數維持 12／68，原生投遞、上傳分步與 owner-disposition 繼續實作。
+
 # 擴展實作進度
 
 任務書 ZIP SHA-256 `79dfd2ba5a8b96f22dea4c5f72a94ca761b15f2e354e33b36c7ecdbedc3ec3ee`。

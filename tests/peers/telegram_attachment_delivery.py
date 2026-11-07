@@ -28,11 +28,11 @@ def write(path, value):
     )
 
 
-def materialize(root, work):
+def materialize(root, work, contract="core-038-outbound"):
     sys.path.insert(0, str(root / "compat/base"))
     from verify_dist import native_target, verify
 
-    pin = json.loads((root / "compat/core-038-outbound/source.lock.json").read_bytes())
+    pin = json.loads((root / "compat" / contract / "source.lock.json").read_bytes())
     expected = pin["platforms"]["-".join(native_target())]
     key = work / "signer.pub"
     key.write_bytes((expected["signer"] + "\n").encode("ascii"))

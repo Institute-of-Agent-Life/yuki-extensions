@@ -1,7 +1,35 @@
 {
-  "unit_id":"feishu","kind":"plugin","path":"plugins/feishu","ecosystem":"rust","version":"0.1.0-alpha.4",
-  "tag_prefix":"feishu/v","license":"AGPL-3.0-only","notices":["LICENSE","NOTICE"],"runtime_files":["plugin.toml"],
-  "source":{"repository":"Institute-of-Agent-Life/yuki-extensions","baseline":"329ca7c487414d2f54ddd98ff4727446ed2446cd",
-    "upstream_path":"src/yuki/gateway/providers/feishu_ws.py","sdk_contract":"compat/core-038-main/source.lock.json"},
-  "check_paths":["tests/cases/EXT-005.py","tests/peers/feishu_reader_replay.py","tests/peers/feishu_rich_message.py","tests/cases/EXT-006.py","tests/peers/feishu_media_wire.py","tests/peers/feishu_media_host.py","compat/core-038-main/source.lock.json","compat/core-038-main/yuki-plugin-sdk-1.0.0-alpha.13.crate"]
+  "unit_id": "feishu",
+  "kind": "plugin",
+  "path": "plugins/feishu",
+  "ecosystem": "rust",
+  "version": "0.1.0-alpha.5",
+  "tag_prefix": "feishu/v",
+  "license": "AGPL-3.0-only",
+  "notices": [
+    "LICENSE",
+    "NOTICE"
+  ],
+  "runtime_files": [
+    "plugin.toml"
+  ],
+  "source": {
+    "repository": "Institute-of-Agent-Life/yuki-extensions",
+    "baseline": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+    "upstream_path": "src/yuki/gateway/providers/feishu_ws.py",
+    "sdk_contract": "compat/core-038-topic/source.lock.json"
+  },
+  "check_paths": [
+    "tests/cases/EXT-005.py",
+    "tests/peers/feishu_reader_replay.py",
+    "tests/peers/feishu_rich_message.py",
+    "tests/cases/EXT-006.py",
+    "tests/peers/feishu_media_wire.py",
+    "tests/peers/feishu_media_host.py",
+    "compat/core-038-topic/source.lock.json",
+    "compat/core-038-topic/yuki-plugin-sdk-1.0.0-alpha.18.crate",
+    "ci/feishu_topic_check.py",
+    "ci/feishu_topic_readers.py",
+    "tests/peers/telegram_attachment_delivery.py"
+  ]
 }

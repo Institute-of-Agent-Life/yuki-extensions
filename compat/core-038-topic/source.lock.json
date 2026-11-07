@@ -1,0 +1,59 @@
+{
+  "repository": "Institute-of-Agent-Life/yuki-core",
+  "source_commit": "e6e4972a76911e8a7101972f7854de7306b54223",
+  "source_tree_sha256": "345cb0e1ae1140e525ae0a284fa9195834c9347320d0c6a96e1d4f1bc2b3e361",
+  "published": false,
+  "source_pr": 113,
+  "platforms": {
+    "darwin-arm64": {
+      "archive": "yuki-core-e6e4972a7691-darwin-arm64.zip",
+      "sha256": "2ba57db7107492688a12a2713b7bce7773a902336748adc8948dbe5e534b7706",
+      "binary_sha256": "88dde249f55aa56a3f68d3dffa434b8f7d5852961543aba7bc98ae9a361f3481",
+      "signer": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPu5/5bzJqKzY1MtYkMNg1Kll2DXYdOSBJIc0JGWscWo huangjiawei@huangjiaweideMac-mini.local",
+      "signer_sha256": "9b8a6d91d12318ef4dc15b489363b88b9ed62eae7fd5cdb7570e1ce285dfc4f3"
+    },
+    "linux-arm64": {
+      "archive": "yuki-core-e6e4972a7691-linux-arm64.zip",
+      "sha256": "127472d66b20897792990d8026ebb3cc97e57b7fb0be2c06a81b50240dbc3fe4",
+      "binary_sha256": "fb1b49599ba4ea94dc24f5715a096f76f2b88eee95d18670be3ba36e9b6605d5",
+      "signer": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINt9dRMopORfG5FKsd1occD1yguNMZVnDbsIAoBYKps1 root@9bb389dcce47",
+      "signer_sha256": "bf30c73e7662dd6034042cb9dc8835fa4bb7822964ac9fc82dddb65ac396d331"
+    },
+    "windows-x86_64": {
+      "archive": "yuki-core-e6e4972a7691-windows-x86_64.zip",
+      "sha256": "afe39aef7726c29dbcc9ad0f0a272ccb5bcce34e81ad184a185d2d56be27b0d6",
+      "binary_sha256": "697b86a5aa896a43a002eb7aa9e1ddeca0c8e49544897bd72763a86a52ae2835",
+      "signer": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINITYU675gyjtZqd1iY6ZW2E0KeqFliJVuRQGnwgmB1P hilbert@hjw",
+      "signer_sha256": "eb322803947d58d76e50c61edd6b036e62c824b97240873115af9a99a70a6cf6"
+    }
+  },
+  "schema_sha256": "a1142b85e9f7e08f269a1090dd360232107e19c0f78d97b4a692a4c4e712b1ea",
+  "fixtures_sha256": "2d986f7c2bf30d597fbf667f346d189a8aad9bf6194d1341fc13620e4907316e",
+  "sdk": {
+    "python": "1.0.0a18",
+    "rust": "1.0.0-alpha.18"
+  },
+  "rust_crate_sha256": "7ca5f2c98169527bbc413e0bdeadc7a881fe8e94c57815c0011d3ce4e5d7d76e",
+  "methods": [
+    "command.invoke",
+    "forget.ack",
+    "forget.request",
+    "gateway.activity",
+    "gateway.dispatch_part",
+    "gateway.inbound",
+    "gateway.media",
+    "gateway.part_status",
+    "gateway.plan_send",
+    "gateway.recall",
+    "gateway.status",
+    "observer.event",
+    "search.begin",
+    "search.finish",
+    "search.status",
+    "terminal.bind",
+    "terminal.scope",
+    "tool.call",
+    "tool.status"
+  ],
+  "reader_version": 56
+}
