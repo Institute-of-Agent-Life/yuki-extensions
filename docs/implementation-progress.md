@@ -4,6 +4,10 @@
 行為基線 `329ca7c487414d2f54ddd98ff4727446ed2446cd`。官方插件接入層用 Rust。
 獨立 Connector 沿用 Python 3.12；共享預算沿總書 K05。
 
+**EXT-004 原事件引用三端通過。** `codex/ext-004-original-reply` 的 Telegram alpha.7 消費核心 #107 的簽署候選 `7965392bd7de`。Mac／Linux／HJW 各十組真 Host 重放通過，群話題內的附件與文字只有首段引用原 message ID，原訊息不存在時保留 failed，冷啟零重送。完整來源、版本、三端 ZIP 及 SHA-256 在 `artifacts/EXT-004/original-reply-13/telegram-delivery.json`。尚未發布，整卡繼續補撤回與 typing 生命周期。
+
+附件子項 #55 實作 `4b3b68c` 已合併 `22f33fcfb6dd`，本地三端驗證與實際合併樹回條見 `artifacts/ci/local-pr/55/receipt.json`。正式總數仍為 12/68。
+
 **EXT-004 附件子項三端通過。** 分支 `codex/ext-004-outbound-attachment`，Telegram Rust alpha.6。原件分頁／摘要、原 Bot 與 chat/topic、UTF-8 caption 分段、拒收與失回應、冷啟零重送、讀取中刪除和晚到頁面隔離均已驗。macOS arm64、Docker Linux arm64、HJW Windows x86_64 各七組真 Host 重放，另各完成 EXT-001、EXT-002、EXT-019。回環平台及模型，付費呼叫為零。
 
 候選與完整 SHA-256 在 `artifacts/EXT-004/outbound-attachment-12/telegram-delivery.json`，三個平台 ZIP 含獨立執行檔、SDK／鎖檔、原 wire 和來源檔案雜湊。Host 固定核心 #105 的受測提交 `19cbc9bf21f98`、SDK alpha.15，插件沿用 SDK alpha.14。全部為本地未發布候選。打包清單與 Desktop parser 已排除 AppleDouble 元資料，既有 Desktop 見證摘要三端相同。

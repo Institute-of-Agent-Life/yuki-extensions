@@ -116,6 +116,7 @@ pub fn upload(
     name: &str,
     mime: &str,
     caption: Option<&str>,
+    reply: Option<i64>,
     bytes: Vec<u8>,
 ) -> Result<Request, Error> {
     let limit = 128 * 1024;
@@ -136,6 +137,14 @@ pub fn upload(
         write!(
             body,
             "--{boundary}\r\nContent-Disposition: form-data; name=\"message_thread_id\"\r\n\r\n{topic}\r\n"
+        )?;
+    }
+    if let Some(message) = reply {
+        let parameters =
+            serde_json::json!({"message_id":message,"allow_sending_without_reply":false});
+        write!(
+            body,
+            "--{boundary}\r\nContent-Disposition: form-data; name=\"reply_parameters\"\r\n\r\n{parameters}\r\n"
         )?;
     }
     if let Some(caption) = caption {

@@ -42,6 +42,65 @@ fn plain_text(value: &Value) -> Result<&str, Error> {
 
 pub fn plan(arguments: &Value, bot: i64) -> Result<Value, Error> {
     route(arguments, bot)?;
+    bound_reply(arguments)?;
+    let reply = arguments.get("reply");
+    if arguments["message"]
+        .get("reply_to_event_id")
+        .filter(|v| !v.is_null())
+        != reply.map(|r| &r["event_id"])
+    {
+        return Err("original reply event mismatch".into());
+    }
+    let mut plain = arguments.clone();
+    if let Some(message) = plain["message"].as_object_mut() {
+        message.remove("reply_to_event_id");
+    }
+    let mut planned = plan_parts(&plain, bot)?;
+    if let Some(reply) = reply {
+        planned["parts"][0]["reply"] = reply.clone();
+    }
+    Ok(planned)
+}
+
+fn bound_reply(arguments: &Value) -> Result<Option<i64>, Error> {
+    let Some(reply) = arguments.get("reply") else {
+        return Ok(None);
+    };
+    if reply.as_object().is_none_or(|r| r.len() != 2)
+        || reply["event_id"].as_i64().is_none_or(|id| id <= 0)
+    {
+        return Err("invalid original reply".into());
+    }
+    let (chat, message) = reply["native_id"]
+        .as_str()
+        .and_then(|id| id.split_once(':'))
+        .ok_or("invalid original native ID")?;
+    let id: i64 = message.parse()?;
+    if Some(chat) != arguments["route"]["chat"].as_str() || id <= 0 || id.to_string() != message {
+        return Err("reply outside original chat".into());
+    }
+    Ok(Some(id))
+}
+
+fn part_reply(arguments: &Value) -> Result<Option<i64>, Error> {
+    let message = bound_reply(arguments)?;
+    if arguments.get("reply") != arguments["part"].get("reply")
+        || (message.is_some() && arguments["part_ordinal"] != 0)
+    {
+        return Err("reply changed between planning and dispatch".into());
+    }
+    Ok(message)
+}
+
+fn without_reply(part: &Value) -> Value {
+    let mut plain = part.clone();
+    if let Some(fields) = plain.as_object_mut() {
+        fields.remove("reply");
+    }
+    plain
+}
+
+fn plan_parts(arguments: &Value, bot: i64) -> Result<Value, Error> {
     let message = &arguments["message"];
     if !arguments["media"].is_null() {
         let text = match message.get("text") {
@@ -99,7 +158,9 @@ impl Pending {
     ) -> Result<Self, Value> {
         let failed = || json!({"state":"failed"});
         let (chat, topic) = route(arguments, bot).map_err(|_| failed())?;
-        let text = plain_text(&arguments["part"]).map_err(|_| failed())?;
+        let reply = part_reply(arguments).map_err(|_| failed())?;
+        let part = without_reply(&arguments["part"]);
+        let text = plain_text(&part).map_err(|_| failed())?;
         if text.chars().count() > TEXT_LIMIT || arguments["part_ordinal"].as_u64().is_none() {
             return Err(failed());
         }
@@ -107,6 +168,10 @@ impl Pending {
         let mut payload = json!({"chat_id":chat, "text":text});
         if let Some(topic) = topic {
             payload["message_thread_id"] = topic.into();
+        }
+        if let Some(message) = reply {
+            payload["reply_parameters"] =
+                json!({"message_id":message,"allow_sending_without_reply":false});
         }
         let url = format!("{base}/bot{token}/sendMessage");
         let transfer = transport::start(&url, Some(&payload), 128 * 1024)
@@ -127,14 +192,15 @@ impl Pending {
         bytes: Vec<u8>,
     ) -> Result<Self, Error> {
         let (chat, topic) = route(args, bot)?;
-        let part = &args["part"];
+        let reply = part_reply(args)?;
+        let part = without_reply(&args["part"]);
         // Validate again at dispatch before passing any name to the native API.
         let mut message = json!({"artifact_id":args["media"]["artifact_id"],"attachment_kind":part["kind"],"name":part["name"]});
         if let Some(caption) = part.get("caption") {
             message["text"] = caption.clone();
         }
         let checked = crate::attachment::part(&json!({"media":args["media"],"message":message}))?;
-        if checked != *part {
+        if checked != part {
             return Err("attachment part changed".into());
         }
         let (method, field) = match (part["kind"].as_str(), mime) {
@@ -152,6 +218,7 @@ impl Pending {
             part["name"].as_str().ok_or("missing name")?,
             mime,
             part["caption"].as_str(),
+            reply,
             bytes,
         )?;
         Ok(Self {
@@ -195,6 +262,31 @@ impl Pending {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn binds_the_original_reply_only_to_the_first_part() {
+        let reply = json!({"event_id":31,"native_id":"-15:9"});
+        let request = json!({"route":{"bot":"101","chat":"-15","topic":"7"},
+            "message":{"text":"雪".repeat(4097),"reply_to_event_id":31},"reply":reply});
+        let planned = plan(&request, 101).unwrap();
+        assert_eq!(planned["parts"][0]["reply"], reply);
+        assert!(planned["parts"][1].get("reply").is_none());
+        let mut dispatch = json!({"route":request["route"],"part":planned["parts"][0],"reply":reply,"part_ordinal":0});
+        assert_eq!(part_reply(&dispatch).unwrap(), Some(9));
+        dispatch["part_ordinal"] = json!(1);
+        assert!(part_reply(&dispatch).is_err());
+        for native in ["8:9", "-15:0", "-15:09", "-15:9:10"] {
+            let mut changed = request.clone();
+            changed["reply"]["native_id"] = json!(native);
+            assert!(plan(&changed, 101).is_err());
+        }
+        let mut changed = request.clone();
+        changed["message"]["reply_to_event_id"] = json!(32);
+        assert!(plan(&changed, 101).is_err());
+        assert!(plan(&request, 102).is_err());
+        dispatch["part_ordinal"] = json!(0);
+        dispatch["part"]["reply"]["native_id"] = json!("-15:10");
+        assert!(part_reply(&dispatch).is_err());
+    }
     #[test]
     fn preserves_caption_then_text_with_one_immutable_attachment() {
         let text = format!("{}🌨{}", "雪".repeat(1023), "a".repeat(4097));

@@ -3,7 +3,7 @@
   "kind": "plugin",
   "path": "plugins/telegram",
   "ecosystem": "rust",
-  "version": "0.1.0-alpha.6",
+  "version": "0.1.0-alpha.7",
   "tag_prefix": "telegram/v",
   "license": "AGPL-3.0-only",
   "notices": [
