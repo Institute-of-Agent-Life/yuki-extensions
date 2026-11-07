@@ -1,5 +1,7 @@
 # 擴展實作進度
 
+**Telegram 0.1.0 已正式發布。** 分支 `codex/telegram-published-receipt` 補存發布、五個附件回取驗 SHA 及舊工作流停用回條。來源 `e9e012d761da`、SDK 1.0.0。Linux arm64 需 glibc 2.39 以上與 curl，已在 glibc 2.41 的本地鏡像重放。本次文件提交沿用 #58 的三端各 22 例，全部 556 個執行／測試／依賴輸入逐檔相同，另核對核心 #110 三端各 51 張檢查。具體版本與完整 SHA-256 在 `artifacts/EXT-043/published-0.1.0/`。此處補記既有 EXT-043 的發布狀態，正式完成數仍 12／68。
+
 任務書 ZIP SHA-256 `79dfd2ba5a8b96f22dea4c5f72a94ca761b15f2e354e33b36c7ecdbedc3ec3ee`。
 行為基線 `329ca7c487414d2f54ddd98ff4727446ed2446cd`。官方插件接入層用 Rust。
 獨立 Connector 沿用 Python 3.12；共享預算沿總書 K05。

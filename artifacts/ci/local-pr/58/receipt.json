@@ -1,0 +1,131 @@
+{
+  "status": "verified-and-merged",
+  "pr": 58,
+  "head": "aade42205aaba6e32da08ea548ca46aeb6508126",
+  "base": "f2bb0c977eafe167094af8bab350adfedd613300",
+  "tested_merge": "cbf2a8f32b0024dca0405ce0a4b17b2e66996722",
+  "merged": "e7dad7c8888c0db723298cb5eacbf1d832645217",
+  "tree": "d495def7d600f61f32432cc052fe2f38050f2caf",
+  "evidence": "/Volumes/huawei/\u9805\u76ee\u5be6\u6230/yuki-extensions/.ci-transfer/work-tg-typing/artifacts/EXT-004/original-activity-17/telegram-delivery.json",
+  "evidence_sha256": "6ee8ab0867e0d80f1b25adc059a209cf23e0af1050d04ce6e57cfc43c4f31e64",
+  "source_files_checked": 595,
+  "post_test_documentation": [
+    "docs/implementation-progress.md",
+    "docs/EXT-004-outbound-attachment.md",
+    "docs/EXT-004-outbound-attachment.md"
+  ],
+  "platforms": {
+    "macos": {
+      "status": "PASS",
+      "archive": "macos.zip",
+      "sha256": "0350a691d603963fa504420edcc8426257e3940f0983c63be19bb93da6af58ea",
+      "scenarios": [
+        "confirmed",
+        "denied",
+        "rejected",
+        "lost",
+        "caption",
+        "caption-lost",
+        "forget",
+        "reply",
+        "reply-text",
+        "reply-rejected",
+        "recall",
+        "recall-lost",
+        "recall-rejected",
+        "recall-denied",
+        "recall-malformed",
+        "typing",
+        "typing-private",
+        "typing-rejected",
+        "typing-lost",
+        "typing-malformed",
+        "typing-denied",
+        "typing-disabled"
+      ],
+      "package_version": "0.1.0-alpha.9",
+      "artifacts": {
+        "Cargo.lock": "feaa3157b6ba45ff04fef392f32c7295d73152a79c1ace443d7b48f34c829ef4",
+        "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "plugin.toml": "cdcc392ee7239454aa6f784391181edc55597fce67c104417af8cc309306b40a",
+        "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "yuki-telegram": "1eb79c7523db16b74c151609c1a147850879b0e6d88156496b6f79c650276bb8"
+      }
+    },
+    "linux": {
+      "status": "PASS",
+      "archive": "linux.zip",
+      "sha256": "55e35665def3149934cd1086996c1331b00d4aa62b8a25ca9caaea630fefb82f",
+      "scenarios": [
+        "confirmed",
+        "denied",
+        "rejected",
+        "lost",
+        "caption",
+        "caption-lost",
+        "forget",
+        "reply",
+        "reply-text",
+        "reply-rejected",
+        "recall",
+        "recall-lost",
+        "recall-rejected",
+        "recall-denied",
+        "recall-malformed",
+        "typing",
+        "typing-private",
+        "typing-rejected",
+        "typing-lost",
+        "typing-malformed",
+        "typing-denied",
+        "typing-disabled"
+      ],
+      "package_version": "0.1.0-alpha.9",
+      "artifacts": {
+        "Cargo.lock": "feaa3157b6ba45ff04fef392f32c7295d73152a79c1ace443d7b48f34c829ef4",
+        "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "plugin.toml": "cdcc392ee7239454aa6f784391181edc55597fce67c104417af8cc309306b40a",
+        "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "yuki-telegram": "127bcc7fa97ee0f2ed000f4d655c6a5f4f4bb3a1e0607787389725c601d6b1ef"
+      }
+    },
+    "windows": {
+      "status": "PASS",
+      "archive": "windows.zip",
+      "sha256": "db9ae891b1363d89045e82adbf4c29a44f80fcd55ab34dad38c80409aa74dc95",
+      "scenarios": [
+        "confirmed",
+        "denied",
+        "rejected",
+        "lost",
+        "caption",
+        "caption-lost",
+        "forget",
+        "reply",
+        "reply-text",
+        "reply-rejected",
+        "recall",
+        "recall-lost",
+        "recall-rejected",
+        "recall-denied",
+        "recall-malformed",
+        "typing",
+        "typing-private",
+        "typing-rejected",
+        "typing-lost",
+        "typing-malformed",
+        "typing-denied",
+        "typing-disabled"
+      ],
+      "package_version": "0.1.0-alpha.9",
+      "artifacts": {
+        "Cargo.lock": "feaa3157b6ba45ff04fef392f32c7295d73152a79c1ace443d7b48f34c829ef4",
+        "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "plugin.toml": "cdcc392ee7239454aa6f784391181edc55597fce67c104417af8cc309306b40a",
+        "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "yuki-telegram.exe": "19c8db249246c0ef24843d2094f1df2bf835300284a38e6dee5ce8aa1e56cff1"
+      }
+    }
+  },
+  "card_status": "VERIFIED_ON_CANDIDATE"
+}
