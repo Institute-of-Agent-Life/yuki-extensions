@@ -91,7 +91,8 @@ def build(root: Path, ident: str, output: Path, *, test_evidence: Path | None = 
             shutil.copy2(path / "Cargo.lock", output / "Cargo.lock")
             shutil.copy2(path / "rust-toolchain.toml", output / "rust-toolchain.toml")
     artifacts = {p.relative_to(output).as_posix(): sha256(p) for p in sorted(output.rglob("*"))
-                 if p.is_file() and p.name != ".gitignore"}
+                 if p.is_file() and p.name != ".gitignore"
+                 and not any(part.startswith("._") for part in p.relative_to(output).parts)}
     result = {"unit_id": ident, "version": unit["version"], "release_tag": unit["tag_prefix"] + unit["version"],
               "published": False, "manifest_sha256": sha256(path / ("pyproject.toml" if unit["ecosystem"] == "python" else "Cargo.toml")),
               "lock_sha256": sha256(path / ("uv.lock" if unit["ecosystem"] == "python" else "Cargo.lock")),

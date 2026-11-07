@@ -84,7 +84,7 @@ def exercise(binary, work):
     server = ThreadingHTTPServer(("127.0.0.1", 0), Native)
     threading.Thread(target=server.serve_forever, daemon=True).start()
     ns = "tg.bot101"
-    grants = ["gateway.inbound", "gateway.media"]
+    grants = ["gateway.inbound", "gateway.media", "gateway.send", "media.open", "forget.owner"]
     binding = {"namespace": ns, "grants": grants, "manifest_revision": "e"*64, "declarations": []}
     env = dict(os.environ, YUKI_PLUGIN_BINDING=json.dumps(binding), YUKI_TELEGRAM_BOT_ID="101",
         YUKI_TELEGRAM_TOKEN="101:fixture", YUKI_TELEGRAM_API=f"http://127.0.0.1:{server.server_port}",
@@ -145,7 +145,8 @@ def exercise(binary, work):
         send({"jsonrpc":"2.0","id":init["id"],"result":{"schema_revision":1,"version":{"major":1,"minor":0},
             "namespace":ns,"grants":grants,"manifest_revision":binding["manifest_revision"],
             "features":["initialize"],"extension_points":[],"host_schema_revision":2,
-            "method_revisions":[{"name":m,"revision":1} for m in ["initialize",*grants]]}})
+            "method_revisions":[{"name":m,"revision":1} for m in ["initialize",*grants,
+                "gateway.plan_send", "gateway.dispatch_part", "forget.request"]]}})
         event = read()
         assert event["method"] == "gateway.inbound" and event["params"]["media_identity"] == {"application":"101"}
         assert event["params"]["segments"] == [{"type":"media","reference":"origin-file","kind":"file"}]
@@ -157,6 +158,36 @@ def exercise(binary, work):
         call(offset=1)
         assert not native()
         checks.append("foreign installation/tenant and invalid first page: zero platform requests")
+        outbound_before = len(native())
+        selected = {"artifact_id":"selected", "version":DIGEST}
+        dispatch = {"handle":"original-bound-handle", "arguments":{
+            "purpose":"deliver", "route":{"bot":"101","chat":"-15","topic":"7"},
+            "part_ordinal":0, "media":selected,
+            "part":{"media":selected,"kind":"file","name":"selected.bin"}}}
+        send({"jsonrpc":"2.0","id":801,"method":"gateway.dispatch_part","params":dispatch})
+        page_request = read()
+        assert page_request["method"] == "media.open"
+        send({"jsonrpc":"2.0","id":802,"method":"forget.request",
+              "params":{"key":"erase-outbound","watermark":11}})
+        assert read() == {"jsonrpc":"2.0","id":801,"result":{"state":"failed"}}
+        assert read()["result"]["key"] == "erase-outbound"
+        dispatch["handle"] = "new-bound-handle"
+        send({"jsonrpc":"2.0","id":804,"method":"gateway.dispatch_part","params":dispatch})
+        current_page = read()
+        assert current_page["method"] == "media.open" and current_page["id"] != page_request["id"]
+        send({"jsonrpc":"2.0","id":page_request["id"],"result":{
+            "offset":0,"total":len(DATA),"version":DIGEST,"mime":"application/octet-stream",
+            "bytes":base64.b64encode(DATA[:16384]).decode(),"done":False}})
+        send({"jsonrpc":"2.0","id":current_page["id"],"result":{
+            "offset":0,"total":len(DATA),"version":DIGEST,"mime":"application/octet-stream",
+            "bytes":base64.b64encode(DATA[:16384]).decode(),"done":False}})
+        continuation = read()
+        assert continuation["method"] == "media.open" and continuation["params"]["offset"] == 16384
+        send({"jsonrpc":"2.0","id":803,"method":"forget.request",
+              "params":{"key":"drained","watermark":11}})
+        assert read() == {"jsonrpc":"2.0","id":804,"result":{"state":"failed"}}
+        assert read()["id"] == 803 and len(native()) == outbound_before
+        checks.append("concurrent media replies before inbound ACK preserve the current handle after a late forgotten page")
         call(ok=True)
         assert not cursor.exists()
         fetched = [("getFile","origin-file"),("GET","docs/%E9%9B%AA%20%23.raw")]
@@ -178,6 +209,16 @@ def exercise(binary, work):
             assert len(delta)==1+gets and delta[0]==("getFile",fid)
             checks.append(fid+": denied; downloads="+str(gets))
         assert not any(r.get("path")=="unexpected-redirect" for r in http)
+        call(ok=True)
+        before = len(native())
+        send({"jsonrpc":"2.0","id":800,"method":"forget.request",
+              "params":{"key":"erase-inbound","watermark":10}})
+        assert read()["result"] == {"key":"erase-inbound","watermark":10,
+            "proof":"volatile-media-cleared-and-upload-pipe-closed"}
+        call(offset=PAGE)
+        assert len(native()) == before
+        checks.append("forget clears cached inbound bytes before acknowledging the original watermark")
+
         proc.stdin.close()
         assert proc.wait(timeout=4)==0 and not release.is_set()
         checks.append("stdio EOF during long poll: exited before HTTP fixture released")

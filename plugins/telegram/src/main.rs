@@ -1,3 +1,4 @@
+mod attachment;
 mod ingress;
 mod media;
 mod social;
@@ -140,15 +141,88 @@ struct Gateway<'a> {
     enabled: bool,
     send: bool,
     pending: Option<social::Pending>,
+    reading: Option<attachment::Read>,
     media: media::Media,
 }
 
 impl Gateway<'_> {
-    fn callback(&mut self, incoming: Incoming, out: &mut impl Write) -> Result<(), Error> {
+    fn callback(
+        &mut self,
+        incoming: Incoming,
+        calls: &mut Calls,
+        out: &mut impl Write,
+    ) -> Result<(), Error> {
         match incoming {
             Incoming::Notification { .. } => Ok(()),
+            Incoming::Result { id, method, result } if method == "media.open" => {
+                if self
+                    .reading
+                    .as_ref()
+                    .is_none_or(|read| read.request_id() != id)
+                {
+                    return Ok(());
+                }
+                let Some(mut read) = self.reading.take() else {
+                    return Ok(());
+                };
+                let dispatch = read.dispatch.clone();
+                let got = result
+                    .map_err(|_| "original attachment unavailable".into())
+                    .and_then(|p| read.receive(p));
+                let state = match got {
+                    Ok(false) => {
+                        self.read_page(read, calls, out)?;
+                        return Ok(());
+                    }
+                    Ok(true) => {
+                        let (args, mime, bytes) = read.into_upload()?;
+                        if let Ok(request) = social::Pending::upload(
+                            dispatch.clone(),
+                            &args,
+                            self.bot,
+                            self.base,
+                            &mime,
+                            bytes,
+                        ) {
+                            self.pending = Some(request);
+                            return Ok(());
+                        }
+                        "failed"
+                    }
+                    Err(_) => "failed",
+                };
+                emit(
+                    out,
+                    &json!({"jsonrpc":"2.0","id":dispatch,"result":{"state":state}}),
+                )
+            }
             Incoming::Result { .. } => Err("unexpected gateway receipt".into()),
             Incoming::Call { id, method, params } => {
+                if method == "forget.request" {
+                    // A forgotten source must not leave readable bytes or a live upload.
+                    // Dropping the transfer waits for curl and its bounded pipe to close.
+                    self.media = media::Media::default();
+                    if let Some(read) = self.reading.take() {
+                        emit(
+                            out,
+                            &json!({"jsonrpc":"2.0","id":read.dispatch,"result":{"state":"failed"}}),
+                        )?;
+                    }
+                    if let Some(upload) = self.pending.take() {
+                        let dispatch = upload.id.clone();
+                        drop(upload);
+                        emit(
+                            out,
+                            &json!({"jsonrpc":"2.0","id":dispatch,"result":{"state":"unknown"}}),
+                        )?;
+                    }
+                    return emit(
+                        out,
+                        &json!({"jsonrpc":"2.0","id":id,"result":{
+                        "key":params["key"],"watermark":params["watermark"],
+                        "proof":"volatile-media-cleared-and-upload-pipe-closed"}}),
+                    );
+                }
                 if self.send && method == "gateway.plan_send" {
                     let reply = match social::plan(&params["arguments"], self.bot) {
                         Ok(plan) => json!({"jsonrpc":"2.0","id":id,"result":plan}),
@@ -159,7 +233,14 @@ impl Gateway<'_> {
                     return emit(out, &reply);
                 }
                 if self.send && method == "gateway.dispatch_part" {
-                    let result = if self.pending.is_some() {
+                    let result = if self.pending.is_some() || self.reading.is_some() {
+                        json!({"state":"failed"})
+                    } else if !params["arguments"]["media"].is_null() {
+                        if let Ok(read) = attachment::Read::new(id.clone(), params.clone()) {
+                            if self.read_page(read, calls, out).is_ok() {
+                                return Ok(());
+                            }
+                        }
                         json!({"state":"failed"})
                     } else {
                         match social::Pending::start(
@@ -195,6 +276,17 @@ impl Gateway<'_> {
             }
         }
     }
+    fn read_page(
+        &mut self,
+        read: attachment::Read,
+        calls: &mut Calls,
+        out: &mut impl Write,
+    ) -> Result<(), Error> {
+        let req = calls.request(read.request_id(), "media.open", read.next())?;
+        emit(out, &req)?;
+        self.reading = Some(read);
+        Ok(())
+    }
     fn poll_delivery(&mut self, out: &mut impl Write) -> Result<(), Error> {
         if self.pending.as_mut().is_some_and(social::Pending::ready)
             && let Some(request) = self.pending.take()
@@ -219,7 +311,7 @@ impl Gateway<'_> {
             Err(RecvTimeoutError::Disconnected) => Ok(false),
             Err(RecvTimeoutError::Timeout) => Ok(true),
             Ok(raw) => {
-                self.callback(calls.receive(&raw?)?, out)?;
+                self.callback(calls.receive(&raw?)?, calls, out)?;
                 Ok(true)
             }
         }
@@ -229,6 +321,24 @@ impl Gateway<'_> {
 fn main() -> Result<(), Error> {
     let (input, mut out) = (host_input(), io::stdout().lock());
     let (mut calls, namespace, enabled, send) = initialize(&input, &mut out)?;
+    if env::var("YUKI_PLUGIN_START_MODE").as_deref() == Ok("erasure_only") {
+        // All retained media bytes and upload pipes belong to the previous process.
+        // A cleanup-only instance acknowledges before opening any Bot connection.
+        while let Ok(raw) = input.recv() {
+            if let Incoming::Call { id, method, params } = calls.receive(&raw?)? {
+                if method != "forget.request" {
+                    return Err("unsupported cleanup callback".into());
+                }
+                emit(
+                    &mut out,
+                    &json!({"jsonrpc":"2.0","id":id,"result":{
+                    "key":params["key"],"watermark":params["watermark"],
+                    "proof":"volatile-media-cleared-and-upload-pipe-closed"}}),
+                )?;
+            }
+        }
+        return Ok(());
+    }
     let token = env::var("YUKI_TELEGRAM_TOKEN")?;
     let bot: i64 = env::var("YUKI_TELEGRAM_BOT_ID")?.parse()?;
     let (prefix, secret) = token.split_once(':').ok_or("invalid Telegram credential")?;
@@ -284,6 +394,7 @@ fn main() -> Result<(), Error> {
         enabled,
         send,
         pending: None,
+        reading: None,
         media: media::Media::default(),
     };
     loop {
@@ -352,8 +463,10 @@ fn main() -> Result<(), Error> {
                         }
                         break;
                     }
-                    Incoming::Result { .. } => return Err("gateway admission failed".into()),
-                    other => gateway.callback(other, &mut out)?,
+                    Incoming::Result { id: returned, .. } if returned == request_id => {
+                        return Err("gateway admission failed".into());
+                    }
+                    other => gateway.callback(other, &mut calls, &mut out)?,
                 }
             }
             commit_cursor(&dir, &cursor, next)?;

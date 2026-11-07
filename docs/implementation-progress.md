@@ -4,6 +4,12 @@
 行為基線 `329ca7c487414d2f54ddd98ff4727446ed2446cd`。官方插件接入層用 Rust。
 獨立 Connector 沿用 Python 3.12；共享預算沿總書 K05。
 
+**EXT-004 附件子項三端通過。** 分支 `codex/ext-004-outbound-attachment`，Telegram Rust alpha.6。原件分頁／摘要、原 Bot 與 chat/topic、UTF-8 caption 分段、拒收與失回應、冷啟零重送、讀取中刪除和晚到頁面隔離均已驗。macOS arm64、Docker Linux arm64、HJW Windows x86_64 各七組真 Host 重放，另各完成 EXT-001、EXT-002、EXT-019。回環平台及模型，付費呼叫為零。
+
+候選與完整 SHA-256 在 `artifacts/EXT-004/outbound-attachment-12/telegram-delivery.json`，三個平台 ZIP 含獨立執行檔、SDK／鎖檔、原 wire 和來源檔案雜湊。Host 固定核心 #105 的受測提交 `19cbc9bf21f98`、SDK alpha.15，插件沿用 SDK alpha.14。全部為本地未發布候選。打包清單與 Desktop parser 已排除 AppleDouble 元資料，既有 Desktop 見證摘要三端相同。
+
+完整 EXT-004 繼續進行，下一步消費核心 #107 的原事件引用，再補撤回與 typing 生命周期。整卡正式完成數仍為 12/68。兩倉依使用者指示共同推進，各自提交，GitHub 檢查工作流改為手動，本地三端通過後合併。原 Codemode 未完成來源保留在主工作目錄。
+
 **EXT-029 已按維護者指定的模型原生範圍通過 HJW 驗收。** `codex/ext-029-model-native` 以已發布 B0 1.0.0（來源 `c6bd0c75e387`）把原私聊的 Main 搜尋接到模型 Responses 的 `web_search`。成功來源、純文字無證、429、斷線與冷啟皆有原根逐次回執。三次普通對答／搜尋之後，各故障各新增一筆物理回執；冷啟沒有新增預留或請求。四個搜尋 HTTP 均到回環模型。操作步驟見 `docs/EXT-029-model-native.md`，Windows 原始 wire 與 Host、來源及封包雜湊見 `artifacts/EXT-029/01`。早期缺字段及舊版不接受 `max_results` 的失敗已留存。原 EXT-029 的 Tavily 插件移出本倉範圍，核心 #104 新增三個外部搜尋方法僅供核對。原 #53 合併後的主線 CI `42315421136` 全過。現行範圍 12/68（含 1 張改範圍），剩餘分級在 `artifacts/readiness/after-model-native-search.json`。
 
 **Windows 重現入口。** `codex/public-base-windows-runner` 讓 `ci/windows.py` 傳送三張卡各自已核的公開 Host 和原插件 ZIP。EXT-003、005、028 在 HJW 的三個獨立目錄併行執行，逐份核對返回的 ZIP、來源快照及 manifest。回條在 `artifacts/ci/windows-public/receipt.json`。#52 實作 `736bc7ffc6fe` 已合併 `32400b6d39f0`，三平台 7 個 CI 作業、9 個 ZIP 及實際合併樹均已核。正式 11/68；其餘分級及下一步見 `artifacts/readiness/after-public-fetch-network.json`。

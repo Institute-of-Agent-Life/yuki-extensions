@@ -1,11 +1,8 @@
 name: independent-units
 
 on:
-  push:
-    # PRs run on the merge ref; a feature-branch push would duplicate that run.
-    branches: [main]
-  pull_request:
-    branches: [main]
+  # Automatic checks run on the owner's macOS, Linux and Windows installations.
+  # Keep the complete hosted suite available for an explicit manual invocation.
   workflow_dispatch:
 
 # Only superseded runs for the same PR are cancelled. Main and manual runs

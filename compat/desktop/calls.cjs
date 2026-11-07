@@ -10,6 +10,7 @@ function walk(dir) {
   const entries = fs.readdirSync(dir, {withFileTypes: true})
   entries.sort((a, b) => a.name < b.name ? -1 : a.name > b.name ? 1 : 0)
   for (const entry of entries) {
+    if (entry.name.startsWith('._')) continue
     const absolute = path.join(dir, entry.name)
     if (entry.isDirectory()) { walk(absolute); continue }
     if (!/\.tsx?$/.test(entry.name) || entry.name.endsWith('contract.gen.ts')) continue
