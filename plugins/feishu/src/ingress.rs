@@ -145,6 +145,26 @@ pub fn normalize(payload: &Value, app: &str, tenant: &str) -> Result<Option<Valu
         Some("p2p") => None,
         _ => return Err("unknown chat type".into()),
     };
+    // The reply endpoint accepts a message ID. Preserve the original root
+    // message as the route, matching the v4 ingress contract.
+    let thread = raw
+        .get("thread_id")
+        .filter(|v| !v.is_null())
+        .map(|v| v.as_str().ok_or("invalid native thread"))
+        .transpose()?
+        .filter(|thread| !thread.is_empty());
+    let topic_root = if thread.is_some() {
+        Some(
+            raw.get("root_id")
+                .filter(|v| !v.is_null())
+                .map(|v| v.as_str().ok_or("invalid original thread root"))
+                .transpose()?
+                .filter(|root| !root.is_empty())
+                .unwrap_or(id),
+        )
+    } else {
+        None
+    };
     let parsed;
     let content = if let Some(encoded) = raw["content"].as_str() {
         parsed = serde_json::from_str::<Value>(encoded)?;
@@ -184,15 +204,41 @@ pub fn normalize(payload: &Value, app: &str, tenant: &str) -> Result<Option<Valu
         .map(str::parse::<i64>)
         .transpose()?
         .or_else(|| raw["create_time"].as_i64());
-    Ok(Some(
-        json!({"source":id,"native_id":id,"sender":sender,"space":group,"topic":raw["thread_id"],
-        "occurred":time,"kind":kind,"segments":segments,"accept":human}),
-    ))
+    let mut result = json!({"source":id,"native_id":id,"sender":sender,"space":group,"topic":thread,
+        "occurred":time,"kind":kind,"segments":segments,"accept":human});
+    if let Some(root) = topic_root {
+        result["topic_root"] = json!(root);
+    }
+    Ok(Some(result))
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn thread_routes_preserve_the_original_root_message() {
+        let mut body = json!({"header":{"app_id":"cli_a","tenant_key":"tenant-a","event_type":"im.message.receive_v1"},
+            "event":{"sender":{"sender_type":"user","sender_id":{"open_id":"ou_user"}},
+            "message":{"message_id":"om_current","chat_id":"oc_group","chat_type":"group",
+                "thread_id":"omt_native","root_id":"om_root","message_type":"text","content":{"text":"hello"}}}});
+        let route = normalize(&body, "cli_a", "tenant-a").unwrap().unwrap();
+        assert_eq!(route["topic"], "omt_native");
+        assert_eq!(route["topic_root"], "om_root");
+        assert_eq!(route["native_id"], "om_current");
+        body["event"]["message"]["root_id"] = Value::Null;
+        assert_eq!(
+            normalize(&body, "cli_a", "tenant-a").unwrap().unwrap()["topic_root"],
+            "om_current"
+        );
+        body["event"]["message"]["root_id"] = json!(7);
+        assert!(normalize(&body, "cli_a", "tenant-a").is_err());
+        body["event"]["message"]["root_id"] = Value::Null;
+        body["event"]["message"]["thread_id"] = json!(7);
+        assert!(normalize(&body, "cli_a", "tenant-a").is_err());
+        body["event"]["message"]["thread_id"] = Value::Null;
+        assert!(normalize(&body, "cli_a", "tenant-a").unwrap().unwrap()["topic"].is_null());
+    }
 
     #[test]
     fn text_mentions_bind_the_complete_original_key() {

@@ -1,11 +1,13 @@
 """Exercise the shipped Windows host and a real RFC6455/pbbp2 native fixture."""
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from contextlib import closing
 import hashlib
 import json
 import os
 from pathlib import Path
 import runpy
 import shutil
+import sqlite3
 import subprocess
 import sys
 import threading
@@ -42,8 +44,11 @@ def fixture_imports(root, work):
     return Frame,serve
 
 
-def prepare(root, output, *, contract="core-032", package_builder=build, reader_archives=None, message_sample=None):
-    work=output/"work"
+def prepare(root, output, *, contract="core-032", package_builder=build, reader_archives=None,
+            message_sample=None, expected_topic="thread", host_materializer=materialize,
+            work_directory=None, native_topics=False, expected_topic_root=None,
+            reader_loader=None, reader_versions=("0.1.0-alpha.1", "0.1.0-alpha.2")):
+    work=work_directory or output/"work"
     work.mkdir()
     Frame,serve=fixture_imports(root,work)
     published = contract == "stable-1.0"
@@ -52,12 +57,12 @@ def prepare(root, output, *, contract="core-032", package_builder=build, reader_
         host, pin, _ = verify(root, Path(os.environ["YUKI_STABLE_BASE_ZIP"]), work)
         platform = pin["platforms"]["windows-x86_64"]
     else:
-        host,pin,platform=materialize(root,work,contract)
+        host,pin,platform=host_materializer(root,work,contract)
     packages=output/"packages"
     binary=packages/("yuki-feishu.exe" if os.name=="nt" else "yuki-feishu")
     if reader_archives:
         import feishu_reader_replay as readers
-        reader_pins = readers.packages(reader_archives, packages)
+        reader_pins = (reader_loader or readers.packages)(reader_archives, packages)
         private = work/"installed-state"
     else:
         built=package_builder(root,"feishu",packages)
@@ -203,7 +208,11 @@ def prepare(root, output, *, contract="core-032", package_builder=build, reader_
         if reader_archives:
             vals["args"] = [str(root/"tests/peers/base_relay.py"), str(binary),
                             str(trace/"wire.jsonl"), str(private), "none"]
-        cfg.write_text(base+"\n[[plugins]]\n"+"\n".join(f"{k} = {json.dumps(v)}" for k,v in vals.items())+"\n",encoding="utf-8")
+        identity = ""
+        if native_topics:
+            vals["grants"].append("gateway.media")
+            identity = '\n[plugins.gateway_media]\napplication=' + json.dumps(app) + '\ntenant=' + json.dumps("tenant-"+slug) + '\n'
+        cfg.write_text(base+"\n[[plugins]]\n"+"\n".join(f"{k} = {json.dumps(v)}" for k,v in vals.items())+"\n"+identity,encoding="utf-8")
     try:
         cli("init")
         if contract != "core-032":
@@ -231,7 +240,8 @@ def prepare(root, output, *, contract="core-032", package_builder=build, reader_
             for app in routes:
                 install(app,stages[app])
                 ids = {}
-                for phase, version in [("old","0.1.0-alpha.1"),("new","0.1.0-alpha.2"),("rollback","0.1.0-alpha.1")]:
+                old_version, new_version = reader_versions
+                for phase, version in [("old",old_version),("new",new_version),("rollback",old_version)]:
                     # Restore the previous stopped copy at the installation's stable cwd.
                     if phase == "old":
                         private.mkdir()
@@ -239,6 +249,8 @@ def prepare(root, output, *, contract="core-032", package_builder=build, reader_
                         shutil.copytree(stopped,private)
                     package = reader_pins[version]
                     shutil.copyfile(packages/package["binary"],binary)
+                    if os.name != "nt":
+                        binary.chmod(0o755)
                     assert hashlib.sha256(binary.read_bytes()).hexdigest() == package["binary_sha256"]
                     cursor = len(wire.read_bytes().splitlines()) if wire.exists() else 0
                     complete.clear()
@@ -261,8 +273,14 @@ def prepare(root, output, *, contract="core-032", package_builder=build, reader_
                 assert ids["old"][0] != ids["rollback"][0]
                 observations[app] = ids
             assert set(observations["cli_a"]["new"]).isdisjoint(observations["cli_b"]["new"])
+            topic_roots = []
+            if native_topics:
+                with closing(sqlite3.connect((data / "core.sqlite").as_uri()+"?mode=ro",uri=True)) as database:
+                    topic_roots = database.execute("SELECT event,namespace,topic_root FROM gateway_topic_origins ORDER BY event").fetchall()
+                assert topic_roots == [(observations[app]["new"][0],"fs."+routes[app][0],expected_topic_root) for app in routes]
             return "reader-replay.json", {"status":"PASS","scope":"stopped-plugin-copy","host":platform,
                 "host_source":pin["source_commit"],"packages":reader_pins,"events":observations,
+                "original_topic_roots":topic_roots,
                 "accounts":accounts,"killed_native_pids":killed,"stopped_private_files":{p.name:[] for p in work.glob("*-stopped")}}
         install("cli_a",stages["cli_a"])
         start()
@@ -291,7 +309,10 @@ def prepare(root, output, *, contract="core-032", package_builder=build, reader_
         assert ids[0]==ids[1] and ids[2]==ids[3] and ids[0]!=ids[2],ids
         assert accounts["cli_a"]["account"]!=accounts["cli_b"]["account"]
         for call, app in zip(calls, ["cli_a"] * 3 + ["cli_b"] * 2, strict=True):
-            p=call["params"];assert p["space"]=="oc_room" and p["topic"]=="thread"
+            p=call["params"];assert p["space"]=="oc_room" and p["topic"]==expected_topic
+            if native_topics:
+                assert p.get("topic_root") == expected_topic_root
+                assert p["media_identity"] == {"application":app,"tenant":"tenant-"+routes[app][0]}
             expected = [
                 {"type":"text","text":"🌨 "}, {"type":"mention","native":"ou_ten","label":"@Ten"},
                 {"type":"text","text":" / "}, {"type":"mention","native":app,"label":"@Yuki"},
@@ -304,10 +325,18 @@ def prepare(root, output, *, contract="core-032", package_builder=build, reader_
             assert p["occurred"]==1000 and p["sender"]=="ou_shared"
         assert all(e["type"]!="event" for e in native if e["phase"]=="break")
         scope = {"card_status": "VERIFIED_ON_UNPUBLISHED_CANDIDATE"}
-        consumer_sdk = pin["rust_crate_sha256"]
+        consumer = json.loads((root / built["source"]["sdk_contract"]).read_bytes())
+        consumer_sdk = consumer["rust_crate_sha256"]
+        if native_topics:
+            with closing(sqlite3.connect((data / "core.sqlite").as_uri()+"?mode=ro",uri=True)) as database:
+                roots = database.execute("SELECT o.event,o.namespace,json_extract(o.identity,'$.application'),json_extract(o.identity,'$.tenant'),d.topic,o.topic_root FROM gateway_topic_origins o JOIN events e ON e.id=o.event JOIN entries d ON d.id=e.entry_id ORDER BY o.event").fetchall()
+            expected = [] if expected_topic_root is None else [
+                (ids[0],"fs.a","cli_a","tenant-a",expected_topic,expected_topic_root),
+                (ids[2],"fs.b","cli_b","tenant-b",expected_topic,expected_topic_root),
+            ]
+            assert roots == expected, (roots,expected)
+            scope["original_topic_roots"] = roots
         if published:
-            consumer = json.loads((root / built["source"]["sdk_contract"]).read_bytes())
-            consumer_sdk = consumer["rust_crate_sha256"]
             scope.update(card_status="VERIFIED_ON_PUBLISHED_BASE", host_published=True, extension_published=False,
                 host_sdk=pin["rust_crate_sha256"], host_schema=pin["schema_sha256"], consumer_version=built["version"],
                 artifact_id=13539727686, package_sha256=FEISHU_SHA256,

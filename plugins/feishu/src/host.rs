@@ -157,6 +157,11 @@ impl Host {
     pub fn submit(&mut self, mut params: Value) -> Result<Id, Error> {
         if let Some(id) = &self.identity {
             params["media_identity"] = id.clone();
+        } else {
+            params
+                .as_object_mut()
+                .ok_or("invalid inbound frame")?
+                .remove("topic_root");
         }
         self.sequence = self.sequence.checked_add(1).ok_or("RPC id overflow")?;
         let id = Id::Number(self.sequence);

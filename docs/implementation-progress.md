@@ -1,3 +1,5 @@
+**EXT-006 原話題定位三端通過。** 分支 `codex/ext-006-original-delivery`，#60 的飛書 alpha.5 鎖定核心 #113 三端候選 `e6e4972a76911` 與 Rust SDK alpha.18。Mac、Linux、HJW 各完成三種話題情境、同安裝 alpha.4 → alpha.5 → alpha.4 回讀及原 app／tenant 媒體回歸。原 `thread_id` 保持事件去重鍵，原 `topic_root` 由首次接納獨立保存，舊事件重投沒有補填。601 個快照檔案與三端原包經核對，EXT-001／002／019 基線的 47 個輸入保持相同，完整證據在 `artifacts/EXT-006/original-topic-18/`。所有平台端點使用回環，付費呼叫為零。正式任務總數維持 12／68，原生投遞、上傳分步與 owner-disposition 繼續實作。
+
 # 擴展實作進度
 
 **Telegram 0.1.0 已正式發布。** 分支 `codex/telegram-published-receipt` 補存發布、五個附件回取驗 SHA 及舊工作流停用回條。來源 `e9e012d761da`、SDK 1.0.0。Linux arm64 需 glibc 2.39 以上與 curl，已在 glibc 2.41 的本地鏡像重放。本次文件提交沿用 #58 的三端各 22 例，全部 556 個執行／測試／依賴輸入逐檔相同，另核對核心 #110 三端各 51 張檢查。具體版本與完整 SHA-256 在 `artifacts/EXT-043/published-0.1.0/`。此處補記既有 EXT-043 的發布狀態，正式完成數仍 12／68。
