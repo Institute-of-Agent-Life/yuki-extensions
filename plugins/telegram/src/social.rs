@@ -71,15 +71,19 @@ fn bound_reply(arguments: &Value) -> Result<Option<i64>, Error> {
     {
         return Err("invalid original reply".into());
     }
-    let (chat, message) = reply["native_id"]
+    native_message(&reply["native_id"], &arguments["route"]["chat"]).map(Some)
+}
+
+fn native_message(native: &Value, original_chat: &Value) -> Result<i64, Error> {
+    let (chat, message) = native
         .as_str()
         .and_then(|id| id.split_once(':'))
         .ok_or("invalid original native ID")?;
     let id: i64 = message.parse()?;
-    if Some(chat) != arguments["route"]["chat"].as_str() || id <= 0 || id.to_string() != message {
-        return Err("reply outside original chat".into());
+    if Some(chat) != original_chat.as_str() || id <= 0 || id.to_string() != message {
+        return Err("native message outside original chat".into());
     }
-    Ok(Some(id))
+    Ok(id)
 }
 
 fn part_reply(arguments: &Value) -> Result<Option<i64>, Error> {
@@ -144,11 +148,48 @@ fn plan_parts(arguments: &Value, bot: i64) -> Result<Value, Error> {
 
 pub struct Pending {
     pub id: Id,
-    chat: String,
+    receipt: Receipt,
     transfer: transport::Request,
 }
 
+enum Receipt {
+    Message(String),
+    Recall,
+}
+
+fn recall_payload(arguments: &Value, bot: i64) -> Result<Value, Error> {
+    let (chat, _) = route(arguments, bot)?;
+    let original = &arguments["original"];
+    if original["event_id"].as_i64().is_none_or(|id| id <= 0)
+        || ["execution", "operation"]
+            .iter()
+            .any(|key| original[key].as_str().is_none_or(str::is_empty))
+    {
+        return Err("missing original recall identity".into());
+    }
+    let message = native_message(&original["native_id"], &arguments["route"]["chat"])?;
+    Ok(json!({"chat_id":chat,"message_id":message}))
+}
+
 impl Pending {
+    pub fn recall(
+        id: Id,
+        arguments: &Value,
+        bot: i64,
+        base: &str,
+        token: &str,
+    ) -> Result<Self, Value> {
+        let payload = recall_payload(arguments, bot).map_err(|_| json!({"state":"failed"}))?;
+        let url = format!("{base}/bot{token}/deleteMessage");
+        let transfer = transport::start(&url, Some(&payload), 128 * 1024)
+            .map_err(|_| json!({"state":"unknown"}))?;
+        Ok(Self {
+            id,
+            receipt: Receipt::Recall,
+            transfer,
+        })
+    }
+
     pub fn start(
         id: Id,
         arguments: &Value,
@@ -178,7 +219,7 @@ impl Pending {
             .map_err(|_| json!({"state":"unknown"}))?;
         Ok(Self {
             id,
-            chat: chat.into(),
+            receipt: Receipt::Message(chat.into()),
             transfer,
         })
     }
@@ -223,7 +264,7 @@ impl Pending {
         )?;
         Ok(Self {
             id,
-            chat: chat.into(),
+            receipt: Receipt::Message(chat.into()),
             transfer,
         })
     }
@@ -245,23 +286,50 @@ impl Pending {
         {
             return json!({"state":"failed"});
         }
-        let message = &response["result"];
-        if status == 200
-            && response["ok"] == true
-            && message["chat"]["id"]
-                .as_i64()
-                .is_some_and(|id| id.to_string() == self.chat)
-            && let Some(id) = message["message_id"].as_i64().filter(|v| *v > 0)
-        {
-            return json!({"state":"confirmed","locator":format!("{}:{id}",self.chat)});
+        if status != 200 || response["ok"] != true {
+            return json!({"state":"unknown"});
         }
-        json!({"state":"unknown"})
+        match self.receipt {
+            Receipt::Recall if response["result"] == true => json!({"state":"confirmed"}),
+            Receipt::Message(chat) => {
+                let message = &response["result"];
+                if message["chat"]["id"]
+                    .as_i64()
+                    .is_some_and(|id| id.to_string() == chat)
+                    && let Some(id) = message["message_id"].as_i64().filter(|v| *v > 0)
+                {
+                    return json!({"state":"confirmed","locator":format!("{chat}:{id}")});
+                }
+                json!({"state":"unknown"})
+            }
+            Receipt::Recall => json!({"state":"unknown"}),
+        }
     }
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn recall_keeps_the_original_bot_and_native_message() {
+        let original = json!({"event_id":31,"execution":"original-root","operation":"original-part","native_id":"-15:9"});
+        let request = json!({"route":{"bot":"101","chat":"-15","topic":"7"},"original":original});
+        assert_eq!(
+            recall_payload(&request, 101).unwrap(),
+            json!({"chat_id":"-15","message_id":9})
+        );
+        assert!(recall_payload(&request, 102).is_err());
+        for native in ["8:9", "-15:0", "-15:09", "-15:9:10"] {
+            let mut changed = request.clone();
+            changed["original"]["native_id"] = json!(native);
+            assert!(recall_payload(&changed, 101).is_err());
+        }
+        for key in ["event_id", "execution", "operation"] {
+            let mut changed = request.clone();
+            changed["original"].as_object_mut().unwrap().remove(key);
+            assert!(recall_payload(&changed, 101).is_err());
+        }
+    }
     #[test]
     fn binds_the_original_reply_only_to_the_first_part() {
         let reply = json!({"event_id":31,"native_id":"-15:9"});

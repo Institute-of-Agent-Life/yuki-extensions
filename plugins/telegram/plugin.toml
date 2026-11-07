@@ -1,7 +1,7 @@
 id = "telegram"
-version = "0.1.0-alpha.7"
+version = "0.1.0-alpha.8"
 program = "yuki-telegram"
 erasure_args = []
 platform = "telegram"
-grants = ["gateway.inbound", "gateway.media", "gateway.send", "media.open", "forget.owner"]
+grants = ["gateway.inbound", "gateway.media", "gateway.send", "gateway.recall", "media.open", "forget.owner"]
 env = ["YUKI_TELEGRAM_TOKEN", "YUKI_TELEGRAM_BOT_ID", "YUKI_TELEGRAM_STATE", "YUKI_TELEGRAM_API", "YUKI_TELEGRAM_CURL"]

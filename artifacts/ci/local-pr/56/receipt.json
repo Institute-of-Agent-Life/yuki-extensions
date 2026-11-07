@@ -1,0 +1,95 @@
+{
+  "status": "verified-and-merged",
+  "pr": 56,
+  "head": "372484a836a8ea1a52e8576099cdf9550f94ae07",
+  "base": "22f33fcfb6ddf887aef02a8c03a17e9a6b1ddc10",
+  "tested_merge": "f5f79f5a6de1f35f482dc2c3f33834d1d8e91a98",
+  "merged": "5ba070ca10f8705b7de286b1995999d40c1dbf90",
+  "tree": "7bfe42c62a6d15d0c80e98fcd8a51b51333df534",
+  "evidence": "/Volumes/huawei/\u9805\u76ee\u5be6\u6230/yuki-extensions/.ci-transfer/work-tg-reply/artifacts/EXT-004/original-reply-13/telegram-delivery.json",
+  "evidence_sha256": "5e8f2316a2c4a0297b4d10e85bb0e9c3cc99fd5f1aa0688044eaa39f17263d8e",
+  "source_files_checked": 585,
+  "post_test_documentation": [
+    "docs/implementation-progress.md",
+    "docs/EXT-004-outbound-attachment.md",
+    "docs/EXT-004-outbound-attachment.md"
+  ],
+  "platforms": {
+    "macos": {
+      "status": "PASS",
+      "archive": "macos.zip",
+      "sha256": "1768f261ab0e33d9321747db0e23285964772d081bd7ed3454c7dc1699e9f13c",
+      "scenarios": [
+        "confirmed",
+        "denied",
+        "rejected",
+        "lost",
+        "caption",
+        "caption-lost",
+        "forget",
+        "reply",
+        "reply-text",
+        "reply-rejected"
+      ],
+      "package_version": "0.1.0-alpha.7",
+      "artifacts": {
+        "Cargo.lock": "4595518ee3447a7984001cfbe9f81870eaf9c3979288988055f0587aebe93e01",
+        "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "plugin.toml": "0f62a99ace76aa7c8aba4f8bd69ebace3ee471ec69d782ad9575291e4b4d4022",
+        "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "yuki-telegram": "103bcc603bb0110d597500451200a0ff1ece2cc087e951603756a7b66e438bb7"
+      }
+    },
+    "linux": {
+      "status": "PASS",
+      "archive": "linux.zip",
+      "sha256": "91100d2bc2ec0f74404b32fdd914c0a30c0cfc8175b50b950cf5f20f43094264",
+      "scenarios": [
+        "confirmed",
+        "denied",
+        "rejected",
+        "lost",
+        "caption",
+        "caption-lost",
+        "forget",
+        "reply",
+        "reply-text",
+        "reply-rejected"
+      ],
+      "package_version": "0.1.0-alpha.7",
+      "artifacts": {
+        "Cargo.lock": "4595518ee3447a7984001cfbe9f81870eaf9c3979288988055f0587aebe93e01",
+        "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "plugin.toml": "0f62a99ace76aa7c8aba4f8bd69ebace3ee471ec69d782ad9575291e4b4d4022",
+        "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "yuki-telegram": "fb802ac118d7dc6fcbe9c34ff162fd2ce00e38ae66bc972c6f0f8e953fc945e7"
+      }
+    },
+    "windows": {
+      "status": "PASS",
+      "archive": "windows.zip",
+      "sha256": "1a2d7d69497a16778dfb035ecf482eb3d3463465462829f9ccd2c5fd2471bd19",
+      "scenarios": [
+        "confirmed",
+        "denied",
+        "rejected",
+        "lost",
+        "caption",
+        "caption-lost",
+        "forget",
+        "reply",
+        "reply-text",
+        "reply-rejected"
+      ],
+      "package_version": "0.1.0-alpha.7",
+      "artifacts": {
+        "Cargo.lock": "4595518ee3447a7984001cfbe9f81870eaf9c3979288988055f0587aebe93e01",
+        "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "plugin.toml": "0f62a99ace76aa7c8aba4f8bd69ebace3ee471ec69d782ad9575291e4b4d4022",
+        "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "yuki-telegram.exe": "bd6171649eb1d9746b426343e85538ce1e7a5677f8efdc46912a954d96978ebc"
+      }
+    }
+  },
+  "card_status": "PARTIAL_ATTACHMENT_AND_ORIGINAL_REPLY_VERIFIED"
+}

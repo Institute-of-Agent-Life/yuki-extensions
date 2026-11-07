@@ -71,8 +71,10 @@ def exercise(root, package, output, scenario):
         finished = threading.Event()
         cleanup_started = threading.Event()
         quoted = scenario.startswith("reply")
-        chat = -15 if quoted else 8
-        topic = 7 if quoted else None
+        recalling = scenario.startswith("recall")
+        grouped = quoted or recalling
+        chat = -15 if grouped else 8
+        topic = 7 if grouped else None
         payload = b"Yuki original attachment\n" + bytes(range(251)) * 97
         caption = (
             "雪" * 1023 + "🌨" + "a" * 4097
@@ -171,10 +173,10 @@ def exercise(root, package, output, scenario):
                             "message_id": 9,
                             "date": int(time.time()),
                             "from": {"id": 8},
-                            "chat": {"id": chat, "type": "supergroup" if quoted else "private"},
+                            "chat": {"id": chat, "type": "supergroup" if grouped else "private"},
                             "text": "@OriginalBot send the selected original attachment.",
                             "entities": [{"type":"mention","offset":0,"length":12}],
-                            **({"message_thread_id": topic} if quoted else {}),
+                            **({"message_thread_id": topic} if grouped else {}),
                         },
                     }
                     return self.reply(
@@ -220,6 +222,15 @@ def exercise(root, package, output, scenario):
                                 args = {"text": caption}
                             args["reply_to_event_id"] = original["event"]
                         call = ("send", args)
+                    elif recalling and count == 3:
+                        call = ("query_chat_history", {"view":"recent","author_kind":"yuki","limit":1})
+                    elif recalling and count in (4, 5):
+                        history = json.loads(next(v["content"] for v in models[-1]["messages"]
+                            if v.get("tool_call_id") == "original-3"))["result"]
+                        assert len(history["events"]) == 1, history
+                        original_event = history["events"][0]
+                        assert original_event["direction"] == "outbound", original_event
+                        call = ("recall_own_message", {"event_id":original_event["event_id"]})
                     message = {"role": "assistant", "content": "finished"}
                     if call:
                         message.update(
@@ -250,9 +261,20 @@ def exercise(root, package, output, scenario):
                             },
                         }
                     )
-                    if count == 3:
+                    if count == (6 if recalling else 3):
                         finished.set()
                     return
+                if self.path == "/bot101:fixture/deleteMessage":
+                    args = json.loads(body)
+                    assert args == {"chat_id":str(chat),"message_id":121}, args
+                    native.append({"method":"deleteMessage", **args})
+                    if scenario == "recall-lost":
+                        self.close_connection = True
+                        self.connection.shutdown(socket.SHUT_RDWR)
+                        return
+                    if scenario == "recall-rejected":
+                        return self.reply({"ok":False,"error_code":403}, 403)
+                    return self.reply({"ok":True,"result":{} if scenario == "recall-malformed" else True})
                 if self.path == "/bot101:fixture/sendDocument":
                     header = (
                         "Content-Type: "
@@ -396,6 +418,8 @@ def exercise(root, package, output, scenario):
                 grants = ["gateway.inbound", "gateway.media", "gateway.send"]
                 if scenario != "denied":
                     grants.extend(["media.open", "forget.owner"])
+                if recalling and scenario != "recall-denied":
+                    grants.append("gateway.recall")
                 fields = {
                     "id": "telegram",
                     "namespace": "tg.original",
@@ -435,9 +459,9 @@ def exercise(root, package, output, scenario):
                     )
                 expected = (
                     "unknown"
-                    if scenario in {"lost", "caption-lost"}
+                    if scenario in {"lost", "caption-lost", "recall-lost", "recall-malformed"}
                     else "failed"
-                    if scenario in {"denied", "rejected", "reply-rejected"}
+                    if scenario in {"denied", "rejected", "reply-rejected", "recall-rejected", "recall-denied"}
                     else "confirmed"
                 )
                 assert result["state"] == expected, result
@@ -468,7 +492,14 @@ def exercise(root, package, output, scenario):
                     "reply": 3, "reply-text": 2}.get(
                     scenario, 1
                 )
+                if recalling:
+                    expected_calls = 1 if scenario == "recall-denied" else 2
                 assert len(native) == expected_calls, native
+                if recalling:
+                    for model in models[4:]:
+                        for message in model["messages"]:
+                            if message.get("tool_call_id") in {"original-4", "original-5"}:
+                                assert json.loads(message["content"])["state"] == expected
                 if scenario in {"caption", "reply"}:
                     assert (
                         native[0]["caption"] + "".join(v["text"] for v in native[1:])
@@ -517,6 +548,7 @@ if __name__ == "__main__":
             "reply",
             "reply-text",
             "reply-rejected",
+            "recall", "recall-lost", "recall-rejected", "recall-denied", "recall-malformed",
         ],
         required=True,
     )
