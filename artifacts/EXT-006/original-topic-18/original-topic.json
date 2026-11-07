@@ -1,7 +1,7 @@
 {
-  "status": "IN_PROGRESS",
+  "status": "PASS",
   "card": "EXT-006",
-  "card_status": "WINDOWS_PENDING",
+  "card_status": "ORIGINAL_TOPIC_ROUTING_VERIFIED",
   "published": false,
   "source_branch": "codex/ext-006-original-delivery",
   "source_snapshot_sha256": "55985d6dde5f7872777703ad0282f9f02830aade3b94693198d5c2b6e0ff21b0",
@@ -413,6 +413,206 @@
           "token_issuances": 2
         }
       ]
+    },
+    "windows": {
+      "status": "PASS",
+      "archive": "windows.zip",
+      "sha256": "b89839ae300a4787a5dcc8bcfb9a06a279036a3fc5e9a6ed23231c9879569196",
+      "topic_cases": {
+        "original-root": {
+          "status": "PASS",
+          "topic": "omt_shared",
+          "topic_root": "om_root",
+          "original_topic_roots": [
+            [
+              1,
+              "fs.a",
+              "cli_a",
+              "tenant-a",
+              "omt_shared",
+              "om_root"
+            ],
+            [
+              2,
+              "fs.b",
+              "cli_b",
+              "tenant-b",
+              "omt_shared",
+              "om_root"
+            ]
+          ],
+          "durable_events": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "host_sha256": "697b86a5aa896a43a002eb7aa9e1ddeca0c8e49544897bd72763a86a52ae2835"
+        },
+        "first-thread-message": {
+          "status": "PASS",
+          "topic": "omt_shared",
+          "topic_root": "om_shared",
+          "original_topic_roots": [
+            [
+              1,
+              "fs.a",
+              "cli_a",
+              "tenant-a",
+              "omt_shared",
+              "om_shared"
+            ],
+            [
+              2,
+              "fs.b",
+              "cli_b",
+              "tenant-b",
+              "omt_shared",
+              "om_shared"
+            ]
+          ],
+          "durable_events": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "host_sha256": "697b86a5aa896a43a002eb7aa9e1ddeca0c8e49544897bd72763a86a52ae2835"
+        },
+        "ordinary-group": {
+          "status": "PASS",
+          "topic": null,
+          "topic_root": null,
+          "original_topic_roots": [],
+          "durable_events": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "host_sha256": "697b86a5aa896a43a002eb7aa9e1ddeca0c8e49544897bd72763a86a52ae2835"
+        }
+      },
+      "reader_events": {
+        "cli_a": {
+          "old": [
+            1
+          ],
+          "new": [
+            2,
+            1
+          ],
+          "rollback": [
+            2
+          ]
+        },
+        "cli_b": {
+          "old": [
+            3
+          ],
+          "new": [
+            4,
+            3
+          ],
+          "rollback": [
+            4
+          ]
+        }
+      },
+      "original_topic_roots": [
+        [
+          2,
+          "fs.a",
+          "om_root"
+        ],
+        [
+          4,
+          "fs.b",
+          "om_root"
+        ]
+      ],
+      "media_domains": [
+        {
+          "domain": "feishu",
+          "kind": "image",
+          "fixture_requests": [
+            {
+              "method": "token",
+              "app": "cli_feishu",
+              "tenant": "tenant-feishu",
+              "issuance": 1
+            },
+            {
+              "method": "resource",
+              "domain": "feishu",
+              "raw_path": "/open-apis/im/v1/messages/om_original/resources/res%20%23%2Fnative?type=image",
+              "key": "res #/native",
+              "type": "image",
+              "token_number": 1
+            },
+            {
+              "method": "token",
+              "app": "cli_feishu",
+              "tenant": "tenant-feishu",
+              "issuance": 2
+            },
+            {
+              "method": "resource",
+              "domain": "feishu",
+              "raw_path": "/open-apis/im/v1/messages/om_original/resources/denied?type=image",
+              "key": "denied",
+              "type": "image",
+              "token_number": 2
+            }
+          ],
+          "sha256": "f645b72f1b9186913bc62759858134c358d5ba6e86fc59a2c467c55fabaeeb8c",
+          "bytes": 26789,
+          "ws_ack_during_rest": true,
+          "wrong_identity_requests": 0,
+          "http_403_retries": 0,
+          "token_issuances": 2
+        },
+        {
+          "domain": "lark",
+          "kind": "file",
+          "fixture_requests": [
+            {
+              "method": "token",
+              "app": "cli_lark",
+              "tenant": "tenant-lark",
+              "issuance": 1
+            },
+            {
+              "method": "resource",
+              "domain": "lark",
+              "raw_path": "/open-apis/im/v1/messages/om_original/resources/res%20%23%2Fnative?type=file",
+              "key": "res #/native",
+              "type": "file",
+              "token_number": 1
+            },
+            {
+              "method": "token",
+              "app": "cli_lark",
+              "tenant": "tenant-lark",
+              "issuance": 2
+            },
+            {
+              "method": "resource",
+              "domain": "lark",
+              "raw_path": "/open-apis/im/v1/messages/om_original/resources/denied?type=file",
+              "key": "denied",
+              "type": "file",
+              "token_number": 2
+            }
+          ],
+          "sha256": "a6c7af0a14eaed92a4c7be304b665671d26dc531b207b518bc4518ea38c194bf",
+          "bytes": 26789,
+          "ws_ack_during_rest": true,
+          "wrong_identity_requests": 0,
+          "http_403_retries": 0,
+          "token_issuances": 2
+        }
+      ]
     }
   },
   "paid_calls": 0,
@@ -423,5 +623,9 @@
     "owner disposition",
     "expanded published contract"
   ],
-  "linux_image": "sha256:dfe19032c767b42cc4aebabea1b31da06a5443feb8e15f84cd756f5e12b2b866"
+  "linux_image": "sha256:dfe19032c767b42cc4aebabea1b31da06a5443feb8e15f84cd756f5e12b2b866",
+  "baseline_reuse": {
+    "receipt": "baseline-reuse.json",
+    "sha256": "7f33eccaa09ddc24467283569526aac20a5d3b17c7ce93c71b1b273745711991"
+  }
 }
