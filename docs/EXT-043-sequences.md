@@ -7,6 +7,12 @@
 
 設定 `YUKI_STABLE_BASE_ZIP` 為公開 Windows ZIP，`YUKI_FROZEN_TELEGRAM_ZIP`、`YUKI_FROZEN_WEB_FETCH_ZIP` 分別為 freeze 列出的 Actions 資產 13523402982、13524465074。以空輸出目錄執行 `python ci/check.py EXT-043 --out artifacts/EXT-043/01`。原生包摘要、原 witness、完整簽署者與九份發行資產的 ID／SHA 在 `compat/stable-1.0/`。
 
-Telegram 的候選媒體安裝與六方法基底分別保留依賴鎖。基底發行由 `releases/telegram/0.1.0/` 的 Cargo 與執行配置選用同一份 Rust 來源。發行登錄逐檔固定編譯輸入；未申請發版時僅建包。Tag 工作流按當前提交建立三平台產物；實際發布另需在該 tag 明選 publish 並通過 plugin-release 環境。
+Telegram 的候選媒體安裝與六方法基底分別保留依賴鎖。基底發行由 `releases/telegram/0.1.0/` 的 Cargo 與執行配置選用同一份 Rust 來源。發行登錄逐檔固定編譯輸入；未申請發版時僅建包。維護者已指定全部 CI 在本地進行。舊 tag 的自動 release 工作流已停用，目前工作流保留手動入口。新版本發布沿具名本地三端回條與單次發布授權執行。
 
 第一輪改動啟動命令的程式路徑，冷啟後未收到第二次 Telegram 握手。該輪回條存於 `artifacts/EXT-043/iterations/changed-launch-path.zip`。通過的部署方式是在子程序與 Host 都停止後，於相同路徑替換已核 digest 的程式，沿用原配置與資料。其他部署方式待個別驗證。
+
+## Telegram 0.1.0 已發布
+
+維護者已授權發布 `plugin/telegram/v0.1.0`。來源 `e9e012d761da06548ecdd7ae2f39deeaf2b4b33d`、SDK 1.0.0，提供入站與文字投遞。三端原 ZIP、SHA256SUMS 與準備回條共五個附件均已回取驗 SHA。發布回條及重查在 `artifacts/EXT-043/published-0.1.0/`。[下載原包](https://github.com/Institute-of-Agent-Life/yuki-extensions/releases/tag/plugin/telegram/v0.1.0)
+
+Linux arm64 原包要求 glibc 2.39 以上及 curl。核心 #110 的本地 Linux 對拍使用 glibc 2.41，已完成四格八次原包重放。macOS 與 HJW 的平台分別為 arm64 及 x86_64。附件、引用、撤回與 typing 的 alpha.9 另按 CORE-053 的增量合同驗收。
