@@ -1,5 +1,5 @@
 use crate::{
-    Config, Error, segments,
+    Config, Error, attachment, segments,
     text::Reading,
     worker::{Job, Worker},
 };
@@ -31,6 +31,8 @@ pub struct Host {
     pending: Option<(Id, bool)>,
     text: Option<Reading>,
     text_enabled: bool,
+    attachment: Option<attachment::Read>,
+    upload_enabled: bool,
 }
 fn send(v: &Value) -> Result<(), Error> {
     let mut w = io::stdout().lock();
@@ -116,6 +118,9 @@ impl Host {
         let send_enabled = permitted("gateway.send", "gateway.plan_send")
             && permitted("gateway.send", "gateway.dispatch_part");
         let text_enabled = permitted("gateway.send", "gateway.read_text");
+        let upload_enabled = send_enabled
+            && permitted("gateway.send", "gateway.prepare_part")
+            && permitted("media.open", "media.open");
         let recall_enabled = send_enabled && permitted("gateway.recall", "gateway.recall");
         let namespace = init["namespace"]
             .as_str()
@@ -136,11 +141,14 @@ impl Host {
             pending: None,
             text: None,
             text_enabled,
+            attachment: None,
+            upload_enabled,
         })
     }
     fn submit_job(&mut self, id: Id, job: Job, media: bool) -> Result<(), Error> {
         if self.pending.is_none()
             && self.text.is_none()
+            && self.attachment.is_none()
             && self
                 .worker
                 .as_ref()
@@ -169,7 +177,11 @@ impl Host {
         Ok(())
     }
     fn begin_text(&mut self, id: Id, params: Value, planning: bool) -> Result<(), Error> {
-        if self.text_enabled && self.pending.is_none() && self.text.is_none() {
+        if self.text_enabled
+            && self.pending.is_none()
+            && self.text.is_none()
+            && self.attachment.is_none()
+        {
             if let Ok(reading) = Reading::new(id.clone(), params, planning) {
                 self.text = Some(reading);
                 return self.read_page();
@@ -208,10 +220,66 @@ impl Host {
             ),
         }
     }
+    fn attachment_page(&mut self) -> Result<(), Error> {
+        let reading = self
+            .attachment
+            .as_mut()
+            .ok_or("missing original attachment read")?;
+        self.sequence = self.sequence.checked_add(1).ok_or("RPC id overflow")?;
+        let id = Id::Number(self.sequence);
+        send(
+            &self
+                .calls
+                .request(id.clone(), "media.open", reading.page())?,
+        )?;
+        reading.page_id = Some(id);
+        Ok(())
+    }
+    fn begin_attachment(&mut self, id: Id, params: Value) -> Result<(), Error> {
+        if self.pending.is_none() && self.text.is_none() && self.attachment.is_none() {
+            if let Ok(reading) =
+                attachment::Read::new(&self.cfg, &self.namespace, id.clone(), params)
+            {
+                self.attachment = Some(reading);
+                return self.attachment_page();
+            }
+        }
+        response(id, json!({"result":{"state":"failed"}}))
+    }
+    fn attachment_result(&mut self, id: Id, result: Result<Value, Value>) -> Result<(), Error> {
+        if self
+            .attachment
+            .as_ref()
+            .is_none_or(|r| r.page_id.as_ref() != Some(&id))
+        {
+            return Ok(());
+        }
+        let mut reading = self
+            .attachment
+            .take()
+            .ok_or("missing original attachment read")?;
+        let progress = result
+            .map_err(|_| Error::from("original attachment revoked"))
+            .and_then(|page| reading.accept(&page));
+        if matches!(progress, Ok(false)) {
+            self.attachment = Some(reading);
+            return self.attachment_page();
+        }
+        let original_id = reading.original_id.clone();
+        match progress.and_then(|_| reading.finish()) {
+            Ok((args, mime, bytes)) => {
+                self.submit_job(original_id, Job::Upload(args, mime, bytes), false)
+            }
+            Err(_) => response(original_id, json!({"result":{"state":"failed"}})),
+        }
+    }
     fn other(&mut self, incoming: Incoming) -> Result<(), Error> {
         match incoming {
             Incoming::Notification { .. } => Ok(()),
             Incoming::Call { id, method, params } if method == "forget.request" => {
+                if let Some(reading) = self.attachment.take() {
+                    response(reading.original_id, json!({"result":{"state":"failed"}}))?;
+                }
                 if let Some(reading) = self.text.take() {
                     response(
                         reading.original_id,
@@ -246,6 +314,12 @@ impl Host {
             Incoming::Call { id, method, params }
                 if method == "gateway.plan_send" && self.send_enabled =>
             {
+                if !params["arguments"]["media"].is_null() && !self.upload_enabled {
+                    return response(
+                        id,
+                        json!({"error":{"code":-32602,"message":"native upload not negotiated"}}),
+                    );
+                }
                 if params["arguments"].get("text_source").is_some() {
                     return self.begin_text(id, params, true);
                 }
@@ -258,6 +332,11 @@ impl Host {
                         }
                     },
                 )
+            }
+            Incoming::Call { id, method, params }
+                if method == "gateway.prepare_part" && self.upload_enabled =>
+            {
+                self.begin_attachment(id, params)
             }
             Incoming::Call { id, method, params }
                 if method == "gateway.dispatch_part" && self.send_enabled =>
@@ -299,7 +378,7 @@ impl Host {
         }
         // Drain a bounded batch of ready pages before returning to native WebSocket ACKs.
         for _ in 0..32 {
-            let incoming = if self.text.is_some() {
+            let incoming = if self.text.is_some() || self.attachment.is_some() {
                 self.input
                     .recv_timeout(Duration::from_millis(2))
                     .map_err(|error| match error {
@@ -315,6 +394,9 @@ impl Host {
                 Ok(raw) => match self.calls.receive(&raw?)? {
                     Incoming::Result { id, method, result } if method == "gateway.read_text" => {
                         self.text_result(id, result)?;
+                    }
+                    Incoming::Result { id, method, result } if method == "media.open" => {
+                        self.attachment_result(id, result)?;
                     }
                     Incoming::Result { id, result, .. } => {
                         let durable = result.is_ok_and(|v| {

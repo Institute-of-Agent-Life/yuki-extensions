@@ -88,7 +88,9 @@ impl Reading {
             let mut plan = segments::plan(cfg, args)?;
             let mut start = 0;
             for part in plan["parts"].as_array_mut().ok_or("missing text plan")? {
-                let text = part["text"].as_str().ok_or("missing text part")?;
+                let Some(text) = part["text"].as_str() else {
+                    continue;
+                };
                 let length = text.len();
                 let digest = format!("{:x}", Sha256::digest(text.as_bytes()));
                 part.as_object_mut()

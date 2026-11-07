@@ -20,6 +20,7 @@ def one(binary, Frame, serve, domain, kind):
     entered,release,ack,shutdown,cancel_entered,cancel_closed=(threading.Event() for _ in range(6))
     requests,wire,errors=[],[],[]
     issued=[]
+    upload_entered,upload_closed=threading.Event(),threading.Event()
 
     def socket(conn):
         try:
@@ -52,7 +53,21 @@ def one(binary, Frame, serve, domain, kind):
             self.send_response(code);self.send_header('Content-Length',str(len(payload)));self.end_headers()
             self.wfile.write(payload)
         def do_POST(self):
-            v=json.loads(self.rfile.read(int(self.headers['Content-Length'])))
+            raw=self.rfile.read(int(self.headers['Content-Length']))
+            if self.path=='/open-apis/im/v1/files':
+                assert self.headers['Authorization']=='Bearer '+issued[-1]
+                assert self.headers['Content-Type'].startswith('multipart/form-data; boundary=')
+                assert b'original-upload-page'*2000 in raw
+                requests.append({'method':'upload','domain':domain,'token_number':len(issued)})
+                upload_entered.set()
+                self.connection.settimeout(4)
+                try:
+                    assert self.connection.recv(1)==b'', 'cancelled upload kept its HTTP connection'
+                except ConnectionResetError:
+                    pass
+                upload_closed.set()
+                return
+            v=json.loads(raw)
             if self.path=='/callback/ws/endpoint':
                 assert v=={'AppID':app,'AppSecret':'fixture-'+app}
                 self.answer({'code':0,'data':{'URL':f'ws://127.0.0.1:{ws.socket.getsockname()[1]}/socket?service_id=9',
@@ -90,7 +105,7 @@ def one(binary, Frame, serve, domain, kind):
         def log_message(self,*args):pass
     server=ThreadingHTTPServer(('127.0.0.1',0),HTTP)
     for obj in (ws,server):threading.Thread(target=obj.serve_forever,daemon=True).start()
-    grants=['gateway.inbound','gateway.media','gateway.send','forget.owner']
+    grants=['gateway.inbound','gateway.media','gateway.send','media.open','forget.owner']
     binding={'namespace':ns,'grants':grants,'manifest_revision':'f'*64,'declarations':[]}
     env=dict(os.environ,YUKI_PLUGIN_BINDING=json.dumps(binding),YUKI_FEISHU_DOMAIN=domain,
         YUKI_FEISHU_APP_ID=app,YUKI_FEISHU_TENANT=tenant,YUKI_FEISHU_APP_SECRET='fixture-'+app,
@@ -122,7 +137,7 @@ def one(binary, Frame, serve, domain, kind):
         init=read();assert init['method']=='initialize'
         send({'jsonrpc':'2.0','id':init['id'],'result':{'schema_revision':1,'version':{'major':1,'minor':0},
             **{k:binding[k] for k in ['namespace','grants','manifest_revision']},'features':['initialize'],
-            'extension_points':[],'host_schema_revision':2,'method_revisions':[{'name':m,'revision':1} for m in ['initialize','gateway.inbound','gateway.media','gateway.plan_send','gateway.dispatch_part','gateway.read_text','forget.request']]}})
+            'extension_points':[],'host_schema_revision':2,'method_revisions':[{'name':m,'revision':1} for m in ['initialize','gateway.inbound','gateway.media','gateway.plan_send','gateway.dispatch_part','gateway.read_text','gateway.prepare_part','media.open','forget.request']]}})
         event=read();params=event['params']
         assert event['method']=='gateway.inbound' and params['media_identity']==identity
         assert params['segments'][0]=={'type':'media','kind':kind,'reference':native_key}
@@ -167,7 +182,10 @@ def one(binary, Frame, serve, domain, kind):
         count = len(requests)
         paged_text = text_pages(send, read, app)
         assert len(requests) == count, 'text planning caused a native effect'
-        return {'domain':domain,'kind':kind,'fixture_requests':requests,'wire':wire,
+        from feishu_upload import upload_pages
+        upload=upload_pages(send,read,ns,domain,app,tenant,upload_entered,upload_closed)
+        assert [r['method'] for r in requests[count:]]==['token','upload']
+        return {'upload':upload,'domain':domain,'kind':kind,'fixture_requests':requests,'wire':wire,
             'sha256':sha256(content).hexdigest(),'bytes':len(content),'ws_ack_during_rest':True,
             'wrong_identity_requests':0,'http_403_retries':0,'token_issuances':len(issued),'forget_cancelled_http':True,'forgotten_page_rejected':True,'paged_text':paged_text}
     finally:

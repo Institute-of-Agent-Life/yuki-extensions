@@ -1,0 +1,44 @@
+{
+  "attempts": [
+    {
+      "path": "artifacts/EXT-006/upload-preflight-02",
+      "status": "FAIL",
+      "reason": "Runtime file upload confirmed; verifier used receipts instead of original parts field",
+      "log": "preflight-02.log",
+      "log_sha256": "000cb5cb525826b2c6019365661e6b890a9c89603ad69778dda6795166a46fdc"
+    },
+    {
+      "path": "artifacts/EXT-006/upload-preflight-03",
+      "status": "FAIL",
+      "reason": "File case passed; image fixture lacked a supported image signature",
+      "log": "preflight-03.log",
+      "log_sha256": "ad45ab310abc1d05ba3bb39e95ba5d782d7fe405b73840d5ed65f8b275ceeb3b"
+    },
+    {
+      "path": "artifacts/EXT-006/upload-preflight-04",
+      "status": "PASS",
+      "reason": "Thirty file/image/ordering/failure/cold-receipt cases passed",
+      "log": "preflight-04.log",
+      "log_sha256": "ff008dd978e6aa2d5f5876787d89cdef06850a3a333f4aef7c240d74ccf0a919"
+    },
+    {
+      "path": "artifacts/EXT-006/upload-preflight-05",
+      "status": "FAIL",
+      "reason": "Independent token recovery succeeded; verifier counted it as the first failed send",
+      "log": "preflight-05.log",
+      "log_sha256": "7c95314f0c9aac8e5a4d2b3fdea7f32a6493858737bdd31984826aaec5b05dc3"
+    },
+    {
+      "path": "artifacts/EXT-006/upload-preflight-06",
+      "status": "PASS",
+      "reason": "Both domains confirmed independent token recovery and reopened both original receipts",
+      "log": "preflight-06.log",
+      "log_sha256": "ba1156728748961424d7c20131d6ffda45507e799c2588a2badd5173d9cab8b4"
+    }
+  ],
+  "final": {
+    "status": "PASS",
+    "receipt": "original-upload.json",
+    "sha256": "7a66c85ded679224fec90813014db71d3fabd50be3429c228df93bb53ad8ed06"
+  }
+}

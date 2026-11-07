@@ -23,7 +23,7 @@ def prepare(root,output):
     pin=json.loads((root/package['source']['sdk_contract']).read_bytes())
     paths=[root/'catalog/feishu.json',root/package['source']['sdk_contract'],root/'ci/package.py',
         root/'ci/handshake_cargo.py',root/'ci/check.py',root/'tests/cases/EXT-006.py',root/'tests/cases/EXT-005.py',
-        *(root/'tests/peers'/n for n in ['feishu_media_wire.py','lark_frames.py','lark-fixture.lock.json']),
+        *(root/'tests/peers'/n for n in ['feishu_media_wire.py','feishu_upload.py','lark_frames.py','lark-fixture.lock.json']),
         *(root/'plugins/feishu').glob('*'),*(root/'plugins/feishu/src').glob('*.rs')]
     return 'lark-rest.json',{'status':'PASS','card_status':'PLATFORM_RESOURCE_VERIFIED_HOST_AND_SOCIAL_PENDING',
         'actual_host_consumption':False,'models':0,'domains':rows,'erasure_only':cleanup,'binary_sha256':package['artifacts'][name],
