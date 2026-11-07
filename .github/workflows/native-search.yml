@@ -1,0 +1,60 @@
+name: Model-native search
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - deploy/search/**
+      - tests/cases/EXT-029.py
+      - tests/peers/joint_base.py
+      - compat/stable-1.0/**
+      - .github/workflows/native-search.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: native-search-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  search:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            target: windows-x86_64
+          - os: macos-latest
+            target: darwin-arm64
+          - os: ubuntu-24.04-arm
+            target: linux-arm64
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download the published base
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TARGET: ${{ matrix.target }}
+        shell: bash
+        run: |
+          gh release download plugin-base-v1.0.0 --repo Institute-of-Agent-Life/yuki-core \
+            --pattern "yuki-plugin-base-1.0.0-$TARGET.zip" --dir .base
+      - name: Verify the signed Host and run its model-native search
+        env:
+          YUKI_STABLE_BASE_ZIP: .base/yuki-plugin-base-1.0.0-${{ matrix.target }}.zip
+          PYTHONUTF8: '1'
+        run: python ci/check.py EXT-029 --out evidence
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: native-search-${{ matrix.target }}-${{ github.sha }}
+          path: |
+            evidence/*.json
+            evidence/*.log
+            evidence/failure.txt
+          if-no-files-found: error

@@ -1,0 +1,9 @@
+{
+  "scope": "model-native search only",
+  "extension_owned_stores": [],
+  "extension_owned_secrets": [],
+  "credential_reference": "YUKI_NATIVE_SEARCH_KEY",
+  "owner": "yuki-core search connection and original root ledger",
+  "import_actions": [],
+  "EXT-041": "Project-level configuration references only; no extension cache or paid operation to import or replay."
+}

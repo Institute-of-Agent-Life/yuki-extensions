@@ -1,0 +1,185 @@
+{
+  "status": "PASS",
+  "card_status": "VERIFIED_MODEL_NATIVE_SCOPE",
+  "release": "plugin-base-v1.0.0",
+  "source": "c6bd0c75e38717abc71373201d31a77982428d5b",
+  "host_sha256": "7ad3dc1659c5ef53809da5c0faf3b6ca885c4e3c7f0c7d46155803c86accf095",
+  "zip_sha256": "287167dae7b2b1222efd22fa5a0aa58e1c39f7129c7112e5b81cebb6278a7ecd",
+  "root": "55e60c3e-1628-4d21-91e1-0c6b7b82cdc8",
+  "main_calls": 2,
+  "native_calls": 4,
+  "search_plugins": [],
+  "paid_calls": 0,
+  "owner": "CORE-024",
+  "template_sha256": "86d6a2a7343769f8a88b70e9036978f93edb69f7872b7bb717267be92509d534",
+  "fixture_endpoints": "local HTTP Main and independent Responses search",
+  "main_result": {
+    "attempt": "native-search:e95f6df8e4331d986b135fd6723fa2bc5e62177d81b53bba4105ba351f6f848f:0",
+    "cache_expires_at": 1794013316,
+    "cached": false,
+    "logical": "native-search:e95f6df8e4331d986b135fd6723fa2bc5e62177d81b53bba4105ba351f6f848f",
+    "native_events": 1,
+    "partial_failure": false,
+    "provider": "native_search_bridge",
+    "query": "qualified query",
+    "sources": [
+      {
+        "domain": "example.org",
+        "snippet": "",
+        "source_id": "native-ecbdb22369cfcca5",
+        "title": "Witness 029",
+        "url": "https://example.org/witness/029"
+      }
+    ],
+    "status": "complete"
+  },
+  "no_sources": {
+    "attempt": "native-search:6fbe9462a4fd23b7182eeacdd8ce0c969bc6da2693f57429cb82b55d1073ffac:0",
+    "cached": false,
+    "logical": "native-search:6fbe9462a4fd23b7182eeacdd8ce0c969bc6da2693f57429cb82b55d1073ffac",
+    "native_events": 0,
+    "partial_failure": true,
+    "provider": "native_search_bridge",
+    "query": "plain query",
+    "sources": [],
+    "status": "no_search_evidence"
+  },
+  "rate_limit": {
+    "attempt": "native-search:701d0b885ebe35ec27aee6dfcb5ab6ac3b8406e60ce4e661520946c6ade58817:0",
+    "cached": false,
+    "http_status": 429,
+    "logical": "native-search:701d0b885ebe35ec27aee6dfcb5ab6ac3b8406e60ce4e661520946c6ade58817",
+    "sources": [],
+    "status": "rejected"
+  },
+  "cold_replay": {
+    "attempt": "native-search:09f5b40ae68abf54a5eb1e55d62bd450c4adef5c9397500b64b939b3bdd6fa9b:0",
+    "cached": false,
+    "logical": "native-search:09f5b40ae68abf54a5eb1e55d62bd450c4adef5c9397500b64b939b3bdd6fa9b",
+    "sources": [],
+    "status": "unknown"
+  },
+  "cold_root_ledger": {
+    "attempts": 6,
+    "business_tool_calls": 1,
+    "business_tool_limit": null,
+    "cost_usd": null,
+    "fields": {
+      "billed_microusd": {
+        "attempts": 6,
+        "known_subtotal": null,
+        "reported": 0,
+        "total": null
+      },
+      "cache": {
+        "attempts": 6,
+        "known_subtotal": null,
+        "reported": 0,
+        "total": null
+      },
+      "input": {
+        "attempts": 6,
+        "known_subtotal": 16,
+        "reported": 4,
+        "total": null
+      },
+      "output": {
+        "attempts": 6,
+        "known_subtotal": 8,
+        "reported": 4,
+        "total": null
+      },
+      "reasoning": {
+        "attempts": 6,
+        "known_subtotal": null,
+        "reported": 0,
+        "total": null
+      },
+      "total": {
+        "attempts": 6,
+        "known_subtotal": 24,
+        "reported": 4,
+        "total": null
+      }
+    },
+    "max_requests": 18,
+    "max_units": 200000,
+    "physical_receipts": [
+      {
+        "attempt": "55e60c3e-1628-4d21-91e1-0c6b7b82cdc8:logical:0:http:0",
+        "logical": "55e60c3e-1628-4d21-91e1-0c6b7b82cdc8:logical:0",
+        "ordinal": 0,
+        "state": "paired",
+        "status_code": 200,
+        "usage": {
+          "input": 4,
+          "output": 2,
+          "total": 6
+        },
+        "usage_raw": "{\"input\":4,\"output\":2,\"total\":6}"
+      },
+      {
+        "attempt": "55e60c3e-1628-4d21-91e1-0c6b7b82cdc8:logical:1:http:0",
+        "logical": "55e60c3e-1628-4d21-91e1-0c6b7b82cdc8:logical:1",
+        "ordinal": 0,
+        "state": "response",
+        "status_code": 200,
+        "usage": {
+          "input": 4,
+          "output": 2,
+          "total": 6
+        },
+        "usage_raw": "{\"input\":4,\"output\":2,\"total\":6}"
+      },
+      {
+        "attempt": "native-search:09f5b40ae68abf54a5eb1e55d62bd450c4adef5c9397500b64b939b3bdd6fa9b:0",
+        "logical": "native-search:09f5b40ae68abf54a5eb1e55d62bd450c4adef5c9397500b64b939b3bdd6fa9b",
+        "ordinal": 0,
+        "state": "unknown",
+        "status_code": null,
+        "usage": null,
+        "usage_raw": null
+      },
+      {
+        "attempt": "native-search:6fbe9462a4fd23b7182eeacdd8ce0c969bc6da2693f57429cb82b55d1073ffac:0",
+        "logical": "native-search:6fbe9462a4fd23b7182eeacdd8ce0c969bc6da2693f57429cb82b55d1073ffac",
+        "ordinal": 0,
+        "state": "response",
+        "status_code": 200,
+        "usage": {
+          "input": 4,
+          "output": 2,
+          "total": 6
+        },
+        "usage_raw": "{\"input\":4,\"output\":2,\"total\":6}"
+      },
+      {
+        "attempt": "native-search:701d0b885ebe35ec27aee6dfcb5ab6ac3b8406e60ce4e661520946c6ade58817:0",
+        "logical": "native-search:701d0b885ebe35ec27aee6dfcb5ab6ac3b8406e60ce4e661520946c6ade58817",
+        "ordinal": 0,
+        "state": "rejected",
+        "status_code": 429,
+        "usage": null,
+        "usage_raw": "null"
+      },
+      {
+        "attempt": "native-search:e95f6df8e4331d986b135fd6723fa2bc5e62177d81b53bba4105ba351f6f848f:0",
+        "logical": "native-search:e95f6df8e4331d986b135fd6723fa2bc5e62177d81b53bba4105ba351f6f848f",
+        "ordinal": 0,
+        "state": "response",
+        "status_code": 200,
+        "usage": {
+          "input": 4,
+          "output": 2,
+          "total": 6
+        },
+        "usage_raw": "{\"input\":4,\"output\":2,\"total\":6}"
+      }
+    ],
+    "reserved_requests": 6,
+    "reserved_units": 110586,
+    "root": "55e60c3e-1628-4d21-91e1-0c6b7b82cdc8",
+    "usage_attempts": 4
+  },
+  "manifest_sha256": "b5a732a08d5279c7dfe63c72b96a325bd26972ff8eefe7b31d40132503994377"
+}
