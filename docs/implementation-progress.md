@@ -4,7 +4,11 @@
 行為基線 `329ca7c487414d2f54ddd98ff4727446ed2446cd`。官方插件接入層用 Rust。
 獨立 Connector 沿用 Python 3.12；共享預算沿總書 K05。
 
+**EXT-004 原消息撤回三端通過。** 分支 `codex/ext-004-original-recall`，Telegram Rust alpha.8／SDK alpha.16。Mac／Linux／HJW 各用核心 #108 同平台簽署候選 `120db2d663af` 通過十五組真 Host 重放，涵蓋公開歷史選取原消息、重複撤回、授權拒絕、平台拒絕、回應遺失與格式不明、冷啟原回執。三端二進位、SDK、原 wire 及完整 SHA-256 在 `artifacts/EXT-004/original-recall-14/telegram-delivery.json`。本輪重跑 HTTP／cache 單元測試及真插件重放，EXT-001／002／019 三端既有基線的 48 個輸入檔雜湊逐件相符，復用證據見 `baseline-reuse.json`。包為本地未發布候選，完整 EXT-004 接續 typing。
+
 **EXT-004 原事件引用三端通過。** `codex/ext-004-original-reply` 的 Telegram alpha.7 消費核心 #107 的簽署候選 `7965392bd7de`。Mac／Linux／HJW 各十組真 Host 重放通過，群話題內的附件與文字只有首段引用原 message ID，原訊息不存在時保留 failed，冷啟零重送。完整來源、版本、三端 ZIP 及 SHA-256 在 `artifacts/EXT-004/original-reply-13/telegram-delivery.json`。尚未發布，整卡繼續補撤回與 typing 生命周期。
+
+引用子項 #56 `372484a836a8` 已合併 `5ba070ca10f8`，合併樹回條在 `artifacts/ci/local-pr/56/receipt.json`。
 
 附件子項 #55 實作 `4b3b68c` 已合併 `22f33fcfb6dd`，本地三端驗證與實際合併樹回條見 `artifacts/ci/local-pr/55/receipt.json`。正式總數仍為 12/68。
 

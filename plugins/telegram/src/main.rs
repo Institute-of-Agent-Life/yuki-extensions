@@ -232,9 +232,25 @@ impl Gateway<'_> {
                     };
                     return emit(out, &reply);
                 }
-                if self.send && method == "gateway.dispatch_part" {
+                if self.send
+                    && matches!(method.as_str(), "gateway.dispatch_part" | "gateway.recall")
+                {
                     let result = if self.pending.is_some() || self.reading.is_some() {
                         json!({"state":"failed"})
+                    } else if method == "gateway.recall" {
+                        match social::Pending::recall(
+                            id.clone(),
+                            &params["arguments"],
+                            self.bot,
+                            self.base,
+                            self.token,
+                        ) {
+                            Ok(request) => {
+                                self.pending = Some(request);
+                                return Ok(());
+                            }
+                            Err(result) => result,
+                        }
                     } else if !params["arguments"]["media"].is_null() {
                         if let Ok(read) = attachment::Read::new(id.clone(), params.clone()) {
                             if self.read_page(read, calls, out).is_ok() {

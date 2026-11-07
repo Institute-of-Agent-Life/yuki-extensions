@@ -1,0 +1,17 @@
+{
+  "repository": "Institute-of-Agent-Life/yuki-core",
+  "source_commit": "120db2d663afe94f511e6f3117494f4da93a685e",
+  "source_pr": 108,
+  "published": false,
+  "sdk": {
+    "python": "1.0.0a16",
+    "rust": "1.0.0-alpha.16"
+  },
+  "rust_crate_sha256": "42bc69523cf04e24e0948c12a5de0fb973623675933f0aa4ce85a1bbd714701e",
+  "python_wheel_sha256": "2a550d2e0f5b77c43f6b0126c54d41d556f7f42f4bcfab01dd050ee46181e747",
+  "schema_sha256": "d4c1a79f5ef4cc6925259e0c931e898d3b491dfe08fa6d38680c97aff2f3609b",
+  "handshake_revision": 1,
+  "verification_sha256": "f591c746dfcf13d5a6acccff7b7b0cf3cc5da6f52ffde9cf2de4c6ffd8cd858c",
+  "verification": "both SDKs verified by producer",
+  "capability": "gateway.recall revision 1 requires its own grant"
+}

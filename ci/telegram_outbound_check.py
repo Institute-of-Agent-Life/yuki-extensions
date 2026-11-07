@@ -52,6 +52,7 @@ def run(root, output):
         "reply",
         "reply-text",
         "reply-rejected",
+        "recall", "recall-lost", "recall-rejected", "recall-denied", "recall-malformed",
     ]:
         case = output / scenario
         with (output / (scenario + ".log")).open("xb") as log:
@@ -77,7 +78,7 @@ def run(root, output):
         "status": "PASS",
         "card": "EXT-004",
         "card_status": "PARTIAL_OUTBOUND_ATTACHMENT_VERIFIED",
-        "pending": ["recall", "typing-lifecycle"],
+        "pending": ["typing-lifecycle"],
         "platform": platform.platform(),
         "curl": {"program": curl_program, "version": curl},
         "package": built,

@@ -1,0 +1,122 @@
+{
+  "status": "PASS",
+  "card": "EXT-004",
+  "card_status": "PARTIAL_ATTACHMENT_REPLY_AND_RECALL_VERIFIED",
+  "published": false,
+  "source_base_commit": "5ba070ca10f8705b7de286b1995999d40c1dbf90",
+  "source_branch": "codex/ext-004-original-recall",
+  "source_files": "source-files.json",
+  "source_files_sha256": "c6a0d767f84e8574e98152c90aaa3e9691b450903a3271cbb7df0a38ec1e57d6",
+  "source_snapshot_sha256": "2191bf5f4876f5abe650c48358f280b56e3197132277bc8c4610cd4f16b8b30d",
+  "core_source_commit": "120db2d663afe94f511e6f3117494f4da93a685e",
+  "core_source_pr": 108,
+  "core_host_schema_sha256": "8f1ac190d6f8471aac1f1f09d806015a8e2941a6d7e6d10f7d44c486762b086a",
+  "plugin_sdk": {
+    "python": "1.0.0a16",
+    "rust": "1.0.0-alpha.16"
+  },
+  "sdk_crate_sha256": "42bc69523cf04e24e0948c12a5de0fb973623675933f0aa4ce85a1bbd714701e",
+  "platforms": {
+    "macos": {
+      "status": "PASS",
+      "archive": "macos.zip",
+      "sha256": "1f22f69d79c68c881f5fc88636ea845df15c521e9571bc34a495fe76b3d723e7",
+      "scenarios": [
+        "confirmed",
+        "denied",
+        "rejected",
+        "lost",
+        "caption",
+        "caption-lost",
+        "forget",
+        "reply",
+        "reply-text",
+        "reply-rejected",
+        "recall",
+        "recall-lost",
+        "recall-rejected",
+        "recall-denied",
+        "recall-malformed"
+      ],
+      "package_version": "0.1.0-alpha.8",
+      "artifacts": {
+        "Cargo.lock": "4f8624408f5018949c7628834825c302eb42302170cc01cd53dd92cdbff0dcd6",
+        "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "plugin.toml": "6f62d31145ff5672688f30d880f5ac3a6289b28c91ead7e7e8144daecd943ec2",
+        "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "yuki-telegram": "9cf358cf87e0e0e944636e9e4d02add60327b7f8308b59fdf06594835b39710d"
+      }
+    },
+    "linux": {
+      "status": "PASS",
+      "archive": "linux.zip",
+      "sha256": "327e6842b36ff45042b5be154fa4b36b9a0d60fcca06952e42ccfb9a1efc9814",
+      "scenarios": [
+        "confirmed",
+        "denied",
+        "rejected",
+        "lost",
+        "caption",
+        "caption-lost",
+        "forget",
+        "reply",
+        "reply-text",
+        "reply-rejected",
+        "recall",
+        "recall-lost",
+        "recall-rejected",
+        "recall-denied",
+        "recall-malformed"
+      ],
+      "package_version": "0.1.0-alpha.8",
+      "artifacts": {
+        "Cargo.lock": "4f8624408f5018949c7628834825c302eb42302170cc01cd53dd92cdbff0dcd6",
+        "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "plugin.toml": "6f62d31145ff5672688f30d880f5ac3a6289b28c91ead7e7e8144daecd943ec2",
+        "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "yuki-telegram": "f844c586e6caa7d7ccd822365a24733a4323743a6fb47e44cbd9c240cb565324"
+      }
+    },
+    "windows": {
+      "status": "PASS",
+      "archive": "windows.zip",
+      "sha256": "3ef32ac463e894989d8facaa36df4cad5b01784e27a82ef8de5674f6256c8d15",
+      "scenarios": [
+        "confirmed",
+        "denied",
+        "rejected",
+        "lost",
+        "caption",
+        "caption-lost",
+        "forget",
+        "reply",
+        "reply-text",
+        "reply-rejected",
+        "recall",
+        "recall-lost",
+        "recall-rejected",
+        "recall-denied",
+        "recall-malformed"
+      ],
+      "package_version": "0.1.0-alpha.8",
+      "artifacts": {
+        "Cargo.lock": "4f8624408f5018949c7628834825c302eb42302170cc01cd53dd92cdbff0dcd6",
+        "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "plugin.toml": "6f62d31145ff5672688f30d880f5ac3a6289b28c91ead7e7e8144daecd943ec2",
+        "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "yuki-telegram.exe": "0456678d9620d6117d04c01a7a37b5e753cd9dc8a83d8b4047f48dbf92d42fe1"
+      }
+    }
+  },
+  "paid_calls": 0,
+  "platform_service": "loopback Telegram Bot API and model endpoints",
+  "pending": [
+    "typing-lifecycle"
+  ],
+  "baseline_receipt": "artifacts/EXT-004/outbound-attachment-12/telegram-delivery.json",
+  "baseline_receipt_sha256": "e1b405fd408a571b66ff2ef0b2e442207e947df082df69b854597a1f18acfaaa",
+  "baseline_reuse": {
+    "receipt": "baseline-reuse.json",
+    "sha256": "bd8f86bf76fa52c0f147f5cdde09a55325a1f4fb0ad1fa399ad296bde1a50dab"
+  }
+}
