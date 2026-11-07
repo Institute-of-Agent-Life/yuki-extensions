@@ -1,0 +1,45 @@
+[
+  {
+    "attempt": "owner-preflight-01",
+    "status": "FAIL",
+    "reason": "read-only WAL-mode inspection created sidecars; replaced by immutable closed-snapshot reader",
+    "failure": {
+      "status": "FAIL",
+      "reason": "mode=ro opened a closed WAL-mode snapshot and created temporary sidecars",
+      "database_unchanged": true,
+      "removed_own_generated_files": [
+        {
+          "path": "tests/fixtures/feishu-owner/synthetic-legacy-core.db-wal",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "tests/fixtures/feishu-owner/synthetic-legacy-core.db-shm",
+          "bytes": 32768,
+          "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+        },
+        {
+          "path": "tests/fixtures/feishu-owner/._synthetic-legacy-core.db-wal",
+          "bytes": 4096,
+          "sha256": "f3bad5b302237b647db06386a1ea9efd86388064f8d12a45d354ea4cd0cca2b6"
+        },
+        {
+          "path": "tests/fixtures/feishu-owner/._synthetic-legacy-core.db-shm",
+          "bytes": 4096,
+          "sha256": "f3bad5b302237b647db06386a1ea9efd86388064f8d12a45d354ea4cd0cca2b6"
+        }
+      ]
+    }
+  },
+  {
+    "attempt": "owner-preflight-02",
+    "status": "FAIL",
+    "reason": "comparison required incidental query order; now compares original immutable event identities",
+    "failure": {
+      "status": "FAIL",
+      "reason": "fixture query order differs from explicit receipt ID ordering",
+      "correction": "compare the complete original receipt rows by their immutable canonical event IDs",
+      "source_unchanged": true
+    }
+  }
+]
