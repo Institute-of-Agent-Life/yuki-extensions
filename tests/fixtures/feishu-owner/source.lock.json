@@ -1,0 +1,11 @@
+{
+  "baseline": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+  "files": {
+    "junit.xml": "fae589ec9d9084777deebe39ec34541267e6207eae9d29937bec640038a9ed8e",
+    "original-owner-oracle.json": "5fef829e0d13807a3873b2de1e9763b87cc0ddd7911d48f4250fad2c921bcb27",
+    "original_owner_data.py": "0ed5730a56cf6b763dba50903728671f92ad51b961fa30c700a8ad8273531316",
+    "pytest.log": "21a040b9965649d4b5c0359ef43627eedb2b801a5194240d24bc7869fbaff72c",
+    "synthetic-legacy-core.db": "fcb9e58eeb3e1f480ec3c7569a1c77a787922746e4d46a2b90c497ee4bb7091d",
+    "synthetic-receipts.json": "869f8fd18ac2c8ea1c4ff1ae73edef40861af60214f667f45b146051d233313c"
+  }
+}

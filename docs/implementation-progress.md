@@ -1,3 +1,9 @@
+**EXT-006 owner-disposition 三端通過。** 分支 `codex/ext-006-owner-disposition`。固定舊版 `329ca7c487414d2f54ddd98ff4727446ed2446cd` 的隔離 oracle 通過 55 項測試，保存合成 SQLite 與兩筆原回執。Mac、Linux、HJW Windows 各驗空私庫、原 app／platform 篩選、缺失目錄、未知資料、三種未關閉 SQLite sidecar、錯 schema 與來源變更。正常卡入口產出 owner 檔與明確的結構化提及待辦，完整卡維持 blocked。
+
+三端原包與 reader 證據在 `artifacts/EXT-006/original-owner-01/original-owner.json`，SHA-256 `68d6612c8e674e063516b79f18c004a4048d31d8586d29bfc876f83462a0dac6`。來源快照 `3024d01498e754ede58b1ee301a2c0f0ab2597254bf04077b25a1386e35c3f82`，623 個來源檔已綁定。Rust／SDK 輸入沿 #62 原三端結果，611 個既有輸入逐檔相同，詳 `runtime-reuse.json`。此輪沒有新增編譯 target，Linux 臨時容器已移除。前兩輪檢查失敗和修正原因保存在 `previous-attempts.json`。
+
+附件上傳 #62 的本地提交 `890d695a0def` 已合併 main `a5d126f8bdc5`，合併回條見 `artifacts/ci/local-pr/62/receipt.json`。全部為未發布開發候選，實際部署的 tenant 綁定、secret 引用、私庫盤點與 CORE-041 映射留待實例核對。正式總數維持 12／68，下一步完成核心原 account 提及與飛書消費者。
+
 **EXT-006 原生附件上傳三端通過。** 分支 `codex/ext-006-native-upload`，Rust alpha.7／SDK alpha.20，鎖定核心 #116 的受測來源 `0e45e53958e77`，核心 main 已合併 `8e150d8325a6`。Mac、Linux、HJW Windows 每端完成 32 個附件情境、30 個文字／撤回情境、三種話題路由、alpha.6 → alpha.7 → alpha.6 回讀，以及原件分頁遺忘、晚到頁隔離與上傳中取消。每步回執及原包索引在 `artifacts/EXT-006/original-upload-01/original-upload.json`，SHA-256 `7a66c85ded679224fec90813014db71d3fabd50be3429c228df93bb53ad8ed06`。來源快照 `7b0ba3a2b9ba23b5957a2c525528584c73c831dc670d3bf68a1755ec11db039e` 的 635 個檔案已核對。
 
 三端包雜湊為 Mac `f2273eb2aece656acfabef5fb98506bc188d1998426a70195b4757b0d24f2623`、Linux `1910aab1e690e761e7f8f8871b40a8f338e3dd9beed8450a046f293796ab8db6`、Windows `5f1814d205c0dfb8e1425e2e514fc69609b1629a4a598d9388788750f486c001`。本輪原包均為未發布開發候選，平台和模型均用回環，付費呼叫為零。三端 gate 自建 target 已清理，另清理兩個已完成 SDK20 的 Mac 預驗 target，共 942,468,338 bytes，2,437 個保留檔案校驗相符，回條在 `artifacts/ci/cleanup-20261107/rest20-preflight/`。完整 EXT-006 保持進行中，正式總數維持 12／68，接續結構化提及與 owner-disposition。

@@ -1,0 +1,9 @@
+.......................................................                  [100%]
+=============================== warnings summary ===============================
+tests/unit/test_feishu_ws.py::test_feishu_identity_dial_lets_the_rest_of_startup_finish
+  /Users/huangjiawei/.cache/yuki-core/329ca7c487414d2f54ddd98ff4727446ed2446cd/src/yuki/persistence/database.py:287: SAWarning: Cannot correctly sort tables; there are unresolvable cycles between tables "canonical_conversations, conversation_legacy_aliases", which is usually caused by mutually dependent foreign key constraints.  Foreign key constraints involving these tables will not be considered; this warning may raise an error in a future release.
+    for table in Base.metadata.sorted_tables
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /Volumes/huawei/項目實戰/yuki-extensions/.ci-transfer/local-gate/feishu-owner/original-03/junit.xml -
+55 passed, 1 warning in 2.78s

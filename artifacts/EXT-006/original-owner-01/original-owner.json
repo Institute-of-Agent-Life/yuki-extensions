@@ -1,0 +1,82 @@
+{
+  "status": "PASS",
+  "card": "EXT-006",
+  "card_status": "OWNER_DISPOSITION_VERIFIED",
+  "full_card_complete": false,
+  "source_snapshot_sha256": "3024d01498e754ede58b1ee301a2c0f0ab2597254bf04077b25a1386e35c3f82",
+  "source_files": "source-files.json",
+  "source_files_sha256": "75eedaa3d05140e40aaa36a9a741adcaffed310338e42abeaf6faeeeb934043e",
+  "baseline": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+  "oracle_sha256": "5fef829e0d13807a3873b2de1e9763b87cc0ddd7911d48f4250fad2c921bcb27",
+  "runtime_reuse": {
+    "file": "runtime-reuse.json",
+    "sha256": "7ec8ba562502ca0d236836999f1e12ea59e53c299bbc644be4bcc61db995b4cc",
+    "inputs_verified": 611
+  },
+  "platforms": {
+    "macos": {
+      "status": "PASS",
+      "archive": "macos.zip",
+      "sha256": "5ffa6e3239707e416220b8a16c50e5c2ec041c3d618c551927e9c17d158700b4",
+      "owner_status": "OWNER_DISPOSITION_VERIFIED",
+      "card_status": "BLOCKED",
+      "assertions": {
+        "original_receipts_retained": 2,
+        "original_scope_isolation": true,
+        "empty_private_observed": true,
+        "missing_private_unknown": true,
+        "unknown_private_blocked_and_preserved": true,
+        "unsupported_reader_rejected": true,
+        "open_snapshot_rejected_and_preserved": true,
+        "changed_fixture_rejected": true,
+        "source_unchanged": true
+      }
+    },
+    "linux": {
+      "status": "PASS",
+      "archive": "linux.zip",
+      "sha256": "ac64703d48e0695fe5048af3dcc6d210cae35391613f58a1314fe377ae0ef7c0",
+      "owner_status": "OWNER_DISPOSITION_VERIFIED",
+      "card_status": "BLOCKED",
+      "assertions": {
+        "original_receipts_retained": 2,
+        "original_scope_isolation": true,
+        "empty_private_observed": true,
+        "missing_private_unknown": true,
+        "unknown_private_blocked_and_preserved": true,
+        "unsupported_reader_rejected": true,
+        "open_snapshot_rejected_and_preserved": true,
+        "changed_fixture_rejected": true,
+        "source_unchanged": true
+      }
+    },
+    "windows": {
+      "status": "PASS",
+      "archive": "windows.zip",
+      "sha256": "c71fb1101b6d084a1913646fa21f9416300731b79f6c791c4f86d3e340428309",
+      "owner_status": "OWNER_DISPOSITION_VERIFIED",
+      "card_status": "BLOCKED",
+      "assertions": {
+        "original_receipts_retained": 2,
+        "original_scope_isolation": true,
+        "empty_private_observed": true,
+        "missing_private_unknown": true,
+        "unknown_private_blocked_and_preserved": true,
+        "unsupported_reader_rejected": true,
+        "open_snapshot_rejected_and_preserved": true,
+        "changed_fixture_rejected": true,
+        "source_unchanged": true
+      }
+    }
+  },
+  "published": false,
+  "paid_calls": 0,
+  "deployed_data_inspected": false,
+  "next_executable_task": "CORE-025 original-account structured mention producer and EXT-006 consumer",
+  "deployment_inputs_pending": [
+    "original deployed tenant binding",
+    "deployment secret reference",
+    "private directory inventory",
+    "CORE-041 instance mapping"
+  ]
+}

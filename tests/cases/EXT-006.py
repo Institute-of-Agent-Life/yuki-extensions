@@ -32,4 +32,12 @@ def prepare(root,output):
 
 
 def run(root,output):
-    return 'lark-rest.json',{'status':'BLOCKED','card_status':'AWAITING_REAL_HOST_SELECTION_SOCIAL_AND_MIGRATION'}
+    from feishu_owner_check import run as inspect_owners
+    owners = inspect_owners(root, output / 'owners')
+    return 'lark-rest-receipts.json', {
+        'status': 'BLOCKED',
+        'card_status': 'OWNER_VERIFIED_STRUCTURED_MENTIONS_PENDING',
+        'owner_disposition': 'owners/owner-disposition-index.json',
+        'owner_status': owners['card_status'],
+        'pending': ['original-account structured mentions', 'expanded public contract acceptance'],
+    }

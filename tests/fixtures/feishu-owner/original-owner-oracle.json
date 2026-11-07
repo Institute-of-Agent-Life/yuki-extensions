@@ -1,0 +1,383 @@
+{
+  "source_commit": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+  "source_files": {
+    "src/yuki/gateway/providers/feishu.py": "d4cc00e824155f329d0d14c0e2781ba015826957caeee796b4e7b7162ecf6a5a",
+    "src/yuki/gateway/providers/feishu_ws.py": "795eeca028d8c6a9be27d74aee34fbaa2b1c189b126795404fba33f4e56a9757",
+    "src/yuki/gateway/providers/feishu_ingress.py": "7ef8cddce8e6ccfe9d746b6ce6623676b5f82ac60929bb3e7bdd601293a23ed3",
+    "src/yuki/gateway/providers/feishu_social.py": "c6adc68936ab401ed5665c6a3c33a631261cc4d379af60229ee8d6be19427b3e",
+    "src/yuki/identity/receipt_compat.py": "497528100d97d814b6a1f741bc11f0784ab803085239db5641298f636d58b19c",
+    "src/yuki/conversation/canonical_db_models.py": "fd1be30a27962990c76f796add0f2e5afb650c6bde5f304f425f9283fad05d44",
+    "src/yuki/social/content.py": "80d4da9f5f4acc776a187947714c8149a859bd903ba022110301f47dfb530a28",
+    "src/yuki/gateway/social.py": "674683da663b621fbdb36f339d08d5f4de679bd05efba0d059b83e8cc6b8489a",
+    "tests/unit/test_feishu_client.py": "de700f73b86136de2b28aa1ff9559ae55b79906a15a7179d5dd541bf6c899e90",
+    "tests/unit/test_feishu_ws.py": "1e9966673a0374a356f3243ce0331fb277214acd37862f1deadfde7bc301e747",
+    "tests/unit/test_feishu_social.py": "b38eca50b9f939bd79c0450ce564cba2ee01e81c3a7e9e219bd877f935939a83",
+    "tests/unit/test_feishu_configuration.py": "405a6e1f86dba550b7db84887d01364e969a9d47ca5685d921c0e8ff4877115b",
+    "tests/integration/test_feishu_runtime.py": "7863758878a58f51ea30ad40cd065859ebdf4370074515937d49379fae01cc9b"
+  },
+  "command": [
+    "/Users/huangjiawei/.cache/yuki-core/329ca7c487414d2f54ddd98ff4727446ed2446cd/.venv/bin/python",
+    "-m",
+    "pytest",
+    "tests/unit/test_feishu_client.py",
+    "tests/unit/test_feishu_ws.py",
+    "tests/unit/test_feishu_social.py",
+    "tests/unit/test_feishu_configuration.py",
+    "tests/integration/test_feishu_runtime.py",
+    "-p",
+    "no:cacheprovider",
+    "-o",
+    "tmp_path_retention_policy=all",
+    "-o",
+    "tmp_path_retention_count=1",
+    "--basetemp",
+    "/tmp/fs-original-owner-3puqsrl_/pytest",
+    "--junitxml",
+    "/Volumes/huawei/\u9805\u76ee\u5be6\u6230/yuki-extensions/.ci-transfer/local-gate/feishu-owner/original-03/junit.xml",
+    "-q"
+  ],
+  "exit_code": 0,
+  "status": "PASS",
+  "runner_sha256": "0ed5730a56cf6b763dba50903728671f92ad51b961fa30c700a8ad8273531316",
+  "tier": "fixed legacy boundary and durable owner oracle",
+  "isolated_data": true,
+  "legacy_working_tree_modified": false,
+  "cases": [
+    {
+      "name": "test_identity_namespaces_the_app_and_reuses_the_tenant_token",
+      "class": "tests.unit.test_feishu_client",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_write_failure_is_not_replayed_and_errors_do_not_include_secrets[timeout]",
+      "class": "tests.unit.test_feishu_client",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_write_failure_is_not_replayed_and_errors_do_not_include_secrets[invalid_json]",
+      "class": "tests.unit.test_feishu_client",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_write_failure_is_not_replayed_and_errors_do_not_include_secrets[missing_code]",
+      "class": "tests.unit.test_feishu_client",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_write_failure_is_not_replayed_and_errors_do_not_include_secrets[rejected]",
+      "class": "tests.unit.test_feishu_client",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_websocket_credentials_do_not_need_a_tenant_token",
+      "class": "tests.unit.test_feishu_client",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_rejected_token_is_replaced_only_for_the_next_independent_call",
+      "class": "tests.unit.test_feishu_client",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_upload_sends_binary_multipart_without_a_credential_in_the_file_or_url",
+      "class": "tests.unit.test_feishu_client",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_original_message_and_resource_keys_are_used_for_media",
+      "class": "tests.unit.test_feishu_client",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_unresolvable_media_is_not_sent_to_a_different_lookup_api[file_key_without_message]",
+      "class": "tests.unit.test_feishu_client",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_unresolvable_media_is_not_sent_to_a_different_lookup_api[{\"type\":\"sticker\"}]",
+      "class": "tests.unit.test_feishu_client",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_unresolvable_media_is_not_sent_to_a_different_lookup_api[[]]",
+      "class": "tests.unit.test_feishu_client",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_public_frame_schema_matches_official_wire_fields",
+      "class": "tests.unit.test_feishu_ws",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_fragment_ack_waits_for_admission_and_preserves_original_frame_identity",
+      "class": "tests.unit.test_feishu_ws",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_failed_admission_is_500_without_logging_payload_or_secrets",
+      "class": "tests.unit.test_feishu_ws",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_pong_config_replaces_server_intervals_and_control_does_not_enter_chat",
+      "class": "tests.unit.test_feishu_ws",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_card_interaction_is_acknowledged_without_becoming_human_speech",
+      "class": "tests.unit.test_feishu_ws",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_cancellation_never_acknowledges_an_uncommitted_event",
+      "class": "tests.unit.test_feishu_ws",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_reconnect_uses_new_endpoint_and_connection_callbacks_without_replaying_events",
+      "class": "tests.unit.test_feishu_ws",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_actual_async_websocket_accepts_event_ack_without_debug_secret_leak",
+      "class": "tests.unit.test_feishu_ws",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_start_returns_while_the_first_dial_is_still_waiting",
+      "class": "tests.unit.test_feishu_ws",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_feishu_identity_dial_lets_the_rest_of_startup_finish",
+      "class": "tests.unit.test_feishu_ws",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_rejected_first_dial_stops_only_the_socket",
+      "class": "tests.unit.test_feishu_ws",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_endpoint_auth_rejection_stops_reconnection_without_replaying_or_logging_secret",
+      "class": "tests.unit.test_feishu_ws",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_native_specific_and_system_proxy_precede_all_proxy[proxies0-http://all-proxy:7890]",
+      "class": "tests.unit.test_feishu_ws",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_native_specific_and_system_proxy_precede_all_proxy[proxies1-socks5h://all-proxy:1080]",
+      "class": "tests.unit.test_feishu_ws",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_native_specific_and_system_proxy_precede_all_proxy[proxies2-http://https-proxy:7891]",
+      "class": "tests.unit.test_feishu_ws",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_native_specific_and_system_proxy_precede_all_proxy[proxies3-http://wss-proxy:7892]",
+      "class": "tests.unit.test_feishu_ws",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_native_specific_and_system_proxy_precede_all_proxy[proxies4-socks5h://system-proxy:1080]",
+      "class": "tests.unit.test_feishu_ws",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_native_specific_and_system_proxy_precede_all_proxy[proxies5-None]",
+      "class": "tests.unit.test_feishu_ws",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_no_proxy_bypasses_all_and_more_specific_proxy",
+      "class": "tests.unit.test_feishu_ws",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_proxy_connection_failure_never_attempts_direct_connection",
+      "class": "tests.unit.test_feishu_ws",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_private_mentions_decode_only_for_the_same_application",
+      "class": "tests.unit.test_feishu_social",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_media_caption_is_a_separately_receipted_message[image-image/png-image_key]",
+      "class": "tests.unit.test_feishu_social",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_media_caption_is_a_separately_receipted_message[file-text/plain-file_key]",
+      "class": "tests.unit.test_feishu_social",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_thread_and_quote_are_native_replies_with_one_send",
+      "class": "tests.unit.test_feishu_social",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_large_unicode_text_splits_at_json_bytes_and_keeps_mentions_whole",
+      "class": "tests.unit.test_feishu_social",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_missing_message_receipt_is_uncertain_and_does_not_trigger_another_send",
+      "class": "tests.unit.test_feishu_social",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_member_probe_uses_self_token_or_real_member_pages",
+      "class": "tests.unit.test_feishu_social",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_recall_uses_the_original_platform_message_reference",
+      "class": "tests.unit.test_feishu_social",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_feishu_environment_selects_lark_and_masks_secret",
+      "class": "tests.unit.test_feishu_configuration",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_partial_feishu_credentials_stop_before_resource_creation[cli_offline-]",
+      "class": "tests.unit.test_feishu_configuration",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_partial_feishu_credentials_stop_before_resource_creation[-offline-only-secret]",
+      "class": "tests.unit.test_feishu_configuration",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_unknown_cloud_is_not_silently_assigned_feishu_identity",
+      "class": "tests.unit.test_feishu_configuration",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_native_private_uses_common_main_social_and_durable_duplicate",
+      "class": "tests.integration.test_feishu_runtime",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_admission_returns_before_model_finishes",
+      "class": "tests.integration.test_feishu_runtime",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_group_cold_admission_and_native_mention_keep_platform_identity",
+      "class": "tests.integration.test_feishu_runtime",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_topics_keep_real_threads_and_share_space",
+      "class": "tests.integration.test_feishu_runtime",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_native_group_control_uses_current_person_without_main[False]",
+      "class": "tests.integration.test_feishu_runtime",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_native_group_control_uses_current_person_without_main[True]",
+      "class": "tests.integration.test_feishu_runtime",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_real_websocket_reconnect_updates_registry_for_original_presence",
+      "class": "tests.integration.test_feishu_runtime",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_gateway_shutdown_joins_admitted_turn_before_database_close[socket_error]",
+      "class": "tests.integration.test_feishu_runtime",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_gateway_shutdown_joins_admitted_turn_before_database_close[socket_and_client_error]",
+      "class": "tests.integration.test_feishu_runtime",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_gateway_shutdown_joins_admitted_turn_before_database_close[socket_cancel]",
+      "class": "tests.integration.test_feishu_runtime",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_gateway_shutdown_joins_admitted_turn_before_database_close[repeated_cancel]",
+      "class": "tests.integration.test_feishu_runtime",
+      "failed": false,
+      "skipped": false
+    }
+  ],
+  "files": {
+    "junit.xml": "fae589ec9d9084777deebe39ec34541267e6207eae9d29937bec640038a9ed8e",
+    "pytest.log": "21a040b9965649d4b5c0359ef43627eedb2b801a5194240d24bc7869fbaff72c",
+    "synthetic-legacy-core.db": "fcb9e58eeb3e1f480ec3c7569a1c77a787922746e4d46a2b90c497ee4bb7091d",
+    "synthetic-receipts.json": "869f8fd18ac2c8ea1c4ff1ae73edef40861af60214f667f45b146051d233313c"
+  }
+}
