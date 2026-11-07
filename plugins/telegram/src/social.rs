@@ -42,7 +42,35 @@ fn plain_text(value: &Value) -> Result<&str, Error> {
 
 pub fn plan(arguments: &Value, bot: i64) -> Result<Value, Error> {
     route(arguments, bot)?;
-    let text = plain_text(&arguments["message"])?;
+    let message = &arguments["message"];
+    if !arguments["media"].is_null() {
+        let text = match message.get("text") {
+            None => "",
+            Some(text) => text.as_str().ok_or("invalid attachment caption")?,
+        };
+        let end = text
+            .char_indices()
+            .nth(1024)
+            .map_or(text.len(), |(byte, _)| byte);
+        let mut first = arguments.clone();
+        first["message"]["text"] = json!(&text[..end]);
+        let mut parts = vec![crate::attachment::part(&first)?];
+        if end < text.len() {
+            let tail = plan(
+                &json!({"route":arguments["route"],"message":{"text":&text[end..]}}),
+                bot,
+            )?;
+            parts.extend(
+                tail["parts"]
+                    .as_array()
+                    .ok_or("invalid text plan")?
+                    .iter()
+                    .cloned(),
+            );
+        }
+        return Ok(json!({"parts":parts}));
+    }
+    let text = plain_text(message)?;
     let mut start = 0;
     let mut parts = Vec::new();
     for (index, (byte, _)) in text.char_indices().enumerate().skip(1) {
@@ -90,6 +118,49 @@ impl Pending {
         })
     }
 
+    pub fn upload(
+        id: Id,
+        args: &Value,
+        bot: i64,
+        base: &str,
+        mime: &str,
+        bytes: Vec<u8>,
+    ) -> Result<Self, Error> {
+        let (chat, topic) = route(args, bot)?;
+        let part = &args["part"];
+        // Validate again at dispatch before passing any name to the native API.
+        let mut message = json!({"artifact_id":args["media"]["artifact_id"],"attachment_kind":part["kind"],"name":part["name"]});
+        if let Some(caption) = part.get("caption") {
+            message["text"] = caption.clone();
+        }
+        let checked = crate::attachment::part(&json!({"media":args["media"],"message":message}))?;
+        if checked != *part {
+            return Err("attachment part changed".into());
+        }
+        let (method, field) = match (part["kind"].as_str(), mime) {
+            (Some("file"), _) => ("sendDocument", "document"),
+            (Some("image"), "image/gif") => ("sendAnimation", "animation"),
+            (Some("image"), m) if m.starts_with("image/") => ("sendPhoto", "photo"),
+            _ => return Err("unsupported attachment type".into()),
+        };
+        let transfer = transport::upload(
+            base,
+            method,
+            field,
+            chat,
+            topic,
+            part["name"].as_str().ok_or("missing name")?,
+            mime,
+            part["caption"].as_str(),
+            bytes,
+        )?;
+        Ok(Self {
+            id,
+            chat: chat.into(),
+            transfer,
+        })
+    }
+
     pub fn ready(&mut self) -> bool {
         self.transfer.ready().unwrap_or(true)
     }
@@ -124,6 +195,29 @@ impl Pending {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn preserves_caption_then_text_with_one_immutable_attachment() {
+        let text = format!("{}🌨{}", "雪".repeat(1023), "a".repeat(4097));
+        let media = json!({"artifact_id":"selected","version":"a".repeat(64)});
+        let request = json!({"route":{"bot":"101","chat":"-15","topic":"7"},
+            "message":{"artifact_id":"selected","attachment_kind":"file","name":"source.bin","text":text},"media":media});
+        let parts = plan(&request, 101).unwrap();
+        let parts = parts["parts"].as_array().unwrap();
+        assert_eq!(parts.len(), 3);
+        assert_eq!(parts[0]["media"], media);
+        assert_eq!(parts[0]["caption"].as_str().unwrap().chars().count(), 1024);
+        assert_eq!(parts[1]["text"].as_str().unwrap().len(), 4096);
+        assert_eq!(parts[2]["text"], "a");
+        assert!(parts[1..].iter().all(|part| part.get("media").is_none()));
+        let joined = format!(
+            "{}{}{}",
+            parts[0]["caption"].as_str().unwrap(),
+            parts[1]["text"].as_str().unwrap(),
+            parts[2]["text"].as_str().unwrap()
+        );
+        assert_eq!(joined, text);
+        assert!(plan(&request, 102).is_err());
+    }
     #[test]
     fn preserves_unicode_and_rejects_unsupported_parts_before_dispatch() {
         let text = format!("{}🌨&", "雪".repeat(4095));

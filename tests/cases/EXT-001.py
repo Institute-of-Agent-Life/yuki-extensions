@@ -82,6 +82,8 @@ def run(root: Path, output: Path):
         observed = execute([str(executable)], isolated).stdout.strip()
         assert observed == "fixture-gamma 0.0.1", observed
         gamma_hashes = {p.name: sha256(p) for p in (isolated / "built/gamma").iterdir()}
+        assert all(not any(part.startswith("._") for part in Path(name).parts)
+                   for package in packages.values() for name in package["artifacts"])
         beta_hashes = {p.name: sha256(p) for p in (isolated / "built" / "beta").iterdir()}
         # A manifest change selects and builds only alpha. Beta's emitted bytes stay identical.
         alpha_manifest = isolated / "catalog" / "alpha.json"

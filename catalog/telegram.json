@@ -3,7 +3,7 @@
   "kind": "plugin",
   "path": "plugins/telegram",
   "ecosystem": "rust",
-  "version": "0.1.0-alpha.5",
+  "version": "0.1.0-alpha.6",
   "tag_prefix": "telegram/v",
   "license": "AGPL-3.0-only",
   "notices": [
@@ -29,7 +29,10 @@
     "tests/peers/joint_base.py",
     "tests/peers/base_relay.py",
     "ci/base-witness.py",
-    "tests/cases/EXT-067.py"
+    "tests/cases/EXT-067.py",
+    "tests/peers/telegram_attachment_delivery.py",
+    "ci/telegram_outbound_check.py",
+    "compat/core-038-outbound/source.lock.json"
   ],
   "runtime_files": [
     "plugin.toml"

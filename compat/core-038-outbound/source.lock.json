@@ -1,0 +1,33 @@
+{
+  "repository": "Institute-of-Agent-Life/yuki-core",
+  "source_commit": "19cbc9bf21f9825545e587f0738144e4db1e23b4",
+  "main_merge": "0dab3504ee394b7aeab76e1cb2e8f805de0a41c5",
+  "published": false,
+  "handoff_sha256": "07e4d8d25cc3f946488c6a57c92467de6a092a4f6a0a244b7971a88a53cd11e8",
+  "platforms": {
+    "darwin-arm64": {
+      "archive": "yuki-core-19cbc9bf21f9-darwin-arm64.zip",
+      "sha256": "7b803b0e6d0d15b16faef9a6574201b337c2ba419061467497bf2976e48bcc75",
+      "binary_sha256": "388b37ebd9488d9dc6dae1c7501987b2ab3f50a92e8006fd2f1d8082103f7f0e",
+      "signer": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMhpUMI+KuL9Qa6GbJAgSiDHYJrBboLdQliGomGN0HCZ huangjiawei@huangjiaweideMac-mini.local",
+      "signer_sha256": "1a83498b073752e1bd72306e9e5ab3d75e75ed9472d283fce34fcd96e8312dff"
+    },
+    "linux-arm64": {
+      "archive": "yuki-core-19cbc9bf21f9-linux-arm64.zip",
+      "sha256": "9f0ecdf4993e6869a66c804a8001cebbc31061941e5dd8acf143225208f41d2d",
+      "binary_sha256": "19c0b6ae5dde0b16a5239f349d89c49549ad1444b5c55dbce113eb8f1bc2857f",
+      "signer": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICbFCiYcg55RJRRo6PSljxSX9c0ccvNLgiXt34HT2lBC root@c4aa2476a266",
+      "signer_sha256": "56a4159f4a6bdab0e71fc7fc1543251bff13e306f1415d8e1bfa65becbac8106"
+    },
+    "windows-x86_64": {
+      "archive": "yuki-core-19cbc9bf21f9-windows-x86_64.zip",
+      "sha256": "17a001c95122a8ad889e61732f1ebcd4943fd27a46044f6903ff18048898361b",
+      "binary_sha256": "ea93857b7b13d607d06bc14f6d3ea32a6283d97a0d0a54b0730e292737e01874",
+      "signer": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPvtwISnjRKz+98ZtbEawArkoX9DbABpb+WLYPwlSdGq hilbert@hjw",
+      "signer_sha256": "8513582b6c34079e012657b4bc391e1220a0f40edc360beb0ec2332cbb585388"
+    }
+  },
+  "schema_sha256": "d8202a4e581e8d1d7f76c29d92930e2ba21603b0ce0d2d06b1efefc04641226f",
+  "fixtures_sha256": "2d986f7c2bf30d597fbf667f346d189a8aad9bf6194d1341fc13620e4907316e",
+  "source_tree_sha256": "14b07f06225211c26b705dfb43b45cf397e9f6d0b04835a575bd8ccb49b79a79"
+}

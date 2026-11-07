@@ -190,6 +190,9 @@ def run(root: Path, output: Path):
         raise ValueError("unclassified OpenAPI drift: " + repr(changes))
 
     node, compiler = parser_tools(root, work)
+    # AppleDouble files can accompany source members on the local exFAT volume.
+    # Exercise this fault on every OS while preserving the pinned source inventory.
+    (work / "src/main/._local-ci.ts").write_bytes(b"\x00\x05\x16\x07\xff")
     parsed = work / "parsed.json"
     subprocess.run([node, directory / "calls.cjs", compiler, work, parsed], check=True, timeout=180)
     ast = json.loads(parsed.read_bytes())

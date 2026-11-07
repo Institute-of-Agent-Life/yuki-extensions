@@ -1,13 +1,6 @@
 name: Model-native search
 on:
-  pull_request:
-    branches: [main]
-    paths:
-      - deploy/search/**
-      - tests/cases/EXT-029.py
-      - tests/peers/joint_base.py
-      - compat/stable-1.0/**
-      - .github/workflows/native-search.yml
+  # The same command runs against the signed base in the local three-OS gate.
   workflow_dispatch:
 
 permissions:
