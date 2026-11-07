@@ -1,0 +1,142 @@
+{
+  "status": "verified-and-merged",
+  "pr": 55,
+  "head": "4b3b68c6e9525288a13802b88613852e2554ec6d",
+  "base": "be3839dce5cd72f805d7c784a6e8cbfa92f5aa42",
+  "tested_merge": "a2e0e5d21004493431aed4e4c873ec85c08241e8",
+  "merged": "22f33fcfb6ddf887aef02a8c03a17e9a6b1ddc10",
+  "tree": "59ea33a41ed1997404a4feabde032faf013b33eb",
+  "evidence": "/Volumes/huawei/\u9805\u76ee\u5be6\u6230/yuki-extensions/.ci-transfer/work-tg-parts/artifacts/EXT-004/outbound-attachment-12/telegram-delivery.json",
+  "evidence_sha256": "e1b405fd408a571b66ff2ef0b2e442207e947df082df69b854597a1f18acfaaa",
+  "source_files_checked": 585,
+  "post_test_documentation": [
+    "docs/implementation-progress.md",
+    "docs/EXT-004-outbound-attachment.md"
+  ],
+  "platforms": {
+    "macos": {
+      "evidence": "macos.zip",
+      "sha256": "78ec533ea14ae99ddb2e031d6335ab87f43b0c7286a2b511501bf8683d2e4ba6",
+      "status": "PASS",
+      "scenarios": [
+        "confirmed",
+        "denied",
+        "rejected",
+        "lost",
+        "caption",
+        "caption-lost",
+        "forget"
+      ],
+      "package_version": "0.1.0-alpha.6",
+      "package_sha256": {
+        "Cargo.lock": "11eaeb451f6738c61b13c6a234d94b098743c55c4b96d2cc87ba7b9a648d5e71",
+        "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "plugin.toml": "2b34f88002ee682d7e9a279fc873e01e526f5723d4892dc63f1f71306b8dbb69",
+        "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "yuki-telegram": "0e30f9d747de4029788704986a4b033df2ef26f4d0e2ff0a9418bd5381882ce4"
+      },
+      "source_snapshot_sha256": "d3304d9f48995969a0ec1c61515f9878681f8b2641c824afeccfe15f79936436",
+      "baseline": {
+        "archive": "macos-baseline.zip",
+        "sha256": "ea13423e7c660234e16ef1a1a4851ed1e322cf886853f489777952b97ff78393",
+        "cards": {
+          "EXT-001": {
+            "status": "PASS",
+            "manifest_sha256": "88622b91c4b1be67f58faf7c4e551ec27424e3bad7b2e512c74b744cb4747d8d"
+          },
+          "EXT-002": {
+            "status": "PASS",
+            "manifest_sha256": "86ea1c91f0b4e92021c4916f79d17aaa52bebf9246d38f7e44fdb8c6bb99307e"
+          },
+          "EXT-019": {
+            "status": "PASS",
+            "manifest_sha256": "28c06332c3a06907bcf66ea4cfd09eb936e5f7872ae2a1e5a3cfe9621aa7951e"
+          }
+        }
+      }
+    },
+    "linux": {
+      "evidence": "linux.zip",
+      "sha256": "14e19fc8143f0211ce02739bfc3a653cbbb7ce759350fc49265290f124ff3b30",
+      "status": "PASS",
+      "scenarios": [
+        "confirmed",
+        "denied",
+        "rejected",
+        "lost",
+        "caption",
+        "caption-lost",
+        "forget"
+      ],
+      "package_version": "0.1.0-alpha.6",
+      "package_sha256": {
+        "Cargo.lock": "11eaeb451f6738c61b13c6a234d94b098743c55c4b96d2cc87ba7b9a648d5e71",
+        "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "plugin.toml": "2b34f88002ee682d7e9a279fc873e01e526f5723d4892dc63f1f71306b8dbb69",
+        "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "yuki-telegram": "495ac844d6e26465b376083fa5840bee74681a3abf5996f66abbf8582af4fbc1"
+      },
+      "source_snapshot_sha256": "d3304d9f48995969a0ec1c61515f9878681f8b2641c824afeccfe15f79936436",
+      "baseline": {
+        "archive": "linux-baseline.zip",
+        "sha256": "dd63bd3744718a35de5088b7e09ed478cea641a2c28ab77da3c7152e789a9f4f",
+        "cards": {
+          "EXT-001": {
+            "status": "PASS",
+            "manifest_sha256": "57458eaf0c44052b9bddd734c897598a03ff35f3741c8c79ca0fd78b62687e93"
+          },
+          "EXT-002": {
+            "status": "PASS",
+            "manifest_sha256": "ce994b47445eafe8010e83aa65f4c3eb747b5afe34d592f906e7469fba7069f1"
+          },
+          "EXT-019": {
+            "status": "PASS",
+            "manifest_sha256": "27ab7d43a7a7ce4a091e55a78bccd75b6e678ffdf85895245060cfaaaec5f576"
+          }
+        }
+      }
+    },
+    "windows": {
+      "evidence": "windows.zip",
+      "sha256": "225c4e40cb31e4eb46cbdc8a9e93256f107a02b0124d545427a56b5554924f8a",
+      "status": "PASS",
+      "scenarios": [
+        "confirmed",
+        "denied",
+        "rejected",
+        "lost",
+        "caption",
+        "caption-lost",
+        "forget"
+      ],
+      "package_version": "0.1.0-alpha.6",
+      "package_sha256": {
+        "Cargo.lock": "11eaeb451f6738c61b13c6a234d94b098743c55c4b96d2cc87ba7b9a648d5e71",
+        "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+        "plugin.toml": "2b34f88002ee682d7e9a279fc873e01e526f5723d4892dc63f1f71306b8dbb69",
+        "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+        "yuki-telegram.exe": "538f3bd9b6ac222be9318fda3a1ebe2bec596fa2321b93cbff807bc1e40bee4d"
+      },
+      "source_snapshot_sha256": "d3304d9f48995969a0ec1c61515f9878681f8b2641c824afeccfe15f79936436",
+      "baseline": {
+        "archive": "windows-baseline.zip",
+        "sha256": "b2a1334ddf810f4cb1b5ed9b6e1505e617f916aac047033871ec0de6e252fbc9",
+        "cards": {
+          "EXT-001": {
+            "status": "PASS",
+            "manifest_sha256": "be1bbedb34ee62c1cecf0c90a31a8bde2f7620ec1c637d7d0106d7e9c978cee7"
+          },
+          "EXT-002": {
+            "status": "PASS",
+            "manifest_sha256": "214b574ca82adc27edfa352994fc1342f68036bf05ba2955e4a25acb64fb1502"
+          },
+          "EXT-019": {
+            "status": "PASS",
+            "manifest_sha256": "8c71ac4b677445a9c84ff1ff078b32802264542f3502a94bfb133c5b37bf9e7f"
+          }
+        }
+      }
+    }
+  },
+  "card_status": "PARTIAL_OUTBOUND_ATTACHMENT_VERIFIED"
+}

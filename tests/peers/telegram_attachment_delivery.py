@@ -70,9 +70,13 @@ def exercise(root, package, output, scenario):
         person = str(uuid.uuid4())
         finished = threading.Event()
         cleanup_started = threading.Event()
+        quoted = scenario.startswith("reply")
+        chat = -15 if quoted else 8
+        topic = 7 if quoted else None
         payload = b"Yuki original attachment\n" + bytes(range(251)) * 97
         caption = (
-            "雪" * 1023 + "🌨" + "a" * 4097 if scenario.startswith("caption") else ""
+            "雪" * 1023 + "🌨" + "a" * 4097
+            if scenario.startswith("caption") or quoted else ""
         )
         env = dict(
             os.environ,
@@ -167,8 +171,10 @@ def exercise(root, package, output, scenario):
                             "message_id": 9,
                             "date": int(time.time()),
                             "from": {"id": 8},
-                            "chat": {"id": 8, "type": "private"},
-                            "text": "Send the selected original attachment.",
+                            "chat": {"id": chat, "type": "supergroup" if quoted else "private"},
+                            "text": "@OriginalBot send the selected original attachment.",
+                            "entities": [{"type":"mention","offset":0,"length":12}],
+                            **({"message_thread_id": topic} if quoted else {}),
                         },
                     }
                     return self.reply(
@@ -205,6 +211,14 @@ def exercise(root, package, output, scenario):
                         }
                         if caption:
                             args["text"] = caption
+                        if quoted:
+                            frames = [json.loads(line) for line in trace.read_bytes().split(b"\n")[:-1]]
+                            inbound = next(v["frame"] for v in frames if v["frame"].get("method") == "gateway.inbound")
+                            original = next(v["frame"]["result"] for v in frames
+                                if v["direction"] == "from_host" and v["frame"].get("id") == inbound["id"])
+                            if scenario == "reply-text":
+                                args = {"text": caption}
+                            args["reply_to_event_id"] = original["event"]
                         call = ("send", args)
                     message = {"role": "assistant", "content": "finished"}
                     if call:
@@ -257,7 +271,11 @@ def exercise(root, package, output, scenario):
                         raw == payload
                         and fields["document"].get_filename() == "shared.bin"
                     )
-                    assert fields["chat_id"].get_content().strip() == "8"
+                    assert fields["chat_id"].get_content().strip() == str(chat)
+                    observed_topic = int(fields["message_thread_id"].get_content()) if "message_thread_id" in fields else None
+                    assert observed_topic == topic
+                    reply = json.loads(fields["reply_parameters"].get_content()) if "reply_parameters" in fields else None
+                    assert reply == ({"message_id":9,"allow_sending_without_reply":False} if quoted else None)
                     observed_caption = (
                         fields["caption"].get_payload(decode=True).decode()
                         if "caption" in fields
@@ -270,14 +288,22 @@ def exercise(root, package, output, scenario):
                             "sha256": hashlib.sha256(raw).hexdigest(),
                             "size": len(raw),
                             "caption": observed_caption,
-                            "chat": "8",
+                            "chat": str(chat),
+                            "topic": observed_topic,
+                            "reply_parameters": reply,
                         }
                     )
                 elif self.path == "/bot101:fixture/sendMessage":
                     args = json.loads(body)
-                    assert args["chat_id"] == "8"
+                    assert args["chat_id"] == str(chat)
+                    assert args.get("message_thread_id") == topic
+                    assert args.get("reply_parameters") == (
+                        {"message_id":9,"allow_sending_without_reply":False}
+                        if quoted and not native else None
+                    )
                     native.append(
-                        {"method": "sendMessage", "text": args["text"], "chat": "8"}
+                        {"method": "sendMessage", "text": args["text"], "chat": str(chat),
+                         "topic": topic, "reply_parameters": args.get("reply_parameters")}
                     )
                 else:
                     raise AssertionError("unexpected Telegram route " + self.path)
@@ -289,10 +315,13 @@ def exercise(root, package, output, scenario):
                     return
                 if scenario == "rejected":
                     return self.reply({"ok": False, "error_code": 403}, 403)
+                if scenario == "reply-rejected":
+                    return self.reply({"ok": False, "error_code": 400,
+                        "description": "Bad Request: message to be replied not found"}, 400)
                 self.reply(
                     {
                         "ok": True,
-                        "result": {"chat": {"id": 8}, "message_id": 120 + len(native)},
+                        "result": {"chat": {"id": chat}, "message_id": 120 + len(native)},
                     }
                 )
 
@@ -408,7 +437,7 @@ def exercise(root, package, output, scenario):
                     "unknown"
                     if scenario in {"lost", "caption-lost"}
                     else "failed"
-                    if scenario in {"denied", "rejected"}
+                    if scenario in {"denied", "rejected", "reply-rejected"}
                     else "confirmed"
                 )
                 assert result["state"] == expected, result
@@ -435,15 +464,18 @@ def exercise(root, package, output, scenario):
                             time.sleep(0.05)
                         assert not errors, errors
                 assert len(native) == count
-                expected_calls = {"denied": 0, "caption": 3, "caption-lost": 2}.get(
+                expected_calls = {"denied": 0, "caption": 3, "caption-lost": 2,
+                    "reply": 3, "reply-text": 2}.get(
                     scenario, 1
                 )
                 assert len(native) == expected_calls, native
-                if scenario == "caption":
+                if scenario in {"caption", "reply"}:
                     assert (
                         native[0]["caption"] + "".join(v["text"] for v in native[1:])
                         == caption
                     )
+                if scenario == "reply-text":
+                    assert "".join(v["text"] for v in native) == caption
             finally:
                 server.shutdown()
                 thread.join()
@@ -482,6 +514,9 @@ if __name__ == "__main__":
             "caption",
             "caption-lost",
             "forget",
+            "reply",
+            "reply-text",
+            "reply-rejected",
         ],
         required=True,
     )

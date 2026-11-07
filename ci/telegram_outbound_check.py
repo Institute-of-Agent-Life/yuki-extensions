@@ -49,6 +49,9 @@ def run(root, output):
         "caption",
         "caption-lost",
         "forget",
+        "reply",
+        "reply-text",
+        "reply-rejected",
     ]:
         case = output / scenario
         with (output / (scenario + ".log")).open("xb") as log:
@@ -74,7 +77,7 @@ def run(root, output):
         "status": "PASS",
         "card": "EXT-004",
         "card_status": "PARTIAL_OUTBOUND_ATTACHMENT_VERIFIED",
-        "pending": ["original-topic-reply", "recall", "typing-lifecycle"],
+        "pending": ["recall", "typing-lifecycle"],
         "platform": platform.platform(),
         "curl": {"program": curl_program, "version": curl},
         "package": built,
