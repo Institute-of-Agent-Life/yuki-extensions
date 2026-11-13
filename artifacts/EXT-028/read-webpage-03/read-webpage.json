@@ -1,0 +1,58 @@
+{
+  "formal_card_status": "ORIGINAL_READER_SLICE_VERIFIED",
+  "independent_review": {
+    "exact_code_sha256": "2bf35685984b5efec945d20c6572ee673733e14d6be6c1ba8c774e611f1558d9",
+    "export_sha256": "15e8d5d1c9801fdf84c7c353d4497ccc4545a87b35decbc442f2e2c90ff61aee",
+    "model": "swe-2-max",
+    "result": "PASS_WITH_NOTES"
+  },
+  "paid_calls": 0,
+  "pending": [
+    "v4 ten-minute cache and URL/HTML edge parity",
+    "same installation E13"
+  ],
+  "platforms": {
+    "linux": {
+      "archive": "linux.zip",
+      "default_declaration_replays": 1,
+      "manifest_sha256": "ca21f3aff3e4eeb8cd88ce411876791990b544c2c1848e975fe3f35e8691e242",
+      "original_projections_passed": 18,
+      "plugin_sha256": "b44dd70a752d99567e9b5f86acac6a5b01a59a33d5dbf74f184828c515f685bb",
+      "sdk_frame_refusals": 1,
+      "sha256": "88f74e6a25854ffde657edacbe3261890aa18a7f10615392d1332017acd8525b",
+      "status": "PASS"
+    },
+    "macos": {
+      "archive": "macos.zip",
+      "default_declaration_replays": 1,
+      "manifest_sha256": "5514f289594afb3dee2d2464a037e66001f91b5c1b1cd11899e25e27a365dc80",
+      "original_projections_passed": 18,
+      "plugin_sha256": "13a237aaf4c7afa80d8c87b0c8c1c0e8345deeadece8336d9b3e4d03a4a0a743",
+      "sdk_frame_refusals": 1,
+      "sha256": "8fe18769ba63a671bbd6b18f07eb52498eb3d6a05d58dceae5af0f3204c09059",
+      "status": "PASS"
+    },
+    "windows": {
+      "archive": "windows.zip",
+      "default_declaration_replays": 1,
+      "manifest_sha256": "013985014c7faad02772be0535ab8389faf082a518e3dd60105642e1cdb94139",
+      "original_projections_passed": 18,
+      "plugin_sha256": "d4dc454cb85d011145cc5e0b5fcb51acf04d03d28034206039a30f692260b260",
+      "sdk_frame_refusals": 1,
+      "sha256": "473df16e2ce5ae04500a1f7240feaa11e887550be20e05de0f46b68b5e892b98",
+      "status": "PASS"
+    }
+  },
+  "published": false,
+  "sdk_versions": {
+    "python": "1.0.0a14",
+    "rust": "1.0.0-alpha.14"
+  },
+  "source_base": "edfadf86fcc302b2f90472ba3f088b0be665a021",
+  "source_inventory_sha256": "30db9dd4e87f4d2caceaada4bab2c194d901fea32ce0608f117a4c219aca3c81",
+  "source_payload_sha256": "eccea0fcf5cf953749885501d3b196f3ec0fbb2c0a6dfe587eb2e3aebbc76f2b",
+  "status": "PASS",
+  "v4_declaration_sha256": "c0e371edbf802081e05b00dac37e5aece23c8557cd9914e54f501a6fabf9fd40",
+  "v4_oracle_sha256": "a57ad275c2f986bfe512fe4a50124d5d06cec9611ac554c95919ec1dfe371772",
+  "v4_source_commit": "329ca7c487414d2f54ddd98ff4727446ed2446cd"
+}

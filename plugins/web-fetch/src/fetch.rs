@@ -16,6 +16,12 @@ const MAX_BYTES: usize = 2 * 1024 * 1024;
 const MAX_HEADERS: usize = 128 * 1024;
 type Result<T> = std::result::Result<T, &'static str>;
 
+#[derive(Clone, Copy)]
+enum LineBreaks {
+    Lf,
+    Unicode,
+}
+
 #[derive(Default)]
 pub(crate) struct Request {
     headers: Vec<(String, String)>,
@@ -27,6 +33,18 @@ struct Hop {
     headers: HashMap<String, String>,
     bytes: Vec<u8>,
     complete: bool,
+}
+
+impl Hop {
+    fn mime(&self) -> Option<String> {
+        self.headers.get("content-type").map(|s| {
+            s.split(';')
+                .next()
+                .unwrap_or("")
+                .trim()
+                .to_ascii_lowercase()
+        })
+    }
 }
 
 struct Transfer(Child);
@@ -170,7 +188,7 @@ fn transfer(
     })
 }
 
-fn text(bytes: &[u8], html: bool) -> String {
+fn text(bytes: &[u8], html: bool, breaks: LineBreaks) -> String {
     let source = String::from_utf8_lossy(bytes);
     let mut parts = Vec::new();
     if html {
@@ -194,23 +212,36 @@ fn text(bytes: &[u8], html: bool) -> String {
     } else {
         parts.push(source.into_owned());
     }
-    parts
-        .iter()
-        .flat_map(|s| s.lines())
-        .map(|s| s.split_whitespace().collect::<Vec<_>>().join(" "))
-        .filter(|s| !s.is_empty())
-        .collect::<Vec<_>>()
-        .join("\n")
+    let mut lines = Vec::new();
+    for part in &parts {
+        let mut push = |line: &str| {
+            let line = match breaks {
+                LineBreaks::Lf => line.split_whitespace().collect::<Vec<_>>(),
+                LineBreaks::Unicode => line
+                    .split(|c: char| c.is_whitespace() || c == '\u{1f}')
+                    .filter(|word| !word.is_empty())
+                    .collect(),
+            }
+            .join(" ");
+            if !line.is_empty() {
+                lines.push(line);
+            }
+        };
+        match breaks {
+            LineBreaks::Lf => part.lines().for_each(&mut push),
+            LineBreaks::Unicode => part
+                .split([
+                    '\n', '\r', '\u{b}', '\u{c}', '\u{1c}', '\u{1d}', '\u{1e}', '\u{85}',
+                    '\u{2028}', '\u{2029}',
+                ])
+                .for_each(&mut push),
+        }
+    }
+    lines.join("\n")
 }
 
 fn result(source: &Url, url: &Url, hop: Hop) -> Value {
-    let mime = hop.headers.get("content-type").map(|s| {
-        s.split(';')
-            .next()
-            .unwrap_or("")
-            .trim()
-            .to_ascii_lowercase()
-    });
+    let mime = hop.mime();
     let etag = hop.headers.get("etag").filter(|s| s.len() <= 4096);
     let mut data = json!({"source":source.as_str(),"url":url.as_str(),"status":hop.code,
         "content_type":mime.as_deref().filter(|s| s.len() <= 256),"etag":etag,
@@ -226,7 +257,11 @@ fn result(source: &Url, url: &Url, hop: Hop) -> Value {
     ) {
         "unsupported_content_type"
     } else {
-        let content = text(&hop.bytes, mime.as_deref() != Some("text/plain"));
+        let content = text(
+            &hop.bytes,
+            mime.as_deref() != Some("text/plain"),
+            LineBreaks::Lf,
+        );
         if content.is_empty() {
             "empty_page"
         } else {
@@ -276,15 +311,16 @@ fn result(source: &Url, url: &Url, hop: Hop) -> Value {
     data
 }
 
-fn follow(
+fn follow<T>(
     source: &str,
     mut request: Request,
     resolve: impl Fn(&Url) -> Result<Vec<IpAddr>>,
     exchange: impl Fn(&Url, IpAddr, &Request, Duration) -> Result<Hop>,
-) -> Value {
+    project: impl FnOnce(&Url, &Url, Hop) -> T,
+) -> std::result::Result<T, Value> {
     let original = match policy::url(source) {
         Ok(url) => url,
-        Err(e) => return json!({"state":e}),
+        Err(e) => return Err(json!({"state":e})),
     };
     let mut current = original.clone();
     let mut seen: HashMap<String, Vec<IpAddr>> = HashMap::new();
@@ -306,10 +342,12 @@ fn follow(
         })();
         let hop = match outcome {
             Ok(value) => value,
-            Err(e) => return json!({"source":original.as_str(),"url":current.as_str(),"state":e}),
+            Err(e) => {
+                return Err(json!({"source":original.as_str(),"url":current.as_str(),"state":e}));
+            }
         };
         if !matches!(hop.code, 301 | 302 | 303 | 307 | 308) {
-            return result(&original, &current, hop);
+            return Ok(project(&original, &current, hop));
         }
         let next = hop
             .headers
@@ -317,17 +355,51 @@ fn follow(
             .and_then(|raw| current.join(raw).ok())
             .and_then(|v| policy::url(v.as_str()).ok());
         let Some(next) = next else {
-            return json!({"source":original.as_str(),"url":current.as_str(),"status":hop.code,"state":"invalid_redirect"});
+            return Err(
+                json!({"source":original.as_str(),"url":current.as_str(),"status":hop.code,"state":"invalid_redirect"}),
+            );
         };
         if current.origin() != next.origin() {
             request = Request::default();
         }
         current = next;
     }
-    json!({"source":original.as_str(),"url":current.as_str(),"state":"redirect_limit"})
+    Err(json!({"source":original.as_str(),"url":current.as_str(),"state":"redirect_limit"}))
 }
 
 pub(crate) fn read(source: &str) -> Value {
+    read_with(source, result).unwrap_or_else(std::convert::identity)
+}
+
+pub(crate) fn read_text(source: &Url) -> Result<String> {
+    read_with(source.as_str(), |_, _, hop| {
+        if !hop.complete || hop.code >= 400 || hop.bytes.is_empty() {
+            return Err("extract_failed");
+        }
+        let mime = hop.mime();
+        if !matches!(
+            mime.as_deref(),
+            Some("text/plain" | "text/html" | "application/xhtml+xml")
+        ) {
+            return Err("unsupported_page");
+        }
+        let content = text(
+            &hop.bytes,
+            mime.as_deref() != Some("text/plain"),
+            LineBreaks::Unicode,
+        );
+        if content.is_empty() {
+            return Err("empty_page");
+        }
+        Ok(content)
+    })
+    .map_err(|_| "extract_failed")?
+}
+
+fn read_with<T>(
+    source: &str,
+    project: impl FnOnce(&Url, &Url, Hop) -> T,
+) -> std::result::Result<T, Value> {
     follow(
         source,
         Request::default(),
@@ -349,6 +421,7 @@ pub(crate) fn read(source: &str) -> Value {
                 .unwrap_or_default();
             transfer(url, ip, request, timeout, &proxy, &bypass)
         },
+        project,
     )
 }
 
@@ -442,9 +515,14 @@ mod tests {
                 })
                 .collect()
         });
-        let data = follow(url, request, policy::resolve, |u, i, r, t| {
-            transfer(u, i, r, t, &proxy, "")
-        });
+        let data = follow(
+            url,
+            request,
+            policy::resolve,
+            |u, i, r, t| transfer(u, i, r, t, &proxy, ""),
+            result,
+        )
+        .unwrap_or_else(std::convert::identity);
         (data, peer.join().unwrap())
     }
 
@@ -568,7 +646,9 @@ mod tests {
                     complete: true,
                 })
             },
-        );
+            result,
+        )
+        .unwrap_err();
         assert_eq!(result["state"], "dns_changed");
         assert_eq!(result["source"], "http://example.org/path");
     }

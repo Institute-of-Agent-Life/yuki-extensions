@@ -1,0 +1,13 @@
+id = "web-fetch"
+version = "0.1.0-alpha.3"
+program = "yuki-web-fetch"
+grants = ["tool.call"]
+env = ["YUKI_WEB_FETCH_HTTP_PROXY","YUKI_WEB_FETCH_HTTPS_PROXY","YUKI_WEB_FETCH_ALL_PROXY","YUKI_WEB_FETCH_NO_PROXY"]
+
+[[tools]]
+name = "read_webpage"
+description = "读取一个明确的公开网页 URL，可来自本轮或历史。question 指定所需内容；搜索不自动下载页面，需正文时显式调用此工具。"
+parallel_read = false
+cacheable = false
+code_direct = true
+schema = {type="object",properties={url={type="string"},question={type="string",description="用户希望从网页了解的问题，可省略"}},required=["url"],additionalProperties=false}

@@ -3,14 +3,15 @@
   "kind": "plugin",
   "path": "plugins/web-fetch",
   "ecosystem": "rust",
-  "version": "0.1.0-alpha.2",
+  "version": "0.1.0-alpha.3",
   "tag_prefix": "web-fetch/v",
   "license": "AGPL-3.0-only",
   "notices": [
     "LICENSE"
   ],
   "runtime_files": [
-    "plugin.toml"
+    "plugin.toml",
+    "plugin-read-webpage.toml"
   ],
   "source": {
     "repository": "Institute-of-Agent-Life/yuki-extensions",
@@ -20,6 +21,7 @@
   },
   "check_paths": [
     "tests/cases/EXT-028.py",
+    "tests/peers/read_webpage.py",
     "compat/base/source.lock.json",
     "compat/base/yuki-plugin-sdk-1.0.0-alpha.14.crate",
     "compat/gateway-refusal/source.lock.json",
