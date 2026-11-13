@@ -1,0 +1,11 @@
+id = "memory-maintenance"
+version = "0.1.0-alpha.5"
+program = "yuki-memory-maintenance"
+args = ["--reflection-only"]
+erasure_args = ["--reflection-only"]
+grants = [
+    "maintenance.history.page", "maintenance.evidence", "maintenance.model.open",
+    "maintenance.extract.preview", "maintenance.extract.apply",
+    "llm.complete", "llm.result", "forget.owner",
+]
+env = ["YUKI_MEMORY_MAINTENANCE_JOBS"]

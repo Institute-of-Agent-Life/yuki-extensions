@@ -1,0 +1,12 @@
+{
+  "task": "EXT-035",
+  "status": "PASS",
+  "scope": "explicit event reflection and existing rebuild regression",
+  "files": {
+    "linux.zip": "475a6911cecd10fc220c71ddf626ddf71fa5641ff43d87f0c3d6453793f7543c",
+    "macos.zip": "467b1771eeea67412dccce8b62ac250511772b2d9dbff3e65eb05801f42aaba1",
+    "reflection-scope.json": "cba13cf4e2d6421149ddcbf7fbcdea7691a21e0ff89817a9185ec3b493bd5463",
+    "source-files.json": "6170c72518d635c4748c24404b48848312462c9b3febc18b8a51f9e3891d72cf",
+    "windows.zip": "28d19a4297a69de9920ff322c8eaee329e5e4d224b13d086a3070c21ca15dae9"
+  }
+}

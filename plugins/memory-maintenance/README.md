@@ -110,3 +110,28 @@ Run `python ci/check.py EXT-034 --preparation --out artifacts/EXT-034/product-ma
 The current product build uses its existing alpha.8 SDK pin and negotiates the
 rebuild methods against the alpha.21 Host. Publication and additional platform
 qualification remain pending.
+
+## Reflect on an authorized event batch
+
+Use `plugin-reflection.toml` with an isolated private job directory. Install a
+CORE-035 scope restricted to the original entry, the `reflect` purpose and the
+appropriate SELF write subject. The declared auxiliary route must accept the
+same entry, purpose and maintenance origin. The explicit event-only mode
+accepts up to 16 primary and contextual events from that entry.
+
+```json
+{"action":"reflection.run","batch":"november-part-1","plan":{"scope":"own","route":"review","events":[42],"context":[41]}}
+```
+
+The worker saves its source versions before requesting a model, retains the
+original request and preview IDs, and settles the approved SELF edits once.
+Context may inform the model and never serves as primary evidence. A response
+with zero actions still receives an apply receipt. After a crash, use the same
+batch and plan in a new job file. The same auxiliary call key recovers an
+unacknowledged result, while a known request is only observed by ID. Use
+`reflection.status` with the batch ID to inspect the local checkpoint.
+
+A source erasure removes matching batch inputs, results and temporary copies.
+The batch ID stays fenced. Background scheduling, foreground quiet time,
+receipt-backed inputs, and aggregate daily quotas remain outside this
+development candidate.

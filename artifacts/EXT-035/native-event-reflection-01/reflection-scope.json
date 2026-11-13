@@ -1,0 +1,74 @@
+{
+  "task": "EXT-035",
+  "status": "PASS",
+  "formal_card_status": "PARTIAL",
+  "published": false,
+  "source_base": "a4d19e5b94c10bc7275049eb1843f94ffac39657",
+  "source_inventory_sha256": "6170c72518d635c4748c24404b48848312462c9b3febc18b8a51f9e3891d72cf",
+  "extension_version": "0.1.0-alpha.5",
+  "host_source_commit": "fca3f22ce60d35f20a866fff7a409bb419a9b1be",
+  "host_schema_sha256": "123de29cf8057cea1dfd566aec31ea30ba4ff68524920581843456e51cbb2e7d",
+  "consumer_sdk": {
+    "version": "1.0.0-alpha.8",
+    "crate_sha256": "a8739c74d300f1044c94749ced333d9694920aa7c91728b19f624ff9fbaf2e63"
+  },
+  "capabilities": [
+    "explicit original event and context batch",
+    "stable paid receipt and apply recovery",
+    "entry-private SELF result",
+    "empty apply receipt",
+    "scoped erasure of retained and in-flight data"
+  ],
+  "remaining": [
+    "tool receipt input and original batch scheduling",
+    "foreground quiet policy",
+    "instance-level daily quota and published installation tuple"
+  ],
+  "platforms": {
+    "macos": {
+      "status": "PASS",
+      "archive": "macos.zip",
+      "sha256": "467b1771eeea67412dccce8b62ac250511772b2d9dbff3e65eb05801f42aaba1",
+      "binary_sha256": "8d8bd2b41a63dd91de3103c27e1a9dcd576d672ceaad13535e68dc66c6bd6c57",
+      "host_binary_sha256": "3ffffc915c9a54e6981925c27c80500febc9571baab9eb009a94d9e3dc0f6b1f",
+      "host_archive_sha256": "918940eacfd1b2c6fa564cb0bf1575abbbef2f42d69118f540bd625b014796c8",
+      "aux_archive_sha256": "e0bb338bdaafa3f86ee821808c7d197596fae27cb6b1c9d4c7e1cd00e871dfe7",
+      "manifest_sha256": "0cd0efec0f87277faa3e0fd5ac12c6e3d6ab5b62dd9a15d214e714fbd9e0150a",
+      "report_sha256": "dd67ae1498addcef55635f7a312f3174ebe6ab73f4c26dbd08dd6b138289b0af",
+      "rebuild_manifest_sha256": "6e028fa382a0d8e7ddc2adf9f2bdd143b73234cf12f8c38c7fdcc29de1c23d6d",
+      "rust_tests": 2,
+      "reflection_transport_attempts": 6,
+      "paid_provider_calls": 0
+    },
+    "linux": {
+      "status": "PASS",
+      "archive": "linux.zip",
+      "sha256": "475a6911cecd10fc220c71ddf626ddf71fa5641ff43d87f0c3d6453793f7543c",
+      "binary_sha256": "9024eedab45197f2b05b827d5bacee1bab0d3c250ded9780119f538c90b3cef3",
+      "host_binary_sha256": "2c0c900b9357ddb1a8809ae349961827ece9aa277341f0d1f56e98316c150e6e",
+      "host_archive_sha256": "a202029cece7eabddd23c6d689d5bc0608e36c939ca231c40ba42605fec3960b",
+      "aux_archive_sha256": "419b9ae246789d807316b21effadf474186f410582c960989f2bc213a9d27070",
+      "manifest_sha256": "6829058395be9b4ce5faf99fe1ea5df981aeefeef8ecffda8e9d478d2ced1344",
+      "report_sha256": "482f075276e1e96e4c3ecb3fe616f35b9d099234f54e9d6ed08d6789cac36a29",
+      "rebuild_manifest_sha256": "3f3a142f27132d677c062f807ac0940fa08411752dc88c2025d1d50d099909df",
+      "rust_tests": 2,
+      "reflection_transport_attempts": 6,
+      "paid_provider_calls": 0
+    },
+    "windows": {
+      "status": "PASS",
+      "archive": "windows.zip",
+      "sha256": "28d19a4297a69de9920ff322c8eaee329e5e4d224b13d086a3070c21ca15dae9",
+      "binary_sha256": "79b6c534a8410362b08ce3946b0be8293037c9c7e802322740983b62f28cad13",
+      "host_binary_sha256": "7d4632bb7b605b1abed5c091f6b7f0947e16d83f99bf46328c9d3aad98fe3cc3",
+      "host_archive_sha256": "c446405436be9b0adfd4765cf8f5aa33122c8341e3d7a7baef0e1617dfa52211",
+      "aux_archive_sha256": "eb806f321f0d9e689ba268559943655905c122d9a592c91da1644b611cdc38f8",
+      "manifest_sha256": "f281ea9ba9f475c1bcfd475e4e5a3aeae3f7914909329bb19523028981b9e3d0",
+      "report_sha256": "af2d4aafe5bacc1e5c3e89fdac6c93dee97e74a23047300e45ca403b55f48ba9",
+      "rebuild_manifest_sha256": "4645ff5e17529b0d2c03202bf87321fb35d1b42d3982682ff5adfc21bcd25502",
+      "rust_tests": 2,
+      "reflection_transport_attempts": 6,
+      "paid_provider_calls": 0
+    }
+  }
+}
