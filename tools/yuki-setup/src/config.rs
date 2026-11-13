@@ -2,7 +2,7 @@ use std::{
     fs::{self, File, OpenOptions},
     io::{self, Write},
     path::Path,
-    process::{self, Command},
+    process,
 };
 
 pub const SOUL: &str = "# SOUL example\n\nThe operator owns the character's description. Review this sample before editing the owner's SOUL.md.\n";
@@ -41,21 +41,10 @@ impl<'a> Entry<'a> {
     }
 }
 
-pub fn new_project(python: &mut Command) -> io::Result<String> {
-    let output = python
-        .args([
-            "-I",
-            "-c",
-            "import secrets; print('yuki-' + secrets.token_hex(16))",
-        ])
-        .output()?;
-    let name = std::str::from_utf8(&output.stdout).unwrap_or("").trim_end();
-    if !output.status.success() || !valid_project(name) {
-        return Err(io::Error::other(
-            "could not generate a Compose project name",
-        ));
-    }
-    Ok(name.to_owned())
+pub fn new_project() -> io::Result<String> {
+    let mut token = [0u8; 16];
+    getrandom::fill(&mut token).map_err(io::Error::other)?;
+    Ok(format!("yuki-{:032x}", u128::from_be_bytes(token)))
 }
 
 fn valid_project(name: &str) -> bool {
@@ -210,19 +199,19 @@ pub fn read_zone(input: &str) -> Result<Option<&str>, &'static str> {
             .trim_start()
             .strip_prefix("export ")
             .unwrap_or(line.trim_start());
-        if let Some((key, raw)) = line.split_once('=') {
-            if key.trim() == "YUKI_TIMEZONE" {
-                if value.is_some() {
-                    return Err("duplicate YUKI_TIMEZONE in .env");
-                }
-                let raw = raw.split('#').next().unwrap_or("").trim();
-                let unquoted = raw
-                    .strip_prefix('"')
-                    .and_then(|v| v.strip_suffix('"'))
-                    .or_else(|| raw.strip_prefix("'").and_then(|v| v.strip_suffix("'")))
-                    .unwrap_or(raw);
-                value = Some(unquoted);
+        if let Some((key, raw)) = line.split_once('=')
+            && key.trim() == "YUKI_TIMEZONE"
+        {
+            if value.is_some() {
+                return Err("duplicate YUKI_TIMEZONE in .env");
             }
+            let raw = raw.split('#').next().unwrap_or("").trim();
+            let unquoted = raw
+                .strip_prefix('"')
+                .and_then(|v| v.strip_suffix('"'))
+                .or_else(|| raw.strip_prefix("'").and_then(|v| v.strip_suffix("'")))
+                .unwrap_or(raw);
+            value = Some(unquoted);
         }
     }
     Ok(value)

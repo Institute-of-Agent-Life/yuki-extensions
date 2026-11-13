@@ -40,9 +40,13 @@ def verify(root, output, package_dir=None):
 
 def exercise(output, work, archive, plugin, pin, native, target, manifest, setup):
     actions = []
+    empty_path = work / "offline-path"
+    empty_path.mkdir()
+    installer_env = dict(os.environ, PATH=str(empty_path))
+
     def invoke(label, dest, bundle=archive, version="1.0.0", extra=(), ok=True):
         cmd = [setup,"native","--core",version,"--archive",bundle,"--dir",dest,*extra]
-        proc = subprocess.run(cmd, capture_output=True, text=True, timeout=90)
+        proc = subprocess.run(cmd, capture_output=True, text=True, timeout=90, env=installer_env)
         actions.append({"case": label, "exit": proc.returncode, "stdout": proc.stdout, "stderr": proc.stderr})
         assert (proc.returncode == 0) == ok, (label, proc.stderr)
         if ok:
@@ -129,8 +133,9 @@ def exercise(output, work, archive, plugin, pin, native, target, manifest, setup
                        else "The pinned web-fetch package targets Windows x86_64"),
         }
     assert not list(work.glob(".yuki-base-*"))
+    assert not list(work.glob(".yuki-native-*"))
     return "setup-install.json", {"status":"PASS","card_status":"PUBLIC_NATIVE_PROFILE_VERIFIED",
-                "full_card_accepted":False,"offline":True,"core_source":pin["source_commit"],
+                "full_card_accepted":False,"offline":True,"installer_path_empty":True,"core_source":pin["source_commit"],
                 "target":target,"host_zip_sha256":sha(archive),"plugin_zip_sha256":sha(plugin) if plugin is not None else None,
                 "installer":manifest["artifacts"],"actions":actions,"without_plugins":plain_status,
                 "explicit_original":selected_status,"preserved":before}

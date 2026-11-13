@@ -122,12 +122,13 @@ def verify(root, output):
     exe = output / "packages" / ("yuki-setup.exe" if os.name == "nt" else "yuki-setup")
     env = {key: val for key, val in os.environ.items()
            if not key.startswith("COMPOSE_") and key != "YUKI_TIMEZONE"}
+    installer_env = dict(env, PATH="")
     actions = []
     secret = "fixture-secret-reference-preserve"
 
     def setup(action, kit, *options, source=archive, refusal=None):
         result = subprocess.run([exe, action, "--archive", source, "--dir", kit, *options],
-                                env=env, capture_output=True, text=True, timeout=90)
+                                env=installer_env, capture_output=True, text=True, timeout=90)
         assert secret not in result.stdout + result.stderr
         if refusal is None:
             assert result.returncode == 0, result.stderr

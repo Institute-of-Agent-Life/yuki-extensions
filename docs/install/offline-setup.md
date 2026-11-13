@@ -1,7 +1,10 @@
 # Offline candidate setup
 
 Build the independent Rust installer with `python ci/package.py --unit yuki-setup --out dist/setup`.
-It uses local Python 3.12 and OpenSSH ssh-keygen to verify the producer signature.
+The installed Rust binary verifies the pinned producer's OpenSSH Ed25519
+signatures, archive inventory, and content digests in-process. The CI command
+above uses Python to build the package. Installation and offline doctor work
+with an empty executable search path.
 The signed native packages and OCI archive are supplied separately. The compiled
 trust pins are under `tools/yuki-setup/inputs/`. CORE-039 source `093716ad01c0`
 is a development version; its handoff pins were published in producer commit

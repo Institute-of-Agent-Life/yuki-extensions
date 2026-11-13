@@ -1,0 +1,23 @@
+{
+  "platforms": {
+    "linux": {
+      "bytes": 75337010,
+      "path": "linux-input.zip",
+      "sha256": "dc279a01bdd024115986df63fc007e2bf10ab570bcbbdf0d97f8abda9e31a5b4"
+    },
+    "macos": {
+      "bytes": 73946305,
+      "path": "macos-input.zip",
+      "sha256": "02cdf86af45a6f1f41f117c6e509c9145f46f224fbffdafaa2c103e82fd455bb"
+    },
+    "windows": {
+      "bytes": 83068716,
+      "path": "windows-input.zip",
+      "sha256": "bd151210a06f9a0ae81b27dd6478e4f37b6e565c038746530e781649b96770b1"
+    }
+  },
+  "runner_sha256": "35b29a9d97c1d487c0e103af76823a0ba9fa3d5c1d61b151825a224482f5acdd",
+  "source_base": "603785b82ae9080971e3e84fd98ba4ea5f13830e",
+  "source_file_count": 105,
+  "source_inventory_sha256": "6cd27ecc73c8c536bf30a64c90bd7f825549b0a99c8a24cb49bd6788189188b9"
+}

@@ -1,0 +1,53 @@
+{
+  "formal_card_status": "STANDALONE_RUST_INSTALLER_VERIFIED",
+  "independent_review": {
+    "export_sha256": "b41d5c1efb87e4c6839dfc3aea2043c74efddc9e47797e009759e0c150e25ca0",
+    "input_inventory_sha256": "c72197637dac1472d3f25481d6c94c8c049f8d266c46cacca46e838a5ad84955",
+    "model": "swe-2-max",
+    "result": "PASS_WITH_NOTES"
+  },
+  "installed_producer_versions": [
+    "plugin-base-v1.0.0",
+    "core-039-093716ad01c0"
+  ],
+  "pending": [
+    "compatible SnowLuma image and isolated readiness replay with original optional runtime"
+  ],
+  "platforms": {
+    "linux": {
+      "archive": "linux.zip",
+      "compose_actions": 0,
+      "development_and_oci_actions": 6,
+      "installer_sha256": "73b46b0269404f31ca6c32523262ccc072f3660f5d3acc0000dac95a540d0312",
+      "manifest_sha256": "2eaa15d9742e9a644e989859f03f711c7db42750234174de035954391853b2b1",
+      "public_native_actions": 7,
+      "sha256": "bb067e4e7a53370f0cdc0655e596b3de6baa307ff8b4240edb097902ebd88381",
+      "status": "PASS"
+    },
+    "macos": {
+      "archive": "macos.zip",
+      "compose_actions": 22,
+      "development_and_oci_actions": 6,
+      "installer_sha256": "7083930da10b1b6fba37269d4a593cc6027dbdd023230b526bae62bf49aee169",
+      "manifest_sha256": "69e0573a23dc8c01f0c7743bb22e775dc0d8b82849f19ec6fe8c3ac846c0f714",
+      "public_native_actions": 7,
+      "sha256": "7e81cb0853d4ebc592b10f4ca3444fdf433b61b5c436639661a07af76aae8fbb",
+      "status": "PASS"
+    },
+    "windows": {
+      "archive": "windows.zip",
+      "compose_actions": 0,
+      "development_and_oci_actions": 8,
+      "installer_sha256": "cc20ac57d90ccd63696d9b6dc3094e63b8b696404fce4d8a9485c162d9b3225a",
+      "manifest_sha256": "8ed90f01c6583cca91ed09dbf7c387ce00fe71f8ef0834c083e138c04b970308",
+      "public_native_actions": 8,
+      "sha256": "d03b3e35e2c1b35cd030f8d4987d48fcf00c4dbced9f3e12b64a532a7f2f6640",
+      "status": "PASS"
+    }
+  },
+  "published": false,
+  "source_base": "603785b82ae9080971e3e84fd98ba4ea5f13830e",
+  "source_inventory_sha256": "6cd27ecc73c8c536bf30a64c90bd7f825549b0a99c8a24cb49bd6788189188b9",
+  "status": "PASS",
+  "version": "0.1.0-alpha.3"
+}

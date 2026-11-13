@@ -1,63 +1,13 @@
+mod archive;
 mod config;
+mod install;
+mod oci;
 use std::{
     collections::HashMap,
     env, fs,
     path::{Path, PathBuf},
-    process::Command,
 };
 type Error = Box<dyn std::error::Error>;
-
-struct Core {
-    version: String,
-    image: String,
-    platform: String,
-}
-
-fn python() -> Command {
-    let mut python = Command::new(if cfg!(windows) { "py" } else { "python3" });
-    if cfg!(windows) {
-        python.arg("-3.12");
-    }
-    python
-}
-
-fn verify(archive: &Path) -> Result<Core, Error> {
-    let out = python()
-        .args([
-            "-I",
-            "-c",
-            concat!(include_str!("keygen.py"), "\n", include_str!("verify.py")),
-        ])
-        .arg(archive)
-        .args([
-            include_str!("../inputs/source.lock.json"),
-            include_str!("../inputs/oci-candidate.json"),
-            include_str!("../inputs/oci-candidate.json.sig"),
-            include_str!("../inputs/signer.pub"),
-            include_str!("../inputs/verify_dist.py"),
-            include_str!("../inputs/verify_oci.py"),
-        ])
-        .output()?;
-    if !out.status.success() {
-        let stderr = String::from_utf8_lossy(&out.stderr);
-        eprintln!(
-            "CORE-039 verification failed: {}",
-            stderr.lines().last().unwrap_or("unknown error")
-        );
-        return Err("offline input refused".into());
-    }
-    let value = String::from_utf8(out.stdout)?;
-    let mut lines = value.lines();
-    let core = Core {
-        version: lines.next().ok_or("missing version")?.to_owned(),
-        image: lines.next().ok_or("missing image digest")?.to_owned(),
-        platform: lines.next().ok_or("missing platform")?.to_owned(),
-    };
-    if lines.next().is_some() {
-        return Err("invalid verified input".into());
-    }
-    Ok(core)
-}
 
 fn timezone_valid(value: &str) -> bool {
     !value.is_empty()
@@ -120,28 +70,12 @@ fn run() -> Result<(), Error> {
             }) {
                 return Err("unknown option for native base installation".into());
             }
-            let result = python()
-                .args([
-                    "-I",
-                    "-c",
-                    concat!(include_str!("keygen.py"), "\n", include_str!("stable.py")),
-                ])
-                .arg(archive)
-                .arg(dir)
-                .arg(include_str!("../inputs/base-1.0.json"))
-                .arg(plugin_file.map(String::as_str).unwrap_or(""))
-                .output()?;
-            if !result.status.success() {
-                eprintln!(
-                    "{}",
-                    String::from_utf8_lossy(&result.stderr)
-                        .lines()
-                        .last()
-                        .unwrap_or("base verification failed")
-                );
-                return Err("native base input refused".into());
-            }
-            print!("{}", String::from_utf8(result.stdout)?);
+            let result = install::base(Path::new(archive), &dir, plugin_file.map(Path::new))
+                .map_err(|err| {
+                    eprintln!("{err}");
+                    "native base input refused"
+                })?;
+            println!("{}", serde_json::to_string(&result)?);
             return Ok(());
         }
         if selected.is_some() != optional
@@ -152,41 +86,26 @@ fn run() -> Result<(), Error> {
         {
             return Err("native takes --archive and --dir; a selected Windows web-fetch also requires --plugin-file".into());
         }
-        let output = python()
-            .args([
-                "-I",
-                "-c",
-                concat!(include_str!("keygen.py"), "\n", include_str!("native.py")),
-            ])
-            .arg(args.get("--archive").ok_or("missing --archive")?)
-            .arg(dir)
-            .args([
-                include_str!("../inputs/native.lock.json"),
-                include_str!("../inputs/verify_dist.py"),
-                "b542c9bdd5535e944aeadd8442b3a4c766eab010a14ed3d9e665c5e1bffbf2db",
-                include_str!("../inputs/web-fetch.lock.json"),
-                plugin_file.map(String::as_str).unwrap_or(""),
-            ])
-            .output()?;
-        if !output.status.success() {
-            eprintln!(
-                "{}",
-                String::from_utf8_lossy(&output.stderr)
-                    .lines()
-                    .last()
-                    .unwrap_or("native verifier failed")
-            );
-            return Err("native input refused".into());
-        }
-        print!("{}", String::from_utf8(output.stdout)?);
+        let archive = Path::new(args.get("--archive").ok_or("missing --archive")?);
+        let result =
+            install::candidate(archive, &dir, plugin_file.map(Path::new)).map_err(|err| {
+                eprintln!("{err}");
+                "native input refused"
+            })?;
+        println!("{result}");
         return Ok(());
     }
-    let core = verify(Path::new(args.get("--archive").ok_or("missing --archive")?))?;
+    let core = oci::verify(Path::new(args.get("--archive").ok_or("missing --archive")?)).map_err(
+        |err| {
+            eprintln!("CORE-039 verification failed: {err}");
+            "offline input refused"
+        },
+    )?;
     if args.get("--core").is_some_and(|v| v != &core.version) {
         return Err("selected core version does not match the verified input".into());
     }
-    if args.get("--plugin-file").is_some()
-        || args.get("--plugin").is_some()
+    if args.contains_key("--plugin-file")
+        || args.contains_key("--plugin")
         || args.get("--profile").is_some_and(|v| v != "direct")
     {
         return Err("selected component has no compatible pinned package in this candidate".into());
@@ -215,7 +134,7 @@ fn run() -> Result<(), Error> {
     let soul = config::read_optional(&dir.join("SOUL.example.md"))?;
     let project = match existing.as_deref() {
         Some(contents) => config::read_project(contents)?.map(str::to_owned),
-        None if cmd == "init" => Some(config::new_project(&mut python())?),
+        None if cmd == "init" => Some(config::new_project()?),
         None => return Err("incomplete offline kit".into()),
     };
     let compose = config::compose(&core.image, &core.platform, &entry, project.as_deref());
@@ -272,41 +191,5 @@ fn main() {
     if let Err(err) = run() {
         eprintln!("{err}");
         std::process::exit(1);
-    }
-}
-
-#[cfg(test)]
-mod public_base_tests {
-    use super::python;
-
-    #[test]
-    fn commit_refuses_to_replace_even_an_empty_existing_destination() {
-        let probe = r#"
-from pathlib import Path
-from tempfile import TemporaryDirectory
-import runpy
-commit = runpy.run_path("src/stable.py")["commit_directory"]
-with TemporaryDirectory() as tmp:
-    src, dst = (Path(tmp) / n for n in ["staged", "installed"])
-    src.mkdir()
-    (src / "checked").write_bytes(b"payload")
-    dst.mkdir()
-    try:
-        commit(src, dst)
-    except OSError:
-        assert src.is_dir() and not list(dst.iterdir())
-    else:
-        raise AssertionError("existing directory replaced")
-    dst.rmdir()
-    commit(src, dst)
-    assert not src.exists() and (dst / "checked").read_bytes() == b"payload"
-"#;
-        assert!(
-            python()
-                .args(["-I", "-c", probe])
-                .status()
-                .unwrap()
-                .success()
-        );
     }
 }
