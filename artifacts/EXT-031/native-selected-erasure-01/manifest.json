@@ -1,0 +1,13 @@
+{
+  "task": "EXT-031",
+  "status": "PASS",
+  "files": {
+    "linux.zip": "dcaa06a76da0dc4d885b12e50faeb4318d4f08e56bf1970630f28f6666bd347a",
+    "macos.zip": "279ac403d0088321b72c4f8cee10e2dceb6f4129b87a96aa82ddc70b1caf22d2",
+    "media-inspection.json": "85766eee41c008d8d9b6057133e2fcb9f74c306336b1c9c7c1fc2e4d8ba6027f",
+    "source-files.json": "9015472259cec83904ccdd5eaafcd0e796a782177151e99334b392cc3bb779a8",
+    "source-reuse.json": "d89f776fa4b3fa857de06b6eba28b51d36235d72202198300fabcd4197123367",
+    "tested-source-files.json": "8b209725705ffbc9daa6adeb2cdf84bd53953259b0ef207d45411b2a86738036",
+    "windows.zip": "faefc64cb4ad0bf8fdc3fbd23ed4708e11e2d15fe8325ebedc8e8c839060ccab"
+  }
+}

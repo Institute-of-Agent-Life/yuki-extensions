@@ -5,6 +5,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import platform
 import subprocess
 import sys
 import time
@@ -18,7 +19,7 @@ def sha(p):
     return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 
 
-def prepare(root, output):
+def prepare(root, output, *, main_contract=None):
     if os.environ.get("YUKI_MEDIA_MAIN_AUDIT") == "1":
         sys.path.insert(0, str(root / "tests/peers"))
         from media_main_audit import exercise
@@ -31,20 +32,29 @@ def prepare(root, output):
     wheels = Path(os.environ["YUKI_MEDIA_CODEC_WHEELS"])
     backend = output / "work" / "codecs"
     python = backend / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
+    machine = platform.machine().lower()
+    arch = {"aarch64": "arm64", "amd64": "x86_64"}.get(machine, machine)
+    system = {"darwin": "macos", "win32": "windows", "linux": "linux"}[sys.platform]
+    target = f"{system}-{arch}"
+    ff = lock["ffmpeg"]["platforms"][target]
+    ffmpeg = backend / Path(ff["member"]).name
     owner = Owner(
         root,
         output,
         "media",
         ["media.process", "media.open", "media.publish", "forget.owner"],
-        contract="core-038",
+        contract=main_contract or "core-038",
         environment={
             "YUKI_MEDIA_PYTHON": str(python),
-            "YUKI_MEDIA_FFMPEG": str(backend / "ffmpeg.exe"),
+            "YUKI_MEDIA_FFMPEG": str(ffmpeg),
             "YUKI_MEDIA_TEMP": str(backend / "temporary"),
         },
         relay="media_stdio.py",
         command_timeout=40,
     )
+    config = owner.data / "yuki.toml"
+    config.write_text(config.read_text(encoding="utf-8").replace('mode = "hybrid"', 'mode = "lexical-only"'),
+                      encoding="utf-8")
     backend.mkdir()
 
     def execute(*args):
@@ -71,14 +81,13 @@ def prepare(root, output):
         "--no-deps",
         *packages,
     )
-    ff = lock["ffmpeg"]["platforms"]["windows-x86_64"]
     wheel = wheels / ff["filename"]
     assert sha(wheel) == ff["sha256"]
     with zipfile.ZipFile(wheel) as z:
         binary = z.read(ff["member"])
-    ffmpeg = backend / "ffmpeg.exe"
     ffmpeg.write_bytes(binary)
     assert sha(ffmpeg) == ff["binary_sha256"]
+    ffmpeg.chmod(0o700)
     temporary = backend / "temporary"
     temporary.mkdir()
     # Independent original decoder fixtures. The core owns only the copied inputs.
@@ -318,13 +327,27 @@ def prepare(root, output):
             "imported": False,
         },
     }
-    (output / "owner-disposition.json").write_text(
-        json.dumps(disposition, indent=2) + "\n"
-    )
+    (output / "owner-disposition.json").write_text(json.dumps(disposition, indent=2) + "\n")
+    if main_contract is not None:
+        sys.path.insert(0, str(root / "tests/peers"))
+        from media_main import exercise
+
+        main = output / "main"
+        main.mkdir()
+        name, witness = exercise(root, main, native_package=output / "packages",
+                                 codec_dir=backend, contract=main_contract, ffmpeg=ffmpeg)
+        (main / name).write_text(json.dumps(witness, indent=2) + "\n", encoding="utf-8")
+        receipt["main_witness"] = "main/" + name
+        receipt["card_status"] = ("NATIVE_DECODE_AND_MAIN_ERASURE_VERIFIED"
+                                  if any(c["case"] == "forget" for c in witness["cases"])
+                                  else "NATIVE_DECODE_AND_MAIN_REPLAY_VERIFIED")
+        receipt["pending"] = witness["unwitnessed"]
     return "media-inspection.json", receipt
 
 
 def run(root, output):
+    if os.environ.get("YUKI_MEDIA_SELECTED_ERASURE") == "1":
+        return prepare(root, output, main_contract="core-038-selected-erasure")
     return "media-inspection.json", {
         "status": "BLOCKED",
         "card_status": "AWAITING_FIXED_MAIN_ERASURE_NATIVE_GATEWAY_AND_PUBLICATION",

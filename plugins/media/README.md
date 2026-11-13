@@ -13,10 +13,9 @@ and a 15-second deadline. It extracts text from at most 12 pages and reports
 truncation and encryption. The runtime files in the package keep the original
 reader separately auditable.
 
-Set YUKI_MEDIA_FFMPEG to the verified executable selected in packaging/codecs.lock.
-The initial runtime witness uses the Windows x86_64 imageio-ffmpeg 0.6.0 wheel.
-The Rust package builds separately on Windows, macOS and Linux. Video execution
-on another target requires a separately verified codec entry. FFmpeg receives
+Set YUKI_MEDIA_FFMPEG to the executable pinned in packaging/codecs.lock for the
+current platform. The imageio-ffmpeg 0.6.0 wheels contain FFmpeg 7.1 for Windows
+x86_64 and macOS arm64, and FFmpeg 7.0.2 for Linux arm64. FFmpeg receives
 only a local selected file, whitelisted containers and local-file protocol.
 It samples up to eight frames at their actual timestamps, within 600 seconds,
 and scales to at most 1024 pixels across. It does not decode audio.

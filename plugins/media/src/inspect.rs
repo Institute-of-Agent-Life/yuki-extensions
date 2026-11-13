@@ -136,7 +136,11 @@ fn video(dir: &Path, cancel: &AtomicBool) -> Result<Vec<(f64, Vec<u8>)>> {
     let exe = configured("YUKI_MEDIA_FFMPEG")?;
     let lock: Value = serde_json::from_str(include_str!("../packaging/codecs.lock"))
         .map_err(|_| "codec_pin_invalid")?;
-    let target = format!("{}-{}", std::env::consts::OS, std::env::consts::ARCH);
+    let arch = match std::env::consts::ARCH {
+        "aarch64" => "arm64",
+        other => other,
+    };
+    let target = format!("{}-{arch}", std::env::consts::OS);
     let expected = lock["ffmpeg"]["platforms"][target]["binary_sha256"]
         .as_str()
         .ok_or("codec_target_unavailable")?;
