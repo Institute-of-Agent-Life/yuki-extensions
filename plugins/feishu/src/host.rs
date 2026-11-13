@@ -31,6 +31,7 @@ pub struct Host {
     pending: Option<(Id, bool)>,
     text: Option<Reading>,
     text_enabled: bool,
+    mentions_enabled: bool,
     attachment: Option<attachment::Read>,
     upload_enabled: bool,
 }
@@ -118,6 +119,8 @@ impl Host {
         let send_enabled = permitted("gateway.send", "gateway.plan_send")
             && permitted("gateway.send", "gateway.dispatch_part");
         let text_enabled = permitted("gateway.send", "gateway.read_text");
+        let mentions_enabled = permitted("gateway.send", "gateway.read_mentions")
+            && permitted("forget.owner", "forget.request");
         let upload_enabled = send_enabled
             && permitted("gateway.send", "gateway.prepare_part")
             && permitted("media.open", "media.open");
@@ -141,6 +144,7 @@ impl Host {
             pending: None,
             text: None,
             text_enabled,
+            mentions_enabled,
             attachment: None,
             upload_enabled,
         })
@@ -171,13 +175,14 @@ impl Host {
         send(
             &self
                 .calls
-                .request(id.clone(), "gateway.read_text", reading.page())?,
+                .request(id.clone(), reading.method(), reading.page())?,
         )?;
         reading.page_id = Some(id);
         Ok(())
     }
     fn begin_text(&mut self, id: Id, params: Value, planning: bool) -> Result<(), Error> {
         if self.text_enabled
+            && (params["arguments"].get("mentions_source").is_none() || self.mentions_enabled)
             && self.pending.is_none()
             && self.text.is_none()
             && self.attachment.is_none()
@@ -320,7 +325,9 @@ impl Host {
                         json!({"error":{"code":-32602,"message":"native upload not negotiated"}}),
                     );
                 }
-                if params["arguments"].get("text_source").is_some() {
+                if params["arguments"].get("text_source").is_some()
+                    || params["arguments"].get("mentions_source").is_some()
+                {
                     return self.begin_text(id, params, true);
                 }
                 response(
@@ -392,7 +399,12 @@ impl Host {
                 Err(TryRecvError::Empty) => return Ok(results),
                 Err(TryRecvError::Disconnected) => return Err("host disconnected".into()),
                 Ok(raw) => match self.calls.receive(&raw?)? {
-                    Incoming::Result { id, method, result } if method == "gateway.read_text" => {
+                    Incoming::Result { id, method, result }
+                        if matches!(
+                            method.as_str(),
+                            "gateway.read_text" | "gateway.read_mentions"
+                        ) =>
+                    {
                         self.text_result(id, result)?;
                     }
                     Incoming::Result { id, method, result } if method == "media.open" => {

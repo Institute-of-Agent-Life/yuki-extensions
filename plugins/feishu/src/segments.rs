@@ -1,5 +1,5 @@
 //! Preserve the original native recipient, quote and v4 text byte limit.
-use crate::{Config, Error, attachment};
+use crate::{Config, Error, attachment, mentions};
 use serde_json::{Value, json};
 use url::Url;
 
@@ -90,10 +90,24 @@ pub fn plan(cfg: &Config, args: &Value) -> Result<Value, Error> {
     if text.is_empty() && parts.is_empty() {
         return Err("missing text or selected attachment".into());
     }
+    let annotations = mentions::read(args, text)?;
     let first_visible = parts.len();
+    let mut remaining = annotations.iter().peekable();
     let boundaries: Vec<_> = text
         .char_indices()
-        .map(|(i, _)| i)
+        .filter_map(|(index, _)| {
+            while remaining.peek().is_some_and(|mention| mention.end <= index) {
+                remaining.next();
+            }
+            if remaining
+                .peek()
+                .is_some_and(|mention| mention.start < index && index < mention.end)
+            {
+                None
+            } else {
+                Some(index)
+            }
+        })
         .chain(std::iter::once(text.len()))
         .collect();
     let mut start = 0;
@@ -102,9 +116,14 @@ pub fn plan(cfg: &Config, args: &Value) -> Result<Value, Error> {
         let mut high = boundaries.len() - 1;
         while low <= high {
             let end = low + (high - low) / 2;
-            if text_body(&text[boundaries[start]..boundaries[end]])
-                .to_string()
-                .len()
+            if text_body(&mentions::render(
+                text,
+                &annotations,
+                boundaries[start],
+                boundaries[end],
+            )?)
+            .to_string()
+            .len()
                 <= TEXT_BYTES
             {
                 low = end + 1;
@@ -123,6 +142,9 @@ pub fn plan(cfg: &Config, args: &Value) -> Result<Value, Error> {
     }
     if let Some(reply) = args.get("reply") {
         parts[first_visible]["reply"] = reply.clone();
+    }
+    if parts.len() > 64 {
+        return Err("original native plan exceeds part limit".into());
     }
     Ok(json!({"parts":parts}))
 }
@@ -147,7 +169,8 @@ pub fn delivery(cfg: &Config, args: &Value) -> Result<(Url, Value), Error> {
             .and_then(Value::as_str)
             .filter(|s| !s.is_empty())
             .ok_or("missing text")?;
-        let body = text_body(text);
+        let annotations = mentions::read(args, text)?;
+        let body = text_body(&mentions::render(text, &annotations, 0, text.len())?);
         if body.to_string().len() > TEXT_BYTES {
             return Err("native text limit exceeded".into());
         }
@@ -279,5 +302,88 @@ mod tests {
         let planned = plan(&config(), &args).unwrap();
         assert_eq!(planned["parts"].as_array().unwrap().len(), 2);
         assert_eq!(planned["parts"][1]["reply"], quote);
+    }
+    #[test]
+    fn original_native_content_and_boundaries_match_fixed_v4() {
+        use sha2::{Digest, Sha256};
+        let oracle: Value =
+            serde_json::from_str(include_str!("../tests/v4-native-content.json")).unwrap();
+        assert_eq!(
+            oracle["baseline"],
+            "329ca7c487414d2f54ddd98ff4727446ed2446cd"
+        );
+        for case in oracle["cases"].as_array().unwrap() {
+            let text = case["unit"]
+                .as_str()
+                .unwrap()
+                .repeat(case["repeat"].as_u64().unwrap() as usize);
+            let marker = case["marker"].as_str().unwrap();
+            let annotations: Vec<_> = text
+                .match_indices(marker)
+                .map(|(start, _)| {
+                    json!({
+                        "start": start,
+                        "end": start + marker.len(),
+                        "account": "original",
+                        "native": case["native"],
+                        "label": "小雪",
+                        "assignment": "stage",
+                        "source": 1
+                    })
+                })
+                .collect();
+            let mut args = args();
+            args["message"]["text"] = json!(text);
+            args["mentions"] = json!(annotations);
+            let planned = plan(&config(), &args).unwrap();
+            let parts = planned["parts"].as_array().unwrap();
+            assert_eq!(
+                parts.len(),
+                case["parts"].as_array().unwrap().len(),
+                "{}",
+                case["name"]
+            );
+            let mut start = 0;
+            for (index, (part, expected)) in parts
+                .iter()
+                .zip(case["parts"].as_array().unwrap())
+                .enumerate()
+            {
+                let text = part["text"].as_str().unwrap();
+                let end = start + text.len();
+                args["mentions"] = json!(
+                    annotations
+                        .iter()
+                        .filter(|m| m["start"].as_u64().unwrap() as usize >= start
+                            && (m["end"].as_u64().unwrap() as usize) <= end)
+                        .map(|m| {
+                            let mut local = m.clone();
+                            local["start"] = json!(m["start"].as_u64().unwrap() as usize - start);
+                            local["end"] = json!(m["end"].as_u64().unwrap() as usize - start);
+                            local
+                        })
+                        .collect::<Vec<_>>()
+                );
+                args["part"] = part.clone();
+                args["part_ordinal"] = json!(index);
+                let (_, body) = delivery(&config(), &args).unwrap();
+                assert_eq!(
+                    text.len(),
+                    expected["text_bytes"].as_u64().unwrap() as usize
+                );
+                assert_eq!(
+                    format!("{:x}", Sha256::digest(text.as_bytes())),
+                    expected["text_sha256"]
+                );
+                assert_eq!(
+                    format!(
+                        "{:x}",
+                        Sha256::digest(body["content"].as_str().unwrap().as_bytes())
+                    ),
+                    expected["content_sha256"]
+                );
+                start = end;
+            }
+        }
     }
 }

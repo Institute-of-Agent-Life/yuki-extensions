@@ -8,4 +8,4 @@
 
 本卡產物分列可重建記憶體狀態、其他權威 owner 與現場待核項目。實際部署目錄的盤點及 CORE-041 實例映射交 EXT-041 重驗。
 
-獨立重現使用 `python ci/feishu_owner_check.py --out artifacts/EXT-006/owner-local/`。正常卡入口 `python ci/check.py EXT-006 --out artifacts/EXT-006/local/` 同步產出兩份 owner-disposition 與總索引，結構化提及和公開合同驗收完成前，卡狀態維持 blocked。三種 SQLite sidecar 任一存在時，要求提供關閉後的一致快照，原檔案保留。
+獨立重現使用 `python ci/feishu_owner_check.py --out artifacts/EXT-006/owner-local/`。正常卡入口 `python ci/check.py EXT-006 --out artifacts/EXT-006/local/` 同步產出兩份 owner-disposition 與總索引，並執行文字、上傳與提及重放。公開合同驗收完成前，卡狀態維持 blocked。三種 SQLite sidecar 任一存在時，要求提供關閉後的一致快照，原檔案保留。

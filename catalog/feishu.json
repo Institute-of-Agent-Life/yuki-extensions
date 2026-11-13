@@ -3,7 +3,7 @@
   "kind": "plugin",
   "path": "plugins/feishu",
   "ecosystem": "rust",
-  "version": "0.1.0-alpha.7",
+  "version": "0.1.0-alpha.8",
   "tag_prefix": "feishu/v",
   "license": "AGPL-3.0-only",
   "notices": [
@@ -17,7 +17,7 @@
     "repository": "Institute-of-Agent-Life/yuki-extensions",
     "baseline": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
     "upstream_path": "src/yuki/gateway/providers/feishu_ws.py",
-    "sdk_contract": "compat/core-038-original-filename/source.lock.json"
+    "sdk_contract": "compat/core-025-native-mentions/source.lock.json"
   },
   "check_paths": [
     "tests/cases/EXT-005.py",
@@ -37,6 +37,11 @@
     "compat/core-038-bounded-text/yuki-plugin-sdk-1.0.0-alpha.20.crate",
     "compat/core-038-original-filename/source.lock.json",
     "compat/core-038-original-filename/yuki-plugin-sdk-1.0.0-alpha.20.crate",
-    "tests/peers/feishu_upload.py"
+    "tests/peers/feishu_upload.py",
+    "compat/core-025-native-mentions/source.lock.json",
+    "compat/core-025-native-mentions/yuki-plugin-sdk-1.0.0-alpha.21.crate",
+    "tests/peers/feishu_mentions.py",
+    "ci/feishu_owner_check.py",
+    "ci/feishu_owner.py"
   ]
 }

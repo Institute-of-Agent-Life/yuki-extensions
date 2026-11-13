@@ -881,12 +881,13 @@ dependencies = [
 
 [[package]]
 name = "yuki-feishu"
-version = "0.1.0-alpha.7"
+version = "0.1.0-alpha.8"
 dependencies = [
  "data-encoding",
  "native-tls",
  "percent-encoding",
  "prost",
+ "serde",
  "serde_json",
  "sha2",
  "tungstenite",
@@ -896,9 +897,9 @@ dependencies = [
 
 [[package]]
 name = "yuki-plugin-sdk"
-version = "1.0.0-alpha.20"
+version = "1.0.0-alpha.21"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ead6399dc90f70419bdfdf8a96e2694118501e62ab4aee5121fb5405cc100b50"
+checksum = "c123bafcf3125ae1a465820b65c804317825c4429cedbe4bc922b03bf04c7dd5"
 dependencies = [
  "serde",
  "serde_json",

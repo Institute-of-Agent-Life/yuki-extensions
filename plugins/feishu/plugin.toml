@@ -1,5 +1,5 @@
 id = "feishu"
-version = "0.1.0-alpha.7"
+version = "0.1.0-alpha.8"
 program = "yuki-feishu"
 platform = "feishu"
 grants = ["gateway.inbound", "gateway.media", "gateway.send", "gateway.recall", "media.open", "forget.owner"]

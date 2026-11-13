@@ -98,6 +98,7 @@ if __name__ == "__main__":
             "core-038-topic",
             "core-038-bounded-text",
             "core-038-original-filename",
+            "core-025-native-mentions",
         ],
         default="core-038-topic",
     )

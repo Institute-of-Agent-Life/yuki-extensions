@@ -23,7 +23,7 @@ def prepare(root,output):
     pin=json.loads((root/package['source']['sdk_contract']).read_bytes())
     paths=[root/'catalog/feishu.json',root/package['source']['sdk_contract'],root/'ci/package.py',
         root/'ci/handshake_cargo.py',root/'ci/check.py',root/'tests/cases/EXT-006.py',root/'tests/cases/EXT-005.py',
-        *(root/'tests/peers'/n for n in ['feishu_media_wire.py','feishu_upload.py','lark_frames.py','lark-fixture.lock.json']),
+        *(root/'tests/peers'/n for n in ['feishu_media_wire.py','feishu_upload.py','feishu_mentions.py','lark_frames.py','lark-fixture.lock.json']),
         *(root/'plugins/feishu').glob('*'),*(root/'plugins/feishu/src').glob('*.rs')]
     return 'lark-rest.json',{'status':'PASS','card_status':'PLATFORM_RESOURCE_VERIFIED_HOST_AND_SOCIAL_PENDING',
         'actual_host_consumption':False,'models':0,'domains':rows,'erasure_only':cleanup,'binary_sha256':package['artifacts'][name],
@@ -31,13 +31,24 @@ def prepare(root,output):
         'source_bindings':{p.relative_to(root).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in paths if p.is_file() and not p.name.startswith('._')}}
 
 
-def run(root,output):
+def run(root, output):
     from feishu_owner_check import run as inspect_owners
+    from feishu_delivery_check import run as deliver, SCENARIOS, UPLOAD_SCENARIOS, MENTION_SCENARIOS
+
     owners = inspect_owners(root, output / 'owners')
+    delivery = deliver(root, output / 'delivery', scenarios=SCENARIOS)
+    package = output / 'delivery/packages'
+    uploads = deliver(root, output / 'uploads', package, UPLOAD_SCENARIOS)
+    mentions = deliver(root, output / 'mentions', package, MENTION_SCENARIOS)
+    assert all(result['status'] == 'PASS' for result in [owners, delivery, uploads, mentions])
     return 'lark-rest-receipts.json', {
         'status': 'BLOCKED',
-        'card_status': 'OWNER_VERIFIED_STRUCTURED_MENTIONS_PENDING',
+        'card_status': 'NATIVE_IMPLEMENTATION_VERIFIED_PUBLIC_CONTRACT_PENDING',
         'owner_disposition': 'owners/owner-disposition-index.json',
         'owner_status': owners['card_status'],
-        'pending': ['original-account structured mentions', 'expanded public contract acceptance'],
+        'native_receipts': ['delivery/original-delivery.json', 'uploads/original-delivery.json',
+                            'mentions/original-delivery.json'],
+        'native_cases': len(delivery['cases']) + len(uploads['cases']) + len(mentions['cases']),
+        'paid_calls': 0,
+        'pending': ['expanded public contract acceptance'],
     }
