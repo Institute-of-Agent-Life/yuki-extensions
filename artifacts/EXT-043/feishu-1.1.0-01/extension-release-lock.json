@@ -1,0 +1,47 @@
+{
+  "status": "PASS",
+  "published": false,
+  "release_tag": "plugin/feishu/v0.1.0",
+  "host_source": "09bdd7382de41343767960c0aa0e279db2b618dc",
+  "schema_sha256": "34281af056b704eb211e3a07c834aa4aeb0666cde66d6218a4525b9f9dbaad90",
+  "sdk": {
+    "python": "1.1.0",
+    "rust": "1.1.0"
+  },
+  "platforms": {
+    "macos": {
+      "status": "PASS",
+      "archive": "macos.zip",
+      "sha256": "6857dc56c4ea294005ac4a776f895e510b9bda5ad682b12ac927b8ea0f87cfa0",
+      "manifest_sha256": "145e6eb543c1e282c1c937d6613c4a9316b213918fb3be9902abbde030d69884",
+      "binary_sha256": "c5af4b15f1073542b7d968918f3e9b0cf7ebd21269bd322acf66a4296fc659b9",
+      "distribution": "yuki-feishu-0.1.0-macos.zip",
+      "distribution_sha256": "c275a019d646c8e81d3e1c1ea12257548d1d251d53448d3046cba4aac63c50f1",
+      "cases": 6
+    },
+    "linux": {
+      "status": "PASS",
+      "archive": "linux.zip",
+      "sha256": "c3f37180273282b24cb627f29ae5010d05e23c35ee0a9e0ac08d014509bf8c64",
+      "manifest_sha256": "68f217887825e86266f6b41eb350d45ad2f7d90a1c01b82725f6b0e28288b19a",
+      "binary_sha256": "1b35816ced0a1ce66e0b41513b60b00e944de36a8060b1ac6af3f964bb631039",
+      "distribution": "yuki-feishu-0.1.0-linux.zip",
+      "distribution_sha256": "2f39ee1cd95e5c75f71023932953be5aace039bd0e360cab7c445d9323c81cb4",
+      "cases": 6
+    },
+    "windows": {
+      "status": "PASS",
+      "archive": "windows.zip",
+      "sha256": "675e2f90a9f155d2d5f74668fd986ea14e845a2b90306081fc9ea410905f3a50",
+      "manifest_sha256": "35d5ec8ee83e01879756b7138c32228471643a6d7fbe2080a9f92f3fbee679b8",
+      "binary_sha256": "4b60492668bac65cf15e67d12c778fcfc5dc1016ab94ac512c014cb6fddb2b79",
+      "distribution": "yuki-feishu-0.1.0-windows.zip",
+      "distribution_sha256": "97434ca71a779016ebbe3096fbc5979fccfa66e02e053b81cfd58affb7aa57af",
+      "cases": 6
+    }
+  },
+  "source_base": "537e974e9912db7b60772a7723dac8019382390e",
+  "source_inventory_sha256": "42655cd104eda7e9533870e37c66e5e01d772b701fbb83c7507296c418cdff40",
+  "formal_card_status": "FEISHU_QUALIFIED_ON_PUBLISHED_HOST",
+  "paid_calls": 0
+}
