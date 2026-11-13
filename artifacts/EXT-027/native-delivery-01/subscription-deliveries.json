@@ -1,0 +1,60 @@
+{
+  "status": "PASS",
+  "formal_card_status": "BLOCKED",
+  "published": false,
+  "source_base": "b7188ac1d35b9de22df2e97e9ac44ca3ec71f61c",
+  "source_inventory_sha256": "dcd60887a926955a11fe719fa3781eacb8cecf32fb43269f59bde22df45b7285",
+  "source_inventory_files": 314,
+  "producer_source_commit": "cb02f74ea48b85c6b6932423b93e6332b97f2871",
+  "consumer_rust_sdk": "1.0.0-alpha.10",
+  "notification_schema_sha256": "ab4f3a9684597f3b57b77eb638daf8538c54bacc484e3609f3ad36bfed817fb8",
+  "platforms": {
+    "macos": {
+      "status": "PASS",
+      "archive": "macos.zip",
+      "sha256": "d1daaed5bc2933c61855734bca8593451cb6e8ddc49f0bb4182f0a1aa41d2c48",
+      "manifest_sha256": "db33e1203bc4baf89f0cc94c218d9f4413a0df5b23f5bfca3f29e3a3c0370849",
+      "report_sha256": "6f5f12890b0b730c6462e388b7de4b29a35ab358bf53f404fa0e77a629548b46",
+      "binary_sha256": "5228fdc625064c0aad5de0fd6e854decd40aebf1faf3fcbc493940810f684ca5",
+      "source_publications": 6,
+      "native_delivery": [
+        "unknown",
+        "confirmed"
+      ],
+      "paid_calls": 0
+    },
+    "linux": {
+      "status": "PASS",
+      "archive": "linux.zip",
+      "sha256": "ce23a150cdca6eba4c4dccbc9ed623064a714a9ca4bae3291ec850e638a71e2e",
+      "manifest_sha256": "fe4381d78b28566fb832dd4236a382b00e75cd067cf0f51f8eaeef43a351f923",
+      "report_sha256": "bdcea2e91d600a8f3603eac603394d6d0af55abb80367eb5365f43b92149e567",
+      "binary_sha256": "f6b99c142213c2fc1c742b487138fbeff3d2fe9126c38829d89c8ba6f3bb5d87",
+      "source_publications": 6,
+      "native_delivery": [
+        "unknown",
+        "confirmed"
+      ],
+      "paid_calls": 0
+    },
+    "windows": {
+      "status": "PASS",
+      "archive": "windows.zip",
+      "sha256": "56c0ca146c3b4303fc768c6cad3e612430fd0fc047e78e5bbe5ad2e04a49ece5",
+      "manifest_sha256": "34261ee452dfd67623138dcdf323331871f4debca4e4df5e62011954fe84cfb6",
+      "report_sha256": "fd78d0bdd4e0e48ec207eb1f425a07bff55f2e1dfa80f4b655eb59885d5c23aa",
+      "binary_sha256": "8ff1a6154d2e2ab1a32ceb365519e3838bf25b7ea4f205342f0e20a8d4e2c743",
+      "source_publications": 6,
+      "native_delivery": [
+        "unknown",
+        "confirmed"
+      ],
+      "paid_calls": 0
+    }
+  },
+  "remaining": [
+    "original R06 source recordings",
+    "RSS/Atom source support and paged Miniflux",
+    "formal published producer and consumer tuple"
+  ]
+}
