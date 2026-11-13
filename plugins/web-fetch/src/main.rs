@@ -59,7 +59,7 @@ struct PageCall {
     id: Id,
     handle: String,
     request: PageRequest,
-    result: Option<Value>,
+    result: Option<PageResult>,
 }
 
 enum PageRequest {
@@ -67,20 +67,27 @@ enum PageRequest {
     Legacy(legacy::Request),
 }
 
+struct PageResult {
+    body: Value,
+    fresh_text: Option<String>,
+}
+
 impl PageRequest {
-    fn read(&self) -> Value {
-        match self {
-            Self::Legacy(request) => request.read(),
+    fn read(&self, cache: &mut legacy::Cache) -> PageResult {
+        let (body, fresh_text) = match self {
+            Self::Legacy(request) => request.read(cache),
             Self::Fetch(url) => {
                 let data = fetch::read(url);
                 let state = data["state"].as_str().unwrap_or("invalid_result");
-                if matches!(state, "read" | "partial" | "not_modified") {
+                let result = if matches!(state, "read" | "partial" | "not_modified") {
                     json!({"ok":true,"data":data})
                 } else {
                     json!({"ok":false,"error":state,"data":data})
-                }
+                };
+                (result, None)
             }
-        }
+        };
+        PageResult { body, fresh_text }
     }
 }
 
@@ -97,6 +104,7 @@ fn main() -> Result<(), Error> {
     let fetch_enabled = names.contains(&"web_fetch");
     let mut calls = handshake(&mut input, &mut out, binding)?;
     let mut pending = std::collections::HashMap::<Id, PageCall>::new();
+    let mut cache = legacy::Cache::default();
     let mut sequence = 0_i64;
     while let Some(raw) = read_frame(&mut input)? {
         match calls.receive(&raw)? {
@@ -156,14 +164,20 @@ fn main() -> Result<(), Error> {
                 let active =
                     result.is_ok_and(|s| s["state"] == "dispatched" && s["handle"] == page.handle);
                 if !active {
+                    cache = legacy::Cache::default();
                     send(
                         &mut out,
                         &json!({"jsonrpc":"2.0","id":page.id,"result":{"ok":false,"error":"scope_unavailable"}}),
                     )?;
                 } else if let Some(result) = page.result {
-                    send_result(&mut out, page.id, result)?;
+                    if let (PageRequest::Legacy(request), Some(text)) =
+                        (page.request, result.fresh_text)
+                    {
+                        request.remember(&mut cache, &result.body, text);
+                    }
+                    send_result(&mut out, page.id, result.body)?;
                 } else {
-                    page.result = Some(page.request.read());
+                    page.result = Some(page.request.read(&mut cache));
                     sequence = sequence.checked_add(1).ok_or("id overflow")?;
                     let check = Id::Number(sequence);
                     send(
