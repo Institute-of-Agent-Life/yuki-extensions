@@ -6,13 +6,16 @@ import importlib.util
 import json
 import os
 from pathlib import Path
+import platform
 import shutil
+import subprocess
 import sys
 import threading
 import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import parse_qs, unquote, urlsplit
 from uuid import uuid4
+from zipfile import ZipFile
 
 
 def save(path, value):
@@ -40,11 +43,67 @@ def wait(check, seconds=20):
     raise TimeoutError('timed out waiting for ' + check.__name__)
 
 
+def qualified_inputs(args, out):
+    sys.path.insert(0, str(args.root / 'ci'))
+    spec = importlib.util.spec_from_file_location('feishu_release_case', args.root / 'tests/cases/EXT-006.py')
+    release = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(release)
+    system = {'Darwin': 'macos', 'Linux': 'linux', 'Windows': 'windows'}[platform.system()]
+    release_info = release.qualified_package(args.root, system, out / 'gateway-package')
+    suffix = '.exe' if os.name == 'nt' else ''
+    binary = out / 'gateway-package' / ('yuki-feishu' + suffix)
+    bundle = args.root / 'artifacts/EXT-031/native-selected-erasure-01'
+    record = json.loads((bundle / 'media-inspection.json').read_bytes())['platforms'][system]
+    archive = bundle / record['archive']
+    assert sha(archive.read_bytes()) == record['sha256']
+    codec_dir = out / 'codecs'
+    subprocess.run(['uv', 'venv', '--offline', '--python', sys.executable, str(codec_dir)],
+                   check=True, capture_output=True, timeout=60)
+    python = codec_dir / ('Scripts/python.exe' if os.name == 'nt' else 'bin/python')
+    codec_lock = json.loads((args.root / 'plugins/media/packaging/codecs.lock').read_bytes())
+    wheels = Path(os.environ['YUKI_MEDIA_CODEC_WHEELS'])
+    packages = []
+    for entry in codec_lock['document_backend']['packages'].values():
+        path = wheels / entry['filename']
+        assert sha(path.read_bytes()) == entry['sha256']
+        packages.append(str(path))
+    subprocess.run(['uv', 'pip', 'install', '--python', str(python), '--offline', '--no-index',
+                    '--no-deps', *packages], check=True, capture_output=True, timeout=60)
+    subprocess.run([python, args.root / 'tests/peers/media_fixtures.py', codec_dir],
+                   check=True, capture_output=True, timeout=60)
+
+    def package(_root, unit, dest):
+        assert unit == 'media'
+        dest.mkdir()
+        with ZipFile(archive) as src:
+            manifest = src.read('packages/package-manifest.json')
+            result = json.loads(manifest)
+            assert result['artifacts']['yuki-media' + suffix] == record['plugin_sha256']
+            for name, expected in result['artifacts'].items():
+                path = dest / name
+                assert path.resolve().is_relative_to(dest)
+                raw = src.read('packages/' + name)
+                assert sha(raw) == expected
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_bytes(raw)
+                if name == 'yuki-media':
+                    path.chmod(0o700)
+            (dest / 'package-manifest.json').write_bytes(manifest)
+        return result
+
+    return binary, codec_dir / 'good.pdf', {'YUKI_MEDIA_PYTHON': str(python)}, package, {
+        'gateway_release': release_info, 'processor_archive_sha256': record['sha256'],
+    }
+
+
 def run(args):
     sys.path.insert(0, str(args.root / 'ci'))
     from personal_preview import Owner
     case = args.domain
     tg = case == 'telegram'
+    qualified = args.qualified
+    if qualified and tg:
+        raise ValueError('the qualified input is the Feishu/Lark package')
     app = '101' if tg else 'cli_' + case
     tenant = 'tenant-' + case
     namespace = 'tg.bot101' if tg else 'fs.' + case
@@ -56,16 +115,38 @@ def run(args):
     out = args.out
     out.mkdir()
     wire = out / 'gateway.jsonl'
-    bundle = args.media / 'src/artifacts/EXT-031/candidate-03'
-    codecs = bundle / 'work/codecs'
-    pdf = (codecs / 'good.pdf').read_bytes()
+    evidence = {}
+    contract = 'core-038-main'
+    if qualified:
+        binary, pdf, environment, package_builder, evidence = qualified_inputs(args, out)
+        expected = sha(binary.read_bytes())
+        contract = 'core-038-selected-erasure'
+    else:
+        if args.media is None or args.gateway is None:
+            raise ValueError('legacy replay requires the media and gateway paths')
+        bundle = args.media / 'src/artifacts/EXT-031/candidate-03'
+        codecs = bundle / 'work/codecs'
+        pdf = codecs / 'good.pdf'
+        binary = args.gateway
+        expected = ('a07413f4b0b351eea85bb97b52f2e16d7fd59978f45414f948c4e9fd821b79e5' if tg
+                    else '4fc4e77480ba96709cb1172ebe8fd7a3e6f58d0f2469142cea2adc29d1ad57d0')
+        environment = {'YUKI_MEDIA_PYTHON': str(codecs / 'Scripts/python.exe'),
+                       'YUKI_MEDIA_FFMPEG': str(codecs / 'ffmpeg.exe')}
+
+        def package_builder(_root, unit, dest):
+            assert unit == 'media'
+            m = json.loads((bundle / 'packages/package-manifest.json').read_bytes())
+            assert m['artifacts']['yuki-media.exe'] == '2d0e7e9b910789bf34b8d263475c71a720a2ee650628fc88a3292a64e26d454c'
+            for member, digest in m['artifacts'].items():
+                assert sha((bundle / 'packages' / member).read_bytes()) == digest
+            shutil.copytree(bundle / 'packages', dest)
+            return m
+
+    pdf = pdf.read_bytes()
     before, marker, trailer = pdf.rpartition(b'startxref')
     assert marker and b'%%EOF' in trailer
     payload = before + b'\n%' + case.encode() * 15000 + b'\n' + marker + trailer
     assert len(payload) > 2 * 24576
-    binary = args.gateway
-    expected = ('a07413f4b0b351eea85bb97b52f2e16d7fd59978f45414f948c4e9fd821b79e5' if tg
-                else '4fc4e77480ba96709cb1172ebe8fd7a3e6f58d0f2469142cea2adc29d1ad57d0')
     assert sha(binary.read_bytes()) == expected
     trace, model, errors = [], [], []
     stop = threading.Event()
@@ -178,22 +259,12 @@ def run(args):
     server = ThreadingHTTPServer(('127.0.0.1',0),Endpoint)
     threading.Thread(target=server.serve_forever,daemon=True).start()
     api=f'http://127.0.0.1:{server.server_port}'
-    def package(_root, unit, dest):
-        assert unit=='media'
-        m=json.loads((bundle/'packages/package-manifest.json').read_bytes())
-        assert m['artifacts']['yuki-media.exe']==sha((bundle/'packages/yuki-media.exe').read_bytes())=='2d0e7e9b910789bf34b8d263475c71a720a2ee650628fc88a3292a64e26d454c'
-        for member, expected_digest in m['artifacts'].items():
-            assert sha((bundle/'packages'/member).read_bytes()) == expected_digest
-        shutil.copytree(bundle/'packages', dest)
-        return m
-
     try:
         temp=out/'private-temp'
         temp.mkdir()
         owner=Owner(args.root,out,'media',['media.process','media.open','media.publish','forget.owner'],
-                    contract='core-038-main',package_builder=package,
-                    environment={'YUKI_MEDIA_PYTHON':str(codecs/'Scripts/python.exe'),
-                                 'YUKI_MEDIA_FFMPEG':str(codecs/'ffmpeg.exe'),'YUKI_MEDIA_TEMP':str(temp)})
+                    contract=contract,package_builder=package_builder,
+                    environment={**environment, 'YUKI_MEDIA_TEMP':str(temp)}, command_timeout=40)
         cfg=owner.data/'yuki.toml'
         core=cfg.read_text(encoding='utf8').replace('mode = "hybrid"', 'mode = "lexical-only"')
         core=core.replace('[[plugins]]','[main]\nendpoint='+json.dumps(api+'/model')+
@@ -207,6 +278,8 @@ def run(args):
         env=({'YUKI_TELEGRAM_BOT_ID':app,'YUKI_TELEGRAM_TOKEN':'101:fixture','YUKI_TELEGRAM_STATE':str(out/'cursor'),'YUKI_TELEGRAM_API':api}
              if tg else {'YUKI_FEISHU_APP_ID':app,'YUKI_FEISHU_APP_SECRET':'fixture-'+app,'YUKI_FEISHU_TENANT':tenant,
                          'YUKI_FEISHU_DOMAIN':case,'YUKI_FEISHU_API':api,'YUKI_FEISHU_PROXY':''})
+        if not tg and os.environ.get('YUKI_FEISHU_CURL'):
+            env['YUKI_FEISHU_CURL'] = os.environ['YUKI_FEISHU_CURL']
         owner.env.update(env)
         fields={'id':'gateway-'+case,'namespace':namespace,'platform':case,'bot_stage':stage,'program':sys.executable,
                 'args':[str(args.root/'tests/peers/observe_stdio.py'),str(binary),str(wire)],
@@ -231,7 +304,7 @@ def run(args):
                  'host':owner.platform,'sdk':owner.pin['rust_crate_sha256'],'gateway_binary':expected,
                  'stage':stage,'source_event':received(),'requested_slot':1,'actual_slots':[0],
                  'installation':ident,'gateway_callbacks':0,'native_gets':0,'model_http':len(model),
-                 'original_receipt':receipt,'native':trace,'published':False})
+                 'original_receipt':receipt,'native':trace,'published':False,**evidence})
             return
         original=b''
         assert calls
@@ -240,8 +313,11 @@ def run(args):
             assert param['offset']==len(original) and param['source_event']==received() and param['attachment_index']==0
             assert param['bot_stage']==stage and param['namespace']==namespace and param['media_identity']==ident
             assert param['platform']==case and param['reference']==reference
-            reply=next(r['frame']['result'] for r in records if r['direction']=='from_plugin' and
-                       r['frame'].get('id')==call['id'] and 'result' in r['frame'])
+            response = next((r['frame'] for r in records if r['direction'] == 'from_plugin'
+                             and r['frame'].get('id') == call['id']), {})
+            assert 'result' in response, {'callback': call['id'], 'error': response.get('error'),
+                                          'receipt': receipt, 'native': trace}
+            reply = response['result']
             assert reply['sha256']==sha(payload) and reply['size']==len(payload) and reply['offset']==param['offset']
             original+=base64.b64decode(reply['data'],validate=True)
         assert original==payload and sum(r['method']=='resource' for r in trace)==1
@@ -252,7 +328,7 @@ def run(args):
              'host_source':owner.pin['source_commit'],'host':owner.platform,'sdk':owner.pin['rust_crate_sha256'],
              'gateway_binary':expected,'processor_binary':owner.binary_sha,'offsets':[c['params']['offset'] for c in calls],
              'selected_bytes':len(original),'selected_sha256':sha(original),'operation':receipt['id'],'model_http':len(model),
-             'native':trace,'published':False})
+             'native':trace,'published':False,**evidence})
     finally:
         stop.set()
         server.shutdown()
@@ -265,6 +341,8 @@ if __name__=='__main__':
     parser=argparse.ArgumentParser()
     parser.add_argument('domain',choices=('telegram','feishu','lark'))
     parser.add_argument('--wrong-slot',action='store_true')
+    parser.add_argument('--qualified',action='store_true')
     for name in ('root','media','gateway','out'):
-        parser.add_argument(name,type=lambda p:Path(p).resolve())
+        parser.add_argument(name,type=lambda p:Path(p).resolve(),
+                            **({'nargs': '?'} if name in ('media', 'gateway') else {}))
     run(parser.parse_args())
