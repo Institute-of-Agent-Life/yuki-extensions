@@ -42,7 +42,9 @@
 
 **EXT-006 原話題定位三端通過。** 分支 `codex/ext-006-original-delivery`，#60 的飛書 alpha.5 鎖定核心 #113 三端候選 `e6e4972a76911` 與 Rust SDK alpha.18。Mac、Linux、HJW 各完成三種話題情境、同安裝 alpha.4 → alpha.5 → alpha.4 回讀及原 app／tenant 媒體回歸。原 `thread_id` 保持事件去重鍵，原 `topic_root` 由首次接納獨立保存，舊事件重投沒有補填。601 個快照檔案與三端原包經核對，EXT-001／002／019 基線的 47 個輸入保持相同，完整證據在 `artifacts/EXT-006/original-topic-18/`。所有平台端點使用回環，付費呼叫為零。正式任務總數維持 12／68，原生投遞、上傳分步與 owner-disposition 繼續實作。
 
-**EXT-027 訂閱通知開發候選。** 分支 `codex/ext-027-native-notifications`，Rust subscription-monitor 0.1.0-alpha.1 使用 CORE-058 原 Host `cb02f74ea48b` 與 SDK 1.0.0-alpha.10。Mac、Linux、HJW Windows 各以本機 HTTP 驗 Miniflux、Bilibili 動態和直播轉態，包含原管理員授權、四份獨立發布、回應丟失後重讀、撤權及私聊來源清除。每端編譯目錄已清理。三端原包與回條見 [subscription-deliveries.json](../artifacts/EXT-027/native-notification-01/subscription-deliveries.json)，SHA-256 `d809440f53ac95cca5c4c367b2c88dde3a7cace62b731e20f7b3954225aeb4ba`。整卡仍待 R06 原錄製輸入、原 RSS／Atom 行為、直接送達及未知實收，並需正式安裝組合。
+**EXT-027 直接送達與未知實收。** 分支 `codex/ext-027-original-delivery`。Mac、Linux、HJW Windows 各驗六筆原發布。OneBot 測試端確認第一段後斷線，核心保留第二段 unknown。冷啟只送下一個新訂閱項目，原 unknown 保持原狀。三端回條 [subscription-deliveries.json](../artifacts/EXT-027/native-delivery-01/subscription-deliveries.json)，SHA-256 `ed719efe2fb71928d73afa2e89b2711cf5d29298dcfa0626bc5eb6ccd653c24c`。整卡仍待 R06 原錄製輸入、RSS／Atom 及 Miniflux 分頁和正式安裝組合。
+
+**EXT-027 訂閱通知開發候選。** [#77](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/77) 合入 `b7188ac1d35b`。Rust subscription-monitor 0.1.0-alpha.1 使用 CORE-058 原 Host `cb02f74ea48b` 與 SDK 1.0.0-alpha.10。Mac、Linux、HJW Windows 各以本機 HTTP 驗 Miniflux、Bilibili 動態和直播轉態，包含原管理員授權、四份獨立發布、回應丟失後重讀、撤權及私聊來源清除。三端原包與回條見 [subscription-deliveries.json](../artifacts/EXT-027/native-notification-01/subscription-deliveries.json)，SHA-256 `d809440f53ac95cca5c4c367b2c88dde3a7cace62b731e20f7b3954225aeb4ba`。
 
 # 擴展實作進度
 

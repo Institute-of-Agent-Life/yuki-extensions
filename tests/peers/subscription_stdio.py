@@ -11,11 +11,12 @@ def record(direction,raw,forwarded=True):
 
 def input_loop():
  try:
-  for line in sys.stdin.buffer:
-   frame=json.loads(line)
-   if frame.get('id') in publishes and 'result' in frame and (control/'lose-next').exists():
-    record('from_host',line,False);(control/'lose-next').unlink();(control/'lost.json').write_text(json.dumps(frame),encoding='utf-8');child.kill();return
-   record('from_host',line);child.stdin.write(line);child.stdin.flush()
+  with open(sys.stdin.fileno(),'rb',closefd=False) as source:
+   for line in source:
+    frame=json.loads(line)
+    if frame.get('id') in publishes and 'result' in frame and (control/'lose-next').exists():
+     record('from_host',line,False);(control/'lose-next').unlink();(control/'lost.json').write_text(json.dumps(frame),encoding='utf-8');child.kill();return
+    record('from_host',line);child.stdin.write(line);child.stdin.flush()
  finally:
   try:child.stdin.close()
   except OSError:pass
@@ -26,5 +27,7 @@ try:
   if frame.get('method')=='notification.publish':publishes.add(frame['id'])
   sys.stdout.buffer.write(line);sys.stdout.buffer.flush()
 finally:
- if child.poll() is None:child.kill()
- child.wait()
+ try:child.wait(timeout=2)
+ except subprocess.TimeoutExpired:
+  child.kill()
+  child.wait()
