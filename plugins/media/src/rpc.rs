@@ -87,7 +87,8 @@ impl Rpc {
             self.pending.lock().unwrap().remove(&id);
             return Err("host disconnected".into());
         }
-        let deadline = std::time::Instant::now() + Duration::from_secs(10);
+        let wait = if method == "llm.complete" { 35 } else { 10 };
+        let deadline = std::time::Instant::now() + Duration::from_secs(wait);
         loop {
             match rx.recv_timeout(Duration::from_millis(25)) {
                 Ok(v) => return v,

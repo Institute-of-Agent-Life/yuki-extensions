@@ -1,0 +1,55 @@
+{
+  "status": "PASS",
+  "published": false,
+  "source_base": "4182da9a3deb3ba5ce1ce8666ec509ff4337b84a",
+  "source_inventory_sha256": "b6749df8d968c79323f72e3260ee39082b6fb13a6f69db27c78984948152c57f",
+  "formal_card_status": "NATIVE_ASR_PROCESSOR_CANDIDATE",
+  "paid_calls": 0,
+  "platforms": {
+    "macos": {
+      "status": "PASS",
+      "archive": "macos.zip",
+      "sha256": "2e2f65a5b20bbe04da3ea29bfe80dc9dd7cac4b39308ab8bb9deed4bbb71b6f5",
+      "manifest_sha256": "b9ff0bcafcc6d09b3728410dc1274991ac3c876d2bae399e6a2c635ced4a0153",
+      "binary_sha256": "fd8384d34ccb0ebc8e991ad968be2b4a743d3b42abe9b1188b5f66b50e9f05f6",
+      "selected_media_cases": 6,
+      "sdk": {
+        "rust": "1.0.0-alpha.21",
+        "sha256": "df5886b89274f8ec81f98d1a0639e7c1bb0f2e32b6cc9073b594ac6fe72af012"
+      },
+      "host_sha256": "ebeffef606972a883f3bf0745d12d91282f7d74d6c29e443b5b8fa624efacba8"
+    },
+    "linux": {
+      "status": "PASS",
+      "archive": "linux.zip",
+      "sha256": "48e4d7103f995895de82a25b4790a4ef36c02fde53bafa5e6d97edc44d2996cf",
+      "manifest_sha256": "eb3f899e4bf84ff14674ede9e6327cc314f8c09cfe2eb8f9aa13de4cae0bb0af",
+      "binary_sha256": "07a2d6e86b764f421b7bd944f9603866ea28f3d26c91731cca5266c4cfc64fde",
+      "selected_media_cases": 6,
+      "sdk": {
+        "rust": "1.0.0-alpha.21",
+        "sha256": "df5886b89274f8ec81f98d1a0639e7c1bb0f2e32b6cc9073b594ac6fe72af012"
+      },
+      "host_sha256": "8139473dd9a9afee4d31318af56d1d862d1ae8f50646bb33518ff5b1d39fe547"
+    },
+    "windows": {
+      "status": "PASS",
+      "archive": "windows.zip",
+      "sha256": "ed7327a00171dc51f5337d38e38dbadefbb456a57ada67cd0459f9e06ac00cba",
+      "manifest_sha256": "0d70a1b0f28f1e3220c041d2c4fdc45850415a8a199a1e79f659afc0d888d6cc",
+      "binary_sha256": "d376b12a4e3690bf840a3866e8e3ee06dcb0e3fc034644626287358ae00d555e",
+      "selected_media_cases": 6,
+      "sdk": {
+        "rust": "1.0.0-alpha.21",
+        "sha256": "df5886b89274f8ec81f98d1a0639e7c1bb0f2e32b6cc9073b594ac6fe72af012"
+      },
+      "host_sha256": "e75b21ceb9a4bf6700326bd37194aa33938494a96992f0f4bba5db2decb0d9d8"
+    }
+  },
+  "fixture": "Original pinned Host, immutable Rust media, pinned FFmpeg and loopback model",
+  "pending": [
+    "Main first turn and history with the actual media binary",
+    "dual original QQ receiving sessions and distinct Host-call accounting",
+    "published Host and plugin installation"
+  ]
+}
