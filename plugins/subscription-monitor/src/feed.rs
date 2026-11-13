@@ -17,6 +17,40 @@ pub fn text<'a>(v: &'a Value, key: &str) -> Result<&'a str> {
         .filter(|s| !s.is_empty())
         .ok_or_else(|| format!("missing {key}"))
 }
+
+fn pending_target_is_current(config: &Value, request: &Value) -> bool {
+    let original = &request["target"];
+    config["targets"].as_array().is_some_and(|targets| {
+        targets.iter().any(|target| {
+            ["target_type", "target_id", "conversation_id"]
+                .iter()
+                .all(|key| {
+                    original[key]
+                        .as_str()
+                        .is_some_and(|value| target[key] == value)
+                })
+        })
+    })
+}
+
+pub fn next_pending(config: &Value, state: &mut Value) -> Result<Option<Value>> {
+    let original = state["publishing"].as_str().map(str::to_owned);
+    let pending = state["pending"].as_array_mut().ok_or("invalid outbox")?;
+    if let Some(original) = original {
+        let first = pending
+            .first()
+            .ok_or("original publication request is missing")?;
+        if first["event_key"] != original {
+            return Err("original publication request changed".into());
+        }
+        if !pending_target_is_current(config, first) {
+            return Err("original publication target changed before reconciliation".into());
+        }
+    } else {
+        pending.retain(|request| pending_target_is_current(config, request));
+    }
+    Ok(pending.first().cloned())
+}
 fn id(v: &Value) -> Result<String> {
     if let Some(s) = v.as_str().filter(|s| !s.is_empty()) {
         Ok(s.to_owned())
@@ -310,6 +344,28 @@ mod tests {
         c["id"] = "b".into();
         let b = admit(&c, &Value::Null, feed(&[1]), "2026-01-01T00:00:00Z").unwrap();
         assert_ne!(a["pending"][0]["event_key"], b["pending"][0]["event_key"]);
+    }
+
+    #[test]
+    fn removed_target_discards_unsent_requests_but_fences_original_unknown() {
+        let config = cfg();
+        let original = json!({"event_key":"original","target":config["targets"][0]});
+        let alternative = json!({"event_key":"different","target":{
+            "target_type":"group","target_id":"s","conversation_id":"different"
+        }});
+        let mut state = json!({"pending":[alternative,original],"seen":{"original":true}});
+        assert_eq!(
+            next_pending(&config, &mut state).unwrap(),
+            Some(original.clone())
+        );
+        assert_eq!(state["pending"], json!([original]));
+        state["publishing"] = json!("original");
+        let mut changed = config.clone();
+        changed["targets"] = json!([alternative["target"]]);
+        let saved = state.clone();
+        assert!(next_pending(&changed, &mut state).is_err());
+        assert_eq!(state, saved);
+        assert_eq!(next_pending(&config, &mut state).unwrap(), Some(original));
     }
     #[test]
     fn errors_never_advance_live_state() {

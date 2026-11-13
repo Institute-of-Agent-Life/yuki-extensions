@@ -43,7 +43,10 @@ receipt is separate from physical confirmed/unknown delivery.
 
 The journal holds cursor and complete requests in one synced record before any
 publish. A lost ACK replays the exact immutable request; no new event key is
-created for retry. An incomplete journal or a second writer stops processing.
+created for retry. A removed target drops requests that have never been
+dispatched and retains their seen keys. A publication with an unknown outcome
+stays fenced until its original target is restored for reconciliation.
+An incomplete journal or a second writer stops processing.
 The 100 MiB quota fails closed and retains state; it does not evict dedup markers.
 For a Host erasure request, the worker stops polling and removes matching
 publication receipts from the journal and its historical rows. It keeps seen
