@@ -1,0 +1,85 @@
+{
+  "task": "EXT-027",
+  "status": "PASS",
+  "formal_card_status": "BLOCKED",
+  "published": false,
+  "source_base": "8bbc4a3c62f1275d1c8eb324756ebdb1e528b015",
+  "source_inventory_sha256": "52e916719daef7ba14897055d11eb2d2beb1cc1a59e5e52ebc509f96d768167e",
+  "extension_version": "0.1.0-alpha.6",
+  "host_source_commit": "cb02f74ea48b85c6b6932423b93e6332b97f2871",
+  "host_schema_sha256": "bb5f47ac27502e2a8a5be3a1bb00ed105919fed856ecbb79d305935fff14135a",
+  "sdk": {
+    "python": "1.0.0a10",
+    "rust": "1.0.0-alpha.10"
+  },
+  "v4_source_commit": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+  "capabilities": [
+    "HTTP ETag and Last-Modified persisted with admitted XML and JSON feeds",
+    "304 preserves the admitted state across process restarts",
+    "failed observations never advance or replace admitted validators"
+  ],
+  "remaining": [
+    "original R06 source recordings",
+    "legacy subscription KV migration",
+    "published Host and consumer tuple"
+  ],
+  "previous_candidate": {
+    "archive": "macos-regression-before.zip",
+    "sha256": "f5fa8a062ea235ac81c6a6e208d657a91d399dc5b33b0ec8fa5b51ea59ad6de3",
+    "result": "FAIL",
+    "expected": "unsolicited 304 was parsed as a feed body"
+  },
+  "platforms": {
+    "macos": {
+      "status": "PASS",
+      "archive": "macos.zip",
+      "sha256": "1064442bc4a6698762dcfcb677474062455b0a5f0db504045a9a1cc6be248952",
+      "binary_sha256": "1e0bab1d5d0da3177fc929c56fd34685c35ac77f0059d2835d3a808dbd24e345",
+      "manifest_sha256": "cc215369f32321d72cc8095db30466e2ca46245edc31a9e76b260063698e3edf",
+      "report_sha256": "e8576dc9433ff2106c03c9f46c019e909a5287af413ad7a51352b01668e8cd36",
+      "host_archive_sha256": "eb4794b29db562b5fc12cde284474d61bf17ac9cba608d3f1ecd5c7dfed48f77",
+      "host_binary_sha256": "e89fe50220b669de21dd890ed71a7416a4fed55a79c2dce4032544cc679b5429",
+      "rust_tests": 17,
+      "host_publications": 9,
+      "cold_not_modified_sources": [
+        "/feeds/releases.atom",
+        "/feeds/releases.json",
+        "/feeds/releases.rss"
+      ]
+    },
+    "linux": {
+      "status": "PASS",
+      "archive": "linux.zip",
+      "sha256": "41b52e4e9b0e137278db09ba050383d45064091a6d1135da0afe3f76395596f2",
+      "binary_sha256": "f7a12ca54e805d4fe21940a9cdba58d7b051cbfa6fc95a191ed37634a573d9a6",
+      "manifest_sha256": "412d10b426d67c7121b73850306d9345c5cfaa6b230024c44ba87df590628d72",
+      "report_sha256": "2ef9e7339539c642e704697266d087bda2be7c95ef5b273f1ec66c8570e7e217",
+      "host_archive_sha256": "34739495bb1bd35555a3016c1d01b8c49d9c1e335461329fbaf2a1c4ff226828",
+      "host_binary_sha256": "046de34a34cc221976918cdfb18ab10622184f30e738f9209a7e4b4804fa3c6c",
+      "rust_tests": 17,
+      "host_publications": 9,
+      "cold_not_modified_sources": [
+        "/feeds/releases.atom",
+        "/feeds/releases.json",
+        "/feeds/releases.rss"
+      ]
+    },
+    "windows": {
+      "status": "PASS",
+      "archive": "windows.zip",
+      "sha256": "2601858f93da28e127a967c59c0fecd3b0d4656fb7f748216fc7210b4bd136d3",
+      "binary_sha256": "0032c9904a20184e940a3bd159fdfeab7f590c1e97f8f76985fbf8458004570c",
+      "manifest_sha256": "85da84e66bdd8d23b347f86398d203efcc8688493a69970f5cc9911040d5f746",
+      "report_sha256": "ae5e5ae63762220027ef9c8a6b81150cc8f718217cfcdb87a20c6275e9ae595d",
+      "host_archive_sha256": "dea4b90f5008e466f6385ceea1d0833574dcf10a5a079f8ac639b7a4be4c542c",
+      "host_binary_sha256": "44e051731197a8cc7d6aae1534c66b00625ca4e062c0439769b5f4cc19f2b8be",
+      "rust_tests": 17,
+      "host_publications": 9,
+      "cold_not_modified_sources": [
+        "/feeds/releases.atom",
+        "/feeds/releases.json",
+        "/feeds/releases.rss"
+      ]
+    }
+  }
+}

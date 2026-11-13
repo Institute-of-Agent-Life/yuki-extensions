@@ -30,6 +30,14 @@ filters. They retain the first occurrence of a source ID and resolve relative
 URLs. A missing ID falls back to the resolved link or the original v4 content
 fingerprint. A declared next page leaves the cursor and existing outbox intact.
 [JSON Feed 1.1](https://www.jsonfeed.org/version/1.1/)
+RSS, Atom and JSON Feed save HTTP validators with the accepted cursor and outbox.
+After a restart the next poll sends the saved ETag or Last-Modified value. A
+conditional 304 leaves the cursor and receipts unchanged and clears the last
+poll error. A failed response keeps the last accepted validators, and changing
+the source URL or kind requires a new subscription ID. An older journal starts
+with a full fetch and keeps its deduplication history.
+[HTTP conditional requests](https://www.rfc-editor.org/rfc/rfc9110.html#section-13)
+
 HTTPS uses system curl with certificate validation, a 10-second bound, a 1 MiB
 limit and no redirects. An explicit loopback HTTP service supports local Miniflux
 and offline recordings. `token_env` optionally names a Host-approved environment
