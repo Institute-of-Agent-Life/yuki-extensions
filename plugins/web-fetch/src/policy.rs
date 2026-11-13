@@ -20,7 +20,7 @@ pub fn url(input: &str) -> Result<Url, &'static str> {
     Ok(url)
 }
 
-fn public(ip: IpAddr) -> bool {
+pub(crate) fn public(ip: IpAddr) -> bool {
     match ip {
         IpAddr::V4(addr) => {
             let [a, b, c, _] = addr.octets();

@@ -1,5 +1,5 @@
 id = "web-fetch"
-version = "0.1.0-alpha.2"
+version = "0.1.0-alpha.3"
 program = "yuki-web-fetch"
 grants = ["tool.call"]
 env = ["YUKI_WEB_FETCH_HTTP_PROXY","YUKI_WEB_FETCH_HTTPS_PROXY","YUKI_WEB_FETCH_ALL_PROXY","YUKI_WEB_FETCH_NO_PROXY"]
