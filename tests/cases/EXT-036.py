@@ -1,5 +1,8 @@
 """Run the independent Rust maintenance plugin against the pinned actual Host."""
+from contextlib import closing
 import json
+import sqlite3
+import subprocess
 import time
 import uuid
 import threading
@@ -7,7 +10,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from personal_preview import Owner
 
 
-def prepare(root, output):
+def prepare(root, output, *, integrity=False):
     calls=[]
     class Provider(BaseHTTPRequestHandler):
         def log_message(self,*_):pass
@@ -23,18 +26,63 @@ def prepare(root, output):
             self.send_response(200);self.send_header('Content-Type','application/json');self.send_header('Content-Length',str(len(payload)));self.end_headers();self.wfile.write(payload)
     server=ThreadingHTTPServer(('127.0.0.1',0),Provider)
     threading.Thread(target=server.serve_forever,daemon=True).start()
-    try:return exercise(root,output,server,calls)
+    try:return exercise(root,output,server,calls,integrity=integrity)
     finally:
         server.shutdown();server.server_close()
         (output/'embedding-http.json').write_text(json.dumps(calls,indent=2),encoding='utf-8')
 
 
-def exercise(root, output, server, calls):
+def fixture_rows(database):
+    with closing(sqlite3.connect(database.resolve().as_uri() + '?mode=ro', uri=True)) as db:
+        return {
+            'lexical': db.execute('SELECT rowid,content,memory_key,category FROM memory_retrieval_fts ORDER BY rowid').fetchall(),
+            'evidence': db.execute('SELECT fact,source_version,quote FROM memory_evidence ORDER BY id').fetchall(),
+            'attempts': db.execute('SELECT logical,state FROM embedding_items ORDER BY logical,ordinal').fetchall(),
+            'apply': db.execute('SELECT operation,digest FROM maintenance_audit_apply ORDER BY operation').fetchall(),
+        }
+
+
+def approve_changed_install(owner, op):
+    plugin = {"plugin_id": owner.unit}
+    with (owner.out / "route-approval.log").open("wb") as log:
+        daemon = subprocess.Popen([owner.exe, "--data", owner.data, "run"], cwd=owner.work,
+                                  env=owner.env, stdout=log, stderr=log)
+    try:
+        deadline = time.monotonic() + 15
+        while time.monotonic() < deadline:
+            if daemon.poll() is not None:
+                raise RuntimeError("Host exited before installation approval")
+            result = owner.command("operator", "control", "read", "plugin.get", json.dumps(plugin))
+            if result.returncode == 0:
+                state = json.loads(result.stdout)
+                break
+            time.sleep(.05)
+        else:
+            raise RuntimeError("changed installation approval status unavailable")
+        assert state["status"] == "discovered"
+        op("control", "write", "plugin.approve", json.dumps({
+            **plugin, "request_id": str(uuid.uuid4()), "expected_revision": state["revision"],
+        }))
+        approved = op("control", "read", "plugin.get", json.dumps(plugin))
+        assert approved["status"] == "disabled"
+        assert set(approved["approved_permissions"]) == set(state["requested_permissions"])
+        op("host", "enable", owner.unit, "true")
+    finally:
+        if daemon.poll() is None:
+            owner.command("operator", "shutdown")
+            try:
+                daemon.wait(timeout=8)
+            except subprocess.TimeoutExpired:
+                daemon.kill()
+                daemon.wait()
+
+
+def exercise(root, output, server, calls, *, integrity):
     jobs = output / 'operator-jobs'
     jobs.mkdir()
     owner = Owner(root, output, 'memory-maintenance',
                   ['maintenance.audit','maintenance.audit.apply','maintenance.reembed','forget.owner'],
-                  contract='core-035',
+                  contract='core-035-integrity' if integrity else 'core-035',
                   environment={'YUKI_MEMORY_MAINTENANCE_JOBS':str(jobs)}, command_timeout=30)
     cfg=owner.data/'yuki.toml'
     cfg.write_text(cfg.read_text().replace('mode = "hybrid"','mode = "lexical-only"'),encoding='utf-8')
@@ -63,61 +111,122 @@ def exercise(root, output, server, calls):
         bot=op('account','open','qq','quality-fixture','100',1,'--start',1)
         space=json.dumps(['qq','quality-fixture','702'],separators=(',',':'))
         entry=op('entry','group',space)['entry']
-        text='Original EXT-036 quality source; no invented evidence.'
-        frame={'source':'quality-original','account':user['account'],'bot_stage':bot['assignment'],
-               'reply_bot':'100','space':space,'kind':'message','occurred':100,'observed':100,
-               'segments':[{'type':'text','text':text}]}
-        event=op('ingress','record',json.dumps(frame),'--accept')['event']
-        execution=op('ingress','claim',event)['execution']
-        edit={'action':'add','body':'Original quality fixture','fact_key':'quality-fixture',
-              'subject':{'kind':'person','person':actor,'space':None,'visibility':None,'entry':None},
-              'evidence':[{'kind':'event','id':event,'quote':text}]}
-        fact=op('memory','edit',execution,actor,'quality-add',json.dumps(edit))
+        def seed(label, person=actor, account=user['account'], group=space):
+            text=f'原始證據 {label} is visible in its own conversation.'
+            frame={'source':f'quality-{label}','account':account,'bot_stage':bot['assignment'],
+                   'reply_bot':'100','space':group,'kind':'message','occurred':100,'observed':100,
+                   'segments':[{'type':'text','text':text}]}
+            event=op('ingress','record',json.dumps(frame),'--accept')['event']
+            execution=op('ingress','claim',event)['execution']
+            edit={'action':'add','body':text,'fact_key':f'quality-{label}',
+                  'subject':{'kind':'person','person':person},
+                  'evidence':[{'kind':'event','id':event,'quote':text}]}
+            return event,execution,op('memory','edit',execution,person,'quality-add',json.dumps(edit))
+        event,execution,fact=seed('selected')
         (output/'seed-fact.json').write_text(json.dumps(fact,indent=2),encoding='utf-8')
+        if integrity:
+            _,_,missing=seed('missing-evidence')
+            _,_,invalid=seed('invalid-evidence')
+            foreign_actor=str(uuid.uuid4())
+            op('person','create',foreign_actor)
+            foreign_account=op('account','open','qq','quality-fixture','201',1,'--person',foreign_actor,'--start',1)
+            foreign_group=json.dumps(['qq','quality-fixture','703'],separators=(',',':'))
+            op('entry','group',foreign_group)
+            _,_,foreign=seed('foreign',foreign_actor,foreign_account['account'],foreign_group)
+    database=owner.data/'core.sqlite'
+    if integrity:
+        with closing(sqlite3.connect(database)) as fixture, fixture:
+            for corrupt in (fact,missing,foreign):
+                fixture.execute('UPDATE memory_retrieval_fts SET content=? WHERE rowid=(SELECT number FROM memory_facts WHERE id=?)',
+                                ('corrupted fixture index',corrupt['fact']))
+            fixture.execute('DELETE FROM memory_evidence WHERE fact=?',(missing['fact'],))
+            fixture.execute('UPDATE memory_evidence SET source_version=? WHERE fact=?',('0'*64,invalid['fact']))
+        before_scan=fixture_rows(database)
     policy='\n[plugins.maintenance.scopes.own]\n'+f'actor={json.dumps(actor)}\nentry={json.dumps(entry)}\n'
     policy+='methods=["maintenance.audit","maintenance.audit.apply","maintenance.reembed"]\npurposes=["quality"]\n'
     policy+='write_subject={kind="person",person='+json.dumps(actor)+'}\n'
     policy+='embedding_routes=["dense-a","dense-b","dense-unknown"]\n'
+    provider='"openai_compatible"' if integrity else '{openai_compatible={}}'
     for name in ['a','b','unknown']:
-        policy+=f'\n[plugins.maintenance.embedding_routes.dense-{name}]\nprovider={{openai_compatible={{}}}}\nmodel="fixture-{name}"\ndimensions=3\nbase_url="http://127.0.0.1:{server.server_port}/v1"\n'
+        policy+=f'\n[plugins.maintenance.embedding_routes.dense-{name}]\nprovider={provider}\nmodel="fixture-{name}"\ndimensions=3\nbase_url="http://127.0.0.1:{server.server_port}/v1"\n'
     cfg.write_text(cfg.read_text()+policy,encoding='utf-8')
+    if integrity:
+        approve_changed_install(owner,op)
+    scope={'scope':'own','purpose':'quality'}
+    scan_params={**scope,**({'integrity':True} if integrity else {})}
+    selected=fact['fact']
+    selected_scan={**scan_params,'fact':selected}
     cases={}
     with owner.running():
         cases['invalid_job']=job('invalid-job',{'action':'scan','scope':'own','purpose':'quality','actor':'override'})
         assert cases['invalid_job']['state']=='not_completed'
-        scan=job('scan-1',{'action':'scan','scope':'own','purpose':'quality'})
+        scan=job('scan-1',{'action':'scan',**scan_params})
         cases['scan']=scan
         (output/'first-scan.json').write_text(json.dumps(scan,indent=2),encoding='utf-8')
         assert scan['state']=='completed',scan
         audit=scan['result']['audit'];assert audit['paid_calls']==0 and audit['items']
         assert not calls
+        if integrity:
+            findings={row['fact']:row for row in scan['result']['quality_findings']}
+            assert set(findings)=={selected,missing['fact'],invalid['fact']}
+            assert findings[selected]['lexical']=='mismatch'
+            assert findings[missing['fact']]['evidence_missing'] and findings[missing['fact']]['lexical']=='mismatch'
+            assert findings[invalid['fact']]['invalid_event_evidence']==1
+            assert findings[invalid['fact']]['event_evidence_checked']==1
+            cases['stats']=job('stats-1',{'action':'stats',**scope})
+            assert cases['stats']['result']['stats']=={
+                'facts':3,'lexical_repairs':2,'facts_missing_evidence':1,
+                'event_evidence_checked':2,'invalid_event_evidence':1,
+            }
+            cases['audit']=job('audit-1',{'action':'audit',**scope})
+            assert cases['audit']==scan
+            cases['legacy_scan']=job('legacy-1',{'action':'scan',**scope})
+            assert cases['legacy_scan']['result']['quality_findings']=='not_exposed_by_candidate'
+            assert fixture_rows(database)==before_scan and not calls
+            cases['scan_side_effects']={'fixture_rows_unchanged':True,'embedding_http_calls':0}
         cases['foreign_scope']=job('foreign-scope',{'action':'scan','scope':'not-installed','purpose':'quality'})
         assert cases['foreign_scope']['state']=='not_completed'
-        selected=audit['items'][0]['fact']
-        cases['apply']=job('apply-1',{'action':'apply','scope':'own','purpose':'quality','operation':'quality-selected-apply',
-                                    'fingerprint':audit['fingerprint'],'approved':[selected]})
+        revision=next(item['revision'] for item in audit['items'] if item['fact']==selected)
+        apply={'action':'apply',**scan_params,'operation':'quality-selected-apply',
+               'fingerprint':audit['fingerprint'],'approved':[selected]}
+        cases['foreign_fact']=job('foreign-fact',{**apply,'operation':'quality-foreign-rejected',
+                                    'approved':[foreign['fact'] if integrity else str(uuid.uuid4())]})
+        assert cases['foreign_fact']['state']=='not_completed'
+        cases['apply']=job('apply-1',apply)
         assert cases['apply']['state']=='completed',cases['apply']
         assert cases['apply']['result']['rebuilt']==[selected] and cases['apply']['result']['paid_calls']==0
-        cases['foreign_fact']=job('foreign-fact',{'action':'apply','scope':'own','purpose':'quality','operation':'quality-foreign-rejected',
-                                    'fingerprint':audit['fingerprint'],'approved':[str(uuid.uuid4())]})
-        assert cases['foreign_fact']['state']=='not_completed'
+        if integrity:
+            after_apply=fixture_rows(database)
+            assert len(after_apply['lexical'])==len(before_scan['lexical'])
+            changed=[after for before,after in zip(before_scan['lexical'],after_apply['lexical']) if before!=after]
+            assert len(changed)==1 and changed[0][1]=='原始證據 selected is visible in its own conversation.'
+            assert after_apply['evidence']==before_scan['evidence']
+            assert after_apply['attempts']==before_scan['attempts']
+            cases['after_apply']=job('after-apply',{'action':'audit',**scope})
+            after_findings={row['fact']:row for row in cases['after_apply']['result']['quality_findings']}
+            assert after_findings[selected]['lexical']=='current'
+            assert after_findings[missing['fact']]['lexical']=='mismatch'
     with owner.running():
-        cases['replay']=job('apply-replay',{'action':'apply','scope':'own','purpose':'quality','operation':'quality-selected-apply',
-                                    'fingerprint':audit['fingerprint'],'approved':[selected]})
+        cases['replay']=job('apply-replay',apply)
         assert cases['replay']==cases['apply']
         routes={r['route']:r['profile'] for r in audit['embedding_routes']}
         assert routes['dense-a']!=routes['dense-b']
         def embed(name, route, operation):
             return job(name,{'action':'reembed','scope':'own','purpose':'quality','operation':operation,
-                             'route':route,'profile':routes[route],'fact':selected,'revision':audit['items'][0]['revision']})
+                             'route':route,'profile':routes[route],'fact':selected,'revision':revision})
         cases['embed_a']=embed('embed-a','dense-a','quality-embed-a')
         assert cases['embed_a']['state']=='completed',cases['embed_a']
         assert cases['embed_a']['result']['state']=='done' and cases['embed_a']['result']['usage']['input']==5
         assert len(calls)==1
-        current=job('scan-after-a',{'action':'scan','scope':'own','purpose':'quality'})
+        current=job('scan-after-a',{'action':'scan',**selected_scan})
         cases['scan_after_a']=current
-        missing=current['result']['coverage'][0]['missing_profiles']
-        assert 'dense-b' in [r['route'] for r in missing] and 'dense-a' not in [r['route'] for r in missing]
+        if integrity:
+            profiles={row['route']:row for row in current['result']['coverage'][0]['profiles']}
+            assert profiles['dense-a']['coverage']=='current'
+            assert profiles['dense-b']['coverage']=='missing' and profiles['dense-b']['attempt'] is None
+        else:
+            missing_profiles=[r['route'] for r in current['result']['coverage'][0]['missing_profiles']]
+            assert 'dense-b' in missing_profiles and 'dense-a' not in missing_profiles
         cases['embed_b']=embed('embed-b','dense-b','quality-embed-b')
         assert cases['embed_b']['result']['state']=='done' and len(calls)==2
         cases['embed_unknown']=embed('embed-unknown','dense-unknown','quality-embed-unknown')
@@ -127,17 +236,22 @@ def exercise(root, output, server, calls):
     with owner.running():
         cases['unknown_replay']=embed('embed-unknown-replay','dense-unknown','quality-embed-unknown')
         assert cases['unknown_replay']==cases['embed_unknown'] and len(calls)==3
-        before=job('scan-before-edit',{'action':'scan','scope':'own','purpose':'quality'})['result']['audit']
+        before_result=job('scan-before-edit',{'action':'scan',**selected_scan})['result']
+        before=before_result['audit']
+        if integrity:
+            profiles={row['route']:row for row in before_result['coverage'][0]['profiles']}
+            assert profiles['dense-unknown']['coverage']=='missing' and profiles['dense-unknown']['attempt']=='unknown'
+            cases['unknown_scan']=before_result
         readable=op('memory','read',execution,actor,'--fact',selected,'--evidence')['items'][0]
         corrected=op('memory','edit',execution,actor,'quality-correct',json.dumps({
             'action':'correct','fact':selected,'revision':readable['revision'],'proof':readable['proof'],
             'body':'Changed fact content, same original evidence count'}))
-        after=job('scan-after-edit',{'action':'scan','scope':'own','purpose':'quality'})['result']['audit']
+        after=job('scan-after-edit',{'action':'scan',**selected_scan})['result']['audit']
         assert len(before['items'])==len(after['items'])==1
         assert before['items'][0]['evidence_total']==after['items'][0]['evidence_total']
         assert before['fingerprint']!=after['fingerprint']
         cases['same_count_change']={'before':before,'after':after,'correction':corrected}
-        cases['stale_fingerprint']=job('stale-fingerprint',{'action':'apply','scope':'own','purpose':'quality',
+        cases['stale_fingerprint']=job('stale-fingerprint',{'action':'apply',**selected_scan,
             'operation':'stale-plan','fingerprint':before['fingerprint'],'approved':[selected]})
         assert cases['stale_fingerprint']['state']=='not_completed'
         assert len(calls)==3
@@ -157,10 +271,16 @@ def exercise(root, output, server, calls):
         assert len(calls)==3
         cases['erasure']={'operation':erased,'callback_observed':callback,'pending_obligations':pending,
                          'operator_acquire_calls':0,'automatic_callback_acceptance':False}
+    sdk_pin=json.loads((root/'compat/core-035/source.lock.json').read_bytes())
+    package=json.loads((owner.packages/'package-manifest.json').read_bytes())
     return 'hygiene-report.json',{'status':'PASS','card_status':'BLOCKED','candidate_only':True,
-        'core':owner.evidence(),'cases':cases,'embedding_http_calls':len(calls),'scan_paid_calls':0,'database_access':'public operator and SDK only',
-        'remaining':['actual SQL integrity findings','producer clarification of metadata erasure obligations']}
+        'core':owner.evidence(),'plugin':{'version':package['version'],'sdk':sdk_pin['sdk']['rust'],
+        'sdk_crate_sha256':sdk_pin['rust_crate_sha256'],'binary_sha256':owner.binary_sha},
+        'cases':cases,'embedding_http_calls':len(calls),'scan_paid_calls':0,
+        'database_access':'public operator and SDK; fault injection confined to the isolated fixture' if integrity else 'public operator and SDK only',
+        'remaining':(['published Host and plugin tuple'] if integrity else ['actual SQL integrity findings'])
+                    + ['producer clarification of metadata erasure obligations']}
 
 
 def run(root,output):
-    raise RuntimeError('CORE-035 is an unpublished candidate; use --preparation')
+    return prepare(root,output,integrity=True)

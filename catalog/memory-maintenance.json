@@ -3,7 +3,7 @@
   "kind": "plugin",
   "path": "plugins/memory-maintenance",
   "ecosystem": "rust",
-  "version": "0.1.0-alpha.2",
+  "version": "0.1.0-alpha.3",
   "tag_prefix": "memory-maintenance/v",
   "license": "AGPL-3.0-only",
   "notices": ["LICENSE"],
@@ -16,6 +16,6 @@
   },
   "check_paths": [
     "tests/cases/EXT-034.py", "tests/cases/EXT-036.py", "tests/fixtures/EXT-034",
-    "tests/peers/rebuild_stdio.py", "compat/core-035"
+    "tests/peers/rebuild_stdio.py", "compat/core-035", "compat/core-035-integrity"
   ]
 }

@@ -1,0 +1,47 @@
+{
+  "repository": "Institute-of-Agent-Life/yuki-core",
+  "source_commit": "f9a3bc7302a6b593232d14e25bceaf1d1e9cc836",
+  "source_tree_sha256": "7b1963ac489616ce4fcd5d140439d1d8516c5da4c12016cd80266dc2bdd5afb4",
+  "published": false,
+  "schema_sha256": "369e2e9f355ec4e6207640b378e52499c5e454cc69b6209c9af023a56f245485",
+  "maintenance_schema_sha256": "f6b891be0d54d9fe19df6a1cbb0c9c66f40cb420453b65a668d95d20607621cf",
+  "sdk": {
+    "python": "1.0.0a22",
+    "rust": "1.0.0-alpha.22"
+  },
+  "rust_crate_sha256": "0e0f50f4d95e247d640c1aff5fe68724c615161db8f025e738d75a64ae3d42c8",
+  "methods": [
+    "maintenance.audit",
+    "maintenance.audit.apply",
+    "maintenance.content",
+    "maintenance.dependencies",
+    "maintenance.evidence",
+    "maintenance.extract.apply",
+    "maintenance.extract.preview",
+    "maintenance.fact.page",
+    "maintenance.history.page",
+    "maintenance.model.open",
+    "maintenance.reembed",
+    "maintenance.tool.page"
+  ],
+  "platforms": {
+    "darwin-arm64": {
+      "archive": "yuki-maintenance-preview-f9a3bc7302a6-darwin-arm64.zip",
+      "sha256": "395429be4cc74f92dbd4852a1f62f2e950967b73778474435731c2acdf399eaf",
+      "binary_sha256": "9c834897b12ba72123c885486b1013cd46b5bcd5237c51a7f9587c87dcc537a6",
+      "validation_manifest_sha256": "6295e965c4d79c036fda9680396610176872628d2e4b69533583efec55a5303e"
+    },
+    "linux-arm64": {
+      "archive": "yuki-maintenance-preview-f9a3bc7302a6-linux-arm64.zip",
+      "sha256": "525fc55975df8879d06d8d774e62feb59c3325a6d4a9576b7881af41bec6eefe",
+      "binary_sha256": "33c503b4e25544fe2baa43ed1280a40bdae97dd403bae2dacbde20370233e7c1",
+      "validation_manifest_sha256": "4c0df4af389959b421cc2edcb7f30f76eabd12ef2e5f6478485b0cec2092862c"
+    },
+    "windows-x86_64": {
+      "archive": "yuki-maintenance-preview-f9a3bc7302a6-windows-x86_64.zip",
+      "sha256": "f393506afe72f5404a695098b78bfcbffe76ef7f6e1f1bba2a3471017a493436",
+      "binary_sha256": "cc5eb15f1cc195decbf05759123f4d9b617b405bb1a2a9cafb964c25d1db2e1f",
+      "validation_manifest_sha256": "bb49c8be6eef7469b588417a62067004006fc2f76e9cb43ba3b0a1529e8887ef"
+    }
+  }
+}

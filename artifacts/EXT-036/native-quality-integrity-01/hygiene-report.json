@@ -1,0 +1,64 @@
+{
+  "status": "PASS",
+  "formal_card_status": "BLOCKED",
+  "published": false,
+  "source_base": "4c911cf3e2e8d9e7570ddb424d18f34180c8e344",
+  "source_inventory_sha256": "4ee37cb046378c9a68b597ccbab9d28f2eb23aad654a7c3c4e2dd4cca070caa1",
+  "source_inventory_files": 307,
+  "producer_source_commit": "f9a3bc7302a6b593232d14e25bceaf1d1e9cc836",
+  "producer_main_commit": "8ecc81153e98240ce38b44dd593c0ccf502edd69",
+  "producer_rust_sdk": "1.0.0-alpha.22",
+  "maintenance_schema_sha256": "f6b891be0d54d9fe19df6a1cbb0c9c66f40cb420453b65a668d95d20607621cf",
+  "consumer_rust_sdk": "1.0.0-alpha.8",
+  "platforms": {
+    "macos": {
+      "status": "PASS",
+      "archive": "macos.zip",
+      "sha256": "d38fb4dbb25f7012017c6a0db924d0eace5261d4a1c122dbec732f92d9c85090",
+      "manifest_sha256": "60b522ea181825360b739029b540089cb17fc035ecc6d07f5b9a1b1e4dbe2018",
+      "rebuild_manifest_sha256": "9da61a7adfec0be94be3126db0a01a03bf33107b952d4cc6fb3894d3d956a883",
+      "quality_cases": 21,
+      "rebuild_groups": [
+        "authorized",
+        "denied"
+      ],
+      "producer_sha256": "395429be4cc74f92dbd4852a1f62f2e950967b73778474435731c2acdf399eaf",
+      "plugin_sha256": "0b71332e9ad6f0fe8d4b4eb8d4d106763302453f651f8048bd4786d35a7cb926",
+      "temporary_build_targets_remaining": 0
+    },
+    "linux": {
+      "status": "PASS",
+      "archive": "linux.zip",
+      "sha256": "c03b847c2ca51ad2dd20ceab188c90eeab0893638e1ef209676f43c12bb9cede",
+      "manifest_sha256": "cf529bd2d601412ca59bc1e1dc34fa0e5b06f2898aff7750743946eef12cde44",
+      "rebuild_manifest_sha256": "72203325d5e1ac27b9c5e5f290aa7826ec14a33b0622069d88474ef5ad546270",
+      "quality_cases": 21,
+      "rebuild_groups": [
+        "authorized",
+        "denied"
+      ],
+      "producer_sha256": "525fc55975df8879d06d8d774e62feb59c3325a6d4a9576b7881af41bec6eefe",
+      "plugin_sha256": "85e5bdfb5ad6196134afd42e7059e1587bf3afe7f0dea5b742c0e709e63b3b48",
+      "temporary_build_targets_remaining": 0
+    },
+    "windows": {
+      "status": "PASS",
+      "archive": "windows.zip",
+      "sha256": "d9dfb02dc7a85c13d00d3e5b786d21b692e7619c25e1c46739855f70b7a6d207",
+      "manifest_sha256": "63246c23bc5dbc79d610421eaafbbed9cf31674bb83d1ba0a74d368cc65b6484",
+      "rebuild_manifest_sha256": "761996ce7acff65ee2985845438c2c1ca8d907fa3a6eddf660df1f15ff78de7c",
+      "quality_cases": 21,
+      "rebuild_groups": [
+        "authorized",
+        "denied"
+      ],
+      "producer_sha256": "f393506afe72f5404a695098b78bfcbffe76ef7f6e1f1bba2a3471017a493436",
+      "plugin_sha256": "370216c167b49d1e9ca7d9ed213d443f69a91e1872c4f91af1dcc0497c04344b",
+      "temporary_build_targets_remaining": 0
+    }
+  },
+  "remaining": [
+    "published producer and plugin tuple",
+    "source-bound erasure for local quality reports"
+  ]
+}
