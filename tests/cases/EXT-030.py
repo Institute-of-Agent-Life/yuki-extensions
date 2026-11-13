@@ -8,15 +8,52 @@ import json
 import os
 from pathlib import Path
 import subprocess
+import sys
 import threading
 import time
 import uuid
 import wave
 
+from package import build
 from personal_preview import Owner
 
 
-def prepare(root, output, *, original_source_replay=False):
+def approve_route(owner, output, op):
+    with (output / "route-approval.log").open("wb") as log:
+        daemon = subprocess.Popen([owner.exe, "--data", owner.data, "run"], cwd=owner.work,
+                                  env=owner.env, stdout=log, stderr=log)
+    try:
+        args = {"plugin_id": "media"}
+        deadline = time.monotonic() + 15
+        while time.monotonic() < deadline:
+            assert daemon.poll() is None
+            result = owner.command("operator", "control", "read", "plugin.get", json.dumps(args))
+            if result.returncode == 0:
+                state = json.loads(result.stdout)
+                break
+            time.sleep(.05)
+        else:
+            raise RuntimeError("original route approval status unavailable")
+        assert state["status"] == "discovered"
+        op("control", "write", "plugin.approve", json.dumps({
+            **args, "request_id": str(uuid.uuid4()), "expected_revision": state["revision"],
+        }))
+        approval = op("control", "read", "plugin.get", json.dumps(args))
+        assert approval["status"] == "disabled"
+        assert set(approval["approved_permissions"]) == set(state["requested_permissions"])
+        op("host", "enable", "media", "true")
+    finally:
+        if daemon.poll() is None:
+            owner.command("operator", "shutdown")
+            try:
+                daemon.wait(timeout=8)
+            except subprocess.TimeoutExpired:
+                daemon.kill()
+                daemon.wait()
+
+
+def prepare(root, output, *, original_source_replay=False, package_builder=build,
+            contract="core-038-selected-erasure"):
     calls, records = [], []
     held, release = threading.Event(), threading.Event()
     behavior = {"mode": "normal"}
@@ -61,8 +98,8 @@ def prepare(root, output, *, original_source_replay=False):
         configured['YUKI_MEDIA_FFMPEG'] = os.environ['YUKI_MEDIA_FFMPEG']
     owner = Owner(root, output, "media",
                   ["media.process", "media.open", "media.publish", "forget.owner", "llm.complete", "llm.result"],
-                  contract=os.environ.get('YUKI_ASR_HOST_CONTRACT', 'core-038-selected-erasure'),
-                  environment=configured, command_timeout=40)
+                  contract=contract, environment=configured, command_timeout=40,
+                  package_builder=package_builder)
     cfg = owner.data / "yuki.toml"
     cfg.write_text(cfg.read_text().replace('mode = "hybrid"', 'mode = "lexical-only"'), encoding="utf-8")
     inputs = owner.data / "media-inputs"
@@ -112,41 +149,8 @@ def prepare(root, output, *, original_source_replay=False):
     cfg.write_text(cfg.read_text() + '\n[qq]\nnamespace="asr-fixture"\ndesignated_ingress="100"\n'
                    '[qq.groups]\n"702"="open"\n[[qq.bots]]\nself_id="100"\n'
                    f'stage={json.dumps(bot["assignment"])}\ntoken_env="YUKI_ASR_QQ"\n', encoding="utf-8")
-    def approve_route():
-        with (output / 'route-approval.log').open('wb') as log:
-            daemon = subprocess.Popen([owner.exe, '--data', owner.data, 'run'], cwd=owner.work,
-                                      env=owner.env, stdout=log, stderr=log)
-        try:
-            deadline = time.monotonic() + 12
-            while time.monotonic() < deadline:
-                assert daemon.poll() is None
-                result = owner.command('operator', 'control', 'read', 'plugin.get', '{"plugin_id":"media"}')
-                if result.returncode == 0:
-                    state = json.loads(result.stdout)
-                    break
-                time.sleep(.05)
-            else:
-                raise RuntimeError('original route approval status unavailable')
-            assert state['status'] == 'discovered'
-            args = {'plugin_id': 'media'}
-            op('control', 'write', 'plugin.approve', json.dumps({
-                **args, 'request_id': str(uuid.uuid4()), 'expected_revision': state['revision'],
-            }))
-            approval = op('control', 'read', 'plugin.get', json.dumps(args))
-            assert approval['status'] == 'disabled'
-            assert set(approval['approved_permissions']) == set(state['requested_permissions'])
-            op('host', 'enable', 'media', 'true')
-        finally:
-            if daemon.poll() is None:
-                owner.command('operator', 'shutdown')
-                try:
-                    daemon.wait(timeout=8)
-                except subprocess.TimeoutExpired:
-                    daemon.kill()
-                    daemon.wait()
-
     try:
-        approve_route()
+        approve_route(owner, output, op)
         with owner.running():
             e, ex, audio = event("original")
             first = process(e, ex, "original")
@@ -224,4 +228,11 @@ def prepare(root, output, *, original_source_replay=False):
 
 
 def run(root, output):
-    return 'asr-source.json', {'status': 'BLOCKED', 'card_status': 'WAITING_FOR_SOURCE_SCOPED_MAIN_REPLAY'}
+    inputs = ("YUKI_HOST_CANDIDATE", "YUKI_ASR_CORE_FIXTURES", "YUKI_MEDIA_ASR_PACKAGE", "YUKI_MEDIA_FFMPEG")
+    missing = [name for name in inputs if not os.environ.get(name)]
+    if missing:
+        return "asr-source.json", {"status": "BLOCKED", "card_status": "WAITING_FOR_SOURCE_SCOPED_MAIN_REPLAY",
+                                   "missing": missing}
+    sys.path.insert(0, str(root / "tests/peers"))
+    from main_asr_native import replay
+    return replay(root, output, prepare, approve_route)
