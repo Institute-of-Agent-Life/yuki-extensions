@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "formal_card_status": "BLOCKED",
+  "published": false,
+  "source_base": "5b55d7a4c95e0611636ea1e41b0d772987406539",
+  "source_inventory_sha256": "b1905689a1d376cb4fd184377020e3bc7c64b1ed7f9d37a61bd7dcf91c25b131",
+  "source_inventory_files": 313,
+  "producer_source_commit": "cb02f74ea48b85c6b6932423b93e6332b97f2871",
+  "consumer_rust_sdk": "1.0.0-alpha.10",
+  "notification_schema_sha256": "ab4f3a9684597f3b57b77eb638daf8538c54bacc484e3609f3ad36bfed817fb8",
+  "platforms": {
+    "macos": {
+      "status": "PASS",
+      "archive": "macos.zip",
+      "sha256": "980d09682e2314160a4705ec162985060605737555313cad73a9fe06d378245e",
+      "manifest_sha256": "4eb158c8b1981aec3e93b39853d1433f2926853f5fdfe639d7ba1d24e01be2ca",
+      "report_sha256": "a1e1b2432cbb3a0b13f0a7b6cab3b479d9852bdc1ef65c2ad6ad764c97cb753e",
+      "binary_sha256": "64e3eb45653d7b4ac27a3331727f43f84cb36743ab43ea44a2c60e54b219507e",
+      "source_publications": 4,
+      "paid_calls": 0
+    },
+    "linux": {
+      "status": "PASS",
+      "archive": "linux.zip",
+      "sha256": "651b698fffda6ae722e59bfad6e5e7ebdb5427fc0115914cf72e399b791dde01",
+      "manifest_sha256": "13c4d5992beaf6611e876757b77d609a0f85058378ddc3824bb10ea2951363b1",
+      "report_sha256": "29358f8e8f13f19c0c1ab2ee9443b718b7d89f03ca89465af14ec740781edb77",
+      "binary_sha256": "c5d61f7ca1798ebd2f4d3a869b9c479d87ed064f54221cac70ed138fff204c25",
+      "source_publications": 4,
+      "paid_calls": 0
+    },
+    "windows": {
+      "status": "PASS",
+      "archive": "windows.zip",
+      "sha256": "a6f97201ed7f865dae917e0ecb2df778cf3be76c600b557e268bb6f97ebb5e0c",
+      "manifest_sha256": "c61c917eebfae1f46ee88346c3d50127f6ee3bf836e15d5ff7e6daf54ad96c98",
+      "report_sha256": "29c6edbc96c4c566292234e5915567c36ba064e680fcbff5185cd1bd8a94551c",
+      "binary_sha256": "8a5fc2f1de652cb7009a68917c1ec913688ff1429453e04e826c57482e039b77",
+      "source_publications": 4,
+      "paid_calls": 0
+    }
+  },
+  "remaining": [
+    "original R06 source recordings",
+    "RSS/Atom source support and paged Miniflux",
+    "direct delivery/unknown physical receiver cases",
+    "formal published producer and consumer tuple"
+  ]
+}
