@@ -109,6 +109,9 @@ pub fn parse(kind: &str, raw: &Value, previous: &Value, now: &str) -> Result<(Ve
             }
         }
         "json_feed" => {
+            if raw.get("next_url").is_some() {
+                return Err("paged feed requires complete capture".into());
+            }
             for v in raw["items"].as_array().ok_or("missing JSON Feed items")? {
                 items.push(item(
                     id(&v["id"])?,
@@ -120,9 +123,6 @@ pub fn parse(kind: &str, raw: &Value, previous: &Value, now: &str) -> Result<(Ve
                     v["url"].as_str().unwrap_or(""),
                     v["date_published"].as_str().unwrap_or(now).into(),
                 ));
-            }
-            if raw.get("next_url").is_some() {
-                return Err("paged feed requires complete capture".into());
             }
         }
         "bilibili_dynamic" => {
@@ -206,27 +206,36 @@ pub fn admit(config: &Value, old: &Value, raw: Document, now: &str) -> Result<Va
         .as_array()
         .filter(|x| !x.is_empty() && x.len() <= 4)
         .ok_or("one to four explicit targets required")?;
-    let (items, cursor) = match raw {
+    let (mut items, cursor, newest_first) = match raw {
+        Document::Json(raw) if kind == "json_feed" && raw.get("version").is_some() => (
+            crate::json_feed::parse(url, &raw, now)?,
+            old["cursor"].clone(),
+            true,
+        ),
         Document::Json(raw) => {
-            let (mut items, cursor) = parse(kind, &raw, &old["cursor"], now)?;
-            items.sort_by(|left, right| {
-                left["occurred_at"]
-                    .as_str()
-                    .cmp(&right["occurred_at"].as_str())
-            });
-            (items, cursor)
+            let (items, cursor) = parse(kind, &raw, &old["cursor"], now)?;
+            (items, cursor, false)
         }
-        Document::Xml(raw) => {
-            let mut items = crate::xml_feed::parse(url, &raw, now)?;
-            items.reverse();
-            items.sort_by_cached_key(|entry| {
-                entry["occurred_at"]
-                    .as_str()
-                    .and_then(crate::xml_feed::instant)
-            });
-            (items, old["cursor"].clone())
-        }
+        Document::Xml(raw) => (
+            crate::xml_feed::parse(url, &raw, now)?,
+            old["cursor"].clone(),
+            true,
+        ),
     };
+    if newest_first {
+        items.reverse();
+        items.sort_by_cached_key(|entry| {
+            entry["occurred_at"]
+                .as_str()
+                .and_then(crate::feed_entry::instant)
+        });
+    } else {
+        items.sort_by(|left, right| {
+            left["occurred_at"]
+                .as_str()
+                .cmp(&right["occurred_at"].as_str())
+        });
+    }
     let mut state = if old.is_null() {
         json!({"url":url,"kind":kind,"seen":{},"pending":[],"receipts":[],"initialized":false})
     } else {
@@ -335,6 +344,34 @@ mod tests {
         let saved = s.clone();
         assert!(admit(&c, &s, feed(&[1, 2, 3]), "x").is_err());
         assert_eq!(s, saved);
+    }
+
+    #[test]
+    fn versioned_json_feed_reuses_existing_explicit_ids_and_outbox() {
+        let mut config = cfg();
+        config["kind"] = json!("json_feed");
+        let now = "2026-01-01T00:00:00Z";
+        let previous = admit(
+            &config,
+            &Value::Null,
+            Document::Json(json!({"items":[{"id":" existing ","content_text":"old"}]})),
+            now,
+        )
+        .unwrap();
+        let snapshot = json!({"version":"https://jsonfeed.org/version/1.1","items":[
+            {"id":"new","content_html":"<p>First<br>release</p>","tags":["news"]},
+            {"id":" existing ","content_text":"changed body"}
+        ]});
+        let pending = admit(&config, &previous, Document::Json(snapshot.clone()), now).unwrap();
+        assert_eq!(pending["pending"].as_array().unwrap().len(), 1);
+        assert_eq!(
+            pending["pending"][0]["payload"]["entry"]["body"],
+            "First release"
+        );
+        let mut changed = snapshot;
+        changed["items"][0]["content_html"] = json!("<p>Edited</p>");
+        assert!(admit(&config, &pending, Document::Json(changed), now).is_err());
+        assert_eq!(pending["pending"][0]["payload"]["entry"]["id"], "new");
     }
     #[test]
     fn independent_subscriptions_and_targets() {
