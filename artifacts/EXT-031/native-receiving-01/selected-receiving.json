@@ -1,0 +1,104 @@
+{
+  "status": "PASS",
+  "formal_card_status": "NATIVE_RECEIVING_VERIFIED_PUBLIC_INSTALL_TUPLE_PENDING",
+  "published": false,
+  "source_base": "0f381ba76595c4724377dbcfcc4ee808cfbefe81",
+  "source_inventory_sha256": "b1ca7456b5cd4cdcb5ca7cab44227543dfecdb28872493a694e3da12ed2ddba4",
+  "source_snapshot_sha256": "5d2ed52bb3c0004e349bcd1b27ebbf7aba0ddbcec0e52067b698c689b996a26f",
+  "host_source": "0114269addf5e3dd0ab5e352ff3360ad1dcd5586",
+  "host_sdk": {
+    "python": "1.0.0a21",
+    "rust": "1.0.0-alpha.21"
+  },
+  "host_schema_sha256": "123de29cf8057cea1dfd566aec31ea30ba4ff68524920581843456e51cbb2e7d",
+  "media_schema_sha256": "d7af4bc4b1ea38decb0654af563410cc731fb2f27bb02568211d519a1c96a45f",
+  "gateway_release": "plugin/feishu/v0.1.0",
+  "gateway_source": "66a593a47cb87b7fbaf00cf1cc6f0fc022f21572",
+  "platforms": {
+    "macos": {
+      "status": "PASS",
+      "archive": "macos.zip",
+      "sha256": "2cc699a15370c71949928fcb029706fb67811dc85e42fc892ed495f0b6c777f5",
+      "manifest_sha256": "6550032a662e367c1c8aa093bdbea71fa61498cb5816877f5aa0e83c7ce9836b",
+      "cases": {
+        "feishu": {
+          "sha256": "e0e3e603c3322fc097467b721c1661a604a595f779be002765525ebdace68cdc",
+          "bytes": 131058,
+          "callbacks": 6
+        },
+        "feishu-wrong": {
+          "sha256": "fc308923ed0d51572c2b35f72b3bac659bbcfd20dd47413f8d53289295752782",
+          "bytes": null,
+          "callbacks": 0
+        },
+        "lark": {
+          "sha256": "40775d61e810a111b128bc88d01e0a16615120a173e29f4927876f614cc73420",
+          "bytes": 101058,
+          "callbacks": 5
+        },
+        "lark-wrong": {
+          "sha256": "a2e9bf4510a7516fb3c5043753057db420f8687beebb98371f1bd9bfb5942714",
+          "bytes": null,
+          "callbacks": 0
+        }
+      }
+    },
+    "linux": {
+      "status": "PASS",
+      "archive": "linux.zip",
+      "sha256": "19bbe4928d7c995cd9c8de7d11dd14ec40bd63ed8bc4ee3d0549003fe17e5642",
+      "manifest_sha256": "d4a4b964f5061b827978506327715e514a576de04e324fdc48bdc5d80bfdcfe6",
+      "cases": {
+        "feishu": {
+          "sha256": "1a97ea463cea0b68bb4f176257c9c76931b4c2fa799689fd9d3b3e846a9fd6b7",
+          "bytes": 131058,
+          "callbacks": 6
+        },
+        "feishu-wrong": {
+          "sha256": "29595b023a09dcb5e1bb4c6d01325306df9446847e46e7cd2da61bdba96f6571",
+          "bytes": null,
+          "callbacks": 0
+        },
+        "lark": {
+          "sha256": "381f5260bb263f658926c73233ef1269c4c58854412a2d994430191067ac05c3",
+          "bytes": 101058,
+          "callbacks": 5
+        },
+        "lark-wrong": {
+          "sha256": "a9c7f4076d404bad9b0064a621e5511d73561d1f683e3f4ec765398aa526b53c",
+          "bytes": null,
+          "callbacks": 0
+        }
+      }
+    },
+    "windows": {
+      "status": "PASS",
+      "archive": "windows.zip",
+      "sha256": "9ef4f90abe0879da585d76218759aa0714f2995cd0d25b9094f62effaa229d2c",
+      "manifest_sha256": "1b29adad89532102b59df93a6230e2616ff5029e5a4b5088fa1f8761657528b2",
+      "cases": {
+        "feishu": {
+          "sha256": "2d21437cfa5eb3f9ef5b51d74607889275f561ff0ff5086516f1dcfbfe27091e",
+          "bytes": 131058,
+          "callbacks": 6
+        },
+        "feishu-wrong": {
+          "sha256": "cfda1b503d78f42f5a826c950c56e04a0f252105b05d07190f764fcb2b8fa3a5",
+          "bytes": null,
+          "callbacks": 0
+        },
+        "lark": {
+          "sha256": "fa8b54354107229468e6152a79d0e76863b2d7a90c225dbedf5c2c93e17fc92d",
+          "bytes": 101058,
+          "callbacks": 5
+        },
+        "lark-wrong": {
+          "sha256": "d096c2b44d052c6ebf2287a4e24d431fcc6b0366a470cad35de7ad4a572f21fc",
+          "bytes": null,
+          "callbacks": 0
+        }
+      }
+    }
+  },
+  "paid_calls": 0
+}
