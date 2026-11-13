@@ -1,0 +1,56 @@
+{
+  "status": "PASS",
+  "card_status": "BLOCKED",
+  "scope": "unpublished isolated game",
+  "plugin_version": "0.1.0-alpha.1",
+  "host_source_commit": "9db8b3f073e34a6b86c8f93e878c2de09f0e25ba",
+  "host_schema_sha256": "38600a59f63c64fe1eb45ddd2da618b0db25c3af10a2fee49416f6a3f4a4c252",
+  "sdk": {
+    "python": "1.0.0a9",
+    "rust": "1.0.0-alpha.9"
+  },
+  "source_snapshot_sha256": "8057d1c776802348dd1d720ba41818ecaff66e14e853a6b3815464eb28074860",
+  "platforms": {
+    "macos": {
+      "status": "PASS",
+      "archive": "macos.zip",
+      "sha256": "59442d947406384ae3fae5f9d51267bf17d69c71a5d29bdf2601adb27d1453d0",
+      "manifest_sha256": "2a177cc1cc127f70c6adb2dd9e15e9e9b06ecca14608a4e785be1be7ef3e4085",
+      "report_sha256": "dfdc7c0cf0c8a26d2b25c422af75c21cb56b7fa318a7fae0ac9d2f5e97d22cf1",
+      "binary_sha256": "cbd9c78a92cbe9609791dd55593e07aafaa927e1e26206b2d49da29366e0ff1e",
+      "host_archive_sha256": "3c2dab0738d434db26cd145e82d29a7e79773d4d9713649a1ef04b58949a32e9",
+      "case_count": 20,
+      "rust_tests": 3,
+      "paid_calls": 0
+    },
+    "linux": {
+      "status": "PASS",
+      "archive": "linux.zip",
+      "sha256": "58171b2679f5ecb6287e43fc7350386963576a49a0ae5e1edd983a5ac1e58988",
+      "manifest_sha256": "6456a6caaec0a6b33ce0aec21e4f182c43939d5f2b9c389657c6492e7e06c2a8",
+      "report_sha256": "24aad5952e51c1ac214c19887928694d700ee9260d74a5c4ed54936422f9a080",
+      "binary_sha256": "cc89f241d585dcfa0fbba4c16e132a326d1e1f9573f58545a69d32f58737b7aa",
+      "host_archive_sha256": "326325c842984e88ec80e94056b86afdab280e62968d9b22aceaa809ce281a99",
+      "case_count": 20,
+      "rust_tests": 3,
+      "paid_calls": 0
+    },
+    "windows": {
+      "status": "PASS",
+      "archive": "windows.zip",
+      "sha256": "e12beceaaee50f9f7c413eecb69ea98c235a7b6106629decd99e8507b81b7875",
+      "manifest_sha256": "8037f0b56b839e6a8998f3564c3e9def11354814cf97569ee096e859c7375fa5",
+      "report_sha256": "cd9f142ca17e08bc5ac811a077d719c9424cae9a3a09e52943c51a9ee63e6072",
+      "binary_sha256": "9933249a2555ba1c773db35a568f57a5dfc85582ebe0c9f7aeed63c7c91fe11d",
+      "host_archive_sha256": "1e0d5856740899539c9f4adac2b4c6ce6d01aff6d7697597203d37f2d87d7f56",
+      "case_count": 20,
+      "rust_tests": 3,
+      "paid_calls": 0
+    }
+  },
+  "remaining": [
+    "R11 real GitHub Monitor and two target grants",
+    "original API9 loading and old-host compatibility",
+    "published producer and external consumer acceptance"
+  ]
+}

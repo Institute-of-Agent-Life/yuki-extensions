@@ -28,8 +28,11 @@ Windows 最小 Rust intake（`ci/session_intake.py`）已用真 Host 取得原 t
 在目前交付文件未提供完整安裝 policy 的設定下，前景、已接納 Work、actorless 三例
 `session.create` 均回 -32003，未呼叫 session.run。這驗證當前配置被拒，不能據此定位核心缺陷。
 
-需生產者提供可解析的 `plugins.sessions` policy、auxiliary route/Profile、purpose/origin、
-background grant 和真人 handle 正反例。取得後依 `EXT-047-sequences.md` 做有狀態遊戲、重啟及來源清除；
-最小診斷不是正式遊戲，沒有建立空發行單位。
+CORE-051 原包的 foreground 安裝方式見 [Lighthouse](../examples/scoped-session/README.md)。
+部署以 `plugins.sessions` 明選 game route、`context_profiles=["none"]` 和
+`background=false`，auxiliary route 僅允許原 `session`、`call` 與列出的入口。
+玩家透過真 `command.invoke` handle 啟動、續玩和查閱。Rust 插件 0.1.0-alpha.1
+由 `ci/check.py EXT-047 --preparation` 對固定原包驗原鍵冷啟、跨 Person 拒讀及原來源清除。
+GitHub Monitor 的兩目標驗收及原 API9 裝載重放仍待交接。
 
 回退保持原 API9 版本與原 Host。第三方未實收新版本、未驗原 QQ scope 前，不改其版本或宣稱相容。
