@@ -243,6 +243,140 @@ def exercise(peer, root, working, output, host, binary, declaration):
         return cases
 
 
+def exercise_tool_receipts(peer, root, working, output, host, binary, declaration):
+    class Worker(peer.Worker):
+        def submit(self, name, action, batch, **args):
+            pending = self.jobs / (name + ".tmp")
+            write(pending, {"action": "reflection." + action, "batch": batch, **args})
+            pending.rename(self.jobs / (name + ".job"))
+
+        def rows(self, sql, *args):
+            with closing(sqlite3.connect((self.data / "core.sqlite").as_uri() + "?mode=ro", uri=True)) as db:
+                return db.execute(sql, args).fetchall()
+
+    output.mkdir()
+    owner = Worker(working, output, host, binary, root, declaration)
+    tool_text = "confirmed tool receipt retains exact source"
+    long_text = "unselected tail " + "x" * 540
+    with owner.running():
+        owner.op("person", "create", ACTOR)
+        user = owner.op("account", "open", "qq", "reflection-tools", "200", 1, "--person", ACTOR, "--start", 1)
+        bot = owner.op("account", "open", "qq", "reflection-tools", "100", 1, "--start", 1)
+        entry = owner.op("entry", "private", user["assignment"], bot["assignment"])["entry"]
+        space = '["qq","reflection-tools","701"]'
+        owner.op("entry", "group", space)
+
+        def confirm(sequence, text, *, foreign=False):
+            frame = {"source": f"receipt-{sequence}", "account": user["account"],
+                     "bot_stage": bot["assignment"], "reply_bot": "100", "kind": "message",
+                     "occurred": 100 * sequence, "observed": 100 * sequence,
+                     "segments": [{"type": "text", "text": "original request"}]}
+            if foreign:
+                frame["space"] = space
+            event = owner.op("ingress", "record", json.dumps(frame), "--accept")["event"]
+            execution = owner.op("ingress", "claim", event)["execution"]
+            operation = f"receipt-{sequence}"
+            owner.op("effect", "intent", execution, operation, ACTOR, "put", operation,
+                     json.dumps({"value": text}))
+            result = owner.op("effect", "local", execution, operation, ACTOR)
+            assert result["state"] == "confirmed" and result["result"]["value"]["value"] == text
+            receipt, = owner.rows("SELECT rowid FROM operations WHERE namespace=? AND operation_id=?",
+                                  execution, operation)[0]
+            return {"execution": execution, "receipt": receipt, "sources": [event]}, operation
+
+        original, operation = confirm(1, tool_text)
+        unselected, unselected_operation = confirm(2, "second actual receipt")
+        foreign, _ = confirm(3, "another entry", foreign=True)
+        long, _ = confirm(4, long_text)
+
+    trace = output / "wire.jsonl"
+    with model_peer() as (port, model, requests, _accepted, _release):
+        configure(owner, root, binary, trace, entry, port, declaration)
+
+        def plan(*tools):
+            return {"scope": "own", "route": "review", "tools": list(tools)}
+
+        def action(key, execution, op, quote):
+            return {"action": "add", "subject": {"kind": "self", "visibility": "private", "entry": entry},
+                    "fact_key": key, "body": "retain a fact from the confirmed tool result",
+                    "evidence": [{"kind": "tool", "execution": execution, "operation": op, "quote": quote}]}
+
+        def frames(method):
+            rows = [json.loads(line) for line in trace.read_bytes().splitlines(keepends=True) if line.endswith(b"\n")]
+            return [row["frame"]["params"] for row in rows if row["direction"] == "from_plugin"
+                    and row["frame"].get("method") == method]
+
+        def state():
+            return json.loads((owner.jobs / "reflection-tool-original/state.json").read_bytes())
+
+        with owner.running():
+            owner.online()
+            wrong_source = dict(original, sources=unselected["sources"])
+            missing_receipt = dict(original, receipt=unselected["receipt"])
+            for name, selected in [("foreign-tool", foreign), ("wrong-source", wrong_source),
+                                   ("missing-receipt", missing_receipt), ("oversize-tool", long)]:
+                rejected = owner.job(name, "run", batch=name, plan=plan(selected))
+                assert rejected["state"] == "not_completed", rejected
+            assert not requests and not frames("maintenance.model.open")
+            model["actions"] = [action("other-tool", unselected["execution"], unselected_operation,
+                                       "second actual receipt")]
+            unbound = owner.job("unselected-evidence", "run", batch="unselected-evidence", plan=plan(original))
+            assert unbound["state"] == "not_completed" and not owner.facts()
+            model["actions"] = [action("false-quote", original["execution"], operation, "fabricated quote")]
+            false = owner.job("false-quote", "run", batch="false-quote", plan=plan(original))
+            assert false["state"] == "not_completed" and not owner.facts()
+            assert len(requests) == 2
+            model["actions"] = [action("tool-lesson", original["execution"], operation, tool_text)]
+            (owner.control / "kill-model-call").write_text("tool-original", encoding="utf-8")
+            owner.submit("before-tool-ack", "run", batch="tool-original", plan=plan(original))
+            paid = wait_for(owner.control / "model-paid-before-kill.json")["result"]
+            assert paid["state"] in {"response", "paired"} and len(requests) == 3
+            assert state()["phase"]["phase"] == "prepared"
+            assert tool_text in str(requests[-1]["wire"])
+            assert not owner.facts() and not (owner.jobs / "before-tool-ack.result").exists()
+
+        with owner.running():
+            owner.online()
+            result = peer.completed(owner.job("recover-tool-ack", "run", batch="tool-original",
+                                              plan=plan(original)))
+            assert result["request"] == paid["request"] and len(requests) == 3
+            assert len(result["receipts"]["applied"]) == 1 and owner.facts() == [("tool-lesson", 1)]
+            assert owner.rows("SELECT kind, visibility, visibility_entry FROM memory_facts") == [
+                ("self", "private", entry)]
+            evidence, = owner.rows("SELECT kind, source_key, origin_execution, quote FROM memory_evidence")
+            assert (evidence[0], json.loads(evidence[1]), evidence[2], evidence[3]) == (
+                "tool", [original["execution"], operation], original["execution"], tool_text)
+            roots = [frame for frame in frames("maintenance.model.open") if frame["key"] == "tool-original"]
+            preview, = [frame for frame in frames("maintenance.extract.preview") if frame["key"] == "tool-original"]
+            assert len(roots) == 2 and roots[0] == roots[1]
+            assert roots[0]["tools"] == preview["tools"] and roots[0]["sources"] == preview["sources"] == []
+            assert roots[0]["tools"][0]["receipt"] == original["receipt"]
+            assert roots[0]["tools"][0]["role"] == "primary"
+            owner.op("privacy", "erase", "original-tool-source", ACTOR, json.dumps(original["sources"]))
+            deadline = time.monotonic() + 12
+            while owner.op("privacy", "pending", declaration["id"])["obligations"]:
+                assert time.monotonic() < deadline, "tool receipt erasure did not settle"
+                time.sleep(.05)
+            assert owner.rows("SELECT status FROM memory_facts") == [("erased",)]
+            assert owner.rows("SELECT quote FROM memory_evidence") == [(None,)]
+            assert owner.rows("SELECT count(*) FROM model_attempts WHERE json_extract(usage_json,'$.total')=12") == [(3,)]
+            assert state()["plan"] is None and state()["phase"]["phase"] == "erased"
+            assert not (owner.jobs / "recover-tool-ack.result").exists()
+            assert not (owner.jobs / "before-tool-ack.job").exists()
+
+        with owner.running():
+            owner.online()
+            stale = peer.completed(owner.job("erased-tool", "run", batch="tool-original", plan=plan(original)))
+            assert stale == {"phase": "erased"} and len(requests) == 3
+            assert not (owner.jobs / "erased-tool.job").exists()
+
+    return {"original": original, "operation": operation, "frozen_tools": roots[0]["tools"],
+            "original_model": result["request"], "model_transport_attempts": len(requests),
+            "cold_recovery_with_original_model_receipt": True, "source_erased_fact_and_checkpoint": True,
+            "unselected_receipt_and_fabricated_quote_denied": True,
+            "foreign_wrong_source_missing_and_oversize_denied_before_model": True}
+
+
 def prepare(root, output):
     spec = importlib.util.spec_from_file_location("paired_maintenance", root/"tests/cases/EXT-034.py")
     peer = importlib.util.module_from_spec(spec)
@@ -253,12 +387,15 @@ def prepare(root, output):
         package = build(root, "memory-maintenance", output/"packages")
         binary = output/"packages"/("yuki-memory-maintenance.exe" if os.name == "nt" else "yuki-memory-maintenance")
         declaration = tomllib.loads((output/"packages/plugin-reflection.toml").read_text(encoding="utf-8"))
-        assert declaration["version"] == package["version"] == "0.1.0-alpha.5"
+        assert declaration["version"] == package["version"] == "0.1.0-alpha.6"
+        tools = tomllib.loads((output/"packages/plugin-reflection-tools.toml").read_text(encoding="utf-8"))
+        assert tools["version"] == declaration["version"] and tools["id"] != declaration["id"]
         cases = exercise(peer, root, work/"r", output, host, binary, declaration)
-    return "reflection-scope.json", {"status":"PASS", "card_status":"UNPUBLISHED_EVENT_REFLECTION",
+        tool_cases = exercise_tool_receipts(peer, root, work/"t", output/"tools", host, binary, tools)
+    return "reflection-scope.json", {"status":"PASS", "card_status":"UNPUBLISHED_EVENT_AND_TOOL_REFLECTION",
         "candidate":lock, "producer_receipts":producer_receipts, "plugin":package["artifacts"],
-        "cases":cases, "paid_provider_calls":0, "published":False,
-        "remaining":["tool receipt input and original batch scheduling", "foreground quiet policy",
+        "cases":cases, "tool_cases":tool_cases, "paid_provider_calls":0, "published":False,
+        "remaining":["original batch scheduling", "foreground quiet policy",
                      "instance-level daily quota and published installation tuple"]}
 
 

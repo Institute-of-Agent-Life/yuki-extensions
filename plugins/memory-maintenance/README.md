@@ -132,6 +132,24 @@ unacknowledged result, while a known request is only observed by ID. Use
 `reflection.status` with the batch ID to inspect the local checkpoint.
 
 A source erasure removes matching batch inputs, results and temporary copies.
-The batch ID stays fenced. Background scheduling, foreground quiet time,
-receipt-backed inputs, and aggregate daily quotas remain outside this
-development candidate.
+The batch ID stays fenced.
+
+To include confirmed tool results, install `plugin-reflection-tools.toml` in a
+separate private job directory with the same narrow `reflect` policy and add
+`maintenance.tool.page` to that scope. Its distinct installation ID lets the
+event worker retain the policy revision bound to its original model receipts.
+Choose each receipt by its original execution and receipt ID and copy its
+complete, ordered `source_ids` from the authorized tool page.
+
+```json
+{"action":"reflection.run","batch":"november-tool-1","plan":{"scope":"own","route":"review","tools":[{"execution":"<original execution>","receipt":15,"sources":[42]}]}}
+```
+
+A batch may combine primary events, contextual events and primary tool results
+up to 16 inputs. The worker checks the exact source set before opening a model
+request, freezes each receipt version, and uses the same inputs for preview.
+Tool results must fit the Host's complete preview and expose at most 128
+original source IDs. Tool evidence cites the original execution and operation.
+Erasing any selected source removes the batch checkpoint and fences its ID.
+Background scheduling, foreground quiet time, and aggregate daily quotas
+remain pending.

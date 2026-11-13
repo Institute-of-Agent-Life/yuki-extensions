@@ -1,0 +1,81 @@
+{
+  "task": "EXT-035",
+  "status": "PASS",
+  "formal_card_status": "PARTIAL",
+  "published": false,
+  "source_base": "3da73eb17f6ddd0f6f12ade99c8c899f0727de3a",
+  "source_inventory_sha256": "9749bcd09522d65d5afed62c28f8ea82038ae0f50bf08db8a2b3834836e368e3",
+  "extension_version": "0.1.0-alpha.6",
+  "host_source_commit": "fca3f22ce60d35f20a866fff7a409bb419a9b1be",
+  "host_schema_sha256": "123de29cf8057cea1dfd566aec31ea30ba4ff68524920581843456e51cbb2e7d",
+  "consumer_sdk": {
+    "version": "1.0.0-alpha.8",
+    "crate_sha256": "a8739c74d300f1044c94749ced333d9694920aa7c91728b19f624ff9fbaf2e63"
+  },
+  "capabilities": [
+    "explicit original event and context batch",
+    "confirmed tool receipt and exact dependency map",
+    "stable paid receipt and apply recovery",
+    "entry-private SELF result",
+    "empty apply receipt",
+    "scoped erasure of retained and in-flight data"
+  ],
+  "remaining": [
+    "original batch scheduling",
+    "foreground quiet policy",
+    "instance-level daily quota and published installation tuple"
+  ],
+  "platforms": {
+    "macos": {
+      "status": "PASS",
+      "archive": "macos.zip",
+      "sha256": "e5ec267238a4f540cf964f8f6508bf71e2be454a7c261b36168f2a017c8616ac",
+      "binary_sha256": "ae1413186ad65fa593da70e2e8bc4e7c5fde84ef7293eaf40ef26e903fe1766b",
+      "host_binary_sha256": "3ffffc915c9a54e6981925c27c80500febc9571baab9eb009a94d9e3dc0f6b1f",
+      "host_archive_sha256": "918940eacfd1b2c6fa564cb0bf1575abbbef2f42d69118f540bd625b014796c8",
+      "aux_archive_sha256": "e0bb338bdaafa3f86ee821808c7d197596fae27cb6b1c9d4c7e1cd00e871dfe7",
+      "manifest_sha256": "36bfc59dd507cae76eaf4967a36bb5a8cccc1637604d7feb6cba08ca14f7f02f",
+      "report_sha256": "239a928d2f99205f6b615601799d4e4f92d6c2b256c7ad7a516af08d37151f2c",
+      "rebuild_manifest_sha256": "070665601d189aa5cb2977a62afa5b3b9562b9a090a1a487cc695b0eb18aeb7b",
+      "rust_tests": 2,
+      "reflection_transport_attempts": 9,
+      "event_transport_attempts": 6,
+      "tool_transport_attempts": 3,
+      "paid_provider_calls": 0
+    },
+    "linux": {
+      "status": "PASS",
+      "archive": "linux.zip",
+      "sha256": "794757e6a84ff90482998c050a09dc641618c41c23d644b03edc92ce40af29a2",
+      "binary_sha256": "8ebcdb7c186441fa44943516c9363eccf961a4731170e77bfd53cf08ae171236",
+      "host_binary_sha256": "2c0c900b9357ddb1a8809ae349961827ece9aa277341f0d1f56e98316c150e6e",
+      "host_archive_sha256": "a202029cece7eabddd23c6d689d5bc0608e36c939ca231c40ba42605fec3960b",
+      "aux_archive_sha256": "419b9ae246789d807316b21effadf474186f410582c960989f2bc213a9d27070",
+      "manifest_sha256": "e5ee800d00e7605520926b7ba16a183b205f1f5062a6b8bcc9fb66a5ded50242",
+      "report_sha256": "699d73d3d17bd8c76a6d8ba62194236a31d6146d23056535cd9f008026f898ea",
+      "rebuild_manifest_sha256": "075bca7d1c433596f423900556ba6452c9dd62e8da22f785c8fffa92fa1aac48",
+      "rust_tests": 2,
+      "reflection_transport_attempts": 9,
+      "event_transport_attempts": 6,
+      "tool_transport_attempts": 3,
+      "paid_provider_calls": 0
+    },
+    "windows": {
+      "status": "PASS",
+      "archive": "windows.zip",
+      "sha256": "37059a5a7bb0f26c32f8e6f388047417c3ae683385caae8aaf3f1437f455ea02",
+      "binary_sha256": "726c2fe61281c8c0944832b61d7a7cc8a2ddc4854d69e0fc648011a7f9374872",
+      "host_binary_sha256": "7d4632bb7b605b1abed5c091f6b7f0947e16d83f99bf46328c9d3aad98fe3cc3",
+      "host_archive_sha256": "c446405436be9b0adfd4765cf8f5aa33122c8341e3d7a7baef0e1617dfa52211",
+      "aux_archive_sha256": "eb806f321f0d9e689ba268559943655905c122d9a592c91da1644b611cdc38f8",
+      "manifest_sha256": "c6c8df8558e8a588beb494ecfe3adf75d62d6649e4794f1ec2018798a46aea55",
+      "report_sha256": "1cb1c590cab5a51c7e9bb281c0dd9f7efb5b88fd1fe3dd8940a97cac3897fd91",
+      "rebuild_manifest_sha256": "39244cc44f0275679bc8207240a9d6479afc63e87cf1777ded16763f9e913706",
+      "rust_tests": 2,
+      "reflection_transport_attempts": 9,
+      "event_transport_attempts": 6,
+      "tool_transport_attempts": 3,
+      "paid_provider_calls": 0
+    }
+  }
+}
