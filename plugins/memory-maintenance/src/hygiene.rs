@@ -1,12 +1,13 @@
+use serde::{Deserialize, Serialize};
 use serde_json::{Value, json};
 
 pub fn request(job: &Value) -> Result<(&'static str, Value), String> {
     let obj = job.as_object().ok_or("job must be an object")?;
     let action = job["action"].as_str().ok_or("action required")?;
     let (method, allowed, required): (_, &[&str], &[&str]) = match action {
-        "scan" => (
+        "scan" | "audit" | "stats" => (
             "maintenance.audit",
-            &["scope", "purpose", "fact", "after"],
+            &["scope", "purpose", "fact", "after", "integrity"],
             &["scope", "purpose"],
         ),
         "apply" => (
@@ -16,6 +17,7 @@ pub fn request(job: &Value) -> Result<(&'static str, Value), String> {
                 "purpose",
                 "fact",
                 "after",
+                "integrity",
                 "operation",
                 "fingerprint",
                 "approved",
@@ -63,12 +65,20 @@ pub fn request(job: &Value) -> Result<(&'static str, Value), String> {
         }
     }
     for (k, v) in &params {
-        if k != "approved"
-            && k != "revision"
-            && !v.as_str().is_some_and(|s| !s.is_empty() && s.len() <= 256)
-        {
+        let valid = match k.as_str() {
+            "integrity" => v.is_boolean(),
+            "approved" | "revision" => true,
+            _ => v.as_str().is_some_and(|s| !s.is_empty() && s.len() <= 256),
+        };
+        if !valid {
             return Err(format!("invalid {k}"));
         }
+    }
+    if action == "audit" || action == "stats" {
+        params.entry("integrity").or_insert(Value::Bool(true));
+    }
+    if action == "stats" && params["integrity"] != true {
+        return Err("stats requires integrity findings".into());
     }
     if action == "apply" {
         let ids = params["approved"]
@@ -90,8 +100,44 @@ pub fn request(job: &Value) -> Result<(&'static str, Value), String> {
     Ok((method, Value::Object(params)))
 }
 
-/// Interpret only the producer's observed counts and semantic identities.
-pub fn scan_report(raw: Value) -> Result<Value, String> {
+#[derive(Deserialize, Serialize)]
+#[serde(rename_all = "snake_case")]
+enum Lexical {
+    Current,
+    Missing,
+    Mismatch,
+    NotIndexed,
+    Unexpected,
+}
+
+#[derive(Deserialize, Serialize)]
+#[serde(rename_all = "snake_case")]
+enum VectorState {
+    Current,
+    Missing,
+    InvalidShape,
+    Stale,
+    NotIndexed,
+}
+
+#[derive(Deserialize, Serialize)]
+struct VectorCoverage {
+    route: String,
+    profile: String,
+    coverage: VectorState,
+    attempt: Option<String>,
+}
+
+#[derive(Deserialize)]
+struct Integrity {
+    lexical: Lexical,
+    evidence_missing: bool,
+    event_evidence_checked: u64,
+    invalid_event_evidence: u64,
+    vectors: Vec<VectorCoverage>,
+}
+
+pub fn scan_report(raw: Value, integrity_requested: bool) -> Result<Value, String> {
     if raw["paid_calls"] != 0 {
         return Err("audit charged a request".into());
     }
@@ -99,6 +145,49 @@ pub fn scan_report(raw: Value) -> Result<Value, String> {
     let routes = raw["embedding_routes"]
         .as_array()
         .ok_or("audit routes missing")?;
+    if integrity_requested {
+        let mut findings = Vec::with_capacity(items.len());
+        let mut coverage = Vec::with_capacity(items.len());
+        let mut lexical_repairs = 0;
+        let mut missing_evidence = 0;
+        let mut checked = 0_u64;
+        let mut invalid = 0_u64;
+        for item in items {
+            let integrity = Integrity::deserialize(&item["integrity"])
+                .map_err(|e| format!("Host integrity findings unavailable: {e}"))?;
+            lexical_repairs += usize::from(matches!(
+                integrity.lexical,
+                Lexical::Missing | Lexical::Mismatch | Lexical::Unexpected
+            ));
+            missing_evidence += usize::from(integrity.evidence_missing);
+            checked = checked
+                .checked_add(integrity.event_evidence_checked)
+                .ok_or("invalid checked evidence count")?;
+            invalid = invalid
+                .checked_add(integrity.invalid_event_evidence)
+                .ok_or("invalid evidence count")?;
+            findings.push(json!({
+                "fact": item["fact"], "revision": item["revision"],
+                "lexical": integrity.lexical, "evidence_missing": integrity.evidence_missing,
+                "event_evidence_checked": integrity.event_evidence_checked,
+                "invalid_event_evidence": integrity.invalid_event_evidence,
+            }));
+            coverage.push(json!({
+                "fact": item["fact"], "revision": item["revision"],
+                "retained_evidence": item["evidence_retained"], "recorded_evidence": item["evidence_total"],
+                "profiles": integrity.vectors,
+            }));
+        }
+        let stats = json!({
+            "facts": items.len(), "lexical_repairs": lexical_repairs,
+            "facts_missing_evidence": missing_evidence,
+            "event_evidence_checked": checked, "invalid_event_evidence": invalid,
+        });
+        return Ok(json!({
+            "audit": raw, "coverage": coverage, "bounded_page": true,
+            "quality_findings": findings, "stats": stats, "paid_calls": 0,
+        }));
+    }
     let coverage: Vec<_> = items.iter().map(|item| {
         let profiles = item["vector_profiles"].as_array().cloned().unwrap_or_default();
         let missing: Vec<_> = routes.iter().filter(|r| !profiles.contains(&r["profile"]))
@@ -116,7 +205,9 @@ mod tests {
     use super::*;
     #[test]
     fn same_dimensions_different_profile_stays_missing() {
-        let r=scan_report(json!({"paid_calls":0,"fingerprint":"original","items":[{"fact":"f","revision":2,"vector_profiles":["old"],"evidence_total":0,"evidence_retained":0}],"embedding_routes":[{"route":"new","profile":"new","dimensions":3}]})).unwrap();
+        let legacy = json!({"paid_calls":0,"fingerprint":"original","items":[{"fact":"f","revision":2,"vector_profiles":["old"],"evidence_total":0,"evidence_retained":0}],"embedding_routes":[{"route":"new","profile":"new","dimensions":3}]});
+        assert!(scan_report(legacy.clone(), true).is_err());
+        let r = scan_report(legacy, false).unwrap();
         assert_eq!(r["coverage"][0]["missing_profiles"][0]["profile"], "new");
         assert_eq!(r["coverage"][0]["retained_evidence"], 0);
         assert_eq!(
@@ -132,5 +223,13 @@ mod tests {
             request(&json!({"action":"scan","scope":"own","purpose":"quality","actor":"override"}))
                 .is_err()
         );
+        assert!(
+            request(&json!({"action":"scan","scope":"own","purpose":"quality","integrity":"true"}))
+                .is_err()
+        );
+        let (method, params) =
+            request(&json!({"action":"stats","scope":"own","purpose":"quality"})).unwrap();
+        assert_eq!(method, "maintenance.audit");
+        assert_eq!(params["integrity"], true);
     }
 }

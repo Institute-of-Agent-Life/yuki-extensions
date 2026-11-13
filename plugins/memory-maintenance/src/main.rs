@@ -89,9 +89,10 @@ fn run_jobs(
                     return Err("job does not match the installed maintenance mode".into());
                 }
                 let (method, params) = hygiene::request(&job)?;
+                let integrity_requested = params["integrity"] == true;
                 let response = rpc.call(method, params, &stop)?;
                 if method == "maintenance.audit" {
-                    hygiene::scan_report(response)
+                    hygiene::scan_report(response, integrity_requested)
                 } else {
                     Ok(response)
                 }
