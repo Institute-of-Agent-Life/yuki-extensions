@@ -1,0 +1,83 @@
+{
+  "status": "PASS",
+  "formal_card_status": "BLOCKED",
+  "published": false,
+  "source_base": "ea9dbe204d3aafef168ae55ee3c3ca205d730f66",
+  "source_inventory_sha256": "955f9bfbb9701513c488ead44f8ab717bc05af40b30716411e4c40dca0bda61a",
+  "source_inventory_files": 316,
+  "producer_source_commit": "cb02f74ea48b85c6b6932423b93e6332b97f2871",
+  "notification_schema_sha256": "ab4f3a9684597f3b57b77eb638daf8538c54bacc484e3609f3ad36bfed817fb8",
+  "consumer_rust_sdk": "1.0.0-alpha.10",
+  "consumer_version": "0.1.0-alpha.4",
+  "behavior_baseline": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+  "remaining": [
+    "original R06 source recordings",
+    "formal published producer and consumer tuple",
+    "legacy subscription KV migration"
+  ],
+  "platforms": {
+    "macos": {
+      "status": "PASS",
+      "archive": "macos.zip",
+      "sha256": "7be3ca998e82e218ebb23aad371f067c1c129eb7014565d3fe97d5085dbdf5cc",
+      "manifest_sha256": "638fe6e96082fa2c8b49650f49dc4bd5788ebc3a1fb6bcab0b96615e2be8d7dc",
+      "report_sha256": "c3f5ea060c4126ee99c620e7d024ac032ab0b8df456a4a8294c92c531f583e9b",
+      "binary_sha256": "326c75718f1b5f74951bc699c977756275a59080de8ecb97b43ab002ec62188b",
+      "source_publications": 8,
+      "native_delivery": [
+        "unknown",
+        "confirmed"
+      ],
+      "rust_tests": 11,
+      "original_target_fence": {
+        "original_key": "feed:one:e6cafc9237a23352829206dcaf3eb0a45a9af6f0fc3c715bdd1e2a11fd0eb23f",
+        "same_pending_request": true,
+        "no_dispatch_for_changed_target": true,
+        "reconciled_on_original_target": true
+      },
+      "paid_calls": 0
+    },
+    "linux": {
+      "status": "PASS",
+      "archive": "linux.zip",
+      "sha256": "50e412287f266459fff6457fe0d203ad8e5bcf8d5aa037e141bef3a61e51896c",
+      "manifest_sha256": "48b9d42b49e14207ae27107db2f4f198582f293749875605ff080e93594a02d5",
+      "report_sha256": "8d01f80f0fca266d1a6e7c36464e8683b36002b56233b36de5cd971474b95f27",
+      "binary_sha256": "4702a12cd4430031b7ea55ce85c935fe2092740e5cd1b5211603dec85fadfd5e",
+      "source_publications": 8,
+      "native_delivery": [
+        "unknown",
+        "confirmed"
+      ],
+      "rust_tests": 11,
+      "original_target_fence": {
+        "original_key": "feed:one:e2660965267302fe44e8660b731027615baabc2f9e763f8ef8de49d25de52d10",
+        "same_pending_request": true,
+        "no_dispatch_for_changed_target": true,
+        "reconciled_on_original_target": true
+      },
+      "paid_calls": 0
+    },
+    "windows": {
+      "status": "PASS",
+      "archive": "windows.zip",
+      "sha256": "99542218096988e348e340259c75dddff9dae716d341bbdadb76b5e9e2636f74",
+      "manifest_sha256": "72fee389ba89eb36a992247e97c9ed25e55789c2cd748d6e0016dd954c1b0141",
+      "report_sha256": "7a42ab5584088339abf18cd2b99c7e3b00937342a184ec9579264f19ddc2eaf1",
+      "binary_sha256": "3d00b80b7cb1f6d2f84e623384c5f64be0cd9d2648ff5c3af130df334e456e23",
+      "source_publications": 8,
+      "native_delivery": [
+        "unknown",
+        "confirmed"
+      ],
+      "rust_tests": 11,
+      "original_target_fence": {
+        "original_key": "feed:one:7efeb5e77a0b4294f7db66ec536f5916f51e18288ab90e3b0276a0ddf02bf879",
+        "same_pending_request": true,
+        "no_dispatch_for_changed_target": true,
+        "reconciled_on_original_target": true
+      },
+      "paid_calls": 0
+    }
+  }
+}

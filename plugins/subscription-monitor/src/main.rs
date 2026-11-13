@@ -246,9 +246,18 @@ fn worker(
                 if stop.load(Ordering::Acquire) {
                     break;
                 }
-                let Some(request) = state["pending"].as_array().and_then(|a| a.first()).cloned()
-                else {
-                    break;
+                let request = match feed::next_pending(c, &mut state) {
+                    Ok(Some(request)) => request,
+                    result => {
+                        if let Err(error) = result {
+                            state["error"] = Value::String(error);
+                        }
+                        let mut j = journal.lock().unwrap();
+                        let mut all = j.state.clone();
+                        all["subscriptions"][sid] = state.clone();
+                        j.commit(all)?;
+                        break;
+                    }
                 };
                 let unresolved = !state["publishing"].is_null();
                 state["publishing"] = request["event_key"].clone();
@@ -334,7 +343,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             }
             Incoming::Call { method, id, params } if method == "forget.request" => {
                 stop.store(true, Ordering::Release);
-                let stopped = worker.take().is_none_or(|handle| handle.join().is_ok());
+                let stopped = worker
+                    .take()
+                    .is_none_or(|handle| handle.join().is_ok_and(|result| result.is_ok()));
                 let sources = serde_json::from_value::<HashSet<i64>>(params["sources"].clone());
                 let erased = stopped
                     && sources.is_ok_and(|sources| {

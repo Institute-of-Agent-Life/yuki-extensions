@@ -172,6 +172,17 @@ def prepare(root,out):
    (owner.work/'control/lose-next').touch()
    page_failure[0]=None
    wait(lambda:(owner.work/'control/lost.json').exists());lost=json.loads((owner.work/'control/lost.json').read_bytes());assert lost['result']['event_created']
+   unresolved=state()['subscriptions']['one']
+   assert unresolved['publishing']==unresolved['pending'][0]['event_key']
+   other_target={**target,'conversation_id':'unrelated-fixture-entry'}
+   set_config([dict(sub,targets=[other_target])])
+  with running():
+   wait(lambda:state()['subscriptions']['one'].get('error')=='original publication target changed before reconciliation')
+   fenced=state()['subscriptions']['one']
+   assert fenced['pending']==unresolved['pending'] and fenced['publishing']==unresolved['publishing']
+   dispatches=[f for f in wires() if f['direction']=='from_plugin' and f['frame'].get('method')=='notification.publish']
+   assert len(dispatches)==n+1
+   set_config([*base_subscriptions,direct])
   with running():
    wait(lambda:count('one')==1 and count('two')==1)
    dynamic_page[0]=True
@@ -288,6 +299,10 @@ def prepare(root,out):
   report={'status':'PASS','card_status':'BLOCKED','published':False,'core':owner.evidence(),'grant':grant,'revocation':revoke,'lost_ack':lost,'receipts':receipts,'observations':polls,'physical_public_sends':0,'source_errors_preserved_cursor':True,'same_key_requests_identical':True,'host':host,'delivery':{'unknown_wire':unknown,'confirmed_wire':confirmed,'outcomes':outcomes},'sources':{'fixtures':'offline HTTP responses','miniflux_pagination':{'failure_paths':failures,'original_state_preserved':True,'recovered_publications':2},'bilibili_incomplete_page_refused':True,'live_transition_receipt':receipts[3]['publication']['notification_id']},'erasure':{'original':forgotten,'removed_receipts':assigned,'preserved_seen_keys':True,'pending':[]},'remaining':['original R06 source recordings','RSS/Atom source support','formal published producer and consumer tuple']}
   report['sources']['xml_feeds']={'baseline_sizes':{'rss':1,'atom':1},'invalid_responses_preserved_state':True,
     'cold_restart_publication_counts':{'rss':1,'atom':1},'receipts':xml_receipts}
+  assert replays[0]['target']==target
+  report['target_change']={'original_key':fenced['publishing'],
+    'same_pending_request':fenced['pending']==unresolved['pending'],
+    'no_dispatch_for_changed_target':True,'reconciled_on_original_target':replays[0]['target']==target}
   report['remaining']=['original R06 source recordings','formal published producer and consumer tuple',
                        'legacy subscription KV migration']
   (out/'journal.jsonl').write_bytes((home/'state.jsonl').read_bytes());return 'subscription-deliveries.json',report
