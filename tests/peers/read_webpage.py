@@ -84,6 +84,15 @@ CASES = {
     "frame-limit": ({"url": url("/frame-limit")}, ["/frame-limit"]),
 }
 
+CACHE_CASES = {
+    "cache-fill": ({"url": url("/cache")}, ["/cache"]),
+    "cache-hit": ({"url": url("/cache") + "#second-read"}, []),
+    "cache-other-question": ({"url": url("/cache"), "question": "另一個問題"}, ["/cache"]),
+    "cache-no-error": ({"url": url("/http-error")}, ["/http-error"]),
+    "cache-no-oversized": ({"url": url("/frame-limit")}, ["/frame-limit"]),
+    "cache-cold-read": ({"url": url("/cache")}, ["/cache"]),
+}
+
 
 def canonical(value):
     return json.dumps(
@@ -183,7 +192,7 @@ def serve(handler):
             thread.join()
 
 
-def replay(host, plugin, manifest, output, work):
+def replay(host, plugin, manifest, output, work, *, cache_cases=False):
     output.mkdir()
     data = work / "owner"
     work.mkdir()
@@ -191,11 +200,10 @@ def replay(host, plugin, manifest, output, work):
     (definition,) = manifest["tools"]
     tool = definition["name"]
     requests, models, completions, active = [], [], {}, []
-    expected = (
-        CASES
-        if tool == "read_webpage"
-        else {"default": ({"url": url("/page")}, ["/page"])}
-    )
+    expected = CASES if tool == "read_webpage" else {"default": ({"url": url("/page")}, ["/page"])}
+    if cache_cases:
+        assert tool == "read_webpage"
+        expected = {**expected, **CACHE_CASES}
     env = dict(
         os.environ, NO_PROXY="127.0.0.1,localhost", no_proxy="127.0.0.1,localhost"
     )
@@ -234,6 +242,8 @@ def replay(host, plugin, manifest, output, work):
                 self.respond(302, location=REDIRECTS[self.path])
             elif self.path == "/http-error":
                 self.respond(403)
+            elif self.path == "/cache":
+                self.respond(200, ("current page " + active[0]).encode())
             else:
                 mime, body = FIXTURES[self.path]
                 self.respond(200, body, mime)
@@ -318,6 +328,50 @@ def replay(host, plugin, manifest, output, work):
                     owner.kill()
                     owner.wait(timeout=10)
 
+    cases = {}
+
+    def invoke(name):
+        _, paths = expected[name]
+        active[:] = [name]
+        before_models, before_requests = len(models), len(requests)
+        index = len(cases) + 1
+        ingress = {
+            "source": name,
+            "native_id": name,
+            "account": human["account"],
+            "bot_stage": bot["assignment"],
+            "occurred": index,
+            "observed": index,
+            "kind": "message",
+            "segments": [{"type": "text", "text": f"Read fixture {name}"}],
+        }
+        receipt = (
+            cli("operator", "main", "trigger", "web-reader", name,
+                json.dumps({"text": "Read the paged fixture"}))
+            if name == "paged"
+            else cli("operator", "ingress", "record", json.dumps(ingress), "--accept")
+        )
+        reply = wait_until(lambda: completions.get(name), seconds=40)
+        assert len(models) == before_models + 2, name
+        declared = [
+            d for d in models[before_models]["tools"]
+            if d["function"]["name"] in {"read_webpage", "web_fetch", "web_search"}
+        ]
+        assert [d["function"]["name"] for d in declared] == [tool], declared
+        if tool == "read_webpage":
+            assert hashlib.sha256(canonical(declared[0])).hexdigest() == V4_DECLARATION
+        expected_requests = [
+            item
+            for path in paths
+            for item in ({"connect": ORIGIN}, {"get": path, "host": ORIGIN})
+        ]
+        assert requests[before_requests:] == expected_requests, (name, requests[before_requests:])
+        cases[name] = {"ingress": receipt, "result": reply, "requests": expected_requests}
+
+    def online():
+        status = cli("operator", "host", "status", check=False)
+        return status and any(p["online"] for p in status["plugins"])
+
     try:
         with serve(Proxy) as proxy, serve(Model) as model:
             env.update(YUKI_WEB_FETCH_HTTP_PROXY=proxy, YUKI_WEB_FETCH_NO_PROXY="")
@@ -397,71 +451,23 @@ def replay(host, plugin, manifest, output, work):
                 for key, value in definition.items():
                     config_file.write(f"{key}={object_toml(value)}\n")
             with running():
-                wait_until(
-                    lambda: (status := cli("operator", "host", "status", check=False))
-                    and any(p["online"] for p in status["plugins"])
-                )
-                cases = {}
+                wait_until(online)
                 cli("operator", "main", "register", "plugin", "web-reader", entry)
-                for index, (name, (_, paths)) in enumerate(expected.items(), 1):
-                    active[:] = [name]
-                    before_models, before_requests = len(models), len(requests)
-                    ingress = {
-                        "source": name,
-                        "native_id": name,
-                        "account": human["account"],
-                        "bot_stage": bot["assignment"],
-                        "occurred": index,
-                        "observed": index,
-                        "kind": "message",
-                        "segments": [{"type": "text", "text": f"Read fixture {name}"}],
-                    }
-                    receipt = (
-                        cli(
-                            "operator",
-                            "main",
-                            "trigger",
-                            "web-reader",
-                            name,
-                            json.dumps({"text": "Read the paged fixture"}),
-                        )
-                        if name == "paged"
-                        else cli(
-                            "operator",
-                            "ingress",
-                            "record",
-                            json.dumps(ingress),
-                            "--accept",
-                        )
-                    )
-                    reply = wait_until(lambda: completions.get(name), seconds=40)
-                    assert len(models) == before_models + 2, name
-                    declared = [
-                        d
-                        for d in models[before_models]["tools"]
-                        if d["function"]["name"]
-                        in {"read_webpage", "web_fetch", "web_search"}
-                    ]
-                    assert [d["function"]["name"] for d in declared] == [tool], declared
-                    if tool == "read_webpage":
-                        assert (
-                            hashlib.sha256(canonical(declared[0])).hexdigest()
-                            == V4_DECLARATION
-                        )
-                    expected_requests = [
-                        item
-                        for path in paths
-                        for item in ({"connect": ORIGIN}, {"get": path, "host": ORIGIN})
-                    ]
-                    assert requests[before_requests:] == expected_requests, (
-                        name,
-                        requests[before_requests:],
-                    )
-                    cases[name] = {
-                        "ingress": receipt,
-                        "result": reply,
-                        "requests": expected_requests,
-                    }
+                for name in expected:
+                    if name != "cache-cold-read":
+                        invoke(name)
+            if cache_cases:
+                with running():
+                    wait_until(online)
+                    invoke("cache-cold-read")
+                cache_values = {
+                    name: cases[name]["result"]["result"] for name in CACHE_CASES
+                }
+                assert cache_values["cache-fill"] == cache_values["cache-hit"]
+                for name in ("cache-fill", "cache-other-question", "cache-cold-read"):
+                    assert cache_values[name]["data"]["sources"][0]["relevant_content"] == "current page " + name
+                assert cache_values["cache-no-error"] == {"ok": False, "error": "extract_failed"}
+                assert cache_values["cache-no-oversized"] == {"ok": False, "error": "result_too_large"}
             frames = [json.loads(line) for line in trace.read_bytes().splitlines()]
             calls = list(exchange(frames, "tool.call", "from_host"))
             checks = list(exchange(frames, "tool.status", "from_plugin"))
@@ -508,7 +514,7 @@ def replay(host, plugin, manifest, output, work):
                 else:
                     assert reply["result"] == model_result
                 handle = call["params"]["handle"]
-                expected_checks = 2 if expected[name][1] else 0
+                expected_checks = 2 if expected[name][1] or name == "cache-hit" else 0
                 state_checks = [
                     r["result"] for q, r in checks if q["params"]["handle"] == handle
                 ]
@@ -527,6 +533,8 @@ def replay(host, plugin, manifest, output, work):
 
 def compare(original, observed):
     for name, case in observed["cases"].items():
+        if name in CACHE_CASES:
+            continue
         before = original["cases"][name]["payload"]
         after = case.get("original_result", case["result"]["result"])
         if name == "frame-limit":
@@ -543,6 +551,7 @@ def main():
     parser.add_argument("--package", type=Path, required=True)
     parser.add_argument("--oracle", type=Path, required=True)
     parser.add_argument("--out", type=Path, required=True)
+    parser.add_argument("--cache", action="store_true")
     args = parser.parse_args()
     output = args.out.resolve()
     output.mkdir()
@@ -578,7 +587,7 @@ def main():
         assert bytes.fromhex(result["data"]["original_hex"]) == PAGE
         assert result["data"]["observed_sha256"] == hashlib.sha256(PAGE).hexdigest()
         legacy = replay(
-            host, plugin, selected, output / "selected", scratch / "selected"
+            host, plugin, selected, output / "selected", scratch / "selected", cache_cases=args.cache
         )
         compare(original, legacy)
         write(

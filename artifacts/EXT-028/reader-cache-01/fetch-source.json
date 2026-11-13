@@ -1,0 +1,46 @@
+{
+  "status": "PASS",
+  "formal_card_status": "published_base_compatibility_verified",
+  "published": false,
+  "source_base": "081fef403d55fbf44dcdaf0200dbce674e9151c9",
+  "source_inventory_sha256": "ccd4ac91a856672e1e2fdd1f4066932a1fb2063de096786044bc84b87a39c556",
+  "source_files": 316,
+  "host_source_commit": "c6bd0c75e38717abc71373201d31a77982428d5b",
+  "paid_calls": 0,
+  "runtime_boundary": "cache is local to one plugin process and deployment",
+  "platforms": {
+    "macos": {
+      "status": "PASS",
+      "archive": "macos.zip",
+      "sha256": "c84e45ec720be770b0f1cfb9d53ea4c9c8d56d3e02fd9fff308c7b063adcfdad",
+      "manifest_sha256": "6a56c38883cc6c2d25f232531e9c98b33f6b7b3ca3d7849fce00f2425e190468",
+      "selected_cases": 25,
+      "default_cases": 1,
+      "plugin_sha256": "e66c1d0d3632a99ba8906e1d8f0ad7ddb4d9583c5b38284a67344298dec00664",
+      "original_host_sha256": "ed0aef8a02d216133a21dc784c67d2c344f5bd667f168884ae5475ea1465e533",
+      "oracle_sha256": "a57ad275c2f986bfe512fe4a50124d5d06cec9611ac554c95919ec1dfe371772"
+    },
+    "linux": {
+      "status": "PASS",
+      "archive": "linux.zip",
+      "sha256": "1a804457a14a12798cfc2190245449eb6640ab8f96f69635a33a8bd182f4c578",
+      "manifest_sha256": "bd8fedd6a9f7639a103e577276784053b49c18934f8d1977892b231601067eaa",
+      "selected_cases": 25,
+      "default_cases": 1,
+      "plugin_sha256": "9709cd7a65ba6aebdbaa44fac8a9c6ae215e7edef4398aac0cb28ac4d8faa1b1",
+      "original_host_sha256": "737d5d0ff9ec8e77adc898f5a6112f742c7785bc395730b65a1e4b13310eb69f",
+      "oracle_sha256": "a57ad275c2f986bfe512fe4a50124d5d06cec9611ac554c95919ec1dfe371772"
+    },
+    "windows": {
+      "status": "PASS",
+      "archive": "windows.zip",
+      "sha256": "9f242688bafc3f4829424a08ad3a1650fbb9e5c2cf2f591ba95dd10317d95c54",
+      "manifest_sha256": "ee3cb55c5d7d518aeb75ecf90c7e5ce807041dd593344a17947e7be676eb5469",
+      "selected_cases": 25,
+      "default_cases": 1,
+      "plugin_sha256": "d582cdd1feffcc8ccc87fbaef9fc0f7f18cac53a2303a07b766158952dbe9f10",
+      "original_host_sha256": "287167dae7b2b1222efd22fa5a0aa58e1c39f7129c7112e5b81cebb6278a7ecd",
+      "oracle_sha256": "a57ad275c2f986bfe512fe4a50124d5d06cec9611ac554c95919ec1dfe371772"
+    }
+  }
+}

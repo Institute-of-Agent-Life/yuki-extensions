@@ -38,8 +38,11 @@ including Unicode and existing percent escapes. HTTP uses the validated,
 encoded URL and checks each redirect. An oversized
 download returns `extract_failed`. A result that exceeds the SDK frame returns
 `result_too_large`. The Host can page a result that fits the SDK frame and read
-it back after a restart. Each new operation fetches the URL again. The v4
-implementation kept a ten-minute extraction cache.
+it back after a restart. The selected reader keeps up to 128 recent public
+page extractions in memory for ten minutes, keyed by normalized source URL and
+question. Every call still uses the original Host handle checks. The cache
+stores extracted text from successful bounded responses. Restart fetches a
+fresh page for a new operation.
 
 Record the oracle from a read-only v4 checkout at
 `329ca7c487414d2f54ddd98ff4727446ed2446cd` using its installed Python
