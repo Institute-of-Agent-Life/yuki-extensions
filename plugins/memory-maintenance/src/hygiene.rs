@@ -1,5 +1,6 @@
 use serde::{Deserialize, Serialize};
 use serde_json::{Value, json};
+use std::{collections::BTreeSet, fs, io, path::Path};
 
 pub fn request(job: &Value) -> Result<(&'static str, Value), String> {
     let obj = job.as_object().ok_or("job must be an object")?;
@@ -198,6 +199,85 @@ pub fn scan_report(raw: Value, integrity_requested: bool) -> Result<Value, Strin
     }).collect();
     Ok(json!({"audit":raw,"coverage":coverage,"bounded_page":true,
               "quality_findings":"not_exposed_by_candidate","paid_calls":0}))
+}
+
+fn references(values: &Value) -> Result<BTreeSet<String>, String> {
+    serde_json::from_value(values.clone()).map_err(|_| "quality erasure references missing".into())
+}
+
+pub fn bind_result(method: &str, response: &Value) -> Result<BTreeSet<String>, String> {
+    if method == "maintenance.audit" {
+        let mut all = BTreeSet::new();
+        for item in response["items"].as_array().ok_or("audit items missing")? {
+            all.extend(references(&item["erasure_refs"])?);
+        }
+        return Ok(all);
+    }
+    references(&response["erasure_refs"])
+}
+
+pub fn erase(root: &Path, params: &Value) -> Result<(), String> {
+    let erased = references(&params["erasure_refs"])?;
+    if erased.is_empty() || params["sources"].as_array().is_none_or(|s| !s.is_empty()) {
+        return Err("unrecognized quality erasure obligation".into());
+    }
+    let mut unclassified = false;
+    for entry in fs::read_dir(root).map_err(|e| e.to_string())? {
+        let path = entry.map_err(|e| e.to_string())?.path();
+        let Some(file) = path.file_name().and_then(|name| name.to_str()) else {
+            continue;
+        };
+        let Some(name) = file
+            .strip_suffix(".result.tmp")
+            .or_else(|| file.strip_suffix(".result"))
+            .filter(|name| super::job_name(name))
+        else {
+            continue;
+        };
+        let result: Value = match crate::rebuild::read_json(&path) {
+            Ok(Some(result)) => result,
+            Ok(None) => continue,
+            Err(_) => {
+                unclassified = true;
+                continue;
+            }
+        };
+        let matches = match result["state"].as_str() {
+            Some("not_completed") => false,
+            Some("completed") => match references(&result["erasure_refs"]) {
+                Ok(refs) => !refs.is_disjoint(&erased),
+                Err(_) => {
+                    unclassified = true;
+                    continue;
+                }
+            },
+            _ => {
+                unclassified = true;
+                continue;
+            }
+        };
+        if matches {
+            let job = root.join(format!("{name}.job"));
+            if !root.join(format!("{name}.started")).is_file() {
+                return Err("original quality job fence missing".into());
+            }
+            remove(&job)?;
+            remove(&path)?;
+        }
+    }
+    crate::rebuild::sync_dir(root).map_err(|e| e.to_string())?;
+    if unclassified {
+        return Err("quality report erasure requires classification of remaining files".into());
+    }
+    Ok(())
+}
+
+fn remove(path: &Path) -> Result<(), String> {
+    match fs::remove_file(path) {
+        Ok(()) => Ok(()),
+        Err(e) if e.kind() == io::ErrorKind::NotFound => Ok(()),
+        Err(e) => Err(e.to_string()),
+    }
 }
 
 #[cfg(test)]

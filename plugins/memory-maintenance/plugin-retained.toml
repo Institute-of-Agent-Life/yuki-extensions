@@ -1,0 +1,7 @@
+id = "memory-maintenance"
+version = "0.1.0-alpha.4"
+program = "yuki-memory-maintenance"
+args = ["--retain-reports"]
+erasure_args = ["--retain-reports"]
+grants = ["maintenance.audit", "maintenance.audit.apply", "maintenance.reembed", "forget.owner"]
+env = ["YUKI_MEMORY_MAINTENANCE_JOBS"]

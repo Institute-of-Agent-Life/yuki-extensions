@@ -17,6 +17,13 @@ use std::{
 };
 use yuki_plugin_sdk::{host::Incoming, read_frame};
 
+#[derive(Clone, Copy, PartialEq, Eq)]
+enum Mode {
+    Quality,
+    RetainedQuality,
+    Rebuild,
+}
+
 fn job_name(name: &str) -> bool {
     !name.is_empty()
         && name.len() <= 80
@@ -25,12 +32,15 @@ fn job_name(name: &str) -> bool {
 
 fn safe_job(path: &std::path::Path) -> bool {
     path.extension().is_some_and(|s| s == "job")
-        && path.file_stem().and_then(|s| s.to_str()).is_some_and(job_name)
+        && path
+            .file_stem()
+            .and_then(|s| s.to_str())
+            .is_some_and(job_name)
 }
 fn run_jobs(
     rpc: Arc<rpc::Rpc>,
     root: PathBuf,
-    rebuild_only: bool,
+    mode: Mode,
     stop: Arc<AtomicBool>,
 ) -> Result<(), String> {
     while !stop.load(Ordering::Acquire) {
@@ -76,37 +86,48 @@ fn run_jobs(
                 let rebuild_job = job["action"]
                     .as_str()
                     .is_some_and(|action| action.starts_with("rebuild."));
-                if rebuild_only && rebuild_job {
+                if mode == Mode::Rebuild && rebuild_job {
                     let key = path
                         .file_stem()
                         .and_then(|s| s.to_str())
                         .ok_or("invalid job name")?;
                     return rebuild::run(&root, key, job, |method, params| {
                         rpc.call(method, params, &stop)
-                    });
+                    })
+                    .map(|body| (body, None));
                 }
-                if rebuild_only || rebuild_job {
+                if mode == Mode::Rebuild || rebuild_job {
                     return Err("job does not match the installed maintenance mode".into());
                 }
-                let (method, params) = hygiene::request(&job)?;
+                let (method, mut params) = hygiene::request(&job)?;
                 let integrity_requested = params["integrity"] == true;
-                let response = rpc.call(method, params, &stop)?;
-                if method == "maintenance.audit" {
-                    hygiene::scan_report(response, integrity_requested)
-                } else {
-                    Ok(response)
+                if mode == Mode::RetainedQuality {
+                    params["retain"] = json!(true);
                 }
+                let response = rpc.call(method, params, &stop)?;
+                let refs = (mode == Mode::RetainedQuality)
+                    .then(|| hygiene::bind_result(method, &response))
+                    .transpose()?;
+                let body = if method == "maintenance.audit" {
+                    hygiene::scan_report(response, integrity_requested)?
+                } else {
+                    response
+                };
+                Ok((body, refs))
             });
             if stop.load(Ordering::Acquire) {
                 break;
             }
             let report = match result {
-                Ok(value) => json!({"state":"completed","result":value}),
+                Ok((value, Some(refs))) => {
+                    json!({"state":"completed","result":value,"erasure_refs":refs})
+                }
+                Ok((value, None)) => json!({"state":"completed","result":value}),
                 Err(e) => {
                     json!({"state":"not_completed","error":e,"retry":"explicit original-operation recovery only"})
                 }
             };
-            if rebuild_only {
+            if mode != Mode::Quality {
                 rebuild::write_json(&output, &report)?;
             } else {
                 let mut file = OpenOptions::new()
@@ -129,19 +150,21 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         return Err("private operator job directory required".into());
     }
     let args = std::env::args().skip(1).collect::<Vec<_>>();
-    let rebuild_only = match args.as_slice() {
-        [] => false,
-        [mode] if mode == "--rebuild-only" => true,
+    let mode = match args.as_slice() {
+        [] => Mode::Quality,
+        [mode] if mode == "--rebuild-only" => Mode::Rebuild,
+        [mode] if mode == "--retain-reports" => Mode::RetainedQuality,
         _ => return Err("unsupported maintenance worker mode".into()),
     };
-    let _lock = rebuild_only.then(|| rebuild::lock(&root)).transpose()?;
+    let _lock = (mode != Mode::Quality)
+        .then(|| rebuild::lock(&root))
+        .transpose()?;
     let mut input = io::stdin().lock();
     let rpc = Arc::new(rpc::handshake(&mut input)?);
     let stop = Arc::new(AtomicBool::new(false));
-    let (r, p, s) = (rpc.clone(), root.clone(), stop.clone());
     let erasure_only = std::env::var("YUKI_PLUGIN_START_MODE").as_deref() == Ok("erasure_only");
-    let mut worker =
-        (!erasure_only).then(|| thread::spawn(move || run_jobs(r, p, rebuild_only, s)));
+    let (r, p, s) = (rpc.clone(), root.clone(), stop.clone());
+    let mut worker = (!erasure_only).then(|| thread::spawn(move || run_jobs(r, p, mode, s)));
     while let Some(raw) = read_frame(&mut input)? {
         let frame = rpc.calls.lock().unwrap().receive(&raw)?;
         match frame {
@@ -155,20 +178,26 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 let joined = worker
                     .take()
                     .is_none_or(|w| w.join().is_ok_and(|r| r.is_ok()));
-                let reply = if joined
-                    && rebuild_only
-                    && rebuild::erase(&root, &params["sources"]).is_ok()
-                {
-                    json!({"jsonrpc":"2.0","id":id,"result":{"key":params["key"],"watermark":params["watermark"],"proof":"selected rebuild state and results removed"}})
+                let erased = if !joined {
+                    Err("worker_stop_failed")
                 } else {
-                    let message = if !joined {
-                        "worker_stop_failed"
-                    } else if rebuild_only {
-                        "rebuild_erasure_incomplete"
-                    } else {
-                        "metadata_erasure_contract_pending"
-                    };
-                    json!({"jsonrpc":"2.0","id":id,"error":{"code":-32000,"message":message}})
+                    match mode {
+                        Mode::Rebuild => rebuild::erase(&root, &params["sources"])
+                            .map(|()| "selected rebuild state and results removed")
+                            .map_err(|_| "rebuild_erasure_incomplete"),
+                        Mode::RetainedQuality => hygiene::erase(&root, &params)
+                            .map(|()| "selected quality reports removed")
+                            .map_err(|_| "quality_erasure_incomplete"),
+                        Mode::Quality => Err("metadata_erasure_contract_pending"),
+                    }
+                };
+                let reply = match erased {
+                    Ok(proof) => {
+                        json!({"jsonrpc":"2.0","id":id,"result":{"key":params["key"],"watermark":params["watermark"],"proof":proof}})
+                    }
+                    Err(message) => {
+                        json!({"jsonrpc":"2.0","id":id,"error":{"code":-32000,"message":message}})
+                    }
                 };
                 let _ = rpc.send(&reply);
             }

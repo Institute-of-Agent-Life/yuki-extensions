@@ -148,7 +148,7 @@ struct Approval {
     ordinals: Vec<u64>,
 }
 
-fn sync_dir(path: &Path) -> io::Result<()> {
+pub(crate) fn sync_dir(path: &Path) -> io::Result<()> {
     #[cfg(unix)]
     File::open(path)?.sync_all()?;
     #[cfg(not(unix))]
@@ -186,7 +186,7 @@ pub fn write_json(path: &Path, value: &impl Serialize) -> Result<()> {
     written.map_err(|e| e.to_string())
 }
 
-fn read_json<T: DeserializeOwned>(path: &Path) -> Result<Option<T>> {
+pub(crate) fn read_json<T: DeserializeOwned>(path: &Path) -> Result<Option<T>> {
     match fs::symlink_metadata(path) {
         Ok(m) if m.is_file() => (),
         Ok(_) => return Err("unsafe maintenance state file".into()),

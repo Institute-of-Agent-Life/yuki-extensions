@@ -33,12 +33,16 @@ including jobs with no result. Inspect the original operation and resolve its
 state before explicitly submitting recovery with the same operation. Changing
 an operation to retry an unknown paid attempt is unsupported.
 
-The plugin reads no core database. It implements no timer or model-triggered
-maintenance. Its forget handler stops processing and returns
-`metadata_erasure_contract_pending`; it does not acknowledge unproved erasure or
-delete unrelated operator jobs. The candidate did not send an automatic callback
-after this metadata-only audit/reembed flow. The producer's retention/dependency
-contract is required before this integration can be accepted.
+The plugin reads no core database. The operator submits each maintenance job
+explicitly. Use `plugin-retained.toml` with a Host supporting `retain` and a
+fresh private job directory to bind new reports to their original sources.
+The plugin saves the report and its opaque erasure references in the same
+atomic write. On a forget request it stops processing, removes the affected
+reports and their original jobs, and retains their started markers. An
+unreadable or unclassified report keeps the obligation pending. The operator
+can start the worker again through the Host after the original watermark is
+acknowledged. Previously saved reports require their original classification
+before they can be included in this installation.
 
 The tested maintenance scope uses `actor`, `entry`, `methods`, `purposes`,
 `write_subject={kind="person",person="<original Person UUID>"}` and the allowed

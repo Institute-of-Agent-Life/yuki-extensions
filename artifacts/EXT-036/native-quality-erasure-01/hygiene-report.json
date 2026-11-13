@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "formal_card_status": "BLOCKED",
+  "published": false,
+  "source_base": "797c61b15e94990027887ebb4f0c1faad4aa24fd",
+  "source_inventory_sha256": "193d9fbba09ad47bf8a76b81df85df91be0c38c0f5970014c7acdb640fdc53a9",
+  "source_inventory_files": 320,
+  "producer_source_commit": "dcabd6fc5b52faf81e8ac5ae714fad05127a3f4e",
+  "producer_main_commit": "4ca980df2748591994df14cad40a17c551bfab30",
+  "consumer_rust_sdk": "1.0.0-alpha.8",
+  "producer_rust_sdk": "1.0.0-alpha.23",
+  "maintenance_schema_sha256": "269d5b6b542f850e7949dd53e8a15a40c26dfa748e2d3a270f6076d30fd2cec6",
+  "platforms": {
+    "macos": {
+      "status": "PASS",
+      "archive": "macos.zip",
+      "sha256": "1489757ed5057e54de74766e59a5eb964ce68bb9266a5dc153c2ed2b0c0122ee",
+      "manifest_sha256": "a3ea6147b8fd59c92395800439310c17ae4792b4ca603c1120a58d03297d4240",
+      "report_sha256": "1a67a3c70ebfd5f32bcf5c3254b6a87a8752ffa04084a5b21991d863691272e8",
+      "binary_sha256": "3f8960b4d48c35f9dec1a1e4afc4b2d1e95b9cc71b4f1c34e24d28d531c70b5c",
+      "retained_quality_cases": 23,
+      "legacy_quality_cases": 21,
+      "rebuild_status": "PASS",
+      "paid_calls": 0
+    },
+    "linux": {
+      "status": "PASS",
+      "archive": "linux.zip",
+      "sha256": "3519c75746477c6c960cebb289552744f28e15a969df2a6e99d9d2a4d2bab224",
+      "manifest_sha256": "702fd8a5b95e9885d76205f1b30d08e4a2ac8673bbe991c63e549151bd7dda64",
+      "report_sha256": "0d467ebf1c42d1e6dcf3ef10e151c0613f36ee75f75324852751ba4fe65ad165",
+      "binary_sha256": "8d9291a8830c66294533148fe1af95290e83015014a857ab938b45c2bc0db40e",
+      "retained_quality_cases": 23,
+      "legacy_quality_cases": 21,
+      "rebuild_status": "PASS",
+      "paid_calls": 0
+    },
+    "windows": {
+      "status": "PASS",
+      "archive": "windows.zip",
+      "sha256": "1e5a234a5e312f7c987c42abf8e7efc1fc27e5ddac20d576f31b8ee4720dfe34",
+      "manifest_sha256": "f547993aa8eaadefcaa19a6eb6177307787cd7c689a65c38ec91df0682d0c8a1",
+      "report_sha256": "29f3ebc61728738f89b9d2bbc01c2c1167e248f934a0c93630f1ea3e890c4e9c",
+      "binary_sha256": "f5af331b5568a900bacc594903a1acd4c49495b0aab588bdec859d4f26dc8e91",
+      "retained_quality_cases": 23,
+      "legacy_quality_cases": 21,
+      "rebuild_status": "PASS",
+      "paid_calls": 0
+    }
+  },
+  "remaining": [
+    "published Host and plugin tuple"
+  ]
+}
