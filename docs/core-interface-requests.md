@@ -342,7 +342,7 @@ HJW Windows／Arch 真原 Rust Monty consumer：direct 同一 paid response 的
 不由插件製造 child receipt。另需核 bad 項零派發、同 root 不加預留、下一合法項
 獨立授權、拒絕後 kill／恢復不重做首筆；未知項仍無新增重試權。
 
-## CORE-058 / EXT-027 原管理員 target grant intake
+## CORE-058 / EXT-027 原管理員目標授權
 
 `cb02f74ea48b`／alpha.10：Windows 最小 Rust consumer 三次原 Host call 都取得
 `tool.status.state=dispatched`，其 canonical Person 已由公開 operator 設 admin。
@@ -350,13 +350,11 @@ HJW Windows／Arch 真原 Rust Monty consumer：direct 同一 paid response 的
 具體原 handle、mutation key、target、Person／entry、模型與安裝配置見
 `artifacts/EXT-027/source-intake-01/`。尚無 notification.publish 或送達；不先判定核心 bug。
 
-請交可直接套用的公開最小安裝設定和操作序列：notification policy（若須額外欄位）、
-原管理員作用域、QQ receiving bot／Conversation 的公開建立方式，以及原 handle 如何
-符合授權。請含成功、非管理員／換 Person／換 topic／撤權拒絕，並示範原 source 不借
-最近管理員的背景 publication。若要新 candidate，請附來源、版本與三平台 digest。
-同時提供 CORE-051 `plugins.sessions` 的完整可解析最小 policy（routes、context
-profiles、background permission）及 aux session route 設定，供 EXT-047 隔離遊戲使用。
-擴展不讀主庫、不借 fixture 私有寫入建立 grant，也不猜測替代身份規則。
+後續 EXT-027 用原命令 handle 與具名 QQ receiving bot 通過三端目標授權與投遞。
+EXT-047 另以原 Monitor 請求驗兩個私聊目標。CORE-058 已授權第二目標時仍拒絕同鍵換目標，
+第一目標重讀原回條。原 API9 依目標各收同一來源鍵，遷移需要保存來源鍵到新發布鍵的對應。
+仍待核真第三方套件與 CORE-058 的正式組合，以及原生 QQ 操作的公開授權。
+[原授權與發布線路](../artifacts/EXT-047/original-monitor-01/monitor-migration.json)
 
 ## CORE-051 → EXT-047：隔離 session 的安裝和原回條
 
@@ -371,7 +369,7 @@ policy、限定兩個 origin 的 game profile 以及原命令 handle。驗收由
 
 可重現入口 `ci/session_intake.py`，證據 `artifacts/EXT-047/source-intake-01/`。
 原 GitHub Monitor 的 manifest／observe／register／commands／polling／config 已固定原版 hash，
-遷移對照在 `docs/sdk-migration.md`；R11 的兩目標 grant 另受 CORE-058 回條阻塞。
+R11 的舊 Host 和 CORE-058 比對見 [遷移對照](sdk-migration.md#github-monitor-123)。
 
 ## CORE-037 → EXT-037：真查詢已可用，私庫訂閱與清除仍需公開契約
 

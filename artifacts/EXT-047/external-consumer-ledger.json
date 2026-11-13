@@ -54,18 +54,40 @@
     "api": "9.0",
     "license": "AGPL-3.0-only",
     "pinned_files_verified": true,
-    "runtime_tested": false,
+    "runtime_tested": true,
     "installed": false,
     "migrated": false,
     "published": false,
-    "new_host_rejection": "not_run",
-    "old_host_usability": "not_run",
-    "R11_two_target_replay": "blocked_notification_target_grant",
-    "http_outage": "not_run",
-    "observation": "original code inspected, not executed"
+    "new_host_rejection": "legacy declaration rejected during Rust Host configuration parsing on three platforms",
+    "old_host_usability": "original loader, start, observation and notification owner exercised on three platforms",
+    "R11_two_target_replay": "old fixed plugin passed; same-key alternate target rejected on CORE-058",
+    "http_outage": "503 increments failures and retains previous success time and committed cursor",
+    "observation": "external_untrusted excerpt preserved; zero Main jobs, physical sends or paid calls",
+    "installed_in": "isolated fixed API9 oracle only",
+    "evidence": {
+      "path": "original-monitor-01/monitor-migration.json",
+      "sha256": "9c1e8845448717abd87913ced385f8404fee45d9d0cba7443bd0a136d99ba38d"
+    }
   },
-  "isolated_game": "not_implemented_until_public_policy_available",
+  "isolated_game": {
+    "status": "verified_unpublished_candidate",
+    "name": "lighthouse",
+    "version": "0.1.0-alpha.1",
+    "evidence": {
+      "path": "native-lighthouse-01/lighthouse-session.json",
+      "sha256": "489ad37c1cdf501ce0575182479cff8e3d16a38ab2e2c8a7bfe00e0aa9e30e66"
+    },
+    "platforms": [
+      "macos",
+      "linux",
+      "windows"
+    ],
+    "native_cases_per_platform": 20
+  },
   "raw_qq_without_scope": "not_run_real_consumer_and_scope_required",
   "message_normalized": "Monitor register entry inspected; other external consumers pending",
-  "host_source_access": "public package and contract only; no private imports or database access"
+  "host_source_access": {
+    "rust": "public package and contract only",
+    "legacy": "read-only original code and isolated fixed v4 fixtures with original repositories"
+  }
 }

@@ -1,0 +1,39 @@
+{
+  "linux-missing-transfer-file": {
+    "sha256": "4b2d044a3f1dbc4ffa439104e9e4d9a8dff74160df7737ee003cfccab366212c",
+    "checks": {
+      "environment": 0,
+      "offline_dependencies": 0,
+      "build_original_vec1": 0,
+      "environment_versions": 0,
+      "original_plugin_suite": 0,
+      "original_r11": 0,
+      "rust_intake": 1,
+      "failure": null
+    }
+  },
+  "windows-sqlite-42": {
+    "sha256": "7b520a80e3f4913619cb2aac011adff85043a256a4ab3a5fd86c095bbc19b0d2",
+    "checks": {
+      "environment": 0,
+      "offline_dependencies": 0,
+      "build_original_vec1": 0,
+      "environment_versions": 0,
+      "original_plugin_suite": 0,
+      "original_r11": 1,
+      "failure": null
+    }
+  },
+  "windows-sqlite-42-repeat": {
+    "sha256": "ed840006eeb98c356864c19f7a9b8d9d9c61e54a00eb08d3c02b16df1f0e109b",
+    "checks": {
+      "environment": 0,
+      "offline_dependencies": 0,
+      "build_original_vec1": 0,
+      "environment_versions": 0,
+      "original_plugin_suite": 0,
+      "original_r11": 1,
+      "failure": null
+    }
+  }
+}
