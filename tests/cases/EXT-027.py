@@ -32,23 +32,46 @@ def prepare(root,out):
  json_old={'id':'json-original','content_text':'JSON Feed baseline'}
  json_feed={'version':'https://jsonfeed.org/version/1.1','authors':[{'name':'Newsroom'}],
             'items':[json_old]}
+ def validators(tag, date):
+  return {
+   '/feeds/releases.rss':{'ETag':f'W/"rss-{tag}"'},
+   '/feeds/releases.atom':{'Last-Modified':date},
+   json_path:{'ETag':f'"json-{tag}"','Last-Modified':date},
+  }
+ feed_headers=validators('old','Thu, 01 Jan 2026 00:00:00 GMT')
+ conditional_mode='unsolicited'
  class HTTP(BaseHTTPRequestHandler):
   def log_message(self,*a):pass
-  def reply(self,v,status=200):
+  def reply(self,v,status=200,headers=None):
    mime='application/xml' if isinstance(v,str) else 'application/json'
    b=(v if isinstance(v,str) else json.dumps(v)).encode()
-   self.send_response(status);self.send_header('Content-Type',mime);self.send_header('Content-Length',str(len(b)));self.end_headers();self.wfile.write(b)
+   self.send_response(status)
+   for name,value in (headers or {}).items():self.send_header(name,value)
+   if status!=304:
+    self.send_header('Content-Type',mime);self.send_header('Content-Length',str(len(b)))
+   self.end_headers()
+   if status!=304:self.wfile.write(b)
   def do_GET(self):
    parsed=urlsplit(self.path)
    query=parse_qs(parsed.query)
    before=int(query.get('before_entry_id',['0'])[0])
    failure=page_failure[0] if before else None
-   polls.append({'path':self.path,'error':error[0],'page_failure':failure})
+   poll={'path':self.path,'error':error[0],'page_failure':failure}
    if error[0]:self.reply({'error':'offline'},503)
    elif self.path=='/dynamic':self.reply({'code':0,'data':{'items':dynamics,'has_more':dynamic_page[0]}})
    elif self.path=='/live':self.reply({'code':0,'data':live})
-   elif parsed.path in xml_feeds:self.reply(xml_feeds[parsed.path])
-   elif parsed.path==json_path:self.reply(json_feed)
+   elif parsed.path in feed_headers:
+    sent={
+     name:self.headers[header]
+     for name,header in [('ETag','If-None-Match'),('Last-Modified','If-Modified-Since')]
+     if header in self.headers
+    }
+    current=feed_headers[parsed.path]
+    matches=sent==current and conditional_mode=='normal'
+    unsolicited=conditional_mode=='unsolicited' and parsed.path.endswith('.rss')
+    status=304 if matches or unsolicited else 200
+    poll.update({'validators':sent,'status':status})
+    self.reply(xml_feeds.get(parsed.path,json_feed),status,current if status==200 else None)
    elif parsed.path=='/v1/entries' and query.get('status')==['unread']:
     page=sorted((row for row in entries if not before or row['id']<before),
                 key=lambda row:row['id'],reverse=True)
@@ -62,6 +85,7 @@ def prepare(root,out):
     else:
      self.reply({'total':len(page),'entries':page[:limit]})
    else:self.reply({'error':'unexpected source'},404)
+   polls.append(poll)
   def do_POST(self):
    body=json.loads(self.rfile.read(int(self.headers['Content-Length'])));calls.append(body);action=actions.popleft() if actions else None
    msg={'role':'assistant','content':None if action else ''}
@@ -243,9 +267,14 @@ def prepare(root,out):
                     include_any=['json-category'])
    feed_ids=('rss','atom','json')
    set_config([*xml_configs,json_config])
+   wait(lambda:state().get('errors',{}).get('rss')=='unexpected not-modified feed response')
+   assert 'rss' not in state().get('subscriptions',{})
+   conditional_mode='normal'
    wait(lambda:all(state().get('subscriptions',{}).get(sid,{}).get('initialized') for sid in feed_ids))
    feed_baseline={sid:state()['subscriptions'][sid] for sid in feed_ids}
    assert all(count(sid)==0 and len(feed_baseline[sid]['seen'])==1 for sid in feed_ids)
+   original_headers=feed_headers
+   feed_headers=validators('rejected','Fri, 02 Jan 2026 00:00:00 GMT')
    xml_feeds['/feeds/releases.rss']='<rss><channel><item><guid>rss-new</guid></item>'
    xml_feeds['/feeds/releases.atom']='<!DOCTYPE feed><feed xmlns="http://www.w3.org/2005/Atom"/>'
    json_feed['next_url']=f'http://127.0.0.1:{server.server_port}/feeds/next.json'
@@ -253,6 +282,10 @@ def prepare(root,out):
                    for sid in ('rss','atom'))
         and 'paged feed' in (state().get('errors',{}).get('json') or ''))
    assert {sid:state()['subscriptions'][sid] for sid in feed_ids}==feed_baseline
+   malformed_polls=[row for row in polls if row.get('status')==200 and
+                    row.get('validators') and row['validators']==original_headers.get(row['path'])]
+   assert {row['path'] for row in malformed_polls}==set(original_headers)
+   feed_headers=validators('new','Sun, 04 Jan 2026 00:00:00 GMT')
    xml_feeds['/feeds/releases.rss']=(
     '<rss version="2.0"><channel><item><guid isPermaLink="false">rss-new</guid>'
     '<title>New RSS item</title><author>Newsroom</author><link>../posts/rss-new</link>'
@@ -289,10 +322,28 @@ def prepare(root,out):
    assert json_entry['author']=='Newsroom' and json_entry['tags']==['json-category']
    assert all(row['publication']['agent_turn_enqueued'] and not row['publication']['delivery_enqueued']
               for row in format_receipts)
+   after_publication={sid:state()['subscriptions'][sid] for sid in feed_ids}
+   count_after_publication=len(results('notification.publish'))
+   error[0]=True
+   wait(lambda:all(state().get('errors',{}).get(sid)=='source HTTP observation failed'
+                   for sid in feed_ids))
+   assert {sid:state()['subscriptions'][sid] for sid in feed_ids}==after_publication
+   error[0]=False
   with running():
    original_polls=len(polls)
-   wait(lambda:all(any(row['path']==path for row in polls[original_polls:])
-                   for path in (*xml_feeds,json_path)))
+   def confirmed_no_change():
+    matches=[row for row in polls[original_polls:] if row.get('status')==304]
+    if {row['path'] for row in matches}==set(feed_headers):
+     return matches
+   cold_304=wait(confirmed_no_change)
+   assert all(row['validators']==feed_headers[row['path']] for row in cold_304)
+   wait(lambda:all(not state().get('errors',{}).get(sid) for sid in feed_ids))
+   assert {sid:state()['subscriptions'][sid] for sid in feed_ids}==after_publication
+   assert len(results('notification.publish'))==count_after_publication
+   changed=dict(json_config,url=json_config['url']+'?alternate=1')
+   set_config([*xml_configs,changed])
+   wait(lambda:state().get('errors',{}).get('json')=='source changed; use new subscription ID')
+   assert not any('alternate=1' in row['path'] for row in polls)
    assert all(count(sid)==1 for sid in feed_ids)
    assert all(len(state()['subscriptions'][sid]['seen'])==2 for sid in feed_ids)
    assert not any(row['path']=='/feeds/next.json' for row in polls)
@@ -325,6 +376,10 @@ def prepare(root,out):
     'cold_restart_publication_counts':{'rss':1,'atom':1},'receipts':format_receipts[:2]}
   report['sources']['json_feed']={'versions':['1','1.1'],'paged_response_preserved_state':True,
     'additional_page_requested':False,'cold_restart_publication_count':1,'receipt':format_receipts[2]}
+  report['sources']['conditional_feeds']={'unsolicited_304_rejected':True,
+    'failed_observation_retained_validators':malformed_polls,'cold_304':cold_304,
+    'cleared_transient_errors':True,'cursor_and_publications_unchanged':True,
+    'changed_source_never_requested':True}
   assert replays[0]['target']==target
   report['target_change']={'original_key':fenced['publishing'],
     'same_pending_request':fenced['pending']==unresolved['pending'],

@@ -1,0 +1,13 @@
+{
+  "task": "EXT-027",
+  "status": "PASS",
+  "scope": "native conditional feed qualification",
+  "files": {
+    "linux.zip": "41b52e4e9b0e137278db09ba050383d45064091a6d1135da0afe3f76395596f2",
+    "macos-regression-before.zip": "f5fa8a062ea235ac81c6a6e208d657a91d399dc5b33b0ec8fa5b51ea59ad6de3",
+    "macos.zip": "1064442bc4a6698762dcfcb677474062455b0a5f0db504045a9a1cc6be248952",
+    "source-files.json": "52e916719daef7ba14897055d11eb2d2beb1cc1a59e5e52ebc509f96d768167e",
+    "subscription-deliveries.json": "bc30a02cb27f3c406ec787dfb89d6caa1a0c360f155b86f6d66acb34ebff92a6",
+    "windows.zip": "2601858f93da28e127a967c59c0fecd3b0d4656fb7f748216fc7210b4bd136d3"
+  }
+}

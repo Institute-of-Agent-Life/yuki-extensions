@@ -186,6 +186,15 @@ pub fn parse(kind: &str, raw: &Value, previous: &Value, now: &str) -> Result<(Ve
     }
     Ok((items, cursor))
 }
+pub fn check_source(old: &Value, url: &str, kind: &str) -> Result<()> {
+    if old["url"].as_str().is_some_and(|s| s != url)
+        || old["kind"].as_str().is_some_and(|s| s != kind)
+    {
+        return Err("source changed; use new subscription ID".into());
+    }
+    Ok(())
+}
+
 pub fn admit(config: &Value, old: &Value, raw: Document, now: &str) -> Result<Value> {
     let sid = text(config, "id")?;
     let url = text(config, "url")?;
@@ -197,11 +206,7 @@ pub fn admit(config: &Value, old: &Value, raw: Document, now: &str) -> Result<Va
     {
         return Err("invalid subscription ID".into());
     }
-    if old["url"].as_str().is_some_and(|s| s != url)
-        || old["kind"].as_str().is_some_and(|s| s != kind)
-    {
-        return Err("source changed; use new subscription ID".into());
-    }
+    check_source(old, url, kind)?;
     let targets = config["targets"]
         .as_array()
         .filter(|x| !x.is_empty() && x.len() <= 4)

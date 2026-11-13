@@ -1,5 +1,6 @@
 mod feed;
 mod feed_entry;
+mod http;
 mod journal;
 mod json_feed;
 mod rpc;
@@ -7,10 +8,8 @@ mod xml_feed;
 use serde_json::{Value, json};
 use std::{
     collections::HashSet,
-    fs,
-    io::{self, Read, Write},
+    fs, io,
     path::PathBuf,
-    process::{Command, Stdio},
     sync::{
         Arc, Mutex,
         atomic::{AtomicBool, Ordering},
@@ -19,94 +18,45 @@ use std::{
     time::{Duration, SystemTime, UNIX_EPOCH},
 };
 use yuki_plugin_sdk::{host::Incoming, read_frame};
-fn fetch(config: &Value, url: &str) -> Result<Vec<u8>, String> {
-    if !(url.starts_with("https://") || url.starts_with("http://127.0.0.1:"))
-        || url.chars().any(char::is_control)
-        || url.contains('@')
-    {
-        return Err("source endpoint requires HTTPS or explicit local service".into());
-    }
-    let mut child = Command::new("curl")
-        .args([
-            "--disable",
-            "--silent",
-            "--fail",
-            "--globoff",
-            "--proto",
-            "=http,https",
-            "--max-time",
-            "10",
-            "--max-filesize",
-            "1048576",
-            "--config",
-            "-",
-        ])
-        .stdin(Stdio::piped())
-        .stdout(Stdio::piped())
-        .stderr(Stdio::null())
-        .spawn()
-        .map_err(|_| "curl unavailable")?;
-    let result = (|| {
-        let mut input = child.stdin.take().ok_or("curl pipe missing")?;
-        writeln!(
-            input,
-            "url = \"{}\"",
-            url.replace('\\', "\\\\").replace('"', "\\\"")
-        )
-        .map_err(|_| "curl input failed")?;
-        if let Some(name) = config["token_env"].as_str() {
-            let token = std::env::var(name).map_err(|_| "source credential unavailable")?;
-            if token.chars().any(char::is_control) {
-                return Err("invalid source credential".to_owned());
-            }
-            writeln!(
-                input,
-                "header = \"X-Auth-Token: {}\"",
-                token.replace('\\', "\\\\").replace('"', "\\\"")
-            )
-            .map_err(|_| "curl credential input failed")?;
-        }
-        drop(input);
-        let mut raw = vec![];
-        child
-            .stdout
-            .take()
-            .ok_or("curl output missing")?
-            .take(1048577)
-            .read_to_end(&mut raw)
-            .map_err(|_| "source read failed")?;
-        if raw.len() > 1048576 {
-            return Err("source response too large".into());
-        }
-        if !child.wait().map_err(|_| "curl wait failed")?.success() {
-            return Err("source HTTP observation failed".into());
-        }
-        Ok(raw)
-    })();
-    let _ = child.kill();
-    let _ = child.wait();
-    result
-}
-
 fn fetch_json(config: &Value, url: &str) -> Result<Value, String> {
-    serde_json::from_slice(&fetch(config, url)?).map_err(|_| "invalid source JSON".into())
+    serde_json::from_slice(&http::body(config, url)?).map_err(|_| "invalid source JSON".into())
 }
 
-fn observe(config: &Value, stop: &AtomicBool) -> Result<feed::Document, String> {
+fn observe(
+    config: &Value,
+    state: &Value,
+    stop: &AtomicBool,
+    now: &str,
+) -> Result<Option<Value>, String> {
     let url = feed::text(config, "url")?;
-    match config["kind"].as_str() {
-        Some("xml_feed") => fetch(config, url).map(feed::Document::Xml),
-        Some("json_feed") => {
-            let raw = fetch(config, url)?;
-            let text = std::str::from_utf8(&raw).map_err(|_| "invalid source JSON")?;
+    let kind = feed::text(config, "kind")?;
+    feed::check_source(state, url, kind)?;
+    if matches!(kind, "xml_feed" | "json_feed") {
+        let validators = if state["initialized"] == true {
+            &state["http_validators"]
+        } else {
+            &Value::Null
+        };
+        let Some(response) = http::feed(config, url, validators)? else {
+            return Ok(None);
+        };
+        let document = if kind == "xml_feed" {
+            feed::Document::Xml(response.body)
+        } else {
+            let text = std::str::from_utf8(&response.body).map_err(|_| "invalid source JSON")?;
             let text = text.trim_start_matches(['\u{feff}', ' ', '\t', '\r', '\n']);
-            serde_json::from_str(text)
-                .map(feed::Document::Json)
-                .map_err(|_| "invalid source JSON".into())
-        }
-        Some("miniflux") => miniflux(config, url, stop).map(feed::Document::Json),
-        _ => fetch_json(config, url).map(feed::Document::Json),
+            feed::Document::Json(serde_json::from_str(text).map_err(|_| "invalid source JSON")?)
+        };
+        let mut admitted = feed::admit(config, state, document, now)?;
+        admitted["http_validators"] = response.validators;
+        return Ok(Some(admitted));
     }
+    let snapshot = if kind == "miniflux" {
+        miniflux(config, url, stop)?
+    } else {
+        fetch_json(config, url)?
+    };
+    feed::admit(config, state, feed::Document::Json(snapshot), now).map(Some)
 }
 
 fn miniflux(config: &Value, url: &str, stop: &AtomicBool) -> Result<Value, String> {
@@ -236,8 +186,9 @@ fn worker(
                         .map_err(|_| "clock before epoch")?
                         .as_secs(),
                 )?;
-                match observe(c, &stop).and_then(|raw| feed::admit(c, &state, raw, &now)) {
-                    Ok(v) => state = v,
+                match observe(c, &state, &stop, &now) {
+                    Ok(Some(v)) => state = v,
+                    Ok(None) => {}
                     Err(e) => {
                         let mut j = journal.lock().unwrap();
                         let mut all = j.state.clone();
