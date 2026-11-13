@@ -13,7 +13,43 @@ import uuid
 from personal_preview import Owner
 
 
-def exercise(root, output):
+def exercise(root, output, *, native_package=None, codec_dir=None, contract='core-038-main', ffmpeg=None):
+    if native_package is None:
+        native_package, codec_dir, build, source = original_inputs(root)
+        rebuilt = False
+    else:
+        build = json.loads((native_package / 'package-manifest.json').read_bytes())
+        source = {'package_manifest_sha256': hashlib.sha256((native_package / 'package-manifest.json').read_bytes()).hexdigest()}
+        rebuilt = True
+    if codec_dir is None:
+        raise ValueError('isolated decoder directory required')
+    digest = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
+    name = 'yuki-media.exe' if os.name == 'nt' else 'yuki-media'
+    assert all(c['exit_code'] == 0 for c in build['commands'])
+    assert all(digest(native_package / member) == expected for member, expected in build['artifacts'].items())
+    assert name in build['artifacts']
+    python = codec_dir / ('Scripts/python.exe' if os.name == 'nt' else 'bin/python')
+    codec = json.loads((native_package / 'packaging/codecs.lock').read_bytes())['ffmpeg']['platforms']
+    if ffmpeg is not None:
+        codec_digest = digest(ffmpeg)
+        assert any(codec_digest == entry['binary_sha256'] for entry in codec.values())
+    if ffmpeg is None:
+        ffmpeg = codec_dir / 'ffmpeg.exe'
+        codec_digest = digest(ffmpeg)
+        assert codec_digest == codec['windows-x86_64']['binary_sha256']
+    def save(path, value): path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    save(output / 'consumer.lock.json', {**source, 'consumer_binary_sha256': build['artifacts'][name],
+        'consumer_sdk': json.loads((root / build['source']['sdk_contract']).read_bytes())['sdk'],
+        'consumer_crate_sha256': digest(root / 'compat/core-038/yuki-plugin-sdk-1.0.0-alpha.4.crate'),
+        'ffmpeg_sha256': codec_digest, 'python_sha256': digest(python)})
+    def frozen_package(_root, unit, destination):
+        assert unit == 'media'
+        shutil.copytree(native_package, destination, ignore=shutil.ignore_patterns('._*'))
+        return build
+    return replay(root, output, codec_dir, ffmpeg, python, frozen_package, save, digest, contract, rebuilt)
+
+
+def original_inputs(root):
     baseline = Path(os.environ['YUKI_MEDIA_BASELINE_DIR'])
     original = baseline / 'src/artifacts/EXT-031/candidate-03'
     source = baseline / 'src/plugins/media'
@@ -24,26 +60,19 @@ def exercise(root, output):
     paths = [p.relative_to(root / 'plugins/media') for p in (root / 'plugins/media').rglob('*')
              if p.is_file() and not p.name.startswith('._') and p.name != 'README.md']
     for name in paths: assert digest(source / name) == digest(root / 'plugins/media' / name), str(name)
-    ffmpeg = original / 'work/codecs/ffmpeg.exe'
-    python = original / 'work/codecs/Scripts/python.exe'
-    assert digest(ffmpeg) == '2ce797a0f88d7f067180338fb227f7b1928ea727bd9a4d7a1d022f7c52af71a3'
     build = json.loads((original / 'packages/package-manifest.json').read_bytes())
-    assert all(c['exit_code'] == 0 for c in build['commands'])
     assert build['artifacts']['yuki-media.exe'] == binary_sha
-    def save(path, value): path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-    save(output / 'consumer.lock.json', {'consumer_binary_sha256': binary_sha,
+    return original / 'packages', original / 'work/codecs', build, {
         'consumer_snapshot_sha256': digest(baseline / 'source.zip'),
         'build_manifest_sha256': digest(original / 'packages/package-manifest.json'),
-        'source_files': {str(p).replace('\\', '/'): digest(source / p) for p in paths},
-        'consumer_sdk': json.loads((root / 'compat/core-038/source.lock.json').read_bytes())['sdk'],
-        'consumer_crate_sha256': digest(root / 'compat/core-038/yuki-plugin-sdk-1.0.0-alpha.4.crate'),
-        'ffmpeg_sha256': digest(ffmpeg), 'python_sha256': digest(python)})
-    def frozen_package(_root, unit, destination):
-        assert unit == 'media'
-        shutil.copytree(original / 'packages', destination)
-        return build
+        'source_files': {p.as_posix(): digest(source / p) for p in paths},
+    }
+
+
+def replay(root, output, codec_dir, ffmpeg, python, frozen_package, save, digest, contract, rebuilt):
     results = []
-    kinds = os.environ.get('YUKI_MEDIA_MAIN_CASES', 'pdf,video').split(',')
+    default = 'pdf,video,not-selected,video-no-vision,forget,corrupt' if rebuilt else 'pdf,video'
+    kinds = os.environ.get('YUKI_MEDIA_MAIN_CASES', default).split(',')
     assert set(kinds) <= {'pdf', 'video', 'not-selected', 'video-no-vision', 'forget', 'corrupt'}
     for kind in kinds:
         out = output / kind; out.mkdir()
@@ -82,7 +111,7 @@ def exercise(root, output):
         threading.Thread(target=model.serve_forever, daemon=True).start()
         temporary = out / 'temporary'; temporary.mkdir()
         owner = Owner(root, out, 'media', ['media.process', 'media.open', 'media.publish', 'forget.owner'],
-            contract='core-038-main', command_timeout=40, package_builder=frozen_package,
+            contract=contract, command_timeout=40, package_builder=frozen_package,
             relay='media_stdio.py' if kind == 'forget' else None,
             environment={'YUKI_MEDIA_PYTHON': str(python), 'YUKI_MEDIA_FFMPEG': str(ffmpeg),
                          'YUKI_MEDIA_TEMP': str(temporary)})
@@ -99,7 +128,7 @@ def exercise(root, output):
             config = owner.data / 'yuki.toml'
             transfer = out / 'gateway-transfer'; transfer.mkdir()
             for filename in ['unselected.pdf', 'good.pdf', 'video.mp4', 'corrupt.pdf']:
-                shutil.copy2(original / 'work/codecs' / filename, transfer / filename)
+                shutil.copy2(codec_dir / filename, transfer / filename)
             inputs = owner.data / 'media-inputs'; inputs.mkdir(exist_ok=True)
             for filename in ['unselected.pdf', 'good.pdf', 'video.mp4', 'corrupt.pdf']:
                 shutil.copy2(transfer / filename, inputs / filename)
@@ -211,6 +240,9 @@ def exercise(root, output):
             save(out / 'result.json', results[-1])
         finally:
             accepted.set(); model.shutdown(); model.server_close()
+    pending = ['gateway native inbound consumer', 'published tuple']
+    if 'forget' not in kinds:
+        pending.append('late forget on this tuple')
     return 'main-selected-consumer.json', {'status': 'PASS', 'card_status': 'UNPUBLISHED_MAIN_MEDIA_CANDIDATE',
-        'cases': results, 'consumer_rebuilt': False, 'backend_rewritten': False,
-        'unwitnessed': ['gateway native inbound consumer', 'late forget on this tuple', 'published tuple']}
+        'cases': results, 'consumer_rebuilt': rebuilt, 'backend_rewritten': False,
+        'unwitnessed': pending}

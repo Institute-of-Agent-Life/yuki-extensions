@@ -1,0 +1,88 @@
+{
+  "status": "PASS",
+  "formal_card_status": "NATIVE_SELECTED_DECODER_VERIFIED_PUBLIC_TUPLE_PENDING",
+  "published": false,
+  "source_base": "0eb7e01ac17e1a755b8769791943c17353fc5113",
+  "source_inventory_sha256": "9015472259cec83904ccdd5eaafcd0e796a782177151e99334b392cc3bb779a8",
+  "tested_inventory_sha256": "8b209725705ffbc9daa6adeb2cdf84bd53953259b0ef207d45411b2a86738036",
+  "source_archive_sha256": "a229e79ec96438ca1b69c2184a24b841a0fe402014a2ebb5b695c2c79eaa2b3b",
+  "host_source": "0114269addf5e3dd0ab5e352ff3360ad1dcd5586",
+  "host_reader": 58,
+  "host_sdk": {
+    "python": "1.0.0a21",
+    "rust": "1.0.0-alpha.21"
+  },
+  "media_schema_sha256": "d7af4bc4b1ea38decb0654af563410cc731fb2f27bb02568211d519a1c96a45f",
+  "platforms": {
+    "macos": {
+      "status": "PASS",
+      "archive": "macos.zip",
+      "sha256": "279ac403d0088321b72c4f8cee10e2dceb6f4129b87a96aa82ddc70b1caf22d2",
+      "manifest_sha256": "fc9b3cc030920229c284ea95c9de8e661211ab6609b3ad761dfca03ad9bda1c4",
+      "main_cases": 6,
+      "selected_processor_cases": 6,
+      "host": {
+        "archive": "yuki-media-preview-0114269addf5-darwin-arm64.zip",
+        "sha256": "ebeffef606972a883f3bf0745d12d91282f7d74d6c29e443b5b8fa624efacba8",
+        "binary_sha256": "282a364f9b9ba0794f3634701e11418529dab7374aca288c2d2873d5664d81e6",
+        "validation_manifest_sha256": "f8c4805de8899c71ac0b8e4e5d4cb62cb1100af5c298ea11ec0c19ec17b338ac"
+      },
+      "ffmpeg_sha256": "6d175a4743ca50256e89a8cdd731100f9cee33bd79aeea46894d209410dc6617",
+      "plugin_sha256": "b47049d07ddfcd8af0477ecfad160811c12ca9cbf38e6ef654c9419e34fc312f",
+      "codec_frames_seconds": [
+        0.0,
+        5.0
+      ]
+    },
+    "linux": {
+      "status": "PASS",
+      "archive": "linux.zip",
+      "sha256": "dcaa06a76da0dc4d885b12e50faeb4318d4f08e56bf1970630f28f6666bd347a",
+      "manifest_sha256": "dfc7b250580fac9700da3b921e5665a8489a4d68f1c443667a3562804a9aad62",
+      "main_cases": 6,
+      "selected_processor_cases": 6,
+      "host": {
+        "archive": "yuki-media-preview-0114269addf5-linux-arm64.zip",
+        "sha256": "8139473dd9a9afee4d31318af56d1d862d1ae8f50646bb33518ff5b1d39fe547",
+        "binary_sha256": "cd86847cf6cdf9f1ea844077bd6e3ae073074c9489f19b832e7a08db0e8a80a4",
+        "validation_manifest_sha256": "7d53419c6f8c65dafc6346a225f0447dc09ffb7f9b84f7b5c8764e5719d4cf84"
+      },
+      "ffmpeg_sha256": "6bb182d0d75d23028db82e9e4f723ca69b853d055698486e6984ddb2c06fb8ce",
+      "plugin_sha256": "8d310b741576a3526c00dc645eb7b46e82774aee925956daf6836178539c92e9",
+      "codec_frames_seconds": [
+        0.0,
+        5.0
+      ]
+    },
+    "windows": {
+      "status": "PASS",
+      "archive": "windows.zip",
+      "sha256": "faefc64cb4ad0bf8fdc3fbd23ed4708e11e2d15fe8325ebedc8e8c839060ccab",
+      "manifest_sha256": "ce32597c6e0793acdef8d59e96deaff2459529b577ee1f39f045538650a7fda2",
+      "main_cases": 6,
+      "selected_processor_cases": 6,
+      "host": {
+        "archive": "yuki-media-preview-0114269addf5-windows-x86_64.zip",
+        "sha256": "e75b21ceb9a4bf6700326bd37194aa33938494a96992f0f4bba5db2decb0d9d8",
+        "binary_sha256": "9c828c80a9db56aa941f131af1732abc5ad74a27970c2467591bed5d4611d5ec",
+        "validation_manifest_sha256": "ed03fbecac3b9190b92898a9cb8a03e72a47ecd2a47ed02dc2813ffb78cceed0"
+      },
+      "ffmpeg_sha256": "2ce797a0f88d7f067180338fb227f7b1928ea727bd9a4d7a1d022f7c52af71a3",
+      "plugin_sha256": "5360eedc7d211d03014acb20a307a3210b14c737a88809a5f8749bbb8a58cea2",
+      "codec_frames_seconds": [
+        0.0,
+        5.0
+      ]
+    }
+  },
+  "paid_calls": 0,
+  "pending": [
+    "original receiving gateway through this exact native tuple",
+    "published producer and install tuple"
+  ],
+  "windows_transport": {
+    "status": "complete named evidence transferred",
+    "original_transfer_timed_out": true,
+    "evidence_archive_sha256": "a403f1854578555592a3fc59d65bde5a5d9455ba3e6a13b0ed910da741e2a0b1"
+  }
+}

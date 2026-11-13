@@ -1,0 +1,16 @@
+{
+  "old_base": "0478196050b5aa0282434b82cab94532ec215e19",
+  "current_base": "0eb7e01ac17e1a755b8769791943c17353fc5113",
+  "original_inventory_sha256": "8b209725705ffbc9daa6adeb2cdf84bd53953259b0ef207d45411b2a86738036",
+  "verified_runtime_inputs": 174,
+  "unrelated_feishu_only": {
+    "ci/feishu_delivery_check.py": {
+      "tested": "355417d82560ae6dd346ac60083ca7d83d666deb0953ac68ff010a46151f549b",
+      "merged": "ae8714fb555919f5e964430f1fc7d9bfbc57acdd7527b641cdfca00cfc129e9e"
+    },
+    "ci/feishu_topic_check.py": {
+      "tested": "0baeff2c689fea442a83890905283287338077681b3bd56c63a88621f7d7be3d",
+      "merged": "fcda1e28c4d4062c17f6a961089b71f652139ef8a4c2b278ca28fc0b5388da92"
+    }
+  }
+}
