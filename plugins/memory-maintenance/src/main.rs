@@ -1,5 +1,6 @@
 mod hygiene;
 mod rebuild;
+mod reflection;
 mod rpc;
 use serde_json::{Value, json};
 use std::{
@@ -22,6 +23,7 @@ enum Mode {
     Quality,
     RetainedQuality,
     Rebuild,
+    Reflection,
 }
 
 fn job_name(name: &str) -> bool {
@@ -83,14 +85,20 @@ fn run_jobs(
                 .and_then(|_| marker.sync_all())
                 .map_err(|e| e.to_string())?;
             let result = request.and_then(|job| {
+                let key = path
+                    .file_stem()
+                    .and_then(|s| s.to_str())
+                    .ok_or("invalid job name")?;
+                if mode == Mode::Reflection {
+                    return reflection::run(&root, key, job, |method, params| {
+                        rpc.call(method, params, &stop)
+                    })
+                    .map(|body| (body, None));
+                }
                 let rebuild_job = job["action"]
                     .as_str()
                     .is_some_and(|action| action.starts_with("rebuild."));
                 if mode == Mode::Rebuild && rebuild_job {
-                    let key = path
-                        .file_stem()
-                        .and_then(|s| s.to_str())
-                        .ok_or("invalid job name")?;
                     return rebuild::run(&root, key, job, |method, params| {
                         rpc.call(method, params, &stop)
                     })
@@ -154,6 +162,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         [] => Mode::Quality,
         [mode] if mode == "--rebuild-only" => Mode::Rebuild,
         [mode] if mode == "--retain-reports" => Mode::RetainedQuality,
+        [mode] if mode == "--reflection-only" => Mode::Reflection,
         _ => return Err("unsupported maintenance worker mode".into()),
     };
     let _lock = (mode != Mode::Quality)
@@ -188,6 +197,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                         Mode::RetainedQuality => hygiene::erase(&root, &params)
                             .map(|()| "selected quality reports removed")
                             .map_err(|_| "quality_erasure_incomplete"),
+                        Mode::Reflection => reflection::erase(&root, &params["sources"])
+                            .map(|()| "matching reflection state and results removed")
+                            .map_err(|_| "reflection_erasure_incomplete"),
                         Mode::Quality => Err("metadata_erasure_contract_pending"),
                     }
                 };

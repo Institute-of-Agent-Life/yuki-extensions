@@ -199,7 +199,7 @@ pub(crate) fn read_json<T: DeserializeOwned>(path: &Path) -> Result<Option<T>> {
         .map_err(|e| e.to_string())
 }
 
-fn identifier(value: &str) -> bool {
+pub(crate) fn identifier(value: &str) -> bool {
     !value.is_empty()
         && value.len() <= 80
         && value
@@ -207,7 +207,7 @@ fn identifier(value: &str) -> bool {
             .all(|b| b.is_ascii_lowercase() || b.is_ascii_digit() || b == b'-')
 }
 
-fn state_dir(parent: &Path, name: &str) -> Result<PathBuf> {
+pub(crate) fn state_dir(parent: &Path, name: &str) -> Result<PathBuf> {
     let path = parent.join(name);
     match fs::create_dir(&path) {
         Ok(()) => sync_dir(parent).map_err(|e| e.to_string())?,
@@ -616,14 +616,14 @@ pub fn erase(root: &Path, sources: &Value) -> Result<()> {
     Ok(())
 }
 
-fn remove_results(job: &Path) -> bool {
+pub(crate) fn remove_results(job: &Path) -> bool {
     let result = remove(&job.with_extension("result"));
     let transient = remove(&job.with_extension("result.tmp"));
     // Keep the input as a retry anchor until both output paths are clear.
     result.is_ok() && transient.is_ok() && remove(job).is_ok()
 }
 
-fn remove(path: &Path) -> Result<()> {
+pub(crate) fn remove(path: &Path) -> Result<()> {
     match fs::remove_file(path) {
         Ok(()) => Ok(()),
         Err(e) if e.kind() == io::ErrorKind::NotFound => Ok(()),

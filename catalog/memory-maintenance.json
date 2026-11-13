@@ -3,11 +3,11 @@
   "kind": "plugin",
   "path": "plugins/memory-maintenance",
   "ecosystem": "rust",
-  "version": "0.1.0-alpha.4",
+  "version": "0.1.0-alpha.5",
   "tag_prefix": "memory-maintenance/v",
   "license": "AGPL-3.0-only",
   "notices": ["LICENSE"],
-  "runtime_files": ["plugin.toml", "plugin-retained.toml", "plugin-rebuild.toml", "README.md"],
+  "runtime_files": ["plugin.toml", "plugin-retained.toml", "plugin-rebuild.toml", "plugin-reflection.toml", "README.md"],
   "source": {
     "repository": "Institute-of-Agent-Life/yuki-extensions",
     "baseline": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
@@ -15,7 +15,7 @@
     "sdk_contract": "compat/core-035/source.lock.json"
   },
   "check_paths": [
-    "tests/cases/EXT-034.py", "tests/cases/EXT-036.py", "tests/fixtures/EXT-034",
+    "tests/cases/EXT-034.py", "tests/cases/EXT-035.py", "tests/cases/EXT-036.py", "tests/fixtures/EXT-034",
     "tests/peers/observe_stdio.py", "tests/peers/rebuild_stdio.py", "compat/core-035",
     "compat/core-035-integrity", "compat/core-035-retention/source.lock.json"
   ]
