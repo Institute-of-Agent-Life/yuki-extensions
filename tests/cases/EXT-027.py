@@ -22,10 +22,18 @@ def prepare(root,out):
  live={'room_id':781,'live_status':0,'title':'original live room'}
  dynamic_page=[False]
  page_failure=[None]
+ rss_old='<item><guid isPermaLink="false">rss-original</guid><title>RSS baseline</title></item>'
+ atom_old='<entry><id>atom-original</id><title>Atom baseline</title></entry>'
+ xml_feeds={
+  '/feeds/releases.rss':f'<rss version="2.0"><channel>{rss_old}</channel></rss>',
+  '/feeds/releases.atom':f'<feed xmlns="http://www.w3.org/2005/Atom">{atom_old}</feed>',
+ }
  class HTTP(BaseHTTPRequestHandler):
   def log_message(self,*a):pass
   def reply(self,v,status=200):
-   b=json.dumps(v).encode();self.send_response(status);self.send_header('Content-Type','application/json');self.send_header('Content-Length',str(len(b)));self.end_headers();self.wfile.write(b)
+   mime='application/xml' if isinstance(v,str) else 'application/json'
+   b=(v if isinstance(v,str) else json.dumps(v)).encode()
+   self.send_response(status);self.send_header('Content-Type',mime);self.send_header('Content-Length',str(len(b)));self.end_headers();self.wfile.write(b)
   def do_GET(self):
    parsed=urlsplit(self.path)
    query=parse_qs(parsed.query)
@@ -35,6 +43,7 @@ def prepare(root,out):
    if error[0]:self.reply({'error':'offline'},503)
    elif self.path=='/dynamic':self.reply({'code':0,'data':{'items':dynamics,'has_more':dynamic_page[0]}})
    elif self.path=='/live':self.reply({'code':0,'data':live})
+   elif parsed.path in xml_feeds:self.reply(xml_feeds[parsed.path])
    elif parsed.path=='/v1/entries' and query.get('status')==['unread']:
     page=sorted((row for row in entries if not before or row['id']<before),
                 key=lambda row:row['id'],reverse=True)
@@ -208,22 +217,68 @@ def prepare(root,out):
    assert fresh['notification_id']!=missing_ack['notification_id']
    wait(lambda:delivery_outcomes(missing_ack,fresh)==[('unknown',),('confirmed',)])
    outcomes=delivery_outcomes(missing_ack,fresh)
+   xml_configs=[
+    dict(sub,id='rss',kind='xml_feed',url=f'http://127.0.0.1:{server.server_port}/feeds/releases.rss',
+         include_any=['newsroom']),
+    dict(sub,id='atom',kind='xml_feed',url=f'http://127.0.0.1:{server.server_port}/feeds/releases.atom',
+         include_any=['atom-category']),
+   ]
+   set_config(xml_configs)
+   wait(lambda:all(state().get('subscriptions',{}).get(sid,{}).get('initialized') for sid in ('rss','atom')))
+   xml_baseline={sid:state()['subscriptions'][sid] for sid in ('rss','atom')}
+   assert all(count(sid)==0 and len(xml_baseline[sid]['seen'])==1 for sid in xml_baseline)
+   xml_feeds['/feeds/releases.rss']='<rss><channel><item><guid>rss-new</guid></item>'
+   xml_feeds['/feeds/releases.atom']='<!DOCTYPE feed><feed xmlns="http://www.w3.org/2005/Atom"/>'
+   wait(lambda:all('malformed or unsupported XML feed' in (state().get('errors',{}).get(sid) or '')
+                   for sid in xml_baseline))
+   assert {sid:state()['subscriptions'][sid] for sid in xml_baseline}==xml_baseline
+   xml_feeds['/feeds/releases.rss']=(
+    '<rss version="2.0"><channel><item><guid isPermaLink="false">rss-new</guid>'
+    '<title>New RSS item</title><author>Newsroom</author><link>../posts/rss-new</link>'
+    '<description><![CDATA[<p>First <b>release</b></p>]]></description>'
+    '<pubDate>Fri, 02 Jan 2026 08:00:00 +0800</pubDate></item>'
+    '<item><guid>rss-new</guid><title>Conflicting duplicate</title></item>'
+    f'{rss_old}</channel></rss>'
+   )
+   xml_feeds['/feeds/releases.atom']=(
+    '<feed xmlns="http://www.w3.org/2005/Atom" xml:base="../"><entry xml:base="posts/">'
+    '<id>atom-new</id><title>New Atom item</title><link href="atom-new"/>'
+    '<updated>2026-01-03T08:00:00+08:00</updated><category term="atom-category"/>'
+    '<content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml"><p>First</p><p>Atom</p></div></content>'
+    f'</entry>{atom_old}</feed>'
+   )
+   wait(lambda:count('rss')==count('atom')==1)
+   xml_receipts=[state()['subscriptions'][sid]['receipts'][0] for sid in ('rss','atom')]
+   rss,atom=(row['request']['payload']['entry'] for row in xml_receipts)
+   assert rss['id']=='rss-new' and rss['title']=='New RSS item' and rss['body']=='First release'
+   assert rss['published_at']=='2026-01-02T00:00:00Z' and rss['url'].endswith('/posts/rss-new')
+   assert atom['id']=='atom-new' and atom['body']=='First Atom' and atom['tags']==['atom-category']
+   assert atom['published_at']=='2026-01-03T00:00:00Z' and atom['url'].endswith('/posts/atom-new')
+   assert all(row['publication']['agent_turn_enqueued'] and not row['publication']['delivery_enqueued']
+              for row in xml_receipts)
+  with running():
+   original_polls=len(polls)
+   wait(lambda:all(any(row['path']==path for row in polls[original_polls:]) for path in xml_feeds))
+   assert all(count(sid)==1 for sid in ('rss','atom'))
+   assert all(len(state()['subscriptions'][sid]['seen'])==2 for sid in ('rss','atom'))
+   revoke=admin('revoke_target')
+   entries.append({'id':3,'title':'revoked update','published_at':'2026-01-03T00:00:00Z'})
    set_config(base_subscriptions)
-   revoke=admin('revoke_target');entries.append({'id':3,'title':'revoked update','published_at':'2026-01-03T00:00:00Z'})
    wait(lambda:any('error'in x for x in results('notification.publish')));assert count('one')==count('two')==1
    wait(lambda:all(state().get('subscriptions',{}).get(sid,{}).get('pending')
                    and state()['subscriptions'][sid].get('error') for sid in ('one','two')))
    final=state()
    host=op('host','status')
    forgotten=op('privacy','forget','subscription-private-erasure',actor)
-   assigned=[row['publication']['source_event_id'] for row in receipts]+[missing_ack['source_event_id'],fresh['source_event_id']]
+   assigned=[row['publication']['source_event_id'] for row in [*receipts,*xml_receipts]]+[missing_ack['source_event_id'],fresh['source_event_id']]
    assert set(assigned).issubset(forgotten['sources'])
    wait(lambda:any(f['direction']=='from_host' and f['frame'].get('method')=='forget.request'
                    and f['frame']['params']['watermark']==forgotten['watermark'] for f in wires()))
    wait(lambda:op('privacy','pending','subscription-monitor')['obligations']==[])
    scrubbed=state()
-   assert all(not scrubbed['subscriptions'][sid]['receipts'] for sid in subscriptions)
-   assert all(scrubbed['subscriptions'][sid]['seen']==final['subscriptions'][sid]['seen'] for sid in subscriptions)
+   assert all(not scrubbed['subscriptions'][sid]['receipts'] for sid in (*subscriptions,'rss','atom'))
+   assert all(scrubbed['subscriptions'][sid]['seen']==final['subscriptions'][sid]['seen']
+              for sid in (*subscriptions,'rss','atom'))
    assert b'new public release' not in (home/'state.jsonl').read_bytes()
    assert b'second public dynamic' not in (home/'state.jsonl').read_bytes()
    assert not scrubbed['subscriptions']['direct']['receipts']
@@ -231,6 +286,10 @@ def prepare(root,out):
   assert all(any(p['page_failure']==mode and 'before_entry_id=2' in p['path'] for p in polls)
              for mode in failures)
   report={'status':'PASS','card_status':'BLOCKED','published':False,'core':owner.evidence(),'grant':grant,'revocation':revoke,'lost_ack':lost,'receipts':receipts,'observations':polls,'physical_public_sends':0,'source_errors_preserved_cursor':True,'same_key_requests_identical':True,'host':host,'delivery':{'unknown_wire':unknown,'confirmed_wire':confirmed,'outcomes':outcomes},'sources':{'fixtures':'offline HTTP responses','miniflux_pagination':{'failure_paths':failures,'original_state_preserved':True,'recovered_publications':2},'bilibili_incomplete_page_refused':True,'live_transition_receipt':receipts[3]['publication']['notification_id']},'erasure':{'original':forgotten,'removed_receipts':assigned,'preserved_seen_keys':True,'pending':[]},'remaining':['original R06 source recordings','RSS/Atom source support','formal published producer and consumer tuple']}
+  report['sources']['xml_feeds']={'baseline_sizes':{'rss':1,'atom':1},'invalid_responses_preserved_state':True,
+    'cold_restart_publication_counts':{'rss':1,'atom':1},'receipts':xml_receipts}
+  report['remaining']=['original R06 source recordings','formal published producer and consumer tuple',
+                       'legacy subscription KV migration']
   (out/'journal.jsonl').write_bytes((home/'state.jsonl').read_bytes());return 'subscription-deliveries.json',report
  finally:
   server.shutdown();server.server_close();(out/'model.json').write_text(json.dumps(calls,ensure_ascii=False,indent=2),encoding='utf-8');(out/'operator.json').write_text(json.dumps(ops,ensure_ascii=False,indent=2),encoding='utf-8')
