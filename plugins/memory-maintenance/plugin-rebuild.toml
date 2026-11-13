@@ -1,0 +1,10 @@
+id = "memory-maintenance"
+version = "0.1.0-alpha.2"
+program = "yuki-memory-maintenance"
+args = ["--rebuild-only"]
+erasure_args = ["--rebuild-only"]
+grants = [
+    "maintenance.history.page", "maintenance.evidence", "maintenance.content", "maintenance.extract.preview",
+    "maintenance.extract.apply", "llm.complete", "llm.result", "forget.owner",
+]
+env = ["YUKI_MEMORY_MAINTENANCE_JOBS"]
