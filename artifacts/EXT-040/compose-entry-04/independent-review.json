@@ -1,0 +1,76 @@
+{
+  "status": "PASS",
+  "scope": "Independent project/volume isolation, retained operator config and candidate source integrity",
+  "base": "b106b7a58a5834810c5c0ad3a4eb02f17f5f2181",
+  "branch": "codex/ext-040-compose-entry",
+  "tracked_diff_sha256": "2f6124936e5eed746a492550ef1c8a47e03324c28abf058d273df94d076ac111",
+  "complete_diff_sha256": "6d984c19f643576d9f3f5d75ff1481f5c7fd426bc346c16097451421485ad6e1",
+  "source_archive_sha256": "7da7f958131c600f49310e6cd4301bc644b1235f5db38adfc2ff3a6fc01982ce",
+  "verified_snapshot_files": 106,
+  "windows_payload_sha256": "6d143549160164f318486250adac7f55890c76e3da8a09459a60e4cbac58b292",
+  "windows_executed_in_independent_review": false,
+  "replay_script_sha256": "d3dfa2aca990c385d4321f79967d55c1c8d032582eb73f4fd758a5e13dce017d",
+  "replay_sha256": "d826a032026e77373f4df45717b0b15cbde2dc6220c2b5678db9887a29bc259e",
+  "independent_replay": {
+    "binary_sha256": "58499e514528548484b0a6a02dad631968d2190fc2020d1c0e8f48e426c52810",
+    "source_archive_sha256": "7da7f958131c600f49310e6cd4301bc644b1235f5db38adfc2ff3a6fc01982ce",
+    "status": "PASS",
+    "projects": [
+      "yuki-90f3801b12756bc910dcc6a621476d78",
+      "yuki-583dc9728c294b74fbafbbb6c431f34a"
+    ],
+    "volumes": [
+      "yuki-90f3801b12756bc910dcc6a621476d78_owner",
+      "yuki-583dc9728c294b74fbafbbb6c431f34a_owner"
+    ],
+    "same_basename": true,
+    "preserved_on_reinit": true,
+    "named_volume_legacy": true,
+    "bind_legacy_owner_preserved": true,
+    "local_network": "none",
+    "external_network": "private-proxy",
+    "no_host_ports": true
+  },
+  "original_mac": {
+    "manifest_sha256": "d27457d27092cbebd4e08a90a5c7be5bbdc8b3978d467fb18d488d0a60208fd4",
+    "installer_binary_sha256": "58499e514528548484b0a6a02dad631968d2190fc2020d1c0e8f48e426c52810",
+    "compose": "PASS",
+    "compose_cases": 22,
+    "native": "PASS",
+    "native_cases": 7,
+    "local": {
+      "health": "healthy",
+      "project": "yuki-4dc744fae981c4a96ee5d2ac7c0373e9",
+      "network_mode": "none",
+      "volume": "yuki-4dc744fae981c4a96ee5d2ac7c0373e9_owner",
+      "mount": "/var/tmp",
+      "schema_version": 13,
+      "owner_survived_recreate": true
+    },
+    "external": {
+      "health": "healthy",
+      "project": "yuki-8128bb33b401fdc113f90fb44a406578",
+      "network_mode": "ext040-e33a3a6ee312-ingress",
+      "volume": "yuki-8128bb33b401fdc113f90fb44a406578_owner",
+      "mount": "/var/tmp",
+      "schema_version": 13,
+      "peer_ready": true,
+      "unconfigured_qq_http_status": 404,
+      "survived_other_project_down": true
+    },
+    "card_status": "AWAITING_OPTIONAL_SERVICE_RUNTIME"
+  },
+  "original_linux": {
+    "manifest_sha256": "e51a68b4d56e1a326abaf11129a37558bc16a24a2a63247dfd7daaedebccb1df",
+    "installer_binary_sha256": "1fcc62e0444000a873f59cb4aa51aaad5a8bb00fb6b5c001edda8c2bab6080a6",
+    "native": "PASS",
+    "native_cases": 7,
+    "card_status": "PUBLIC_NATIVE_PROFILE_VERIFIED"
+  },
+  "no_shared_docker_resources_changed_in_independent_review": true,
+  "full_card_accepted": false,
+  "remaining": [
+    "Windows exact-source native qualification",
+    "SnowLuma optional service runtime"
+  ]
+}

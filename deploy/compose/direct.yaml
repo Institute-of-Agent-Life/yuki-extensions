@@ -10,15 +10,34 @@ services:
     security_opt: [no-new-privileges:true]
     environment:
       TZ: ${YUKI_TIMEZONE:-UTC}
+    network_mode: none
     volumes:
-      - ./data:/data
+      - owner:/var/tmp
     entrypoint: ['/bin/sh', '-ec']
     command:
       - |
-        if [ ! -f /data/owner/yuki.toml ]; then yuki-core --data /data/owner init; fi
-        exec yuki-core --data /data/owner run
+        if [ ! -e /var/tmp/yuki ]; then
+          stage=$$(mktemp -d /var/tmp/.yuki-init.XXXXXXXX)
+          trap 'rm -rf -- "$$stage"' EXIT
+          yuki-core --data "$$stage" init
+          sed -i 's/^listen = "127\.0\.0\.1:0"$$/listen = "127.0.0.1:8080"/' "$$stage/yuki.toml"
+          mv -T --no-clobber "$$stage" /var/tmp/yuki
+          rm -rf -- "$$stage"
+          trap - EXIT
+        fi
+        exec yuki-core --data /var/tmp/yuki run
     healthcheck:
-      test: ['CMD', 'yuki-core', '--data', '/data/owner', 'operator', 'database-info']
-      interval: 10s
+      test:
+        - CMD
+        - /bin/bash
+        - -ec
+        - |
+          exec 3<>/dev/tcp/127.0.0.1/8080
+          printf 'GET /readyz HTTP/1.1\r\nHost: localhost\r\nConnection: close\r\n\r\n' >&3
+          read -r status <&3
+          [[ "$$status" == 'HTTP/1.1 200 '* ]]
+      interval: 2s
       timeout: 3s
-      retries: 5
+      retries: 10
+volumes:
+  owner:

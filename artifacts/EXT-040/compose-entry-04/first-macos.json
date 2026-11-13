@@ -1,0 +1,34 @@
+[
+  {
+    "command": [
+      "rustc",
+      "--version",
+      "--verbose"
+    ],
+    "exit_code": 0,
+    "stdout": "rustc 1.96.0 (ac68faa20 2026-05-25)\nbinary: rustc\ncommit-hash: ac68faa20c58cbccd01ee7208bf3b6e93a7d7f96\ncommit-date: 2026-05-25\nhost: aarch64-apple-darwin\nrelease: 1.96.0\nLLVM version: 22.1.2\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "cargo",
+      "--version"
+    ],
+    "exit_code": 0,
+    "stdout": "cargo 1.96.0 (30a34c682 2026-05-25)\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "cargo",
+      "test",
+      "--locked",
+      "--offline",
+      "--target-dir",
+      "/var/folders/xd/1qtnjp4s4kv_9z6x7bq465kw0000gn/T/yuki-rust-build-3s6238s3"
+    ],
+    "exit_code": 101,
+    "stdout": "\nrunning 5 tests\ntest config::tests::external_entry_requires_an_explicit_compose_network ... ok\ntest config::tests::updating_a_managed_value_preserves_other_assignments_and_comments ... ok\ntest config::tests::compose_project_must_be_one_literal_generated_name ... ok\ntest config::tests::manual_comments_are_preserved_and_changed_image_is_refused ... ok\ntest public_base_tests::commit_refuses_to_replace_even_an_empty_existing_destination ... FAILED\n\nfailures:\n\n---- public_base_tests::commit_refuses_to_replace_even_an_empty_existing_destination stdout ----\n\nthread 'public_base_tests::commit_refuses_to_replace_even_an_empty_existing_destination' (38561144) panicked at src/main.rs:304:9:\nassertion failed: python().args([\"-I\", \"-c\", probe]).status().unwrap().success()\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n\n\nfailures:\n    public_base_tests::commit_refuses_to_replace_even_an_empty_existing_destination\n\ntest result: FAILED. 4 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.12s\n\n",
+    "stderr": "   Compiling yuki-setup v0.1.0-alpha.2 (/Volumes/huawei/\u9805\u76ee\u5be6\u6230/yuki-extensions/.ci-transfer/work-ext040-main-20261113/tools/yuki-setup)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.21s\n     Running unittests src/main.rs (/var/folders/xd/1qtnjp4s4kv_9z6x7bq465kw0000gn/T/yuki-rust-build-3s6238s3/debug/deps/yuki_setup-f385955938a6b32f)\nTraceback (most recent call last):\n  File \"<string>\", line 5, in <module>\n  File \"/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/runpy.py\", line 268, in run_path\n    return _run_module_code(code, init_globals, run_name,\n  File \"/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/runpy.py\", line 97, in _run_module_code\n    _run_code(code, mod_globals, init_globals,\n  File \"/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/runpy.py\", line 87, in _run_code\n    exec(code, run_globals)\n  File \"src/stable.py\", line 12, in <module>\n    import tomllib\nModuleNotFoundError: No module named 'tomllib'\nerror: test failed, to rerun pass `--bin yuki-setup`\n"
+  }
+]

@@ -1,4 +1,6 @@
-**EXT-006 原帳號提及三端通過。** 分支 `codex/ext-006-native-mentions`，Rust alpha.8／SDK alpha.21，核心 #118 受測來源 `338245cab96f`，已合併核心 main `2a25234e0a44`。Mac、Linux、HJW Windows 各通過 30 個文字／撤回、32 個上傳、22 個提及及三種原話題重放，另驗舊版回讀、55 項 owner 核對與擦除取消。獨立審查以同一簽署 Host 重現 alpha.7 的原提及規劃拒絕，alpha.8 完成 11,000 個提及與 323 頁原註記，失回應後冷啟未重送。
+**EXT-040 Compose 安裝已通過本地三端驗證。** 分支 `codex/ext-040-compose-install`，yuki-setup alpha.2。Mac、Linux、HJW 分別完成 7、7、8 項原生基底 1.0 安裝驗證。Mac 另用固定 Linux ARM64 映像完成 22 項 Compose 操作。兩個同名安裝擁有獨立資料卷，重建後各自保有資料。明選的外部入口只在既有代理網路提供 `/readyz`，未設定的 QQ 路由回傳 404。未發布三端包、來源雜湊與原回條在 `artifacts/EXT-040/compose-entry-04/setup-install.json`，SHA-256 `d2923d6926a053e13352962b2065e72c38cf760f0217c81ca9f7054edfb890b3`。完整卡仍需 SnowLuma 的同架構原映像、啟動就緒及 QQ 登入驗收，正式總數 12／68。
+
+**EXT-006 原帳號提及已合併。** [#64](https://github.com/Institute-of-Agent-Life/yuki-extensions/pull/64) `37fcab390f11` 進入 main `80784b724308`。分支 `codex/ext-006-native-mentions`，Rust alpha.8／SDK alpha.21，核心 #118 受測來源 `338245cab96f`，已合併核心 main `2a25234e0a44`。Mac、Linux、HJW Windows 各通過 30 個文字／撤回、32 個上傳、22 個提及及三種原話題重放，另驗舊版回讀、55 項 owner 核對與擦除取消。獨立審查以同一簽署 Host 重現 alpha.7 的原提及規劃拒絕，alpha.8 完成 11,000 個提及與 323 頁原註記，失回應後冷啟未重送。
 
 原包、來源快照、雜湊與回條位於 `artifacts/EXT-006/original-mentions-02/original-mentions.json`，SHA-256 `0e7764a1340037607a182eb0bba9406dd757196d0f715687ea2a136def660d7f`。三端該輪自建 target 已清理。此為未發布開發候選，整卡待擴充公開合同驗收，正式完成數維持 12／68。
 

@@ -1,0 +1,64 @@
+{
+  "status": "PASS",
+  "formal_card_status": "AWAITING_OPTIONAL_SERVICE_RUNTIME",
+  "published": false,
+  "source_base": "80784b724308ebad152357efca5c86a81cfd0bbc",
+  "source_inventory_sha256": "a54fb2419c2d39b4443d821929a3ec48d2d42aeef5463041f3a2100351abc10b",
+  "windows_payload_sha256": "e8e40d6bbb58f858ee266d65cad79d1ed6ed1032a90b11ee6fee787a33bd2e0f",
+  "prior_independent_review_sha256": "d66b0b14aa872d08b899708c342bb9e6efaa5c5c388c115a1ae92fd2eae34215",
+  "prior_to_current_runtime_changes": [],
+  "unrelated_upstream_inventory_changes": [
+    "catalog/feishu.json",
+    "ci/feishu_delivery_check.py",
+    "ci/feishu_topic_check.py",
+    "ci/feishu_topic_readers.py"
+  ],
+  "platforms": {
+    "macos": {
+      "status": "PASS",
+      "archive": "macos.zip",
+      "sha256": "25f2f09a4843099211141ccd2eb5463932885d48c26094baa0c11f97dfd72c20",
+      "installer_sha256": "58499e514528548484b0a6a02dad631968d2190fc2020d1c0e8f48e426c52810",
+      "receipt_sha256": "488c650f8079912aaced95a6cc37a8c63d48858879fadfe9c52bd5191e0bc304",
+      "manifest_sha256": "7d2375c672d541335d5aa8912c4169004888194befe4ceb811f5aebf6e6ffd8a",
+      "actions": {
+        "native": 7,
+        "compose": 22
+      }
+    },
+    "linux": {
+      "status": "PASS",
+      "archive": "linux.zip",
+      "sha256": "48d0fb6dc160deadb2cd8e066bf950326a2faea3428da1e372493da0fdaaada8",
+      "installer_sha256": "1fcc62e0444000a873f59cb4aa51aaad5a8bb00fb6b5c001edda8c2bab6080a6",
+      "receipt_sha256": "002c159097db244320d936cb113baa5c527ae27fe71f91a36f6cdcd46085397d",
+      "manifest_sha256": "678e2b0ff5d17cebf020ae07d9f60209ad685222b83b9a4b3994436a87b2cee1",
+      "actions": {
+        "native": 7
+      }
+    },
+    "windows": {
+      "status": "PASS",
+      "archive": "windows.zip",
+      "sha256": "aee3d9c8c0febe573b38e19a1b5b2e6e922ece2ef4d0121ecf88121e9535b234",
+      "installer_sha256": "57372a1a42c515cb8a00c5791627a0576e2dce7394786e7bd32660bedca72bd7",
+      "receipt_sha256": "aea65b4cb5f8bcbbae8ceab518b4fd52c659ad4eb7784fe217c7787efe83a0e7",
+      "manifest_sha256": "1c39b707c56b4dd58508bbc99d7f31e43bc336ee3688c5d4492dcb678be22dda",
+      "actions": {
+        "native": 8
+      }
+    }
+  },
+  "setup_artifact_kind": "unpublished development installer",
+  "first_attempts": {
+    "macos": {
+      "path": "first-macos.json",
+      "sha256": "a38ea19ea1abf7b9d760454554280c946ffaedcc8f1dd3a94a66072e0acccfab"
+    },
+    "linux": {
+      "path": "first-linux.txt",
+      "sha256": "cd5ac990dc97c996e9de5f6464082c9a1c2384369322d2253e254fb3a85b9e84"
+    }
+  },
+  "remaining": "native SnowLuma instance with matched image, readiness and authorized operator QQ login"
+}

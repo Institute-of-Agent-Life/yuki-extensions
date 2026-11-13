@@ -13,12 +13,16 @@ struct Core {
     platform: String,
 }
 
-fn verify(archive: &Path) -> Result<Core, Error> {
+fn python() -> Command {
     let mut python = Command::new(if cfg!(windows) { "py" } else { "python3" });
     if cfg!(windows) {
         python.arg("-3.12");
     }
-    let out = python
+    python
+}
+
+fn verify(archive: &Path) -> Result<Core, Error> {
+    let out = python()
         .args([
             "-I",
             "-c",
@@ -85,6 +89,7 @@ fn run() -> Result<(), Error> {
             "--timezone",
             "--profile",
             "--entry",
+            "--entry-network",
             "--plugin",
             "--plugin-file",
         ]
@@ -104,7 +109,6 @@ fn run() -> Result<(), Error> {
         let optional = selected == Some("web-fetch") && plugin_file.is_some();
         if let Some(version) = args.get("--core") {
             if version != "1.0.0"
-                || !(args.len() == 3 || optional && args.len() == 5)
                 || selected.is_some() != optional
                 || plugin_file.is_some() != optional
             {
@@ -116,11 +120,7 @@ fn run() -> Result<(), Error> {
             }) {
                 return Err("unknown option for native base installation".into());
             }
-            let mut python = Command::new(if cfg!(windows) { "py" } else { "python3" });
-            if cfg!(windows) {
-                python.arg("-3.12");
-            }
-            let result = python
+            let result = python()
                 .args([
                     "-I",
                     "-c",
@@ -144,14 +144,15 @@ fn run() -> Result<(), Error> {
             print!("{}", String::from_utf8(result.stdout)?);
             return Ok(());
         }
-        if !(args.len() == 2 || optional && args.len() == 4) {
+        if selected.is_some() != optional
+            || plugin_file.is_some() != optional
+            || args
+                .keys()
+                .any(|k| !["--dir", "--archive", "--plugin", "--plugin-file"].contains(&k.as_str()))
+        {
             return Err("native takes --archive and --dir; a selected Windows web-fetch also requires --plugin-file".into());
         }
-        let mut python = Command::new(if cfg!(windows) { "py" } else { "python3" });
-        if cfg!(windows) {
-            python.arg("-3.12");
-        }
-        let output = python
+        let output = python()
             .args([
                 "-I",
                 "-c",
@@ -187,15 +188,17 @@ fn run() -> Result<(), Error> {
     if args.get("--plugin-file").is_some()
         || args.get("--plugin").is_some()
         || args.get("--profile").is_some_and(|v| v != "direct")
-        || args.get("--entry").is_some_and(|v| v != "local")
     {
-        return Err("selected component or external entry has no compatible pinned package in this candidate".into());
+        return Err("selected component has no compatible pinned package in this candidate".into());
     }
+    let entry = config::Entry::parse(
+        args.get("--entry").map(String::as_str),
+        args.get("--entry-network").map(String::as_str),
+    )?;
     let zone = args.get("--timezone").map(String::as_str);
     if zone.is_some_and(|v| !timezone_valid(v)) {
         return Err("invalid timezone".into());
     }
-    let compose = config::compose(&core.image, &core.platform);
     if cmd == "init" {
         fs::create_dir_all(&dir)?;
     }
@@ -210,9 +213,20 @@ fn run() -> Result<(), Error> {
     let existing = config::read_optional(&dir.join("compose.yaml"))?;
     let environment = config::read_optional(&dir.join(".env"))?;
     let soul = config::read_optional(&dir.join("SOUL.example.md"))?;
-    if existing
-        .as_deref()
-        .is_some_and(|v| !config::pinned_compose(v, &compose))
+    let project = match existing.as_deref() {
+        Some(contents) => config::read_project(contents)?.map(str::to_owned),
+        None if cmd == "init" => Some(config::new_project(&mut python())?),
+        None => return Err("incomplete offline kit".into()),
+    };
+    let compose = config::compose(&core.image, &core.platform, &entry, project.as_deref());
+    let legacy = matches!(entry, config::Entry::Local)
+        && existing.as_deref().is_some_and(|v| {
+            config::pinned_compose(v, &config::legacy_compose(&core.image, &core.platform))
+        });
+    if !legacy
+        && existing
+            .as_deref()
+            .is_some_and(|v| !config::pinned_compose(v, &compose))
     {
         return Err("compose.yaml differs from the pinned offline kit; preserve it and use a separate directory".into());
     }
@@ -244,8 +258,13 @@ fn run() -> Result<(), Error> {
         return Err("offline timezone differs".into());
     }
     println!(
-        "offline doctor passed; candidate={} platform={} image={} profile=direct entry=local",
-        core.version, core.platform, core.image
+        "offline doctor passed; candidate={} platform={} image={} profile=direct entry={} storage={} project={}",
+        core.version,
+        core.platform,
+        core.image,
+        entry.name(),
+        if legacy { "legacy-bind" } else { "volume" },
+        project.as_deref().unwrap_or("compose-default"),
     );
     Ok(())
 }
@@ -258,14 +277,10 @@ fn main() {
 
 #[cfg(test)]
 mod public_base_tests {
-    use std::process::Command;
+    use super::python;
 
     #[test]
     fn commit_refuses_to_replace_even_an_empty_existing_destination() {
-        let mut python = Command::new(if cfg!(windows) { "py" } else { "python3" });
-        if cfg!(windows) {
-            python.arg("-3.12");
-        }
         let probe = r#"
 from pathlib import Path
 from tempfile import TemporaryDirectory
@@ -286,6 +301,12 @@ with TemporaryDirectory() as tmp:
     commit(src, dst)
     assert not src.exists() and (dst / "checked").read_bytes() == b"payload"
 "#;
-        assert!(python.args(["-I", "-c", probe]).status().unwrap().success());
+        assert!(
+            python()
+                .args(["-I", "-c", probe])
+                .status()
+                .unwrap()
+                .success()
+        );
     }
 }
