@@ -13,9 +13,14 @@ No source response can change a target or create an administrator grant.
 Supported source snapshots: Miniflux entries, JSON Feed, Bilibili dynamics and
 live-state responses. The first fetch establishes a silent baseline; explicit
 `initial_sync=replay_recent` admits at most `replay_recent_limit` (default 3,
-maximum 20). Existing pending requests drain first. Incomplete Miniflux pages,
-HTTP errors and malformed responses preserve the previous cursor. Multi-page
-Miniflux, RSS/Atom parsing and migration of legacy KV remain separate work.
+maximum 20). Existing pending requests drain first. The Miniflux reader walks
+up to 20 pages in descending entry ID order using `before_entry_id` (Miniflux
+2.0.9 or later). Keep collection filters such as `status` in the configured URL.
+Use `limit` to select a page size of up to 100 and select a narrower collection
+if it exceeds the page budget. The worker checks remaining counts and ID order
+before admitting the collection. Incomplete pages, HTTP errors and malformed
+responses preserve the previous cursor. RSS/Atom parsing and legacy KV migration
+remain open.
 HTTPS uses system curl with certificate validation, a 10-second bound, a 1 MiB
 limit and no redirects. An explicit loopback HTTP service supports local Miniflux
 and offline recordings. `token_env` optionally names a Host-approved environment
