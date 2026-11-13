@@ -1,5 +1,5 @@
 id = "memory-maintenance"
-version = "0.1.0-alpha.5"
+version = "0.1.0-alpha.6"
 program = "yuki-memory-maintenance"
 args = ["--reflection-only"]
 erasure_args = ["--reflection-only"]
