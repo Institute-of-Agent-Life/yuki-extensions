@@ -6,9 +6,9 @@ import sys
 import threading
 
 
-def observe(program, trace, *, stderr=None):
+def observe(program, trace, *args, stderr=None):
     lock=threading.Lock()
-    child=subprocess.Popen([program],stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=stderr)
+    child=subprocess.Popen([program,*args],stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=stderr)
     def copy(stream, sink, direction):
         try:
             for line in stream:

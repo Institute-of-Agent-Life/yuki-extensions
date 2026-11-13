@@ -1,6 +1,7 @@
 """Run the independent Rust maintenance plugin against the pinned actual Host."""
-from contextlib import closing
+from contextlib import closing, contextmanager
 import json
+import os
 import sqlite3
 import subprocess
 import time
@@ -10,7 +11,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from personal_preview import Owner
 
 
-def prepare(root, output, *, integrity=False):
+def prepare(root, output, *, integrity=False, retain=False):
     calls=[]
     class Provider(BaseHTTPRequestHandler):
         def log_message(self,*_):pass
@@ -26,7 +27,7 @@ def prepare(root, output, *, integrity=False):
             self.send_response(200);self.send_header('Content-Type','application/json');self.send_header('Content-Length',str(len(payload)));self.end_headers();self.wfile.write(payload)
     server=ThreadingHTTPServer(('127.0.0.1',0),Provider)
     threading.Thread(target=server.serve_forever,daemon=True).start()
-    try:return exercise(root,output,server,calls,integrity=integrity)
+    try:return exercise(root,output,server,calls,integrity=integrity,retain=retain)
     finally:
         server.shutdown();server.server_close()
         (output/'embedding-http.json').write_text(json.dumps(calls,indent=2),encoding='utf-8')
@@ -40,6 +41,33 @@ def fixture_rows(database):
             'attempts': db.execute('SELECT logical,state FROM embedding_items ORDER BY logical,ordinal').fetchall(),
             'apply': db.execute('SELECT operation,digest FROM maintenance_audit_apply ORDER BY operation').fetchall(),
         }
+
+
+def wait_for_worker_exit(jobs):
+    lock=jobs/'.worker.lock'
+    if not lock.is_file():
+        return
+    if os.name=='nt':
+        import msvcrt
+        def try_lock(file):
+            msvcrt.locking(file.fileno(),msvcrt.LK_NBLCK,1)
+    else:
+        import fcntl
+        def try_lock(file):
+            fcntl.flock(file,fcntl.LOCK_EX|fcntl.LOCK_NB)
+    deadline=time.monotonic()+5
+    while time.monotonic()<deadline:
+        with lock.open('r+b') as file:
+            try:
+                try_lock(file)
+                return
+            except BlockingIOError:
+                pass
+            except OSError as error:
+                if os.name!='nt' or error.errno!=13:
+                    raise
+        time.sleep(.05)
+    raise RuntimeError('previous maintenance worker still owns its private job directory')
 
 
 def approve_changed_install(owner, op):
@@ -77,15 +105,29 @@ def approve_changed_install(owner, op):
                 daemon.wait()
 
 
-def exercise(root, output, server, calls, *, integrity):
+def exercise(root, output, server, calls, *, integrity, retain):
     jobs = output / 'operator-jobs'
     jobs.mkdir()
     owner = Owner(root, output, 'memory-maintenance',
                   ['maintenance.audit','maintenance.audit.apply','maintenance.reembed','forget.owner'],
-                  contract='core-035-integrity' if integrity else 'core-035',
+                  contract='core-035-retention' if retain else 'core-035-integrity' if integrity else 'core-035',
                   environment={'YUKI_MEMORY_MAINTENANCE_JOBS':str(jobs)}, command_timeout=30)
     cfg=owner.data/'yuki.toml'
     cfg.write_text(cfg.read_text().replace('mode = "hybrid"','mode = "lexical-only"'),encoding='utf-8')
+    if retain:
+        import tomllib
+        retained=tomllib.loads((owner.packages/'plugin-retained.toml').read_text(encoding='utf-8'))
+        configuration=tomllib.loads(cfg.read_text(encoding='utf-8'))
+        args=configuration['plugins'][0]['args'] + retained['args']
+        old_line='args='+json.dumps(configuration['plugins'][0]['args'])
+        new_line='args='+json.dumps(args)+'\nerasure_args='+json.dumps(args)
+        cfg.write_text(cfg.read_text().replace(old_line,new_line),encoding='utf-8')
+    @contextmanager
+    def running():
+        if retain:
+            wait_for_worker_exit(jobs)
+        with owner.running():
+            yield
     records=[]
     def op(*args):
         r=owner.command('operator',*map(str,args))
@@ -105,7 +147,7 @@ def exercise(root, output, server, calls, *, integrity):
             time.sleep(.05)
         raise AssertionError('maintenance job timed out: '+name)
     actor=str(uuid.uuid4())
-    with owner.running():
+    with running():
         op('person','create',actor)
         user=op('account','open','qq','quality-fixture','200',1,'--person',actor,'--start',1)
         bot=op('account','open','qq','quality-fixture','100',1,'--start',1)
@@ -125,7 +167,7 @@ def exercise(root, output, server, calls, *, integrity):
         event,execution,fact=seed('selected')
         (output/'seed-fact.json').write_text(json.dumps(fact,indent=2),encoding='utf-8')
         if integrity:
-            _,_,missing=seed('missing-evidence')
+            missing_event,_,missing=seed('missing-evidence')
             _,_,invalid=seed('invalid-evidence')
             foreign_actor=str(uuid.uuid4())
             op('person','create',foreign_actor)
@@ -157,7 +199,7 @@ def exercise(root, output, server, calls, *, integrity):
     selected=fact['fact']
     selected_scan={**scan_params,'fact':selected}
     cases={}
-    with owner.running():
+    with running():
         cases['invalid_job']=job('invalid-job',{'action':'scan','scope':'own','purpose':'quality','actor':'override'})
         assert cases['invalid_job']['state']=='not_completed'
         scan=job('scan-1',{'action':'scan',**scan_params})
@@ -206,7 +248,7 @@ def exercise(root, output, server, calls, *, integrity):
             after_findings={row['fact']:row for row in cases['after_apply']['result']['quality_findings']}
             assert after_findings[selected]['lexical']=='current'
             assert after_findings[missing['fact']]['lexical']=='mismatch'
-    with owner.running():
+    with running():
         cases['replay']=job('apply-replay',apply)
         assert cases['replay']==cases['apply']
         routes={r['route']:r['profile'] for r in audit['embedding_routes']}
@@ -255,22 +297,83 @@ def exercise(root, output, server, calls, *, integrity):
             'operation':'stale-plan','fingerprint':before['fingerprint'],'approved':[selected]})
         assert cases['stale_fingerprint']['state']=='not_completed'
         assert len(calls)==3
+        if retain:
+            cases['retained_unrelated']=job('retained-unrelated',{'action':'audit',**scope,'fact':missing['fact']})
+            cases['retained_before_erase']=job('retained-selected',{'action':'audit',**scope,'fact':selected})
+            assert len(cases['retained_unrelated']['erasure_refs'])==1
+            assert len(cases['retained_before_erase']['erasure_refs'])>=1
+            assert missing_event != event
+            for name, report in [('temporary-affected', cases['retained_before_erase']),
+                                 ('temporary-unrelated', cases['retained_unrelated'])]:
+                (jobs/(name+'.started')).write_text('fixture fence\n',encoding='utf-8')
+                (jobs/(name+'.job')).write_text('{}',encoding='utf-8')
+                (jobs/(name+'.result.tmp')).write_text(json.dumps(report),encoding='utf-8')
+            (jobs/'unclassified.result').write_text('{incomplete',encoding='utf-8')
         erased=op('privacy','erase','quality-erase',actor,json.dumps([event]))
-        end=time.monotonic()+8
-        callback=None
+        end=time.monotonic()+12
+        callback=failed_reply=None
         while time.monotonic()<end:
-            frames=[json.loads(s)['frame'] for s in owner.trace.read_text(encoding='utf-8').splitlines()]
-            callback=next((f for f in frames if f.get('method')=='forget.request' and f['params']['key']=='quality-erase'),None)
-            if callback and not op('privacy','pending','memory-maintenance')['obligations']:break
+            frames=[json.loads(line)['frame'] for line in owner.trace.read_bytes().splitlines(keepends=True)
+                    if line.endswith(b'\n')]
+            callbacks=[f for f in frames if f.get('method')=='forget.request' and f['params']['key']=='quality-erase']
+            callback=callbacks[0] if callbacks else None
+            if callback:
+                if retain:
+                    failed_reply=next((f for f in frames if f.get('id')==callback['id']
+                        and f.get('error',{}).get('message')=='quality_erasure_incomplete'),None)
+                    if failed_reply:break
+                elif not op('privacy','pending','memory-maintenance')['obligations']:
+                    break
             time.sleep(.1)
         pending=op('privacy','pending','memory-maintenance')['obligations']
-        cases['erased_reembed']=job('erased-reembed',{'action':'reembed','scope':'own','purpose':'quality',
-            'operation':'quality-after-erase','route':'dense-a','profile':routes['dense-a'],
-            'fact':selected,'revision':after['items'][0]['revision']})
-        assert cases['erased_reembed']['state']=='not_completed'
+        if retain:
+            assert callback and failed_reply and pending, (callback,failed_reply,pending)
+            assert set(callback['params']['erasure_refs']) & set(cases['retained_before_erase']['erasure_refs'])
+            assert callback['params']['sources']==[]
+            assert not set(callback['params']['erasure_refs']) & set(cases['retained_unrelated']['erasure_refs'])
+            assert (jobs/'retained-unrelated.result').exists()
+        else:
+            cases['erased_reembed']=job('erased-reembed',{'action':'reembed','scope':'own','purpose':'quality',
+                'operation':'quality-after-erase','route':'dense-a','profile':routes['dense-a'],
+                'fact':selected,'revision':after['items'][0]['revision']})
+            assert cases['erased_reembed']['state']=='not_completed'
         assert len(calls)==3
         cases['erasure']={'operation':erased,'callback_observed':callback,'pending_obligations':pending,
                          'operator_acquire_calls':0,'automatic_callback_acceptance':False}
+    if retain:
+        cases['erasure']['initial_failure']=failed_reply
+        (jobs/'unclassified.result').rename(output/'unclassified-before-recovery.json')
+        with running():
+            deadline=time.monotonic()+12
+            pending=op('privacy','pending','memory-maintenance')['obligations']
+            while pending and time.monotonic()<deadline:
+                time.sleep(.1)
+                pending=op('privacy','pending','memory-maintenance')['obligations']
+            assert pending==[]
+            assert not (jobs/'retained-selected.result').exists()
+            assert not (jobs/'retained-selected.job').exists()
+            assert (jobs/'retained-selected.started').is_file()
+            assert json.loads((jobs/'retained-unrelated.result').read_bytes())==cases['retained_unrelated']
+            assert not (jobs/'temporary-affected.result.tmp').exists()
+            assert not (jobs/'temporary-affected.job').exists()
+            assert (jobs/'temporary-affected.started').is_file()
+            assert (jobs/'temporary-unrelated.job').is_file()
+            assert json.loads((jobs/'temporary-unrelated.result.tmp').read_bytes())==cases['retained_unrelated']
+            cases['erasure']['temporary_results']={'affected_removed':True,'unrelated_preserved':True}
+            cases['erased_reembed']=job('erased-reembed',{'action':'reembed',**scope,
+                'operation':'quality-after-erase','route':'dense-a','profile':routes['dense-a'],
+                'fact':selected,'revision':after['items'][0]['revision']})
+            assert cases['erased_reembed']['state']=='not_completed' and len(calls)==3
+            cases['erasure']['automatic_callback_acceptance']=True
+            cases['erasure']['pending_after_cold_cleanup']=[]
+            frames=[json.loads(line) for line in owner.trace.read_bytes().splitlines(keepends=True)
+                    if line.endswith(b'\n')]
+            acknowledgement=next((row['frame']['result'] for row in frames
+                if row['direction']=='from_plugin' and isinstance(row['frame'].get('result'),dict)
+                and row['frame']['result'].get('key')=='quality-erase'
+                and row['frame']['result'].get('watermark')==callback['params']['watermark']),None)
+            assert acknowledgement and acknowledgement['proof']=='selected quality reports removed'
+            cases['erasure']['acknowledgement']=acknowledgement
     sdk_pin=json.loads((root/'compat/core-035/source.lock.json').read_bytes())
     package=json.loads((owner.packages/'package-manifest.json').read_bytes())
     return 'hygiene-report.json',{'status':'PASS','card_status':'BLOCKED','candidate_only':True,
@@ -279,8 +382,8 @@ def exercise(root, output, server, calls, *, integrity):
         'cases':cases,'embedding_http_calls':len(calls),'scan_paid_calls':0,
         'database_access':'public operator and SDK; fault injection confined to the isolated fixture' if integrity else 'public operator and SDK only',
         'remaining':(['published Host and plugin tuple'] if integrity else ['actual SQL integrity findings'])
-                    + ['producer clarification of metadata erasure obligations']}
+                    + ([] if retain else ['producer clarification of metadata erasure obligations'])}
 
 
 def run(root,output):
-    return prepare(root,output,integrity=True)
+    return prepare(root,output,integrity=True,retain=os.environ.get('YUKI_QUALITY_RETENTION')=='1')
