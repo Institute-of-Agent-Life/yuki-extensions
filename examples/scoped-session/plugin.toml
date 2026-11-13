@@ -1,0 +1,25 @@
+id = "lighthouse"
+version = "0.1.0-alpha.1"
+program = "yuki-lighthouse"
+grants = ["command.invoke", "session.create", "session.run", "session.page", "llm.complete", "llm.result", "forget.owner"]
+commands = ["/lighthouse"]
+
+[sessions]
+routes = ["game"]
+background = false
+context_profiles = ["none"]
+
+[aux_routes.game]
+purposes = ["game"]
+origins = ["session", "call"]
+entries = ["REPLACE_WITH_ORIGINAL_ENTRY_ID"]
+
+[aux_routes.game.profile]
+endpoint = "http://127.0.0.1:8080/v1/chat/completions"
+protocol = "chat"
+model = "REPLACE_WITH_GAME_MODEL_ID"
+name = "Lighthouse"
+merge_ms = 0
+root_slots = 1
+max_input_units = 100000
+max_output = 256
