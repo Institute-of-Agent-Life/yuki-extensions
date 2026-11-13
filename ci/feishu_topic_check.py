@@ -16,10 +16,14 @@ sys.path.insert(0, str(ROOT / "tests/peers"))
 from telegram_attachment_delivery import materialize
 
 
-def run(root, output, contract="core-038-topic"):
+def run(root, output, contract="core-038-topic", *, package_source=None, released_host=None):
     output.mkdir(parents=True, exist_ok=False)
     package = output / "packages"
-    built = build(root, "feishu", package)
+    if package_source is None:
+        built = build(root, "feishu", package)
+    else:
+        shutil.copytree(package_source, package, ignore=shutil.ignore_patterns("._*"))
+        built = json.loads((package / "package-manifest.json").read_bytes())
     spec = importlib.util.spec_from_file_location(
         "feishu_ingress_case", root / "tests/cases/EXT-005.py"
     )
@@ -34,6 +38,11 @@ def run(root, output, contract="core-038-topic"):
         )
         shutil.copytree(package, destination)
         return built
+
+    def selected_host(root, work, contract):
+        if released_host is not None:
+            return released_host
+        return materialize(root, work, contract)
 
     cases = {}
     for scenario, thread, root_message, expected_root in [
@@ -66,7 +75,7 @@ def run(root, output, contract="core-038-topic"):
                 expected_topic=thread or None,
                 native_topics=True,
                 expected_topic_root=expected_root,
-                host_materializer=materialize,
+                host_materializer=selected_host,
                 work_directory=Path(temporary) / "work",
             )
         (destination / name).write_text(

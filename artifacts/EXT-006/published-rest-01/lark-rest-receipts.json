@@ -1,0 +1,71 @@
+{
+  "status": "PASS",
+  "formal_card_status": "VERIFIED_DEVELOPMENT_ACCEPTANCE",
+  "published": false,
+  "source_base": "0478196050b5aa0282434b82cab94532ec215e19",
+  "source_inventory_sha256": "fdd384d6e05918a48f868fe5e4083cd93c8e73ebe3dca3e4d83cdd7944d29d95",
+  "source_snapshot_archive_sha256": "058e704d0958c0aaa55f764801859bae1ec420879a2d25f7164c103a4e020fb0",
+  "consumed_release": {
+    "tag": "plugin/feishu/v0.1.0",
+    "source_commit": "66a593a47cb87b7fbaf00cf1cc6f0fc022f21572",
+    "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/releases/tag/plugin/feishu/v0.1.0",
+    "github_publication_sha256": "b818a9c506eeea14be38568803cbd3b892b1bd9161815ebd77c09807ed27382e"
+  },
+  "host_source": "09bdd7382de41343767960c0aa0e279db2b618dc",
+  "host_bundle_sha256": "90933f039d2aaa19231f03b7ea12dabd0ebfb09cac282d05e8385a8d33738845",
+  "sdk": {
+    "python": "1.1.0",
+    "rust": "1.1.0"
+  },
+  "host_schema_sha256": "34281af056b704eb211e3a07c834aa4aeb0666cde66d6218a4525b9f9dbaad90",
+  "platforms": {
+    "macos": {
+      "status": "PASS",
+      "native_cases": 84,
+      "topic_cases": 3,
+      "resource_cases": 2,
+      "legacy_oracle_cases": 55,
+      "distribution_sha256": "c275a019d646c8e81d3e1c1ea12257548d1d251d53448d3046cba4aac63c50f1",
+      "binary_sha256": "c5af4b15f1073542b7d968918f3e9b0cf7ebd21269bd322acf66a4296fc659b9",
+      "host_sha256": "7c6c09c223a5f767445f97efde289794a8499ecc5e35120eb9e078266e0ddfff",
+      "manifest_sha256": "dc29844c840950043af0e6a36ded30893c74b2baacdc86d7cb252781f9025d83",
+      "archive": "macos.zip",
+      "sha256": "5032d680a40379ec82b74c254ebd0ff8cf4ada6e97d5a34e40f9cb56087ddbdf"
+    },
+    "linux": {
+      "status": "PASS",
+      "native_cases": 84,
+      "topic_cases": 3,
+      "resource_cases": 2,
+      "legacy_oracle_cases": 55,
+      "distribution_sha256": "2f39ee1cd95e5c75f71023932953be5aace039bd0e360cab7c445d9323c81cb4",
+      "binary_sha256": "1b35816ced0a1ce66e0b41513b60b00e944de36a8060b1ac6af3f964bb631039",
+      "host_sha256": "76064c03525bfd889044fbfcab891c1257a76f679efd46f53fedf7d782587d81",
+      "manifest_sha256": "d66b83687a2b76a41a3f162c5d08a8e6ead7edf5a0375cce5c646929881cddd6",
+      "archive": "linux.zip",
+      "sha256": "84c248d86ba38f2064c9d7dfd0cf7520338451e8543e18997e75533234aae064"
+    },
+    "windows": {
+      "status": "PASS",
+      "native_cases": 84,
+      "topic_cases": 3,
+      "resource_cases": 2,
+      "legacy_oracle_cases": 55,
+      "distribution_sha256": "97434ca71a779016ebbe3096fbc5979fccfa66e02e053b81cfd58affb7aa57af",
+      "binary_sha256": "4b60492668bac65cf15e67d12c778fcfc5dc1016ab94ac512c014cb6fddb2b79",
+      "host_sha256": "e40296d67b2760a1a47f01a961779708ee97a88043155656bbadffa57cd703a8",
+      "manifest_sha256": "3cfc2e44b61a22037732edf72873bc5fab8ee7fe4e44bae8b8f1d93c7549c533",
+      "archive": "windows.zip",
+      "sha256": "8586b74604888b55810e85aadd92aa07dd2afa4abc1b78d1c77d76d2b54d07ef"
+    }
+  },
+  "prior_native_gateway_selection": {
+    "path": "artifacts/EXT-006/selected-native-03/manifest.json",
+    "sha256": "dfad59a49c17cda464ab2fc9b076fc6ea504369f9e12d87dda90684f45d8fd3c"
+  },
+  "deployment_followup": [
+    "actual enterprise connection",
+    "CORE-041 deployed instance mapping for EXT-041"
+  ],
+  "paid_calls": 0
+}
