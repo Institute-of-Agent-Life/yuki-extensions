@@ -1,0 +1,13 @@
+{
+  "task": "EXT-043",
+  "status": "PASS",
+  "source_snapshot_sha256": "42655cd104eda7e9533870e37c66e5e01d772b701fbb83c7507296c418cdff40",
+  "files": {
+    "extension-release-lock.json": "5c840ab6ba37d8e115cd3ee4f90d3f0483cfe70c70a4227552ab093256af0854",
+    "linux.zip": "c3f37180273282b24cb627f29ae5010d05e23c35ee0a9e0ac08d014509bf8c64",
+    "macos.zip": "6857dc56c4ea294005ac4a776f895e510b9bda5ad682b12ac927b8ea0f87cfa0",
+    "source-files.json": "42655cd104eda7e9533870e37c66e5e01d772b701fbb83c7507296c418cdff40",
+    "source.json": "42655cd104eda7e9533870e37c66e5e01d772b701fbb83c7507296c418cdff40",
+    "windows.zip": "675e2f90a9f155d2d5f74668fd986ea14e845a2b90306081fc9ea410905f3a50"
+  }
+}

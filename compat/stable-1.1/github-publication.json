@@ -1,0 +1,19 @@
+{
+  "asset_sha256": {
+    "SHA256SUMS": "4fa4d145a52dd545a186349c270c9699b4cf6608c71586f59b302bcc356b1f98",
+    "SHA256SUMS.sig": "e85c849bd13e615ab6510d64e664f0ee22b70d93a1b6a29adda89623f2c3c2cb",
+    "manifest.json": "28e37974c394cc6ba9caca61175c8c41f7d8dc56f674970d10bab7d948cbcc86",
+    "release-receipt.json": "7260957118eb5f60df6a0178410a9c891629d7a9d6977a9da86dbdb2ccb1bde8",
+    "signer.pub": "650033c53aebcabfd7e5050a6d7557e0df9db092d942869b7953472ed8930647",
+    "yuki-plugin-base-1.1.0-support.zip": "f44bd998e00f8889ca0c9723c60ccfa358173a7c9af02dc3434aecd5d94e768d",
+    "yuki-plugin-base-1.1.0.zip": "90933f039d2aaa19231f03b7ea12dabd0ebfb09cac282d05e8385a8d33738845"
+  },
+  "published_at": "2026-11-13T10:05:28Z",
+  "qualification_receipt_sha256": "7260957118eb5f60df6a0178410a9c891629d7a9d6977a9da86dbdb2ccb1bde8",
+  "release_id": 444069771,
+  "release_tag": "plugin-base-v1.1.0",
+  "release_url": "https://github.com/Institute-of-Agent-Life/yuki-core/releases/tag/plugin-base-v1.1.0",
+  "sha256_verified_from": "GitHub release asset metadata and exact local copies",
+  "source_commit": "09bdd7382de41343767960c0aa0e279db2b618dc",
+  "status": "published"
+}

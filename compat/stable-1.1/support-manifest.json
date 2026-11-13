@@ -1,0 +1,33 @@
+{
+  "files": {
+    "handshake.ndjson": "5275ee7b90b6af4221693f92ea9c1b4fb1d1b306c2b6ebb85947273dba0bcfa3",
+    "handshake.schema.json": "d5df14d83fab311d0a8f1c12c7f4a78467c4745f6eb82c2b8700f5ad221f81ba",
+    "host-schema.json": "34281af056b704eb211e3a07c834aa4aeb0666cde66d6218a4525b9f9dbaad90",
+    "method-index.json": "859744c627a58417b982ac42c406b7fc765107dd409b1ad0461c00c0ae0297a8",
+    "yuki-conformance-peer.pyz": "3f60c4ede7ceb3980c498ff061dd7237a555eae4c0631d380d12448a2e845826",
+    "yuki-plugin-sdk-1.1.0.crate": "6bd4ddeb46ed0e635013a33ab65e9ff5455ff3685d846920c666083d9db1ad14",
+    "yuki_plugin_sdk-1.1.0-py3-none-any.whl": "b270387f0112e54844bb761ef9cca8c5d548d65adb01ec409fc9b8e0ed1d0013"
+  },
+  "methods": [
+    "initialize",
+    "forget.request",
+    "gateway.dispatch_part",
+    "gateway.inbound",
+    "gateway.media",
+    "gateway.plan_send",
+    "gateway.prepare_part",
+    "gateway.read_mentions",
+    "gateway.read_text",
+    "gateway.recall",
+    "media.open",
+    "tool.call",
+    "tool.status"
+  ],
+  "published": false,
+  "python_sdk": "yuki_plugin_sdk-1.1.0-py3-none-any.whl",
+  "rust_sdk": "yuki-plugin-sdk-1.1.0.crate",
+  "source_commit": "09bdd7382de41343767960c0aa0e279db2b618dc",
+  "source_dirty": false,
+  "source_tree_sha256": "a5d845dde6a5f1e926fdec5df28c13ce7e8a1103de9921412ea5a1a56943ebbf",
+  "version": "1.1.0"
+}

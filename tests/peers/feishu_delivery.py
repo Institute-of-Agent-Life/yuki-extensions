@@ -23,7 +23,7 @@ from feishu_upload import Upload
 from feishu_mentions import Mentions
 
 
-def exercise(root, package, output, domain, scenario):
+def exercise(root, package, output, domain, scenario, *, released_host=None):
     output.mkdir(parents=True)
     manifest = json.loads((package / "package-manifest.json").read_bytes())
     binary = package / ("yuki-feishu.exe" if os.name == "nt" else "yuki-feishu")
@@ -34,10 +34,12 @@ def exercise(root, package, output, domain, scenario):
         prefix="fs-send-", dir="/tmp" if os.name != "nt" else None
     ) as temporary:
         work = Path(temporary)
-        contract = json.loads((root / "catalog/feishu.json").read_bytes())["source"][
-            "sdk_contract"
-        ]
-        host, pin, target = materialize(root, work, Path(contract).parent.name)
+        if released_host is None:
+            contract = json.loads((root / "catalog/feishu.json").read_bytes())["source"][
+                "sdk_contract"
+            ]
+            released_host = materialize(root, work, Path(contract).parent.name)
+        host, pin, target = released_host
         spec = importlib.util.spec_from_file_location(
             "native_feishu", root / "tests/cases/EXT-005.py"
         )

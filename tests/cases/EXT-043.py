@@ -30,10 +30,14 @@ def unpack(archive, pin, dest):
 
 def run(root, output):
     name = "extension-release-lock.json"
+    sys.path.insert(0, str(root / "ci"))
+    if os.environ.get("YUKI_STABLE_1_1_BUNDLE"):
+        from feishu_release_check import native
+
+        return "feishu-stable.json", native(root, output)
     env = ["YUKI_STABLE_BASE_ZIP", "YUKI_FROZEN_TELEGRAM_ZIP", "YUKI_FROZEN_WEB_FETCH_ZIP"]
     if sys.platform != "win32" or not all(os.environ.get(k) for k in env):
         return name, {"status": "BLOCKED", "reason": "HJW Windows and frozen inputs required", "inputs": env}
-    sys.path.insert(0, str(root / "ci"))
     prepare = runpy.run_path(str(root / "ci/publish-plugin.py"))["prepare"]
     joint = runpy.run_path(str(root / "tests/peers/joint_base.py"))["run"]
     lock = json.loads((root / "compat/stable-1.0/source.lock.json").read_bytes())

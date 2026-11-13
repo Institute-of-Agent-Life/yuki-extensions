@@ -1,0 +1,101 @@
+{
+  "assets": {
+    "manifest.json": "28e37974c394cc6ba9caca61175c8c41f7d8dc56f674970d10bab7d948cbcc86",
+    "yuki-plugin-base-1.1.0-support.zip": "f44bd998e00f8889ca0c9723c60ccfa358173a7c9af02dc3434aecd5d94e768d",
+    "yuki-plugin-base-1.1.0.zip": "90933f039d2aaa19231f03b7ea12dabd0ebfb09cac282d05e8385a8d33738845"
+  },
+  "database_reader": 56,
+  "evidence_sha256": "71ff06833d2cd4a82dae89ac5972886da3c9b0fdcd8da42562b9e2174cb31d0e",
+  "handshake_sha256": "8a4a1d2cd3619fcdc75ed0af3c71629320ac7c4924ccbdb01ae5ba772fe8648d",
+  "methods": [
+    "initialize",
+    "forget.request",
+    "gateway.dispatch_part",
+    "gateway.inbound",
+    "gateway.media",
+    "gateway.plan_send",
+    "gateway.prepare_part",
+    "gateway.read_mentions",
+    "gateway.read_text",
+    "gateway.recall",
+    "media.open",
+    "tool.call",
+    "tool.status"
+  ],
+  "parent": {
+    "publication_receipt_sha256": "2bd0b94fd7350c0e49617d5b8755c05401308f8b9639d5f9476678583a4d0aeb",
+    "release": "plugin-base-v1.0.0",
+    "release_receipt_sha256": "a98fb1e4d36f895f02db8614b88638ed73339f21d03bd42c76719ab54274dabc",
+    "source_commit": "c6bd0c75e38717abc71373201d31a77982428d5b",
+    "stable_digest": "f99094570de061970e3a21112007d51ed98df042f35060617df104ab05f6c496"
+  },
+  "platforms": {
+    "linux": {
+      "host_binary_sha256": "76064c03525bfd889044fbfcab891c1257a76f679efd46f53fedf7d782587d81",
+      "paid_calls": 0,
+      "receipt_sha256": "dba471b49dc59f3e817dd449b54ccc6d63009f8d75fab52f1ca81209cb26fd9a",
+      "status": "PASS"
+    },
+    "macos": {
+      "host_binary_sha256": "7c6c09c223a5f767445f97efde289794a8499ecc5e35120eb9e078266e0ddfff",
+      "paid_calls": 0,
+      "receipt_sha256": "8edb4d8b6568ab70d96f2550eda5f372b82f9647883aac96b2dc3c92d9cd551a",
+      "status": "PASS"
+    },
+    "windows": {
+      "host_binary_sha256": "e40296d67b2760a1a47f01a961779708ee97a88043155656bbadffa57cd703a8",
+      "paid_calls": 0,
+      "receipt_sha256": "c82566f146aa237720dd83504cbdc96aabe90c2228e3e90f784326f397e0fc06",
+      "status": "PASS"
+    }
+  },
+  "published": false,
+  "release": "plugin-base-v1.1.0",
+  "replay_cells": 27,
+  "sdk_versions": {
+    "python": "1.1.0",
+    "rust": "1.1.0"
+  },
+  "selection": {
+    "forget.request": {
+      "new_method": true
+    },
+    "gateway.inbound": {
+      "fields": [
+        [
+          "params",
+          "properties",
+          "topic_root"
+        ]
+      ]
+    },
+    "gateway.media": {
+      "new_method": true
+    },
+    "gateway.prepare_part": {
+      "new_method": true
+    },
+    "gateway.read_mentions": {
+      "new_method": true
+    },
+    "gateway.read_text": {
+      "new_method": true
+    },
+    "gateway.recall": {
+      "new_method": true
+    },
+    "media.open": {
+      "new_method": true
+    }
+  },
+  "signer": {
+    "fingerprint": "SHA256:4yE2WrSr1RfVT5C/L9pmumvv+yD60kR0RjUXHYFEgs8",
+    "pubkey_sha256": "650033c53aebcabfd7e5050a6d7557e0df9db092d942869b7953472ed8930647",
+    "scope": "1.1.0 distribution"
+  },
+  "source_commit": "09bdd7382de41343767960c0aa0e279db2b618dc",
+  "source_tree_sha256": "a5d845dde6a5f1e926fdec5df28c13ce7e8a1103de9921412ea5a1a56943ebbf",
+  "status": "verified_release_candidate",
+  "surface_sha256": "34281af056b704eb211e3a07c834aa4aeb0666cde66d6218a4525b9f9dbaad90",
+  "wire_min_reader": "1.0.0"
+}

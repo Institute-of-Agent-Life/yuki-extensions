@@ -15,5 +15,31 @@
       "releases/telegram/0.1.0/plugin.toml": "780ecff8d4681631655556ba6d8b1771a84b9a13ba7f2f97ef3a4c693a3d8499"
     },
     "qualification": "artifacts/EXT-043/01"
+  },
+  "plugin/feishu/v0.1.0": {
+    "sdk_contract": "compat/stable-1.1/source.lock.json",
+    "qualification": "artifacts/EXT-043/feishu-1.1.0-01",
+    "inputs": {
+      "catalog/feishu.json": "3c1839c9c69f9ea37a3a6da88a88ddaf3e84ae5131955a3eee848f8c4dac3bd2",
+      "compat/stable-1.1/source.lock.json": "1d41302c201b59e10ec409e3e90d05ef0740116fab379f40a5740424edb479c5",
+      "plugins/feishu/LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+      "plugins/feishu/NOTICE": "51201cfac32f0bae2e3f4157609d1f4c268f76fef608d30e6809a7581b6746cb",
+      "plugins/feishu/rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+      "plugins/feishu/src/attachment.rs": "70cf42e3351cd36404e9c8297c4fded2e9a8a4b92fbf07b17530d6dbfe593e6e",
+      "plugins/feishu/src/host.rs": "a98e7ee01d2ced5d9e6de2114e4f1bffb861151a0f9acf8e9ae757291f764421",
+      "plugins/feishu/src/ingress.rs": "41728bc2069e4a2af93eb1247c0aa6fc9f8f93168f6efaff42df8306afedc7a0",
+      "plugins/feishu/src/main.rs": "96892582417d886201c833a7f1710247c60586ae5484d015a67904af6b61fcca",
+      "plugins/feishu/src/mentions.rs": "73e71f2f1c5854c8f7ed27c2a58965823793a4df2dea7bc3727b005c8af62787",
+      "plugins/feishu/src/rest.rs": "1e2d120ff38a5286ba457140136974959b2551b0bc94ecdfacd35bec5860450b",
+      "plugins/feishu/src/segments.rs": "5be8595ae992d070dd44626d3ed804676c23bf5fa1e3dbcf78d52d825775856f",
+      "plugins/feishu/src/text.rs": "0576e09c91927ef4272f790676eb86109d0559c58ec361312ca067548beb6ffa",
+      "plugins/feishu/src/transport.rs": "def72c5f0e3594f5655358e467e70cf5da7792c8bf309d83560c8ed40d7ff941",
+      "plugins/feishu/src/worker.rs": "a896ff9cef876601cff6c48ca6b732a1252fd0652f270f1173f1660b4b30e434",
+      "plugins/feishu/src/ws.rs": "d2fe7637b25fc8e8ca47cb7a7e3671b2a8d34c1c414babc940e6369945d8911e",
+      "releases/feishu/0.1.0/Cargo.lock": "ab79d69eb71d92f7494289450353828ba1d01daf3fc9fb11391a680aee8168ff",
+      "releases/feishu/0.1.0/Cargo.toml": "f62a288e5f4d266bb60b525337e6599a2aab9ea34101b62a75b4ee6bd11903af",
+      "releases/feishu/0.1.0/plugin.toml": "7e05b59c38098404792cc5f5065aa425a538262d768cf22ffca0a57dd37373e6",
+      "plugins/feishu/tests/v4-native-content.json": "40b9359d6147ff50c72cdd768c9cb8a87ae902190ab68465ee03306ec3e4499e"
+    }
   }
 }

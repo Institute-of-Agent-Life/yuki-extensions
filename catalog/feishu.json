@@ -42,6 +42,12 @@
     "compat/core-025-native-mentions/yuki-plugin-sdk-1.0.0-alpha.21.crate",
     "tests/peers/feishu_mentions.py",
     "ci/feishu_owner_check.py",
-    "ci/feishu_owner.py"
+    "ci/feishu_owner.py",
+    "tests/cases/EXT-043.py",
+    "compat/stable-1.1/source.lock.json",
+    "compat/stable-1.1/yuki-plugin-sdk-1.1.0.crate",
+    "releases/feishu/0.1.0/Cargo.toml",
+    "releases/feishu/0.1.0/Cargo.lock",
+    "releases/feishu/0.1.0/plugin.toml"
   ]
 }
