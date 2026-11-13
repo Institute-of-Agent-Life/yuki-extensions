@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "formal_card_status": "BLOCKED",
+  "published": false,
+  "source_base": "5182062ad4f4cc6906d4c843c37cd99c7fa8aa07",
+  "source_inventory_sha256": "624a131e4ba1a85803093e9c87277355fe46ae25dd462bb40b37e535fedd2953",
+  "source_inventory_files": 319,
+  "producer_source_commit": "1e7b89362b6f806aa11eed841b28071b22151e7e",
+  "control_schema_sha256": "ff3efce8020cbc6aff324c2aebfb6a90c863f3c60ea27b54df4af17d59a9c213",
+  "consumer_rust_sdk": "1.0.0-alpha.11",
+  "consumer_version": "0.1.0-alpha.1",
+  "remaining": [
+    "private store and bounded queue",
+    "R18 delayed writer and real effect reconciliation",
+    "authorized versioned export",
+    "published producer and consumer acceptance"
+  ],
+  "platforms": {
+    "macos": {
+      "status": "PASS",
+      "archive": "macos.zip",
+      "sha256": "6902fc60a2417d941fc527fd3a3110f74c436d4bdb17a9a75e5afcb5fd3fbc7d",
+      "manifest_sha256": "b9644feb42a920c4e1f9593a6b115654c755d9a5cb6f95c4082b88cac7629045",
+      "report_sha256": "c750824c42912ca66d0b13d46f9eeb4198874046ef993ef6e71764e8c061f9a2",
+      "binary_sha256": "d53c404fd76ca6406fc44c4ddba5779b938df18314c6ce2a30b81f4f7108c72f",
+      "case_count": 5,
+      "paid_calls": 0
+    },
+    "linux": {
+      "status": "PASS",
+      "archive": "linux.zip",
+      "sha256": "a7ab5cc4aa553f947ad749823bbfc75c4da8a2f8f79715393a483c8c7acd05e8",
+      "manifest_sha256": "28f907d8dce0b875c6071c6eb3908a85d9b92fff7ed737aa168d85dc39776d1b",
+      "report_sha256": "6474554865f29ae71972fee60122d0875e0aecfe9a35334f43ffb605b3e681e1",
+      "binary_sha256": "a1854034b95e233076208750b71ed0b12287cb9a369f92edb243b363b74c592c",
+      "case_count": 5,
+      "paid_calls": 0
+    },
+    "windows": {
+      "status": "PASS",
+      "archive": "windows.zip",
+      "sha256": "fab438fd63aec17f6dc3b02de6cf7ad9845616bd3a5a98a2c5229fe84029ed35",
+      "manifest_sha256": "d5e5a5ba0eb3f1985548790c55693d89d4a70eb9e61a54dc79c2ce0f5b4fc60d",
+      "report_sha256": "e7d0edccab674a98d626ae1f838c075c167fa939a89a2b05039f3b6977312d97",
+      "binary_sha256": "c5e26e6bc7836f718dd8dca32269a24fe8c9245e92219cfe71936941d5a2d00a",
+      "case_count": 5,
+      "paid_calls": 0
+    }
+  }
+}
