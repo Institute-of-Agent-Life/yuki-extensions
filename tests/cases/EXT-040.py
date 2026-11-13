@@ -3,6 +3,9 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import re
+import runpy
+import shutil
 import subprocess
 import time
 from urllib.request import build_opener, ProxyHandler
@@ -12,7 +15,6 @@ from package import build
 
 def prepare(root, output):
     if os.environ.get("YUKI_STABLE_BASE_ZIP"):
-        import runpy
         return runpy.run_path(str(root / "tests/peers/setup_published.py"))["verify"](root, output)
 
     work=output/"work";work.mkdir()
@@ -33,8 +35,9 @@ def prepare(root, output):
         if (r.returncode==0)!=success:raise RuntimeError(f"unexpected {command} exit {r.returncode}: {r.stderr}")
     kit=work/"direct"
     setup("init",kit,oci,"--profile","direct","--entry","local","--core",pin["core_version"])
-    original=(kit/"compose.yaml").read_text()
-    assert original==(root/"deploy/compose/direct.yaml").read_text(encoding="utf-8")
+    original=(kit/"compose.yaml").read_text(encoding="utf-8")
+    template, count = re.subn(r"^name: yuki-[0-9a-f]{32}\n", "", original, flags=re.MULTILINE)
+    assert count == 1 and template == (root/"deploy/compose/direct.yaml").read_text(encoding="utf-8")
     assert pin["image_digest"] in original and "pull_policy: never" in original
     assert all(word not in original.lower() for word in ("napcat","monty","qq","docker.sock","execd","depends_on"))
     (kit/"compose.yaml").write_text("# operator comment\n"+original,encoding="utf-8",newline="\n")
@@ -122,5 +125,30 @@ def prepare(root, output):
 
 
 def run(root, output):
-    return "setup-install.json",{"status":"BLOCKED","card_status":"AWAITING_PRODUCER_AND_DEPLOYMENT_INPUTS",
-        "reason":"Complete external-entry, optional-service and deployed Compose acceptance remains pending. Use --preparation for either the signed CORE-039 candidate or the released native base."}
+    def peer(name):
+        return runpy.run_path(str(root / "tests" / "peers" / f"setup_{name}.py"))["verify"]
+
+    compose_out = output / "compose"
+    if os.environ.get("YUKI_CORE039_OCI") and shutil.which("docker"):
+        compose = peer("compose")(root, compose_out)
+    else:
+        compose = {"status": "not_run", "reason": "Requires Docker Compose and YUKI_CORE039_OCI"}
+
+    if os.environ.get("YUKI_STABLE_BASE_ZIP"):
+        native_out = output / "native"
+        native_out.mkdir()
+        package_dir = compose_out / "packages" if compose["status"] == "PASS" else None
+        _, native = peer("published")(root, native_out, package_dir)
+    else:
+        native = {"status": "not_run", "reason": "Requires YUKI_STABLE_BASE_ZIP for this platform"}
+
+    return "setup-install.json", {
+        "status": "BLOCKED",
+        "card_status": "AWAITING_OPTIONAL_SERVICE_RUNTIME",
+        "compose": compose,
+        "native": native,
+        "snowluma": {
+            "status": "not_run",
+            "reason": "The card lacks an imported compatible SnowLuma image, a readiness test that can run before QQ login, and an authorized runner for the image's ptrace and seccomp requirements.",
+        },
+    }

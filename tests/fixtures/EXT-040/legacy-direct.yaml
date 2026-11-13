@@ -1,0 +1,24 @@
+# Generated from a verified offline CORE-039 candidate.
+services:
+  core:
+    image: yuki-core@sha256:d716bd4e692f421afd2d623264579a2702104bc4bbb8a7ba3299a7ae026977df
+    platform: linux/arm64
+    pull_policy: never
+    user: '65532:65532'
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    environment:
+      TZ: ${YUKI_TIMEZONE:-UTC}
+    volumes:
+      - ./data:/data
+    entrypoint: ['/bin/sh', '-ec']
+    command:
+      - |
+        if [ ! -f /data/owner/yuki.toml ]; then yuki-core --data /data/owner init; fi
+        exec yuki-core --data /data/owner run
+    healthcheck:
+      test: ['CMD', 'yuki-core', '--data', '/data/owner', 'operator', 'database-info']
+      interval: 10s
+      timeout: 3s
+      retries: 5

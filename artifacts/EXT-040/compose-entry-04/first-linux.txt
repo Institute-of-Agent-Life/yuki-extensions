@@ -1,0 +1,25 @@
+Traceback (most recent call last):
+  File "/src/ci/check.py", line 38, in main
+    report_name, report = runner(root, args.out.resolve())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/src/tests/cases/EXT-040.py", line 18, in prepare
+    return runpy.run_path(str(root / "tests/peers/setup_published.py"))["verify"](root, output)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/src/tests/peers/setup_published.py", line 35, in verify
+    if package_dir is not None else build(root, "yuki-setup", pkg))
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/src/ci/package.py", line 29, in build
+    validate_unit(root, unit)
+  File "/src/ci/units.py", line 158, in validate_unit
+    if source.is_symlink():
+       ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/pathlib.py", line 914, in is_symlink
+    return S_ISLNK(self.lstat().st_mode)
+                   ^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/pathlib.py", line 847, in lstat
+    return self.stat(follow_symlinks=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/pathlib.py", line 840, in stat
+    return os.stat(self, follow_symlinks=follow_symlinks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted: '/src/tools/yuki-setup/._Cargo.lock'

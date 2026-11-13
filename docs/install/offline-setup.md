@@ -15,15 +15,37 @@ yuki-setup init --archive PATH_TO_SIGNED_OCI_TAR --core core-039-093716ad01c0 --
 yuki-setup doctor --archive PATH_TO_SIGNED_OCI_TAR --dir KIT
 ```
 
-The kit contains the digest-pinned Compose file, a timezone in .env and an editable
-SOUL example. Reapplying a timezone preserves unrelated assignments, NapCat remnants,
-secret references and comments. The installer reports missing optional packages before
-writing. It performs no image import, container start, login, network discovery or model
-probe. Prepare a writable data directory for UID/GID 65532 and import the verified OCI
-into a compatible local runtime before an operator-approved Compose launch. The core
-service initializes a fresh owner and uses a read-only root with no Docker socket.
-The candidate exposes local owner operations; external ingress and optional sidecars
-require separately verified delivery and endpoint contracts.
+The kit contains a digest-pinned Compose file, a timezone in `.env`, and a SOUL
+example. Rerun `init --timezone` to change the timezone while keeping operator
+comments, other environment assignments, and the SOUL example. Setup verifies
+packages and configuration offline.
+
+Import the verified OCI archive into a local Linux ARM64 Docker engine.
+From the kit directory, run `docker compose up -d --pull never --wait`.
+The local kit has one core service with a read-only root and an isolated network
+namespace. Docker stores the owner in a named volume so SQLite and the operator
+socket use a Linux filesystem. Compose checks `/readyz` inside the container.
+Each new kit saves a distinct project name in `compose.yaml`. Keep that name and
+volume when recreating the service. Run Compose without `--project-name` or a
+`COMPOSE_PROJECT_NAME` override. The doctor reports `project=compose-default`
+for older kits and preserves their project selection. Kits with
+`storage=legacy-bind` need a bind source that supports Unix sockets.
+
+To connect an operator-managed proxy on an existing private Docker network, use
+a separate kit:
+
+```text
+yuki-setup init --archive PATH_TO_SIGNED_OCI_TAR --dir KIT --entry external --entry-network PROXY_NETWORK
+yuki-setup doctor --archive PATH_TO_SIGNED_OCI_TAR --dir KIT --entry external --entry-network PROXY_NETWORK
+```
+
+Attach the proxy to `PROXY_NETWORK` and point it to
+`http://<project>-core:8080` using the project name reported by the offline
+doctor. Keep TLS and public routing on the proxy.
+The kit defines an upstream on the selected network and publishes no host
+ports. The core candidate uses `direct`. SnowLuma and the Code profile require
+compatible pinned deployment inputs. The [SnowLuma deployment guide](https://snowluma.github.io/en/docs/guide/deploy/docker)
+describes the runtime privileges and operator-managed QQ login.
 
 To install the native release for the current OS into a new directory:
 
@@ -31,10 +53,12 @@ To install the native release for the current OS into a new directory:
 yuki-setup native --archive PATH_TO_SIGNED_NATIVE_ZIP --dir NEW_NATIVE_DIRECTORY
 ```
 
-The native command verifies the architecture, every archive member, the SDKs and
-the fixture hash before making the installation visible. Operator-owned state lives
-outside that directory. Start the installed executable with a fresh data directory
-using `yuki-core --data OWNER init` and `yuki-core --data OWNER run`.
+The native command verifies the architecture, archive members, SDKs, and fixture
+hash before making the installation visible. For the signed public base on macOS,
+choose an APFS destination or a volume that supports exclusive rename. Use a short
+path for the operator-owned data directory on macOS and Linux to fit the Unix socket
+path limit. Start the candidate with `yuki-core --data OWNER init` and
+`yuki-core --data OWNER run`.
 
 On Windows the native installer can also compose the verified Rust web-fetch
 candidate from extensions commit `0bac149`:
@@ -55,4 +79,8 @@ composed owner, run its verified core executable with `--data NEW_NATIVE_DIRECTO
 
 Windows 如明選原 web-fetch，加 `--plugin web-fetch --plugin-file <原Actions ZIP>`（資產 13524465074）。安裝器核實原包、建立獨立 owner 並寫入該包授權及工具宣告。無 QQ／其他插件的新 owner 應可 ready；明選原包的新 owner 應只啟用 web-fetch。錯平台、錯版本、壞 ZIP、未知選配或已有目的地必須拒絕，且舊 owner 的配置與 SOUL 逐 bytes 保留。候選原生安裝與 Compose 原先的入口繼續使用各自的鎖。CORE-044 此次發布提供原生基底與 SDK，Compose 映像及外部入口另行驗證。
 
-Windows 原生驗證可同時指定 `YUKI_STABLE_BASE_ZIP` 與 `YUKI_FROZEN_WEB_FETCH_ZIP`，執行 `python ci/check.py EXT-040 --preparation --out <新回條目錄>`。測試會在隔離目錄另外啟動宿主，安裝命令本身不開服務。回條在 `artifacts/EXT-040/public-native-01`。第一輪修正新舊簽名驗證器重複傳入 timeout；第二輪觀察到公開 Host 在無插件時回覆成功且清單為空。第三輪核對該原回應與明選插件的 online 狀態。
+原生驗證用 `YUKI_STABLE_BASE_ZIP` 指定當前平台的原包，再執行
+`python ci/check.py EXT-040 --preparation --out <新回條目錄>`。Windows 可另指定
+`YUKI_FROZEN_WEB_FETCH_ZIP` 驗證選配。測試會在隔離目錄啟動宿主。
+要驗證 Compose，先在本機匯入候選映像，再設 `YUKI_CORE039_OCI` 並省略
+`--preparation`。完整卡回條會分列 Compose、原生安裝和 SnowLuma 實測狀態。
