@@ -1,0 +1,93 @@
+{
+  "card": "EXT-034",
+  "consumer": {
+    "methods": [
+      "maintenance.history.page",
+      "maintenance.evidence",
+      "maintenance.content",
+      "maintenance.extract.preview",
+      "maintenance.extract.apply",
+      "llm.complete",
+      "llm.result",
+      "forget.request"
+    ],
+    "sdk": {
+      "sha256": "a8739c74d300f1044c94749ced333d9694920aa7c91728b19f624ff9fbaf2e63",
+      "version": "1.0.0-alpha.8"
+    },
+    "version": "0.1.0-alpha.2"
+  },
+  "faults": [
+    "receipt lost after commit",
+    "mismatched applied ordinal receipt",
+    "source erased with unreadable unrelated job"
+  ],
+  "formal_card_status": "NATIVE_REBUILD_WORKER_VERIFIED",
+  "paid_calls": 0,
+  "platforms": {
+    "linux": {
+      "archive": "linux.zip",
+      "core_candidate_sha256": {
+        "CORE-035": "a202029cece7eabddd23c6d689d5bc0608e36c939ca231c40ba42605fec3960b",
+        "CORE-050": "419b9ae246789d807316b21effadf474186f410582c960989f2bc213a9d27070"
+      },
+      "manifest_sha256": "7df8f882f3eb9f49a829dd560cb0dc20e4fc178294b6184538ef4dcc8cae653b",
+      "sha256": "07899a32ebfbe3319b3a353b81a528e753586a67c3f2553462f30435de4fb780",
+      "status": "PASS",
+      "worker_sha256": "87c812f3dc92d474a7722d8fbf018e34bb87a1e7548dd1955978aacf7bbbf9fa"
+    },
+    "macos": {
+      "archive": "macos.zip",
+      "core_candidate_sha256": {
+        "CORE-035": "918940eacfd1b2c6fa564cb0bf1575abbbef2f42d69118f540bd625b014796c8",
+        "CORE-050": "e0bb338bdaafa3f86ee821808c7d197596fae27cb6b1c9d4c7e1cd00e871dfe7"
+      },
+      "manifest_sha256": "f4a85f9ba1529c173cc38b71f1454fff09a204bd0290c6c05a90d8250516cb70",
+      "sha256": "173b5c2c51d305d39558e70bbc8da3a1f861a29a3f778613aea452f985918548",
+      "status": "PASS",
+      "worker_sha256": "d2e2d67c950d8f705d758b7466ea94b90f24d3158a3a0f5c93a030a25ae6dede"
+    },
+    "windows": {
+      "archive": "windows.zip",
+      "core_candidate_sha256": {
+        "CORE-035": "c446405436be9b0adfd4765cf8f5aa33122c8341e3d7a7baef0e1617dfa52211",
+        "CORE-050": "eb806f321f0d9e689ba268559943655905c122d9a592c91da1644b611cdc38f8"
+      },
+      "manifest_sha256": "4578afb78231c2e8f510a5e30a622fafea6675c368bbdd502496db69b04373bc",
+      "sha256": "94d8384d0a54de172d8a5cee090098caf807e980b83cf701f721ecb2fc3b7346",
+      "status": "PASS",
+      "worker_sha256": "518d46a3389c560e2029930fc5f766b59f8ef9f6cde7a67c52e7d108424660d4"
+    }
+  },
+  "previous_round": {
+    "linux_second_attempt": "commit barrier timed out while concurrent CI was running; exact rerun passed",
+    "original_receipt_sha256": "0857922a0ea640a46ae5aaf4112744aca263b78e7bb4580c84b7875f2f43e681",
+    "runtime_review": {
+      "export_sha256": "96a120e5276f98439eb324d96e89c2848bdce89113faaff100da77886093d07f",
+      "followup": "validate the entire journal job name before joining the root path",
+      "model": "SWE-2 Max",
+      "status": "PASS+NOTES"
+    },
+    "windows_second_attempt": "test observed removal before all output paths were cleared"
+  },
+  "producer": {
+    "commit": "fca3f22ce60d35f20a866fff7a409bb419a9b1be",
+    "host_schema_sha256": "123de29cf8057cea1dfd566aec31ea30ba4ff68524920581843456e51cbb2e7d",
+    "host_sdk": "1.0.0-alpha.21",
+    "status": "unpublished-development-candidate"
+  },
+  "published": false,
+  "quality_regression": {
+    "archive_sha256": "947ef650957bce3426be6bbbab9083bd17ba75ddb7c0be0ad9126f1f865ba164",
+    "manifest_sha256": "f7e3a38143ab44767d79371792335f37ae81d25ca3cc861e98a21e7e248735da",
+    "platform": "macos",
+    "status": "PASS"
+  },
+  "remaining": [
+    "immutable producer publication and released Host installation qualification"
+  ],
+  "source_base": "1e988c2e67df1b8ef433a8bdc2889d0c7e4b5e40",
+  "source_files": 102,
+  "source_inventory_sha256": "3f91de7d2c5559703e775ac7151c81932841f4538b27d0e5beb45db28321fd03",
+  "status": "PASS"
+}

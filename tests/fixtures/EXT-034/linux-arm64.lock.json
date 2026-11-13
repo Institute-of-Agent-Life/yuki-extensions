@@ -1,0 +1,26 @@
+{
+  "binary_sha256": "2c0c900b9357ddb1a8809ae349961827ece9aa277341f0d1f56e98316c150e6e",
+  "cards": {
+    "CORE-035": {
+      "archive_sha256": "a202029cece7eabddd23c6d689d5bc0608e36c939ca231c40ba42605fec3960b",
+      "method_module": "protocol/maintenance/methods.json",
+      "method_module_sha256": "d82f8da58ac0e190aa206a401c2e1f7c892eb2285235d266bc5834fc13d23d39"
+    },
+    "CORE-050": {
+      "archive_sha256": "419b9ae246789d807316b21effadf474186f410582c960989f2bc213a9d27070",
+      "method_module": "protocol/aux-model/methods.json",
+      "method_module_sha256": "0c8a29152940f5ea290e42c99c5f38baf379e5281e8877caffd9f236db427776"
+    }
+  },
+  "extraction_fixture_sha256": "660a70d48606b1eb3429f3ce285b329daf634de1af45fcb559f2ec51b1777cb5",
+  "host_schema_sha256": "123de29cf8057cea1dfd566aec31ea30ba4ff68524920581843456e51cbb2e7d",
+  "legacy_rebuild_doc_sha256": "c77d5109cbfbe6b734f5a181ecd61bfffdfc28e60d6409b2dad97154f56738ed",
+  "legacy_source_commit": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+  "rust_sdk": {
+    "sha256": "a04f566b9c994b5c15aede019f8aa63f7c29bc602695aa6373daad3497093197",
+    "version": "1.0.0-alpha.21"
+  },
+  "source_commit": "fca3f22ce60d35f20a866fff7a409bb419a9b1be",
+  "source_tree_sha256": "b2b48138821142249ec49885c9fe7603351746aef04137ec473a1dcbefa92897",
+  "status": "unpublished-development-candidate"
+}
