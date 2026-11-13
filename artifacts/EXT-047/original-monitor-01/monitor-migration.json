@@ -1,0 +1,95 @@
+{
+  "task": "EXT-047",
+  "case": "R11",
+  "status": "PASS",
+  "formal_acceptance": false,
+  "published": false,
+  "scope": "original Monitor through API9 loader and notification repository; CORE-058 request replay through public SDK",
+  "original": {
+    "repository": "Institute-of-Agent-Life/Yuki-GitHub-Monitor",
+    "commit": "efba5e1ad77f52364c13702c342ab6b937c86c1e",
+    "tree": "9f3776ce7117b8fd986b052b106df8a9f95443b3",
+    "version": "1.2.3",
+    "plugin_api": "9.0",
+    "license": "AGPL-3.0-only",
+    "archive_sha256": "c6469d2c283b367e066e75484ab6186b6bf4233cc82ca31a5d4c98b1c924db00",
+    "manifest_sha256": "61c4e03b26903428b1c044fb37add5bddee2afdbdb2c8f8d7f9f9f6bb2bc16a6",
+    "v4_commit": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+    "v4_archive_sha256": "86735aacc29f5cb8e8b8f16755e377b99317587b22dffe6bb6fcc8bedf6a284f",
+    "v4_dependency_lock_sha256": "d5c3aa41335d2ad701b7309ff36e8e84ecd47319266ce996d2db1bc1f24b1897"
+  },
+  "rust_host": {
+    "source_commit": "cb02f74ea48b85c6b6932423b93e6332b97f2871",
+    "handoff_commit": "8007173d256777fc06d9df93a596813d609620d2",
+    "sdk": {
+      "python": "1.0.0a10",
+      "rust": "1.0.0-alpha.10"
+    },
+    "host_schema_sha256": "bb5f47ac27502e2a8a5be3a1bb00ed105919fed856ecbb79d305935fff14135a"
+  },
+  "source_snapshot_sha256": "87861d852b65dcb92a3d4190141ea6012c8727de3f52e2ba32983dc74eae6279",
+  "observation": {
+    "original_api9_different_targets_share_event_key": true,
+    "rust_host_conflicting_target_rejected_with_same_key": true,
+    "rust_host_original_target_deduplicated": true,
+    "rust_host_diagnostic_target_specific_key_accepts": true,
+    "old_declaration_rejected_at_config_parse": true,
+    "old_runtime_location": "isolated fixed v4 test owner",
+    "http_503_recorded_without_losing_success_or_cursor": true,
+    "physical_sends": 0,
+    "paid_calls": 0
+  },
+  "remaining": [
+    "original native QQ scoped consumer and grant mapping",
+    "other old hook consumers when identified",
+    "published optional Host method witness and independently migrated third-party tuple"
+  ],
+  "platforms": {
+    "macos": {
+      "status": "PASS",
+      "archive": "macos.zip",
+      "sha256": "888e7e8a55a901e11be04b0018342e9d9ca8aa8b8dca36e30f6364bce83ec76d",
+      "runtime": "3.12.13",
+      "sqlite": "3.53.1",
+      "host_archive_sha256": "eb4794b29db562b5fc12cde284474d61bf17ac9cba608d3f1ecd5c7dfed48f77",
+      "host_binary_sha256": "e89fe50220b669de21dd890ed71a7416a4fed55a79c2dce4032544cc679b5429",
+      "sdk_wheel_sha256": "2e1d4e6646c698d0f851d86145888b10b2c287f77e57c9887e1218c814a0e229",
+      "original_tests": 25,
+      "r11": 1,
+      "host_operations": 7,
+      "original_receipt_sha256": "a3a043d2c6c243b2c32bdffcee9153587642f682942ca7b34905ae4a3e9a0b5f",
+      "rust_receipt_sha256": "003551babc998b8d8c623d6ae269cdedbdecc0c4954c1eaa6ca65aae9d438d77"
+    },
+    "linux": {
+      "status": "PASS",
+      "archive": "linux.zip",
+      "sha256": "3fff68025f2dd4e42d62d9c878c1c6c37dc2bcdc403ed6e52dc4abea03d64ca4",
+      "runtime": "3.12.16",
+      "sqlite": "3.46.1",
+      "host_archive_sha256": "34739495bb1bd35555a3016c1d01b8c49d9c1e335461329fbaf2a1c4ff226828",
+      "host_binary_sha256": "046de34a34cc221976918cdfb18ab10622184f30e738f9209a7e4b4804fa3c6c",
+      "sdk_wheel_sha256": "2e1d4e6646c698d0f851d86145888b10b2c287f77e57c9887e1218c814a0e229",
+      "original_tests": 25,
+      "r11": 1,
+      "host_operations": 7,
+      "original_receipt_sha256": "782e0fab9f553ee826e6626a036e73501aa8e1e0c30a3fe22c9ec35e0042edc3",
+      "rust_receipt_sha256": "d6fcae15285281e37014c57107a2f8faf27f6275c898457b7fc0a11eae18349e"
+    },
+    "windows": {
+      "status": "PASS",
+      "archive": "windows.zip",
+      "sha256": "7b735ed2a8fbb203bf3cc4db36fe72dece06ad0d5b45d92fcfced539485412de",
+      "runtime": "3.12.0",
+      "sqlite": "3.46.0",
+      "host_archive_sha256": "dea4b90f5008e466f6385ceea1d0833574dcf10a5a079f8ac639b7a4be4c542c",
+      "host_binary_sha256": "44e051731197a8cc7d6aae1534c66b00625ca4e062c0439769b5f4cc19f2b8be",
+      "sdk_wheel_sha256": "2e1d4e6646c698d0f851d86145888b10b2c287f77e57c9887e1218c814a0e229",
+      "original_tests": 25,
+      "r11": 1,
+      "host_operations": 7,
+      "original_receipt_sha256": "f820ce460036a4951433e659b44cdacc6d414e06d9dd93ce7cab6a71c60b139e",
+      "rust_receipt_sha256": "707242f6c00296303754443ef06c4f3ef92c51331d9158277de5904185837bd2"
+    }
+  },
+  "failed_attempts_sha256": "7263387a5450bb6784344a4a16c204b4323a0a33dba414b391ceb5030a015fc8"
+}

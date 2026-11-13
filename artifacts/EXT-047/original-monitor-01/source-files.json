@@ -1,0 +1,12 @@
+{
+  "ci/github_monitor_intake.py": "441ab8390e3399489d25b7090d3c6ae6934c7a81d7dce0e96379e7479805d1b6",
+  "ci/handshake_cargo.py": "9f2ffc334472116d8f2c1ab8ff0194bc8a9eb2c6f82c13ceb82f4375d99fdfae",
+  "ci/host_preview.py": "6d4dbb4c0348ae501041bb28e7cefc09476290dbeea6bd9c43324560b19d9d23",
+  "ci/oci_package.py": "cb8b3cceec8cffb8077400d6f733f8b52be8f3fbf0c79e15b8491884b86bba7a",
+  "ci/package.py": "0876af85709d577217009d6dbf395a75c891c5f3aa54840f0c7e3376a416972f",
+  "ci/personal_preview.py": "33b05b3eef6137ac44083a2aa2e9f716512d3177612856a3068b049a52a32d06",
+  "ci/rust_cache.py": "0ee65548645a050859e4dd8e7f089a23be15acb3e07c2733b210b706a7e85ac3",
+  "ci/units.py": "c0ce87e8f47744fd2381b51a9a3e2f7899773ab0a6d66bbb1c15fc7abbd4e33e",
+  "compat/core-058/source.lock.json": "bed311b7208d37e93d7325bb9b02af63f72c02c6f3de7afe153b0d5fbc6cb471",
+  "tests/peers/github_monitor_v4.py": "123e5385608ef133a4c8633b4027bc5ced0ea1b81ddf06ea9c93e4f25eef941c"
+}

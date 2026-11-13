@@ -8,18 +8,31 @@ Git blob 和 SHA-256。這是 AGPL-3.0-only 的唯讀參考，未變更外部版
 
 | 原消費面 | 已確認內容 | 遷移狀態 |
 |---|---|---|
-| manifest / entrypoint | API `9.0`、`yuki_requires >=4.0.0`、Python `github_monitor:GitHubMonitorPlugin` | 與 Rust Host 的公開握手不能直接等同；未安裝、未自動執行 |
-| 背景與 HTTP | 一個背景任務、四個 HTTP 併發、`api.github.com` allowlist、`GITHUB_TOKEN` | 尚需真 GitHub HTTP 故障與重放驗收；不讀真 token |
+| manifest / entrypoint | API `9.0`、`yuki_requires >=4.0.0`、Python `github_monitor:GitHubMonitorPlugin` | 固定 v4 已載入並啟停。Rust Host 在配置階段拒絕 `plugin_api`／`entrypoint` |
+| 背景與 HTTP | 一個背景任務、四個 HTTP 併發、`api.github.com` allowlist、`GITHUB_TOKEN` | 原輪詢已驗本機 GitHub 線路。503 保留前次成功時間與已提交游標 |
 | 自有配置與 KV | config read/write、storage.private，100 MB | 插件自有；不映射到核心主庫 |
-| 通知與媒體 | notification.publish/agent、media.artifact.create | CORE-058 真目標 grant intake 被拒；兩訂閱 R11 尚未跑到 |
+| 通知與媒體 | notification.publish/agent、media.artifact.create | R11 已驗兩個原目標及撤權。Rust Host 在相同發布鍵指向第二目標時拒絕，原目標重讀原回條 |
 | 命令 | 原 `github`／alias `github` 命令，SUPERUSER、30 秒；text 最大 2000 | status/repos/add/remove/pause/resume/sync/test/events/rate-limit/outbox；新 Host 註冊與原 scope 待驗 |
-| 觀察 | `observe_queue` 讀原配置／queue／diagnostics，分開 queue_available、error_category、last_success_at、failures、pending/inflight | 靜態核對完成；未在舊 Host 或新 Host 執行原觀察入口 |
+| 觀察 | `observe_queue` 讀原配置／queue／diagnostics，分開 queue_available、error_category、last_success_at、failures、pending/inflight | 原觀察入口已核缺 queue、撤權中斷、授權恢復與 503 |
 | 獨立 AI session | 已核註冊／命令／輪詢入口未呼叫獨立 session；通知帶 ask_agent/agent_intent | 不將通知 Agent 意圖當隔離遊戲；遊戲另驗 |
 | MESSAGE_NORMALIZED | 固定 register 入口只註冊 config、github 命令與背景服務，未註冊 MESSAGE_NORMALIZED | 其他外部插件時序清單未完成；不以 accepted observer.event 取代 |
 
-原觀察入口在 queue 不存在時保留 `queue_available=false`，只在有有效 queue 時加入 pending 數量。
-診斷分類與成功時間是不同欄位；網路失敗不得寫成零活動。外部正文不是命令或收件授權。
-本次沒有聲稱原 API9 已被新 Host 實際拒載，也沒有聲稱已重驗舊 Host 可用性；兩者保留具名待驗狀態。
+Mac、Linux、HJW Windows 各跑完原 Monitor 的 25 項測試、一組 R11 和七筆 Rust Host 操作。
+R11 在隔離 v4 載入原插件，透過本機 GitHub HTTP、原通知資料庫及兩個私聊目的地重放。
+撤銷第二目標後，原插件接納游標為 101，提交游標停在 100。恢復授權後，第二目標以原請求取得獨立回條，
+提交游標才推進至 101。外部正文保留 `external_untrusted`，原 Main 工作為零。
+
+CORE-058 以 plugin 和 event key 辨識發布。移植時，消費者需將原來源鍵與新目標發布鍵對應保存，
+並在失去回應時讀同一目標的原回條。對拍的試驗鍵證實兩筆發布可分開授權和記帳。
+原 KV、真 QQ scope、其他插件對 `MESSAGE_NORMALIZED` 的依賴與正式安裝組合仍待驗。
+[原包 SHA-256、線路與逐端回條](../artifacts/EXT-047/original-monitor-01/monitor-migration.json)
+
+重現時，從鎖定的 v4 建立隔離測試副本，將
+`tests/peers/github_monitor_v4.py` 放在該副本的 `tests/integration/test_original_monitor_replay.py`。
+用原 v4 的鎖定依賴和 Vec1 執行 pytest，讓 `YUKI_MONITOR_REPLAY_OUT` 指向新 JSON。
+接著以 `YUKI_HOST_CANDIDATE` 指向對應平台的 CORE-058 原包，執行
+`python ci/github_monitor_intake.py --work NEW_WORK --original ORIGINAL_JSON --out NEW_JSON`。
+Windows 的 v4 重放使用已驗 SQLite 3.46.0，因 v4 的 FTS5 DDL 需要 `contentless_delete`。
 
 ## 隔離遊戲
 
@@ -33,6 +46,4 @@ CORE-051 原包的 foreground 安裝方式見 [Lighthouse](../examples/scoped-se
 `background=false`，auxiliary route 僅允許原 `session`、`call` 與列出的入口。
 玩家透過真 `command.invoke` handle 啟動、續玩和查閱。Rust 插件 0.1.0-alpha.1
 由 `ci/check.py EXT-047 --preparation` 對固定原包驗原鍵冷啟、跨 Person 拒讀及原來源清除。
-GitHub Monitor 的兩目標驗收及原 API9 裝載重放仍待交接。
-
-回退保持原 API9 版本與原 Host。第三方未實收新版本、未驗原 QQ scope 前，不改其版本或宣稱相容。
+回退保留原 API9 版本與原 Host。GitHub Monitor 仍由原 Host 執行，Rust 遷移組合待維護者驗收。
