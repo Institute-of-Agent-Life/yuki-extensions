@@ -1,3 +1,7 @@
+**EXT-006 原帳號提及三端通過。** 分支 `codex/ext-006-native-mentions`，Rust alpha.8／SDK alpha.21，核心 #118 受測來源 `338245cab96f`，已合併核心 main `2a25234e0a44`。Mac、Linux、HJW Windows 各通過 30 個文字／撤回、32 個上傳、22 個提及及三種原話題重放，另驗舊版回讀、55 項 owner 核對與擦除取消。獨立審查以同一簽署 Host 重現 alpha.7 的原提及規劃拒絕，alpha.8 完成 11,000 個提及與 323 頁原註記，失回應後冷啟未重送。
+
+原包、來源快照、雜湊與回條位於 `artifacts/EXT-006/original-mentions-02/original-mentions.json`，SHA-256 `0e7764a1340037607a182eb0bba9406dd757196d0f715687ea2a136def660d7f`。三端該輪自建 target 已清理。此為未發布開發候選，整卡待擴充公開合同驗收，正式完成數維持 12／68。
+
 **EXT-006 owner-disposition 三端通過。** 分支 `codex/ext-006-owner-disposition`。固定舊版 `329ca7c487414d2f54ddd98ff4727446ed2446cd` 的隔離 oracle 通過 55 項測試，保存合成 SQLite 與兩筆原回執。Mac、Linux、HJW Windows 各驗空私庫、原 app／platform 篩選、缺失目錄、未知資料、三種未關閉 SQLite sidecar、錯 schema 與來源變更。正常卡入口產出 owner 檔與明確的結構化提及待辦，完整卡維持 blocked。
 
 三端原包與 reader 證據在 `artifacts/EXT-006/original-owner-01/original-owner.json`，SHA-256 `68d6612c8e674e063516b79f18c004a4048d31d8586d29bfc876f83462a0dac6`。來源快照 `3024d01498e754ede58b1ee301a2c0f0ab2597254bf04077b25a1386e35c3f82`，623 個來源檔已綁定。Rust／SDK 輸入沿 #62 原三端結果，611 個既有輸入逐檔相同，詳 `runtime-reuse.json`。此輪沒有新增編譯 target，Linux 臨時容器已移除。前兩輪檢查失敗和修正原因保存在 `previous-attempts.json`。

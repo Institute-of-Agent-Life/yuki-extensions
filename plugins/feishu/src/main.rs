@@ -1,6 +1,7 @@
 mod attachment;
 mod host;
 mod ingress;
+mod mentions;
 mod rest;
 mod segments;
 mod text;

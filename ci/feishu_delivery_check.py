@@ -13,6 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tests/peers"))
 from feishu_delivery import exercise
 from feishu_upload import SCENARIOS as UPLOAD_SCENARIOS
+from feishu_mentions import SCENARIOS as MENTION_SCENARIOS
 
 SCENARIOS = [
     "private",
@@ -54,9 +55,13 @@ def run(root, output, existing=None, scenarios=SCENARIOS):
         "status": "PASS",
         "card": "EXT-006",
         "card_status": (
-            "ORIGINAL_UPLOAD_VERIFIED"
-            if all(s.startswith("upload-") for s in scenarios)
-            else "ORIGINAL_TEXT_DELIVERY_VERIFIED"
+            "ORIGINAL_MENTIONS_VERIFIED"
+            if all(s.startswith("mention-") for s in scenarios)
+            else (
+                "ORIGINAL_UPLOAD_VERIFIED"
+                if all(s.startswith("upload-") for s in scenarios)
+                else "ORIGINAL_TEXT_DELIVERY_VERIFIED"
+            )
         ),
         "published": False,
         "package": package,
@@ -68,8 +73,12 @@ def run(root, output, existing=None, scenarios=SCENARIOS):
                 if all(s.startswith("upload-") for s in scenarios)
                 else ["original uploads and dependent sends"]
             ),
-            "structured native mentions",
-            "owner disposition",
+            *(
+                []
+                if all(s.startswith("mention-") for s in scenarios)
+                else ["structured native mentions"]
+            ),
+            "owner disposition is verified separately",
             "expanded published contract",
         ],
         "files": {
@@ -90,13 +99,21 @@ if __name__ == "__main__":
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--package", type=Path)
     parser.add_argument("--uploads", action="store_true")
+    parser.add_argument("--mentions", action="store_true")
     parser.add_argument(
-        "--scenario", choices=SCENARIOS + UPLOAD_SCENARIOS, action="append"
+        "--scenario",
+        choices=SCENARIOS + UPLOAD_SCENARIOS + MENTION_SCENARIOS,
+        action="append",
     )
     args = parser.parse_args()
     run(
         ROOT,
         args.out.resolve(),
         args.package.resolve() if args.package else None,
-        args.scenario or (UPLOAD_SCENARIOS if args.uploads else SCENARIOS),
+        args.scenario
+        or (
+            MENTION_SCENARIOS
+            if args.mentions
+            else UPLOAD_SCENARIOS if args.uploads else SCENARIOS
+        ),
     )

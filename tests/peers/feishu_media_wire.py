@@ -137,7 +137,7 @@ def one(binary, Frame, serve, domain, kind):
         init=read();assert init['method']=='initialize'
         send({'jsonrpc':'2.0','id':init['id'],'result':{'schema_revision':1,'version':{'major':1,'minor':0},
             **{k:binding[k] for k in ['namespace','grants','manifest_revision']},'features':['initialize'],
-            'extension_points':[],'host_schema_revision':2,'method_revisions':[{'name':m,'revision':1} for m in ['initialize','gateway.inbound','gateway.media','gateway.plan_send','gateway.dispatch_part','gateway.read_text','gateway.prepare_part','media.open','forget.request']]}})
+            'extension_points':[],'host_schema_revision':2,'method_revisions':[{'name':m,'revision':1} for m in ['initialize','gateway.inbound','gateway.media','gateway.plan_send','gateway.dispatch_part','gateway.read_text','gateway.read_mentions','gateway.prepare_part','media.open','forget.request']]}})
         event=read();params=event['params']
         assert event['method']=='gateway.inbound' and params['media_identity']==identity
         assert params['segments'][0]=={'type':'media','kind':kind,'reference':native_key}
@@ -181,13 +181,15 @@ def one(binary, Frame, serve, domain, kind):
         assert len(issued)==3, 'forget did not clear the application token'
         count = len(requests)
         paged_text = text_pages(send, read, app)
+        from feishu_mentions import annotation_pages
+        paged_mentions = annotation_pages(send, read, app)
         assert len(requests) == count, 'text planning caused a native effect'
         from feishu_upload import upload_pages
         upload=upload_pages(send,read,ns,domain,app,tenant,upload_entered,upload_closed)
         assert [r['method'] for r in requests[count:]]==['token','upload']
         return {'upload':upload,'domain':domain,'kind':kind,'fixture_requests':requests,'wire':wire,
             'sha256':sha256(content).hexdigest(),'bytes':len(content),'ws_ack_during_rest':True,
-            'wrong_identity_requests':0,'http_403_retries':0,'token_issuances':len(issued),'forget_cancelled_http':True,'forgotten_page_rejected':True,'paged_text':paged_text}
+            'wrong_identity_requests':0,'http_403_retries':0,'token_issuances':len(issued),'forget_cancelled_http':True,'forgotten_page_rejected':True,'paged_text':paged_text,'paged_mentions':paged_mentions}
     finally:
         release.set();shutdown.set();proc.stdin.close()
         try:proc.wait(timeout=4)

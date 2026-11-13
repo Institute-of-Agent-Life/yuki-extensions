@@ -20,6 +20,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "ci"))
 from personal_preview import free_address
 from telegram_attachment_delivery import materialize, write
 from feishu_upload import Upload
+from feishu_mentions import Mentions
 
 
 def exercise(root, package, output, domain, scenario):
@@ -45,9 +46,19 @@ def exercise(root, package, output, domain, scenario):
         Frame, serve = fixture.fixture_imports(root, work)
         app, tenant, namespace = "cli_" + domain, "tenant-" + domain, "fs." + domain
         person = str(uuid.uuid4())
+        mentions = Mentions(scenario) if scenario.startswith("mention-") else None
         upload = Upload(scenario) if scenario.startswith("upload-") else None
-        private = scenario in {"private", "upload-private"}
-        thread = scenario not in {"private", "group", "upload-private"}
+        if scenario == "mention-caption":
+            upload = Upload("upload-file")
+            upload.caption = mentions.text
+        private = scenario in {"private", "upload-private", "mention-private"}
+        thread = scenario not in {
+            "private",
+            "group",
+            "upload-private",
+            "mention-private",
+            "mention-group",
+        }
         quoted = scenario in {"reply", "upload-reply", "upload-reply-only"}
         recalling = scenario.startswith("recall")
         long = scenario in {"parts", "lost", "rejected", "expiry", "reply"}
@@ -121,6 +132,8 @@ def exercise(root, package, output, domain, scenario):
             }
 
         packet = event()
+        if mentions:
+            mentions.event(packet)
 
         def socket(conn):
             try:
@@ -236,7 +249,7 @@ def exercise(root, package, output, domain, scenario):
                         args = (
                             upload.args(operator, models, person)
                             if upload
-                            else {"text": text}
+                            else {"text": mentions.text if mentions else text}
                         )
                         if quoted:
                             wire = [
@@ -393,10 +406,10 @@ def exercise(root, package, output, domain, scenario):
                     return self.reply({"code": 99991663}, 400)
                 if scenario == "expiry":
                     time.sleep(1.05)
-                if scenario == "lost" and index == 2:
+                if scenario in {"lost", "mention-lost"} and index == 2:
                     self.close_connection = True
                     return
-                if scenario == "rejected" and index == 2:
+                if scenario in {"rejected", "mention-rejected"} and index == 2:
                     return self.reply({"code": 230006}, 403)
                 if scenario == "malformed":
                     return self.reply({"code": 0, "data": {}})
@@ -456,7 +469,7 @@ def exercise(root, package, output, domain, scenario):
                 (inputs / "original.bin").write_bytes(upload.payload)
             with running():
                 operator("person", "create", person)
-                operator(
+                original_account = operator(
                     "account",
                     "open",
                     domain,
@@ -468,6 +481,8 @@ def exercise(root, package, output, domain, scenario):
                     "--start",
                     1,
                 )
+                if mentions:
+                    mentions.account(original_account)
                 stage = operator(
                     "account", "open", domain, namespace, app, 1, "--start", 1
                 )["assignment"]
@@ -536,6 +551,8 @@ def exercise(root, package, output, domain, scenario):
             )
             if upload:
                 expected = upload.expected
+            if mentions:
+                expected = mentions.expected
             assert result["state"] == expected, result
             counts = len(native), len(models), len(tokens)
             with running():
@@ -577,6 +594,7 @@ def exercise(root, package, output, domain, scenario):
             if (
                 expected == "confirmed"
                 and not upload
+                and not mentions
                 and not recalling
                 and scenario != "token-rejected"
             ):
@@ -592,7 +610,10 @@ def exercise(root, package, output, domain, scenario):
                     native,
                     tokens,
                     [json.loads(line) for line in trace.read_bytes().splitlines()],
+                    rendered_caption=mentions.rendered if mentions else None,
                 )
+            elif mentions:
+                assert len(native) >= 1
             elif long:
                 assert len(native) == (2 if scenario in {"lost", "rejected"} else 3), {
                     "scenario": scenario,
@@ -608,6 +629,15 @@ def exercise(root, package, output, domain, scenario):
                 assert len(native) == 1
             if scenario == "expiry":
                 assert len(tokens) == len(native)
+            mention_proof = (
+                mentions.verify(
+                    result,
+                    native,
+                    [json.loads(line) for line in trace.read_bytes().splitlines()],
+                )
+                if mentions
+                else None
+            )
             proof = {
                 "status": "PASS",
                 "domain": domain,
@@ -622,6 +652,7 @@ def exercise(root, package, output, domain, scenario):
                 "host_zip_sha256": target["sha256"],
                 "plugin_sha256": digest,
                 "paid_calls": 0,
+                **({"mentions": mention_proof} if mentions else {}),
             }
             write(output / "delivery.json", proof)
             return proof

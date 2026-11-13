@@ -192,7 +192,7 @@ class Upload:
             return "failed"
         return "confirmed"
 
-    def verify(self, result, native, tokens, frames):
+    def verify(self, result, native, tokens, frames, rendered_caption=None):
         assert result["state"] == self.expected
         if self.scenario == "upload-denied":
             assert native == tokens == []
@@ -238,14 +238,11 @@ class Upload:
         states = [receipt["state"] for receipt in receipts]
         assert states == ["confirmed"] * (expected_count - 1) + [self.expected], states
         if self.expected == "confirmed":
-            assert (
-                "".join(
-                    json.loads(row["body"]["content"])["text"]
-                    for row in native[1:]
-                    if row["body"]["msg_type"] == "text"
-                )
-                == self.caption
-            )
+            assert "".join(
+                json.loads(row["body"]["content"])["text"]
+                for row in native[1:]
+                if row["body"]["msg_type"] == "text"
+            ) == (self.caption if rendered_caption is None else rendered_caption)
             assert receipts[0]["result"]["resource"] == {
                 "kind": self.kind,
                 "key": "native-original-key",
