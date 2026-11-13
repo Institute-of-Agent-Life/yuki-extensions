@@ -38,7 +38,7 @@ fn capture(mut stream: impl Read, limit: u64, overflow: Arc<AtomicBool>) -> Vec<
     }
     bytes
 }
-fn execute(command: &mut Command, cancel: &AtomicBool) -> Result<(Vec<u8>, Vec<u8>)> {
+pub(crate) fn execute(command: &mut Command, cancel: &AtomicBool) -> Result<(Vec<u8>, Vec<u8>)> {
     let mut child = Decoder(
         command
             .stdin(Stdio::null())
@@ -132,7 +132,7 @@ fn pdf(dir: &Path, cancel: &AtomicBool) -> Result<Value> {
     Ok(value)
 }
 
-fn video(dir: &Path, cancel: &AtomicBool) -> Result<Vec<(f64, Vec<u8>)>> {
+pub(crate) fn ffmpeg() -> Result<PathBuf> {
     let exe = configured("YUKI_MEDIA_FFMPEG")?;
     let lock: Value = serde_json::from_str(include_str!("../packaging/codecs.lock"))
         .map_err(|_| "codec_pin_invalid")?;
@@ -147,7 +147,11 @@ fn video(dir: &Path, cancel: &AtomicBool) -> Result<Vec<(f64, Vec<u8>)>> {
     if digest(&fs::read(&exe).map_err(|_| "codec_unavailable")?) != expected {
         return Err("codec_digest_mismatch".into());
     }
-    let mut cmd = Command::new(exe);
+    Ok(exe)
+}
+
+fn video(dir: &Path, cancel: &AtomicBool) -> Result<Vec<(f64, Vec<u8>)>> {
+    let mut cmd = Command::new(ffmpeg()?);
     cmd.current_dir(dir).args([
         "-nostdin",
         "-hide_banner",
@@ -213,10 +217,15 @@ fn video(dir: &Path, cancel: &AtomicBool) -> Result<Vec<(f64, Vec<u8>)>> {
     Ok(frames)
 }
 
-fn read(rpc: &Rpc, handle: &str, cancel: &AtomicBool) -> Result<(String, Vec<u8>)> {
+pub(crate) fn read(
+    rpc: &Rpc,
+    handle: &str,
+    cancel: &AtomicBool,
+) -> Result<(String, String, Vec<u8>)> {
     let mut bytes = vec![];
     let mut version = None;
     let mut total = None;
+    let mut content_type: Option<String> = None;
     loop {
         let r = rpc.call(
             "media.open",
@@ -228,14 +237,17 @@ fn read(rpc: &Rpc, handle: &str, cancel: &AtomicBool) -> Result<(String, Vec<u8>
             .filter(|n| *n <= 16_777_216)
             .ok_or("invalid_source_length")?;
         let v = r["version"].as_str().ok_or("invalid_source_version")?;
+        let mime = r["mime"].as_str().ok_or("invalid_source_mime")?;
         if total.is_some_and(|n| n != length)
             || version.as_deref().is_some_and(|s| s != v)
+            || content_type.as_deref().is_some_and(|s| s != mime)
             || r["offset"].as_u64() != Some(bytes.len() as u64)
         {
             return Err("source_changed".into());
         }
         total = Some(length);
         version = Some(v.to_owned());
+        content_type = Some(mime.to_owned());
         let chunk = STANDARD
             .decode(r["bytes"].as_str().ok_or("invalid_source_chunk")?)
             .map_err(|_| "invalid_source_chunk")?;
@@ -250,14 +262,14 @@ fn read(rpc: &Rpc, handle: &str, cancel: &AtomicBool) -> Result<(String, Vec<u8>
             if bytes.len() != length as usize || digest(&bytes) != v {
                 return Err("source_digest_mismatch".into());
             }
-            return Ok((v.to_owned(), bytes));
+            return Ok((v.to_owned(), mime.to_owned(), bytes));
         }
         if bytes.len() >= length as usize {
             return Err("invalid_source_end".into());
         }
     }
 }
-fn check(rpc: &Rpc, handle: &str, version: &str, cancel: &AtomicBool) -> Result<()> {
+pub(crate) fn check(rpc: &Rpc, handle: &str, version: &str, cancel: &AtomicBool) -> Result<()> {
     let r = rpc.call(
         "media.open",
         json!({"handle":handle,"offset":0,"length":1}),
@@ -273,10 +285,13 @@ fn decode(rpc: &Rpc, p: &Value, cancel: &AtomicBool, dir: &Path) -> Result<Value
     let purpose = p["arguments"]["purpose"]
         .as_str()
         .ok_or("invalid_purpose")?;
+    if purpose == "transcript" {
+        return crate::asr::transcribe(rpc, p, cancel, dir);
+    }
     if !matches!(purpose, "inspect" | "frames") {
         return Err("unsupported_purpose".into());
     }
-    let (version, bytes) = read(rpc, handle, cancel)?;
+    let (version, _, bytes) = read(rpc, handle, cancel)?;
     let source = p["arguments"]["media"].clone();
     if bytes.starts_with(b"%PDF-") && purpose == "inspect" {
         fs::write(dir.join("input.pdf"), bytes).map_err(|_| "temporary_write_failed")?;

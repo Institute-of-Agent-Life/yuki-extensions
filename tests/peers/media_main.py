@@ -38,15 +38,21 @@ def exercise(root, output, *, native_package=None, codec_dir=None, contract='cor
         codec_digest = digest(ffmpeg)
         assert codec_digest == codec['windows-x86_64']['binary_sha256']
     def save(path, value): path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    contract_path = root / build['source']['sdk_contract']
+    sdk = json.loads(contract_path.read_bytes())
+    crate = contract_path.with_name(f"yuki-plugin-sdk-{sdk['sdk']['rust']}.crate")
+    assert digest(crate) == sdk['rust_crate_sha256']
     save(output / 'consumer.lock.json', {**source, 'consumer_binary_sha256': build['artifacts'][name],
-        'consumer_sdk': json.loads((root / build['source']['sdk_contract']).read_bytes())['sdk'],
-        'consumer_crate_sha256': digest(root / 'compat/core-038/yuki-plugin-sdk-1.0.0-alpha.4.crate'),
+        'consumer_sdk': sdk['sdk'],
+        'consumer_crate_sha256': sdk['rust_crate_sha256'],
         'ffmpeg_sha256': codec_digest, 'python_sha256': digest(python)})
     def frozen_package(_root, unit, destination):
         assert unit == 'media'
         shutil.copytree(native_package, destination, ignore=shutil.ignore_patterns('._*'))
         return build
-    return replay(root, output, codec_dir, ffmpeg, python, frozen_package, save, digest, contract, rebuilt)
+    consumer_sdk = {'version': sdk['sdk']['rust'], 'sha256': sdk['rust_crate_sha256']}
+    return replay(root, output, codec_dir, ffmpeg, python, frozen_package, save, digest,
+                  contract, rebuilt, consumer_sdk)
 
 
 def original_inputs(root):
@@ -69,7 +75,8 @@ def original_inputs(root):
     }
 
 
-def replay(root, output, codec_dir, ffmpeg, python, frozen_package, save, digest, contract, rebuilt):
+def replay(root, output, codec_dir, ffmpeg, python, frozen_package, save, digest,
+           contract, rebuilt, consumer_sdk):
     results = []
     default = 'pdf,video,not-selected,video-no-vision,forget,corrupt' if rebuilt else 'pdf,video'
     kinds = os.environ.get('YUKI_MEDIA_MAIN_CASES', default).split(',')
@@ -230,7 +237,7 @@ def replay(root, output, codec_dir, ffmpeg, python, frozen_package, save, digest
                 assert not image_sha
             consumer = owner.evidence()
             consumer['host_sdk'] = consumer.pop('sdk')
-            consumer['consumer_sdk'] = {'version': '1.0.0-alpha.4', 'sha256': digest(root / 'compat/core-038/yuki-plugin-sdk-1.0.0-alpha.4.crate')}
+            consumer['consumer_sdk'] = consumer_sdk
             results.append({'case': kind, 'status': 'PASS', **consumer, 'model_http_requests': len(models),
                 'physical_processor_calls': len(process), 'source': call['params']['arguments']['media'] if call else None,
                     'operation': call['params']['operation'] if call else None, 'receipt': data, 'model_frame_sha256': image_sha,

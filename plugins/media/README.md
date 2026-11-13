@@ -3,7 +3,8 @@
 The independently built Rust plugin consumes CORE-038 media.process, reads only
 the bound source through media.open, and publishes immutable sampled frames
 through media.publish. It retains the original event/slot or artifact/version,
-PDF page markers and video timestamps. It creates no model request.
+PDF page markers and video timestamps. PDF and video inspection do not call a
+model.
 
 The PDF backend is the unchanged baseline document_reader.py. Install the pinned
 pypdf and defusedxml wheels into a private Python 3.12 environment and set
@@ -18,7 +19,15 @@ current platform. The imageio-ffmpeg 0.6.0 wheels contain FFmpeg 7.1 for Windows
 x86_64 and macOS arm64, and FFmpeg 7.0.2 for Linux arm64. FFmpeg receives
 only a local selected file, whitelisted containers and local-file protocol.
 It samples up to eight frames at their actual timestamps, within 600 seconds,
-and scales to at most 1024 pixels across. It does not decode audio.
+and scales to at most 1024 pixels across.
+
+An installation can opt into audio transcription by setting
+`YUKI_MEDIA_ASR_ROUTE` to its approved Chat auxiliary route and granting
+`llm.complete` and `llm.result` alongside media access. The Host scopes that
+route to the original call and selected audio. AMR and MP3 are converted
+with the pinned FFmpeg and passed back as an immutable WAV reference. QQ SILK
+requires the original receiving adapter's `get_record` conversion. An invalid
+audio stream, unavailable result or withdrawn source yields no transcript.
 
 YUKI_MEDIA_TEMP optionally selects an existing private temporary directory.
 Calls use disposable subdirectories. On forget.request the plugin cancels all
@@ -26,8 +35,8 @@ volatile work, stops decoder children, clears temporary files and acknowledges
 only after cleanup. Host authorization is rechecked before results leave the
 plugin. A scope error prevents late publication.
 
-This uses an unpublished alpha.4 Host contract. Actual original-model pixel
-presentation and public-release acceptance remain separate open checks.
-The Host automatically registers volatile media ownership. The Windows
-candidate-03 witness waits for the asynchronous original forget callback and
-its acknowledgement, without an operator privacy acquire command.
+The package uses the unpublished Rust SDK 1.0.0-alpha.21 and the Host pinned in
+`compat/core-038-selected-erasure/source.lock.json`. The Host automatically
+registers volatile media ownership. Replay tests exercise the original forget
+callback and acknowledgement. The foreground audio replay and published
+installation have separate acceptance inputs.

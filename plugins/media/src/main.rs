@@ -1,3 +1,4 @@
+mod asr;
 mod inspect;
 mod rpc;
 use serde_json::json;
