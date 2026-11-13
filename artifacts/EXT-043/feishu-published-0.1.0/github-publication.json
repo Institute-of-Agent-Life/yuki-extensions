@@ -1,0 +1,50 @@
+{
+  "status": "published-and-downloaded",
+  "repository": "Institute-of-Agent-Life/yuki-extensions",
+  "tag": "plugin/feishu/v0.1.0",
+  "release_id": 444199226,
+  "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/releases/tag/plugin/feishu/v0.1.0",
+  "source_commit": "66a593a47cb87b7fbaf00cf1cc6f0fc022f21572",
+  "main_merge": "0478196050b5aa0282434b82cab94532ec215e19",
+  "host_source": "09bdd7382de41343767960c0aa0e279db2b618dc",
+  "sdk": {
+    "python": "1.1.0",
+    "rust": "1.1.0"
+  },
+  "schema_sha256": "34281af056b704eb211e3a07c834aa4aeb0666cde66d6218a4525b9f9dbaad90",
+  "published_at": "2026-11-13T12:25:17Z",
+  "qualification_sha256": "5c840ab6ba37d8e115cd3ee4f90d3f0483cfe70c70a4227552ab093256af0854",
+  "paid_calls": 0,
+  "assets": [
+    {
+      "id": 743566283,
+      "name": "release-preparation.json",
+      "sha256": "9cf057865eb89269d29f004d1f9eb35bb8a46c164fe9a6fc9bc71fab5f4c4b6e",
+      "bytes": 1838
+    },
+    {
+      "id": 743566280,
+      "name": "SHA256SUMS",
+      "sha256": "7bd0f74eb83b76d53b5f9583edf6150cf20b9c09af5b8262f5d8775c5e7b840e",
+      "bytes": 375
+    },
+    {
+      "id": 743566287,
+      "name": "yuki-feishu-0.1.0-linux.zip",
+      "sha256": "2f39ee1cd95e5c75f71023932953be5aace039bd0e360cab7c445d9323c81cb4",
+      "bytes": 921077
+    },
+    {
+      "id": 743566281,
+      "name": "yuki-feishu-0.1.0-macos.zip",
+      "sha256": "c275a019d646c8e81d3e1c1ea12257548d1d251d53448d3046cba4aac63c50f1",
+      "bytes": 858038
+    },
+    {
+      "id": 743566282,
+      "name": "yuki-feishu-0.1.0-windows.zip",
+      "sha256": "97434ca71a779016ebbe3096fbc5979fccfa66e02e053b81cfd58affb7aa57af",
+      "bytes": 1479837
+    }
+  ]
+}

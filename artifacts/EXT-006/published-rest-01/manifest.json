@@ -1,0 +1,12 @@
+{
+  "task": "EXT-006",
+  "status": "PASS",
+  "source_snapshot_sha256": "fdd384d6e05918a48f868fe5e4083cd93c8e73ebe3dca3e4d83cdd7944d29d95",
+  "files": {
+    "lark-rest-receipts.json": "bfea4c760a5f907fddab0cbf5c1892e731026c0d2dc5567f4d2738e41cf98084",
+    "linux.zip": "84c248d86ba38f2064c9d7dfd0cf7520338451e8543e18997e75533234aae064",
+    "macos.zip": "5032d680a40379ec82b74c254ebd0ff8cf4ada6e97d5a34e40f9cb56087ddbdf",
+    "source-files.json": "fdd384d6e05918a48f868fe5e4083cd93c8e73ebe3dca3e4d83cdd7944d29d95",
+    "windows.zip": "8586b74604888b55810e85aadd92aa07dd2afa4abc1b78d1c77d76d2b54d07ef"
+  }
+}

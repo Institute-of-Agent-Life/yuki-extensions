@@ -34,7 +34,7 @@ SCENARIOS = [
 ]
 
 
-def run(root, output, existing=None, scenarios=SCENARIOS):
+def run(root, output, existing=None, scenarios=SCENARIOS, *, released_host=None):
     output.mkdir(parents=True, exist_ok=False)
     packages = output / "packages"
     if existing:
@@ -47,7 +47,8 @@ def run(root, output, existing=None, scenarios=SCENARIOS):
         for scenario in scenarios:
             cases.append(
                 exercise(
-                    root, packages, output / (domain + "-" + scenario), domain, scenario
+                    root, packages, output / (domain + "-" + scenario), domain, scenario,
+                    released_host=released_host,
                 )
             )
             print(domain, scenario, cases[-1]["state"], flush=True)
@@ -79,7 +80,7 @@ def run(root, output, existing=None, scenarios=SCENARIOS):
                 else ["structured native mentions"]
             ),
             "owner disposition is verified separately",
-            "expanded published contract",
+            *([] if released_host is not None else ["expanded published contract"]),
         ],
         "files": {
             p.relative_to(output).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
