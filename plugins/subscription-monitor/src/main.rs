@@ -1,5 +1,7 @@
 mod feed;
+mod feed_entry;
 mod journal;
+mod json_feed;
 mod rpc;
 mod xml_feed;
 use serde_json::{Value, json};
@@ -94,6 +96,14 @@ fn observe(config: &Value, stop: &AtomicBool) -> Result<feed::Document, String> 
     let url = feed::text(config, "url")?;
     match config["kind"].as_str() {
         Some("xml_feed") => fetch(config, url).map(feed::Document::Xml),
+        Some("json_feed") => {
+            let raw = fetch(config, url)?;
+            let text = std::str::from_utf8(&raw).map_err(|_| "invalid source JSON")?;
+            let text = text.trim_start_matches(['\u{feff}', ' ', '\t', '\r', '\n']);
+            serde_json::from_str(text)
+                .map(feed::Document::Json)
+                .map_err(|_| "invalid source JSON".into())
+        }
         Some("miniflux") => miniflux(config, url, stop).map(feed::Document::Json),
         _ => fetch_json(config, url).map(feed::Document::Json),
     }

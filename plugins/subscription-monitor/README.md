@@ -25,6 +25,11 @@ each original ID and resolve relative links against the source and `xml:base`.
 The XML reader rejects document type declarations. It uses the observation
 time for delivery when the source date is absent or invalid and leaves the
 published date empty. Legacy KV migration remains open.
+Versioned JSON Feed 1 and 1.1 use the same entry projection and author/tag
+filters. They retain the first occurrence of a source ID and resolve relative
+URLs. A missing ID falls back to the resolved link or the original v4 content
+fingerprint. A declared next page leaves the cursor and existing outbox intact.
+[JSON Feed 1.1](https://www.jsonfeed.org/version/1.1/)
 HTTPS uses system curl with certificate validation, a 10-second bound, a 1 MiB
 limit and no redirects. An explicit loopback HTTP service supports local Miniflux
 and offline recordings. `token_env` optionally names a Host-approved environment

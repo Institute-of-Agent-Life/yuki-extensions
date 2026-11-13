@@ -28,6 +28,10 @@ def prepare(root,out):
   '/feeds/releases.rss':f'<rss version="2.0"><channel>{rss_old}</channel></rss>',
   '/feeds/releases.atom':f'<feed xmlns="http://www.w3.org/2005/Atom">{atom_old}</feed>',
  }
+ json_path='/feeds/releases.json'
+ json_old={'id':'json-original','content_text':'JSON Feed baseline'}
+ json_feed={'version':'https://jsonfeed.org/version/1.1','authors':[{'name':'Newsroom'}],
+            'items':[json_old]}
  class HTTP(BaseHTTPRequestHandler):
   def log_message(self,*a):pass
   def reply(self,v,status=200):
@@ -44,6 +48,7 @@ def prepare(root,out):
    elif self.path=='/dynamic':self.reply({'code':0,'data':{'items':dynamics,'has_more':dynamic_page[0]}})
    elif self.path=='/live':self.reply({'code':0,'data':live})
    elif parsed.path in xml_feeds:self.reply(xml_feeds[parsed.path])
+   elif parsed.path==json_path:self.reply(json_feed)
    elif parsed.path=='/v1/entries' and query.get('status')==['unread']:
     page=sorted((row for row in entries if not before or row['id']<before),
                 key=lambda row:row['id'],reverse=True)
@@ -234,15 +239,20 @@ def prepare(root,out):
     dict(sub,id='atom',kind='xml_feed',url=f'http://127.0.0.1:{server.server_port}/feeds/releases.atom',
          include_any=['atom-category']),
    ]
-   set_config(xml_configs)
-   wait(lambda:all(state().get('subscriptions',{}).get(sid,{}).get('initialized') for sid in ('rss','atom')))
-   xml_baseline={sid:state()['subscriptions'][sid] for sid in ('rss','atom')}
-   assert all(count(sid)==0 and len(xml_baseline[sid]['seen'])==1 for sid in xml_baseline)
+   json_config=dict(sub,id='json',kind='json_feed',url=f'http://127.0.0.1:{server.server_port}{json_path}',
+                    include_any=['json-category'])
+   feed_ids=('rss','atom','json')
+   set_config([*xml_configs,json_config])
+   wait(lambda:all(state().get('subscriptions',{}).get(sid,{}).get('initialized') for sid in feed_ids))
+   feed_baseline={sid:state()['subscriptions'][sid] for sid in feed_ids}
+   assert all(count(sid)==0 and len(feed_baseline[sid]['seen'])==1 for sid in feed_ids)
    xml_feeds['/feeds/releases.rss']='<rss><channel><item><guid>rss-new</guid></item>'
    xml_feeds['/feeds/releases.atom']='<!DOCTYPE feed><feed xmlns="http://www.w3.org/2005/Atom"/>'
+   json_feed['next_url']=f'http://127.0.0.1:{server.server_port}/feeds/next.json'
    wait(lambda:all('malformed or unsupported XML feed' in (state().get('errors',{}).get(sid) or '')
-                   for sid in xml_baseline))
-   assert {sid:state()['subscriptions'][sid] for sid in xml_baseline}==xml_baseline
+                   for sid in ('rss','atom'))
+        and 'paged feed' in (state().get('errors',{}).get('json') or ''))
+   assert {sid:state()['subscriptions'][sid] for sid in feed_ids}==feed_baseline
    xml_feeds['/feeds/releases.rss']=(
     '<rss version="2.0"><channel><item><guid isPermaLink="false">rss-new</guid>'
     '<title>New RSS item</title><author>Newsroom</author><link>../posts/rss-new</link>'
@@ -258,20 +268,34 @@ def prepare(root,out):
     '<content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml"><p>First</p><p>Atom</p></div></content>'
     f'</entry>{atom_old}</feed>'
    )
-   wait(lambda:count('rss')==count('atom')==1)
-   xml_receipts=[state()['subscriptions'][sid]['receipts'][0] for sid in ('rss','atom')]
-   rss,atom=(row['request']['payload']['entry'] for row in xml_receipts)
+   json_feed={
+    'version':'https://jsonfeed.org/version/1','authors':[{'name':'Newsroom'}],
+    'items':[
+     {'url':'../posts/json-new','content_html':'<p>First <b>JSON</b></p><script>ignored</script>',
+      'date_modified':'2026-01-04T08:00:00+08:00','tags':['json-category','json-category']},
+     {'url':'../posts/json-new','content_text':'Duplicate changed body','tags':['json-category']},
+     json_old,
+    ],
+   }
+   wait(lambda:all(count(sid)==1 for sid in feed_ids))
+   format_receipts=[state()['subscriptions'][sid]['receipts'][0] for sid in feed_ids]
+   rss,atom,json_entry=(row['request']['payload']['entry'] for row in format_receipts)
    assert rss['id']=='rss-new' and rss['title']=='New RSS item' and rss['body']=='First release'
    assert rss['published_at']=='2026-01-02T00:00:00Z' and rss['url'].endswith('/posts/rss-new')
    assert atom['id']=='atom-new' and atom['body']=='First Atom' and atom['tags']==['atom-category']
    assert atom['published_at']=='2026-01-03T00:00:00Z' and atom['url'].endswith('/posts/atom-new')
+   assert json_entry['id']==json_entry['url'] and json_entry['url'].endswith('/posts/json-new')
+   assert json_entry['body']=='First JSON' and json_entry['published_at']=='2026-01-04T00:00:00Z'
+   assert json_entry['author']=='Newsroom' and json_entry['tags']==['json-category']
    assert all(row['publication']['agent_turn_enqueued'] and not row['publication']['delivery_enqueued']
-              for row in xml_receipts)
+              for row in format_receipts)
   with running():
    original_polls=len(polls)
-   wait(lambda:all(any(row['path']==path for row in polls[original_polls:]) for path in xml_feeds))
-   assert all(count(sid)==1 for sid in ('rss','atom'))
-   assert all(len(state()['subscriptions'][sid]['seen'])==2 for sid in ('rss','atom'))
+   wait(lambda:all(any(row['path']==path for row in polls[original_polls:])
+                   for path in (*xml_feeds,json_path)))
+   assert all(count(sid)==1 for sid in feed_ids)
+   assert all(len(state()['subscriptions'][sid]['seen'])==2 for sid in feed_ids)
+   assert not any(row['path']=='/feeds/next.json' for row in polls)
    revoke=admin('revoke_target')
    entries.append({'id':3,'title':'revoked update','published_at':'2026-01-03T00:00:00Z'})
    set_config(base_subscriptions)
@@ -281,15 +305,15 @@ def prepare(root,out):
    final=state()
    host=op('host','status')
    forgotten=op('privacy','forget','subscription-private-erasure',actor)
-   assigned=[row['publication']['source_event_id'] for row in [*receipts,*xml_receipts]]+[missing_ack['source_event_id'],fresh['source_event_id']]
+   assigned=[row['publication']['source_event_id'] for row in [*receipts,*format_receipts]]+[missing_ack['source_event_id'],fresh['source_event_id']]
    assert set(assigned).issubset(forgotten['sources'])
    wait(lambda:any(f['direction']=='from_host' and f['frame'].get('method')=='forget.request'
                    and f['frame']['params']['watermark']==forgotten['watermark'] for f in wires()))
    wait(lambda:op('privacy','pending','subscription-monitor')['obligations']==[])
    scrubbed=state()
-   assert all(not scrubbed['subscriptions'][sid]['receipts'] for sid in (*subscriptions,'rss','atom'))
+   assert all(not scrubbed['subscriptions'][sid]['receipts'] for sid in (*subscriptions,*feed_ids))
    assert all(scrubbed['subscriptions'][sid]['seen']==final['subscriptions'][sid]['seen']
-              for sid in (*subscriptions,'rss','atom'))
+              for sid in (*subscriptions,*feed_ids))
    assert b'new public release' not in (home/'state.jsonl').read_bytes()
    assert b'second public dynamic' not in (home/'state.jsonl').read_bytes()
    assert not scrubbed['subscriptions']['direct']['receipts']
@@ -298,7 +322,9 @@ def prepare(root,out):
              for mode in failures)
   report={'status':'PASS','card_status':'BLOCKED','published':False,'core':owner.evidence(),'grant':grant,'revocation':revoke,'lost_ack':lost,'receipts':receipts,'observations':polls,'physical_public_sends':0,'source_errors_preserved_cursor':True,'same_key_requests_identical':True,'host':host,'delivery':{'unknown_wire':unknown,'confirmed_wire':confirmed,'outcomes':outcomes},'sources':{'fixtures':'offline HTTP responses','miniflux_pagination':{'failure_paths':failures,'original_state_preserved':True,'recovered_publications':2},'bilibili_incomplete_page_refused':True,'live_transition_receipt':receipts[3]['publication']['notification_id']},'erasure':{'original':forgotten,'removed_receipts':assigned,'preserved_seen_keys':True,'pending':[]},'remaining':['original R06 source recordings','RSS/Atom source support','formal published producer and consumer tuple']}
   report['sources']['xml_feeds']={'baseline_sizes':{'rss':1,'atom':1},'invalid_responses_preserved_state':True,
-    'cold_restart_publication_counts':{'rss':1,'atom':1},'receipts':xml_receipts}
+    'cold_restart_publication_counts':{'rss':1,'atom':1},'receipts':format_receipts[:2]}
+  report['sources']['json_feed']={'versions':['1','1.1'],'paged_response_preserved_state':True,
+    'additional_page_requested':False,'cold_restart_publication_count':1,'receipt':format_receipts[2]}
   assert replays[0]['target']==target
   report['target_change']={'original_key':fenced['publishing'],
     'same_pending_request':fenced['pending']==unresolved['pending'],

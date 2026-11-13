@@ -36,3 +36,10 @@ with baseline/current cursor and original pending rows. Miniflux is read through
 its entries endpoint; this plugin does not initiate another RSS fetch for it.
 The first candidate's JSON-source transport and three parsers are verified
 separately from legacy RSS/Atom import and formal publication.
+
+JSON Feed 1 and 1.1 use the fixed v4 entry projection. Resolve relative article
+URLs, keep plain text literal, and use the first item for a repeated identity.
+Derive an identity from the resolved link or the full normalized content when
+the source omits an ID. An explicit nonempty ID remains the stored source key.
+Malformed or paged documents leave the existing cursor and outbox intact.
+Previously accepted unversioned JSON snapshots keep their original parsing.
