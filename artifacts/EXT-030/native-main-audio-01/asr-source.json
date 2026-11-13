@@ -1,0 +1,59 @@
+{
+  "status": "PASS",
+  "source_base": "c1e83ccd15a0459d203f7049948fa9a55fe8aa04",
+  "source_inventory_sha256": "46723c1380253484c8e38e90fa984a7fcd05bce6cd86dedd4b573e3c3c044e48",
+  "published": false,
+  "formal_card_status": "UNPUBLISHED_ORIGINAL_MAIN_REPLAY",
+  "platforms": {
+    "macos": {
+      "archive": "macos.zip",
+      "status": "PASS",
+      "sha256": "469eee972ac016fae3e18cd73f0b210bb8ef27e3a954c0a2586242d915cae391",
+      "manifest_sha256": "49ee93b068ac0fc4afbd315e5cab642d4416de7440743c6fb317ec1dd1ac31d1",
+      "native_cases": 8,
+      "host": {
+        "archive": "yuki-media-preview-eb9d6d2e0d69-darwin-arm64.zip",
+        "sha256": "3f9ee1ee59cf5f6472f3374649b9c1f6ce4b4d2f282e9100e4e5486418fd5411",
+        "binary_sha256": "f1a686bceff4689cbb7b32224b70a29656dfdaf9e334f373df54332440ea9785",
+        "validation_manifest_sha256": "229d166b0da162ca7e2a90e94d4ed07078497c71fbb001711982265328294032"
+      },
+      "plugin_sha256": "fd8384d34ccb0ebc8e991ad968be2b4a743d3b42abe9b1188b5f66b50e9f05f6"
+    },
+    "linux": {
+      "archive": "linux.zip",
+      "status": "PASS",
+      "sha256": "08e0dd07ee37d7fde463481bdf04c7d0009c7b7900572e1af70d261ac60870c5",
+      "manifest_sha256": "def9ee751fe42232d58215ac4e89fec25593fd3934f68a7cf1c5b3ae9974391c",
+      "native_cases": 8,
+      "host": {
+        "archive": "yuki-media-preview-eb9d6d2e0d69-linux-arm64.zip",
+        "sha256": "add9d67c0dff47ebd9a6d3229dc0ece8d8b1e60ddfdcba68b9c7439e34a158b5",
+        "binary_sha256": "c284b47d741e38bc66252895e27a275f2ab5c4b7dd402e0bcfc765ed1a02f529",
+        "validation_manifest_sha256": "f60b598ef86d26c31ae7dbf7aea70cfd0b48e0238972530096a0217efb574ea2"
+      },
+      "plugin_sha256": "07a2d6e86b764f421b7bd944f9603866ea28f3d26c91731cca5266c4cfc64fde"
+    },
+    "windows": {
+      "archive": "windows.zip",
+      "status": "PASS",
+      "sha256": "84130551e32d5b98037e9fd96758448c8a9b14e0cd3580b94c73139c4d0f658a",
+      "manifest_sha256": "aa9085154b8339d1db80ab12456fcb137c8eee4e58b297366f6eba1a3394c36b",
+      "native_cases": 8,
+      "host": {
+        "archive": "yuki-media-preview-eb9d6d2e0d69-windows-x86_64.zip",
+        "sha256": "30d905b514397c6676cc08ee711b084dd2f836776e703f9e3d481e3d1a9858a3",
+        "binary_sha256": "dab349c61bb6c3e716ba6cb27ce9a93130a8bd70b912cc423760604cd73e50a8",
+        "validation_manifest_sha256": "66e212af4e5e107f53880d9249eea0c32f929416cd7cf11de591e90cd8478084"
+      },
+      "plugin_sha256": "d376b12a4e3690bf840a3866e8e3ee06dcb0e3fc034644626287358ae00d555e"
+    }
+  },
+  "physical_paid_calls": 0,
+  "core_tested_source": "eb9d6d2e0d6915d6ac2fbb6227088a0ec0316326",
+  "core_main": "9b17e82a698fdb20027c9aeb16a7b74a015e69a8",
+  "runner_sha256": "b4ba840c10cc2aa142af22952dcbdec972b7d37db0fa8d0116841f89b77b0a25",
+  "pending": [
+    "published producer and media tuple",
+    "SILK conversion by the actual QQ adapter"
+  ]
+}

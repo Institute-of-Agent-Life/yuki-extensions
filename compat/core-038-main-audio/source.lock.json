@@ -1,0 +1,32 @@
+{
+  "source_commit": "eb9d6d2e0d6915d6ac2fbb6227088a0ec0316326",
+  "schema_sha256": "123de29cf8057cea1dfd566aec31ea30ba4ff68524920581843456e51cbb2e7d",
+  "sdk": {
+    "python": "1.0.0a21",
+    "rust": "1.0.0-alpha.21"
+  },
+  "rust_crate_sha256": "df5886b89274f8ec81f98d1a0639e7c1bb0f2e32b6cc9073b594ac6fe72af012",
+  "media_schema_sha256": "d7af4bc4b1ea38decb0654af563410cc731fb2f27bb02568211d519a1c96a45f",
+  "database_reader": 59,
+  "published": false,
+  "platforms": {
+    "darwin-arm64": {
+      "archive": "yuki-media-preview-eb9d6d2e0d69-darwin-arm64.zip",
+      "sha256": "3f9ee1ee59cf5f6472f3374649b9c1f6ce4b4d2f282e9100e4e5486418fd5411",
+      "binary_sha256": "f1a686bceff4689cbb7b32224b70a29656dfdaf9e334f373df54332440ea9785",
+      "validation_manifest_sha256": "229d166b0da162ca7e2a90e94d4ed07078497c71fbb001711982265328294032"
+    },
+    "linux-arm64": {
+      "archive": "yuki-media-preview-eb9d6d2e0d69-linux-arm64.zip",
+      "sha256": "add9d67c0dff47ebd9a6d3229dc0ece8d8b1e60ddfdcba68b9c7439e34a158b5",
+      "binary_sha256": "c284b47d741e38bc66252895e27a275f2ab5c4b7dd402e0bcfc765ed1a02f529",
+      "validation_manifest_sha256": "f60b598ef86d26c31ae7dbf7aea70cfd0b48e0238972530096a0217efb574ea2"
+    },
+    "windows-x86_64": {
+      "archive": "yuki-media-preview-eb9d6d2e0d69-windows-x86_64.zip",
+      "sha256": "30d905b514397c6676cc08ee711b084dd2f836776e703f9e3d481e3d1a9858a3",
+      "binary_sha256": "dab349c61bb6c3e716ba6cb27ce9a93130a8bd70b912cc423760604cd73e50a8",
+      "validation_manifest_sha256": "66e212af4e5e107f53880d9249eea0c32f929416cd7cf11de591e90cd8478084"
+    }
+  }
+}
