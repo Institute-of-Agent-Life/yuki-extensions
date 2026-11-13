@@ -10,8 +10,9 @@ No source response can change a target or create an administrator grant.
 {"poll_seconds":30,"subscriptions":[{"id":"news","kind":"miniflux","url":"https://miniflux.example/v1/entries?limit=100","enabled":true,"targets":[{"target_type":"group","target_id":"original-space","conversation_id":"original-entry"}],"ask_agent":true,"condition":"Notify only a confirmed release","initial_sync":"baseline"}]}
 ```
 
-Supported source snapshots: Miniflux entries, JSON Feed, Bilibili dynamics and
-live-state responses. The first fetch establishes a silent baseline; explicit
+Supported source snapshots include Miniflux entries, JSON Feed, Bilibili dynamics
+and live state, and UTF-8 RSS 2.0 or Atom using `kind = "xml_feed"`. The first
+fetch establishes a silent baseline. Explicit
 `initial_sync=replay_recent` admits at most `replay_recent_limit` (default 3,
 maximum 20). Existing pending requests drain first. The Miniflux reader walks
 up to 20 pages in descending entry ID order using `before_entry_id` (Miniflux
@@ -19,8 +20,11 @@ up to 20 pages in descending entry ID order using `before_entry_id` (Miniflux
 Use `limit` to select a page size of up to 100 and select a narrower collection
 if it exceeds the page budget. The worker checks remaining counts and ID order
 before admitting the collection. Incomplete pages, HTTP errors and malformed
-responses preserve the previous cursor. RSS/Atom parsing and legacy KV migration
-remain open.
+responses preserve the previous cursor. RSS and Atom retain the first entry for
+each original ID and resolve relative links against the source and `xml:base`.
+The XML reader rejects document type declarations. It uses the observation
+time for delivery when the source date is absent or invalid and leaves the
+published date empty. Legacy KV migration remains open.
 HTTPS uses system curl with certificate validation, a 10-second bound, a 1 MiB
 limit and no redirects. An explicit loopback HTTP service supports local Miniflux
 and offline recordings. `token_env` optionally names a Host-approved environment

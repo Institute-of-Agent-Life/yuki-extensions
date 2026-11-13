@@ -1,6 +1,13 @@
 use serde_json::{Value, json};
 use sha2::{Digest, Sha256};
+
 pub type Result<T> = std::result::Result<T, String>;
+
+pub enum Document {
+    Json(Value),
+    Xml(Vec<u8>),
+}
+
 pub fn digest(v: &Value) -> String {
     format!("{:x}", Sha256::digest(v.to_string().as_bytes()))
 }
@@ -40,7 +47,7 @@ pub fn timestamp(seconds: u64) -> Result<String> {
         seconds % 60
     ))
 }
-fn item(key: String, title: &str, body: &str, url: &str, at: String) -> Value {
+pub(crate) fn item(key: String, title: &str, body: &str, url: &str, at: String) -> Value {
     json!({"id":key,"title":title.chars().take(150).collect::<String>(),"body":body.chars().take(4000).collect::<String>(),"url":url.chars().take(800).collect::<String>(),"occurred_at":at})
 }
 pub fn parse(kind: &str, raw: &Value, previous: &Value, now: &str) -> Result<(Vec<Value>, Value)> {
@@ -145,7 +152,7 @@ pub fn parse(kind: &str, raw: &Value, previous: &Value, now: &str) -> Result<(Ve
     }
     Ok((items, cursor))
 }
-pub fn admit(config: &Value, old: &Value, raw: &Value, now: &str) -> Result<Value> {
+pub fn admit(config: &Value, old: &Value, raw: Document, now: &str) -> Result<Value> {
     let sid = text(config, "id")?;
     let url = text(config, "url")?;
     let kind = text(config, "kind")?;
@@ -165,12 +172,27 @@ pub fn admit(config: &Value, old: &Value, raw: &Value, now: &str) -> Result<Valu
         .as_array()
         .filter(|x| !x.is_empty() && x.len() <= 4)
         .ok_or("one to four explicit targets required")?;
-    let (mut items, cursor) = parse(kind, raw, &old["cursor"], now)?;
-    items.sort_by(|left, right| {
-        left["occurred_at"]
-            .as_str()
-            .cmp(&right["occurred_at"].as_str())
-    });
+    let (items, cursor) = match raw {
+        Document::Json(raw) => {
+            let (mut items, cursor) = parse(kind, &raw, &old["cursor"], now)?;
+            items.sort_by(|left, right| {
+                left["occurred_at"]
+                    .as_str()
+                    .cmp(&right["occurred_at"].as_str())
+            });
+            (items, cursor)
+        }
+        Document::Xml(raw) => {
+            let mut items = crate::xml_feed::parse(url, &raw, now)?;
+            items.reverse();
+            items.sort_by_cached_key(|entry| {
+                entry["occurred_at"]
+                    .as_str()
+                    .and_then(crate::xml_feed::instant)
+            });
+            (items, old["cursor"].clone())
+        }
+    };
     let mut state = if old.is_null() {
         json!({"url":url,"kind":kind,"seen":{},"pending":[],"receipts":[],"initialized":false})
     } else {
@@ -195,12 +217,18 @@ pub fn admit(config: &Value, old: &Value, raw: &Value, now: &str) -> Result<Valu
         if baseline || (state["initialized"] != true && index + limit < total) {
             continue;
         }
-        let words = format!(
-            "{}\n{}",
-            entry["title"].as_str().unwrap_or(""),
-            entry["body"].as_str().unwrap_or("")
-        )
-        .to_lowercase();
+        let mut words = [
+            entry["title"].as_str(),
+            entry["body"].as_str(),
+            entry["author"].as_str(),
+        ]
+        .into_iter()
+        .flatten()
+        .collect::<Vec<_>>();
+        if let Some(tags) = entry["tags"].as_array() {
+            words.extend(tags.iter().filter_map(Value::as_str));
+        }
+        let words = words.join("\n").to_lowercase();
         let matches = |k: &str| {
             config[k].as_array().into_iter().flatten().any(|w| {
                 w.as_str()
@@ -258,27 +286,29 @@ mod tests {
     fn cfg() -> Value {
         json!({"id":"a","kind":"miniflux","url":"https://example.org/v1/entries","targets":[{"target_type":"group","target_id":"s","conversation_id":"c"}]})
     }
-    fn feed(ids: &[u64]) -> Value {
-        json!({"total":ids.len(),"entries":ids.iter().map(|n|json!({"id":n,"title":"Update","content":"same content"})).collect::<Vec<_>>()})
+    fn feed(ids: &[u64]) -> Document {
+        Document::Json(
+            json!({"total":ids.len(),"entries":ids.iter().map(|n|json!({"id":n,"title":"Update","content":"same content"})).collect::<Vec<_>>()}),
+        )
     }
     #[test]
     fn baseline_replay_and_same_content_distinct_ids() {
         let c = cfg();
-        let s = admit(&c, &Value::Null, &feed(&[1]), "2026-01-01T00:00:00Z").unwrap();
+        let s = admit(&c, &Value::Null, feed(&[1]), "2026-01-01T00:00:00Z").unwrap();
         assert!(s["pending"].as_array().unwrap().is_empty());
-        let s = admit(&c, &s, &feed(&[1, 2]), "2026-01-01T00:00:00Z").unwrap();
+        let s = admit(&c, &s, feed(&[1, 2]), "2026-01-01T00:00:00Z").unwrap();
         assert_eq!(s["pending"].as_array().unwrap().len(), 1);
         let saved = s.clone();
-        assert!(admit(&c, &s, &feed(&[1, 2, 3]), "x").is_err());
+        assert!(admit(&c, &s, feed(&[1, 2, 3]), "x").is_err());
         assert_eq!(s, saved);
     }
     #[test]
     fn independent_subscriptions_and_targets() {
         let mut c = cfg();
         c["initial_sync"] = "replay_recent".into();
-        let a = admit(&c, &Value::Null, &feed(&[1]), "2026-01-01T00:00:00Z").unwrap();
+        let a = admit(&c, &Value::Null, feed(&[1]), "2026-01-01T00:00:00Z").unwrap();
         c["id"] = "b".into();
-        let b = admit(&c, &Value::Null, &feed(&[1]), "2026-01-01T00:00:00Z").unwrap();
+        let b = admit(&c, &Value::Null, feed(&[1]), "2026-01-01T00:00:00Z").unwrap();
         assert_ne!(a["pending"][0]["event_key"], b["pending"][0]["event_key"]);
     }
     #[test]

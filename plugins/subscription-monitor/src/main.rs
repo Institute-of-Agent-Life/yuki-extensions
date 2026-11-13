@@ -1,6 +1,7 @@
 mod feed;
 mod journal;
 mod rpc;
+mod xml_feed;
 use serde_json::{Value, json};
 use std::{
     collections::HashSet,
@@ -16,7 +17,7 @@ use std::{
     time::{Duration, SystemTime, UNIX_EPOCH},
 };
 use yuki_plugin_sdk::{host::Incoming, read_frame};
-fn fetch(config: &Value, url: &str) -> Result<Value, String> {
+fn fetch(config: &Value, url: &str) -> Result<Vec<u8>, String> {
     if !(url.starts_with("https://") || url.starts_with("http://127.0.0.1:"))
         || url.chars().any(char::is_control)
         || url.contains('@')
@@ -78,18 +79,27 @@ fn fetch(config: &Value, url: &str) -> Result<Value, String> {
         if !child.wait().map_err(|_| "curl wait failed")?.success() {
             return Err("source HTTP observation failed".into());
         }
-        serde_json::from_slice(&raw).map_err(|_| "invalid source JSON".into())
+        Ok(raw)
     })();
     let _ = child.kill();
     let _ = child.wait();
     result
 }
 
-fn observe(config: &Value, stop: &AtomicBool) -> Result<Value, String> {
+fn fetch_json(config: &Value, url: &str) -> Result<Value, String> {
+    serde_json::from_slice(&fetch(config, url)?).map_err(|_| "invalid source JSON".into())
+}
+
+fn observe(config: &Value, stop: &AtomicBool) -> Result<feed::Document, String> {
     let url = feed::text(config, "url")?;
-    if config["kind"] != "miniflux" {
-        return fetch(config, url);
+    match config["kind"].as_str() {
+        Some("xml_feed") => fetch(config, url).map(feed::Document::Xml),
+        Some("miniflux") => miniflux(config, url, stop).map(feed::Document::Json),
+        _ => fetch_json(config, url).map(feed::Document::Json),
     }
+}
+
+fn miniflux(config: &Value, url: &str, stop: &AtomicBool) -> Result<Value, String> {
     if url.contains('#') {
         return Err("Miniflux URL cannot contain a fragment".into());
     }
@@ -141,8 +151,8 @@ fn observe(config: &Value, stop: &AtomicBool) -> Result<Value, String> {
             return Err("observation interrupted".into());
         }
         let mut page = match before {
-            Some(id) => fetch(config, &format!("{base}&before_entry_id={id}")),
-            None => fetch(config, &base),
+            Some(id) => fetch_json(config, &format!("{base}&before_entry_id={id}")),
+            None => fetch_json(config, &base),
         }?;
         let count = page["total"].as_u64().ok_or("missing Miniflux total")?;
         if count > (20 * limit) as u64 {
@@ -216,7 +226,7 @@ fn worker(
                         .map_err(|_| "clock before epoch")?
                         .as_secs(),
                 )?;
-                match observe(c, &stop).and_then(|raw| feed::admit(c, &state, &raw, &now)) {
+                match observe(c, &stop).and_then(|raw| feed::admit(c, &state, raw, &now)) {
                     Ok(v) => state = v,
                     Err(e) => {
                         let mut j = journal.lock().unwrap();

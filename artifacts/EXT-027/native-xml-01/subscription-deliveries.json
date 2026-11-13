@@ -1,0 +1,77 @@
+{
+  "status": "PASS",
+  "formal_card_status": "BLOCKED",
+  "published": false,
+  "source_base": "a900cb8af23c6dc36447a80bf79338ac5bed326e",
+  "source_inventory_sha256": "72b338fbb610249357caee055b15edc39cb604505512f47123f5dfbb8bea2a83",
+  "source_inventory_files": 316,
+  "producer_source_commit": "cb02f74ea48b85c6b6932423b93e6332b97f2871",
+  "notification_schema_sha256": "ab4f3a9684597f3b57b77eb638daf8538c54bacc484e3609f3ad36bfed817fb8",
+  "consumer_rust_sdk": "1.0.0-alpha.10",
+  "consumer_version": "0.1.0-alpha.3",
+  "behavior_baseline": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+  "remaining": [
+    "original R06 source recordings",
+    "formal published producer and consumer tuple",
+    "legacy subscription KV migration"
+  ],
+  "platforms": {
+    "macos": {
+      "status": "PASS",
+      "archive": "macos.zip",
+      "sha256": "1aac5697827cbb2d11e3ca0051d12366450b74063dfd7f03faa4ad609af19d0c",
+      "manifest_sha256": "9ff2857478fb9975fcfdeee1d81035346e91ba07b64525202cea3794247bbe7b",
+      "report_sha256": "52ff0e7ef7b340ce79acac9650ddc6227d77858d50fdbd99f73320d01a501c00",
+      "binary_sha256": "d0ab09f64298e04f1422e3d91d1e0c2f55e0d63cf5c0a704687bb0374e98774d",
+      "source_publications": 8,
+      "native_delivery": [
+        "unknown",
+        "confirmed"
+      ],
+      "rust_tests": 10,
+      "xml_cold_publications": {
+        "rss": 1,
+        "atom": 1
+      },
+      "paid_calls": 0
+    },
+    "linux": {
+      "status": "PASS",
+      "archive": "linux.zip",
+      "sha256": "f17cfb88a79f5c734716098915b6e9261f61d3f9efed2cd1c5f2d397bf407346",
+      "manifest_sha256": "6d73c905252c62ed3b26da61298c6bf9eaae0987af0ccb9ca09b89ad7a4822c5",
+      "report_sha256": "4b34da755386c1a10a8aa147ee0541e0c77eb786c44e303e70ac2cd232122ee0",
+      "binary_sha256": "d01f70c6a8b126f25912550e6abc60ae47c96d2cf54a1bf636688c61d88bb0cb",
+      "source_publications": 8,
+      "native_delivery": [
+        "unknown",
+        "confirmed"
+      ],
+      "rust_tests": 10,
+      "xml_cold_publications": {
+        "rss": 1,
+        "atom": 1
+      },
+      "paid_calls": 0
+    },
+    "windows": {
+      "status": "PASS",
+      "archive": "windows.zip",
+      "sha256": "2c2f7a82ddb65da3a388406768144354f172c5baa600570d8bd228fc927746c4",
+      "manifest_sha256": "146a43c9d8d3053a092e83871ac410328ea6820e0a8e7987db190488498f45a1",
+      "report_sha256": "9f6c08c6ff9c6cf27904065145cda63358b1152ea1613b071f903e225d8f6fc2",
+      "binary_sha256": "ee0ebaaf686016b0bec249c72270a0c96298b034c8198b55faee9eb256ec885d",
+      "source_publications": 8,
+      "native_delivery": [
+        "unknown",
+        "confirmed"
+      ],
+      "rust_tests": 10,
+      "xml_cold_publications": {
+        "rss": 1,
+        "atom": 1
+      },
+      "paid_calls": 0
+    }
+  }
+}
