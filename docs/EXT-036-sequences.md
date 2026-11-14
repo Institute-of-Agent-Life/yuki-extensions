@@ -40,3 +40,10 @@ same-count revision/fingerprint rejection, distinct same-dimension embeddings,
 unknown-attempt replay and post-erasure reembed refusal. Candidate-01 records the
 missing `write_subject` configuration; candidate-04 preserves the unmet automatic
 callback assertion. Metadata erasure and the published tuple remain pending.
+## Published Host replay
+
+Download `yuki-plugin-base-1.2.0.zip` from the [core release](https://github.com/Institute-of-Agent-Life/yuki-core/releases/tag/plugin-base-v1.2.0) and set `YUKI_STABLE_1_2_BUNDLE` to its path. Run `PYTHONPATH=ci python -B ci/check.py EXT-036 --out <new-output-directory>` on macOS or Linux. Use a short output path so the native operator socket fits.
+
+For Windows, dispatch `Extension Windows CI` with `EXT-036`, the exact extension revision and core source `4ca980df2748591994df14cad40a17c551bfab30`. The job downloads the same bundle and retains the report and original wire.
+
+The runner checks the release digest and native Host surface. It uses the Rust alpha.4 witness bundled with the release. The report identifies the public Host and SDK separately from the SDK used to build the witness. The independent maintenance plugin release remains pending.

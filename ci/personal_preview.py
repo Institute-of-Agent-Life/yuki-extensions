@@ -64,6 +64,7 @@ class Owner:
         command_timeout=12,
         package_builder=build,
         binary_name=None,
+        released_host=None,
     ):
         self.command_timeout = command_timeout
         self.root = root
@@ -71,7 +72,10 @@ class Owner:
         self.unit = unit
         self.work = out / "work"
         self.work.mkdir()
-        self.exe, self.pin, self.platform = materialize(root, self.work, contract)
+        self.exe, self.pin, self.platform = (
+            materialize(root, self.work, contract) if released_host is None else released_host
+        )
+        self.published_host = released_host is not None
         self.data = self.work / "owner"
         self.packages = out / "packages"
         package = package_builder(root, unit, self.packages)
@@ -181,7 +185,7 @@ class Owner:
         return {
             "source_commit": self.pin["source_commit"],
             "handoff_commit": self.pin.get("handoff_commit"),
-            "published": False,
+            "published": self.published_host,
             "host": self.platform,
             "sdk": {
                 "version": self.pin["sdk"]["rust"],
