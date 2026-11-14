@@ -15,3 +15,15 @@ wire and missing canonical input fields are in
 `artifacts/EXT-025/source-intake-01/`. The original participation library is
 pinned in `compat/participation-library/source.lock.json`. No algorithm has been
 rewritten or substituted by this probe.
+
+`jev_replay.py` exercises the original Python participation library through
+the installed SDK and Rust Host. It sends the library's native Jev request
+through `llm.complete` and returns the Host's paged result to the library. The
+provider is a loopback fixture. The test uses disposable sources and records
+the model wire, original reply and mentions, attempt count and budget receipt.
+
+Run `python -B ci/check.py EXT-025 --preparation --out <new-directory>` from the
+extension root with `PYTHONPATH=ci`. Set `YUKI_PARTICIPATION_SOURCE` to the pinned
+archive, `YUKI_CORE050_CANDIDATE` to the matching platform ZIP, and
+`YUKI_CORE050_MANIFEST` to its producer verification manifest. Install the
+hash-locked replay requirements in an isolated Python 3.12 environment.
