@@ -11,7 +11,7 @@ on:
         description: Taskbook replay to run
         required: true
         type: choice
-        options: ['EXT-035', 'EXT-035-scheduled-tools', 'EXT-035-context', 'EXT-036', 'EXT-036-release', 'EXT-036-published', 'EXT-037']
+        options: ['EXT-035', 'EXT-035-scheduled-tools', 'EXT-035-context', 'EXT-036', 'EXT-036-release', 'EXT-036-published', 'EXT-037', 'EXT-040-published']
       core_revision:
         description: Exact source of the core Host candidate
         required: true
@@ -48,7 +48,7 @@ jobs:
           persist-credentials: false
           path: extensions
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
-        if: ${{ !startsWith(inputs.card, 'EXT-036') }}
+        if: ${{ !startsWith(inputs.card, 'EXT-036') && inputs.card != 'EXT-040-published' }}
         with:
           repository: Institute-of-Agent-Life/yuki-core
           ref: ${{ inputs.core_revision }}
@@ -71,7 +71,7 @@ jobs:
           "TEMP=$env:RUNNER_TEMP" >> $env:GITHUB_ENV
           "PYTHONDONTWRITEBYTECODE=1" >> $env:GITHUB_ENV
       - name: Prepare the Host candidate from its checked source
-        if: ${{ !startsWith(inputs.card, 'EXT-036') }}
+        if: ${{ !startsWith(inputs.card, 'EXT-036') && inputs.card != 'EXT-040-published' }}
         working-directory: core
         env:
           CORE_REVISION: ${{ inputs.core_revision }}
@@ -93,7 +93,7 @@ jobs:
             python -B ci/host_candidate.py --manifest $manifest --out $destination
           }
       - name: Exercise the native extension and retain the original receipts
-        if: ${{ !startsWith(inputs.card, 'EXT-036') }}
+        if: ${{ !startsWith(inputs.card, 'EXT-036') && inputs.card != 'EXT-040-published' }}
         env:
           REVISION: ${{ inputs.revision }}
           CORE_REVISION: ${{ inputs.core_revision }}
@@ -138,6 +138,32 @@ jobs:
           if (Test-Path (Join-Path $package 'package-manifest.json')) {
             Copy-Item -LiteralPath $package -Destination $output.FullName -Recurse
           }
+          exit $result
+      - name: Verify the offline installer with the two published minor versions
+        if: inputs.card == 'EXT-040-published'
+        working-directory: extensions
+        env:
+          REVISION: ${{ inputs.revision }}
+          CORE_REVISION: ${{ inputs.core_revision }}
+        run: |
+          if ((git rev-parse HEAD) -cne $env:REVISION) { throw 'Wrong extension checkout' }
+          $pin = Get-Content compat/stable-1.2/source.lock.json -Raw | ConvertFrom-Json
+          if ($pin.source_commit -cne $env:CORE_REVISION) { throw 'Wrong published Host source' }
+          foreach ($version in @('1.1.0', '1.2.0')) {
+            $directory = New-Item -ItemType Directory -Path (Join-Path $env:RUNNER_TEMP $version)
+            $asset = "yuki-plugin-base-$version.zip"
+            foreach ($name in @($asset, 'manifest.json', 'signer.pub', 'SHA256SUMS', 'SHA256SUMS.sig')) {
+              Invoke-WebRequest -Uri ("https://github.com/Institute-of-Agent-Life/yuki-core/releases/download/plugin-base-v$version/" + $name) -OutFile (Join-Path $directory.FullName $name)
+            }
+            Set-Item "Env:YUKI_SETUP_BASE_$($version.Substring(0,3).Replace('.', '_'))" (Join-Path $directory.FullName $asset)
+          }
+          $env:PYTHONPATH = Join-Path (Get-Location) 'ci'
+          cargo fetch --locked --manifest-path tools/yuki-setup/Cargo.toml
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $replay = Join-Path $env:RUNNER_TEMP 'yuki40'
+          python -B ci/check.py EXT-040 --preparation --out $replay
+          $result = $LASTEXITCODE
+          Copy-Item -LiteralPath $replay -Destination ../windows-evidence -Recurse
           exit $result
       - name: Upload Windows candidate and replay evidence
         if: always()

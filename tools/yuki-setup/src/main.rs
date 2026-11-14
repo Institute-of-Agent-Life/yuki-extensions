@@ -58,23 +58,30 @@ fn run() -> Result<(), Error> {
         let plugin_file = args.get("--plugin-file");
         let optional = selected == Some("web-fetch") && plugin_file.is_some();
         if let Some(version) = args.get("--core") {
-            if version != "1.0.0"
-                || selected.is_some() != optional
-                || plugin_file.is_some() != optional
-            {
-                return Err("native --core 1.0.0 accepts the base archive and optionally the frozen web-fetch package".into());
-            }
             let archive = args.get("--archive").ok_or("missing --archive")?;
             if args.keys().any(|k| {
                 !["--core", "--dir", "--archive", "--plugin", "--plugin-file"].contains(&k.as_str())
             }) {
                 return Err("unknown option for native base installation".into());
             }
-            let result = install::base(Path::new(archive), &dir, plugin_file.map(Path::new))
-                .map_err(|err| {
-                    eprintln!("{err}");
-                    "native base input refused"
-                })?;
+            let result = if version == "1.0.0" {
+                if selected.is_some() != optional || plugin_file.is_some() != optional {
+                    return Err(
+                        "native --core 1.0.0 requires a pinned web-fetch package when selected"
+                            .into(),
+                    );
+                }
+                install::base(Path::new(archive), &dir, plugin_file.map(Path::new))
+            } else {
+                if selected.is_some() || plugin_file.is_some() {
+                    return Err("optional plugin needs a compatible native setup package".into());
+                }
+                install::published_base(version, Path::new(archive), &dir)
+            }
+            .map_err(|err| {
+                eprintln!("{err}");
+                "native base input refused"
+            })?;
             println!("{}", serde_json::to_string(&result)?);
             return Ok(());
         }

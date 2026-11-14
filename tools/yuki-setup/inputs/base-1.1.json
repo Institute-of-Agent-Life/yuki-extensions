@@ -1,0 +1,34 @@
+{
+  "source_commit": "09bdd7382de41343767960c0aa0e279db2b618dc",
+  "published": true,
+  "assets": {
+    "host-linux": {
+      "path": "evidence/assets/linux/yuki-core",
+      "sha256": "76064c03525bfd889044fbfcab891c1257a76f679efd46f53fedf7d782587d81"
+    },
+    "host-macos": {
+      "path": "evidence/assets/macos/yuki-core",
+      "sha256": "7c6c09c223a5f767445f97efde289794a8499ecc5e35120eb9e078266e0ddfff"
+    },
+    "host-windows": {
+      "path": "evidence/assets/windows/yuki-core.exe",
+      "sha256": "e40296d67b2760a1a47f01a961779708ee97a88043155656bbadffa57cd703a8"
+    },
+    "python-sdk": {
+      "path": "evidence/assets/yuki_plugin_sdk-1.1.0-py3-none-any.whl",
+      "sha256": "b270387f0112e54844bb761ef9cca8c5d548d65adb01ec409fc9b8e0ed1d0013"
+    },
+    "rust-sdk": {
+      "path": "evidence/assets/yuki-plugin-sdk-1.1.0.crate",
+      "sha256": "6bd4ddeb46ed0e635013a33ab65e9ff5455ff3685d846920c666083d9db1ad14"
+    }
+  },
+  "surface_sha256": "34281af056b704eb211e3a07c834aa4aeb0666cde66d6218a4525b9f9dbaad90",
+  "asset_sha256": {
+    "yuki-plugin-base-1.1.0.zip": "90933f039d2aaa19231f03b7ea12dabd0ebfb09cac282d05e8385a8d33738845",
+    "SHA256SUMS": "4fa4d145a52dd545a186349c270c9699b4cf6608c71586f59b302bcc356b1f98",
+    "SHA256SUMS.sig": "e85c849bd13e615ab6510d64e664f0ee22b70d93a1b6a29adda89623f2c3c2cb",
+    "signer.pub": "650033c53aebcabfd7e5050a6d7557e0df9db092d942869b7953472ed8930647",
+    "manifest.json": "28e37974c394cc6ba9caca61175c8c41f7d8dc56f674970d10bab7d948cbcc86"
+  }
+}
