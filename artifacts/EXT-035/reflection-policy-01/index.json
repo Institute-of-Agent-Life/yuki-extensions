@@ -1,5 +1,5 @@
 {
-  "status": "WAITING_HJW",
+  "status": "VERIFIED_DEVELOPMENT",
   "source_snapshot_sha256": "05a513cefa9f45f1a119e74c3ae87e5fdefe9a693957ecb2bc717955b2ac2642",
   "platforms": {
     "macos": {
@@ -7,21 +7,45 @@
       "receipt": "macos.json",
       "receipt_sha256": "44972eeb66171fc1f340e4874611b579c96ec14ddd4f27e535e9c32aa0f01fe5",
       "package": "ext035-reflection-policy-matrix-20261113/macos.zip",
-      "package_sha256": "415db65cafc935d40a7d3aac92ef1119d0d8924ff3a7e30bfeefb53c6d10af6d"
+      "package_sha256": "415db65cafc935d40a7d3aac92ef1119d0d8924ff3a7e30bfeefb53c6d10af6d",
+      "isolated_host_replay": {
+        "status": "PASS",
+        "receipt": "macos-native.json",
+        "receipt_sha256": "3b09882470145dafa5898d574d9602bfeb8807470d0b62bf1c0cad1274a6ede7",
+        "tested_source": "574cb627706c94b7545f3652b1025a4662680d56",
+        "host_sha256": "b94669213527103368fef6dd7f4ae642694a477ad213ff14d3f189f4f887eb2b",
+        "host_binary_sha256": "5e884bd6c3564594e38032e2eb2aa242c089f1ec12ce2a8f10114a3792ea510d"
+      }
     },
     "linux": {
       "status": "PASS",
       "receipt": "linux.json",
       "receipt_sha256": "d5cfd421f6eefac6d05e64b5242ae43b8e0798c7caa89136e512b2fd5d8593c6",
       "package": "ext035-reflection-policy-matrix-20261113/linux-transfer/linux.zip",
-      "package_sha256": "6898f746de79099a3d5683c9b0e5296f749ef76c89c719da49a2f7e1a8bfa6a9"
+      "package_sha256": "6898f746de79099a3d5683c9b0e5296f749ef76c89c719da49a2f7e1a8bfa6a9",
+      "isolated_host_replay": {
+        "status": "PASS",
+        "receipt": "linux-native.json",
+        "receipt_sha256": "c8594ad6d36940a6e35ed283d586fd4c84a91e8b41c19295375ed2736ec1de6a",
+        "tested_source": "574cb627706c94b7545f3652b1025a4662680d56",
+        "host_sha256": "e7e024241e93923cb6d3a70625759a46a8d365c54d3d17cbd18419ae656df3f2",
+        "host_binary_sha256": "62f9582f46c59dad7656bb01cb0d9c27b149b19db46b57144126a4b18b5db7a3"
+      }
     },
     "windows": {
-      "status": "BLOCKED",
-      "input": "ext035-reflection-policy-matrix-20261113/windows-input.zip",
-      "input_sha256": "385b538499d6846b89678514e70ba4a737eaee88bf16ec70bbb77099a3cad6b3",
-      "reason": "HJW SSH connection timed out"
+      "status": "PASS",
+      "receipt": "windows-native.json",
+      "receipt_sha256": "a9be7d90886bcd3e98a452325df8106fe7c9dc6ea40c0f1bd1e63f811924911c",
+      "tested_source": "e98671f79cc3ce73d62d472ab6358f61c2203f5f",
+      "host_sha256": "d78567a43e5b9d5b3a80a10ddd1cf29ad2064cea4cabd988fcb4a12186ca7522",
+      "host_binary_sha256": "209f84278b0d4e6ade862e98c7326a97d2dc45c3399b38f38c8bd041b9c1fe41",
+      "workflow": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/43569503940",
+      "artifact_id": 14103554506,
+      "artifact_sha256": "a329e2fb60699d8f8f4925c2ca23dd2800eb348f740b610ec93b61c334f4cc7f",
+      "original_receipt_sha256": "77f49009bdd51ed5471488260b81da119c749c8b0a178805c5890b53749b681c"
     }
   },
-  "published": false
+  "published": false,
+  "core_source": "2c49627825305f5bff543b38b342df0f9bdbce6c",
+  "core_source_tree_sha256": "a133494b44f9aba5410a35237d85a0ceed787f3df00cf1c3376f1e32342cfade"
 }
