@@ -1,0 +1,27 @@
+{
+  "status": "WAITING_HJW",
+  "source_snapshot_sha256": "05a513cefa9f45f1a119e74c3ae87e5fdefe9a693957ecb2bc717955b2ac2642",
+  "platforms": {
+    "macos": {
+      "status": "PASS",
+      "receipt": "macos.json",
+      "receipt_sha256": "44972eeb66171fc1f340e4874611b579c96ec14ddd4f27e535e9c32aa0f01fe5",
+      "package": "ext035-reflection-policy-matrix-20261113/macos.zip",
+      "package_sha256": "415db65cafc935d40a7d3aac92ef1119d0d8924ff3a7e30bfeefb53c6d10af6d"
+    },
+    "linux": {
+      "status": "PASS",
+      "receipt": "linux.json",
+      "receipt_sha256": "d5cfd421f6eefac6d05e64b5242ae43b8e0798c7caa89136e512b2fd5d8593c6",
+      "package": "ext035-reflection-policy-matrix-20261113/linux-transfer/linux.zip",
+      "package_sha256": "6898f746de79099a3d5683c9b0e5296f749ef76c89c719da49a2f7e1a8bfa6a9"
+    },
+    "windows": {
+      "status": "BLOCKED",
+      "input": "ext035-reflection-policy-matrix-20261113/windows-input.zip",
+      "input_sha256": "385b538499d6846b89678514e70ba4a737eaee88bf16ec70bbb77099a3cad6b3",
+      "reason": "HJW SSH connection timed out"
+    }
+  },
+  "published": false
+}

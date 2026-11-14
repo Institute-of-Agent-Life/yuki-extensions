@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "platform": "Linux",
+  "host_source": "2c49627825305f5bff543b38b342df0f9bdbce6c",
+  "host_tree_sha256": "a133494b44f9aba5410a35237d85a0ceed787f3df00cf1c3376f1e32342cfade",
+  "host_archive_sha256": "4e5f7ca0de842518e8149bf79cb6eb16692eebcf9a874e83c3db8c96f561a89e",
+  "host_binary_sha256": "4f27775cf10734061630082f4ab509ced778779d3b78f911dffccff51a3b3d17",
+  "extension_archive_sha256": "6898f746de79099a3d5683c9b0e5296f749ef76c89c719da49a2f7e1a8bfa6a9",
+  "extension_binary_sha256": "c29db1de036eeee148ef01444c5bb99bd4c3b2631d566883aec65aeb9b823814",
+  "cases": {
+    "cursor": 2,
+    "cycle": {
+      "slot": "2026-11-14T03",
+      "completed": 1,
+      "outcome": "held"
+    },
+    "original_paid_request": "3bec389b-e9bd-4b7b-9e50-3bf5013a09e8",
+    "paid_response_lost_then_recovered": true,
+    "transports": 1,
+    "scope_and_cursor_checked": true,
+    "outside_slot_transports": 0,
+    "cold_repeat_transports": 0,
+    "daily_limit": 1,
+    "reserved_undispatched_request": "ac843a1e-05fe-4208-a413-f945abe46b96",
+    "original_paid_result_settled_after_limit": true,
+    "foreground_selected_no_source_before_idle": true
+  },
+  "paid_calls": 0
+}
