@@ -1,0 +1,77 @@
+{
+  "asset_sha256": {
+    "SHA256SUMS": "a558735d5d2ffee887336ef00fea222c6a060835bfcbf3c24ab87e05367d4ea5",
+    "SHA256SUMS.sig": "015d777af9116c27026f9aa119fac9d9692ce114065579a937fa3927a84d5a33",
+    "manifest.json": "3c0e3a9444a3bdeb14c3a2cba8a94870544dcbe40d9f0a1d0cc4a76e1dea35f3",
+    "release-receipt.json": "7e186d9fe7788b0cc1ca135a14d9e78bafcb9d8e9f18f73722da697bc031d740",
+    "signer.pub": "7c68fbe206dfc8b1d654a68c056f1bab0194023c0e16c5747ef1c564eb391f8e",
+    "yuki-plugin-base-1.2.0-support.zip": "84b2a223d313e67778eddeb0c1f7a162850a9f194eb24cb18c3becd0b41e66dc",
+    "yuki-plugin-base-1.2.0.zip": "c7d4790b19827e9cbd9a2629fa605c417b42700255060cb7eeeb71f24b8df145"
+  },
+  "assets": {
+    "host-linux": {
+      "path": "assets/linux/yuki-core",
+      "sha256": "1ece3571c5976dd882dc50bcc574739d8678d3de3d1da9c39a91a39d39ce3988"
+    },
+    "host-macos": {
+      "path": "assets/macos/yuki-core",
+      "sha256": "37755215fdba660ead307801cde5012f65eb5e6a0d52afc9aa0875f155cc4d89"
+    },
+    "host-windows": {
+      "path": "assets/windows/yuki-core.exe",
+      "sha256": "24a402cd05777365b76da0bed5e748399228fab28d4b71d5b2e03cf69be9a470"
+    },
+    "python-sdk": {
+      "path": "assets/yuki_plugin_sdk-1.2.0-py3-none-any.whl",
+      "sha256": "e121dc744111b852008d84fe3e031aae84839e3bee36fee809000bc063f3e988"
+    },
+    "rust-sdk": {
+      "path": "assets/yuki-plugin-sdk-1.2.0.crate",
+      "sha256": "a8b860c7095dc0fea94545080e370abe2f57d4b789b137b6faef38f05a21c06f"
+    }
+  },
+  "database_reader": 60,
+  "evidence_sha256": "2b7ea57c4440f6c0837dae2ae13fe9b4e1168c35870c65a9f7befebd6cbf6986",
+  "handshake_sha256": "8a4a1d2cd3619fcdc75ed0af3c71629320ac7c4924ccbdb01ae5ba772fe8648d",
+  "maintenance_witnesses": {
+    "linux": {
+      "package": {
+        "path": "platforms/linux/memory-maintenance/linux-quality-consumer.zip",
+        "sha256": "c9a38b8f9b937c61756601ca43a1ee8e382c6b50b4950aaab2e7948f698394e9"
+      },
+      "source_commit": "fa28fbc2fd36dd718648df8c1b7c34e2e49cde19"
+    },
+    "macos": {
+      "package": {
+        "path": "platforms/macos/memory-maintenance/macos-quality-consumer.zip",
+        "sha256": "a97df1159bd043592da0f4ca13923a1b6240b0d208873ad13f8c856490cc4e7f"
+      },
+      "source_commit": "fa28fbc2fd36dd718648df8c1b7c34e2e49cde19"
+    },
+    "windows": {
+      "package": {
+        "path": "platforms/windows/memory-maintenance/windows-quality-consumer.zip",
+        "sha256": "b2fff8e7c0a8629e2f34045c91f933bc3c52cd64737b389c99d9df1863f5d35a"
+      },
+      "source_commit": "fa28fbc2fd36dd718648df8c1b7c34e2e49cde19"
+    }
+  },
+  "published": true,
+  "release_id": 445152164,
+  "release_url": "https://github.com/Institute-of-Agent-Life/yuki-core/releases/tag/plugin-base-v1.2.0",
+  "repository": "Institute-of-Agent-Life/yuki-core",
+  "schema_sha256": "874e008e58618d0cbc4ffee0430e10d467a500eefe3e509fb160862e93c65061",
+  "sdk": {
+    "python": "1.2.0",
+    "rust": "1.2.0"
+  },
+  "signer": {
+    "fingerprint": "SHA256:w7Fl6F4/IQvNgx1BifimjNU+k47VGksKp+qtxIMlpGQ",
+    "pubkey_sha256": "7c68fbe206dfc8b1d654a68c056f1bab0194023c0e16c5747ef1c564eb391f8e",
+    "scope": "1.2.0 distribution"
+  },
+  "source_commit": "4ca980df2748591994df14cad40a17c551bfab30",
+  "surface_sha256": "874e008e58618d0cbc4ffee0430e10d467a500eefe3e509fb160862e93c65061",
+  "tag": "plugin-base-v1.2.0",
+  "wire_min_reader": "1.0.0"
+}

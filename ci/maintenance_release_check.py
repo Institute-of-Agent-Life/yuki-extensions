@@ -1,0 +1,87 @@
+"""Replay the witnessed Rust maintenance plugin against the published 1.2 Host."""
+
+import hashlib
+import io
+import json
+import os
+from pathlib import Path
+import platform
+import subprocess
+from tempfile import TemporaryDirectory
+from zipfile import ZipFile
+
+from package import sha256
+
+
+def checked_member(archive, entry):
+    data = archive.read("evidence/" + entry["path"])
+    if hashlib.sha256(data).hexdigest() != entry["sha256"]:
+        raise ValueError("changed release member: " + entry["path"])
+    return data
+
+
+def replay(root, output, bundle, exercise):
+    lock = json.loads((root / "compat/stable-1.2/source.lock.json").read_bytes())
+    path = Path(bundle).resolve(strict=True)
+    expected = lock["asset_sha256"]["yuki-plugin-base-1.2.0.zip"]
+    if not lock["published"] or sha256(path) != expected:
+        raise ValueError("published plugin base 1.2.0 bundle required")
+    system = {"Darwin": "macos", "Linux": "linux", "Windows": "windows"}[platform.system()]
+    host_asset = lock["assets"]["host-" + system]
+    sdk_asset = lock["assets"]["rust-sdk"]
+    witness = lock["maintenance_witnesses"][system]
+    sdk = json.loads((root / "compat/core-035/source.lock.json").read_bytes())
+
+    with ZipFile(path) as archive:
+        host_bytes = checked_member(archive, host_asset)
+        worker_bytes = checked_member(archive, witness["package"])
+        checked_member(archive, sdk_asset)
+        checked_member(archive, lock["assets"]["python-sdk"])
+
+    with TemporaryDirectory(prefix="yuki-maintenance-", dir="/tmp" if system == "macos" else None) as scratch:
+        host = Path(scratch) / Path(host_asset["path"]).name
+        host.write_bytes(host_bytes)
+        host.chmod(0o700)
+        surface = json.loads(subprocess.check_output([host, "plugin-surface"], timeout=20))
+        required = {"maintenance.audit", "maintenance.audit.apply", "maintenance.reembed", "forget.request"}
+        if (surface["version"] != lock["sdk"]["rust"]
+                or surface["candidate_source"] != lock["source_commit"]
+                or surface["surface_sha256"] != lock["surface_sha256"]
+                or not required.issubset(surface["methods"])):
+            raise ValueError("released Host differs from the pinned maintenance contract")
+
+        def install_witness(_root, _unit, destination):
+            with ZipFile(io.BytesIO(worker_bytes)) as worker:
+                raw = worker.read("package-manifest.json")
+                manifest = json.loads(raw)
+                members = manifest["artifacts"]
+                if (manifest["unit_id"] != "memory-maintenance"
+                        or manifest["version"] != "0.1.0-alpha.4"
+                        or sorted(worker.namelist()) != sorted(["package-manifest.json", *members])):
+                    raise ValueError("unexpected witnessed maintenance package")
+                destination.mkdir()
+                for name, digest in members.items():
+                    data = worker.read(name)
+                    if (name in {"", ".", ".."} or any(c in name for c in "/\\:")
+                            or hashlib.sha256(data).hexdigest() != digest):
+                        raise ValueError("changed maintenance package member: " + name)
+                    (destination / name).write_bytes(data)
+                (destination / "package-manifest.json").write_bytes(raw)
+                if system != "windows":
+                    (destination / "yuki-memory-maintenance").chmod(0o700)
+                return manifest
+
+        pin = {**lock, "sdk": sdk["sdk"], "rust_crate_sha256": sdk["rust_crate_sha256"]}
+        native = {**host_asset, "binary_sha256": host_asset["sha256"], "archive_sha256": expected}
+        label, result = exercise(
+            root, output, integrity=True, retain=True,
+            released_host=(host, pin, native), package_builder=install_witness,
+        )
+    result["published_base"] = {
+        "tag": lock["tag"], "source_commit": lock["source_commit"], "sdk": lock["sdk"],
+        "rust_sdk_sha256": sdk_asset["sha256"], "archive_sha256": expected,
+        "surface_sha256": lock["surface_sha256"], "database_reader": lock["database_reader"],
+    }
+    result["plugin"].update(source_commit=witness["source_commit"],
+                            package_sha256=witness["package"]["sha256"], published=False)
+    return label, result

@@ -9,9 +9,11 @@ import uuid
 import threading
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from personal_preview import Owner
+from package import build
 
 
-def prepare(root, output, *, integrity=False, retain=False):
+def prepare(root, output, *, integrity=False, retain=False, released_host=None,
+            package_builder=build):
     calls=[]
     class Provider(BaseHTTPRequestHandler):
         def log_message(self,*_):pass
@@ -27,7 +29,9 @@ def prepare(root, output, *, integrity=False, retain=False):
             self.send_response(200);self.send_header('Content-Type','application/json');self.send_header('Content-Length',str(len(payload)));self.end_headers();self.wfile.write(payload)
     server=ThreadingHTTPServer(('127.0.0.1',0),Provider)
     threading.Thread(target=server.serve_forever,daemon=True).start()
-    try:return exercise(root,output,server,calls,integrity=integrity,retain=retain)
+    try:
+        return exercise(root, output, server, calls, integrity=integrity, retain=retain,
+                        released_host=released_host, package_builder=package_builder)
     finally:
         server.shutdown();server.server_close()
         (output/'embedding-http.json').write_text(json.dumps(calls,indent=2),encoding='utf-8')
@@ -105,13 +109,15 @@ def approve_changed_install(owner, op):
                 daemon.wait()
 
 
-def exercise(root, output, server, calls, *, integrity, retain):
+def exercise(root, output, server, calls, *, integrity, retain, released_host,
+             package_builder):
     jobs = output / 'operator-jobs'
     jobs.mkdir()
     owner = Owner(root, output, 'memory-maintenance',
                   ['maintenance.audit','maintenance.audit.apply','maintenance.reembed','forget.owner'],
                   contract='core-035-retention' if retain else 'core-035-integrity' if integrity else 'core-035',
-                  environment={'YUKI_MEMORY_MAINTENANCE_JOBS':str(jobs)}, command_timeout=30)
+                  environment={'YUKI_MEMORY_MAINTENANCE_JOBS':str(jobs)}, command_timeout=30,
+                  released_host=released_host, package_builder=package_builder)
     cfg=owner.data/'yuki.toml'
     cfg.write_text(cfg.read_text().replace('mode = "hybrid"','mode = "lexical-only"'),encoding='utf-8')
     if retain:
@@ -275,7 +281,7 @@ def exercise(root, output, server, calls, *, integrity, retain):
         assert cases['embed_unknown']['state']=='completed',cases['embed_unknown']
         assert cases['embed_unknown']['result']['state']=='unknown',cases['embed_unknown']
         assert len(calls)==3
-    with owner.running():
+    with running():
         cases['unknown_replay']=embed('embed-unknown-replay','dense-unknown','quality-embed-unknown')
         assert cases['unknown_replay']==cases['embed_unknown'] and len(calls)==3
         before_result=job('scan-before-edit',{'action':'scan',**selected_scan})['result']
@@ -376,14 +382,19 @@ def exercise(root, output, server, calls, *, integrity, retain):
             cases['erasure']['acknowledgement']=acknowledgement
     sdk_pin=json.loads((root/'compat/core-035/source.lock.json').read_bytes())
     package=json.loads((owner.packages/'package-manifest.json').read_bytes())
+    remaining = (['published plugin installation tuple'] if owner.published_host else
+                 ['published Host and plugin tuple'] if integrity else ['actual SQL integrity findings'])
     return 'hygiene-report.json',{'status':'PASS','card_status':'BLOCKED','candidate_only':True,
         'core':owner.evidence(),'plugin':{'version':package['version'],'sdk':sdk_pin['sdk']['rust'],
         'sdk_crate_sha256':sdk_pin['rust_crate_sha256'],'binary_sha256':owner.binary_sha},
         'cases':cases,'embedding_http_calls':len(calls),'scan_paid_calls':0,
         'database_access':'public operator and SDK; fault injection confined to the isolated fixture' if integrity else 'public operator and SDK only',
-        'remaining':(['published Host and plugin tuple'] if integrity else ['actual SQL integrity findings'])
-                    + ([] if retain else ['producer clarification of metadata erasure obligations'])}
+        'remaining': remaining + ([] if retain else ['producer clarification of metadata erasure obligations'])}
 
 
 def run(root,output):
+    if bundle := os.environ.get('YUKI_STABLE_1_2_BUNDLE'):
+        from maintenance_release_check import replay
+
+        return replay(root, output, bundle, prepare)
     return prepare(root,output,integrity=True,retain=os.environ.get('YUKI_QUALITY_RETENTION')=='1')
