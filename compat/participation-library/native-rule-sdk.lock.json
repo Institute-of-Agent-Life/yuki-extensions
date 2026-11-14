@@ -1,0 +1,6 @@
+{
+  "status": "unpublished-development-candidate",
+  "source_commit": "05b69d5323adb0bf4ca5a4a21394e17c407b662b",
+  "sdk": {"rust": "1.0.0-alpha.30"},
+  "rust_crate_sha256": "dce9033fcb7a1e6a38960475d380a74f69a7b771ba2537f236a52c0222b141ff"
+}
