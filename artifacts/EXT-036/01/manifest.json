@@ -1,0 +1,9 @@
+{
+  "task": "EXT-036",
+  "status": "PASS",
+  "phase": "published-installation",
+  "source_commit": "cab006ee3d5b874e8cdf9708d78a45fac5faea71",
+  "files": {
+    "hygiene-report.json": "f56a2f4f61b974fe5ac20d4edac4e8bd14ecf56f85eb2ad384d4e7e59bffb35c"
+  }
+}
