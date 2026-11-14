@@ -1,0 +1,85 @@
+{
+  "task": "EXT-035",
+  "status": "PASS",
+  "formal_card_status": "PARTIAL",
+  "published": false,
+  "source_base": "2a9c5843e88c575d124f69d175529f71f5a4fb4c",
+  "source_inventory_sha256": "cab5bcdbf771640bc2a9c38848737ea64560cc6692e29928aafa6c65477016e2",
+  "extension_version": "0.1.0-alpha.7",
+  "host_source_commit": "fca3f22ce60d35f20a866fff7a409bb419a9b1be",
+  "host_schema_sha256": "123de29cf8057cea1dfd566aec31ea30ba4ff68524920581843456e51cbb2e7d",
+  "consumer_sdk": {
+    "version": "1.0.0-alpha.8",
+    "crate_sha256": "a8739c74d300f1044c94749ced333d9694920aa7c91728b19f624ff9fbaf2e63"
+  },
+  "capabilities": [
+    "explicit original event and context batch",
+    "confirmed tool receipt and exact dependency map",
+    "stable paid receipt and apply recovery",
+    "entry-private SELF result",
+    "empty apply receipt",
+    "scoped erasure of retained and in-flight data",
+    "one-entry local-time event scheduling with a durable contiguous cursor"
+  ],
+  "remaining": [
+    "original raw Person/Space windows and automatic tool receipt selection",
+    "true foreground and quota policy consumer",
+    "published installation tuple"
+  ],
+  "platforms": {
+    "macos": {
+      "status": "PASS",
+      "archive": "macos.zip",
+      "sha256": "e724bc4cdbaa8949279f6c893e73e5fae983abb4d38a65fb5d146fee848062ef",
+      "binary_sha256": "0820d2425efbb5b1f9f7411fd119d8c7634bc7ea0cf6643cb96db5bfe4d0dbec",
+      "host_binary_sha256": "3ffffc915c9a54e6981925c27c80500febc9571baab9eb009a94d9e3dc0f6b1f",
+      "host_archive_sha256": "918940eacfd1b2c6fa564cb0bf1575abbbef2f42d69118f540bd625b014796c8",
+      "aux_archive_sha256": "e0bb338bdaafa3f86ee821808c7d197596fae27cb6b1c9d4c7e1cd00e871dfe7",
+      "manifest_sha256": "20143fc482a4c2b2451df92ca58861b5ca7a38a857b5d1cda97da1b0c580ec7a",
+      "report_sha256": "b434cfb6b332674c84c4edd7c8e8d30ec8cde6dc75c19a0922e418b339f44130",
+      "rebuild_manifest_sha256": "347164382db953d615fdaf80c245050ab4481be620754e9c64914d9ff54fe358",
+      "rust_tests": 3,
+      "reflection_transport_attempts": 11,
+      "scheduled_transport_attempts": 2,
+      "event_transport_attempts": 6,
+      "tool_transport_attempts": 3,
+      "paid_provider_calls": 0
+    },
+    "linux": {
+      "status": "PASS",
+      "archive": "linux.zip",
+      "sha256": "b2afe63ff0ba5a9725aa9807c8a6eeb966710790487d7a45454589db4f7f878f",
+      "binary_sha256": "f6c875c0f12df2ed719510c1c0182abe197862bc8fabc30d2ae496a15ec164df",
+      "host_binary_sha256": "2c0c900b9357ddb1a8809ae349961827ece9aa277341f0d1f56e98316c150e6e",
+      "host_archive_sha256": "a202029cece7eabddd23c6d689d5bc0608e36c939ca231c40ba42605fec3960b",
+      "aux_archive_sha256": "419b9ae246789d807316b21effadf474186f410582c960989f2bc213a9d27070",
+      "manifest_sha256": "6d226d9756b3b29ca2045bfd391dbdfcb901dd7c851ccb4e49090d86e1d75144",
+      "report_sha256": "8d56d351cfaa827642867e91ff03dd9afda3f3b03961ec6ee21d4b25fd84d518",
+      "rebuild_manifest_sha256": "ff4a8171bea471eb4b47bfb19cd42682f79b84ac8b4d2eaf68ce49385b2a5cf1",
+      "rust_tests": 3,
+      "reflection_transport_attempts": 11,
+      "scheduled_transport_attempts": 2,
+      "event_transport_attempts": 6,
+      "tool_transport_attempts": 3,
+      "paid_provider_calls": 0
+    },
+    "windows": {
+      "status": "PASS",
+      "archive": "windows.zip",
+      "sha256": "0ad0773a089a98b76b6837ed386bb553be12a432c1b30eaa30e470dc986e7931",
+      "binary_sha256": "a1dd78af4e3d465c71a004598aa6ae6a7dfbb2ed6749afccd39378c132433964",
+      "host_binary_sha256": "7d4632bb7b605b1abed5c091f6b7f0947e16d83f99bf46328c9d3aad98fe3cc3",
+      "host_archive_sha256": "c446405436be9b0adfd4765cf8f5aa33122c8341e3d7a7baef0e1617dfa52211",
+      "aux_archive_sha256": "eb806f321f0d9e689ba268559943655905c122d9a592c91da1644b611cdc38f8",
+      "manifest_sha256": "803559aefab7b6d2cba1f61ade5b75d8f3745ddbc8a8c06d1468bb43a3e0d460",
+      "report_sha256": "7aa9acfedd9d438fdc261ebe2bea21333bd333520d6b346365fae4acd2e407a4",
+      "rebuild_manifest_sha256": "fbf7f61c8070b3eb7653e86cdd25ad4c4f1605bf6850845e7e0b8e73bef9f91f",
+      "rust_tests": 3,
+      "reflection_transport_attempts": 11,
+      "scheduled_transport_attempts": 2,
+      "event_transport_attempts": 6,
+      "tool_transport_attempts": 3,
+      "paid_provider_calls": 0
+    }
+  }
+}

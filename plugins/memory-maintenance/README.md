@@ -151,5 +151,29 @@ request, freezes each receipt version, and uses the same inputs for preview.
 Tool results must fit the Host's complete preview and expose at most 128
 original source IDs. Tool evidence cites the original execution and operation.
 Erasing any selected source removes the batch checkpoint and fences its ID.
-Background scheduling, foreground quiet time, and aggregate daily quotas
-remain pending.
+
+## Schedule reflection for one installed entry
+
+Use `plugin-reflection-schedule.toml` in a dedicated private job directory.
+Configure the Host scope and auxiliary route as for event reflection. Create
+`reflection-schedule.json` before starting the worker.
+
+```json
+{"stream":{"scope":"own","route":"review","entry":"<original Host entry>","after":41},"timezone":"Asia/Shanghai","hours":[4,12,20]}
+```
+
+Set `after` to the original internal event cursor for this stream. A fresh
+stream can start at zero to include its available history. Each scheduled slot
+processes up to 32 batches with one primary event per batch. The worker reads
+only the named installed entry and commits the cursor after the Host confirms
+the apply receipt, including an empty result. A lost response is recovered
+with the same batch and request. A held batch stops the slot and keeps the
+cursor until a later configured slot or source erasure. The local journal binds
+the scope, route, entry, initial cursor and timezone across restart.
+
+On a Host with reflection admission configured, set `quiet_seconds` and
+`max_daily_calls` in `[reflection_budget]` to enforce foreground and daily
+request limits. A foreground deferral before selecting a batch waits within the
+current slot. A deferral after selection retains that batch for a later slot.
+Scheduled context and automatic tool receipt selection require additional
+acceptance. Tool receipts can be reflected on through the explicit mode above.

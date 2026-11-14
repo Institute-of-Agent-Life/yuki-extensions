@@ -1,4 +1,4 @@
-use serde_json::{Value, json};
+use serde_json::Value;
 use std::{
     collections::HashMap,
     io::{self, BufRead, Write},
@@ -66,9 +66,6 @@ impl Rpc {
         writeln!(out, "{v}")
             .and_then(|_| out.flush())
             .map_err(|_| "host disconnected".into())
-    }
-    pub fn reply(&self, id: Id, result: Value) {
-        let _ = self.send(&json!({"jsonrpc":"2.0","id":id,"result":result}));
     }
     pub fn call(&self, method: &str, params: Value, cancel: &AtomicBool) -> Result<Value> {
         if cancel.load(Ordering::Acquire) {
