@@ -2,6 +2,7 @@ mod hygiene;
 mod rebuild;
 mod reflection;
 mod rpc;
+mod schedule;
 use serde_json::{Value, json};
 use std::{
     fs,
@@ -24,6 +25,7 @@ enum Mode {
     RetainedQuality,
     Rebuild,
     Reflection,
+    ScheduledReflection,
 }
 
 fn job_name(name: &str) -> bool {
@@ -152,6 +154,29 @@ fn run_jobs(
     }
     Ok(())
 }
+
+fn run_schedule(
+    rpc: Arc<rpc::Rpc>,
+    root: PathBuf,
+    stop: Arc<AtomicBool>,
+    schedule: schedule::Schedule,
+) -> Result<(), String> {
+    while !stop.load(Ordering::Acquire) {
+        schedule.poll(
+            &root,
+            std::time::SystemTime::now().into(),
+            |method, params| rpc.call(method, params, &stop),
+        )?;
+        for _ in 0..10 {
+            if stop.load(Ordering::Acquire) {
+                break;
+            }
+            thread::sleep(Duration::from_millis(100));
+        }
+    }
+    Ok(())
+}
+
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let root = PathBuf::from(std::env::var("YUKI_MEMORY_MAINTENANCE_JOBS")?).canonicalize()?;
     if !root.is_dir() {
@@ -163,17 +188,26 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         [mode] if mode == "--rebuild-only" => Mode::Rebuild,
         [mode] if mode == "--retain-reports" => Mode::RetainedQuality,
         [mode] if mode == "--reflection-only" => Mode::Reflection,
+        [mode] if mode == "--scheduled-reflection" => Mode::ScheduledReflection,
         _ => return Err("unsupported maintenance worker mode".into()),
     };
     let _lock = (mode != Mode::Quality)
         .then(|| rebuild::lock(&root))
         .transpose()?;
+    let erasure_only = std::env::var("YUKI_PLUGIN_START_MODE").as_deref() == Ok("erasure_only");
+    let schedule = (mode == Mode::ScheduledReflection && !erasure_only)
+        .then(|| schedule::Schedule::load(&root))
+        .transpose()?;
     let mut input = io::stdin().lock();
     let rpc = Arc::new(rpc::handshake(&mut input)?);
     let stop = Arc::new(AtomicBool::new(false));
-    let erasure_only = std::env::var("YUKI_PLUGIN_START_MODE").as_deref() == Ok("erasure_only");
     let (r, p, s) = (rpc.clone(), root.clone(), stop.clone());
-    let mut worker = (!erasure_only).then(|| thread::spawn(move || run_jobs(r, p, mode, s)));
+    let mut worker = (!erasure_only).then(|| {
+        thread::spawn(move || match schedule {
+            Some(schedule) => run_schedule(r, p, s, schedule),
+            None => run_jobs(r, p, mode, s),
+        })
+    });
     while let Some(raw) = read_frame(&mut input)? {
         let frame = rpc.calls.lock().unwrap().receive(&raw)?;
         match frame {
@@ -199,6 +233,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                             .map_err(|_| "quality_erasure_incomplete"),
                         Mode::Reflection => reflection::erase(&root, &params["sources"])
                             .map(|()| "matching reflection state and results removed")
+                            .map_err(|_| "reflection_erasure_incomplete"),
+                        Mode::ScheduledReflection => reflection::erase(&root, &params["sources"])
+                            .and_then(|()| schedule::erase(&root, &params["sources"]))
+                            .map(|()| "matching scheduled reflection state and results removed")
                             .map_err(|_| "reflection_erasure_incomplete"),
                         Mode::Quality => Err("metadata_erasure_contract_pending"),
                     }

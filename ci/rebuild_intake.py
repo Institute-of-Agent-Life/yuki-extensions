@@ -34,7 +34,12 @@ def wait_for(path, error=None, timeout=12):
         except (FileNotFoundError, json.JSONDecodeError):
             if error is not None and error.is_file():
                 raise RuntimeError(error.read_text(encoding="utf-8"))
-            time.sleep(0.025)
+        except PermissionError:
+            # The Windows reader can reach the name while rename still owns it.
+            # An unreadable result stays a test failure after the same deadline.
+            if os.name != "nt":
+                raise
+        time.sleep(0.025)
     raise TimeoutError(path.name)
 
 

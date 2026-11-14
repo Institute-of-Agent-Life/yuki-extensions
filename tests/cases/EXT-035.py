@@ -12,6 +12,7 @@ import tempfile
 import threading
 import time
 import tomllib
+from datetime import datetime, timezone
 
 from package import build
 from rebuild_intake import ACTOR, wait_for, write
@@ -81,6 +82,85 @@ def configure(owner, root, binary, trace, entry, port, declaration):
                'max_input_units=1000000\nmax_output=1024\n')
     with (owner.data/"yuki.toml").open("a", encoding="utf-8") as config:
         config.write(policy)
+
+
+def exercise_schedule(peer, root, working, output, host, binary, declaration):
+    owner = peer.Worker(working, output, host, binary, root, declaration)
+    trace = output / "scheduled-wire.jsonl"
+    state = owner.jobs / "reflection-schedule.state.json"
+    settings = owner.jobs / "reflection-schedule.json"
+    serial = "scheduled-00000000000000000001"
+
+    def record():
+        try:
+            return json.loads(state.read_bytes())
+        except FileNotFoundError:
+            return {}
+        except PermissionError:
+            if os.name != "nt":
+                raise
+            return {}
+
+    with owner.running():
+        owner.op("person", "create", ACTOR)
+        user = owner.op("account", "open", "qq", "reflection-schedule", "200", 1,
+                        "--person", ACTOR, "--start", 1)
+        bot = owner.op("account", "open", "qq", "reflection-schedule", "100", 1, "--start", 1)
+        entry = owner.op("entry", "private", user["assignment"], bot["assignment"])["entry"]
+        group = '["qq","reflection-schedule","702"]'
+        owner.op("entry", "group", group)
+        events = []
+        for sequence, text in enumerate(("before the original cursor", "scheduled original event",
+                                         "another entry canary", "next original event"), 1):
+            frame = {"source":f"scheduled-{sequence}", "account":user["account"],
+                     "bot_stage":bot["assignment"], "reply_bot":"100", "kind":"message",
+                     "occurred":100 * sequence, "observed":100 * sequence,
+                     "segments":[{"type":"text","text":text}]}
+            if sequence == 3:
+                frame["space"] = group
+            events.append(owner.op("ingress", "record", json.dumps(frame), "--accept")["event"])
+    current_hour = datetime.now(timezone.utc).hour
+    config = {"stream":{"scope":"own","route":"review","entry":entry,"after":events[0]},
+              "timezone":"UTC","hours":[(current_hour + 12) % 24]}
+    write(settings, config)
+    with model_peer() as (port, _, observations, _, _):
+        configure(owner, root, binary, trace, entry, port, declaration)
+        with owner.running():
+            wait_for(owner.control / "relay-process.json")
+            time.sleep(1.2)
+            assert not state.exists() and not observations
+        config["hours"] = list(range(24))
+        write(settings, config)
+        (owner.control / "kill-model-call").write_text(serial, encoding="utf-8")
+        with owner.running():
+            cut = wait_for(owner.control / "model-paid-before-kill.json")["result"]
+            assert cut["state"] == "response" and len(observations) == 1
+            assert record()["pending"] == events[1] and record()["cursor"] == events[0]
+        with owner.running():
+            end = time.monotonic() + 25
+            while time.monotonic() < end:
+                completed = record()
+                if completed.get("cycle", {}).get("outcome") == "drained":
+                    break
+                time.sleep(.05)
+            else:
+                raise AssertionError(f"scheduled reflection did not drain: {record()}")
+            assert completed["cursor"] == events[3] and completed["pending"] is None
+            assert completed["cycle"]["completed"] == 2 and len(observations) == 2
+        with owner.running():
+            wait_for(owner.control / "relay-process.json")
+            time.sleep(1.2)
+            assert record()["cursor"] == events[3] and len(observations) == 2
+        wire = [json.loads(line)["frame"] for line in trace.read_text().splitlines()]
+        used = [message["params"]["request"] for message in wire if message.get("method") == "llm.result"]
+        assert used[0] == cut["request"]
+        prompts = [json.dumps(item["wire"], ensure_ascii=False) for item in observations]
+        assert "scheduled original event" in prompts[0] and "next original event" in prompts[1]
+        assert all("before the original cursor" not in prompt and "another entry canary" not in prompt
+                   for prompt in prompts)
+        return {"cursor":completed["cursor"],"cycle":completed["cycle"],"original_paid_request":used[0],
+                "paid_response_lost_then_recovered":True,"transports":len(observations),
+                "scope_and_cursor_checked":True,"outside_slot_transports":0,"cold_repeat_transports":0}
 
 
 def exercise(peer, root, working, output, host, binary, declaration):
@@ -387,16 +467,21 @@ def prepare(root, output):
         package = build(root, "memory-maintenance", output/"packages")
         binary = output/"packages"/("yuki-memory-maintenance.exe" if os.name == "nt" else "yuki-memory-maintenance")
         declaration = tomllib.loads((output/"packages/plugin-reflection.toml").read_text(encoding="utf-8"))
-        assert declaration["version"] == package["version"] == "0.1.0-alpha.6"
+        assert declaration["version"] == package["version"] == "0.1.0-alpha.7"
         tools = tomllib.loads((output/"packages/plugin-reflection-tools.toml").read_text(encoding="utf-8"))
         assert tools["version"] == declaration["version"] and tools["id"] != declaration["id"]
+        schedule = tomllib.loads((output/"packages/plugin-reflection-schedule.toml").read_text(encoding="utf-8"))
+        assert schedule["version"] == declaration["version"] and schedule["id"] not in {declaration["id"], tools["id"]}
         cases = exercise(peer, root, work/"r", output, host, binary, declaration)
         tool_cases = exercise_tool_receipts(peer, root, work/"t", output/"tools", host, binary, tools)
-    return "reflection-scope.json", {"status":"PASS", "card_status":"UNPUBLISHED_EVENT_AND_TOOL_REFLECTION",
+        schedule_output = output/"schedule"
+        schedule_output.mkdir()
+        scheduled = exercise_schedule(peer, root, work/"s", schedule_output, host, binary, schedule)
+    return "reflection-scope.json", {"status":"PASS", "card_status":"UNPUBLISHED_REFLECTION_SCHEDULE",
         "candidate":lock, "producer_receipts":producer_receipts, "plugin":package["artifacts"],
-        "cases":cases, "tool_cases":tool_cases, "paid_provider_calls":0, "published":False,
-        "remaining":["original batch scheduling", "foreground quiet policy",
-                     "instance-level daily quota and published installation tuple"]}
+        "cases":cases, "tool_cases":tool_cases, "scheduled":scheduled, "paid_provider_calls":0, "published":False,
+        "remaining":["original raw Person/Space windows and automatic tool receipt selection",
+                     "true foreground and quota policy consumer", "published installation tuple"]}
 
 
 def run(root, output):

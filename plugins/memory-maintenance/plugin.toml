@@ -1,5 +1,5 @@
 id = "memory-maintenance"
-version = "0.1.0-alpha.6"
+version = "0.1.0-alpha.7"
 program = "yuki-memory-maintenance"
 grants = ["maintenance.audit", "maintenance.audit.apply", "maintenance.reembed", "forget.owner"]
 env = ["YUKI_MEMORY_MAINTENANCE_JOBS"]
