@@ -400,5 +400,6 @@ def run(root,output):
         from maintenance_release_check import replay
 
         return replay(root, output, bundle, prepare,
-                      qualify=os.environ.get('YUKI_MAINTENANCE_RELEASE_CANDIDATE')=='1')
+                      qualify=os.environ.get('YUKI_MAINTENANCE_RELEASE_CANDIDATE')=='1',
+                      published_plugin=os.environ.get('YUKI_MAINTENANCE_RELEASE_ZIP'))
     return prepare(root,output,integrity=True,retain=os.environ.get('YUKI_QUALITY_RETENTION')=='1')

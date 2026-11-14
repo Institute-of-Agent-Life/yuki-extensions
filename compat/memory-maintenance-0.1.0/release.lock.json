@@ -1,0 +1,83 @@
+{
+  "status": "published-and-downloaded",
+  "repository": "Institute-of-Agent-Life/yuki-extensions",
+  "tag": "plugin/memory-maintenance/v0.1.0",
+  "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/releases/tag/plugin/memory-maintenance/v0.1.0",
+  "release_id": 445174551,
+  "source_commit": "b5010e9bd5f62848c7a4fedd810afd284ba7b551",
+  "main_merge": "8376e4d8a181dd7bdd618349ba776cfeae76dd3b",
+  "published_at": "2026-11-14T09:24:02Z",
+  "release_preparation_sha256": "abf4ec4e90db0419c3670522c5e3aa399d6f944dfbd7514a2b91c42d53af4b78",
+  "host": {
+    "tag": "plugin-base-v1.2.0",
+    "source_commit": "4ca980df2748591994df14cad40a17c551bfab30",
+    "sdk": {
+      "python": "1.2.0",
+      "rust": "1.2.0"
+    },
+    "rust_sdk_sha256": "a8b860c7095dc0fea94545080e370abe2f57d4b789b137b6faef38f05a21c06f",
+    "archive_sha256": "c7d4790b19827e9cbd9a2629fa605c417b42700255060cb7eeeb71f24b8df145",
+    "surface_sha256": "874e008e58618d0cbc4ffee0430e10d467a500eefe3e509fb160862e93c65061",
+    "database_reader": 60
+  },
+  "sdk": {
+    "version": "1.2.0",
+    "sha256": "a8b860c7095dc0fea94545080e370abe2f57d4b789b137b6faef38f05a21c06f"
+  },
+  "asset_sha256": {
+    "release-preparation.json": "abf4ec4e90db0419c3670522c5e3aa399d6f944dfbd7514a2b91c42d53af4b78",
+    "SHA256SUMS": "55a0c3ce6f1a35c5759e0ffbfc41f36cceaa2501a9d52e6600b6089add05c7e4",
+    "yuki-memory-maintenance-0.1.0-linux.zip": "1d97ee140c88ae595f923d078b18158a2667b5945d275b77a131e49be33bc550",
+    "yuki-memory-maintenance-0.1.0-macos.zip": "494c171058faa26142a7b7d293819ac699ae18833ebc8bfd5df7bef239e43d9b",
+    "yuki-memory-maintenance-0.1.0-windows.zip": "bba870f56f0ef5823657e258201e4c92d98b36f948cface3d5cd9f1a6ac7ead3"
+  },
+  "platforms": {
+    "macos": {
+      "archive": "yuki-memory-maintenance-0.1.0-macos.zip",
+      "sha256": "494c171058faa26142a7b7d293819ac699ae18833ebc8bfd5df7bef239e43d9b",
+      "bytes": 861433,
+      "binary_sha256": "bad068bf2cb85d696d109eb7778da6589253414d22179ea08ab109b6a8c98421",
+      "host_sha256": "37755215fdba660ead307801cde5012f65eb5e6a0d52afc9aa0875f155cc4d89",
+      "report_sha256": "580033b9274c763530f1e5f13a43ef8e8be59d2706738bdef755912b19fb0cc7",
+      "manifest_sha256": "975784889df46f35977ac2e032c598790c1f1d75eacca7050f74727601cc9ede",
+      "wire_sha256": "9cfab028e07f3e554cd8fe51ef16e2d79ff53dc11d4e0609948ce4181e375958",
+      "cases": 23,
+      "rust_tests": 4,
+      "paid_calls": 0,
+      "release_inputs_sha256": "3c0c8b8e93a51477fc40e1f30860bd93e1f20956b2ac00f08498c4c8b72bf1c9",
+      "platform": "macos"
+    },
+    "linux": {
+      "archive": "yuki-memory-maintenance-0.1.0-linux.zip",
+      "sha256": "1d97ee140c88ae595f923d078b18158a2667b5945d275b77a131e49be33bc550",
+      "bytes": 960830,
+      "binary_sha256": "f40a2eaa3d97fa271f7d95f7cfcf3e74cb61e3eda7b5cbd720ddcd9440b4fcf1",
+      "host_sha256": "1ece3571c5976dd882dc50bcc574739d8678d3de3d1da9c39a91a39d39ce3988",
+      "report_sha256": "78a72c2ea0bc3b44803a8ee3e646655b8963a0ee1f808fcf8cfd167f7a5d11f3",
+      "manifest_sha256": "da7c229dee4ee6c82aa904e5f98744a9d79b1d067c3daa9321574851cc4d30bd",
+      "wire_sha256": "61bbcd32de3532ec39b719f28f83bbe0a80d328c9b5662838914790b70038eeb",
+      "cases": 23,
+      "rust_tests": 4,
+      "paid_calls": 0,
+      "release_inputs_sha256": "3c0c8b8e93a51477fc40e1f30860bd93e1f20956b2ac00f08498c4c8b72bf1c9",
+      "platform": "linux"
+    },
+    "windows": {
+      "archive": "yuki-memory-maintenance-0.1.0-windows.zip",
+      "sha256": "bba870f56f0ef5823657e258201e4c92d98b36f948cface3d5cd9f1a6ac7ead3",
+      "bytes": 785744,
+      "binary_sha256": "f004d8d78db6db3d5c5e66a0c71d2ed9885f8d3d9bdaf420fff7c63d5c44385e",
+      "host_sha256": "24a402cd05777365b76da0bed5e748399228fab28d4b71d5b2e03cf69be9a470",
+      "report_sha256": "98bbc97ebef14284c0ba7c0b454f172000fa355de2bb5bca78d6df979a780515",
+      "manifest_sha256": "4b2e682af0709cebb008e175d38a4926c2bfde1d40788d79d0fc022bf3c78327",
+      "wire_sha256": "0035c928c3c474acf80056b945904a1ee1c056f061fb5d5cfec0d320786f4632",
+      "cases": 23,
+      "rust_tests": 4,
+      "paid_calls": 0,
+      "release_inputs_sha256": "3c0c8b8e93a51477fc40e1f30860bd93e1f20956b2ac00f08498c4c8b72bf1c9",
+      "github_actions": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/43579478135",
+      "github_artifact_sha256": "d8fc435212cc53ed924c3c7cf58236a93d1c45896cb0e9949fb3496b9f416862",
+      "platform": "windows"
+    }
+  }
+}
