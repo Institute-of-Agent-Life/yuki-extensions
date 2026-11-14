@@ -20,6 +20,13 @@ def materialize(root, work, contract="core-032"):
         meta = json.loads(bundle.read("candidate.json"))
         if meta["source_commit"] != pin["source_commit"] or meta["dirty"] or meta["host_schema_sha256"] != pin["schema_sha256"]:
             raise ValueError("incompatible host candidate")
+        if contract == "core-037-export" and (
+            meta["source_tree_sha256"] != pin["source_tree_sha256"]
+            or meta["control_schema_sha256"] != pin["control_schema_sha256"]
+            or meta["database_schema_revision"] != pin["database_schema_revision"]
+            or meta["validation"]["manifest_sha256"] != expected["validation_manifest_sha256"]
+        ):
+            raise ValueError("trace export candidate differs from its verified source")
         if "personal_schema_sha256" in pin and meta.get("personal_schema_sha256") != pin["personal_schema_sha256"]:
             raise ValueError("personal schema digest mismatch")
         if "media_schema_sha256" in pin and meta.get("media_schema_sha256") != pin["media_schema_sha256"]:

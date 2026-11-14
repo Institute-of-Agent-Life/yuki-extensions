@@ -1,0 +1,45 @@
+{
+  "status": "VERIFIED_DEVELOPMENT",
+  "core_source": "132fd9f90b57c8c872103b31a284a40fe1b1ada8",
+  "core_schema_sha256": "fe2865633884975d738dd3d09ca71aee628115742d2110e3bb84caf2da481d1e",
+  "database_schema_revision": 60,
+  "consumer_rust_sdk": "1.0.0-alpha.11",
+  "producer_sdk": {
+    "python": "1.0.0a23",
+    "rust": "1.0.0-alpha.23"
+  },
+  "published": false,
+  "platforms": {
+    "darwin-arm64": {
+      "status": "PASS",
+      "scenarios": 11,
+      "report": "darwin-arm64.json",
+      "report_sha256": "de55406d1b49b5738bdc8ca2d944a3cffdae719181058e322ed86e3831bed80b",
+      "manifest_sha256": "74e7401b8a7c7ed60393b7a9a59bc204b281d2247b5b5e2e64e995571a5f1a86",
+      "host_sha256": "bfa88a823770935f447aa76ae4826ff0786eaf876610e32a52aed7e8b85ea6cd",
+      "plugin_sha256": "737ff977bd23097f18385e8901ef23a166501c44436f394d0888d3778fff72aa"
+    },
+    "linux-arm64": {
+      "status": "PASS",
+      "scenarios": 11,
+      "report": "linux-arm64.json",
+      "report_sha256": "b5620788683a6f511cca94bc1f95a69ed07c890981de6e2987cc1ebddf01d332",
+      "manifest_sha256": "25148c927205c6073a5138516434bda0a89184447fab28b5ba39dcbdf9f2480e",
+      "host_sha256": "6a58c41efe2a492b3494184b3dc9a7761f313f9d91bee60e5028f3cdcd3e4f2a",
+      "plugin_sha256": "84cf6d9b1d647ce25e28f60ca1f16ee344048142227c0ac38390443847002406"
+    },
+    "windows-x86_64": {
+      "status": "PASS",
+      "scenarios": 11,
+      "report": "windows-x86_64.json",
+      "report_sha256": "afd7ede3d3fe0d31884ffbf24430c2c94bdf25535c31f65c8ed839845b540d50",
+      "host_sha256": "1ee7504d1ec4f7ff459805f042873fd7632913025c156ab20fbd23710be9068d",
+      "plugin_sha256": "0ec9711b58acafa5764f309b4183203a108fb72b399b65b3dda827cc172309d4",
+      "workflow": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/43568848287",
+      "artifact_id": 14104081592,
+      "artifact_sha256": "89c5495be6847dafe459974f76ae192be92d05396ca24bb549d051d7c42da7a2",
+      "tested_merge": "0c2f85421f4f7e47d466a4daafd14a5d20e1daa6",
+      "original_report_sha256": "5357e597cfac07b43515b8deda3a64640a056785c3e4b246e07ed0ef43de58a6"
+    }
+  }
+}
