@@ -1,10 +1,10 @@
 id = "memory-maintenance-reflection-schedule"
-version = "0.1.0-alpha.8"
+version = "0.1.0-alpha.9"
 program = "yuki-memory-maintenance"
 args = ["--scheduled-reflection"]
 erasure_args = ["--scheduled-reflection"]
 grants = [
-    "maintenance.history.page", "maintenance.evidence", "maintenance.model.open",
+    "maintenance.history.page", "maintenance.tool.page", "maintenance.evidence", "maintenance.model.open",
     "maintenance.extract.preview", "maintenance.extract.apply", "llm.complete",
     "llm.result", "forget.owner",
 ]

@@ -176,5 +176,17 @@ On a Host with reflection admission configured, set `quiet_seconds` and
 request limits. A foreground deferral keeps the original cursor and any
 selected batch. The worker resumes within the configured slot after Main is
 idle, including after a restart.
-Scheduled context and automatic tool receipt selection require additional
-acceptance. Tool receipts can be reflected on through the explicit mode above.
+
+Set the top-level `include_tools` option to `true` when the installed Host
+supports the `event` filter on `maintenance.tool.page`. Give the scheduled scope
+the `maintenance.tool.page` grant. For each event, the worker freezes the
+confirmed receipts with their original versions and source IDs before opening
+the model. It keeps the same batch if the response is lost. A receipt that
+exceeds the readable size, an incomplete source set or more than 15 receipts
+holds the batch without advancing the event cursor.
+
+An existing event-only batch completes using its saved selection after upgrade.
+The next batch uses the current setting. When rolling back, settle any pending
+tool batch with the new worker before restarting an older worker on that journal.
+Scheduled continuity across the original Person and Space windows still needs
+the corresponding Host projection.

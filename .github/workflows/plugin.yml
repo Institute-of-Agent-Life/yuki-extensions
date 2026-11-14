@@ -11,7 +11,7 @@ on:
         description: Taskbook replay to run
         required: true
         type: choice
-        options: ['EXT-035', 'EXT-037']
+        options: ['EXT-035', 'EXT-035-scheduled-tools', 'EXT-037']
       core_revision:
         description: Exact source of the core Host candidate
         required: true
@@ -80,7 +80,7 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           cargo fetch --locked --manifest-path sdk/rust/Cargo.toml
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          $card = if ($env:EXTENSION_CARD -eq 'EXT-035') { 'CORE-039' } else { 'CORE-037' }
+          $card = if ($env:EXTENSION_CARD -eq 'EXT-037') { 'CORE-037' } else { 'CORE-039' }
           python -B ci/check.py $card --out artifacts/extension-windows/producer
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           $manifest = 'artifacts/extension-windows/producer/manifest.json'

@@ -51,7 +51,7 @@ def verify_producer(path, candidate, card):
         raise ValueError("candidate differs from the passing producer manifest")
 
 
-def reflect(source, host, output):
+def reflect(source, host, output, *, scheduled_tools=False):
     from package import build
 
     package = output / "packages"
@@ -86,6 +86,10 @@ def reflect(source, host, output):
                 for label, allowed in [("denied", False), ("authorized", True)]
             },
         }
+        if scheduled_tools:
+            cases["scheduled_tools"] = reflection.exercise_scheduled_tools(
+                peer, source, work / "a", output / "scheduled-tools", host, binary, schedule,
+            )
     return {"cases": cases, "plugin": built["artifacts"]}
 
 
@@ -137,7 +141,7 @@ def export_trace(source, archive, candidate, member, archive_hash, output):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("card", choices=["EXT-035", "EXT-037"])
+    parser.add_argument("card", choices=["EXT-035", "EXT-035-scheduled-tools", "EXT-037"])
     parser.add_argument("revision")
     parser.add_argument("core_revision")
     parser.add_argument("source", type=Path)
@@ -164,12 +168,12 @@ def main():
     with ZipFile(archive) as package:
         if package.read("candidate.json") != raw:
             raise ValueError("core archive and candidate metadata differ")
-    producer_card = "CORE-039" if args.card == "EXT-035" else "CORE-037"
+    producer_card = "CORE-037" if args.card == "EXT-037" else "CORE-039"
     verify_producer(args.producer_manifest, candidate, producer_card)
     archive_hash = sha(archive)
     member = "bin/yuki-core.exe" if system == "windows" else "bin/yuki-core"
     output.mkdir(exist_ok=False)
-    if args.card == "EXT-035":
+    if producer_card == "CORE-039":
         verifier.verify(
             archive, folder / "signer.pub", args.core_revision, archive_hash,
             candidate["members"]["fixtures/host-boundaries.json"]["sha256"],
@@ -179,7 +183,7 @@ def main():
             with ZipFile(archive) as package:
                 host.write_bytes(package.read(member))
             host.chmod(0o700)
-            result = reflect(source, host, output)
+            result = reflect(source, host, output, scheduled_tools=args.card == "EXT-035-scheduled-tools")
     else:
         result = export_trace(source, archive, candidate, member, archive_hash, output)
     receipt = {
