@@ -18,6 +18,11 @@ from package import build
 from rebuild_intake import ACTOR, wait_for, write
 
 
+def exercise_scheduled_tools(peer, root, work, output, host, binary, schedule):
+    output.mkdir()
+    return exercise_schedule(peer, root, work, output, host, binary, schedule, include_tools=True)
+
+
 @contextmanager
 def model_peer():
     observations = []
@@ -92,7 +97,7 @@ def configure(owner, root, binary, trace, entry, port, declaration):
 
 
 def exercise_schedule(peer, root, working, output, host, binary, declaration, *, daily_limit=None,
-                      foreground=False):
+                      foreground=False, include_tools=False):
     owner = peer.Worker(working, output, host, binary, root, declaration)
     trace = output / "scheduled-wire.jsonl"
     state = owner.jobs / "reflection-schedule.state.json"
@@ -127,16 +132,30 @@ def exercise_schedule(peer, root, working, output, host, binary, declaration, *,
             if sequence == 3:
                 frame["space"] = group
             events.append(owner.op("ingress", "record", json.dumps(frame), "--accept")["event"])
+        def confirm(event, operation):
+            execution = owner.op("ingress", "claim", event)["execution"]
+            owner.op("effect", "intent", execution, operation, ACTOR, "put", operation,
+                     json.dumps({"value": operation}))
+            receipt = owner.op("effect", "local", execution, operation, ACTOR)
+            assert receipt["state"] == "confirmed"
+            return execution
+        if include_tools:
+            confirm(events[0], "before-cursor-tool")
+            execution = confirm(events[1], "original-scheduled-tool")
+            confirm(events[2], "foreign-entry-tool")
     current_hour = datetime.now(timezone.utc).hour
+    budget_timezone = "Etc/GMT-12" if current_hour in (23, 0) else "UTC"
     config = {"stream":{"scope":"own","route":"review","entry":entry,"after":events[0]},
               "timezone":"UTC","hours":[(current_hour + 12) % 24]}
+    if include_tools:
+        config["include_tools"] = True
     write(settings, config)
     with model_peer() as (port, model, observations, _, _):
         configure(owner, root, binary, trace, entry, port, declaration)
         if daily_limit is not None or foreground:
             config_path = owner.data / "yuki.toml"
             text = config_path.read_text(encoding="utf-8")
-            policy = f'\n[reflection_budget]\ntimezone="UTC"\nmax_daily_calls={daily_limit or 96}\n'
+            policy = f'\n[reflection_budget]\ntimezone="{budget_timezone}"\nmax_daily_calls={daily_limit or 96}\n'
             config_path.write_text(text.replace("\n[[plugins]]", policy + "\n[[plugins]]", 1),
                                    encoding="utf-8")
         with owner.running():
@@ -165,8 +184,22 @@ def exercise_schedule(peer, root, working, output, host, binary, declaration, *,
                 model["main_release"].set()
             cut = wait_for(owner.control / "model-paid-before-kill.json")["result"]
             assert cut["state"] == "response" and len([o for o in observations if o["route"] == "/model"]) == 1
-            assert record()["pending"] == events[1] and record()["cursor"] == events[0]
+            saved = record()
+            assert saved["cursor"] == events[0]
+            if include_tools:
+                assert saved["pending"]["event"] == events[1]
+                selected, = saved["pending"]["tools"]
+                assert selected["sources"] == [events[1]] and len(selected["version"]) == 64
+            else:
+                assert saved["pending"] == events[1]
         with owner.running():
+            if include_tools:
+                # This receipt was absent when the original paid batch was
+                # frozen. It must not change the request being recovered.
+                owner.op("effect", "intent", execution, "late-scheduled-tool", ACTOR, "put",
+                         "late-scheduled-tool", json.dumps({"value": "late-scheduled-tool"}))
+                late = owner.op("effect", "local", execution, "late-scheduled-tool", ACTOR)
+                assert late["state"] == "confirmed"
             end = time.monotonic() + 25
             terminal = "held" if daily_limit is not None else "drained"
             dispatches = 1 if daily_limit is not None else 2
@@ -180,7 +213,9 @@ def exercise_schedule(peer, root, working, output, host, binary, declaration, *,
                 raise AssertionError(f"scheduled reflection did not drain: {record()}")
             assert completed["cursor"] == cursor
             assert completed["pending"] == (events[3] if daily_limit is not None else None)
-            assert completed["cycle"]["completed"] == dispatches
+            assert completed["serial"] == dispatches + 1, completed
+            if completed["cycle"]["slot"] == saved["cycle"]["slot"]:
+                assert completed["cycle"]["completed"] == dispatches, completed
             assert len([o for o in observations if o["route"] == "/model"]) == dispatches
         with owner.running():
             wait_for(owner.control / "relay-process.json")
@@ -207,12 +242,26 @@ def exercise_schedule(peer, root, working, output, host, binary, declaration, *,
             write(output / "quota-attempts.json", attempts)
         assert all("before the original cursor" not in prompt and "another entry canary" not in prompt
                    for prompt in prompts)
+        if include_tools:
+            assert "original-scheduled-tool" in prompts[0]
+            assert all("foreign-entry-tool" not in prompt and "before-cursor-tool" not in prompt
+                       for prompt in prompts)
+            assert all("late-scheduled-tool" not in prompt for prompt in prompts)
+            assert all("original-scheduled-tool" not in prompt for prompt in prompts[1:])
+            frozen = [m["params"]["tools"] for m in wire
+                      if m.get("method") in {"maintenance.model.open", "maintenance.extract.preview"}
+                      and m["params"].get("key") == serial]
+            assert len(frozen) >= 2
+            assert all(value == [{"receipt": selected["receipt"], "version": selected["version"],
+                                  "role": "primary"}] for value in frozen)
         return {"cursor":completed["cursor"],"cycle":completed["cycle"],"original_paid_request":used[0],
                 "paid_response_lost_then_recovered":True,"transports":len(prompts),
                 "scope_and_cursor_checked":True,"outside_slot_transports":0,"cold_repeat_transports":0,
                 **({"daily_limit":daily_limit,"reserved_undispatched_request":attempts[1][0],
                     "original_paid_result_settled_after_limit":True} if daily_limit is not None else {}),
-                **({"foreground_selected_no_source_before_idle": True} if foreground else {})}
+                **({"foreground_selected_no_source_before_idle": True} if foreground else {}),
+                **({"selected_tool": selected, "foreign_prior_and_late_receipts_absent": True}
+                   if include_tools else {})}
 
 
 def exercise(peer, root, working, output, host, binary, declaration):
@@ -519,7 +568,7 @@ def prepare(root, output):
         package = build(root, "memory-maintenance", output/"packages")
         binary = output/"packages"/("yuki-memory-maintenance.exe" if os.name == "nt" else "yuki-memory-maintenance")
         declaration = tomllib.loads((output/"packages/plugin-reflection.toml").read_text(encoding="utf-8"))
-        assert declaration["version"] == package["version"] == "0.1.0-alpha.8"
+        assert declaration["version"] == package["version"] == "0.1.0-alpha.9"
         tools = tomllib.loads((output/"packages/plugin-reflection-tools.toml").read_text(encoding="utf-8"))
         assert tools["version"] == declaration["version"] and tools["id"] != declaration["id"]
         schedule = tomllib.loads((output/"packages/plugin-reflection-schedule.toml").read_text(encoding="utf-8"))

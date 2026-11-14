@@ -29,13 +29,36 @@ struct Plan {
 
 #[derive(Clone, Deserialize, Serialize, PartialEq, Eq)]
 #[serde(deny_unknown_fields)]
-struct ToolSelection {
+pub(crate) struct ToolSelection {
     execution: String,
     receipt: u64,
     sources: Vec<u64>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    version: Option<String>,
 }
 
 impl ToolSelection {
+    pub(crate) fn from_page(item: &Value) -> Result<Self> {
+        let selection: Self = serde_json::from_value(json!({
+            "execution": item["execution"], "receipt": item["receipt"],
+            "sources": item["source_ids"], "version": item["version"]
+        }))
+        .map_err(|_| "invalid scheduled tool receipt")?;
+        if !selection.valid()
+            || selection.version.is_none()
+            || item["complete"] != true
+            || item["sources_complete"] != true
+            || item["source_count"] != selection.sources.len()
+        {
+            return Err("scheduled tool receipt or source set is incomplete".into());
+        }
+        Ok(selection)
+    }
+
+    pub(crate) fn sources(&self) -> &[u64] {
+        &self.sources
+    }
+
     fn valid(&self) -> bool {
         !self.execution.trim().is_empty()
             && self.execution.len() <= 256
@@ -47,6 +70,12 @@ impl ToolSelection {
                 .iter()
                 .all(|&id| i64::try_from(id).is_ok_and(|id| id > 0))
             && self.sources.windows(2).all(|pair| pair[0] < pair[1])
+            && self.version.as_ref().is_none_or(|version| {
+                version.len() == 64
+                    && version
+                        .bytes()
+                        .all(|byte| byte.is_ascii_digit() || (b'a'..=b'f').contains(&byte))
+            })
     }
 }
 
@@ -262,9 +291,17 @@ fn select(plan: &Plan, call: &mut HostCall<'_>) -> Result<Phase> {
         let result = serde_json::from_str::<Value>(&original(item, "preview")?)
             .map_err(|_| "invalid original reflection tool result")?;
         let operation = original(item, "operation")?;
+        let version = original(item, "version")?;
+        if tool
+            .version
+            .as_ref()
+            .is_some_and(|expected| expected != &version)
+        {
+            return Err("original reflection tool receipt version changed".into());
+        }
         tools.push(ToolRef {
             receipt: tool.receipt,
-            version: original(item, "version")?,
+            version,
             role: "primary".into(),
         });
         material.push(json!({

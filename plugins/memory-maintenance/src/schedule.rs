@@ -1,4 +1,7 @@
-use crate::{rebuild, reflection};
+use crate::{
+    rebuild,
+    reflection::{self, ToolSelection},
+};
 use chrono::{DateTime, Timelike, Utc};
 use chrono_tz::Tz;
 use serde::{Deserialize, Serialize};
@@ -7,6 +10,7 @@ use std::{collections::BTreeSet, path::Path};
 
 type Result<T> = std::result::Result<T, String>;
 const MAX_BATCHES: u32 = 32;
+const MAX_TOOLS: usize = 15;
 const STATE: &str = "reflection-schedule.state.json";
 
 #[derive(Clone, Debug, PartialEq, Eq, Deserialize, Serialize)]
@@ -24,6 +28,8 @@ pub struct Schedule {
     stream: Stream,
     timezone: Tz,
     hours: BTreeSet<u32>,
+    #[serde(default)]
+    include_tools: bool,
 }
 
 #[derive(Deserialize, Serialize)]
@@ -32,8 +38,33 @@ struct State {
     timezone: Tz,
     cursor: u64,
     serial: u64,
-    pending: Option<u64>,
+    pending: Option<Pending>,
     cycle: Option<Cycle>,
+}
+
+#[derive(Deserialize, Serialize)]
+#[serde(untagged)]
+enum Pending {
+    Event(u64),
+    WithTools {
+        event: u64,
+        tools: Vec<ToolSelection>,
+    },
+}
+
+impl Pending {
+    fn event(&self) -> u64 {
+        match self {
+            Self::Event(event) | Self::WithTools { event, .. } => *event,
+        }
+    }
+
+    fn tools(&self) -> &[ToolSelection] {
+        match self {
+            Self::Event(_) => &[],
+            Self::WithTools { tools, .. } => tools,
+        }
+    }
 }
 
 #[derive(Deserialize, Serialize)]
@@ -118,7 +149,7 @@ impl Schedule {
             }
         }
 
-        let advanced = state.advance(root, &path, &mut call);
+        let advanced = state.advance(root, &path, self.include_tools, &mut call);
         let cycle = state.cycle.as_mut().ok_or("missing reflection cycle")?;
         let outcome = match advanced {
             Ok(true) => {
@@ -146,29 +177,36 @@ impl State {
         &mut self,
         root: &Path,
         path: &Path,
+        include_tools: bool,
         call: &mut impl FnMut(&str, Value) -> Result<Value>,
     ) -> Result<bool> {
-        let event = match self.pending {
-            Some(event) => event,
-            None => {
-                let page = call(
-                    "maintenance.history.page",
-                    json!({
-                        "scope": self.stream.scope, "purpose": "reflect", "after": self.cursor
-                    }),
-                )?;
-                let Some(event) = first_source(&page, &self.stream.entry, self.cursor)? else {
-                    return Ok(false);
-                };
-                self.pending = Some(event);
-                rebuild::write_json(path, self)?;
-                event
-            }
-        };
+        if self.pending.is_none() {
+            let page = call(
+                "maintenance.history.page",
+                json!({
+                    "scope": self.stream.scope, "purpose": "reflect", "after": self.cursor
+                }),
+            )?;
+            let Some(event) = first_source(&page, &self.stream.entry, self.cursor)? else {
+                return Ok(false);
+            };
+            self.pending = Some(if include_tools {
+                Pending::WithTools {
+                    event,
+                    tools: self.stream.tool_receipts(event, call)?,
+                }
+            } else {
+                Pending::Event(event)
+            });
+            rebuild::write_json(path, self)?;
+        }
+        let pending = self.pending.as_ref().ok_or("missing scheduled sources")?;
+        let event = pending.event();
         let batch = format!("scheduled-{:020}", self.serial);
         let job = json!({
             "action": "reflection.run", "batch": batch,
-            "plan": {"scope": self.stream.scope, "route": self.stream.route, "events": [event]}
+            "plan": {"scope": self.stream.scope, "route": self.stream.route,
+                     "events": [event], "tools": pending.tools()}
         });
         let result = reflection::run(root, &batch, job, call)?;
         if !matches!(result["phase"].as_str(), Some("applied" | "erased")) {
@@ -183,6 +221,47 @@ impl State {
         self.cursor = event;
         self.pending = None;
         Ok(())
+    }
+}
+
+impl Stream {
+    fn tool_receipts(
+        &self,
+        event: u64,
+        call: &mut impl FnMut(&str, Value) -> Result<Value>,
+    ) -> Result<Vec<ToolSelection>> {
+        let mut selected = Vec::new();
+        let mut after = 0;
+        loop {
+            let page = call(
+                "maintenance.tool.page",
+                json!({"scope": self.scope, "purpose": "reflect", "event": event, "after": after}),
+            )?;
+            let items = page["items"]
+                .as_array()
+                .ok_or("invalid scheduled tool page")?;
+            for item in items {
+                let receipt = item["receipt"]
+                    .as_u64()
+                    .filter(|id| *id > after)
+                    .ok_or("unordered scheduled tool page")?;
+                if item["entry"] != self.entry || selected.len() == MAX_TOOLS {
+                    return Err("scheduled tool receipt outside entry or batch limit".into());
+                }
+                let tool = ToolSelection::from_page(item)?;
+                if !tool.sources().contains(&event) {
+                    return Err("scheduled tool receipt missing its trigger source".into());
+                }
+                selected.push(tool);
+                after = receipt;
+            }
+            if page["next"] != after {
+                return Err("tool cursor does not match its page".into());
+            }
+            if items.is_empty() {
+                return Ok(selected);
+            }
+        }
     }
 }
 
@@ -224,13 +303,22 @@ fn first_source(page: &Value, entry: &str, cursor: u64) -> Result<Option<u64>> {
 
 pub fn erase(root: &Path, sources: &Value) -> Result<()> {
     let path = root.join(STATE);
+    rebuild::remove(&path.with_extension("json.tmp"))?;
+    rebuild::sync_dir(root).map_err(|error| error.to_string())?;
     let Some(mut state) = rebuild::read_json::<State>(&path)? else {
         return Ok(());
     };
     let erased: BTreeSet<u64> =
         serde_json::from_value(sources.clone()).map_err(|e| e.to_string())?;
-    if let Some(event) = state.pending.filter(|event| erased.contains(event)) {
-        state.settle(event)?;
+    if let Some(pending) = state.pending.as_ref().filter(|pending| {
+        erased.contains(&pending.event())
+            || pending
+                .tools()
+                .iter()
+                .flat_map(ToolSelection::sources)
+                .any(|id| erased.contains(id))
+    }) {
+        state.settle(pending.event())?;
         rebuild::write_json(&path, &state)?;
     }
     Ok(())
@@ -257,5 +345,41 @@ mod tests {
             first_source(&json!({"items":[],"next_event":40}), "original", 40).unwrap(),
             None
         );
+    }
+
+    #[test]
+    fn tool_pages_freeze_complete_receipts_for_the_original_event() {
+        let stream: Stream = serde_json::from_value(json!({
+            "scope":"own","route":"review","entry":"original","after":40
+        }))
+        .unwrap();
+        let original = json!({
+            "execution":"work","receipt":7,"entry":"original","source_ids":[42,44],
+            "source_count":2,"sources_complete":true,"complete":true,"version":"a".repeat(64)
+        });
+        let selected = stream
+            .tool_receipts(42, &mut |method, args| {
+                assert_eq!(method, "maintenance.tool.page");
+                assert_eq!(args["event"], 42);
+                Ok(if args["after"] == 0 {
+                    json!({"items":[original],"next":7})
+                } else {
+                    assert_eq!(args["after"], 7);
+                    json!({"items":[],"next":7})
+                })
+            })
+            .unwrap();
+        assert_eq!(selected[0].sources(), &[42, 44]);
+        let mut wrong_entry = original.clone();
+        wrong_entry["entry"] = "other".into();
+        let mut incomplete = original;
+        incomplete["sources_complete"] = false.into();
+        for rejected in [wrong_entry, incomplete] {
+            assert!(
+                stream
+                    .tool_receipts(42, &mut |_, _| Ok(json!({"items":[rejected],"next":7})))
+                    .is_err()
+            );
+        }
     }
 }
