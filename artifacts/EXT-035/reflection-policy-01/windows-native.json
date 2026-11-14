@@ -1,0 +1,227 @@
+{
+  "status": "PASS",
+  "card": "EXT-035",
+  "platform": "Windows-2025Server-10.0.26100-SP0",
+  "extension_commit": "e98671f79cc3ce73d62d472ab6358f61c2203f5f",
+  "core_commit": "2c49627825305f5bff543b38b342df0f9bdbce6c",
+  "core_archive_sha256": "d78567a43e5b9d5b3a80a10ddd1cf29ad2064cea4cabd988fcb4a12186ca7522",
+  "core_binary_sha256": "209f84278b0d4e6ade862e98c7326a97d2dc45c3399b38f38c8bd041b9c1fe41",
+  "paid_calls": 0,
+  "cases": {
+    "foreground": {
+      "cursor": 2,
+      "cycle": {
+        "slot": "2026-11-14T07",
+        "completed": 1,
+        "outcome": "held"
+      },
+      "original_paid_request": "a7c796d2-8c52-41bd-ae67-848d6367522f",
+      "paid_response_lost_then_recovered": true,
+      "transports": 1,
+      "scope_and_cursor_checked": true,
+      "outside_slot_transports": 0,
+      "cold_repeat_transports": 0,
+      "daily_limit": 1,
+      "reserved_undispatched_request": "707b003b-709d-4d79-927c-40ba9c0ee6ae",
+      "original_paid_result_settled_after_limit": true,
+      "foreground_selected_no_source_before_idle": true
+    },
+    "schedule": {
+      "cursor": 4,
+      "cycle": {
+        "slot": "2026-11-14T07",
+        "completed": 2,
+        "outcome": "drained"
+      },
+      "original_paid_request": "9a09372e-8dbc-4ce2-a78e-dcf7075ceaa9",
+      "paid_response_lost_then_recovered": true,
+      "transports": 2,
+      "scope_and_cursor_checked": true,
+      "outside_slot_transports": 0,
+      "cold_repeat_transports": 0
+    },
+    "events": {
+      "paid_before_kill": {
+        "erased": false,
+        "logical": "plugin-aux:43bd3e41-34bd-4a4c-89df-de6044debb4e",
+        "request": "43bd3e41-34bd-4a4c-89df-de6044debb4e",
+        "root": "9fb8cf22-08b1-4bb4-a258-7115cae21af5",
+        "state": "response",
+        "usage": {
+          "input": 9,
+          "output": 3,
+          "total": 12
+        }
+      },
+      "after_restart": {
+        "phase": "applied",
+        "preview": "ad670d9f-e208-46a2-ad31-efb6a791c3a4",
+        "receipts": {
+          "applied": [
+            {
+              "ordinal": 0,
+              "receipt": {
+                "fact": "71091b1a-0524-4287-8351-c3f262e32b64",
+                "outcome": "active",
+                "revision": 1
+              }
+            }
+          ],
+          "operation": "reflection:first-batch",
+          "preview": "ad670d9f-e208-46a2-ad31-efb6a791c3a4"
+        },
+        "request": "43bd3e41-34bd-4a4c-89df-de6044debb4e"
+      },
+      "empty": {
+        "phase": "applied",
+        "preview": "b2ffaf83-b3b3-46fa-ac1d-2443104d6b9c",
+        "receipts": {
+          "applied": [],
+          "operation": "reflection:empty",
+          "preview": "b2ffaf83-b3b3-46fa-ac1d-2443104d6b9c"
+        },
+        "request": "b96621aa-a231-4e7f-9077-0867d18b8202"
+      },
+      "unknown": {
+        "phase": "requested",
+        "request": "450ada3d-fde4-447f-ae5d-7b0294968c6c"
+      },
+      "erase_late": {
+        "key": "reflection-late",
+        "sources": [
+          4
+        ],
+        "watermark": 1
+      },
+      "erase_retained": {
+        "key": "reflection-source",
+        "sources": [
+          1
+        ],
+        "watermark": 2
+      },
+      "provider_observations": [
+        {
+          "mode": "active",
+          "route": "/model"
+        },
+        {
+          "mode": "active",
+          "route": "/model"
+        },
+        {
+          "mode": "active",
+          "route": "/model"
+        },
+        {
+          "mode": "active",
+          "route": "/model"
+        },
+        {
+          "mode": "unknown",
+          "route": "/model"
+        },
+        {
+          "mode": "held",
+          "route": "/model"
+        }
+      ],
+      "original_model_callback_count": 7,
+      "original_physical_attempts": 6,
+      "foreign_entry_rejected_before_model": true,
+      "private_global_and_context_writes_rejected": true,
+      "erased_batch_resubmission_refused": true
+    },
+    "tools": {
+      "original": {
+        "execution": "6a8660f6-480a-43b6-9bd3-aae226721fc0",
+        "receipt": 1,
+        "sources": [
+          1
+        ]
+      },
+      "operation": "receipt-1",
+      "frozen_tools": [
+        {
+          "receipt": 1,
+          "role": "primary",
+          "version": "2bbf2ce83f1a5c995c8a09083f03deba1f74dd64f92bbd8d1e6e8fb0b7aafffc"
+        }
+      ],
+      "original_model": "b1e2b1e4-58cf-4de3-b4c7-6efd8d97dbf2",
+      "model_transport_attempts": 3,
+      "cold_recovery_with_original_model_receipt": true,
+      "source_erased_fact_and_checkpoint": true,
+      "unselected_receipt_and_fabricated_quote_denied": true,
+      "foreign_wrong_source_missing_and_oversize_denied_before_model": true
+    },
+    "rebuild": {
+      "denied": {
+        "missing_evidence": {
+          "error": "{\"code\":-32003,\"message\":\"method, grant or original scope denied\"}",
+          "retry": "explicit original-operation recovery only",
+          "state": "not_completed"
+        },
+        "loopback_requests": 0
+      },
+      "authorized": {
+        "review": {
+          "action_count": 2,
+          "applied_ordinals": [],
+          "content": {
+            "id": "cfdd831c-d29e-4940-af6d-2e4d2c58d371",
+            "kind": "preview",
+            "sha256": "c0ab8c4b017a4952f5a85cfa83f5374590524cbe1ac690972591843bcfbd1f22",
+            "size": 934
+          },
+          "execution": "active",
+          "pending": null,
+          "phase": "review",
+          "preview": "cfdd831c-d29e-4940-af6d-2e4d2c58d371"
+        },
+        "cut_host_receipt": {
+          "applied": [
+            {
+              "ordinal": 0,
+              "receipt": {
+                "fact": "8f4a13c6-2d5f-4e1c-af78-002ac7c55f83",
+                "outcome": "active",
+                "revision": 1
+              }
+            }
+          ],
+          "operation": "cfdd831c-d29e-4940-af6d-2e4d2c58d371/approved-tea",
+          "preview": "cfdd831c-d29e-4940-af6d-2e4d2c58d371"
+        },
+        "facts": [
+          [
+            "tea",
+            1
+          ]
+        ],
+        "outside_scope_denied": true,
+        "changed_subset_denied": true,
+        "pause_resume_cancel": true,
+        "local_source_erasure_verified": true,
+        "host_erasure_acknowledged": true,
+        "unresolved_inbox_then_original_watermark": true,
+        "mismatched_receipt_not_confirmed": true,
+        "explicit_resume_same_receipt": true,
+        "loopback_requests": 1
+      }
+    }
+  },
+  "plugin": {
+    "Cargo.lock": "894a732ae7222e1af3514425bb88828206eb9ac4d1449b35847865833d34583b",
+    "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+    "plugin-rebuild.toml": "f8c1543c05280ca036808c19f83a5fd51d982e03ce6bdd61913cb4a59be6e4f6",
+    "plugin-reflection-schedule.toml": "c31cdb0f03c4709e832b7d7aa520fd5f0342a770be676a330975e7fd6b70ed6a",
+    "plugin-reflection-tools.toml": "2af9910dbe6d1557422d471487e9e9d4bcf7f042b7045593002b05de9f7cf17e",
+    "plugin-reflection.toml": "59c12d6f55cbda151df1ad9e985a23c246ea37682e91858543b42c3402c285d5",
+    "plugin-retained.toml": "d614e11a02e2dc867b21582e17d0f8324177f256fcec43eb557437effec1f551",
+    "plugin.toml": "55cc17da0892ccb815911e16744139b518a24b53987fbb5b4d5903a0a7339ca1",
+    "README.md": "e87dad586c19ddb372c8ee89caa1614bc9fa8229c26796c4eee477982f4b049c",
+    "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+    "yuki-memory-maintenance.exe": "9311948dde9b543a5e9c52705060f14db322811e2c51895b18da31170c27bd19"
+  }
+}

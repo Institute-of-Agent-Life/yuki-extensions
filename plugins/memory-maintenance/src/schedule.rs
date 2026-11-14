@@ -104,7 +104,7 @@ impl Schedule {
         match state.cycle.as_ref() {
             Some(cycle) if cycle.slot > slot => return Ok(()),
             Some(cycle) if cycle.slot == slot => {
-                if cycle.outcome != Outcome::Running {
+                if !matches!(cycle.outcome, Outcome::Running | Outcome::Foreground) {
                     return Ok(());
                 }
             }
@@ -130,8 +130,7 @@ impl Schedule {
                 }
             }
             Ok(false) => Outcome::Drained,
-            Err(error) if foreground(&error) && state.pending.is_some() => Outcome::Foreground,
-            Err(error) if foreground(&error) => return Ok(()),
+            Err(error) if foreground(&error) => Outcome::Foreground,
             Err(_) => Outcome::Held,
         };
         if outcome != cycle.outcome || matches!(outcome, Outcome::Running) {

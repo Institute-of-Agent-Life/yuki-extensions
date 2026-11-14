@@ -1,5 +1,5 @@
 id = "memory-maintenance"
-version = "0.1.0-alpha.7"
+version = "0.1.0-alpha.8"
 program = "yuki-memory-maintenance"
 args = ["--retain-reports"]
 erasure_args = ["--retain-reports"]

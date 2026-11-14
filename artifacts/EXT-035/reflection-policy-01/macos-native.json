@@ -1,0 +1,226 @@
+{
+  "status": "PASS",
+  "card": "EXT-035",
+  "extension_commit": "574cb627706c94b7545f3652b1025a4662680d56",
+  "core_commit": "2c49627825305f5bff543b38b342df0f9bdbce6c",
+  "core_archive_sha256": "b94669213527103368fef6dd7f4ae642694a477ad213ff14d3f189f4f887eb2b",
+  "core_binary_sha256": "5e884bd6c3564594e38032e2eb2aa242c089f1ec12ce2a8f10114a3792ea510d",
+  "paid_calls": 0,
+  "cases": {
+    "foreground": {
+      "cursor": 2,
+      "cycle": {
+        "slot": "2026-11-14T06",
+        "completed": 1,
+        "outcome": "held"
+      },
+      "original_paid_request": "6bfb30d6-f9e0-40fd-a803-37eca4c53a53",
+      "paid_response_lost_then_recovered": true,
+      "transports": 1,
+      "scope_and_cursor_checked": true,
+      "outside_slot_transports": 0,
+      "cold_repeat_transports": 0,
+      "daily_limit": 1,
+      "reserved_undispatched_request": "89e3c58c-a96d-462c-9350-942ded89ccaa",
+      "original_paid_result_settled_after_limit": true,
+      "foreground_selected_no_source_before_idle": true
+    },
+    "schedule": {
+      "cursor": 4,
+      "cycle": {
+        "slot": "2026-11-14T06",
+        "completed": 2,
+        "outcome": "drained"
+      },
+      "original_paid_request": "28e4e9e6-fa09-4af1-bae9-2970c7056dce",
+      "paid_response_lost_then_recovered": true,
+      "transports": 2,
+      "scope_and_cursor_checked": true,
+      "outside_slot_transports": 0,
+      "cold_repeat_transports": 0
+    },
+    "events": {
+      "paid_before_kill": {
+        "erased": false,
+        "logical": "plugin-aux:8dbacfa3-074e-4f4e-b5db-9dbdc5f26f75",
+        "request": "8dbacfa3-074e-4f4e-b5db-9dbdc5f26f75",
+        "root": "aad95b13-c12f-496e-a2df-956de2db6b18",
+        "state": "response",
+        "usage": {
+          "input": 9,
+          "output": 3,
+          "total": 12
+        }
+      },
+      "after_restart": {
+        "phase": "applied",
+        "preview": "44a7bd27-7ab8-46bc-bab5-33c95730f0b4",
+        "receipts": {
+          "applied": [
+            {
+              "ordinal": 0,
+              "receipt": {
+                "fact": "58fb8913-9763-4dd2-9c34-427788b3b295",
+                "outcome": "active",
+                "revision": 1
+              }
+            }
+          ],
+          "operation": "reflection:first-batch",
+          "preview": "44a7bd27-7ab8-46bc-bab5-33c95730f0b4"
+        },
+        "request": "8dbacfa3-074e-4f4e-b5db-9dbdc5f26f75"
+      },
+      "empty": {
+        "phase": "applied",
+        "preview": "d300f653-efc1-4ee2-b39b-d4293b0743d5",
+        "receipts": {
+          "applied": [],
+          "operation": "reflection:empty",
+          "preview": "d300f653-efc1-4ee2-b39b-d4293b0743d5"
+        },
+        "request": "b4caaa83-4b10-4ae7-84e1-c314b17b8c52"
+      },
+      "unknown": {
+        "phase": "requested",
+        "request": "f4f7c309-7ed6-4806-a972-8ea510572ad0"
+      },
+      "erase_late": {
+        "key": "reflection-late",
+        "sources": [
+          4
+        ],
+        "watermark": 1
+      },
+      "erase_retained": {
+        "key": "reflection-source",
+        "sources": [
+          1
+        ],
+        "watermark": 2
+      },
+      "provider_observations": [
+        {
+          "mode": "active",
+          "route": "/model"
+        },
+        {
+          "mode": "active",
+          "route": "/model"
+        },
+        {
+          "mode": "active",
+          "route": "/model"
+        },
+        {
+          "mode": "active",
+          "route": "/model"
+        },
+        {
+          "mode": "unknown",
+          "route": "/model"
+        },
+        {
+          "mode": "held",
+          "route": "/model"
+        }
+      ],
+      "original_model_callback_count": 7,
+      "original_physical_attempts": 6,
+      "foreign_entry_rejected_before_model": true,
+      "private_global_and_context_writes_rejected": true,
+      "erased_batch_resubmission_refused": true
+    },
+    "tools": {
+      "original": {
+        "execution": "9e3970a5-acc8-403c-a35b-ba46cad6db1e",
+        "receipt": 1,
+        "sources": [
+          1
+        ]
+      },
+      "operation": "receipt-1",
+      "frozen_tools": [
+        {
+          "receipt": 1,
+          "role": "primary",
+          "version": "d757922cfa3f2518198bd86534ddf2d6f43940d097e8326e19232f52405dcc87"
+        }
+      ],
+      "original_model": "85603102-cc18-4fc7-aa18-34499b3dddde",
+      "model_transport_attempts": 3,
+      "cold_recovery_with_original_model_receipt": true,
+      "source_erased_fact_and_checkpoint": true,
+      "unselected_receipt_and_fabricated_quote_denied": true,
+      "foreign_wrong_source_missing_and_oversize_denied_before_model": true
+    },
+    "rebuild": {
+      "denied": {
+        "missing_evidence": {
+          "error": "{\"code\":-32003,\"message\":\"method, grant or original scope denied\"}",
+          "retry": "explicit original-operation recovery only",
+          "state": "not_completed"
+        },
+        "loopback_requests": 0
+      },
+      "authorized": {
+        "review": {
+          "action_count": 2,
+          "applied_ordinals": [],
+          "content": {
+            "id": "e95c067e-ed62-4beb-bce8-3231e372bd7d",
+            "kind": "preview",
+            "sha256": "c0ab8c4b017a4952f5a85cfa83f5374590524cbe1ac690972591843bcfbd1f22",
+            "size": 934
+          },
+          "execution": "active",
+          "pending": null,
+          "phase": "review",
+          "preview": "e95c067e-ed62-4beb-bce8-3231e372bd7d"
+        },
+        "cut_host_receipt": {
+          "applied": [
+            {
+              "ordinal": 0,
+              "receipt": {
+                "fact": "d64b6dc8-33f4-468f-8fda-bbe7950e1ae0",
+                "outcome": "active",
+                "revision": 1
+              }
+            }
+          ],
+          "operation": "e95c067e-ed62-4beb-bce8-3231e372bd7d/approved-tea",
+          "preview": "e95c067e-ed62-4beb-bce8-3231e372bd7d"
+        },
+        "facts": [
+          [
+            "tea",
+            1
+          ]
+        ],
+        "outside_scope_denied": true,
+        "changed_subset_denied": true,
+        "pause_resume_cancel": true,
+        "local_source_erasure_verified": true,
+        "host_erasure_acknowledged": true,
+        "unresolved_inbox_then_original_watermark": true,
+        "mismatched_receipt_not_confirmed": true,
+        "explicit_resume_same_receipt": true,
+        "loopback_requests": 1
+      }
+    }
+  },
+  "plugin": {
+    "Cargo.lock": "894a732ae7222e1af3514425bb88828206eb9ac4d1449b35847865833d34583b",
+    "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+    "README.md": "e87dad586c19ddb372c8ee89caa1614bc9fa8229c26796c4eee477982f4b049c",
+    "plugin-rebuild.toml": "f8c1543c05280ca036808c19f83a5fd51d982e03ce6bdd61913cb4a59be6e4f6",
+    "plugin-reflection-schedule.toml": "c31cdb0f03c4709e832b7d7aa520fd5f0342a770be676a330975e7fd6b70ed6a",
+    "plugin-reflection-tools.toml": "2af9910dbe6d1557422d471487e9e9d4bcf7f042b7045593002b05de9f7cf17e",
+    "plugin-reflection.toml": "59c12d6f55cbda151df1ad9e985a23c246ea37682e91858543b42c3402c285d5",
+    "plugin-retained.toml": "d614e11a02e2dc867b21582e17d0f8324177f256fcec43eb557437effec1f551",
+    "plugin.toml": "55cc17da0892ccb815911e16744139b518a24b53987fbb5b4d5903a0a7339ca1",
+    "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+    "yuki-memory-maintenance": "1699698097df72a679286391f26a7db5742ec262ec73bb24032176cfe484d6a5"
+  }
+}
