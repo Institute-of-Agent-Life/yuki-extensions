@@ -187,6 +187,12 @@ holds the batch without advancing the event cursor.
 
 An existing event-only batch completes using its saved selection after upgrade.
 The next batch uses the current setting. When rolling back, settle any pending
-tool batch with the new worker before restarting an older worker on that journal.
-Scheduled continuity across the original Person and Space windows still needs
-the corresponding Host projection.
+tool or context batch with the new worker before restarting an older worker on
+that journal.
+
+Set `include_context` to `true` on a Host that supports `before` on
+`maintenance.history.page`. The scheduler saves up to four earlier event IDs
+from the same installed entry with the pending batch. The model can use them
+for context. New evidence still requires the primary event or a selected
+tool receipt. A retry retains the pending selection and the original cursor.
+Cross-entry Person and Space windows need the corresponding Host projection.

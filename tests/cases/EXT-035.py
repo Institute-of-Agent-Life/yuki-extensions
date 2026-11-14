@@ -97,7 +97,7 @@ def configure(owner, root, binary, trace, entry, port, declaration):
 
 
 def exercise_schedule(peer, root, working, output, host, binary, declaration, *, daily_limit=None,
-                      foreground=False, include_tools=False):
+                      foreground=False, include_tools=False, include_context=False):
     owner = peer.Worker(working, output, host, binary, root, declaration)
     trace = output / "scheduled-wire.jsonl"
     state = owner.jobs / "reflection-schedule.state.json"
@@ -149,6 +149,8 @@ def exercise_schedule(peer, root, working, output, host, binary, declaration, *,
               "timezone":"UTC","hours":[(current_hour + 12) % 24]}
     if include_tools:
         config["include_tools"] = True
+    if include_context:
+        config["include_context"] = True
     write(settings, config)
     with model_peer() as (port, model, observations, _, _):
         configure(owner, root, binary, trace, entry, port, declaration)
@@ -190,6 +192,10 @@ def exercise_schedule(peer, root, working, output, host, binary, declaration, *,
                 assert saved["pending"]["event"] == events[1]
                 selected, = saved["pending"]["tools"]
                 assert selected["sources"] == [events[1]] and len(selected["version"]) == 64
+                if include_context:
+                    assert saved["pending"]["context"] == [events[0]]
+            elif include_context:
+                assert saved["pending"] == {"event": events[1], "tools": [], "context": [events[0]]}
             else:
                 assert saved["pending"] == events[1]
         with owner.running():
@@ -240,8 +246,17 @@ def exercise_schedule(peer, root, working, output, host, binary, declaration, *,
             assert len(attempts) == 2 and attempts[0][0] == cut["request"], attempts
             assert attempts[0][2] == 12 and attempts[1][1:] == (None, None), attempts
             write(output / "quota-attempts.json", attempts)
-        assert all("before the original cursor" not in prompt and "another entry canary" not in prompt
-                   for prompt in prompts)
+        assert all("another entry canary" not in prompt for prompt in prompts)
+        if include_context:
+            assert all("before the original cursor" in prompt for prompt in prompts)
+            opened = [m["params"]["sources"] for m in wire
+                      if m.get("method") in {"maintenance.model.open", "maintenance.extract.preview"}
+                      and m["params"].get("key") == serial]
+            assert len(opened) >= 2
+            assert all([(ref["event"], ref["role"]) for ref in selection] ==
+                       [(events[1], "primary"), (events[0], "context")] for selection in opened)
+        else:
+            assert all("before the original cursor" not in prompt for prompt in prompts)
         if include_tools:
             assert "original-scheduled-tool" in prompts[0]
             assert all("foreign-entry-tool" not in prompt and "before-cursor-tool" not in prompt
@@ -261,7 +276,9 @@ def exercise_schedule(peer, root, working, output, host, binary, declaration, *,
                     "original_paid_result_settled_after_limit":True} if daily_limit is not None else {}),
                 **({"foreground_selected_no_source_before_idle": True} if foreground else {}),
                 **({"selected_tool": selected, "foreign_prior_and_late_receipts_absent": True}
-                   if include_tools else {})}
+                   if include_tools else {}),
+                **({"context_event": events[0], "context_role_preserved": True}
+                   if include_context else {})}
 
 
 def exercise(peer, root, working, output, host, binary, declaration):
@@ -568,7 +585,7 @@ def prepare(root, output):
         package = build(root, "memory-maintenance", output/"packages")
         binary = output/"packages"/("yuki-memory-maintenance.exe" if os.name == "nt" else "yuki-memory-maintenance")
         declaration = tomllib.loads((output/"packages/plugin-reflection.toml").read_text(encoding="utf-8"))
-        assert declaration["version"] == package["version"] == "0.1.0-alpha.9"
+        assert declaration["version"] == package["version"] == "0.1.0-alpha.10"
         tools = tomllib.loads((output/"packages/plugin-reflection-tools.toml").read_text(encoding="utf-8"))
         assert tools["version"] == declaration["version"] and tools["id"] != declaration["id"]
         schedule = tomllib.loads((output/"packages/plugin-reflection-schedule.toml").read_text(encoding="utf-8"))
