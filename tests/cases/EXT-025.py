@@ -18,6 +18,7 @@ from zipfile import ZipFile
 from package import build
 from personal_preview import free_address
 from participation_rule import run as replay_rule
+from participation_semantic import run as replay_semantic
 from rebuild_intake import Owner, sha, wait_for, write
 
 
@@ -31,7 +32,7 @@ DELIVERY_TEXT = "已確認送達的 Yuki 回覆"
 
 def prepare(root, output):
     archive = Path(os.environ["YUKI_CORE050_CANDIDATE"])
-    source = Path(os.environ["YUKI_PARTICIPATION_SOURCE"])
+    source = Path(os.environ["YUKI_PARTICIPATION_SOURCE"]).resolve()
     manifest_path = Path(os.environ["YUKI_CORE050_MANIFEST"])
     producer = json.loads((root / "compat/participation-library/native-host.lock.json").read_bytes())
     upstream = json.loads((root / "compat/participation-library/source.lock.json").read_bytes())
@@ -91,6 +92,15 @@ def prepare(root, output):
         rule_output.mkdir()
         report["native_rule"] = replay_rule(work / "rule-owner", executable, worker, rule_output)
         report["native_rule"]["package_manifest_sha256"] = sha(packages / "package-manifest.json")
+        semantic_output = output / "native-semantic"
+        semantic_output.mkdir()
+        report["native_semantic"] = replay_semantic(work / "review-owner", executable, worker,
+                                                    packages / "semantic_bridge.py", source, semantic_output)
+        write(output / "ordinary-replay.json", {
+            "status": "PASS", "card_status": "in_progress", "published": False,
+            "host": report["host"], "library": report["library"], "worker_sha256": sha(worker),
+            "package_manifest_sha256": sha(packages / "package-manifest.json"), **report["native_semantic"],
+        })
     return "native-jev-intake.json", report
 
 

@@ -1,0 +1,222 @@
+"""Load the pinned participation library and exchange its native review with Rust."""
+
+import asyncio
+import base64
+from contextlib import closing
+import hashlib
+import json
+from pathlib import Path
+import sys
+import tarfile
+import tempfile
+import time
+
+import httpx
+
+
+UPSTREAM = "a6a13d4f04ecc36da26adb5f364abdb4f032fc1e"
+UPSTREAM_SHA256 = "0e2cad3ad0f16e710e39f6fd2c9513c0a4c889ca54617ad6fdcb599f313a6ab4"
+
+
+def receive():
+    return json.loads(sys.stdin.buffer.readline())
+
+
+def send(value):
+    print(json.dumps(value, separators=(",", ":"), ensure_ascii=True), flush=True)
+
+
+def original(source):
+    body = b"".join(base64.b64decode(page, validate=True) for page in source["pages"])
+    if hashlib.sha256(body).hexdigest() != source["version"]:
+        raise ValueError("original source digest changed")
+    return json.loads(body)
+
+
+def projected(source, controller, reply=None):
+    from yuki_participation.models import EventMention, ScopedEvent, SourceRef
+
+    scope = controller.state.scope
+    event = source["event"]
+    key = f"event:{event}"
+    digest = source["version"]
+    previous = controller.state.host_checkpoint.get("source_versions", {}).get(key)
+    revision = 1 if previous is None else previous[0] + int(previous[1] != digest)
+    ref = SourceRef(event_id=key, revision=revision)
+    frame = original(source)
+    if frame["kind"] == "self":
+        if (frame["event"], frame["entry"], frame["generation"]) != (event, scope.conversation_id, scope.generation):
+            raise ValueError("original delivery is outside the observation scope")
+        item = ScopedEvent(scope=scope, ref=ref, thread=key, kind="self", author="SELF", target="group",
+                           text=frame["text"], at=frame["observed"] / 1000, source_order=event)
+    else:
+        origin = source["origin"]
+        if (origin["entry"], origin["observed_generation"]) != (scope.conversation_id, scope.generation):
+            raise ValueError("original human observation is outside the review scope")
+        actor = origin["original_person"]
+        item = ScopedEvent(scope=scope, ref=ref, thread=reply.thread if reply else key, author=actor, target=actor,
+                           text=frame.get("text") or "".join(part["text"] for part in frame["segments"] if part["type"] == "text"),
+                           at=(frame["occurred"] or frame["observed"]) / 1000, source_order=event,
+                           reply_to=reply.ref if reply else None,
+                           mentions=tuple(EventMention.model_validate(mark) for mark in source["mentions"]))
+    current = controller.state.events.get(key)
+    if current is not None and current.ref == ref:
+        return current
+    if not controller.observe_committed_event(item):
+        raise ValueError("original observation is stale")
+    controller.set_host_mapping_entry("source_versions", key, [revision, digest])
+    return item
+
+
+async def review(job):
+    from yuki_participation.controller import Controller
+    from yuki_participation.models import Scope, Snapshot
+    from yuki_participation.observer import JevObserver
+    from yuki_participation.participation import ParticipationUnit, UnitBinding
+    from yuki_participation.store import SnapshotStore
+
+    if original(job["focus"])["bot_stage"] != job["receiver"]:
+        send({"type": "done"})
+        return
+    original_focus = job["focus"]["origin"]
+    scope = Scope(conversation_id=original_focus["entry"], generation=original_focus["observed_generation"])
+    now = time.time()
+    with closing(SnapshotStore(Path(job["checkpoint"]))) as store:
+        store.connection.execute("PRAGMA secure_delete=ON")
+        existing = store.load(scope)
+        revision = existing[0] if existing else 0
+        controller = Controller.restore(existing[1], now) if existing else Controller(scope, now)
+        earlier = projected(job["anchor"], controller)
+        focus = projected(job["focus"], controller, earlier)
+        if focus.kind != "human":
+            raise ValueError("the focus must be an original human input")
+        key = focus.ref.event_id
+        previous = controller.state.host_checkpoint.get("ordinary_reviews", {}).get(key)
+        if previous is not None:
+            snapshot = Snapshot.model_validate(previous["snapshot"])
+            if snapshot.focus.ref != focus.ref or tuple(item.ref for item in snapshot.context) != (earlier.ref,):
+                raise ValueError("the original review basis changed")
+            if previous["settled"]:
+                send({"type": "done"})
+                return
+        else:
+            snapshot = controller.freeze_observation(Snapshot(scope=scope, focus=focus, context=(earlier,),
+                                                              sequence=revision + 1, issued_at=max(now, focus.at)))
+            controller.set_host_mapping_entry("ordinary_reviews", key,
+                                              {"snapshot": snapshot.model_dump(mode="json"), "settled": False})
+            revision = store.save(controller.state, expected_revision=revision)
+
+        def exchange(request):
+            wire = json.loads(request.content)
+            wire.pop("model")
+            send({"type": "review", "wire": wire})
+            response = receive()
+            if response.get("status") != "response":
+                return httpx.Response(503)
+            payload = b"".join(base64.b64decode(piece, validate=True) for piece in response["pages"])
+            if hashlib.sha256(payload).hexdigest() != response["sha256"]:
+                raise ValueError("original model result digest changed")
+            return httpx.Response(200, content=payload)
+
+        async with httpx.AsyncClient(transport=httpx.MockTransport(exchange), trust_env=False) as client:
+            observer = JevObserver("host-route", identity=lambda: {"display_name": job["name"], "aliases": ()},
+                                   endpoint="http://127.0.0.1/systemone", request_model="host-route",
+                                   response_model=job["response_model"], client=client)
+            try:
+                result = await observer.evaluate(snapshot)
+            except (httpx.HTTPError, ValueError):
+                send({"type": "done"})
+                return
+        if not controller.apply_semantic_observation(result):
+            send({"type": "done"})
+            return
+        invited = controller.invitation_current(focus, result.received_at)
+        send({"type": "decision", "invited": invited})
+        outcome = receive()
+        if outcome.get("status") == "invalidated":
+            send({"type": "done"})
+            return
+        if outcome.get("accepted"):
+            binding = UnitBinding(scope=scope, unit=ParticipationUnit(thread=focus.thread, target=focus.author),
+                                  actor=focus.author, basis=(focus.ref, earlier.ref))
+            if not controller.observe_unit_input(binding, focus.ref):
+                raise ValueError("original admission could not be applied to the participation state")
+        controller.set_host_mapping_entry("ordinary_reviews", key,
+                                          {"snapshot": snapshot.model_dump(mode="json"), "settled": True})
+        store.save(controller.state, expected_revision=revision)
+        send({"type": "done"})
+
+
+def erase(job):
+    from yuki_participation.controller import Controller
+    from yuki_participation.models import Scope, Snapshot, SourceRef
+    from yuki_participation.store import SnapshotStore
+
+    checkpoint = Path(job["checkpoint"])
+    if not checkpoint.is_file():
+        send({"type": "done"})
+        return
+    keys = {f"event:{event}" for event in job["sources"]}
+    with closing(SnapshotStore(checkpoint)) as store:
+        store.connection.execute("PRAGMA secure_delete=ON")
+        scopes = store.connection.execute("SELECT scope,generation FROM snapshot_head").fetchall()
+        for entry, generation in scopes:
+            revision, state = store.load(Scope(conversation_id=entry, generation=generation))
+            controller = Controller.restore(state, time.time())
+            versions = dict(state.host_checkpoint.get("source_versions", {}))
+            reviews = dict(state.host_checkpoint.get("ordinary_reviews", {}))
+            related = keys.intersection(versions)
+            if not related:
+                continue
+            for key in related:
+                controller.observe_source_change(SourceRef(event_id=key, revision=versions.pop(key)[0]))
+            for key, record in list(reviews.items()):
+                snapshot = Snapshot.model_validate(record["snapshot"])
+                if any(item.ref.event_id in related for item in (snapshot.focus, *snapshot.context)):
+                    del reviews[key]
+            controller.set_state_entry("host_checkpoint", "source_versions", versions)
+            controller.set_state_entry("host_checkpoint", "ordinary_reviews", reviews)
+            store.save(controller.state, expected_revision=revision)
+        checkpoint_result = store.connection.execute("PRAGMA wal_checkpoint(TRUNCATE)").fetchone()
+        if checkpoint_result[0] != 0:
+            raise RuntimeError("original SQLite WAL is still in use")
+    send({"type": "done"})
+
+
+def pending(job):
+    from yuki_participation.models import Scope
+    from yuki_participation.store import SnapshotStore
+
+    with closing(SnapshotStore(Path(job["checkpoint"]))) as store:
+        generations = store.connection.execute(
+            "SELECT generation FROM snapshot_head WHERE scope=?", (job["entry"],)
+        ).fetchall()
+        events = set()
+        for (generation,) in generations:
+            _, state = store.load(Scope(conversation_id=job["entry"], generation=generation))
+            for key, record in state.host_checkpoint.get("ordinary_reviews", {}).items():
+                if not record["settled"]:
+                    events.add(int(key.removeprefix("event:")))
+    send({"type": "pending", "events": sorted(events)})
+
+
+def main():
+    archive = Path(sys.argv[1])
+    if hashlib.sha256(archive.read_bytes()).hexdigest() != UPSTREAM_SHA256:
+        raise ValueError("participation archive does not match the pinned source")
+    with tempfile.TemporaryDirectory(prefix="yuki-participation-library-") as directory:
+        with tarfile.open(archive) as bundle:
+            bundle.extractall(directory, filter="data")
+        source = Path(directory) / f"Yuki-Semantic-Participation-{UPSTREAM}" / "src"
+        sys.path.insert(0, str(source))
+        job = receive()
+        if job["action"] == "erase":
+            erase(job)
+        elif job["action"] == "pending":
+            pending(job)
+        else:
+            asyncio.run(review(job))
+
+
+if __name__ == "__main__":
+    main()
