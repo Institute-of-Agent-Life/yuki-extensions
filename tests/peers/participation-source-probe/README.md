@@ -16,11 +16,14 @@ wire and missing canonical input fields are in
 pinned in `compat/participation-library/source.lock.json`. No algorithm has been
 rewritten or substituted by this probe.
 
-`jev_replay.py` exercises the original Python participation library through
-the installed SDK and Rust Host. It sends the library's native Jev request
-through `llm.complete` and returns the Host's paged result to the library. The
-provider is a loopback fixture. The test uses disposable sources and records
-the model wire, original reply and mentions, attempt count and budget receipt.
+`jev_replay.py` exercises the pinned participation library through the installed
+SDK and Rust Host. It reads a confirmed OneBot delivery as original SELF
+context, retains literal names as text, and sends the library's native Jev
+request through `llm.complete`. The positive fixture submits an ordinary native
+mention promotion before Jev reviews the same focus. They share one
+accepted Main input. The peer reopens its private library checkpoint after a
+Host restart and reads the original model result and usage. All endpoints and
+participants in this diagnostic are fixtures.
 
 Run `python -B ci/check.py EXT-025 --preparation --out <new-directory>` from the
 extension root with `PYTHONPATH=ci`. Set `YUKI_PARTICIPATION_SOURCE` to the pinned
