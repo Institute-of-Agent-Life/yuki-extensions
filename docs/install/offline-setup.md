@@ -87,3 +87,20 @@ Windows 如明選原 web-fetch，加 `--plugin web-fetch --plugin-file <原Actio
 `YUKI_FROZEN_WEB_FETCH_ZIP` 驗證選配。測試會在隔離目錄啟動宿主。
 要驗證 Compose，先在本機匯入候選映像，再設 `YUKI_CORE039_OCI` 並省略
 `--preparation`。完整卡回條會分列 Compose、原生安裝和 SnowLuma 實測狀態。
+
+## 公開原生基底 1.1.0 與 1.2.0
+
+將同一版本的 ZIP、`manifest.json`、`SHA256SUMS`、`SHA256SUMS.sig`
+及 `signer.pub` 放在同一個本機目錄，選擇版本及新安裝路徑。
+
+```text
+yuki-setup native --core 1.2.0 --archive yuki-plugin-base-1.2.0.zip --dir NEW_NATIVE_DIRECTORY
+```
+
+離線安裝會核對發布簽名、Host 架構及兩套 SDK 雜湊。新目錄包含當前平台的
+`bin/yuki-core`、SDK 和已核對的協議。可用 `--data OWNER init --memory-mode lexical-only`
+建立獨立 owner，再執行 `run`。這兩個版本的原生安裝只選核心，維護插件按其
+發布版本另行安裝。當指定已存在的安裝目錄時，命令拒絕覆寫。
+
+以 `YUKI_SETUP_BASE_1_1`、`YUKI_SETUP_BASE_1_2` 指定兩個原 ZIP，
+執行 `python ci/check.py EXT-040 --preparation --out NEW_EVIDENCE` 重現原生驗證。

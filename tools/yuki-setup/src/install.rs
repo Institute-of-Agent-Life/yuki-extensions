@@ -15,6 +15,8 @@ use std::{
 };
 
 const BASE_LOCK: &[u8] = include_bytes!("../inputs/base-1.0.json");
+const BASE_1_1_LOCK: &[u8] = include_bytes!("../inputs/base-1.1.json");
+const BASE_1_2_LOCK: &[u8] = include_bytes!("../inputs/base-1.2.json");
 const CANDIDATE_LOCK: &[u8] = include_bytes!("../inputs/native.lock.json");
 const OPTIONAL_LOCK: &[u8] = include_bytes!("../inputs/web-fetch.lock.json");
 const PLUGIN_DIRECTORY: &str = "plugins/web-fetch";
@@ -52,6 +54,30 @@ struct BaseManifest {
     binary: String,
     members: BTreeMap<String, String>,
     methods: Vec<String>,
+}
+
+#[derive(Deserialize)]
+struct ReleaseAsset {
+    path: String,
+    sha256: String,
+}
+
+#[derive(Deserialize)]
+struct ReleaseLock {
+    source_commit: String,
+    published: bool,
+    asset_sha256: BTreeMap<String, String>,
+    assets: BTreeMap<String, ReleaseAsset>,
+    surface_sha256: String,
+}
+
+#[derive(Deserialize)]
+struct ReleaseManifest {
+    version: String,
+    candidate_source: String,
+    package_sha256: String,
+    assets: BTreeMap<String, ReleaseAsset>,
+    surface_sha256: String,
 }
 
 #[derive(Deserialize)]
@@ -355,6 +381,146 @@ pub(crate) fn base(
         binary: entry.binary_sha256.clone(),
         platform,
         plugins: optional.into_iter().map(|_| "web-fetch").collect(),
+    })
+}
+
+pub(crate) fn published_base(
+    version: &str,
+    path: &Path,
+    destination: &Path,
+) -> Result<InstalledBase, Error> {
+    let bytes = match version {
+        "1.1.0" => BASE_1_1_LOCK,
+        "1.2.0" => BASE_1_2_LOCK,
+        _ => return Err("no pinned package for the selected base version".into()),
+    };
+    let pin: ReleaseLock = serde_json::from_slice(bytes)?;
+    let target = target();
+    let system = match target {
+        ("darwin", "arm64") => "macos",
+        ("linux", "arm64") => "linux",
+        ("windows", "x86_64") => "windows",
+        _ => return Err("no verified package on this native target".into()),
+    };
+    let destination = new_destination(destination)?;
+    let archive_name = format!("yuki-plugin-base-{version}.zip");
+    let archive_hash = pin
+        .asset_sha256
+        .get(&archive_name)
+        .ok_or("missing release archive pin")?;
+    let assets = path.parent().ok_or("missing release asset directory")?;
+    let checked = |name: &str| {
+        let expected = pin
+            .asset_sha256
+            .get(name)
+            .ok_or("missing release asset pin")?;
+        archive::checked_input(&assets.join(name), expected)
+    };
+    let sums = checked("SHA256SUMS")?;
+    let signature = checked("SHA256SUMS.sig")?;
+    let signer = checked("signer.pub")?;
+    archive::signature(
+        &sums,
+        &signature,
+        std::str::from_utf8(&signer)?,
+        "yuki-plugin-base-release",
+    )?;
+    let manifest_bytes = checked("manifest.json")?;
+    let manifest: ReleaseManifest = serde_json::from_slice(&manifest_bytes)?;
+    let raw = archive::checked_input(path, archive_hash)?;
+    let mut package = Package::read(&raw, true)?;
+    let signed = std::str::from_utf8(&sums)?;
+    for (name, hash) in [
+        (archive_name.as_str(), archive_hash.as_str()),
+        (
+            "manifest.json",
+            pin.asset_sha256
+                .get("manifest.json")
+                .ok_or("missing manifest pin")?
+                .as_str(),
+        ),
+    ] {
+        if !signed
+            .lines()
+            .any(|line| line.split_once("  ") == Some((hash, name)))
+        {
+            return Err("release asset is absent from the signed manifest".into());
+        }
+    }
+    if !pin.published
+        || manifest.version != version
+        || manifest.candidate_source != pin.source_commit
+        || manifest.package_sha256 != *archive_hash
+        || manifest.surface_sha256 != pin.surface_sha256
+    {
+        return Err("release version, source or contract differs from pin".into());
+    }
+    let host_key = format!("host-{system}");
+    let member = |key: &str, package: &mut Package<'_>| {
+        let expected = pin.assets.get(key).ok_or("missing release member pin")?;
+        let member = manifest
+            .assets
+            .get(key)
+            .ok_or("missing signed release member")?;
+        let path = expected
+            .path
+            .strip_prefix("evidence/")
+            .unwrap_or(&expected.path);
+        if member.sha256 != expected.sha256 || member.path != format!("evidence/{path}") {
+            return Err("release member differs from pin".into());
+        }
+        package.checked_member(&member.path, &member.sha256, None)
+    };
+    let host = exe_name("yuki-core");
+    let binary = member(&host_key, &mut package)?;
+    executable(&binary, target)?;
+    let files = [
+        (host.clone(), binary),
+        (
+            format!("sdk/yuki-plugin-sdk-{version}.crate"),
+            member("rust-sdk", &mut package)?,
+        ),
+        (
+            format!("sdk/yuki_plugin_sdk-{version}-py3-none-any.whl"),
+            member("python-sdk", &mut package)?,
+        ),
+        (
+            "surface.json".into(),
+            package.checked_member("surface.json", &pin.surface_sha256, None)?,
+        ),
+        ("manifest.json".into(), manifest_bytes),
+        (
+            "LICENSE".into(),
+            include_bytes!("../inputs/CORE-LICENSE").to_vec(),
+        ),
+        (
+            "NOTICE".into(),
+            include_bytes!("../inputs/CORE-NOTICE").to_vec(),
+        ),
+    ];
+    install_files(&destination, |stage| {
+        for (name, bytes) in files {
+            let path = stage.join(&name);
+            fs::create_dir_all(path.parent().ok_or("missing installation member parent")?)?;
+            OpenOptions::new()
+                .write(true)
+                .create_new(true)
+                .open(&path)?
+                .write_all(&bytes)?;
+            #[cfg(unix)]
+            if name == host {
+                use std::os::unix::fs::PermissionsExt;
+                fs::set_permissions(&path, fs::Permissions::from_mode(0o755))?;
+            }
+        }
+        Ok(())
+    })?;
+    Ok(InstalledBase {
+        version: manifest.version,
+        source: pin.source_commit,
+        binary: manifest.assets[&host_key].sha256.clone(),
+        platform: format!("{}-{}", target.0, target.1),
+        plugins: Vec::new(),
     })
 }
 
