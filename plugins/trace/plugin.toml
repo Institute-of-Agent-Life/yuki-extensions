@@ -1,7 +1,8 @@
 id = "trace"
-version = "0.1.0-alpha.1"
+version = "0.1.0-alpha.2"
 program = "yuki-trace"
-grants = ["control.invoke", "tool.call"]
+grants = ["command.invoke", "control.invoke", "tool.call"]
+commands = ["/ai/trace/export"]
 
 [[tools]]
 name = "trace_query"
