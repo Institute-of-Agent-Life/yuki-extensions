@@ -1,12 +1,12 @@
 {
   "status": "unpublished-development-candidate",
-  "commit": "05b69d5323adb0bf4ca5a4a21394e17c407b662b",
-  "tree_sha256": "d4ce19aa5d5564b649ece57234ce59cbaded0ed7efaa9c7443615f489a0a1b8c",
-  "host_schema_sha256": "aa027ade07aa9f3f1541f8e05db38d53116fef4345c0a30bdac92ae44b227ce2",
+  "commit": "5404fbf2a1f814949d6d55b61da388b2dd8e6703",
+  "tree_sha256": "aab363676855cbd4ffaed4e59b77cc6c113bcbf65de6e176c51a9f97037e724e",
+  "host_schema_sha256": "89ed421dcf01ed17dd2e4426696f02a4e4b5597811b357b84590059baf0c381e",
   "aux_schema_sha256": "3b04d607eb9a61532f8c820f0bc751be40424dccfd9740c2bde74c52271e0b50",
   "sdk_versions": {
-    "python": "1.0.0a30",
-    "rust": "1.0.0-alpha.30"
+    "python": "1.0.0a31",
+    "rust": "1.0.0-alpha.31"
   },
   "reader": 62
 }

@@ -31,8 +31,9 @@ and waits for the active read to finish before acknowledging source erasure.
 Optional Jev review runs as a second Rust worker for the same entry with its
 own plugin ID and namespace. The Rule can admit a native mention while the
 review is still waiting for a response. The review worker reads the original
-human focus and its exact reply anchor through the Host. It promotes an
-invitation using the same original event.
+human focus and its exact reply anchor through the Host. An invitation
+promotes the original focus with the anchor's event ID and version. The Host
+checks the anchor in the same transaction that admits the focus.
 
 Pass these arguments after the original entry and receiving stage.
 
