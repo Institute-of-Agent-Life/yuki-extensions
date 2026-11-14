@@ -23,7 +23,29 @@ def checked_member(archive, entry):
     return data
 
 
-def replay(root, output, bundle, exercise, *, qualify=False):
+def unpack_worker(worker_bytes, destination, system, version):
+    with ZipFile(io.BytesIO(worker_bytes)) as worker:
+        raw = worker.read("package-manifest.json")
+        manifest = json.loads(raw)
+        members = manifest["artifacts"]
+        if (manifest["unit_id"] != "memory-maintenance"
+                or manifest["version"] != version
+                or sorted(worker.namelist()) != sorted(["package-manifest.json", *members])):
+            raise ValueError("unexpected maintenance package")
+        destination.mkdir()
+        for name, digest in members.items():
+            data = worker.read(name)
+            if (name in {"", ".", ".."} or any(c in name for c in "/\\:")
+                    or hashlib.sha256(data).hexdigest() != digest):
+                raise ValueError("changed maintenance package member: " + name)
+            (destination / name).write_bytes(data)
+        (destination / "package-manifest.json").write_bytes(raw)
+        if system != "windows":
+            (destination / "yuki-memory-maintenance").chmod(0o700)
+        return manifest
+
+
+def replay(root, output, bundle, exercise, *, qualify=False, published_plugin=None):
     lock = json.loads((root / "compat/stable-1.2/source.lock.json").read_bytes())
     path = Path(bundle).resolve(strict=True)
     expected = lock["asset_sha256"]["yuki-plugin-base-1.2.0.zip"]
@@ -34,6 +56,18 @@ def replay(root, output, bundle, exercise, *, qualify=False):
     sdk_asset = lock["assets"]["rust-sdk"]
     witness = lock["maintenance_witnesses"][system]
     sdk = json.loads((root / "compat/core-035/source.lock.json").read_bytes())
+    published = published_plugin is not None
+    if published and qualify:
+        raise ValueError("choose the released package or the build candidate")
+    if published:
+        release = json.loads((root / "compat/memory-maintenance-0.1.0/release.lock.json").read_bytes())
+        plugin_archive = Path(published_plugin).resolve(strict=True)
+        plugin_asset = release["platforms"][system]
+        if (release["status"] != "published-and-downloaded" or release["tag"] != TAG
+                or release["host"]["archive_sha256"] != expected
+                or release["sdk"]["sha256"] != sdk_asset["sha256"]
+                or sha256(plugin_archive) != plugin_asset["sha256"]):
+            raise ValueError("published maintenance plugin does not match the release lock")
     if qualify:
         qualification = json.loads((root / "releases/memory-maintenance/0.1.0/qualification.json").read_bytes())
         prepare = runpy.run_path(str(root / "ci/publish-plugin.py"))["prepare"]
@@ -43,7 +77,8 @@ def replay(root, output, bundle, exercise, *, qualify=False):
 
     with ZipFile(path) as archive:
         host_bytes = checked_member(archive, host_asset)
-        worker_bytes = checked_member(archive, witness["package"])
+        if not published and not qualify:
+            worker_bytes = checked_member(archive, witness["package"])
         checked_member(archive, sdk_asset)
         checked_member(archive, lock["assets"]["python-sdk"])
 
@@ -60,27 +95,16 @@ def replay(root, output, bundle, exercise, *, qualify=False):
             raise ValueError("released Host differs from the pinned maintenance contract")
 
         def install_witness(_root, _unit, destination):
-            with ZipFile(io.BytesIO(worker_bytes)) as worker:
-                raw = worker.read("package-manifest.json")
-                manifest = json.loads(raw)
-                members = manifest["artifacts"]
-                if (manifest["unit_id"] != "memory-maintenance"
-                        or manifest["version"] != "0.1.0-alpha.4"
-                        or sorted(worker.namelist()) != sorted(["package-manifest.json", *members])):
-                    raise ValueError("unexpected witnessed maintenance package")
-                destination.mkdir()
-                for name, digest in members.items():
-                    data = worker.read(name)
-                    if (name in {"", ".", ".."} or any(c in name for c in "/\\:")
-                            or hashlib.sha256(data).hexdigest() != digest):
-                        raise ValueError("changed maintenance package member: " + name)
-                    (destination / name).write_bytes(data)
-                (destination / "package-manifest.json").write_bytes(raw)
-                if system != "windows":
-                    (destination / "yuki-memory-maintenance").chmod(0o700)
-                return manifest
+            if published:
+                package = unpack_worker(plugin_archive.read_bytes(), destination, system, "0.1.0")
+                binary = "yuki-memory-maintenance.exe" if system == "windows" else "yuki-memory-maintenance"
+                if (package["release_tag"] != TAG or package["artifacts"][binary] != plugin_asset["binary_sha256"]
+                        or package["source"]["release_inputs_sha256"] != plugin_asset["release_inputs_sha256"]):
+                    raise ValueError("released package differs from the qualified plugin")
+                return package
+            return unpack_worker(worker_bytes, destination, system, "0.1.0-alpha.4")
 
-        pin = ({**lock, "rust_crate_sha256": sdk_asset["sha256"]} if qualify else
+        pin = (lock if qualify or published else
                {**lock, "sdk": sdk["sdk"], "rust_crate_sha256": sdk["rust_crate_sha256"]})
         native = {**host_asset, "binary_sha256": host_asset["sha256"], "archive_sha256": expected}
         label, result = exercise(
@@ -93,7 +117,11 @@ def replay(root, output, bundle, exercise, *, qualify=False):
         "rust_sdk_sha256": sdk_asset["sha256"], "archive_sha256": expected,
         "surface_sha256": lock["surface_sha256"], "database_reader": lock["database_reader"],
     }
-    if qualify:
+    if published:
+        result["plugin"].update(release_tag=TAG, source_commit=release["source_commit"],
+                                package_sha256=plugin_asset["sha256"], published=True)
+        result.update(card_status="PASS", candidate_only=False, remaining=[])
+    elif qualify:
         package = json.loads((output / "packages/package-manifest.json").read_bytes())
         result["plugin"].update(release_tag=package["release_tag"],
                                 release_inputs_sha256=package["source"]["release_inputs_sha256"],
