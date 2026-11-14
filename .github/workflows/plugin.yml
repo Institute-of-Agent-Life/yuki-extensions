@@ -99,7 +99,7 @@ jobs:
           YUKI_RUST_BUILD_ROOT: ${{ runner.temp }}/src
           YUKI_RUST_CACHE_ROOT: ${{ runner.temp }}/rust
         run: |
-          python -B ci-driver/ci/windows_candidate_replay.py $env:EXTENSION_CARD $env:REVISION $env:CORE_REVISION extensions core/artifacts/extension-windows/candidate windows-evidence
+          python -B ci-driver/ci/windows_candidate_replay.py $env:EXTENSION_CARD $env:REVISION $env:CORE_REVISION extensions core/artifacts/extension-windows/candidate core/artifacts/extension-windows/producer/manifest.json windows-evidence
       - name: Upload Windows candidate and replay evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
