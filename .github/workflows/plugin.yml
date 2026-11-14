@@ -29,6 +29,10 @@ jobs:
   windows:
     runs-on: windows-latest
     timeout-minutes: 40
+    env:
+      GIT_CONFIG_COUNT: '1'
+      GIT_CONFIG_KEY_0: core.autocrlf
+      GIT_CONFIG_VALUE_0: 'false'
     steps:
       - name: Check the requested revisions
         env:
