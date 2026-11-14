@@ -1,0 +1,23 @@
+{
+  "unit_id": "participation",
+  "kind": "plugin",
+  "path": "plugins/participation",
+  "ecosystem": "rust",
+  "version": "0.1.0-alpha.1",
+  "tag_prefix": "plugin/participation/v",
+  "license": "AGPL-3.0-only",
+  "notices": ["LICENSE"],
+  "runtime_files": ["plugin.toml", "README.md"],
+  "source": {
+    "repository": "Institute-of-Agent-Life/yuki-extensions",
+    "baseline": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+    "sdk_contract": "compat/participation-library/native-rule-sdk.lock.json"
+  },
+  "check_paths": [
+    "ci/participation_rule.py",
+    "tests/cases/EXT-025.py",
+    "compat/participation-library/native-host.lock.json",
+    "compat/participation-library/native-rule-sdk.lock.json",
+    "compat/participation-library/yuki-plugin-sdk-1.0.0-alpha.30.crate"
+  ]
+}

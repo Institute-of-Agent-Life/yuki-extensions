@@ -15,7 +15,9 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from threading import Thread
 from zipfile import ZipFile
 
+from package import build
 from personal_preview import free_address
+from participation_rule import run as replay_rule
 from rebuild_intake import Owner, sha, wait_for, write
 
 
@@ -82,6 +84,13 @@ def prepare(root, output):
         report["host"] = {"archive_sha256": sha(archive), "binary_sha256": sha(executable),
                           "manifest_sha256": candidate["validation"]["manifest_sha256"], **producer}
         report["library"] = {"commit": upstream["source_commit"], "sha256": upstream["source_sha256"]}
+        packages = output / "packages"
+        build(root, "participation", packages)
+        worker = packages / ("yuki-participation.exe" if os.name == "nt" else "yuki-participation")
+        rule_output = output / "native-rule"
+        rule_output.mkdir()
+        report["native_rule"] = replay_rule(work / "rule-owner", executable, worker, rule_output)
+        report["native_rule"]["package_manifest_sha256"] = sha(packages / "package-manifest.json")
     return "native-jev-intake.json", report
 
 
