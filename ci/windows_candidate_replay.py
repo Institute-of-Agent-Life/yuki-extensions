@@ -89,14 +89,21 @@ def export_trace(source, folder, host, output):
     previous["unverified_platforms"] = [x for x in previous.get("unverified_platforms", []) if x != target]
     with TemporaryDirectory(prefix="ext37-") as directory:
         staging = Path(directory)
-        for name in ["catalog", "ci", "compat", "connector", "images", "plugins", "tests", "tools"]:
-            shutil.copytree(source / name, staging / name, ignore=shutil.ignore_patterns("._*", "target"))
+        checked = subprocess.check_output(["git", "-C", source, "ls-files", "-z"]).decode()
+        for name in checked.split("\0"):
+            if not name or name.startswith("artifacts/"):
+                continue
+            path = staging / name
+            path.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(source / name, path)
         (staging / "compat/core-037-export/source.lock.json").write_text(
             json.dumps(previous, indent=2) + "\n", encoding="utf-8")
         os.environ["YUKI_HOST_CANDIDATE"] = str(archive)
-        replay = output / "export"
-        replay.mkdir()
-        result = prepare(staging, replay, real_plugin=True, export=True)
+        with TemporaryDirectory(prefix="t37-", dir="/tmp" if sys.platform == "darwin" else None) as replay:
+            try:
+                result = prepare(staging, Path(replay), real_plugin=True, export=True)
+            finally:
+                shutil.copytree(replay, output / "export", ignore=shutil.ignore_patterns("work", "._*"))
     return {"cases": result, "host_lock": entry}
 
 
