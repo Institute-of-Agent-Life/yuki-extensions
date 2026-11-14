@@ -27,9 +27,12 @@
       "sha256": "6a58c41efe2a492b3494184b3dc9a7761f313f9d91bee60e5028f3cdcd3e4f2a",
       "binary_sha256": "6d6ee8c31a8d916d979a3793bacd8f4396185fef8489b9e4f22142fa8c52f9b0",
       "validation_manifest_sha256": "d489d67a6fbc5627f37eb2cd6cac0197afb5950f09c542c75ec56e3a762f9b5d"
+    },
+    "windows-x86_64": {
+      "archive": "yuki-control-preview-132fd9f90b57-windows-x86_64.zip",
+      "sha256": "1ee7504d1ec4f7ff459805f042873fd7632913025c156ab20fbd23710be9068d",
+      "binary_sha256": "25a2f7c05ac7b5e3b2b8702c05bbc94015ba75a970987ad2189a4bd7026b6641",
+      "validation_manifest_sha256": "dcc5e394420eda41dc9d7cc5f536f7cf21a3d2f54b6c8c7aa739df197eb71b53"
     }
-  },
-  "unverified_platforms": [
-    "windows-x86_64"
-  ]
+  }
 }

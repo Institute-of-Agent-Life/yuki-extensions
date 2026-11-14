@@ -1,5 +1,5 @@
 {
-  "status": "WAITING_HJW",
+  "status": "VERIFIED_DEVELOPMENT",
   "core_source": "132fd9f90b57c8c872103b31a284a40fe1b1ada8",
   "core_schema_sha256": "fe2865633884975d738dd3d09ca71aee628115742d2110e3bb84caf2da481d1e",
   "database_schema_revision": 60,
@@ -29,8 +29,17 @@
       "plugin_sha256": "84cf6d9b1d647ce25e28f60ca1f16ee344048142227c0ac38390443847002406"
     },
     "windows-x86_64": {
-      "status": "BLOCKED",
-      "reason": "HJW SSH connection timed out"
+      "status": "PASS",
+      "scenarios": 11,
+      "report": "windows-x86_64.json",
+      "report_sha256": "afd7ede3d3fe0d31884ffbf24430c2c94bdf25535c31f65c8ed839845b540d50",
+      "host_sha256": "1ee7504d1ec4f7ff459805f042873fd7632913025c156ab20fbd23710be9068d",
+      "plugin_sha256": "0ec9711b58acafa5764f309b4183203a108fb72b399b65b3dda827cc172309d4",
+      "workflow": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/43568848287",
+      "artifact_id": 14104081592,
+      "artifact_sha256": "89c5495be6847dafe459974f76ae192be92d05396ca24bb549d051d7c42da7a2",
+      "tested_merge": "0c2f85421f4f7e47d466a4daafd14a5d20e1daa6",
+      "original_report_sha256": "5357e597cfac07b43515b8deda3a64640a056785c3e4b246e07ed0ef43de58a6"
     }
   }
 }
