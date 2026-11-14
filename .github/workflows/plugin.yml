@@ -11,7 +11,7 @@ on:
         description: Taskbook replay to run
         required: true
         type: choice
-        options: ['EXT-035', 'EXT-035-scheduled-tools', 'EXT-036', 'EXT-036-release', 'EXT-036-published', 'EXT-037']
+        options: ['EXT-035', 'EXT-035-scheduled-tools', 'EXT-035-context', 'EXT-036', 'EXT-036-release', 'EXT-036-published', 'EXT-037']
       core_revision:
         description: Exact source of the core Host candidate
         required: true

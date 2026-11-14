@@ -51,7 +51,7 @@ def verify_producer(path, candidate, card):
         raise ValueError("candidate differs from the passing producer manifest")
 
 
-def reflect(source, host, output, *, scheduled_tools=False):
+def reflect(source, host, output, *, scheduled_tools=False, continuity=False):
     from package import build
 
     package = output / "packages"
@@ -89,6 +89,13 @@ def reflect(source, host, output, *, scheduled_tools=False):
         if scheduled_tools:
             cases["scheduled_tools"] = reflection.exercise_scheduled_tools(
                 peer, source, work / "a", output / "scheduled-tools", host, binary, schedule,
+            )
+        if continuity:
+            context = output / "scheduled-context"
+            context.mkdir()
+            cases["scheduled_context"] = reflection.exercise_schedule(
+                peer, source, work / "c", context, host, binary, schedule,
+                include_tools=True, include_context=True,
             )
     return {"cases": cases, "plugin": built["artifacts"]}
 
@@ -141,7 +148,7 @@ def export_trace(source, archive, candidate, member, archive_hash, output):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("card", choices=["EXT-035", "EXT-035-scheduled-tools", "EXT-037"])
+    parser.add_argument("card", choices=["EXT-035", "EXT-035-scheduled-tools", "EXT-035-context", "EXT-037"])
     parser.add_argument("revision")
     parser.add_argument("core_revision")
     parser.add_argument("source", type=Path)
@@ -183,7 +190,9 @@ def main():
             with ZipFile(archive) as package:
                 host.write_bytes(package.read(member))
             host.chmod(0o700)
-            result = reflect(source, host, output, scheduled_tools=args.card == "EXT-035-scheduled-tools")
+            result = reflect(source, host, output,
+                             scheduled_tools=args.card in {"EXT-035-scheduled-tools", "EXT-035-context"},
+                             continuity=args.card == "EXT-035-context")
     else:
         result = export_trace(source, archive, candidate, member, archive_hash, output)
     receipt = {

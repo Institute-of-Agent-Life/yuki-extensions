@@ -30,6 +30,8 @@ pub struct Schedule {
     hours: BTreeSet<u32>,
     #[serde(default)]
     include_tools: bool,
+    #[serde(default)]
+    include_context: bool,
 }
 
 #[derive(Deserialize, Serialize)]
@@ -46,23 +48,32 @@ struct State {
 #[serde(untagged)]
 enum Pending {
     Event(u64),
-    WithTools {
+    Selection {
         event: u64,
         tools: Vec<ToolSelection>,
+        #[serde(default, skip_serializing_if = "Vec::is_empty")]
+        context: Vec<u64>,
     },
 }
 
 impl Pending {
     fn event(&self) -> u64 {
         match self {
-            Self::Event(event) | Self::WithTools { event, .. } => *event,
+            Self::Event(event) | Self::Selection { event, .. } => *event,
         }
     }
 
     fn tools(&self) -> &[ToolSelection] {
         match self {
             Self::Event(_) => &[],
-            Self::WithTools { tools, .. } => tools,
+            Self::Selection { tools, .. } => tools,
+        }
+    }
+
+    fn context(&self) -> &[u64] {
+        match self {
+            Self::Event(_) => &[],
+            Self::Selection { context, .. } => context,
         }
     }
 }
@@ -149,7 +160,7 @@ impl Schedule {
             }
         }
 
-        let advanced = state.advance(root, &path, self.include_tools, &mut call);
+        let advanced = state.advance(root, &path, self, &mut call);
         let cycle = state.cycle.as_mut().ok_or("missing reflection cycle")?;
         let outcome = match advanced {
             Ok(true) => {
@@ -177,7 +188,7 @@ impl State {
         &mut self,
         root: &Path,
         path: &Path,
-        include_tools: bool,
+        schedule: &Schedule,
         call: &mut impl FnMut(&str, Value) -> Result<Value>,
     ) -> Result<bool> {
         if self.pending.is_none() {
@@ -190,10 +201,26 @@ impl State {
             let Some(event) = first_source(&page, &self.stream.entry, self.cursor)? else {
                 return Ok(false);
             };
-            self.pending = Some(if include_tools {
-                Pending::WithTools {
+            let context = if schedule.include_context {
+                self.stream.previous(event, call)?
+            } else {
+                Vec::new()
+            };
+            let tools = if schedule.include_tools {
+                self.stream.tool_receipts(event, call)?
+            } else {
+                Vec::new()
+            };
+            if tools.len() + context.len() > MAX_TOOLS {
+                return Err(
+                    "scheduled reflection selection exceeds its original input limit".into(),
+                );
+            }
+            self.pending = Some(if schedule.include_tools || !context.is_empty() {
+                Pending::Selection {
                     event,
-                    tools: self.stream.tool_receipts(event, call)?,
+                    tools,
+                    context,
                 }
             } else {
                 Pending::Event(event)
@@ -206,7 +233,7 @@ impl State {
         let job = json!({
             "action": "reflection.run", "batch": batch,
             "plan": {"scope": self.stream.scope, "route": self.stream.route,
-                     "events": [event], "tools": pending.tools()}
+                     "events": [event], "tools": pending.tools(), "context": pending.context()}
         });
         let result = reflection::run(root, &batch, job, call)?;
         if !matches!(result["phase"].as_str(), Some("applied" | "erased")) {
@@ -225,6 +252,40 @@ impl State {
 }
 
 impl Stream {
+    fn previous(
+        &self,
+        event: u64,
+        call: &mut impl FnMut(&str, Value) -> Result<Value>,
+    ) -> Result<Vec<u64>> {
+        let page = call(
+            "maintenance.history.page",
+            json!({"scope":self.scope,"purpose":"reflect","before":event}),
+        )?;
+        if page["next_event"] != event {
+            return Err("reflection context anchor changed".into());
+        }
+        let items = page["items"]
+            .as_array()
+            .filter(|items| items.len() <= 4)
+            .ok_or("invalid reflection context page")?;
+        let mut selected = Vec::with_capacity(items.len());
+        for item in items {
+            let id = item["event"]
+                .as_u64()
+                .filter(|&id| {
+                    id > selected.last().copied().unwrap_or(0)
+                        && id < event
+                        && i64::try_from(id).is_ok()
+                })
+                .ok_or("unordered reflection context")?;
+            if item["entry"] != self.entry || item["offset"] != 0 {
+                return Err("reflection context outside the original entry".into());
+            }
+            selected.push(id);
+        }
+        Ok(selected)
+    }
+
     fn tool_receipts(
         &self,
         event: u64,
@@ -312,6 +373,7 @@ pub fn erase(root: &Path, sources: &Value) -> Result<()> {
         serde_json::from_value(sources.clone()).map_err(|e| e.to_string())?;
     if let Some(pending) = state.pending.as_ref().filter(|pending| {
         erased.contains(&pending.event())
+            || pending.context().iter().any(|id| erased.contains(id))
             || pending
                 .tools()
                 .iter()
