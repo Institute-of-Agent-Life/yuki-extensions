@@ -1,15 +1,21 @@
-name: independent-units
+name: Extension Windows CI
 
 on:
-  # Automatic checks run on the owner's macOS, Linux and Windows installations.
-  # Keep the complete hosted suite available for an explicit manual invocation.
   workflow_dispatch:
-
-# Only superseded runs for the same PR are cancelled. Main and manual runs
-# retain unique groups, so they cannot cancel each other.
-concurrency:
-  group: ${{ github.event_name == 'pull_request' && format('{0}-pr-{1}', github.workflow, github.event.pull_request.number) || format('{0}-run-{1}', github.workflow, github.run_id) }}
-  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+    inputs:
+      revision:
+        description: Exact extension PR merge commit
+        required: true
+        type: string
+      card:
+        description: Taskbook replay to run
+        required: true
+        type: choice
+        options: ['EXT-035', 'EXT-037']
+      core_revision:
+        description: Exact source of the core Host candidate
+        required: true
+        type: string
 
 env:
   PYTHONUTF8: "1"
@@ -20,7 +26,90 @@ permissions:
   contents: read
 
 jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 40
+    steps:
+      - name: Check the requested revisions
+        env:
+          REVISION: ${{ inputs.revision }}
+          CORE_REVISION: ${{ inputs.core_revision }}
+        run: |
+          foreach ($revision in @($env:REVISION, $env:CORE_REVISION)) {
+            if ($revision -cnotmatch '\A[0-9a-f]{40}\z') { throw 'Expected a full commit SHA' }
+          }
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ inputs.revision }}
+          persist-credentials: false
+          path: extensions
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: Institute-of-Agent-Life/yuki-core
+          ref: ${{ inputs.core_revision }}
+          persist-credentials: false
+          path: core
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12'
+      - uses: ilammy/msvc-dev-cmd@0b201ec74fa43914dc39ae48a89fd1d8cb592756
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          path: ci-driver
+      - name: Prepare the pinned toolchain
+        run: |
+          rustup toolchain install 1.96.0 --profile minimal --component rustfmt --component clippy
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          "TMP=$env:RUNNER_TEMP" >> $env:GITHUB_ENV
+          "TEMP=$env:RUNNER_TEMP" >> $env:GITHUB_ENV
+          "PYTHONDONTWRITEBYTECODE=1" >> $env:GITHUB_ENV
+      - name: Prepare the Host candidate from its checked source
+        working-directory: core
+        env:
+          CORE_REVISION: ${{ inputs.core_revision }}
+          EXTENSION_CARD: ${{ inputs.card }}
+        run: |
+          if ((git rev-parse HEAD) -cne $env:CORE_REVISION) { throw 'Wrong core checkout' }
+          cargo fetch --locked
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          cargo fetch --locked --manifest-path sdk/rust/Cargo.toml
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $card = if ($env:EXTENSION_CARD -eq 'EXT-035') { 'CORE-039' } else { 'CORE-037' }
+          python -B ci/check.py $card --out artifacts/extension-windows/producer
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $manifest = 'artifacts/extension-windows/producer/manifest.json'
+          $destination = 'artifacts/extension-windows/candidate'
+          if ($card -eq 'CORE-039') {
+            python -B ci/candidate_job.py native --manifest $manifest --out $destination
+          } else {
+            python -B ci/host_candidate.py --manifest $manifest --out $destination
+          }
+      - name: Exercise the native extension and retain the original receipts
+        env:
+          REVISION: ${{ inputs.revision }}
+          CORE_REVISION: ${{ inputs.core_revision }}
+          EXTENSION_CARD: ${{ inputs.card }}
+          YUKI_CRATE_CACHE: ${{ github.workspace }}/crates
+          YUKI_RUST_BUILD_ROOT: ${{ runner.temp }}/src
+          YUKI_RUST_CACHE_ROOT: ${{ runner.temp }}/rust
+        run: |
+          python -B ci-driver/ci/windows_candidate_replay.py $env:EXTENSION_CARD $env:REVISION $env:CORE_REVISION extensions core/artifacts/extension-windows/candidate windows-evidence
+      - name: Upload Windows candidate and replay evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: extension-windows-${{ github.run_attempt }}
+          path: |
+            windows-evidence/
+            core/artifacts/extension-windows/candidate/
+            core/artifacts/extension-windows/producer/manifest.json
+          if-no-files-found: warn
+          retention-days: 30
+
   select:
+    if: github.event_name != 'workflow_dispatch'
     runs-on: ubuntu-latest
     outputs:
       units: ${{ steps.affected.outputs.units }}
@@ -40,6 +129,7 @@ jobs:
           "units=$units" >> $env:GITHUB_OUTPUT
 
   acceptance:
+    if: github.event_name != 'workflow_dispatch'
     strategy:
       fail-fast: false
       matrix:
