@@ -122,7 +122,10 @@ def exercise(root, output, server, calls, *, integrity, retain, released_host,
     cfg.write_text(cfg.read_text().replace('mode = "hybrid"','mode = "lexical-only"'),encoding='utf-8')
     if retain:
         import tomllib
-        retained=tomllib.loads((owner.packages/'plugin-retained.toml').read_text(encoding='utf-8'))
+        manifest = owner.packages / 'plugin-retained.toml'
+        if not manifest.is_file():
+            manifest = owner.packages / 'plugin.toml'
+        retained=tomllib.loads(manifest.read_text(encoding='utf-8'))
         configuration=tomllib.loads(cfg.read_text(encoding='utf-8'))
         args=configuration['plugins'][0]['args'] + retained['args']
         old_line='args='+json.dumps(configuration['plugins'][0]['args'])
@@ -380,8 +383,8 @@ def exercise(root, output, server, calls, *, integrity, retain, released_host,
                 and row['frame']['result'].get('watermark')==callback['params']['watermark']),None)
             assert acknowledgement and acknowledgement['proof']=='selected quality reports removed'
             cases['erasure']['acknowledgement']=acknowledgement
-    sdk_pin=json.loads((root/'compat/core-035/source.lock.json').read_bytes())
     package=json.loads((owner.packages/'package-manifest.json').read_bytes())
+    sdk_pin=json.loads((root/package['source']['sdk_contract']).read_bytes())
     remaining = (['published plugin installation tuple'] if owner.published_host else
                  ['published Host and plugin tuple'] if integrity else ['actual SQL integrity findings'])
     return 'hygiene-report.json',{'status':'PASS','card_status':'BLOCKED','candidate_only':True,
@@ -396,5 +399,6 @@ def run(root,output):
     if bundle := os.environ.get('YUKI_STABLE_1_2_BUNDLE'):
         from maintenance_release_check import replay
 
-        return replay(root, output, bundle, prepare)
+        return replay(root, output, bundle, prepare,
+                      qualify=os.environ.get('YUKI_MAINTENANCE_RELEASE_CANDIDATE')=='1')
     return prepare(root,output,integrity=True,retain=os.environ.get('YUKI_QUALITY_RETENTION')=='1')

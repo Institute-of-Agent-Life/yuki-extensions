@@ -14,15 +14,15 @@ from package import build, sha256
 from units import inside, load_catalog
 
 
-def prepare(root, tag, output):
+def prepare(root, tag, output, *, candidate=None):
     match = re.fullmatch(r"plugin/([a-z][a-z0-9-]*)/v(\d+\.\d+\.\d+)", tag)
     if not match:
         raise ValueError("invalid plugin release tag")
     unit_id, version = match.groups()
     records = json.loads((root / "catalog/verified.json").read_bytes())
-    if tag not in records:
+    if tag not in records and candidate is None:
         raise ValueError("no registered release for this tag")
-    record = records[tag]
+    record = records[tag] if candidate is None else candidate
     unit = load_catalog(root)[unit_id]
     if unit["kind"] != "plugin" or unit["ecosystem"] != "rust":
         raise ValueError("unsupported release unit")
@@ -33,8 +33,9 @@ def prepare(root, tag, output):
     inputs = record["inputs"]
     if any(sha256(inside(root, path)) != expected for path, expected in inputs.items()):
         raise ValueError("release input differs from the verified sources")
-    required = {contract, f"catalog/{unit_id}.json", *(f"releases/{unit_id}/{version}/{f}" for f in
-                ("Cargo.lock", "Cargo.toml", "plugin.toml"))}
+    profile_files = ("Cargo.lock", "Cargo.toml", "plugin.toml")
+    required = {contract, f"catalog/{unit_id}.json",
+                *(f"releases/{unit_id}/{version}/{f}" for f in profile_files)}
     source = inside(root, unit["path"])
     files = [p for directory in ("src", "tests") for p in (source / directory).rglob("*")
              if p.is_file() and not p.name.startswith("._")]
@@ -54,11 +55,13 @@ def prepare(root, tag, output):
             dest = package / p.relative_to(source)
             dest.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(p, dest)
-        for name in ("Cargo.lock", "Cargo.toml", "plugin.toml"):
+        for name in profile_files:
             shutil.copyfile(profile / name, package / name)
         if tomllib.loads((package / "plugin.toml").read_text())["version"] != version:
             raise ValueError("runtime version differs from tag")
         unit.update(version=version, tag_prefix=f"plugin/{unit_id}/v")
+        if "runtime_files" in record:
+            unit["runtime_files"] = record["runtime_files"]
         unit["source"] = {**unit["source"], "sdk_contract": contract,
                           "release_inputs_sha256": hashlib.sha256(json.dumps(inputs, sort_keys=True).encode()).hexdigest()}
         (stage / "catalog").mkdir()

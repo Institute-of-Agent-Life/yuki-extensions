@@ -1,0 +1,21 @@
+{
+  "inputs": {
+    "catalog/memory-maintenance.json": "053b5474eef3730778cc01b71bf1cf3bd769b9cd6c60a29c6016fd733c53f6da",
+    "compat/stable-1.2/source.lock.json": "4f42d195e62a298221af39b2a3ad9324c81323868b643caadf40158728c3ac79",
+    "plugins/memory-maintenance/LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+    "plugins/memory-maintenance/rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+    "plugins/memory-maintenance/src/hygiene.rs": "43d6b9d1ef3609b0d313e27ab656439ff627a74d09ee49114b20d636fa585a10",
+    "plugins/memory-maintenance/src/main.rs": "49f00c3885d29b5d9e7c68b7bf89c51265b6ae3fd79047bb0fcaf27cc6469dfb",
+    "plugins/memory-maintenance/src/rebuild.rs": "b16a0c3e145c81649c516cd893f5cda3856129955f1fe82dae4f1a0891b74dd4",
+    "plugins/memory-maintenance/src/reflection.rs": "b51bb49a322bdf535c40eb367c1b919a7434ef9ac20d91308b383862961a89df",
+    "plugins/memory-maintenance/src/rpc.rs": "99adbb270f1119a35b4a8f1b1ab928028b1f469f152942dba22b85f7babd2a4f",
+    "plugins/memory-maintenance/src/schedule.rs": "fb420bc7bf38cfe899422520df67f7a1ff9596ed6ccf1345fa8764174ee7ec74",
+    "releases/memory-maintenance/0.1.0/Cargo.lock": "974b6b8076ca57efd55a54bc12b17ac9138db30750ece8b0b4f5edd363ceca28",
+    "releases/memory-maintenance/0.1.0/Cargo.toml": "f6377603cb6d0883259ebb0369e7ba1121d6a0dfb06ee07e11a1ae83cb701a52",
+    "releases/memory-maintenance/0.1.0/plugin.toml": "8b9f03d143ff9c0bc020a434a98b1cb24335e3e5349d18c068a20632874d0b45"
+  },
+  "runtime_files": [
+    "plugin.toml"
+  ],
+  "sdk_contract": "compat/stable-1.2/source.lock.json"
+}

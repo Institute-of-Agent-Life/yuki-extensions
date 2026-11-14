@@ -60,6 +60,7 @@
   "release_id": 445152164,
   "release_url": "https://github.com/Institute-of-Agent-Life/yuki-core/releases/tag/plugin-base-v1.2.0",
   "repository": "Institute-of-Agent-Life/yuki-core",
+  "rust_crate_sha256": "a8b860c7095dc0fea94545080e370abe2f57d4b789b137b6faef38f05a21c06f",
   "schema_sha256": "874e008e58618d0cbc4ffee0430e10d467a500eefe3e509fb160862e93c65061",
   "sdk": {
     "python": "1.2.0",
