@@ -6,11 +6,14 @@ import json
 import os
 from pathlib import Path
 import platform
+import runpy
 import subprocess
 from tempfile import TemporaryDirectory
 from zipfile import ZipFile
 
 from package import sha256
+
+TAG = "plugin/memory-maintenance/v0.1.0"
 
 
 def checked_member(archive, entry):
@@ -20,7 +23,7 @@ def checked_member(archive, entry):
     return data
 
 
-def replay(root, output, bundle, exercise):
+def replay(root, output, bundle, exercise, *, qualify=False):
     lock = json.loads((root / "compat/stable-1.2/source.lock.json").read_bytes())
     path = Path(bundle).resolve(strict=True)
     expected = lock["asset_sha256"]["yuki-plugin-base-1.2.0.zip"]
@@ -31,6 +34,12 @@ def replay(root, output, bundle, exercise):
     sdk_asset = lock["assets"]["rust-sdk"]
     witness = lock["maintenance_witnesses"][system]
     sdk = json.loads((root / "compat/core-035/source.lock.json").read_bytes())
+    if qualify:
+        qualification = json.loads((root / "releases/memory-maintenance/0.1.0/qualification.json").read_bytes())
+        prepare = runpy.run_path(str(root / "ci/publish-plugin.py"))["prepare"]
+
+        def install_release(_root, _unit, destination):
+            return prepare(root, TAG, destination, candidate=qualification)
 
     with ZipFile(path) as archive:
         host_bytes = checked_member(archive, host_asset)
@@ -71,17 +80,27 @@ def replay(root, output, bundle, exercise):
                     (destination / "yuki-memory-maintenance").chmod(0o700)
                 return manifest
 
-        pin = {**lock, "sdk": sdk["sdk"], "rust_crate_sha256": sdk["rust_crate_sha256"]}
+        pin = ({**lock, "rust_crate_sha256": sdk_asset["sha256"]} if qualify else
+               {**lock, "sdk": sdk["sdk"], "rust_crate_sha256": sdk["rust_crate_sha256"]})
         native = {**host_asset, "binary_sha256": host_asset["sha256"], "archive_sha256": expected}
         label, result = exercise(
             root, output, integrity=True, retain=True,
-            released_host=(host, pin, native), package_builder=install_witness,
+            released_host=(host, pin, native),
+            package_builder=install_release if qualify else install_witness,
         )
     result["published_base"] = {
         "tag": lock["tag"], "source_commit": lock["source_commit"], "sdk": lock["sdk"],
         "rust_sdk_sha256": sdk_asset["sha256"], "archive_sha256": expected,
         "surface_sha256": lock["surface_sha256"], "database_reader": lock["database_reader"],
     }
-    result["plugin"].update(source_commit=witness["source_commit"],
-                            package_sha256=witness["package"]["sha256"], published=False)
+    if qualify:
+        package = json.loads((output / "packages/package-manifest.json").read_bytes())
+        result["plugin"].update(release_tag=package["release_tag"],
+                                release_inputs_sha256=package["source"]["release_inputs_sha256"],
+                                published=False)
+        result["card_status"] = "RELEASE_CANDIDATE_VERIFIED"
+        result["remaining"] = ["publish and download the independent plugin"]
+    else:
+        result["plugin"].update(source_commit=witness["source_commit"],
+                                package_sha256=witness["package"]["sha256"], published=False)
     return label, result

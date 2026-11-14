@@ -11,7 +11,7 @@ on:
         description: Taskbook replay to run
         required: true
         type: choice
-        options: ['EXT-035', 'EXT-035-scheduled-tools', 'EXT-036', 'EXT-037']
+        options: ['EXT-035', 'EXT-035-scheduled-tools', 'EXT-036', 'EXT-036-release', 'EXT-037']
       core_revision:
         description: Exact source of the core Host candidate
         required: true
@@ -48,7 +48,7 @@ jobs:
           persist-credentials: false
           path: extensions
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
-        if: inputs.card != 'EXT-036'
+        if: inputs.card != 'EXT-036' && inputs.card != 'EXT-036-release'
         with:
           repository: Institute-of-Agent-Life/yuki-core
           ref: ${{ inputs.core_revision }}
@@ -71,7 +71,7 @@ jobs:
           "TEMP=$env:RUNNER_TEMP" >> $env:GITHUB_ENV
           "PYTHONDONTWRITEBYTECODE=1" >> $env:GITHUB_ENV
       - name: Prepare the Host candidate from its checked source
-        if: inputs.card != 'EXT-036'
+        if: inputs.card != 'EXT-036' && inputs.card != 'EXT-036-release'
         working-directory: core
         env:
           CORE_REVISION: ${{ inputs.core_revision }}
@@ -93,7 +93,7 @@ jobs:
             python -B ci/host_candidate.py --manifest $manifest --out $destination
           }
       - name: Exercise the native extension and retain the original receipts
-        if: inputs.card != 'EXT-036'
+        if: inputs.card != 'EXT-036' && inputs.card != 'EXT-036-release'
         env:
           REVISION: ${{ inputs.revision }}
           CORE_REVISION: ${{ inputs.core_revision }}
@@ -104,11 +104,12 @@ jobs:
         run: |
           python -B ci-driver/ci/windows_candidate_replay.py $env:EXTENSION_CARD $env:REVISION $env:CORE_REVISION extensions core/artifacts/extension-windows/candidate core/artifacts/extension-windows/producer/manifest.json windows-evidence
       - name: Replay EXT-036 against the published Host
-        if: inputs.card == 'EXT-036'
+        if: inputs.card == 'EXT-036' || inputs.card == 'EXT-036-release'
         working-directory: extensions
         env:
           REVISION: ${{ inputs.revision }}
           CORE_REVISION: ${{ inputs.core_revision }}
+          EXTENSION_CARD: ${{ inputs.card }}
         run: |
           if ((git rev-parse HEAD) -cne $env:REVISION) { throw 'Wrong extension checkout' }
           $pin = Get-Content compat/stable-1.2/source.lock.json -Raw | ConvertFrom-Json
@@ -117,6 +118,9 @@ jobs:
           $env:YUKI_STABLE_1_2_BUNDLE = Join-Path $env:RUNNER_TEMP $asset
           Invoke-WebRequest -Uri ("https://github.com/Institute-of-Agent-Life/yuki-core/releases/download/plugin-base-v1.2.0/" + $asset) -OutFile $env:YUKI_STABLE_1_2_BUNDLE
           $env:PYTHONPATH = Join-Path (Get-Location) 'ci'
+          if ($env:EXTENSION_CARD -eq 'EXT-036-release') {
+            $env:YUKI_MAINTENANCE_RELEASE_CANDIDATE = '1'
+          }
           $replay = Join-Path $env:RUNNER_TEMP 'yuki36'
           python -B ci/check.py EXT-036 --out $replay
           $result = $LASTEXITCODE
@@ -124,6 +128,10 @@ jobs:
           Get-ChildItem -LiteralPath $replay -File | Copy-Item -Destination $output.FullName
           if (Test-Path (Join-Path $replay 'work/wire.jsonl')) {
             Copy-Item (Join-Path $replay 'work/wire.jsonl') (Join-Path $output.FullName 'observed-wire.jsonl')
+          }
+          $package = Join-Path $replay 'packages'
+          if (Test-Path (Join-Path $package 'package-manifest.json')) {
+            Copy-Item -LiteralPath $package -Destination $output.FullName -Recurse
           }
           exit $result
       - name: Upload Windows candidate and replay evidence
