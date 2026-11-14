@@ -1,0 +1,227 @@
+{
+  "status": "PASS",
+  "card": "EXT-035",
+  "platform": "Linux-6.12.54-linuxkit-aarch64-with-glibc2.41",
+  "extension_commit": "574cb627706c94b7545f3652b1025a4662680d56",
+  "core_commit": "2c49627825305f5bff543b38b342df0f9bdbce6c",
+  "core_archive_sha256": "e7e024241e93923cb6d3a70625759a46a8d365c54d3d17cbd18419ae656df3f2",
+  "core_binary_sha256": "62f9582f46c59dad7656bb01cb0d9c27b149b19db46b57144126a4b18b5db7a3",
+  "paid_calls": 0,
+  "cases": {
+    "foreground": {
+      "cursor": 2,
+      "cycle": {
+        "slot": "2026-11-14T06",
+        "completed": 1,
+        "outcome": "held"
+      },
+      "original_paid_request": "14856177-d650-4a75-8992-a618dd381699",
+      "paid_response_lost_then_recovered": true,
+      "transports": 1,
+      "scope_and_cursor_checked": true,
+      "outside_slot_transports": 0,
+      "cold_repeat_transports": 0,
+      "daily_limit": 1,
+      "reserved_undispatched_request": "6e93c94a-e80c-4dee-863d-31dfd7486c94",
+      "original_paid_result_settled_after_limit": true,
+      "foreground_selected_no_source_before_idle": true
+    },
+    "schedule": {
+      "cursor": 4,
+      "cycle": {
+        "slot": "2026-11-14T06",
+        "completed": 2,
+        "outcome": "drained"
+      },
+      "original_paid_request": "4b891209-7e3e-4144-9538-0264a83b2aeb",
+      "paid_response_lost_then_recovered": true,
+      "transports": 2,
+      "scope_and_cursor_checked": true,
+      "outside_slot_transports": 0,
+      "cold_repeat_transports": 0
+    },
+    "events": {
+      "paid_before_kill": {
+        "erased": false,
+        "logical": "plugin-aux:4fb7f7ce-afaf-453f-a93a-317fe562af73",
+        "request": "4fb7f7ce-afaf-453f-a93a-317fe562af73",
+        "root": "f58db46e-2fcd-4f4d-8e8d-8484721af30b",
+        "state": "response",
+        "usage": {
+          "input": 9,
+          "output": 3,
+          "total": 12
+        }
+      },
+      "after_restart": {
+        "phase": "applied",
+        "preview": "1e56b8d9-f3f8-47b1-91e0-c637ed26f049",
+        "receipts": {
+          "applied": [
+            {
+              "ordinal": 0,
+              "receipt": {
+                "fact": "af16858a-d2df-48cd-b069-787c9c0a3cde",
+                "outcome": "active",
+                "revision": 1
+              }
+            }
+          ],
+          "operation": "reflection:first-batch",
+          "preview": "1e56b8d9-f3f8-47b1-91e0-c637ed26f049"
+        },
+        "request": "4fb7f7ce-afaf-453f-a93a-317fe562af73"
+      },
+      "empty": {
+        "phase": "applied",
+        "preview": "8072fdf6-004c-47ce-803e-631b319c59f7",
+        "receipts": {
+          "applied": [],
+          "operation": "reflection:empty",
+          "preview": "8072fdf6-004c-47ce-803e-631b319c59f7"
+        },
+        "request": "02d9ca9b-2ce4-4710-866c-85e4c2df5fe5"
+      },
+      "unknown": {
+        "phase": "requested",
+        "request": "b2f72fc9-510c-41ee-8a96-c8c9cb457b59"
+      },
+      "erase_late": {
+        "key": "reflection-late",
+        "sources": [
+          4
+        ],
+        "watermark": 1
+      },
+      "erase_retained": {
+        "key": "reflection-source",
+        "sources": [
+          1
+        ],
+        "watermark": 2
+      },
+      "provider_observations": [
+        {
+          "mode": "active",
+          "route": "/model"
+        },
+        {
+          "mode": "active",
+          "route": "/model"
+        },
+        {
+          "mode": "active",
+          "route": "/model"
+        },
+        {
+          "mode": "active",
+          "route": "/model"
+        },
+        {
+          "mode": "unknown",
+          "route": "/model"
+        },
+        {
+          "mode": "held",
+          "route": "/model"
+        }
+      ],
+      "original_model_callback_count": 7,
+      "original_physical_attempts": 6,
+      "foreign_entry_rejected_before_model": true,
+      "private_global_and_context_writes_rejected": true,
+      "erased_batch_resubmission_refused": true
+    },
+    "tools": {
+      "original": {
+        "execution": "27e144a6-6207-42fd-b3b6-f3d2a66d9eec",
+        "receipt": 1,
+        "sources": [
+          1
+        ]
+      },
+      "operation": "receipt-1",
+      "frozen_tools": [
+        {
+          "receipt": 1,
+          "role": "primary",
+          "version": "f4d6a012c95fb0c1666d9663abcc3d0a0ab234a20b9328eb76e7705d548f43da"
+        }
+      ],
+      "original_model": "0db9e43c-07e4-42ea-88a6-1c63512206ad",
+      "model_transport_attempts": 3,
+      "cold_recovery_with_original_model_receipt": true,
+      "source_erased_fact_and_checkpoint": true,
+      "unselected_receipt_and_fabricated_quote_denied": true,
+      "foreign_wrong_source_missing_and_oversize_denied_before_model": true
+    },
+    "rebuild": {
+      "denied": {
+        "missing_evidence": {
+          "error": "{\"code\":-32003,\"message\":\"method, grant or original scope denied\"}",
+          "retry": "explicit original-operation recovery only",
+          "state": "not_completed"
+        },
+        "loopback_requests": 0
+      },
+      "authorized": {
+        "review": {
+          "action_count": 2,
+          "applied_ordinals": [],
+          "content": {
+            "id": "b63e6c82-ca4b-48fa-822f-dd806788a30a",
+            "kind": "preview",
+            "sha256": "c0ab8c4b017a4952f5a85cfa83f5374590524cbe1ac690972591843bcfbd1f22",
+            "size": 934
+          },
+          "execution": "active",
+          "pending": null,
+          "phase": "review",
+          "preview": "b63e6c82-ca4b-48fa-822f-dd806788a30a"
+        },
+        "cut_host_receipt": {
+          "applied": [
+            {
+              "ordinal": 0,
+              "receipt": {
+                "fact": "a8c10a94-dac0-454f-9f89-96affdf9ecbe",
+                "outcome": "active",
+                "revision": 1
+              }
+            }
+          ],
+          "operation": "b63e6c82-ca4b-48fa-822f-dd806788a30a/approved-tea",
+          "preview": "b63e6c82-ca4b-48fa-822f-dd806788a30a"
+        },
+        "facts": [
+          [
+            "tea",
+            1
+          ]
+        ],
+        "outside_scope_denied": true,
+        "changed_subset_denied": true,
+        "pause_resume_cancel": true,
+        "local_source_erasure_verified": true,
+        "host_erasure_acknowledged": true,
+        "unresolved_inbox_then_original_watermark": true,
+        "mismatched_receipt_not_confirmed": true,
+        "explicit_resume_same_receipt": true,
+        "loopback_requests": 1
+      }
+    }
+  },
+  "plugin": {
+    "Cargo.lock": "894a732ae7222e1af3514425bb88828206eb9ac4d1449b35847865833d34583b",
+    "LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+    "README.md": "e87dad586c19ddb372c8ee89caa1614bc9fa8229c26796c4eee477982f4b049c",
+    "plugin-rebuild.toml": "f8c1543c05280ca036808c19f83a5fd51d982e03ce6bdd61913cb4a59be6e4f6",
+    "plugin-reflection-schedule.toml": "c31cdb0f03c4709e832b7d7aa520fd5f0342a770be676a330975e7fd6b70ed6a",
+    "plugin-reflection-tools.toml": "2af9910dbe6d1557422d471487e9e9d4bcf7f042b7045593002b05de9f7cf17e",
+    "plugin-reflection.toml": "59c12d6f55cbda151df1ad9e985a23c246ea37682e91858543b42c3402c285d5",
+    "plugin-retained.toml": "d614e11a02e2dc867b21582e17d0f8324177f256fcec43eb557437effec1f551",
+    "plugin.toml": "55cc17da0892ccb815911e16744139b518a24b53987fbb5b4d5903a0a7339ca1",
+    "rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+    "yuki-memory-maintenance": "30fdb21637f38b3c7a8c4e9709e161f7ae1198ee857ba6a5a60281bf37bf3761"
+  }
+}

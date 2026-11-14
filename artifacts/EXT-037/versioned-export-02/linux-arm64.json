@@ -1,0 +1,371 @@
+{
+  "status": "PASS",
+  "card_status": "UNPUBLISHED_EXPORT_CANDIDATE",
+  "diagnostic_only": false,
+  "private_store": false,
+  "core": {
+    "source_commit": "132fd9f90b57c8c872103b31a284a40fe1b1ada8",
+    "handoff_commit": null,
+    "published": false,
+    "host": {
+      "archive": "yuki-control-preview-132fd9f90b57-linux-arm64.zip",
+      "sha256": "6a58c41efe2a492b3494184b3dc9a7761f313f9d91bee60e5028f3cdcd3e4f2a",
+      "binary_sha256": "6d6ee8c31a8d916d979a3793bacd8f4396185fef8489b9e4f22142fa8c52f9b0",
+      "validation_manifest_sha256": "d489d67a6fbc5627f37eb2cd6cac0197afb5950f09c542c75ec56e3a762f9b5d"
+    },
+    "sdk": {
+      "version": "1.0.0-alpha.11",
+      "sha256": "cb6db37ce6b3b40d258e209a8561e01e4d496ad14640615a6676e34665031193"
+    },
+    "host_schema_sha256": "fe2865633884975d738dd3d09ca71aee628115742d2110e3bb84caf2da481d1e",
+    "personal_schema_sha256": null,
+    "media_schema_sha256": null,
+    "plugin_sha256": "84cf6d9b1d647ce25e28f60ca1f16ee344048142227c0ac38390443847002406",
+    "wire_sha256": "3707174aab1389cd6208fd658cd942c19597027f408f1579a030de477937a98f"
+  },
+  "original_event": 1,
+  "cases": [
+    {
+      "case": "admin-trace-metadata",
+      "original_call": {
+        "arguments": {
+          "after": 0,
+          "content": false,
+          "identity": "1",
+          "kind": "event",
+          "limit": 3
+        },
+        "handle": "87a164a4-eda8-494f-ab91-3d0799b890c6",
+        "name": "trace_query",
+        "operation": "809cc497-2200-4253-9475-720d34345ba4",
+        "ordinal": null,
+        "parent": null,
+        "revision": "f2a6d6c3ea1e7090272c62cc7acd2d5d8f369d2da0465a2f2f44083d01313322"
+      },
+      "response": {
+        "Ok": {
+          "items": [
+            {
+              "conversation_id": "835c5a05-ad12-4400-abfe-1f9d0e83159e",
+              "created_at": "2026-11-14T03:38:08Z",
+              "delivered_event_id": null,
+              "expires_at": "2026-12-14T03:38:08Z",
+              "generation": 1,
+              "id": 1,
+              "kind": "execution",
+              "operation_id": null,
+              "origin": "human",
+              "payload_status": "available",
+              "source_event_id": 1,
+              "turn_id": "f5213ff3-c12c-4a01-bec5-9e7e178223b0",
+              "work_id": "2257490c-52c8-4f14-9eeb-4f05eb1274da"
+            },
+            {
+              "conversation_id": "835c5a05-ad12-4400-abfe-1f9d0e83159e",
+              "created_at": "2026-11-14T03:38:08Z",
+              "delivered_event_id": null,
+              "expires_at": "2026-12-14T03:38:08Z",
+              "generation": 1,
+              "id": 2,
+              "kind": "execution",
+              "operation_id": null,
+              "origin": "human",
+              "payload_status": "available",
+              "source_event_id": 1,
+              "turn_id": "f5213ff3-c12c-4a01-bec5-9e7e178223b0",
+              "work_id": "2257490c-52c8-4f14-9eeb-4f05eb1274da"
+            },
+            {
+              "conversation_id": "835c5a05-ad12-4400-abfe-1f9d0e83159e",
+              "created_at": "2026-11-14T03:38:08Z",
+              "delivered_event_id": null,
+              "expires_at": "2026-12-14T03:38:08Z",
+              "generation": 1,
+              "id": 3,
+              "kind": "model",
+              "operation_id": "f5213ff3-c12c-4a01-bec5-9e7e178223b0:logical:0:http:0",
+              "origin": "human",
+              "payload_status": "available",
+              "source_event_id": 1,
+              "turn_id": "f5213ff3-c12c-4a01-bec5-9e7e178223b0",
+              "work_id": "2257490c-52c8-4f14-9eeb-4f05eb1274da"
+            }
+          ],
+          "next_cursor": 3
+        }
+      }
+    },
+    {
+      "case": "admin-trace-content",
+      "original_call": {
+        "arguments": {
+          "after": 3,
+          "content": true,
+          "identity": "1",
+          "kind": "event",
+          "limit": 3
+        },
+        "handle": "44e3f2e0-4381-4a03-a803-07077daa5494",
+        "name": "trace_query",
+        "operation": "a6a7581c-679c-41b1-b7ff-aee5d6685ef0",
+        "ordinal": null,
+        "parent": null,
+        "revision": "f2a6d6c3ea1e7090272c62cc7acd2d5d8f369d2da0465a2f2f44083d01313322"
+      },
+      "response": {
+        "Ok": {
+          "items": [
+            {
+              "conversation_id": "835c5a05-ad12-4400-abfe-1f9d0e83159e",
+              "created_at": "2026-11-14T03:38:08Z",
+              "delivered_event_id": null,
+              "expires_at": "2026-12-14T03:38:08Z",
+              "generation": 1,
+              "id": 4,
+              "kind": "tool",
+              "operation_id": "096c24cb-ed05-454f-a549-5aee1ef606d1",
+              "origin": "human",
+              "payload": {
+                "data": {
+                  "arguments": {
+                    "action": "accept",
+                    "goal": "TRACE_CANARY_a0ae4853-814f-4c6c-baf8-6ffa655c21c0"
+                  },
+                  "state": "intent",
+                  "tool": "task_control"
+                },
+                "redactions": []
+              },
+              "payload_status": "available",
+              "source_event_id": 1,
+              "turn_id": "f5213ff3-c12c-4a01-bec5-9e7e178223b0",
+              "work_id": "2257490c-52c8-4f14-9eeb-4f05eb1274da"
+            },
+            {
+              "conversation_id": "835c5a05-ad12-4400-abfe-1f9d0e83159e",
+              "created_at": "2026-11-14T03:38:08Z",
+              "delivered_event_id": null,
+              "expires_at": "2026-12-14T03:38:08Z",
+              "generation": 1,
+              "id": 5,
+              "kind": "model",
+              "operation_id": "f5213ff3-c12c-4a01-bec5-9e7e178223b0:logical:0:http:0",
+              "origin": "human",
+              "payload": {
+                "data": {
+                  "http_status": 200,
+                  "request": {
+                    "bytes": 52284,
+                    "sha256": "6f2f69b1cf67f619acf05e225c84520b5390286794c224705c3b83034d4669ae",
+                    "trace_omitted": "size"
+                  },
+                  "response": {
+                    "choices": [
+                      {
+                        "finish_reason": "tool_calls",
+                        "index": 0,
+                        "message": {
+                          "content": null,
+                          "role": "assistant",
+                          "tool_calls": [
+                            {
+                              "function": {
+                                "arguments": "{\"action\":\"accept\",\"goal\":\"TRACE_CANARY_a0ae4853-814f-4c6c-baf8-6ffa655c21c0\"}",
+                                "name": "task_control"
+                              },
+                              "id": "control-intake-1",
+                              "type": "function"
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "id": "control-intake-1",
+                    "usage": {
+                      "completion_tokens": 1,
+                      "prompt_tokens": 2,
+                      "total_tokens": 3
+                    }
+                  },
+                  "state": "response",
+                  "usage": {
+                    "input": 2,
+                    "output": 1,
+                    "total": 3
+                  }
+                },
+                "redactions": [
+                  "$.request"
+                ]
+              },
+              "payload_status": "available",
+              "source_event_id": 1,
+              "turn_id": "f5213ff3-c12c-4a01-bec5-9e7e178223b0",
+              "work_id": "2257490c-52c8-4f14-9eeb-4f05eb1274da"
+            },
+            {
+              "conversation_id": "835c5a05-ad12-4400-abfe-1f9d0e83159e",
+              "created_at": "2026-11-14T03:38:08Z",
+              "delivered_event_id": null,
+              "expires_at": "2026-12-14T03:38:08Z",
+              "generation": 1,
+              "id": 6,
+              "kind": "tool",
+              "operation_id": "096c24cb-ed05-454f-a549-5aee1ef606d1",
+              "origin": "human",
+              "payload": {
+                "data": {
+                  "arguments": {
+                    "action": "accept",
+                    "goal": "TRACE_CANARY_a0ae4853-814f-4c6c-baf8-6ffa655c21c0"
+                  },
+                  "result": {
+                    "attached": true,
+                    "queued": false,
+                    "work_id": "2257490c-52c8-4f14-9eeb-4f05eb1274da"
+                  },
+                  "state": "confirmed",
+                  "tool": "task_control"
+                },
+                "redactions": []
+              },
+              "payload_status": "available",
+              "source_event_id": 1,
+              "turn_id": "f5213ff3-c12c-4a01-bec5-9e7e178223b0",
+              "work_id": "2257490c-52c8-4f14-9eeb-4f05eb1274da"
+            }
+          ],
+          "next_cursor": 6
+        }
+      }
+    },
+    {
+      "case": "ordinary-trace",
+      "original_call": {
+        "arguments": {
+          "after": 0,
+          "content": false,
+          "identity": "1",
+          "kind": "event",
+          "limit": 3
+        },
+        "handle": "57ff0170-3275-4ca5-b1f0-4b663d68dafe",
+        "name": "trace_query",
+        "operation": "9d1bae5d-3dfc-43d1-a585-3c3d62d5be8f",
+        "ordinal": null,
+        "parent": null,
+        "revision": "f2a6d6c3ea1e7090272c62cc7acd2d5d8f369d2da0465a2f2f44083d01313322"
+      },
+      "response": {
+        "Err": "{\"code\":-32003,\"message\":\"method, grant or original scope denied\"}"
+      }
+    },
+    {
+      "case": "export-metadata",
+      "event": 5,
+      "result": {
+        "data": {
+          "handle": "d4081952-e1eb-4915-8799-2c74fbf75443",
+          "next_cursor": 20,
+          "path": "/result",
+          "schema": "yuki.trace.export/1",
+          "version": "30175420a7be6df5fddccf18e8b238bf0fb0535901db501fdfab77aa46d0e0ca"
+        },
+        "ok": true
+      }
+    },
+    {
+      "case": "export-content",
+      "event": 6,
+      "result": {
+        "data": {
+          "handle": "05546081-55dd-4feb-8add-e0fd1bfedb33",
+          "next_cursor": 20,
+          "path": "/result",
+          "schema": "yuki.trace.export/1",
+          "version": "448742bb86e8088ad90ab9219dab9e74651ecb5f7d8b487e51e8c5dc7eb9ee1b"
+        },
+        "ok": true
+      }
+    },
+    {
+      "case": "export-ordinary",
+      "event": 7,
+      "result": {
+        "error": "{\"code\":-32003,\"message\":\"method, grant or original scope denied\"}",
+        "ok": false
+      }
+    },
+    {
+      "case": "export-invalid-selector",
+      "event": 8,
+      "result": {
+        "error": "unknown trace export option",
+        "ok": false
+      }
+    },
+    {
+      "case": "export-revoked",
+      "event": 9,
+      "result": {
+        "error": "{\"code\":-32003,\"message\":\"method, grant or original scope denied\"}",
+        "ok": false
+      }
+    },
+    {
+      "case": "revoked-trace",
+      "original_call": {
+        "arguments": {
+          "after": 0,
+          "content": false,
+          "identity": "1",
+          "kind": "event",
+          "limit": 3
+        },
+        "handle": "2f21d3cb-ce9c-4556-8999-b50bf6013181",
+        "name": "trace_query",
+        "operation": "10b1df9a-2888-4252-9168-941f892ace9f",
+        "ordinal": null,
+        "parent": null,
+        "revision": "f2a6d6c3ea1e7090272c62cc7acd2d5d8f369d2da0465a2f2f44083d01313322"
+      },
+      "response": {
+        "Err": "{\"code\":-32003,\"message\":\"method, grant or original scope denied\"}"
+      }
+    },
+    {
+      "case": "erased-source-read",
+      "original_call": {
+        "arguments": {
+          "after": 3,
+          "content": true,
+          "identity": "1",
+          "kind": "event",
+          "limit": 3
+        },
+        "handle": "cdefd2d2-6240-43c5-b052-8cbe96226a91",
+        "name": "trace_query",
+        "operation": "abf90953-4f83-4562-8688-a7f576514e06",
+        "ordinal": null,
+        "parent": null,
+        "revision": "f2a6d6c3ea1e7090272c62cc7acd2d5d8f369d2da0465a2f2f44083d01313322"
+      },
+      "response": {
+        "Ok": {
+          "items": [],
+          "next_cursor": null
+        }
+      }
+    },
+    {
+      "case": "export-original-source-erased",
+      "artifact_bodies_cleared": 2
+    }
+  ],
+  "model_http_calls": 12,
+  "full_card_not_executed": [
+    "private store and bounded queue",
+    "R18 delayed writer and real effect reconciliation",
+    "published producer and consumer acceptance"
+  ]
+}

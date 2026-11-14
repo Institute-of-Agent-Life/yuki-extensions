@@ -173,7 +173,8 @@ the scope, route, entry, initial cursor and timezone across restart.
 
 On a Host with reflection admission configured, set `quiet_seconds` and
 `max_daily_calls` in `[reflection_budget]` to enforce foreground and daily
-request limits. A foreground deferral before selecting a batch waits within the
-current slot. A deferral after selection retains that batch for a later slot.
+request limits. A foreground deferral keeps the original cursor and any
+selected batch. The worker resumes within the configured slot after Main is
+idle, including after a restart.
 Scheduled context and automatic tool receipt selection require additional
 acceptance. Tool receipts can be reflected on through the explicit mode above.

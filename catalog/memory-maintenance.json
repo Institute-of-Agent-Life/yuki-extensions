@@ -3,7 +3,7 @@
   "kind": "plugin",
   "path": "plugins/memory-maintenance",
   "ecosystem": "rust",
-  "version": "0.1.0-alpha.7",
+  "version": "0.1.0-alpha.8",
   "tag_prefix": "memory-maintenance/v",
   "license": "AGPL-3.0-only",
   "notices": ["LICENSE"],

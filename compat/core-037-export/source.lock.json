@@ -1,0 +1,38 @@
+{
+  "repository": "Institute-of-Agent-Life/yuki-core",
+  "source_commit": "132fd9f90b57c8c872103b31a284a40fe1b1ada8",
+  "source_tree_sha256": "5efc495e45ac9d33a4a5ad355ec8826aa5b650b6ef75624515916cbd5289659b",
+  "published": false,
+  "schema_sha256": "fe2865633884975d738dd3d09ca71aee628115742d2110e3bb84caf2da481d1e",
+  "control_schema_sha256": "ff3efce8020cbc6aff324c2aebfb6a90c863f3c60ea27b54df4af17d59a9c213",
+  "database_schema_revision": 60,
+  "sdk": {
+    "python": "1.0.0a11",
+    "rust": "1.0.0-alpha.11"
+  },
+  "rust_crate_sha256": "cb6db37ce6b3b40d258e209a8561e01e4d496ad14640615a6676e34665031193",
+  "producer_sdk": {
+    "python": "1.0.0a23",
+    "rust": "1.0.0-alpha.23"
+  },
+  "platforms": {
+    "darwin-arm64": {
+      "archive": "yuki-control-preview-132fd9f90b57-darwin-arm64.zip",
+      "sha256": "bfa88a823770935f447aa76ae4826ff0786eaf876610e32a52aed7e8b85ea6cd",
+      "binary_sha256": "2de40554c0c01e8701d7a5840e6f8d228b492cb474c204cffc429f777e737760",
+      "validation_manifest_sha256": "ddc0f03548a61eb28b6579f0775fa30d8014358bf5d49089781f994aa9f843f4"
+    },
+    "linux-arm64": {
+      "archive": "yuki-control-preview-132fd9f90b57-linux-arm64.zip",
+      "sha256": "6a58c41efe2a492b3494184b3dc9a7761f313f9d91bee60e5028f3cdcd3e4f2a",
+      "binary_sha256": "6d6ee8c31a8d916d979a3793bacd8f4396185fef8489b9e4f22142fa8c52f9b0",
+      "validation_manifest_sha256": "d489d67a6fbc5627f37eb2cd6cac0197afb5950f09c542c75ec56e3a762f9b5d"
+    },
+    "windows-x86_64": {
+      "archive": "yuki-control-preview-132fd9f90b57-windows-x86_64.zip",
+      "sha256": "1ee7504d1ec4f7ff459805f042873fd7632913025c156ab20fbd23710be9068d",
+      "binary_sha256": "25a2f7c05ac7b5e3b2b8702c05bbc94015ba75a970987ad2189a4bd7026b6641",
+      "validation_manifest_sha256": "dcc5e394420eda41dc9d7cc5f536f7cf21a3d2f54b6c8c7aa739df197eb71b53"
+    }
+  }
+}

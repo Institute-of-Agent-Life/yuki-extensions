@@ -371,7 +371,7 @@ policy、限定兩個 origin 的 game profile 以及原命令 handle。驗收由
 原 GitHub Monitor 的 manifest／observe／register／commands／polling／config 已固定原版 hash，
 R11 的舊 Host 和 CORE-058 比對見 [遷移對照](sdk-migration.md#github-monitor-123)。
 
-## CORE-037 → EXT-037：真查詢已可用，私庫訂閱與清除仍需公開契約
+## CORE-037 → EXT-037 診斷查詢、匯出與私庫訂閱
 
 固定來源 `1e7b89362b6f806aa11eed841b28071b22151e7e`、SDK alpha.11，三平台 ZIP
 及成員已核，見 `compat/core-037/source.lock.json` 和 EXT-037 producer-intake。
@@ -379,8 +379,12 @@ Windows 真 Rust probe 與獨立 `yuki-trace` release 插件均使用原 Main to
 handle 呼叫 `control.read/trace.read`。kind／identity／after／limit／content 沿原
 Admin DTO；metadata 與明選正文成功，普通人／撤權被 -32003 拒絕，擦除原 source
 後讀回空頁。原 canary、逐方法 wire、模型 HTTP、build 和 Host/SDK/binary digest
-見 `artifacts/EXT-037/source-intake-01` 與 `candidate-02`。這是未發布查詢候選，
-不是完整 trace／R18／匯出驗收。
+見 `artifacts/EXT-037/source-intake-01` 與 `candidate-02`。
+
+Mac 和 Linux 使用未發布核心來源 `132fd9f90b57`，已透過真 trace 插件驗
+`/ai trace export`、原版本讀取、撤權、同一原事件重投、來源擦除及暫時媒體連結
+清除。候選在 `compat/core-037-export/source.lock.json`，原回條見
+`artifacts/EXT-037/versioned-export-02/index.json`。Windows 候選待 HJW 復驗。
 
 請在核心擁有的既有 observer/control/forget 合同中補齊以下可直接消費的路徑：
 
@@ -393,12 +397,11 @@ Admin DTO；metadata 與明選正文成功，普通人／撤權被 -32003 拒絕
   dependency？需要來源集合、原讀取授權／generation、清除 watermark、重啟 pending
   和證明 ACK 的具體字段與先後順序。現有無私庫的 query consumer 擦除後沒有 callback
   或 pending；不據此判核心 bug，也不手動 operator acquire 冒充產品自動登記。
-- **R18 與匯出**：請交付暫停 writer → forget → 原模型／工具確認 → 舊 writer 返回
-  的真正反例，以及拒絕已撤權 reader、metadata 預設／全文另權、刪除後不可重放的
-  versioned tool artifact 讀取方式。opaque／簽名／憑證／臨時媒體 URL 不得出現在匯出。
+- **R18**：以真私庫 writer 重放暫停寫入、forget、原模型／工具確認及晚返。
+  保留原權威效果、用量及回條，核對副本無正文及可讀版本。
 
-本插件目前只保留單次 RPC 的記憶體結果，沒有私庫、排隊 writer 或 cache；因此沒有
-聲稱清除私庫、背壓丟樣、全文留存或匯出已完成。原核心效果及用量仍由核心原回條判定。
+本插件目前只保留單次 RPC 的記憶體結果。私庫清除、背壓丟樣及全文留存仍待驗，
+原核心效果及用量由核心原回條判定。
 
 ## CORE-037／038 → EXT-038：共用角色可用，頭像與逐平台套用待交接
 

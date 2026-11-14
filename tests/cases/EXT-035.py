@@ -24,6 +24,8 @@ def model_peer():
     control = {"mode": "active", "actions": []}
     accepted = threading.Event()
     release = threading.Event()
+    main_accepted = threading.Event()
+    main_release = threading.Event()
 
     class Model(BaseHTTPRequestHandler):
         def log_message(self, *_args):
@@ -33,6 +35,9 @@ def model_peer():
             body = json.loads(self.rfile.read(int(self.headers["Content-Length"])))
             mode = control["mode"]
             observations.append({"route": self.path, "mode": mode, "wire": body})
+            if self.path == "/main" and control.get("hold_main"):
+                main_accepted.set()
+                assert main_release.wait(15)
             if mode == "unknown":
                 self.close_connection = True
                 return
@@ -56,10 +61,12 @@ def model_peer():
     server = ThreadingHTTPServer(("127.0.0.1", 0), Model)
     thread = threading.Thread(target=server.serve_forever, daemon=True)
     thread.start()
+    control.update(main_accepted=main_accepted, main_release=main_release)
     try:
         yield server.server_port, control, observations, accepted, release
     finally:
         release.set()
+        main_release.set()
         server.shutdown()
         server.server_close()
         thread.join()
@@ -84,7 +91,8 @@ def configure(owner, root, binary, trace, entry, port, declaration):
         config.write(policy)
 
 
-def exercise_schedule(peer, root, working, output, host, binary, declaration):
+def exercise_schedule(peer, root, working, output, host, binary, declaration, *, daily_limit=None,
+                      foreground=False):
     owner = peer.Worker(working, output, host, binary, root, declaration)
     trace = output / "scheduled-wire.jsonl"
     state = owner.jobs / "reflection-schedule.state.json"
@@ -123,44 +131,88 @@ def exercise_schedule(peer, root, working, output, host, binary, declaration):
     config = {"stream":{"scope":"own","route":"review","entry":entry,"after":events[0]},
               "timezone":"UTC","hours":[(current_hour + 12) % 24]}
     write(settings, config)
-    with model_peer() as (port, _, observations, _, _):
+    with model_peer() as (port, model, observations, _, _):
         configure(owner, root, binary, trace, entry, port, declaration)
+        if daily_limit is not None or foreground:
+            config_path = owner.data / "yuki.toml"
+            text = config_path.read_text(encoding="utf-8")
+            policy = f'\n[reflection_budget]\ntimezone="UTC"\nmax_daily_calls={daily_limit or 96}\n'
+            config_path.write_text(text.replace("\n[[plugins]]", policy + "\n[[plugins]]", 1),
+                                   encoding="utf-8")
         with owner.running():
             wait_for(owner.control / "relay-process.json")
             time.sleep(1.2)
             assert not state.exists() and not observations
         config["hours"] = list(range(24))
         write(settings, config)
+        if foreground:
+            config_path = owner.data / "yuki.toml"
+            text = config_path.read_text(encoding="utf-8").replace(
+                f"max_daily_calls={daily_limit or 96}\n",
+                f'max_daily_calls={daily_limit or 96}\nquiet_seconds=4\n\n[main]\n'
+                f'endpoint="http://127.0.0.1:{port}/main"\n'
+                'model="foreground-fixture"\nname="Yuki"\nmerge_ms=1\nroot_slots=4\n'
+                'root_tool_calls=8\nmax_input_units=200000\nmax_output=512\n', 1)
+            config_path.write_text(text, encoding="utf-8")
+            model["hold_main"] = True
         (owner.control / "kill-model-call").write_text(serial, encoding="utf-8")
         with owner.running():
+            if foreground:
+                assert model["main_accepted"].wait(8), "original foreground Main never dispatched"
+                time.sleep(1.3)
+                assert not [o for o in observations if o["route"] == "/model"]
+                assert record().get("pending") is None
+                model["main_release"].set()
             cut = wait_for(owner.control / "model-paid-before-kill.json")["result"]
-            assert cut["state"] == "response" and len(observations) == 1
+            assert cut["state"] == "response" and len([o for o in observations if o["route"] == "/model"]) == 1
             assert record()["pending"] == events[1] and record()["cursor"] == events[0]
         with owner.running():
             end = time.monotonic() + 25
+            terminal = "held" if daily_limit is not None else "drained"
+            dispatches = 1 if daily_limit is not None else 2
+            cursor = events[1] if daily_limit is not None else events[3]
             while time.monotonic() < end:
                 completed = record()
-                if completed.get("cycle", {}).get("outcome") == "drained":
+                if completed.get("cycle", {}).get("outcome") == terminal:
                     break
                 time.sleep(.05)
             else:
                 raise AssertionError(f"scheduled reflection did not drain: {record()}")
-            assert completed["cursor"] == events[3] and completed["pending"] is None
-            assert completed["cycle"]["completed"] == 2 and len(observations) == 2
+            assert completed["cursor"] == cursor
+            assert completed["pending"] == (events[3] if daily_limit is not None else None)
+            assert completed["cycle"]["completed"] == dispatches
+            assert len([o for o in observations if o["route"] == "/model"]) == dispatches
         with owner.running():
             wait_for(owner.control / "relay-process.json")
             time.sleep(1.2)
-            assert record()["cursor"] == events[3] and len(observations) == 2
+            assert record()["cursor"] == cursor and len([o for o in observations if o["route"] == "/model"]) == dispatches
         wire = [json.loads(line)["frame"] for line in trace.read_text().splitlines()]
         used = [message["params"]["request"] for message in wire if message.get("method") == "llm.result"]
         assert used[0] == cut["request"]
-        prompts = [json.dumps(item["wire"], ensure_ascii=False) for item in observations]
-        assert "scheduled original event" in prompts[0] and "next original event" in prompts[1]
+        prompts = [json.dumps(item["wire"], ensure_ascii=False) for item in observations
+                   if item["route"] == "/model"]
+        assert "scheduled original event" in prompts[0]
+        if daily_limit is None:
+            assert "next original event" in prompts[1]
+        else:
+            with closing(sqlite3.connect((owner.data / "core.sqlite").as_uri() + "?mode=ro",
+                                         uri=True)) as db:
+                attempts = db.execute(
+                    "SELECT q.id,a.state,json_extract(a.usage_json,'$.total') "
+                    "FROM host_aux_requests q LEFT JOIN model_attempts a ON a.logical=q.logical "
+                    "WHERE q.purpose='reflect' ORDER BY q.rowid"
+                ).fetchall()
+            assert len(attempts) == 2 and attempts[0][0] == cut["request"], attempts
+            assert attempts[0][2] == 12 and attempts[1][1:] == (None, None), attempts
+            write(output / "quota-attempts.json", attempts)
         assert all("before the original cursor" not in prompt and "another entry canary" not in prompt
                    for prompt in prompts)
         return {"cursor":completed["cursor"],"cycle":completed["cycle"],"original_paid_request":used[0],
-                "paid_response_lost_then_recovered":True,"transports":len(observations),
-                "scope_and_cursor_checked":True,"outside_slot_transports":0,"cold_repeat_transports":0}
+                "paid_response_lost_then_recovered":True,"transports":len(prompts),
+                "scope_and_cursor_checked":True,"outside_slot_transports":0,"cold_repeat_transports":0,
+                **({"daily_limit":daily_limit,"reserved_undispatched_request":attempts[1][0],
+                    "original_paid_result_settled_after_limit":True} if daily_limit is not None else {}),
+                **({"foreground_selected_no_source_before_idle": True} if foreground else {})}
 
 
 def exercise(peer, root, working, output, host, binary, declaration):
@@ -467,7 +519,7 @@ def prepare(root, output):
         package = build(root, "memory-maintenance", output/"packages")
         binary = output/"packages"/("yuki-memory-maintenance.exe" if os.name == "nt" else "yuki-memory-maintenance")
         declaration = tomllib.loads((output/"packages/plugin-reflection.toml").read_text(encoding="utf-8"))
-        assert declaration["version"] == package["version"] == "0.1.0-alpha.7"
+        assert declaration["version"] == package["version"] == "0.1.0-alpha.8"
         tools = tomllib.loads((output/"packages/plugin-reflection-tools.toml").read_text(encoding="utf-8"))
         assert tools["version"] == declaration["version"] and tools["id"] != declaration["id"]
         schedule = tomllib.loads((output/"packages/plugin-reflection-schedule.toml").read_text(encoding="utf-8"))
