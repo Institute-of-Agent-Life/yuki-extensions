@@ -1,3 +1,5 @@
+mod review;
+
 use serde::Deserialize;
 use serde_json::{Value, json};
 use std::{collections::VecDeque, env, io};
@@ -120,11 +122,14 @@ impl<R: io::BufRead, W: io::Write> Host<R, W> {
         Ok(())
     }
 
-    fn acknowledge_erasure(&mut self) -> Result<()> {
+    fn acknowledge_erasure(&mut self, engine: Option<&review::Engine>) -> Result<()> {
         for (id, params) in std::mem::take(&mut self.erasures) {
+            if let Some(engine) = engine {
+                engine.erase(&params["sources"])?;
+            }
             self.send(&json!({"jsonrpc":"2.0","id":id,"result":{
                 "key":params["key"],"watermark":params["watermark"],
-                "proof":"participation Rule has released affected volatile sources"
+                "proof":"participation released affected source copies"
             }}))?;
         }
         Ok(())
@@ -216,12 +221,19 @@ impl<R: io::BufRead, W: io::Write> Host<R, W> {
         Ok(())
     }
 
-    fn run(&mut self) -> Result<()> {
+    fn run(&mut self, engine: Option<&review::Engine>) -> Result<()> {
+        if let Some(engine) = engine {
+            self.notices.extend(engine.pending(&self.scope.entry)?);
+        }
         loop {
-            self.acknowledge_erasure()?;
+            self.acknowledge_erasure(engine)?;
             if let Some(event) = self.notices.pop_front() {
                 self.reading = Some(event);
-                self.rule(event)?;
+                if let Some(engine) = engine {
+                    self.review(event, engine)?;
+                } else {
+                    self.rule(event)?;
+                }
                 if self.reading == Some(event) && !self.erasures.is_empty() {
                     self.notices.retain(|queued| *queued != event);
                     self.notices.push_front(event);
@@ -238,12 +250,15 @@ impl<R: io::BufRead, W: io::Write> Host<R, W> {
 
 fn main() -> Result<()> {
     let args: Vec<_> = env::args().skip(1).collect();
-    let [entry, receiver] = args.as_slice() else {
+    let [entry, receiver, rest @ ..] = args.as_slice() else {
         return Err("usage: yuki-participation <entry> <receiving-stage>".into());
     };
     if entry.is_empty() || receiver.is_empty() {
         return Err("participation needs an original entry and receiving stage".into());
     }
+    let engine = (!rest.is_empty())
+        .then(|| review::Engine::open(rest))
+        .transpose()?;
     Host::connect(
         io::stdin().lock(),
         io::stdout().lock(),
@@ -252,5 +267,5 @@ fn main() -> Result<()> {
             receiver: receiver.clone(),
         },
     )?
-    .run()
+    .run(engine.as_ref())
 }
