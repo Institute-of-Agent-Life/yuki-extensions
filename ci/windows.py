@@ -180,7 +180,14 @@ def main():
     host_candidate = None
     if not public_input and args.task in {"EXT-003", "EXT-005", "EXT-011", "EXT-015", "EXT-020", "EXT-028", "EXT-031", "EXT-036", "EXT-037", "EXT-038"}:
         host_candidate = Path(os.environ["YUKI_HOST_CANDIDATE"])
-        contract = "core-033-client" if args.task == "EXT-015" else "core-033-connector" if args.task == "EXT-011" else "core-037" if args.task in {"EXT-037", "EXT-038"} else "core-035" if args.task == "EXT-036" else "core-038" if args.task == "EXT-031" else ("core-033" if args.task in {"EXT-011","EXT-015"} else "core-032")
+        contract = {
+            "EXT-011": "core-033-connector",
+            "EXT-015": "core-033-client",
+            "EXT-031": "core-038",
+            "EXT-036": "core-035",
+            "EXT-037": "core-037-export" if os.environ.get("YUKI_TRACE_EXPORT") == "1" else "core-037",
+            "EXT-038": "core-037",
+        }.get(args.task, "core-032")
         pin = json.loads((root / "compat" / contract / "source.lock.json").read_bytes())["platforms"]["windows-x86_64"]
         if hashlib.sha256(host_candidate.read_bytes()).hexdigest() != pin["sha256"]:
             raise ValueError("unexpected Windows host candidate")
@@ -291,6 +298,8 @@ if (Test-Path (Join-Path {fixture_home} 'toolchains/1.90.0-x86_64-pc-windows-gnu
         sdk_environment += "$env:YUKI_MEDIA_CODEC_WHEELS=" + quote(remote + "/wheelhouse/media-codecs") + "\n"
     if host_candidate:
         sdk_environment += "$env:YUKI_HOST_CANDIDATE=" + quote(remote + "/wheelhouse/extension-host-candidate.zip") + "\n"
+        if args.task == "EXT-037" and os.environ.get("YUKI_TRACE_EXPORT") == "1":
+            sdk_environment += "$env:YUKI_TRACE_EXPORT='1'\n"
     if native_crates:
         sdk_environment += "$env:YUKI_CRATE_CACHE=" + quote(remote + "/wheelhouse/native-crates") + "\n"
     if release_assets:
