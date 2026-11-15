@@ -31,6 +31,11 @@ DELIVERY_TEXT = "已確認送達的 Yuki 回覆"
 
 
 def prepare(root, output):
+    if stable_host := os.environ.get("YUKI_PARTICIPATION_STABLE_HOST"):
+        from participation_release_check import replay as replay_release
+
+        return replay_release(root, output, Path(stable_host).resolve(),
+                              Path(os.environ["YUKI_PARTICIPATION_SOURCE"]).resolve())
     archive = Path(os.environ["YUKI_CORE050_CANDIDATE"])
     source = Path(os.environ["YUKI_PARTICIPATION_SOURCE"]).resolve()
     manifest_path = Path(os.environ["YUKI_CORE050_MANIFEST"])
@@ -102,6 +107,14 @@ def prepare(root, output):
             "package_manifest_sha256": sha(packages / "package-manifest.json"), **report["native_semantic"],
         })
     return "native-jev-intake.json", report
+
+
+def run(root, output):
+    from participation_release_check import replay as replay_release
+
+    return replay_release(root, output, Path(os.environ["YUKI_PARTICIPATION_STABLE_HOST"]).resolve(),
+                          Path(os.environ["YUKI_PARTICIPATION_SOURCE"]).resolve(),
+                          Path(os.environ["YUKI_PARTICIPATION_RELEASE"]).resolve())
 
 
 def replay(root, output, workspace, executable, library, sdk, expected_reader):

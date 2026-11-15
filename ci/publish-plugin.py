@@ -41,6 +41,11 @@ def prepare(root, tag, output, *, candidate=None):
              if p.is_file() and not p.name.startswith("._")]
     files += [source / n for n in ["rust-toolchain.toml", *unit["notices"]]]
     required.update(p.relative_to(root).as_posix() for p in files)
+    runtime = record.get("runtime_inputs", {})
+    if runtime.keys() - set(record.get("runtime_files", ())) or runtime.keys() & set(profile_files):
+        raise ValueError("release runtime input is outside the packaged runtime")
+    runtime_inputs = {name: inside(root, path) for name, path in runtime.items()}
+    required.update(path.relative_to(root).as_posix() for path in runtime_inputs.values())
     if set(inputs) != required:
         raise ValueError("incomplete release source inventory")
     locked = tomllib.loads((profile / "Cargo.lock").read_text(encoding="utf-8"))["package"]
@@ -57,6 +62,12 @@ def prepare(root, tag, output, *, candidate=None):
             shutil.copyfile(p, dest)
         for name in profile_files:
             shutil.copyfile(profile / name, package / name)
+        for name, path in runtime_inputs.items():
+            destination = inside(package, name)
+            if destination.exists():
+                raise ValueError("release runtime input overlaps a locked source")
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(path, destination)
         if tomllib.loads((package / "plugin.toml").read_text())["version"] != version:
             raise ValueError("runtime version differs from tag")
         unit.update(version=version, tag_prefix=f"plugin/{unit_id}/v")
