@@ -1,0 +1,54 @@
+{
+  "status": "published-and-downloaded",
+  "published": true,
+  "tag": "plugin/participation/v0.2.0",
+  "source_commit": "80183cf45a6a4b05cbb1f00876dce66a1c897f17",
+  "release_id": 445876034,
+  "release_url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/releases/tag/plugin/participation/v0.2.0",
+  "published_at": "2026-11-15T07:11:03Z",
+  "release_receipt_sha256": "36c05d7f77bccdf043757f0e919e34b6fed5d0e7fde52c8b7ca9712faea73181",
+  "host": {
+    "tag": "plugin-base-v1.4.0",
+    "source_commit": "3b68f6ee53ff9245bd37082dd0f8fbc07160aaac",
+    "archive_sha256": "fbc6adad3700dac80e9e7a5898dd85605574b5b8eea8c7631462c9b38602bd83",
+    "surface_sha256": "5f18a26b48eb3e1cef44ca47839dcd0d061dc5e4506e636a7fc6c79dce9a77f1",
+    "reader": 63
+  },
+  "sdk": {
+    "version": "1.4.0",
+    "sha256": "6b9355f9d76f2618a6ca116655b55d5a6ee78d63c4e817f95c6d4a9ff0124489"
+  },
+  "platforms": {
+    "macos": {
+      "name": "yuki-participation-0.2.0-darwin-arm64.zip",
+      "sha256": "369ad74e09ac1a6536b3649d2b3ebfa88d360828dad743642778f30bed06db24",
+      "bytes": 486150,
+      "worker_sha256": "5820c4ff3c7abd5f939395e4b85cb0c2d078aeceb8331fd2690a907527164677",
+      "id": 750168258,
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/releases/download/plugin/participation/v0.2.0/yuki-participation-0.2.0-darwin-arm64.zip"
+    },
+    "linux": {
+      "name": "yuki-participation-0.2.0-linux-arm64.zip",
+      "sha256": "629a155520bec8edc42a9fd54e14d59405ba89526c9208c9a21ba23664f5d230",
+      "bytes": 518565,
+      "worker_sha256": "2c416ec31bfa480954461ccee8a30c9f5f98897a92656325ac19558e1b9cce06",
+      "id": 750168240,
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/releases/download/plugin/participation/v0.2.0/yuki-participation-0.2.0-linux-arm64.zip"
+    },
+    "windows": {
+      "name": "yuki-participation-0.2.0-windows-x86_64.zip",
+      "sha256": "855f1fe01e1b2c1efe96e4420ed0d6b24b206c8cb5792d44ad2c9e1e5ead1100",
+      "bytes": 399974,
+      "worker_sha256": "0984700e8af73f7e51ed5a69ec72080352cd00da7389a2e0dc5aa39c42a5ff29",
+      "id": 750168261,
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/releases/download/plugin/participation/v0.2.0/yuki-participation-0.2.0-windows-x86_64.zip"
+    }
+  },
+  "asset_sha256": {
+    "yuki-participation-0.2.0-darwin-arm64.zip": "369ad74e09ac1a6536b3649d2b3ebfa88d360828dad743642778f30bed06db24",
+    "yuki-participation-0.2.0-linux-arm64.zip": "629a155520bec8edc42a9fd54e14d59405ba89526c9208c9a21ba23664f5d230",
+    "yuki-participation-0.2.0-windows-x86_64.zip": "855f1fe01e1b2c1efe96e4420ed0d6b24b206c8cb5792d44ad2c9e1e5ead1100",
+    "release-receipt.json": "36c05d7f77bccdf043757f0e919e34b6fed5d0e7fde52c8b7ca9712faea73181",
+    "SHA256SUMS": "45ac9c50ca0b84f7aea76e61b0fcafa1185754799e9d410b6e67a02bed52cd0e"
+  }
+}
