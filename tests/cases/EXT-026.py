@@ -258,6 +258,16 @@ def exercise(root, output, work, executable, worker, upstream, *, delivery=False
     def original_proposals():
         return query("SELECT proposal,execution FROM participation_proposals ORDER BY proposal")
 
+    def admission():
+        [(proposal, execution)] = wait(original_proposals)
+        assert query("SELECT source,original_actor FROM executions WHERE id=?", execution) == [(None, None)]
+        assert query("SELECT event FROM main_dependencies WHERE execution=? ORDER BY event", execution) == [
+            (event,) for event in sorted(item["event"] for item in guard)
+        ]
+        [(material,)] = query("SELECT material FROM main_turns WHERE execution=?", execution)
+        assert [item["event"] for item in json.loads(material)["context"]] == selected
+        return proposal, execution
+
     calls = []
 
     class Model(BaseHTTPRequestHandler):
@@ -338,17 +348,12 @@ def exercise(root, output, work, executable, worker, upstream, *, delivery=False
                         assert frame["action"] == "send_group_msg"
                         assert str(frame["params"]["group_id"]) == "756"
                         assert "original intrinsic delivery" in str(frame["params"]["message"])
+                        # A confirmed delivery can add its own dependency after admission.
+                        proposal, execution = admission()
                         peer.send({"echo": frame["echo"], "status": "ok", "retcode": 0,
                                    "data": {"message_id": 75691}})
-                wait(original_proposals)
-                [(proposal, execution)] = original_proposals()
-                assert query("SELECT source,original_actor FROM executions WHERE id=?", execution) == [(None, None)]
-                assert query("SELECT event FROM main_dependencies WHERE execution=? ORDER BY event", execution) == [
-                    (event,) for event in sorted(item["event"] for item in guard)
-                ]
-                [(material,)] = query("SELECT material FROM main_turns WHERE execution=?", execution)
-                assert [item["event"] for item in json.loads(material)["context"]] == selected
-                if not delivery:
+                else:
+                    proposal, execution = admission()
                     wait(lambda: not drop_reply.exists())
                     assert snapshot().pending == proposal and execution not in snapshot().feedback
                 wait(lambda: query("SELECT id FROM executions WHERE id=? AND state='completed'", execution))
