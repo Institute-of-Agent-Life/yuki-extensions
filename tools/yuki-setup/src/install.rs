@@ -17,6 +17,7 @@ use std::{
 const BASE_LOCK: &[u8] = include_bytes!("../inputs/base-1.0.json");
 const BASE_1_1_LOCK: &[u8] = include_bytes!("../inputs/base-1.1.json");
 const BASE_1_2_LOCK: &[u8] = include_bytes!("../inputs/base-1.2.json");
+const BASE_1_3_LOCK: &[u8] = include_bytes!("../inputs/base-1.3.json");
 const CANDIDATE_LOCK: &[u8] = include_bytes!("../inputs/native.lock.json");
 const OPTIONAL_LOCK: &[u8] = include_bytes!("../inputs/web-fetch.lock.json");
 const PLUGIN_DIRECTORY: &str = "plugins/web-fetch";
@@ -392,6 +393,7 @@ pub(crate) fn published_base(
     let bytes = match version {
         "1.1.0" => BASE_1_1_LOCK,
         "1.2.0" => BASE_1_2_LOCK,
+        "1.3.0" => BASE_1_3_LOCK,
         _ => return Err("no pinned package for the selected base version".into()),
     };
     let pin: ReleaseLock = serde_json::from_slice(bytes)?;
