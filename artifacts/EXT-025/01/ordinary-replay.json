@@ -1,0 +1,191 @@
+{
+  "status": "PASS",
+  "task": "EXT-025",
+  "phase": "acceptance",
+  "source_commit": "ca2205bc8f5ea92dde37997a61b685ea435f9723",
+  "published": true,
+  "release_source_commit": "e03b6e660f5a6689241e4e7e875c0945d4a5cfa6",
+  "release_tag": "plugin/participation/v0.1.0",
+  "release_lock_sha256": "38e38f73231305bad45c7c8382aa3fe9260943e2f3ebce05869075e24e3cb217",
+  "host": {
+    "published": true,
+    "tag": "plugin-base-v1.3.0",
+    "source_commit": "c7f7c92b0562000da4e482228e7676993ecf20d3",
+    "archive_sha256": "5bd115e374b41c6091dde698c3002a77d6687337b71f1eb8d6cf8bad0706d2d3",
+    "surface_sha256": "0cde7bbb6bce6cfc2a695beebdc2037e8badcf687dfe9acf2566505d778cd9e4",
+    "database_reader": 63
+  },
+  "sdk": {
+    "versions": {
+      "rust": "1.3.0",
+      "python": "1.3.0"
+    },
+    "rust_sha256": "f89c8c9adf64e1275b5e6e3d5d455d627dd46fd921e3c8c0046d59de131e8932"
+  },
+  "paid_calls": 0,
+  "live_service_calls": false,
+  "release_url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/releases/tag/plugin/participation/v0.1.0",
+  "qualification_sha256": "f9f122b07c1ef55533512878edc15c35ffa46558165d70c113e158c7d618d048",
+  "windows_actions": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/43671008127",
+  "platforms": {
+    "macos": {
+      "status": "PASS",
+      "ordinary_replay_sha256": "115387c15fd1415bab35afb2113174f7a8d28282ff48828bac0725859f54c8b4",
+      "acceptance_manifest_sha256": "6df74e1e81069a6ae6fd88a9a777dc0be06b061ac4dedd3bdd2e51dc66c1197f",
+      "package_manifest_sha256": "974f209aebfc3d06c059d7f1cb77d62e52cef86c43bfbb08ac956a5e6d47acff",
+      "host_binary_sha256": "616b2114c0c33550a149abafd0765770e5b45fa4d0a34bf7fc41bb18de5097e3",
+      "worker_sha256": "b1e61ba78700c548b1ff0f41f5c1f7d466b2b8586c8ac0f570043221007c711e",
+      "wire_frames": 302,
+      "paid_calls": 0,
+      "accepted_human": 9,
+      "main_attempts": 10,
+      "review_attempts": 16,
+      "observed_milliseconds": {
+        "ingress_to_main_input": {
+          "jev_invitation": 239,
+          "quoted_fast": 241,
+          "unquoted_fast": 412
+        },
+        "close_signal_to_negative_probe_receipt": {
+          "main_quiet": 317,
+          "jev_correction": 244
+        }
+      },
+      "release_package_sha256": "d9d357265e162f3c65375197379f487d0e94e22d0a6ba9b66e0280aba3a6c527",
+      "artifact_path": ".ci-transfer/ext025-published-macos-02",
+      "wire_sha256": {
+        "rule-wire.jsonl": "6123bee576c1c1c52aad1ca4f3fb1c84fda875ef9648114c9b15ec09d913ab27",
+        "review-wire.jsonl": "6c86135681c520f988c3504364d6f0767b87c77f796708b25bbc43f2f74f44af"
+      },
+      "observed": {
+        "rule_accepted_before_review": true,
+        "fast_admitted_before_review": 7,
+        "delivery_continued_before_review": 16,
+        "unquoted_continued_before_review": 21,
+        "actual_unavailable_quote_ignored": 22,
+        "ignored_literal": 2,
+        "ignored_invalid_response": 3,
+        "paused": 25,
+        "own_quiet_stopped": 8,
+        "semantic_correction_stopped": 12,
+        "cold_replay": 5,
+        "withdrawn_receipt": {
+          "state": "response_held",
+          "usage": {
+            "input": 17,
+            "output": 3
+          }
+        },
+        "source_erasure": 2,
+        "delivery_source_erasure": 1
+      }
+    },
+    "linux": {
+      "status": "PASS",
+      "ordinary_replay_sha256": "9c9bfcfde8a290cab5fe08cd9c32f737903b48a80462d5b774eb24478a6f04f5",
+      "acceptance_manifest_sha256": "1e3416da75efc754cd74f43f21e16fd85cd82feabb41af5a5cb460a7854cf87a",
+      "package_manifest_sha256": "a85c1ffb4188bc75cad16d2ef4006c7e68103c0843e27c728c313ec46ba199a3",
+      "host_binary_sha256": "9b122989fe778b83b1f3dc5437a82085b3d3971f9e0004745205d0d83fba6b45",
+      "worker_sha256": "8e7bf268f99260d644dcf0987365a8b08392d7fc7f069ecb895959070012291b",
+      "wire_frames": 302,
+      "paid_calls": 0,
+      "accepted_human": 9,
+      "main_attempts": 10,
+      "review_attempts": 16,
+      "observed_milliseconds": {
+        "ingress_to_main_input": {
+          "jev_invitation": 284,
+          "quoted_fast": 300,
+          "unquoted_fast": 435
+        },
+        "close_signal_to_negative_probe_receipt": {
+          "main_quiet": 349,
+          "jev_correction": 280
+        }
+      },
+      "release_package_sha256": "af751c77ac155992042bdfdba6900661b667ab3bf7912cc7b3f8246d79e2252c",
+      "artifact_path": ".ci-transfer/ext025-published-linux-01/replay",
+      "wire_sha256": {
+        "rule-wire.jsonl": "dadfe5e680e8de0de252950e037b18279b3df65c59d8886b0589084f59935cf3",
+        "review-wire.jsonl": "998cee88877bc4eea492dcac8665277bcdb37d8638186cb0e935d93d00c05108"
+      },
+      "observed": {
+        "rule_accepted_before_review": true,
+        "fast_admitted_before_review": 7,
+        "delivery_continued_before_review": 16,
+        "unquoted_continued_before_review": 21,
+        "actual_unavailable_quote_ignored": 22,
+        "ignored_literal": 2,
+        "ignored_invalid_response": 3,
+        "paused": 25,
+        "own_quiet_stopped": 8,
+        "semantic_correction_stopped": 12,
+        "cold_replay": 5,
+        "withdrawn_receipt": {
+          "state": "response_held",
+          "usage": {
+            "input": 17,
+            "output": 3
+          }
+        },
+        "source_erasure": 2,
+        "delivery_source_erasure": 1
+      }
+    },
+    "windows": {
+      "status": "PASS",
+      "ordinary_replay_sha256": "bb1538286cc9b2fd883438e48414bcaf4cdb23976d673dbc41d58c3eada2a892",
+      "acceptance_manifest_sha256": "7d5af37d86148aeceee3ac3aa73af6182b760c5a2192d42194e71393ad2f9868",
+      "package_manifest_sha256": "ac1e9a23327809a54886aa7c5e40bec8248011e9a4d95d44b702f22b30588a88",
+      "host_binary_sha256": "36fb01b7986c590fa10aaaebf319cddbd5f68b060edd9daf74eddf33c107dac3",
+      "worker_sha256": "6ec0f93c2a531ada539162abf9a443dc95d1985a4b44c81e205372c4a407eddb",
+      "wire_frames": 304,
+      "paid_calls": 0,
+      "accepted_human": 9,
+      "main_attempts": 10,
+      "review_attempts": 16,
+      "observed_milliseconds": {
+        "ingress_to_main_input": {
+          "jev_invitation": 735,
+          "quoted_fast": 703,
+          "unquoted_fast": 1328
+        },
+        "close_signal_to_negative_probe_receipt": {
+          "main_quiet": 718,
+          "jev_correction": 671
+        }
+      },
+      "release_package_sha256": "d1147fc19dc806890fe4a4739fe065a7221f91041bf79b7677cda4daeebb2ff7",
+      "artifact": 14143484752,
+      "artifact_sha256": "fe2211626d42130951f8393cdcb5ba28e7dfdc469e537a206b9a5233cee24349",
+      "run": 43671008127,
+      "artifact_path": ".ci-transfer/ext025-published-windows-43671008127/evidence.zip",
+      "wire_sha256": {
+        "rule-wire.jsonl": "d8523c5b0d17d4530ae1fc95d691d0427affd12b05b917195efaeadcdbe8fc3a",
+        "review-wire.jsonl": "15f4f651cfcdedcdc967655af95406e9b0184a84f1791b01bbdb7e09896c574d"
+      },
+      "observed": {
+        "rule_accepted_before_review": true,
+        "fast_admitted_before_review": 7,
+        "delivery_continued_before_review": 16,
+        "unquoted_continued_before_review": 21,
+        "actual_unavailable_quote_ignored": 22,
+        "ignored_literal": 2,
+        "ignored_invalid_response": 3,
+        "paused": 25,
+        "own_quiet_stopped": 8,
+        "semantic_correction_stopped": 12,
+        "cold_replay": 5,
+        "withdrawn_receipt": {
+          "state": "response_held",
+          "usage": {
+            "input": 17,
+            "output": 3
+          }
+        },
+        "source_erasure": 2,
+        "delivery_source_erasure": 1
+      }
+    }
+  }
+}
