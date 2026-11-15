@@ -1,8 +1,14 @@
+mod autonomy;
 mod review;
 
 use serde::Deserialize;
 use serde_json::{Value, json};
-use std::{collections::VecDeque, env, io};
+use std::{
+    collections::VecDeque,
+    env, io,
+    sync::mpsc::{Receiver, RecvTimeoutError, sync_channel},
+    thread,
+};
 use yuki_plugin_sdk::{
     Binding, Id, Peer, Received,
     host::{Calls, Incoming},
@@ -10,6 +16,29 @@ use yuki_plugin_sdk::{
 };
 
 type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
+type Frame = std::result::Result<Vec<u8>, String>;
+
+fn stdin_frames() -> Receiver<Frame> {
+    let (send, receive) = sync_channel(0);
+    thread::spawn(move || {
+        let mut input = io::stdin().lock();
+        loop {
+            match read_frame(&mut input) {
+                Ok(Some(frame)) => {
+                    if send.send(Ok(frame)).is_err() {
+                        return;
+                    }
+                }
+                Ok(None) => return,
+                Err(error) => {
+                    let _ = send.send(Err(error.to_string()));
+                    return;
+                }
+            }
+        }
+    });
+    receive
+}
 
 struct Scope {
     entry: String,
@@ -36,8 +65,8 @@ struct Mention {
     presence_id: Option<String>,
 }
 
-struct Host<R, W> {
-    input: R,
+struct Host<W> {
+    input: Receiver<Frame>,
     output: W,
     calls: Calls,
     scope: Scope,
@@ -45,16 +74,18 @@ struct Host<R, W> {
     notices: VecDeque<i64>,
     erasures: Vec<(Id, Value)>,
     reading: Option<i64>,
+    advancing: bool,
 }
 
-impl<R: io::BufRead, W: io::Write> Host<R, W> {
-    fn connect(mut input: R, mut output: W, scope: Scope) -> Result<Self> {
+impl<W: io::Write> Host<W> {
+    fn connect(input: Receiver<Frame>, mut output: W, scope: Scope) -> Result<Self> {
         let binding: Binding = serde_json::from_str(&env::var("YUKI_PLUGIN_BINDING")?)?;
         let offer = binding.offer();
         let mut peer = Peer::new(binding)?;
         writeln!(output, "{}", peer.request(Id::Number(1), offer)?)?;
         output.flush()?;
-        while let Some(raw) = read_frame(&mut input)? {
+        while let Ok(raw) = input.recv() {
+            let raw = raw?;
             match peer.receive(&raw)? {
                 Received::Response { result: Ok(_), .. } => {
                     let frame: Value = serde_json::from_slice(&raw)?;
@@ -67,6 +98,7 @@ impl<R: io::BufRead, W: io::Write> Host<R, W> {
                         notices: VecDeque::new(),
                         erasures: Vec::new(),
                         reading: None,
+                        advancing: false,
                     });
                 }
                 Received::Response { result: Err(_), .. } => {
@@ -89,9 +121,10 @@ impl<R: io::BufRead, W: io::Write> Host<R, W> {
     }
 
     fn receive(&mut self) -> Result<Option<Incoming>> {
-        read_frame(&mut self.input)?
-            .map(|frame| self.calls.receive(&frame).map_err(Into::into))
-            .transpose()
+        let Ok(frame) = self.input.recv() else {
+            return Ok(None);
+        };
+        Ok(Some(self.calls.receive(&frame?)?))
     }
 
     fn observe(&mut self, incoming: Incoming) -> Result<()> {
@@ -147,11 +180,13 @@ impl<R: io::BufRead, W: io::Write> Host<R, W> {
                     result,
                     ..
                 } if response == id => {
-                    return Ok(if self.reading.is_some() && self.erasures.is_empty() {
-                        result.ok()
-                    } else {
-                        None
-                    });
+                    return Ok(
+                        if (self.reading.is_some() || self.advancing) && self.erasures.is_empty() {
+                            result.ok()
+                        } else {
+                            None
+                        },
+                    );
                 }
                 other => self.observe(other)?,
             }
@@ -225,6 +260,9 @@ impl<R: io::BufRead, W: io::Write> Host<R, W> {
         if let Some(engine) = engine {
             self.notices.extend(engine.pending(&self.scope.entry)?);
         }
+        let mut timer = engine
+            .filter(|engine| engine.autonomous())
+            .map(autonomy::Timer::new);
         loop {
             self.acknowledge_erasure(engine)?;
             if let Some(event) = self.notices.pop_front() {
@@ -239,6 +277,20 @@ impl<R: io::BufRead, W: io::Write> Host<R, W> {
                     self.notices.push_front(event);
                 }
                 self.reading = None;
+            } else if let Some(timer) = &mut timer {
+                match self.input.recv_timeout(timer.remaining()) {
+                    Ok(frame) => {
+                        let incoming = self.calls.receive(&frame?)?;
+                        self.observe(incoming)?;
+                    }
+                    Err(RecvTimeoutError::Disconnected) => return Ok(()),
+                    Err(RecvTimeoutError::Timeout) => {
+                        self.advancing = true;
+                        let result = timer.advance(self);
+                        self.advancing = false;
+                        result?;
+                    }
+                }
             } else if let Some(incoming) = self.receive()? {
                 self.observe(incoming)?;
             } else {
@@ -260,7 +312,7 @@ fn main() -> Result<()> {
         .then(|| review::Engine::open(rest))
         .transpose()?;
     Host::connect(
-        io::stdin().lock(),
+        stdin_frames(),
         io::stdout().lock(),
         Scope {
             entry: entry.clone(),

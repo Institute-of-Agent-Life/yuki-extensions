@@ -18,8 +18,11 @@ UPSTREAM = "a6a13d4f04ecc36da26adb5f364abdb4f032fc1e"
 UPSTREAM_SHA256 = "0e2cad3ad0f16e710e39f6fd2c9513c0a4c889ca54617ad6fdcb599f313a6ab4"
 
 
-def receive():
-    return json.loads(sys.stdin.buffer.readline())
+def receive(*, allow_eof=False):
+    raw = sys.stdin.buffer.readline()
+    if allow_eof and not raw:
+        return None
+    return json.loads(raw)
 
 
 def send(value):
@@ -337,6 +340,106 @@ def unquoted_context(job):
     return choices[0] if len(choices) == 1 else None
 
 
+def observe_self_feedback(controller, proposal, execution, now):
+    from yuki_participation.models import Effect, Feedback
+
+    run = execution["execution"]
+    previous = controller.state.feedback.get(run)
+    if execution["cancelled"]:
+        outcome = "interrupted"
+    elif execution["quiet"]:
+        outcome = "no_reply"
+    elif execution["state"] == "completed":
+        outcome = "completed"
+    else:
+        outcome = "accepted"
+    effects = []
+    for operation in execution["sends"]:
+        effect = f"send:{run}:{operation['operation']}"
+        if operation["confirmed_parts"] and effect not in controller.state.effects:
+            effects.append(Effect(effect_id=effect, kind="message", at=now, actual_targets=("group",)))
+    if previous is not None and previous.outcome == outcome and not effects:
+        return
+    controller.observe_run_feedback(Feedback(
+        run_ref=run, proposal_id=proposal, sequence=1 if previous is None else previous.sequence + 1,
+        outcome=outcome, at=now, effects=tuple(effects),
+    ))
+
+
+def reconcile_self(controller, now):
+    pending = controller.state.pending
+    active = [
+        proposal
+        for proposal, run in controller.state.proposal_runs.items()
+        if (feedback := controller.state.feedback.get(run)) is not None and feedback.outcome == "accepted"
+    ]
+    if pending is not None:
+        active.insert(0, pending)
+    available = True
+    for key in active:
+        send({"type": "feedback", "key": key})
+        feedback = receive(allow_eof=True)
+        if feedback is None:
+            available = False
+            continue
+        if feedback["scope"] != "original_execution" or len(feedback["executions"]) > 1:
+            raise ValueError("ambiguous original SELF feedback")
+        if feedback["executions"]:
+            observe_self_feedback(controller, key, feedback["executions"][0], now)
+        elif key == pending:
+            controller.discard_unaccepted_proposal(key)
+        else:
+            available = False
+    return available
+
+
+def autonomy_tick(job):
+    from yuki_participation.controller import Controller
+    from yuki_participation.models import CandidateKind, Feedback, Scope
+    from yuki_participation.store import SnapshotStore
+
+    scope = Scope(conversation_id=job["entry"], generation=job["generation"])
+    with closing(SnapshotStore(Path(job["checkpoint"]))) as store:
+        store.connection.execute("PRAGMA secure_delete=ON")
+        loaded = store.load(scope)
+        now = max(job["now"], loaded[1].now) if loaded else job["now"]
+        if loaded:
+            revision, state = loaded
+            controller = Controller.restore(state, now if job["resumed"] else state.now)
+        else:
+            revision, controller = 0, Controller(scope, now)
+        cursor = controller.state.host_checkpoint.get("autonomy_cursor", 0)
+        for source in job["sources"]:
+            if source["event"] <= cursor:
+                continue
+            frame = original(source)
+            if (frame["kind"] == "message" and frame["bot_stage"] == job["receiver"]
+                    and not any(part["type"] == "reply" for part in frame["segments"])):
+                projected(source, controller)
+        cursor = max(cursor, job["next"])
+        controller.set_state_entry("host_checkpoint", "autonomy_cursor", cursor)
+
+        available = reconcile_self(controller, now)
+        proposal = controller.advance(
+            now, controller_epoch=controller.state.epoch,
+            host_available=job["can_sample"] and available, intrinsic_allowed=True,
+            include_addressed=False, allowed_kinds=frozenset(),
+        )
+        revision = store.save(controller.state, expected_revision=revision)
+        if proposal is not None:
+            if proposal.kind is not CandidateKind.INTRINSIC or proposal.sources:
+                raise ValueError("intrinsic SELF cannot reuse a human source")
+            send({"type": "propose", "kind": proposal.kind, "key": proposal.proposal_id})
+            receipt = receive(allow_eof=True)
+            if receipt is not None:
+                controller.observe_run_feedback(Feedback(
+                    run_ref=receipt["execution"], proposal_id=proposal.proposal_id, sequence=1,
+                    outcome="accepted", at=now,
+                ))
+                store.save(controller.state, expected_revision=revision)
+    send({"type": "done", "cursor": cursor})
+
+
 def main():
     archive = Path(sys.argv[1])
     if hashlib.sha256(archive.read_bytes()).hexdigest() != UPSTREAM_SHA256:
@@ -346,6 +449,13 @@ def main():
             bundle.extractall(directory, filter="data")
         source = Path(directory) / f"Yuki-Semantic-Participation-{UPSTREAM}" / "src"
         sys.path.insert(0, str(source))
+        if sys.argv[2:] == ["--ticks"]:
+            while raw := sys.stdin.buffer.readline():
+                job = json.loads(raw)
+                if job["action"] != "tick":
+                    raise ValueError("expected a SELF clock tick")
+                autonomy_tick(job)
+            return
         job = receive()
         if job["action"] == "erase":
             erase(job)

@@ -70,3 +70,21 @@ the unquoted path.
 
 Restart recovery uses the same original event and review key. Source erasure
 removes affected snapshot data before the worker acknowledges the Host.
+
+The 0.1.0-alpha.7 preview adds an opt-in intrinsic timer on the alpha.35 Host
+contract. Append `--owner semantic` to the review arguments. The timer needs
+`participation.sources` and `participation.self_propose` in addition to the
+existing feedback and source grants. Install the original receiving stage
+under `[plugins.participation.self_scenes]` for the same group entry.
+`--owner legacy` and `--owner off` keep the ordinary review worker and leave
+the timer inactive.
+
+The Rust worker samples the pinned library every two seconds after successful
+activation of the scene. It reads the current conversation generation and
+sends a proposal with that generation and its original key. The intrinsic
+proposal carries an empty set of human sources. The private snapshot stores
+the proposal before dispatch. After restart, the worker queries the original
+key and applies the authorized execution and its confirmed delivery, stop,
+or no-reply feedback. The clock resumes at the current time. This preview
+uses the intrinsic selector. Conversation-sourced SELF opportunities and the
+official Host and plugin release remain separate acceptance work.
