@@ -1,0 +1,159 @@
+{
+  "status": "PASS",
+  "card_status": "PASS",
+  "phase": "acceptance",
+  "task": "EXT-026",
+  "published": true,
+  "pr": 119,
+  "tested_merge": "bf5654e729eff1abe5b3c75f3f404eb6e6f37444",
+  "tree": "a2520a35485a80c92ad93510b83c4997b2547a2e",
+  "main": "6e12e1188e604bcc02604ed51dfeee6eacadd597",
+  "plugin": {
+    "tag": "plugin/participation/v0.2.0",
+    "source_commit": "80183cf45a6a4b05cbb1f00876dce66a1c897f17",
+    "release_id": 445876034,
+    "release_lock_sha256": "97395c66462cd7002ed19e7251e74221265bf72df4d6c0dc408924bdfa758c8d",
+    "release_receipt_sha256": "36c05d7f77bccdf043757f0e919e34b6fed5d0e7fde52c8b7ca9712faea73181"
+  },
+  "host": {
+    "tag": "plugin-base-v1.4.0",
+    "source_commit": "3b68f6ee53ff9245bd37082dd0f8fbc07160aaac",
+    "archive_sha256": "fbc6adad3700dac80e9e7a5898dd85605574b5b8eea8c7631462c9b38602bd83",
+    "surface_sha256": "5f18a26b48eb3e1cef44ca47839dcd0d061dc5e4506e636a7fc6c79dce9a77f1",
+    "reader": 63
+  },
+  "sdk": {
+    "version": "1.4.0",
+    "sha256": "6b9355f9d76f2618a6ca116655b55d5a6ee78d63c4e817f95c6d4a9ff0124489"
+  },
+  "windows_ci": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/43689096433",
+  "platforms": {
+    "macos": {
+      "manifest_sha256": "a689e74b3ff2a82fb0769af222f2a77a119863fbefb742c058b306777ec3e666",
+      "evidence_sha256": "a9b7b17a1c2e09181c462b739e7a531f10c92a9fca69b55a62b616362474e32a",
+      "host_binary_sha256": "7336c48821ce1a8f5292d7c916728abd61698d42f37d7400d7eca0a288a3bebe",
+      "worker_sha256": "5820c4ff3c7abd5f939395e4b85cb0c2d078aeceb8331fd2690a907527164677",
+      "package_manifest_sha256": "544b29b01d3d9472e1a5354c359773ab48e6b663508974b84fec9b64c43ccd05",
+      "package_sha256": "369ad74e09ac1a6536b3649d2b3ebfa88d360828dad743642778f30bed06db24",
+      "ordinary_admissions": 9,
+      "ordinary_main_requests": 10,
+      "ordinary_jev_requests": 16,
+      "owner_modes": [
+        "off",
+        "legacy",
+        "semantic"
+      ],
+      "fixed_clock": {
+        "first_proposal_at": 5429,
+        "seed_draw": 2647,
+        "cold_opportunities": 0,
+        "original_work_preserved": true,
+        "terminal_feedback": "no_reply",
+        "late_opportunities_after_group_stop": 0
+      },
+      "lost_ack": {
+        "execution": "8df1f378-4293-42b4-97bd-9e6231e70830",
+        "physical_requests": 1,
+        "cold_new_attempts": 0,
+        "outcome": "no_reply"
+      },
+      "confirmed_send": {
+        "locator": "75691",
+        "first_confirmed_at_ms": 1794726928963,
+        "cold_new_attempts": 0
+      },
+      "sourced_self": {
+        "selected_source_count": 1,
+        "support_count": 2,
+        "cold_new_attempts": 0
+      },
+      "paid_calls": 0
+    },
+    "linux": {
+      "manifest_sha256": "ff919c686bb459972cc23b833c718be5f5152e558151da3ccee03322a4a40628",
+      "evidence_sha256": "2c2a3c56b2907a0edf4e36d71ac9e6a51738819769ee096d7a960b1145793e04",
+      "host_binary_sha256": "c488a5267cd314ef9b007440449349fade8ac926250f3be30a230d765795e54d",
+      "worker_sha256": "2c416ec31bfa480954461ccee8a30c9f5f98897a92656325ac19558e1b9cce06",
+      "package_manifest_sha256": "50a0a52e657eea95916ddf4b53ad520bc1e339537a6e93f0ff667a507b3008ad",
+      "package_sha256": "629a155520bec8edc42a9fd54e14d59405ba89526c9208c9a21ba23664f5d230",
+      "ordinary_admissions": 9,
+      "ordinary_main_requests": 10,
+      "ordinary_jev_requests": 16,
+      "owner_modes": [
+        "off",
+        "legacy",
+        "semantic"
+      ],
+      "fixed_clock": {
+        "first_proposal_at": 5429,
+        "seed_draw": 2647,
+        "cold_opportunities": 0,
+        "original_work_preserved": true,
+        "terminal_feedback": "no_reply",
+        "late_opportunities_after_group_stop": 0
+      },
+      "lost_ack": {
+        "execution": "9e25ec70-8631-4bc4-b998-06d80ff03df2",
+        "physical_requests": 1,
+        "cold_new_attempts": 0,
+        "outcome": "no_reply"
+      },
+      "confirmed_send": {
+        "locator": "75691",
+        "first_confirmed_at_ms": 1794726927994,
+        "cold_new_attempts": 0
+      },
+      "sourced_self": {
+        "selected_source_count": 1,
+        "support_count": 2,
+        "cold_new_attempts": 0
+      },
+      "paid_calls": 0
+    },
+    "windows": {
+      "manifest_sha256": "d666dee4be709fddbe1a57dd3e0628096e13499812c52cd572c39502d9eb396e",
+      "evidence_sha256": "c4ec9bd1c01f6c5aeb5f2f33c9dde197e07db15fb2b9ced09832722f993f9483",
+      "host_binary_sha256": "f41858f65afb783f892b67d86da2473590ddc5c7bd88f92c13adfce91bf2b2bd",
+      "worker_sha256": "0984700e8af73f7e51ed5a69ec72080352cd00da7389a2e0dc5aa39c42a5ff29",
+      "package_manifest_sha256": "be943b1101d57edd80167668cb364dc44ee1606bb5309e7bcddf912708642966",
+      "package_sha256": "855f1fe01e1b2c1efe96e4420ed0d6b24b206c8cb5792d44ad2c9e1e5ead1100",
+      "ordinary_admissions": 9,
+      "ordinary_main_requests": 10,
+      "ordinary_jev_requests": 16,
+      "owner_modes": [
+        "off",
+        "legacy",
+        "semantic"
+      ],
+      "fixed_clock": {
+        "first_proposal_at": 5429,
+        "seed_draw": 2647,
+        "cold_opportunities": 0,
+        "original_work_preserved": true,
+        "terminal_feedback": "no_reply",
+        "late_opportunities_after_group_stop": 0
+      },
+      "lost_ack": {
+        "execution": "93bd40f2-fc57-49b5-a1d1-45e66d3f7fc2",
+        "physical_requests": 1,
+        "cold_new_attempts": 0,
+        "outcome": "no_reply"
+      },
+      "confirmed_send": {
+        "locator": "75691",
+        "first_confirmed_at_ms": 1794726982772,
+        "cold_new_attempts": 0
+      },
+      "sourced_self": {
+        "selected_source_count": 1,
+        "support_count": 2,
+        "cold_new_attempts": 0
+      },
+      "paid_calls": 0,
+      "run": 43689096433,
+      "artifact": 14151716208,
+      "artifact_sha256": "31d91f343db9f7fe2cf14a614468fb8b3758b3902d2ba733d664c5a618d73fd8"
+    }
+  },
+  "paid_calls": 0
+}
