@@ -36,6 +36,8 @@ def replay(root, output, host_bundle, library, published_plugin=None):
         asset = release["platforms"][system]
         if (release["status"] != "published-and-downloaded" or release["tag"] != TAG
                 or release["host"]["archive_sha256"] != expected_bundle
+                or release["host"]["source_commit"] != host["source_commit"]
+                or release["sdk"]["version"] != host["sdk"]["rust"]
                 or release["sdk"]["sha256"] != host["rust_crate_sha256"]
                 or sha(published_plugin) != asset["sha256"]):
             raise ValueError("Published participation package differs from its release lock")
@@ -52,6 +54,8 @@ def replay(root, output, host_bundle, library, published_plugin=None):
         raise ValueError("Packaged participation library digest differs")
     if package["artifacts"][binary] != sha(worker):
         raise ValueError("Participation executable differs from its manifest")
+    if published_plugin is not None and package["artifacts"][binary] != asset["worker_sha256"]:
+        raise ValueError("Participation executable differs from the published release")
 
     with TemporaryDirectory(prefix="ext025-stable-") as directory:
         scratch = Path(directory)
@@ -96,4 +100,5 @@ def replay(root, output, host_bundle, library, published_plugin=None):
     }
     if published_plugin:
         result["release_package_sha256"] = sha(published_plugin)
+        result["release_source_commit"] = release["source_commit"]
     return "ordinary-replay.json", result
