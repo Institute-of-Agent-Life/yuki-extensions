@@ -100,7 +100,7 @@ checksum = "a2c754d6c33795a1c324727428e5a7dedb5b06195f9890bdbcba760d3e246563"
 
 [[package]]
 name = "yuki-participation"
-version = "0.1.0-alpha.2"
+version = "0.1.0-alpha.3"
 dependencies = [
  "serde",
  "serde_json",
@@ -109,9 +109,9 @@ dependencies = [
 
 [[package]]
 name = "yuki-plugin-sdk"
-version = "1.0.0-alpha.30"
+version = "1.0.0-alpha.31"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "dce9033fcb7a1e6a38960475d380a74f69a7b771ba2537f236a52c0222b141ff"
+checksum = "ab4ae2116deff37c13d372dbc6a7f740655b2f24e9ee0072e870e58e7e2a9281"
 dependencies = [
  "serde",
  "serde_json",

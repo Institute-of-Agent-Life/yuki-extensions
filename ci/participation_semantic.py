@@ -59,6 +59,7 @@ def run(work, executable, worker, adapter, upstream, output):
 
     main_calls, review_calls = [], []
     wait_for_review, release_review = Event(), Event()
+    late_review, release_late = Event(), Event()
 
     class Model(BaseHTTPRequestHandler):
         def log_message(self, *_):
@@ -77,6 +78,9 @@ def run(work, executable, worker, adapter, upstream, output):
                 if "explicit-rule" in focus:
                     wait_for_review.set()
                     assert release_review.wait(10)
+                if "withdrawn while reviewing" in focus:
+                    late_review.set()
+                    assert release_late.wait(10)
                 choices = ({"floor_state": "yuki", "interaction_mark": "invite_yuki"}
                            if "literal-name" not in focus else {})
                 answers = {}
@@ -158,9 +162,16 @@ def run(work, executable, worker, adapter, upstream, output):
                     (state, usage), = review_receipt(reviewed)
                     assert state == "response" and json.loads(usage) == {"input": 17, "output": 3}
                 assert len(review_receipt(wrong)) == 1 and review_receipt(wrong)[0][0] != "response"
+                late = ingress("75308", "withdrawn while reviewing", quoted=True)
+                assert late_review.wait(14)
+                assert not query("SELECT event_id FROM accepted_sources WHERE event_id=?", late)
                 erasure = owner.op("privacy", "erase", "forget-native-review", person, json.dumps([anchor]))
+                release_late.set()
                 await_result(lambda: query("SELECT 1 FROM owner_erasures WHERE owner='review' AND watermark=? "
                                           "AND proof IS NOT NULL", erasure["watermark"]))
+                (late_state, late_usage), = await_result(lambda: review_receipt(late))
+                assert late_state == "response_held" and json.loads(late_usage) == {"input": 17, "output": 3}
+                assert not query("SELECT event_id FROM accepted_sources WHERE event_id=?", late)
                 with closing(sqlite3.connect(checkpoint.as_uri() + "?mode=ro", uri=True)) as snapshot:
                     assert all(canary.encode() not in body for (body,) in
                                snapshot.execute("SELECT body FROM snapshot_body"))
@@ -178,10 +189,12 @@ def run(work, executable, worker, adapter, upstream, output):
                 assert not query("SELECT 1 FROM main_inputs WHERE event=?", paused)
         finally:
             release_review.set()
+            release_late.set()
             server.shutdown()
             thread.join()
-    assert len(review_calls) == 5
+    assert len(review_calls) == 6 and len(main_calls) == 2
     return {"accepted": [explicit, semantic], "ignored_literal": literal, "ignored_invalid_response": wrong,
             "anchor": anchor, "paused": paused, "cold_replay": semantic,
+            "withdrawn_during_review": late, "withdrawn_receipt": {"state": late_state, "usage": json.loads(late_usage)},
             "main_attempts": len(main_calls), "review_attempts": len(review_calls), "paid_calls": 0,
             "rule_accepted_before_review": True, "source_erasure": erasure["watermark"]}

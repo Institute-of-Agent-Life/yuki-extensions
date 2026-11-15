@@ -289,24 +289,15 @@ impl<R: io::BufRead, W: io::Write> Host<R, W> {
         }
         let mut outcome = json!({});
         if decision["invited"] == true {
-            let current = self.request("participation.source", json!({
-                "event":event,"version":focus["version"],"include_reply":true,"include_self":true
-            }))?;
-            if current
-                .as_ref()
-                .is_some_and(|page| page["reply_to"] == reference)
-            {
-                if let Some(admitted) = self.request(
+            outcome = self
+                .request(
                     "participation.promote",
                     json!({
-                        "event":event,"expected_generation":origin.current_generation
+                        "event":event,"expected_generation":origin.current_generation,
+                        "expected_reply":reference
                     }),
-                )? {
-                    outcome = admitted;
-                }
-            } else {
-                outcome = json!({"status":"invalidated"});
-            }
+                )?
+                .unwrap_or_else(|| json!({"status":"invalidated"}));
         }
         if !self.erasures.is_empty() {
             outcome = json!({"status":"invalidated"});
