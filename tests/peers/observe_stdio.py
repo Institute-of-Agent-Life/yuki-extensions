@@ -6,14 +6,27 @@ import sys
 import threading
 
 
-def observe(program, trace, *args, stderr=None):
+def observe(program, trace, *args, stderr=None, cut_file=None):
     lock=threading.Lock()
     child=subprocess.Popen([program,*args],stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=stderr)
+    proposals = set()
     def copy(stream, sink, direction):
         try:
             for line in stream:
+                frame = json.loads(line)
                 with lock, Path(trace).open("a",encoding="utf-8") as log:
-                    print(json.dumps({"direction":direction,"frame":json.loads(line)}),file=log)
+                    row = {"direction": direction, "frame": frame}
+                    if cut_file is not None:
+                        if direction == "from_plugin" and frame.get("method") == "participation.self_propose":
+                            proposals.add(frame["id"])
+                        elif (direction == "from_host" and frame.get("id") in proposals
+                              and "result" in frame and cut_file.is_file()):
+                            row["forwarded"] = False
+                            print(json.dumps(row), file=log, flush=True)
+                            cut_file.unlink()
+                            child.kill()
+                            return
+                    print(json.dumps(row),file=log)
                 sink.write(line)
                 sink.flush()
         except (OSError,ValueError):
@@ -37,4 +50,9 @@ def observe(program, trace, *args, stderr=None):
 
 
 if __name__=="__main__":
-    observe(*sys.argv[1:])
+    program, trace, *arguments = sys.argv[1:]
+    cut_file = None
+    if arguments[:1] == ["--cut-self-reply"]:
+        _, name, *arguments = arguments
+        cut_file = Path(name)
+    observe(program, trace, *arguments, cut_file=cut_file)

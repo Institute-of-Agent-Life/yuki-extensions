@@ -4,7 +4,7 @@ use serde_json::{Value, json};
 use std::{
     fs::{File, OpenOptions},
     io::{self, BufReader, Write},
-    path::PathBuf,
+    path::{Path, PathBuf},
     process::{Child, ChildStdin, ChildStdout, Command, Stdio},
 };
 use yuki_plugin_sdk::read_frame;
@@ -23,6 +23,7 @@ pub(super) struct Engine {
     route: String,
     response_model: String,
     name: String,
+    autonomous: bool,
     _lock: File,
 }
 
@@ -37,6 +38,7 @@ impl Engine {
             route,
             response_model,
             name,
+            owner @ ..,
         ] = args
         else {
             return Err("review requires --review <python> <bridge> <source-archive> <checkpoint> <route> <response-model> <name>".into());
@@ -44,6 +46,19 @@ impl Engine {
         if flag != "--review" || args.iter().any(String::is_empty) {
             return Err("invalid original review configuration".into());
         }
+        let autonomous = match owner {
+            [] => false,
+            [option, mode] if option == "--owner" => match mode.as_str() {
+                "semantic" => true,
+                "legacy" | "off" => false,
+                _ => return Err("invalid participation owner".into()),
+            },
+            _ => {
+                return Err(
+                    "optional participation owner requires --owner <legacy|semantic|off>".into(),
+                );
+            }
+        };
         let checkpoint = PathBuf::from(checkpoint);
         let filename = checkpoint
             .file_name()
@@ -68,29 +83,51 @@ impl Engine {
             route: route.clone(),
             response_model: response_model.clone(),
             name: name.clone(),
+            autonomous,
             _lock: lock,
         })
     }
 
-    fn start(&self, job: &Value) -> Result<Bridge> {
-        let mut child = Command::new(&self.python)
+    fn spawn(&self, persistent: bool) -> Result<Bridge> {
+        let mut command = Command::new(&self.python);
+        command
             .arg("-I")
             .arg("-B")
             .arg(&self.adapter)
-            .arg(&self.upstream)
+            .arg(&self.upstream);
+        if persistent {
+            command.arg("--ticks");
+        }
+        let mut child = command
             .env_remove("YUKI_PLUGIN_BINDING")
             .stdin(Stdio::piped())
             .stdout(Stdio::piped())
             .spawn()?;
         let input = child.stdin.take().ok_or("review bridge lacks input")?;
         let output = BufReader::new(child.stdout.take().ok_or("review bridge lacks output")?);
-        let mut bridge = Bridge {
+        Ok(Bridge {
             child,
             input,
             output,
-        };
+        })
+    }
+
+    fn start(&self, job: &Value) -> Result<Bridge> {
+        let mut bridge = self.spawn(false)?;
         bridge.send(job)?;
         Ok(bridge)
+    }
+
+    pub(super) fn autonomous(&self) -> bool {
+        self.autonomous
+    }
+
+    pub(super) fn tick_reader(&self) -> Result<Bridge> {
+        self.spawn(true)
+    }
+
+    pub(super) fn tick_checkpoint(&self) -> &Path {
+        &self.checkpoint
     }
 
     pub(super) fn erase(&self, sources: &Value) -> Result<()> {
@@ -130,20 +167,20 @@ impl Engine {
     }
 }
 
-struct Bridge {
+pub(super) struct Bridge {
     child: Child,
     input: ChildStdin,
     output: BufReader<ChildStdout>,
 }
 
 impl Bridge {
-    fn send(&mut self, frame: &Value) -> Result<()> {
+    pub(super) fn send(&mut self, frame: &Value) -> Result<()> {
         writeln!(self.input, "{frame}")?;
         self.input.flush()?;
         Ok(())
     }
 
-    fn receive(&mut self) -> Result<Value> {
+    pub(super) fn receive(&mut self) -> Result<Value> {
         let message = read_frame(&mut self.output)?.ok_or("review bridge ended before receipt")?;
         Ok(serde_json::from_slice(&message)?)
     }
@@ -173,8 +210,8 @@ impl Drop for Bridge {
     }
 }
 
-impl<R: io::BufRead, W: io::Write> Host<R, W> {
-    fn original_pages(&mut self, event: i64, mut first: Value) -> Result<Option<Value>> {
+impl<W: io::Write> Host<W> {
+    pub(super) fn original_pages(&mut self, event: i64, mut first: Value) -> Result<Option<Value>> {
         let version = first["version"].clone();
         let origin = first["origin"].take();
         let delivery_origin = first["delivery_origin"].take();

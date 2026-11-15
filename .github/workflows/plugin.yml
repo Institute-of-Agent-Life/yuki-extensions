@@ -11,7 +11,7 @@ on:
         description: Taskbook replay to run
         required: true
         type: choice
-        options: ['EXT-025-native', 'EXT-025-release', 'EXT-025-published', 'EXT-035', 'EXT-035-scheduled-tools', 'EXT-035-context', 'EXT-036', 'EXT-036-release', 'EXT-036-published', 'EXT-037', 'EXT-040-published']
+        options: ['EXT-025-native', 'EXT-025-release', 'EXT-025-published', 'EXT-026', 'EXT-035', 'EXT-035-scheduled-tools', 'EXT-035-context', 'EXT-036', 'EXT-036-release', 'EXT-036-published', 'EXT-037', 'EXT-040-published']
       core_revision:
         description: Exact source of the core Host candidate
         required: true
@@ -84,6 +84,7 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           $card = switch ($env:EXTENSION_CARD) {
             'EXT-025-native' { 'CORE-050' }
+            'EXT-026' { 'CORE-050' }
             'EXT-037' { 'CORE-037' }
             default { 'CORE-039' }
           }
@@ -97,7 +98,7 @@ jobs:
             python -B ci/host_candidate.py --manifest $manifest --out $destination
           }
       - name: Exercise the native extension and retain the original receipts
-        if: ${{ !startsWith(inputs.card, 'EXT-036') && inputs.card != 'EXT-040-published' && !startsWith(inputs.card, 'EXT-025-') }}
+        if: ${{ !startsWith(inputs.card, 'EXT-036') && inputs.card != 'EXT-040-published' && inputs.card != 'EXT-026' && !startsWith(inputs.card, 'EXT-025-') }}
         env:
           REVISION: ${{ inputs.revision }}
           CORE_REVISION: ${{ inputs.core_revision }}
@@ -108,7 +109,7 @@ jobs:
         run: |
           python -B ci-driver/ci/windows_candidate_replay.py $env:EXTENSION_CARD $env:REVISION $env:CORE_REVISION extensions core/artifacts/extension-windows/candidate core/artifacts/extension-windows/producer/manifest.json windows-evidence
       - name: Replay the installed participation worker
-        if: startsWith(inputs.card, 'EXT-025-')
+        if: startsWith(inputs.card, 'EXT-025-') || inputs.card == 'EXT-026'
         working-directory: extensions
         env:
           REVISION: ${{ inputs.revision }}
@@ -128,7 +129,7 @@ jobs:
           python -m pip install --no-index --require-hashes --find-links $wheelhouse -r $lock
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           $env:PYTHONPATH = 'ci'
-          if ($env:EXTENSION_CARD -ne 'EXT-025-native') {
+          if ($env:EXTENSION_CARD -in @('EXT-025-release', 'EXT-025-published')) {
             $base = Get-Content 'compat/stable-1.3/source.lock.json' -Raw | ConvertFrom-Json
             if ($base.source_commit -cne $env:CORE_REVISION) { throw 'Wrong published Host source' }
             $asset = 'yuki-plugin-base-1.3.0.zip'
@@ -148,6 +149,12 @@ jobs:
           if (@($candidate).Count -ne 1) { throw 'Expected one verified CORE-050 candidate' }
           $env:YUKI_CORE050_CANDIDATE = $candidate.FullName
           $env:YUKI_CORE050_MANIFEST = (Resolve-Path '../core/artifacts/extension-windows/producer/manifest.json').Path
+          if ($env:EXTENSION_CARD -eq 'EXT-026') {
+            python -B ci/check.py EXT-026 --preparation --out ../windows-evidence
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+            python -B ci/check.py EXT-025 --preparation --out ../windows-evidence/ordinary-regression
+            exit $LASTEXITCODE
+          }
           python -B ci/check.py EXT-025 --preparation --out ../windows-evidence
           exit $LASTEXITCODE
       - name: Replay EXT-036 against the published Host
