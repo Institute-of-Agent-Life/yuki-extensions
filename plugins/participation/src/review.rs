@@ -1,4 +1,5 @@
 use super::{Host, Original, Result};
+use serde::Deserialize;
 use serde_json::{Value, json};
 use std::{
     fs::{File, OpenOptions},
@@ -7,6 +8,12 @@ use std::{
     process::{Child, ChildStdin, ChildStdout, Command, Stdio},
 };
 use yuki_plugin_sdk::read_frame;
+
+#[derive(Deserialize)]
+struct PriorContext {
+    anchor: Value,
+    references: Vec<Value>,
+}
 
 pub(super) struct Engine {
     python: String,
@@ -105,6 +112,21 @@ impl Engine {
         let events = serde_json::from_value(pending["events"].take())?;
         bridge.finish()?;
         Ok(events)
+    }
+
+    fn prior_context(&self, focus: &Value, receiver: &str) -> Result<Option<PriorContext>> {
+        if !self.checkpoint.is_file() {
+            return Ok(None);
+        }
+        let mut bridge = self.start(&json!({"action":"context","checkpoint":self.checkpoint,
+            "focus":focus,"receiver":receiver}))?;
+        let mut report = bridge.receive()?;
+        if report["type"] != "context" {
+            return Err("missing original participation context".into());
+        }
+        let context = serde_json::from_value(report["context"].take())?;
+        bridge.finish()?;
+        Ok(context)
     }
 }
 
@@ -246,12 +268,12 @@ impl<R: io::BufRead, W: io::Write> Host<R, W> {
         }
     }
 
-    fn admit_review(&mut self, event: i64, generation: u64, reference: &Value) -> Result<Value> {
+    fn admit_review(&mut self, event: i64, generation: u64, basis: &Value) -> Result<Value> {
+        let mut params = basis.clone();
+        params["event"] = json!(event);
+        params["expected_generation"] = json!(generation);
         Ok(self
-            .request(
-                "participation.promote",
-                json!({"event":event,"expected_generation":generation,"expected_reply":reference}),
-            )?
+            .request("participation.promote", params)?
             .unwrap_or_else(|| json!({"status":"invalidated"})))
     }
 
@@ -265,13 +287,24 @@ impl<R: io::BufRead, W: io::Write> Host<R, W> {
         {
             return Ok(());
         }
-        let reference = first["reply_to"].clone();
-        let Some(anchor) = reference["event"].as_i64() else {
-            return Ok(());
-        };
+        let reply = first["reply_to"].clone();
         let Some(focus) = self.original_pages(event, first)? else {
             return Ok(());
         };
+        let native_reply = reply.is_object();
+        let (reference, basis) = if native_reply {
+            (reply.clone(), json!({"expected_reply":reply}))
+        } else if let Some(context) = engine.prior_context(&focus, &self.scope.receiver)? {
+            (
+                context.anchor,
+                json!({"expected_context":context.references}),
+            )
+        } else {
+            return Ok(());
+        };
+        let anchor = reference["event"]
+            .as_i64()
+            .ok_or("missing original context event")?;
         let Some(first) = self.request("participation.source", json!({
             "event":anchor,"version":reference["version"],"include_origin":true,"include_self":true,
             "include_delivery_origin":true
@@ -291,7 +324,8 @@ impl<R: io::BufRead, W: io::Write> Host<R, W> {
         };
         let mut bridge = engine.start(&json!({"action":"review","checkpoint":engine.checkpoint,
             "name":engine.name,"response_model":engine.response_model,"receiver":self.scope.receiver,
-            "focus":focus,"anchor":earlier,"producer":producer}))?;
+            "focus":focus,"anchor":earlier,"producer":producer,"native_reply":native_reply,
+            "context":basis["expected_context"]}))?;
         let mut review = bridge.receive()?;
         if review["type"] == "feedback" {
             let source = review["event"]
@@ -308,7 +342,7 @@ impl<R: io::BufRead, W: io::Write> Host<R, W> {
             review = bridge.receive()?;
         }
         if review["type"] == "fast" {
-            let outcome = self.admit_review(event, origin.current_generation, &reference)?;
+            let outcome = self.admit_review(event, origin.current_generation, &basis)?;
             bridge.send(&outcome)?;
             review = bridge.receive()?;
         }
@@ -330,7 +364,7 @@ impl<R: io::BufRead, W: io::Write> Host<R, W> {
         }
         let mut outcome = json!({});
         if decision["invited"] == true {
-            outcome = self.admit_review(event, origin.current_generation, &reference)?;
+            outcome = self.admit_review(event, origin.current_generation, &basis)?;
         }
         if !self.erasures.is_empty() {
             outcome = json!({"status":"invalidated"});
