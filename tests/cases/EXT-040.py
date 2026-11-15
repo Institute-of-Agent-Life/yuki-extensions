@@ -144,13 +144,12 @@ def run(root, output):
     else:
         native = {"status": "not_run", "reason": "Requires YUKI_STABLE_BASE_ZIP for this platform"}
 
+    snowluma = compose.get("snowluma", {"status": "not_run", "reason": "Requires the Compose replay"})
+    ready = all(item["status"] == "PASS" for item in (compose, native, snowluma))
     return "setup-install.json", {
-        "status": "BLOCKED",
-        "card_status": "AWAITING_OPTIONAL_SERVICE_RUNTIME",
+        "status": "PASS" if ready else "BLOCKED",
+        "card_status": "INSTALL_AND_PRELOGIN_VERIFIED" if ready else "AWAITING_INSTALL_REPLAY",
         "compose": compose,
         "native": native,
-        "snowluma": {
-            "status": "not_run",
-            "reason": "The card lacks an imported compatible SnowLuma image, a readiness test that can run before QQ login, and an authorized runner for the image's ptrace and seccomp requirements.",
-        },
+        "snowluma": snowluma,
     }

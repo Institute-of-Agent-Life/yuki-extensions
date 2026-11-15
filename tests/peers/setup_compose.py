@@ -77,6 +77,36 @@ def check_peer(image, network, name):
     assert command([*peer, "/onebot/42"], timeout=12).startswith("HTTP/1.1 404 ")
 
 
+def start_snowluma(run, service, core_image, network, project):
+    image = service["image"]
+    assert image in inspect("image", image, ".RepoDigests")
+    run("--profile", "qq", "up", "--detach", "--pull", "never", "--no-build",
+        "--wait", "--wait-timeout", "90", timeout=110)
+    container = run("--profile", "qq", "ps", "-q", "snowluma").strip()
+    assert inspect("container", container, ".Config.Image") == image
+    assert inspect("container", container, ".State.Health.Status") == "healthy"
+    host = inspect("container", container, ".HostConfig")
+    assert host["Privileged"] is False and host["NetworkMode"] == network
+    assert host["CapAdd"] == ["CAP_SYS_PTRACE"]
+    assert "seccomp=unconfined" not in (host["SecurityOpt"] or [])
+    bindings = host["PortBindings"]
+    assert set(bindings) == {"5099/tcp", "6081/tcp"}
+    assert all(len(value) == 1 and value[0]["HostIp"] == "127.0.0.1" for value in bindings.values())
+    expected = {"/app/data": "snowluma_data", "/app/.config": "snowluma_qq_config",
+                "/app/.local/share": "snowluma_qq_data"}
+    mounts = inspect("container", container, ".Mounts")
+    assert {m["Destination"]: m["Name"] for m in mounts} == {
+        dest: project + "_" + suffix for dest, suffix in expected.items()
+    }
+    assert all(m["Type"] == "volume" for m in mounts)
+    run("--profile", "qq", "exec", "-T", "snowluma", "sh", "-ec",
+        'set -- /app/data/config/onebot_*.json; test ! -f "$1"')
+    check_peer(core_image, network, project)
+    return {"status": "PASS", "image": image, "ui_before_login": True,
+            "novnc_before_login": True, "core_ready_after_gateway_start": True,
+            "configured_ports": "loopback-only", "login_volumes": "new", "network": "internal"}
+
+
 def launch_pair(local, external, env, image, network):
     direct = partial(compose, local, env)
     ingress = partial(compose, external, env)
@@ -107,10 +137,17 @@ def launch_pair(local, external, env, image, network):
             assert operator(direct, "get-label") == direct_marker
             local_state["owner_survived_recreate"] = True
             external_state["survived_other_project_down"] = True
-            return local_state, external_state
+            gateway_state = {"status": "not_run", "reason": "Requires YUKI_SNOWLUMA_RUNTIME=1 and the pinned local image"}
+            if os.environ.get("YUKI_SNOWLUMA_RUNTIME") == "1":
+                selected = json.loads(ingress("--profile", "qq", "config", "--format", "json"))
+                gateway_state = start_snowluma(ingress, selected["services"]["snowluma"], image, network, names[1])
+            return local_state, external_state, gateway_state
         finally:
             with ThreadPoolExecutor(max_workers=2) as pool:
-                cleanups = [pool.submit(run, "down", "--volumes", "--timeout", "5") for run in (direct, ingress)]
+                cleanups = [
+                    pool.submit(run, "--profile", "qq", "down", "--volumes", "--timeout", "5")
+                    for run in (direct, ingress)
+                ]
                 for cleanup in cleanups:
                     cleanup.result()
 
@@ -188,7 +225,7 @@ def verify(root, output):
 
         for name, options, reason in [
             ("missing-monty", ("--profile", "code"), "no compatible pinned package"),
-            ("missing-snowluma", ("--plugin", "snowluma"), "no compatible pinned package"),
+            ("snowluma-without-ingress", ("--plugin", "snowluma"), "SnowLuma requires --entry external"),
             ("missing-network", ("--entry", "external"), "requires a valid --entry-network"),
             ("bad-network", ("--entry", "external", "--entry-network", "bad\nnet"), "requires a valid --entry-network"),
             ("network-with-local", ("--entry-network", "gateway"), "use --entry local or"),
@@ -221,9 +258,29 @@ def verify(root, output):
               refusal="differs from the pinned offline kit")
         assert (external / "compose.yaml").read_bytes() == external_yaml
 
+        gateway = work / "gateway" / "kit"
+        options = (*options, "--plugin", "snowluma")
+        setup("init", gateway, *options, "--timezone", "Asia/Shanghai")
+        original = (gateway / "compose.yaml").read_bytes()
+        setup("init", gateway, *options, "--timezone", "Asia/Shanghai")
+        assert (gateway / "compose.yaml").read_bytes() == original
+        assert "gateway=snowluma" in setup("doctor", gateway, *options)
+        setup("doctor", gateway, *options[:-2], refusal="differs from the pinned offline kit")
+        run = partial(compose, gateway, env)
+        assert run("config", "--services").split() == ["core"]
+        selected = json.loads(run("--profile", "qq", "config", "--format", "json"))
+        assert set(selected["services"]) == {"core", "snowluma"}
+        sl = selected["services"]["snowluma"]
+        assert sl["profiles"] == ["qq"] and sl["pull_policy"] == "never"
+        assert not any("depends_on" in s for s in selected["services"].values())
+        assert set(sl["networks"]) == {"ingress"}
+        assert [(p["host_ip"], p["target"]) for p in sl["ports"]] == [
+            ("127.0.0.1", 5099), ("127.0.0.1", 6081)
+        ]
+
         image = "yuki-core@" + pin["image_digest"]
         assert image in inspect("image", image, ".RepoDigests")
-        local_state, external_state = launch_pair(local, external, env, image, network)
+        local_state, external_state, gateway_state = launch_pair(local, gateway, env, image, network)
 
     return {
         "status": "PASS",
@@ -236,6 +293,7 @@ def verify(root, output):
         "actions": actions,
         "direct_without_monty": local_state,
         "no_qq_external_entry": external_state,
+        "snowluma": gateway_state,
         "legacy_napcat_env_preserved": True,
         "previous_named_volume_preserved": old_volume["name"],
         "registry_pulls": 0,

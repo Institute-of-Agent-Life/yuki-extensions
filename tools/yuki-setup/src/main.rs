@@ -112,7 +112,7 @@ fn run() -> Result<(), Error> {
         return Err("selected core version does not match the verified input".into());
     }
     if args.contains_key("--plugin-file")
-        || args.contains_key("--plugin")
+        || args.get("--plugin").is_some_and(|v| v != "snowluma")
         || args.get("--profile").is_some_and(|v| v != "direct")
     {
         return Err("selected component has no compatible pinned package in this candidate".into());
@@ -120,6 +120,7 @@ fn run() -> Result<(), Error> {
     let entry = config::Entry::parse(
         args.get("--entry").map(String::as_str),
         args.get("--entry-network").map(String::as_str),
+        args.contains_key("--plugin"),
     )?;
     let zone = args.get("--timezone").map(String::as_str);
     if zone.is_some_and(|v| !timezone_valid(v)) {
@@ -184,13 +185,18 @@ fn run() -> Result<(), Error> {
         return Err("offline timezone differs".into());
     }
     println!(
-        "offline doctor passed; candidate={} platform={} image={} profile=direct entry={} storage={} project={}",
+        "offline doctor passed; candidate={} platform={} image={} profile=direct entry={} storage={} project={}{}",
         core.version,
         core.platform,
         core.image,
         entry.name(),
         if legacy { "legacy-bind" } else { "volume" },
         project.as_deref().unwrap_or("compose-default"),
+        if matches!(entry, config::Entry::External { snowluma: true, .. }) {
+            " gateway=snowluma"
+        } else {
+            ""
+        },
     );
     Ok(())
 }
