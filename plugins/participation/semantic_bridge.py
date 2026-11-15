@@ -356,8 +356,10 @@ def observe_self_feedback(controller, proposal, execution, now):
     effects = []
     for operation in execution["sends"]:
         effect = f"send:{run}:{operation['operation']}"
-        if operation["confirmed_parts"] and effect not in controller.state.effects:
-            effects.append(Effect(effect_id=effect, kind="message", at=now, actual_targets=("group",)))
+        confirmed_at = operation["first_confirmed_at"]
+        if operation["confirmed_parts"] and confirmed_at is not None and effect not in controller.state.effects:
+            effects.append(Effect(effect_id=effect, kind="message", at=confirmed_at / 1000,
+                                  actual_targets=("group",)))
     if previous is not None and previous.outcome == outcome and not effects:
         return
     controller.observe_run_feedback(Feedback(

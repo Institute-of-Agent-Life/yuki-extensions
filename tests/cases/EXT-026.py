@@ -318,15 +318,20 @@ def exercise(root, output, work, executable, worker, upstream, *, delivery=False
     assert lost == ([] if delivery else [{"execution": execution, "newly_accepted": True}])
     recovery = [row["frame"]["params"] for row in frames if row["direction"] == "from_plugin"
                 and row["frame"].get("method") == "participation.feedback"]
-    assert {"key": proposal, "allow_missing_proposal": True} in recovery
+    assert {"key": proposal, "allow_missing_proposal": True, "include_delivery_time": True} in recovery
     assert query("SELECT id FROM events WHERE raw_actor=? ORDER BY id", person) == [
         (event,) for event in event_times
     ]
-    observed_sends = query("SELECT locator FROM social_outbound WHERE namespace=?", execution)
-    assert observed_sends == ([("75691",)] if delivery else [])
+    observed_sends = query("SELECT locator,observed_at FROM social_outbound WHERE namespace=?", execution)
+    assert [row[0] for row in observed_sends] == (["75691"] if delivery else [])
+    original_confirmation = observed_sends[0][1] if delivery else None
+    confirmed_effects = [row.effect.at for row in snapshot().effects.values()
+                         if row.run_ref == execution and row.effect.kind == "message"]
+    assert confirmed_effects == ([original_confirmation / 1000] if delivery else [])
     return {"reader": reader, "owner_modes": [*other_modes, "semantic"], "seed_draw": seed,
             "original_human_events": len(event_times), "new_human_events": 0, "main_attempts": len(calls),
             "paid_calls": 0, "proposal": proposal, "original_work": execution, "terminal_feedback": terminal,
             "confirmed_locators": [row[0] for row in observed_sends],
+            "original_confirmation_ms": original_confirmation,
             "lost_admission_reply": lost, "cold_new_attempts": 0,
             "wire_frames": len(frames), "wire_sha256": sha(trace)}

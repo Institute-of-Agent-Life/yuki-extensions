@@ -135,7 +135,7 @@ impl<'a> Timer<'a> {
                     let key = frame["key"].as_str().ok_or("missing original SELF key")?;
                     let reply = host.request(
                         "participation.feedback",
-                        json!({"key":key,"allow_missing_proposal":true}),
+                        json!({"key":key,"allow_missing_proposal":true,"include_delivery_time":true}),
                     )?;
                     bridge.send(&reply.unwrap_or(Value::Null))?;
                 }
