@@ -11,7 +11,7 @@ on:
         description: Taskbook replay to run
         required: true
         type: choice
-        options: ['EXT-025-native', 'EXT-025-release', 'EXT-025-published', 'EXT-026', 'EXT-026-release', 'EXT-026-published', 'EXT-028-release', 'EXT-035', 'EXT-035-scheduled-tools', 'EXT-035-context', 'EXT-036', 'EXT-036-release', 'EXT-036-published', 'EXT-037', 'EXT-040-published']
+        options: ['EXT-025-native', 'EXT-025-release', 'EXT-025-published', 'EXT-026', 'EXT-026-release', 'EXT-026-published', 'EXT-028-release', 'EXT-028-published', 'EXT-035', 'EXT-035-scheduled-tools', 'EXT-035-context', 'EXT-036', 'EXT-036-release', 'EXT-036-published', 'EXT-037', 'EXT-040-published']
       core_revision:
         description: Exact source of the core Host candidate
         required: true
@@ -48,7 +48,7 @@ jobs:
           persist-credentials: false
           path: extensions
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
-        if: ${{ !startsWith(inputs.card, 'EXT-036') && inputs.card != 'EXT-040-published' && inputs.card != 'EXT-025-release' && inputs.card != 'EXT-025-published' && !startsWith(inputs.card, 'EXT-026-') && inputs.card != 'EXT-028-release' }}
+        if: ${{ !startsWith(inputs.card, 'EXT-036') && inputs.card != 'EXT-040-published' && inputs.card != 'EXT-025-release' && inputs.card != 'EXT-025-published' && !startsWith(inputs.card, 'EXT-026-') && !startsWith(inputs.card, 'EXT-028-') }}
         with:
           repository: Institute-of-Agent-Life/yuki-core
           ref: ${{ inputs.core_revision }}
@@ -71,7 +71,7 @@ jobs:
           "TEMP=$env:RUNNER_TEMP" >> $env:GITHUB_ENV
           "PYTHONDONTWRITEBYTECODE=1" >> $env:GITHUB_ENV
       - name: Prepare the Host candidate from its checked source
-        if: ${{ !startsWith(inputs.card, 'EXT-036') && inputs.card != 'EXT-040-published' && inputs.card != 'EXT-025-release' && inputs.card != 'EXT-025-published' && !startsWith(inputs.card, 'EXT-026-') && inputs.card != 'EXT-028-release' }}
+        if: ${{ !startsWith(inputs.card, 'EXT-036') && inputs.card != 'EXT-040-published' && inputs.card != 'EXT-025-release' && inputs.card != 'EXT-025-published' && !startsWith(inputs.card, 'EXT-026-') && !startsWith(inputs.card, 'EXT-028-') }}
         working-directory: core
         env:
           CORE_REVISION: ${{ inputs.core_revision }}
@@ -98,7 +98,7 @@ jobs:
             python -B ci/host_candidate.py --manifest $manifest --out $destination
           }
       - name: Exercise the native extension and retain the original receipts
-        if: ${{ !startsWith(inputs.card, 'EXT-036') && inputs.card != 'EXT-040-published' && !startsWith(inputs.card, 'EXT-026') && !startsWith(inputs.card, 'EXT-025-') && inputs.card != 'EXT-028-release' }}
+        if: ${{ !startsWith(inputs.card, 'EXT-036') && inputs.card != 'EXT-040-published' && !startsWith(inputs.card, 'EXT-026') && !startsWith(inputs.card, 'EXT-025-') && !startsWith(inputs.card, 'EXT-028-') }}
         env:
           REVISION: ${{ inputs.revision }}
           CORE_REVISION: ${{ inputs.core_revision }}
@@ -161,12 +161,13 @@ jobs:
           }
           python -B ci/check.py EXT-025 --preparation --out ../windows-evidence
           exit $LASTEXITCODE
-      - name: Replay the Rust web-fetch candidate with the published Host
-        if: inputs.card == 'EXT-028-release'
+      - name: Replay the Rust web-fetch package with the published Host
+        if: startsWith(inputs.card, 'EXT-028-')
         working-directory: extensions
         env:
           REVISION: ${{ inputs.revision }}
           CORE_REVISION: ${{ inputs.core_revision }}
+          EXTENSION_CARD: ${{ inputs.card }}
         run: |
           if ((git rev-parse HEAD) -cne $env:REVISION) { throw 'Wrong extension checkout' }
           $base = Get-Content compat/stable-1.0/source.lock.json -Raw | ConvertFrom-Json
@@ -177,7 +178,14 @@ jobs:
           if ((Get-FileHash $bundle -Algorithm SHA256).Hash.ToLowerInvariant() -cne $target.sha256) { throw 'Wrong Host archive' }
           $env:YUKI_WEB_FETCH_RELEASE_HOST = $bundle
           $env:PYTHONPATH = Join-Path (Get-Location) 'ci'
-          python -B ci/check.py EXT-028 --preparation --out ../windows-evidence
+          if ($env:EXTENSION_CARD -eq 'EXT-028-published') {
+            $release = Get-Content 'compat/web-fetch-0.1.0/release.lock.json' -Raw | ConvertFrom-Json
+            $env:YUKI_WEB_FETCH_RELEASE = Join-Path $env:RUNNER_TEMP 'web-fetch-windows.zip'
+            Invoke-WebRequest -Uri $release.platforms.windows.url -OutFile $env:YUKI_WEB_FETCH_RELEASE
+            python -B ci/check.py EXT-028 --out ../windows-evidence
+          } else {
+            python -B ci/check.py EXT-028 --preparation --out ../windows-evidence
+          }
           exit $LASTEXITCODE
       - name: Replay EXT-036 against the published Host
         if: startsWith(inputs.card, 'EXT-036')

@@ -1,0 +1,33 @@
+{
+  "source_commit": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+  "evidence": [
+    {
+      "path": "src/yuki/web/bridge_state.py",
+      "blob": "c8ae55963b010688f3a7b1030793df48a71bec5f",
+      "sha256": "e6d97e0cf0634322c628d5fcf75e1b11c2c2d5f3c9a2682cfa51c03c965c6633",
+      "observation": "Bounded SQLite retrieval cache: expiry and size handling in BridgeState._access."
+    },
+    {
+      "path": "src/yuki/web/page_extractor.py",
+      "blob": "fe3995e54c1f76ae1d438e07676b7158ddb6bcc5",
+      "sha256": "29ea313c220f35b33bff507b36f870c84ded245525273293d73fd156b0851657",
+      "observation": "DirectPageExtractor.extract keys by normalized URL and query and rebuilds the entry on cache miss."
+    },
+    {
+      "path": "src/yuki/web/http_transport.py",
+      "blob": "5051fd5f50c4d5e6a18d804aa8d71ff3827a23c3",
+      "sha256": "3a4ee640ceae0f0111ed1dc900643b6c6ddecd059a5d40dbd75a65a1c49cefa2",
+      "observation": "Proxy selection and verified public destination transport are part of the legacy direct-page route."
+    }
+  ],
+  "rebuildable": [
+    "Direct HTTP extraction entries in BridgeState are retrieval cache."
+  ],
+  "authoritative_elsewhere": [
+    "A paid attempt or original operation receipt belongs to its original accounting/operation owner; exclude it from cache cleanup."
+  ],
+  "field_review": [
+    "No deployed volume was inspected. Identify each original database and owner before importing or dropping records."
+  ],
+  "plugin_storage": "No persistent page store. Reads use memory; the host owns admitted tool results and their paging."
+}
