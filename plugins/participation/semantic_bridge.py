@@ -158,7 +158,7 @@ async def review(job):
         revision = existing[0] if existing else 0
         controller = Controller.restore(existing[1], now) if existing else Controller(scope, now)
         earlier = projected(job["anchor"], controller)
-        focus = projected(job["focus"], controller, earlier)
+        focus = projected(job["focus"], controller, earlier if job["native_reply"] else None)
         if focus.kind != "human":
             raise ValueError("the focus must be an original human input")
         key = focus.ref.event_id
@@ -170,7 +170,7 @@ async def review(job):
             if previous["settled"]:
                 send({"type": "done"})
                 return
-            continued = previous.get("continued", False)
+            record = previous
         else:
             continued = continue_original(controller, focus, earlier, job, now)
             if continued is None:
@@ -178,9 +178,13 @@ async def review(job):
                 return
             snapshot = controller.freeze_observation(Snapshot(scope=scope, focus=focus, context=(earlier,),
                                                               sequence=revision + 1, issued_at=max(now, focus.at)))
-            controller.set_host_mapping_entry("ordinary_reviews", key,
-                                              {"snapshot": snapshot.model_dump(mode="json"), "settled": False,
-                                               "continued": continued})
+            record = {"snapshot": snapshot.model_dump(mode="json"), "settled": False, "continued": continued}
+            if not job["native_reply"]:
+                record["context"] = {
+                    "anchor": {"event": job["anchor"]["event"], "version": job["anchor"]["version"]},
+                    "references": job["context"],
+                }
+            controller.set_host_mapping_entry("ordinary_reviews", key, record)
             revision = store.save(controller.state, expected_revision=revision)
 
         def exchange(request):
@@ -213,14 +217,12 @@ async def review(job):
         if outcome.get("status") == "invalidated":
             send({"type": "done"})
             return
-        if outcome.get("accepted") and not continued:
+        if outcome.get("accepted") and not record.get("continued", False):
             binding = UnitBinding(scope=scope, unit=ParticipationUnit(thread=focus.thread, target=focus.author),
                                   actor=focus.author, basis=(focus.ref, earlier.ref))
             if not controller.observe_unit_input(binding, focus.ref):
                 raise ValueError("original admission could not be applied to the participation state")
-        controller.set_host_mapping_entry("ordinary_reviews", key,
-                                          {"snapshot": snapshot.model_dump(mode="json"), "settled": True,
-                                           "continued": continued})
+        controller.set_host_mapping_entry("ordinary_reviews", key, {**record, "settled": True})
         store.save(controller.state, expected_revision=revision)
         send({"type": "done"})
 
@@ -250,7 +252,9 @@ def erase(job):
                 controller.observe_source_change(SourceRef(event_id=key, revision=versions.pop(key)[0]))
             for key, record in list(reviews.items()):
                 snapshot = Snapshot.model_validate(record["snapshot"])
-                if any(item.ref.event_id in related for item in (snapshot.focus, *snapshot.context)):
+                references = record.get("context", {}).get("references", [])
+                if (any(item.ref.event_id in related for item in (snapshot.focus, *snapshot.context))
+                        or any(f"event:{item['event']}" in related for item in references)):
                     del reviews[key]
             controller.set_state_entry("host_checkpoint", "source_versions", versions)
             controller.set_state_entry("host_checkpoint", "ordinary_reviews", reviews)
@@ -278,6 +282,61 @@ def pending(job):
     send({"type": "pending", "events": sorted(events)})
 
 
+def unquoted_context(job):
+    from yuki_participation.controller import Controller
+    from yuki_participation.models import Scope
+    from yuki_participation.participation import CHECKPOINT_KEY, ParticipationCheckpoint
+    from yuki_participation.store import SnapshotStore
+
+    focus = job["focus"]
+    envelope = original(focus)
+    if (envelope["bot_stage"] != job["receiver"]
+            or any(part["type"] == "reply" for part in envelope["segments"])
+            or any(mark["kind"] == "yuki" and mark["presence_id"] != job["receiver"]
+                   for mark in focus["mentions"])):
+        return None
+    origin = focus["origin"]
+    scope = Scope(conversation_id=origin["entry"], generation=origin["observed_generation"])
+    with closing(SnapshotStore(Path(job["checkpoint"]))) as store:
+        existing = store.load(scope)
+    if existing is None:
+        return None
+    _, state = existing
+    previous = state.host_checkpoint.get("ordinary_reviews", {}).get(f"event:{focus['event']}")
+    if previous is not None:
+        return None if previous["settled"] else previous.get("context")
+    checkpoint = state.host_checkpoint.get(CHECKPOINT_KEY)
+    if checkpoint is None:
+        return None
+    units = ParticipationCheckpoint.model_validate(checkpoint).units.values()
+    by_unit = {(row.binding.actor, row.binding.unit.thread, row.binding.unit.target): row for row in units}
+    versions = state.host_checkpoint.get("source_versions", {})
+
+    def source_reference(ref):
+        original_ref = versions.get(ref.event_id)
+        if not original_ref or original_ref[0] != ref.revision:
+            return None
+        return {"event": int(ref.event_id.removeprefix("event:")), "version": original_ref[1]}
+
+    now = time.time()
+    choices = []
+    for view in Controller.restore(state, now).participating_units(now):
+        if view.closed or view.binding.actor != origin["original_person"]:
+            continue
+        unit = by_unit.get((view.binding.actor, view.unit.thread, view.unit.target))
+        if unit is None or unit.input_ref is None:
+            continue
+        earlier = state.events.get(unit.input_ref.event_id)
+        if earlier is None or earlier.ref != unit.input_ref or earlier.kind != "human":
+            continue
+        refs = tuple(dict.fromkeys((*view.binding.basis, earlier.ref)))
+        references = [source_reference(ref) for ref in refs]
+        if any(ref is None or ref["event"] >= focus["event"] for ref in references):
+            continue
+        choices.append({"anchor": source_reference(earlier.ref), "references": references})
+    return choices[0] if len(choices) == 1 else None
+
+
 def main():
     archive = Path(sys.argv[1])
     if hashlib.sha256(archive.read_bytes()).hexdigest() != UPSTREAM_SHA256:
@@ -292,6 +351,8 @@ def main():
             erase(job)
         elif job["action"] == "pending":
             pending(job)
+        elif job["action"] == "context":
+            send({"type": "context", "context": unquoted_context(job)})
         else:
             asyncio.run(review(job))
 

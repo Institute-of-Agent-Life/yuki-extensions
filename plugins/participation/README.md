@@ -61,6 +61,10 @@ A reply to Yuki's confirmed delivery can also continue the original
 person's relationship. The worker matches its logical send and producer
 event against Host feedback for the original admission.
 
+An unquoted human input can use a single established relationship in the
+same entry and generation. The Host verifies the original context versions
+before admission. A native quote whose source has disappeared cannot use
+the unquoted path.
+
 Restart recovery uses the same original event and review key. Source erasure
 removes affected snapshot data before the worker acknowledges the Host.
-This development package covers review with a canonical reply anchor.

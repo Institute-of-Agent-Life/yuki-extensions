@@ -18,6 +18,7 @@ def run(work, executable, worker, adapter, upstream, output):
     person = "00000000-0000-4000-8000-000000000253"
     other_person = "00000000-0000-4000-8000-000000000254"
     speaking_person = "00000000-0000-4000-8000-000000000255"
+    continuing_person = "00000000-0000-4000-8000-000000000256"
     space = '["qq","review-fixture","753"]'
     address = free_address()
     config = owner.data / "yuki.toml"
@@ -35,6 +36,9 @@ def run(work, executable, worker, adapter, upstream, output):
         owner.op("person", "create", speaking_person)
         speaker = owner.op("account", "open", "qq", "review-fixture", "202", 1,
                            "--person", speaking_person, "--start", 1)
+        owner.op("person", "create", continuing_person)
+        continuing = owner.op("account", "open", "qq", "review-fixture", "203", 1,
+                               "--person", continuing_person, "--start", 1)
         bot = owner.op("account", "open", "qq", "review-fixture", "100", 1, "--start", 1)
 
     def query(statement, *args):
@@ -58,6 +62,9 @@ def run(work, executable, worker, adapter, upstream, output):
             time.sleep(0.05)
         raise TimeoutError("original participation review did not settle")
 
+    def elapsed_ms(started):
+        return (time.monotonic_ns() - started) // 1_000_000
+
     timestamps = {}
 
     def ingress(native, text, *, quoted=False, mentioned=False, actor=author):
@@ -77,6 +84,7 @@ def run(work, executable, worker, adapter, upstream, output):
     fast_review, release_fast = Event(), Event()
     late_review, release_late = Event(), Event()
     expression_review, release_expression = Event(), Event()
+    unquoted_review, release_unquoted = Event(), Event()
 
     class Model(BaseHTTPRequestHandler):
         def log_message(self, *_):
@@ -89,7 +97,8 @@ def run(work, executable, worker, adapter, upstream, output):
                 trigger = json.dumps(request["messages"][-1]["content"])
                 intent = ("quiet" if "fast via own state" in trigger else
                           "stay" if any(text in trigger for text in
-                                        ("ordinary continuation", "correction seed", "correction during review"))
+                                        ("ordinary continuation", "correction seed", "correction during review",
+                                         "unquoted seed", "continue without a quote"))
                           else None)
                 text = "private response"
                 if intent is not None:
@@ -120,6 +129,11 @@ def run(work, executable, worker, adapter, upstream, output):
                 if "continue confirmed delivery" in focus:
                     expression_review.set()
                     assert release_expression.wait(10)
+                if "continue without a quote" in focus:
+                    assert not request["state"]["focus"].get("reply_to")
+                    assert request["state"]["context"][0]["text"] == "unquoted seed"
+                    unquoted_review.set()
+                    assert release_unquoted.wait(10)
                 if "correction during review" in focus:
                     choices = {"floor_state": "other", "interaction_mark": "other_exchange"}
                 elif any(text in focus for text in ("literal-name", "after own quiet", "after semantic correction",
@@ -197,8 +211,10 @@ def run(work, executable, worker, adapter, upstream, output):
                 assert query("SELECT event FROM participation_promotions WHERE plugin='review'") == []
                 release_review.set()
                 await_result(lambda: query("SELECT 1 FROM participation_promotions WHERE plugin='review' AND event=?", explicit))
+                started = time.monotonic_ns()
                 semantic = ingress("75304", "ordinary continuation", quoted=True)
                 await_result(lambda: query("SELECT 1 FROM main_inputs WHERE event=?", semantic))
+                jev_admission_ms = elapsed_ms(started)
                 await_result(lambda: len(main_calls) == 2)
                 assert query("SELECT event_id FROM accepted_sources ORDER BY event_id") == [(explicit,), (semantic,)]
                 assert query("SELECT event FROM participation_promotions WHERE plugin='rule'") == [(explicit,)]
@@ -219,15 +235,19 @@ def run(work, executable, worker, adapter, upstream, output):
                 assert len(review_receipt(wrong)) == 1 and review_receipt(wrong)[0][0] != "response"
 
                 assert query("SELECT engage FROM participation_main_reports WHERE event=?", semantic) == [("stay",)]
+                started = time.monotonic_ns()
                 fast = ingress("75309", "fast via own state", quoted="75304")
-                assert fast_review.wait(14)
-                assert query("SELECT event_id FROM accepted_sources WHERE event_id=?", fast) == [(fast,)]
+                await_result(lambda: query("SELECT 1 FROM main_inputs WHERE event=?", fast))
+                quoted_admission_ms = elapsed_ms(started)
+                assert fast_review.wait(14) and not review_receipt(fast)
                 await_result(lambda: query("SELECT engage FROM participation_main_reports "
                                            "WHERE event=? AND engage='quiet'", fast))
+                quiet_observed = time.monotonic_ns()
                 release_fast.set()
                 await_result(lambda: review_receipt(fast))
                 after_quiet = ingress("75310", "after own quiet", quoted="75309")
                 await_result(lambda: review_receipt(after_quiet))
+                quiet_probe_ms = elapsed_ms(quiet_observed)
                 assert not query("SELECT event_id FROM accepted_sources WHERE event_id=?", after_quiet)
                 assert query("SELECT event_id FROM accepted_sources ORDER BY event_id") == [(explicit,), (semantic,), (fast,)]
 
@@ -237,10 +257,12 @@ def run(work, executable, worker, adapter, upstream, output):
                                            "WHERE event=? AND engage='stay'", correction_seed))
                 corrected = ingress("75314", "correction during review", quoted="75313", actor=other)
                 await_result(lambda: review_receipt(corrected))
+                correction_observed = time.monotonic_ns()
                 await_result(lambda: query("SELECT 1 FROM participation_main_reports "
                                            "WHERE event=? AND engage='stay'", corrected))
                 after_correction = ingress("75315", "after semantic correction", quoted="75314", actor=other)
                 await_result(lambda: review_receipt(after_correction))
+                correction_probe_ms = elapsed_ms(correction_observed)
                 assert query("SELECT event_id FROM accepted_sources ORDER BY event_id") == [
                     (explicit,), (semantic,), (fast,), (correction_seed,), (corrected,),
                 ]
@@ -281,6 +303,19 @@ def run(work, executable, worker, adapter, upstream, output):
                     await_erasure(expression_erasure, "confirmed group expression")
                     erased_delivery = ingress("75325", "quote withdrawn delivery", quoted="75322", actor=speaker)
 
+                ingress("75330", "original unquoted relationship anchor", actor=continuing)
+                unquoted_seed = ingress("75331", "unquoted seed", quoted="75330", actor=continuing)
+                await_result(lambda: query("SELECT 1 FROM participation_main_reports "
+                                           "WHERE event=? AND engage='stay'", unquoted_seed))
+                started = time.monotonic_ns()
+                unquoted = ingress("75332", "continue without a quote", actor=continuing)
+                await_result(lambda: query("SELECT 1 FROM main_inputs WHERE event=?", unquoted))
+                unquoted_admission_ms = elapsed_ms(started)
+                assert unquoted_review.wait(14) and not review_receipt(unquoted)
+                release_unquoted.set()
+                await_result(lambda: review_receipt(unquoted))
+                unavailable_quote = ingress("75333", "actual unavailable quote", quoted="75399", actor=continuing)
+
                 late = ingress("75308", "withdrawn while reviewing", quoted=True)
                 assert late_review.wait(14)
                 assert not query("SELECT event_id FROM accepted_sources WHERE event_id=?", late)
@@ -292,6 +327,8 @@ def run(work, executable, worker, adapter, upstream, output):
                 assert not query("SELECT event_id FROM accepted_sources WHERE event_id=?", late)
                 assert not query("SELECT 1 FROM main_inputs WHERE event=?", erased_delivery)
                 assert not review_receipt(erased_delivery)
+                assert not query("SELECT 1 FROM main_inputs WHERE event=?", unavailable_quote)
+                assert not review_receipt(unavailable_quote)
 
             config.write_text(config.read_text(encoding="utf-8").replace('"753"="observe"', '"753"="paused"'),
                               encoding="utf-8")
@@ -306,10 +343,12 @@ def run(work, executable, worker, adapter, upstream, output):
             release_fast.set()
             release_late.set()
             release_expression.set()
+            release_unquoted.set()
             server.shutdown()
             thread.join()
-    assert len(review_calls) == 14 and len(main_calls) == 8
-    return {"accepted": [explicit, semantic, fast, correction_seed, corrected, expression_seed, delivered],
+    assert len(review_calls) == 16 and len(main_calls) == 10
+    return {"accepted": [explicit, semantic, fast, correction_seed, corrected, expression_seed, delivered,
+                         unquoted_seed, unquoted],
             "ignored_literal": literal, "ignored_invalid_response": wrong,
             "anchor": anchor, "paused": paused, "cold_replay": semantic,
             "withdrawn_during_review": late, "withdrawn_receipt": {"state": late_state, "usage": json.loads(late_usage)},
@@ -318,5 +357,13 @@ def run(work, executable, worker, adapter, upstream, output):
             "original_confirmed_delivery": confirmed, "delivery_continued_before_review": delivered,
             "foreign_delivery_ignored": foreign_delivery, "withdrawn_delivery_ignored": erased_delivery,
             "delivery_source_erasure": expression_erasure["watermark"],
+            "unquoted_continued_before_review": unquoted, "actual_unavailable_quote_ignored": unavailable_quote,
+            "observed_milliseconds": {
+                "ingress_to_main_input": {"jev_invitation": jev_admission_ms,
+                                          "quoted_fast": quoted_admission_ms,
+                                          "unquoted_fast": unquoted_admission_ms},
+                "close_signal_to_negative_probe_receipt": {"main_quiet": quiet_probe_ms,
+                                                           "jev_correction": correction_probe_ms},
+            },
             "main_attempts": len(main_calls), "review_attempts": len(review_calls), "paid_calls": 0,
             "rule_accepted_before_review": True, "source_erasure": erasure["watermark"]}
