@@ -285,6 +285,14 @@ def pending(job):
     send({"type": "pending", "events": sorted(events)})
 
 
+def source_reference(state, ref):
+    version = state.host_checkpoint.get("source_versions", {}).get(ref.event_id)
+    kind, _, identity = ref.event_id.partition(":")
+    if not version or version[0] != ref.revision or kind != "event" or not identity.isdecimal():
+        return None
+    return {"event": int(identity), "version": version[1]}
+
+
 def unquoted_context(job):
     from yuki_participation.controller import Controller
     from yuki_participation.models import Scope
@@ -313,14 +321,6 @@ def unquoted_context(job):
         return None
     units = ParticipationCheckpoint.model_validate(checkpoint).units.values()
     by_unit = {(row.binding.actor, row.binding.unit.thread, row.binding.unit.target): row for row in units}
-    versions = state.host_checkpoint.get("source_versions", {})
-
-    def source_reference(ref):
-        original_ref = versions.get(ref.event_id)
-        if not original_ref or original_ref[0] != ref.revision:
-            return None
-        return {"event": int(ref.event_id.removeprefix("event:")), "version": original_ref[1]}
-
     now = time.time()
     choices = []
     for view in Controller.restore(state, now).participating_units(now):
@@ -333,10 +333,10 @@ def unquoted_context(job):
         if earlier is None or earlier.ref != unit.input_ref or earlier.kind != "human":
             continue
         refs = tuple(dict.fromkeys((*view.binding.basis, earlier.ref)))
-        references = [source_reference(ref) for ref in refs]
+        references = [source_reference(state, ref) for ref in refs]
         if any(ref is None or ref["event"] >= focus["event"] for ref in references):
             continue
-        choices.append({"anchor": source_reference(earlier.ref), "references": references})
+        choices.append({"anchor": source_reference(state, earlier.ref), "references": references})
     return choices[0] if len(choices) == 1 else None
 
 
@@ -395,6 +395,27 @@ def reconcile_self(controller, now):
     return available
 
 
+def proposal_frame(state, proposal):
+    from yuki_participation.models import CandidateKind
+
+    frame = {"type": "propose", "kind": proposal.kind, "key": proposal.proposal_id}
+    if proposal.kind is CandidateKind.INTRINSIC:
+        return frame
+
+    supports = proposal.supports or ((proposal.support,) if proposal.support is not None else ())
+    if proposal.kind is not CandidateKind.CONVERSATION or not supports:
+        return None
+    refs = dict.fromkeys(proposal.sources)
+    for support in supports:
+        refs.update(dict.fromkeys((support.basis, *support.covered, *support.dependencies)))
+    guarded = {ref: source_reference(state, ref) for ref in refs}
+    if any(reference is None for reference in guarded.values()):
+        return None
+    frame["sources"] = [guarded[ref]["event"] for ref in proposal.sources]
+    frame["source_guard"] = list(guarded.values())
+    return frame
+
+
 def autonomy_tick(job):
     from yuki_participation.controller import Controller
     from yuki_participation.models import CandidateKind, Feedback, Scope
@@ -425,17 +446,18 @@ def autonomy_tick(job):
         proposal = controller.advance(
             now, controller_epoch=controller.state.epoch,
             host_available=job["can_sample"] and available, intrinsic_allowed=True,
-            include_addressed=False, allowed_kinds=frozenset(),
+            include_addressed=False, allowed_kinds=frozenset({CandidateKind.CONVERSATION}),
         )
+        frame = proposal_frame(controller.state, proposal) if proposal is not None else None
+        if proposal is not None and frame is None:
+            controller.discard_unaccepted_proposal(proposal.proposal_id)
         revision = store.save(controller.state, expected_revision=revision)
-        if proposal is not None:
-            if proposal.kind is not CandidateKind.INTRINSIC or proposal.sources:
-                raise ValueError("intrinsic SELF cannot reuse a human source")
-            send({"type": "propose", "kind": proposal.kind, "key": proposal.proposal_id})
+        if frame is not None:
+            send(frame)
             receipt = receive(allow_eof=True)
             if receipt is not None:
                 controller.observe_run_feedback(Feedback(
-                    run_ref=receipt["execution"], proposal_id=proposal.proposal_id, sequence=1,
+                    run_ref=receipt["execution"], proposal_id=frame["key"], sequence=1,
                     outcome="accepted", at=now,
                 ))
                 store.save(controller.state, expected_revision=revision)

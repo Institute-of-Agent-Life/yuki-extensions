@@ -1,7 +1,7 @@
-"""Replay the Rust intrinsic owner and its pinned clock on an exact Host candidate."""
+"""Replay the Rust SELF owner and its pinned clock on an exact Host candidate."""
 
 from contextlib import closing
-from hashlib import file_digest
+from hashlib import file_digest, sha256
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
 import math
@@ -62,14 +62,34 @@ def prepare(root, output):
         send_output = output / "confirmed"
         send_output.mkdir()
         delivery = exercise(root, send_output, work / "delivery", executable, worker, upstream, delivery=True)
+        source_output = output / "conversation"
+        source_output.mkdir()
+        conversation = exercise(root, source_output, work / "conversation", executable, worker, upstream, conversation=True)
         assert result["reader"] == host["reader"]
         return "self-tick-diff.json", {
-            "status": "PASS", "card_status": "INTRINSIC_CANDIDATE_VERIFIED", "published": False,
+            "status": "PASS", "card_status": "SELF_CANDIDATE_VERIFIED", "published": False,
             "host": {**host, "archive_sha256": sha(archive), "binary_sha256": sha(executable)},
             "library": library["source_commit"], "worker_sha256": sha(worker),
             "package_manifest_sha256": sha(packages / "package-manifest.json"),
-            "worker_version": package["version"], "fixed_clock": clock, "confirmed_delivery": delivery, **result,
+            "worker_version": package["version"], "fixed_clock": clock, "confirmed_delivery": delivery,
+            "conversation": conversation, **result,
         }
+
+
+def observation(focus, sequence, issued, received, context=(), *, stop=False):
+    from yuki_participation.models import Choice, Observation, Snapshot
+    from yuki_participation.rubric import CRITERIA, REVISION
+
+    choices = {"interaction_mark": "ask_yuki_stop" if stop else "open_group",
+               "floor_state": "other" if stop else "open", "information_state": "new",
+               "boundary_scope": "group_thread" if stop else "target_thread"}
+    return Observation(
+        observation_id=f"original-fixture-{sequence}", snapshot=Snapshot(
+            scope=focus.scope, focus=focus, context=context, sequence=sequence, issued_at=issued,
+        ), received_at=received, provider="fixture", model_revision="fixture", rubric_revision=REVISION,
+        answers={key: Choice(choice=choice, probabilities={option: float(option == choice)
+                 for option in CRITERIA[key]}) for key, choice in choices.items()},
+    )
 
 
 def replay_clock(work, adapter, upstream):
@@ -105,15 +125,31 @@ def replay_clock(work, adapter, upstream):
                 "resumed": cold, "can_sample": not cold, "sources": [], "next": 0}
 
     arm = "original-fixed-work"
+    quiet = work / "quiet.sqlite"
+    stopped = Controller(scope, 7000)
+    focus, stop = (
+        ScopedEvent(scope=scope, ref=SourceRef(event_id=f"event:{event}", revision=1), thread="original",
+                    author="original-member", target="original-member", text=text, at=at, source_order=event)
+        for event, text, at in ((36, "prior opportunity", 6980), (37, "stop participating", 6995))
+    )
+    for event in (focus, stop):
+        assert stopped.observe_committed_event(event)
+    assert stopped.apply_semantic_observation(observation(stop, 2, 6995, 6995, stop=True))
+    assert stopped.apply_semantic_observation(observation(focus, 1, 6981, 7001))
+    assert any(boundary.explicit_stop and boundary.group_wide and boundary.released_by is None
+               for boundary in stopped.state.boundaries.values())
+    assert not stopped.opportunity_scores(7002, include_addressed=False)
+    with closing(SnapshotStore(quiet)) as store:
+        store.save(stopped.state, expected_revision=0)
     inputs = [tick(warm, 5429, False), {"execution": arm, "newly_accepted": True},
               tick(resumed, 5429, True), tick(warm, 5629, True),
               {"scope": "original_execution", "executions": [{"execution": arm, "state": "completed",
-                "quiet": True, "cancelled": False, "sends": []}]}]
+                "quiet": True, "cancelled": False, "sends": []}]}, tick(quiet, 7002, False)]
     process = subprocess.run([sys.executable, "-I", "-B", str(adapter), str(upstream), "--ticks"],
                              input="".join(json.dumps(row) + "\n" for row in inputs), text=True,
                              capture_output=True, check=True, timeout=30)
     frames = [json.loads(line) for line in process.stdout.splitlines()]
-    assert [frame["type"] for frame in frames] == ["propose", "done", "done", "feedback", "done"]
+    assert [frame["type"] for frame in frames] == ["propose", "done", "done", "feedback", "done", "done"]
     assert frames[0]["kind"] == proposal.kind and frames[3]["key"] == frames[0]["key"]
     with closing(SnapshotStore(warm)) as store:
         _, state = store.load(scope)
@@ -124,10 +160,11 @@ def replay_clock(work, adapter, upstream):
         _, cold = store.load(scope)
     assert cold.pending is None and not cold.proposals and cold.last_sample_at == 5429
     return {"first_proposal_at": 5429, "seed_draw": original.state.sample_sequence,
-            "cold_opportunities": 0, "original_work_preserved": True, "terminal_feedback": "no_reply"}
+            "cold_opportunities": 0, "original_work_preserved": True, "terminal_feedback": "no_reply",
+            "late_opportunities_after_group_stop": 0}
 
 
-def exercise(root, output, work, executable, worker, upstream, *, delivery=False):
+def exercise(root, output, work, executable, worker, upstream, *, delivery=False, conversation=False):
     from yuki_participation.controller import Controller
     from yuki_participation.models import Scope, ScopedEvent, SourceRef
     from yuki_participation.store import SnapshotStore
@@ -141,6 +178,11 @@ def exercise(root, output, work, executable, worker, upstream, *, delivery=False
     address = free_address()
     baseline = config.read_text(encoding="utf-8").replace('"127.0.0.1:0"', json.dumps(address), 1)
     token = "deterministic-qq-fixture"
+
+    def query(statement, *args):
+        with closing(sqlite3.connect((owner.data / "core.sqlite").as_uri() + "?mode=ro", uri=True)) as db:
+            return db.execute(statement, args).fetchall()
+
     with owner.running():
         entry = owner.op("entry", "group", space)["entry"]
         owner.op("person", "create", person)
@@ -151,6 +193,8 @@ def exercise(root, output, work, executable, worker, upstream, *, delivery=False
         now = time.time()
         for number in range(1, 36):
             at = int((now - 600 + number) * 1000)
+            if conversation and number >= 34:
+                at = int((now - 21 + number - 34) * 1000)
             packet = {"source": f"old-{number}", "native_id": f"756{number:02}", "account": author["account"],
                       "bot_stage": bot["assignment"], "reply_bot": "100", "space": space, "kind": "message",
                       "observed": at, "occurred": at,
@@ -164,24 +208,37 @@ def exercise(root, output, work, executable, worker, upstream, *, delivery=False
         key = f"event:{event}"
         assert policy.observe_committed_event(ScopedEvent(
             scope=scope, ref=SourceRef(event_id=key, revision=1), thread=key,
-            author=person, target="group", text="original group activity", at=at, source_order=event,
+            author=person, target=person, text="original group activity", at=at, source_order=event,
         ))
     policy.set_state_entry("host_checkpoint", "autonomy_cursor", max(event_times))
-    rate = policy.intrinsic_opportunity(now)
+    selected = []
+    guard = []
+    own_rate = policy.intrinsic_opportunity(now + 10)
+    rate = own_rate
+    if conversation:
+        prior_id, focus_id = list(event_times)[-2:]
+        prior, focus = (policy.state.events[f"event:{event}"] for event in (prior_id, focus_id))
+        assert policy.apply_semantic_observation(observation(focus, 1, now - 18, now - 12, (prior,)))
+        selected = [focus_id]
+        for event in (focus_id, prior_id):
+            [(envelope,)] = query("SELECT envelope FROM events WHERE id=?", event)
+            wire = json.dumps(json.loads(envelope), sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+            version = sha256(wire.encode()).hexdigest()
+            policy.set_host_mapping_entry("source_versions", f"event:{event}", [1, version])
+            guard.append({"event": event, "version": version})
+        rate += policy.opportunity_scores(now + 10, include_addressed=False)[focus.ref.event_id]
+        assert rate > own_rate
     assert rate > 0
     # Select one deterministic original stream so the live fixture need not
     # wait hours for its next intrinsic opportunity.
     arrival = -math.expm1(-rate * 0.5)
     seed = next(number for number in range(1, 3000000)
                 if policy._sample(number, "arrival") < arrival
+                and (not conversation or policy._sample(number, "selection") * rate > own_rate)
                 and all(policy._sample(number + shift, "arrival") > .2 for shift in range(1, 8)))
     policy._set(sample_sequence=seed - 1)
     with closing(SnapshotStore(checkpoint)) as store:
         store.save(policy.state, expected_revision=0)
-
-    def query(statement, *args):
-        with closing(sqlite3.connect((owner.data / "core.sqlite").as_uri() + "?mode=ro", uri=True)) as db:
-            return db.execute(statement, args).fetchall()
 
     def wait(probe, timeout=24):
         deadline = time.monotonic() + timeout
@@ -189,7 +246,7 @@ def exercise(root, output, work, executable, worker, upstream, *, delivery=False
             if result := probe():
                 return result
             time.sleep(.05)
-        raise TimeoutError("intrinsic SELF fixture did not settle")
+        raise TimeoutError("SELF fixture did not settle")
 
     def ready(mode):
         return query("SELECT online FROM host_installations WHERE plugin=?", f"participation-{mode}") == [(1,)]
@@ -256,7 +313,7 @@ def exercise(root, output, work, executable, worker, upstream, *, delivery=False
                     + '\n[plugins.participation.self_scenes]\n' + json.dumps(entry) + '='
                     + json.dumps(bot["assignment"]) + '\n', encoding="utf-8")
 
-            other_modes = () if delivery else ("off", "legacy")
+            other_modes = () if delivery or conversation else ("off", "legacy")
             for mode in other_modes:
                 install(mode)
                 with owner.running():
@@ -286,6 +343,11 @@ def exercise(root, output, work, executable, worker, upstream, *, delivery=False
                 wait(original_proposals)
                 [(proposal, execution)] = original_proposals()
                 assert query("SELECT source,original_actor FROM executions WHERE id=?", execution) == [(None, None)]
+                assert query("SELECT event FROM main_dependencies WHERE execution=? ORDER BY event", execution) == [
+                    (event,) for event in sorted(item["event"] for item in guard)
+                ]
+                [(material,)] = query("SELECT material FROM main_turns WHERE execution=?", execution)
+                assert [item["event"] for item in json.loads(material)["context"]] == selected
                 if not delivery:
                     wait(lambda: not drop_reply.exists())
                     assert snapshot().pending == proposal and execution not in snapshot().feedback
@@ -313,7 +375,8 @@ def exercise(root, output, work, executable, worker, upstream, *, delivery=False
     proposals = [row["frame"]["params"] for row in frames if row["direction"] == "from_plugin"
                  and row["frame"].get("method") == "participation.self_propose"]
     assert len(proposals) == 1 and proposals[0]["expected_generation"] == 1
-    assert proposals[0]["key"] == proposal and "sources" not in proposals[0]
+    assert proposals[0]["key"] == proposal
+    assert proposals[0].get("sources", []) == selected and proposals[0].get("source_guard", []) == guard
     lost = [row["frame"]["result"] for row in frames if row.get("forwarded") is False]
     assert lost == ([] if delivery else [{"execution": execution, "newly_accepted": True}])
     recovery = [row["frame"]["params"] for row in frames if row["direction"] == "from_plugin"
@@ -333,5 +396,6 @@ def exercise(root, output, work, executable, worker, upstream, *, delivery=False
             "paid_calls": 0, "proposal": proposal, "original_work": execution, "terminal_feedback": terminal,
             "confirmed_locators": [row[0] for row in observed_sends],
             "original_confirmation_ms": original_confirmation,
+            "selected_sources": selected, "source_guard": guard,
             "lost_admission_reply": lost, "cold_new_attempts": 0,
             "wire_frames": len(frames), "wire_sha256": sha(trace)}
