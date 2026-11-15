@@ -1,0 +1,4 @@
+id = "participation"
+version = "0.2.0"
+program = "yuki-participation"
+grants = ["observe.metadata", "participation.source", "participation.promote", "forget.owner"]

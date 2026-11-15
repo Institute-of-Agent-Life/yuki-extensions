@@ -7,6 +7,8 @@ import json
 import math
 import os
 from pathlib import Path
+import platform
+import runpy
 import shutil
 import sqlite3
 import subprocess
@@ -17,15 +19,25 @@ from threading import Thread
 import time
 from zipfile import ZipFile
 
+from maintenance_release_check import checked_member, unpack_worker
 from package import build
+from participation_rule import run as replay_rule
+from participation_semantic import run as replay_semantic
 from participation_semantic import checkpoint_idle
 from personal_preview import free_address
 from rebuild_intake import Owner, sha
 from windows_candidate_replay import load, verify_producer
 
 
+SELF_METHODS = {"participation.sources", "participation.self_propose", "participation.feedback"}
+STABLE_TAG = "plugin/participation/v0.2.0"
+STABLE_CONTRACT = "compat/stable-1.4/source.lock.json"
+
+
 def prepare(root, output):
     upstream = Path(os.environ["YUKI_PARTICIPATION_SOURCE"]).resolve()
+    if stable_host := os.environ.get("YUKI_PARTICIPATION_STABLE_HOST"):
+        return stable_replay(root, output, Path(stable_host).resolve(strict=True), upstream)
     archive = Path(os.environ["YUKI_CORE050_CANDIDATE"])
     manifest = Path(os.environ["YUKI_CORE050_MANIFEST"])
     pins = root / "compat/participation-library"
@@ -40,7 +52,7 @@ def prepare(root, output):
         assert candidate["source_tree_sha256"] == host["tree_sha256"]
         assert candidate["host_schema_sha256"] == host["host_schema_sha256"]
         assert candidate["sdk_versions"] == host["sdk_versions"]
-        assert {"participation.sources", "participation.self_propose", "participation.feedback"} <= set(candidate["implemented_methods"])
+        assert SELF_METHODS <= set(candidate["implemented_methods"])
         assert sorted(bundle.namelist()) == sorted(["candidate.json", *candidate["members"]])
         for name, member in candidate["members"].items():
             with bundle.open(name) as file:
@@ -50,30 +62,117 @@ def prepare(root, output):
         with bundle.open("bin/" + native) as source, executable.open("xb") as destination:
             shutil.copyfileobj(source, destination)
         executable.chmod(0o700)
-        with tarfile.open(upstream) as source:
-            source.extractall(work, filter="data")
-        library_root = work / ("Yuki-Semantic-Participation-" + library["source_commit"])
-        sys.path.insert(0, str(library_root / "src"))
         packages = output / "packages"
         package = build(root, "participation", packages)
         worker = packages / ("yuki-participation.exe" if os.name == "nt" else "yuki-participation")
-        clock = replay_clock(work, packages / "semantic_bridge.py", upstream)
-        result = exercise(root, output, work / "fixture", executable, worker, upstream)
+        replays = replay_package(root, output, work, executable, worker, upstream, library, host["reader"])
+        return "self-tick-diff.json", {
+            "status": "PASS", "card_status": "SELF_CANDIDATE_VERIFIED", "published": False,
+            "host": {**host, "archive_sha256": sha(archive), "binary_sha256": sha(executable)},
+            "library": library["source_commit"], "worker_sha256": sha(worker),
+            "package_manifest_sha256": sha(packages / "package-manifest.json"),
+            "worker_version": package["version"], **replays,
+        }
+
+
+def replay_package(root, output, work, executable, worker, upstream, library, reader):
+    with tarfile.open(upstream) as source:
+        source.extractall(work, filter="data")
+    library_root = work / ("Yuki-Semantic-Participation-" + library["source_commit"])
+    sys.path.insert(0, str(library_root / "src"))
+    try:
+        clock = replay_clock(work, worker.with_name("semantic_bridge.py"), upstream)
+        intrinsic = exercise(root, output, work / "fixture", executable, worker, upstream)
         send_output = output / "confirmed"
         send_output.mkdir()
         delivery = exercise(root, send_output, work / "delivery", executable, worker, upstream, delivery=True)
         source_output = output / "conversation"
         source_output.mkdir()
         conversation = exercise(root, source_output, work / "conversation", executable, worker, upstream, conversation=True)
-        assert result["reader"] == host["reader"]
-        return "self-tick-diff.json", {
-            "status": "PASS", "card_status": "SELF_CANDIDATE_VERIFIED", "published": False,
-            "host": {**host, "archive_sha256": sha(archive), "binary_sha256": sha(executable)},
-            "library": library["source_commit"], "worker_sha256": sha(worker),
-            "package_manifest_sha256": sha(packages / "package-manifest.json"),
-            "worker_version": package["version"], "fixed_clock": clock, "confirmed_delivery": delivery,
-            "conversation": conversation, **result,
-        }
+        assert intrinsic["reader"] == delivery["reader"] == conversation["reader"] == reader
+        return {"fixed_clock": clock, "confirmed_delivery": delivery, "conversation": conversation, **intrinsic}
+    finally:
+        sys.path.remove(str(library_root / "src"))
+
+
+def stable_replay(root, output, archive, upstream, published_plugin=None):
+    host = json.loads((root / STABLE_CONTRACT).read_bytes())
+    expected_bundle = host["asset_sha256"]["yuki-plugin-base-1.4.0.zip"]
+    if not host["published"] or sha(archive) != expected_bundle:
+        raise ValueError("Published Plugin Base 1.4.0 archive required")
+    system = {"Darwin": "macos", "Linux": "linux", "Windows": "windows"}[platform.system()]
+    record = json.loads((root / "releases/participation/0.2.0/qualification.json").read_bytes())
+    library = json.loads((root / "compat/participation-library/source.lock.json").read_bytes())
+    assert sha(upstream) == library["source_sha256"]
+    packages = output / "packages"
+    if published_plugin is None:
+        prepare_release = runpy.run_path(str(root / "ci/publish-plugin.py"))["prepare"]
+        package = prepare_release(root, STABLE_TAG, packages, candidate=record)
+    else:
+        release = json.loads((root / "compat/participation-0.2.0/release.lock.json").read_bytes())
+        asset = release["platforms"][system]
+        if (release["status"] != "published-and-downloaded" or release["tag"] != STABLE_TAG
+                or release["host"]["archive_sha256"] != expected_bundle
+                or release["host"]["source_commit"] != host["source_commit"]
+                or release["sdk"]["version"] != host["sdk"]["rust"]
+                or release["sdk"]["sha256"] != host["rust_crate_sha256"]
+                or sha(published_plugin) != asset["sha256"]):
+            raise ValueError("Published participation package differs from its release lock")
+        package = unpack_worker(published_plugin.read_bytes(), packages, system, "0.2.0", unit_id="participation")
+        binary = "yuki-participation.exe" if system == "windows" else "yuki-participation"
+        if package["artifacts"][binary] != asset["worker_sha256"]:
+            raise ValueError("Published participation worker differs from its release lock")
+    inputs_digest = sha256(json.dumps(record["inputs"], sort_keys=True).encode()).hexdigest()
+    if (package["version"] != "0.2.0" or package["release_tag"] != STABLE_TAG
+            or package["source"]["sdk_contract"] != STABLE_CONTRACT
+            or package["source"]["release_inputs_sha256"] != inputs_digest
+            or json.loads((packages / "source.lock.json").read_bytes()) != library):
+        raise ValueError("Participation package uses different release inputs")
+    worker = packages / ("yuki-participation.exe" if system == "windows" else "yuki-participation")
+    assert sha(worker) == package["artifacts"][worker.name]
+    bundled_host = host["assets"]["host-" + system]
+    with TemporaryDirectory(prefix="ext026-stable-", dir="/tmp" if system != "windows" else None) as directory:
+        work = Path(directory)
+        executable = work / Path(bundled_host["path"]).name
+        with ZipFile(archive) as bundle:
+            executable.write_bytes(checked_member(bundle, bundled_host))
+            for role in ("rust-sdk", "python-sdk"):
+                checked_member(bundle, host["assets"][role])
+        executable.chmod(0o700)
+        surface = json.loads(subprocess.check_output([executable, "plugin-surface"], timeout=20))
+        if (surface["version"] != host["sdk"]["rust"] or surface["candidate_source"] != host["source_commit"]
+                or surface["surface_sha256"] != host["surface_sha256"] or not surface["selected_by_default"]
+                or not SELF_METHODS.issubset(surface["methods"])):
+            raise ValueError("Published Host surface differs from its pin")
+        result = replay_package(root, output, work, executable, worker, upstream, library, host["database_reader"])
+        rule_out = output / "ordinary-rule"
+        review_out = output / "ordinary-review"
+        rule_out.mkdir()
+        review_out.mkdir()
+        rule = replay_rule(work / "rule", executable, worker, rule_out)
+        review = replay_semantic(work / "review", executable, worker, packages / "semantic_bridge.py", upstream, review_out)
+    result.update(
+        status="PASS", card_status="PASS" if published_plugin else "RELEASE_CANDIDATE_VERIFIED",
+        tag=STABLE_TAG, published=published_plugin is not None, platform=system, worker_version=package["version"],
+        host={"published": True, "tag": host["tag"], "source_commit": host["source_commit"],
+              "archive_sha256": expected_bundle, "binary_sha256": bundled_host["sha256"],
+              "surface_sha256": host["surface_sha256"], "reader": host["database_reader"]},
+        sdk={"versions": host["sdk"], "rust_sha256": host["rust_crate_sha256"]},
+        library=library["source_commit"], worker_sha256=sha(worker),
+        package_manifest_sha256=sha(packages / "package-manifest.json"), release_inputs_sha256=inputs_digest,
+        ordinary_rule=rule, ordinary_review=review,
+    )
+    if published_plugin:
+        result.update(release_package_sha256=sha(published_plugin), release_source_commit=release["source_commit"])
+    return "self-tick-diff.json", result
+
+
+def run(root, output):
+    return stable_replay(
+        root, output, Path(os.environ["YUKI_PARTICIPATION_STABLE_HOST"]).resolve(strict=True),
+        Path(os.environ["YUKI_PARTICIPATION_SOURCE"]).resolve(strict=True),
+        Path(os.environ["YUKI_PARTICIPATION_RELEASE"]).resolve(strict=True),
+    )
 
 
 def observation(focus, sequence, issued, received, context=(), *, stop=False):
