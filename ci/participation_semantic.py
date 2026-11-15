@@ -3,13 +3,14 @@
 from contextlib import closing
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
+import os
 from pathlib import Path
 import sqlite3
 import sys
 from threading import Event, Thread
 import time
 
-from rebuild_intake import Owner
+from rebuild_intake import Owner, sha
 from personal_preview import free_address
 
 
@@ -159,6 +160,27 @@ def run(work, executable, worker, adapter, upstream, output):
     checkpoint = work / "review-checkpoint.sqlite"
     canary = "private-original-participation-anchor-753"
 
+    def previous_review_stopped():
+        # The observer is the Host's direct child. Its Rust child may still
+        # hold the checkpoint lock after the Host shuts down.
+        try:
+            with checkpoint.with_suffix(".participation.lock").open("r+b") as lock:
+                if os.name == "nt":
+                    import msvcrt
+                    msvcrt.locking(lock.fileno(), msvcrt.LK_NBLCK, 1)
+                else:
+                    import fcntl
+                    fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except FileNotFoundError:
+            return True
+        except BlockingIOError:
+            return False
+        except PermissionError:
+            if os.name != "nt":
+                raise
+            return False
+        return True
+
     def await_erasure(result, erased_text):
         await_result(lambda: query("SELECT 1 FROM owner_erasures WHERE owner='review' AND watermark=? "
                                   "AND proof IS NOT NULL", result["watermark"]))
@@ -176,10 +198,14 @@ def run(work, executable, worker, adapter, upstream, output):
             owner.env["YUKI_REVIEW_FIXTURE"] = "deterministic-test-key"
             base = f"http://127.0.0.1:{server.server_port}"
             common = ["observe.metadata", "participation.source", "participation.promote", "forget.owner"]
+            relay = Path(__file__).resolve().parents[1] / "tests/peers/observe_stdio.py"
+
             def plugin(name, args, grants):
+                trace = (output / f"{name}-wire.jsonl").resolve()
                 return (
                     '\n[[plugins]]\nid=' + json.dumps(name) + '\nnamespace=' + json.dumps(name)
-                    + '\nprogram=' + json.dumps(str(worker)) + '\nargs=' + json.dumps(args)
+                    + '\nprogram=' + json.dumps(sys.executable)
+                    + '\nargs=' + json.dumps([str(relay), str(worker), str(trace), *args])
                     + '\ngrants=' + json.dumps(grants) + '\n[plugins.participation]\nentries=' + json.dumps([entry]) + '\n'
                 )
             with (owner.data / "yuki.toml").open("a", encoding="utf-8") as stream:
@@ -221,6 +247,7 @@ def run(work, executable, worker, adapter, upstream, output):
                 assert len(review_calls) == 4
                 assert canary.encode() in checkpoint.read_bytes()
 
+            await_result(previous_review_stopped)
             with owner.running():
                 await_result(lambda: sum(1 for item in owner.op("host", "status")["plugins"] if item["online"]) == 2)
                 assert ingress("75304", "ordinary continuation", quoted=True) == semantic
@@ -332,6 +359,7 @@ def run(work, executable, worker, adapter, upstream, output):
 
             config.write_text(config.read_text(encoding="utf-8").replace('"753"="observe"', '"753"="paused"'),
                               encoding="utf-8")
+            await_result(previous_review_stopped)
             with owner.running():
                 await_result(lambda: sum(1 for item in owner.op("host", "status")["plugins"] if item["online"]) == 2)
                 ingress("75311", "paused group original anchor")
@@ -347,6 +375,18 @@ def run(work, executable, worker, adapter, upstream, output):
             server.shutdown()
             thread.join()
     assert len(review_calls) == 16 and len(main_calls) == 10
+    traces = [output / "rule-wire.jsonl", output / "review-wire.jsonl"]
+    frames = [json.loads(line) for trace in traces for line in trace.read_text(encoding="utf-8").splitlines()]
+    notices = [row["frame"] for row in frames if row["direction"] == "from_host"]
+    calls = [row["frame"] for row in frames if row["direction"] == "from_plugin"]
+    assert any(frame.get("method") == "observer.event" and "id" not in frame
+               and frame["params"]["event"] == unquoted for frame in notices)
+    assert any(frame.get("method") == "forget.request" for frame in notices)
+    assert {"participation.source", "participation.promote", "participation.feedback", "llm.complete", "llm.result"} <= {
+        frame.get("method") for frame in calls
+    }
+    assert any(frame.get("method") == "participation.promote" and frame["params"]["event"] == unquoted
+               and frame["params"].get("expected_context") for frame in calls)
     return {"accepted": [explicit, semantic, fast, correction_seed, corrected, expression_seed, delivered,
                          unquoted_seed, unquoted],
             "ignored_literal": literal, "ignored_invalid_response": wrong,
@@ -366,4 +406,5 @@ def run(work, executable, worker, adapter, upstream, output):
                                                            "jev_correction": correction_probe_ms},
             },
             "main_attempts": len(main_calls), "review_attempts": len(review_calls), "paid_calls": 0,
-            "rule_accepted_before_review": True, "source_erasure": erasure["watermark"]}
+            "rule_accepted_before_review": True, "source_erasure": erasure["watermark"],
+            "wire_sha256": {trace.name: sha(trace) for trace in traces}}
