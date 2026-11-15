@@ -82,3 +82,8 @@ The 0.1.0 candidate uses the published Plugin Base 1.0 Rust SDK. Set
 the signed Host, builds both declarations into the candidate, and compares
 the ordinary reader to the fixed v4 oracle. It also replays the in-memory cache
 and reads the original result after a restart.
+
+To verify the published plugin, also set `YUKI_WEB_FETCH_RELEASE` to the
+original platform release ZIP and run the same command without
+`--preparation`. The replay checks both original packages and reports
+the source, read cases, network test witness, and owner disposition.

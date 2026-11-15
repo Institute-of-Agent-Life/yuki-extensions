@@ -1,0 +1,52 @@
+{
+  "status": "published-and-downloaded",
+  "published": true,
+  "tag": "plugin/web-fetch/v0.1.0",
+  "source_commit": "2d74781a9b45cace1123a72fd918670207582153",
+  "release_id": 445880732,
+  "release_url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/releases/tag/plugin/web-fetch/v0.1.0",
+  "published_at": "2026-11-15T07:21:48Z",
+  "release_receipt_sha256": "f78632ede908be0e159cdfdf97f45bbdf9bce72d15b36e86cca1df271bf67cf9",
+  "host": {
+    "tag": "plugin-base-v1.0.0",
+    "source_commit": "c6bd0c75e38717abc71373201d31a77982428d5b",
+    "schema_sha256": "131754fbc818d26557eb31958782624eb38bbe19d1f4e3c6f42e2e62f8d9001e"
+  },
+  "sdk": {
+    "python": "1.0.0",
+    "rust": "1.0.0"
+  },
+  "platforms": {
+    "macos": {
+      "name": "yuki-web-fetch-0.1.0-darwin-arm64.zip",
+      "sha256": "0ea0832127bb4da089b80bddc16183e043afcb6d7d9dcf58b907cd5cb4d78758",
+      "bytes": 651714,
+      "worker_sha256": "22d54995e2f050d35a652e29e8ccf5625abc38f4f5a79bcd8562ab894d20d133",
+      "id": 750193226,
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/releases/download/plugin/web-fetch/v0.1.0/yuki-web-fetch-0.1.0-darwin-arm64.zip"
+    },
+    "linux": {
+      "name": "yuki-web-fetch-0.1.0-linux-arm64.zip",
+      "sha256": "ad00e6f26e09376aeea4d5672913795b8683e4df1a65a4b35d12aeb84c4ea3a3",
+      "bytes": 715962,
+      "worker_sha256": "c8eaaf615f97cf6877345110f67e4814ae745df8dce63a2e8c9fc65e7fcc5627",
+      "id": 750193227,
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/releases/download/plugin/web-fetch/v0.1.0/yuki-web-fetch-0.1.0-linux-arm64.zip"
+    },
+    "windows": {
+      "name": "yuki-web-fetch-0.1.0-windows-x86_64.zip",
+      "sha256": "3bd1a795288c243d4f5015ae7f0a82752b0de780a3b2230cfcf5ae2def58bd95",
+      "bytes": 583473,
+      "worker_sha256": "6b1a8de539791f300a5beeb965711a93ee3f0489e1c41ed5b57747371cf6a183",
+      "id": 750193230,
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/releases/download/plugin/web-fetch/v0.1.0/yuki-web-fetch-0.1.0-windows-x86_64.zip"
+    }
+  },
+  "asset_sha256": {
+    "yuki-web-fetch-0.1.0-darwin-arm64.zip": "0ea0832127bb4da089b80bddc16183e043afcb6d7d9dcf58b907cd5cb4d78758",
+    "yuki-web-fetch-0.1.0-linux-arm64.zip": "ad00e6f26e09376aeea4d5672913795b8683e4df1a65a4b35d12aeb84c4ea3a3",
+    "yuki-web-fetch-0.1.0-windows-x86_64.zip": "3bd1a795288c243d4f5015ae7f0a82752b0de780a3b2230cfcf5ae2def58bd95",
+    "release-receipt.json": "f78632ede908be0e159cdfdf97f45bbdf9bce72d15b36e86cca1df271bf67cf9",
+    "SHA256SUMS": "03cb16ca76677b2143c134cedf8e92eb71bc25cc7b37c5d5ebc6f904b939b227"
+  }
+}

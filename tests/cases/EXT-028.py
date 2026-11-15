@@ -4,6 +4,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
 import os
 from pathlib import Path
+import platform
 import runpy
 import subprocess
 import sys
@@ -11,6 +12,7 @@ import threading
 import time
 
 from host_preview import materialize
+from maintenance_release_check import unpack_worker
 from package import build
 
 
@@ -318,12 +320,33 @@ def exercise(root, output, signed, *, published=False):
 
 
 
-def prepare_release(root, output, archive):
+def replay_release(root, output, archive, published_package=None):
     profile = root / "releases/web-fetch/0.1.0"
     qualification = json.loads((profile / "qualification.json").read_bytes())
-    prepare = runpy.run_path(str(root / "ci/publish-plugin.py"))["prepare"]
     packages = output / "packages"
-    package = prepare(root, "plugin/web-fetch/v0.1.0", packages, candidate=qualification)
+    lock = json.loads((root / qualification["sdk_contract"]).read_bytes())
+    tag = "plugin/web-fetch/v0.1.0"
+    if published_package is None:
+        prepare = runpy.run_path(str(root / "ci/publish-plugin.py"))["prepare"]
+        package = prepare(root, tag, packages, candidate=qualification)
+    else:
+        release = json.loads((root / "compat/web-fetch-0.1.0/release.lock.json").read_bytes())
+        system = {"Darwin": "macos", "Linux": "linux", "Windows": "windows"}[platform.system()]
+        asset = release["platforms"][system]
+        archive_bytes = published_package.read_bytes()
+        if (release["status"] != "published-and-downloaded" or not release["published"]
+                or release["tag"] != tag or release["host"]["tag"] != lock["tag"]
+                or release["host"]["source_commit"] != lock["source_commit"] or release["sdk"] != lock["sdk"]
+                or hashlib.sha256(archive_bytes).hexdigest() != asset["sha256"]):
+            raise ValueError("Published web-fetch archive differs from its release lock")
+        package = unpack_worker(archive_bytes, packages, system, "0.1.0", unit_id="web-fetch")
+        binary = "yuki-web-fetch.exe" if system == "windows" else "yuki-web-fetch"
+        if package["artifacts"][binary] != asset["worker_sha256"]:
+            raise ValueError("Published web-fetch binary differs from its release lock")
+    expected_inputs = hashlib.sha256(json.dumps(qualification["inputs"], sort_keys=True).encode()).hexdigest()
+    if (package["release_tag"] != tag or package["source"]["sdk_contract"] != qualification["sdk_contract"]
+            or package["source"]["release_inputs_sha256"] != expected_inputs):
+        raise ValueError("Web-fetch archive uses different release inputs")
     oracle = root / "tests/fixtures/EXT-028/read-webpage-v4.json"
     replay = output / "installed"
     subprocess.run(
@@ -333,25 +356,49 @@ def prepare_release(root, output, archive):
         cwd=root, check=True, timeout=240,
     )
     report = json.loads((replay / "read-webpage.json").read_bytes())
-    lock = json.loads((root / qualification["sdk_contract"]).read_bytes())
     assert report["source_commit"] == lock["source_commit"] and report["paid_calls"] == 0
-    assert package["source"]["sdk_contract"] == qualification["sdk_contract"]
-    return "fetch-source.json", {
-        "status": "PASS", "card_status": "RELEASE_CANDIDATE_VERIFIED", "published": False,
+    result = {
+        "status": "PASS", "card_status": "PASS" if published_package else "RELEASE_CANDIDATE_VERIFIED",
+        "published": published_package is not None,
         "release_tag": package["release_tag"], "host": lock["tag"], "sdk": lock["sdk"],
         "package": package["artifacts"], "read_webpage": report["plugin_sha256"],
         "oracle_sha256": report["oracle_sha256"], "wire_cases": len(report["selected"]["cases"]),
         "paid_calls": report["paid_calls"],
     }
+    if published_package:
+        passed = {
+            line.removeprefix("test ").removesuffix(" ... ok")
+            for command in package["commands"] if command["command"][1:2] == ["test"]
+            for line in command["stdout"].splitlines() if line.startswith("test ") and line.endswith(" ... ok")
+        }
+        required = {
+            "fetch::tests::cross_origin_never_restores_credentials_or_body",
+            "fetch::tests::denied_redirect_and_not_modified_are_distinct",
+            "fetch::tests::rebinding_fails_before_second_dispatch_and_keeps_source",
+            "fetch::tests::failed_proxy_does_not_make_a_direct_connection",
+            "fetch::tests::bounded_result_preserves_source_and_hash_even_when_text_exceeds_frame",
+        }
+        assert required <= passed
+        owner = (root / "plugins/web-fetch/owner-disposition.json").read_bytes()
+        (output / "owner-disposition.json").write_bytes(owner)
+        result.update(
+            release_source_commit=release["source_commit"], release_package_sha256=asset["sha256"],
+            host_source_commit=report["source_commit"], host_zip_sha256=report["host_zip_sha256"],
+            network_checks=sorted(passed), owner_disposition_sha256=hashlib.sha256(owner).hexdigest(),
+        )
+    return "fetch-source.json", result
 
 
 def prepare(root, output):
     if archive := os.environ.get("YUKI_WEB_FETCH_RELEASE_HOST"):
-        return prepare_release(root, output, Path(archive).resolve(strict=True))
+        return replay_release(root, output, Path(archive).resolve(strict=True))
     return exercise(root, output, signed=False)
 
 
 def run(root, output):
+    if archive := os.environ.get("YUKI_WEB_FETCH_RELEASE_HOST"):
+        return replay_release(root, output, Path(archive).resolve(strict=True),
+                              Path(os.environ["YUKI_WEB_FETCH_RELEASE"]).resolve(strict=True))
     if os.environ.get("YUKI_STABLE_BASE_ZIP"):
         if sys.platform != "win32" or not os.environ.get("YUKI_FROZEN_WEB_FETCH_ZIP"):
             return "fetch-source.json", {"status":"BLOCKED", "reason":"The frozen public-base path requires Windows and YUKI_FROZEN_WEB_FETCH_ZIP."}
