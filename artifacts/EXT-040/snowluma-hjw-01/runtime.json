@@ -1,0 +1,40 @@
+{
+  "task": "EXT-040",
+  "platform": "HJW Windows / WSL2 linux/amd64",
+  "candidate": "yuki-setup 0.1.0-alpha.7",
+  "generator_sha256": "1b02f30665ee1bb6664a27e35a3a266cc9b0223c9b05bcfb0455fc37843a2d0e",
+  "verified_core_oci": {
+    "source": "093716ad01c0a0ce1f9364e7af26f97c7ad5bdc9",
+    "platform": "linux/arm64",
+    "sha256": "b5975cbc593594c6b55222e7ae1fd8ac9a2bbb3bd147ee1081438df04c708ec9"
+  },
+  "snowluma": {
+    "version": "1.14.21",
+    "image": "motricseven7/snowluma@sha256:6301d6ff097a369577b62099efd9859a875d57ff56469ac958b4f00e84100d47",
+    "platform": "linux/amd64",
+    "offline_image_archive_sha256": "26b99a5fc6043c8f3f24464b5f98d194d2003483fc71476fd4f6937a5b5dfb16"
+  },
+  "readiness": {
+    "status": "PASS",
+    "image_started_in_internal_network": true,
+    "generated_compose_sha256": "9b2b8093a623b02416e28820c1289bd1c37193431733fe4af3979ddf6fcf735d",
+    "webui_and_novnc": "healthy",
+    "fresh_login_state": true,
+    "seccomp": 2,
+    "configured_ports": "loopback",
+    "default_services": [
+      "core"
+    ],
+    "isolated_volumes_removed": true
+  },
+  "deployed_single_bot": {
+    "status": "verified",
+    "checked_at_utc": "2026-11-15T10:25:32.285892+00:00",
+    "yuki_source": "0aa3e08bd3b5a78677b7831c7a22301966526adf",
+    "ingress_count": 1,
+    "confirmed_egress_count": 1,
+    "case": "group /ai ping",
+    "confirmed_message_id_present": true,
+    "command_receipt_matches_inbound_key": true
+  }
+}

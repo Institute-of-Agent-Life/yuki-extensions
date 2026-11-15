@@ -9,14 +9,19 @@ pub const SOUL: &str = "# SOUL example\n\nThe operator owns the character's desc
 
 pub enum Entry<'a> {
     Local,
-    External(&'a str),
+    External { network: &'a str, snowluma: bool },
 }
 
 impl<'a> Entry<'a> {
-    pub fn parse(mode: Option<&str>, network: Option<&'a str>) -> Result<Self, &'static str> {
-        match (mode.unwrap_or("local"), network) {
-            ("local", None) => Ok(Self::Local),
-            ("external", Some(name))
+    pub fn parse(
+        mode: Option<&str>,
+        network: Option<&'a str>,
+        snowluma: bool,
+    ) -> Result<Self, &'static str> {
+        match (mode.unwrap_or("local"), network, snowluma) {
+            ("local", None, false) => Ok(Self::Local),
+            ("local", _, true) => Err("SnowLuma requires --entry external --entry-network NAME"),
+            ("external", Some(name), _)
                 if name.len() <= 128
                     && name
                         .as_bytes()
@@ -26,9 +31,12 @@ impl<'a> Entry<'a> {
                         .bytes()
                         .all(|b| b.is_ascii_alphanumeric() || b"_.-".contains(&b)) =>
             {
-                Ok(Self::External(name))
+                Ok(Self::External {
+                    network: name,
+                    snowluma,
+                })
             }
-            ("external", _) => Err("external entry requires a valid --entry-network name"),
+            ("external", _, _) => Err("external entry requires a valid --entry-network name"),
             _ => Err("use --entry local or --entry external --entry-network NAME"),
         }
     }
@@ -36,10 +44,41 @@ impl<'a> Entry<'a> {
     pub fn name(&self) -> &'static str {
         match self {
             Self::Local => "local",
-            Self::External(_) => "external",
+            Self::External { .. } => "external",
         }
     }
 }
+
+const SNOWLUMA_SERVICE: &str = r#"  snowluma:
+    image: motricseven7/snowluma@sha256:6301d6ff097a369577b62099efd9859a875d57ff56469ac958b4f00e84100d47
+    platform: linux/amd64
+    profiles: [qq]
+    pull_policy: never
+    shm_size: 1g
+    cap_add: [SYS_PTRACE]
+    environment:
+      SNOWLUMA_WEBUI_HOST: '0.0.0.0'
+      SNOWLUMA_WEBUI_PORT: '5099'
+      TZ: ${YUKI_TIMEZONE:-UTC}
+    networks: [ingress]
+    ports:
+      - '127.0.0.1::5099'
+      - '127.0.0.1::6081'
+    volumes:
+      - snowluma_data:/app/data
+      - snowluma_qq_config:/app/.config
+      - snowluma_qq_data:/app/.local/share
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - >-
+          test "$$(curl -sS --max-time 3 -o /dev/null -w '%{http_code}' http://127.0.0.1:5099/api/ui/public)" = 200 &&
+          test "$$(curl -sS --max-time 3 -o /dev/null -w '%{http_code}' http://127.0.0.1:6081/vnc.html)" = 200
+      interval: 2s
+      timeout: 7s
+      retries: 20
+"#;
+const SNOWLUMA_VOLUMES: &str = "  snowluma_data:\n  snowluma_qq_config:\n  snowluma_qq_data:\n";
 
 pub fn new_project() -> io::Result<String> {
     let mut token = [0u8; 16];
@@ -79,11 +118,15 @@ pub fn compose(digest: &str, platform: &str, entry: &Entry<'_>, project: Option<
         .unwrap_or_default();
     let (listen, service_network, networks) = match entry {
         Entry::Local => ("127.0.0.1", "    network_mode: none\n", String::new()),
-        Entry::External(name) => (
+        Entry::External { network, .. } => (
             "0.0.0.0",
             "    networks:\n      ingress:\n        aliases:\n          - \"${COMPOSE_PROJECT_NAME}-core\"\n",
-            format!("networks:\n  ingress:\n    name: '{name}'\n    external: true\n"),
+            format!("networks:\n  ingress:\n    name: '{network}'\n    external: true\n"),
         ),
+    };
+    let (gateway, gateway_volumes) = match entry {
+        Entry::External { snowluma: true, .. } => (SNOWLUMA_SERVICE, SNOWLUMA_VOLUMES),
+        _ => ("", ""),
     };
     format!(
         r#"# Generated from a verified offline CORE-039 candidate.
@@ -126,9 +169,9 @@ pub fn compose(digest: &str, platform: &str, entry: &Entry<'_>, project: Option<
       interval: 2s
       timeout: 3s
       retries: 10
-volumes:
+{gateway}volumes:
   owner:
-{networks}"#
+{gateway_volumes}{networks}"#
     )
 }
 
@@ -364,12 +407,37 @@ mod tests {
 
     #[test]
     fn external_entry_requires_an_explicit_compose_network() {
-        assert!(Entry::parse(Some("external"), None).is_err());
-        assert!(Entry::parse(None, Some("gateway")).is_err());
-        assert!(Entry::parse(Some("external"), Some("bad'\nnet")).is_err());
+        assert!(Entry::parse(Some("external"), None, false).is_err());
+        assert!(Entry::parse(None, Some("gateway"), false).is_err());
+        assert!(Entry::parse(Some("external"), Some("bad'\nnet"), false).is_err());
         assert!(matches!(
-            Entry::parse(Some("external"), Some("gateway-1")),
-            Ok(Entry::External("gateway-1"))
+            Entry::parse(Some("external"), Some("gateway-1"), false),
+            Ok(Entry::External {
+                network: "gateway-1",
+                snowluma: false
+            })
+        ));
+    }
+
+    #[test]
+    fn snowluma_is_explicit_and_its_compose_profile_can_start_independently() {
+        assert!(Entry::parse(None, None, true).is_err());
+        let plain = Entry::parse(Some("external"), Some("qq-private"), false).unwrap();
+        let with_qq = Entry::parse(Some("external"), Some("qq-private"), true).unwrap();
+        let core = compose("sha256:core", "linux/arm64", &plain, None);
+        let kit = compose("sha256:core", "linux/arm64", &with_qq, None);
+        assert!(!core.contains("snowluma"));
+        assert!(kit.contains("profiles: [qq]") && kit.contains("pull_policy: never"));
+        assert_eq!(
+            core.split_once("\nvolumes:\n").unwrap().0,
+            kit.split_once("\n  snowluma:\n").unwrap().0,
+        );
+        assert!(kit.contains("/api/ui/public") && kit.contains("/vnc.html"));
+        assert!(!kit.contains("depends_on") && !kit.contains("docker.sock"));
+        assert!(!pinned_compose(&core, &kit));
+        assert!(!pinned_compose(
+            &kit.replace("127.0.0.1::5099", "5099"),
+            &kit
         ));
     }
 

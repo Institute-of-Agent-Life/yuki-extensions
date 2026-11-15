@@ -45,10 +45,38 @@ yuki-setup doctor --archive PATH_TO_SIGNED_OCI_TAR --dir KIT --entry external --
 Attach the proxy to `PROXY_NETWORK` and point it to
 `http://<project>-core:8080` using the project name reported by the offline
 doctor. Keep TLS and public routing on the proxy.
-The kit defines an upstream on the selected network and publishes no host
-ports. The core candidate uses `direct`. SnowLuma and the Code profile require
-compatible pinned deployment inputs. The [SnowLuma deployment guide](https://snowluma.github.io/en/docs/guide/deploy/docker)
-describes the runtime privileges and operator-managed QQ login.
+The core upstream on the selected network uses `direct` and has no published
+host ports. A Code profile requires compatible pinned deployment inputs.
+
+### Optional SnowLuma
+
+Use a new external-entry kit and add `--plugin snowluma` to both `init` and
+`doctor`. The kit pins the tested SnowLuma 1.14.21 image for Linux AMD64.
+Import that exact image into Docker before starting the `qq` profile.
+The core OCI archive is Linux ARM64. The Docker engine must support both
+architectures to launch them together.
+
+```sh
+docker compose up -d --pull never --wait
+docker compose --profile qq up -d --pull never --wait
+docker compose --profile qq port snowluma 5099
+docker compose --profile qq port snowluma 6081
+```
+
+The first command starts the core independently. The optional service
+allocates loopback ports for its management page and noVNC. It uses separate
+named volumes for the SnowLuma state and QQ login. Its health check requires
+both pages to return HTTP 200 before login. Use an operator-managed bridge
+that supports host port publishing for browser access. For an account to send and receive,
+the operator must log in and configure an authenticated reverse OneBot
+connection. The shipped image requires `SYS_PTRACE` to start its bundled Node
+binary. This kit uses Docker's default seccomp filter. Live delivery was
+checked on the existing HJW deployment with its own runtime configuration.
+[SnowLuma Docker documentation](https://snowluma.github.io/en/docs/guide/deploy/docker)
+
+To replay pre-login readiness with the imported image, set
+`YUKI_SNOWLUMA_RUNTIME=1` alongside `YUKI_CORE039_OCI` and use the full
+EXT-040 command. The replay creates an internal network and fresh volumes.
 
 To install the native release for the current OS into a new directory:
 
