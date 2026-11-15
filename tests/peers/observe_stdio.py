@@ -22,9 +22,9 @@ def observe(program, trace, *args, stderr=None, cut_file=None):
                         elif (direction == "from_host" and frame.get("id") in proposals
                               and "result" in frame and cut_file.is_file()):
                             row["forwarded"] = False
-                            print(json.dumps(row), file=log)
-                            child.kill()
+                            print(json.dumps(row), file=log, flush=True)
                             cut_file.unlink()
+                            child.kill()
                             return
                     print(json.dumps(row),file=log)
                 sink.write(line)
