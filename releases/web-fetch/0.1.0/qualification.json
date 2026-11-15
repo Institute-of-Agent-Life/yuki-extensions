@@ -1,0 +1,24 @@
+{
+  "sdk_contract": "compat/stable-1.0/source.lock.json",
+  "runtime_files": [
+    "plugin.toml",
+    "plugin-read-webpage.toml"
+  ],
+  "runtime_inputs": {
+    "plugin-read-webpage.toml": "releases/web-fetch/0.1.0/plugin-read-webpage.toml"
+  },
+  "inputs": {
+    "catalog/web-fetch.json": "6ec69ca622f0957ef0456dc552370ccae37165bf74e2e4eaeed4b2c563c89c5c",
+    "compat/stable-1.0/source.lock.json": "3e40e71c7e7c66794591a79f7a3651220496b4c3a4101b3abb8a77c3e8688418",
+    "plugins/web-fetch/LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+    "plugins/web-fetch/rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+    "plugins/web-fetch/src/fetch.rs": "91ec25f72fe97e3dc4381a8ca84a1a6f5358c19f2b3390ffef1c3e8cdcd0c691",
+    "plugins/web-fetch/src/legacy.rs": "8d2a39e84055339591eb63e78395883ffc2aa4ff00226af5f36d8e2a941f7111",
+    "plugins/web-fetch/src/main.rs": "3319d368992b5938461c35f14069635028b9af5a92a984db8fbb3d02803101b2",
+    "plugins/web-fetch/src/policy.rs": "88eb427814d6ae94adf199e2ea7c8da0da141b2d3ad47f9234b1f78cf2243430",
+    "releases/web-fetch/0.1.0/Cargo.lock": "021fb3daa1e66799df2d070d5db966e61b084c9f2b28e32f9a86c1911d3eeb9c",
+    "releases/web-fetch/0.1.0/Cargo.toml": "7c07dc918f361ba88a00a9f09988145715c349ba729d4b84e9170c23e7ad576e",
+    "releases/web-fetch/0.1.0/plugin-read-webpage.toml": "efe2bfdaaf1886f575c74b067eebf97514c222ced77d9b5656c0796564209cb8",
+    "releases/web-fetch/0.1.0/plugin.toml": "f82c03b6fcef38bd9a40e7d8d3a5b9a6a8f8377a0d42f6a5963d777621280b22"
+  }
+}

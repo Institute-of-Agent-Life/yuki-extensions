@@ -75,3 +75,10 @@ PYTHONPATH=ci python tests/peers/read_webpage.py \
 ### Published Windows Host acceptance
 
 Use the public 1.0.0 Windows ZIP in `YUKI_STABLE_BASE_ZIP` and the web-fetch Actions ZIP named by its freeze (artifact 13524465074) in `YUKI_FROZEN_WEB_FETCH_ZIP`. Run `python ci/check.py EXT-028 --out <new-directory>`. First redirect a requested page to a monitored loopback address. The Host must receive the original refusal with zero requests to that destination. Then serve more than 2 MiB. The original execution must read a partial result that distinguishes the observed bytes from the retained prefix, with matching source, digest and UTF-8 text. The existing signed-candidate command and its R07 network and owner receipts remain available.
+
+The 0.1.0 candidate uses the published Plugin Base 1.0 Rust SDK. Set
+`YUKI_WEB_FETCH_RELEASE_HOST` to the original 1.0.0 platform ZIP and run
+`python ci/check.py EXT-028 --preparation --out NEW_EVIDENCE`. The test installs
+the signed Host, builds both declarations into the candidate, and compares
+the ordinary reader to the fixed v4 oracle. It also replays the in-memory cache
+and reads the original result after a restart.

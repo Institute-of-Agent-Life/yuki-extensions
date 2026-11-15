@@ -318,7 +318,36 @@ def exercise(root, output, signed, *, published=False):
 
 
 
+def prepare_release(root, output, archive):
+    profile = root / "releases/web-fetch/0.1.0"
+    qualification = json.loads((profile / "qualification.json").read_bytes())
+    prepare = runpy.run_path(str(root / "ci/publish-plugin.py"))["prepare"]
+    packages = output / "packages"
+    package = prepare(root, "plugin/web-fetch/v0.1.0", packages, candidate=qualification)
+    oracle = root / "tests/fixtures/EXT-028/read-webpage-v4.json"
+    replay = output / "installed"
+    subprocess.run(
+        [sys.executable, "-B", str(root / "tests/peers/read_webpage.py"),
+         "--host", str(archive), "--package", str(packages), "--oracle", str(oracle),
+         "--out", str(replay), "--cache"],
+        cwd=root, check=True, timeout=240,
+    )
+    report = json.loads((replay / "read-webpage.json").read_bytes())
+    lock = json.loads((root / qualification["sdk_contract"]).read_bytes())
+    assert report["source_commit"] == lock["source_commit"] and report["paid_calls"] == 0
+    assert package["source"]["sdk_contract"] == qualification["sdk_contract"]
+    return "fetch-source.json", {
+        "status": "PASS", "card_status": "RELEASE_CANDIDATE_VERIFIED", "published": False,
+        "release_tag": package["release_tag"], "host": lock["tag"], "sdk": lock["sdk"],
+        "package": package["artifacts"], "read_webpage": report["plugin_sha256"],
+        "oracle_sha256": report["oracle_sha256"], "wire_cases": len(report["selected"]["cases"]),
+        "paid_calls": report["paid_calls"],
+    }
+
+
 def prepare(root, output):
+    if archive := os.environ.get("YUKI_WEB_FETCH_RELEASE_HOST"):
+        return prepare_release(root, output, Path(archive).resolve(strict=True))
     return exercise(root, output, signed=False)
 
 
