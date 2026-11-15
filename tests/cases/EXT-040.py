@@ -14,7 +14,7 @@ from package import build
 
 
 def prepare(root, output):
-    if os.environ.get("YUKI_SETUP_BASE_1_1") or os.environ.get("YUKI_SETUP_BASE_1_2"):
+    if any(os.environ.get(f"YUKI_SETUP_BASE_1_{minor}") for minor in (1, 2, 3)):
         return runpy.run_path(str(root / "tests/peers/setup_published.py"))["verify_minors"](root, output)
     if os.environ.get("YUKI_STABLE_BASE_ZIP"):
         return runpy.run_path(str(root / "tests/peers/setup_published.py"))["verify"](root, output)

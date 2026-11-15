@@ -44,6 +44,8 @@ def verify_minors(root, output):
         version: Path(os.environ[f"YUKI_SETUP_BASE_{suffix}"]).resolve(strict=True)
         for version, suffix in (("1.1.0", "1_1"), ("1.2.0", "1_2"))
     }
+    if base := os.environ.get("YUKI_SETUP_BASE_1_3"):
+        archives["1.3.0"] = Path(base).resolve(strict=True)
     package = output / "packages"
     installer = build(root, "yuki-setup", package)
     setup = package / ("yuki-setup.exe" if os.name == "nt" else "yuki-setup")
@@ -110,7 +112,7 @@ def verify_minors(root, output):
                     ready = json.load(response)
                 assert ready == {"ready": True}
                 info = json.loads(cli("operator", "database-info"))
-                assert info["schema_version"] == {"1.1.0": 56, "1.2.0": 60}[version]
+                assert info["schema_version"] == {"1.1.0": 56, "1.2.0": 60, "1.3.0": 63}[version]
                 cli("operator", "shutdown")
                 assert process.wait(timeout=10) == 0
             finally:
@@ -121,19 +123,20 @@ def verify_minors(root, output):
             results[version] = {"installed": receipt, "archive_sha256": sha(archive), "ready": ready,
                                 "reader": info["schema_version"], "existing_owner_preserved": True}
 
-        source = archives["1.2.0"]
+        latest = next(reversed(archives))
+        source = archives[latest]
         absent = work / "must-stay-absent"
         invoke("1.1.0", source, absent, success=False)
-        invoke("1.2.0", source, absent, "--plugin", "web-fetch", success=False)
+        invoke(latest, source, absent, "--plugin", "web-fetch", success=False)
         invalid = work / "invalid"
         invalid.mkdir()
         for name in ("SHA256SUMS", "signer.pub", "manifest.json"):
             (invalid / name).write_bytes((source.parent / name).read_bytes())
         (invalid / "SHA256SUMS.sig").write_text("invalid signature", encoding="utf-8")
-        assert "SHA-256 differs" in invoke("1.2.0", invalid / source.name, absent, success=False)
+        assert "SHA-256 differs" in invoke(latest, invalid / source.name, absent, success=False)
         (invalid / "SHA256SUMS.sig").write_bytes((source.parent / "SHA256SUMS.sig").read_bytes())
         (invalid / source.name).write_bytes(b"invalid archive")
-        assert "SHA-256 differs" in invoke("1.2.0", invalid / source.name, absent, success=False)
+        assert "SHA-256 differs" in invoke(latest, invalid / source.name, absent, success=False)
         assert not absent.exists() and not list(work.glob(".yuki-native-*"))
     return "setup-install.json", {
         "status": "PASS", "card_status": "PUBLISHED_NATIVE_MINOR_INSTALLS_VERIFIED",
