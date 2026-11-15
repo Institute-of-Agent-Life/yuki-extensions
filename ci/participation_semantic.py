@@ -3,19 +3,27 @@
 from contextlib import closing
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
+from pathlib import Path
 import sqlite3
 import sys
 from threading import Event, Thread
 import time
 
 from rebuild_intake import Owner
+from personal_preview import free_address
 
 
 def run(work, executable, worker, adapter, upstream, output):
     owner = Owner(work, executable, output)
     person = "00000000-0000-4000-8000-000000000253"
     other_person = "00000000-0000-4000-8000-000000000254"
+    speaking_person = "00000000-0000-4000-8000-000000000255"
     space = '["qq","review-fixture","753"]'
+    address = free_address()
+    config = owner.data / "yuki.toml"
+    config.write_text(config.read_text(encoding="utf-8").replace(
+        '"127.0.0.1:0"', json.dumps(address), 1
+    ), encoding="utf-8")
     with owner.running():
         entry = owner.op("entry", "group", space)["entry"]
         owner.op("person", "create", person)
@@ -24,6 +32,9 @@ def run(work, executable, worker, adapter, upstream, output):
         owner.op("person", "create", other_person)
         other = owner.op("account", "open", "qq", "review-fixture", "201", 1,
                          "--person", other_person, "--start", 1)
+        owner.op("person", "create", speaking_person)
+        speaker = owner.op("account", "open", "qq", "review-fixture", "202", 1,
+                           "--person", speaking_person, "--start", 1)
         bot = owner.op("account", "open", "qq", "review-fixture", "100", 1, "--start", 1)
 
     def query(statement, *args):
@@ -65,6 +76,7 @@ def run(work, executable, worker, adapter, upstream, output):
     wait_for_review, release_review = Event(), Event()
     fast_review, release_fast = Event(), Event()
     late_review, release_late = Event(), Event()
+    expression_review, release_expression = Event(), Event()
 
     class Model(BaseHTTPRequestHandler):
         def log_message(self, *_):
@@ -84,6 +96,14 @@ def run(work, executable, worker, adapter, upstream, output):
                     text += "\n<yuki-state>" + json.dumps({"engage": intent}) + "</yuki-state>"
                 response = {"choices": [{"message": {"role": "assistant", "content": text},
                                          "finish_reason": "stop"}]}
+                if request["messages"][-1]["role"] == "user" and "expression seed" in trigger:
+                    response["choices"][0] = {
+                        "message": {"role": "assistant", "content": None,
+                                    "tool_calls": [{"id": "original-expression", "type": "function",
+                                                    "function": {"name": "send", "arguments": json.dumps(
+                                                        {"text": "confirmed group expression"})}}]},
+                        "finish_reason": "tool_calls",
+                    }
             else:
                 assert self.path == "/systemone" and request["model"] == "jev-request-fixture"
                 review_calls.append(request)
@@ -97,9 +117,13 @@ def run(work, executable, worker, adapter, upstream, output):
                 if "withdrawn while reviewing" in focus:
                     late_review.set()
                     assert release_late.wait(10)
+                if "continue confirmed delivery" in focus:
+                    expression_review.set()
+                    assert release_expression.wait(10)
                 if "correction during review" in focus:
                     choices = {"floor_state": "other", "interaction_mark": "other_exchange"}
-                elif any(text in focus for text in ("literal-name", "after own quiet", "after semantic correction")):
+                elif any(text in focus for text in ("literal-name", "after own quiet", "after semantic correction",
+                                                     "other actor quotes delivery")):
                     choices = {}
                 else:
                     choices = {"floor_state": "yuki", "interaction_mark": "invite_yuki"}
@@ -120,6 +144,17 @@ def run(work, executable, worker, adapter, upstream, output):
 
     checkpoint = work / "review-checkpoint.sqlite"
     canary = "private-original-participation-anchor-753"
+
+    def await_erasure(result, erased_text):
+        await_result(lambda: query("SELECT 1 FROM owner_erasures WHERE owner='review' AND watermark=? "
+                                  "AND proof IS NOT NULL", result["watermark"]))
+        with closing(sqlite3.connect(checkpoint.as_uri() + "?mode=ro", uri=True)) as snapshot:
+            assert all(erased_text.encode() not in body for (body,) in
+                       snapshot.execute("SELECT body FROM snapshot_body"))
+        paths = [checkpoint, checkpoint.with_name(checkpoint.name + "-wal")]
+        remaining = [path.name for path in paths if path.exists() and erased_text.encode() in path.read_bytes()]
+        assert not remaining, f"erased source remains in {remaining}"
+
     with ThreadingHTTPServer(("127.0.0.1", 0), Model) as server:
         thread = Thread(target=server.serve_forever)
         thread.start()
@@ -210,24 +245,54 @@ def run(work, executable, worker, adapter, upstream, output):
                     (explicit,), (semantic,), (fast,), (correction_seed,), (corrected,),
                 ]
 
+                sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tests/peers"))
+                try:
+                    from subscription_onebot import Peer
+                finally:
+                    sys.path.pop(0)
+                with closing(Peer(address, "100", owner.env["YUKI_REVIEW_FIXTURE"])) as gateway:
+                    ingress("75320", "original expression anchor", actor=speaker)
+                    expression_seed = ingress("75321", "expression seed", quoted="75320", actor=speaker)
+                    outbound = gateway.receive()
+                    assert outbound["action"] == "send_group_msg"
+                    assert str(outbound["params"]["group_id"]) == "753"
+                    gateway.send({"echo": outbound["echo"], "status": "ok", "retcode": 0,
+                                  "data": {"message_id": "75322"}})
+                    (confirmed,), = await_result(lambda: query(
+                        "SELECT p.event FROM personal_deliveries p JOIN social_outbound o ON o.id=p.outbound "
+                        "JOIN executions x ON x.id=o.namespace WHERE x.source=? AND o.locator='75322'",
+                        expression_seed,
+                    ))
+                    await_result(lambda: query("SELECT 1 FROM executions WHERE source=? AND state='completed'",
+                                               expression_seed))
+                    delivered = ingress("75323", "continue confirmed delivery", quoted="75322", actor=speaker)
+                    assert expression_review.wait(14)
+                    assert query("SELECT event_id FROM accepted_sources WHERE event_id=?", delivered) == [(delivered,)]
+                    assert not query("SELECT 1 FROM participation_main_reports WHERE event=?", expression_seed)
+                    release_expression.set()
+                    await_result(lambda: review_receipt(delivered))
+                    foreign_delivery = ingress("75324", "other actor quotes delivery", quoted="75322", actor=other)
+                    await_result(lambda: review_receipt(foreign_delivery))
+                    assert not query("SELECT 1 FROM main_inputs WHERE event=?", foreign_delivery)
+                    assert b"confirmed group expression" in checkpoint.read_bytes()
+                    expression_erasure = owner.op("privacy", "erase", "erase-confirmed-expression",
+                                                  speaking_person, json.dumps([expression_seed]))
+                    assert confirmed in expression_erasure["sources"]
+                    await_erasure(expression_erasure, "confirmed group expression")
+                    erased_delivery = ingress("75325", "quote withdrawn delivery", quoted="75322", actor=speaker)
+
                 late = ingress("75308", "withdrawn while reviewing", quoted=True)
                 assert late_review.wait(14)
                 assert not query("SELECT event_id FROM accepted_sources WHERE event_id=?", late)
                 erasure = owner.op("privacy", "erase", "forget-native-review", person, json.dumps([anchor]))
                 release_late.set()
-                await_result(lambda: query("SELECT 1 FROM owner_erasures WHERE owner='review' AND watermark=? "
-                                          "AND proof IS NOT NULL", erasure["watermark"]))
+                await_erasure(erasure, canary)
                 (late_state, late_usage), = await_result(lambda: review_receipt(late))
                 assert late_state == "response_held" and json.loads(late_usage) == {"input": 17, "output": 3}
                 assert not query("SELECT event_id FROM accepted_sources WHERE event_id=?", late)
-                with closing(sqlite3.connect(checkpoint.as_uri() + "?mode=ro", uri=True)) as snapshot:
-                    assert all(canary.encode() not in body for (body,) in
-                               snapshot.execute("SELECT body FROM snapshot_body"))
-                paths = [checkpoint, checkpoint.with_name(checkpoint.name + "-wal")]
-                remaining = [path.name for path in paths if path.exists() and canary.encode() in path.read_bytes()]
-                assert not remaining, f"erased anchor remains in {remaining}"
+                assert not query("SELECT 1 FROM main_inputs WHERE event=?", erased_delivery)
+                assert not review_receipt(erased_delivery)
 
-            config = owner.data / "yuki.toml"
             config.write_text(config.read_text(encoding="utf-8").replace('"753"="observe"', '"753"="paused"'),
                               encoding="utf-8")
             with owner.running():
@@ -240,14 +305,18 @@ def run(work, executable, worker, adapter, upstream, output):
             release_review.set()
             release_fast.set()
             release_late.set()
+            release_expression.set()
             server.shutdown()
             thread.join()
-    assert len(review_calls) == 11 and len(main_calls) == 5
-    return {"accepted": [explicit, semantic, fast, correction_seed, corrected],
+    assert len(review_calls) == 14 and len(main_calls) == 8
+    return {"accepted": [explicit, semantic, fast, correction_seed, corrected, expression_seed, delivered],
             "ignored_literal": literal, "ignored_invalid_response": wrong,
             "anchor": anchor, "paused": paused, "cold_replay": semantic,
             "withdrawn_during_review": late, "withdrawn_receipt": {"state": late_state, "usage": json.loads(late_usage)},
             "fast_admitted_before_review": fast, "own_quiet_stopped": after_quiet,
             "semantic_correction": corrected, "semantic_correction_stopped": after_correction,
+            "original_confirmed_delivery": confirmed, "delivery_continued_before_review": delivered,
+            "foreign_delivery_ignored": foreign_delivery, "withdrawn_delivery_ignored": erased_delivery,
+            "delivery_source_erasure": expression_erasure["watermark"],
             "main_attempts": len(main_calls), "review_attempts": len(review_calls), "paid_calls": 0,
             "rule_accepted_before_review": True, "source_erasure": erasure["watermark"]}

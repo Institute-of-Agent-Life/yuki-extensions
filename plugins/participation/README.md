@@ -57,6 +57,10 @@ original Main response's participation intent. The later Jev decision
 shares the same Main input. A `quiet` report closes that relationship's
 fast continuation.
 
+A reply to Yuki's confirmed delivery can also continue the original
+person's relationship. The worker matches its logical send and producer
+event against Host feedback for the original admission.
+
 Restart recovery uses the same original event and review key. Source erasure
 removes affected snapshot data before the worker acknowledges the Host.
 This development package covers review with a canonical reply anchor.

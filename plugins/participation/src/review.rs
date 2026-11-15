@@ -155,6 +155,7 @@ impl<R: io::BufRead, W: io::Write> Host<R, W> {
     fn original_pages(&mut self, event: i64, mut first: Value) -> Result<Option<Value>> {
         let version = first["version"].clone();
         let origin = first["origin"].take();
+        let delivery_origin = first["delivery_origin"].take();
         let end = first["size"].clone();
         let mut annotation = first["mentions"].take();
         let mut pieces = vec![];
@@ -203,7 +204,8 @@ impl<R: io::BufRead, W: io::Write> Host<R, W> {
             annotation = next;
         }
         Ok(Some(
-            json!({"event":event,"origin":origin,"version":version,"mentions":mentions,"pages":pieces}),
+            json!({"event":event,"origin":origin,"delivery_origin":delivery_origin,
+                "version":version,"mentions":mentions,"pages":pieces}),
         ))
     }
 
@@ -271,20 +273,35 @@ impl<R: io::BufRead, W: io::Write> Host<R, W> {
             return Ok(());
         };
         let Some(first) = self.request("participation.source", json!({
-            "event":anchor,"version":reference["version"],"include_origin":true,"include_self":true
+            "event":anchor,"version":reference["version"],"include_origin":true,"include_self":true,
+            "include_delivery_origin":true
         }))? else { return Ok(()) };
         let Some(earlier) = self.original_pages(anchor, first)? else {
             return Ok(());
         };
+        let producer_event = earlier["delivery_origin"]["producer_event"].as_i64();
+        let producer = if let Some(source) = producer_event {
+            self.request(
+                "participation.source",
+                json!({"event":source,"include_origin":true}),
+            )?
+            .map(|page| json!({"event":source,"origin":page["origin"],"version":page["version"]}))
+        } else {
+            None
+        };
         let mut bridge = engine.start(&json!({"action":"review","checkpoint":engine.checkpoint,
             "name":engine.name,"response_model":engine.response_model,"receiver":self.scope.receiver,
-            "focus":focus,"anchor":earlier}))?;
+            "focus":focus,"anchor":earlier,"producer":producer}))?;
         let mut review = bridge.receive()?;
         if review["type"] == "feedback" {
+            let source = review["event"]
+                .as_i64()
+                .filter(|source| *source == anchor || Some(*source) == producer_event)
+                .ok_or("feedback source is outside the original reply")?;
             let feedback = self
                 .request(
                     "participation.feedback",
-                    json!({"event":anchor,"include_self_report":true}),
+                    json!({"event":source,"include_self_report":true}),
                 )?
                 .unwrap_or_else(|| json!({}));
             bridge.send(&feedback)?;

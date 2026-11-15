@@ -68,31 +68,62 @@ def projected(source, controller, reply=None):
     return item
 
 
-def continue_original(controller, focus, earlier, anchor, now):
+def expression_producer(controller, proof, focus):
+    if proof is None:
+        return None
+    key = f"event:{proof['event']}"
+    origin = proof["origin"]
+    candidate = controller.state.events.get(key)
+    version = controller.state.host_checkpoint.get("source_versions", {}).get(key)
+    if (candidate is None or not origin or candidate.kind != "human" or candidate.author != focus.author
+            or origin["entry"] != focus.scope.conversation_id
+            or origin["observed_generation"] != focus.scope.generation
+            or origin["original_person"] != candidate.author
+            or version != [candidate.ref.revision, proof["version"]]):
+        return None
+    return candidate
+
+
+def continue_original(controller, focus, earlier, job, now):
+    from yuki_participation.models import Effect
     from yuki_participation.participation import ParticipationUnit, UnitBinding
     from yuki_participation.self_report import SelfDelta, SelfReport
 
-    if earlier.kind != "human" or earlier.author != focus.author:
+    receipt = job["anchor"].get("delivery_origin")
+    prior = expression_producer(controller, job["producer"], focus) if receipt else earlier
+    if prior is None or prior.kind != "human" or prior.author != focus.author:
         return False
-    basis = controller.participation_own_basis(earlier.thread, earlier.author, now)
+    source = receipt["producer_event"] if receipt else job["anchor"]["event"]
+    basis = controller.participation_own_basis(prior.thread, prior.author, now)
     if not basis:
         return False
-    send({"type": "feedback"})
-    feedback = [row for row in receive().get("executions", [])
-                if (row.get("self_report") or {}).get("event") == anchor]
+    send({"type": "feedback", "event": source})
+    executions = receive().get("executions", [])
+    if receipt:
+        feedback = [row for row in executions if row["execution"] == receipt["execution"]
+                    and any(send["operation"] == receipt["operation"] and send["confirmed_parts"] > 0
+                            for send in row["sends"])]
+    else:
+        feedback = [row for row in executions if (row.get("self_report") or {}).get("event") == source]
     if len(feedback) != 1:
         return False
     (execution,) = feedback
+    unit = ParticipationUnit(thread=prior.thread, target=prior.target)
+    binding = UnitBinding(scope=focus.scope, unit=unit, actor=prior.author,
+                          basis=tuple(dict.fromkeys((*basis, prior.ref))))
+    if receipt:
+        effect = Effect(effect_id=f"send:{receipt['execution']}:{receipt['operation']}", kind="message",
+                        at=receipt["first_confirmed_at"] / 1000, actual_targets=("group",))
+        if not controller.observe_unit_expression(binding, execution["execution"], effect, anchor=earlier.ref):
+            return False
     report = execution["self_report"]
-    unit = ParticipationUnit(thread=earlier.thread, target=earlier.target)
-    binding = UnitBinding(scope=focus.scope, unit=unit, actor=earlier.author,
-                          basis=tuple(dict.fromkeys((*basis, earlier.ref))))
-    controller.observe_unit_hint(binding, SelfReport(
-        run_ref=execution["execution"], sequence=report["sequence"], response_id=report["attempt"],
-        at=earlier.at, source=earlier.ref, delta=SelfDelta(engage=report["engage"]),
-    ))
-    if report["engage"] == "quiet":
-        return False
+    if report is not None and report["event"] == source:
+        controller.observe_unit_hint(binding, SelfReport(
+            run_ref=execution["execution"], sequence=report["sequence"], response_id=report["attempt"],
+            at=prior.at, source=prior.ref, delta=SelfDelta(engage=report["engage"]),
+        ))
+        if report["engage"] == "quiet":
+            return False
     matched = controller.participation_view(focus, now).matched_unit
     if matched is None or matched.unit != unit or matched.binding.actor != focus.author:
         return False
@@ -141,7 +172,7 @@ async def review(job):
                 return
             continued = previous.get("continued", False)
         else:
-            continued = continue_original(controller, focus, earlier, job["anchor"]["event"], now)
+            continued = continue_original(controller, focus, earlier, job, now)
             if continued is None:
                 send({"type": "done"})
                 return
