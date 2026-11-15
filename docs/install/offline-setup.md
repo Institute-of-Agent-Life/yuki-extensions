@@ -88,13 +88,13 @@ Windows 如明選原 web-fetch，加 `--plugin web-fetch --plugin-file <原Actio
 要驗證 Compose，先在本機匯入候選映像，再設 `YUKI_CORE039_OCI` 並省略
 `--preparation`。完整卡回條會分列 Compose、原生安裝和 SnowLuma 實測狀態。
 
-## 公開原生基底 1.1.0 至 1.3.0
+## 公開原生基底 1.1.0 至 1.4.0
 
 將同一版本的 ZIP、`manifest.json`、`SHA256SUMS`、`SHA256SUMS.sig`
 及 `signer.pub` 放在同一個本機目錄，選擇版本及新安裝路徑。
 
 ```text
-yuki-setup native --core 1.3.0 --archive yuki-plugin-base-1.3.0.zip --dir NEW_NATIVE_DIRECTORY
+yuki-setup native --core 1.4.0 --archive yuki-plugin-base-1.4.0.zip --dir NEW_NATIVE_DIRECTORY
 ```
 
 離線安裝會核對發布簽名、Host 架構及兩套 SDK 雜湊。新目錄包含當前平台的
@@ -102,5 +102,6 @@ yuki-setup native --core 1.3.0 --archive yuki-plugin-base-1.3.0.zip --dir NEW_NA
 建立獨立 owner，再執行 `run`。插件按各自的發布版本另外安裝。當指定已存在
 的安裝目錄時，命令拒絕覆寫。
 
-以 `YUKI_SETUP_BASE_1_1`、`YUKI_SETUP_BASE_1_2`、`YUKI_SETUP_BASE_1_3` 指定原 ZIP，
+以 `YUKI_SETUP_BASE_1_1`、`YUKI_SETUP_BASE_1_2`、`YUKI_SETUP_BASE_1_3`、
+`YUKI_SETUP_BASE_1_4` 指定原 ZIP，
 執行 `python ci/check.py EXT-040 --preparation --out NEW_EVIDENCE` 重現原生驗證。
