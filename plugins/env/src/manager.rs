@@ -36,11 +36,31 @@ fn exchange(_path: &std::path::Path, _operation: &str) -> Result<Value, &'static
 pub fn status(operation: &str) -> Result<Value, &'static str> {
     let address = std::env::var_os("YUKI_ENV_MANAGER_SOCKET").ok_or("manager_unavailable")?;
     let response = exchange(std::path::Path::new(&address), operation)?;
-    // The Manager's full status contains other runs, services and host paths.
+    project_status(&response)
+}
+
+fn project_status(response: &Value) -> Result<Value, &'static str> {
     let ready = response["ready"]
         .as_bool()
         .ok_or("invalid_manager_response")?;
-    Ok(json!({"ready":ready}))
+    let storage = &response["storage"];
+    let size = |field: &str| storage[field].as_u64().ok_or("invalid_manager_response");
+    let capacity = size("capacity_bytes")?;
+    let used = size("used_bytes")?;
+    let available = size("available_bytes")?;
+    if used > capacity
+        || available > capacity - used
+        || response["home"] != "/home/yuki"
+        || response["workspace"] != "/workspace"
+    {
+        return Err("invalid_manager_response");
+    }
+    Ok(json!({
+        "ready":ready,
+        "home":"/home/yuki",
+        "workspace":"/workspace",
+        "storage":{"capacity_bytes":capacity,"used_bytes":used,"available_bytes":available}
+    }))
 }
 
 #[cfg(test)]
@@ -48,12 +68,30 @@ mod tests {
     use super::*;
 
     #[test]
-    fn original_manager_exposes_only_readiness() {
+    fn original_manager_exposes_environment_capacity() {
         if std::env::var_os("YUKI_ENV_TEST_MANAGER").is_some() {
-            assert_eq!(
-                status("test-original-operation"),
-                Ok(json!({"ready":false}))
-            );
+            let value = status("test-original-operation").unwrap();
+            assert_eq!(value["ready"], false);
+            assert!(value["storage"]["capacity_bytes"].as_u64().unwrap() > 0);
         }
+    }
+
+    #[test]
+    fn status_projects_only_virtual_paths_and_storage_counts() {
+        let mut report = json!({
+            "ready":true, "home":"/home/yuki", "workspace":"/workspace",
+            "generation":"manager-private", "runs":[{"run_id":"private-run"}],
+            "services":[{"name":"private-service"}], "host_available_bytes":400,
+            "storage":{"capacity_bytes":100,"used_bytes":60,"available_bytes":35}
+        });
+        assert_eq!(
+            project_status(&report),
+            Ok(json!({
+                "ready":true, "home":"/home/yuki", "workspace":"/workspace",
+                "storage":{"capacity_bytes":100,"used_bytes":60,"available_bytes":35}
+            }))
+        );
+        report["storage"]["available_bytes"] = json!(41);
+        assert_eq!(project_status(&report), Err("invalid_manager_response"));
     }
 }

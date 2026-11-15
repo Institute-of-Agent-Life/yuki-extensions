@@ -1,12 +1,12 @@
 id = "env"
-version = "0.1.0-alpha.1"
+version = "0.1.0-alpha.2"
 program = "yuki-env"
 grants = ["tool.call"]
 env = ["YUKI_ENV_MANAGER_SOCKET"]
 
 [[tools]]
 name = "environment_status"
-description = "Read the configured environment manager's readiness."
+description = "查看已配置持久 Linux 环境的就绪状态、虚拟目录和存储容量。"
 parallel_read = false
 code_direct = true
 cacheable = false
