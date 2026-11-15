@@ -14,12 +14,16 @@ from rebuild_intake import Owner
 def run(work, executable, worker, adapter, upstream, output):
     owner = Owner(work, executable, output)
     person = "00000000-0000-4000-8000-000000000253"
+    other_person = "00000000-0000-4000-8000-000000000254"
     space = '["qq","review-fixture","753"]'
     with owner.running():
         entry = owner.op("entry", "group", space)["entry"]
         owner.op("person", "create", person)
         author = owner.op("account", "open", "qq", "review-fixture", "200", 1,
                           "--person", person, "--start", 1)
+        owner.op("person", "create", other_person)
+        other = owner.op("account", "open", "qq", "review-fixture", "201", 1,
+                         "--person", other_person, "--start", 1)
         bot = owner.op("account", "open", "qq", "review-fixture", "100", 1, "--start", 1)
 
     def query(statement, *args):
@@ -45,20 +49,21 @@ def run(work, executable, worker, adapter, upstream, output):
 
     timestamps = {}
 
-    def ingress(native, text, *, quoted=False, mentioned=False):
+    def ingress(native, text, *, quoted=False, mentioned=False, actor=author):
         parts = [{"type": "text", "text": text}]
         if quoted:
-            parts.append({"type": "reply", "native_id": "75301"})
+            parts.append({"type": "reply", "native_id": "75301" if quoted is True else quoted})
         if mentioned:
             parts.append({"type": "mention", "account": bot["account"], "native": "100", "label": "Yuki"})
         now = timestamps.setdefault(native, time.time_ns() // 1_000_000)
-        packet = {"source": native, "native_id": native, "account": author["account"],
+        packet = {"source": native, "native_id": native, "account": actor["account"],
                   "bot_stage": bot["assignment"], "reply_bot": "100", "space": space,
                   "kind": "message", "observed": now, "occurred": now, "segments": parts}
         return owner.op("ingress", "record", json.dumps(packet))["event"]
 
     main_calls, review_calls = [], []
     wait_for_review, release_review = Event(), Event()
+    fast_review, release_fast = Event(), Event()
     late_review, release_late = Event(), Event()
 
     class Model(BaseHTTPRequestHandler):
@@ -69,7 +74,15 @@ def run(work, executable, worker, adapter, upstream, output):
             request = json.loads(self.rfile.read(int(self.headers["Content-Length"])))
             if self.path == "/main":
                 main_calls.append(request)
-                response = {"choices": [{"message": {"role": "assistant", "content": "quiet"},
+                trigger = json.dumps(request["messages"][-1]["content"])
+                intent = ("quiet" if "fast via own state" in trigger else
+                          "stay" if any(text in trigger for text in
+                                        ("ordinary continuation", "correction seed", "correction during review"))
+                          else None)
+                text = "private response"
+                if intent is not None:
+                    text += "\n<yuki-state>" + json.dumps({"engage": intent}) + "</yuki-state>"
+                response = {"choices": [{"message": {"role": "assistant", "content": text},
                                          "finish_reason": "stop"}]}
             else:
                 assert self.path == "/systemone" and request["model"] == "jev-request-fixture"
@@ -78,11 +91,18 @@ def run(work, executable, worker, adapter, upstream, output):
                 if "explicit-rule" in focus:
                     wait_for_review.set()
                     assert release_review.wait(10)
+                if "fast via own state" in focus:
+                    fast_review.set()
+                    assert release_fast.wait(10)
                 if "withdrawn while reviewing" in focus:
                     late_review.set()
                     assert release_late.wait(10)
-                choices = ({"floor_state": "yuki", "interaction_mark": "invite_yuki"}
-                           if "literal-name" not in focus else {})
+                if "correction during review" in focus:
+                    choices = {"floor_state": "other", "interaction_mark": "other_exchange"}
+                elif any(text in focus for text in ("literal-name", "after own quiet", "after semantic correction")):
+                    choices = {}
+                else:
+                    choices = {"floor_state": "yuki", "interaction_mark": "invite_yuki"}
                 answers = {}
                 for name, question in request["questions"].items():
                     choice = choices.get(name, "unknown")
@@ -124,7 +144,7 @@ def run(work, executable, worker, adapter, upstream, output):
                     + plugin("rule", [entry, bot["assignment"]], common)
                     + plugin("review", [entry, bot["assignment"], "--review", sys.executable, str(adapter),
                                         str(upstream), str(checkpoint), "jev", "jev-response-fixture", "Yuki"],
-                             [*common, "llm.complete", "llm.result"])
+                             [*common, "participation.feedback", "llm.complete", "llm.result"])
                     + '\n[plugins.aux_routes.jev]\npurposes=["review"]\norigins=["event"]\nentries='
                     + json.dumps([entry]) + '\n[plugins.aux_routes.jev.profile]\nendpoint=' + json.dumps(base + "/systemone")
                     + '\nmodel="jev-request-fixture"\nname="Jev"\nmerge_ms=0\nroot_slots=2\n'
@@ -162,6 +182,34 @@ def run(work, executable, worker, adapter, upstream, output):
                     (state, usage), = review_receipt(reviewed)
                     assert state == "response" and json.loads(usage) == {"input": 17, "output": 3}
                 assert len(review_receipt(wrong)) == 1 and review_receipt(wrong)[0][0] != "response"
+
+                assert query("SELECT engage FROM participation_main_reports WHERE event=?", semantic) == [("stay",)]
+                fast = ingress("75309", "fast via own state", quoted="75304")
+                assert fast_review.wait(14)
+                assert query("SELECT event_id FROM accepted_sources WHERE event_id=?", fast) == [(fast,)]
+                await_result(lambda: query("SELECT engage FROM participation_main_reports "
+                                           "WHERE event=? AND engage='quiet'", fast))
+                release_fast.set()
+                await_result(lambda: review_receipt(fast))
+                after_quiet = ingress("75310", "after own quiet", quoted="75309")
+                await_result(lambda: review_receipt(after_quiet))
+                assert not query("SELECT event_id FROM accepted_sources WHERE event_id=?", after_quiet)
+                assert query("SELECT event_id FROM accepted_sources ORDER BY event_id") == [(explicit,), (semantic,), (fast,)]
+
+                ingress("75312", "other person's original anchor", actor=other)
+                correction_seed = ingress("75313", "correction seed", quoted="75312", actor=other)
+                await_result(lambda: query("SELECT 1 FROM participation_main_reports "
+                                           "WHERE event=? AND engage='stay'", correction_seed))
+                corrected = ingress("75314", "correction during review", quoted="75313", actor=other)
+                await_result(lambda: review_receipt(corrected))
+                await_result(lambda: query("SELECT 1 FROM participation_main_reports "
+                                           "WHERE event=? AND engage='stay'", corrected))
+                after_correction = ingress("75315", "after semantic correction", quoted="75314", actor=other)
+                await_result(lambda: review_receipt(after_correction))
+                assert query("SELECT event_id FROM accepted_sources ORDER BY event_id") == [
+                    (explicit,), (semantic,), (fast,), (correction_seed,), (corrected,),
+                ]
+
                 late = ingress("75308", "withdrawn while reviewing", quoted=True)
                 assert late_review.wait(14)
                 assert not query("SELECT event_id FROM accepted_sources WHERE event_id=?", late)
@@ -184,17 +232,22 @@ def run(work, executable, worker, adapter, upstream, output):
                               encoding="utf-8")
             with owner.running():
                 await_result(lambda: sum(1 for item in owner.op("host", "status")["plugins"] if item["online"]) == 2)
-                paused = ingress("75307", "paused group", quoted=True, mentioned=True)
+                ingress("75311", "paused group original anchor")
+                paused = ingress("75307", "paused group", quoted="75311", mentioned=True)
                 assert not review_receipt(paused)
                 assert not query("SELECT 1 FROM main_inputs WHERE event=?", paused)
         finally:
             release_review.set()
+            release_fast.set()
             release_late.set()
             server.shutdown()
             thread.join()
-    assert len(review_calls) == 6 and len(main_calls) == 2
-    return {"accepted": [explicit, semantic], "ignored_literal": literal, "ignored_invalid_response": wrong,
+    assert len(review_calls) == 11 and len(main_calls) == 5
+    return {"accepted": [explicit, semantic, fast, correction_seed, corrected],
+            "ignored_literal": literal, "ignored_invalid_response": wrong,
             "anchor": anchor, "paused": paused, "cold_replay": semantic,
             "withdrawn_during_review": late, "withdrawn_receipt": {"state": late_state, "usage": json.loads(late_usage)},
+            "fast_admitted_before_review": fast, "own_quiet_stopped": after_quiet,
+            "semantic_correction": corrected, "semantic_correction_stopped": after_correction,
             "main_attempts": len(main_calls), "review_attempts": len(review_calls), "paid_calls": 0,
             "rule_accepted_before_review": True, "source_erasure": erasure["watermark"]}

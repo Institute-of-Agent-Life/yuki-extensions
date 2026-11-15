@@ -68,6 +68,46 @@ def projected(source, controller, reply=None):
     return item
 
 
+def continue_original(controller, focus, earlier, anchor, now):
+    from yuki_participation.participation import ParticipationUnit, UnitBinding
+    from yuki_participation.self_report import SelfDelta, SelfReport
+
+    if earlier.kind != "human" or earlier.author != focus.author:
+        return False
+    basis = controller.participation_own_basis(earlier.thread, earlier.author, now)
+    if not basis:
+        return False
+    send({"type": "feedback"})
+    feedback = [row for row in receive().get("executions", [])
+                if (row.get("self_report") or {}).get("event") == anchor]
+    if len(feedback) != 1:
+        return False
+    (execution,) = feedback
+    report = execution["self_report"]
+    unit = ParticipationUnit(thread=earlier.thread, target=earlier.target)
+    binding = UnitBinding(scope=focus.scope, unit=unit, actor=earlier.author,
+                          basis=tuple(dict.fromkeys((*basis, earlier.ref))))
+    controller.observe_unit_hint(binding, SelfReport(
+        run_ref=execution["execution"], sequence=report["sequence"], response_id=report["attempt"],
+        at=earlier.at, source=earlier.ref, delta=SelfDelta(engage=report["engage"]),
+    ))
+    if report["engage"] == "quiet":
+        return False
+    matched = controller.participation_view(focus, now).matched_unit
+    if matched is None or matched.unit != unit or matched.binding.actor != focus.author:
+        return False
+    actual = matched.binding.model_copy(update={"basis": tuple(dict.fromkeys((*binding.basis, focus.ref)))})
+    if not controller.continuation_current(focus.ref, actual, now):
+        return False
+    send({"type": "fast"})
+    outcome = receive()
+    if not outcome.get("accepted"):
+        return None
+    if not controller.observe_unit_input(actual, focus.ref, continuation=True):
+        raise ValueError("original continuation could not be applied to the participation state")
+    return True
+
+
 async def review(job):
     from yuki_participation.controller import Controller
     from yuki_participation.models import Scope, Snapshot
@@ -99,11 +139,17 @@ async def review(job):
             if previous["settled"]:
                 send({"type": "done"})
                 return
+            continued = previous.get("continued", False)
         else:
+            continued = continue_original(controller, focus, earlier, job["anchor"]["event"], now)
+            if continued is None:
+                send({"type": "done"})
+                return
             snapshot = controller.freeze_observation(Snapshot(scope=scope, focus=focus, context=(earlier,),
                                                               sequence=revision + 1, issued_at=max(now, focus.at)))
             controller.set_host_mapping_entry("ordinary_reviews", key,
-                                              {"snapshot": snapshot.model_dump(mode="json"), "settled": False})
+                                              {"snapshot": snapshot.model_dump(mode="json"), "settled": False,
+                                               "continued": continued})
             revision = store.save(controller.state, expected_revision=revision)
 
         def exchange(request):
@@ -136,13 +182,14 @@ async def review(job):
         if outcome.get("status") == "invalidated":
             send({"type": "done"})
             return
-        if outcome.get("accepted"):
+        if outcome.get("accepted") and not continued:
             binding = UnitBinding(scope=scope, unit=ParticipationUnit(thread=focus.thread, target=focus.author),
                                   actor=focus.author, basis=(focus.ref, earlier.ref))
             if not controller.observe_unit_input(binding, focus.ref):
                 raise ValueError("original admission could not be applied to the participation state")
         controller.set_host_mapping_entry("ordinary_reviews", key,
-                                          {"snapshot": snapshot.model_dump(mode="json"), "settled": True})
+                                          {"snapshot": snapshot.model_dump(mode="json"), "settled": True,
+                                           "continued": continued})
         store.save(controller.state, expected_revision=revision)
         send({"type": "done"})
 

@@ -244,6 +244,15 @@ impl<R: io::BufRead, W: io::Write> Host<R, W> {
         }
     }
 
+    fn admit_review(&mut self, event: i64, generation: u64, reference: &Value) -> Result<Value> {
+        Ok(self
+            .request(
+                "participation.promote",
+                json!({"event":event,"expected_generation":generation,"expected_reply":reference}),
+            )?
+            .unwrap_or_else(|| json!({"status":"invalidated"})))
+    }
+
     pub(super) fn review(&mut self, event: i64, engine: &Engine) -> Result<()> {
         let Some(first) = self.request("participation.source", json!({
             "event":event,"include_origin":true,"include_reply":true,"include_self":true,"mention_cursor":0
@@ -270,7 +279,22 @@ impl<R: io::BufRead, W: io::Write> Host<R, W> {
         let mut bridge = engine.start(&json!({"action":"review","checkpoint":engine.checkpoint,
             "name":engine.name,"response_model":engine.response_model,"receiver":self.scope.receiver,
             "focus":focus,"anchor":earlier}))?;
-        let review = bridge.receive()?;
+        let mut review = bridge.receive()?;
+        if review["type"] == "feedback" {
+            let feedback = self
+                .request(
+                    "participation.feedback",
+                    json!({"event":anchor,"include_self_report":true}),
+                )?
+                .unwrap_or_else(|| json!({}));
+            bridge.send(&feedback)?;
+            review = bridge.receive()?;
+        }
+        if review["type"] == "fast" {
+            let outcome = self.admit_review(event, origin.current_generation, &reference)?;
+            bridge.send(&outcome)?;
+            review = bridge.receive()?;
+        }
         if review["type"] == "done" {
             return bridge.finish();
         }
@@ -289,15 +313,7 @@ impl<R: io::BufRead, W: io::Write> Host<R, W> {
         }
         let mut outcome = json!({});
         if decision["invited"] == true {
-            outcome = self
-                .request(
-                    "participation.promote",
-                    json!({
-                        "event":event,"expected_generation":origin.current_generation,
-                        "expected_reply":reference
-                    }),
-                )?
-                .unwrap_or_else(|| json!({"status":"invalidated"}));
+            outcome = self.admit_review(event, origin.current_generation, &reference)?;
         }
         if !self.erasures.is_empty() {
             outcome = json!({"status":"invalidated"});
