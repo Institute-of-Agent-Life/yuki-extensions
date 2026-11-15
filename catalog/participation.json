@@ -3,7 +3,7 @@
   "kind": "plugin",
   "path": "plugins/participation",
   "ecosystem": "rust",
-  "version": "0.1.0-alpha.8",
+  "version": "0.1.0-alpha.9",
   "tag_prefix": "plugin/participation/v",
   "license": "AGPL-3.0-only",
   "notices": ["LICENSE"],
@@ -17,8 +17,9 @@
     "ci/participation_rule.py",
     "ci/participation_semantic.py",
     "tests/cases/EXT-025.py",
+    "tests/cases/EXT-026.py",
     "compat/participation-library/native-host.lock.json",
     "compat/participation-library/native-rule-sdk.lock.json",
-    "compat/participation-library/yuki-plugin-sdk-1.0.0-alpha.36.crate"
+    "compat/participation-library/yuki-plugin-sdk-1.0.0-alpha.37.crate"
   ]
 }
