@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "task": "EXT-028",
+  "phase": "acceptance",
+  "scope": "three-platform published archive replay",
+  "verified_test_source": "2f9cba660441caa7e52bd92b0ee602b0c230fe2e",
+  "files": {
+    "fetch-source.json": "74058cd70b7eef11102397e815f988683f470771a67c31979ad082568e6e3b41",
+    "owner-disposition.json": "f70d2e289f35bb4ecf616d128e9103cdf056c749749f6801b2b07c4765768500"
+  }
+}

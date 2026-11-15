@@ -1,0 +1,100 @@
+{
+  "status": "PASS",
+  "card_status": "PASS",
+  "phase": "acceptance",
+  "task": "EXT-028",
+  "pr": 121,
+  "published": true,
+  "published_plugin": {
+    "tag": "plugin/web-fetch/v0.1.0",
+    "source_commit": "2d74781a9b45cace1123a72fd918670207582153",
+    "release_id": 445880732,
+    "release_receipt_sha256": "f78632ede908be0e159cdfdf97f45bbdf9bce72d15b36e86cca1df271bf67cf9",
+    "release_lock_sha256": "a994efd43af35ba5f5646c1325a9db3259825748c0a9e74abc9309a6996aafb3"
+  },
+  "host": {
+    "tag": "plugin-base-v1.0.0",
+    "source_commit": "c6bd0c75e38717abc71373201d31a77982428d5b",
+    "schema_sha256": "131754fbc818d26557eb31958782624eb38bbe19d1f4e3c6f42e2e62f8d9001e"
+  },
+  "sdk": {
+    "python": "1.0.0",
+    "rust": "1.0.0"
+  },
+  "rust_sdk_sha256": "21aceed53a465aaefe6a74560a4d283b947c55dc6f5fb3fd5d5e10f4dc842711",
+  "tested_merge": "2f9cba660441caa7e52bd92b0ee602b0c230fe2e",
+  "git_tree": "a0e24388d485076b27472cb66d0776b5126163f5",
+  "source_snapshot_sha256": "ccb9446878f4c002ffeab50ed4fab220599b6aafb96db7b5621412298a3104ef",
+  "oracle_source": "329ca7c487414d2f54ddd98ff4727446ed2446cd",
+  "oracle_sha256": "a57ad275c2f986bfe512fe4a50124d5d06cec9611ac554c95919ec1dfe371772",
+  "owner_disposition_sha256": "f70d2e289f35bb4ecf616d128e9103cdf056c749749f6801b2b07c4765768500",
+  "platforms": {
+    "macos": {
+      "manifest_sha256": "8e863b53d95089bd25370de4bddd005d00084c4bd04c4f2dec1afa3d0bc22e5c",
+      "report_sha256": "962fb3ae1a481e878969376a96468fb228e64e731af05a808ed6790006f8bd41",
+      "installed_evidence_sha256": "259df0a17377577b2b9bfdadca0e5dee50245fc2a2c566eddbb65318e4700623",
+      "host_zip_sha256": "ed0aef8a02d216133a21dc784c67d2c344f5bd667f168884ae5475ea1465e533",
+      "package_manifest_sha256": "4842e07685a26fe72521467d2b7ac0cbd43c2f3202153dc49997ed6d04fce946",
+      "package_sha256": "0ea0832127bb4da089b80bddc16183e043afcb6d7d9dcf58b907cd5cb4d78758",
+      "binary_sha256": "22d54995e2f050d35a652e29e8ccf5625abc38f4f5a79bcd8562ab894d20d133",
+      "reader_cases": 25,
+      "default_cases": 1,
+      "network_checks": [
+        "fetch::tests::bounded_result_preserves_source_and_hash_even_when_text_exceeds_frame",
+        "fetch::tests::cross_origin_never_restores_credentials_or_body",
+        "fetch::tests::denied_redirect_and_not_modified_are_distinct",
+        "fetch::tests::failed_proxy_does_not_make_a_direct_connection",
+        "fetch::tests::rebinding_fails_before_second_dispatch_and_keeps_source",
+        "legacy::tests::cache_bounds_are_fixed_from_the_original_read",
+        "policy::tests::never_choose_one_public_answer_from_a_mixed_set"
+      ],
+      "paid_calls": 0
+    },
+    "linux": {
+      "manifest_sha256": "05dbb8407c66039ab907f17f52eeea738612cadd865aad0287788c8dc2f0f576",
+      "report_sha256": "d15fbf8fa896ee7ff26e1d1fb09dbafd172ba6fee7805e252b917bd4cb2098e2",
+      "installed_evidence_sha256": "6aec2506cadb2be8114ad159b1101e57d86209bb8994720c5d5990fb55c9cc77",
+      "host_zip_sha256": "737d5d0ff9ec8e77adc898f5a6112f742c7785bc395730b65a1e4b13310eb69f",
+      "package_manifest_sha256": "d9420a5a40d4d012d0689d7ea1c2d3e18a5a5c8a7c849027c42f859fbecc6306",
+      "package_sha256": "ad00e6f26e09376aeea4d5672913795b8683e4df1a65a4b35d12aeb84c4ea3a3",
+      "binary_sha256": "c8eaaf615f97cf6877345110f67e4814ae745df8dce63a2e8c9fc65e7fcc5627",
+      "reader_cases": 25,
+      "default_cases": 1,
+      "network_checks": [
+        "fetch::tests::bounded_result_preserves_source_and_hash_even_when_text_exceeds_frame",
+        "fetch::tests::cross_origin_never_restores_credentials_or_body",
+        "fetch::tests::denied_redirect_and_not_modified_are_distinct",
+        "fetch::tests::failed_proxy_does_not_make_a_direct_connection",
+        "fetch::tests::rebinding_fails_before_second_dispatch_and_keeps_source",
+        "legacy::tests::cache_bounds_are_fixed_from_the_original_read",
+        "policy::tests::never_choose_one_public_answer_from_a_mixed_set"
+      ],
+      "paid_calls": 0
+    },
+    "windows": {
+      "manifest_sha256": "426c4a71992fdf0211b4752ac4a41216116108de445d0f240e24e7357f2309a4",
+      "report_sha256": "df8f55518802e4403cc109a607d8b5e94c68f1075ab9ddde5ae91dc6fe69e787",
+      "installed_evidence_sha256": "24e29f2b51a44c11c30887f3d6317765fcd8640b70ea2c55f8e6c844d28240b2",
+      "host_zip_sha256": "287167dae7b2b1222efd22fa5a0aa58e1c39f7129c7112e5b81cebb6278a7ecd",
+      "package_manifest_sha256": "d3d584621e2f9f9325251f4af69dfbba3d55b4c4e61de6563c4e7ed14ee99aa3",
+      "package_sha256": "3bd1a795288c243d4f5015ae7f0a82752b0de780a3b2230cfcf5ae2def58bd95",
+      "binary_sha256": "6b1a8de539791f300a5beeb965711a93ee3f0489e1c41ed5b57747371cf6a183",
+      "reader_cases": 25,
+      "default_cases": 1,
+      "network_checks": [
+        "fetch::tests::bounded_result_preserves_source_and_hash_even_when_text_exceeds_frame",
+        "fetch::tests::cross_origin_never_restores_credentials_or_body",
+        "fetch::tests::denied_redirect_and_not_modified_are_distinct",
+        "fetch::tests::failed_proxy_does_not_make_a_direct_connection",
+        "fetch::tests::rebinding_fails_before_second_dispatch_and_keeps_source",
+        "legacy::tests::cache_bounds_are_fixed_from_the_original_read",
+        "policy::tests::never_choose_one_public_answer_from_a_mixed_set"
+      ],
+      "paid_calls": 0,
+      "run": 43690007873,
+      "artifact": 14152435274,
+      "artifact_sha256": "87e07af13edd67492f18dfb3817c59d731bf81d598de2fd367d6031e3e3b338d"
+    }
+  },
+  "paid_calls": 0
+}
