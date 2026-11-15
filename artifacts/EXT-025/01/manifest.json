@@ -1,0 +1,17 @@
+{
+  "task": "EXT-025",
+  "status": "PASS",
+  "card_status": "PASS",
+  "phase": "acceptance",
+  "source_commit": "ca2205bc8f5ea92dde37997a61b685ea435f9723",
+  "release_source_commit": "e03b6e660f5a6689241e4e7e875c0945d4a5cfa6",
+  "published": true,
+  "verification": {
+    "macos": "local",
+    "linux": "local",
+    "windows": "https://github.com/Institute-of-Agent-Life/yuki-extensions/actions/runs/43671008127"
+  },
+  "files": {
+    "ordinary-replay.json": "b201c17c52a512519161ac554de9a0772c722c4bb1f15455e0fe4c984c9205aa"
+  }
+}

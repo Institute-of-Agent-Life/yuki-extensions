@@ -1,0 +1,72 @@
+{
+  "assets": {
+    "SHA256SUMS": {
+      "sha256": "b1976361b7fb6774a7794e8898abc1e6a1e35e1b4c57607e08461bb344597be6",
+      "size": 396,
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/releases/download/plugin/participation/v0.1.0/SHA256SUMS"
+    },
+    "release-preparation.json": {
+      "sha256": "52174c11dbd56b91387a479d9d81055de1450aa96fa319aff1b3837f60de7925",
+      "size": 6371,
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/releases/download/plugin/participation/v0.1.0/release-preparation.json"
+    },
+    "yuki-participation-0.1.0-linux.zip": {
+      "sha256": "af751c77ac155992042bdfdba6900661b667ab3bf7912cc7b3f8246d79e2252c",
+      "size": 468352,
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/releases/download/plugin/participation/v0.1.0/yuki-participation-0.1.0-linux.zip"
+    },
+    "yuki-participation-0.1.0-macos.zip": {
+      "sha256": "d9d357265e162f3c65375197379f487d0e94e22d0a6ba9b66e0280aba3a6c527",
+      "size": 440307,
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/releases/download/plugin/participation/v0.1.0/yuki-participation-0.1.0-macos.zip"
+    },
+    "yuki-participation-0.1.0-windows.zip": {
+      "sha256": "d1147fc19dc806890fe4a4739fe065a7221f91041bf79b7677cda4daeebb2ff7",
+      "size": 361175,
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/releases/download/plugin/participation/v0.1.0/yuki-participation-0.1.0-windows.zip"
+    }
+  },
+  "build_commit": "426f242d7e3b24e98adbdf8cd114d4302069d7d8",
+  "host": {
+    "archive_sha256": "5bd115e374b41c6091dde698c3002a77d6687337b71f1eb8d6cf8bad0706d2d3",
+    "database_reader": 63,
+    "published": true,
+    "source_commit": "c7f7c92b0562000da4e482228e7676993ecf20d3",
+    "surface_sha256": "0cde7bbb6bce6cfc2a695beebdc2037e8badcf687dfe9acf2566505d778cd9e4",
+    "tag": "plugin-base-v1.3.0"
+  },
+  "platforms": {
+    "linux": {
+      "release_inputs_sha256": "4f977577f512ae1b3cdc06bc8c36fc7b97e006d5b26e88a03064659ae3479238",
+      "sha256": "af751c77ac155992042bdfdba6900661b667ab3bf7912cc7b3f8246d79e2252c",
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/releases/download/plugin/participation/v0.1.0/yuki-participation-0.1.0-linux.zip",
+      "worker_sha256": "8e7bf268f99260d644dcf0987365a8b08392d7fc7f069ecb895959070012291b"
+    },
+    "macos": {
+      "release_inputs_sha256": "4f977577f512ae1b3cdc06bc8c36fc7b97e006d5b26e88a03064659ae3479238",
+      "sha256": "d9d357265e162f3c65375197379f487d0e94e22d0a6ba9b66e0280aba3a6c527",
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/releases/download/plugin/participation/v0.1.0/yuki-participation-0.1.0-macos.zip",
+      "worker_sha256": "b1e61ba78700c548b1ff0f41f5c1f7d466b2b8586c8ac0f570043221007c711e"
+    },
+    "windows": {
+      "release_inputs_sha256": "4f977577f512ae1b3cdc06bc8c36fc7b97e006d5b26e88a03064659ae3479238",
+      "sha256": "d1147fc19dc806890fe4a4739fe065a7221f91041bf79b7677cda4daeebb2ff7",
+      "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/releases/download/plugin/participation/v0.1.0/yuki-participation-0.1.0-windows.zip",
+      "worker_sha256": "6ec0f93c2a531ada539162abf9a443dc95d1985a4b44c81e205372c4a407eddb"
+    }
+  },
+  "publication_id": 445774519,
+  "publication_sha256": "633777827fcb122e43b1a84ea4dd709da4e5ec914aca87b0ebb2fb9e4ae9984e",
+  "published_at": "2026-11-15T03:05:28Z",
+  "release_preparation_sha256": "52174c11dbd56b91387a479d9d81055de1450aa96fa319aff1b3837f60de7925",
+  "repository": "Institute-of-Agent-Life/yuki-extensions",
+  "sdk": {
+    "sha256": "f89c8c9adf64e1275b5e6e3d5d455d627dd46fd921e3c8c0046d59de131e8932",
+    "version": "1.3.0"
+  },
+  "source_commit": "e03b6e660f5a6689241e4e7e875c0945d4a5cfa6",
+  "source_tree": "3574a5627f77a8181ac755c7563041ed03080b15",
+  "status": "published-and-downloaded",
+  "tag": "plugin/participation/v0.1.0",
+  "url": "https://github.com/Institute-of-Agent-Life/yuki-extensions/releases/tag/plugin/participation/v0.1.0"
+}
