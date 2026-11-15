@@ -71,8 +71,9 @@ the unquoted path.
 Restart recovery uses the same original event and review key. Source erasure
 removes affected snapshot data before the worker acknowledges the Host.
 
-The 0.1.0-alpha.9 preview offers the opt-in SELF timer on the alpha.37 Host
-contract. Append `--owner semantic` to the review arguments. The timer needs
+The 0.2.0 profile offers the opt-in SELF timer with Plugin Base 1.4.0.
+The development profile uses the alpha.37 Host. Append `--owner semantic`
+to the review arguments. The timer needs
 `participation.sources` and `participation.self_propose` in addition to the
 existing feedback and source grants. Install the original receiving stage
 under `[plugins.participation.self_scenes]` for the same group entry.
@@ -89,5 +90,9 @@ The private snapshot stores
 the proposal before dispatch. After restart, the worker queries the original
 key and applies the authorized execution and its confirmed delivery, stop,
 or no-reply feedback. Confirmed delivery uses the timestamp from the Host's
-original physical receipt. The clock resumes at the current time. The
-official Host and plugin release remain pending.
+original physical receipt. The clock resumes at the current time.
+
+For version 0.2.0 qualification, set `YUKI_PARTICIPATION_STABLE_HOST` to the
+published Plugin Base 1.4.0 ZIP and `YUKI_PARTICIPATION_SOURCE` to the pinned
+library archive. Run `python ci/check.py EXT-026 --preparation --out NEW_EVIDENCE`
+to build the profile and replay SELF and ordinary participation.

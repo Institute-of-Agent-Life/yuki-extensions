@@ -1,0 +1,32 @@
+{
+  "sdk_contract": "compat/stable-1.4/source.lock.json",
+  "runtime_files": [
+    "plugin.toml",
+    "README.md",
+    "semantic_bridge.py",
+    "source.lock.json",
+    "review-requirements.txt"
+  ],
+  "runtime_inputs": {
+    "README.md": "plugins/participation/README.md",
+    "semantic_bridge.py": "plugins/participation/semantic_bridge.py",
+    "source.lock.json": "compat/participation-library/source.lock.json",
+    "review-requirements.txt": "compat/participation-library/replay-requirements.txt"
+  },
+  "inputs": {
+    "catalog/participation.json": "07569fb2ec483b16589541cb7c2efed4902dec2ba6f828b809a9b8b5d8d73313",
+    "compat/participation-library/replay-requirements.txt": "e45dea35969e4f63d2f084d5c22b1b0616053dd5c2de8dd0714a6d7d796e9d4b",
+    "compat/participation-library/source.lock.json": "ecc2403a579b7e6a1ce09482108b8dc6bc6d37345e2d295bdb55f70bf513f586",
+    "compat/stable-1.4/source.lock.json": "6cee199f6a7db48131d7e679b09ed79af1707585be3de26b24c0f920a30fbe44",
+    "plugins/participation/LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+    "plugins/participation/README.md": "2d16e2fb9d1ee93f6f81990a53f51bad1c305e9674c3bf115f747ae0c170cf29",
+    "plugins/participation/rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+    "plugins/participation/semantic_bridge.py": "41558e23a60f45bfba37834485ac0bf8868db78660639f34a609b62cae3c479b",
+    "plugins/participation/src/autonomy.rs": "4b25cd14b109d2b939f7398b3140760800d7e5b3ef59439602b4dad47efc5f30",
+    "plugins/participation/src/main.rs": "7be4626637578417d074e41c390b2c36315ce4b4ac86b6ad6565286e8da88e73",
+    "plugins/participation/src/review.rs": "7af8c6985a9a8c0443e3c9abc5d265a20738c9ce3c55fad74a8cd58a1a851eb6",
+    "releases/participation/0.2.0/Cargo.lock": "b13c0a22697fa2ba3c4d6b34cbf12e1b90f530553e2190aaa3b0c763c39b49b5",
+    "releases/participation/0.2.0/Cargo.toml": "319722b2b432a1d0da295859136a67fd5e3c8deb07108939e4730103d8fbece9",
+    "releases/participation/0.2.0/plugin.toml": "e6602efd84111b0b0d1e5efb174c0bb08e87f3db4261c1b957cdbeee0ca82fb8"
+  }
+}
