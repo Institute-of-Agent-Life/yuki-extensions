@@ -45,11 +45,17 @@ Use Python 3.12 or later with `compat/participation-library/replay-requirements.
 installed, the packaged `semantic_bridge.py`, and the archive pinned by
 `compat/participation-library/source.lock.json`. The checkpoint is a private
 SQLite file in an existing directory. Give each review instance its own
-checkpoint. Grant the review instance `llm.complete` and `llm.result` in
-addition to the grants above. Configure `ROUTE` for Jev `review` on that entry,
+checkpoint. Grant the review instance `participation.feedback`, `llm.complete`
+and `llm.result` in addition to the grants above. Configure `ROUTE` for Jev `review` on that entry,
 with event origin and the pinned response model. Model credentials stay in
 the Host. The bridge runs the unchanged participation library against local
 messages from the Rust worker.
+
+A human reply to the same person's admitted message can continue before
+Jev returns. The pinned library checks the existing relationship and the
+original Main response's participation intent. The later Jev decision
+shares the same Main input. A `quiet` report closes that relationship's
+fast continuation.
 
 Restart recovery uses the same original event and review key. Source erasure
 removes affected snapshot data before the worker acknowledges the Host.
