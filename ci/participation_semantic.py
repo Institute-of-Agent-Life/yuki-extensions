@@ -374,6 +374,7 @@ def run(work, executable, worker, adapter, upstream, output):
             release_unquoted.set()
             server.shutdown()
             thread.join()
+            await_result(previous_review_stopped)
     assert len(review_calls) == 16 and len(main_calls) == 10
     traces = [output / "rule-wire.jsonl", output / "review-wire.jsonl"]
     frames = [json.loads(line) for trace in traces for line in trace.read_text(encoding="utf-8").splitlines()]
