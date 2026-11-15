@@ -1,0 +1,31 @@
+{
+  "sdk_contract": "compat/stable-1.3/source.lock.json",
+  "runtime_files": [
+    "plugin.toml",
+    "README.md",
+    "semantic_bridge.py",
+    "source.lock.json",
+    "review-requirements.txt"
+  ],
+  "runtime_inputs": {
+    "README.md": "plugins/participation/README.md",
+    "semantic_bridge.py": "plugins/participation/semantic_bridge.py",
+    "source.lock.json": "compat/participation-library/source.lock.json",
+    "review-requirements.txt": "compat/participation-library/replay-requirements.txt"
+  },
+  "inputs": {
+    "catalog/participation.json": "2c3ce10acd18651ebd8f5fdb6d90787b467d82a751636e97d58a9cc813888225",
+    "compat/participation-library/replay-requirements.txt": "e45dea35969e4f63d2f084d5c22b1b0616053dd5c2de8dd0714a6d7d796e9d4b",
+    "compat/participation-library/source.lock.json": "ecc2403a579b7e6a1ce09482108b8dc6bc6d37345e2d295bdb55f70bf513f586",
+    "compat/stable-1.3/source.lock.json": "cbe73185f3138e469a2502f7b25251f641d2a402097dd8b66b3d274c37b50775",
+    "plugins/participation/LICENSE": "e89cfb6162750cdd87952a48c302e1fc9271a487f283c53e4fceab0b30f25a99",
+    "plugins/participation/README.md": "fe68355c3dcbb20916fe348a39a5a12bc22839aa66836a2f6e4e75685fd952ab",
+    "plugins/participation/rust-toolchain.toml": "75cd8d73777ba32f23fcf6d5a7f49019b4a7c8ebe34a06ceb5a40d1c21ab8ffc",
+    "plugins/participation/semantic_bridge.py": "203232e69602ebf2db56018a9e801f234226813830ee79c3c649d558d6cf09bb",
+    "plugins/participation/src/main.rs": "3848b541bbdcd3741129ab6993a6c336e51c0bd5a8b0bb2121e7983cfbd903a7",
+    "plugins/participation/src/review.rs": "d4fe7809b0279932e70b52d00a677de0c6307f698ef83a5cd69457dce6947d6f",
+    "releases/participation/0.1.0/Cargo.lock": "ff69d2120eaedad67700d6d6b336c183fb4d31de65dbb92e0bbd18f57241dd3b",
+    "releases/participation/0.1.0/Cargo.toml": "ca31615805ae4e1744b6f6156de9ed3804ba906f74ef60ea624e276b3f05d04c",
+    "releases/participation/0.1.0/plugin.toml": "8ed7011fd9bcfc5538246cafd4b06476bab43dfe2e0fc5f47246accffc1dbcd5"
+  }
+}

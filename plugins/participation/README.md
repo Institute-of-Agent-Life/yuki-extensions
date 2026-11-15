@@ -8,7 +8,7 @@ can continue through the Host's ordinary promotion. Repeated observations
 share the original Main input. Plain text names and other native targets do
 not satisfy this Rule.
 
-Install the development candidate with this configuration, filling in the
+Install the worker with this configuration, filling in the
 entry and assignment from the same Host.
 
 ```toml
@@ -41,9 +41,11 @@ Pass these arguments after the original entry and receiving stage.
 --review PYTHON BRIDGE SOURCE_ARCHIVE CHECKPOINT ROUTE RESPONSE_MODEL DISPLAY_NAME
 ```
 
-Use Python 3.12 or later with `compat/participation-library/replay-requirements.txt`
-installed, the packaged `semantic_bridge.py`, and the archive pinned by
-`compat/participation-library/source.lock.json`. The checkpoint is a private
+Use Python 3.12 or later, the packaged `semantic_bridge.py`, and the original
+library archive pinned by `source.lock.json`. Install the locked Python
+dependencies with `python -m pip install --require-hashes -r review-requirements.txt`.
+In a source checkout these locks are under `compat/participation-library/`.
+The checkpoint is a private
 SQLite file in an existing directory. Give each review instance its own
 checkpoint. Grant the review instance `participation.feedback`, `llm.complete`
 and `llm.result` in addition to the grants above. Configure `ROUTE` for Jev `review` on that entry,

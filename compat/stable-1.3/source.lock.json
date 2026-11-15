@@ -1,0 +1,51 @@
+{
+  "published": true,
+  "tag": "plugin-base-v1.3.0",
+  "release_url": "https://github.com/Institute-of-Agent-Life/yuki-core/releases/tag/plugin-base-v1.3.0",
+  "source_commit": "c7f7c92b0562000da4e482228e7676993ecf20d3",
+  "github_publication_sha256": "ef08641cd88bfcd410725b9937992c256d6dfe6f3ca02245d97e67ea449af794",
+  "release_receipt_sha256": "73bcb6f047615cd2207be7e6401525fa7168e8681d0f0b1f29c8c200e8adb8cd",
+  "signer": {
+    "fingerprint": "SHA256:FHssb1Olj2VHvEk4eOnNG+uN3ftKfG8dBGEZSIeqyD8",
+    "pubkey_sha256": "8cb4ca9aaa667ecd97a5a455ec6dcc43ecd969897a289a72da1d3dd4e48945cc",
+    "scope": "1.3.0 distribution"
+  },
+  "surface_sha256": "0cde7bbb6bce6cfc2a695beebdc2037e8badcf687dfe9acf2566505d778cd9e4",
+  "database_reader": 63,
+  "sdk": {
+    "rust": "1.3.0",
+    "python": "1.3.0"
+  },
+  "rust_crate_sha256": "f89c8c9adf64e1275b5e6e3d5d455d627dd46fd921e3c8c0046d59de131e8932",
+  "asset_sha256": {
+    "manifest.json": "f67d368955fb7ed7e5fce44572ac1f396acabb414e3d8d4af96cf2de33342cdf",
+    "release-receipt.json": "73bcb6f047615cd2207be7e6401525fa7168e8681d0f0b1f29c8c200e8adb8cd",
+    "signer.pub": "8cb4ca9aaa667ecd97a5a455ec6dcc43ecd969897a289a72da1d3dd4e48945cc",
+    "SHA256SUMS": "7516d986f26d6f74c47bdebecc301818e56815f8469cb888005ff6d0772a92eb",
+    "SHA256SUMS.sig": "8123565bdd99d127ca0923ef799882add5fb696e6d9e5b29504b6ae0baa2a36d",
+    "yuki-plugin-base-1.3.0-support.zip": "7b6cc3241d27d213330457804dbef295595fadd1f3bb6b33f8361399959d3017",
+    "yuki-plugin-base-1.3.0.zip": "5bd115e374b41c6091dde698c3002a77d6687337b71f1eb8d6cf8bad0706d2d3"
+  },
+  "assets": {
+    "host-linux": {
+      "path": "assets/linux/yuki-core",
+      "sha256": "9b122989fe778b83b1f3dc5437a82085b3d3971f9e0004745205d0d83fba6b45"
+    },
+    "host-macos": {
+      "path": "assets/macos/yuki-core",
+      "sha256": "616b2114c0c33550a149abafd0765770e5b45fa4d0a34bf7fc41bb18de5097e3"
+    },
+    "host-windows": {
+      "path": "assets/windows/yuki-core.exe",
+      "sha256": "36fb01b7986c590fa10aaaebf319cddbd5f68b060edd9daf74eddf33c107dac3"
+    },
+    "python-sdk": {
+      "path": "assets/yuki_plugin_sdk-1.3.0-py3-none-any.whl",
+      "sha256": "fadf0483cf63314759747e4cfcf60301f577eb9a3bcc78cadd44a3fecba12d0b"
+    },
+    "rust-sdk": {
+      "path": "assets/yuki-plugin-sdk-1.3.0.crate",
+      "sha256": "f89c8c9adf64e1275b5e6e3d5d455d627dd46fd921e3c8c0046d59de131e8932"
+    }
+  }
+}

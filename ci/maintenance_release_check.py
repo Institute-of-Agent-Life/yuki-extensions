@@ -23,25 +23,25 @@ def checked_member(archive, entry):
     return data
 
 
-def unpack_worker(worker_bytes, destination, system, version):
+def unpack_worker(worker_bytes, destination, system, version, *, unit_id="memory-maintenance"):
     with ZipFile(io.BytesIO(worker_bytes)) as worker:
         raw = worker.read("package-manifest.json")
         manifest = json.loads(raw)
         members = manifest["artifacts"]
-        if (manifest["unit_id"] != "memory-maintenance"
+        if (manifest["unit_id"] != unit_id
                 or manifest["version"] != version
                 or sorted(worker.namelist()) != sorted(["package-manifest.json", *members])):
-            raise ValueError("unexpected maintenance package")
+            raise ValueError("unexpected plugin package")
         destination.mkdir()
         for name, digest in members.items():
             data = worker.read(name)
             if (name in {"", ".", ".."} or any(c in name for c in "/\\:")
                     or hashlib.sha256(data).hexdigest() != digest):
-                raise ValueError("changed maintenance package member: " + name)
+                raise ValueError("changed plugin package member: " + name)
             (destination / name).write_bytes(data)
         (destination / "package-manifest.json").write_bytes(raw)
         if system != "windows":
-            (destination / "yuki-memory-maintenance").chmod(0o700)
+            (destination / ("yuki-" + unit_id)).chmod(0o700)
         return manifest
 
 
