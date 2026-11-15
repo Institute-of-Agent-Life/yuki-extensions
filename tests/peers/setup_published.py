@@ -44,8 +44,9 @@ def verify_minors(root, output):
         version: Path(os.environ[f"YUKI_SETUP_BASE_{suffix}"]).resolve(strict=True)
         for version, suffix in (("1.1.0", "1_1"), ("1.2.0", "1_2"))
     }
-    if base := os.environ.get("YUKI_SETUP_BASE_1_3"):
-        archives["1.3.0"] = Path(base).resolve(strict=True)
+    for minor in (3, 4):
+        if base := os.environ.get(f"YUKI_SETUP_BASE_1_{minor}"):
+            archives[f"1.{minor}.0"] = Path(base).resolve(strict=True)
     package = output / "packages"
     installer = build(root, "yuki-setup", package)
     setup = package / ("yuki-setup.exe" if os.name == "nt" else "yuki-setup")
@@ -112,7 +113,7 @@ def verify_minors(root, output):
                     ready = json.load(response)
                 assert ready == {"ready": True}
                 info = json.loads(cli("operator", "database-info"))
-                assert info["schema_version"] == {"1.1.0": 56, "1.2.0": 60, "1.3.0": 63}[version]
+                assert info["schema_version"] == {"1.1.0": 56, "1.2.0": 60, "1.3.0": 63, "1.4.0": 63}[version]
                 cli("operator", "shutdown")
                 assert process.wait(timeout=10) == 0
             finally:
